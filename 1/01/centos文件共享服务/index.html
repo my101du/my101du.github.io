@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Samba文件共享服务 permalink: samba-server tags:
+ samba 运维  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Samba文件共享服务
+permalink: samba-server
+tags:
+
+samba
+运维
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/centos%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Samba文件共享服务
+permalink: samba-server
+tags:
+
+samba
+运维
+
+">
+
+<meta itemprop="wordCount" content="2082">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Samba文件共享服务
+permalink: samba-server
+tags:
+
+samba
+运维
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/centos%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/centos%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2082字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Samba文件共享服务
+permalink: samba-server
+tags:</p>
+<ul>
+<li>samba</li>
+<li>运维</li>
+</ul>
+<hr>
+<h1 id="选择-nfssamba">选择 NFS/Samba</h1>
+<p>碎文件多，nfs 有优势，否则，smb 兼容性好。</p>
+<p>碎文件数量临界点，2w 个，具体可以自己谷歌国外 nfs 和 smb 的测评</p>
+<h1 id="samba-服务">Samba 服务</h1>
+<p>Samba 是在Linux和UNIX系统上实现SMB协议的一个免费软件，由服务器及客户端程序构成。Samba最大的功能就是可以用于Linux与windows系统直接的文件共享和打印共享，Samba既可以用于windows与Linux之间的文件共享，也可以用于Linux与Linux之间的资源共享。</p>
+<p>Samba由两个主要程序组成，它们是smbd和nmbd。这两个守护进程在服务器启动到停止期间持续运行，功能各异。Smbd和nmbd使用的全部配置信息全都保存在smb.conf文件中。Smb.conf向smbd和nmbd两个守护进程说明输出什么以便共享，共享输出给谁及如何进行输出。</p>
+<p>Samba提供了基于CIFS的四个服务：</p>
+<p>1)、文件和打印服务</p>
+<p>2)、授权与被授权</p>
+<p>3)、名称解析</p>
+<p>4)、浏览服务</p>
+<p><a href="https://www.tecmint.com/install-samba4-on-centos-7-for-file-sharing-on-windows/">https://www.tecmint.com/install-samba4-on-centos-7-for-file-sharing-on-windows/</a></p>
+<h2 id="samba-server-基本配置">samba server 基本配置</h2>
+<pre><code class="language-shell">sudo yum install samba samba-client samba-common
+
+# 防火墙
+firewall-cmd --permanent --zone=public --add-service=samba
+firewall-cmd --reload
+
+sudo mkdir /home/share
+sudo chmod -R 777 /home/share
+
+sudo useradd smbuser
+
+# 这就是关键了， 并不是 passwd  而是 smbpasswd
+sudo smbpasswd -a smbuser
+</code></pre>
+<p>sudo vi /etc/samba/smb.conf</p>
+<pre><code class="language-shell">#找到 global 配置部分，添加一行
+security=user
+
+#来到最后，添加
+[myshare]
+path=/home/share
+comment=my share directory
+browseable=yes
+writable=yes
+
+[global]
+    workgroup = WORKGROUP
+    netbios name = centos
+    security = user
+[Anonymous]
+    comment = Anonymous File Server Share
+    path = /srv/samba/anonymous
+    browsable =yes
+    writable = yes
+    guest ok = yes
+    read only = no
+    force user = nobody
+</code></pre>
+<p>重启服务</p>
+<pre><code class="language-shell"># 测试配置
+testparm
+
+# smb
+systemctl start smb.service
+systemctl enable smb.service
+
+# nmb  干啥的？
+systemctl start nmb.service
+systemctl enable nmb.service
+</code></pre>
+<p>然后在客户端用 <code>smbuser</code>用户和对应的密码来连接共享目录（例如windows的 \192.168.0.x 和 OSX 的 cmd+k）</p>
+<h2 id="主机加入了一个域-访问时无法连接">主机加入了一个域， 访问时无法连接</h2>
+<p>登录窗口选“更多选项”， 账号里开始打一个 <code>\</code> 就不会自动读取到域了</p>
+<h2 id="性能调整">性能调整</h2>
+<p>放在 [global]</p>
+<pre><code class="language-shell"># disable links and symbol links  不需要对符号链接也共享
+follow symlinks = no
+wide links = no
+
+# enable some read/write tuning  启用读写缓存等等
+read raw = yes
+write raw = yes
+
+aio read size = 16384
+aio write size = 16384
+write cache size = 262144
+
+max xmit = 65536
+large readwrite = yes
+
+# Use sendfile for reading files efficiently:以下几个我测试貌似影响不大
+use sendfile = yes
+getwd cache = yes
+
+# disable locking, because only 2 share can be written.
+strict locking = no
+fake oplocks = yes
+oplocks = no
+</code></pre>
+<p>follow symlinks ，对我来说不需要，Windows好象不支持这种符号连接，我也不需要在共享里有这个东西，所以关闭</p>
+<p>wide links，同上，不需要</p>
+<p>aio read/write size，是和异步读写有关的，设大一点比较好</p>
+<p>oplocks和locking这两个决定samba是否对文件进行lock测试，如果一个用户以write方式打开了这个文件，那么其它用户就 不能再以write打开，这两个东西很费内存，也同样会降低samba的性能。 另外，我有很多个share，其中只有两个是所有人都可以写的，其它的都只有一个用户能写，对于后者，不需要打开这个，因为共享设计就是别人无法写。 那么就在global里面把这几个和lock有关的参数关掉，在那两个所有人可以写的share再打开。</p>
+<p>所有基它的参数，都是samba里面提到的performance tunning的参数我就不一个一个的说了，要了解它的可以去 <a href="http://us1.samba.org/samba/docs/man/Samba-HOWTO-Collection/">http://us1.samba.org/samba/docs/man/Samba-HOWTO-Collection/</a>  看 看</p>
+<p>完整的参数 <a href="http://us1.samba.org/samba/docs/man/Samba-HOWTO-Collection/">http://us1.samba.org/samba/docs/man/Samba-HOWTO-Collection/</a></p>
+<h1 id="nfs">NFS</h1>
+<p>如果 windows 下也用了samba, 因为无法修改端口，则端口映射无法使用。改成 NFS</p>
+<h2 id="服务端-centos">服务端 CentOS</h2>
+<p>安装</p>
+<pre><code class="language-shell"># 客户端也是这个。。。
+yum -y install nfs-utils nfs-utils-lib
+
+systemctl enable nfs-server.service
+systemctl enable rpcbind
+systemctl enable nfs-lock
+systemctl enable nfs-idmap  
+
+
+systemctl start nfs-server.service
+systemctl start rpcbind
+systemctl start nfs-lock
+systemctl start nfs-idmap 
+
+# 修改目录权限(或者把某个用户加入到组。)
+chown nfsnobody:nfsnobody /var/nfs
+
+chmod -R 777 /var/www
+</code></pre>
+<p>配置 <code>/etc/exports</code> 文件,如</p>
+<pre><code class="language-shell"># [要共享的目录] [共享给客户端IP(选项)] [客户端2 ...  可以是一个 ip 或网段 全部选项 https://linux.die.net/man/5/exports
+/var/www 192.168.100.222(rw,async,no_subtree_check,no_root_squash)
+/var/nfs        192.168.1.0/24(rw,sync,no_subtree_check)
+
+# 修改完毕后，要重载配置
+exportfs -a
+</code></pre>
+<h3 id="防火墙">防火墙：</h3>
+<p>如果没有配置好，会出现 mount.nfs: Connection timed out</p>
+<p>因为 nfs 除了默认开放端口  111 2049  还有一些随机端口，很不方便，因此配置NFS服务使用固定端口。</p>
+<p>编辑 /etc/sysconfig/nfs 配置文件</p>
+<pre><code class="language-shell"># TCP port rpc.lockd should listen on.
+LOCKD_TCPPORT=32803
+# UDP port rpc.lockd should listen on.
+LOCKD_UDPPORT=32769
+ 
+MOUNTD_PORT=892
+STATD_PORT=662
+</code></pre>
+<p>在Linux NFS服务器上执行以下命令获得NFS端口信息</p>
+<pre><code class="language-shell">rpcinfo -p
+
+
+#....略其他 111  2049 892  662 等
+100021    4   udp  32769  nlockmgr
+100021    1   tcp  32803  nlockmgr
+</code></pre>
+<p>找到后，运行如下</p>
+<pre><code class="language-shell">firewall-cmd --permanent --add-port=2049/tcp
+firewall-cmd --permanent --add-port=2049/udp
+firewall-cmd --permanent --add-port=111/tcp
+firewall-cmd --permanent --add-port=111/udp
+firewall-cmd --permanent --add-port=892/tcp
+firewall-cmd --permanent --add-port=892/udp
+firewall-cmd --permanent --add-port=662/tcp
+firewall-cmd --permanent --add-port=662/udp
+firewall-cmd --permanent --add-port=32803/tcp
+firewall-cmd --permanent --add-port=32769/udp
+</code></pre>
+<p>firewall-cmd &ndash;reload</p>
+<h2 id="客户端">客户端</h2>
+<h3 id="linux">linux</h3>
+<pre><code class="language-shell">apt-get install nfs-common portmap
+
+# or centos
+yum -y install nfs-utils nfs-utils-lib
+
+# 挂载 mount -t nfs
+mount 12.34.56.789:/home /mnt/nfs/home
+mount 12.34.56.789:/var/nfs /mnt/nfs/var/nfs
+
+
+df -h
+
+# 检查已经 mount 的
+mount
+
+# 启动自动挂载,添加内容
+vi /etc/fstab
+
+#一个案例 10.211.55.9:/data    /data  nfs auto,rw,vers=3,hard,intr,tcp,rsize=32768,wsize=32768      0   0
+12.34.56.789:/home  /mnt/nfs/home   nfs      auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0
+12.34.56.789:/var/nfs  /mnt/nfs/var/nfs   nfs     auto,noatime,nolock,bg,nfsvers=3,intr,tcp,actimeo=1800 0 0
+
+# 卸载
+umount /directory name
+</code></pre>
+<h3 id="mac端配置">Mac端配置</h3>
+<p>在终端中使用 <code>showmount -e IP\Domain</code>来查看 Centos 主机的共享状态</p>
+<p>使用命令挂载即可</p>
+<pre><code class="language-shell">$ sudo mount -t nfs 192.168.100.222:/var/www /private/nfs
+</code></pre>
+<p><a href="http://blog.huatai.me/2014/10/14/mac-os-x-mount-linux-nfs/">http://blog.huatai.me/2014/10/14/mac-os-x-mount-linux-nfs/</a></p>
+<h3 id="客户端-windows">客户端 windows</h3>
+<p>打开控制面板 &gt; 程序 &gt; 启用或关闭 Windows 功能，找到NFS服务打开子目录勾选NFS客户端与管理工具。
+NFS客户端：通过界面操作挂在NFS
+管理工具：通过命令行挂在NFS</p>
+<p>查看远程电脑NFS共享的目录</p>
+<p>showmount -e 远程电脑的IP</p>
+<p>挂载 打开我的电脑点击此电脑 &gt; 映射网络驱动器</p>
+<p>需要读写权限的需要修改注册表
+通过修改注册表将windows访问NFS时的UID和GID改成0即可，步骤如下
+1、在运行中输入regedit，打开注册表编辑器；
+2、进入HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default条目；
+3、选择新建&mdash;-QWORD值，新建AnonymousUid，AnonymousGid两个值，值为0；
+4、重启电脑 注册表才会生效；</p>
+<p>卸载
+不要使用资源管理器的“断开网络驱动器”</p>
+<h2 id="问题">问题</h2>
+<p>如果连接时 Centos 端提示</p>
+<blockquote>
+<p>nfsd: request from insecure port (192.168.7.130:49232)!</p>
+</blockquote>
+<p>则将&rsquo;选项&rsquo;配置成 (rw,async,insecure) 即可</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/centos%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/centos%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/centos%E7%9A%84%E9%98%B2%E7%81%AB%E5%A2%99%E6%9C%8D%E5%8A%A1/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/leancloud%E4%BA%91%E6%9C%8D%E5%8A%A1/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

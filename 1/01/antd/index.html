@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: antd permalink: react-and-antd tags: frontend 开始 使用 codesandbox 快速查看 https://codesandbox.io/s/jnw46698m3 兼容性 对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。 如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 s" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: antd permalink: react-and-antd tags: frontend 开始 使用 codesandbox 快速查看 https://codesandbox.io/s/jnw46698m3 兼容性 对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。 如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 s" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/antd/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: antd permalink: react-and-antd tags: frontend 开始 使用 codesandbox 快速查看 https://codesandbox.io/s/jnw46698m3 兼容性 对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。 如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 s">
+
+<meta itemprop="wordCount" content="4514">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: antd permalink: react-and-antd tags: frontend 开始 使用 codesandbox 快速查看 https://codesandbox.io/s/jnw46698m3 兼容性 对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。 如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 s"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/antd/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/antd/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4514字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: antd
+permalink: react-and-antd
+tags:</p>
+<ul>
+<li>frontend</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="开始">开始</h1>
+<p>使用 codesandbox 快速查看</p>
+<p><a href="https://codesandbox.io/s/jnw46698m3">https://codesandbox.io/s/jnw46698m3</a></p>
+<h2 id="兼容性">兼容性</h2>
+<p>对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。</p>
+<p>如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 shim。</p>
+<h2 id="样式引入-create-react-app">样式引入 （create-react-app）</h2>
+<p>修改 src/App.css</p>
+<pre><code class="language-css">@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+</code></pre>
+<h2 id="在-create-react-app-中定制">在 create-react-app 中定制</h2>
+<p><a href="https://ant.design/docs/react/use-with-create-react-app-cn">https://ant.design/docs/react/use-with-create-react-app-cn</a></p>
+<p>如果直接修改 webpack.config.js</p>
+<pre><code class="language-shell">yarn eject
+</code></pre>
+<p>如果不想暴露这些默认配置文件，但又想覆盖，用下面的方法：</p>
+<h3 id="对-create-react-app-的默认配置进行自定义">对 create-react-app 的默认配置进行自定义</h3>
+<pre><code class="language-shell">yarn add react-app-rewired customize-cra
+</code></pre>
+<p>修改 package.json</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+-   &quot;start&quot;: &quot;react-scripts start&quot;,
++   &quot;start&quot;: &quot;react-app-rewired start&quot;,
+-   &quot;build&quot;: &quot;react-scripts build&quot;,
++   &quot;build&quot;: &quot;react-app-rewired build&quot;,
+-   &quot;test&quot;: &quot;react-scripts test&quot;,
++   &quot;test&quot;: &quot;react-app-rewired test&quot;,
+}
+</code></pre>
+<p>项目根目录创建一个 config-overrides.js 用于修改默认配置</p>
+<h2 id="构建">构建</h2>
+<p>可以用 webpack  (parcel)phttps://parceljs.org/ 等等</p>
+<p>或使用一些社区脚手架</p>
+<h2 id="按需加载">按需加载</h2>
+<p>可以通过以下的写法来按需加载组件。</p>
+<pre><code class="language-js">import Button from 'antd/lib/button';
+import 'antd/lib/button/style'; // 或者 antd/lib/button/style/css 加载 css 文件
+</code></pre>
+<p>如果你使用了 babel，那么可以使用 babel-plugin-import 来进行按需加载，加入这个插件后。你可以仍然这么写：</p>
+<pre><code class="language-js">import { Button } from 'antd';
+</code></pre>
+<p>插件会帮你转换成 antd/lib/xxx 的写法。另外此插件配合 style 属性可以做到模块样式的按需自动加载。</p>
+<h2 id="moment-体积太大的缩小">moment 体积太大的缩小</h2>
+<h1 id="不同的工作流">不同的工作流</h1>
+<h2 id="dva">dva</h2>
+<h2 id="create-react-app">create-react-app</h2>
+<p>高级配置：按需加载、主题等</p>
+<h1 id="社区与第三方资源">社区与第三方资源</h1>
+<h2 id="脚手架市场">脚手架市场</h2>
+<p><a href="http://scaffold.ant.design/#/">http://scaffold.ant.design/#/</a></p>
+<p>学习里面的案例</p>
+<h2 id="社区组件">社区组件</h2>
+<p><a href="https://ant.design/docs/react/recommendation-cn">https://ant.design/docs/react/recommendation-cn</a></p>
+<p>路由、布局等</p>
+<p>react-router</p>
+<h1 id="组件">组件</h1>
+<h2 id="布局-layout">布局 Layout</h2>
+<p>通过组织 Layout(子组件有 Header, Content, Sider 等) Menu(包括 SubMenu) 等来设计一个布局，可以在文档查看到更多布局</p>
+<h3 id="不同的页面布局模式">不同的页面布局模式</h3>
+<p>这里以常见的 顶部菜单+侧栏+面包屑+内容区域为例</p>
+<p>代码如下</p>
+<p>小心有坑， SubMenu 的 “menu”第一个字母是大写，如果 import - const 里面写错了，会提示什么 App 组件错误&hellip;</p>
+<pre><code class="language-js">import React, { Component } from 'react';
+import logo from './img/pulse_logo_icon.png';
+import './App.css';
+import { Layout, Menu, Breadcrumb, Icon, DatePicker } from 'antd';
+const { SubMenu } = Menu;
+const { Sider, Content, Header } = Layout;
+
+class App extends Component {
+  render() {
+    return (
+      &lt;Layout&gt;
+        &lt;Header className=&quot;header&quot;&gt;
+          &lt;div className=&quot;logo&quot;&gt;
+            &lt;img src={logo} /&gt;
+            Pulse Admin
+          &lt;/div&gt;
+          &lt;Menu
+            theme=&quot;dark&quot;
+            mode=&quot;horizontal&quot;
+            defaultSelectedKeys={['2']}
+            style={{ lineHeight: '64px' }}
+          &gt;
+            &lt;Menu.Item key=&quot;1&quot;&gt;News&lt;/Menu.Item&gt;
+            &lt;Menu.Item key=&quot;2&quot;&gt;Products&lt;/Menu.Item&gt;
+            &lt;Menu.Item key=&quot;3&quot;&gt;Users&lt;/Menu.Item&gt;
+          &lt;/Menu&gt;
+        &lt;/Header&gt;
+        &lt;Layout&gt;
+          &lt;Sider width={200} style={{ background: 'fff' }}&gt;
+            &lt;Menu
+              mode=&quot;inline&quot;
+              defaultSelectedKeys={[&quot;1&quot;]}
+              defaultOpenKeys={[&quot;sub1&quot;]}
+              style={{height: '100%', borderRight: 0 }}
+            &gt;
+              &lt;SubMenu key=&quot;sub1&quot; title={&lt;span&gt;&lt;Icon type=&quot;user&quot; /&gt;Product Finder&lt;/span&gt;}&gt;
+                &lt;Menu.Item key=&quot;1&quot;&gt;Sync OData&lt;/Menu.Item&gt;
+                &lt;Menu.Item key=&quot;2&quot;&gt;Class Fields&lt;/Menu.Item&gt;
+                &lt;Menu.Item key=&quot;3&quot;&gt;option3&lt;/Menu.Item&gt;
+                &lt;Menu.Item key=&quot;4&quot;&gt;option4&lt;/Menu.Item&gt;
+              &lt;/SubMenu&gt;
+              &lt;SubMenu key=&quot;sub2&quot; title={&lt;span&gt;&lt;Icon type=&quot;user&quot; /&gt;Users&lt;/span&gt;}&gt;
+                &lt;Menu.Item key=&quot;5&quot;&gt;BU clients&lt;/Menu.Item&gt;
+                &lt;Menu.Item key=&quot;6&quot;&gt;Customer Manager&lt;/Menu.Item&gt;
+              &lt;/SubMenu&gt;
+            &lt;/Menu&gt;
+          &lt;/Sider&gt;
+          &lt;Layout style={{ padding: '0 24px 24px' }}&gt;
+            &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+              &lt;Breadcrumb.Item&gt;Home&lt;/Breadcrumb.Item&gt;
+              &lt;Breadcrumb.Item&gt;List&lt;/Breadcrumb.Item&gt;
+              &lt;Breadcrumb.Item&gt;App&lt;/Breadcrumb.Item&gt;
+            &lt;/Breadcrumb&gt;
+            &lt;Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}&gt;
+              Content
+            &lt;/Content&gt;
+          &lt;/Layout&gt;
+        &lt;/Layout&gt;
+      &lt;/Layout&gt;
+    );
+  }
+}
+
+export default App;
+
+</code></pre>
+<h3 id="收起导航">收起导航</h3>
+<p>Sider 组件的 collapsible 属性结合 state 来处理</p>
+<pre><code class="language-js">state = {
+    collapsed: false,
+  };
+  onCollapse = (collapsed) =&gt; {
+    console.log(collapsed);
+    this.setState({ collapsed });
+  }
+  render() {
+  //.....
+  
+  
+  return (
+      &lt;Layout style={{ minHeight: '100vh' }}&gt;
+        &lt;Sider
+          collapsible
+          collapsed={this.state.collapsed}
+          onCollapse={this.onCollapse}
+        &gt;
+</code></pre>
+<p>或者自定义一个触发器</p>
+<pre><code class="language-js">toggle = () =&gt; {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+  
+  
+  render() {
+    return (
+      &lt;Layout&gt;
+        &lt;Sider
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+        &gt;
+        
+        ....
+        
+        &lt;Icon
+              className=&quot;trigger&quot;
+              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              onClick={this.toggle}
+            /&gt;
+</code></pre>
+<p>对这个 trigger 按钮定义样式</p>
+<pre><code class="language-css">#components-layout-demo-custom-trigger .trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+#components-layout-demo-custom-trigger .trigger:hover {
+  color: #1890ff;
+}
+
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  background: rgba(255,255,255,.2);
+  margin: 16px;
+}
+</code></pre>
+<p><img src="/media/15490411859003/15231762694234.jpg" alt=""></p>
+<h3 id="固定头部其他">固定头部，其他</h3>
+<h3 id="grid-栅格">Grid 栅格</h3>
+<p>24 等分</p>
+<p>通过row在水平方向建立一组column（简写col）</p>
+<p>你的内容应当放置于col内，并且，只有col可以作为row的直接元素</p>
+<p><code>Row</code>的<code>gutter</code>除了设置为固定的数值，还可以设置为<code>{ xs: 8, sm: 16, md: 24, lg: 32 }</code>实现响应式
+<code>Col</code>可设置 span 和 offset</p>
+<pre><code class="language-html">&lt;Row gutter={16}&gt;
+  &lt;Col span={4} /&gt;
+  &lt;Col span={4} /&gt;
+  &lt;Col span={4} /&gt;
+  &lt;Col span={4} /&gt;
+  &lt;Col span={4} /&gt;
+  &lt;Col span={4}  offset={8} /&gt;
+&lt;/Row&gt;
+</code></pre>
+<p>栅格系统中的列是指1到24的值来表示其跨越的范围。例如，三个等宽的列可以使用.col-8来创建</p>
+<p>如果一个row中的col总和超过 24，那么多余的col会作为一个整体另起一行排列</p>
+<p><strong>push 和 pull改变默认顺序</strong></p>
+<pre><code class="language-html">&lt;Row&gt;
+  &lt;Col span={18} push={6}&gt;col-18 col-push-6&lt;/Col&gt;
+  &lt;Col span={6} pull={18}&gt;col-6 col-pull-18&lt;/Col&gt;
+&lt;/Row&gt;
+</code></pre>
+<p><strong>flex 布局（对齐、排序、响应式等等）</strong></p>
+<p>Row:</p>
+<ul>
+<li>align: top/middle/bottom</li>
+<li>gutter</li>
+<li>justify: start/center/end/space-between/space-around</li>
+<li>type</li>
+</ul>
+<p>Col</p>
+<ul>
+<li>offset</li>
+<li>order</li>
+<li>pull</li>
+<li>xs sm&hellip;..</li>
+</ul>
+<pre><code class="language-html">&lt;Row type=&quot;flex&quot; justify=&quot;start&quot;&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+&lt;/Row&gt;
+
+&lt;p&gt;sub-element align center&lt;/p&gt;
+&lt;Row type=&quot;flex&quot; justify=&quot;center&quot;&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+  &lt;Col span={4}&gt;col-4&lt;/Col&gt;
+&lt;/Row&gt;
+
+&lt;Row type=&quot;flex&quot;&gt;
+  &lt;Col span={6} order={4}&gt;1 col-order-4&lt;/Col&gt;
+  &lt;Col span={6} order={3}&gt;2 col-order-3&lt;/Col&gt;
+  &lt;Col span={6} order={2}&gt;3 col-order-2&lt;/Col&gt;
+  &lt;Col span={6} order={1}&gt;4 col-order-1&lt;/Col&gt;
+&lt;/Row&gt;
+</code></pre>
+<p>响应式</p>
+<pre><code class="language-html">&lt;Row&gt;
+&lt;Col xs={2} sm={4} md={6} lg={8} xl={10}&gt;Col&lt;/Col&gt;
+&lt;Col xs={20} sm={16} md={12} lg={8} xl={4}&gt;Col&lt;/Col&gt;
+&lt;Col xs={2} sm={4} md={6} lg={8} xl={10}&gt;Col&lt;/Col&gt;
+&lt;/Row&gt;
+
+&lt;Row&gt;
+&lt;Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}&gt;Col&lt;/Col&gt;
+&lt;Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}&gt;Col&lt;/Col&gt;
+&lt;Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}&gt;Col&lt;/Col&gt;
+&lt;/Row&gt;
+</code></pre>
+<h2 id="button-按钮">Button 按钮</h2>
+<p>设置按钮大小、类型、图标、状态&hellip;；多个按钮组合</p>
+<h2 id="icon-图标">Icon 图标</h2>
+<p>图标默认托管在 iconfont.cn，默认公网可访问。如需本地部署，可参考 <a href="https://github.com/ant-design/antd-init/tree/master/examples/local-iconfont">https://github.com/ant-design/antd-init/tree/master/examples/local-iconfont</a> 示例。</p>
+<p>命名顺序：[图标名]-[形状?]-[描线?]-[方向?]</p>
+<p>实心和描线图标保持同名，用 -o 来区分，比如 question-circle（实心） 和 question-circle-o（描线）；</p>
+<pre><code class="language-html">&lt;Icon type=&quot;question&quot; style={{ fontSize: 16, color: '#08c' }} /&gt;
+</code></pre>
+<h2 id="页面导航类">页面导航类</h2>
+<h3 id="固定浮动-affix">固定浮动 Affix</h3>
+<h3 id="面包屑--breadcrumb">面包屑  Breadcrumb</h3>
+<pre><code class="language-html">&lt;Breadcrumb&gt;
+    &lt;Breadcrumb.Item href=&quot;&quot;&gt;
+      &lt;Icon type=&quot;home&quot; /&gt;
+    &lt;/Breadcrumb.Item&gt;
+    &lt;Breadcrumb.Item href=&quot;&quot;&gt;
+      &lt;Icon type=&quot;user&quot; /&gt;
+      &lt;span&gt;Application List&lt;/span&gt;
+    &lt;/Breadcrumb.Item&gt;
+    &lt;Breadcrumb.Item&gt;
+      Application
+    &lt;/Breadcrumb.Item&gt;
+</code></pre>
+<p>路由集成（以 react-router@4 为例）</p>
+<pre><code class="language-js">import { HashRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
+
+const breadcrumbNameMap = {
+  '/apps': 'Application List',
+  '/apps/1': 'Application1',
+  '/apps/2': 'Application2',
+  '/apps/1/detail': 'Detail',
+  '/apps/2/detail': 'Detail',
+};
+
+const Apps = () =&gt; (
+  &lt;ul className=&quot;app-list&quot;&gt;
+    &lt;li&gt;
+      &lt;Link to=&quot;/apps/1&quot;&gt;Application1&lt;/Link&gt;：&lt;Link to=&quot;/apps/1/detail&quot;&gt;Detail&lt;/Link&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;Link to=&quot;/apps/2&quot;&gt;Application2&lt;/Link&gt;：&lt;Link to=&quot;/apps/2/detail&quot;&gt;Detail&lt;/Link&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+);
+
+const Home = withRouter((props) =&gt; {
+  const { location } = props;
+  const pathSnippets = location.pathname.split('/').filter(i =&gt; i);
+  const extraBreadcrumbItems = pathSnippets.map((_, index) =&gt; {
+    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+    return (
+      &lt;Breadcrumb.Item key={url}&gt;
+        &lt;Link to={url}&gt;
+          {breadcrumbNameMap[url]}
+        &lt;/Link&gt;
+      &lt;/Breadcrumb.Item&gt;
+    );
+  });
+  const breadcrumbItems = [(
+    &lt;Breadcrumb.Item key=&quot;home&quot;&gt;
+      &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+    &lt;/Breadcrumb.Item&gt;
+  )].concat(extraBreadcrumbItems);
+  return (
+    &lt;div className=&quot;demo&quot;&gt;
+      &lt;div className=&quot;demo-nav&quot;&gt;
+        &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+        &lt;Link to=&quot;/apps&quot;&gt;Application List&lt;/Link&gt;
+      &lt;/div&gt;
+      &lt;Switch&gt;
+        &lt;Route path=&quot;/apps&quot; component={Apps} /&gt;
+        &lt;Route render={() =&gt; &lt;span&gt;Home Page&lt;/span&gt;} /&gt;
+      &lt;/Switch&gt;
+      &lt;Alert style={{ margin: '16px 0' }} message=&quot;Click the navigation above to switch:&quot; /&gt;
+      &lt;Breadcrumb&gt;
+        {breadcrumbItems}
+      &lt;/Breadcrumb&gt;
+    &lt;/div&gt;
+  );
+});
+</code></pre>
+<p><img src="/media/15490411859003/15325016633248.jpg" alt=""></p>
+<h3 id="下拉框-dropdown">下拉框 Dropdown</h3>
+<p>除了已经在案例的，还有个改动默认点击行为（默认点击完会隐藏，可以设为不隐藏）</p>
+<h3 id="菜单-menu">菜单 Menu</h3>
+<p>除了案例中的 horizontal 和 inline vertical 、submenu 外，有个“Open current submenu only”</p>
+<p>点击某个子菜单，会把其他所有的子菜单都收缩起来节省空间</p>
+<pre><code class="language-js">// submenu keys of first level
+  rootSubmenuKeys = ['sub1', 'sub2', 'sub4'];
+
+  state = {
+    openKeys: ['sub1'],
+  };
+
+  onOpenChange = (openKeys) =&gt; {
+    const latestOpenKey = openKeys.find(key =&gt; this.state.openKeys.indexOf(key) === -1);
+    if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({ openKeys });
+    } else {
+      this.setState({
+        openKeys: latestOpenKey ? [latestOpenKey] : [],
+      });
+    }
+  }
+  
+  render() {
+    return (
+      &lt;Menu
+        mode=&quot;inline&quot;
+        openKeys={this.state.openKeys}
+        onOpenChange={this.onOpenChange}
+        style={{ width: 256 }}
+      &gt;
+</code></pre>
+<h3 id="分页-pagination">分页 Pagination</h3>
+<h3 id="分步-steps">分步 Steps</h3>
+<h2 id="表单与数据输入-form">表单与数据输入 Form</h2>
+<p>普通、in modal，动态表单等</p>
+<p>保存数据到 upper component    validation 验证等
+其他control: slider/star/file/drag</p>
+<h3 id="自动完成--autocomplete">自动完成  AutoComplete</h3>
+<h3 id="层级选择输入框例如省市县-cascader">层级选择输入框（例如省市县） Cascader</h3>
+<h3 id="选择框-checkbox">选择框 Checkbox</h3>
+<p>group   check all等</p>
+<h3 id="时间日期选择-datepicker-与-time-picker">时间日期选择 DatePicker 与 Time Picker</h3>
+<h3 id="输入框-input-与-inputnumber">输入框 Input 与 InputNumber</h3>
+<h3 id="提到-mention">提到 Mention</h3>
+<p>使用 @ 或 # 分别自动引用人/标签</p>
+<h3 id="打分评价-rate">打分评价 Rate</h3>
+<p>支持五星,自定义图形</p>
+<h3 id="radio-单选可用-button-组合的形式">radio 单选（可用 Button 组合的形式）</h3>
+<h3 id="select-与-treeselect">Select 与 TreeSelect</h3>
+<p>普通下拉选项和组合多个选项  搜索等</p>
+<p>树状选择器</p>
+<h3 id="slider-滑动条">Slider 滑动条</h3>
+<h3 id="switch-转换开关">Switch 转换开关</h3>
+<h3 id="转移左右两列的元素-transfer">转移(左右两列的元素) Transfer</h3>
+<h3 id="上传文件--upload">上传文件  Upload</h3>
+<p>在后端取得文件数据，如果用了代理，（package.json 设置 proxy 地址），Laravel 取不到 <code>$request-&gt;file('file')</code>，但是 url 里的 ?code=1121 正常。估计是“代理”的问题</p>
+<p>在请求里也能看到如下的信息</p>
+<p><img src="/media/15490411859003/15341446178971.jpg" alt=""></p>
+<p>下面的代码能看到信息</p>
+<pre><code class="language-php">dd($request-&gt;file('file'))
+</code></pre>
+<p><img src="/media/15490411859003/15341449319207.jpg" alt=""></p>
+<h2 id="数据显示元素">数据显示元素</h2>
+<h3 id="头像-avatar">头像 Avatar</h3>
+<h3 id="徽章小圆点数字提示-badge">徽章(小圆点/数字提示) Badge</h3>
+<h3 id="日历--calendar">日历  Calendar</h3>
+<h3 id="卡片-card">卡片 Card</h3>
+<p>卡片如何可点击跳转？</p>
+<p>最后解析出来 html 是一个div</p>
+<p><img src="/media/15490411859003/15344777628228.jpg" alt="-w688"></p>
+<p><a href="https://github.com/ant-design/ant-design/issues/9286">https://github.com/ant-design/ant-design/issues/9286</a></p>
+<p>可以传递任何属性， 因此<code>&lt;Card href=&quot;http://www.baidu.com&quot;&gt;&lt;/Card&gt;</code> 但我试过不行</p>
+<p>在外面包裹一个 <code>a</code>吧</p>
+<h3 id="轮转幻灯-carousel">轮转(幻灯) Carousel</h3>
+<h3 id="收起展开--collapse">收起/展开  Collapse</h3>
+<h3 id="列表-list">列表 List</h3>
+<p>普通列表、加载、无限加载等</p>
+<h3 id="popover-弹出提示框">Popover 弹出提示框</h3>
+<h3 id="tooltip--小提示文本">Tooltip  小提示（文本）</h3>
+<h3 id="表格-table">表格 Table</h3>
+<p>datasource  复杂结构</p>
+<h3 id="切换-tabs">切换 Tabs</h3>
+<p><a href="https://ant.design/components/tabs/">Tabs</a></p>
+<pre><code class="language-js">import { Tabs } from 'antd';
+const TabPane = Tabs.TabPane;
+
+function callback(key) {
+  console.log(key);
+}
+
+// extra content(add to Tabs property)
+const operations = &lt;Button&gt;Extra Action&lt;/Button&gt;;
+
+// type=&quot;card&quot; 文本底部高亮条/卡片式
+// tabPosition={this.state.tabPosition} // 上下左右
+// size={size}
+&lt;Tabs defaultActiveKey=&quot;1&quot; onChange={callback} tabBarExtraContent={operations}&gt;
+    &lt;TabPane tab=&quot;Tab 1&quot; key=&quot;1&quot;&gt;Content of Tab Pane 1&lt;/TabPane&gt;
+    &lt;TabPane tab=&quot;Tab 2&quot; key=&quot;2&quot;&gt;Content of Tab Pane 2&lt;/TabPane&gt;
+    &lt;TabPane tab=&quot;Tab 3&quot; key=&quot;3&quot;&gt;Content of Tab Pane 3&lt;/TabPane&gt;
+    
+    //icon
+    &lt;TabPane tab={&lt;span&gt;&lt;Icon type=&quot;android&quot; /&gt;Tab 2&lt;/span&gt;} key=&quot;2&quot;&gt;
+      Tab 2
+    &lt;/TabPane&gt;
+    
+    // disabled
+    &lt;TabPane tab=&quot;Tab 2&quot; disabled key=&quot;2&quot;&gt;Tab 2&lt;/TabPane&gt;
+&lt;/Tabs&gt;
+</code></pre>
+<h3 id="打标签-tag">打标签 Tag</h3>
+<h3 id="时间轴-timeline">时间轴 Timeline</h3>
+<h3 id="树形列表-tree">树形列表 Tree</h3>
+<h2 id="操作反馈类">操作反馈类</h2>
+<h3 id="警示提醒框-alert">警示/提醒框 Alert</h3>
+<h3 id="drawer-抽屉">Drawer 抽屉</h3>
+<p>侧边显示，多层级  预览</p>
+<h3 id="模式弹窗-modal">模式弹窗 Modal</h3>
+<h3 id="弹出消息-message-顶部-小">弹出消息 Message (顶部 小)</h3>
+<h3 id="通知-notification--右侧堆叠-自动消失">通知 Notification  （右侧，堆叠 自动消失）</h3>
+<h3 id="进度条-progress">进度条 Progress</h3>
+<h3 id="popconfirm--弹出式确认">PopConfirm  弹出式确认</h3>
+<h3 id="旋转等待-spin">旋转等待 Spin</h3>
+<h2 id="其他">其他</h2>
+<h3 id="锚点-anchor--可用作浮动大纲">锚点 Anchor  (可用作浮动大纲)</h3>
+<h3 id="回到顶部-backtop">回到顶部 Backtop</h3>
+<h3 id="分割线-divider">分割线 Divider</h3>
+<h3 id="多语言-localeprovider">多语言 LocaleProvider</h3>
+<h1 id="定制主题">定制主题</h1>
+<p><a href="https://ant.design/docs/react/customize-theme-cn">https://ant.design/docs/react/customize-theme-cn</a></p>
+<p>按上面的操作方法2， App.css 里引入 antd.less 和 custom.less 后无效，是因为 create-react-app 的配置文件默认没有支持 less 的编译</p>
+<pre><code class="language-css">@import '~antd/dist/antd.less';
+@import './custom.less';
+</code></pre>
+<p><img src="/media/15490411859003/15234265763900.jpg" alt=""></p>
+<h2 id="create-react-app-脚手架创建的项目使用自定义-less">Create-react-app 脚手架创建的项目使用自定义 less</h2>
+<p><a href="https://www.jianshu.com/p/205bd3d8c4a7">https://www.jianshu.com/p/205bd3d8c4a7</a> （评论中也讨论了 eject 的优劣，以及自己从头写 webpack）</p>
+<p><a href="https://juejin.im/post/5a4341a26fb9a04511716749">https://juejin.im/post/5a4341a26fb9a04511716749</a></p>
+<p>有两种方案</p>
+<ol>
+<li>React-app-rewired（一个对 create-react-app 进行自定义配置的社区解决方案）</li>
+<li>使用 npm run eject 暴露所有内建的配置 （推荐，上面的比较复杂）</li>
+</ol>
+<blockquote>
+<p>为了支持更好的控制，create-react-app 包括了 npm run eject 命令。Eject 将所有的工具（配置文件和 package.json 依赖库）解压到应用所在的路径，因此你可以按照你心中的想法定做</p>
+</blockquote>
+<h3 id="npm-run-eject">npm run eject</h3>
+<pre><code class="language-shell"># 如果有 git 版本控制，先 commit
+git add .
+git commit -m &quot;before eject&quot;
+
+npm run eject
+</code></pre>
+<p><strong>这个操作不可逆</strong></p>
+<p>运行后多了script和config目录，在 package.json 里会看到更多（之前被隐藏的）的信息</p>
+<p><img src="/media/15490411859003/15234244589753.jpg" alt=""></p>
+<h3 id="eject-后将部分依赖移动到-devdependencies">eject 后将部分依赖移动到 devDependencies</h3>
+<p>确保生产环境的依赖尽可能少，只在开发阶段使用 webpack 等等（是否有必要？）</p>
+<h3 id="使用babel-plugin-import实现antd按需加载">使用babel-plugin-import实现Antd按需加载</h3>
+<pre><code class="language-shell">npm install --save-dev babel-plugin-import
+</code></pre>
+<p>有两种方法，选其中一个</p>
+<ol>
+<li>修改 package.json</li>
+<li>新建 .babelrc 文件写配置 （推荐）</li>
+</ol>
+<p>.babelrc会覆盖package.json里带有的babel配置。<strong>注意</strong>要把 package.json 里<code>babel</code>部分（包括 presets）全部复制过来。</p>
+<p>.babelrc 文件内容</p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [
+     &quot;react-app&quot;
+   ],
+   &quot;plugins&quot;: [
+     [
+       &quot;import&quot;,
+       {
+         &quot;libraryName&quot;: &quot;antd&quot;,
+         &quot;style&quot;: true
+       }
+     ]
+   ]
+}
+</code></pre>
+<h1 id="其他-1">其他</h1>
+<h2 id="is-there-any-way-to-disable-all-animations-禁用动画">is there any way to disable all animations? 禁用动画</h2>
+<p><a href="https://github.com/ant-design/ant-design/issues/951">https://github.com/ant-design/ant-design/issues/951</a></p>
+<pre><code class="language-css">* {
+    animation-duration: 0s !important;
+}
+</code></pre>
+<h3 id="引入less">引入Less</h3>
+<p>安装less-loader 和 less</p>
+<pre><code class="language-shell">npm install --save-dev less-loader less
+
+# 或yarn
+yarn add --dev less-loader less
+</code></pre>
+<p>然后修改<strong>config文件夹下</strong>的<code>webpack.config.dev.js</code>和<code>webpack.config.prod.js</code>文件(都需要修改)</p>
+<p><code>exclude: [/\.js$/, /\.html$/, /\.json$/],</code> 修改为 <code>exclude: [/\.html$/, /\.(js|jsx)$/, /\.(css|less)$/, /\.json$/, /\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],</code></p>
+<p><img src="/media/15490411859003/15234257960716.jpg" alt=""></p>
+<p><code>test: /\.css$/,</code> 修改为 <code>test: /\.(css|less)$/,</code></p>
+<p>在<code>test</code>的下面找到<code>use</code>，添加<code>loader</code></p>
+<pre><code class="language-json">use: [  
+    {...},
+    {...},
+    {
+      loader: require.resolve('less-loader') // compiles Less to CSS
+    }
+  ],
+</code></pre>
+<p><img src="/media/15490411859003/15234257618470.jpg" alt=""></p>
+<p>报错</p>
+<p><img src="/media/15490411859003/15234263906994.jpg" alt=""></p>
+<blockquote>
+<p>Inline JavaScript is not enabled.</p>
+</blockquote>
+<p>需要修改前面的 dev 和 production 两个 webpack 配置文件，把 loader less-loader 这段，添加一个 options 改成如下</p>
+<pre><code class="language-js">{
+  loader: require.resolve('less-loader'),
+  options: {
+    javascriptEnabled: true
+  }
+}
+</code></pre>
+<p>重新启动 yarn start （让 webpack 配置文件生效），自定义主题成功</p>
+<p><img src="/media/15490411859003/15234267004529.jpg" alt=""></p>
+<h1 id="ant-design-pro">ant-design-pro</h1>
+<h2 id="简介">简介</h2>
+<p>Antd 包括了很多的组件，但随着项目的增大，为了在不同的团队之间封装多个组件并共享，ant design pro 提供了一个脚手架和很多“模板”，你可以直接使用它来创建一个中后台项目，而不需要慢慢搭建。</p>
+<p>可以认为 React+Dva+antd+ES2015+g2(图形可视化)   ，带了一大堆工具（路由、图表库、测试、mock数据等等）, 用 dva 简化 redux &hellip;</p>
+<p>也可以认为是官方替代 antd-admin 的方案。</p>
+<p>目前有这些模板</p>
+<pre><code>- Dashboard
+  - 分析页
+  - 监控页
+  - 工作台
+- 表单页
+  - 基础表单页
+  - 分步表单页
+  - 高级表单页
+- 列表页
+  - 查询表格
+  - 标准列表
+  - 卡片列表
+  - 搜索列表（项目/应用/文章）
+- 详情页
+  - 基础详情页
+  - 高级详情页
+- 结果
+  - 成功页
+  - 失败页
+- 异常
+  - 403 无权限
+  - 404 找不到
+  - 500 服务器出错
+- 帐户
+  - 登录
+  - 注册
+  - 注册成功
+</code></pre>
+<h2 id="安装">安装</h2>
+<p>安装方法1 ，clone 项目</p>
+<pre><code class="language-shell">$ git clone --depth=1 https://github.com/ant-design/ant-design-pro.git my-project
+$ cd my-project
+</code></pre>
+<p>安装方法2[建议] 使用 <code> ant-design-pro-cli</code> 命令行工具</p>
+<pre><code class="language-shell">$ npm install ant-design-pro-cli -g
+$ cd my-project
+$ pro new  # Initialize Scaffold
+
+# 按提示输入项目名（会自动创建项目目录，安装依赖库）
+</code></pre>
+<h2 id="脚手架项目结构">脚手架（项目结构）</h2>
+<p>生成的项目结构如下（好大的 node_modules 目录，700多M！）</p>
+<pre><code>├── mock                     # Local Mock Data
+├── public
+│   └── favicon.ico          # Favicon
+├── src
+│   ├── assets               # Local static files
+│   ├── common               # Common Configuration like Navigation
+│   ├── components           # Components
+│   ├── e2e                  # Integrated Test Case
+│   ├── layouts              # Common Layouts
+│   ├── models               # dva Model
+│   ├── routes               # Sub-pages and templates
+│   ├── services             # Back-end Services
+│   ├── utils                # Utility
+│   ├── g2.js                # Dataviz Configuration
+│   ├── theme.js             # Theme Configuration
+│   ├── index.ejs            # HTML Entry
+│   ├── index.js             # App Entry
+│   ├── index.less           # Global Stylesheet
+│   └── router.js            # Route Entry File
+├── tests                    # Tests Configuration
+├── README.md
+└── package.json
+</code></pre>
+<h2 id="启动">启动</h2>
+<p>安装依赖，启动</p>
+<pre><code class="language-shell">
+$ npm start
+</code></pre>
+<p>启动 localhost:8000  （等待 <code>[babel-plugin-dva-hmr][INFO] got routerPath ./router</code>这个过程特别慢，也不知道什么原因，mbp 发热很厉害）</p>
+<p>在这里有讨论，封装太厉害导致反应慢 <a href="https://github.com/ant-design/ant-design-pro/issues/556">https://github.com/ant-design/ant-design-pro/issues/556</a></p>
+<p><img src="/media/15490411859003/15231656091621.png" alt=""></p>
+<p>点开下各个菜单，熟悉下</p>
+<h2 id="布局-layout-1">布局 Layout</h2>
+<p>。。。。</p>
+<h2 id="一些问题">一些问题</h2>
+<h3 id="indexhtml-中引用的外部文件如何关掉">index.html 中引用的外部文件如何关掉</h3>
+<pre><code class="language-html">&lt;script src=&quot;https://cdn.polyfill.io/v2/polyfill.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://gw.alipayobjects.com/os/rmsportal/nGVBgVyXzzmbAqevIAPy.js&quot;&gt;
+  &lt;/script&gt;
+  &lt;script src=&quot; https://gw.alipayobjects.com/os/rmsportal/TKSqiyoUxzrHoMwjViwA.js &quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://gw.alipayobjects.com/os/antv/assets/data-set/0.8.7/data-set.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>老铁，我想知道index.html 中的那行js引用是起到了什么作用，好像没有还不行，在我们的内部环境是访问不了的？有什么替代方式吗？？</p>
+<p>@afc163
+Member
+afc163 commented on Nov 1, 2017
+可以拷贝上述静态文件的内容并自行部署。</p>
+<p>或者关闭相应的 extenals：</p>
+<p>ant-design-pro/.roadhogrc  (新版里改成 .webpackrc.js)</p>
+<p>Lines 23 to 25 in 9709268</p>
+<p>&ldquo;g2&rdquo;: &ldquo;G2&rdquo;,
+&ldquo;g-cloud&rdquo;: &ldquo;Cloud&rdquo;,
+&ldquo;g2-plugin-slider&rdquo;: &ldquo;G2.Plugin.slider&rdquo;</p>
+<h1 id="飞冰gui-构建工具设计并生成-基于-react-的中后台应用解决方案">飞冰：GUI 构建工具，设计并生成 基于 React 的中后台应用解决方案</h1>
+<p><a href="https://alibaba.github.io/ice/">https://alibaba.github.io/ice/</a></p>
+<p><a href="https://github.com/alibaba/ice/issues/66">https://github.com/alibaba/ice/issues/66</a></p>
+<p><a href="https://www.zhihu.com/question/266529857">https://www.zhihu.com/question/266529857</a></p>
+<p>真厉害啊</p>
+<p><img src="/media/15490411859003/15276667548250.jpg" alt=""></p>
+<h1 id="问题">问题</h1>
+<h2 id="anchor-锚点定位问题">Anchor 锚点定位问题</h2>
+<p><a href="https://github.com/ant-design/ant-design/issues/6817">https://github.com/ant-design/ant-design/issues/6817</a></p>
+<p><a href="https://segmentfault.com/q/1010000012989862">https://segmentfault.com/q/1010000012989862</a></p>
+<p><a href="https://github.com/ant-design/ant-design/pull/9694">https://github.com/ant-design/ant-design/pull/9694</a></p>
+<p><a href="https://github.com/dvajs/dva/issues/287">https://github.com/dvajs/dva/issues/287</a></p>
+<p>关键</p>
+<p>使用 browserHistory</p>
+<p><a href="https://www.jianshu.com/p/3ddfd0444c7e">https://www.jianshu.com/p/3ddfd0444c7e</a></p>
+<p><a href="https://github.com/ant-design/ant-design/issues/4104">https://github.com/ant-design/ant-design/issues/4104</a></p>
+<h2 id="typeerror-super-expression-must-either-be-null-or-a-function-not-undefined">TypeError: Super expression must either be null or a function, not undefined</h2>
+<h2 id="ie11-or-9-下提示-对象不支持startswith属性或方法">IE（11 or 9） 下提示 对象不支持“startsWith”属性或方法</h2>
+<p><a href="https://github.com/ant-design/ant-design/search?q=startsWith&amp;type=Issues&amp;utf8=%E2%9C%93">https://github.com/ant-design/ant-design/search?q=startsWith&amp;type=Issues&amp;utf8=%E2%9C%93</a></p>
+<p><a href="https://github.com/ant-design/ant-design/issues/5338">https://github.com/ant-design/ant-design/issues/5338</a></p>
+<p><a href="https://ant.design/docs/react/getting-started-cn#%E5%85%BC%E5%AE%B9%E6%80%A7">https://ant.design/docs/react/getting-started-cn#%E5%85%BC%E5%AE%B9%E6%80%A7</a></p>
+<p>对于 IE 系列浏览器，需要提供 es5-shim 和 es6-shim 等 Polyfills 的支持。</p>
+<p>如果你使用了 babel，强烈推荐使用 babel-polyfill 和 babel-plugin-transform-runtime 来替代以上两个 shim。</p>
+<p>避免同时使用 babel 和 shim 两种兼容方法，以规避 #6512 中所遇问题</p>
+<p>如果在 IE 浏览器中遇到 startsWith 的问题，请引入 es6-shim 或 babel-polyfill。</p>
+<pre><code class="language-shell">npm install --save babel-preset-es2015 babel-polyfill babel-plugin-transform-runtime
+</code></pre>
+<p>在.babelrc文件添加</p>
+<pre><code class="language-js">{ &quot;presets&quot;: [ &quot;es2015&quot;, &quot;react&quot; ],
+
+  &quot;plugins&quot;: [
+    [&quot;transform-runtime&quot;, {
+      &quot;helpers&quot;: false, // defaults to true
+      &quot;polyfill&quot;: false, // defaults to true
+      &quot;regenerator&quot;: false, // defaults to true
+      &quot;moduleName&quot;: &quot;babel-runtime&quot; // defaults to &quot;babel-runtime&quot;
+    }]
+    ]
+}
+</code></pre>
+<p>然后修改 webpack.config.js, 在 <code>entry</code>添加<code>'babel-polyfill'</code>, 重新 build 就可以在IE打开了</p>
+<pre><code class="language-js">entry: ['babel-polyfill', require.resolve('./polyfills'), paths.appIndexJs],
+</code></pre>
+<p>我在 build 的时候报错了，还没时间去看，  说是 helper 无效， 因此删除了{}。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/antd/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/antd/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/calendar-%E6%97%A5%E5%8E%86%E5%BA%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/superagent%E6%88%96node-crawler%E6%8A%93%E5%8F%96%E9%A1%B5%E9%9D%A2%E5%B9%B6%E7%94%A8cheerio%E6%88%96jsdom%E8%A7%A3%E6%9E%90dom/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

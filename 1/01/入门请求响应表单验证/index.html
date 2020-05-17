@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="入门，请求,响应,表单验证 permalink: laravel-tutorial-form-validation tags:
+ laravel  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="入门，请求,响应,表单验证
+permalink: laravel-tutorial-form-validation
+tags:
+
+laravel
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%85%A5%E9%97%A8%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="入门，请求,响应,表单验证
+permalink: laravel-tutorial-form-validation
+tags:
+
+laravel
+
+">
+
+<meta itemprop="wordCount" content="4168">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="入门，请求,响应,表单验证
+permalink: laravel-tutorial-form-validation
+tags:
+
+laravel
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%85%A5%E9%97%A8%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%85%A5%E9%97%A8%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4168字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>入门，请求,响应,表单验证
+permalink: laravel-tutorial-form-validation
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<h1 id="请求">请求</h1>
+<h2 id="获取请求">获取请求</h2>
+<p>要通过依赖注入的方式获取 HTTP 请求的实例，就必须在控制器的构造器或方法中，使用 Illuminate\Http\Request 类型提示。当前的请求实例便会自动由 服务容器注入</p>
+<p>[暂停]</p>
+<h2 id="验证失败自动填充旧数据">验证失败自动填充旧数据</h2>
+<p>Laravel 可以让你将本次的输入数据保留到下一次请求发送前。对于在表单验证失败后重新填入表单值相当有用。当然，如果你使用 Laravel 的 验证服务，你就不需要再手动使用这些方法，因为 Laravel 的一些内置验证功能会自动调用它们。</p>
+<p>使用Illuminate\Http\Request 实例的 flash 方法,将当前的输入数据存进 Session 中</p>
+<pre><code class="language-php">$request-&gt;flash();
+$request-&gt;flashOnly('username', 'email');
+$request-&gt;flashExcept('password');
+
+//闪存数据的同时，重定向
+return redirect('form')-&gt;withInput();
+return redirect('form')-&gt;withInput($request-&gt;except('password'));
+</code></pre>
+<p>然后就可以获取旧数据了</p>
+<pre><code class="language-php">$username = $request-&gt;old('username');
+</code></pre>
+<p>或者在 Blade 模板中通过全局辅助函数 old 来显示旧输入数据</p>
+<pre><code class="language-php">{{ old('username') }}
+</code></pre>
+<h2 id="cookie">Cookie</h2>
+<h2 id="上传文件">上传文件</h2>
+<h1 id="机器人验证">机器人验证</h1>
+<h2 id="图片数字验证码">图片/数字验证码</h2>
+<p><a href="https://github.com/mewebstudio/captcha">https://github.com/mewebstudio/captcha</a></p>
+<pre><code class="language-shell">composer require mews/captcha
+</code></pre>
+<p>修改 config/app.php, 增加 provider 和 alias</p>
+<pre><code class="language-php">'providers' =&gt; [
+        // ...
+        Mews\Captcha\CaptchaServiceProvider::class,
+    ]
+
+'aliases' =&gt; [
+        // ...
+        'Captcha' =&gt; Mews\Captcha\Facades\Captcha::class,
+    ]
+</code></pre>
+<h3 id="配置">配置</h3>
+<pre><code class="language-shell">php artisan vendor:publish
+</code></pre>
+<p>编辑 config/captcha.php</p>
+<pre><code class="language-php">return [
+    'default'   =&gt; [
+        'length'    =&gt; 5,
+        'width'     =&gt; 120,
+        'height'    =&gt; 36,
+        'quality'   =&gt; 90,
+    ],
+    // ...
+];
+</code></pre>
+<h3 id="使用">使用</h3>
+<p>在表单中, 生成一个验证码图片</p>
+<pre><code class="language-php">{{ captcha_img() }}
+&lt;input type=&quot;text&quot; name=&quot;captcha&quot;&gt;
+</code></pre>
+<ul>
+<li>return image: captcha();</li>
+<li>return URL: captcha_src();</li>
+<li>return HTML: captcha_img();</li>
+</ul>
+<p>如果要使用不同的配置参数</p>
+<pre><code class="language-php">captcha_img('flat');
+</code></pre>
+<p>然后在处理提交数据的方法中进行验证</p>
+<pre><code class="language-php">$rules = ['captcha' =&gt; 'required|captcha'];
+$validator = Validator::make(Input::all(), $rules);
+</code></pre>
+<h1 id="验证">验证</h1>
+<p>本章结合 Request （请求）来一起使用加深印象</p>
+<p>需要对应用程序传入的数据进行验证，是否合法或者在允许的格式范围内。</p>
+<p>默认情况下，Laravel 的基底控制器类使用了 ValidatesRequests trait，来使用各种验证规则验证传入的 HTTP 请求.(检查应用程序的基底控制器 (App\Http\Controllers\Controller) 类你会看到这个类使用了 ValidatesRequests trait。这个 trait 在你所有的控制器里提供了方便的 <code>validate</code> 验证方法。)</p>
+<h2 id="如何安全地提交数据">如何安全地提交数据</h2>
+<p><a href="https://laracasts.com/discuss/channels/laravel/how-best-to-sanitize-inputs">https://laracasts.com/discuss/channels/laravel/how-best-to-sanitize-inputs</a></p>
+<h2 id="验证开始">验证开始</h2>
+<p>validate 方法会接收 HTTP 传入的请求以及验证的规则。如果验证通过，你的代码就可以正常的运行。若验证失败，则会<strong>抛出异常错误消息并自动将其返回给用户</strong>。</p>
+<ul>
+<li>在<strong>一般的 HTTP 请求</strong>下，都会<strong>生成一个重定向响应</strong></li>
+<li>对于 <strong>AJAX</strong> 请求则会发送 <strong>JSON 响应</strong></li>
+</ul>
+<p>例子</p>
+<pre><code class="language-php">public function store(Request $request)
+{
+    $this-&gt;validate($request, [
+        'title' =&gt; 'required|unique:posts|max:255',
+        'body' =&gt; 'required',
+    ]);
+
+    // 博客文章成功发表，将其保存到数据库...
+}
+
+//如果你的 HTTP 请求中包含了「嵌套」参数，则可以在验证规则中使用「点」语法来指定他们：
+public funciton store_2(Request $request){
+	$this-&gt;validate($request, [
+	    'title' =&gt; 'required|unique:posts|max:255',
+	    'author.name' =&gt; 'required',
+	    'author.description' =&gt; 'required',
+	]);
+}
+</code></pre>
+<h2 id="显示验证错误">显示验证错误</h2>
+<p>如果验证失败，会自动把用户重定向到之前的位置，并把验证错误<code>闪存至 session</code>(<a href="http://d.laravel-china.org/docs/5.1/session#flash-data">http://d.laravel-china.org/docs/5.1/session#flash-data</a>)</p>
+<p>然后，我们并不需要在 GET 路由中明确的将错误消息绑定到视图上（Laravel 会自动检查 session 内的错误数据，存在的话会自动绑定到视图上）。</p>
+<p><code>$errors</code> 变量是 Illuminate\Support\MessageBag。</p>
+<p>如下，在输入界面中，一旦提交数据后验证失败，会返回到这个输入界面并显示错误</p>
+<pre><code class="language-php">&lt;!-- /resources/views/post/create.blade.php --&gt;
+
+&lt;h1&gt;创建文章&lt;/h1&gt;
+
+@if (count($errors) &gt; 0)
+    &lt;div class=&quot;alert alert-danger&quot;&gt;
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    &lt;/div&gt;
+@endif
+
+&lt;!-- 创建文章的表单 --&gt;
+</code></pre>
+<h3 id="当然你可以在控制器中自定义闪存的错误消息格式">当然你可以在控制器中<strong>自定义闪存的错误消息格式</strong></h3>
+<pre><code class="language-php">use Illuminate\Contracts\Validation\Validator;
+
+abstract class Controller extends BaseController
+{
+    use DispatchesJobs, ValidatesRequests;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function formatValidationErrors(Validator $validator)
+    {
+        return $validator-&gt;errors()-&gt;all();
+    }
+}
+</code></pre>
+<h2 id="ajax-请求和验证">Ajax 请求和验证</h2>
+<p>在 AJAX 的请求中使用 validate 方法时，Laravel 并不会生成一个重定向响应，而是会生成一个包含所有错误验证的 JSON 响应。这个 JSON 响应会发送一个 422 HTTP 状态码。</p>
+<h2 id="手动创建验证实例">手动创建验证实例</h2>
+<p>如果不想使用默认的 ValidatesRequests trait 的 <code>validate</code>方法，可以使用<code>Validator::make</code>方法在 <code>facede</code>手动创建一个 <code>Validator</code> 类的实例</p>
+<p>第一个参数是需要验证的数据（requet-&gt;all()），第二个是规则。验证失败用<code>withErrors</code>方法来闪存错误消息到 session</p>
+<pre><code class="language-php">use Validator;
+//......
+public function store(Request $request){ 
+	$validator = Validator::make($request-&gt;all(), [
+            'title' =&gt; 'required|unique:posts|max:255',
+            'body' =&gt; 'required',
+        ]);
+
+        if ($validator-&gt;fails()) {
+            return redirect('post/create')
+                        -&gt;withErrors($validator)
+                        -&gt;withInput();
+        }
+</code></pre>
+<h3 id="命名错误清单">命名错误清单</h3>
+<p>如果一个页面有很多表单，$error (MessageBag类的实例) 会包含很多个表单的验证错误 ， 需要对它们进行<strong>命名</strong>来获取<strong>特定表单</strong>的错误信息。</p>
+<p>在前面的 <code>withErrors()</code> 添加第二个参数即可</p>
+<pre><code class="language-php">return redirect('register')
+            -&gt;withErrors($validator, 'login');
+</code></pre>
+<p>然后就可以从 <code>$errors</code>变量中通过命名来获取特定表单的错误消息</p>
+<pre><code class="language-php">{{ $errors-&gt;login-&gt;first('email') }}
+</code></pre>
+<h3 id="验证后的钩子">验证后的钩子</h3>
+<p>在验证完成之后，validator 可以让你附加返回消息。如果想做进一步的验证，或者附加更多的错误信息到消息集合上，可以使用 <code>after</code>方法。</p>
+<pre><code class="language-php">$validator = Validator::make(...);
+
+$validator-&gt;after(function($validator) {
+    if ($this-&gt;somethingElseIsInvalid()) {
+        $validator-&gt;errors()-&gt;add('field', 'Something is wrong with this field!');
+    }
+});
+
+if ($validator-&gt;fails()) {
+    //
+}
+</code></pre>
+<h2 id="表单请求验证">表单请求验证</h2>
+<p>如果验证规则越来越复杂，验证逻辑会把控制器弄得一团糟。我们是否可以把它们剥离出去并在控制器中使用呢？</p>
+<p><strong>表单请求</strong>是一个自定义的<strong>请求类</strong>，里面<strong>包含着验证逻辑</strong>，通过<strong>扩展默认的 <code>Request</code> 类</strong>。</p>
+<p>运行命令，在<code>app/Http/Requests</code>下生成文件<code>StoreBlogPostRequest.php</code></p>
+<pre><code class="language-shell">php artisan make:request StoreBlogPostRequest
+</code></pre>
+<p>阅读代码，可以看到它扩展了<code>Request</code>类，然后在<code>rules()</code>方法中添加验证规则。</p>
+<pre><code class="language-php">class PortalSearchRequest extends Request
+{
+    public function authorize()
+    {
+        return false;
+    }
+
+    public function rules()
+    {
+        return [
+            'title' =&gt; 'required|unique:posts|max:255',
+            'body' =&gt; 'required',
+        ];
+    }
+}
+</code></pre>
+<p>随后就可以通过<strong>在控制器方法中</strong>利用<strong>类型提示</strong>传入请求。（传入的请求会在控制器方法被调用前进行验证）.</p>
+<p><strong>注意</strong>
+这里<code>store()</code>方法的参数，之前是 <code>Request $request</code>，现在被我们自定义的请求类<code>StoreBlogPostRequest $request</code>替代啦。</p>
+<p>其实整个过程说来说去就是扩展 Request 类，把验证规则写到这个自己创建的请求类中去。。。。</p>
+<pre><code class="language-php">public function store(StoreBlogPostRequest $request)
+{
+    // 传入的请求是有效的...
+}
+</code></pre>
+<h3 id="授权表单请求">授权表单请求</h3>
+<p>注意这个自定义的 Request 类中，还有个<code>authorize()</code>方法。用来确认用户是否真的通过了授权，以便更新指定数据。
+（有一个用户想试图去更新一篇文章的评论，你能保证他确实是这篇评论的拥有者吗）</p>
+<p>如果 <code>authorize</code> 方法返回 false，则会自动返回一个 HTTP 响应，其中包含 403 状态码，而你的控制器方法也将不会被运行。</p>
+<p>例如，在 route 中先定义</p>
+<pre><code class="language-php">Route::post('comment/{comment}');
+</code></pre>
+<p>然后可以通过<code>route()</code>方法来获取这个 URI 参数的值</p>
+<pre><code class="language-php">public function authorize()
+{
+    $commentId = $this-&gt;route('comment');
+
+    return Comment::where('id', $commentId)
+                  -&gt;where('user_id', Auth::id())-&gt;exists();
+}
+</code></pre>
+<p>当然，如果打算在应用程序的其它部分处理授权逻辑，只需从 authorize 方法返回 true ：</p>
+<pre><code class="language-php">public function authorize()
+{
+    return true;
+}
+</code></pre>
+<h3 id="自定义错误格式">自定义错误格式</h3>
+<p><strong>自定义闪存错误消息格式</strong></p>
+<p>正如前面在控制器中操作，你也可以在这个自定义的 Request 类中做这件事(实际上就是在你的基底请求 (App\Http\Requests\Request) 中重写 formatErrors)</p>
+<pre><code class="language-php">Illuminate\Contracts\Validation\Validator
+
+protected function formatErrors(Validator $validator)
+{
+    return $validator-&gt;errors()-&gt;all();
+}
+</code></pre>
+<h3 id="自定义错误消息">自定义错误消息</h3>
+<p>重写表单请求类的 <code>message</code> 方法（必须返回数组，含有成对的属性/规则和对应的错误消息）</p>
+<pre><code class="language-php">public function messages()
+{
+    return [
+        'title.required' =&gt; '标题是必填的',
+        'body.required'  =&gt; '消息是必填的',
+    ];
+}
+</code></pre>
+<h2 id="处理错误消息">处理错误消息</h2>
+<p>可以在视图中直接把 $errors 变量显示出来</p>
+<p>首先要得到<code>Illuminate\Support\MessageBag</code>的实例，通过调用一个 Validator 实例的 errors 方法。</p>
+<pre><code class="language-php">$messages = $validator-&gt;errors();
+</code></pre>
+<p>然后就可以用很多方法来操作错误消息。</p>
+<p><strong>查看特定字段的第一个错误消息</strong></p>
+<pre><code class="language-php">echo $messages-&gt;first('email');
+</code></pre>
+<p><strong>查看特定字段所有错误消息</strong></p>
+<pre><code class="language-php">foreach ($messages-&gt;get('email') as $message) {
+    //
+}
+</code></pre>
+<p><strong>查看所有字段所有错误消息</strong></p>
+<pre><code class="language-php">foreach ($messages-&gt;all() as $message) {
+    //
+}
+</code></pre>
+<p><strong>判断特定字段是否有错误消息</strong></p>
+<pre><code class="language-php">if ($messages-&gt;has('email')) {
+    //
+}
+</code></pre>
+<p><strong>获取格式化后的错误消息（特定字段/所有）</strong></p>
+<p>“格式化后”是指？</p>
+<pre><code class="language-php">echo $messages-&gt;first('email', '&lt;p&gt;:message&lt;/p&gt;');
+
+foreach ($messages-&gt;all('&lt;li&gt;:message&lt;/li&gt;') as $message) {
+    //
+}
+</code></pre>
+<h2 id="自定义错误消息-1">自定义错误消息</h2>
+<p>默认的验证消息比较“死板”，如果有需要自定义的话，可以传递三个参数到<code>Validator::make</code>方法</p>
+<p><code>:attribute</code> 占位符会被通过验证的字段实际名称所取代，另外还有其他一些占位符也可以使用</p>
+<pre><code class="language-php">$messages = [
+    'same'    =&gt; ':attribute 和 :other 必须相同。',
+    'size'    =&gt; ':attribute 必须是 :size。',
+    'between' =&gt; ':attribute 必须介于 :min - :max。',
+    'in'      =&gt; ':attribute 必须是以下的类型之一： :values。',
+];
+
+$validator = Validator::make($input, $rules, $messages);
+</code></pre>
+<p>如果想针对<strong>特定的字段</strong>进行自定义消息，可以使用<code>.</code>符号</p>
+<pre><code class="language-php">$messages = [
+    'email.required' =&gt; '我们需要知道你的 e-mail 地址！',
+];
+</code></pre>
+<h3 id="语言包">语言包</h3>
+<p>在许多情况下，你可能希望在语言包中被指定的特定属性自定义消息不被直接传到 Validator 上（没看懂）。因此你可以把消息加入到 resources/lang/xx/validation.php 语言包中的 custom 数组。</p>
+<pre><code class="language-php">'custom' =&gt; [
+    'email' =&gt; [
+        'required' =&gt; '我们需要知道你的 e-mail 地址！',
+    ],
+],
+
+</code></pre>
+<h2 id="可用的验证规则">可用的验证规则</h2>
+<p>重点来了，前面是“怎么用验证规则”，现在是“有哪些规则可以用”</p>
+<p>这是一个清单，用的时候查就可以了(其实就是 Laravel 自带了大量的函数)</p>
+<p>Accepted
+Active URL
+After (Date)
+Alpha
+Alpha Dash
+Alpha Numeric
+Array
+Before (Date)
+Between
+Boolean
+Confirmed
+Date
+Date Format
+Different
+Digits
+Digits Between
+E-Mail
+Exists (Database)
+Image (File)
+In
+Integer
+IP Address
+JSON
+Max
+MIME Types (File)
+Min
+Not In
+Numeric
+Regular Expression
+Required
+Required If
+Required Unless
+Required With
+Required With All
+Required Without
+Required Without All
+Same
+Size
+String
+Timezone
+Unique (Database)
+URL</p>
+<p><strong>案例</strong></p>
+<p>表单有个元素 keywords[]， 要求它填写大于1，小于5个元素.
+先定义 array，再定义“范围”</p>
+<pre><code class="language-php">$rules = [
+            'keywords' =&gt; 'required|array|between:1,5',
+        ];
+</code></pre>
+<h2 id="按条件增加规则">按<strong>条件</strong>增加规则</h2>
+<h3 id="如果希望只有输入的数据中有这个字段才验证它可以添加sometimes规则">如果希望只有<strong>输入的数据中有这个字段</strong>才验证它，可以添加<code>sometimes</code>规则</h3>
+<p>例如下面 email 字段的验证只会在 $data 数组有此字段时才会进行。</p>
+<pre><code class="language-php">$v = Validator::make($data, [
+    'email' =&gt; 'sometimes|required|email',
+]);
+</code></pre>
+<h3 id="符合某种条件才开始验证条件式">符合某种条件才开始验证（条件式）</h3>
+<p>例如一个游戏收藏玩家的信息收集表单，有三个字段。希望<code>reason</code>只有在<code>games</code>满足&gt;100时才验证</p>
+<ul>
+<li>email</li>
+<li>games（收藏了多少款游戏）</li>
+<li>reason （“你为什么会收藏大于100款的游戏？”，默认不会验证，必须要 games 输入的值大于 100 才验证）</li>
+</ul>
+<pre><code class="language-php">//首先创建基本的规则
+$v = Validator::make($data, [
+    'email' =&gt; 'required|email',
+    'games' =&gt; 'required|numeric',
+]);
+
+//然后调用 sometimes 方法
+//第一个参数是我们要用条件认证的字段名称
+//第二个参数是我们想使用的验证规则
+//闭包 作为第三个参数传入，如果其返回 true，则额外的规则就会被加入
+$v-&gt;sometimes('reason', 'required|max:500', function($input) {
+    return $input-&gt;games &gt;= 100;
+});
+
+//一次对多个字段增加条件式验证
+$v-&gt;sometimes(['reason', 'cost'], 'required', function($input) {
+    return $input-&gt;games &gt;= 100;
+});
+</code></pre>
+<blockquote>
+<p>注意：传入闭包的 $input 参数是 Illuminate\Support\Fluent 实例，可用来访问你的输入或文件对象。</p>
+</blockquote>
+<h2 id="自定义验证规则">自定义验证规则</h2>
+<p>即使 Laravel 自带有这么多的验证规则，但有时候一些奇葩的需求还是需要自定义新的
+规则。</p>
+<p>使用 Validator facade 中的 extend 方法，让我们在 <strong>服务提供者</strong> 中使用这个方法来自定义注册的验证规则：</p>
+<p>可以选择使用闭包的方式，或者传入类和方法的方式</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use Validator;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    /**
+     * 启动所有应用程序服务。
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Validator::extend('foo', function($attribute, $value, $parameters, $validator) {
+            return $value == 'foo';
+        });
+        
+        // 或者使用传入类和方法的方式
+        //Validator::extend('foo', 'FooValidator@validate');
+    }
+
+    /**
+     * 注册服务提供者。
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+}
+</code></pre>
+<h3 id="为自定义规则自定义错误消息有点拗口">为自定义规则自定义错误消息（有点拗口。。。）</h3>
+<p>这一节没看明白。。。暂时用不到</p>
+<h3 id="隐式扩展功能">隐式扩展功能</h3>
+<p>也没怎么看懂</p>
+<p>好像是：</p>
+<p>如果定义一个规则，（例如 是整数 interger..， 没有写明 required？）
+那么如果它是 null(被验证的属性不存在或空值)，则验证规则不会被运行 （导致返回了 true ？）</p>
+<pre><code class="language-php">$rules = ['count' =&gt; 'integer'];
+$input = ['count' =&gt; null];
+Validator::make($input, $rules)-&gt;passes(); // true
+</code></pre>
+<p>如果要在值为 null 空仍然运行此规则，则必须“暗示”属性为必填（隐式 扩展）
+（注意：一个「隐式」扩展功能只会 暗示 该属性为必填。它的实际属性是否为无效属性或空属性主要取决于你。）</p>
+<pre><code class="language-php">Validator::extendImplicit('foo', function($attribute, $value, $parameters, $validator) {
+    return $value == 'foo';
+});
+</code></pre>
+<h2 id="一些技巧">一些技巧</h2>
+<h3 id="如果表单提交过来某个值是数组怎样对每个值进行验证例如-checkbox-要求每个值不能大于10">如果表单提交过来某个值是数组，怎样对每个值进行验证？（例如 checkbox ，要求每个值不能大于10）</h3>
+<p>如果只是简单地验证“是否勾选了至少一个 checkbox”，用<code>required</code>规则就够了</p>
+<pre><code class="language-php">'roles'=&gt;'required'
+</code></pre>
+<p>除了在这里可以使用 validate 方法的 <code>*</code>技巧</p>
+<p><a href="https://mattstauffer.co/blog/form-array-validation-in-laravel-5-2">https://mattstauffer.co/blog/form-array-validation-in-laravel-5-2</a></p>
+<p>还有在自定义的 请求验证类 中的<code>rules()</code>方法中：</p>
+<pre><code class="language-php">$rules = [
+    'name' =&gt; 'required|max:255',
+  ];
+
+  foreach($this-&gt;request-&gt;get('items') as $key =&gt; $val)
+  {
+    $rules['items.'.$key] = 'required|max:10';
+  }
+
+  return $rules;
+</code></pre>
+<p>但是这样会弹出错误提示：</p>
+<blockquote>
+<p>The items.0 may not be greater than 10 charactors</p>
+</blockquote>
+<p>items.0 是什么鬼？所以还需要自定义错误消息。</p>
+<pre><code class="language-php">public function messages()
+{
+  $messages = [];
+  foreach($this-&gt;request-&gt;get('items') as $key =&gt; $val)
+  {
+    $messages['items.'.$key.'.max'] = 'The field labeled &quot;Book Title '.$key.'&quot; must be less than :max characters.';
+  }
+  return $messages;
+}
+</code></pre>
+<h1 id="flash-显示错误">Flash 显示错误</h1>
+<p>laracasts/flash</p>
+<h1 id="遇到问题记录">遇到问题记录</h1>
+<p>创建一个 form request class, 在 controller 里引用后，提交数据报错</p>
+<blockquote>
+<p>Class App\Http\Requests\LdapLoginRequest does not exist</p>
+</blockquote>
+<p>但是确保了文件名和类名、路径都没有错。</p>
+<p>其实是因为这个验证类里有语法错误，在报错堆栈找到后面几个就看到了</p>
+<p><img src="/media/15490412692439/15562671145884.jpg" alt="-w489"></p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%85%A5%E9%97%A8%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%85%A5%E9%97%A8%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86-hash/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

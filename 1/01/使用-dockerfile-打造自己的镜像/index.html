@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 使用 Dockerfile 打造自己的镜像 permalink: docker-dockerfile-my-images tags: server 各种镜像文件 在 Docker Hub 市场上，可以看到成千上万各种各样的镜像。例如 MySQL 提供数据库服务、Redis 提供缓存服务、Wor" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 使用 Dockerfile 打造自己的镜像 permalink: docker-dockerfile-my-images tags: server 各种镜像文件 在 Docker Hub 市场上，可以看到成千上万各种各样的镜像。例如 MySQL 提供数据库服务、Redis 提供缓存服务、Wor" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-dockerfile-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 使用 Dockerfile 打造自己的镜像 permalink: docker-dockerfile-my-images tags: server 各种镜像文件 在 Docker Hub 市场上，可以看到成千上万各种各样的镜像。例如 MySQL 提供数据库服务、Redis 提供缓存服务、Wor">
+
+<meta itemprop="wordCount" content="3742">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 使用 Dockerfile 打造自己的镜像 permalink: docker-dockerfile-my-images tags: server 各种镜像文件 在 Docker Hub 市场上，可以看到成千上万各种各样的镜像。例如 MySQL 提供数据库服务、Redis 提供缓存服务、Wor"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%BD%BF%E7%94%A8-dockerfile-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BD%BF%E7%94%A8-dockerfile-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3742字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 使用 Dockerfile 打造自己的镜像
+permalink: docker-dockerfile-my-images
+tags:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="各种镜像文件">各种镜像文件</h1>
+<p>在 Docker Hub 市场上，可以看到<strong>成千上万各种各样的镜像</strong>。例如 MySQL 提供数据库服务、Redis 提供缓存服务、Wordpress 提供一个博客服务，等等。只需要<strong>拉取</strong>、<strong>创建容器</strong> 两步，就可以马上跑起来一个服务，而不需要像以往那样繁琐的安装和配置过程。</p>
+<p><strong>镜像最开始都是在一个 Linux 核心上构建出来的</strong>。（可以选 Ubuntu、CentOS 等等）</p>
+<p>例如，一个提供 Nginx 服务的镜像，可能就是在 Ubuntu 镜像上安装 Nginx 服务，然后打包。</p>
+<p><strong>有的镜像是在别的镜像上再封装一层</strong></p>
+<p>例如一个镜像提供 PHP + Nginx 服务，可能就是在前面那个 Nginx 镜像上，再添加 PHP 服务，然后打包。</p>
+<p>举个例子，下面这个 php 镜像中，第一句话 <code>FROM debian:jessie</code> 就表示它是从 debian 的 jessie 版本构建出来的。在这个 <strong>Dockerfile</strong> 文件（后面章节细说）中可以看到在它基础上运行了很多命令（如安装软件包、修改配置文件等等），最终得到我们需要的 PHP 镜像。</p>
+<p><a href="https://github.com/docker-library/php/blob/499a0e89e73db985874082ea936529b96413ceb0/7.1/jessie/fpm/Dockerfile">https://github.com/docker-library/php/blob/499a0e89e73db985874082ea936529b96413ceb0/7.1/jessie/fpm/Dockerfile</a></p>
+<p>现在我们试试基于一个原始的 Ubuntu 操作系统镜像，添加 Nginx + PHP + MySQL 动态网站服务。</p>
+<h1 id="dockerfile-做什么的">Dockerfile 做什么的</h1>
+<p>假设现在我们<strong>手动</strong>操作，一步步在 Ubuntu 基础镜像上添加 Nginx 服务、PHP服务、MySQL 服务，那么会需要输入大量的命令</p>
+<ol>
+<li>拉取 Ubuntu 镜像</li>
+<li>从 Ubuntu 镜像启动容器</li>
+<li>进入容器内部的命令行</li>
+<li>安装 Nginx</li>
+<li>安装 PHP 以及相关的库</li>
+<li>安装 MySQL</li>
+<li>&hellip;(清理缓存等等)</li>
+<li>设置对外端口</li>
+<li>修改默认配置文件</li>
+<li>文件权限修改</li>
+<li>其他</li>
+</ol>
+<p>这么漫长的操作！下次要创建一个类似的容器，也要从头到尾来一遍？</p>
+<p>还有大量的命令输入很容易出错。</p>
+<p>因此，最好能把整个“过程”中的所有操作都一步步记录下来，在一个很直观的<strong>配置文件</strong>里提现出来，便于回顾、修改参数。</p>
+<p>这个配置文件就是 <code>Dockerfile</code>，可以认为是描述自定义镜像/容器的一份详细的“说明书”</p>
+<h1 id="小练习增强-php-fpm-容器">小练习：“增强” php-fpm 容器</h1>
+<pre><code class="language-shell">FROM prooph/php:7.1-fpm
+
+RUN docker-php-ext-configure opcache --enable-opcache \
+    &amp;&amp; docker-php-ext-install opcache
+
+# Copy configuration
+COPY config/opcache.ini $PHP_INI_DIR/conf.d/
+</code></pre>
+<h1 id="准备持久化存储数据文件的目录">准备持久化存储数据、文件的目录</h1>
+<p>创建一个目录<code>~/docker-php</code> ，<code>www</code> 目录下只放了一个测试的 <code>index.php</code>，<code>default.conf</code>是一个 Nginx 站点配置文件，等下要把它复制到镜像里面去。</p>
+<pre><code class="language-shell"># 查看一下这个目录的结构
+$ tree ./docker-php/
+./docker-php/
+|-- default.conf
+|-- Dockerfile
+`-- www
+    `-- index.php
+</code></pre>
+<p>在<code>index.php</code>文件里面是一句简单的输出 php 环境配置信息的代码</p>
+<pre><code class="language-php">&lt;?php phpinfo(); ?&gt;
+</code></pre>
+<h2 id="替换容器内的默认配置文件">替换容器内的默认配置文件</h2>
+<p>Nginx 配置文件</p>
+<p>Nginx 虚拟主机配置文件<code>default.conf</code> 内容如下：(例子比较简单，以后可以根据站点需要添加 rewrite 规则，静态文件过期等参数)</p>
+<pre><code class="language-shell">server {
+        listen 80 default_server;
+        listen [::]:80 default_server ipv6only=on;
+ 
+        root /usr/share/nginx/html;
+        index index.php index.html index.htm;
+ 
+        server_name localhost;
+ 
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+                #try_files $uri $uri/ =404;
+        }
+ 
+        error_page 404 /404.html;
+ 
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+                root /usr/share/nginx/html;
+        }
+ 
+        location ~ \.php$ {
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                include fastcgi_params;
+        }
+}
+</code></pre>
+<h1 id="基于-ubuntu-创建-nginx--php-fpm-镜像的完整-dockerfile-文件">基于 Ubuntu 创建 Nginx + PHP-FPM 镜像的完整 Dockerfile 文件</h1>
+<p>如下是 <code>Dockerfile</code> 的内容，关键的地方都有注释。</p>
+<pre><code class="language-shell">FROM daocloud.io/ubuntu:14.04
+MAINTAINER Eric Zhang &lt;my101du@gmail.com&gt;
+ 
+# update system
+RUN apt-get update
+RUN apt-get -y upgrade
+
+# install php dependences
+RUN apt-get install -y libmcrypt-dev libz-dev git wget libxml2
+
+# install nginx
+RUN apt-get -y install nginx
+RUN echo &quot;daemon off;&quot; &gt;&gt; /etc/nginx/nginx.conf
+
+# install PHP and extionsions, libapache2-mod-php5 includes all laravel needs library
+RUN apt-get -y install php5-fpm php5-cli libapache2-mod-php5 php-pear php5-curl mcrypt php5-mcrypt php5-memcache php5-json php5-gd php5-mysql php5-xmlrpc
+
+# change fix_pathinfo param value
+RUN sed -i s/\;cgi\.fix_pathinfo\s*\=\s*1/cgi.fix_pathinfo\=0/ /etc/php5/fpm/php.ini
+
+# clean files
+RUN apt-get clean \
+    &amp;&amp; apt-get autoclean \
+    &amp;&amp; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# initial application work folder
+RUN mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bakww
+COPY default.conf /etc/nginx/sites-available/default
+
+# copy all files of current folder to Docker container's /app path
+COPY ./www /usr/share/nginx/html
+RUN chmod -R 0777 /usr/share/nginx/html
+
+# ports and workdir
+WORKDIR /usr/share/nginx/html
+
+EXPOSE 80
+
+# start commands
+CMD service php5-fpm start &amp;&amp; nginx
+</code></pre>
+<p>现在根据上面的配置，生成镜像并运行容器，新镜像名称是 <code>image-nginx-php</code>，并且已经把 <code>www</code>目录打包进去了。</p>
+<pre><code class="language-shell"># 根据这个 Dockerfile 文件创建镜像&quot;image-nginx-php&quot;
+$ sudo docker build -t image-nginx-php .
+
+# 从镜像来创建容器&quot;container-nginx-php&quot;并运行
+$ sudo docker run --name container-nginx-php -d -p 80:8080 image-nginx-php
+</code></pre>
+<p> 
+在浏览器里输入 <code>http://[ip]:8080</code>，可以看到 <code>phpinfo()</code> 的输出内容了。</p>
+<h1 id="创建一个-mysql-镜像并启动容器">创建一个 MySQL 镜像并启动容器 </h1>
+<p>先在 <code>宿主机</code> 中创建一个目录 /my_datadir，用于把 MySQL 容器的数据库目录/var/lib/mysql 持久化保存在宿主机中（因为镜像在下次重新加载到容器中后，所有数据会丢失）</p>
+<pre><code class="language-shell">$ sudo mkdir /my_datadir
+</code></pre>
+<p>在运行 docker run 命令时，通过 <code>-v</code> (volumn)来指定这个数据目录，“:”前面是宿主机数据库保存路径，后面是容器中MySQL的数据目录；并用 <code>-e</code> 来设置 root 密码</p>
+<p>mysql:latest 表示安装最新版本的 MySQL，如果不需要，也可以改成 5.5，5.6 等等，这个版本号列表可以在镜像的详情页面上查到。</p>
+<p><strong>注意</strong>
+我们这里没有使用 <code>-p 3307:3306</code> (顺序：主机系统端口:容器内系统端口)来进行容器和主机的端口映射！</p>
+<p>使用了外部的 MySQL 配置文件替代自身的（MySQL 5.7 默认配置占用资源大。。）</p>
+<pre><code class="language-shell">$ sudo docker run --name some-mysql -v ~/Downloads/docker-html/docker.cnf:/etc/mysql/conf.d/docker.cnf -v /my_datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -e MYSQL_DATABASE=db_test -d daocloud.io/mysql:latest
+</code></pre>
+<p>现在运行<code>docker ps</code>，可以看到我们有两个容器在运行，一个是之前的 <code>container-nginx-php</code>，另一个就是刚启动的 mysql 容器</p>
+<pre><code class="language-shell"># 查看运行的容器 有两个
+$ sudo docker ps -a
+CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS                NAMES
+8bdf3dde171d        daocloud.io/mysql:latest   &quot;docker-entrypoint.sh&quot;   4 minutes ago       Up 4 minutes        3306/tcp             some-mysql
+834777df49a8        image-nginx-php            &quot;/bin/sh -c 'service &quot;   17 hours ago        Up 17 hours         0.0.0.0:80-&gt;80/tcp   container-nginx-php
+</code></pre>
+<h1 id="使用-mysql-client-访问容器内的-mysql-服务">使用 mysql client 访问容器内的 MySQL 服务</h1>
+<p><strong>注意</strong>
+<code>host</code>是 127.0.0.1，试过使用 localhost，发现会直接连接到宿主机的 MySQL 服务器上去（即使宿主机的端口 3306 对不上！ 目前不知道什么原因）。建议进入后 <code>show database</code>看下数据库</p>
+<pre><code class="language-shell">mysql --host=127.0.0.1 --port=3307 -uroot -p
+
+# The same
+mysql -uroot -p -h 127.0.0.1 -P 3307
+
+mysql&gt;show databases;
+</code></pre>
+<p><strong>默认是没有开通“外部容器”的访问的</strong>，要么使用 &ndash;link 的方式。要么进入容器内，创建新的用户。</p>
+<p>实际上，容器里的应用想要访问宿主机的 MySQL 服务，也是必须要把host修改成宿主机的远程 IP 的，因为容器里的“localhost”。</p>
+<h1 id="是用哪个容器和-mysql-连接">是用哪个容器和 MySQL 连接？</h1>
+<p>一开始用 nginx 容器去 &ndash;link mysql 容器，发现主机找不到</p>
+<blockquote>
+<p>SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: Name does not resolve</p>
+</blockquote>
+<p>应该先使用 php-fpm 容器去 link 这个 MySQL 容器，然后 nginx 再 link 这个 php-fpm 容器</p>
+<h1 id="容器-rm-后内部的数据库也会消失">容器 rm 后，内部的数据库也会消失</h1>
+<p>如果是开发环境，最好使用 -v 来映射； 生产环境可以打包后定时备份出来，或者生成容器时从 sql 文件恢复。</p>
+<h1 id="还原宿主机的-sql-备份文件到容器中的数据库">还原宿主机的 sql 备份文件到容器中的数据库</h1>
+<p>使用 <code>-i</code> 参数可以直接读到宿主机的文件，不要使用<code>-ti</code>，会提示不是 tty</p>
+<pre><code class="language-shell">docker exec -i my-new-database mysql -uroot -pnew-db-password --force db_name &lt; db_dump.sql
+</code></pre>
+<h1 id="容器或宿主机连接-mysql-容器">容器或宿主机连接 MySQL 容器</h1>
+<h2 id="映射端口的方式">映射端口的方式</h2>
+<p>通过在启动 MySQL 容器时，指定端口映射，可以让其他容器和宿主机都能通过某个端口来访问这个 MySQL 容器。</p>
+<p>方法略。</p>
+<p>但对于一些安全性要求较高的场合，只允许某个容器和它有关联（或者平时不需要经常用命令行去操作这个容器内的服务），暴露容器的端口可能不太合适。</p>
+<p>就需要用下面的方法了</p>
+<h2 id="启动容器的时候使用---link-参数">启动容器的时候，使用 &ndash;link 参数</h2>
+<p>这种情况下，只有启动时关联了这个 MySQL 容器的其他容器才能访问。其他容器没有与之关联的容器是不能访问它的数据的。</p>
+<p>默认情况下，容器与容器之间是隔离的。</p>
+<p>要想让 <code>container-nginx-php</code>容器能访问到 <code>MySQL</code>容器的 3306 端口(因为前面启动容器时没有进行端口映射，所以实际上我们是无法访问被隔离的容器内部的 3306 端口的)。需要在启动 <code>container-nginx-php</code>容器的时候指定一个 <code>--link</code> 参数，手动对接起来。</p>
+<p><strong>其他的容器在运行时添加 <code>--link</code>参数来连接这个 <code>MySQL</code>容器，这样才能通过 3306 端口访问到它</strong></p>
+<p>先修改 <code>index.php</code>，添加数据库连接测试的代码。</p>
+<p><strong>注意</strong>
+主机名设为 <code>mysql</code>或<code>container-mysql</code>都可以，当然你也可以随便取，<strong>只要和我们后面的 <code>--link</code> 参数保持一致即可</strong>。</p>
+<p>背后原理</p>
+<blockquote>
+<p>实际上是在 container-nginx-php 容器中，在 <code>/etc/hosts</code> 中增加了一条记录，以便能通过主机名找到另一个 container</p>
+</blockquote>
+<p>用<code>localhost</code>是无效的(因为是链接的“外部”的容器，而表示本地的 <code>localhost</code> 并没有安装和启动 MySQL 服务)</p>
+<pre><code class="language-php">&lt;?php
+    $link = mysqli_connect('mysql-in-container', 'root', 'password') or die('connect error');
+    echo mysqli_get_host_info($link);
+?&gt;
+</code></pre>
+<p>先把之前运行的<code>docker-nginx-php</code>容器停止、删除</p>
+<pre><code class="language-shell">$ sudo docker ps -a
+$ sudo docker stop 834777df49a8
+$ sudo docker rm 834777df49a8
+</code></pre>
+<p><strong>注意</strong>
+由于 <code>index.php</code> 文件变化了，要重新 <code>build</code>构建一个新的镜像去覆盖旧镜像，否则镜像里还是用的旧的 <code>index.php</code> 文件(内容为 <code>phpinfo()</code>的那个)。</p>
+<pre><code class="language-shell">$ cd ~/docker-php
+$ sudo docker build -t image-nginx-php .
+</code></pre>
+<p>然后再启动容器 <code>container-nginx-php</code>, 注意 <code>--link container-mysql:mysql-in-container</code> 参数，表示容器运行的时候去连接名为<code>container-mysql</code>的 MySQL 容器，。<code>--link</code> 参数值与前面 <code>index.php</code> 代码里的 <code>主机名</code> 是一样的。</p>
+<pre><code class="language-shell">$ sudo docker run --name container-nginx-php --link some-mysql:mysql-in-container -d -p 80:8080 image-nginx-php
+</code></pre>
+<p>在浏览器里打开 <code>http://[ip]:8080</code>，如果显示 <code>some-mysql via TCP/IP</code> 这行字符串，就表示连接 MySQL 容器正常了。接下来你可以在<code>index.php</code>里写代码，运行 <code>CREATE DATABASE</code> 等 SQL 语句来试试。假设创建了一个叫 <code>test_db</code>的数据库。</p>
+<p>因为 MySQL 容器的数据库保存目录 <code>/var/lib/mysql</code> 实际上是挂载了宿主机的 <code>/my_datadir</code> 目录，所以当创建一个数据库后，会在宿主机的目录里看到这个新数据库<code>test_db</code>。当以后停止容器、删除容器时，这个宿主机里的数据库目录不受影响，并不会随着被删除。</p>
+<pre><code class="language-shell">$ ls /my_datadir/
+auto.cnf        ib_logfile0  ibdata1  mysql               sys
+ib_buffer_pool  ib_logfile1  ibtmp1   performance_schema  test_db
+</code></pre>
+<p>Nginx-php 容器也可以在启动时添加 <code>-v</code>参数使用 <code>Volumn</code> 特性。让 Nginx 容器的站点根目录挂载宿主机的一个目录即可，这样就不用每次修改一点点代码后都要重新 build 构建一次新镜像了。</p>
+<p>所以呢，在开发阶段，如果你的 web 项目文件变动特别多，也可以用 <code>Volumn</code>来挂接一个外部的宿主机的目录（就像 MySQL 容器挂接的 <code>/datadir</code>一样），省得不停地 build 镜像。</p>
+<p>项目开发完毕交付给客户的时候（表示不再频繁更新），再把项目文件夹打包到镜像里去。</p>
+<pre><code class="language-shell"># 使用 -v 挂载宿主机目录，这样不用每次都 build 新镜像，修改 `index.php`马上生效
+$ sudo docker run --name docker-nginx-php -v ~/docker-php/www:/usr/share/nginx/html --link some-mysql:mysql -d -p 80:80 image-nginx-php
+</code></pre>
+<p>各有利弊。一般本地开发用 Volumn 方式，部署到生产环境时做成镜像，在生产环境只要 run 一个 container 就可以了。</p>
+<p>比如我本地开发一个 Laravel 项目，有很多的 composer require &amp; install (node 项目的 npm install 也类似)，本地把所有的依赖文件都下载、安装好，做成镜像，在生产环境上就好像“复制、粘贴、运行”，部署特别快。</p>
+<h1 id="run--entrypoint">RUN &amp; Entrypoint</h1>
+<p>不管CMD 还是ENTRYPOINT 在同一个Dockerfile有多条时, 只会执行最后一条</p>
+<h1 id="打包成镜像减少每次在客户端使用-dockerfile-编译导致的耗时漫长">打包成镜像，减少每次在客户端使用 Dockerfile 编译导致的耗时漫长</h1>
+<p>如图，从 php7 上添加一些库，在安装时简直。。。。  一旦有更新，在各个容器启动时重新 build 会浪费很多时间。</p>
+<p><img src="/media/15490412289766/15263751572796.jpg" alt=""></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-dockerfile-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-dockerfile-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%95%9C%E5%83%8F/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/frp-%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/docker-%E9%87%8C%E8%BF%90%E8%A1%8C%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%9A%84-chrome/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

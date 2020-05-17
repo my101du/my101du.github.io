@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Artisan 命令 permalink: laravel-artisan tags: laravel 简介 Artisan 是 Laravel 自带的命令行接口，可以帮助你构建 Laravel 应用，减少手动繁琐操作。例如之前接触过的维护模式, 创建 Controller, Model, 生成缓存等等&amp;helli" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Artisan 命令 permalink: laravel-artisan tags: laravel 简介 Artisan 是 Laravel 自带的命令行接口，可以帮助你构建 Laravel 应用，减少手动繁琐操作。例如之前接触过的维护模式, 创建 Controller, Model, 生成缓存等等&helli" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/artisan-%E5%91%BD%E4%BB%A4/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Artisan 命令 permalink: laravel-artisan tags: laravel 简介 Artisan 是 Laravel 自带的命令行接口，可以帮助你构建 Laravel 应用，减少手动繁琐操作。例如之前接触过的维护模式, 创建 Controller, Model, 生成缓存等等&helli">
+
+<meta itemprop="wordCount" content="2616">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Artisan 命令 permalink: laravel-artisan tags: laravel 简介 Artisan 是 Laravel 自带的命令行接口，可以帮助你构建 Laravel 应用，减少手动繁琐操作。例如之前接触过的维护模式, 创建 Controller, Model, 生成缓存等等&helli"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/artisan-%E5%91%BD%E4%BB%A4/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/artisan-%E5%91%BD%E4%BB%A4/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2616字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Artisan 命令
+permalink: laravel-artisan
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="简介">简介</h1>
+<p>Artisan 是 <strong>Laravel 自带的命令行接口</strong>，可以帮助你构建 Laravel 应用，减少手动繁琐操作。例如之前接触过的维护模式, 创建 Controller, Model, 生成缓存等等&hellip;</p>
+<pre><code class="language-shell">php artisan env
+php artisan down # up
+php artisan make:controller TestController
+php artisan route:cache
+</code></pre>
+<p>应用场景</p>
+<p><a href="https://phpartisan.cn/news/2.html">https://phpartisan.cn/news/2.html</a></p>
+<ul>
+<li>Laravel基本的命令</li>
+<li>创建定时任务，比如每日凌晨运行脚本</li>
+<li>执行处理数据量大，时间长的任务（比如管理员给某用户分配10万个订单）</li>
+<li>批量调用接口，使用爬虫等！</li>
+</ul>
+<h2 id="查看所有命令列表">查看所有命令列表</h2>
+<p>用 list 命令；如果想知道某一个命令的帮助信息，在该命令前面添加 help 指令</p>
+<pre><code class="language-shell">php artisan list
+
+# help ,查看 migrate 的帮助信息
+php artisan help migrate
+</code></pre>
+<h2 id="tinker-环境">Tinker 环境</h2>
+<p>Tinker(一个基于 PsySH 包提供支持的 REPL)</p>
+<p>在命令行中与你整个的 Laravel 应用进行交互，包括 Eloquent ORM、任务、事件等等</p>
+<pre><code class="language-shell">php artisan tinker
+</code></pre>
+<h1 id="构建自己的自定义命令">构建自己的自定义命令</h1>
+<p>应用场景：例如可以通过命令行来触发执行一些任务，对文件和目录进行操作等</p>
+<p>默认存储在 <code>app/Console/Commands</code> 目录</p>
+<p>生成命令</p>
+<pre><code class="language-shell">php artisan make:command SendEmails
+</code></pre>
+<p>在自动创建的文件中，修改这两行内容，以便在 list 的时候看到简介</p>
+<p><img src="/media/15490412692685/15260026587340.jpg" alt=""></p>
+<p>之前</p>
+<p><img src="/media/15490412692685/15260027908025.jpg" alt=""></p>
+<p>之后（例如 $signature 改成 &lsquo;odata:sync&rsquo; ，冒号前面是”分组名“，如果只有一个命令，可以忽略）</p>
+<p><img src="/media/15490412692685/15260028207244.jpg" alt=""></p>
+<h2 id="命令结构">命令结构</h2>
+<p>修改 <code>__construct</code> 和 <code>handle</code> 方法，在里面实现该命令执行的代码</p>
+<p>可以在 Command 的构造函数（<code>__construct</code>）中注入我们需要的任何依赖项（Laravel 服务容器 将会自动注入所有在构造函数中的带类型约束的依赖）</p>
+<pre><code class="language-php">use App\User;
+use App\DripEmailer;
+
+//...$signature  $description
+
+protected $drip;
+
+public function __construct(DripEmailer $drip)
+{
+    parent::__construct();
+    $this-&gt;drip = $drip;
+}
+
+public function handle()
+{
+    $this-&gt;drip-&gt;send(User::find($this-&gt;argument('user')));
+}
+</code></pre>
+<p>然后就可以运行这个 artisan 命令了(假设这里 $signature 是 <code>odata:sync</code>)，会调用 handle 方法</p>
+<pre><code class="language-shell">php artisan odata:sync
+</code></pre>
+<h2 id="闭包命令">闭包命令</h2>
+<p>打开 <code>app\Console\Kernel.php</code>文件, 看到如下内容</p>
+<pre><code class="language-php">protected function commands()
+{
+    $this-&gt;load(__DIR__ . '/Commands');
+
+    require base_path('routes/console.php');
+}
+</code></pre>
+<p>其中<code>$this-&gt;load(__DIR__ . '/Commands');</code>，表示加载进来前面我们定义的<strong>所有</strong><code>控制台命令</code>。</p>
+<p>那第二行<code>require base_path('routes/console.php')</code>是什么？打开这个文件<code>routes/console.php</code>看到如下：</p>
+<pre><code class="language-php">Artisan::command('inspire', function () {
+    $this-&gt;comment(Inspiring::quote());
+})-&gt;describe('Display an inspiring quote');
+</code></pre>
+<p>这个文件没有定义 HTTP 路由，它也将**基于控制台的入口点（路由）**定义到应用中</p>
+<p>因此 Laravel 也可以定义<code>基于闭包的命令</code> （和<code>路由闭包</code>替代控制器很相似），使用<code>Artisan::command</code>方法定义所有基于闭包的路由。</p>
+<p>接收两个参数：命令签名 和一个接收命令参数和选项的闭包 （对比下前控制台命令里的 <code>handle</code>方法，以及<code>describe</code>方法对应的 description）</p>
+<pre><code class="language-php">Artisan::command('build {project}', function ($project) {
+    $this-&gt;info(&quot;Building {$project}!&quot;);
+});
+</code></pre>
+<p>例如我定义了一个基于闭包的命令</p>
+<pre><code class="language-php">Artisan::command('test', function () {
+    echo 'test closure';
+})-&gt;describe('Test Closure Command');
+</code></pre>
+<p>然后运行 artisan ,正常运行</p>
+<pre><code class="language-shell">$php artisan test
+test closure%
+</code></pre>
+<p><strong>类型提示依赖</strong></p>
+<p>除了接收命令的参数和选项外，命令闭包也可以使用类型提示从 服务容器 中解析你想要的其他依赖关系：(和控制台命令一样)</p>
+<pre><code class="language-php">use App\User;
+use App\DripEmailer;
+
+Artisan::command('email:send {user}', function (DripEmailer $drip, $user) {
+    $drip-&gt;send(User::find($user));
+});
+</code></pre>
+<h1 id="定义输入期望">定义输入期望</h1>
+<p>通过设置 signature 属性的参数和选项，来定义你期望用户输入的内容</p>
+<h2 id="参数">参数</h2>
+<p>所有用户提供的参数及选项都被包含在<strong>花括号</strong>中。例如这个命令定义了一个 <strong>必需</strong> 的参数 <code>user</code>，语法看起来很像路由的定义。</p>
+<pre><code class="language-php">protected $signature = 'email:send {user}';
+
+//可以创建可选参数，并定义参数的默认值
+email:send {user?}
+email:send {user=foo}
+</code></pre>
+<h2 id="选项">选项</h2>
+<p>当命令行指定选项时，它们以两个连字符 (&ndash;) 作为前缀。有两种类型的选项：接收值和不接受值</p>
+<pre><code class="language-php">protected $signature = 'email:send {user} {--queue}';
+</code></pre>
+<p>可以在调用Artisan命令时指定 &ndash;queue 开关。如果 &ndash;queue 开关被传递，该选项的值为 true ，否则为 false</p>
+<pre><code class="language-shell">php artisan email:send 1 --queue
+</code></pre>
+<p><strong>选项带值</strong></p>
+<p>如果用户必须为选项指定一个值，需要用一个等号 = 作为选项名称的后缀</p>
+<pre><code class="language-php">protected $signature = 'email:send {user} {--queue=}';
+
+//指定一个默认值
+protected $signature = 'email:send {user} {--queue=default}';
+</code></pre>
+<p>调用时</p>
+<pre><code class="language-shell">php artisan email:send 1 --queue=default
+</code></pre>
+<h2 id="参数和选项期望输入数组">参数和选项期望输入数组</h2>
+<p>使用 * 符号来期望输入数组</p>
+<pre><code class="language-php">email:send {user*}
+
+email:send {user} {--id=*}
+</code></pre>
+<p>那么下面的命令会设置 user 的值为 [&lsquo;foo&rsquo;, &lsquo;bar&rsquo;], 这是一个有两个元素的数组，而不是之前只能是一个元素</p>
+<pre><code class="language-shell">php artisan email:send foo bar
+
+php artisan email:send --id=1 --id=2
+</code></pre>
+<h2 id="注释输入参数和选项">注释输入参数和选项</h2>
+<p>给命令的参数和选项分配说明文字，用冒号隔开</p>
+<pre><code class="language-php">protected $signature = 'email:send
+                        {user : The ID of the user}
+                        {--queue= : Whether the job should be queued}';
+</code></pre>
+<h1 id="io-命令">I/O 命令</h1>
+<p>为命令定义完输入参数和选项后，如何在执行命令的时候（handle 或 闭包）获取它们的值呢？</p>
+<h2 id="获取参数和选项">获取参数和选项</h2>
+<h3 id="命令执行时获取命令的参数和选项">命令执行时获取命令的参数和选项</h3>
+<p>在命令执行时，你可以使用 <code>argument</code> 和 <code>option</code> 方法：</p>
+<p>如果需要将<strong>所有</strong>参数/选项以 array 检索，就调用 arguments/options 方法：</p>
+<pre><code class="language-php">public function handle()
+{
+    //特定参数
+    $userId = $this-&gt;argument('user');
+    //所有参数
+    $arguments = $this-&gt;arguments();
+
+    // 特定选项
+    $queueName = $this-&gt;option('queue');
+    //所有选项
+    $options = $this-&gt;options();
+}
+</code></pre>
+<h2 id="交互式输入">交互式输入</h2>
+<p>要求用户在执行命令时提供输入，ask 方法将提示用户给定问题，接收他们的输入，然后将用户的输入返回到你的命令</p>
+<pre><code class="language-php">public function handle()
+{
+    $name = $this-&gt;ask('What is your name?');
+    
+    //如果需要隐藏用户在控制台输入的敏感内容
+    $password = $this-&gt;secret('What is the password?');
+    
+    //如果需要用户确认
+    if ($this-&gt;confirm('Do you wish to continue?')) {
+        //
+    }
+    
+    //自动补全，不管提示的内容是什么，用户仍然可以选择任何回答
+    $name = $this-&gt;anticipate('What is your name?', ['Taylor', 'Dayle']);
+    
+    // 多重选择（提供预定义的一组选择），并返回默认值
+    $name = $this-&gt;choice('What is your name?', ['Taylor', 'Dayle'], $default);
+}
+</code></pre>
+<h2 id="输出">输出</h2>
+<p>可以使用 line 、info 、 comment 、 question 和 error 方法来将输出发送到终端（每个方法都有适当的 ANSI 颜色来作为表明其目的）</p>
+<pre><code class="language-php">public function handle()
+{
+    $this-&gt;info('Display this on the screen');
+    $this-&gt;error('Something went wrong!');
+    $this-&gt;line('Display this on the screen'); //无色的输出
+}
+</code></pre>
+<p>根据 <a href="https://stillat.com/blog/2016/12/03/custom-command-styles-with-laravel-artisan">https://stillat.com/blog/2016/12/03/custom-command-styles-with-laravel-artisan</a>， 如果需要让输出的字符串中，部分文本有不同的颜色，可以使用 <code>&lt;bg=red;fg=blue&gt;text&lt;/&gt;</code>实现</p>
+<p>The following table lists the valid foreground and background colors:</p>
+<p>Color	Value	Example
+Black	black	fg=black;bg=black
+Red	red	fg=red;bg=red
+Green	green	fg=green;bg=green
+Yellow	yellow	fg=yellow;bg=yellow
+Blue	blue	fg=blue;bg=blue
+Magenta	magenta	fg=magenta;bg=magenta
+Cyan	cyan	fg=cyan;bg=cyan
+White	white	fg=white;bg=white
+Default	default	fg=default;bg=default
+Options can also be used to change various aspects of the text as it is displayed. The following table lists each of the various options and a description of each:</p>
+<p>Option	Value	Description
+Bold	bold	Causes the formatted text to display more brightly than the surrounding text.
+Underscore	underscore	Underlines the styled text.
+Blink	blink	Causes the styled text to blink within the console terminal. Note: most modern terminals do not support blink.
+Reverse	reverse	Swaps the foreground and background colors for the styled text.
+Conceal	conceal	Sets the foreground color to transparent. This effectively makes the typed text invisible.</p>
+<p><strong>表布局</strong></p>
+<pre><code class="language-php">$headers = ['Name', 'Email'];
+$users = App\User::all(['name', 'email'])-&gt;toArray();
+$this-&gt;table($headers, $users);
+</code></pre>
+<p><strong>进度条</strong></p>
+<p>使用输出对象，我们可以启动、推进和停止进度条, 查阅 <a href="https://symfony.com/doc/2.7/components/console/helpers/progressbar.html">Symfony 进度条组件文档 </a></p>
+<pre><code class="language-php">$users = App\User::all();
+
+$bar = $this-&gt;output-&gt;createProgressBar(count($users));
+
+foreach ($users as $user) {
+    $this-&gt;performTask($user);
+
+    $bar-&gt;advance();
+}
+
+$bar-&gt;finish();
+</code></pre>
+<h1 id="注册命令">注册命令</h1>
+<p>由于在控制台内核的 commands 方法中调用了 load 方法，所以 app/Console/Commands 目录下的所有命令都将自动注册到 Artisan。 实际上，你可以自由地调用 load 方法来扫描 Artisan 命令的<strong>其他目录</strong>：</p>
+<pre><code class="language-php">protected function commands()
+{
+    $this-&gt;load(__DIR__.'/Commands');
+    $this-&gt;load(__DIR__.'/MoreCommands');
+
+    // ...
+}
+</code></pre>
+<p>还可以通过将其类名添加到 app/Console/Kernel.php 文件的 $command 属性来手动注册命令。当 Artisan 启动时，该属性中列出的所有命令将由 服务容器 解析并在 Artisan 注册：</p>
+<pre><code class="language-php">protected $commands = [
+    Commands\SendEmails::class
+];
+</code></pre>
+<h1 id="在代码里执行-artisan-命令-而不是在-cli-中">在代码里执行 Artisan 命令 (而不是在 CLI 中)</h1>
+<p>例如，你可能希望从路由或控制器触发 Artisan 命令。你可以使用 Artisan facade 上的 call 方法来完成。命令的名称作为第一个参数，命令参数的数组作为第二个参数</p>
+<pre><code class="language-php">// 路由回调中
+Route::get('/foo', function () {
+    $exitCode = Artisan::call('email:send', [
+        'user' =&gt; 1, '--queue' =&gt; 'default'
+    ]);
+
+    //
+});
+
+// 队列中
+Route::get('/foo', function () {
+    Artisan::queue('email:send', [
+        'user' =&gt; 1, '--queue' =&gt; 'default'
+    ]);
+
+    //
+});
+
+//如果需要指定不接受字符串值的选项的值，例如 migrate：refresh 命令中的 --force 标志，则可以传递 true 或 false ：
+$exitCode = Artisan::call('migrate:refresh', [
+    '--force' =&gt; true,
+]);
+
+// 从其他命令调用命令
+public function handle()
+{
+    $this-&gt;call('email:send', [
+        'user' =&gt; 1, '--queue' =&gt; 'default'
+    ]);
+
+    //如果想阻止其所有输出，用 callSilent
+    $this-&gt;callSilent('email:send', [
+        'user' =&gt; 1, '--queue' =&gt; 'default'
+    ]);
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/artisan-%E5%91%BD%E4%BB%A4/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/artisan-%E5%91%BD%E4%BB%A4/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

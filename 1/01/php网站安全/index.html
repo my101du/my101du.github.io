@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: PHP网站安全 permalink: php-site-security tags:
+ php  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: PHP网站安全
+permalink: php-site-security
+tags:
+
+php
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/php%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: PHP网站安全
+permalink: php-site-security
+tags:
+
+php
+
+">
+
+<meta itemprop="wordCount" content="8408">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: PHP网站安全
+permalink: php-site-security
+tags:
+
+php
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/php%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/php%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8408字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 17分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: PHP网站安全
+permalink: php-site-security
+tags:</p>
+<ul>
+<li>php</li>
+</ul>
+<hr>
+<h1 id="服务器安全">服务器安全</h1>
+<h2 id="端口修改">端口修改</h2>
+<h2 id="公钥登录不要用密码">公钥登录，不要用密码</h2>
+<h2 id="fail2ban一键安装脚本-一键防止ssh爆破">Fail2ban一键安装脚本—— 一键防止SSH爆破</h2>
+<p>一键安装部署Fail2ban，自动配置防SSH爆破。可自定义ip封禁时间，最高重试次数。Fail2ban会通过检查日志来匹配错误信息，从而使用iptables来防止暴力破解。理论上只要是能够在服务器本地输出错误日志和访问日志的程序都可以使用Fail2ban来保驾护航。</p>
+<p>wget <a href="https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh">https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh</a>
+bash fail2ban.sh</p>
+<p>wget <a href="https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/uninstall.sh">https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/uninstall.sh</a></p>
+<p>bash uninstall.sh</p>
+<h2 id="跳板机">跳板机</h2>
+<p><a href="https://juejin.im/post/5c9d7660e51d4562c846c193">https://juejin.im/post/5c9d7660e51d4562c846c193</a></p>
+<h1 id="模拟攻击植入木马">模拟攻击/植入木马</h1>
+<h1 id="禁用一些危险函数">禁用一些危险函数</h1>
+<p>编辑 <code>php.ini</code> 文件，找到 <code>disable_functions</code> 关键词，设置为</p>
+<pre><code class="language-shell">disable_functions = passthru,exec,system,chroot,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server
+</code></pre>
+<p>当然，你可以根据需要添加更多函数，提高安全性。</p>
+<!-- raw HTML omitted -->
+<h1 id="目录权限设置完全解读">目录权限设置完全解读</h1>
+<p>编辑<code>/etc/php.ini</code>文件</p>
+<p>open_basedir = .:/tmp/</p>
+<p>设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，</p>
+<p>或者直接写上程序的目录/data/www.osyunwei.com/:/tmp/</p>
+<p>open_basedir =/home/upload/:/tmp 限制只能访问/home/upload目录下的php文件。</p>
+<p>我们假设 http 服务器如 nginx 运行的用户和用户组是 www ，网站用户（ftp用户）为 ftpuser ，网站根目录是 <code>/home/wwwroot</code></p>
+<p>1.先进入web根目录</p>
+<pre><code class="language-shell">cd /home/wwwroot
+</code></pre>
+<p>2.首先设定网站目录的文件的所有者和所有组为ftpuser:www，如下命令：</p>
+<pre><code class="language-shell">chown -R ftpuser:www /home/wwwroot
+</code></pre>
+<p>3.网上的那个原文中这么处理文件 <code>find -not -type d -exec chmod 640 {} \;，</code>如果你目录下文件非常多，会卡死，故换一种思路</p>
+<pre><code class="language-shell">chmod -R 640 /home/wwwroot
+</code></pre>
+<p>把所有文件、目录都改成640，这样ftpuser用户可以读写，www用户只能读，其他用户没权限
+​
+4.设置网站的目录权限为750</p>
+<pre><code class="language-shell">find -type d -exec chmod 750 {} \;
+</code></pre>
+<p>这样ftpuser用户可以读、写、执行任意目录，www用户可以读和执行但不可以写，其他用户没权限</p>
+<p>5.针对个别目录设置可写权限。比如网站的一些缓存目录就需要给http服务有写入权限。例如discuz x2的/data/目录就必须要写入权限。</p>
+<pre><code class="language-shell">find data -type d -exec chmod 770 {} \;
+</code></pre>
+<p>更激进的权限</p>
+<pre><code class="language-shell">find -type f -name *.php -exec chmod 444 {} ;
+find ./ -type d -exec chmod 555 {} \;
+</code></pre>
+<p>即 文件没有执行权限，目录没有写权限</p>
+<p>有一篇文章可参考 <a href="http://www.zeroplace.cn/article.asp?id=898">http://www.zeroplace.cn/article.asp?id=898</a></p>
+<p>1.服务器自身系统安全：
+　　使用最新的操作系统，或者最新的稳定版(比如Ubuntu的LTS)，定期打好更新，系统权限合理划分，重要文件做权限安全保护。
+　　比如：
+　</p>
+<pre><code class="language-shell">　# chattr +i /etc/passwd 
+　　# chattr +i /etc/group 
+　　# chattr +i /etc/shadow 
+　　# chattr +i /etc/gshadow 
+　　# chattr +i /etc/ssh/sshd_config 
+</code></pre>
+<p>　　使用DenyHost程序防止SSH被暴力攻击，具体方法见站外文章：http://www.myhack58.com/Article/48/66/2011/28833.htm
+　　
+　　2.Web服务器和PHP的安全规则：
+　　首先根据需求更新Web服务器和PHP，在网站程序目录中严格定义权限，比如不会修改的地方 做好禁止写入权限， upload目录和cache等临时目录需要做好限制PHP或相关脚本运行。
+　　nginx规则相关脚本：
+　　</p>
+<pre><code class="language-shell">location ~ .*\.(php|php5)?$ { 
+　　……. 
+　　#—————————————— 
+　　rewrite ^/(uc\_client|templates|include|plugins|admin|attachments|images| 
+　　forumdata)/.*\.(php|php5)?$ /50x.php last; 
+　　#——————————————- 
+　　} 
+</code></pre>
+<p>　　apache规则相关脚本
+　　//注意：这里改成你需要屏蔽的目录 比如upload目录
+　　php_flag engine off
+　　Order allow,deny
+　　Deny from all
+　　PHP.INI需要修改的地方(很重要)
+　　查找：disable_functions
+　　找到后在=后面添加</p>
+<p>　　这里都是禁止在php里面执行的函数
+　　服务器木马查杀篇(PHP)
+　　1.安装杀毒软件，我的服务器使用的是avast效果还算比较好。
+　　2.根据木马特征扫描人工排查(人工排查这个就需要个人经验判断了)
+　　PHP木马的最明显特征是使用了eval与base64_decode这个函数还有一些比较危险的函数。
+　　可以输入下面的命令 进行查询
+　　</p>
+<pre><code class="language-shell">find /home/www/ -type f -name &quot;*.php&quot; | xargs grep &quot;eval(&quot; |more 
+</code></pre>
+<p>　　增强版(在网站目录执行)：
+　　</p>
+<pre><code class="language-shell">find ./ -name &quot;*.php&quot; |xargs egrep &quot;phpspy|c99sh|milw0rm|eval\(gunerpress|eval\(base64_decoolcode|spider_bc&quot;&gt; /tmp/php.txt 
+　　grep -r –include=*.php '[^a-z]eval($_POST' . &gt; /tmp/eval.txt 
+　　grep -r –include=*.php 'file_put_contents(.*$_POST\[.*\]);' . &gt; /tmp/file_put_contents.txt 
+　　find ./ -name &quot;*.php&quot; -type f -print0 | xargs -0 egrep &quot;(phpspy|c99sh|milw0rm|eval\(gzuncompress\(base64_decoolcode|eval\(base64_decoolcode|spider_bc|gzinflate)&quot; | awk -F: '{print $1}' | sort | uniq 
+</code></pre>
+<p>上面代码最终会讲名单输出到 /tmp 目录中 请直接查看列表 根据情况进行处理。
+　　
+查找最近一天被修改的PHP文件
+　　</p>
+<pre><code class="language-shell">#find -mtime -1 -type f -name \*.php 
+</code></pre>
+<h2 id="修改网站的权限">修改网站的权限</h2>
+<p>　　</p>
+<pre><code class="language-shell">find -type f -name \*.php -exec chmod 444 {} \; 
+　　find ./ -type d -exec chmod 555{} \; 
+</code></pre>
+<h1 id="寻找php网站挂马后门">寻找PHP（网站）挂马，后门</h1>
+<h2 id="几个木马特征查找工具">几个木马特征查找工具</h2>
+<p>一 php后门木马常用的函数大致上可分为四种类型：</p>
+<ol>
+<li>
+<p>执行系统命令: system, passthru, shell_exec, exec, popen, proc_open</p>
+</li>
+<li>
+<p>代码执行与加密: eval, assert, call_user_func,base64_decode, gzinflate, gzuncompress, gzdecode, str_rot13</p>
+</li>
+<li>
+<p>文件包含与生成: require, require_once, include, include_once, file_get_contents, file_put_contents, fputs, fwrite</p>
+</li>
+<li>
+<p>.htaccess: SetHandler, auto_prepend_file, auto_append_file</p>
+</li>
+</ol>
+<p>二 想找一个 关键词是“hellow word” 在哪些文件中有，我们用grep命令</p>
+<pre><code class="language-shell">grep --color -i -r -n &quot;hellow word&quot;  /data/www/
+</code></pre>
+<p>这样就能搜索出来 文件中包含关键词的文件</p>
+<p>&ndash;color是关键词标红</p>
+<p>-i是不区分大小写
+-r是包含子目录的搜索
+-d skip忽略子目录</p>
+<p>可以用以上命令查找网站项目里的带有挂马的文件</p>
+<p>三.两个查后门的实用linux命令：</p>
+<pre><code class="language-shell">find /data/web/website/ -iname *.php -mtime -35
+</code></pre>
+<p>找出/data/web/website/目录下 35分钟前新建的php</p>
+<p>find /data/web/website/ -name “*.php” | xargs grep “eval($_POST[” 找出/data/web/website/ 里面源码包含eval($_POST[的php文件  (注意：POST后面可能需要转义符“\”，否则有可能不能执行）</p>
+<p>四.</p>
+<p>例如</p>
+<p>注入漏洞eval(base64_decode</p>
+<p>grep &ndash;color -i -r -n &ldquo;eval&rdquo;  /data/www/   找出来对比以前正常的代码，看是否正常。然后用stat查看这个木马文件的修改时间，最后去寻找WEB日志，找出木马从哪里进来的</p>
+<p>eg: grep &ndash;color -i -r -n &lsquo;eval($_POST&rsquo;  cncar/</p>
+<p>五：</p>
+<p>实用查找PHP木马命令：</p>
+<p>查找PHP木马</p>
+<pre><code class="language-shell">find ./ -name &quot;*.php&quot; |xargs egrep &quot;phpspy|c99sh|milw0rm|eval\(gunerpress|eval\(base64_decoolcode|spider_bc&quot;&gt; /tmp/php.txt
+
+grep -r --include=*.php  '[^a-z]eval($_POST' . &gt; /tmp/eval.txt
+
+grep -r --include=*.php  'file_put_contents(.*$_POST.∗);' . &gt; /tmp/file_put_contents.txt
+
+find ./ -name &quot;*.php&quot; -type f -print0 | xargs -0 egrep &quot;(phpspy|c99sh|milw0rm|eval\(gzuncompress\(base64_decoolcode|eval\(base64_decoolcode|spider_bc|gzinflate)&quot; | awk -F: '{print $1}' | sort | uniq
+</code></pre>
+<p>#查找被修改的PHP文件</p>
+<pre><code class="language-shell">#最近一天
+find -mtime -1 -type f -name \*.php
+
+#假设最后更新是10天前我们可以查找10天内生成的可以php文件:
+find /var/www/ -name “*.php” -mtime -10
+</code></pre>
+<p>也可以通过关键字的形式查找 常见的木马常用代码函数 eval,shell_exec,passthru,popen,system</p>
+<pre><code class="language-shell">find /var/www/ -name “*.php” |xargs grep “eval” |more
+find /var/www/ -name “*.php” |xargs grep “shell_exec” |more
+find /var/www/ -name “*.php” |xargs grep “passthru” |more
+
+</code></pre>
+<p>还有查看access.log 当然前提是你网站的所有php文件不是很多的情况下</p>
+<p>一句话查找PHP木马</p>
+<pre><code class="language-shell">find ./ -name “*.php” |xargs egrep “phpspy|c99sh|milw0rm|eval(gunerpress|eval(base64_decode|spider_bc”&gt; /tmp/php.txt
+
+grep -r –include=*.php ’[^a-z]eval($_POST’ . &gt; /tmp/eval.txt
+
+grep -r –include=*.php ’file_put_contents(.*$_POST[.*]);’ . &gt; /tmp/file_put_contents.txt
+
+find ./ -name “*.php” -type f -print0 | xargs -0 egrep “(phpspy|c99sh|milw0rm|eval(gzuncompress(base64_decode|eval(base64_decode|spider_bc|gzinflate)” | awk -F: ‘{print $1}’ | sort | uniq
+</code></pre>
+<p>六</p>
+<p>以下其实是多余的操作了其实，但是还是有值得看的地方</p>
+<p>，检查代码。</p>
+<p>肯定不是一个文件一个文件的检查，Linxu有强悍的命令</p>
+<p>grep ‘eval’ * -R 全盘搜索当前目录所有文件（包含子目录）中带有eval的文件，这条可以快速查找到被挂马的文件。</p>
+<p>关于eval，请自行google一句话php代码。</p>
+<p>2，查看日志。</p>
+<p>不到这个时候不知道日志的可贵啊。</p>
+<p>还是以grep命令为主。</p>
+<p>思路：负责的站点是Linux，只开了2个端口，一个22和80，外部的执行命令是由从80端口进来，Selinux报httpd访问/boot文件，确认被挂马。而所有的命令执行必须POST提交给执行的文件。所以，查找日志中所有的POST记录。</p>
+<p>cat access_log_20120823.log | grep ‘POST’ | grep -v ‘反向查找’ | less，通过grep -v排除正常post，egrep也支持正则，但是太复杂了，看懂不知道怎么运用。</p>
+<p>（这里不建议用cat，用tail可以追加一个文件来看）
+这可以防患于未然，防止不知道哪天又被人黑进来了。每天看一眼日志。</p>
+<p>3，对于网页目录，只给apache用户rx权限，不要给w权限，目录设置要加上rx，不要给w，个别文件除外。所以，配合2使用，Linux下可以快速过滤刷选出来不规则的POST请求。</p>
+<p>综合1，2其实就可以快速查找被黑的页面，被修改的文件替换干净的代码。</p>
+<h1 id="centos下使用inotify防php木马">centos下使用inotify防php木马</h1>
+<p>Ø  实验环境
+操作系统：CentOS 5.5
+Web程序：Apache
+网址：web1.ttlsa.com
+站点目录：/var/www/html</p>
+<p>Ø  前言
+作为web站点系统管理员，遇到站点被挂马是非常无奈的事情，php等程序代码不是我们写的，程序是否存在上传漏洞也搞不清楚，从运维的角度出发，我们可以对上传上来的php权限控制.这边我使用Inotify对文件实时监控,一旦发生了对php文件的创建移动操作，立马把相应文件权限设置为000，这样来达到杜绝php木马的效果，如果是自己发布php怎么办？这个问题不难，自己可以用脚本实现吧。</p>
+<p>Ø  安装Inotify</p>
+<pre><code class="language-shell"># cd /usr/local/src/tarbag/
+    # wget http://downloads.sourceforge.net/inotify-tools/inotify-tools-3.13.tar.gz?modtime=1199213676&amp;big_mirror=0 # 下载Intify
+    # tar –xzvf inotify-tools-3.13.tar.gz -C /software # 解压tar包到指定目录
+    # cd /usr/local/src/software/inotify-tools-3.13 # 切换到解压目录
+    # ./configure –prefix=/usr/local/inotify # 配置
+    # make
+    # make install
+</code></pre>
+<p>Ø  Inotify监控脚本
+InotifDenyPHP.sh(这是我写的针对php的脚本,具体实现大家可以相应灵活修改)</p>
+<pre><code class="language-shell">#!/bin/bash
+    # Author:Deng Yun
+    # DateTime:2011-06-21 04:59
+    Inotify=&quot;/usr/local/inotify/bin/inotifywait&quot; # 你懂得
+    ${Inotify} -mrq -e create,move,attrib /var/www/html | while read Path Events FileName
+    do
+         if [[ ${FileName} == *.php ]]; then # 判断文件名是否以php结尾
+              chmod 000 ${Path}${FileName} # 更改权限,本脚本核心部分
+         fi
+    done
+</code></pre>
+<p>相关注释：
+Path：文件目录
+Events ：事件，create，move，attrib等等，这个脚本暂时没用它
+FileName：文件名</p>
+<h1 id="创建移动文件修改文件权限都会触发这个操作">创建、移动文件，修改文件权限都会触发这个操作</h1>
+<p>Ø  准备php上传文件
+upload.html</p>
+<pre><code class="language-html">&lt;form action=&quot;upload_file.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+    &lt;label for=&quot;file&quot;&gt;Filename:&lt;/label&gt;
+    &lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot; /&gt;
+    &lt;br /&gt;
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+    &lt;/form&gt;
+</code></pre>
+<p>upload_file.php</p>
+<pre><code class="language-php">    if($_FILES)
+    {
+         if ($_FILES[&quot;file&quot;][&quot;error&quot;] &gt; 0)
+         {
+           echo &quot;Return Code: &quot; . $_FILES[&quot;file&quot;][&quot;error&quot;] . &quot;&lt;br /&gt;&quot;;
+         }
+         else
+         {
+           echo &quot;Upload: &quot; . $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot;&lt;br /&gt;&quot;;
+           echo &quot;Type: &quot; . $_FILES[&quot;file&quot;][&quot;type&quot;] . &quot;&lt;br /&gt;&quot;;
+           echo &quot;Size: &quot; . ($_FILES[&quot;file&quot;][&quot;size&quot;] / 1024) . &quot; Kb&lt;br /&gt;&quot;;
+           echo &quot;Temp file: &quot; . $_FILES[&quot;file&quot;][&quot;tmp_name&quot;] . &quot;&lt;br /&gt;&quot;;
+           if (file_exists(&quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]))
+           {
+              echo $_FILES[&quot;file&quot;][&quot;name&quot;] . &quot; already exists. &quot;;
+           }
+           else
+           {
+              move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;], &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;]);
+              echo &quot;Stored in: &quot; . &quot;upload/&quot; . $_FILES[&quot;file&quot;][&quot;name&quot;];
+           }
+         }
+    }
+    else
+    {
+         echo &quot;Invalid file&quot;;
+    }
+</code></pre>
+<p>php文件准备得差不多了，把upload.html和upload_file.php上传到服务器/var/www/html目录下，以及脚本也准备好，先运行脚本在测试.如果web目录下的文件非常多的话，inotify需要一段时间才能开始监听，我这边有150w个文件，大概花了3分钟，不过我这服务器是i3,256内存的虚拟机.</p>
+<p>在根目录下新建upload目录,php程序是传到这个目录下的</p>
+<h1 id="mkdir-varwwwhtmlupload">mkdir /var/www/html/upload</h1>
+<h1 id="chown-apacheapache-varwwwhtmlupload------改成相应的apache用户名大部分叫daemon">chown apache.apache /var/www/html/upload      #改成相应的apache用户名,大部分叫daemon</h1>
+<p>不启动inotify监控,上传php木马muma1.php</p>
+<p>上传成功</p>
+<p>试试muma1.php是否可以运行，ok没有问题</p>
+<p>Ø  启动inotify，测试上传php文件
+启动脚本</p>
+<pre><code># ./InotifDenyPHP.sh
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.  #看到这个才说明开始监控文件
+</code></pre>
+<p>上传muma2.php</p>
+<p>上传成功</p>
+<p>这会儿看看在浏览器中是否能够运行,如下图</p>
+<p>可以看出muma2.php直行失败了,上服务器看看muma2.php权限是不是改成了000，从下面这张图我可以看到muama1.php是默认644权限，而muma2.php是000权限，很明显是inotify和我们的脚本动的手脚</p>
+<p>如果自己要发布php程序怎么，比如ftp用户ttlsa,ftp目录为/var/www/html，那么我们可以在脚本总先判断文件所有者是否为ttlsa，如果不是则权限至为000。在或者判断所有者是否为apache用户，如果是则置为000.集思广益，判断的方法很多。</p>
+<h1 id="木马特征代码">木马特征代码</h1>
+<p><strong>来自 api/remote/mod/mod_cron.php</strong></p>
+<pre><code class="language-php">@$_=&quot;s&quot;.&quot;s&quot;./*-/*-*/&quot;e&quot;./*-/*-*/&quot;r&quot;;                  
+@$_=/*-/*-*/&quot;a&quot;./*-/*-*/$_./*-/*-*/&quot;t&quot;;                  
+@$_/*-/*-*/($/*-/*-*/{&quot;_P&quot;./*-/*-*/&quot;OS&quot;./*-/*-*/&quot;T&quot;}                  
+[/*-/*-*/1/*-/*-*/-/*-/*-*/2/*-/*-*/-/*-/*-*/9/*-/*-*/]);
+</code></pre>
+<p><strong>来自ttad/adAusLife1.php</strong></p>
+<pre><code class="language-php">@preg_replace(&quot;/[email]/e&quot;,$_POST['toqwrqrpic'],&quot;error&quot;);
+</code></pre>
+<h1 id="使用版本管理或文件对比工具来查找变化的文件">使用版本管理或文件对比工具来查找变化的文件</h1>
+<h1 id="一些后门检查工具">一些后门检查工具</h1>
+<h2 id="pecker">pecker</h2>
+<h2 id="php-shell-detector推荐">PHP-Shell-Detector（推荐）</h2>
+<p><a href="https://github.com/emposha/PHP-Shell-Detector">https://github.com/emposha/PHP-Shell-Detector</a></p>
+<p>Upload shelldetect.php and shelldetect.db to your root directory</p>
+<p>Open shelldetect.php file in your browser</p>
+<p>Example: <a href="http://www.website.com/shelldetect.php">http://www.website.com/shelldetect.php</a></p>
+<p>Use default username &amp; password</p>
+<p>Username: admin Password: protect</p>
+<h1 id="discuz论坛安全加固">Discuz论坛安全加固</h1>
+<h2 id="目录权限设置">目录权限设置</h2>
+<h2 id="远程附件">远程附件</h2>
+<h2 id="adsf">adsf</h2>
+<p><a href="http://www.361way.com/discuz-safe/2626.html">http://www.361way.com/discuz-safe/2626.html</a></p>
+<p>Discuz可以算是php里的一个比较优秀的bbs程序了，最近公司了增了discuz应用。不过在服务器上运行php程序相较java程序来说，安全性上总觉得不那么让人放心。果不其然，运行不久，网站就被人给黑了 。之前该机一直平安的运行jsp安全的运行了一年多没有问题 。当然，此处并不是说java较php优秀 。之前运行jsp程序之所以没有问题也有两方面的原因：其一，java本身所具有的相对安全的特性；其二，在运维和程序代码本身都做了很多的努力，防止sql 注入，上传漏洞等。所以相信php做了一种快速高效的开发语言，如果安全加固做的比较到位的话，其与java代码相较并不处于弱势。</p>
+<p>针对discuz的安全加固如下：</p>
+<p>1、在nginx入口上对data|images|config|static|source|template 这几个可以上传的目录里的php文件禁止访问 。（更安全一点就是列出放行的，其他全部禁止。）</p>
+<pre><code class="language-shell">location ~* ^/(data|images|config|static|source|template)/.*.(php|php5)$
+   {
+   deny all;
+   }
+</code></pre>
+<p>按照以上的配置，即使出现上传漏洞，上传到了上面配置的几个目录php文件，也会报403出错无法执行。更安全的做法是，放行部分，其余全部禁止，例如：</p>
+<pre><code class="language-shell">location ~ (index|forum|group|archiver|api|uc_client|uc_server).*.(php)?$
+    {
+                allow all;
+                fastcgi_pass  127.0.0.1:9000;
+                fastcgi_index index.php;
+                include fcgi.conf;
+}
+</code></pre>
+<p>不过上面只是一个示例，根目录下的php文件，我此处并未列全。而且还有一个问题就是，每次有新的版本发布，如果目录结构变列或者根目录新增php文件，都要相应的修改nginx 的安全配置。</p>
+<p>2、优化nginx和php-fpm程序运行用户。例如，该用户为www，让www用户没有家目录，没有shell，无法登陆。nginx和php-fpm程序是通过root内部调用切换到 www用户。类似于mysql的启动。具体增加语句如下：</p>
+<pre><code class="language-shell">useradd www -d /dev/null -s /sbin/nologin
+</code></pre>
+<p>如果感觉还不够安全，可以再利用chroot和sudo等程序，限制www用户所能访问的目录和可以调用的命令。</p>
+<p>3、目录权限控制。除了discuz下的data目录有写的权限，取消所有其他目录的写权限。</p>
+<p>该步，我看到网上有列出执行的shell命令为：
+规范的写法是：</p>
+<pre><code class="language-shell">find source -maxdepth 4 -type d -exec chmod 555 {} ;
+find api -maxdepth 4 -type d -exec chmod 555 {} ;
+find static -maxdepth 4 -type d -exec chmod 555 {} ;
+find archive -maxdepth 4 -type d -exec chmod 555 {} ;
+find config -maxdepth 4 -type d -exec chmod 555 {} ;
+find data -maxdepth 4 -type d -exec chmod 755 {} ;
+find template -maxdepth 4 -type d -exec chmod 555 {} ;
+find uc_client -maxdepth 4 -type d -exec chmod 555 {} ;
+</code></pre>
+<p>注：上面的<code>-maxdepth 4</code> 也是可以取消的。</p>
+<p>对目录设置完成后，还要对文件配置权限：</p>
+<pre><code class="language-shell">find . -type f -exec chmod 444  {} ;
+</code></pre>
+<p>设置论坛目录的文件只可读，然后设置那些需要写的文件，一般只有data下的文件是可以的。</p>
+<pre><code class="language-shell">find data -type f -exec chmod 755 {} ;
+</code></pre>
+<p>设置data 文件为755</p>
+<p>4、禁止php相关函数的调用及跨站。在php.ini文件中开启以下两项</p>
+<pre><code class="language-shell">open_basedir = .:/tmp/
+disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popep
+assthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space,posix_ctermid,posix_get_last_error,posix
+_getcwd, posix_getegid,posix_geteuid,posix_getgid, posix_getgrgid,posix_getgrnam,posix_getgroups,posix_getlogin,posix_getpgid,posix_getpgrp,posix_getpid, posix_getppid,posix_get
+pwnam,posix_getpwuid, posix_getrlimit, posix_getsid,posix_getuid,posix_isatty, posix_kill,posix_mkfifo,posix_setegid,posix_seteuid,posix_setgid, posix_setpgid,posix_setsid,posix
+_setuid,posix_strerror,posix_times,posix_ttyname,posix_uname
+</code></pre>
+<p>以上主要是对系统层面的调用函数全部禁止 。</p>
+<p>5、将该KVM机进行隔离。和其他主机无法连接。</p>
+<p>该步骤配置是有条件的，在有KVM环境的条件，可以将各个应用之间利用KVM进行隔离。web访问模式为 物理机iptables nat ——KVM虚拟机 或 web入口——物理机iptables nat ——KVM虚拟机 。</p>
+<p>6、数据库控制。</p>
+<p>在mysql新建用户时，一是适当分配给用户所需的权限，二是要在创建用户时最好能限定来源IP 。例如：</p>
+<pre><code class="language-sql">CREATE USER 'discuz'@'192.168.0.%' IDENTIFIED BY '66ZX811a';
+grant select,insert,update,delete,create,index,trigger,create temporary tables on discuz.* to 'discuz'@'192.168.0.%';
+</code></pre>
+<h1 id="使用-docker-来隔离-applicationmysql-与系统">使用 Docker 来隔离 application、mysql 与系统</h1>
+<h1 id="phpcms-隐藏核心框架目录">PHPCMS 隐藏核心框架目录</h1>
+<h1 id="参考内容-使用chroot解决php的运行安全问题">参考内容： 使用Chroot解决PHP的运行安全问题</h1>
+<p>　　近些日子，小蒋的一篇博文引起了广大主机商的关注。其原因是小蒋运营的创智主机被提交了漏洞到乌云网上在这篇文章中小蒋给出了解决方法，就是采用禁用函数的方法来保证服务器环境的安全。</p>
+<p>　　但是，禁用函数真的是最好的选择么？不是的！</p>
+<p>　　AMH面板的开发者Amysql告诉我们，更好的选择是Chroot!</p>
+<p>　　AMH面板是一款LNMP面板，一方面，为了方便版本升级，另一方面，面板是开发者一个人开发的，所以AMH没有像kangle,WDCP,LUM,webmin等采用二进制文件实现平台的环境，而是使用基于AMP的PHP程序来控制平台。这样，就要考虑到PHP的安全问题了。由于PHP写成的程序，所以需要大量的的使用exec,shell_exec两个函数来实现面板和系统的信息交换处理。显然，小蒋给出的限制函数的方法并不适合AMH这样的面板。那么，Amysql如何解决PHP的运行安全问题呢？</p>
+<p>　　Amysql采用了这样的方法。对于AMH下的虚拟主机，一律开启Chroot来保证安全，而控制台PHP则关闭chroot来保证面板的正常运作。</p>
+<p>　　说了这么多，那么什么是Chroot呢？</p>
+<p>　　据维基百科的词条解释，Chroot本是Unix下的一个命令，但是，在PHP-FPM中，也是引入了这一功能。</p>
+<p>　　维基词条：chroot是在unix系统的一个操作，用于对当前的程序和它的子进程改变真实的磁盘根目录。</p>
+<p>　　Chroot的工作原理是什么呢？</p>
+<p>　　由于LNMP环境下，PHP-FPM与Nginx的通信只能通过CGI实现，所以，如果你在FPM设置中对文件的根目录进行修改，那么，你的PHP程序就无法跨越这个指定的根目录。而面板所在的虚拟主机，由于没有开启Chroot，所以使用的根目录依然是系统的根目录 /</p>
+<p>　　具体解释一下？</p>
+<p>　　就拿我用的AMH面板的控制台和普通虚拟主机来说明。控制台文件放在/home/Wwwroot/Index/Web文件夹下，普通主机的文件放在/home/wwwroot/Domain/web文件夹下。对于控制台程序，由于没有开启Chroot，所以，这个PHP文件的实际位置和运行位置相同，都是/home/wwwroot/Index/web/，而其根目录就是/；对于普通虚拟主机，开启Chroot,那么，虽然，运行的文件的位置是/home/wwwroot/domain/web/index.php，但是经过Chroot的导向，在PHP程序中，实际认为的文件地址是/web/index.php。同时在/home/wwwroot/domain/为了使入侵者认为自己进入的是根系统，而仿照Unix的文件夹命名规则，创建了etc,usr,tmp,lib等文件夹，如同为PHP程序创建了一个沙盒.所以，使用Chroot的用户不用害怕中国菜刀，因为他只能在沙盘内起作用，无法对主系统产生影响，从而造成经济损失。</p>
+<p>　　沙盒（英语：sandbox），有时也称为沙箱，是为一些来源不可信、具备破坏力或无法判定程序意图的程序提供试验的环境。然而，沙盒中的所有改动对操作系统不会造成任何损失。通常，这种技术被计算机技术人员广泛使用，尤其是计算机杀毒软件行业，沙盒是一个观察计算机病毒的重要环境。</p>
+<p>　　我们都知道，在类Unix系统中，所有程序，甚至设备，都是由文件表示，我们所使用的ls,wget命令，事实上都对应着一个特定的可执行文件，而当我们使用Chroot后，由于/home/wwwwroot/domain/usr下没有相应的文件，也就无法执行相应的命令。从而保证系统信息的安全。</p>
+<p>　　与禁用函数相比，Chroot有什么优点呢？</p>
+<p>　　禁用函数是针对整个PHP程序而言的，所有需要通过PHP程序进行解析的文件，都会受到禁用函数的设置。网站程序不同，那么有可能需要的函数不同，不同的虚拟主机无法单独设置。而Chroot可以根据不同的虚拟主机,进行特异化设置。对于需要使用特殊函数的程序，可以关闭Chroot，来保证网站程序的正常运转；程序不需要调用特殊的程序，就可以开启Chroot模式；如果只是要启用一个或两个特定的程序，你可以仿照如下的过程添加函数。比如说，当我们开启Chroot时，PHP程序是无法使用sendmail()函数来发信的，我们可以使用mini_sendmail替代sendmail来修复发信。</p>
+<pre><code class="language-shell">cd /home/wwwroot/www.ixiqin.com/
+cp -P /bin/bash /bin/sh bin
+cp /etc/passwd /etc/group etc
+cd /tmp
+wget http://centos.googlecode.com/files/mini_sendmail-1.3.6.tar.gz
+tar xzf mini_sendmail-1.3.6.tar.gz
+cd mini_sendmail-1.3.6
+make
+cp mini_sendmail /home/wwwroot/www.ixiqin.com/usr/sbin/sendmail
+</code></pre>
+<p>　　以上代码，在/tmp目录下编译mini_sendmail，然后将生成的可执行文件复制到chroot后目录下相应位置，以保证发件系统的正常运行。</p>
+<p>　　非AMH用户如何使用Chroot功能</p>
+<p>　　如果你是AMH的用户，那你就省心了，因为Amysql将这个功能集成到了模块里，而且默认情况下每一个虚拟主机都是开启了安全模式的，你只需要在后台下载AMChroot模块，管理即可。如果你不是AMH用户，也可以使用这个功能，只需要修改Nginx和PHP-FPM的配置文件即可。由于要把domain站点限制在/home/wwwroot/domain，所以对于php-fpm，此网站根目录已经变成是/web，所以我们需要更改Nginx传递给php-fpm的网站根目录地址。</p>
+<p>　　找到fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;，更改为fastcgi_param SCRIPT_FILENAME /web$fastcgi_script_name;同时，将php-fpm.conf文件中的Chroot改为chroot = /home/wwwroot/domain</p>
+<p>　　有什么需要注意的呢？</p>
+<p>　　Tips One:Chroot模式下，各种探针，如雅黑探针将会失效，报错。</p>
+<p>　　Tips Two:Chroot模式可用做在线shell模拟器，安全真实。</p>
+<p>　　综合以上分析，我建议，与其使用死板的禁用函数，我们为什么不试试更加好用的Chroot。</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/php%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/php%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/php%E8%B0%83%E7%94%A8%E4%BA%92%E8%81%94%E7%BD%91api%E6%9C%8D%E5%8A%A1%E6%9F%A5%E5%BF%AB%E9%80%92%E4%B8%8E%E4%BC%81%E4%B8%9A%E6%A0%B8%E5%90%8D/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/php%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

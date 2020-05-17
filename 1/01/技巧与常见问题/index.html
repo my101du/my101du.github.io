@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="技巧与常见问题 permalink: wordpress-tips-question tags: wordpress necessary: Remove Google Fonts References WeChatPay For WooCommerce WooCommerce WP Super Cache optional: CKEditor for WordPress Jetpack由WordPress.com出品 JP Markdown Akismet Visual Form Builder WooCommerce Stripe Gateway(for paypal, alipay need pro version-$35) WPide 微信打赏（" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="技巧与常见问题 permalink: wordpress-tips-question tags: wordpress necessary: Remove Google Fonts References WeChatPay For WooCommerce WooCommerce WP Super Cache optional: CKEditor for WordPress Jetpack由WordPress.com出品 JP Markdown Akismet Visual Form Builder WooCommerce Stripe Gateway(for paypal, alipay need pro version-$35) WPide 微信打赏（" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="技巧与常见问题 permalink: wordpress-tips-question tags: wordpress necessary: Remove Google Fonts References WeChatPay For WooCommerce WooCommerce WP Super Cache optional: CKEditor for WordPress Jetpack由WordPress.com出品 JP Markdown Akismet Visual Form Builder WooCommerce Stripe Gateway(for paypal, alipay need pro version-$35) WPide 微信打赏（">
+
+<meta itemprop="wordCount" content="3847">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="技巧与常见问题 permalink: wordpress-tips-question tags: wordpress necessary: Remove Google Fonts References WeChatPay For WooCommerce WooCommerce WP Super Cache optional: CKEditor for WordPress Jetpack由WordPress.com出品 JP Markdown Akismet Visual Form Builder WooCommerce Stripe Gateway(for paypal, alipay need pro version-$35) WPide 微信打赏（"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3847字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="技巧与常见问题">技巧与常见问题</h1>
+<p>permalink: wordpress-tips-question
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>necessary:
+Remove Google Fonts References
+WeChatPay For WooCommerce
+WooCommerce
+WP Super Cache</p>
+<p>optional:
+CKEditor for WordPress
+Jetpack由WordPress.com出品
+JP Markdown
+Akismet
+Visual Form Builder
+WooCommerce Stripe Gateway(for paypal, alipay need pro version-$35)
+WPide</p>
+<!-- raw HTML omitted -->
+<p>微信打赏（Wechat Reward）
+WeiXin Payments for WooCommerce</p>
+<h1 id="rewrite">Rewrite</h1>
+<p><a href="https://codex.wordpress.org/htaccess">https://codex.wordpress.org/htaccess</a></p>
+<h2 id="web-服务器nginx-apache">web 服务器（nginx apache）</h2>
+<p><strong>Apache</strong></p>
+<pre><code class="language-shell">&lt;Directory &quot;/var/www/html&quot;&gt;
+    Options Includes ExecCGI FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.php$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+&lt;/Directory&gt;
+</code></pre>
+<p><strong>Apache .htaccess 文件</strong></p>
+<pre><code class="language-shell"># BEGIN WordPress
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+# END WordPress
+</code></pre>
+<p><strong>Nginx</strong></p>
+<pre><code class="language-xml">
+</code></pre>
+<h2 id="自定义">自定义</h2>
+<p>先修改固定链接为</p>
+<p>创建一个页面，绑定 permalink</p>
+<p>修改 functions.php，添加规则</p>
+<pre><code class="language-php"></code></pre>
+<p>去后台切换一下，点一下 数字形式，然后切回文章名形式，让规则生效</p>
+<h1 id="安装插件主题的时候提示需要-ftp-权限的问题">安装插件、主题的时候提示需要 FTP 权限的问题</h1>
+<p><img src="/media/15490412570365/14950066487609.jpg" alt=""></p>
+<p>这是因为 wordpress 目录的用户组没有和 web 服务器保持一致。例如 Apache 里设置的 UserGroup 是 <code>www</code>（也有的是<code>daemon</code>，通过查看<code>httpd.conf</code>可以看到），而你的 wordpress 目录是 root 用户创建的。修改用户组和所属用户即可。</p>
+<pre><code class="language-shell">sudo chown -R www:www /home/wwwroot/your_wp_folder
+</code></pre>
+<p>还有另一个办法，就是修改<code>wp-config.php</code>文件，在最后添加</p>
+<pre><code class="language-php">define(&quot;FS_METHOD&quot;,&quot;direct&quot;);
+define(&quot;FS_CHMOD_DIR&quot;, 0777);
+define(&quot;FS_CHMOD_FILE&quot;, 0777);
+</code></pre>
+<p>另外就是，如果安装了 LNMP一键包，要修改 /usr/local/php/etc/php.ini ，把 disable_function 里的几个函数删掉，然后重启.</p>
+<h1 id="版本控制">版本控制</h1>
+<h2 id="gitignore-忽略一些不必要的文件">gitignore 忽略一些不必要的文件</h2>
+<p><a href="https://gist.github.com/salcode/b515f520d3f8207ecd04">https://gist.github.com/salcode/b515f520d3f8207ecd04</a></p>
+<pre><code class="language-shell"># ignore everything in the root except the &quot;wp-content&quot; directory.
+/*
+!wp-content/
+
+# ignore everything in the &quot;wp-content&quot; directory, except:
+# mu-plugins, plugins, and themes directories
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# ignore all mu-plugins, plugins, and themes
+# unless explicitly whitelisted at the end of this file
+wp-content/mu-plugins/*
+wp-content/plugins/*
+wp-content/themes/*
+
+# ignore all files starting with . or ~
+.*
+~*
+
+# ignore node dependency directories (used by grunt)
+node_modules/
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore Editor files
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# -------------------------
+# BEGIN Whitelisted Files
+# -------------------------
+
+# track these files, if they exist
+!.gitignore
+!.editorconfig
+!README.md
+!CHANGELOG.md
+!composer.json
+
+# track favicon files, if they exist
+!android-chrome-*.png
+!apple-touch-icon*.png
+!browserconfig.xml
+!favicon*.png
+!favicon*.ico
+!manifest.json
+!mstile-*.png
+!safari-pinned-tab.svg
+
+# track these mu-plugins, plugins, and themes
+# add your own entries here
+!wp-content/mu-plugins/example-mu-plugin/
+!wp-content/plugins/example-plugin/
+!wp-content/themes/example-theme/
+</code></pre>
+<h1 id="权限">权限</h1>
+<p>User Specific Content（对文章进行角色、用户设置查看）
+User Role Editor(用户角色，只能控制用户的操作权限，对文章和页面无作用)
+User Access Manager</p>
+<h2 id="对于-page-设置了-author-无法实现能编辑的问题">对于 Page 设置了 Author 无法实现能编辑的问题</h2>
+<p><a href="https://clicknathan.com/web-design/restrict-wordpress-authors-to-edit-their-own-pages/">https://clicknathan.com/web-design/restrict-wordpress-authors-to-edit-their-own-pages/</a></p>
+<p>关键是这段话</p>
+<blockquote>
+<p>By default, WordPress’ Author role doesn’t allow users set as authors to edit Pages, even though you can assign an author as the Author of a Page. Kind of weird.</p>
+</blockquote>
+<h1 id="ubuntu-14-php55-升级php56-或-70">ubuntu 14 php5.5 升级php5.6 或 7.0</h1>
+<p>卸载旧版
+sudo apt-get purge php.*</p>
+<p>或者先找出来再删除
+sudo aptitude search php5|awk {&lsquo;print $2&rsquo;}|grep -v i386|grep -v &ldquo;^A&quot;|tr &ldquo;\n&rdquo;  &quot; &quot;
+sudo apt-get purge <!-- raw HTML omitted -->
+例如
+sudo apt-get -y purge libapache2-mod-php5 libapache2-mod-php5filter libexpect-php5 libgv-php5 libow-php5 php5 php5-adodb php5-auth-pam php5-cgi php5-cli php5-common php5-curl php5-dbg php5-enchant php5-exactimage php5-ffmpeg php5-fpm php5-geoip php5-gmp php5-idn php5-imagick php5-imap php5-interbase php5-intl php5-json php5-lasso php5-ldap php5-librdf php5-mapscript php5-memcache php5-memcached php5-mhash php5-midgard2 php5-ming php5-mssql php5-mysql php5-mysqlnd php5-odbc php5-pgsql php5-ps php5-pspell php5-radius php5-recode php5-remctl php5-rrd php5-sasl php5-snmp php5-sqlite php5-suhosin php5-svn php5-sybase php5-tidy php5-tokyo-tyrant php5-uuid php5-xcache php5-xdebug php5-xmlrpc php5-xsl</p>
+<p>然后安装
+apt-get install -y language-pack-en-base
+apt-get -y update
+apt-get install software-properties-common
+LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
+apt-get -y update
+apt-get install -y php7.0-fpm  php7.0-common php7.0-gd php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-intl php7.0-xsl php7.0-mbstring php7.0-opcache php7.0-zip php7.0-bcmath php7.0-iconv php7.0-json</p>
+<p>如果是 apache ,则安装 php7.0  libapache2-mod-php7.0， Nginx 这个不要装</p>
+<p>或者 5.6
+apt-get -y install php5.6 php5.6-mcrypt php5.6-mbstring php5.6-curl php5.6-cli php5.6-mysql php5.6-gd php5.6-intl php5.6-xsl</p>
+<p>先安装服务 apt-get install memcached</p>
+<p>下面的是对PHP的扩展
+安装 memcached(见一篇文章 php7.0 安装使用与性能监测)
+如果提示 phpize 没有，先
+sudo apt-get install php7.0-dev
+configure: error: no, sasl.h is not available. Run configure with &ndash;disable-memcached-sasl to disable this check</p>
+<p>文章里 touch 的方法无效，改用
+$ sudo vim /etc/php/7.0/fpm/php.ini
+在末尾添加
+[Memcached]
+extension=memcached.so</p>
+<pre><code class="language-shell">sudo apt-get install -y tmux curl wget \
+    nginx \
+    php7.0-fpm \
+    php7.0-cli php7.0-curl php7.0-gd \
+    php7.0-intl php7.0-mysql
+
+    # php7.0-mcrypt is available, but is already compiled in via ppa:ondrej/php
+
+# Since php-memcached is now available, install that too:
+
+sudo apt-get install -y php-memcached
+</code></pre>
+<p><a href="http://www.hankcs.com/appos/wordpress/wordpress-memcached-cache-acceleration.html">http://www.hankcs.com/appos/wordpress/wordpress-memcached-cache-acceleration.html</a>
+<a href="https://github.com/tollmanz/wordpress-pecl-memcached-object-cache">https://github.com/tollmanz/wordpress-pecl-memcached-object-cache</a></p>
+<p>vi php-fpm.cnf
+listen = /run/php/php7.0-fpm.sock
+#listen = 127.0.0.1:9000</p>
+<p>vi虚拟主机
+location ~ .php$ {
+try_files $uri =404;
+#fastcgi_pass 127.0.0.1:9000;
+fastcgi_pass unix:/run/php/php7.0-fpm.sock
+fastcgi_index index.php;
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+include fastcgi_params;
+}</p>
+<p>然后
+apt-get autoclean
+service php7.0-fpm start
+service nginx start</p>
+<p>Creating config file /etc/php/7.0/fpm/php.ini with new version
+NOTICE: Not enabling PHP 7.0 FPM by default.
+NOTICE: To enable PHP 7.0 FPM in Apache2 do:
+NOTICE: a2enmod proxy_fcgi setenvif
+NOTICE: a2enconf php7.0-fpm</p>
+<h1 id="性能">性能</h1>
+<h1 id="迁移到新域名">迁移到新域名</h1>
+<p>首先修改 wp-config.php ，如果里面有固定的域名，则改掉</p>
+<p>然后进入数据库</p>
+<pre><code class="language-sql">UPDATE wp_options SET option_value = replace( option_value, 'http://www.old.com', 'http://www.new.com' ) WHERE option_name = 'home' OR option_name = 'siteurl'; 
+UPDATE wp_posts SET post_content = replace( post_content, 'http://www.old.com', 'http://www.new.com' ) ;
+UPDATE wp_posts SET commment_content = replace( commment_content, 'http://www.old.com', 'http://www.new.com' ) ;
+UPDATE wp_posts SET commment_author_url = replace( commment_author_url, 'http://www.old.com', 'http://www.new.com' ) ; 
+UPDATE wp_posts SET guid = replace( guid, 'http://www.old.com', 'http://www.new.com' ) ; 
+</code></pre>
+<p>不止是这5句，由于各个主题不同，也许你还要修改其他的表中信息。比如我们做外贸的使用的企业网站主题很多有 portfolio（存放产品信息的），你可以逐一查看下。</p>
+<h1 id="修改服务器的-dns为8888-ubuntu-安装插件需要访问国外服务器">修改服务器的 DNS为8.8.8.8 Ubuntu （安装插件需要访问国外服务器）</h1>
+<p>You need to configure the /etc/network/interfaces file if you want to change your DNS server via the command line.</p>
+<p>It should look something like this:</p>
+<pre><code class="language-shell"># The loopback network interface  
+auto lo  
+iface lo inet loopback  
+
+
+# The primary network interface  
+auto eth0 
+iface eth0 inet static  
+address 192.168.X.X
+netmask 255.255.255.0
+gateway 192.168.X.X
+dns-nameservers X.X.X.X 
+If you have more than one DNS server, just add a space between each:
+
+dns-nameservers X.X.X.X Y.Y.Y.Y Z.Z.Z.Z
+Just replace the Xs, Ys, and Zs with your own IPs of the DNS servers of choice, and when this is done, run this command to update the settings:
+
+sudo ifdown eth0 &amp;&amp; sudo ifup eth0
+</code></pre>
+<h1 id="问题">问题</h1>
+<h2 id="菜单没有在新窗口打开的选项">菜单没有在“新窗口打开”的选项</h2>
+<p>在页面顶部展开“Screen Options”，勾上 <code>Link Target</code>就会出现了</p>
+<h2 id="安装多个主题后在主题里面找不到">安装多个主题后，在“主题”里面找不到</h2>
+<p>打开 php.ini，在 disabled_funcitons 里把 scandir 去掉，重启 php nginx</p>
+<h2 id="360网站卫士导致无法登录的问题">360网站卫士导致无法登录的问题</h2>
+<p>首页/目录不要勾选，如果你勾选了，会出现wordpress网站无法登录的情况</p>
+<h2 id="警惕wordpress的htaccess文件被更改自动还原">警惕wordpress的.htaccess文件被更改（自动还原）</h2>
+<p>WordPress教程 .htaccess
+10
+Comments 发表评论
+很多人都在用wordpress来做网站，而如果你网站主机使用的是linux系统，.htaccess配置文件就发挥着重要的作用，URL规范化，301重定向，防盗链等等。但是不知道大家有没有注意到，wordpress的.htaccess文件会经常被更改，我这里说的被更改并不是指网站被黑，或者是安装插件导致.htaccess改变，而是指.htaccess不知不觉的还原成默认的。
+大家知道，在linux系统上安装完成了wordpress，并且在后台设置了伪静态的“固定连接”之后，会自动生成一个包含如下内容的.htaccess文件：</p>
+<p>我们可以用记事本打开该文件进行编辑，添加一些语句以实现特殊的需要。我之前的一个用wordpress搭建的网站，由于结构的调整，导致很多url发生变化，于是我在.htaccess中用RedirectMatch把老的URL重定向到新URL：
+今天在查看这个网站的日志的时候发现，Googlebot在抓取很多老的url都返回404错误，浏览器中打开这些老的url，也都是404错误页。不是都做过301重定向吗，为什么又变成了404呢？赶紧查看.htaccess文件，发现.htaccess的内容竟然都变成了默认的了，也就是我添加的301重定向语句RedirectMatch 301 ^/category/old-category/ /category/new-category$2 都自动消失了。以为是网站被黑了，但是不像啊，黑了我的网站，为什么只是把.htaccess改回默认的，而没有其他动作呢？我又查看了其他几个用wordpress搭建的网站，很多网站的.htaccess文件都是默认内容了！
+网上搜了一下，没有找到我要的答案，唯一在wordpress中文论坛看到有人提到：如果更改了固定连接，wordpress会自动修改.htaccess文件中# BEGIN WordPress和# END WordPress的内容，但是我并没有修改过固定连接。
+后来经过我自己测试，并非是因为修改固定连接，只要你点击了设置——固定连接，不管你有没有修改什么，也不管你又没有保存，只要点击了“固定连接”，.htaccess文件中# BEGIN WordPress和# END WordPress之间的内容就会被更改，自动还原。不知道这算不算是wordpress的一个bug。
+这个问题最好的解决方法是：把自己添加在.htaccess中的语句，写在# BEGIN WordPress和# END WordPress之外，如下：</p>
+<pre><code class="language-shell"># BEGIN WordPress
+&lt;IfModule mod_rewrite.c&gt;
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ – [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+&lt;/IfModule&gt;
+# END WordPress
+RedirectMatch 301 ^/category/old-category/ /category/new-category$2
+</code></pre>
+<h1 id="把-jquery-等js文件挪到body最后">把 jquery 等js文件挪到body最后</h1>
+<h1 id="修改默认的主题获取路径函数使用七牛的地址">修改默认的主题获取路径函数，使用七牛的地址</h1>
+<p>使用 Hyper Cache 的开启 CDN 后，填写七牛域名，会把大部分静态文件地址自动替换(不再需要 WPJAM 七牛镜像存储 这个插件)。但一些主题因为使用了 get_stylesheet_directory_uri （以及关联的最终 get_theme_root_uri）函数，不会去CDN找文件，因此需要手动修改核心文件</p>
+<p>vi wp-includes/class-wp-theme.php</p>
+<p>修改 get_theme_root_uri  考虑做成插件
+<a href="http://www.smzdy.com/wordpressge-zhong-huo-qu-lu-jing-he-urldi-zhi-de-han-shu-zong-jie.html">http://www.smzdy.com/wordpressge-zhong-huo-qu-lu-jing-he-urldi-zhi-de-han-shu-zong-jie.html</a>
+<a href="http://www.uedsc.com/wp-content/themes">http://www.uedsc.com/wp-content/themes</a></p>
+<h1 id="php7-导致一些插件提示错误">php7 导致一些插件提示错误</h1>
+<blockquote>
+<p>syntax error, unexpected &lsquo;new&rsquo; (T_NEW)</p>
+</blockquote>
+<p><a href="https://wordpress.org/support/topic/the-plugin-doesnt-work-on-php-version-7">https://wordpress.org/support/topic/the-plugin-doesnt-work-on-php-version-7</a></p>
+<p>replace any =&amp; new by = new.</p>
+<p>域名购买</p>
+<p>空间</p>
+<p>设置</p>
+<p>地址重写</p>
+<p>插件</p>
+<ul>
+<li>代码高亮</li>
+</ul>
+<p>静态资源加速（七牛）
+解决 css 中引用字体文件返回403错误（hightlight 插件）
+這個是因爲你在七牛的空間中設置了防盜鏈，但是防盜鏈中沒有設置訪問css文件的域名，導致從css文件中訪問到的圖片的referer是css的域名，不在防盜鏈的白名單中，所以被403 forbidden了。
+1、问题</p>
+<p>网站使用七牛的CDN来静态化网站，加速WordPress后，发现网站使用@font-face制作的Web ico都无法显示了，显示为403。</p>
+<p>2、问题分析</p>
+<p>使用七牛CDN加速网站的CSS文件后，发现网站的部分图标无法显示，这只是表象，其实本质是：因为七牛CDN的防盗链功能导致@font-face制作的Web ico失效。</p>
+<p>而失效的原因是：在七牛的空间中设置了防盗链，但是防盗链中没有设置访问css文件的域名，导致从css文件中访问到的图片的referer是css的域名，不在防盗链的白名单中，所以被403 forbidden了。</p>
+<p>3、解决方法</p>
+<p>根据上述的问题分析，那么解决问题的方法就有两个（使用任何一个就可以解决问题）：</p>
+<p>修改七牛空间的防盗链设置，使之可以正常显示@font-face制作的Web ico。
+直接在七牛CDN中不缓存css文件。</p>
+<p>本地设置-扩展名，加上 woff，ttf js|css|png|jpg|jpeg|gif|ico|woff|ttf</p>
+<p>location ~* .(eot|ttf|woff)$ {
+add_header Access-Control-Allow-Origin &lsquo;*';
+}</p>
+<p>最后把 highlight 换字体成 cosole了……可以找到</p>
+<h1 id="内容相关">内容相关</h1>
+<h2 id="插入-youtube-视频设置开始播放和结束播放的时间">插入 Youtube 视频，设置开始播放和结束播放的时间</h2>
+<p>有时候在复制 youtube 地址的时候，如果正在播放，会把“当前播放到 n 秒”也复制进去，导致在 WP 里嵌入时，会从这个时间点开始。</p>
+<p>需要修改源码里的嵌入地址，把 <code>t=</code> 改成开始的时间（秒）</p>
+<p>如果只需要播放一段，改成 <code>&amp;start=3603&amp;end=3643</code></p>
+<pre><code>[embed]https://www.youtube.com/watch?v=uEXAHDKg2C4&amp;t=0s[/embed]
+</code></pre>
+<h1 id="插件导致-500-错误打开-wp_debugtrue-也不行的问题">插件导致 500 错误，打开 WP_DEBUG=true 也不行的问题</h1>
+<p>某一天在本地测试，突然网站前后台全部打不开，500 错误。</p>
+<p>mac + php7.1.24 + MySQL</p>
+<p>把 php.ini 里的 display_errors = on ， 和 wp-config.php 里的 WP_DEBUG true 都打开都没有任何错误显示（按照常理，应该会有报错了），重启 php 服务也没用</p>
+<p>后来把插件全部挪出来，一个个放回去。 发现有个插件的 问题。。。。</p>
+<p>wechat-weixin-payments-for-woocommerce</p>
+<p>后来发现可能是我本地的文件损坏了， 从公网拉下来，覆盖替换就好了。</p>
+<h1 id="cdn-屏蔽大陆访问导致安装升级插件出现-429-too-many-request">CDN 屏蔽大陆访问，导致安装、升级插件出现 429 too many request</h1>
+<p>可以在服务器上安装 vpn/ss 等， 太麻烦</p>
+<p>下载 kill 429 插件（翻墙下载），然后 上传 zip 来安装</p>
+<p>安装 wpjam basic 后，在功能增强里，启用 &ldquo;使用 wordpress 国内镜像下载更新包&rdquo;</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8F%92%E4%BB%B6-siteorigin-page-builder/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

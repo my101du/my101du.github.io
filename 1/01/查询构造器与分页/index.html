@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="查询构造器与分页 permalink: laravel-query-builder-pagination tags: laravel 数据库连接 目前，Laravel 支持以下四种数据库系统： MySQL Postgres SQLite SQL Server Mongo DB 的支持可以使用这个项目 - laravel-mongodb 配置参数 环境变量中的配" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="查询构造器与分页 permalink: laravel-query-builder-pagination tags: laravel 数据库连接 目前，Laravel 支持以下四种数据库系统： MySQL Postgres SQLite SQL Server Mongo DB 的支持可以使用这个项目 - laravel-mongodb 配置参数 环境变量中的配" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="查询构造器与分页 permalink: laravel-query-builder-pagination tags: laravel 数据库连接 目前，Laravel 支持以下四种数据库系统： MySQL Postgres SQLite SQL Server Mongo DB 的支持可以使用这个项目 - laravel-mongodb 配置参数 环境变量中的配">
+
+<meta itemprop="wordCount" content="4334">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="查询构造器与分页 permalink: laravel-query-builder-pagination tags: laravel 数据库连接 目前，Laravel 支持以下四种数据库系统： MySQL Postgres SQLite SQL Server Mongo DB 的支持可以使用这个项目 - laravel-mongodb 配置参数 环境变量中的配"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4334字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>查询构造器与分页</p>
+<p>permalink: laravel-query-builder-pagination
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="数据库连接">数据库连接</h1>
+<p>目前，Laravel 支持以下四种数据库系统：</p>
+<p>MySQL
+Postgres
+SQLite
+SQL Server</p>
+<p>Mongo DB 的支持可以使用这个项目 - laravel-mongodb</p>
+<h2 id="配置参数">配置参数</h2>
+<p><strong>环境变量中的配置参数</strong></p>
+<p>编辑 <code>bootstrap/app.php</code>文件，打开<code>Dotenv::load(__DIR__.'/../')</code>，以便 lumen 能读取配置文件</p>
+<p>然后修改<code>.env</code>文件，增加/修改关于数据库的配置（一般是<code>DB_</code>开头）</p>
+<pre><code class="language-xml">DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=pulse_wp
+DB_USERNAME=root
+DB_PASSWORD=123456
+</code></pre>
+<p><strong>应用程序的数据库配置</strong></p>
+<p>在<code>app/config/database.php</code>中</p>
+<p><strong>配置读写分离</strong></p>
+<p>read 及 write 连接的其它数据库设置选项将会合并在主要的 mysql 数组内。</p>
+<pre><code class="language-json">'mysql' =&gt; [
+    'read' =&gt; [
+        'host' =&gt; '192.168.1.1',
+    ],
+    'write' =&gt; [
+        'host' =&gt; '196.168.1.2'
+    ],
+    'driver'    =&gt; 'mysql',
+    'database'  =&gt; 'database',
+    'username'  =&gt; 'root',
+    'password'  =&gt; '',
+    'charset'   =&gt; 'utf8',
+    'collation' =&gt; 'utf8_unicode_ci',
+    'prefix'    =&gt; '',
+],
+</code></pre>
+<h2 id="原始的-sql-查找">原始的 SQL 查找</h2>
+<p>DB facade 提供每个类型的查找方法：select、update、insert、delete、statement</p>
+<p><strong>SELECT</strong></p>
+<p>传递给 select 方法的第一个参数是原始的 SQL 查找，而第二个参数是任何查找所需要的参数绑定。通常，这些都是 where 语句的限定值。参数绑定主要是为了防止 SQL 注入。</p>
+<pre><code class="language-php">$users = DB::select('select * from users where active = ?', [1]);
+</code></pre>
+<p>略</p>
+<h2 id="多数据库连接">多数据库连接</h2>
+<p>通过 DB facade 的 connection 方法来访问每个连接。传递给 connection 方法的 name 必须对应至 config/database.php 配置文件中的连接列表的其中一个</p>
+<p>有时候在本地需要临时使用一个其他的数据库</p>
+<pre><code class="language-php">//在 config/database.php 中的 `connection`中添加
+'test' =&gt; [
+            'driver'    =&gt; 'mysql',
+            'host'      =&gt; env('DB_HOST', 'localhost'),
+            'database'  =&gt; 'test_db',
+            'username'  =&gt; 'root',
+            'password'  =&gt; '123456',
+            'charset'   =&gt; 'utf8',
+            'collation' =&gt; 'utf8_unicode_ci',
+            'prefix'    =&gt; '',
+            'strict'    =&gt; false,
+        ],
+</code></pre>
+<p>然后</p>
+<pre><code class="language-php">$users = DB::connection('foo')-&gt;select(...);
+</code></pre>
+<h1 id="query-builder-查询构造器">Query Builder 查询构造器</h1>
+<p>Laravel 的查询构造器使用 PDO 参数绑定，来保护你的应用程序免受 SQL 注入的攻击。在绑定传入字符串前不需要清理它们</p>
+<h2 id="获取结果">获取结果</h2>
+<h3 id="从数据表获取所有列">从数据表获取所有列</h3>
+<p>使用 <code>DB</code> facade 的 <code>table</code> 方法开始查询，table 方法针对查询表<strong>返回一个查询构造器实例</strong>，允许你在查询时<strong>链式调用更多约束</strong>，并使用 get 方法获取最终结果（一个 Illuminate\Support\Collection，每个结果都是一个 PHP StdClass 对象的实例）</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\DB; 
+// or use DB;
+// ...
+
+$users = DB::table('users')-&gt;get();
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}
+</code></pre>
+<h3 id="获取单个列行">获取单个列/行</h3>
+<p>一行数据</p>
+<pre><code class="language-php">$user = DB::table('users')-&gt;where('name', 'John')-&gt;first();
+</code></pre>
+<p>只需要某行数据取出<strong>单个值</strong></p>
+<pre><code class="language-php">$user = DB::table('users')-&gt;where('name', 'John')-&gt;value();
+</code></pre>
+<p>获取一个包含<strong>单个字段值</strong>的集合</p>
+<pre><code class="language-php">$titles = DB::table('roles')-&gt;pluck('title');
+foreach ($titles as $title) {
+    echo $title;
+}
+
+//可以指定自定义的键值字段，例如把 “name”作为 key
+$roles = DB::table('roles')-&gt;pluck('title', 'name');
+
+foreach ($roles as $name =&gt; $title) {
+    echo $title;
+}
+</code></pre>
+<h3 id="分块获取">分“块”获取</h3>
+<p>如果要操作大量数据（例如 1000 条以上），可以使用 <code>chunk</code>方法，每次只取一小块数据，然后传递给一个闭包来处理。也可以<code>return false</code>来中途停止对后续分块的处理。</p>
+<pre><code class="language-php">DB::table('users')-&gt;orderBy('id')-&gt;chunk(100, function ($users) {
+    if(){
+    		return false;
+    }
+    
+    foreach ($users as $user) {
+        //
+    }
+});
+</code></pre>
+<h3 id="聚合方法如求总量求和平均等">聚合方法（如求总量、求和、平均等）</h3>
+<p>例如 count、 max、 min、 avg 和 sum</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;count();
+
+$price = DB::table('orders')-&gt;where('finalized', 1)-&gt;max('price');
+</code></pre>
+<h2 id="使用-select-子句只查询指定字段">使用 select 子句，只查询指定字段</h2>
+<p>不需要选出所有字段 （select *）的时候，可以用<code>select</code>子句来限制查询的字段列表（select field_1, filed_2, &hellip;）。</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;select('name', 'email as user_email')-&gt;get();
+</code></pre>
+<p>使用<code>distinct</code>方法让查询返回不重复的结果</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;distinct()-&gt;get();
+</code></pre>
+<p>已经有一个查询构造器实例，想再加入一个字段，使用<code>addSelect</code>方法</p>
+<pre><code class="language-php">$query = DB::table('users')-&gt;select('name');
+
+$users = $query-&gt;addSelect('age')-&gt;get();
+</code></pre>
+<h3 id="原始表达式">原始表达式</h3>
+<p>如果想使用一个原始表达式（作为一个字符串注入到查询中，要小心避免造成 SQL 注入攻击！），可以使用<code>DB::raw</code>方法</p>
+<pre><code class="language-php">$users = DB::table('users')
+                     -&gt;select(DB::raw('count(*) as user_count, status'))
+                     -&gt;where('status', '&lt;&gt;', 1)
+                     -&gt;groupBy('status')
+                     -&gt;get();
+</code></pre>
+<p><strong>补充</strong></p>
+<p>另外，后面的 insert 等，也支持原始表达式，例如实现 “REPLACE INTO”</p>
+<pre><code class="language-php">//使用 DB 的 Facades 直接执行原生的 SQL 语句：
+
+//example
+DB::insert(&quot;replace into test(id, test) values(1, now());&quot;);
+</code></pre>
+<h2 id="joins">Joins</h2>
+<h3 id="默认的-join-方法就是-inner-join">默认的 join 方法就是 inner join</h3>
+<p>第一个参数是表名，其他参数指定用来连接的字段约束。（可以在查找中连接多个数据表）</p>
+<pre><code class="language-php">$users = DB::table('users')
+            -&gt;join('contacts', 'users.id', '=', 'contacts.user_id')
+            -&gt;join('orders', 'users.id', '=', 'orders.user_id')
+            -&gt;select('users.*', 'contacts.phone', 'orders.price')
+            -&gt;get();
+</code></pre>
+<h3 id="leftjoin">leftJoin</h3>
+<pre><code class="language-php">$users = DB::table('users')
+            -&gt;leftJoin('posts', 'users.id', '=', 'posts.user_id')
+            -&gt;get();
+</code></pre>
+<h3 id="crossjoin">crossJoin</h3>
+<p>想要交叉连接的表名来做「交叉连接」，通过第一个表和连接表生成一个笛卡尔积</p>
+<pre><code class="language-php">$users = DB::table('sizes')
+            -&gt;crossJoin('colours')
+            -&gt;get();
+</code></pre>
+<h3 id="高级-join-语法">高级 join 语法</h3>
+<p>传递一个闭包作为 join 方法的第二个参数，闭包收到一个 JoinClause 对象，让你可以在 join 子句中指定约束</p>
+<pre><code class="language-php">DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')-&gt;orOn(...);
+        })
+        -&gt;get();
+</code></pre>
+<p>还可以在连接中使用 where 和 orWhere 方法。这些方法将会比较值和对应的字段，而不是比较两个字段</p>
+<pre><code class="language-php">DB::table('users')
+        -&gt;join('contacts', function ($join) {
+            $join-&gt;on('users.id', '=', 'contacts.user_id')
+                 -&gt;where('contacts.user_id', '&gt;', 5);
+        })
+        -&gt;get();
+</code></pre>
+<h2 id="unions-合并查询">Unions 合并查询</h2>
+<p>可以先创建一个初始查询，并使用 union 方法将它与第二个查询进行合并</p>
+<pre><code class="language-php">$first = DB::table('users')
+            -&gt;whereNull('first_name');
+
+$users = DB::table('users')
+            -&gt;whereNull('last_name')
+            -&gt;union($first)
+            -&gt;get();
+</code></pre>
+<h2 id="where-子句">where 子句</h2>
+<h3 id="简单的-where">简单的 where</h3>
+<p>在查询构造器实例中使用 where 方法从而把 where 子句加入到这个查询中。
+一般是三个参数： <code>字段名</code>，<code>运算符</code>（数据库支持的所有运算符），对字段进行<code>评估的值</code>，例如</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;where('votes', '=', 100)-&gt;get();
+</code></pre>
+<p>如果有多个条件，可以传入一个条件数组</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;where([
+    ['status', '=', '1'],
+    ['subscribed', '&lt;&gt;', '1'],
+])-&gt;get();
+</code></pre>
+<h3 id="or与-and">OR（与 AND）</h3>
+<p>多个 <code>where</code> 条件数组默认是“AND”关系。如果需要“OR”，则使用<code>orWhere</code>, 它们可以链式一起来约束查询。</p>
+<pre><code class="language-php">$users = DB::table('users')
+                    -&gt;where('votes', '&gt;', 100)
+                    -&gt;orWhere('name', 'John')
+                    -&gt;get();
+</code></pre>
+<h3 id="其他-where">其他 where</h3>
+<p>包括</p>
+<ul>
+<li><code>whereBetween/whereNotBetween</code> 是否介于两个值之间</li>
+<li><code>whereIn/whereNotIn</code> 是否包含在指定数组内</li>
+<li><code>whereNull/whereNotNull</code> 是否为 null</li>
+<li><code>whereDate / whereMonth / whereDay / whereYear</code> 是否等于指定的年 月 日 日期</li>
+<li><code>whereColumn</code> 检测两个列的数据是否一致（或其他运算符）,还可以接收数组参数</li>
+</ul>
+<pre><code class="language-php">$users = DB::table('users')-&gt;whereBetween('votes', [1, 100])-&gt;get();
+
+//-&gt;whereNotBetween('votes', [1, 100])-&gt;get();
+//-&gt;whereIn('id', [1, 2, 3])-&gt;get();
+//-&gt;whereNotIn('id', [1, 2, 3]) -&gt;get();
+//-&gt;whereNull('updated_at')-&gt;get();
+//-&gt;whereNotNull('updated_at')-&gt;get();
+//-&gt;whereMonth('created_at', '12')-&gt;get();
+
+$users = DB::table('users')
+                -&gt;whereColumn('first_name', 'last_name')
+                -&gt;get();
+$users = DB::table('users')
+                -&gt;whereColumn('updated_at', '&gt;', 'created_at')
+                -&gt;get();
+$users = DB::table('users')
+                -&gt;whereColumn([
+                    ['first_name', '=', 'last_name'],
+                    ['updated_at', '&gt;', 'created_at']
+                ])-&gt;get();
+</code></pre>
+<h3 id="参数分组">参数分组</h3>
+<p>例如下面的 SQL，有一个约束分组<code>votes &gt; 100</code>和<code>title &lt;&gt; 'Admin'</code>（and 关系）, 然后这个约束分组再和 <code>name = 'john'</code> 约束构成 or 关系</p>
+<pre><code class="language-sql">select * from users where name = 'John' or (votes &gt; 100 and title &lt;&gt; 'Admin')
+</code></pre>
+<p>那么可以传递一个 闭包 到 orWhere 方法,告诉查询构造器开始一个约束分组. 此 闭包 接收一个查询构造器实例, 可用它来设置应包含在括号分组内的约束</p>
+<pre><code class="language-php">DB::table('users')
+            -&gt;where('name', '=', 'John')
+            -&gt;orWhere(function ($query) {
+                $query-&gt;where('votes', '&gt;', 100)
+                      -&gt;where('title', '&lt;&gt;', 'Admin');
+            })
+            -&gt;get();
+</code></pre>
+<h3 id="where-exists-语法">Where Exists 语法</h3>
+<p>可编写 where exists SQL 子句,此方法会接收一个 闭包 参数，此闭包接收一个查询语句构造器实例，让你可以定义应放在「exists」SQL 子句中的查找</p>
+<pre><code class="language-php">DB::table('users')
+            -&gt;whereExists(function ($query) {
+                $query-&gt;select(DB::raw(1))
+                      -&gt;from('orders')
+                      -&gt;whereRaw('orders.user_id = users.id');
+            })
+            -&gt;get();
+</code></pre>
+<p>上面的查询将生成 SQL</p>
+<pre><code class="language-sql">select * from users
+where exists (
+    select 1 from orders where orders.user_id = users.id
+)
+</code></pre>
+<h3 id="json-查询">JSON 查询</h3>
+<p>MySQL 5.7+ 和 Postgres数据库中可以直接保存 JSON 格式的数据(注意版本)，因此你可以使用<code>-&gt;</code>运算符来查询 JSON 列数据</p>
+<pre><code class="language-php">$users = DB::table('users')
+                -&gt;where('options-&gt;language', 'en')
+                -&gt;get();
+
+$users = DB::table('users')
+                -&gt;where('preferences-&gt;dining-&gt;meal', 'salad')
+                -&gt;get();
+</code></pre>
+<h2 id="ordering-grouping-limit-及-offset">Ordering, Grouping, Limit 及 Offset</h2>
+<h3 id="排序">排序</h3>
+<p><strong>orderBy 普通排序</strong> ，第一个参数是字段名，第二个是顺序</p>
+<pre><code class="language-php">$users = DB::table('users')
+                -&gt;orderBy('name', 'desc')
+                -&gt;get();
+</code></pre>
+<p><strong>latest / oldest 快速 依据日期对查询结果排序</strong></p>
+<p>默认依据 <code>created_at</code> 列, 也可以使用其他字段名</p>
+<pre><code class="language-php">$user = DB::table('users')
+                -&gt;latest()
+                -&gt;first();
+</code></pre>
+<p><strong>inRandomOrder 查询结果随机排序</strong></p>
+<pre><code class="language-php">$randomUser = DB::table('users')
+                -&gt;inRandomOrder()
+                -&gt;first()
+</code></pre>
+<h3 id="分组-groupby--having--havingraw">分组 groupBy / having / havingRaw</h3>
+<p>对查询结果进行分组</p>
+<pre><code class="language-php">$users = DB::table('users')
+                -&gt;groupBy('account_id')
+                -&gt;having('account_id', '&gt;', 100)
+                -&gt;get();
+</code></pre>
+<p>havingRaw 方法可以将一个原始的表达式设置为 having 子句的值。例如，我们能找出所有销售额超过 2,500 元的部门</p>
+<pre><code class="language-php">$users = DB::table('orders')
+                -&gt;select('department', DB::raw('SUM(price) as total_sales'))
+                -&gt;groupBy('department')
+                -&gt;havingRaw('SUM(price) &gt; 2500')
+                -&gt;get();
+</code></pre>
+<h3 id="限制--略过指定数量的查询">限制 / 略过指定数量的查询</h3>
+<p>skip 的别名 “offset”， take 的别名 “limit”,</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;skip(10)-&gt;take(5)-&gt;get();
+
+// 相当于
+$users = DB::table('users')-&gt;offset(10)-&gt;limit(5)-&gt;get();
+</code></pre>
+<h2 id="条件语句">条件语句</h2>
+<p>希望在定义完查询构造器后，只有当某个值为 true 时才执行查询. 有点像“绑定事件，延迟触发”
+可以使用<code>when</code>方法, 只有第一个参数为 true 时，闭包里的 where 语句才执行</p>
+<p>如果再把一个闭包作为第三个参数传递给 when 方法，表示当第一个参数的值为 false，就执行这个闭包（第三个参数）</p>
+<pre><code class="language-php">$role = $request-&gt;input('role');
+
+$users = DB::table('users')
+                -&gt;when($role, function ($query) use ($role) {
+                    return $query-&gt;where('role_id', $role);
+                })
+                -&gt;get();
+
+// 第三个参数是一个闭包，当第一个参数为 false 时就执行它
+$sortBy = null;
+
+$users = DB::table('users')
+                -&gt;when($sortBy, function ($query) use ($sortBy) {
+                    return $query-&gt;orderBy($sortBy);
+                }, function ($query) {
+                    return $query-&gt;orderBy('name');
+                })
+                -&gt;get();
+</code></pre>
+<h2 id="inserts-插入数据">Inserts 插入数据</h2>
+<p>插入一条或多条记录</p>
+<pre><code class="language-php">DB::table('users')-&gt;insert(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);
+
+DB::table('users')-&gt;insert([
+    ['email' =&gt; 'taylor@example.com', 'votes' =&gt; 0],
+    ['email' =&gt; 'dayle@example.com', 'votes' =&gt; 0]
+]);
+</code></pre>
+<p>如果数据表有自增 id，可以用 <code>insertGetId</code> 方法在插入记录时获取 ID</p>
+<pre><code class="language-php">$id = DB::table('users')-&gt;insertGetId(
+    ['email' =&gt; 'john@example.com', 'votes' =&gt; 0]
+);
+</code></pre>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>当使用 PostgreSQL 时，insertGetId 方法将预测自动递增字段的名称为 id。若你要从不同「顺序」来获取 ID，则可以将顺序名称作为第二个参数传递给 insertGetId 方法。</p>
+</blockquote>
+<h2 id="updates-更新数据">Updates 更新数据</h2>
+<h3 id="普通更新">普通更新</h3>
+<p>可以更新普通字段，或者在 MySQL 5.7/Postgres 等版本中更新 JSON 数据</p>
+<pre><code class="language-php">DB::table('users')
+            -&gt;where('id', 1)
+            -&gt;update(['votes' =&gt; 1]);
+
+// mysql 5.7 / postgres
+DB::table('users')
+            -&gt;where('id', 1)
+            -&gt;update(['options-&gt;enabled' =&gt; true]);
+</code></pre>
+<h3 id="自增自减">自增/自减</h3>
+<p>简化手写 update, 查询构造器提供了<code>increment</code>和<code>decrement</code>便利的自增/自减方法. 第二个参数可以控制自增/自减的量。</p>
+<pre><code class="language-php">DB::table('users')-&gt;increment('votes');
+DB::table('users')-&gt;increment('votes', 5);
+
+DB::table('users')-&gt;decrement('votes');
+DB::table('users')-&gt;decrement('votes', 5);
+</code></pre>
+<h2 id="deletes-删除">Deletes 删除</h2>
+<p>普通删除</p>
+<pre><code class="language-php">DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;delete();
+</code></pre>
+<p><strong>清空表</strong></p>
+<p>可以使用 truncate 方法，这将删除所有行，并重置自动递增 ID 为零</p>
+<pre><code class="language-php">DB::table('users')-&gt;truncate();
+</code></pre>
+<h2 id="悲观锁">悲观锁</h2>
+<p>「共享锁」，可以使用 sharedLock 方法。共享锁可防止选中的 <strong>数据列</strong> 被篡改，直到事务被提交为止</p>
+<pre><code class="language-php">DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;sharedLock()-&gt;get();
+</code></pre>
+<p>使用 lockForUpdate 方法。使用「更新」锁可避免 <strong>行</strong> 被其它共享锁修改或选取</p>
+<pre><code class="language-php">DB::table('users')-&gt;where('votes', '&gt;', 100)-&gt;lockForUpdate()-&gt;get();
+</code></pre>
+<h1 id="分页">分页</h1>
+<h2 id="基本">基本</h2>
+<p>在 查询构造器 或 Eloquent 查询中使用 <code>paginate</code> 方法分页。会自动基于用户当前所查看的页面来设置适当的限制和偏移（默认情况下，当前页面通过 HTTP 请求所带的 <code>page</code> 字符串参数的值来检测，并且会被 Laravel <strong>自动检测</strong>，并且<strong>自动插入到由分页器产生的链接</strong>中）</p>
+<p>传递给 paginate 方法的唯一参数是你希望在「每页」显示的项目条数</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;paginate(15);
+$users = App\User::where('votes', '&gt;', 100)-&gt;paginate(15);
+
+// 返回常用的分页链接（兼容 Bootstrap CSS）
+return view('user.index', ['users' =&gt; $users]);
+</code></pre>
+<p>如果只需要简单的 上一页 下一页 链接, 这在你操作大型数据集、渲染视图时不需要显示页码链接的时候非常有用</p>
+<pre><code class="language-php">$users = DB::table('users')-&gt;simplePaginate(15);
+</code></pre>
+<h2 id="显示">显示</h2>
+<p>当调用 <code>paginate</code> 方法的时候，你将会接收到一个 <code>Illuminate\Pagination\LengthAwarePaginator</code> 实例（或者调用 <code>simplePaginate</code> 得到 <code>Illuminate\Pagination\Paginator</code> 实例）</p>
+<p>使用 <code>dd</code>打出来看到，包括了很多需要的数据。提供了一些用于描述结果集的<strong>方法</strong>（例如 <code>$result-&gt;items()</code>方法）</p>
+<p><img src="/media/15490412690589/15083082096236.jpg" alt=""></p>
+<p>除了这些辅助方法，分页器实例也是一个迭代器，并且可以作为数组循环。因此，一旦检索到结果集，你可以使用 Blade 模板显示结果集并渲染页面链接：<code>links</code> 方法将会链接渲染到结果集中其余的页，链接中每一个都已经包含了适当的 page 查询字符串变量</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    @foreach ($users as $user)
+        {{ $user-&gt;name }}
+    @endforeach
+&lt;/div&gt;
+
+{{ $users-&gt;links() }}
+</code></pre>
+<p><img src="/media/15490412690589/15083088451809.jpg" alt=""></p>
+<h3 id="自定义分页-uri">自定义分页 URI</h3>
+<p><code>withPath</code>方法可以让生成的链接如 <a href="http://example.com">http://example.com</a>**/custom/url**?page=N</p>
+<pre><code class="language-php">$users-&gt;withPath('custom/url');
+</code></pre>
+<h3 id="附件参数">附件参数</h3>
+<p>使用 <code>append</code> 方法附加查询参数到分页链接中，添加<code>sort=votes</code>到每个分页链</p>
+<pre><code class="language-php">{{ $users-&gt;appends(['sort' =&gt; 'votes'])-&gt;links() }}
+</code></pre>
+<p>如果要附加“哈希片段”,使用<code>fragment</code>方法，它会添加 <code>#foo</code> 到每个分页链接的末尾</p>
+<pre><code class="language-php">{{ $users-&gt;fragment('foo')-&gt;links() }}
+</code></pre>
+<h2 id="转换结果为-json">转换结果为 JSON</h2>
+<p>Laravel 分页器结果类实现了 <code>Illuminate\Contracts\Support\Jsonable</code> 接口契约并且提供 <code>toJson</code> 方法，所以它很容易将你的分页结果集转换为 JSON</p>
+<p>也可以通过简单地从路由返回或者控制器 action 的方式，将分页实例转换为 JSON</p>
+<pre><code class="language-php">Route::get('users', function () {
+    return App\User::paginate();
+});
+</code></pre>
+<p>从分页器获取的 JSON 将包含元信息，如： total, current_page, last_page 等等。实际的结果对象将通过 JSON 数组中的 data 键来获取</p>
+<pre><code class="language-json">{
+   &quot;total&quot;: 50,
+   &quot;per_page&quot;: 15,
+   &quot;current_page&quot;: 1,
+   &quot;last_page&quot;: 4,
+   &quot;next_page_url&quot;: &quot;http://laravel.app?page=2&quot;,
+   &quot;prev_page_url&quot;: null,
+   &quot;from&quot;: 1,
+   &quot;to&quot;: 15,
+   &quot;data&quot;:[
+        {
+            // Result Object
+        },
+        {
+            // Result Object
+        }
+   ]
+}
+</code></pre>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>目前，Laravel无法有效执行使用 groupBy 语句的分页操作。如果你需要在一个分页结果集中使用 groupBy，建议你查询数据库并手动创建分页器。</p>
+</blockquote>
+<h2 id="手动创建分页">手动创建分页</h2>
+<p>（未看完实践）</p>
+<blockquote>
+<p>当手动创建分页器实例时，你应该手动「切割」传递给分页器的结果集数组。如果你不确定如何去做到这一点，请查阅 PHP 的 array_slice 函数。</p>
+</blockquote>
+<p>有些时候你可能希望手动创建一个分页实例，将其传递为一个项目数组。你可以依据你的需求创建 Illuminate\Pagination\Paginator 或 Illuminate\Pagination\LengthAwarePaginator 实例。</p>
+<p>Paginator 类不需要知道结果集中的数据项总数；然而，正因如此，该类没有用于检索最后一页索引的方法。LengthAwarePaginator 接收的参数几乎和 Paginator 一样；但是，它需要计算结果集中的数据项总数。</p>
+<p>换句话说，Paginator 相当于查询语句构造器和 Eloquent 中的 simplePaginate 方法，而 LengthAwarePaginator 则相当于 paginate 方法。</p>
+<h2 id="自定义分页视图">自定义分页视图</h2>
+<p>默认情况下，视图渲染显示的分页链接都兼容 Bootstrap CSS 框架。如果你不使用 Bootstrap，你可以随意定义你自己的视图去渲染这些链接。当在分页器实例中调用 <code>links</code> 方法时，传递视图名称作为方法的第一参数即可</p>
+<pre><code class="language-html">{{ $paginator-&gt;links('view.name') }}
+
+// Passing data to the view...
+{{ $paginator-&gt;links('view.name', ['foo' =&gt; 'bar']) }}
+</code></pre>
+<p>自定义分页视图最简单的方法是通过 vendor:publish 命令将它们导出到你的 resources/views/vendor 目录：</p>
+<pre><code class="language-shell">php artisan vendor:publish --tag=laravel-pagination
+</code></pre>
+<p>编辑 resources/views/vendor/pagination 目录中的 default.blade.php 文件即可</p>
+<h2 id="分页器实例方法">分页器实例方法</h2>
+<blockquote>
+<ul>
+<li>$results-&gt;count()</li>
+<li>$results-&gt;currentPage()</li>
+<li>$results-&gt;firstItem()</li>
+<li>$results-&gt;hasMorePages()</li>
+<li>$results-&gt;lastItem()</li>
+<li>$results-&gt;lastPage() (Not available when using simplePaginate)</li>
+<li>$results-&gt;nextPageUrl()</li>
+<li>$results-&gt;perPage()</li>
+<li>$results-&gt;previousPageUrl()</li>
+<li>$results-&gt;total() (Not available when using simplePaginate)</li>
+<li>$results-&gt;url($page)</li>
+</ul>
+</blockquote>
+<h1 id="问题">问题</h1>
+<h2 id="insert-批量插入数据时性能非常低的问题">insert 批量插入数据时性能非常低的问题</h2>
+<p><a href="https://stackoverflow.com/questions/44552637/very-slow-eloquent-insert-update-queries-in-laravel">https://stackoverflow.com/questions/44552637/very-slow-eloquent-insert-update-queries-in-laravel</a></p>
+<p>一次案例：来自一个数组, 每个元素包含若干字符串，有些field 设置了 varchar(5000) 插入 6k+ 条数据，很久没反应；改成轮流插入 500 条，还是半天没反应</p>
+<p>后来改成200条每次，成功了。</p>
+<p>其实这个表总共也才 4M。。。。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%9C%AC%E5%9C%B0%E5%8C%96/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Python 文档来源 廖雪峰 https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000 CookBook (上面的那个，入门快，但是不完整，例如没有说“接口”) https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html 安装 centos sudo yum install centos-release-scl # 最新版 https://www.python.org/downloads/ 好像一直失败。。。。（也有可能是代理服务" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Python 文档来源 廖雪峰 https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000 CookBook (上面的那个，入门快，但是不完整，例如没有说“接口”) https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html 安装 centos sudo yum install centos-release-scl # 最新版 https://www.python.org/downloads/ 好像一直失败。。。。（也有可能是代理服务" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/python/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Python 文档来源 廖雪峰 https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000 CookBook (上面的那个，入门快，但是不完整，例如没有说“接口”) https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html 安装 centos sudo yum install centos-release-scl # 最新版 https://www.python.org/downloads/ 好像一直失败。。。。（也有可能是代理服务">
+
+<meta itemprop="wordCount" content="10273">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Python 文档来源 廖雪峰 https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000 CookBook (上面的那个，入门快，但是不完整，例如没有说“接口”) https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html 安装 centos sudo yum install centos-release-scl # 最新版 https://www.python.org/downloads/ 好像一直失败。。。。（也有可能是代理服务"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/python/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/python/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 10273字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="python">Python</h1>
+<h1 id="文档来源">文档来源</h1>
+<p>廖雪峰
+<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/0014319098638265527beb24f7840aa97de564ccc7f20f6000</a></p>
+<p>CookBook (上面的那个，入门快，但是不完整，例如没有说“接口”)
+<a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html">https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p12_define_interface_or_abstract_base_class.html</a></p>
+<h1 id="安装">安装</h1>
+<p>centos</p>
+<pre><code class="language-shell">sudo yum install centos-release-scl
+
+# 最新版 https://www.python.org/downloads/  好像一直失败。。。。（也有可能是代理服务出问题。检查下网络）
+sudo yum install rh-python37
+
+python --version  # 咦还是 2.7？
+scl enable rh-python37 bash
+
+# 自己编译的办法
+wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
+tar xzf Python-3.8.0.tgz
+sudo ./configure --enable-optimizations
+sudo make altinstall  # 注意是 altinstall 区别 install 
+alias python=python3  # 替换默认的 python2
+
+python --version  # 好了！
+</code></pre>
+<h2 id="对于-python-module-编译必需">对于 Python module 编译必需</h2>
+<pre><code class="language-shell">sudo yum install gcc openssl-devel bzip2-devel libffi-devel
+sudo yum install python-devel
+sudo yum groupinstall 'Development Tools'
+</code></pre>
+<h2 id="pip-包管理器">pip 包管理器</h2>
+<pre><code class="language-shell">sudo yum install epel-release
+sudo yum install python-pip
+pip --version
+</code></pre>
+<p>安装包 卸载 查找</p>
+<pre><code class="language-shell">pip install twisted
+pip uninstall twisted
+pip search &quot;twisted&quot;
+pip list
+pip list --outdated
+</code></pre>
+<h2 id="虚拟环境">虚拟环境？</h2>
+<p>mkdir ~/my_new_project
+cd ~/my_new_project
+scl enable rh-python36 bash
+python -m venv my_project_venv
+source my_project_venv/bin/activate</p>
+<h1 id="交互环境">交互环境</h1>
+<pre><code class="language-shell">python
+&gt;&gt;&gt;print('1+1=', 1+1)
+1+1= 2
+&gt;&gt;&gt;
+</code></pre>
+<h1 id="输入输出">输入输出</h1>
+<h2 id="输出">输出</h2>
+<p>字符串，数字、计算结果。
+以及逗号隔开多个字符串连接起来</p>
+<pre><code class="language-shell">&gt;&gt;&gt;print('hello world')
+
+&gt;&gt;&gt;print('hello world', '1+1=', 1+1)
+</code></pre>
+<h2 id="输入">输入</h2>
+<p>使用<code>input()</code>来存放用户输入到变量中</p>
+<pre><code class="language-shell"># 等待输入
+&gt;&gt;&gt;name = input()
+Micheal
+
+# 再打印 name 变量
+&gt;&gt;&gt;name
+</code></pre>
+<p>使用代码，创建 test.py</p>
+<pre><code class="language-py">name = input()
+print('hello', name)
+</code></pre>
+<p>运行 py 文件</p>
+<pre><code class="language-shell">python test.py
+</code></pre>
+<h1 id="基础">基础</h1>
+<h2 id="数据类型和变量">数据类型和变量</h2>
+<h3 id="整形浮点字符串">整形、浮点、字符串</h3>
+<h3 id="布尔值">布尔值</h3>
+<p>True False</p>
+<p>可用 and、or和not运算( 5&gt;3 这样的运算结果返回的也是布尔值)</p>
+<pre><code class="language-shell">&gt;&gt;&gt; True and False
+False
+&gt;&gt;&gt; 5 &gt; 3 and 3 &gt; 1
+True
+
+&gt;&gt;&gt; True or False
+True
+
+&gt;&gt;&gt; not True
+False
+</code></pre>
+<p>一般在条件判断中使用</p>
+<pre><code class="language-py">if age &gt;= 18:
+    print('adult')
+else:
+    print('teenager')
+</code></pre>
+<h3 id="空值--none">空值  None</h3>
+<p>注意并不是 0，  有点像 OC 的 nil 什么的..</p>
+<h3 id="字符串">字符串</h3>
+<p>单引号内部，特殊字符要转义</p>
+<pre><code class="language-python">&gt;&gt;&gt;print('I\'m \n\&quot;OK\&quot;!')
+I'm
+&quot;OK&quot;!
+</code></pre>
+<p>特殊情况</p>
+<p>（1）如果字符串内本身有很多斜杠付 <code>\\\t\\</code>，默认转义会输出 <code>\     \</code>。想要<strong>原样输出</strong>怎么办？用<code>r</code>开头</p>
+<pre><code class="language-python">&gt;&gt;&gt;print(r'\\\t\\')
+\\\t\\
+</code></pre>
+<p>（2）太多 <code>\n</code>换行导致代码很不好看，可以用<code>'''内容'''</code>来实现多行内容 (前后有三个单引号包裹，中间多个 &hellip; 是在交互式命令行里自动生成的提示符——回车就会有，不是代码的一部分)</p>
+<pre><code class="language-python">&gt;&gt;&gt; print('''line1
+... line2
+... line3''')
+line1
+line2
+line3
+</code></pre>
+<p>py 代码里</p>
+<pre><code class="language-py">print('''line1
+line2
+line3''')
+</code></pre>
+<h3 id="变量">变量</h3>
+<p>变量名必须是大小写英文、数字和_的组合，且不能用数字开头.</p>
+<p>Python 是动态语言。同一个变量可以反复赋值，而且可以是不同类型的变量</p>
+<pre><code class="language-py">a = 123 # a是整数
+print(a)
+a = 'ABC' # a变为字符串
+print(a)
+</code></pre>
+<p>将第一个变量 a 赋值给第二个变量 b，然后更改原变量 a 的值，不会影响变量 b 的值</p>
+<pre><code class="language-py">a = 'ABC'
+b = a
+a = 'XYZ'
+print(b)  # ABC
+</code></pre>
+<p><img src="/media/15490413192578/15436487313790.jpg" alt="-w593"></p>
+<h3 id="常量">常量</h3>
+<p>Python 的常量很奇怪，因为没有关键字告诉运行环境这是一个常量（类似 PHP 的 define）,<strong>它其实是一个变量</strong></p>
+<p>只不过因为我们习惯把它用全大写字母命名后作为常量，所以要注意不要去更改它的值。。。</p>
+<pre><code class="language-py">PI = 3.14159265359
+</code></pre>
+<h3 id="计算">计算</h3>
+<p>加减乘就不多说了。</p>
+<p>除法<code>/</code>默认的返回结果<strong>一定是浮点数，即使整除</strong></p>
+<pre><code class="language-py">10/3 = 3.33333333
+
+9/3 = 3.0
+</code></pre>
+<p><strong>地板除（结果取整）</strong></p>
+<pre><code class="language-py">10 // 3
+3
+</code></pre>
+<p><strong>取余数</strong></p>
+<pre><code class="language-py">10 % 3
+1
+</code></pre>
+<h2 id="字符串编码-unicode">字符串编码 Unicode</h2>
+<h3 id="编码的不同">编码的不同</h3>
+<p>8个比特（bit）作为一个字节（byte）
+一个字节能表示的最大的整数就是255（二进制11111111=十进制255）
+如果要表示更大的整数，就必须用更多的字节。比如两个字节可以表示的最大整数是65535，4个字节可以表示的最大整数是4294967295</p>
+<p><strong>ASCII编码</strong>
+最开始只有英文
+127个字符被编码到计算机里，也就是大小写英文字母、数字和一些符号(A的编码是65，z的编码是122)</p>
+<p><strong>GB2312编码，Shift_JIS，Euc-kr 等等</strong>
+能支持中文，日文，韩文&hellip;
+在多语言混合的文本中导致冲突</p>
+<p><strong>Unicode</strong>
+把所有语言都统一到一套编码里.
+ASCII编码是1个字节, Unicode编码通常是2个字节</p>
+<p>汉字<code>中</code>字中已经超出了ASCII编码的范围，用Unicode编码是十进制的20013, 等于二进制的01001110 00101101
+字母<code>A</code>用ASCII编码是十进制的65，二进制的01000001, 如果把ASCII编码的<code>A</code>用Unicode编码，只需要在前面<strong>补0</strong>就可以，因此，A的Unicode编码是00000000 01000001。</p>
+<p>这就带来了问题：”全英文文本下，由于要补0，使用 Unicode 会浪费存储空间“</p>
+<p><strong>“可变长编码”的 UTF-8编码</strong>
+把Unicode编码转化为UTF-8编码，UTF-8编码把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。如果你要传输的文本包含大量英文字符，用UTF-8编码就能节省空间：</p>
+<p><img src="/media/15490413192578/15436495575774.jpg" alt="-w713"></p>
+<h3 id="计算机系统通用的字符编码工作方式-与-python3-字符串">计算机系统通用的字符编码工作方式 与 Python3 字符串</h3>
+<p>在计算机内存中，统一使用Unicode编码（兼容），当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码（空间）。</p>
+<p>场景：
+用记事本编辑的时候，从文件读取的UTF-8字符被转换为Unicode字符到内存里，编辑完成后，保存的时候再把Unicode转换为UTF-8保存到文件：</p>
+<p>浏览网页的时候，服务器会把动态生成的Unicode内容转换为UTF-8再传输到浏览器：所以你看到很多网页的源码上会有类似<!-- raw HTML omitted -->的信息，表示该网页正是用的UTF-8编码。
+<img src="/media/15490413192578/15436514576795.jpg" alt="-w339"></p>
+<p>最新的Python 3版本中，字符串是以Unicode编码的，因此支持多语言</p>
+<pre><code class="language-python">&gt;&gt;&gt; print('包含中文的str')
+包含中文的str
+
+# 可以用十六进制这么写str, 完全等价
+&gt;&gt;&gt; '\u4e2d\u6587'
+'中文'
+</code></pre>
+<p><strong>Python的字符串类型是 <code>str</code>，在内存中以Unicode表示，一个字符对应若干个字节</strong></p>
+<p>如果要在网络上传输，或者保存到磁盘上，就需要把 <code>str</code>(字符串类型) 变为以 <code>字节</code> 为单位的 <code>bytes</code>。</p>
+<p>注意下面，</p>
+<pre><code class="language-shell">a = 'ABC'
+
+# 用带b前缀表示 bytes, bytes的每个字符都只占用一个字节
+x = b'ABC'
+</code></pre>
+<p><strong>在操作字符串时，我们经常遇到str和bytes的互相转换。为了避免乱码问题，应当始终坚持使用UTF-8编码对str和bytes进行转换</strong></p>
+<h3 id="encode-编码">encode 编码</h3>
+<p>以 <code>Unicode</code> 表示的 <code>str</code> 通过encode()方法可以编码为指定的bytes，例如：</p>
+<pre><code class="language-shell"># 纯英文的 str 可以用  ASCII 编码为 bytes, 内容一样
+&gt;&gt;&gt; 'ABC'.encode('ascii')
+b'ABC'
+
+# 含有中文的str可以用UTF-8编码为bytes
+&gt;&gt;&gt; '中文'.encode('utf-8')
+b'\xe4\xb8\xad\xe6\x96\x87'
+
+# 由于中文不可以用 ASCII 编码，因此报错(因为中文编码的范围超过了ASCII编码的范围)
+&gt;&gt;&gt; '中文'.encode('ascii')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-1: ordinal not in range(128)
+</code></pre>
+<p>在bytes中，无法显示为ASCII字符的字节，用\x##显示。</p>
+<h3 id="decode-解码">decode 解码</h3>
+<p>反过来，如果我们从网络或磁盘上读取了字节流，那么读到的数据就是bytes。要把bytes变为str，就需要用decode()方法：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; b'ABC'.decode('ascii')
+'ABC'
+&gt;&gt;&gt; b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8')
+'中文'
+
+# 如果bytes中包含无法解码的字节，decode()方法会报错
+&gt;&gt;&gt; b'\xe4\xb8\xad\xff'.decode('utf-8')
+Traceback (most recent call last):
+  ...
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff in position 3: invalid start byte
+
+
+# 如果bytes中只有一小部分无效的字节，可以传入errors='ignore'忽略错误的字节：
+&gt;&gt;&gt; b'\xe4\xb8\xad\xff'.decode('utf-8', errors='ignore')
+'中'
+</code></pre>
+<h3 id="python-文件中指定编码">python 文件中指定编码</h3>
+<p>由于Python源代码也是一个文本文件，所以，当你的源代码中包含中文的时候，在保存源代码时，就需要务必指定保存为UTF-8编码。当Python解释器读取源代码时，为了让它按UTF-8编码读取，我们通常在文件开头写上这两行：</p>
+<pre><code class="language-py">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+</code></pre>
+<p>第一行注释是为了告诉Linux/OS X系统，这是一个Python可执行程序，Windows系统会忽略这个注释；</p>
+<p>第二行注释是为了告诉Python解释器，按照UTF-8编码读取源代码，否则，你在源代码中写的中文输出可能会有乱码。</p>
+<p>申明了UTF-8编码并不意味着你的.py文件就是UTF-8编码的，必须并且要确保文本编辑器正在使用UTF-8 without BOM编码：</p>
+<p><img src="/media/15490413192578/15436534025311.jpg" alt="-w702"></p>
+<h3 id="len函数计算-str-的字符数-以及-bytes-的字节数">len()函数计算 str 的字符数， 以及 bytes 的字节数</h3>
+<pre><code class="language-shell"># str
+&gt;&gt;&gt; len('ABC')
+3
+&gt;&gt;&gt; len('中文')
+2
+
+# bytes
+&gt;&gt;&gt; len(b'ABC')
+3
+&gt;&gt;&gt; len(b'\xe4\xb8\xad\xe6\x96\x87')
+6
+&gt;&gt;&gt; len('中文'.encode('utf-8'))
+6
+</code></pre>
+<p>可见，1个中文字符经过UTF-8编码后通常会占用3个字节，而1个英文字符只占用1个字节</p>
+<h3 id="输出格式化的字符串">输出格式化的字符串</h3>
+<p><strong>%s %d %f %x （和 C 语言一样）</strong></p>
+<pre><code class="language-shell">&gt;&gt;&gt; 'Hello, %s' % 'world'
+'Hello, world'
+&gt;&gt;&gt; 'Hi, %s, you have $%d.' % ('Michael', 1000000)
+'Hi, Michael, you have $1000000.'
+
+# 转义 % 为普通字符
+&gt;&gt;&gt; 'growth rate: %d %%' % 7
+'growth rate: 7 %'
+</code></pre>
+<p>其中，格式化整数和浮点数还可以指定是否补0和整数与小数的位数：</p>
+<pre><code class="language-python">print('%2d-%02d' % (3, 1))
+3-01
+
+print('%.2f' % 3.1415926)
+3.14
+</code></pre>
+<p><strong>使用字符串的format()方法, 稍微麻烦一些</strong></p>
+<pre><code class="language-shell">&gt;&gt;&gt; 'Hello, {0}, 成绩提升了 {1:.1f}%'.format('小明', 17.125)
+'Hello, 小明, 成绩提升了 17.1%'
+</code></pre>
+<h2 id="list-和-tuple-列表与元组">list 和 tuple （列表与元组）</h2>
+<h3 id="list-可变">list （可变）</h3>
+<p>list是一种<strong>有序的集合</strong>，可以随时添加和删除其中的元素(可变的有序表，可以往list中追加元素到末尾：)</p>
+<pre><code class="language-shell">&gt;&gt;&gt; classmates = ['Michael', 'Bob', 'Tracy']
+&gt;&gt;&gt; classmates
+['Michael', 'Bob', 'Tracy']
+
+# list里面的元素的数据类型也可以不同
+&gt;&gt;&gt; L = ['Apple', 123, True]
+
+# 甚至元素也可以是另一个list （看成 二维数组）
+&gt;&gt;&gt; s = ['python', 'java', ['asp', 'php'], 'scheme']
+&gt;&gt;&gt; len(s)
+4
+# 取得这个内部list 的某个元素
+&gt;&gt;&gt;s[2][1]
+
+# 获得 list 元素个数
+&gt;&gt;&gt; len(classmates)
+3
+
+# 用索引来访问list中每一个位置的元素（从0 开始）
+&gt;&gt;&gt; classmates[1]
+'Bob'
+
+# 最后一个元素的索引是len(classmates) - 1，如果超过，就会提示越界
+
+# 除了计算索引位置外，还可以用-1做索引，直接获取最后一个元素， 或者 -2 -3获取倒数第二 第三个
+&gt;&gt;&gt; classmates[-1]
+'Tracy'
+&gt;&gt;&gt; classmates[-3]
+'Michael'
+
+# 追加元素
+&gt;&gt;&gt; classmates.append('Adam')
+&gt;&gt;&gt; classmates
+['Michael', 'Bob', 'Tracy', 'Adam']
+
+# 删除list末尾的元素，用pop()方法：
+&gt;&gt;&gt; classmates.pop()
+'Adam'
+&gt;&gt;&gt; classmates
+['Michael', 'Jack', 'Bob', 'Tracy']
+
+# 插入到指定的位置（比如索引号为1的位置）
+&gt;&gt;&gt; classmates.insert(1, 'Jack')
+&gt;&gt;&gt; classmates
+['Michael', 'Jack', 'Bob', 'Tracy', 'Adam
+
+# 删除指定位置的元素，用pop(i)方法，其中i是索引位置：
+&gt;&gt;&gt; classmates.pop(1)
+'Jack'
+&gt;&gt;&gt; classmates
+['Michael', 'Bob', 'Tracy']
+
+# 把某个元素替换成别的元素，可以直接赋值给对应的索引位置
+&gt;&gt;&gt; classmates[1] = 'Sarah'
+&gt;&gt;&gt; classmates
+['Michael', 'Sarah', 'Tracy']
+</code></pre>
+<h3 id="tuple-不可变">tuple (不可变)</h3>
+<p>tuple一旦初始化就不能修改， 没有append()，insert()这样的方法。 其他获取元素和方法和 list 一致</p>
+<p>为什么有这个类型？
+因为tuple不可变，所以代码更安全。如果可能，能用tuple代替list就尽量用tuple</p>
+<pre><code class="language-shell">&gt;&gt;&gt; t = (1, 2)
+&gt;&gt;&gt; t
+(1, 2)
+
+# 特殊情况是定义一个只有 一个元素 的 tuple. 
+&gt;&gt;&gt; t = (1)
+&gt;&gt;&gt; t
+# 发现定义的不是tuple，是 1 这个数，这是因为括号()既可以表示tuple，又可以表示数学公式中的小括号
+1
+
+# 所以，只有1个元素的tuple定义时必须加一个逗号,来消除歧义（Python在显示只有1个元素的tuple时，也会加一个逗号,，以免你误解成数学计算意义上的括号。）
+&gt;&gt;&gt; t = (1,)
+&gt;&gt;&gt; t
+(1,)
+</code></pre>
+<p><strong>特殊情况，把列表 list 作为 tuple 的一个元素，可以实现它“部分可变”</strong></p>
+<pre><code class="language-py">&gt;&gt;&gt; t = ('a', 'b', ['A', 'B'])
+&gt;&gt;&gt; t[2][0] = 'X'
+&gt;&gt;&gt; t[2][1] = 'Y'
+&gt;&gt;&gt; t
+('a', 'b', ['X', 'Y'])
+</code></pre>
+<p>表面上看，tuple的元素确实变了，但其实变的不是tuple的元素，而是list的元素。tuple一开始指向的list并没有改成别的list，所以，tuple所谓的“不变”是说，tuple的每个元素，指向永远不变。</p>
+<h2 id="条件判断">条件判断</h2>
+<pre><code class="language-py">x = 14
+
+if x&gt;10:
+    print('x&gt;10')
+# 如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else，所以这里其实不会打印出来
+elif age&gt;5:
+    print('x&gt;5')
+else:
+    print('x')
+    
+# 只要x是非零数值、非空字符串、非空list等，就判断为True，否则为False。
+if x:
+    print('True')
+</code></pre>
+<h3 id="条件判断与-input-返回结果">条件判断与 input() 返回结果</h3>
+<pre><code class="language-py">birth = input('birth: ')
+if birth &lt; 2000:
+    print('00前')
+else:
+    print('00后')
+</code></pre>
+<p>运行后，如果输入 1985，预期是返回 <code>00前</code>，结果报错了</p>
+<blockquote>
+<p>Traceback (most recent call last):
+File &ldquo;<!-- raw HTML omitted -->&rdquo;, line 1, in <!-- raw HTML omitted -->
+TypeError: unorderable types: str() &gt; int()</p>
+</blockquote>
+<p>这是因为 <code>input()</code>返回的是 <code>str</code>类型（<code>'1985'</code>），而这里判断条件中要求 <code>birth</code>是数字（只有整数可以比较）</p>
+<p>所以先使用 <code>int()</code>函数对格式进行转换, 变成<strong>整数</strong></p>
+<pre><code class="language-py">s = input('birth: ')
+birth = int(s)
+if birth &lt; 2000:
+    print('00前')
+else:
+    print('00后')
+</code></pre>
+<p><strong>假设输入错误，不是数字，而是字符串呢？</strong></p>
+<p>例如输入 &lsquo;abc&rsquo;，也会报错，因为 <code>int()</code>发现是一个字符串，而不是合法的数字（以 <code>str</code> 格式存储）</p>
+<p>如何检查并捕获程序运行期的错误呢？</p>
+<p><strong>后面的 错误 和 调试 会讲到。</strong></p>
+<h2 id="循环">循环</h2>
+<p>Python的循环有两种，</p>
+<h3 id="一种是forin循环依次把list或tuple中的每个元素迭代出来">一种是<code>for...in</code>循环，依次把<code>list</code>或<code>tuple</code>中的每个元素迭代出来</h3>
+<pre><code class="language-py">names = ['Michael', 'Bob', 'Tracy']
+for name in names:
+    print(name)
+</code></pre>
+<p><strong>range()函数，快速生成整数序列，然后用 list() 函数转换成 list</strong></p>
+<p>例如，我们要计算 0-99的整数之和，手写一个 [0,1,2,3,4&hellip;..99]是不可能的。用下面的方法可以快速生成</p>
+<p><strong>整数序列</strong> 与 <strong>list</strong> 区别？</p>
+<pre><code class="language-py">sum = 0
+
+# 好像 list(range(100)) 得到结果也一样。
+for x in range(100):
+    sum = sum + x
+print(sum)
+</code></pre>
+<h3 id="另一种是-while-只要条件满足就不断循环条件不满足时退出循环">另一种是 <code>while</code> 只要条件满足，就不断循环，条件不满足时退出循环</h3>
+<p>比如我们要计算100以内所有奇数之和</p>
+<pre><code class="language-py">sum = 0
+n = 99
+while n &gt; 0:
+    sum = sum + n
+    n = n - 2
+print(sum)
+</code></pre>
+<p><strong>break</strong>语句可以提前退出循环</p>
+<pre><code class="language-py">n = 1
+while n &lt;= 100:
+    if n &gt; 10: # 当n = 11时，条件满足，执行break语句
+        break # break语句会结束当前循环
+    print(n)
+    n = n + 1
+print('END')
+</code></pre>
+<p><strong>continue</strong>跳过当前的这次循环，直接开始下一次循环</p>
+<pre><code class="language-py">n = 0
+while n &lt; 10:
+    n = n + 1
+    if n % 2 == 0: # 如果n是偶数，执行continue语句
+        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
+    print(n)
+
+# 打印出 1，3，5，7，9
+</code></pre>
+<h2 id="dict-字典-和-set">dict (字典) 和 set</h2>
+<h3 id="dict全称dictionary-其他语言中也称为map使用键-值key-value存储">dict全称dictionary， 其他语言中也称为map，使用键-值（key-value）存储</h3>
+<p>假设要根据同学的名字查找对应的成绩</p>
+<pre><code class="language-shell"># 如果用 list 的方式
+names = ['Michael', 'Bob', 'Tracy']
+scores = [95, 75, 85]
+
+# 用 dic 的方式
+&gt;&gt;&gt; d = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
+&gt;&gt;&gt; d['Michael']
+</code></pre>
+<p><code>dict</code>查找速度是很快的，因为字典有个索引表，通过索引直接找到数据。</p>
+<p>而<code>list</code>是一个个依次查找，list 很大的时候，效率很低。</p>
+<p><strong>把新的数据放入dict</strong></p>
+<pre><code class="language-shell">&gt;&gt;&gt; d['Adam'] = 67
+
+# 相同的 key, 覆盖前面的 value
+&gt;&gt;&gt; d['Admin'] = 88
+88
+</code></pre>
+<p><strong>不存在的 key,dict 会报错</strong></p>
+<pre><code class="language-shell"># 直接读取不存在的 key
+&gt;&gt;&gt; d['Thomas']
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+KeyError: 'Thomas'
+
+# 为了避免报错，可以先用`in`判断 key 是否存在
+&gt;&gt;&gt; 'Thomas' in d
+
+# 或者用`get()`方法，如果不存在，返回 None, 或者一个指定的value
+&gt;&gt;&gt; d.get('Thomas')
+交互环境中 None 不显示出来 
+&gt;&gt;&gt; d.get('Thomas', -1)
+-1
+</code></pre>
+<p><strong>删除key</strong></p>
+<pre><code class="language-shell">&gt;&gt;&gt; d.pop('Bob')
+75
+&gt;&gt;&gt; d
+{'Michael': 95, 'Tracy': 85}
+</code></pre>
+<p><strong>Dict 的 key 必须是不可变对象</strong></p>
+<p>dict可以用在需要高速查找的很多地方，在Python代码中几乎无处不在，正确使用dict非常重要，需要牢记的第一条就是dict的key必须是不可变对象。</p>
+<p>这是因为dict根据key来计算value的存储位置，如果每次计算相同的key得出的结果不同，那dict内部就完全混乱了。这个通过key计算位置的算法称为<strong>哈希算法（Hash</strong>）。要保证hash的正确性，作为key的对象就不能变。在Python中，字符串、整数等都是不可变的，因此，可以放心地作为key。而list是可变的，就不能作为key：</p>
+<h3 id="set">Set</h3>
+<p>set和dict类似，也是一组key的集合，但<strong>不存储value</strong>。由于key不能重复，所以，<strong>在set中，没有重复的key</strong>。</p>
+<p>要创建一个set，需要提供一个list作为输入集合：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; s = set([1, 2, 3])
+&gt;&gt;&gt; s
+{1, 2, 3}
+</code></pre>
+<p>传入的参数[1, 2, 3]是一个<code>list</code>,而显示的<code>{1, 2, 3}</code>只是告诉你这个set内部有1，2，3这3个元素，显示的顺序也不表示set是有序的。。</p>
+<p>重复元素在set中自动被过滤</p>
+<pre><code class="language-shell">&gt;&gt;&gt; s = set([1, 1, 2, 2, 3, 3])
+&gt;&gt;&gt; s
+{1, 2, 3}
+</code></pre>
+<p>通过add(key)方法可以添加元素到set中，可以重复添加，但不会有效果</p>
+<pre><code class="language-shell">&gt;&gt;&gt; s.add(4)
+&gt;&gt;&gt; s
+{1, 2, 3, 4}
+&gt;&gt;&gt; s.add(4)
+&gt;&gt;&gt; s
+{1, 2, 3, 4}
+</code></pre>
+<p>通过remove(key)方法可以删除元素</p>
+<pre><code class="language-shell">&gt;&gt;&gt; s.remove(4)
+&gt;&gt;&gt; s
+{1, 2, 3}
+</code></pre>
+<p>set可以看成数学意义上的<strong>无序和无重复元素的集合</strong>，因此，两个set可以做数学意义上的<strong>交集、并集等操作</strong>：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; s1 = set([1, 2, 3])
+&gt;&gt;&gt; s2 = set([2, 3, 4])
+&gt;&gt;&gt; s1 &amp; s2
+{2, 3}
+&gt;&gt;&gt; s1 | s2
+{1, 2, 3, 4}
+</code></pre>
+<p>set和dict的唯一区别仅在于没有存储对应的value，但是，set的原理和dict一样，所以，<strong>同样不可以放入可变对象</strong>，因为无法判断两个可变对象是否相等，也就无法保证set内部“不会有重复元素”。试试把list放入set，看看是否会报错</p>
+<h2 id="重要--再议不可变对象">重要  再议不可变对象</h2>
+<p><code>str</code> 是不可变对象的理解。</p>
+<p>重新赋值，与修改对象的不同</p>
+<pre><code class="language-shell">&gt;&gt;&gt;a = 'abc'
+&gt;&gt;&gt;a
+'abc'
+
+# 重新赋值，它的值改变了
+&gt;&gt;&gt;a = 'bbc'
+&gt;&gt;&gt;a
+'bbc'
+
+# 但是如果调用 replace() 方法来“修改”a
+&gt;&gt;&gt;a.replace('b', 'c')
+
+# 返回了新的值
+'ccc'
+
+# 但是再打印变量 a，值没有变
+&gt;&gt;&gt;a
+'bbc'
+</code></pre>
+<p>这是为什么？</p>
+<p>准确地说：<code>a</code>是<strong>变量</strong>，它 指向了一个字符串对象<code>'abc'</code>，这个对象的内容才是 &lsquo;abc&rsquo;
+(而不是 对象<code>a</code> 的内容是 &lsquo;abc&rsquo;)</p>
+<p>调用<code>a.replace('a', 'A')</code>时, 实际上是作用在字符串对象&rsquo;abc&rsquo;上，<strong>创建了一个新字符串</strong>&lsquo;Abc&rsquo;并返回，<strong>并没有直接修改变量a,变量a仍指向原有的字符串&rsquo;abc&rsquo;</strong></p>
+<p>因此，如果把变量 a(或者用另外一个变量b)来指向这个新字符串, 就能改变它了。</p>
+<pre><code class="language-shell">&gt;&gt;&gt; a = a.replace('b', 'c')
+&gt;&gt;&gt; a
+'ccc'
+</code></pre>
+<p>所以，对于不变对象来说，<strong>调用对象自身的任意方法，也不会改变该对象自身的内容</strong>（关键：并未重新赋值）。相反，<strong>这些方法会创建新的对象并返回</strong>，这样，就保证了不可变对象<strong>本身</strong>永远是不可变的。</p>
+<h1 id="函数">函数</h1>
+<h2 id="定义函数与调用函数">定义函数与调用函数</h2>
+<pre><code class="language-py">def my_abs(x):
+    if x &gt;= 0:
+        return x
+    else:
+        return -x
+</code></pre>
+<p>调用</p>
+<pre><code class="language-py">print(my_abs(-99))
+</code></pre>
+<p>如果没有return语句，函数执行完毕后也会返回结果，只是结果为None。return None可以简写为return。</p>
+<h3 id="import-从代码文件中导入已经定义的函数"><code>import()</code> 从代码文件中导入已经定义的函数</h3>
+<p>假设把上面的函数定义代码保存为 <code>abstest.py</code>, 然后就可以在命令行或者其他Python代码里调用它了</p>
+<pre><code class="language-py">&gt;&gt;&gt; from abstest import my_abs 
+&gt;&gt;&gt; my_abs(-9) 
+&gt;&gt;&gt; 9    
+</code></pre>
+<p>在后面<code>模块</code>中详细介绍</p>
+<h3 id="用pass语句定义一个空函作为占位符">用<code>pass</code>语句定义一个空函作为占位符</h3>
+<pre><code class="language-py">def nop():
+    pass
+</code></pre>
+<p>用处：实际上pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。</p>
+<h3 id="参数检查">参数检查</h3>
+<p>调用函数时，会检查<code>参数个数</code>和<code>参数类型</code></p>
+<pre><code class="language-shell"># 个数不对，Python解释器会自动检查出来，并抛出TypeError
+&gt;&gt;&gt; my_abs(1, 2)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: my_abs() takes 1 positional argument but 2 were given
+
+
+# 参数类型不对，Python解释器提示的错误并不是特别准确
+&gt;&gt;&gt; my_abs('A')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 2, in my_abs
+TypeError: unorderable types: str() &gt;= int()
+
+# 看看 python 自带的 abs() 函数错误提示，准确提示了 bad operand type for abs(): 'str'
+&gt;&gt;&gt; abs('A')
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: bad operand type for abs(): 'str'
+</code></pre>
+<p>修改一下my_abs的定义，用内置函数<code>isinstance()</code>对参数类型做检查，只允许整数和浮点数类型的参数</p>
+<pre><code class="language-py">def my_abs(x):
+    if not isinstance(x, (int, float)):
+        raise TypeError('bad operand type')
+    if x &gt;= 0:
+        return x
+    else:
+        return -x
+</code></pre>
+<p>再运行就会抛出指定的错误信息了 TypeError: bad operand type</p>
+<p>详细的<code>错误</code>和<code>异常处理</code>在后面</p>
+<h3 id="返回多个值">返回多个值</h3>
+<p>一个函数可以返回多个值？确实可以</p>
+<p>例如在游戏开发中，需要同时返回 x,y 坐标</p>
+<pre><code class="language-py">import math
+
+def move(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    return nx, ny
+</code></pre>
+<p>使用</p>
+<pre><code class="language-shell">&gt;&gt;&gt; x, y = move(100, 100, 60, math.pi / 6)
+&gt;&gt;&gt; print(x, y)
+151.96152422706632 70.0
+</code></pre>
+<p><strong>真相</strong></p>
+<p>Python函数返回的仍然是单一值，但其实是一个 <code>tuple</code>。 （在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple）</p>
+<h2 id="函数参数">函数参数</h2>
+<p>除了正常定义的必选参数外，还有</p>
+<ul>
+<li>默认参数</li>
+<li>可变参数</li>
+<li>关键字参数</li>
+</ul>
+<p><strong>位置参数</strong></p>
+<p>调用函数时，传入的两个值<strong>按照位置顺序依次赋给参数x和n</strong>。</p>
+<pre><code class="language-py">def power(x, n):
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
+</code></pre>
+<pre><code class="language-shell">&gt;&gt;&gt; power(5, 2)
+25
+&gt;&gt;&gt; power(5, 3)
+125
+</code></pre>
+<p><strong>默认参数</strong></p>
+<p>调用函数 <code>power(5)</code>,不需要传入 n，就会自动计算平方（n=2）,相当于<code>power(5, 3)</code></p>
+<pre><code class="language-py">def power(x, n=2):
+    s = 1
+    while n &gt; 0:
+        n = n - 1
+        s = s * x
+    return s
+</code></pre>
+<p>默认参数可以简化函数的调用，只有与默认参数不符的函数调用才需要提供额外的信息</p>
+<p>设置默认参数时，有几点要注意：</p>
+<ul>
+<li>必选参数在前，<strong>默认参数在后</strong>，否则Python的解释器会报错（思考一下为什么默认参数不能放在必选参数前面）</li>
+<li>把变化大的参数放前面，变化小的参数放后面。变化小的参数就可以作为默认参数</li>
+</ul>
+<pre><code class="language-py">def enroll(name, gender, age=6, city='Beijing'):
+    print('name:', name)
+    print('gender:', gender)
+    print('age:', age)
+    print('city:', city)
+</code></pre>
+<p>有多个默认参数时，调用的时候，既可以按顺序提供默认参数，也可以<strong>不按顺序提供部分默认参数</strong>，这时需要把参数名写上,例如</p>
+<pre><code class="language-shell">enroll('Adam', 'M', city='Tianjin')
+</code></pre>
+<p>意思是，city参数用传进去的值，其他默认参数继续使用默认值。</p>
+<p><strong>默认参数为 list 类型的坑</strong></p>
+<p>例如有个函数，默认参数 L 是一个空的列表 []</p>
+<pre><code class="language-py">def add_end(L=[]):
+    L.append('END')
+    return L
+</code></pre>
+<p>当正常调用它时（修改了默认参数的值），能返回期望的数据</p>
+<pre><code class="language-shell">&gt;&gt;&gt; add_end([1, 2, 3])
+[1, 2, 3, 'END']
+&gt;&gt;&gt; add_end(['x', 'y', 'z'])
+['x', 'y', 'z', 'END']
+</code></pre>
+<p>然而当直接使用默认参数时</p>
+<pre><code class="language-shell"># 第一次
+&gt;&gt;&gt; add_end()
+['END']
+
+# 再次调用 add_end()
+&gt;&gt;&gt; add_end()
+['END', 'END']
+
+# 第三次调用
+&gt;&gt;&gt; add_end()
+['END', 'END', 'END']
+</code></pre>
+<p>发现奇怪的是，<strong>函数每次被调用后，都“记住了”上次添加了&rsquo;END&rsquo;后的list，默认参数的值被改变了</strong></p>
+<p>这是因为 Python<strong>函数 在定义的时候，默认参数L的值就被计算出来了</strong>，即[]，因为<strong>默认参数L也是一个变量</strong>，它<strong>指向对象[]</strong>，<strong>每次调用该函数，如果改变了L的内容，则下次调用时，默认参数的内容就变了，不再是函数定义时的[]了</strong>。</p>
+<p>因此定义默认参数要牢记一点：<strong>默认参数必须指向不变对象！例如 None, str</strong></p>
+<p>上面的例子改成使用 <code>None</code></p>
+<pre><code class="language-py">def add_end(L=None):
+    if L is None:
+        L = []
+    L.append('END')
+    return L
+</code></pre>
+<p>每次调用函数时，只要发现默认参数为 None 就把 L 重置为空列表 [], 所以不管调用多少次（使用默认参数）都没有问题</p>
+<pre><code class="language-shell">&gt;&gt;&gt; add_end()
+['END']
+&gt;&gt;&gt; add_end()
+['END']
+</code></pre>
+<p>为什么要设计str、None这样的不变对象呢？因为<strong>不变对象一旦创建，对象内部的数据就不能修改，这样就减少了由于修改数据导致的错误</strong>。此外，由于对象不变，多任务环境下同时读取对象不需要加锁，同时读一点问题都没有。我们在编写程序时，如果可以设计一个不变对象，那就尽量设计成不变对象。</p>
+<h3 id="可变参数">可变参数</h3>
+<p>可变参数就是传入的参数个数是可变的，可以是1个、2个到任意个，还可以是0个。</p>
+<p>给定一组数字a，b，c……，请计算a2 + b2 + c2 + ……。</p>
+<p>可以用之前学过的，函数参数是一个 list / tuple，然后在内部循环</p>
+<pre><code class="language-py">def calc(numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+</code></pre>
+<p>调用时比较麻烦，需要先组装出 list/tuple</p>
+<pre><code class="language-shell">&gt;&gt;&gt; calc([1, 2, 3])
+14
+&gt;&gt;&gt; calc((1, 3, 5, 7))
+84
+</code></pre>
+<p>如果用<strong>可变参数</strong> <code>*numbers</code></p>
+<pre><code class="language-py">def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+</code></pre>
+<p>就能简化调用函数的方式(不需要组装 list/tuple, 依次把参数一个个放进去即可)</p>
+<pre><code class="language-shell">&gt;&gt;&gt; calc(1, 2, 3)
+14
+&gt;&gt;&gt; calc(1, 3, 5, 7)
+84
+
+# 如果已经有一个 list/tuple, 调用可变参数的函数，就要使用索引来得到参数并传入了
+&gt;&gt;&gt; nums = [1, 2, 3]
+&gt;&gt;&gt; calc(nums[0], nums[1], nums[2])
+# 因为这种写法太繁琐，所以可以用简化的方式，在 list/tuple 名称前面添加一个 * 号把它变成可变参数（和函数定义时的可变参数格式一样）
+# 这种写法相当有用，而且很常见
+&gt;&gt;&gt; calc(*nums)
+</code></pre>
+<h3 id="关键字参数">关键字参数</h3>
+<p>前面<code>可变参数</code>在函数调用时自动组装为一个<strong>tuple</strong>（因此是没有参数名的）</p>
+<p>而<code>关键字参数</code>允许你传入0个或任意个<strong>含参数名 的参数</strong>，这些关键字参数在函数内部自动组装为一个<strong>dict</strong></p>
+<pre><code class="language-py">def person(name, age, **kw):
+    print('name:', name, 'age:', age, 'other:', kw)
+</code></pre>
+<p><code>**kw</code>就是<code>关键字参数</code></p>
+<pre><code class="language-shell"># 当只传入必选参数时, other 是一个空的 dict）
+&gt;&gt;&gt; person('Michael', 30)
+name: Michael age: 30 other: {}
+
+# 传入任意个数的关键字参数(注意是 任意个数)， other 这个 dict 的内容会随之改变
+&gt;&gt;&gt; person('Bob', 35, city='Beijing')
+name: Bob age: 35 other: {'city': 'Beijing'}
+&gt;&gt;&gt; person('Adam', 45, gender='M', job='Engineer')
+name: Adam age: 45 other: {'gender': 'M', 'job': 'Engineer'}
+</code></pre>
+<p>用处是？</p>
+<p>可以扩展函数的功能. 例如在注册用户是，可以灵活处理必填项（name, age）和可选项</p>
+<pre><code class="language-shell"># 先组装出一个 dict
+&gt;&gt;&gt; extra = {'city': 'Beijing', 'job': 'Engineer'}
+&gt;&gt;&gt; person('Jack', 24, city=extra['city'], job=extra['job'])
+name: Jack age: 24 other: {'city': 'Beijing', 'job': 'Engineer'}
+
+# 简化写法（和可变参数类似）**extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数，kw将获得一个dict，注意kw获得的dict是extra的一份拷贝，对kw的改动不会影响到函数外的extra。
+&gt;&gt;&gt; person('Jack', 24, **extra)
+</code></pre>
+<h3 id="命名关键字参数">命名关键字参数</h3>
+<p>如果要限制关键字参数的名字，就可以用命名关键字参数。 （关键字参数可以传入任意名称的参数，在内部使用<code>if 'city' in kw:</code>判断是会否有这些参数名）</p>
+<p>如果只希望接收city和job作为关键字参数，需要一个特殊分隔符<code>*</code>，*后面的参数被视为<strong>命名关键字参数</strong></p>
+<pre><code class="language-py">def person(name, age, *, city, job):
+    print(name, age, city, job)
+
+# 命名关键字参数可以有缺省值(city='Beijing')，从而简化调用：
+def person(name, age, *, city='Beijing', job):
+    print(name, age, city, job)
+</code></pre>
+<p>调用</p>
+<pre><code class="language-shell">&gt;&gt;&gt; person('Jack', 24, city='Beijing', job='Engineer')
+Jack 24 Beijing Engineer
+
+# 有缺省值的命名关键字参数，不需要再传入 city 参数
+&gt;&gt;&gt; person('Jack', 24, job='Engineer')
+Jack 24 Beijing Engineer
+
+# 命名关键字参数**必须传入参数名**，这和位置参数不同。如果没有传入参数名，调用将报错
+&gt;&gt;&gt; person('Jack', 24, 'Beijing', 'Engineer')
+# 由于调用时缺少参数名city和job，Python解释器把这4个参数均视为位置参数，但person()函数仅接受2个位置参数
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: person() takes 2 positional arguments but 4 were given 
+</code></pre>
+<p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了：</p>
+<pre><code class="language-py">def person(name, age, *args, city, job):
+    print(name, age, args, city, job)
+</code></pre>
+<h3 id="参数组合">参数组合</h3>
+<p>可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用</p>
+<p>但是 <strong>参数定义的顺序</strong>必须是：</p>
+<ol>
+<li>必选参数</li>
+<li>默认参数</li>
+<li>可变参数</li>
+<li>命名关键字参数和关键字参数</li>
+</ol>
+<p><strong>虽然可以组合多达5种参数，但不要同时使用太多的组合，否则函数接口的可理解性很差。</strong></p>
+<p>例如</p>
+<pre><code class="language-py"># 必选，必选，默认，可变，关键字
+def f1(a, b, c=0, *args, **kw):
+    print('a =', a, 'b =', b, 'c =', c, 'args =', args, 'kw =', kw)
+
+# 必选，必选，默认，命名关键字分隔符，命名关键字参数d, 关键字
+def f2(a, b, c=0, *, d, **kw):
+    print('a =', a, 'b =', b, 'c =', c, 'd =', d, 'kw =', kw)
+</code></pre>
+<p>注意看下面调用函数时，各个参数的变化</p>
+<pre><code class="language-shell">&gt;&gt;&gt; f1(1, 2)
+a = 1 b = 2 c = 0 args = () kw = {}
+&gt;&gt;&gt; f1(1, 2, c=3)
+a = 1 b = 2 c = 3 args = () kw = {}
+&gt;&gt;&gt; f1(1, 2, 3, 'a', 'b')
+a = 1 b = 2 c = 3 args = ('a', 'b') kw = {}
+&gt;&gt;&gt; f1(1, 2, 3, 'a', 'b', x=99)
+a = 1 b = 2 c = 3 args = ('a', 'b') kw = {'x': 99}
+&gt;&gt;&gt; f2(1, 2, d=99, ext=None)
+a = 1 b = 2 c = 0 d = 99 kw = {'ext': None}
+
+
+# 还可以在调用上述函数时，传入 tuple 和 dict 
+&gt;&gt;&gt; args = (1, 2, 3, 4)
+&gt;&gt;&gt; kw = {'d': 99, 'x': '#'}
+&gt;&gt;&gt; f1(*args, **kw)
+a = 1 b = 2 c = 3 args = (4,) kw = {'d': 99, 'x': '#'}
+&gt;&gt;&gt; args = (1, 2, 3)
+&gt;&gt;&gt; kw = {'d': 88, 'x': '#'}
+&gt;&gt;&gt; f2(*args, **kw)
+a = 1 b = 2 c = 3 d = 88 kw = {'x': '#'}
+</code></pre>
+<h2 id="递归函数-防止栈溢出">递归函数 防止栈溢出</h2>
+<p>一个函数在内部调用自身本身，这个函数就是递归函数。</p>
+<p>例如 计算阶乘<code>n! = 1 x 2 x 3 x ... x n</code>，用函数fact(n)表示。 所以，<code>fact(n)</code>可以表示为<code>n x fact(n-1)</code>，只有n=1时需要特殊处理。</p>
+<pre><code class="language-py">def fact(n):
+    if n==1:
+        return 1
+    return n * fact(n - 1)
+</code></pre>
+<p>fact(5)，可以根据函数定义看到计算过程如下</p>
+<pre><code class="language-shell">===&gt; fact(5)
+===&gt; 5 * fact(4)
+===&gt; 5 * (4 * fact(3))
+===&gt; 5 * (4 * (3 * fact(2)))
+===&gt; 5 * (4 * (3 * (2 * fact(1))))
+===&gt; 5 * (4 * (3 * (2 * 1)))
+===&gt; 5 * (4 * (3 * 2))
+===&gt; 5 * (4 * 6)
+===&gt; 5 * 24
+===&gt; 120
+</code></pre>
+<p>理论上，所有的递归函数都可以写成循环的方式，但循环的逻辑不如递归清晰。</p>
+<p>使用递归函数需要注意<strong>防止栈溢出</strong></p>
+<p><strong>在计算机中，函数调用是通过栈（stack）这种数据结构实现的，每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧</strong>。由于<strong>栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出</strong>。可以试试fact(1000)：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; fact(1000)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 4, in fact
+  ...
+  File &quot;&lt;stdin&gt;&quot;, line 4, in fact
+RuntimeError: maximum recursion depth exceeded in comparison
+</code></pre>
+<p>解决递归调用栈溢出的方法是通过<strong>尾递归优化</strong>，事实上尾递归和循环的效果是一样的，所以，把循环看成是一种特殊的尾递归函数也是可以的</p>
+<p>尾递归是指，在函数返回的时候，调用自身本身，并且，return语句不能包含表达式。这样，编译器或者解释器就可以把尾递归做优化，使递归本身无论调用多少次，都只占用一个栈帧，不会出现栈溢出的情况。</p>
+<p>上面的fact(n)函数由于<code>return n * fact(n - 1)</code>引入了乘法表达式，所以就不是尾递归了。要改成尾递归方式，需要多一点代码，主要是要把<strong>每一步的乘积传入到递归函数</strong>中：</p>
+<pre><code class="language-py">def fact(n):
+    return fact_iter(n, 1)
+
+def fact_iter(num, product):
+    if num == 1:
+        return product
+    return fact_iter(num - 1, num * product)
+</code></pre>
+<p>可以看到，<code>return fact_iter(num - 1, num * product)</code>仅返回递归函数本身，num - 1和num * product在函数调用前就会被计算，不影响函数调用。</p>
+<p>fact(5)对应的fact_iter(5, 1)的调用如下</p>
+<pre><code class="language-shell">===&gt; fact_iter(5, 1)
+===&gt; fact_iter(4, 5)
+===&gt; fact_iter(3, 20)
+===&gt; fact_iter(2, 60)
+===&gt; fact_iter(1, 120)
+===&gt; 120
+</code></pre>
+<p>练习：汉诺塔</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/python/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/python/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/flask/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

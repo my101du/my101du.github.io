@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: react router(4) permalink: react-router tags: foreground Understand these nouns: Router(BrowserRouter or HistoryRouter) Swtich Route Link Redirect withRouter Sample: import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from &#39;react-router-dom&#39;; import TestComponent from &#39;./TestComponent&#39; @withRouter export default class App extends React.Component { //... return ( &amp;lt;div&amp;gt; &amp;lt;Link to=&amp;quot;/test&amp;quot;&amp;gt;test&amp;lt;/Link&amp;gt; &amp;lt;Router&amp;gt; &amp;lt;Switch&amp;gt; &amp;lt;Route path=&amp;quot;/&amp;quot; exact component={Dashboard} /&amp;gt; &amp;lt;Route path=&amp;quot;/test&amp;quot; exact component={Test} /&amp;gt; &amp;lt;Redirect from=&amp;quot;/accounts&amp;quot; to=&amp;quot;/users&amp;quot; /&amp;gt; &amp;lt;Route component={NoMatch} /&amp;gt; &amp;lt;/Switch&amp;gt; &amp;lt;/Router&amp;gt;" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: react router(4) permalink: react-router tags: foreground Understand these nouns: Router(BrowserRouter or HistoryRouter) Swtich Route Link Redirect withRouter Sample: import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from &#39;react-router-dom&#39;; import TestComponent from &#39;./TestComponent&#39; @withRouter export default class App extends React.Component { //... return ( &lt;div&gt; &lt;Link to=&quot;/test&quot;&gt;test&lt;/Link&gt; &lt;Router&gt; &lt;Switch&gt; &lt;Route path=&quot;/&quot; exact component={Dashboard} /&gt; &lt;Route path=&quot;/test&quot; exact component={Test} /&gt; &lt;Redirect from=&quot;/accounts&quot; to=&quot;/users&quot; /&gt; &lt;Route component={NoMatch} /&gt; &lt;/Switch&gt; &lt;/Router&gt;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/react-router4/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: react router(4) permalink: react-router tags: foreground Understand these nouns: Router(BrowserRouter or HistoryRouter) Swtich Route Link Redirect withRouter Sample: import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from &#39;react-router-dom&#39;; import TestComponent from &#39;./TestComponent&#39; @withRouter export default class App extends React.Component { //... return ( &lt;div&gt; &lt;Link to=&quot;/test&quot;&gt;test&lt;/Link&gt; &lt;Router&gt; &lt;Switch&gt; &lt;Route path=&quot;/&quot; exact component={Dashboard} /&gt; &lt;Route path=&quot;/test&quot; exact component={Test} /&gt; &lt;Redirect from=&quot;/accounts&quot; to=&quot;/users&quot; /&gt; &lt;Route component={NoMatch} /&gt; &lt;/Switch&gt; &lt;/Router&gt;">
+
+<meta itemprop="wordCount" content="3304">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: react router(4) permalink: react-router tags: foreground Understand these nouns: Router(BrowserRouter or HistoryRouter) Swtich Route Link Redirect withRouter Sample: import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from &#39;react-router-dom&#39;; import TestComponent from &#39;./TestComponent&#39; @withRouter export default class App extends React.Component { //... return ( &lt;div&gt; &lt;Link to=&quot;/test&quot;&gt;test&lt;/Link&gt; &lt;Router&gt; &lt;Switch&gt; &lt;Route path=&quot;/&quot; exact component={Dashboard} /&gt; &lt;Route path=&quot;/test&quot; exact component={Test} /&gt; &lt;Redirect from=&quot;/accounts&quot; to=&quot;/users&quot; /&gt; &lt;Route component={NoMatch} /&gt; &lt;/Switch&gt; &lt;/Router&gt;"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-router4/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-router4/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3304字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: react router(4)
+permalink: react-router
+tags:</p>
+<ul>
+<li>foreground</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>Understand these nouns:</p>
+<p>Router(BrowserRouter or HistoryRouter)
+Swtich
+Route
+Link
+Redirect
+withRouter</p>
+<p>Sample:</p>
+<pre><code class="language-javascript">import { BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import TestComponent from './TestComponent'
+
+@withRouter
+export default class App extends React.Component {
+    //...
+    return (
+        &lt;div&gt;
+            &lt;Link to=&quot;/test&quot;&gt;test&lt;/Link&gt;
+            
+            &lt;Router&gt;
+                &lt;Switch&gt;
+                    &lt;Route path=&quot;/&quot; exact component={Dashboard} /&gt;
+                    &lt;Route path=&quot;/test&quot; exact component={Test} /&gt;
+                    &lt;Redirect from=&quot;/accounts&quot; to=&quot;/users&quot; /&gt;
+                    &lt;Route component={NoMatch} /&gt;
+                &lt;/Switch&gt;
+            &lt;/Router&gt;
+        &lt;/div&gt;
+
+</code></pre>
+<h1 id="没有通过验证的用户自动跳转到登录界面">没有通过验证的用户自动跳转到登录界面</h1>
+<h2 id="最简单的就是控制-login-组件与-main-组件的显示">最简单的，就是控制 Login 组件与 Main 组件的显示</h2>
+<p>但是这种方案：</p>
+<ol>
+<li>没有自动“跳转”</li>
+<li>跳转到登录后自动跳回上一页</li>
+</ol>
+<pre><code class="language-js">if (this.props.commonStore.appLoaded) {
+        return (
+          &lt;MainLayout&gt;
+            &lt;Switch&gt;
+                &lt;Route path=&quot;/&quot; exact component={Dashboard} /&gt;
+            &lt;/Switch&gt;
+          &lt;/MainLayout&gt;
+        );
+} else {
+        return (
+          &lt;Login /&gt;
+        )
+      }
+</code></pre>
+<h2 id="使用-redirect-结合thispropslocationstate更完善已经登录则跳回上一页未登录自动跳转">使用 Redirect 结合this.props.location.state更完善，已经登录则跳回上一页，未登录，自动跳转</h2>
+<p><a href="https://tylermcginnis.com/react-router-protected-routes-authentication/">https://tylermcginnis.com/react-router-protected-routes-authentication/</a></p>
+<p>首先<code>import {Redirect} from 'react-router-dom'</code></p>
+<p>为了测试方便，定义一个 fakeAuth</p>
+<pre><code class="language-js">const fakeAuth = {
+    isAuthenticated: false,
+    authenticate(cb) {
+        this.isAuthenticated = true
+        setTimeout(cb, 100) //fake async
+    },
+    signout(cb) {
+        this.isAuthenticated = false
+        setTimeout(cb, 100)
+    }  
+}
+</code></pre>
+<p>一个公共组件和一个受保护组件</p>
+<pre><code class="language-js">const Public = () =&gt; &lt;h3&gt;Public Component&lt;/h3&gt;
+const Protected = () =&gt; &lt;h3&gt;Protected Component&lt;/h3&gt;
+</code></pre>
+<p>Login 组件（临时）</p>
+<pre><code class="language-js">const Login = () =&gt; &lt;div&gt;Login&lt;/div&gt;
+</code></pre>
+<p>App 组件里添加两个 Link ,以及对应的组件(这时，只有 /public 可以被访问)</p>
+<pre><code class="language-js">&lt;Router&gt;
+    &lt;div&gt;
+        &lt;Link to=&quot;/public&quot;&gt;Pulbic&lt;/Link&gt;
+        &lt;Link to=&quot;/protected&quot;&gt;Proteced&lt;/Link&gt;
+    &lt;/div&gt;
+    
+    &lt;Route path=&quot;/public&quot; component={Public}&gt;&lt;/Route&gt;
+    
+    &lt;Route path=&quot;/login&quot; component={Login}&gt;&lt;/Route&gt;
+&lt;/Router&gt;
+</code></pre>
+<p>再继续添加<code>PrivateRoute</code>组件</p>
+<pre><code class="language-js">&lt;Route path=&quot;/public&quot; component={Public}&gt;&lt;/Route&gt;
+&lt;Route path=&quot;/login&quot; component={Login}&gt;&lt;/Route&gt;
+&lt;PrivateRoute path=&quot;/protected&quot; component={Protected} /&gt;
+</code></pre>
+<p>接着完善 <code>PrivateRoute</code>，实际上是一个 HOC, 设置一个 <code>&lt;Route&gt;</code>组件的<code>render</code>属性，判断当用户已经通过验证时，显示传入的组件，如果没有则 redirect 到登录的路由 /login</p>
+<p><code>Redirect</code>的<code>to</code>属性里，传入了一些数据到 /login（ props.location）便于登录完后返回这个页面，在后面用<code>const { from } = this.props.location.state</code>来取值</p>
+<pre><code class="language-js">const PrivateRoute = ({ component: Component, ...rest }) =&gt; (
+  &lt;Route
+    {...rest}
+    render={props =&gt;
+      fakeAuth.isAuthenticated ? (
+        &lt;Component {...props} /&gt;
+      ) : (
+        &lt;Redirect
+          to={% raw %}{{
+            pathname: &quot;/login&quot;,
+            state: { 
+                from: props.location 
+            }
+          }}{% endraw %}
+        /&gt;
+      )
+    }
+  /&gt;
+);
+</code></pre>
+<p><strong>注意</strong>
+不能用 <code>class PrivateRoute extends Component {}</code>,在内部<code>render(){ return ( &lt;Route&gt;) }</code>的方式，会报错“函数内不能 return Component”, 因为 const PrivateRoute 是个“无状态组件”。不能用 return 的方式</p>
+<p>如果用了 <code>mobx</code>, 那么 fakeAuth 就不能用了。</p>
+<p>这段代码要改下，把 <code>&lt;Route&gt;</code> 放到一个 React 组件里面去，(上面那个无状态组件不支持 <code>@inject</code>这种指令的)</p>
+<p>最好是把 this.props.component 命名为 <code>Children</code> 以免和 React 的 Component 类重名了。</p>
+<pre><code class="language-js">@inject('authStore')
+@observer
+class PrivateRoute extends Component {
+  render() {
+    const { component:Children } = this.props
+
+    return (&lt;Route
+      render={props =&gt;
+        this.props.authStore.isAuthenticated ? (
+          &lt;Children {...this.props} /&gt;
+        ) : (
+          &lt;Redirect
+            to={% raw %}{{
+              pathname: &quot;/login&quot;,
+              state: { 
+                  from: this.props.location 
+              }
+            }}{% endraw %}
+          /&gt;
+        )
+      }
+    /&gt;)
+  }
+}
+
+export default PrivateRoute
+</code></pre>
+<p><strong>扩展</strong></p>
+<p>这里我尝试写了下 HOC 的方式，用 HOC 组件返回一个封装过的组件，但是代码报错了。。。没时间检查，应该也是可行的。</p>
+<p>添加一个登录组件<code>AuthButton</code>放在顶部，如果未登录，显示按钮，否则显示”welcome“信息,并且再点击”退出“button, redirect to / pah</p>
+<pre><code class="language-js">const AuthButton = withRouter(
+  ({ history }) =&gt;
+    fakeAuth.isAuthenticated ? (
+      &lt;p&gt;
+        Welcome!{&quot; &quot;}
+        &lt;button
+          onClick={() =&gt; {
+            fakeAuth.signout(() =&gt; history.push(&quot;/&quot;));
+          }}
+        &gt;
+          Sign out
+        &lt;/button&gt;
+      &lt;/p&gt;
+    ) : (
+      &lt;p&gt;You are not logged in.&lt;/p&gt;
+    )
+);
+
+</code></pre>
+<p>最后剩下的就是修改 <code>&lt;Login /&gt;</code>组件，如果用户未登录，就显示登录按钮，否则自动跳转回去之前的页面(真实情况是，已经登录后，就不能再重新登录了)</p>
+<pre><code class="language-js">class Login extends React.Component {
+  state = {
+    redirectToReferrer: false
+  };
+
+  login = () =&gt; {
+    fakeAuth.authenticate(() =&gt; {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
+
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: &quot;/&quot; } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return &lt;Redirect to={from} /&gt;;
+    }
+
+    return (
+      &lt;div&gt;
+        &lt;p&gt;You must log in to view the page at {from.pathname}&lt;/p&gt;
+        &lt;button onClick={this.login}&gt;Log in&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<h2 id="基于角色role的组件访问权限使用-hoc">基于角色（role）的组件访问权限（使用 HOC）</h2>
+<p>这样后端只要获取到用户的 role 就可以了。</p>
+<p><a href="https://hackernoon.com/role-based-authorization-in-react-c70bb7641db4">https://hackernoon.com/role-based-authorization-in-react-c70bb7641db4</a>  好文，写作风格用词等很不错, 含金量很大</p>
+<p>注意两个词区别, 看起来挺像的</p>
+<p>Authentication  身份认证   一般指登录 who are you
+Authorization   授权      指是否有权限访问某个页面/资源  are you allowed to see that</p>
+<p>我们还需要让组件 self contained, reusable</p>
+<h3 id="第一步-在路由里传入-roles-属性">第一步 在<strong>路由</strong>里传入 roles 属性</h3>
+<p><code>&lt;Route&gt;</code> 组件添加属性 <code>allowed</code>(值为可访问的 roles 数组)</p>
+<pre><code class="language-js">//Router Configuration
+&lt;Route
+  allowed={['manager', 'admin']}
+  path=&quot;feature&quot;
+  component={YourRoute}
+/&gt;
+</code></pre>
+<p>然后<code>&lt;YourRoute&gt;</code>组件内有一个可复用的<code>&lt;Authorization&gt;</code>组件，继续传入从父组件得到的<code>props</code> 数据中的 <code>allowed</code>.以及当前 <code>user</code></p>
+<pre><code>// Route handler
+class YourRoute extends React.Component {
+    render() {
+        return &lt;Authorization allowed={this.props.allowed} user={this.state.user}&gt;
+</code></pre>
+<h3 id="第二步-roles-和组件关联">第二步 roles 和<strong>组件</strong>关联</h3>
+<p>在每条<strong>路由</strong>里面传入角色列表给组件去处理并不是很好。我们想把这个角色列表<strong>下放到组件里</strong>。</p>
+<p>使用 **HOC (高阶组件)**<code>Authorization</code>，传入待封装的组件<code>WrappedComponent</code>和参数<code>allowedRoles</code>，处理权限，然后返回被封装过的组件。（如果权限不符合，统一返回  No page for you）</p>
+<pre><code class="language-js">// Authorization HOC
+const Authorization = (WrappedComponent, allowedRoles) =&gt;
+  return class WithAuthorization extends React.Component {
+    constructor(props) {
+      super(props)
+
+      // In this case the user is hardcoded, but it could be loaded from anywhere.
+      // Redux, MobX, RxJS, Backbone...
+      this.state = {
+        user: {
+          name: 'vcarl',
+          role: 'admin'
+        }
+      }
+    }
+    render() {
+      const { role } = this.state.user
+      if (allowedRoles.includes(role)) {
+        return &lt;WrappedComponent {...this.props} /&gt;
+      } else {
+        return &lt;h1&gt;No page for you!&lt;/h1&gt;
+      }
+    }
+  }
+</code></pre>
+<p>现在<code>&lt;YourRoute&gt;</code>就可以用这个 HOC 来封装它了</p>
+<pre><code class="language-js">// Route handler
+class YourRoute extends React.Component {
+  render() {
+    return &lt;div&gt;
+      /* the rest of your page */
+    &lt;/div&gt;
+  }
+}
+
+export default Authorization(YourRoute, ['manager', 'admin'])
+</code></pre>
+<p>现在<code>&lt;Route&gt;</code>里可以删去<code>allowed</code>属性了，他们放到 HOC 里面去了<code>Authorization(YourRoute, ['manager', 'admin'])</code></p>
+<pre><code class="language-js">&lt;Route
+  path=&quot;feature&quot;
+  component={YourRoute}
+/&gt;
+</code></pre>
+<h3 id="可以把-hoc-函数调用移动到路由里面去不推荐会有问题">可以把 HOC 函数调用移动到路由里面去（不推荐，会有问题）</h3>
+<p>上面还可以这么写</p>
+<pre><code class="language-js">// 不再使用单独一行代码来封装 YourRoute 组件 
+// export default Authorization(YourRoute, ['manager', 'admin'])
+export default YourRoute
+
+
+// 而是放到路由里面去封装
+&lt;Route
+  path=&quot;feature&quot;
+  component={Authorization(YourRoute, ['manager', 'admin'])}
+/&gt;
+</code></pre>
+<p>看起来写法有点不一样而已。有人指出，在 render 里面类似<code>component={}</code>代码使用 HOC 封装组件会产生很多问题，不应该这么做。</p>
+<h3 id="建立角色与权限组简化管理">建立“角色与权限组”，简化管理</h3>
+<p>目前虽然可以用<code>Authorization()</code>传入组件、roles列表，来给一个组件绑定访问权限。但如果有多个路由，有不同的权限要求呢？</p>
+<ul>
+<li>/users 允许 admin manager user 三种角色访问</li>
+<li>/users/:id/edit 允许 manager 和 admin 两种角色访问</li>
+<li>/users/create 只允许 admin 这一种角色访问</li>
+</ul>
+<p>就会写很多类似的代码</p>
+<pre><code class="language-js">Authorization(Users, ['admin', 'manager', 'user'])
+Authorization(EditUser, ['admin', 'manager'])
+Authorization(CreateUser, ['admin'])
+</code></pre>
+<p>不仅写起来繁琐，每次都要输入几个角色的字符串，万一以后想把 user 改名成 member，要大量改动代码。
+而且不直观，全是<code>Authorization</code>，权限的级别要去看参数才知道。</p>
+<p>现在把 <code>Authorization</code> 这个 HOC 的两个同等级参数（组件，roles 数组）中，第二个参数提升一下，变成一个函数，并且返回一个 HOC</p>
+<pre><code class="language-js">const Authorization = (allowedRoles) =&gt;
+  (WrappedComponent) =&gt;
+    return class WithAuthorization extends React.Component {
+</code></pre>
+<p>通过改造，可以通过传入不同的 roles 参数，返回不同的 HOC ，这样生成我们需要的“角色与权限组”,非常方便集中管理、扩展组合不同的权限组</p>
+<p>比如下面的三个：</p>
+<pre><code class="language-js">const User = Authorization(['user', 'manager', 'admin'])
+const Manager = Authorization(['manager', 'admin'])
+const Admin = Authorization(['admin'])
+</code></pre>
+<p>然后路由里就可以不需要传入 roles, 而直接用这几个 HOC (角色与权限组)，类似<code>component={Manager(EditUser)}</code></p>
+<pre><code class="language-js">&lt;Route path=&quot;/&quot; component={App}&gt;
+    &lt;Route path=&quot;users&quot; component={User(Users)}&gt;
+      &lt;Route path=&quot;:id/edit&quot; component={Manager(EditUser)} /&gt;
+      &lt;Route path=&quot;create&quot; component={Admin(CreateUser)} /&gt;
+    &lt;/Route&gt;
+  &lt;/Route&gt;
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-js">&lt;Route path=&quot;/&quot; component={App}&gt;
+    &lt;Route path=&quot;users&quot; component={Authorization(['user', 'manager', 'admin'])(Users)}&gt;
+      &lt;Route path=&quot;:id/edit&quot; component={Authorization(['manager', 'admin'])(EditUser)} /&gt;
+      &lt;Route path=&quot;create&quot; component={Authorization(['admin'])(CreateUser)} /&gt;
+    &lt;/Route&gt;
+  &lt;/Route&gt;
+</code></pre>
+<p>看到 <code>Authorization(parameter)(Component)</code> 这个，是不是想起 Redux 的 <code>connect</code>了？</p>
+<h3 id="在-react-app-里管理用户权限">在 React App 里管理用户权限</h3>
+<p><a href="https://medium.com/dailyjs/managing-user-permissions-in-your-react-app-a93a94ff9b40za">https://medium.com/dailyjs/managing-user-permissions-in-your-react-app-a93a94ff9b40za</a></p>
+<h3 id="问题-前端是否可以通过伪造-role-来访问其他未授权的组件">问题 前端是否可以通过伪造 role 来访问其他未授权的组件？</h3>
+<p><a href="https://segmentfault.com/a/1190000012675759">https://segmentfault.com/a/1190000012675759</a>
+答案：不能。 必须配合后端</p>
+<p>进页面的时候就直接走API拿到当前用户所有能访问的URL列表，然后每次路由跳转的时候就通过这个列表判断下，直接减少了API的请求</p>
+<p>google 到其他主题</p>
+<h1 id="获取当前路由">获取当前路由</h1>
+<p>关键</p>
+<ul>
+<li>withRouter</li>
+<li>this.props.location[.path]</li>
+</ul>
+<pre><code class="language-js">import {withRouter} from 'react-router-dom';
+    ...
+
+    const SomeComponent = withRouter(props =&gt; &lt;MyComponent {...props}/&gt;);
+
+    class MyComponent extends React.Component {
+        ...
+        SomeMethod () {
+          const {pathname} = this.props.location;
+          ...
+        }
+        ...
+
+    }
+
+</code></pre>
+<h1 id="如果-react-项目在某个子目录下">如果 react 项目在某个子目录下</h1>
+<p>把项目放到  <a href="http://www.sample.org/app/">http://www.sample.org/app/</a> 而不是默认的根目录， 会发现把文件部署过去后，点击所有链接，会自动跳到根目录</p>
+<p>例如本来希望链接是 <a href="http://www.sample.org/app/something">http://www.sample.org/app/something</a></p>
+<p>结果链接是  <a href="http://www.sample.org/something">http://www.sample.org/something</a>  ,丢失了 app/</p>
+<p>诡异的是，页面访问正常（history router 的功劳。。。），因为实际上没有发生服务器/后台的路由跳转</p>
+<p>要想让链接自动带这个子目录，只要在使用 Router 组件的时候添加 <code>basename</code>参数即可</p>
+<pre><code class="language-js">&lt;Router basename={'/app'}&gt;
+</code></pre>
+<p>网上的这篇文章，我没有修改 package.json 的 homepage（./app） ,改了反而出错，变成 /app/app 两层</p>
+<p><a href="https://medium.com/@svinkle/how-to-deploy-a-react-app-to-a-subdirectory-f694d46427c1">https://medium.com/@svinkle/how-to-deploy-a-react-app-to-a-subdirectory-f694d46427c1</a></p>
+<h1 id="后端配合当页面停留在子路由时刷新不会提示-404">后端配合，当页面停留在子路由时，刷新不会提示 404</h1>
+<p>默认情况下，我们必须 <strong>先</strong> 进入 SPA（React &amp; Vue）等的“入口文件”，也就是根路由，例如 <code>/</code></p>
+<p>然后通过点击动作，在子路由之间跳转，如 <code>/test1</code>  <code>/test2</code></p>
+<p>如果直接在浏览器里输入 <code>/test1</code>,或者前端路由跳转到 <code>/test1</code>时刷新浏览器， 会提示 404。 这是因为刷新动作会请求后端路由，而后端路由并没有匹配的规则。</p>
+<p>解决办法：</p>
+<p>(1)如果是 Laravel 等自带路由系统的框架，可以写一个路由规则（略，参看..）
+(2)简单地把应用所有文件放到某个目录，然后在 Nginx 里写一个 rewrite，让所有子路由请求全部跳回首页，让前端路由去接管处理</p>
+<pre><code class="language-shell">location / {
+  try_files $uri $uri/ /index.html;
+}
+</code></pre>
+<p>如果是一个子目录</p>
+<pre><code class="language-shell">location /reactApp {
+    root /var/www;  // 注意，是这个子目录的上级主目录
+    #index  index.html;
+    try_files $uri $uri/ /reactApp/index.html;
+}
+</code></pre>
+<p>这时候打开页面，会提示 css 文件 404.</p>
+<p>分析 <code>build/index.html</code>, 里面的路径是“当前路径”（相对） <code>./sub/path/static/js/xxx.css</code> 当然找不到了</p>
+<p>需要修改 build 出来的<code>index.html</code>里 css 和 js 的路径为绝对路径<code>/reactApp/</code>.</p>
+<p>打开 <code>package.json</code> 的 <strong>homepage</strong>, 把默认的 <code>./</code>改成 <code>/reactApp</code> 重新 build，现在 <code>/build/index.html</code>里的路径是绝对路径了<code>/reactApp/static/css/xxxx.css</code></p>
+<p>如果需要动态改变，例如 build 到不同的子目录，可以使用</p>
+<p><a href="https://github.com/facebook/create-react-app/pull/937">https://github.com/facebook/create-react-app/pull/937</a></p>
+<pre><code class="language-shell">PUBLIC_URL=https://www.your.domain.com npm run build 
+</code></pre>
+<p>或修改 <code>config/webpack.config.dev.js</code>的<code>const publicPath = '/';</code> (未测试)</p>
+<p>或使用nginx代理的方式部署</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/react-router4/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/react-router4/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/react-hooks/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

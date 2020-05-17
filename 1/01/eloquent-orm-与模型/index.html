@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Eloquent ORM 与模型 permalink: laravel-eloquent-orm-model tags: laravel Eloquent ORM 入门 ORM Eloquent ORM 是 Laravel 中的 ORM 实现 是一种 ActiveRecord 的实现，用于和数据库进行交互。 每个数据库表都有一个对应的「模型」，通过模型查找数据表内" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Eloquent ORM 与模型 permalink: laravel-eloquent-orm-model tags: laravel Eloquent ORM 入门 ORM Eloquent ORM 是 Laravel 中的 ORM 实现 是一种 ActiveRecord 的实现，用于和数据库进行交互。 每个数据库表都有一个对应的「模型」，通过模型查找数据表内" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Eloquent ORM 与模型 permalink: laravel-eloquent-orm-model tags: laravel Eloquent ORM 入门 ORM Eloquent ORM 是 Laravel 中的 ORM 实现 是一种 ActiveRecord 的实现，用于和数据库进行交互。 每个数据库表都有一个对应的「模型」，通过模型查找数据表内">
+
+<meta itemprop="wordCount" content="7628">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Eloquent ORM 与模型 permalink: laravel-eloquent-orm-model tags: laravel Eloquent ORM 入门 ORM Eloquent ORM 是 Laravel 中的 ORM 实现 是一种 ActiveRecord 的实现，用于和数据库进行交互。 每个数据库表都有一个对应的「模型」，通过模型查找数据表内"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7628字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 16分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Eloquent ORM 与模型</p>
+<p>permalink: laravel-eloquent-orm-model
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="eloquent-orm-入门">Eloquent ORM 入门</h1>
+<h2 id="orm">ORM</h2>
+<h2 id="eloquent-orm-是-laravel-中的-orm-实现">Eloquent ORM 是 Laravel 中的 ORM 实现</h2>
+<p>是一种 ActiveRecord 的实现，用于和数据库进行交互。
+每个数据库表都有一个对应的「模型」，通过模型查找数据表内的数据，以及将记录添加到数据表。</p>
+<p>用户 &mdash; [模型] &mdash; 模型对应的表</p>
+<h2 id="打开支持">打开支持</h2>
+<p>lumen 一定要记得打开<code>bootstrap/app.php</code>里的这两行，才能使用 Eloquent ORM 和 Facade 特性 ( Lumen 里为了提高性能，默认是关闭的)</p>
+<pre><code class="language-php">$app-&gt;withFacades();
+$app-&gt;withEloquent();
+</code></pre>
+<h2 id="定义-eloquent-模型">定义 Eloquent 模型</h2>
+<p>所有的 Eloquent 模型都继承自 <code>Illuminate\Database\Eloquent\Model</code> 类。
+建议在 app 目录下创建 Models 来统一存放。</p>
+<p>创建与前面数据库对应的模型类<code>app/PreProducts.php</code>，内容如下</p>
+<pre><code class="language-php">namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class PreProducts extends Model{
+
+}
+</code></pre>
+<p>当然，除了上面的手动添加文件，还可以用 artisan 命令快速创建模型实例</p>
+<pre><code class="language-shell">php artisan make:model User
+
+# 同时生成一个 “数据库迁移”
+php artisan make:model User --migration
+</code></pre>
+<p>然后就可以在控制器 <code>ProductsController.php</code>里用它了(use App\PulseProducts)，<code>PulseProducts</code>使用了 Facade 特性，简化了模型类的调用。</p>
+<pre><code class="language-php">use App\PulseProducts;
+
+class ProductsController{
+	public function index(){
+		//这个方法生成的数据是对象类型，无法通过 phpunit 单元测试，要强制用 json_encode 返回
+		//return PulseProducts::all();
+		
+		return json_encode($result);
+	}
+}
+</code></pre>
+<h2 id="模型约定">模型约定</h2>
+<p>例如一个<code>Flight</code> 模型类，我们用它来从 <code>flights</code>数据表中读取数据/写入数据。</p>
+<pre><code class="language-php">namespace App;
+use Illuminate\Database\Eloquent\Model;
+
+class Flight extends Model
+{
+    //
+}
+</code></pre>
+<h3 id="数据表名">数据表名</h3>
+<p>模型对应的数据表默认是类的“蛇形名称”，并加上复数形式。例如这里的 <code>Flight</code>模型对应的数据表名默认是<code>flights</code></p>
+<p>如果需要自定义表名，需要在模型上定义个<code>table</code>属性。</p>
+<pre><code class="language-php">protected $table = 'my_flights';
+</code></pre>
+<h3 id="主键">主键</h3>
+<p>Eloquent 假设每个表都有<code>id</code>主键，当然也可以自定义<code>$primaryKey</code></p>
+<h3 id="时间戳">时间戳</h3>
+<p>默认会认为表中有 <code>created_at</code> 和 <code>updated_at</code>，如果不希望 Eloquent 维护它们，可在模型内将 <code>$timestamps</code>属性设置为 false 关闭。</p>
+<p>还可以设置日期的保存格式</p>
+<pre><code class="language-php">public $timestamps = false;
+
+protected $dateFormat = 'U';
+</code></pre>
+<h3 id="数据库连接">数据库连接</h3>
+<p>默认使用应用程序中默认的数据库连接设置。（如<code>config/database.php</code>），如果需要修改成别的连接名</p>
+<pre><code class="language-php">protected $connection = 'connection-name';
+</code></pre>
+<h2 id="取回模型集合">取回模型/集合</h2>
+<h3 id="多个模型多条数据">多个模型（多条数据）</h3>
+<p>可把每个 Eloquent 模型想像成强大的 <code>查询构造器</code>，它让你可以流畅地查找与模型关联的数据表</p>
+<pre><code class="language-php">//返回一些实例组成的集合
+$flights = Flight::all();
+
+// 遍历每个 Flight 实例
+// 输出 name 字段的值
+foreach ($flights as $flight) {
+    echo $flight-&gt;name;
+}
+</code></pre>
+<p><code>Flight::all()</code>返回的实际上一个 Illuminate\Database\Eloquent\Collection 实例
+因此可以使用 <code>Collection</code> 类提供的多种 辅助函数，也可以简单地像数组一样来遍历集合。</p>
+<p>例如下面的“分块”来处理<strong>大量</strong> Eloquent 查询结果，节省内存</p>
+<p>chunk 方法将会获取一个 Eloquent 模型的「分块」，并将它们送到指定的 闭包 (Closure) 中进行处理</p>
+<p>访问某个集合中某个模型的值，就和访问类属性一样。<code>$flight-&gt;name</code></p>
+<pre><code class="language-php">Flight::chunk(200, function ($flights) {
+    foreach ($flights as $flight) {
+        //
+    }
+});
+</code></pre>
+<h3 id="增加限制">增加限制</h3>
+<p>由于每个 Eloquent 模型都可以当作一个 <code>查询构造器</code>，所以你可以在查找中增加规则，然后使用 <code>get</code> 方法来获取结果：</p>
+<pre><code class="language-php">$flights = App\Flight::where('active', 1)
+               -&gt;orderBy('name', 'desc')
+               -&gt;take(10)
+               -&gt;get();
+</code></pre>
+<h3 id="单个模型集合单条数据">单个模型/集合（单条数据）</h3>
+<p>单个模型的实例，而不是它们的集合</p>
+<pre><code class="language-php">// 通过主键取回一个模型...
+$flight = App\Flight::find(1);
+
+// 取回符合查找限制的第一个模型 ...
+$flight = App\Flight::where('active', 1)-&gt;first();
+</code></pre>
+<p><strong>未找到异常处理</strong></p>
+<p>没有找到相应结果，则会抛出一个 Illuminate\Database\Eloquent\ModelNotFoundException</p>
+<pre><code class="language-php">$model = App\Flight::findOrFail(1);
+$model = App\Flight::where('legs', '&gt;', 100)-&gt;firstOrFail();
+</code></pre>
+<p>在路由里 return 模型查找结果，如果没有捕捉到异常，则会自动地送回 HTTP 404 响应给用户，而不需要自己编写代码返回 404 响应</p>
+<pre><code class="language-php">Route::get('/api/flights/{id}', function ($id) {
+    return App\Flight::findOrFail($id);
+});
+</code></pre>
+<h3 id="聚合函数countsummax等处理集合">聚合函数(count、sum、max等)处理集合</h3>
+<p>使用 count、sum、max，和其它 查询构造器 提供的 聚合函数。这些方法会返回适当的标量值，而不是一个完整的模型实例</p>
+<pre><code class="language-php">$count = App\Flight::where('active', 1)-&gt;count();
+$max = App\Flight::where('active', 1)-&gt;max('price');
+</code></pre>
+<h3 id="让返回数据默认是数组结构">让返回数据默认是数组结构</h3>
+<p>使用查询构造器或模型，默认返回的是“集合”，并且集合的每个元素都是对象。如果希望让返回的结果是数组形式，可以使用这条语句。</p>
+<pre><code class="language-php">DB::setFetchMode(PDO::FETCH_ASSOC);
+</code></pre>
+<h2 id="添加更新">添加/更新</h2>
+<h3 id="基本添加">基本添加</h3>
+<p>创建一个新模型实例，并在模型上设置属性和调用 save 方法即可。例如在某个 Controller 中。 <code>save</code>方法调用时，created_at 以及 updated_at 时间戳将会被自动设置</p>
+<pre><code class="language-php">// 验证请求...
+$flight = new Flight;
+$flight-&gt;name = $request-&gt;name;
+$flight-&gt;save();
+</code></pre>
+<p>被添加的模型实例将会从你的方法中返回。</p>
+<p>在 <code>save</code> 完成后，就能直接得到自动创建的 increment id 了</p>
+<pre><code class="language-php">$term = Terms::create(['name'=&gt;$request-&gt;input('term_name'), 'term_group'=&gt;0]);
+$term-&gt;save();
+
+//自增主键
+echo $term-&gt;term_id;
+</code></pre>
+<h3 id="基本更新">基本更新</h3>
+<p>取得模型，修改属性值，然后<code>save</code>，时间戳<code>update_at</code>会自动更新</p>
+<pre><code class="language-php">$flight = App\Flight::find(1);
+$flight-&gt;name = 'New Flight Name';
+$flight-&gt;save();
+</code></pre>
+<p><strong>批量更新</strong></p>
+<p>或者使用<code>update</code>方法来传入键值对数组参数进行更新。（以及添加更多限制条件）</p>
+<pre><code class="language-php">App\Flight::where('active', 1)
+          -&gt;where('destination', 'San Diego')
+          -&gt;update(['delayed' =&gt; 1]);
+</code></pre>
+<h3 id="批量赋值多个属性--create">批量赋值多个属性  （create()）</h3>
+<p>前面的添加模型方法中，先<code>$flight = new Flight</code>，然后逐个对模型类的属性进行赋值。</p>
+<pre><code class="language-php">$flight = new Flight;
+$flight-&gt;key_1 = 'vaue1';
+$flight-&gt;key_2 = 'vaue2';
+
+$flight-&gt;save();
+//....
+</code></pre>
+<p>这样写起来挺麻烦的。
+有没有办法在<strong>一行代码内，一次性传入多个值</strong>来生成一个模型类的实例呢？就像这样：</p>
+<pre><code class="language-php">$flight = App\Flight::create(['name' =&gt; 'Flight 10', 'start_from'=&gt;'HK']);
+
+
+//如果你已经有一个 model 实例，你可以使用一个数组传递给 fill 方法：
+$flight-&gt;fill(['name' =&gt; 'Flight 22']);
+</code></pre>
+<p><strong>安全问题！！批量赋值（Mass-Assignment）漏洞</strong></p>
+<p>当用户通过 HTTP 请求传入了非预期的参数，并借助这些参数更改了数据库中你并不打算要更改的字段。</p>
+<p>例如一个用户模型，有<code>is_admin</code>属性（设置该用户是否管理员身份），如果恶意用户通过 HTTP 请求直接发送 <code>is_admin=1</code>，那么就会把自己升级成管理员权限。</p>
+<p>因此所有的 Eloquent 模型默认都有<strong>针对批量赋值（Mass-Assignment）做保护</strong></p>
+<p>如果你用 <code>create</code> 方法来批量赋值，会报错：</p>
+<blockquote>
+<p>MassAssignmentException in Model.php line 424:
+name</p>
+</blockquote>
+<p>所以，要在模型上指定一个 <code>fillable</code> 或 <code>guarded</code> 属性，定义好哪些模型属性是可以被批量赋值的。</p>
+<p>在模型中添加</p>
+<pre><code class="language-php">class Flight extends Model
+{
+	protected $fillable = ['name'];
+	//....
+</code></pre>
+<p>两者的区别是：
+<code>$fillable</code> 就像一个“白名单”
+<code>$guarded</code> 就像“黑名单”，表示除了这里面的，其他都可以批量赋值，例如“password”</p>
+<p>并且同时只能选择一个</p>
+<h3 id="其他创建方法">其他创建方法</h3>
+<ul>
+<li>firstOrCreate</li>
+<li>firstOrNew</li>
+</ul>
+<pre><code class="language-php">// 使用指定的字段／值对，来尝试寻找数据库中的记录，当结果不存在时创建它
+$flight = App\Flight::firstOrCreate(['name' =&gt; 'Flight 10']);
+
+// 尝试使用指定的属性在数据库中寻找符合的纪录，当结果不存在时实例化一个新实例。
+//返回的模型还尚未保存到数据库, 必须手动调用`save()`来保存
+$flight = App\Flight::firstOrNew(['name' =&gt; 'Flight 10']);
+$flight-&gt;save();
+</code></pre>
+<h3 id="批量插入多条数据">批量插入多条数据</h3>
+<p>我们知道 查询构造器有 <code>DB::table()-&gt;insert([])</code> 方法可以插入一个用多元素的数组来实现批量插入。但 Eloquent ORM 目前只有一次 <code>save</code> 一条数据。。。</p>
+<h2 id="删除模型">删除模型</h2>
+<h3 id="delete">delete</h3>
+<p>先从数据库中取回模型, 然后在实例上调用<code>delete</code></p>
+<pre><code class="language-php">$flight = App\Flight::find(1);
+$flight-&gt;delete();
+</code></pre>
+<h3 id="destroy">destroy</h3>
+<p>如果知道主键，可以不用取回模型就直接删除（一个或多个）</p>
+<pre><code class="language-php">App\Flight::destroy(1);
+App\Flight::destroy([1, 2, 3]);
+App\Flight::destroy(1, 2, 3);
+</code></pre>
+<h3 id="通过查找一系列符合条件的数据然后一起删除">通过查找一系列符合条件的数据，然后一起删除</h3>
+<pre><code class="language-php">$deletedRows = App\Flight::where('active', 0)-&gt;delete();
+</code></pre>
+<h3 id="软删除并不真正删掉数据而是设置一个deleted_at属性">“软删除”——并不真正删掉数据，而是设置一个<code>deleted_at</code>属性</h3>
+<p>如果模型有一个非空值 deleted_at，代表模型已经被软删除了。</p>
+<p>必须在模型上使用 Illuminate\Database\Eloquent\SoftDeletes trait 并添加 deleted_at 字段到你的 $dates 属性上：</p>
+<p>然后才能在模型上启动软删除</p>
+<pre><code class="language-php">namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Flight extends Model
+{
+    use SoftDeletes;
+
+    /**
+     * 需要被转换成日期的属性。
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+}
+</code></pre>
+<p>然后在结构生成器（Migration）里添加一个新字段(softDeletes辅助函数)</p>
+<pre><code class="language-php">Schema::table('flights', function ($table) {
+    $table-&gt;softDeletes();
+});
+</code></pre>
+<p>现在当你在模型上调用 delete 方法时，deleted_at 字段将会被设置成目前的日期和时间。而且，当查找有启用软删除的模型时，被软删除的模型将会自动从所有查找结果中排除。</p>
+<p>要确认指定的模型实例是否被软删除</p>
+<pre><code class="language-php">if ($flight-&gt;trashed()) {
+    //
+}
+</code></pre>
+<p>另外, 某些情况下(例如后台管理界面), 要把这些标记了软删除的模型强制查找出来(默认会排除掉)</p>
+<pre><code class="language-php">$flights = App\Flight::withTrashed()
+                -&gt;where('account_id', 1)
+                -&gt;get();
+</code></pre>
+<p>如果<strong>只</strong>查询这些被软删除的数据, 用<code>onlyTrashed()</code></p>
+<pre><code class="language-php">$flights = App\Flight::onlyTrashed()
+                -&gt;where('airline_id', 1)
+                -&gt;get();
+</code></pre>
+<p><strong>Where 子句注意事项</strong></p>
+<p>原文档比较复杂. 实际上就是, 一个模型拥有了 softDelete 字段后, 模型的查询方法自动生成的 SQL 语句中会自动带有 <code>deleted_at is null</code>.</p>
+<p>如果用</p>
+<pre><code class="language-php">User::where('name', '=', 'John')
+            -&gt;orWhere('votes', '&gt;', 100);
+        	-&gt;get();
+</code></pre>
+<p>会得到:</p>
+<pre><code class="language-query">select * from `users` where `users`.`deleted_at` is null and `name` = 'John' or `votes` &gt; 100
+</code></pre>
+<p>这里的 <code>or</code> 有些问题, 和预期的查询需求不符</p>
+<p>因此必须要用被分组的<code>orWhere</code>子句</p>
+<pre><code class="language-php">User::where(function($query) {
+        $query-&gt;where('name', '=', 'John')
+              -&gt;orWhere('votes', '&gt;', 100);
+        })
+        -&gt;get();
+</code></pre>
+<p>才能生成</p>
+<pre><code class="language-query">select * from `users` where `users`.`deleted_at` is null and (`name` = 'John' or `votes` &gt; 100)
+</code></pre>
+<p><code>withTrashed()</code>也可以用在关联查找(后面有内容)</p>
+<pre><code class="language-php">$flight-&gt;history()-&gt;withTrashed()-&gt;get();
+</code></pre>
+<p><strong>恢复被软删除的模型</strong></p>
+<pre><code class="language-php">$flight-&gt;restore();
+
+//在查找上使用, 恢复多个模型
+App\Flight::withTrashed()
+        -&gt;where('airline_id', 1)
+        -&gt;restore();
+        
+// 用在关联查找上
+$flight-&gt;history()-&gt;restore();
+</code></pre>
+<p><strong>永久删除一个被标记为软删除的模型</strong></p>
+<pre><code class="language-php">$flight-&gt;forceDelete();
+
+// 删除所有相关模型  慎重!
+$flight-&gt;history()-&gt;forceDelete();
+</code></pre>
+<h2 id="查询作用域-query-scope预先定义一组查询条件简化代码">查询作用域 (Query Scope)，预先定义一组查询条件简化代码</h2>
+<p>可以结合更强大的“仓库模式”学习。</p>
+<p>查询模型时，可能有一条/一组查询条件，经常会要在代码里用到，可以<strong>预先</strong>建立一个&quot;封装了一系列查询&quot;的方法.</p>
+<p>例如&quot;最受欢迎的用户&quot;是&quot;被评论的次数大于100&rdquo;, 代码是<code>where('votes', '&gt;', 100)</code>, 但是将来可能变成 200, 300&hellip; 或者变成&quot;被点赞大于100&quot;<code>where(' ups', '&gt;', 100)</code>. 如果<strong>在很多地方</strong>都用到这个判断,那么这些 100\200 的数组或者条件会到处都是, <strong>难以维护</strong>.</p>
+<p>为了将来维护方便, 可以把它定义成一个&quot;范围&rdquo;. 简单地在 Eloquent 模型方法前面加上前缀 scope 即可</p>
+<pre><code class="language-php">public function scopePopular($query)
+    {
+        return $query-&gt;where('votes', '&gt;', 100);
+    }
+
+public function scopeActive($query)
+    {
+        return $query-&gt;where('active', 1);
+    }
+</code></pre>
+<p>以后就可以<strong>直接在查找模型时调用这个&quot;快捷方式&rdquo;</strong>(范围方法), 将来修改&quot;范围&quot;的限制条件, 只需要改动一个地方就可以了.而不需要在代码里到处去找 &gt; 100, 改成 150， 几十上百个怎么办？</p>
+<p>同时，还可以<strong>同时链式调用多个范围方法</strong>(如下面的<code>popular()</code>和<code>active()</code>)</p>
+<pre><code class="language-php">$users = App\User::popular()-&gt;active()-&gt;orderBy('created_at')-&gt;get();
+</code></pre>
+<p><strong>动态范围</strong></p>
+<p>当然可以支持参数~</p>
+<pre><code class="language-php">public function scopeOfType($query, $type)
+    {
+        return $query-&gt;where('type', $type);
+    }
+    
+// 调用
+$users = App\User::ofType('admin')-&gt;get();
+</code></pre>
+<h3 id="全局作用域">全局作用域</h3>
+<p>为给定模型的所有查询添加条件约束（例如 Laravel 自带的 <code>软删除</code>就使用了全局作用域来从数据库中拉出所有没有被删除的模型）</p>
+<p>编写自定义的全局作用域可以提供一种方便的、简单的方式，来<strong>确保给定模型的每个查询都有特定的条件约束</strong></p>
+<p>一般习惯在 <code>app</code> 文件夹下创建 <code>Scopes</code> 文件夹来存放
+首先定义一个实现 Illuminate\Database\Eloquent\Scope 接口的类，该接口要求你实现一个方法：<code>apply</code>。需要的话可以在 apply 方法中添加 where 条件到查询</p>
+<pre><code class="language-php">namespace App\Scopes;
+
+use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+
+class AgeScope implements Scope
+{
+    /**
+     * 应用作用域
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $builder
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return void
+     */
+    public function apply(Builder $builder, Model $model)
+    {
+        return $builder-&gt;where('age', '&gt;', 200);
+    }
+}
+</code></pre>
+<p>接下来就可以应用这个全局作用域了。 <strong>重写给定模型</strong>的 <code>boot</code> 方法并使用 <code>addGlobalScope</code> 方法</p>
+<pre><code class="language-php">namespace App;
+
+use App\Scopes\AgeScope;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 数据模型的启动方法
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new AgeScope);
+    }
+}
+</code></pre>
+<p><strong>使用查询时，自动应用</strong></p>
+<p>接下来如果使用<code>User::all()</code>查询则会生成如下SQL语句（自动补上全局作用域定义的 age&gt;200）</p>
+<pre><code class="language-sql">select * from `users` where `age` &gt; 200
+</code></pre>
+<h3 id="匿名全局作用域">匿名全局作用域</h3>
+<p>如果不想专门定义一个全局作用域的单独类在 <code>app/Scopes</code>里，Eloquent 还允许我们使用闭包定义全局作用域。直接在 模型 里面写.（例如，有的作用域只需要在某一个模型上使用）</p>
+<p>比如说在 User 的<code>boot</code>里面</p>
+<pre><code class="language-php"> static::addGlobalScope('age', function(Builder $builder) {
+            $builder-&gt;where('age', '&gt;', 200);
+        });
+</code></pre>
+<h3 id="本地作用域">本地作用域</h3>
+<p>定义通用的约束集合以便在应用中复用。例如，我们并不想在所有<code>User::all()</code>的时候都<strong>自动</strong>添加一个<code>age&gt;200</code>的查询条件，而希望<strong>在需要的时候，指定作用域</strong></p>
+<p>例如可以定义一系列的本地作用域：最受欢迎的用户；粉丝超过100的用户&hellip;.
+自己来灵活组合。</p>
+<p>方法： 在对应 Eloquent 模型方法前加上一个 <code>scope</code> 前缀，作用域总是返回查询构建器</p>
+<p><strong>还可以定义一个可接受参数的范围</strong> 例如下面的<code>scopeOfType</code>，可以传入第二个参数 <code>$type</code></p>
+<pre><code class="language-php">class User extends Model
+{
+    public function scopePopular($query)
+    {
+        return $query-&gt;where('votes', '&gt;', 100);
+    }
+
+    public function scopeActive($query)
+    {
+        return $query-&gt;where('active', 1);
+    }
+    
+    public function scopeOfType($query, $type)
+    {
+        return $query-&gt;where('type', $type);
+    }
+</code></pre>
+<p>因为它们不是模型上全局的作用域，在查询时，需要<strong>显式</strong>调用模型方法来指定作用域。</p>
+<p><code>popular()</code> 对应  <code>scoptPoular</code> 模型方法， <code>active()</code>对应<code>scopeActive</code>模型方法</p>
+<pre><code class="language-php">$users = App\User::popular()-&gt;active()-&gt;orderBy('created_at')-&gt;get();
+
+// 对于可以传入参数的动态范围模型方法
+$users = App\User::ofType('admin')-&gt;get();
+</code></pre>
+<h3 id="查询中临时使用withoutglobalscope来移除作用域">查询中临时使用<code>withoutGlobalScope</code>来移除作用域**</h3>
+<pre><code class="language-php">// 对于有单独类的作用域的情况
+User::withoutGlobalScope(AgeScope::class)-&gt;get();
+
+// 移除多个或者全部
+User::withoutGlobalScopes()-&gt;get();
+User::withoutGlobalScopes([FirstScope::class, SecondScope::class])-&gt;get();
+
+// 匿名全局作用域的情况，可以直接传入在模型`boot`里定义的名称
+User::withoutGlobalScope('age')-&gt;get();
+</code></pre>
+<h2 id="与模型有关的-事件">与模型有关的 <code>事件</code></h2>
+<p>Eloquent 模型会触发许多事件，让你可以借助以下的方法在模型的生命周期的多个时间点进行监控</p>
+<p>(例如用日志记录用户被创建\删除\登录等.)..</p>
+<p>联系“事件”和服务提供者 学习</p>
+<pre><code class="language-list">* creating
+* created //新模型被初次保存将会触发 creating 以及 created 事件
+* updating
+* updated //一个模型已经存在于数据库且调用了 save 方法 触发 updating 和 updated 事件
+* saving
+* saved // 保存、更新都会触发 saving 和 saved 事件
+* deleting
+* deleted
+* restoring
+* restored
+</code></pre>
+<p>事件让你每当有特定的模型类在数据库保存或更新时，执行代码。</p>
+<p>在 Eloquent 模型上定义一个 <code>$events</code> 属性，将 Eloquent 模型的生命周期的多个点映射到你的 <code>服务提供者</code> 。(providers)</p>
+<pre><code class="language-php">namespace App;
+
+use App\Events\UserSaved;
+use App\Events\UserDeleted;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    protected $events = [
+        'saved' =&gt; UserSaved::class,
+        'deleted' =&gt; UserDeleted::class,
+    ];
+</code></pre>
+<h3 id="观察者">观察者</h3>
+<p>如果在一个给定的模型中监听许多事件，您可以使用观察者将所有监听器变成一个类。观察者类里的方法名应该反映Eloquent想监听的事件。每种方法接收 model 作为其唯一的参数。</p>
+<p>创建一个目录 <code>app/Observers</code>,例如一个 User 模型发生事件的观察者 UserObserver</p>
+<pre><code class="language-php">namespace App\Observers;
+
+use App\User;
+
+class UserObserver
+{
+    /**
+     * 监听用户创建的事件。
+     *
+     * @param  User  $user
+     * @return void
+     */
+    public function created(User $user)
+    {
+        //
+    }
+
+    /**
+     * 监听用户删除事件。
+     *
+     * @param  User  $user
+     * @return void
+     */
+    public function deleting(User $user)
+    {
+</code></pre>
+<p>然后在 服务提供商 之一的 <code>boot</code>方法里<strong>注册</strong>一个观察者，用模型中的<code>observe</code>方法去观察</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use App\User;
+use App\Observers\UserObserver;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        User::observe(UserObserver::class);
+    }
+</code></pre>
+<p><strong>老的资料里剩下的。。。</strong>
+还有一种闭包的方法， 在服务提供者中直接定义一个 Eloquent 事件监听器</p>
+<pre><code class="language-php">use App\User;
+
+class AppServiceProvider extends ServiceProvider{
+	
+	public function boot()
+    {
+        User::creating(function ($user) {
+            if ( ! $user-&gt;isValid()) {
+                return false;
+            }
+        });
+    }
+}
+</code></pre>
+<h1 id="eloquent-集合">Eloquent 集合</h1>
+<p>Eloquent 返回的所有多结果集都是 Illuminate\Database\Eloquent\Collection 对象的实例(包括通过 get 方法检索或通过访问关联关系获取到的结果)</p>
+<p>集合对象继承了 Laravel 的 集合基类，因此它自然也继承了数十种能优雅地处理 Eloquent 模型底层数组的方法</p>
+<p>当然，所有的集合都可以作为迭代器，可以就像简单的 PHP 数组一样来遍历它们：</p>
+<pre><code class="language-php">$users = App\User::where('active', 1)-&gt;get();
+
+foreach ($users as $user) {
+    echo $user-&gt;name;
+}
+</code></pre>
+<p>然而，集合比数组更加强大，它通过更直观的接口暴露出<strong>可链式调用</strong>的 map/reduce 等操作。举个例子，我们要删除模型中所有未激活的并收集剩余用户的名字：</p>
+<p>例如 删除模型中所有未激活的，并收集剩余用户的名字</p>
+<pre><code class="language-php">$users = App\User::where('active', 1)-&gt;get();
+
+$names = $users-&gt;reject(function ($user) {
+    return $user-&gt;active === false;
+})
+-&gt;map(function ($user) {
+    return $user-&gt;name;
+});
+</code></pre>
+<blockquote>
+<p>大多数 Eloquent 集合方法会返回新的 Eloquent 集合实例，但是 pluck, keys, zip, collapse, flatten 和 flip 方法除外，它们会返回 集合基类 实例. 同样，如果 map 操作返回的集合不包含任何 Eloquent 模型，那么它会被自动转换成集合基类</p>
+</blockquote>
+<h2 id="可用方法">可用方法</h2>
+<p>所有集合基类提供的强大的方法</p>
+<p>all  keyBy &hellip;.</p>
+<p>见文档 eloquent-collections  ,可对比“辅助方法”来看</p>
+<h2 id="自定义集合">自定义集合</h2>
+<p>在自己的扩展方法中使用自定义的 Collection 对象，可以在你自己的模型中重写 newCollection 方法：</p>
+<p>一旦你定义了 newCollection 方法，任何时候都可以在 Eloquent 返回的模型的 Collection 实例中获取你的自定义集合实例。如果你想要在应用程序的每个模型中使用自定义集合，则应该在所有的模型继承的模型基类中重写 newCollection 方法。</p>
+<pre><code class="language-php">namespace App;
+
+use App\CustomCollection;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    /**
+     * 创建一个新的 Eloquent 集合实例对象。
+     *
+     * @param  array  $models
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function newCollection(array $models = [])
+    {
+        return new CustomCollection($models);
+    }
+}
+</code></pre>
+<h1 id="修改器-访问器修改器日期类型转换">修改器 （访问器，修改器，日期、类型转换）</h1>
+<p>Mutator</p>
+<p>在 Eloquent 模型实例中获取或设置某些属性值的时候，访问器和修改器允许你对 Eloquent 属性值进行格式化(可能想要使用 Laravel 加密器 来加密一个即将被保存在数据库中的值，当你从 Eloquent 模型访问该属性时，其值将被自动解密)</p>
+<p>除了自定义访问器和修改器之外，Eloquent 也会自动将日期字段类型转换成 Carbon 实例或将 文本字段类型转换成 JSON。</p>
+<h2 id="访问器">访问器</h2>
+<p>要定义一个访问器，则须在你的模型上创建一个 getFooAttribute 方法，要访问的 Foo 字段需使用「驼峰式」来命名。</p>
+<p>例如为 first_name 属性定义一个访问器，当 Eloquent 尝试获取 first_name 的值时，将会自动调用此访问器,字段的原始值被传递到访问器中，允许你对它进行处理并返回结果, 如果想获取被修改后的值，你可以在模型实例上访问 first_name 属性.</p>
+<pre><code class="language-php">class User extends Model
+{
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+    }
+}
+
+//获取被修改后的值
+$user = App\User::find(1);
+$firstName = $user-&gt;first_name;
+</code></pre>
+<h2 id="修改器">修改器</h2>
+<p>在模型上定义一个 setFooAttribute 方法。要访问的 Foo 字段需使用「驼峰式」来命名。尝试在模型上<strong>设置</strong> first_name 的<strong>值</strong>时，该修改器将被<strong>自动调用</strong></p>
+<p>修改器会获取属性已经被设置的值，允许你操作该值并将其设置到 Eloquent 模型内部的 $attributes 属性上</p>
+<p>例如 定义 first_name 属性的修改器。setFirstNameAttribute 方法在调用的时候会接收 Sally 这个值作为参数。接着修改器会使用 strtolower 函数并将其值设置到内部的 $attributes 数组</p>
+<pre><code class="language-php">class User extends Model
+{
+    public function setFirstNameAttribute($value)
+    {
+        $this-&gt;attributes['first_name'] = strtolower($value);
+    }
+}
+
+// 将 first_name 属性设置成 Sally,
+$user = App\User::find(1);
+$user-&gt;first_name = 'Sally';
+</code></pre>
+<h2 id="日期转换器">日期转换器</h2>
+<p>默认情况下，Eloquent 将会把 created_at 和 updated_at 字段转换成 Carbon 实例(它继承了 PHP 原生的 DateTime 类，并提供了各种有用的方法)</p>
+<p>通过重写模型的 $dates 属性，自行定义哪些日期类型字段会被自动转换，或者完全禁止所有日期类型字段的转换</p>
+<pre><code class="language-php">class User extends Model
+{
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+}
+</code></pre>
+<p>当某个字段被认为是日期格式时，你或许想将其数值设置成一个 UNIX 时间戳、日期字符串（Y-m-d）、日期时间（ date-time ）字符串，当然还有 DateTime 或 Carbon 实例，并且<strong>让日期值自动正确地保存到你的数据库中</strong></p>
+<pre><code class="language-php">$user = App\User::find(1);
+
+$user-&gt;deleted_at = Carbon::now();
+
+$user-&gt;save();
+</code></pre>
+<p>当获取到的属性包含在 $dates 属性时，都将会自动转换成 Carbon 实例，允许你在属性上使用任意的 Carbon 方法</p>
+<pre><code class="language-php">$user = App\User::find(1);
+
+return $user-&gt;deleted_at-&gt;getTimestamp();
+</code></pre>
+<p><strong>日期格式</strong></p>
+<p>默认情况下，时间戳将会以 &lsquo;Y-m-d H:i:s&rsquo; 的形式格式化。想要自定义自己的时间戳格式，可在模型中设置 $dateFormat 属性（决定了日期属性应以何种格式被保存到数据表中，以及当模型被序列化成数组或是 JSON 格式时，这些日期属性以何种格式被保存）</p>
+<pre><code class="language-php">class Flight extends Model
+{
+    /**
+     * 模型的日期字段的保存格式。
+     *
+     * @var string
+     */
+    protected $dateFormat = 'U';
+}
+</code></pre>
+<h2 id="属性类型转换">属性类型转换</h2>
+<p>$casts 属性在模型中提供了一个便利的方法来将属性转换为常见的数据类型（是一个数组，且数组的键是那些需要被转换的属性名称，值则是你希望转换的数据类型）</p>
+<ul>
+<li>integer</li>
+<li>real</li>
+<li>float</li>
+<li>double</li>
+<li>string</li>
+<li>boolean</li>
+<li>object</li>
+<li>array</li>
+<li>collection</li>
+<li>date</li>
+<li>datetime</li>
+<li>timestamp</li>
+</ul>
+<p>例如，让我们转换 is_admin 属性，将整数（0 或 1）转换为布尔值，当你访问 is_admin 属性时，它将会被转换成布尔值类型，即便保存在数据库里的的值是一个整数类型</p>
+<pre><code class="language-php">class User extends Model
+{
+    protected $casts = [
+        'is_admin' =&gt; 'boolean',
+    ];
+}
+
+// 访问属性时自动转换类型
+$user = App\User::find(1);
+
+if ($user-&gt;is_admin) {
+    //
+}
+</code></pre>
+<h3 id="数组-json-转换">数组 JSON 转换</h3>
+<p>如果一个字段是以被序列化的 JSON 来存储在数据库中, array 类型转换将会非常有用（例如 MySQL 5.7 支持直接存储 JSON 类型的数据到字段中）</p>
+<p>例如，当你在 Eloquent 模型上访问的某个属性在数据库里是一个 JSON 或 TEXT 字段类型，它包含了被序列化的 JSON，而且你对该字段添加了 array 类型转换，那么它将会自动反序列化成一个 PHP 数组</p>
+<p>一旦类型转换被定义，你就可以访问 options 属性，它将会自动把 JSON 反序列化成一个 PHP 数组。当你设置 options 属性的值时，接收到的数组将会被自动序列化成 JSON 以便进行保存：</p>
+<pre><code class="language-php">class User extends Model
+{
+    /**
+     * 应该被转换成原生类型的属性。
+     *
+     * @var array
+     */
+    protected $casts = [
+        'options' =&gt; 'array',
+    ];
+}
+
+// 访问时被自动反序列成 PHP 数组，保存时又自动序列化成 JSON
+$user = App\User::find(1);
+
+$options = $user-&gt;options;
+
+$options['key'] = 'value';
+
+$user-&gt;options = $options;
+
+$user-&gt;save();
+</code></pre>
+<h1 id="序列化">序列化</h1>
+<p>在创建 JSON API 的时候，经常会需要将<strong>模型</strong>和<strong>关联</strong>转换成数组或 JSON。</p>
+<h2 id="序列化模型集合成数组或-json">序列化模型/集合成数组或 JSON</h2>
+<p>将模型或关联转换成数组/JSON，可以使用 <code>toArray</code> 和 <code>toJSON</code> 方法。方法是<strong>递归</strong>的，因此，<strong>所有属性和关联（包含关联中的关联）都会被转换成数组/JSON</strong>：</p>
+<p>PHP 原生的 <code>(array) $testArray</code> 不是递归的，只能把“第一级”元素转成数组，内部的对象不会改变。</p>
+<pre><code class="language-php">$user = App\User::with('roles')-&gt;first();
+return $user-&gt;toArray();
+return $user-&gt;toJson();
+
+// 将整个集合转换成数组
+$users = App\User::all();
+return $users-&gt;toArray();
+//强制把一个模型或集合转型成一个字符串，它将会自动调用 toJson 方法：
+return (string) $user;
+</code></pre>
+<p>当模型或集合被转型成字符串时，模型或集合便会被转换成 JSON 格式，因此你可以直接从应用程序的路由或者控制器中返回 Eloquent 对象：</p>
+<pre><code class="language-php">Route::get('users', function () {
+    return App\User::all();
+});
+</code></pre>
+<h2 id="隐藏来自-json-的属性">隐藏来自 JSON 的属性</h2>
+<p>设置模型的 <code>hidden</code> 和 <code>visiable</code> 属性，可以让某些属性在 JSON 中不显示（看 模型 一章）</p>
+<pre><code class="language-php">class User extends Model
+{
+    protected $hidden = ['password'];
+    protected $visible = ['first_name', 'last_name'];
+}
+</code></pre>
+<p>如果要临时修改属性是否可见，使用 <code>makeVisible</code> 方法来显示通常隐藏的属性（返回一个模型实例）；在模型实例后使用 <code>makeHidden</code> 方法来隐藏通常显示的属性</p>
+<pre><code class="language-php">return $user-&gt;makeVisible('attribute')-&gt;toArray();
+return $user-&gt;makeHidden('attribute')-&gt;toArray();
+</code></pre>
+<h2 id="添加参数到-json">添加参数到 JSON</h2>
+<p>在转换模型到 数组 或 JSON 时，添加一个在数据库中没有对应字段的属性。
+首先需要为这个值定义一个 访问器。</p>
+<p>访问器创建成功后，只需添加该属性到改模型的 <code>appends</code> 属性中。
+一旦属性被添加到 appends 清单，便会将模型中的数组和 JSON 这两种形式都包含进去。在 appends 数组中的属性也遵循模型中 visible 和 hidden 设置</p>
+<p><strong>注意</strong>
+属性名称通常遵循 「Snake Case」, 的命名方式，即是访问器的名称是基于 「Camel Case」 的命名方式(例如这个例子中的 <code>getIsAdminAttribute</code> 对应 <code>is_admin</code>)</p>
+<pre><code class="language-php">class User extends Model
+{
+	protected $appends = ['is_admin'];
+
+    public function getIsAdminAttribute()
+    {
+        return $this-&gt;attributes['admin'] == 'yes';
+    }
+}
+</code></pre>
+<h1 id="api-资源">API 资源</h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/laravel-%E5%85%A5%E9%97%A8/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/artisan-%E5%91%BD%E4%BB%A4/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

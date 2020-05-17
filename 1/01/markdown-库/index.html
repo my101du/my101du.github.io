@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="markdown 库 搜关键词 https://www.npmjs.com/search?q=markdown https://www.npmjs.com/package/remark https://remark.js.org/ 很多解析库都基于此。 remark 是 unified的创建，专门处理 markdown,其他插件还有处理 html、text 的 https://unified.js.org/#guides （unifi" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="markdown 库 搜关键词 https://www.npmjs.com/search?q=markdown https://www.npmjs.com/package/remark https://remark.js.org/ 很多解析库都基于此。 remark 是 unified的创建，专门处理 markdown,其他插件还有处理 html、text 的 https://unified.js.org/#guides （unifi" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/markdown-%E5%BA%93/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="markdown 库 搜关键词 https://www.npmjs.com/search?q=markdown https://www.npmjs.com/package/remark https://remark.js.org/ 很多解析库都基于此。 remark 是 unified的创建，专门处理 markdown,其他插件还有处理 html、text 的 https://unified.js.org/#guides （unifi">
+
+<meta itemprop="wordCount" content="1718">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="markdown 库 搜关键词 https://www.npmjs.com/search?q=markdown https://www.npmjs.com/package/remark https://remark.js.org/ 很多解析库都基于此。 remark 是 unified的创建，专门处理 markdown,其他插件还有处理 html、text 的 https://unified.js.org/#guides （unifi"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/markdown-%E5%BA%93/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/markdown-%E5%BA%93/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1718字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>markdown 库</p>
+<p>搜关键词
+<a href="https://www.npmjs.com/search?q=markdown">https://www.npmjs.com/search?q=markdown</a></p>
+<h1 id="httpswwwnpmjscompackageremark"><a href="https://www.npmjs.com/package/remark">https://www.npmjs.com/package/remark</a></h1>
+<p><a href="https://remark.js.org/">https://remark.js.org/</a></p>
+<p>很多解析库都基于此。 remark 是 <code>unified</code>的创建，专门处理 markdown,其他插件还有处理 html、text 的</p>
+<p><a href="https://unified.js.org/#guides">https://unified.js.org/#guides</a>
+（unified is an interface for processing text with syntax trees and transforming between them.）</p>
+<p>api
+<a href="https://github.com/unifiedjs/unified#api">https://github.com/unifiedjs/unified#api</a></p>
+<p>ast explorer
+<a href="https://astexplorer.net/#/gist/0a92bbf654aca4fdfb3f139254cf0bad/ffe102014c188434c027e43661dbe6ec30042ee2">https://astexplorer.net/#/gist/0a92bbf654aca4fdfb3f139254cf0bad/ffe102014c188434c027e43661dbe6ec30042ee2</a></p>
+<h1 id="markdown-itgithubio">markdown-it.github.io</h1>
+<p>首页右侧，打开 debug 窗口，可以看到 json 结构</p>
+<p>API 文档
+<a href="https://markdown-it.github.io/markdown-it/">https://markdown-it.github.io/markdown-it/</a></p>
+<p>render 直接渲染，可设置是否支持 html</p>
+<p>parse 可以转换成一个 AST(抽象语法树，在render之前的)</p>
+<p>插件：表格等</p>
+<h1 id="html-转-markdown">html 转 markdown</h1>
+<p>react-markdown 有个 <code>Parsing HTML</code>的，未尝试</p>
+<h1 id="得到大纲层级">得到大纲层级</h1>
+<p><a href="https://github.com/hyurl/outlining">https://github.com/hyurl/outlining</a></p>
+<h1 id="json-转-markdown比较好找">json 转 markdown，比较好找</h1>
+<p>json2md： 好像也是“一级”的json 看不出嵌套</p>
+<p>要先从树状 json 转成它，再生成 markdown</p>
+<h1 id="md-转为-json-或-数组-树状结构需要分析文本">md 转为 json 或 数组 树状结构，需要分析文本</h1>
+<p>用<code>markdown-it</code>的<code>parse</code>得到的 json ,是“一级”的，无法得到树状。</p>
+<h2 id="dropsimple-markdown">[drop]simple-markdown</h2>
+<p><a href="https://github.com/Khan/simple-markdown">https://github.com/Khan/simple-markdown</a></p>
+<p>问题
+heading 和 paragraph 也只有一级
+ordered items 列表，也和 title 混成一级</p>
+<p>找不到合适的， 考虑一个“中间格式”，例如 yaml
+<a href="https://devotter.com/json-to-yaml">https://devotter.com/json-to-yaml</a> 因为看到这里有</p>
+<p>jsonml
+<a href="http://www.jsonml.org/">http://www.jsonml.org/</a>
+md2jsonml</p>
+<h1 id="最后-md2json2html-互转感觉是拼凑了几个产品">[最后 ]md2json2html 互转（感觉是拼凑了几个产品）</h1>
+<p><a href="https://github.com/LeuisKen/md2json2html/blob/master/src/json2html.js">https://github.com/LeuisKen/md2json2html/blob/master/src/json2html.js</a></p>
+<p>可参考代码</p>
+<p>使用了 remark 包</p>
+<p><strong>一些问题</strong></p>
+<p>换行符没有按要求被转成一个 新 的节点，而是在字符串后简单加上了 <code>\n</code>
+这是符合markdown 规范的，md 要空行 才算是一个新的段落</p>
+<p><img src="/media/15560023011553/15560155641810.jpg" alt="-w429"></p>
+<p>丢失行内代码</p>
+<p><img src="/media/15560023011553/15560172918137.jpg" alt="-w370"></p>
+<p>经过修改node_modules/md2json2html/src/markdown2json.js，观察返回的 ast (而不是 content)</p>
+<p><img src="/media/15560023011553/15560178720004.jpg" alt="-w171"></p>
+<p><img src="/media/15560023011553/15560178202002.jpg" alt="-w258"></p>
+<p>发现问题出在 markdown parse 这里</p>
+<p>inlineCode 的 AST 代码</p>
+<pre><code class="language-js">{
+    &quot;type&quot;: &quot;inlineCode&quot;,
+    &quot;value&quot;: &quot;autoload_psr4&quot;,
+    &quot;position&quot;: {
+        &quot;start&quot;: {
+            &quot;line&quot;: 383,
+            &quot;column&quot;: 3,
+            &quot;offset&quot;: 8788
+        },
+        &quot;end&quot;: {
+            &quot;line&quot;: 383,
+            &quot;column&quot;: 18,
+            &quot;offset&quot;: 8803
+        },
+        &quot;indent&quot;: []
+    }
+},
+
+
+// 转成json 后
+{
+    &quot;tagName&quot;: &quot;code&quot;
+},
+</code></pre>
+<p>code 的 AST 代码</p>
+<pre><code class="language-js">{
+    &quot;type&quot;: &quot;code&quot;,
+    &quot;lang&quot;: &quot;php&quot;,
+    &quot;value&quot;: &quot;$map = require __DIR__ . '/autoload_psr4.php';\nforeach ($map as $namespace =&gt; $path) {\n    $loader-&gt;setPsr4($namespace, $path);\n}&quot;,
+    &quot;position&quot;: {
+        &quot;start&quot;: {
+            &quot;line&quot;: 385,
+            &quot;column&quot;: 1,
+            &quot;offset&quot;: 8841
+        },
+        &quot;end&quot;: {
+            &quot;line&quot;: 390,
+            &quot;column&quot;: 4,
+            &quot;offset&quot;: 8981
+        },
+        &quot;indent&quot;: [
+            1,
+            1,
+            1,
+            1,
+            1
+        ]
+    }
+},
+
+//转成 json 后
+{
+    &quot;tagName&quot;: &quot;pre&quot;,
+    &quot;attr&quot;: {
+        &quot;lang&quot;: &quot;php&quot;
+    },
+    &quot;children&quot;: {
+        &quot;tagName&quot;: &quot;code&quot;,
+        &quot;children&quot;: &quot;class ComposerAutoloaderInitee70723fd3132b6d05f0ff016c58b71b{&quot;
+    }
+},
+</code></pre>
+<p>需要修改代码<code>markdown-parser.js</code>, 把返回值改成 如下</p>
+<pre><code class="language-js">case 'inlineCode':
+// return structure('code');
+return {
+    tagName: 'code',
+    children: node.value
+}
+</code></pre>
+<h2 id="处理1-markdown-得到的-json-还要按层级树化">处理1 markdown 得到的 json 还要按层级“树”化</h2>
+<h2 id="处理2-实现互相转换-即-json---markdown--ast-是标准的吗">处理2 实现互相转换 即 json &lt;-&gt; markdown  AST 是标准的吗</h2>
+<p>markdown-&gt;ast     ast-&gt; markdown</p>
+<p><a href="https://github.com/spmjs/mdast">https://github.com/spmjs/mdast</a></p>
+<p>安装的时候提示:
+npm install mdast
+npm WARN deprecated <a href="mailto:mdast@3.0.0">mdast@3.0.0</a>: <code>mdast</code> was renamed to <code>remark</code></p>
+<h2 id="使用-remarkstringifyast-得到的-markdown-处理">使用 remark().stringify(ast) 得到的 markdown 处理</h2>
+<p>自动给每一个链接添加了前后的尖括号</p>
+<p><img src="/media/15560023011553/15560759664778.jpg" alt="-w277"></p>
+<p>测试把它再次作为“源”进行 markdown-&gt;ast-&gt;markdown</p>
+<p>发现不会再多增加一个，可行。</p>
+<h2 id="listjson-to-tree">list(json) to tree</h2>
+<p>因为并没有“唯一key”,而是有 h1 h2 h3 又恢复到 h1 h2  所以会有找“前一个同标签”的现象</p>
+<p>只能逐个匹配<code>&quot;type&quot;: &quot;heading&quot;</code>, 记录“当前 depth”</p>
+<p>如果发现一个新 heading 节点</p>
+<ul>
+<li>depth 缩小，例如从 1 -&gt; 2, 相当于在当前容器内 push 一个新容器。</li>
+</ul>
+<pre><code class="language-json">[
+    // head 1 -&gt; H1(1)
+    {
+        type: heading,
+        depth: 1,
+        children: { //...}
+    },
+    // 第一个 head level 2 -&gt; H2(1), 属于 H1(1)
+    {
+        type: heading,
+        depth: 2,
+        children: { //...}
+    },
+    // 后面内容都属于 H2(1), 也属于 H1(1)
+    {
+        type: paragraph,
+        children: { [{type: text}, {type: inlineCode}, {type: text}] }
+    },
+    // 第二个 head level 2 -&gt; H2(2), 属于 H1(1)
+    {
+        type: heading,
+        depth: 2,
+        children: { //...}
+    },
+    // 后面内容都属于 H2(2), 也属于 H1(1)
+    
+    // head 1 -&gt; H1(2) 第二个一级标题
+    {
+        type: heading,
+        depth: 1,
+        children: { //...}
+    },
+    // 后面内容都属于 H1(2)
+
+]
+</code></pre>
+<p>更好的处理方式：</p>
+<ol>
+<li>导入 md, 简单给每个 heading 一个 uuid</li>
+<li>独立出来一个“关联表”，标注它们之间的关系（父子、平级、以及前后顺序、打tag）</li>
+<li>不建议在导入一批 md 后并生成关系网后， 重新又去导入生成（但能保存在云端，或智能匹配）</li>
+</ol>
+<p>编辑模式，可以把整块（H1 H2 级别）进行关联、拖拽到网络中</p>
+<p>数据 -&gt; md 实体文件： 就像 hexo 一样读数据，然后逐个生成 md （页/文章/主题）</p>
+<h1 id="编辑--预览">编辑 / 预览</h1>
+<h2 id="react-ace--react-markdown-有问题">react-ace + react-markdown 有问题</h2>
+<p>左侧 React-ACE 编辑器，右侧 React-markdown 渲染，通过 state 更新输入数据， 因为两边的样式不一致，无法同时滚动到相同的位置</p>
+<p><img src="/media/15560023011553/15560880619514.jpg" alt="-w518"></p>
+<p>react-syntax-highlighter ：让 react-markdown 渲染出的内容中代码高亮（或者用 highlight.js,以renderer的属性）</p>
+<p><img src="/media/15560023011553/15560916201893.jpg" alt="-w239"></p>
+<p>最新的一个 react-markdown代码高亮在这里实现：（它说 highlight.js 有问题，换另外一个）
+<a href="https://medium.com/young-developer/react-markdown-code-and-syntax-highlighting-632d2f9b4ada">https://medium.com/young-developer/react-markdown-code-and-syntax-highlighting-632d2f9b4ada</a></p>
+<h2 id="code-mirror-比-react-ace-更强大的编辑器注重代码在线编辑时快捷键什么的">code mirror 比 react-ace 更强大的“编辑器”，注重代码在线编辑时快捷键什么的</h2>
+<h2 id="能在编辑模式就预览的-不需要拆分一个渲染窗口就能看到最终效果">能在编辑模式就预览的 （不需要拆分一个渲染窗口就能看到最终效果）</h2>
+<p>需要编辑器功能：
+语法高亮
+head方法效果
+文本加粗删除效果
+表格</p>
+<p>ACE, 能部分高亮，但不能支持快捷键。标题只能变色，不能改变大小(修改样式方式不太方便)
+<img src="/media/15560023011553/15560921806207.jpg" alt="-w566"></p>
+<p>安装</p>
+<pre><code class="language-shell">npm install brace
+</code></pre>
+<p><a href="https://github.com/securingsincity/react-ace/blob/master/docs/Ace.md">https://github.com/securingsincity/react-ace/blob/master/docs/Ace.md</a>
+这里好像可以增加快捷键</p>
+<p><a href="https://github.com/Ionaru/easy-markdown-editor">https://github.com/Ionaru/easy-markdown-editor</a>  色彩不够丰富</p>
+<p>支持快捷键！ 预览模式双屏同时滚动等等
+问题：不支持表格直接预览
+<a href="https://simplemde.com/">https://simplemde.com/</a>  选项设置中，语法高亮只能在“预览模式”，不能在编辑模式
+<a href="https://github.com/sparksuite/simplemde-markdown-editor">https://github.com/sparksuite/simplemde-markdown-editor</a></p>
+<p>编辑模式的样式可以修改文件实现（语法高亮区域应该也可以处理，因为 easymde 简单把 inlineCode pre 什么的都统一搞成了 commet）</p>
+<p><img src="/media/15560023011553/15560941049721.jpg" alt="-w338"></p>
+<p>这里有人在讨论
+<a href="https://github.com/sparksuite/simplemde-markdown-editor/issues/138">https://github.com/sparksuite/simplemde-markdown-editor/issues/138</a>
+<a href="https://github.com/sparksuite/simplemde-markdown-editor/issues/661">https://github.com/sparksuite/simplemde-markdown-editor/issues/661</a>（指出并不会支持。。。）
+<a href="https://github.com/sparksuite/simplemde-markdown-editor/issues/385">https://github.com/sparksuite/simplemde-markdown-editor/issues/385</a></p>
+<p><a href="https://github.com/lepture/editor">https://github.com/lepture/editor</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/markdown-%E5%BA%93/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/markdown-%E5%BA%93/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/mindmap-%E5%BA%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/lodash%E4%B8%8Eunderscore/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

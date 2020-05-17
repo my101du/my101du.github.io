@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="事件 Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件. 事件类(Event)通常放在app/Events目录下，" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="事件 Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件. 事件类(Event)通常放在app/Events目录下，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%BA%8B%E4%BB%B6/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="事件 Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件. 事件类(Event)通常放在app/Events目录下，">
+
+<meta itemprop="wordCount" content="2732">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="事件 Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件. 事件类(Event)通常放在app/Events目录下，"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%BA%8B%E4%BB%B6/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BA%8B%E4%BB%B6/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2732字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="事件">事件</h1>
+<p>Laravel 事件机制实现了一个简单的观察者模式，让我们可以订阅和监听应用中出现的各种事件.</p>
+<p>事件类(Event)通常放在<code>app/Events</code>目录下，而对应的侦听类（Listener）保存在<code>app/Listeners</code>目录下</p>
+<p><strong>事件机制是一种很好的应用解耦方式</strong>。
+一个事件可以拥有多个互不依赖的监听器。例如每次把用户的订单发完货后都希望给他发个 Slack 通知。
+可以发起一个 OrderShipped 事件，它会被监听器接收到再传递给 Slack 通知模块，这样你就不用把订单处理的代码跟 Slack 通知的代码耦合在一起了</p>
+<h1 id="注册事件监听器">注册事件/监听器</h1>
+<p>app/Providers/EventServiceProvider（注册事件和监听器对应关系）
+app/Events/（事件）
+app/Listeners(监听器)</p>
+<h2 id="手动创建">手动创建</h2>
+<p>可以在 <code>EventServiceProvider</code> (app/Provider/EventServiceProvider)中注册所有的事件侦听器。它的 <code>listen</code> 属性是一个数组，包含所有的事件（键）以及事件对应的监听器（值）</p>
+<p>例如下面的代码，表示当发生<code>PodcastWasPurchased</code>事件时，<code>App\Listeners\EmailPurchaseConfirmation</code>这个监听器会被触发并作出相应处理。</p>
+<pre><code class="language-php">protected $listen = [
+    'App\Events\PodcastWasPurchased' =&gt; [
+        'App\Listeners\EmailPurchaseConfirmation',
+    ],
+];
+</code></pre>
+<p>除了上面在<code>$listen</code>数组中注册，还可以在<code>boot</code>方法中注册闭包事件</p>
+<pre><code class="language-php">//注册应用程序中的任何其他事件
+public function boot()
+{
+    parent::boot();
+
+    Event::listen('event.name', function ($foo, $bar) {
+        //
+    });
+}
+</code></pre>
+<p><strong>通配符事件监听器</strong></p>
+<p>在注册监听器时使用 * 通配符参数，它让你在一个监听器中可以监听到多个事件。通配符监听器接受的第一个参数是事件名称，第二个参数是整个的事件数据</p>
+<pre><code class="language-php">Event::listen('event.*', function ($eventName, array $data) {
+    //
+});
+</code></pre>
+<h2 id="生成-eventlistener">生成 Event/Listener</h2>
+<p>运行下面的命令会生成所有列在<code>EventServiceProvider</code>中列出的所有事件和监听器（如果存在就不会去修改它）,这样就不要我们一个个文件去手动创建了。</p>
+<pre><code class="language-shell">php artisan event:generate
+</code></pre>
+<h1 id="定义事件">定义事件</h1>
+<p>事件类就是一个包含与事件相关信息数据的容器.本例生成的 <code>OrderShipped</code> 事件接受一个 Eloquent ORM 对象。</p>
+<p>如下看到，它没有包含其它逻辑。<strong>它仅只是一个被构建的 Order 对象的容器</strong></p>
+<p>注意<code>use Illuminate\Queue\SerializesModel</code>，使用了 SerializesModels trait 的事件将会优雅的序列化任何的 Eloquent 模型</p>
+<pre><code class="language-php">namespace App\Events;
+
+use App\Order;
+use Illuminate\Queue\SerializesModels;
+
+class OrderShipped
+{
+    use SerializesModels;
+
+    public $order;
+
+    /**
+     * 创建一个事件实例。
+     *
+     * @param  Order  $order
+     * @return void
+     */
+    public function __construct(Order $order)
+    {
+        $this-&gt;order = $order;
+    }
+}
+</code></pre>
+<h1 id="定义监听器">定义监听器</h1>
+<p>事件监听器在 <code>handle</code> 方法中<strong>接受了事件实例作为参数</strong>，前面运行 <code>event:generate</code> 命令将会在事件的 handle 方法中自动加载正确的事件类和类型提示。在 handle 方法中，你可以运行任何需要<strong>响应该事件的业务逻辑</strong></p>
+<p>你的事件监听器也可以在构造函数(<code>__construct</code>)中对任何依赖使用类型提示。所有的事件监听器会经由 Laravel 的 服务容器 做解析，所以所有的依赖都将会被自动注入：</p>
+<pre><code class="language-php">namespace App\Listeners;
+
+use App\Events\OrderShipped;
+
+class SendShipmentNotification
+{
+    /**
+     * 创建事件监听器。
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * 处理事件
+     *
+     * @param  OrderShipped  $event
+     * @return void
+     */
+    public function handle(OrderShipped $event)
+    {
+        // 使用 $event-&gt;order 来访问 order ...
+    }
+}
+</code></pre>
+<p><strong>停止事件传播</strong></p>
+<p>如果希望停止一个事件传播到其他的监听器（事件会依次在多个监听器之间传递下去）。这时你可以通过在监听器的 handle 方法中返回 false 来实现。</p>
+<h1 id="队列化事件监听器">队列化事件监听器</h1>
+<p>如果在事件监听器中要进行一些耗时任务，可以把它们放入“队列”中（在使用队列化监听器之前，需要在服务器或者本地环境中配置 队列 并开启一个队列监听器）</p>
+<p>只需增加 <code>ShouldQueue</code> 接口到你的监听器类，就可以对监听器进行队列化。（由 Artisan 命令 event:generate 生成的监听器已经将此接口导入到命名空间了，因此你可以直接使用它）</p>
+<p>当然，可以在监听器类中定义 <code>$connection</code> 和 <code>$queue</code> 属性来自定义队列的连接和名称</p>
+<pre><code class="language-php">namespace App\Listeners;
+
+use App\Events\OrderShipped;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+//增加 `ShouldQueue` 接口到你的监听器类 implements ShouldQueue
+class SendShipmentNotification implements ShouldQueue
+{
+    /**
+     * 队列化任务使用的连接名称。
+    */
+    public $connection = 'sqs';
+
+    /**
+     * 队列化任务使用的队列名称。
+     */
+    public $queue = 'listeners';
+
+    //
+}
+</code></pre>
+<p>当事件被监听器调用时， <strong>事件分发器</strong>会使用 Laravel 的 队列系统 自动将它进行队列化.如果监听器通过队列运行且没有抛出任何异常，则已执行完的任务将会自动从队列中删除</p>
+<h2 id="手动访问队列">手动访问队列</h2>
+<p>需要手动访问底层队列任务的 delete 和 release 方法，可以使用 Illuminate\Queue\InteractsWithQueue trait 来实现</p>
+<pre><code class="language-php">class SendShipmentNotification implements ShouldQueue
+{
+    use InteractsWithQueue;
+    
+    public function handle(OrderShipped $event)
+    {
+        if (true) {
+            $this-&gt;release(30);
+        }
+    }
+</code></pre>
+<h2 id="处理失败任务">处理失败任务</h2>
+<p>队列化的事件监听器可能失败（队列监听器任务执行次数超过在工作队列中定义的最大尝试次数，监听器的 <code>failed</code> 方法将会被自动调用，它接受事件实例和失败的异常作为参数）</p>
+<pre><code class="language-php">public function handle(OrderShipped $event){}
+
+public function failed(OrderShipped $event, $exception)
+{
+    //
+}
+</code></pre>
+<h1 id="触发事件">触发事件</h1>
+<p>通过传递一个事件实例给 <code>event()</code> 辅助函数.将会把事件分发到它<strong>所有</strong>已经注册的监听器上。因为 event 函数是全局可访问的，所以你可以在应用中的任何地方调用它</p>
+<pre><code class="language-php">class OrderController extends Controller{
+    public function ship($orderId){
+        $order = Order::findOrFail($orderId);
+        
+        // 订单的发货逻辑...
+        
+        event(new OrderShipped($order));
+    }
+}
+</code></pre>
+<p>测试时，不用真的触发监听器就能<strong>断言事件类型</strong>是很有用的。 Laravel <strong>内置的测试辅助方法</strong> 能让这件事变得很容易。</p>
+<p>我们<strong>只需要触发事件</strong>，并在<code>event()</code>里传入具体的内容，因为对应的监听器会自动响应事件并作出处理。</p>
+<h1 id="事件订阅者">事件订阅者</h1>
+<p>虽然可以在 EventServiceProvider 的 <code>$listen</code> 中注册所有的 事件/监听器。但是当条目数量增加的时候，更好的办法是将它们进行“分组”管理和集中处理。</p>
+<p>例如与用户有关的所有事件（登录、注销）、与订单有关的所有事件（发货、物流信息变化）等。</p>
+<h2 id="编写事件订阅者">编写<code>事件订阅者</code></h2>
+<p>事件订阅者：</p>
+<ul>
+<li>在自身内部<strong>订阅多个事件</strong></li>
+<li>在单个类中<strong>定义多个事件处理器</strong>，</li>
+<li>进行<strong>事件分发</strong>。</li>
+</ul>
+<p>如下例，定义一个<code>UserEventSubscriber</code>的事件订阅者，然后定义一个 <code>subscribe</code> 方法（它接受一个事件分发器的实例 <code>$events</code> 作为参数），在 subscribe 方法内部多次调用事件分发器<code>$events</code>的<code>listen()</code>方法来注册多个事件监听器.</p>
+<p><code>listen()</code>方法第一个参数是事件类，第二个参数是在当前订阅者类中实现的某个事件监听方法（<code>onUserLogin</code>， <code>onUserLogout</code>）。把之前分散在多个 <code>Listener</code>类 中的 <code>handle</code>方法，统一集中放在这个事件订阅者内部来处理。</p>
+<p><strong>事件分发器类 Illuminate\Events\Dispatcher</strong></p>
+<pre><code class="language-php">namespace App\Listeners;
+
+class UserEventSubscriber
+{
+    
+    public function onUserLogin($event) {}
+
+    public function onUserLogout($event) {}
+
+    /**
+     * 为订阅者注册监听器。
+     *
+     * @param  Illuminate\Events\Dispatcher  $events
+     */
+    public function subscribe($events)
+    {
+        $events-&gt;listen(
+            'Illuminate\Auth\Events\Login',
+            'App\Listeners\UserEventSubscriber@onUserLogin'
+        );
+
+        $events-&gt;listen(
+            'Illuminate\Auth\Events\Logout',
+            'App\Listeners\UserEventSubscriber@onUserLogout'
+        );
+    }
+
+}
+</code></pre>
+<h2 id="注册事件订阅者">注册事件订阅者</h2>
+<p>一旦订阅者被定义，它就可以被注册到事件分发器中</p>
+<p>因为现在把多个事件和监听器的注册都放到了<code>事件订阅者</code>中，所以现在不用再在 <code>EventServicePriver</code>的<code>$listen</code>里面去一个一个订阅事件和监听器了。</p>
+<p>直接在<code>$subscribe</code>属性里订阅一个<code>事件订阅者</code>来批量实现。</p>
+<pre><code class="language-php">class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * 应用中事件监听器的映射。
+     */
+    protected $listen = [
+        //
+    ];
+
+    /**
+     * 需要注册的订阅者类。
+     */
+    protected $subscribe = [
+        'App\Listeners\UserEventSubscriber',
+    ];
+</code></pre>
+<p>案例，以用户登录成功为例</p>
+<p>请先学习 ActivityLog （日志工具）的使用方法</p>
+<h1 id="创建事件与对应的监听器">创建事件与对应的监听器</h1>
+<p>在<code>app\Provider\EventServiceProvider.php</code>的<code>$listen</code>成员中。为登录事件添加一个监听器<code>LogSuccessfulLogin</code>(拆开含义 log successful login，添加登录成功的日志)</p>
+<pre><code class="language-php">protected $listen = [
+    'Illuminate\Auth\Events\Login' =&gt; [
+        'App\Listeners\LogSuccessfulLogin',
+    ],
+];
+</code></pre>
+<p>运行 artisan 命令，生成这个 listener 对应的类文件<code>app/Listeners/LogSuccessfulLogin.php</code></p>
+<pre><code class="language-shell">php artisan event:generate
+# Events and listeners generated successfully!
+</code></pre>
+<h1 id="编辑监听器代码">编辑监听器代码</h1>
+<p>标记<code>LogSuccessfulLogin.php</code></p>
+<pre><code class="language-php">use Spatie\Activitylog\Models\Activity;
+//...
+
+public function handle(Login $event)
+    {
+        //
+    }
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%BA%8B%E4%BB%B6/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%BA%8B%E4%BB%B6/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="git commit 内容规则 commit message 应该是清晰明了，说明本次提交的目的。这样才有利于版本控制。 以及与 issue 关联 格式 提交信息包括三个部分：Header，Body 和 Footer Header" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="git commit 内容规则 commit message 应该是清晰明了，说明本次提交的目的。这样才有利于版本控制。 以及与 issue 关联 格式 提交信息包括三个部分：Header，Body 和 Footer Header" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="git commit 内容规则 commit message 应该是清晰明了，说明本次提交的目的。这样才有利于版本控制。 以及与 issue 关联 格式 提交信息包括三个部分：Header，Body 和 Footer Header">
+
+<meta itemprop="wordCount" content="6949">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="git commit 内容规则 commit message 应该是清晰明了，说明本次提交的目的。这样才有利于版本控制。 以及与 issue 关联 格式 提交信息包括三个部分：Header，Body 和 Footer Header"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6949字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="git-commit-内容规则">git commit 内容规则</h1>
+<p>commit message 应该是清晰明了，说明本次提交的目的。这样才有利于版本控制。 以及与 issue 关联</p>
+<p>格式
+提交信息包括三个部分：Header，Body 和 Footer   Header 是必需的，Body 和 Footer 可以省略。</p>
+<pre><code class="language-xml">&lt;Header&gt;  包括 &lt;type&gt;: &lt;subject&gt;
+ 
+&lt;Body&gt;
+ 
+&lt;Footer&gt;
+</code></pre>
+<h2 id="type用于说明-commit-的类别可以使用如下类别">type用于说明 commit 的类别，可以使用如下类别：</h2>
+<p>feat：新功能（feature）
+fix：修补bug
+doc：文档（documentation）
+style： 格式（不影响代码运行的变动）
+refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+test：增加测试
+chore：构建过程或辅助工具的变动</p>
+<h2 id="subject">subject</h2>
+<p>subject是 commit 目的的简短描述。 说明代码变动的动机，以及与以前行为的对比。</p>
+<p>以动词开头，使用第一人称现在时，比如change，而不是changed或changes
+第一个字母小写
+结尾不加句号（。）</p>
+<h3 id="关联-issue">关联 issue</h3>
+<p>本次提交如果和摸个issue有关系则需要写上这个，格式如下</p>
+<p>关联 Issue #1, #2, #3</p>
+<p>关闭 Issue  Close #1, #2, #3</p>
+<h2 id="body-部分是对本次-commit-的详细描述可以分成多行下面是一个范例">Body 部分是对本次 commit 的详细描述，可以分成多行。下面是一个范例。</h2>
+<pre><code>More detailed explanatory text, if necessary.  Wrap it to 
+about 72 characters or so. 
+ 
+Further paragraphs come after blank lines.
+ 
+- Bullet points are okay, too
+- Use a hanging indent
+</code></pre>
+<h2 id="footer">Footer</h2>
+<p>Footer 部分只用于两种情况：</p>
+<p>关联 Issue
+关闭 Issue</p>
+<h2 id="完整例子">完整例子</h2>
+<pre><code class="language-shell">
+feat: 添加了分享功能
+ 
+给每篇博文添加了分享功能
+ 
+- 添加分享到微博功能
+- 添加分享到微信功能
+- 添加分享到朋友圈功能
+ 
+Issue #1, #2
+Close #1
+</code></pre>
+<h1 id="gitflow">GitFlow</h1>
+<p>一旦开发的功能已经满足发布条件（或预定发布日期接近），应该合并所有满足发布条件的新功能分支到develop分支中，然后，开出一个发布分支（Release），开始准备一个发布版本。一个场景：</p>
+<p>以往开发者通过<strong>长时间</strong>的开发后，需要进行代码合并。这时解决代码冲突、发布新版本可能会带来非常可怕的问题。(因为累计的代码太多了)</p>
+<p>因此提出了「<a href="http://www.extremeprogramming.org/rules/integrateoften.html">持续集成</a>」的概念</p>
+<p>即开发人员需要每几个小时或最多一天内（<strong>较短时间</strong>）进行编译然后<strong>合并代码到主分支</strong>最后再运行<strong>自动化测试</strong>。</p>
+<p>例如使用 GitLab CI 来执行脚本（Jenkins 和 GitHub CI plugin 也同样支持）。使用 Jira 来跟踪问题单，IntelliJ IDEA 作为 IDE，Nexus 作为仓库管理，Ansible 作为自动化部署工具</p>
+<h2 id="gitflow与feature-branches-模式">gitflow与feature branches 模式</h2>
+<p>提倡使用 <a href="https://martinfowler.com/bliki/FeatureBranch.html">feature branches</a> 模式来开发独立的功能，用不同的分支便于集成和发布</p>
+<p><img src="/media/git/1460000018359248.jpeg" alt="img"></p>
+<p>补充：(来自阮一峰的播客)</p>
+<ul>
+<li>
+<p>功能（feature）分支， 开发完成后，要再并入Develop。</p>
+</li>
+<li>
+<p>预发布（release）分支</p>
+</li>
+<li>
+<p>修补bug（fixbug）分支</p>
+</li>
+</ul>
+<p>这三种都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有Master和Develop</p>
+<h2 id="开始">开始</h2>
+<p>初始化动作，就是从 <em>master</em> 分支上创建一个 <em>develop</em> 分支，变成一个类似全能的分支，用来存放、测试所有的代码，同时也是主要是用来合并代码、集成功能的分支</p>
+<p>项目负责人在本地master基础上创建一个develop分支，然后，推送到服务器；</p>
+<pre><code class="language-shell">git checkout -b develop master
+</code></pre>
+<p>作为一个开发人员，在这是<strong>不允许直接提交代码到 <em>develop</em> 分支上的</strong>，更更更不允许直接提交到 <em>master</em> 分支</p>
+<p><em>master</em> 分支代表的是一个「stable」的分支，包含的是已投产或即将投产的代码。如果一段代码在 <em>master</em> 分支上，即代表它已经投产或即将投产发布。</p>
+<p><em>develop</em> 分支代表着「unstable」，它包含了需要编译并且需要测试通过的代码，甚至是没有完成的代码，所以称之为「unstable」。</p>
+<p>-其他开发人员，需要克隆develop中央仓库的源码，创建一个develop的轨迹版本；如果，已经克隆过该项目，则，不需要执行以下第一条命令。</p>
+<pre><code class="language-shell">git clone git@github.org:search-cloud/demo.git
+git checkout -b develop origin/develop
+</code></pre>
+<h2 id="如何开展工作">如何开展工作？</h2>
+<p>例如：你被派到了一个 <em>Jira</em> 问题单</p>
+<p>需要立即从 <em>delevop</em> 分支上<strong>创建一个 <em>feature</em> 分支</strong>。(约定以 「feat-」开头，后面跟上问题单编号 如「feat-SDLC-123-add-name-field」)</p>
+<ul>
+<li><code>feat-</code> 可以让 CI 服务器识别出这是一个 <em>feature</em> 分支</li>
+<li><code>SDLC-123</code>是我们 <em>Jira</em> 问题单的编号，可以链接到问题单</li>
+<li>剩下的部分则是对该功能的简短的说明</li>
+</ul>
+<p>这样，我们的开发工作就可以并行地开展，每个人都可以同时在各自的 <em>feature</em> 分支上开发。</p>
+<pre><code class="language-shell">git checkout -b feat-SDLC-123-add-name-field develop
+</code></pre>
+<h1 id="pull-request">Pull Request</h1>
+<p>通常用来团队 Code Review 、讨论来提高代码质量、便于直接就哪行代码进行反馈</p>
+<p>通常情况下，项目管理者不能让成员直接进行合并到某个分支（写入权限）</p>
+<p>成员开发完某个功能（或者修复某个 issue）后，应该提交一个 PR (Pull Request)，通知大家“我已经做完了，大家来讨论下，如何检查没问题的的话请合并”</p>
+<h2 id="准备">准备</h2>
+<h3 id="首先把修改的代码进行-commit-一次或者多次">首先，把修改的代码进行 commit （一次或者多次）</h3>
+<h3 id="准备用-rebase-合并分支">准备用 rebase 合并分支</h3>
+<p>合并分支时，使用rebase可以使提交的历史记录显得更简洁。</p>
+<h3 id="解决冲突-准备推送到远端分支">解决冲突, 准备推送到远端分支</h3>
+<h2 id="pull-request-流程">pull request 流程</h2>
+<ol>
+<li>填写简介、需要合并进去的分支，指派给谁 review</li>
+<li>创建后，这个 PR 就是公开的了，大家能讨论、修改它</li>
+<li>创建的时候通常遇到冲突需要解决</li>
+<li>通常被指派 review 的人会审查代码，但并没有强制只有这个人，所以团队成员也能看到并进行评论和提出修改意见。</li>
+<li>这些反馈都被添加到到代码行的附近</li>
+<li>开发者要解决评论里提到的问题，回复提问者</li>
+<li>直到所有评论中提出的问题都被解决</li>
+<li>代码才被合并到当时创建PR 时指定的分支</li>
+<li>也有可能 PR 会被关闭，由于一些原因~</li>
+</ol>
+<p><img src="/media/git/pull-request-flow.png" alt=""></p>
+<h2 id="具体案例在-github-里处理-pull-request">具体案例：在 GitHub 里处理 Pull Request</h2>
+<p>假设 A 有一个项目的 Repository 叫 teamwork.git, B 想参与一起开发这个项目，需要向 A 提交 Pull Request</p>
+<h3 id="首先b-需要-fork--clone-项目">首先，B 需要 fork &amp; clone 项目</h3>
+<p><strong>fork</strong></p>
+<p>B 在 A 的项目 github.com/A/teamwork.git 上 fork 这个项目，此时 B 的 &ldquo;my repositories&quot;里就能看到这个项目了</p>
+<p><strong>clone</strong></p>
+<p>将刚刚 fork 来的项目，clone 到本地电脑</p>
+<h3 id="将-bteamworkgit-与-ateamworkgit-建立链接">将 B/teamwork.git 与 A/teamwork.git 建立“链接”</h3>
+<p>下面的命令看到，这个本地 Repository 只与 B 在 Github 上的 Repository 有关。</p>
+<pre><code class="language-shell">git remote -v
+
+origin http://www.github.com/B/teamwork.git
+</code></pre>
+<p>于是给它添加一个远端仓库, 指向 A/teamwork.git, 名称叫 “upstream”</p>
+<pre><code class="language-shell">git remote add upstream https://github.com/timo1160139211/firstGit.git
+</code></pre>
+<h3 id="b-新建分支--修改代码--commit--push-到自己的-repositoy">B 新建分支 &amp; 修改代码 &amp; commit &amp; push 到自己的 Repositoy</h3>
+<pre><code class="language-shell">git checkout -b new-branch
+
+# 修改下文件
+
+git add .
+git commit -m &quot;add some files&quot;
+
+# 注意，是提交到自己（B）的 Repository (从 A 的 teamwork.git fork 过来的)
+git push origin 
+</code></pre>
+<h3 id="b-发起-pull-request">B 发起 Pull Request</h3>
+<p>关键的几步完成了</p>
+<ol>
+<li>fork 别人的项目到自己的仓库</li>
+<li>在 fork 过来的仓库里添加一个远端地址</li>
+</ol>
+<h4 id="comparing-changes">Comparing changes</h4>
+<p>点击 New pull requests按钮</p>
+<p><img src="/media/github/pull-request-list.jpg" alt=""></p>
+<p>然后就会进入 Comparing change 界面.  左边是 A 的仓库和分支（请求合并的目标）， 右边是  B（自己）的分支（请求合并的源）</p>
+<p><img src="/media/github/comparing-changes.jpg" alt=""></p>
+<h4 id="create-pull-request-填写信息">create Pull Request 填写信息</h4>
+<p>点击中间的按钮，输入一些信息.  右侧可以指定  reviewer   assignees 等等</p>
+<p><img src="/media/github/pr-submit-info.jpg" alt=""></p>
+<p>好了，现在看到这个 PR 的动态了</p>
+<p><img src="/media/github/created-pr.jpg" alt=""></p>
+<h3 id="评论">评论</h3>
+<p><img src="/media/github/commet-pr-form.jpg" alt=""></p>
+<p><img src="/media/github/commet-pr.jpg" alt=""></p>
+<h3 id="a-来审查代码并-merge">A 来审查代码并 merge</h3>
+<p>如果同意这个合并，A 点击上面的按钮 &ldquo;Merge pull request&rdquo; 后，</p>
+<p><img src="/media/github/confirm-merge-pr.jpg" alt=""></p>
+<p>合并成功！</p>
+<p><img src="/media/github/after-pr-merge.jpg" alt=""></p>
+<h2 id="pull-request-in-gitflow">Pull Request in GitFlow</h2>
+<p><strong>develop branch</strong>:  通常, 开发者们开发完 feature 后提交 PR 到 develop 分支，reviewer（通常是技术经理）审查代码</p>
+<p><strong>release branch</strong></p>
+<p>&hellip;</p>
+<h1 id="合并">合并</h1>
+<p><strong>当确定新功能开发完成，且联调测试通过，并且新功能负责人已经得到合并feature分支到develop分支的允许；这样才能合并feature分支到develop。</strong></p>
+<p>完成后合并回 develop 分支并删除</p>
+<pre><code class="language-shell">#确保在合并新功能之前，develop分支是最新的
+git pull origin develop
+
+git checkout develop
+
+# 合并可能会有冲突，应该谨慎处理冲突。
+git merge --no-ff feat-SDLC-123-add-name-field
+
+git push
+
+git branch -d feature-x
+</code></pre>
+<p>当我们持续的将功能 <em>merge</em> 到 <em>develop</em> 分支上后，我们可以大大减少变成「集成地狱」的可能</p>
+<h2 id="提交的准则">提交的准则</h2>
+<p>1.<strong>除了源码相关的东西之外，其他build产生的东西（如：maven的target文件夹，.idea文件夹等），均不能提交进入源码仓库，添加到.gitignore文件中忽略掉。</strong>
+2.<strong>撰写规范的提交说明。一份好的提交说明可以帮助协作者更轻松更有效地配合工作。</strong>
+3.<strong>要严格按照我们指定的流程切换到指定分支，开发相应的功能。</strong></p>
+<h1 id="gitlab-ci进行build来避免频繁提交代码导致的冲突">GitLab CI进行build来避免频繁提交代码导致的冲突</h1>
+<p>将 GitLab CI 绑定到以「feat-」开头命名的分支即 <em>feature</em> 分支，在 <em>feature</em> 分支上执行 Maven verify （本地编译以及运行 <em>tests</em>），但不发布到 Nexus 仓库</p>
+<p>GitLab CI 是通过项目根目录里的 <code>.gitlab-ci.yml</code> 文件进行配置，包含了 CI/CD 的各个步骤。这个功能的绝妙之处是它可以将运行脚本和代码提交进行绑定。</p>
+<p>团队提倡频繁地提交代码，每次提交代码都会独立的运行 <em>tests</em>，以保证当前提交的代码不会影响到项目原有的任何其它功能。</p>
+<pre><code class="language-yaml">feature-build:
+  stage: 
+    build
+  script:
+    - mvn clean verify sonar:sonar
+  only:
+    - /^feat-\w+$/
+</code></pre>
+<h1 id="测试覆盖率">测试覆盖率</h1>
+<p>IntelliJ idea 自带 <em>coverage</em> 运行模式,允许运行测试代码检查测试覆盖率</p>
+<p>建议在 Maven 里添加测试覆盖率插件，如 <em>jacoco</em>，它可以在 GitLab CI 运行集成编译的时候生成报告。</p>
+<p>Maven 的 <em>test</em> 阶段执行单元测试，<em>verify</em> 阶段执行集成测试。建议安装 SonarQube 和 Maven <a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Maven">SonarQube</a> 插件来进行静态代码的分析和测试。这样，每一个 <em>feature</em> 分支的每一次提交都会执行上述所有的 <em>test</em></p>
+<h1 id="集成工作--线上版本发布流程">集成工作  线上版本发布流程</h1>
+<p>已经开发完了新功能，同时将代码提交到了 <em>feature</em> 分支，根据「持续集成」到思想，我们要求开发团队需要频繁地把代码从 <em>feature</em> 分支 <em>merge</em> 到 <em>develop</em> 分支上，要求频率最晚不超过一天</p>
+<p>同时 GitLab 里内置了一个代码复查的机制，即发起一个 <em>merge</em> 请求后(Gitlab中 菜单 加号， &ldquo;new merge request&rdquo;)，我们必须复查完代码才可以将代码 <em>merge</em> 到 <em>develop</em> 分支上。</p>
+<p>根据不同的 <em>SDLC</em>（软件开发生命周期）要求，比如我们强制不同的且具有相关职责的开发人员进行代码复查，或者可以更简单点，开发人员自己复查自己的代码，这样起码鼓励了开发人员可以至少复查一下自己的代码，当然也很明显的增加了很多不靠谱的风险</p>
+<p>最终，经过几天的努力，项目功能已经开发完毕，而且已经全部 <em>merge</em> 到 <em>develop</em> 分支上，并验证完毕，同时，其它几个功能也开发完毕也准备发布.记住此时我们只是在每一次的提交时进行了验证，并没有进行部署，如发布 SNAPSHOT 版本到 Nexus 仓库上，这是我们下一步将要做的。</p>
+<p>一旦开发的功能已经满足发布条件（或预定发布日期接近），应该合并所有满足发布条件的新功能分支到develop分支中，然后，开出一个发布分支（Release），开始准备一个发布版本。</p>
+<p>此时，我们<strong>在 <em>develop</em> 分支上</strong>新建一个 <em>release</em> 分支，然而与传统的 Gitflow 不同，新建的 <em>release</em> 分支是以版本号来命名，版本号命名规则可参考<a href="https://semver.org/lang/zh-CN/">这里</a>(semantic语义化)。如果 SNAPSHOT 版本的版本号是 1.2.1-SNAPSHOT，那么此次的 <em>release</em> 分支应该命名为 1.2.1。</p>
+<pre><code class="language-shell">git checkout -b release-1.2.1-SNAPSHOT develop
+
+#推送到远程仓库共享：
+git push
+</code></pre>
+<h2 id="配置-gitlab-ci">配置 GitLab CI</h2>
+<p>使用正则表达式来识别一个 <em>release</em> 分支，同时执行相关的脚本。</p>
+<p>注意的是提交的时候需要加上 <code>[ciskip]</code> 防止新的提交再次触发 GitLab CI，从而进入死循环。</p>
+<pre><code class="language-yaml">release-build:
+  stage:
+    build
+  script: 
+    - mvn versions:set -DnewVersion=${CI_COMMIT_REF_NAME}-SNAPSHOT
+    # now commit the version to the release branch
+    - git add .
+    - git commit -m &quot;create snapshot [ci skip]&quot;
+    - git push
+    # Deploy the binary to Nexus:
+    - mvn deploy
+  only:
+    - /^\d+\.\d+\.\d+$/
+  except:
+    - tags
+</code></pre>
+<h1 id="bugs">Bugs</h1>
+<p>在测试中发现 bugs, 可以直接在 <em>release</em> 分支上修改，修改完后再 <em>merge</em> 到 <em>develop</em> 分支上（<em>develop</em> 分支包含的是已发布或者即将发布的代码）。</p>
+<p>维护分支也就是线上bug修复分支，使用来快速修复生产环境的紧急问题。这个分支是唯一一个开放过程中直接从master分支派生来的分支。快速的修复问题后，它应该被合并回master和develop（或者当前发布分支），然后，master分支需要打一个版本标签。</p>
+<p>一个专门的错误修复开发线，可以让团队在不等待下一个发布周期，导致中断工作流程情况下解决问题。可以将维护分支当做主要的问题修复分支，与master并行。</p>
+<h1 id="发布">发布</h1>
+<p>最后， <em>release</em> 分支被验证通过，我们将会把它 <em>merge</em> 到 <em>master</em> 分支中</p>
+<p>合并时，<em>release</em> 分支中的版本号还是 <em>SNAPSHOT</em> 版本，GitLab runner 会通过 Maven 版本插件将版本号后缀 <em>SNAPSHOT</em> 去掉，同时生成下一个 <em>SNAPSHOT</em> 版本号并发布到 Nexus。此时还会将其部署到 UAT 环境中进行测试，测试无问题后再部署到生产环境。</p>
+<pre><code class="language-yaml">master-branch-build:
+  stage:
+    build
+  script:
+    # Remove the -SNAPSHOT from the POM version
+    - mvn versions:set -DremoveSnapshot
+    # use the Maven help plugin to determine the version. Note the grep -v at the end, to prune out unwanted log lines.
+    - export FINAL_VERSION=$(mvn --non-recursive help:evaluate -Dexpression=project.version | grep -v '\[.*')
+    # Stage and commit the binaries (again using [ci skip] in the comment to avoid cycles)
+    - git add .
+    - git commit -m &quot;Create release version [ci skip]&quot;
+    # Tag the release
+    - git tag -a ${FINAL_VERSION} -m &quot;Create release version&quot;
+    - git push 
+    - mvn sonar:sonar deploy
+  artifacts:
+    paths:
+    # list our binaries here for Ansible deployment in the master-branch-deploy stage
+      - target/my-binaries-*.jar
+  only:
+    - master
+ 
+master-branch-deploy:
+  stage:
+    deploy
+  dependencies:
+    - master-branch-build
+  script:
+   # &quot;We would deploy artifacts (target/my-binaries-*.jar) here, using ansible
+  only:
+    - master
+</code></pre>
+<p>Release分支在功能开发分支（develop）和公共发布版（master）中，充当一个缓冲的作用。每当有源码合并到master中的时候，应该在master上<strong>打一个标签</strong>，以便后续跟踪查阅。</p>
+<pre><code class="language-shell">git tag -a 0.1.0.RELEASE -m &quot;Initial public release&quot; master
+git push --tags
+</code></pre>
+<p>对于把 develop 分支合并到 master，使用 non fast-forward 方式在 master 分支生成一个新节点</p>
+<pre><code class="language-shell"># 切换到Master分支
+git checkout master
+
+# 对Develop分支进行合并
+git merge --no-ff develop
+</code></pre>
+<p>默认是 fast-forward merge (快进式合并)模式，会直接将Master分支指向Develop分支</p>
+<p><img src="/media/git/image-20190604115317760.png" alt="image-20190604115317760"></p>
+<p>而使用 <code>--no-ff</code>，会在执行正常合并的基础上，在 Master 分支上生成一个新节点，保证版本演进的清晰。</p>
+<p><img src="/media/git/image-20190604115425894.png" alt="image-20190604115425894"></p>
+<h1 id="hotfixes">Hotfixes</h1>
+<p>这个分支是负责在<strong>生产环境</strong>上发现的问题，如 bug 或者性能问题等</p>
+<p>和 <em>release</em> 分支类似，都以 release 版本号命名，唯一的区别就是 <em>hotfixes</em> 是新建于 <em>master</em> 分支，<em>release</em> 分支则是从 <em>develop</em> 分支而来。</p>
+<pre><code class="language-shell">git checkout -b fixbug-0.1 master
+
+# 结束后合并到 master
+git checkout master
+git merge --no-ff fixbug-0.1
+
+# 打标签，表示修复过bug
+git tag -a 0.1.1.RELEASE -m &quot;Initial public release&quot; master
+git push --tags
+
+#再合并到develop分支
+git checkout develop
+git merge --no-ff fixbug-0.1
+
+# 最后，删除&quot;修补bug分支&quot;：
+git branch -d fixbug-0.1
+</code></pre>
+<p>和 <em>release</em> 一样，都会触发 Nexus SNAPSHOT 发布，然后部署到 UAT 环境。当一切都没问题验证通过后，需要再将它 <em>merge</em> 回 <em>develop</em> 分支，然后再 <em>merge</em> 到 <em>master</em> 以进行投产发布</p>
+<h1 id="总结-summary">总结 Summary</h1>
+<p><img src="/media/git/1460000018359256.jpeg" alt="img"></p>
+<p>一些优势：</p>
+<ul>
+<li>功能相互隔离。开发人员可以独立的变更功能，使得团队集成工作更加轻松，或者代码的合并加频繁。</li>
+<li>功能相互独立，在每个发布的新版本中可以挑选想要发布的功能，同时可以支持我们持续发布新的功能。</li>
+<li>更多、更合规的代码复查工作。</li>
+<li>自动化测试、部署和交付到各个环境。</li>
+</ul>
+<p>现在互联网公司都在讨论「持续交付」，如果你的团队每天都会发布很多版本，本文的方法估计不太适合你，如果你所在的是一个传统企业，如一些金融机构，在版本发布方面更加谨慎，那本文所介绍的分支管理、持续集成、自动化测试以及自动化部署等方面内容也许对你有所帮助</p>
+<p>本文翻译自(篇幅较长，只把主要部分翻译了过来)：<a href="https://www.infoq.com/articles/gitflow-java-project">https://www.infoq.com/article&hellip;</a></p>
+<h1 id="commit-message-和-change-log-编写-规范">Commit message 和 Change log 编写 规范</h1>
+<p><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html">http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html</a></p>
+<pre><code class="language-shell">git commit -m &quot;this is the message of commit&quot;
+</code></pre>
+<p>一般来说，commit message 应该清晰明了，说明本次提交的目的。</p>
+<p>有很多的规范，例如 Angular 规范，便于和配套工具协同工作</p>
+<p>好处：</p>
+<pre><code class="language-shell">#只看行首，就知道某次 commit 的目的，方便在查看历史记录
+$ git log &lt;last tag&gt; HEAD --pretty=format:%s
+
+#过滤某些commit（比如文档改动），便于快速查找信息, 例如 仅仅显示本次发布新增加的功能
+$ git log &lt;last release&gt; HEAD --grep feature
+</code></pre>
+<p>还可以直接从commit生成Change log。</p>
+<p><img src="/media/git/image-20190605140128787.png" alt="image-20190605140128787"></p>
+<h2 id="commit-message-的格式">Commit message 的格式</h2>
+<p>Commit message 都包括三个部分：Header，Body 和 Footer。(Header 是必需的，Body 和 Footer 可以省略。)任何一行都不得超过72个字符（或100个字符） 避免换行影响美观</p>
+<pre><code class="language-xml">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;
+// 空一行
+&lt;body&gt;
+// 空一行
+&lt;footer&gt;
+</code></pre>
+<h3 id="header">Header</h3>
+<p>包括三个字段：type（必需）、scope（可选）和subject（必需）</p>
+<h4 id="type--commit--的类别"><strong>type</strong>:  commit  的类别</h4>
+<ul>
+<li>feat：新功能（feature）</li>
+<li>fix：修补bug</li>
+<li>docs：文档（documentation）</li>
+<li>style： 格式（不影响代码运行的变动）</li>
+<li>refactor：重构（即不是新增功能，也不是修改bug的代码变动）</li>
+<li>test：增加测试</li>
+<li>chore：构建过程或辅助工具的变动</li>
+</ul>
+<blockquote>
+<p>如果type为<code>feat</code>和<code>fix</code>，则该 commit 将肯定出现在 Change log 之中</p>
+</blockquote>
+<h4 id="scope-视项目而定例如说明-commit-影响的范围比如数据层控制层视图层等等">scope (视项目而定)例如说明 commit 影响的范围，比如数据层、控制层、视图层等等</h4>
+<h4 id="subject-commit-目的的简短描述不超过50个字符">subject commit 目的的简短描述，不超过50个字符</h4>
+<ul>
+<li>以动词开头，使用第一人称现在时，比如change，而不是changed或changes</li>
+<li>第一个字母小写</li>
+<li>结尾不加句号（.）</li>
+</ul>
+<h3 id="boby-本次commit-的详细描述">boby 本次commit 的详细描述</h3>
+<p>可以分成多行</p>
+<blockquote>
+<p>More detailed explanatory text, if necessary.  Wrap it to
+about 72 characters or so.</p>
+</blockquote>
+<blockquote>
+<p>Further paragraphs come after blank lines.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Bullet points are okay, too</li>
+<li>Use a hanging indent</li>
+</ul>
+</blockquote>
+<p>注意</p>
+<ul>
+<li>使用第一人称现在时，比如使用change而不是changed或changes。</li>
+<li>应该说明代码变动的动机，以及与以前行为的对比。</li>
+</ul>
+<h3 id="footer只用于两种情况">Footer（只用于两种情况）</h3>
+<p>（1）当前代码与上一个版本不兼容，则 Footer 部分以<code>BREAKING CHANGE</code>开头，后面是对变动的描述、以及变动理由和迁移方法。</p>
+<pre><code class="language-json">BREAKING CHANGE: isolate scope bindings definition has changed.
+
+    To migrate the code follow the example below:
+
+    Before:
+
+    scope: {
+      myAttr: 'attribute',
+    }
+
+    After:
+
+    scope: {
+      myAttr: '@',
+    }
+
+    The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+
+</code></pre>
+<p>2）关闭 Issue</p>
+<pre><code class="language-shell">Closes #234
+
+# 一次关闭多个 issue 
+Closes #123, #245, #992
+</code></pre>
+<h3 id="其他情况-revert开头-用于撤销以前的-commit">其他情况： revert:开头 （用于撤销以前的 commit）</h3>
+<p>后面跟着被撤销 Commit 的 Header。</p>
+<pre><code class="language-shell">revert: feat(pencil): add 'graphiteWidth' option
+
+This reverts commit 667ecc1654a317a13331b17617d973392f415f02.
+</code></pre>
+<p>Body部分的格式是固定的，必须写成This reverts commit &lt;hash&gt;.，其中的hash是被撤销 commit 的 SHA 标识符。</p>
+<p>如果当前 commit 与被撤销的 commit，在同一个发布（release）里面，那么它们都不会出现在 Change log 里面。如果两者在不同的发布，那么当前 commit，会出现在 Change log 的Reverts小标题下面。</p>
+<h2 id="辅助工具">辅助工具</h2>
+<h3 id="commitizen-撰写合格的-commit-message">Commitizen 撰写合格的 Commit message</h3>
+<pre><code class="language-shell">$ npm install -g commitizen
+</code></pre>
+<p>在项目目录里，运行下面的命令，使其支持 Angular 的 Commit message 格式</p>
+<pre><code class="language-shell">$ commitizen init cz-conventional-changelog --save --save-exact
+</code></pre>
+<p>以后，凡是用到<code>git commit</code>命令，一律改为使用<code>git cz</code>。这时，就会出现选项，用来生成符合格式的 Commit message。</p>
+<p><img src="/media/15597191900882.jpg" alt="-w273"></p>
+<h3 id="validate-commit-msg-检查-node-项目的-commit-message-是否符合格式">validate-commit-msg 检查 Node 项目的 Commit message 是否符合格式</h3>
+<p>拷贝https://github.com/kentcdodds/validate-commit-msg/blob/master/index.js 重命名 validate-commit-msg.js 放入你的代码库</p>
+<p>把这个脚本加入 Git 的 hook。 例如在package.json里面使用 <strong>ghooks</strong>(<a href="http://npm.im/ghooks">http://npm.im/ghooks</a>)，把这个脚本加为commit-msg时运行。</p>
+<pre><code class="language-json">&quot;config&quot;: {
+    &quot;ghooks&quot;: {
+      &quot;commit-msg&quot;: &quot;./validate-commit-msg.js&quot;
+    }
+  }
+</code></pre>
+<p>每次git commit的时候，这个脚本就会自动检查 Commit message 是否合格。如果不合格，就会报错。</p>
+<pre><code class="language-shell">$ git add -A 
+$ git commit -m &quot;edit markdown&quot; 
+INVALID COMMIT MSG: does not match &quot;&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;&quot; ! was: edit markdown
+</code></pre>
+<h2 id="生成-change-log-以及-conventional-changelog-工具生成-change-log">生成 Change log （以及 conventional-changelog 工具生成 Change log）</h2>
+<p>如果你的所有 Commit 都符合 Angular 格式，那么发布新版本时， Change log 就可以用脚本自动生成。</p>
+<p>生成的文档包括以下三个部分。（每个部分都会罗列相关的 commit ，并且有指向这些 commit 的链接）</p>
+<ul>
+<li>New features</li>
+<li>Bug fixes</li>
+<li>Breaking changes.</li>
+</ul>
+<p>使用 conventional-changelog(<a href="https://github.com/ajoslin/conventional-changelog">https://github.com/ajoslin/conventional-changelog</a>) 工具，在 CHANGELOG.md 文件里更新变动</p>
+<pre><code class="language-shell">$ npm install -g conventional-changelog
+$ cd my-project
+$ conventional-changelog -p angular -i CHANGELOG.md -w
+</code></pre>
+<p>上面命令不会覆盖以前的 Change log，只会在CHANGELOG.md的头部加上自从上次发布以来的变动</p>
+<p>如果你想生成所有发布的 Change log，要改为运行下面的命令。</p>
+<pre><code class="language-shell">$ conventional-changelog -p angular -i CHANGELOG.md -w -r 0
+</code></pre>
+<p>可以将其写入package.json的scripts字段, 方便快速生成（运行<code>$ npm run changelog</code>即可）</p>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;changelog&quot;: &quot;conventional-changelog -p angular -i CHANGELOG.md -w -r 0&quot;
+  }
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/github/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

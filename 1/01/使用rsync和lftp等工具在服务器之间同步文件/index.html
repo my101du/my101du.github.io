@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 使用rsync和lftp等工具在服务器之间同步文件 permalink: sync-files-use-rsync-lftp date: 2016/10/25 10:10:10 tags:
+ 运维  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 使用rsync和lftp等工具在服务器之间同步文件
+permalink: sync-files-use-rsync-lftp
+date: 2016/10/25 10:10:10
+tags:
+
+运维
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 使用rsync和lftp等工具在服务器之间同步文件
+permalink: sync-files-use-rsync-lftp
+date: 2016/10/25 10:10:10
+tags:
+
+运维
+
+">
+
+<meta itemprop="wordCount" content="1513">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 使用rsync和lftp等工具在服务器之间同步文件
+permalink: sync-files-use-rsync-lftp
+date: 2016/10/25 10:10:10
+tags:
+
+运维
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1513字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 使用rsync和lftp等工具在服务器之间同步文件
+permalink: sync-files-use-rsync-lftp
+date: 2016/10/25 10:10:10
+tags:</p>
+<ul>
+<li>运维</li>
+</ul>
+<hr>
+<h1 id="通过-scp-进行最基本的文件传输">通过 SCP 进行最基本的文件传输</h1>
+<h2 id="scp-进行一些大文件传输时会出现-stalled-的情况">scp 进行一些大文件传输时，会出现 stalled 的情况</h2>
+<p>在使用 scp 进行一些大文件传输时，会出现 stalled 的情况，不外乎下面两个原因。</p>
+<p>scp 对带宽的使用是贪婪的，因此有多少的带宽他就会使用多少，但是如果一旦由于网络设备或者防火墙造成了一些延时，就会导致此次传输出现 TCP stalled。对此，可以通过限速解决，以 200Kbit/s 的速度进行传输:</p>
+<p>$ scp -l 200 file dst:
+另外还有个次要原因，可能是由于 Linux 下的 SACK 的造成。一般开启限速功能应该就能解决绝大多数的情况了。SACK 是什么请看这里。</p>
+<p>要使用 TCP option 中的 SACK，需要两端都支持。
+根据这篇文章的描述，在局域网或者低延迟的网络中，就完全没有必要开启 SACK options 了，另外在很小的带宽下，比如 1Mbps 的情况下，同样没有必要开启这个选项。该选项可以在 &ldquo;high bandwidth, lossy (or high delay)&rdquo; 的情况下开启。因此出现 stalled 的情况一般都是在客户从公网连接某台服务器，带宽一般都是比较小的，瓶颈带宽在客户端这边，而不大可能是两台同一链路(连在同一台交换机)的服务器之间的数据传输。因此关闭 SACK 会比较有利传输:</p>
+<h1 id="echo-0--procsysnetipv4tcp_sack">echo 0 &gt; /proc/sys/net/ipv4/tcp_sack</h1>
+<h1 id="inotify-与-rsync">inotify 与 Rsync</h1>
+<p>Rsync 是一个同步工具，缺点是每次都要扫描全部文件找到变动的文件列表。
+如果文件量不大，可以直接用<code>crontab</code>计划任务来定时同步。</p>
+<p>而如果文件太多，一般结合 <code>inotify</code>来实现文件变动监控后，只同步变动的内容。</p>
+<p>Rsync 有两种模式，一种是通过 SSH，一种是 deamon。这里选用第一种</p>
+<h2 id="安装与配置">安装与配置</h2>
+<pre><code class="language-shell">#注意，首先要安装 epel 支持
+
+#安装
+$yum install inotify-tools
+$yum install rsync
+</code></pre>
+<h2 id="在服务器和客户端之间建立连接">在服务器和客户端之间建立连接</h2>
+<p>这里我们假设文件的“源”所在服务器为<strong>Server</strong>，需要把文件复制到的“目标”所在服务器为<strong>Client</strong></p>
+<p>分别在<strong>Server</strong> 和<strong>Client</strong> 上创建一个新的用户<code>rsync</code>，避免使用<code>root</code>。并限制目录。</p>
+<pre><code class="language-shell">#在 Server
+Server $ useradd -d /home/rsync -m rsync
+Server $ passwd rsync
+
+#在 Client
+Client $ useradd -d /home/rsync -m  rsync
+Client $ passwd rsync
+</code></pre>
+<p>然后在<strong>Client</strong>上创建公钥<code>id_dsa.pub</code>，复制到<strong>Server</strong>的 <code>/home/rsync/.ssh/authorized_keys</code>，这样就不用手动输入密码了。</p>
+<pre><code class="language-shell">#略，特别注意 Server 端 .ssh 目录和 authorized_keys 文件的权限设置 （700 和 600）
+
+#测试一下，确保不用密码即可登录
+</code></pre>
+<h2 id="在client上创建文件变动监控和同步脚本">在<strong>Client</strong>上创建文件变动监控和同步脚本</h2>
+<pre><code class="language-shell">$vi inotify_rsync.sh
+</code></pre>
+<p>内容如下，特别注意里面定义的<code>SRC</code>（源）和<code>DST</code>（目标）</p>
+<pre><code class="language-shell">#!/bin/sh
+SRC=/home/rsync/test
+DST=rsync@192.168.33.11:/home/rsync/test
+
+#su - rsync
+inotifywait -mrq -e modify,delete,create,attrib ${SRC} | while read D E F
+        do
+                /usr/bin/rsync -ahqzt --delete $SRC $DST
+        done
+</code></pre>
+<p>测试</p>
+<pre><code class="language-shell">#添加执行权限
+$chmod +x inotify_rsync.sh
+
+#后台运行
+$ ./inotify_rsync.sh &amp;
+
+#可以放入开机启动
+$ cat &quot;/root/inotify_rsync.sh &amp;&quot; &gt;&gt; /etc/rc.local
+
+#测试
+
+#首先在 Server 上的同步目录创建文件
+[rsync@Server]$ vi 1.txt
+
+#然后到 Client 的目录上查看
+[rsync@Client]$ cat /home/rsync/test/1.txt
+</code></pre>
+<p><strong>参数说明</strong></p>
+<blockquote>
+<p>/usr/local/bin/inotifywait -mrq -e modify,delete,create,attrib ${SRC}
+-m 是保持一直监听
+-r 是递归查看目录
+-q 是打印出事件
+-e create,move,delete,modify,attrib 是指 “监听 创建 移动 删除 写入 权限” 事件</p>
+</blockquote>
+<blockquote>
+<p>/usr/bin/rsync -ahqzt &ndash;delete $SRC $DST
+-a 存档模式
+-h 保存硬连接
+-q 制止非错误信息
+-z 压缩文件数据在传输
+-t 维护修改时间
+-delete 删除于多余文件</p>
+</blockquote>
+<blockquote>
+<p>要排除同步某个目录时，为rsync添加&ndash;exculde=PATTERN参数，注意，路径是相对路径，具体查看man rsync。
+要排除某个目录的事件监听的处理时，为inotifywait添加&ndash;exclude或&ndash;excludei参数，具体查看man inotifywait。</p>
+</blockquote>
+<blockquote>
+<p>inotifywait 命令产生三个返回值，分别是“日期，时间，文件” 这3个返回值会做为参数传给read，因此脚本中的“while read D E F” 写法细化了返回值。</p>
+</blockquote>
+<p>另外，对源目录的最后“/”解释一下，如果带有这个斜杠，只会复制里面的内容，如果没有带，则会把目录本身也复制进来</p>
+<h2 id="容易出错的地方">容易出错的地方</h2>
+<ol>
+<li>执行脚本时，注意当前用户，</li>
+</ol>
+<h2 id="参考">参考</h2>
+<p><a href="http://www.3mu.me/%E9%80%9A%E8%BF%87rsyncinotify-toolsssh%E5%AE%9E%E7%8E%B0%E8%A7%A6%E5%8F%91%E5%BC%8F%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A4%87%E4%BB%BD/">http://www.3mu.me/%E9%80%9A%E8%BF%87rsyncinotify-toolsssh%E5%AE%9E%E7%8E%B0%E8%A7%A6%E5%8F%91%E5%BC%8F%E8%BF%9C%E7%A8%8B%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%A4%87%E4%BB%BD/</a></p>
+<h1 id="lftp">lftp</h1>
+<p>如果远程服务器<strong>只提供了 FTP 访问协议</strong>，就使用 lftp；如果对服务器有完全的控制权，建议使用 rsync，有更好的性能（因为需要在远程端运行一个 deamon）</p>
+<h2 id="参考-1">参考</h2>
+<p><a href="https://www.kiloroot.com/lftp-an-alternative-when-rsync-is-not-an-option-mirror-directories-over-sftp/">https://www.kiloroot.com/lftp-an-alternative-when-rsync-is-not-an-option-mirror-directories-over-sftp/</a></p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

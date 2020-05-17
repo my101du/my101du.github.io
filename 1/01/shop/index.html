@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="电商案例 来自 Learnku 的购买教程 前言 结构 用户中心； 收货地址； 电商管理后台； 权限管理； 商品管理； 商品 SKU； 购物车模块； 订单模块； 支付模块（支付宝、微" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="电商案例 来自 Learnku 的购买教程 前言 结构 用户中心； 收货地址； 电商管理后台； 权限管理； 商品管理； 商品 SKU； 购物车模块； 订单模块； 支付模块（支付宝、微" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/shop/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="电商案例 来自 Learnku 的购买教程 前言 结构 用户中心； 收货地址； 电商管理后台； 权限管理； 商品管理； 商品 SKU； 购物车模块； 订单模块； 支付模块（支付宝、微">
+
+<meta itemprop="wordCount" content="3251">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="电商案例 来自 Learnku 的购买教程 前言 结构 用户中心； 收货地址； 电商管理后台； 权限管理； 商品管理； 商品 SKU； 购物车模块； 订单模块； 支付模块（支付宝、微"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/shop/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/shop/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3251字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="电商案例">电商案例</h1>
+<p>来自 Learnku 的购买教程</p>
+<h1 id="前言">前言</h1>
+<h2 id="结构">结构</h2>
+<ul>
+<li>用户中心；</li>
+<li>收货地址；</li>
+<li>电商管理后台；</li>
+<li>权限管理；</li>
+<li>商品管理；</li>
+<li>商品 SKU；</li>
+<li>购物车模块；</li>
+<li>订单模块；</li>
+<li>支付模块（支付宝、微信支付）；</li>
+<li>商品评价；</li>
+<li>商品收藏；</li>
+<li>订单退款流程；</li>
+<li>优惠券模块；</li>
+<li>电商安全须知；</li>
+<li>数据备份。</li>
+</ul>
+<p><img src="/media/15490412691706/15414250640985.jpg" alt=""></p>
+<h2 id="知识点">知识点</h2>
+<ul>
+<li>
+<p>Laravel-Admin 快速构建管理后台</p>
+</li>
+<li>
+<p>支付宝和微信支付的回调通知处理</p>
+</li>
+<li>
+<p>Laravel 项目中对异常的处理</p>
+</li>
+<li>
+<p>购物车设计</p>
+</li>
+<li>
+<p>商品 SKU 数据结构设计</p>
+</li>
+<li>
+<p>通过延迟队列自动关闭订单</p>
+</li>
+<li>
+<p>MySQL 事务处理</p>
+</li>
+<li>
+<p>库存增减</p>
+</li>
+<li>
+<p>等</p>
+</li>
+<li>
+<p>现代化工作流 - 电商开发的日常流程，包括 Git 工作流、GitHub 使用等</p>
+</li>
+</ul>
+<p>源码： <a href="https://github.com/summerblue/laravel-shop">https://github.com/summerblue/laravel-shop</a></p>
+<h2 id="常见问题">常见问题</h2>
+<p>通过金钱直接购买别人的经验，节省自己的时间</p>
+<h1 id="开发准备">开发准备</h1>
+<p>linux &amp; Homestead</p>
+<h2 id="需求分析">需求分析</h2>
+<h3 id="用例分析">用例分析</h3>
+<p>单商户的电商系统。主要有三种元素，分解如下</p>
+<p>角色
+游客 —— 未登录
+用户 —— 注册用户，可购买
+运营 —— 上下架商品，处理订单
+管理员 —— 可管理运营</p>
+<p>信息结构（与模型名称）
+用户 —— User
+收货地址 —— UserAddress 包含地址/收货人个人信息
+商品 —— Product
+SKU —— ProductSKU 一个商品的属性有不同值，如 iphone 6 64G / 128G 对应不同 SKU，有独立的库存
+订单 —— Order
+订单项 —— OrderItem 一个订单包含一个/多个项，每个订单项与一个 SKU 关联
+优惠券 —— CouponCode 订单 可以使用优惠券来扣减最终需要支付的金额
+运营人员 —— Operator (管理员也属于运营人员)</p>
+<p>动作 （角色和信息之间之间的互动）  &ldquo;CRUD&rdquo;
+创建 —— Create
+查看 —— Read
+编辑 —— Update
+删除 —— Delete</p>
+<h3 id="用例">用例</h3>
+<ol>
+<li>
+<p>游客
+游客可以查看商品列表；
+游客可以查看单个商品内容。</p>
+</li>
+<li>
+<p>用户
+用户可以查看自己的收货地址列表；
+用户可以新增收货地址；
+用户可以修改自己的收货地址；
+用户可以删除自己的收货地址；
+用户可以收藏商品；
+用户可以将商品加入购物车；
+用户可以将购物车中的商品打包下单；
+用户可以在下单时使用优惠券；
+用户可以通过微信、支付宝支付订单；
+用户可以查看自己的订单信息；
+用户可以对已支付的订单申请退款；
+用户可以将已发货的订单标记为确认收货；
+用户可以对已购买的商品发布评价。</p>
+</li>
+<li>
+<p>运营
+运营可以看到所有的用户列表；
+运营可以发布商品；
+运营可以编辑商品内容；
+运营可以编辑商品 SKU 及其库存；
+运营可以下架商品；
+运营可以将用户已支付的订单标记为已发货；
+运营可以对申请退款的订单执行退款；
+运营可以创建、编辑、删除优惠券。</p>
+</li>
+<li>
+<p>管理员
+管理员可以查看运营人员列表；
+管理员可以新增运营人员；
+管理员可以编辑运营人员；
+管理员可以删除运营人员。</p>
+</li>
+</ol>
+<h2 id="开发思路---开发计划--功能模块优先级安排">开发思路  / 开发计划 / 功能模块优先级安排</h2>
+<p>目前有几个大模块：</p>
+<p>用户
+商品
+订单
+支付
+优惠券
+管理</p>
+<p>依赖关系如下。  因此要优先实现最底下的 商品/用户 模块.</p>
+<p>而“管理模块”因为和其他模块有很多关联，因此没有列出来，和其他模块穿插一起开发</p>
+<p><img src="/media/15490412691706/15414767842697.jpg" alt="-w705"></p>
+<p>MVP —— Minimum Viable Prodcut （最小化可行性产品）</p>
+<blockquote>
+<p>对于这个产品来讲，哪些功能是必不可缺的？</p>
+</blockquote>
+<blockquote>
+<p>我们在设计和开发项目时，应优先完成基础的功能，让流程能尽快跑起来，尽早交付，快速迭代</p>
+</blockquote>
+<blockquote>
+<p>最小产品功能先上，测试的工作量也不会太大。不能憋大招，一个上线就是一大堆功能，复杂度增加的是无限的开发和调错时间，项目上线期限无尽延长。另一方面，用户能在最短时间内接触到产品，产品经理也可以尽快听到用户的反馈，及时调整产品战略，产品离成功会更进一步</p>
+</blockquote>
+<p><strong>敏捷开发</strong> 有类似思路：以用户的需求进化为核心，采用迭代、循序渐进的方法进行软件开发。</p>
+<h2 id="创建项目">创建项目</h2>
+<p>略。</p>
+<ol>
+<li>composer 创建 laravel 5.5 项目</li>
+<li>添加到 git 版本控制</li>
+<li>数据库 laravel-shop</li>
+</ol>
+<h2 id="自己的辅助函数">自己的辅助函数</h2>
+<p>创建文件 <code>bootstrap/helpers.php</code></p>
+<pre><code class="language-php">&lt;?php
+function test_helper() {
+    return 'OK';
+}
+</code></pre>
+<p><strong>tinker</strong> (Laravel 内置的一个交互式控制台，可以让我们很方便地调试 PHP 代码。)</p>
+<pre><code class="language-shell">php artisan tinker
+
+# 然后执行
+&gt;&gt;&gt; test_helper()
+</code></pre>
+<p>报错，是因为没有引入这个文件，使用 composer 的 autoload 功能来自动引入。 编辑<code>composer.json</code>，在 <code>autoload</code>里添加</p>
+<pre><code class="language-json">&quot;files&quot;: [
+            &quot;bootstrap/helpers.php&quot;
+        ]
+</code></pre>
+<p>执行 <code>dumpautoload</code>后再运行，成功</p>
+<pre><code class="language-shell">composer dumpautoload
+
+php artisan tinker
+&gt;&gt;&gt; test_helper()
+=&gt; &quot;OK&quot;
+</code></pre>
+<h2 id="布局">布局</h2>
+<h3 id="布局文件">布局文件</h3>
+<p><code>resources/views/layouts</code>目录中，三个文件</p>
+<p>app.blade.php —— 主要布局文件，项目的所有页面都将继承于此页面；
+_header.blade.php —— 布局的头部区域文件，负责顶部导航栏区块；
+_footer.blade.php —— 布局的尾部区域文件，负责底部导航区块</p>
+<p>首先定义一个<code>route_class()</code>的辅助方法，用处是 根据当前路由名称，动态生成 CSS 里的 class name，针对某个页面做页面样式定制。</p>
+<p>例如一个路由文件中，定义了 <code>portal.index</code>，那么可以在模板文件中使用这个辅助函数，得到 <code>class=&quot;portal-index-page&quot;</code></p>
+<pre><code class="language-php">function route_class()
+{
+    return str_replace('.', '-', Route::currentRouteName());
+}
+</code></pre>
+<p>如下就用到了这个辅助函数：</p>
+<p>app.blade.php</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;!-- CSRF Token --&gt;
+    &lt;meta name=&quot;csrf-token&quot; content=&quot;{{ csrf_token() }}&quot;&gt;
+    &lt;title&gt;@yield('title', 'Laravel Shop') - Laravel 电商教程&lt;/title&gt;
+    &lt;!-- 样式 --&gt;
+    &lt;link href=&quot;{{ mix('css/app.css') }}&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot; class=&quot;{{ route_class() }}-page&quot;&gt;
+        @include('layouts._header')
+        &lt;div class=&quot;container&quot;&gt;
+            @yield('content')
+        &lt;/div&gt;
+        @include('layouts._footer')
+    &lt;/div&gt;
+    &lt;!-- JS 脚本 --&gt;
+    &lt;script src=&quot;{{ mix('js/app.js') }}&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>顶部导航模板和底部模板略。</p>
+<h3 id="展示首页">展示首页</h3>
+<p>新建首页的模板文件<code>views/pages/root.blade.php</code></p>
+<pre><code class="language-html">@extends('layouts.app')
+@section('title', '首页')
+
+@section('content')
+  &lt;h1&gt;这里是首页&lt;/h1&gt;
+@stop
+</code></pre>
+<p>使用控制器 <code>PagesController</code> 来处理所有自定义页面的逻辑，使用 <code>root()</code> 方法来处理首页的展示</p>
+<pre><code class="language-php">public function root()
+    {
+        return view('pages.root');
+    }
+</code></pre>
+<p>路由绑定<code>/routes/web.php</code></p>
+<pre><code class="language-php">Route::get('/', 'PagesController@root')-&gt;name('root');
+</code></pre>
+<h3 id="laravel-mix">Laravel Mix</h3>
+<p>前端任务自动化管理工具</p>
+<p>样式代码在 <code>resources/assets/sass/app.scss</code>，是用 SASS 编写的，最终会由 Mix 来编译成 CSS。</p>
+<pre><code class="language-scss">@import &quot;variables&quot;;
+
+// Bootstrap
+@import &quot;~bootstrap-sass/assets/stylesheets/bootstrap&quot;;
+
+// 通用样式
+body {
+    font-family: Hiragino Sans GB, &quot;Hiragino Sans GB&quot;, Helvetica, &quot;Microsoft YaHei&quot;, Arial,sans-serif;
+}
+//... 略
+</code></pre>
+<p>修改 webpack.mix.js</p>
+<pre><code>...
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .version();
+</code></pre>
+<p>然后监控 <code>resources</code> 文件夹下的资源文件变化，用 webpack 自动编译(处理 js 文件压缩、sass 转换等)</p>
+<pre><code class="language-shell">npm run watch-poll
+</code></pre>
+<h3 id="git-忽略一些-mix-生成的文件">git 忽略一些 mix 生成的文件</h3>
+<pre><code class="language-shell">git status
+vi .gitignore
+
+/public/fonts
+/public/mix-manifest.json
+</code></pre>
+<h1 id="用户模块">用户模块</h1>
+<h2 id="注册登录">注册登录</h2>
+<h3 id="使用自带的用户认证功能运行用户认证脚手架命令-快速构建用户中心">使用自带的用户认证功能，运行用户认证脚手架命令 快速构建用户中心.</h3>
+<p>会询问我们是否要覆盖 app.blade.php 选 no</p>
+<pre><code class="language-shell">php artisan make:auth
+</code></pre>
+<p>自动生成路由 routes/web.php , 第二行我们不需要，删除</p>
+<pre><code class="language-php">Auth::routes();
+
+//Route::get('/home', 'HomeController@index')-&gt;name('home');
+</code></pre>
+<p>app/Http/Controllers/HomeController.php 和 resources/views/home.blade.php 也可以删除</p>
+<p>然后把引用了这个路由的地方都修改掉，<code>$redirectTo</code> 的值从 <code>/home</code> 改成 <code>/</code>。</p>
+<p>app/Http/Controllers/Auth/LoginController.php
+app/Http/Controllers/Auth/RegisterController.php
+app/Http/Controllers/Auth/ResetPasswordController.php</p>
+<p>以及 app/Http/Middleware/RedirectIfAuthenticated.php 的 redirect('/home&rsquo;) 改成 redirect('/')</p>
+<p>测试登录页面 <a href="http://shop.test/login">http://shop.test/login</a></p>
+<h3 id="修改顶部导航模板添加登录注册退出等链接">修改顶部导航模板，添加登录注册、退出等链接</h3>
+<pre><code class="language-html">&lt;!-- 登录注册链接开始 --&gt;
+@guest
+    &lt;li&gt;&lt;a href=&quot;{{ route('login') }}&quot;&gt;登录&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;{{ route('register') }}&quot;&gt;注册&lt;/a&gt;&lt;/li&gt;
+@else
+    &lt;li class=&quot;dropdown&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; role=&quot;button&quot; aria-expanded=&quot;false&quot;&gt;
+            &lt;span class=&quot;user-avatar pull-left&quot; style=&quot;margin-right:8px; margin-top:-5px;&quot;&gt;
+                &lt;img src=&quot;https://iocaffcdn.phphub.org/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/60/h/60&quot; class=&quot;img-responsive img-circle&quot; width=&quot;30px&quot; height=&quot;30px&quot;&gt;
+            &lt;/span&gt;
+            {{ Auth::user()-&gt;name }} &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+        &lt;/a&gt;
+        &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;{{ route('logout') }}&quot;
+                    onclick=&quot;event.preventDefault();
+                             document.getElementById('logout-form').submit();&quot;&gt;
+                    退出登录
+                &lt;/a&gt;
+                &lt;form id=&quot;logout-form&quot; action=&quot;{{ route('logout') }}&quot; method=&quot;POST&quot; style=&quot;display: none;&quot;&gt;
+                    {{ csrf_field() }}
+                &lt;/form&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+@endguest
+&lt;!-- 登录注册链接结束 --&gt;
+</code></pre>
+<h3 id="测试注册">测试注册</h3>
+<p>执行数据库迁移，创建对应的数据库表结构</p>
+<pre><code class="language-php">php artisan migrate
+</code></pre>
+<p>进入注册页面 <code>/register</code>, 新增一个用户。</p>
+<p>然后用这个新用户测试一下登录、退出登录</p>
+<h2 id="邮箱验证">邮箱验证</h2>
+<h3 id="调整数据库结构">调整数据库结构</h3>
+<p>新建一个 <code>migration</code> 文件, 用一个字段来记录用户是否已经验证过邮箱</p>
+<pre><code class="language-shell">#--table=users 是告诉 Laravel 我们这个迁移文件准备对 users 表进行变更。
+php artisan make:migration users_add_email_verified --table=users
+</code></pre>
+<p>编辑迁移文件 database/migrations/&lt; your_date &gt;_users_add_email_verified.php</p>
+<p>添加一个名为 email_verified 的布尔类型字段（在 Mysql 中是 tinyint(1) 类型）,默认 false, 位于 remember_token 字段后面</p>
+<pre><code class="language-php">public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table-&gt;boolean('email_verified')-&gt;default(false)-&gt;after('remember_token');
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table-&gt;dropColumn('email_verified');
+        });
+    }
+</code></pre>
+<p>执行迁移</p>
+<pre><code class="language-shell">php artisan migrate
+
+# 为了检查回滚是否正常，测试下
+php artisan migrate:rollback
+
+# 再执行迁移
+php artisan migrate
+</code></pre>
+<h3 id="调整模型类">调整模型类</h3>
+<p>根据开发规范 <a href="https://laravel-china.org/docs/laravel-specification/5.5/data-model">https://laravel-china.org/docs/laravel-specification/5.5/data-model</a></p>
+<p>将 App\User 这个类移动到 App\Models\User</p>
+<p>然后<strong>在项目文件夹中全局搜索</strong> <code>App\User</code>，替换为 <code>App\Models\User</code>。</p>
+<p>最后修改 app/Models/User.php 的命名空间，将 <code>namespace App</code>; 改成 <code>namespace App\Models</code>;</p>
+<p>最后，因为添加了 email 验证字段，所以修改 User 模型的<code>$fillable</code>属性，添加 email_verified</p>
+<p>并 新增一个 <code>$casts</code> 属性（提供了一个便利的方法来将数据库字段值转换为常见的数据类型），告诉 Laravel 这个字段要转换成 bool 类型：</p>
+<pre><code class="language-php">protected $fillable = [
+        'name', 'email', 'password', 'email_verified',
+    ];
+    
+protected $casts = [
+        'email_verified' =&gt; 'boolean',
+    ];
+.
+</code></pre>
+<p>进入 tinker，输入 <code>App\Models\User::find(1)-&gt;email_verified</code>，可以看到 Laravel 已经将 email_verified 字段的值转成了 bool 类型。</p>
+<h3 id="创建中间件尚未验证邮箱时访问其他页面都会被重定向到一个提示验证邮箱的页面">创建中间件,尚未验证邮箱时访问其他页面都会被重定向到一个提示验证邮箱的页面</h3>
+<p>把需要验证邮箱的路由放到拥有这个中间件的路由组中，当用户访问这些路由时会先执行中间件检查是否验证了邮箱</p>
+<p>运行<code>make:middleware</code>创建一个中间件</p>
+<pre><code class="language-shell">php artisan make:middleware CheckIfEmailVerified
+</code></pre>
+<p>注册这个中间件 修改 app.php</p>
+<h1 id="收货地址">收货地址</h1>
+<h2 id="创建控制器">创建控制器</h2>
+<h2 id="与-user-模型的关联">与 User 模型的关联</h2>
+<p>一个用户有多个地址</p>
+<p>User -&gt; hasMany -&gt; UserAddress</p>
+<p>UserAddress -&gt; belongsTo -&gt; User</p>
+<p>然后就可用  <code>$user-&gt;addresses()</code> 获取</p>
+<h2 id="getfulladdress-设置一个attribute直接返回-省市地址不需每次组装字符串">getFullAddress 设置一个“Attribute”，直接返回 省+市+地址，不需每次组装字符串</h2>
+<h2 id="表单用-vue-的省市联动组件">表单，用 vue 的省市联动组件</h2>
+<h3 id="editadd-用一个模板--创建一个--create-方法">edit/add 用一个模板。  创建一个  create() 方法</h3>
+<h3 id="heading"></h3>
+<h2 id="保存数据与-request-验证">保存数据与 Request 验证</h2>
+<h3 id="request-类">Request 类</h3>
+<p>创建一个基类，方便以后放一些复用的代码</p>
+<p>然后再创建 UserAddressRequest 类继承基类</p>
+<p>rule 规则中这些字段全部都要求填写。</p>
+<h3 id="控制器的-store-方法使用-useraddressrequest-作为参数-并处理返回错误的汉化">控制器的 store() 方法使用 UserAddressRequest 作为参数, 并处理返回错误的汉化</h3>
+<p><code>$request-&gt;user()</code>为当前登录用户</p>
+<pre><code class="language-php">$request-&gt;user()-&gt;addresses()-&gt;save(only.....)
+</code></pre>
+<p>安装 lang cn 包，修改 app.php 的配置</p>
+<p>但字段名还是英文，修改 Request 类的 attribute 属性</p>
+<h3 id="增加路由-form-的-action-链接">增加路由、 Form 的 action、 链接</h3>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/shop/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/shop/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A0%B8%E5%BF%83%E8%A7%A3%E8%AF%BB%E7%B3%BB%E5%88%97/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

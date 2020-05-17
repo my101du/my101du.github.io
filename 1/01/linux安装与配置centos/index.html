@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Linux安装与配置（CentOS） permalink: linux-install-settings-centos tags: 运维 学习 Linux，从最基础的安装和配置开始 下载 从中国镜像。 例如 阿里巴巴 的 https://www.centos.org/download/mirrors/ http://mirrors.aliyun.com/centos/ http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/ 注意下载 minimal 版本。" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Linux安装与配置（CentOS） permalink: linux-install-settings-centos tags: 运维 学习 Linux，从最基础的安装和配置开始 下载 从中国镜像。 例如 阿里巴巴 的 https://www.centos.org/download/mirrors/ http://mirrors.aliyun.com/centos/ http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/ 注意下载 minimal 版本。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/linux%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEcentos/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Linux安装与配置（CentOS） permalink: linux-install-settings-centos tags: 运维 学习 Linux，从最基础的安装和配置开始 下载 从中国镜像。 例如 阿里巴巴 的 https://www.centos.org/download/mirrors/ http://mirrors.aliyun.com/centos/ http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/ 注意下载 minimal 版本。">
+
+<meta itemprop="wordCount" content="7205">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Linux安装与配置（CentOS） permalink: linux-install-settings-centos tags: 运维 学习 Linux，从最基础的安装和配置开始 下载 从中国镜像。 例如 阿里巴巴 的 https://www.centos.org/download/mirrors/ http://mirrors.aliyun.com/centos/ http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/ 注意下载 minimal 版本。"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/linux%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEcentos/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/linux%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEcentos/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7205字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Linux安装与配置（CentOS）
+permalink: linux-install-settings-centos
+tags:</p>
+<ul>
+<li>运维</li>
+</ul>
+<hr>
+<p>学习 Linux，从最基础的安装和配置开始</p>
+<!-- raw HTML omitted -->
+<h1 id="下载-从中国镜像-例如-阿里巴巴-的">下载 从中国镜像。 例如 阿里巴巴 的</h1>
+<p><a href="https://www.centos.org/download/mirrors/">https://www.centos.org/download/mirrors/</a></p>
+<p><a href="http://mirrors.aliyun.com/centos/">http://mirrors.aliyun.com/centos/</a></p>
+<p><a href="http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/">http://mirrors.aliyun.com/centos/7.7.1908/isos/x86_64/</a></p>
+<p>注意下载 minimal 版本。  netinstall 版本在后面安装时一直选择 source 失败(1)cdrom (2)iso (3)net 都不行。</p>
+<h1 id="centos-iso-启动时强制进入文本安装模式">CentOS ISO 启动时强制进入文本安装模式</h1>
+<p>我们并不想进入图形界面的安装模式，但貌似 7.4 上 text mode 不见了！</p>
+<p>在启动到看到几个菜单 install centos7 &amp; test and&hellip;. 时，按 tab 键，手动输入 <code>text</code>.</p>
+<p>CentOS7  最新：</p>
+<p>下载 netinstall ISO 镜像后，在安装界面按 ESC 键，然后在最后输入： 空格 text   然后回车</p>
+<pre><code class="language-shell">linux text
+</code></pre>
+<h1 id="查看版本">查看版本</h1>
+<p>通过下面的命令查看内核版本号</p>
+<pre><code class="language-shell">uname -a
+</code></pre>
+<p>下面命令则可以具体查看 CentOS 的版本号</p>
+<pre><code class="language-shell">cat /etc/redhat-release
+</code></pre>
+<h1 id="centos安装与基础配置">CentOS安装与基础配置</h1>
+<p><img src="" alt="CentOS安装与配置"></p>
+<p>安装完 CentOS 后，还要进行一些基本的配置，例如网卡、SSH 服务、防火墙等等。等到 SSH 服务正常工作后，我们就可以离开机房，以后远程登录连接到服务器来安装和配置其他的服务。</p>
+<!-- raw HTML omitted -->
+<p><strong>注意</strong>
+下面的很多操作中，均涉及到了一些简单的 Linux 命令行和 Vi 编辑器的操作。如果你看不懂，建议先学习下我们的有关课程：</p>
+<ul>
+<li><a href="">Linux命令行教程</a></li>
+<li><a href="">VIM编辑器教程</a></li>
+</ul>
+<h1 id="安装">安装</h1>
+<p>在网络上，CentOS 和 Ubuntu/Debian，Arch 等发行版之争甚器尘上，我之前也是其中狂热的一份子，极力推荐 CentOS，并且在工作中一直使用它。后来随着 Docker 等技术的发展以及工作岗位的转移，开始使用 Ubuntu 了。以这几年的对比使用经验，建议 Linux 初学者和初级运维人员首先学习和使用 CentOS ，而如果是程序开发人员则建议选择 Ubuntu ，理由如下：</p>
+<ul>
+<li>CentOS 的教程相对而言比较全（著名的鸟哥系列）；遇到问题 google 到的答案质量都比较高，有时候解决办法跨几个版本都能通用；而且如果想考证，还有 Redhat 的官方认证的培训</li>
+<li>而 Ubuntu 社区比较自由奔放，中文社区有的回答质量不高（不过国外的<a href="http://stackoverflow.com">http://stackoverflow.com</a> 等站点上的回答质量会高很多）</li>
+<li>CentOS 太稳定了，你遇到的问题基本上都是系统本身的问题，学习起来干扰较少</li>
+<li>Ubuntu 可定制性强，软件更新快，但是有时候会浪费不少时间在一些个性化配置上。</li>
+<li>如果你性格追求安稳/还处在初学阶段/或者想以运维为职业那就 CentOS了；如果是个追求最新科技的极客，平时用 Ubuntu 当工作环境，或者技术很不错，能 hold 住大部分生产环境的问题，那就 Ubuntu 吧。</li>
+<li>总之，各个发行版内核都是 Linux，最重要的是学习命令行和各种服务的配置，选择一个扎进去就可以了，不要浪费时间在争论上。</li>
+</ul>
+<p>本教程适用于CentOS 7.x 版本，某些命令进行修改后也适用于 CentOS 6。</p>
+<p>为了方便展示详细的安装过程，这里我使用了 Virtualbox 虚拟机来安装系统。
+如果你购买的是云服务器，一般在控制面板里有个发行版的列表可以选择，选中后就会自动安装到你的云服务器上了。具体可以查看我们的有关“阿里云”的系列教程。</p>
+<h2 id="下载-iso-安装文件">下载 ISO 安装文件</h2>
+<p><a href="http://isoredirect.centos.org/centos/7/isos/x86_64/">镜像列表</a></p>
+<p>一般选列表里的第一个就可以了，<code>.cn</code> 结尾的都是我们中国境内的镜像服务器，下载速度较快。例如<a href="http://mirrors.ustc.edu.cn/centos/7/isos/x86_64/">http://mirrors.ustc.edu.cn/centos/7/isos/x86_64/</a>。</p>
+<p>这里说明下每个下载链接是什么意思：</p>
+<ul>
+<li>DVD 版表示一个大概 4G 大小的安装镜像文件，除了 CentOS 系统安装文件，还包括了一些软件的安装文件</li>
+<li>Everything 版体积就更大了，我估计是在 DVD 基础上添加了更多的软件</li>
+<li>LiveGNOME 版自带了一个可以运行的桌面环境：把这个安装光盘插在电脑上后，不用把系统安装到硬盘里，就可以先体验一下 GNOME 桌面。</li>
+<li>Minimal 版就是“最小”的，包含了最关键的系统安装文件</li>
+<li>NetInstall 版在“Minimal”上砍掉一些文件，体积更小，但是安装过程中必须要联网，才能把“Minimal”版中缺少的一些文件下载下来。</li>
+<li>普通的链接都是点击后直接用浏览器下载的，而带有“torrent”后缀的，表示这是一个 BT 种子，只能用支持 BT 协议的下载软件来下载。</li>
+</ul>
+<p>综合考虑文件体积，以及避免安装过程中可能出现的网络问题，一般选择 “Minimal”版本。</p>
+<h2 id="将-iso-镜像刻录成安装光盘">将 ISO 镜像刻录成安装光盘</h2>
+<p>在 Virtualbox 中创建一个 CentOS 虚拟机，加载镜像
+如果是机房的物理机器，需要把光盘插入光驱，然后在 BIOS 里设置从 DVD-ROM 启动。</p>
+<h2 id="引导界面">引导界面</h2>
+<p>图形/文本/救援模式</p>
+<h2 id="选择安装界面的语言图形模式">选择安装界面的语言（图形模式）</h2>
+<h2 id="磁盘分区">磁盘分区</h2>
+<h2 id="设置root密码和新增普通用户">设置root密码和新增普通用户</h2>
+<h2 id="开始安装">开始安装</h2>
+<h1 id="安装软件">安装软件</h1>
+<h2 id="yum-命令与-rpm-包">yum 命令与 rpm 包</h2>
+<p>yum 命令支持的操作如下</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yum install 软件包名称</td>
+<td>安装</td>
+</tr>
+<tr>
+<td>yum remove 软件包名称</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="更换为阿里云的yum-源">更换为阿里云的yum 源</h2>
+<pre><code class="language-shell"># 备份
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+
+yum makecache
+</code></pre>
+<h2 id="安装常用的软件和库">安装常用的软件和库</h2>
+<pre><code class="language-shell"># wget 下载工具
+$ yum -y install wget 
+
+# Git 版本控制
+$ yum -y install git
+
+# 升级到 2.x (vscode 远程 ssh 不支持默认低版本 1.8.x)
+sudo yum remove git
+sudo yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install  git2u-all
+git --version
+
+
+# 更强大的 vim 替代默认的 vi 
+$ yum -y install vim
+
+# 添加一个别名，让 vi 自动使用 vim
+$vi ~/.bashrc
+# 添加一行 alias vi='vim'
+
+# 刷新
+$source ~/.bashrc
+
+#然后打开高亮
+$vi /etc/vimrc
+# 添加 syntax on
+</code></pre>
+<h2 id="处理-yum-时-network-unreachable-或-timeout-的问题">处理 yum 时 network unreachable 或 timeout 的问题</h2>
+<ol>
+<li>vi /etc/yum.conf</li>
+</ol>
+<p>增加 <code>ip_resolve = IPv4</code></p>
+<ol start="2">
+<li>编辑 /etc/yum.repos.d/CentOS-Base.repo</li>
+</ol>
+<p>去掉注释  baseurl</p>
+<ol start="3">
+<li>换成其他源</li>
+</ol>
+<pre><code class="language-shell">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+cd /etc/yum.repos.d/
+# 问题： 默认没有 wget 啊！要 yum
+wget http://mirrors.163.com/.help/CentOS7-Base-163.repo
+yum makecache
+yum -y update
+</code></pre>
+<p>上面的方法都不行。</p>
+<p>必须修改 /etc/environment  把内容清空， 然后运行  <code>source /etc/environment</code> 才能彻底清理掉 repo 的代理</p>
+<p>一键使用阿里云CentOS 7和EPEL7 Yum源</p>
+<pre><code class="language-shell">wget -O /etc/yum.repos.d/CentOS7-Aliyun.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+</code></pre>
+<ol start="4">
+<li>使用 http_proxy . <strong>一定要放到  /etc/environment 或 ~/.bash_rc . 自己写一个 start_proxy.sh 来 source 好像无效。。。</strong></li>
+</ol>
+<p>Alternate way to configure proxy settings for yum command</p>
+<ol start="5">
+<li>
+<p>如果换用 4G 能通过，说明公司屏蔽了！！！！ 这时发现系统 http_proxy 无效</p>
+</li>
+<li>
+<p>修改yum 使用代理/etc/yum.conf</p>
+</li>
+</ol>
+<p>proxy=http://192.168.1.1:8080
+proxy_username=twingao
+proxy_password=123456</p>
+<p>搞定！！！ 一定要在这配置文件里面设置代理 （有人提到这个问题 yum 不走全局 proxy  <a href="https://forums.centos.org/viewtopic.php?t=7788">https://forums.centos.org/viewtopic.php?t=7788</a>）</p>
+<p>最终:  在 /etc/environment 里配置就能生效，可以删除这个地方的信息了。</p>
+<h2 id="启用-epelextra-packages-of-enterprise-linux">启用 epel(extra packages of enterprise linux)</h2>
+<pre><code class="language-shell"># CentOS7 64
+$ wget http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+$rpm -ivh epel-release-7-9.noarch.rpm
+
+# other versions please view
+# http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/
+
+
+# 或者
+sudo yum install epel-release
+</code></pre>
+<h1 id="是否要关掉-selinux-">是否要关掉 SELinux ？</h1>
+<p>这个特性有点像 Window 7 及以上版本的 UAC 功能，检测是否有非法操作在修改系统核心文件，在 UAC 里还会弹出个提示，而字符界面下 SELinux 连个提示都没有……</p>
+<p>SELinux 会导致后面我们把 ssh 的端口从标准的 22 修改为其他端口失败，也会有时候导致 samba 服务失败，等等很多问题。
+在学习阶段，建议直接关掉它。</p>
+<pre><code class="language-shell"># 永久关闭
+$ vi /etc/selinux/config
+
+# 将 SELINUX 改为 disabled（默认是 enforcing）
+SELINUX=disabled
+
+#重启服务器
+$ reboot
+
+# 如果是临时关闭，可以运行
+$ setenforce 0
+</code></pre>
+<h1 id="网络配置">网络配置</h1>
+<p>新安装的系统是无法联网的，输入下面的命令，会返回错误。需要手动配置一下网络参数。</p>
+<pre><code class="language-shell">$ ping www.baidu.com
+</code></pre>
+<h2 id="配置网卡参数">配置网卡参数</h2>
+<p>注意 CentOS 7 里的网卡名称不再是 CentOS 6 的 <code>ifcfg-eth0</code> 这种固定形式了，而是每台机器的网卡名称都不同。
+列出 <code>/etc/sysconfig/network-scripts/</code> 目录即可看到。这里我的网卡名是 <code>ifcfg-ens192</code>。</p>
+<pre><code class="language-shell">$ ls -al /etc/sysconfig/network-scripts/
+
+# 编辑网卡配置参数
+$ vi ifcfg-ens192
+
+# 这个配置文件内的参数不一定全部都需要，你可以酌情添加，一般情况下保持系统默认的就可以了。其中 BOOTPROTO，ONBOOT，IPADDR0，GATEWAY0，PREFIXO0，DNS1最重要
+HWADDR=00:50:56:bf:00:25
+TYPE=Ethernet
+#如果你的服务器有固定 IP，这里要使用静态IP地址，否则用 dhcp 就可以了
+BOOTPROTO=static 
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=ens192
+UUID=ae0965e7-22b9-45aa-8ec9-3f0a20a85d11
+#开启自动启用网络连接，一定要记得修改，新系统默认值是 no，是无法联网的
+ONBOOT=yes 
+IPADDR0=10.0.0.101 #设置IP地址
+PREFIX0=24 #设置子网掩码
+GATEWAY0=10.0.0.1 #设置网关
+DNS1=202.102.152.3 #设置主DNS
+DNS2=202.102.128.68 #设置备DNS
+</code></pre>
+<h2 id="重启网络服务">重启网络服务</h2>
+<pre><code class="language-shell">$ systemctl restart network.service
+
+# 如果是 centos6 使用这个命令
+$ service network restart
+</code></pre>
+<h2 id="安装传统的网络工具">安装传统的网络工具</h2>
+<p>CentOS 7 下，以前 CentOS 6 里熟悉的 <code>ifconfig</code>，<code>netstat</code> 等命令都没有了，被 <code>ip</code> 等更强大的命令替代，为了使用这些熟悉的工具，可以手动安装</p>
+<pre><code class="language-shell">$ yum -y install net-tools
+</code></pre>
+<h1 id="账号安全与远程登录控制">账号安全与远程登录控制</h1>
+<p>用户的密码也应当遵循强密码的原则，至少在 8 位以上，包含字母大小写和数字以及特殊字符，并定期更换，或者在怀疑密码被泄露的时候马上更换。</p>
+<h2 id="更改-root-用户的密码">更改 root 用户的密码</h2>
+<p>建议定期修改服务器的 root 密码，在登录后执行</p>
+<pre><code class="language-shell">$ passwd
+</code></pre>
+<h2 id="创建普通用户并赋予权限">创建普通用户，并赋予权限</h2>
+<p>在日常的服务器管理过程中，更安全的办法是不要使用 root 来登录和操作，而是新建一个拥有一定权限的普通用户进行日常的操作与维护。
+例如创建一个名为 <code>newuser</code> 的普通用户，并给他设置密码，在终端下输入：</p>
+<pre><code class="language-shell">$ adduser newuser
+$ passwd newuser
+# 按提示重复输入两次密码
+
+# 如果新用户需要一些 root 才有的权限，可以通过编辑 sudoers 文件赋权。这个命令实际上是 vi /etc/sudoers
+$ visudo
+
+# 在 `root    ALL=(ALL)       ALL` 这一行文件后面添加新用户的权限，如下
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+newuser    ALL=(ALL)      ALL
+
+# 由于这个文件是只读的，所以 vi 保存的时候要使用强制保存
+:wq!
+</code></pre>
+<h2 id="更好的办法是添加到-wheel-组而不是直接设置为-root">更好的办法是添加到 wheel 组，而不是直接设置为 root</h2>
+<pre><code class="language-shell">usermod -aG wheel username
+
+</code></pre>
+<h2 id="确认-ssh-服务正常运行">确认 SSH 服务正常运行</h2>
+<p>首先看看系统是否安装了 <code>OpenSSH</code> 以允许通过 ssh 命令来远程登录服务器，如果没有则需要手动安装。</p>
+<pre><code class="language-shell">$ service sshd status
+# 如果 Loaded 出现“not-found”字样，表示没有安装
+Redirecting to /bin/systemctl status  sshd.service
+● sshd.service
+   Loaded: not-found (Reason: No such file or directory)
+   Active: inactive (dead)
+   
+# 安装 openssh 相关
+$ yum -y install openssh openssh-server openssh-clients
+
+$ service sshd status
+# 这时候 Loaded 是正常的了，表示安装成功。但是 Active 还是 inactive （dead），表示未启动服务
+Redirecting to /bin/systemctl status  sshd.service
+● sshd.service - OpenSSH server daemon
+   Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+
+# 启动服务
+$ service sshd start
+$ service sshd status
+# 这时候发现 Active 已经是 active（running）运行中状态
+Active: active (running) since Sat 2016-08-20 03:31:10 CST; 2s ago
+
+# 设置为开机启动
+$ systemctl enable sshd
+
+# 远程登录测试，填 yes， 正常进入系统
+$ ssh root@192.168.56.101
+</code></pre>
+<h1 id="安装-1">安装</h1>
+<h2 id="下载安装镜像">下载安装镜像</h2>
+<p><a href="http://www.ubuntu.com/download/alternative-downloads">主流的 Ubuntu 版本下载地址</a>
+<a href="http://old-releases.ubuntu.com/releases/">一些历史版本或非 LTS 版本 Ubuntu 下载地址</a></p>
+<h2 id="如何选择合适的-ubuntu-版本">如何选择合适的 Ubuntu 版本？</h2>
+<p><strong>选哪个大版本号？</strong></p>
+<ul>
+<li>如果是个人用于桌面工作或测试用途，尽可能选择最新的版本，因为会包含更多的特性和更新的软件，例如现在最新的 16.04。</li>
+<li>而如果是用于服务器，需要长期提供稳定的服务，最好选择已经通过了几年市场检验的版本，这样资料齐全，并且使用的软件也都是以稳定为主，例如 14.04。</li>
+<li>除非有特殊需要，不要使用比较老的版本，例如 12.04</li>
+</ul>
+<p><strong>选择获得长期支持还是更多新的实验特性？</strong></p>
+<ul>
+<li>小版本号是 04 的，表示 LTS 长期支持版。一般官方会为它提供比较长时间（几年）的软件和库更新，并且源里的软件选择比较稳定的版本。</li>
+<li>小版本号是 10 的，源里的软件会选择更激进的版本号，包含更多的特性，但是官方支持的时间比较短。</li>
+<li>如果是用于个人电脑，建议选择小版本号 10，如果是生产服务器，使用小版本号 04 是更稳妥的选择。</li>
+</ul>
+<p><strong>选择32位版还是64位版</strong></p>
+<p>如果机器的内存大于等于 2G，选 64 位。如果是 2G 以下的小内存服务器，选 32 位即可。</p>
+<p><strong>选择 Desktop、Server、还是 Cloud</strong></p>
+<p>如果需要默认进入图形界面就安装 Desktop，如果是服务器上就选择 Server，Cloud 可能只有大型的云服务商用到。个人推荐 Server 版 + 安装 Gnome 桌面环境，因为 Desktop 版自带的那个桌面环境如果机器配置不够好，使用起来感觉挺卡的。</p>
+<p>本教程以 Ubuntu 14.04.5 LTS Server 64bit 版为例来讲解。请在下面的页面中选择 “Server install image”部分的下载链接。
+<a href="http://releases.ubuntu.com/trusty/">Ubuntu 14.04 下载地址</a></p>
+<h2 id="安装过程">安装过程</h2>
+<h3 id="安装软件集">安装软件集</h3>
+<p>勾选上项（其实这些服务我们后面都可以手动安装，除了 OpenSSH，不太推荐使用系统默认安装的其他服务）</p>
+<ul>
+<li>OpenSSH 用于 ssh 远程登录</li>
+</ul>
+<h3 id="安装-grub-启动引导其到硬盘">安装 GRUB 启动引导其到硬盘</h3>
+<p>如果是双系统（还有 Windows），稍后会需要设置一下才能进入原来的系统。</p>
+<h2 id="virtualbox-中的-ubuntu-虚拟机添加了-host-only-网络">Virtualbox 中的 Ubuntu 虚拟机添加了 Host-Only 网络</h2>
+<pre><code class="language-shell">$ sudo vi /etc/network/interfaces
+#添加
+auto eth1
+iface eth1 inet dhcp
+
+# 重启网络服务（发现会提示 stop fail，并且 ifconfig -a 网卡没有获得 IP，重启服务器就可以了）
+$ sudo service networking restart
+$ ifconfig -a
+$ sudo reboot
+</code></pre>
+<h2 id="如果-centos-增加网卡后没有自动识别">如果 CentOS 增加网卡后没有自动识别</h2>
+<pre><code class="language-shell">ip addr
+
+#记下新网卡的名称和 mac 地址
+enp0s
+08:00......
+
+# 复制网卡配置
+cd /etc/sysconfig/network-scripts
+cp ifcfg-xxx ifcfg-eenp
+</code></pre>
+<h2 id="修改默认源为中国的镜像">修改默认源为中国的镜像</h2>
+<pre><code class="language-shell">$ sudo apt-get install apt-transport-https ca-certificates
+$ sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
+$ sudo vi /etc/apt/sources.list.d/docker.list
+</code></pre>
+<p>把下面的内容添加进去(14.04)</p>
+<pre><code class="language-shell">deb http://mirrors.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.ustc.edu.cn/ubuntu/ trusty-backports main restricted universe multiverse
+</code></pre>
+<h2 id="ubuntu1410的-apt-get-命令返回404问题">ubuntu14.10的 <code>apt-get</code> 命令返回404问题</h2>
+<p>这是因为官方不再支持旧版本的在线更新（对比 centos 超长的支持周期，有点不太负责啊……），修改默认的源即可。</p>
+<pre><code class="language-shell">$ cp /etc/apt/sources.list /etc/apt/sources.list.bak
+$ sudo vi /etc/apt/sources.list
+
+# 用下面的内容替换里面的源
+deb http://old-releases.ubuntu.com/ubuntu/ raring main universe restricted multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu/ raring main universe restricted multiverse
+
+deb http://old-releases.ubuntu.com/ubuntu/ raring-security main universe restricted multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu/ raring-security main universe restricted multiverse
+
+deb http://old-releases.ubuntu.com/ubuntu/ raring-updates main universe restricted multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu/ raring-updates main universe restricted multiverse
+
+deb http://old-releases.ubuntu.com/ubuntu/ raring-backports main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu/ raring-backports main restricted universe multiverse
+
+deb http://old-releases.ubuntu.com/ubuntu/ raring-proposed main restricted universe multiverse
+deb-src http://old-releases.ubuntu.com/ubuntu/ raring-proposed main restricted universe multiverse
+</code></pre>
+<h2 id="cannot-set-lc_ctype-to-default-locale-问题">Cannot set LC_CTYPE to default locale 问题</h2>
+<pre><code class="language-shell">vi .bashrc
+export LC_ALL=&quot;en_US.UTF-8&quot;
+source .bashrc
+
+或者 vi /etc/default/locale
+LANG=en_US.UTF-8
+LANGUAGE=en_US
+LC_ALL=en_US.UTF-8
+</code></pre>
+<p>更简单的：</p>
+<pre><code class="language-shell">sudo locale-gen en_US en_US.UTF-8 （如果要支持中文 zh_CN  zh_CN.UTF-8）
+sudo dpkg-reconfigure locales 
+</code></pre>
+<h2 id="中文乱码在ssh和本身的终端">中文乱码（在ssh和本身的终端）</h2>
+<p>在安装 Linux Ubuntu Server的时候选择的中文安装，结果安装好之后发现好多命令显示的结果都是乱码，如下图所示：</p>
+<p>在网上查了一下其他人的解决办法，貌似目前还无解，传的最多的是下面的方法：
+进入系统后</p>
+<pre><code class="language-shell">$sudo vim /etc/environment 
+LANG=&quot;zh_CN.UTF-8&quot;
+LANGUAGE=&quot;zh_CN:zh&quot;
+修改为
+LANG=&quot;en_GB.UTF-8&quot;
+LANGUAGE=&quot;en_US:en&quot;
+ 
+$sudo vim /etc/default/init/locale
+修改同上
+ 
+reboot
+</code></pre>
+<p>但是这也只是能解决在通过SSH登陆的时候在ssh客户端修改编码方式实现中文显示，但是在系统本身还是现实乱码。即使是通过“sudo apt-get install language-pack-zh”命令安装好中文语言包之后还是无法解决中文显示的问题，既然是玩server系统的，英文总比乱码强，还是改成英文系统省事：</p>
+<pre><code class="language-shell">sudo vim /var/lib/locales/supported.d/local
+改成
+en_US.UTF-8 UTF-8
+
+sudo vim /etc/default/locale
+将下面的内容修改
+LANG=&quot;zh_CN.UTF-8&quot;
+LANGUAGE=&quot;zh_CN:zh&quot;
+修改为：
+LANG=&quot;en_US.UTF-8&quot;
+LANGUAGE=&quot;en_US:en&quot;
+
+sudo locale-gen
+</code></pre>
+<p>重启系统之后，英文显示，不再出现乱码。
+还有一种方法就是安装一个zhcon，zhcon是工作在Linux控制台下的高效双字节中/日/韩(CJK)虚拟终端，就像DOS环境中的UCDOS一样，为控制台(console)环境提供完整的双字节语言环境。zhcon是外挂式平台，与内核汉化不同，不需要对linux的kernel打补丁。如同普通的linux软件，可以方便地直接安装zhcon，在主控制台上执行zhcon后，就可以进入中文平台，也可以随时退出返回到西文状态。
+安装方法：
+sudo apt-get install zhcon
+安装完成后运行sudo zhcon &ndash;utf8 &ndash;drv=vga就可以正常显示中文了。CRL+D退出zhcon，但是运行之后界面反应比较迟钝，也就是刷屏比较慢的情况。跟人感觉没什么意思
+哪位有完美显示中文的解决办法可以给我留言。</p>
+<h2 id="vim-键盘出错的问题">vim 键盘出错的问题</h2>
+<p>(1)可以修改 .vimrc 文件，设置 compable？ 和 另一个参数？
+(2)可以安装完整版的vim</p>
+<pre><code class="language-shell">sudo apt-get remove vim-common
+sudo apt-get install vim
+</code></pre>
+<h1 id="centos7-下直接用-yum-安装-nginxmysqlpostgres-php7x-及扩展当一键包的-targz-无法在公司被下载时">CentOS7 下直接用 Yum 安装 nginx/mysql/postgres/ PHP7.x 及扩展（当一键包的 tar.gz 无法在公司被下载时。。。）</h1>
+<h2 id="php">php</h2>
+<h3 id="准备第三方库-remi-包含很多-php-最新的版本和扩展">准备第三方库。 remi 包含很多 php 最新的版本和扩展</h3>
+<pre><code class="language-shell">sudo yum install yum-utils –y
+sudo yum install epel-release –y
+sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+sudo yum groupinstall 'Development Tools' # 一劳永逸 解决很多依赖 build module 的问题，如 pip psycopg2 需要它
+
+wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm epel-release-latest-7.noarch.rpm
+</code></pre>
+<h3 id="安装-php-和扩展">安装 php 和扩展</h3>
+<p>决定装什么版本 例如这里是 7.2 。 后面再安装扩展等都会以 7.2 为准了</p>
+<pre><code class="language-shell">sudo yum-config-manager ––enable remi–php72
+# 这里报错/usr/lib/python2.7/site-packages/yum/misc.py:133: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal return lambda s: s.lower() == pat
+
+# 用这个方式
+yum --enablerepo=remi-php72 install -y php php-fpm php-opcache php-mcrypt php-mysql php-pgsql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-curl
+
+
+# 后面装所有扩展都要加上  不然会报依赖错误。
+# 另外由于部分扩展的安装有先后顺序， 最好拆成若干命令， 以便检查问题。不然报一大堆依赖错误
+sudo yum --enablerepo=remi-php72 install -y php-cli php-memcached php-xdebug php-zip php-pdo_dblib
+sudo yum --enablerepo=remi-php72 install -y php-igbinary php-imagick php-intl
+
+# 其中 sql server 需要 odbc 驱动 https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15
+# Microsoft ODBC Driver 17 for SQL Server
+sudo su
+curl https://packages.microsoft.com/config/rhel/7/prod.repo &gt; /etc/yum.repos.d/mssql-release.repo
+sudo yum remove unixODBC-utf16 unixODBC-utf16-devel #to avoid conflicts
+# 安装驱动
+sudo ACCEPT_EULA=Y yum install msodbcsql17
+#可选，命令行等。
+sudo ACCEPT_EULA=Y yum install mssql-tools
+echo 'export PATH=&quot;$PATH:/opt/mssql-tools/bin&quot;' &gt;&gt; ~/.bash_profile
+echo 'export PATH=&quot;$PATH:/opt/mssql-tools/bin&quot;' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+sudo yum install unixODBC-devel
+
+# 继续 sqlserver 扩展
+sudo yum --enablerepo=remi-php72 install -y php-pdo_sqlsrv php-sqlsrv 
+sudo yum --enablerepo=remi-php72 install -y php-sodium
+
+# 安装 oracle ，否则 php-v 
+## PHP Warning:  PHP Startup: Unable to load dynamic library 'oci8'
+sudo yum --enablerepo=remi-php72 install -y php-oci8 php-pdo_oci
+
+sudo vi /etc/php.ini
+extension=oci8.so
+# Installing Oracle Instant Client 重头戏 Oracle Instant Client 18.3, which can connect to Oracle Database 11.2 or later.
+wget https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+
+vi /etc/yum.repos.d/ol7-temp.repo
+[ol7_latest]
+name=Oracle Linux $releasever Latest ($basearch)
+baseurl=https://yum.oracle.com/repo/OracleLinux/OL7/latest/$basearch/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpgcheck=1
+enabled=1
+
+sudo yum install oracle-release-el7
+sudo yum list oracle*
+sudo yum -y install xxxxxxxxxx
+
+# 前面的会导致以后再 yum 都报错！！  [Errno -1] Metadata file does not match checksum 必须用下面的方法
+# 如果不慎出现这样情况， 按提示 yum-config-manager --disable centos-sclo-rh
+# 然后 sudo yum clean all &amp;&amp; sudo rm -rf /var/cache/yum/* &amp;&amp; sudo yum clean metadata &amp;&amp; sudo yum makecache &amp;&amp; sudo yum update &amp;&amp; sudo yum repolist 
+# 最后还可以  /etc/yum.conf 添加 http_caching=none
+
+# 在这里下载 Instant Client Package - Basic.
+https://www.oracle.com/hk/database/technologies/instant-client/linux-x86-64-downloads.html
+
+# 需要 sdk 和 client 两个 （）
+sudo yum -y install libaio # 依赖
+rpm -i oracle-instantclient19.5-basic-19.5.0.0.0-1.x86_64.rpm
+rpm -i oracle-instantclient19.5-devel-19.5.0.0.0-1.x86_64.rpm
+#export LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib:$LD_LIBRARY_PATH
+
+# 或
+sudo sh -c &quot;echo /usr/lib/oracle/19.5/client64/lib &gt; /etc/ld.so.conf.d/oracle-instantclient.conf&quot;
+sudo ldconfig
+
+php -v  # 此时不会报错了， 并且看看 phpinfo 有没有单独的 oci8 配置部分 
+
+mv /etc/yum.repos.d/ol7-temp.repo /etc/yum.repos.d/ol7-temp.repo.disabled
+</code></pre>
+<pre><code class="language-shell"># php-cli
+sudo yum install php php-common php-opcache php-mcrypt php-cli php-gd php-curl php-mysql –y
+
+# php-fpm
+sudo yum install php php-fpm php-opcache php-mcrypt php-mysql php-pgsql php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap php-curl curl curl-devel –y
+
+# 启动服务
+sudo systemctl enable php-fpm.service
+sudo systemctl start php-fpm.service
+
+php –v
+</code></pre>
+<p>如果扩展不够，需要增加</p>
+<pre><code class="language-shell">sudo yum search php | more
+</code></pre>
+<p>修改配置 php.ini</p>
+<pre><code class="language-shell">cgi.fix_pathinfo=0
+</code></pre>
+<h2 id="nginx">nginx</h2>
+<pre><code class="language-shell">yum install nginx
+
+systemctl enable nginx.service
+systemctl start nginx.service
+
+sudo firewall-cmd --permanent --zone=public --add-service=http
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+</code></pre>
+<p>虚拟主机支持 php</p>
+<pre><code class="language-shell">server {
+    listen       80;
+    server_name  server_domain_name_or_IP;
+
+    # note that these lines are originally from the &quot;location /&quot; block
+    root   /usr/share/nginx/html;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
+        # 如果你用  php-cli 那就是 fastcgi_pass 127.0.0.1:9000;？？
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+</code></pre>
+<h2 id="还需要修改-php-fpm">还需要修改 php-fpm</h2>
+<p>修改 <code>/etc/php-fpm.d/www.conf</code></p>
+<pre><code class="language-shell">listen = /var/run/php-fpm/php-fpm.sock
+
+listen.owner = nobody  # 这个 和 sock 文件的所有者有关。 如果有问题，要 chown nobody:root -R /run/php/
+listen.group = root
+
+user = nginx
+group = nginx
+</code></pre>
+<p>如果访问 phpinfo() 出现 502 报错， 又确认 /var/run/php-fpm/php-fpm.sock 文件确实存在。</p>
+<p>那就把nginx 和php-fpm 里都改回 127.0.0.1:9000 吧  基本没什么问题。</p>
+<p>但是有時候必須要用 socket 方式（性能、配置文件）， systemctl start php-fpm 失败</p>
+<p>查看日誌</p>
+<pre><code class="language-shell">sudo tail -10 /var/log/php-fpm/error.log
+
+ ERROR: [pool www] cannot get uid for user 'www-data': Success (0)
+</code></pre>
+<p>可能需要修改下文件。 有的用戶並不存在哦。</p>
+<h2 id="mysql-57">mysql 5.7</h2>
+<pre><code class="language-shell">yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+
+yum install mysql-community-server
+
+mysql -V
+
+# 获取临时数据库root密码
+grep 'A temporary password' /var/log/mysqld.log |tail -1
+
+service mysqld start
+
+# 初始化
+/usr/bin/mysql_secure_installation
+</code></pre>
+<h2 id="memcached-server-及-php-memcahcd-扩展">memcached server 及 php-memcahcd 扩展</h2>
+<pre><code class="language-shell">yum -y install memcached
+
+# a client library that offers a couple of tools to manage your Memcached server.
+yum -y install libmemcached
+
+memcached -h
+</code></pre>
+<p>编辑配置 /etc/sysconfig/memcached 默认端口 11211。 一般要在最后一行添加</p>
+<pre><code class="language-shell">PORT=&quot;11211&quot;
+#....
+# 保护不被外部攻击
+OPTIONS=&quot;-l 127.0.0.1 -U 0&quot; 
+</code></pre>
+<p>启动与查看</p>
+<pre><code class="language-shell">firewall-cmd --permanent --zone=public --add-port=11211/tcp
+
+systemctl restart memcached
+systemctl enable memcached
+systemctl status memcached
+
+# 状态
+memcached-tool 127.0.0.1 stats
+</code></pre>
+<p>PHP 的扩展</p>
+<pre><code class="language-shell"># 报错了 提示什么版本不对
+yum install php-pecl-memcache
+
+# 最新的
+yum -y install php-memcached
+
+# 重启 php &amp; nginx
+systemctl restart php-fpm
+
+# 检查
+php -m | grep memcache
+</code></pre>
+<h2 id="postgresql-11">PostgreSQL 11</h2>
+<pre><code class="language-shell">rpm -Uvh https://yum.postgresql.org/11/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+yum install postgresql11-server
+
+firewall-cmd --zone=public --permanent --add-service=http
+firewall-cmd --zone=public --permanent --add-port=5432/tcp
+firewall-cmd --reload
+
+systemctl start postgresql-11
+systemctl enable postgresql-11
+
+# 初始化数据库
+/usr/pgsql-11/bin/postgresql-11-setup initdb
+
+</code></pre>
+<p>编辑 /var/lib/pgsql/data/pg_hba.conf</p>
+<pre><code class="language-shell">host    all             all             127.0.0.1/32            md5
+host    all             all             ::1/128                 md5
+</code></pre>
+<p>验证</p>
+<pre><code class="language-shell">su - postgres -c &quot;psql&quot;
+
+psql (11.0)
+Type &quot;help&quot; for help.
+
+postgres=# 
+</code></pre>
+<p>创建用户</p>
+<pre><code class="language-shell">sudo su postgres
+createuser -P --interactive
+postgres@your_machine_name:~$ createuser -P --interactive
+Enter name of role to add: test
+Enter password for new role:
+Enter it again:
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) y
+Shall the new role be allowed to create more new roles? (y/n) n
+postgres@your_machine_name:~$
+</code></pre>
+<h2 id="问题">问题</h2>
+<h3 id="nginx-emerg-bind-to-00008081-failed-13-permission-denied">nginx: [emerg] bind() to 0.0.0.0:8081 failed (13: Permission denied)</h3>
+<p>添加了若干个虚拟机后， <code>systemctl restart nginx</code> 报错无法启动</p>
+<p><code>systemctl status nginx -l</code> 查看到上面的报错！</p>
+<p>修改 nginx 的 user 为 root 也不行。</p>
+<p>只有 80 端口的虚拟主机可以。。。</p>
+<p>问题：</p>
+<h3 id="nginx--virualbox-share-过来的目录一直-404-或者-no-input-file-specific-或者-403">nginx:  virualbox share 过来的目录，一直 404 或者 no input file specific 或者 403</h3>
+<ol>
+<li>selinux 关闭  无效</li>
+</ol>
+<p>Log in to your server
+Check the current SELinux status, run: sestatus
+To disable SELinux on CentOS 7 temporarily, run: sudo setenforce 0
+Edit the /etc/selinux/config file and set the SELINUX to disabled
+Reboot the Linux server
+Verify it by running the sestatus and getenforce again</p>
+<ol start="2">
+<li>将当前用户添加到 vboxsf 组可以访问</li>
+</ol>
+<pre><code class="language-shell">ls /media/sf_share  # permission
+
+sudo usermod -aG vboxsf $(whoami)
+</code></pre>
+<p>vboxsf 组里添加当前用户。 注意最后一定 <strong>不要</strong> 添加冒号！！ 否则重启后都沒用！！！</p>
+<pre><code class="language-shell">vi /etc/group
+
+sudo reboot
+</code></pre>
+<h3 id="让-php-fpm-跑在-root-用户上">让 php-fpm 跑在 root 用户上</h3>
+<p>因为 /media/sf_share 目录权限一般是 root:vboxsf   770</p>
+<p>而如果 php-fpm.d/www.conf 里 user  group 是别的账号 例如 nginx  那么会导致 nginx 502   no input specific 等等错误（需要关闭 nginx 的 404 ）</p>
+<p>但是新版的 php-fpm 服务好像如果改成 root 会无法启动，查看详情发现不要你用 root.</p>
+<p>强行用</p>
+<pre><code class="language-shell">vi /lib/systemd/system/php7.0-fpm.service
+
+# 添加 --allow-to-run-as-root
+[Service]
+ExecStart=/usr/sbin/php-fpm7.0 --allow-to-run-as-root --nodaemonize --fpm-config /etc/php/7.0/fpm/php-fpm.conf
+
+# 确保生效
+sudo systemctl daemon-reload
+
+# 重启服务
+systemctl restart php-fpm
+</code></pre>
+<h3 id="重启后-runphpphp-fpmsock-消失">重启后 /run/php/php-fpm.sock 消失！</h3>
+<pre><code class="language-shell">vi /lib/systemd/system/php7.2-fpm.service
+</code></pre>
+<p>添加后无效</p>
+<p>RuntimeDirectoryPreserve=yes</p>
+<p>加上 &ndash;fpm-config /etc/php-fpm.conf</p>
+<p>sudo systemctl daemon-reload</p>
+<p>也没有用。</p>
+<p>最后。 需要修改 /etc/php-fpm.d/www.conf</p>
+<p>listen  文件  必须是  /run/php-fpm/xxxx.sock  不能是 /run/php/xxxx    这个 <code>php-fpm</code> 可能是在php7.2-fpm.service的 <code>RuntimeDirectory</code>固定了</p>
+<pre><code> PrivateTmp=true
+RuntimeDirectory=php-fpm
+RuntimeDirectoryMode=0755
+</code></pre>
+<p>因此如果 php-fpm.d/www.conf 里 listen 的 sock 一定要放在 php 目录把这里改成 php  ,且修改 /etc/php-fpm.conf ，修改 pid 路径也改成 /run/php/php-fpm.pid</p>
+<p>也不一定要用 root:root 了</p>
+<p>注意 nginx 里也要修改</p>
+<h1 id="禁用-ipv6">禁用 ipv6</h1>
+<p>在 vscode 的 <code>yarn web --host 192.168.3.17</code> 后  外网无法访问， 提示 refuse</p>
+<p>运行 <code>netstat -nltp</code> 发现  tcp6 类型 监听 ::::8080 这样的 而不是  0.0.0.0:8080 这样的 tcp</p>
+<p>关掉 ipv6</p>
+<pre><code class="language-shell">sysctl -w net.ipv6.conf.all.disable_ipv6=1
+sysctl -w net.ipv6.conf.default.disable_ipv6=1
+</code></pre>
+<p>重启</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/linux%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEcentos/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/linux%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEcentos/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/linux/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

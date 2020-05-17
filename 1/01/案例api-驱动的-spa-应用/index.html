@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="案例：api 驱动的 SPA 应用 https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/ 完整的（vue） https://serversideup.net/courses/api-driven-development-laravel-vuejs/ 后端只提供 RestFul API ，前端用 react/vue/angular 等处理 antd ， element 等 认证 jwt https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a 从客户端的角度设计后端的接口 资料：https://" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="案例：api 驱动的 SPA 应用 https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/ 完整的（vue） https://serversideup.net/courses/api-driven-development-laravel-vuejs/ 后端只提供 RestFul API ，前端用 react/vue/angular 等处理 antd ， element 等 认证 jwt https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a 从客户端的角度设计后端的接口 资料：https://" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="案例：api 驱动的 SPA 应用 https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/ 完整的（vue） https://serversideup.net/courses/api-driven-development-laravel-vuejs/ 后端只提供 RestFul API ，前端用 react/vue/angular 等处理 antd ， element 等 认证 jwt https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a 从客户端的角度设计后端的接口 资料：https://">
+
+<meta itemprop="wordCount" content="5797">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="案例：api 驱动的 SPA 应用 https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/ 完整的（vue） https://serversideup.net/courses/api-driven-development-laravel-vuejs/ 后端只提供 RestFul API ，前端用 react/vue/angular 等处理 antd ， element 等 认证 jwt https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a 从客户端的角度设计后端的接口 资料：https://"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5797字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="案例api-驱动的-spa-应用">案例：api 驱动的 SPA 应用</h1>
+<p><a href="https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/">https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/</a></p>
+<p>完整的（vue）
+<a href="https://serversideup.net/courses/api-driven-development-laravel-vuejs/">https://serversideup.net/courses/api-driven-development-laravel-vuejs/</a></p>
+<h1 id="后端只提供-restful-api-前端用-reactvueangular-等处理">后端只提供 RestFul API ，前端用 react/vue/angular 等处理</h1>
+<p>antd ， element 等</p>
+<h1 id="认证">认证</h1>
+<h2 id="jwt">jwt</h2>
+<p><a href="https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a">https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a</a></p>
+<h1 id="从客户端的角度设计后端的接口">从客户端的角度设计后端的接口</h1>
+<p>资料：https://www.jianshu.com/p/a3828971a59f</p>
+<p>虽然一个api接口的业务，数据逻辑是后端提供的，但真正使用这个接口的是客户端，一个前端功能的实现流程与逻辑，客户端算是接口的需求方。所以建议在前期接口设计和评审时，**客户端的应该更多的思考和参与，什么时机调什么接口？每个接口需要哪些字段？数据含义怎么给？**只有这些都考虑清楚，且达成一致并产出接口文档后，当项目真正启动时，根据接口协议进行开发，才能尽量避免各种不确定因素对项目整体进度的影响。</p>
+<p>API设计核心原则：</p>
+<p>遵循Web标准
+对开发者友好
+在使用上应该保持简单、直观和一致性，不仅仅是容易使用，而应该让使用者感到愉悦
+有效率的</p>
+<h2 id="接口设计规范">接口设计规范</h2>
+<h3 id="每个请求都有的通用请求参数">每个请求都有的通用请求参数</h3>
+<p>每个请求都要携带的参数，用于描述每个请求的基本信息，后端可以通过这些字段进行<strong>接口统计</strong>，或APP终端<strong>设备的统计</strong>，可以放在请求头部header中。</p>
+<p>例如</p>
+<pre><code class="language-json">const header = {
+   version: '1.0.0',                           // 客户端版本version
+   token: '6aab9eb8f32e566dfa41cbd48f53c80d',  // 登陆成功后，登陆令牌token
+   platform:'android',                         // android/ios
+   model:'Note3',                              // 机型信息
+   appid:''                                    // app唯一标识，服务可能提供多个app应用
+ }
+</code></pre>
+<h4 id="在-headers-里给你的api加上版本化-vs-在-url-里使用版本号">在 headers 里给你的API加上版本化 VS 在 URL 里使用版本号</h4>
+<p>能够让你的API迭代地更快，防止老的请求访问你的API最新版。这样能够让你在进行API重大升级时，能够持续对老版本API进行一段时间的支持。</p>
+<p>有很多的人在讨论，API的版本化，应该体现在URL上，还是在请求Header里。理论上讲，应该放在Header里。</p>
+<p>API被发布出来，不会永远不变。变化是不可避免的。重要的是，我们怎么去管理这种变化。</p>
+<h3 id="请求路由链接命名规范的基础上尽量保持良好的可读性">请求路由链接，命名规范的基础上尽量保持良好的可读性</h3>
+<p>参考restful规范</p>
+<p>REST的核心思想是，把API按照逻辑上的资源来进行区分。这些资源被HTTP的不同方法(GET, POST, PUT, PATCH, DELETE)进行请求，每个方法代表不同的含义。（GET=查找,POST=增加,PUT=修改,DELETE=删除）
+REST的伟大之处在于，采用了既有的HTTP methods，在一个单独的链接下，实现了多样的功能操作。你不需要遵循任何的命名规范，仅仅需要一个干净和整洁的URL结构。</p>
+<h3 id="响应数据">响应数据</h3>
+<p>判断code==200的情况下继续解析data，code!=200时，根据业务提示文案放在Desc字段，客户端直接显示就可以了。</p>
+<p>array类型的数据，即使只有1个list字段，也要保证data下是个完整的object结构，这样就可以统一将data层级下的数据当对象解析。</p>
+<h3 id="命名规范">命名规范</h3>
+<ul>
+<li>一般采用小驼峰法</li>
+<li>避免冗余字段</li>
+<li>注释清晰（重要）： 每个接口/字段都需要有详细的描述信息，详细的接口文档，可以帮助新人快速熟悉业务</li>
+</ul>
+<h3 id="返回字段类型要前后端讨论进行统一">返回字段类型要前后端讨论进行统一</h3>
+<p>和两端商讨关于数据类型的返回</p>
+<p>特别是特殊的类型，比如布尔类型等，不同语言表示方法不同</p>
+<h3 id="上传下载接口根据md5校验数据完整性">上传/下载接口，根据md5校验数据完整性</h3>
+<p>上传，下载文件/图片时，除了file本身，还要携带该file的md5，在传输过程中可能丢失部分数据，导致文件损毁，所以需要通过md5值进行完整性校验。
+上传成功后将图片url返回</p>
+<h3 id="避免浮点型计算">避免浮点型计算</h3>
+<p>浮点型计算可能导致精度丢失，为了避免，可以缩小单位进行存储。
+例：1.5元，后端会以150分存到数据库，1.5km会存成1500m。</p>
+<p>如果涉及到逻辑判断与计算,可以返回&quot;1500，单位(m)&quot;,减少出错可能</p>
+<h3 id="json数据保持良好结构">json数据保持良好结构</h3>
+<p>像这个，3类信息user，order，address，全部堆在一起，字段多了以后，对于接口信息的读取很不直观.</p>
+<p>导致客户端在定义model的时候，会将全部字段定义在一个model中，如果其他地方也有用到addressId，Name，Detail等字段信息，则需要重新定义address的model，无法实现model的复用。</p>
+<pre><code class="language-json">{
+    userId: 1
+    userName: '洒哥',
+    userAvatar: 'http://xxx',
+    orderId: 2,
+    orderType: 1
+    addressId: 5,
+    addressDtl: '萝岗'
+  }
+</code></pre>
+<p>优化后user，order，address字段在各自的对象内，一眼就可以看出这个接口有哪些类型的数据. 另外如果放在同一级别，id字段就需要用userId，orderId，addressId区分开，而现在根据不同结构体区分字段类型后，直接使用id就可以了</p>
+<pre><code class="language-json">{
+      user:{
+        id: 1
+        name: '洒哥',
+        avatar: 'http://xxx'
+      }
+      order:{
+        id: 2
+        type: 1
+      }
+      address:{
+        id: 5,
+        detail: '萝岗'
+      }        
+  }
+</code></pre>
+<h2 id="撰写接口文档">撰写接口文档</h2>
+<p>好的文档，和好的接口同样重要。接口文档需要被很容易地找到和访问。大部分开发者会在进行接口开发之前，检查并查看接口文档。如果这些接口文档是写在PDF文档里，或者需要登录才能查看，那将不仅仅是难于查找，还不利于搜索。
+接口文档应该描述完整，并附上具体的例子。最好是，这些例子应该是真实可以访问的。
+一旦你发布了一个API，那意味着，在没有通知调用者的情况下，你有责任不去破坏该接口的已有功能。如果你在今后修改该接口，需要及时更新接口文档，并且在发布接口的更新之前，及时通知你的接口调用者。</p>
+<h2 id="客户端保持逻辑简单-服务端处理业务逻辑和数据变动">客户端保持逻辑简单, 服务端处理业务逻辑和数据变动</h2>
+<h3 id="业务中心放在后端">业务中心放在后端</h3>
+<p>客户端任何的修改都是需要发版， 特别是移动应用，改一个前端的bug就要重新上架。在接口设计的时候，也需要适当考虑这点，将业务重心交给服务端，客户端保持逻辑简单</p>
+<h3 id="客户端只负责展示逻辑不处理业务逻辑">客户端只负责展示逻辑，不处理业务逻辑</h3>
+<p>尽可能不要在前端去拼接字符串什么的。（甚至处理分支条件）</p>
+<p>例如：客户端有个TextView，服务端只给个status字段，status=1时，展示文案1；status=2时，展示文案2；这样设计的缺点是，如果以后要修改status=3时，展示文案1，那么这个status判断逻辑时写死在客户端，就没办法支持这种修改，且这种设计限定死了TextView只能展示2种文案。推荐方案是后端直接将TextView需要展示的文案下发，这样不管是status的判断，还是文案的展示，后期都是可变的。</p>
+<h3 id="客户端不处理金额的计算">客户端不处理金额的计算</h3>
+<p>例如：外卖APP，用户在下单的时候，需要选择收货地址，支付类型，优惠券等，任何一个选项的修改，都可能影响用户最后需要支付的金额。所以这里比较常见的接口设计是在每次选择完回到订单支付页面后，再发送一次请求，后端根据当前选项重新计算金额。金额永远是一款产品最重要，最敏感的信息，如果交由客户端计算，万一出错，即使少1分，都是毁灭性的，所以，关于金额，展示就好。</p>
+<h3 id="客户端少处理请求参数的校验与约束提示">客户端少处理请求参数的校验与约束提示</h3>
+<p>例如：修改密码功能，密码规则&quot;6-12字母，数字，下划线&rdquo;，有3种做法：</p>
+<p>在发送请求前，客户端校验密码规则，如果不符合，则不发送请求。
+优点：规则不满足时，可以减少不必要的请求。
+缺点：客户端写死校验逻辑，密码规则变化时，客户端需要发版。</p>
+<p>客户端只判断null，和最短位数限制，其他校验规则交由后端处理。
+优点：灵活性最好。
+缺点：后端压力大，校验请求多。</p>
+<p>后端在通用配置的接口返回正则表达式，客户端获取后进行正则校验。
+优点：具有一定灵活性。
+缺点：开发，调试成本较高。（推荐：即使出问题，也可以清除配置，回退到第2个方案）</p>
+<h2 id="扩展性">扩展性</h2>
+<p>接口的设计要具有一定的扩展性，考虑到后续版本变化，对于接口，字段的影响及变化。即使和策划或者产品经理确认了“不会改变”，后期也很有可能会变化。</p>
+<p>方案1 写死 key 名，不够灵活</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;张三&quot;,
+    &quot;sex&quot;: &quot;男&quot;,
+    &quot;age&quot;: &quot;20岁&quot;,
+    &quot;nickName&quot;: &quot;小张&quot;
+}
+</code></pre>
+<p>方案2 以list(key-value)的数据形式进行下发</p>
+<pre><code class="language-json">{
+    &quot;userInfos&quot;:[
+    {
+        &quot;key&quot;:&quot;姓名&quot;,
+        &quot;value&quot;:&quot;张三&quot;
+    },{
+        &quot;key&quot;:&quot;性别&quot;,
+        &quot;value&quot;:&quot;男&quot;
+    },{
+</code></pre>
+<p>不过 对于变化不那么频繁，数据item较少，较固定的情况下其实没有必要设计的太灵活，只会增加开发成本。</p>
+<p>对于一些“配置参数”， 用flag替换boolean</p>
+<p>一般情况下，一款APP都会有config接口，用于获取一些常量文案，通用配置等信息，会有很多类似开关的字段，如：isAdmin，isPulsv等等</p>
+<pre><code class="language-json">{
+    isAdmin:1,// 是否是管理员
+    isPulsv:1,// 是否是大v用户
+}
+</code></pre>
+<p>通过二进制第1位表示isAdmin，二进制第2位表示isPulsv。如果有其他新增状态，不需要新增字段，就需要改变返回的数据即可。</p>
+<pre><code class="language-json">flag:3 // 二进制：11，表示2个状态都为true
+</code></pre>
+<h2 id="安全性">安全性</h2>
+<p><strong>响应数据中</strong>包含用户<strong>隐私的字段数据，需要加*号</strong>。如：手机号，身份证，用户邮箱，支付账号，邮寄地址等</p>
+<p><strong>请求参数中</strong>包含<strong>用户隐私的字段参数</strong>，如：登陆接口的密码字段，<strong>需要进行加密传输</strong>，避免被代理捕捉请求后获取明文密码。</p>
+<p>客户端和服务器通过约定的算法，对传递的参数值进行签名匹配，防止参数在请求过程中被抓取篡改。</p>
+<p>总是使用HTTPS，有一些API数据没有被加密，很容易遭到劫持并被篡改。</p>
+<h2 id="兼容性">兼容性</h2>
+<p>在升级了版本后，如果出现同一个接口（如 /users），不同的版本调用同一个接口，逻辑要独立。</p>
+<p>接口或者字段的删除、修改要谨慎：对于已经存在的接口进行修改，需要考虑对线上版本的影响，尽量是数据含义，和新增字段，而不是去修改。</p>
+<h2 id="性能优化">性能优化</h2>
+<h3 id="合并接口待斟酌有评测不一定能节省资源">合并接口（待斟酌，有评测不一定能节省资源）</h3>
+<p>业务场景允许的情况下，尽量一个页面对应一个接口。原先一个页面要通过多个请求获取多种类型数据的情况，最好能通过一个接口全部获取得到。又如：在调用B接口前需要A接口的前置数据的情况，可以让后端支持下，在调用A接口时直接返回B接口的数据，减少类似这种的连续请求。</p>
+<h3 id="字段精简">字段精简</h3>
+<p>在保证良好可读性的前提下，尽量精简，减少流量的消耗</p>
+<h3 id="md5缓存">md5缓存</h3>
+<p>对于频繁调用且数据不常变化的接口，可以在返回的数据中添加md5字段（用于校验除md5外其他数据是否变化），在下次请求的时候将这个md5作为参数传给后端，md5没有变化的情况下，不返回data，客户端可以直接使用上次请求缓存在本地的data。</p>
+<h3 id="限制api返回的字段">限制API返回的字段</h3>
+<p>如果能够在调用时，选择API能够返回的字段，或者同个接口不同状态下需要返回的字段各不相同的时候，将减少网络传输流量，加速调用方的业务处理。</p>
+<p>可以使用fields查询参数来限制API返回的字段。比如，以下请求只返回需要的字段信息： /users/12?fields=id,name,age （联系 Laravel Repository 的 Request Criteria）</p>
+<h3 id="在后端进行图片裁剪">在后端进行图片裁剪</h3>
+<p>客户端上传图片后，当需要在列表这些图片区域较小的地方展示的时候，没必要直接加载原图，可以先在后端通过图片裁剪服务处理后再进行展示</p>
+<h3 id="局部刷新">局部刷新</h3>
+<p>一个页面，如果之前已经加载了20%的数据，那么就不需要每次都返回100%数据，只要返回剩余80%即可</p>
+<p>例：社区帖子列表，每个列表中的帖子其实已经具有title、content、createTime等字段，那么点击进入贴吧详情的时候，title、content、createTime就可以从列表传递过来，详情页的请求只需要返回剩余数据，客户端需要额外处理数据组装逻辑，将前一个页面传递过来的字段和详情页请求到的字段组装成完整的model数据。</p>
+<h3 id="wifi与移动网络的区别对待">wifi与移动网络的区别对待</h3>
+<p>应该尽量减少移动网络下的数据传输，多在WiFi环境下传输数据。例：crash日志上报，数据统计接口等，可以在移动网络的情况下请求频率降低，或缓存，在wifi网络时上调请求频率，或将缓存的数据统一上报。还有上文提到的，如果是wifi网络状态下，就下发高清图提升用户体验，移动网络状态就下发缩略，或裁剪图。</p>
+<h2 id="体验优化">体验优化</h2>
+<p>设计接口时，不能只考虑减少流量消耗，性能优化等，<strong>特定场景下用户体验的优化</strong>才是最高优先级的。</p>
+<p>通过预加载降低对网络依赖
+在网络较差的情况。
+例：列入要做电梯或者进地下室，这时候网络比较差的，查看帖子详情，可能就会加载不出来，提示网络错误等，影响正常体验。可以考虑在列表的接口中，将详情的数据一起请求下发，可通过md5判断详情页面数据是否变化，避免重复加载，这样用户在网络比较好的情况下请求一次列表后，再进入详情页，就不再需要重新请求，对网络的依赖也是最小的。
+前几页的帖子，用户查看详情的概率较高，可以在返回列表的时候携带正文内容，则可以实现秒开详情，也可以判断网络状态，wifi场景下可以将详情数据都返回。</p>
+<h2 id="错误代码">错误代码</h2>
+<p>API在出错时也应该提供一个有用的错误消息给调用方。</p>
+<p>API应该总是返回合理的HTTP状态码。API的错误通常分为两类：</p>
+<ul>
+<li>客户端调用错误使用的400系列状态码，</li>
+<li>和服务端处理错误使用的500系列状态码。</li>
+</ul>
+<p>一个JSON错误消息应该包含这么几个部分，一个有用的错误消息，一个唯一的错误码(方便在接口文档里查到更详细的错误描述)和一个详尽的错误描述。</p>
+<p>在开始设计的时候，</p>
+<p>查询类的接口，应尽可能使用被动式提供数据的无状态接口，格式应尽可能使用对象。这样的接口对于扩展字段非常的方便,也很容易做到向下兼容。这样的增量接口，对于老的自动化测试来说，不会失效，仍然可以跑。
+操作类的接口，尽可能地将资源分离，比如修改用户信息、修改用户头像信息、修改用户职位信息，这样的接口，尽可能使用独立的资源。
+比较难搞的是数据结构设计不合理，那就是新增一个接口，只能尽可能避免。</p>
+<p>对于实在没有办法需要全面升级接口的，如果可能，保持原有的业务，原有的接口运转正常，然后构建一套全新的隔离的接口，最后做下版本使用监控，当观察到所有用户都使用新版本的客户端的时候，并保持一段时间的时候，放弃对老版本的维护，继而下掉老版本的资源，当然，万不得已的时候还可以用强制更新。</p>
+<h2 id="接口统计功能">接口统计功能</h2>
+<p>为了更好的了解我们用户的使用情况，需要我们尽可能多的收集客户端的信息，除了传统的IP、User-Agent之外，还应该收集一些移动相关的信息，比如：</p>
+<p>手机操作系统，是android还是ios，都是什么版本
+用户使用的网络状况，是2G、3G、4G还是WIFI
+客户端APP是什么版本信息。</p>
+<h1 id="api-接口防刷">API 接口防刷</h1>
+<p>让某个接口某个人在某段时间内只能请求N次</p>
+<p>在项目中比较常见的问题也有，那就是连点按钮导致请求多次，以前在web端有表单重复提交，可以通过token 来解决。
+除了上面的方法外，前后端配合的方法。现在全部由后端来控制。</p>
+<p>服务器通过redis 记录下你请求的次数，如果次数超过限制就不给访问。
+在redis 保存的key 是有时效性的，过期就会删除。</p>
+<p><a href="https://www.jianshu.com/p/836938a9d373?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation">https://www.jianshu.com/p/836938a9d373?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<h1 id="参考资料">参考资料</h1>
+<p>api
+<a href="https://serversideup.net/laravel-admin-routes-and-security-in-a-spa/">https://serversideup.net/laravel-admin-routes-and-security-in-a-spa/</a></p>
+<p><strong>dingo</strong>
+<a href="https://orchid.software/en/packages/dingo/api">https://orchid.software/en/packages/dingo/api</a></p>
+<p><strong>BUILD A CMS WITH LARAVEL AND VUE</strong>
+<a href="https://pusher.com/tutorials/cms-laravel-vue-part-3">https://pusher.com/tutorials/cms-laravel-vue-part-3</a></p>
+<p><strong>laravel generator</strong>
+API, Scaffold, CRUD Laravel Generator
+<a href="https://github.com/InfyOmLabs/laravel-generator">https://github.com/InfyOmLabs/laravel-generator</a></p>
+<p><a href="https://codecanyon.net/item/smartend-laravel-admin-dashboard/19184332">https://codecanyon.net/item/smartend-laravel-admin-dashboard/19184332</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/shop/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

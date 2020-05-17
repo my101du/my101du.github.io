@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: webpack(3)教程 permalink: webpack-study tags: webpack 前端 构建工具，grunt或者gulp 打包工具 webpack 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源 开始" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: webpack(3)教程 permalink: webpack-study tags: webpack 前端 构建工具，grunt或者gulp 打包工具 webpack 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源 开始" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/webpack3%E6%95%99%E7%A8%8B/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: webpack(3)教程 permalink: webpack-study tags: webpack 前端 构建工具，grunt或者gulp 打包工具 webpack 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源 开始">
+
+<meta itemprop="wordCount" content="5647">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: webpack(3)教程 permalink: webpack-study tags: webpack 前端 构建工具，grunt或者gulp 打包工具 webpack 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源 开始"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/webpack3%E6%95%99%E7%A8%8B/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/webpack3%E6%95%99%E7%A8%8B/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5647字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: webpack(3)教程
+permalink: webpack-study
+tags:</p>
+<ul>
+<li>webpack</li>
+<li>前端</li>
+</ul>
+<hr>
+<p>构建工具，grunt或者gulp
+打包工具 webpack 他的目的就是把有依赖关系的各种文件打包成一系列的静态资源</p>
+<!-- raw HTML omitted -->
+<h1 id="开始">开始</h1>
+<h2 id="下载与安装全局">下载与安装(全局)</h2>
+<pre><code class="language-shell">npm install -g webpack
+</code></pre>
+<h2 id="配置文件">配置文件</h2>
+<p>webpack.config.js 这个是webpack的管理配置文件</p>
+<pre><code class="language-json">// 以CMD的格式导出模块
+module.exports = {
+    // 入口文件，指向app.js
+    entry: './app.js',
+    // 出口文件
+    output: {
+        // 文件名，将打包好的导出为bundle.js
+        filename: './bundle.js'
+    }
+}
+</code></pre>
+<p>主要分为</p>
+<ul>
+<li>entry 用哪个文件作为项目的入口</li>
+<li>output 处理完成的文件放在哪里</li>
+<li>module 要用什么不同的模块来处理各种类型的文件</li>
+</ul>
+<p>如入口文件 app.js</p>
+<pre><code class="language-js">import bar from './bar'
+
+bar()
+</code></pre>
+<p>入口文件里面引入了模块 bar.js</p>
+<pre><code class="language-js">export default function bar () {
+    console.log('bar')
+}
+</code></pre>
+<p>然后在 html 里引入入口文件</p>
+<pre><code class="language-js">// page.html 这个是html目录文件，这个文件引入入口文件
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;1、最简单的webpack实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;script src=&quot;./bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="执行-webpack-打包">执行 webpack 打包</h2>
+<pre><code class="language-shell"># 默认配置文件
+webpack
+
+# 或者指定不同的配置文件 （如 dev prod 等）
+webpack --config webpack.config.js
+
+# 自动生成 打完后的bundle.js文件
+</code></pre>
+<h1 id="npm-脚本--指令">npm 脚本- 指令</h1>
+<p>例如常常输入的 <code>npm run dev</code>  <code>npm run test</code>等，实际上是用到了 <strong>package.json</strong> 里的 <code>scripts</code> 属性</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;simple-command&quot;,
+    &quot;version&quot;: &quot;0.0.1&quot;,
+    &quot;scripts&quot;: {
+        &quot;test&quot;: &quot;webpack --config webpack.config.js&quot;
+    }
+}
+</code></pre>
+<h1 id="入口多入口出口文件">入口、多入口，出口文件</h1>
+<h2 id="如果只有一个入口文件">如果只有一个入口文件</h2>
+<pre><code class="language-js">entry: './app.js',
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-json">entry: {
+    main: './app.js'
+}
+</code></pre>
+<h2 id="多入口">多入口</h2>
+<p>一个项目里，允许有A、B两个html文件，他们之间是不同的入口文件（比如一个是用户入口页，一个是管理入口页）。first.js 和 second.js 共享 common.js 模块</p>
+<blockquote>
+<p>.
+|____first.html
+| |____first.js
+| | |____common.js
+|____second.html
+| |____second.js
+| | |____common.js</p>
+</blockquote>
+<p>因此配置多个人口就用这个格式</p>
+<pre><code class="language-json">entry: {
+    first: './first_entry.js',
+    second: './second_entry.js'
+},
+</code></pre>
+<p>因为这是“把多入口文件打包到一个文件里”，因此运行的时候会报错</p>
+<blockquote>
+<p>Multiple assets emit to the same filename</p>
+</blockquote>
+<p>需要将<code>outoput</code>改成 [name].js, 名字根据入口文件决定, [name]表示文件名自动匹配入口文件的key</p>
+<pre><code class="language-json">output: {
+    filename: './dist/[name].js'
+}
+</code></pre>
+<p>分别打开first.html和second.html来查看效果</p>
+<h2 id="出口">出口</h2>
+<h3 id="path-与绝对路径">path 与绝对路径</h3>
+<p>除了只写 filename 外，还可以把目录和文件分开写。</p>
+<p>注意， path 必须使用 <code>__dirname</code>变量来指定当前目录的<strong>绝对路径</strong>（指从根目录到当前目录的路径（不带最后一个/））而不能用相对路径<code>./dist</code></p>
+<pre><code class="language-json">output: {
+    path: __dirname + '/dist',
+    filename: 'dist.js'
+}
+</code></pre>
+<h3 id="占位符hash-文件名">占位符、hash 文件名</h3>
+<p>前面的“多入口”里已经用到了 <code>[name]</code>这个占位符。
+有时候需要每次 build 的时候，都生成不同的文件名，避免浏览器会因为 bundle.js 文件名相同，导致每次就加载旧的缓存文件，这时候可以使用 <code>[hash]</code>,打包后得到类似的文件 ：dist.5099da45ae9fc763852d.js</p>
+<pre><code class="language-json">filename: 'dist.[hash].js'
+</code></pre>
+<p>注意： <strong>即使文件没有改变，每次生成的结果也不同</strong>， 如果想让模块没有改变时，hash值不改变，应该改成 <code>chunkhash</code></p>
+<pre><code class="language-js">filename: 'dist.[chunkhash].js'
+</code></pre>
+<h3 id="插件-htmlwebpackplugin-自动创建html模板并让该html文件引入打包好的js文件">插件 HtmlWebpackPlugin： 自动创建html模板，并让该html文件引入打包好的js文件</h3>
+<p>这样会产生一个问题，每次 build 都会得到一个新的文件， 那 html 文件里引入的 dist.xxxxx.js 也要去改动，太麻烦了</p>
+<p>安装一个 webpack 插件<code>html-webpack-plugin</code>， 并且在<strong>当前项目</strong>安装 webpack</p>
+<pre><code class="language-shell">npm install --save-dev html-webpack-plugin
+
+npm install --save webpack
+</code></pre>
+<pre><code class="language-json">// 引入插件
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    //...
+        
+    // 将插件添加到webpack中
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'My HTML'
+        })
+    ]
+</code></pre>
+<p>运行 <code>npm run test</code>，会发现在dist文件夹下，除了之前的js文件，还出现了一个html文件，而这个html文件引入了我们打包好的js文件。</p>
+<p>然后你还会想到，我除了自己自己开发的js 代码，很可能还需要</p>
+<ul>
+<li>以 CDN 的方式引入 jQuery，那么这个生成的 html 文件里怎么生成它们呢？</li>
+<li>自定义生成的 html 文件名？</li>
+</ul>
+<p>那需要查看 HtmlWebpackPlugin 的文档 <a href="https://github.com/jantimon/html-webpack-plugin#configuration">https://github.com/jantimon/html-webpack-plugin#configuration</a>，增加一些配置</p>
+<pre><code class="language-json">plugins: [
+    // 这里是添加的插件
+    new HtmlWebpackPlugin({
+        title: 'title', // html的title（就是title标签里的东西）
+        filename: 'index.html', // 重写后的html文件名，默认是index.html
+        template: './demo.html',    // 这个就是那个模板文件，不会改动原有的内容，而是在原来html文件的末尾，将打包编译好的文件添加进去
+    })
+]
+</code></pre>
+<p>让它能够从”模板“里额外加入打包的js文件， 如 demo.html 如下</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;引入了bootstrap&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css&quot;
+          integrity=&quot;sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u&quot; crossorigin=&quot;anonymous&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;
+    &lt;a href=&quot;http://www.baidu.com&quot;&gt;baidu&lt;/a&gt;
+&lt;/h1&gt;
+&lt;style&gt;
+    .table {
+        width: 500px;
+    }
+&lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="loader">Loader</h1>
+<p>引入css的时候，我们可能用css-loader,处理一些小图片，我们为了减少请求数，所以需要将图片转为base64字符串，这个时候要用url-loader,处理使用es6等高版本js代码的，我们需要使用babel-loader&hellip;.</p>
+<p><strong>作用：对模块的源代码进行转换</strong> 例如输出一个有 es6、7 语法的 js 文件，将其编译转换为 es5 语法</p>
+<p>先通过npm安装loader，引入package.json中</p>
+<pre><code class="language-shell">npm i -s css-loader
+</code></pre>
+<p>然后配置 webpack, 将 loader 添加到 <code>module</code> 下的 <code>rules</code>里面进行配置</p>
+<pre><code class="language-json">module.exports = {
+    //... entry, output...
+    module: {
+        rules: [
+        // loader放在rules这个数组里面
+        ]
+    }
+</code></pre>
+<h2 id="匹配方式">匹配方式</h2>
+<p>webpack 从入口文件（ entry ）开始解析代码，遇见 es6 的 import，或者 require 语法，导入对应的模块。</p>
+<p>每次加载一个新模块时（包括入口文件）（每个文件都被 webpack 视为模块），就会触发能匹配成功的loader。 比如 <code>test: /\.css$/</code> 会匹配成功 <code>.css</code> 结尾的文件，然后模块被该 loader 所处理</p>
+<h2 id="处理方式">处理方式</h2>
+<p><strong>链式</strong></p>
+<p>如下，首先被 css-loader 进行处理，打包成模块，然后被 style-loader 处理(顺序是<strong>从后往前</strong>执行的)，在 加载 js 文件时，将 css 代码插入到 html 文件之中</p>
+<pre><code class="language-json">{
+    test: /\.css$/,
+    use: [
+        'style-loader',
+        'css-loader'
+    ]
+},
+</code></pre>
+<p><strong>异步/同步</strong></p>
+<p><strong>支持查询参数/options</strong></p>
+<pre><code class="language-json">{ test: /\.png$/, use: [ &quot;url-loader?mimetype=image/png&quot; ] }
+</code></pre>
+<p>相当于</p>
+<pre><code class="language-json">{
+    test: /\.png$/,
+    use: [
+        {
+            loader: 'url-loader',
+            options: {
+                mimetype: 'image/png'
+            }
+        }
+    ]
+}
+</code></pre>
+<h2 id="loader-也有插件">loader 也有插件</h2>
+<p>比如 postcss-loader 的 autoprefixer 插件，用于自动添加 css 兼容性前缀</p>
+<h2 id="常用-loader-列表">常用 loader 列表</h2>
+<p>需要查看各自的文档</p>
+<ul>
+<li>babel-loader：用于将es6、es7等语法，转换为es5语法；</li>
+<li>css-loader：用于处理css文件（主要是处理图片的url）；</li>
+<li>style-loader：将转换后的css文件以 style 标签形式插入 html 中；</li>
+<li>postcss-loader：一般用于添加兼容性属性前缀；</li>
+<li>less-loader：以 less 语法来写 css ；</li>
+<li>url-loader：用于将图片小于一定大小的文件，转为 base64 字符串；</li>
+<li>file-loader：url-loader 不能转换 base64字符串 的文件，被这个处理（主要用于设置打包后图片路径，以及CDN等）；</li>
+<li>html-withimg-loader：用于加载html模板；</li>
+</ul>
+<h2 id="babel-loader">babel-loader</h2>
+<h3 id="实际上包括一大堆需要安装的webpack-也在里面">实际上包括一大堆需要安装的（webpack 也在里面）</h3>
+<pre><code class="language-shell">npm install --save babel-loader babel-core babel-preset-env webpack
+</code></pre>
+<p>创建babel规则文件<code>.babelrc</code></p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [
+    [
+      &quot;env&quot;,
+      {
+        &quot;modules&quot;: false,
+        &quot;targets&quot;: {
+          &quot;browsers&quot;: [
+            &quot;&gt; 1%&quot;,
+            &quot;last 2 versions&quot;,
+            &quot;not ie &lt;= 8&quot;
+          ]
+        }
+      }
+    ]
+  ]
+}
+</code></pre>
+<p>然后就可以在代码里用 ES6 语法了(像这里的箭头函数)</p>
+<pre><code class="language-js">let foo = () =&gt; {
+    console.log('1')
+}
+foo()
+</code></pre>
+<p>运行 <code>npm run test</code> 得到 dist.js 文件，代码已经被成功转为非es6语法</p>
+<pre><code class="language-js">var foo = function foo() {
+  console.log('1');
+};
+foo();
+</code></pre>
+<h3 id="但是无法转换-promiseset-等等又要做额外的工作">但是无法转换 Promise、Set 等等。。。。又要做额外的工作</h3>
+<p>安装插件</p>
+<pre><code class="language-shell">npm install babel-runtime --save
+npm install babel-plugin-transform-runtime --save-dev
+</code></pre>
+<p>修改 <code>.babelrc</code>。</p>
+<pre><code class="language-js">{
+  &quot;presets&quot;: [
+    &quot;babel-preset-env&quot;
+  ],
+  &quot;plugins&quot;: [
+    &quot;transform-runtime&quot;
+  ]
+}
+</code></pre>
+<p><code>babel-runtime</code>对应 plugins 里的 <code>transform-runtime</code>, 它干什么的？</p>
+<p>当添加了 babel-loader 后，默认运行 webpack 命令，会给<strong>每个</strong>文件都添加<code>辅助代码</code>（以便可以使用新的特性的代码），因此会导致文件过大。为了禁用 babel 每个文件的 runtime 注入，引入 <code>babel-plugin-transform-runtime</code> 并且使所有辅助代码从这里引用。</p>
+<h3 id="最后需要把-babel-loader-的规则添加到-webpackconfigjs-里去">最后需要把 babel-loader 的规则添加到 webpack.config.js 里去</h3>
+<pre><code class="language-json">{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader'
+}
+</code></pre>
+<h3 id="支持新特性">支持新特性</h3>
+<p>es6的Promise，Set，以及es7中的async/await都可以在代码里使用了。</p>
+<p>但对于一些新特性（还没有正式添加到 ES7 规范里面） 正常来说 runtime 是不支持的。因此要安装<code>babel-preset-stage-2</code> 来指定 stage 版本，通常安装到 stage-2 就足够了，如果还不行，再安装 stage-1 或者 stage-0</p>
+<pre><code class="language-js">npm install --save babel-preset-stage-2
+</code></pre>
+<p>在 .bablerc 文件的 <code>presets</code> 数组里，<code>babel-preset-env</code>下方添加<code>stage-2</code></p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [
+    &quot;babel-preset-env&quot;,
+    &quot;stage-2&quot;
+  ],
+  &quot;plugins&quot;: [
+    &quot;transform-runtime&quot;
+  ]
+}
+</code></pre>
+<h2 id="css-loader">css-loader</h2>
+<p>待续</p>
+<h1 id="开发环境自动刷新与-hmr模块热加载">开发环境（自动刷新与 HMR——模块热加载）</h1>
+<h2 id="观察模式-watch">观察模式 watch</h2>
+<p>编辑模块文件后，会自动触发编译（一部分文件），<strong>需要刷新浏览器</strong>后才能查看到新编译好的文件</p>
+<h2 id="实时重新加载-webpack-dev-server">实时重新加载 webpack-dev-server</h2>
+<p>修改文件后<strong>实施编译</strong>，<strong>自动刷新</strong>浏览器.  修改文件后，webpack-dev-server 触发编译，会重新编译<strong>所有</strong>文件（因此耗时比watch 模式长，但比全编译快）</p>
+<p>问题：</p>
+<ol>
+<li>如果需要一定 UI 操作之后才能得到结果的内容 (每次都跑到固定的 index.html)</li>
+<li>output 文件名不能用 [chunkhash] 只能用 [hash]</li>
+</ol>
+<p>先安装 webpack-dev-server</p>
+<pre><code class="language-shell">npm install --save webpack-dev-server
+</code></pre>
+<p>然后在 webpack.config.js 里添加属性<code>devServer</code>(和 entry，output 平级)</p>
+<pre><code class="language-json">// webpack-dev-server
+devServer: {
+    contentBase: './dist'
+},
+</code></pre>
+<p>然后在 package.json 里添加一条 scripts，对应命令<code>npm run start</code>  (如果默认打开 index.html 页面的话，后面的 url 可以省略)</p>
+<pre><code class="language-json">&quot;start&quot;: &quot;webpack-dev-server --open http://localhost:8080/login.html --config build/webpack.config.js&quot;
+</code></pre>
+<h2 id="中间件容器-webpack-dev-middleware">中间件容器 webpack-dev-middleware</h2>
+<p>略</p>
+<p>添加了一个 express</p>
+<h2 id="最终目的-hmr-热模块替换">最终目的 HMR 热模块替换</h2>
+<p><strong>特点</strong></p>
+<p>修改代码后，不需要刷新页面，修改后的代码效果，就能立刻体现在页面上
+保持，比如输入框里输入了一些内容，代码更新后，往往内容还在</p>
+<h1 id="gulp-与-webpack">Gulp 与 webpack</h1>
+<p>如果是通过gulp插件gulp-webpack，则可以在gulpfile中写上gulp任务：</p>
+<pre><code class="language-shell">var gulp = require('gulp');
+var webpack = require('gulp-webpack');
+var webpackConfig = require('./webpack.config');
+gulp.task(&quot;webpack&quot;, function() {
+    return gulp
+        .src('./')
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest('./build'));
+});
+</code></pre>
+<p><strong>打包后的 bundle.js 特别大</strong></p>
+<p>详细参看 <a href="http://www.jianshu.com/p/a64735eb0e2b">http://www.jianshu.com/p/a64735eb0e2b</a></p>
+<ol>
+<li>建议 jQuery 等不要放在 <code>package.json</code> 里打包，改用 <code>CDN</code> 来引入</li>
+<li>生产环境单独一个config，不要 <code>devtool: 'inline-source-map',</code></li>
+<li>去掉不需要的插件 <code>HotModuleReplacementPlugin, NoErrorsPlugin.</code>等（同上，production.config.js单独一个配置）</li>
+<li>使用 <code>UglifyJsPlugin</code>插件进行压缩(速度变慢，一般只在生产环境启用)</li>
+</ol>
+<h1 id="debug">debug</h1>
+<p>react hot loader 报错</p>
+<blockquote>
+<p>bundle.js:9392 [HMR] The following modules couldn&rsquo;t be hot updated: (They would need a full reload!)
+bundle.js:9394 [HMR]  - 64</p>
+</blockquote>
+<p>这是因为 React 组件的写法，必须要用 <code>export</code> ，如下 <code>entry.js</code></p>
+<pre><code class="language-js">import React from 'react';
+import ReactDOM from 'react-dom';
+
+export default class App extends React.Component{
+    constructor() {
+        super();
+    }
+    render() {
+        //JSX here!
+        return (
+          &lt;div className=&quot;container&quot;&gt;
+            &lt;section className=&quot;jumbotron&quot;&gt;
+              &lt;h1 className=&quot;jumbotron-heading&quot;&gt;this is  a title&lt;/h1&gt;
+            &lt;/section&gt;
+          &lt;/div&gt;
+        )
+    }
+};
+
+ReactDOM.render(&lt;App /&gt;, document.getElementById(&quot;container&quot;));
+</code></pre>
+<p>安装 babel-preset-react-hmre 后，npm run dev 运行 webpack-dev-server 后，html 找不到 build/vendor.js 和 build/app.js
+需要修改 publicPath: &lsquo;/public/&rsquo; (这个文件并不会真实出现在 build 目录里，似乎在运行环境的内存中？ 只有运行 webpack 的时候才会生成实际的文件)</p>
+<p>publicPath: &lsquo;/build/&rsquo;</p>
+<p>官方文档没报错，是因为只有<code>babel-preset-react-hmre</code>而少了前面几个包，然后去掉 publicPath</p>
+<pre><code class="language-shell">npm install babel-plugin-react-transform --save-dev`
+npm install react-transform-hmr --save-dev
+npm install --save-dev react-transform-catch-errors redbox-react
+npm install babel-preset-react-hmre --save-dev
+</code></pre>
+<p><strong>自动刷新后，有个</strong></p>
+<blockquote>
+<p>Uncaught RangeError: Maximum call stack size exceeded
+hotAddUpdateChunk @ bundle.js:736
+webpackHotUpdateCallback @bundle.js:5</p>
+</blockquote>
+<p><a href="https://github.com/webpack/webpack/issues/1583">https://github.com/webpack/webpack/issues/1583</a></p>
+<p>修改 config ,注释掉插件new webpack.HotModuleReplacementPlugin()&hellip;.</p>
+<h1 id="webpack--babel">Webpack &amp; Babel</h1>
+<p>参考 <a href="https://github.com/huangtengfei/blog/issues/17">https://github.com/huangtengfei/blog/issues/17</a></p>
+<p>Webpack 是一个前端模块加载兼打包工具，可以对 JS、CSS 和 图片 等都作为模块来使用和处理。对不同类型的需要编译的文件，需要使用相应的加载器（比如用 babel 转译 ES6）</p>
+<p>另外，由于 Webpack 需要一个入口文件来进行分析和处理，需要先将 React 组件引入到一个主文件。</p>
+<p>编辑 webpack.config.js 配置文件</p>
+<pre><code class="language-js">var path = require('path');
+var webpack = require('webpack');
+
+var ROOT_PATH = path.resolve(__dirname);
+var APP_PATH = path.resolve(__dirname, './components/index.js');
+var BUILD_PATH = path.resolve(__dirname, './build');
+
+module.exports = {
+  entry: APP_PATH,
+  output: {
+    path: BUILD_PATH,
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      loaders: ['babel-loader?presets[]=es2015,presets[]=react']
+    }]
+  }
+}
+</code></pre>
+<p>最后，需要将编译打包后的文件 <code>bundle.js</code> 引入到 index.html 中</p>
+<h2 id="构建">构建</h2>
+<p>执行 webpack.config.js 中的构建任务，生成 <code>bundle.js</code>，这个操作可以在 <code>package.json</code> 中配置：</p>
+<pre><code class="language-js">&quot;scripts&quot;: {
+  &quot;build&quot;: &quot;webpack&quot;
+}
+</code></pre>
+<p>执行 <code>npm run build</code> 完成构建</p>
+<h2 id="启动服务器">启动服务器</h2>
+<p>但这种方式显得略 low，一是它是双击以文件的形式打开 HTML 页面，二是每次有更改都要手动执行 npm run build 重新打包。</p>
+<p>一种更好的方式是启动一个静态资源服务器，监听文件内容修改并自动打包。在这里用的是前面安装好的 webpack-dev-server ，在 package.json 中配置：</p>
+<pre><code class="language-js">&quot;scripts&quot;: {
+  &quot;dev&quot;: &quot;webpack-dev-server --devtool eval --progress --colors --hot --content-base build&quot;
+}
+</code></pre>
+<p>简单解释一下 dev 中各个参数的含义：webpack-dev-server 在 localhost:8080 建立一个 Web 服务器；&ndash;devtool eval 映射编译好的源码，用于调试；&ndash;progress 显示代码打包进度；&ndash;colors 表示在命令行中显示颜色； &ndash;content-base 来指定 server 启动后的内容目录。</p>
+<p>执行 npm run dev 启动 server，此时打开 http://localhost:8080 ，即可看到效果。修改一下 Hello 或者 World 组件中的内容，刷新页面，你会发现浏览器中内容也相应改变了。</p>
+<h2 id="自动刷新">自动刷新</h2>
+<p>前面实现了对文件修改的监听和自动打包，但浏览器还需要手动刷新。其实可以在 Webpack 的配置文件中增加一个入口点，实现自动刷新。</p>
+<pre><code class="language-js">entry: [
+    'webpack/hot/dev-server',
+      'webpack-dev-server/client?http://localhost:8080',
+      APP_PATH
+  ],
+</code></pre>
+<h2 id="处理样式">处理样式</h2>
+<p>不管什么类型的资源，Webpack 都需要相应的 loader 来处理。对于普通的 css，需要 css-loader 和 style-loader 两种 loader，前者会遍历所有 css 并对 url() 处理，后者将样式插入到页面的 style 标签中。对于预编译 css 语言，还需要额外的 loader，比如 less-loader 或 sass-loader，这里用 less 举例。</p>
+<p>首先，安装 loader ：</p>
+<pre><code class="language-shell">npm install less-loader css-loader style-loader --save-dev
+</code></pre>
+<p>然后，在 webpack.config.js 中配置 loader，注意 loader 的处理顺序是从右到左的：</p>
+<pre><code class="language-json">{
+    test: /\.less$/,
+    loader: 'style!css!less'
+}
+</code></pre>
+<p>配置完之后要重新运行一下 npm run dev</p>
+<p>接着，在 Hello 和 World 组件中各添加一个样式文件，这里用 Hello/index.less 举例：</p>
+<pre><code class="language-less">@lightgrey: #ccc;
+
+h1 {
+  background: @lightgrey;
+}
+</code></pre>
+<p>最后，在 components/index.js 中引入 less 文件：</p>
+<pre><code class="language-js">import './Hello/index.less';
+import './World/index.less';
+</code></pre>
+<h2 id="处理图片">处理图片</h2>
+<p>为了减轻网络请求的压力，有时候会有将小图片转成 BASE64 字符串的需求，这个可以通过 url-loader 来实现。</p>
+<p>同处理样式中的操作，首先安装 url-loader ：</p>
+<pre><code class="language-shell">npm install url-loader --save-dev
+</code></pre>
+<p>配置 webpack.config.js，然后重新重新运行一下 npm run dev</p>
+<pre><code class="language-js">{
+    test: /\.(png|jpg)$/,
+    loader: 'url?limit=50000'
+}
+</code></pre>
+<p>接着，在 Hello 组件下建一个 imgs 文件夹，并放入一张小于 50K 的 bg.png 做背景图片，然后修改 Hello/index.less 文件：</p>
+<pre><code class="language-style">h1 {
+  background: url('./img/bg.png');
+}
+</code></pre>
+<p>切换到浏览器，审查元素，看一下图片是不是转成 BASE64 字符串了呢~</p>
+<p>补充</p>
+<p>loader 的写法</p>
+<p>在使用 Webpack 打包小节 webpack.config.js 的编写中，babel-loader 最初我是这样写的：</p>
+<p>loaders: [{
+test: /.jsx?$/,
+loader: &lsquo;babel-loader&rsquo;,
+query: {
+presets: [&lsquo;es2015&rsquo;, &lsquo;react&rsquo;]
+}
+}]
+后来为了使用热加载，引入了 react-hot ，loader 要改为 loaders，即：</p>
+<p>&hellip;
+loaders: [&lsquo;babel-loader&rsquo;, &lsquo;babel-loader&rsquo;],
+query: {
+presets: [&lsquo;es2015&rsquo;, &lsquo;react&rsquo;]
+}
+&hellip; <br>
+这时在执行构建的时候，会报错 Error: Cannot define &lsquo;query&rsquo; and multiple loaders in loaders list，于是改成这种写法。不过后来直接用 webpack-dev-server 的 &ndash;hot 选项，也没引入 react-hot 了，但此处写法仍保留，便于后面扩展 loader 。</p>
+<p>安装 less-loader 报错</p>
+<p>如果在安装样式的几个 loader 的时候，报以下错误：</p>
+<p>UNMET PEER DEPENDENCY less@^2.3.1
+不妨试试用 cnpm 单独安装 less ：</p>
+<p>tnpm i less@^2.3.1</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://fakefish.github.io/react-webpack-cookbook">https://fakefish.github.io/react-webpack-cookbook</a>
+<a href="https://www.twilio.com/blog/2015/08/setting-up-react-for-es6-with-webpack-and-babel-2.html">https://www.twilio.com/blog/2015/08/setting-up-react-for-es6-with-webpack-and-babel-2.html</a>
+<a href="https://zhuanlan.zhihu.com/p/20367175">https://zhuanlan.zhihu.com/p/20367175</a></p>
+<h1 id="技巧">技巧</h1>
+<h2 id="sublime-text-配置高亮hintes6babel-emmet等">Sublime Text 配置（高亮、hint、ES6、Babel emmet等）</h2>
+<p><a href="https://medium.com/@adrianli/setting-up-sublime-text-3-for-reactjs-3bf6baceb73a">https://medium.com/@adrianli/setting-up-sublime-text-3-for-reactjs-3bf6baceb73a</a></p>
+<h3 id="代码高亮">代码高亮</h3>
+<p>安装插件</p>
+<p>Babel
+Babel Snippet
+JSX
+ReactJS
+React ES6 Snippets</p>
+<p>然后修改 View -&gt; Syntax -&gt; Open all&hellip;. 选择 JSX 或者 Babel</p>
+<h3 id="代码错误提示">代码错误提示</h3>
+<p>必须 SublimeLinter</p>
+<p>因为 jsxhint 和 jslint 等都会出现提示 jsx 语法标签未闭合的提示，因此使用 <code>eslint</code> 来代替：</p>
+<pre><code class="language-shell">npm install -g eslint eslint-plugin-react
+
+# 进入项目目录
+cd my-app
+
+# 按提示信息生成 .eslintrc 文件（eslint 的配置，规定哪些错误显示出来）
+eslint --init
+
+# 也可以后期来编辑
+vi .eslintrc
+</code></pre>
+<h3 id="格式化">格式化</h3>
+<p>emmet 通过修改快捷键支持 jsx 语法  ctrl + D</p>
+<p>jsFormat</p>
+<h1 id="问题">问题</h1>
+<h2 id="运行-webpack-dev-server-时node-进程占用很多内存">运行 webpack-dev-server 时，node 进程占用很多内存</h2>
+<p><img src="/media/15490411858954/15324964419819.jpg" alt=""></p>
+<p><a href="https://github.com/webpack/webpack/issues/4363">https://github.com/webpack/webpack/issues/4363</a></p>
+<p>里面有提到，使用 antd 时</p>
+<p><a href="https://github.com/webpack/webpack/issues/1914">https://github.com/webpack/webpack/issues/1914</a></p>
+<p>提到通过修改 <code>node</code> 的运行参数， 设置<code>max_old_space_size</code></p>
+<h2 id="使用-create-react-app-创建的旧应用升级到-webpack4-后报错">使用 Create-React-App 创建的旧应用，升级到 webpack@4 后报错</h2>
+<blockquote>
+<p>this.htmlWebpackPlugin.getHooks is not a function</p>
+</blockquote>
+<p>在这里找到：</p>
+<p><a href="https://github.com/jantimon/html-webpack-plugin/issues/1068">https://github.com/jantimon/html-webpack-plugin/issues/1068</a></p>
+<p>首先升级 <code>npm install --save html-webpack-plugin@next</code> 到 ^4.0.0-beta.5, 重新运行无效</p>
+<p>然后修改 <code>config/webpack.config.dev.js</code>，调整先后顺序，并修改代码</p>
+<p>就可以了</p>
+<p><img src="/media/15490411858954/15507287937507.jpg" alt="-w550"></p>
+<h2 id="babel-升级">babel 升级</h2>
+<blockquote>
+<p>Failed to compile.</p>
+</blockquote>
+<blockquote>
+<p>./src/index.js
+Error: The &lsquo;decorators&rsquo; plugin requires a &lsquo;decoratorsBeforeExport&rsquo; option, whose value must be a boolean. If you are migrating from Babylon/Babel 6 or want to use the old decorators proposal, you should use the &lsquo;decorators-legacy&rsquo; plugin instead of &lsquo;decorators&rsquo;.</p>
+</blockquote>
+<pre><code class="language-shell">npx babel-upgrade --write --install
+</code></pre>
+<p>自动更新 package.json 里的 babel/cli babel/core 等版本 6-&gt;7</p>
+<p>并且 package.json 或者 babelrc 里的配置也会变成新的语法</p>
+<p><img src="/media/15490411858954/15507295179527.jpg" alt="-w381"></p>
+<pre><code class="language-shell">npm-check -u
+</code></pre>
+<h2 id="babel-支持-mobx-的-observe-等装饰器语法">babel 支持 mobx 的 @observe 等装饰器语法</h2>
+<p>默认会报错，提示用 <code>export @dec class</code> 来替代</p>
+<p><img src="/media/15490411858954/15507301193394.jpg" alt="-w1004"></p>
+<p>只需要修改 package.json 里 eslintConfig 配置，或者 .eslintrc 文件</p>
+<pre><code class="language-json">&quot;eslintConfig&quot;: {
+    &quot;extends&quot;: &quot;react-app&quot;,
+    &quot;parserOptions&quot;: {
+      &quot;ecmaFeatures&quot;: {
+        &quot;legacyDecorators&quot;: true
+      }
+    }
+  },
+</code></pre>
+<p>或者修改 .babelrc (推荐单独)里</p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [
+  	&quot;@babel/preset-env&quot;,
+  	&quot;@babel/preset-react&quot;,
+  ],
+  &quot;plugins&quot;: [
+	  [
+	  	&quot;@babel/plugin-proposal-decorators&quot;, 
+	  	{ 
+	  		&quot;legacy&quot;: true 
+	  	}
+	  ]
+	]
+}
+</code></pre>
+<h1 id="优化">优化</h1>
+<p>体积
+<a href="https://jeffjade.com/2017/08/06/124-webpack-packge-optimization-for-volume/">https://jeffjade.com/2017/08/06/124-webpack-packge-optimization-for-volume/</a></p>
+<p>速度
+<a href="https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed/">https://jeffjade.com/2017/08/12/125-webpack-package-optimization-for-speed/</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/webpack3%E6%95%99%E7%A8%8B/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/webpack3%E6%95%99%E7%A8%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/webpack-4/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="外接显示器 2015 之前版本不支持 4k 跑到 60Hz 问题 https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor 可以用 swtichResX 添加 Custom resolutions 设置 Pixel Clock 为 450,00 MHz 彻底关闭自带的显示器 亮度大法 外接后，把笔记本的显示器亮度降到最低。这样" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="外接显示器 2015 之前版本不支持 4k 跑到 60Hz 问题 https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor 可以用 swtichResX 添加 Custom resolutions 设置 Pixel Clock 为 450,00 MHz 彻底关闭自带的显示器 亮度大法 外接后，把笔记本的显示器亮度降到最低。这样" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/macbook-pro/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="外接显示器 2015 之前版本不支持 4k 跑到 60Hz 问题 https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor 可以用 swtichResX 添加 Custom resolutions 设置 Pixel Clock 为 450,00 MHz 彻底关闭自带的显示器 亮度大法 外接后，把笔记本的显示器亮度降到最低。这样">
+
+<meta itemprop="wordCount" content="3582">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="外接显示器 2015 之前版本不支持 4k 跑到 60Hz 问题 https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor 可以用 swtichResX 添加 Custom resolutions 设置 Pixel Clock 为 450,00 MHz 彻底关闭自带的显示器 亮度大法 外接后，把笔记本的显示器亮度降到最低。这样"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/macbook-pro/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/macbook-pro/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3582字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="外接显示器">外接显示器</h1>
+<h2 id="2015-之前版本不支持-4k-跑到-60hz-问题">2015 之前版本不支持 4k 跑到 60Hz 问题</h2>
+<p><a href="https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor">https://kandrejevs.com/blog/read/50/More-than-30Hz-on-Your-133-Macbook-Pro-and-4K-monitor</a></p>
+<p>可以用 swtichResX</p>
+<ol>
+<li>添加 Custom resolutions</li>
+<li>设置 Pixel Clock 为 450,00 MHz</li>
+</ol>
+<p><img src="/media/macbookpro/SwitchResX_Preferences.png" alt="Alt text" title="Optional title"></p>
+<h2 id="彻底关闭自带的显示器">彻底关闭自带的显示器</h2>
+<p><strong>亮度大法</strong> 外接后，把笔记本的显示器亮度降到最低。这样还是会有显卡资源的消耗，只是自欺欺人</p>
+<p><strong>磁铁大法</strong> 把磁铁放在键盘左侧，让机器误以为合盖，把显示器关闭。。欺机</p>
+<p><strong>系统命令行法</strong></p>
+<p>重启，按 cmd + R 进入维护模式，打开终端</p>
+<pre><code class="language-shell">sudo nvram boot-args=&quot;niog=1&quot;
+</code></pre>
+<p>严格遵守这个步骤才能实现</p>
+<ol>
+<li>连上电源和外接显示器</li>
+<li>按开机键，<strong>立即合盖</strong></li>
+<li>等外接显示器有信号时 打开盖子</li>
+<li>观察是否已经关闭</li>
+</ol>
+<p>问题: 休眠唤醒时会点亮mac屏幕
+外接键盘
+合盖
+敲外接键盘或鼠标点亮外接显示器
+键盘按command+F2(显示器闪一下)
+开盖</p>
+<p>如果以后要恢复</p>
+<pre><code class="language-shell">sudo nvram -d boot-args
+</code></pre>
+<h1 id="外接显卡">外接显卡</h1>
+<p>Apple 的 Thunderbolt 1&amp;2 代的电脑，如果你想要使用 eGPU 功能，请不要更新到 macOS 10.13.4 因为这一版的 OS 会停止支援 Thunderbolt 1&amp;2 代的电脑支援 eGPU 功能。</p>
+<p>停止支持。。无语了</p>
+<h1 id="sd-卡插槽使用特殊的短版存储卡或tf-转接">SD 卡插槽使用特殊的短版存储卡或TF 转接</h1>
+<p>这种方案没有拆硬盘风险大。。。</p>
+<p><a href="https://post.smzdm.com/p/48758/">https://post.smzdm.com/p/48758/</a></p>
+<ol>
+<li>昂贵专用的 StorEDGE 或 JetDrive Lite 350：速度很快  (369元才能买到 128G, 存储速度 80M， 大概ssd 的十分之一。。。。)</li>
+<li>廉价的 山寨了Nifty MiniDrive卡套（将 TF 卡接上它） : 速度很慢</li>
+</ol>
+<p>创见的型号对应(240G 900多元)  <a href="https://item.jd.com/42026776215.html#crumb-wrap">https://item.jd.com/42026776215.html#crumb-wrap</a></p>
+<h1 id="给-macbook-pro-升级ssd">给 macbook pro 升级SSD</h1>
+<p>创见那个 SD 卡方案，有耗电的问题。而且访问肯定不如硬盘</p>
+<p><a href="https://segmentfault.com/a/1190000017482307">https://segmentfault.com/a/1190000017482307</a></p>
+<p><a href="https://www.lazycoffee.com/articles/view?id=5c724c93c05ac041f1c2457d">https://www.lazycoffee.com/articles/view?id=5c724c93c05ac041f1c2457d</a></p>
+<p><a href="https://www.bilibili.com/video/av49024361/(">https://www.bilibili.com/video/av49024361/(</a>拆机视频)</p>
+<p><a href="https://www.google.com/search?q=site:v2ex.com/t%20760p">https://www.google.com/search?q=site:v2ex.com/t%20760p</a>  (v站搜 760p 或其他关键词)</p>
+<p><a href="https://www.v2ex.com/t/480002">https://www.v2ex.com/t/480002</a></p>
+<p>可以选择几种硬盘</p>
+<ul>
+<li>一种是淘宝上所谓兼容性比较好的“原装”，这种可能二手货。。</li>
+<li>Transcend JetDrive 520  <a href="https://post.smzdm.com/p/48758/(">https://post.smzdm.com/p/48758/(</a>可以直接硬盘-硬盘备份数据,旧盘做成移动硬盘)</li>
+<li>另外就是第三方 M2 （intel 东芝 三星等）的加转接卡</li>
+</ul>
+<p>Intel 760P  256G （300元左右）https://item.jd.com/12924238445.html</p>
+<p>2013~2014 款 mbp 的理论最高速度为 2GB/s,选择 m.2 接口 ssd ,没必要上高端系列，PCI-E 2.0 的接口会限制高端 ssd 的发挥，intel 760p 就挺好用。2015 款 mbp ,接口升级为PCI-E 2.0, 理论最高速度翻倍，达到 4GB/s。在预算充足的条件下，大可随意购入高端 ssd ，以释放全部的效能。</p>
+<p>关键</p>
+<ol>
+<li>intel 760P （m2 SSD）兼容性好</li>
+<li>M.2 转Macbook pro SSD转接卡</li>
+<li>备份数据</li>
+<li>启动盘</li>
+<li>拆机工具套装 五星刀 六星刀</li>
+</ol>
+<p>注意：</p>
+<ul>
+<li>拆后盖后N颗螺丝，要按顺序放好，以为有两颗短，搞错了拧不进去很麻烦。</li>
+<li>硬盘要完全插进去，不然镙丝位对不上</li>
+<li>全盘抹除需要在硬盘工具的界面左上角的选项里，勾上「show all devices」，才会显示硬盘，才能选择硬盘去抹除。</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/34552328">https://www.zhihu.com/question/34552328</a> 可能2014款这个，不支持 512G&hellip;. 最大 256G?(苹果客服说的，靠谱么？)</p>
+<p>拆机换SSD 视频</p>
+<p><a href="https://zh.ifixit.com/Guide/MacBook+Pro+13-Inch+Retina+%E6%98%BE%E7%A4%BA%E5%B1%8F++2014%E4%B8%AD%E6%9C%9F+SSD+%E6%9B%B4%E6%8D%A2/27849">https://zh.ifixit.com/Guide/MacBook+Pro+13-Inch+Retina+%E6%98%BE%E7%A4%BA%E5%B1%8F++2014%E4%B8%AD%E6%9C%9F+SSD+%E6%9B%B4%E6%8D%A2/27849</a></p>
+<h2 id="步骤">步骤</h2>
+<h3 id="制作启动盘">制作启动盘</h3>
+<p>在 Mac App Store 中搜索 Mojave 并下载。
+磁盘工具格式化U盘 「Mac OS X 扩展（日志式）」格式、GUID 分区图，并将 U 盘命名为「Mojave」
+终端 <code>sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/Mojave /Applications/Install\ macOS\ Mojave.app --nointeraction</code></p>
+<h3 id="拆机">拆机</h3>
+<p>10颗螺丝，注意有两类螺丝：2 颗 2.3 毫米和 8 颗 3.0 毫米梅花五角螺丝
+拨片等工具从上往下（参看上图）慢慢翘起后盖，这里有个小技巧，翘起一侧后，可以用塑料撬棍撑起一边，然后拆另一侧。
+拆开后盖后，第一时间用撬棍从侧面将电池电源切断
+清灰工作，先用毛刷，气吹等工具，简单清理一下设备内部。然后用压缩空气除尘罐着重清理出风口，风扇等区域，注意灰尘防护。
+拆开拆卸固定SSD的 2.9 毫米 T5 Torx 螺丝，取下原装 ssd，取下时可先将 ssd 向上稍抬起，后直接抽出
+将购入第三方 ssd 装上转换接口，插入 ssd 槽中，并固定。
+接上电源，先不要安装后盖，下面安装新系统。</p>
+<h3 id="安装系统">安装系统</h3>
+<p>更换完毕后,重启电脑，开机时按住 option 键不放，直到进入磁盘选择界面，选择你自己的磁盘。</p>
+<p>格式新换的 ssd(抹掉,格式为 APFS ，方案为 GUID 分区图)
+c.格式完之后，退出磁盘工具，选择安装 MacOS 系统到新格式化 ssd,等待安装完成。
+登陆iCloud账号后，自动同步数据。上一步也可以选择从 时间机器 里迁移数据到新的 ssd 里面
+e.开启 ssd TRIM ,固态硬盘的TRIM能避免SSD在垃圾回收时将无用数据当成有用数据来搬运，从而延长 ssd 寿命。在终端中输入命令行sudo trimforce enable，输入系统密码后，按照提示开启。</p>
+<h3 id="装回后盖检查">装回后盖，检查</h3>
+<p>确保系统运行一切正常后，安装好后盖，注意不同螺丝的位置。
+在 “关于本机 → 系统报告 → NVMExpress” 中,可看到已经识别出 NVME ,同时 TRIM 显示支持，链接速度为 X4 ，一切正常。</p>
+<h2 id="遇到问题">遇到问题</h2>
+<h2 id="耗电">耗电</h2>
+<p>耗电是真的快了</p>
+<h3 id="休眠问题">休眠问题</h3>
+<p>遇到休眠问题，只需要重置Mac 笔记本电脑上的 SMC和NVRAM</p>
+<p><a href="https://www.v2ex.com/t/482777">https://www.v2ex.com/t/482777</a></p>
+<p>有提到，换成第三方后，发热变大（因为转接卡没有官方的电流自动调整，一直持续用固定的电流）</p>
+<p>还有休眠问题在新版 macOS 里解决了</p>
+<p>开机变慢问题 23 楼</p>
+<p>hibernatemode  和  standby 的设置
+14.3 默认参数 stanby 1 没有睡眠问题</p>
+<p>休眠的确是有些问题的，我直接把所谓的 &ldquo;write to ssd&rdquo; 大概算是 deep sleep 模式给关掉了，唤醒比以前更加无痛，休眠期间耗电也没有明显提高。</p>
+<p>参考命令：sudo pmset -a hibernatemode 0 standby 0 autopoweroff 0 ；</p>
+<h3 id="版本">版本</h3>
+<p>[怀疑乱写的？]这个问题我是这么解决的，原装硬盘系统整到10.3.6，然后插上760p，重装系统到10.3.6 然后通过appstore直接更新到10.14.3  然后就好了</p>
+<p>原装硬盘先升级到最新10.13或10.14.4；制作U盘安装盘（教程网上有），拆掉旧SSD，装上新SSD，用U盘重新装10.13.6或10.14就可以了，我也是2014 mid 13，intel760P；用了某迪和另外一家的转接（黑色后面有NVME字样），最后选了另外一家的，某迪的卡得太紧了；休眠模式用系统默认的3，可正常休眠；调到25出现休眠唤醒后开机灰屏。现已将休眠模式改回3。</p>
+<p>电池供电，盒盖，模式 3，默认在24小时后也会进入 25 模式的</p>
+<p>单来说，如果是2013年末到14年中的MBP，13年末到14年初的MBA，换NVME SSD必出休眠问题
+那些说没出的，要么修改了主板bootrom（很麻烦），要么是休眠模式不对，MACBOOK有三种休眠模式，0（相当于不休眠），3（内存供电，硬盘备份），25（真正的休眠，内存不供电，原内存信息储存在硬盘，唤醒时把信息从硬盘还原到内存），会出问题的只有25,因为只有25会真正清空内存中的内容，也只有25不掉电。
+如果你把休眠模式切换到25（方法百度），然后再尝试休眠，没有问题，才是真正的没有问题。</p>
+<p>解决这个问题两个方法，第一个，禁用休眠，让你的电脑永远处在0模式（也就是一直开着），或者3模式（但是外网论坛给的解决方式是0模式我也不知道为什么）
+代码在这：  sudo pmset -a hibernatemode 0 standby 0 autopoweroff 0</p>
+<p>第二个,修改bootrom，方法在这
+forums.macrumors.com/thread&hellip;ssd-to-m-2-nvme.2034976/page-65#post-26224320</p>
+<p>如果允许的话，希望能众筹一条刷BOOTROM的线，让大家都能真正的解决这个问题。</p>
+<h3 id="本人-macbook-pro-2014-15-刷-bootrom-之后完美解决睡眠问题">本人 MacBook Pro 2014 15’ 刷 BOOTROM 之后完美解决睡眠问题。</h3>
+<h3 id="合盖睡死-问题集中在20132014年份全部-macbook-promacair-上">合盖睡死 问题(集中在2013、2014年份全部 MacBook Pro、MacAir 上)</h3>
+<p>把macbook的睡眠功能关闭，因为macbook睡眠的时候需要把内存的内容写入硬盘，可能在这个过程中有兼容问题，导致开不了机，关闭就好了，也不怎么耗电。(如果需要恢复设置，到『系统设置 - 能耗』，点『恢复默认』就行。)</p>
+<pre><code class="language-shell">sudo pmset hibernatemode 0 standby 0
+</code></pre>
+<h3 id="开机选择硬盘时新ssd是黄色">开机选择硬盘时，新SSD是黄色</h3>
+<p>Macbook把新硬盘识别为移动硬盘了，暂时没什么好的办法解决，幸运的是并不影响性能，也没有兼容问题，进系统内后仍会把它识别为内置硬盘。2015以后的版本好像都没这问题。</p>
+<h3 id="pci-e-只有x2">PCI-E 只有X2</h3>
+<p>转接卡或插口不稳，拔出来清洁一下接口，再插紧一点即可。也有可能是因为转接卡有虚焊，这就需要跟商家沟通一下了，给你换一个或怎么处理了。</p>
+<h3 id="24g-wifi不能连接的问题-也有人说没有遇到过这个问题">2.4G wifi不能连接的问题 (也有人说没有遇到过这个问题)</h3>
+<p>作者补充：没办法忍受2.4G wifi不能连接的问题，在公共场合大多又是2.4G，好难受，最后闲鱼入手了一台2015年的，换上去一切正常。 弄到最后，感觉自已这样折腾有点主次不分了。。。哈哈。。。</p>
+<p>无论5G还是2.4G的WIFI都无法正常联接，经常断连，这是因为PCI-E 2.0是5GHZ频率，刚好跟WIFI冲突了（PCI-E 1.0 是 2.5GHZ），打开后盖就没这问题，因为硬盘发身出来的信号并不强，干扰不厉害。但合上盖子之后，由于WIFI信号引到机身了，导致干扰非常严重。解决办法就是用锡纸屏蔽掉硬盘的信号，但还是只能连5G，2.4G还是连不上，不过没关系了。做法是先用绝缘胶布在转接口处和SSD的接口包一层；然后用锡纸包两层，因为锡纸是导电的，所以千万不要让芯片短路，锡纸可以用五金店卖有粘性的那种，也可以直接用烧烤时用的那种，没什么区别；最后再用纸缘胶布把锡纸包一层，以免漏电。包的时候不要弄得太厚，合不上盖就不好。</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://beetstech.com/blog/apple-proprietary-ssd-ultimate-guide-to-specs-and-upgrades">https://beetstech.com/blog/apple-proprietary-ssd-ultimate-guide-to-specs-and-upgrades</a>
+<a href="https://bbs.feng.com/read-htm-tid-11882202.html">https://bbs.feng.com/read-htm-tid-11882202.html</a>
+<a href="https://bbs.feng.com/read-htm-tid-11765919.html">https://bbs.feng.com/read-htm-tid-11765919.html</a></p>
+<p><a href="https://post.smzdm.com/p/284300/">https://post.smzdm.com/p/284300/</a></p>
+<p><a href="https://yalv.me/mbp-2014-ssd/">https://yalv.me/mbp-2014-ssd/</a></p>
+<p><a href="https://forums.macrumors.com/threads/upgrading-2013-2014-macbook-pro-ssd-to-m-2-nvme.2034976/(">https://forums.macrumors.com/threads/upgrading-2013-2014-macbook-pro-ssd-to-m-2-nvme.2034976/(</a>国外这个贴子写了好多人的经验和方法，有兴趣和时间的可以去看看，多达120多页的回贴，足够把任何可能出现的情况都说情楚了。)</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/macbook-pro/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/macbook-pro/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

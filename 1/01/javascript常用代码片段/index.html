@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: javascript常用代码片段 permalink: javascript-snippet tags:
+ Javascript   收集一些常用的 JavaScript/jQuery 代码片段
+使用 CDN 加载外部 jQuery，在网络故障的时候使用本地 jQuery 文件 if (typeof jQuery == &#39;undefined&#39;) { document.write(unescape(&amp;quot;%3Cscript src=&#39;/js/jquery.min.js&#39; type=&#39;text/javascript&#39;%3E%3C/script%3E&amp;quot;)); }  系统交互 拷贝到剪贴板 https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/
+第三方库 clipboard.js
+略
+原生 document.execCommand()方法 允许运行命令来操作可编辑区域的内容，注意，是可编辑区域。（意味着除了 、这样的输入域以外，是无法使用这个方法的。） 问题： 不兼容 IE11 以下 需要 input 无法直接复制文本
+如果是一个按钮呢？
+const btn = document.querySelector(&#39;#btn&#39;); btn.addEventListener(&#39;click&#39;,() =&amp;gt; { const input = document.createElement(&#39;input&#39;); document.body.appendChild(input); input.setAttribute(&#39;value&#39;, &#39;听说你想复制我&#39;); //解决 iOS 下弹出键盘问题：代码中添加 //input.setAttribute(&#39;readonly&#39;, &#39;readonly&#39;); 使这个 &amp;lt;input&amp;gt; 是只读的，就不会拉起键盘了。 //input.setSelectionRange(0, 9999); 并没有选中全部内容，我们需要使用另一个方法来选中内容 input.select(); if (document.execCommand(&#39;copy&#39;)) { document.execCommand(&#39;copy&#39;); console.log(&#39;复制成功&#39;); } document.body.removeChild(input); });  写成一个方法
+/** * 一键粘贴 * @param {String} id [需要粘贴的内容] * @param {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接] * * range &#43; selection * * 1.创建一个 range * 2.把内容放入 range * 3.把 range 放入 selection * * 注意：参数 attr 不能是自定义属性 * 注意：对于 user-select: none 的元素无效 * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容 */ copy (id, attr) { let target = null; if (attr) { target = document.createElement(&#39;div&#39;); target.id = &#39;tempTarget&#39;; target.style.opacity = &#39;0&#39;; if (id) { let curNode = document.querySelector(&#39;#&#39; &#43; id); target.innerText = curNode[attr]; } else { target.innerText = attr; } document.body.appendChild(target); } else { target = document.querySelector(&#39;#&#39; &#43; id); } try { let range = document.createRange(); range.selectNode(target); window.getSelection().removeAllRanges(); window.getSelection().addRange(range); document.execCommand(&#39;copy&#39;); window.getSelection().removeAllRanges(); console.log(&#39;复制成功&#39;) } catch (e) { console.log(&#39;复制失败&#39;) } if (attr) { // remove temp target target.parentElement.removeChild(target); } }  copy 事件
+document.addEventListener(&#39;copy&#39;, function (event) { var clipboardData = event.clipboardData || window.clipboardData; if (!clipboardData) { return; } var text = window.getSelection().toString(); if (text) { event.preventDefault(); clipboardData.setData(&#39;text/plain&#39;, text &#43; &#39;\n\n鑫空间版权所有&#39;); } });  剪贴板粘贴 数组 js 数组 forEach 里 没有 continue. 应该用 return true 实现; arr = [1, 2, 3, 4] total = 0; arr.forEach(function(e) { if(e == 2) { return true; } total &#43;= e; });  filter/map/reduce reduce((sum, val)=&amp;gt;{return num;}, initSum) 实现统计总数， 案例，学生里男生总数
+boyCount = [{&#39;id&#39;: 1, &#39;gender&#39;: &#39;boy&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;girl&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;boy&#39;}].reduce(function(sum, rec){ if(rec.gender == &#39;boy&#39;) return sum&#43;1; }, 0); // 得到 2  删除元素 https://love2dev.com/blog/javascript-remove-from-array/
+pop 删除最后一个
+splice
+var a = [1,2,3,4,5,6] // 如果赋值给另外一个数组，那这个数组就是删除的 [4,5] var b = a.splice(a.indexOf(4), 2); // 此时 a 剩下 [1,2,3,6] console.log(a);  loadash 的方法。。 remove
+filter 方法
+数组有多个对象，按对象某个属性排序 https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+最基本的，sort函数使用自定义的对比方法，这个只能按一个属性来排
+[ {id: 1, age: 12, height: 180}, {id: 2, age: 34, height: 170}, {id: 3, age: 32, height: 160} ].sort((a, b) =&amp;gt; (a.age &amp;lt; b.age ? -1 : 1);  如果要依次按几个属性来排序
+function dynamicSortMultiple() { /* * save the arguments object as it will be overwritten * note that arguments object is an array-like object * consisting of the names of the properties to sort by */ var props = arguments; return function (obj1, obj2) { var i = 0, result = 0, numberOfProperties = props.length; /* try getting a different result from 0 (equal) * as long as we have extra properties to compare */ while(result === 0 &amp;amp;&amp;amp; i &amp;lt; numberOfProperties) { result = dynamicSort(props[i])(obj1, obj2); i&#43;&#43;; } return result; } } var People = [ {Name: &amp;quot;Name&amp;quot;, Surname: &amp;quot;Surname&amp;quot;}, {Name:&amp;quot;AAA&amp;quot;, Surname:&amp;quot;ZZZ&amp;quot;}, {Name: &amp;quot;Name&amp;quot;, Surname: &amp;quot;AAA&amp;quot;} ]; People.sort(dynamicSort(&amp;quot;Surname&amp;quot;)); People.sort(dynamicSort(&amp;quot;-Surname&amp;quot;)); People.sort(dynamicSortMultiple(&amp;quot;Name&amp;quot;, &amp;quot;-Surname&amp;quot;));  按字母顺序排
+delete 某个数组元素后，重排索引 例如 arr = [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;c&amp;rsquo;, &amp;lsquo;d&amp;rsquo;, &amp;lsquo;e&amp;rsquo;]
+delete(arr[2])后， 打印 arr
+[&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, empty, &amp;lsquo;d&amp;rsquo;, &amp;lsquo;e&amp;rsquo;]
+被删掉的元素，还占着索引 2 不走。。 导致 d e 的索引数没能按预期往前挪
+用这个方式可以自动清理掉被删除元素的索引
+arr.splice(2, 1) 打印后就是 [&amp;lsquo;a&amp;rsquo;, &amp;lsquo;b&amp;rsquo;, &amp;lsquo;d&amp;rsquo;, &amp;lsquo;e&amp;rsquo;] 索引按 0 1 2 3 重新排了
+还有资料
+https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array
+如果用 underscore 就更容易了 var objs = [ { first_nom: &#39;Lazslo&#39;,last_nom: &#39;Jamf&#39; }, { first_nom: &#39;Pig&#39;, last_nom: &#39;Bodine&#39; }, { first_nom: &#39;Pirate&#39;, last_nom: &#39;Prentice&#39; } ]; var sortedObjs = _.sortBy( objs, &#39;first_nom&#39; );  但这样如果对象有 key，排序后会丢失 key( 变成数组)
+var = { &#39;aaa&#39;: {name: &#39;zhang&#39;, age: 12}, &#39;bbb&#39;: {name: &#39;li&#39;, age: 15}, } var sortedObjs = _.sortBy( objs, &#39;name&#39; ); // return [ {name: &#39;li&#39;, age:15}, {name: &#39;zhang&#39;, age:12} ]  如果要通过 key 找到某个元素，还是可以去原来那个对象里去找的，如objs[&#39;aaa&#39;]
+事件 增加一个自定义事件并触发 定义 event handler
+$(o).on(&#39;my-awesome-event&#39;, function(event){ ... });  要触发这个 event
+$(o).trigger(&#39;my-awesome-event&#39;);  关闭监听器?
+$(o).off(&#39;my-awesome-event&#39;);  用 jQuery 在原有的事件监听器 后面 再添加一个事件监听器
+// 不影响之前绑定的, 在之前的 事件发生之 后。 $( o ).bind( &amp;quot;show&amp;quot;, function() {} );  如果要发生之前呢？ 下面的方法报错了。。。
+$.fn.preBind = function(type, data, fn) { this.bind(type, data, fn); var currentBindings = this.data(&#39;events&#39;)[type]; // 但是这里报错了！！！ data(&#39;event&#39;) Cannot read property &#39;click&#39; of undefined var currentBindingsLastIndex = currentBindings.length - 1; var newBindings = []; newBindings.push(currentBindings[currentBindingsLastIndex]); $.each(currentBindings, function (index) { if (index &amp;lt; currentBindingsLastIndex) newBindings.push(this); }); this.data(&#39;events&#39;)[type] = newBindings; return this; }; $(&#39;#button&#39;).preBind(&#39;click&#39;, function() { console.log(&#39;hello&#39;); });  另一个， Boss 写的， Form 里面对 openPicklist 之前手动 trigger 事件。。。。（不改造 click ，只是在需要的时候添加一些特殊的事件）
+$.fn.cgbForm = function (options) { var $selector = $(this); var triggerEvent = {}; //在 start() 里对 triggerEvent 扩充了一些 .info = ... function openPicklist(target, runPrePicklist) { // 一些数据初始化 options = {model: info[target].model, title: info[target].title, sel_id: getItemPLCode(target)}; if (info[target].relid != undefined) { options.relation = {id: info[target].relcode, idwhere: info[target].relid}; } options.plCallBack = afterPickList; plOpenId = target; // 如果要调用 &amp;quot;pre&amp;quot; picklist， 拦截 if (runPrePicklist == undefined) { runPrePicklist = true; } if (runPrePicklist) { // 一些要传回去的数据。 例如 id 就是表示哪个按钮被点了 var ev = {id: target, options: options, fielddata: info[target], pk: codePK} // 把事件有有关的数据与刚要传过去的 合并， 以及 // $.Event(&#39;prepicklist&#39;) 来自 jQuery 代码4964行，`function( src, props )` 得到 this.isDefaultPrevented 以及 this.type = src.type; $.extend(ev, $.Event(&#39;prepicklist&#39;), triggerEvent); // selector 这里就是 Form ,调用 trigger() 并传入 ev 参数 $selector.trigger(ev); // 如果执行完毕了，继续后面 if (ev.isDefaultPrevented()) { return; } } // 这是本来要操作的， 这个方法里调用 ajax 等 basicPickListOpen(options); } };  prepicklist 事件监听
+$(&#39;#formComment&#39;).on(&#39;prepicklist&#39;, function (ev) { if (ev.fielddata.codefield == &#39;cd_project_power_type&#39;) { } });  因此要实现 click 注入，简化下更容易理解
+&amp;lt;button class=&amp;quot;btn&amp;quot; data-name=&amp;quot;btnName&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;  给一个 click 事件
+$(&#39;.btn&#39;).on(&#39;click&#39;, function(e){ ev = e $.extend(ev, $.Event(&#39;preclick&#39;), {}); //直接用 window 好了 触发事件。 等下在后面有 $(window).on(&#39;preclick&#39;, function(ev)) 去监听它并作出响应 $(window).trigger(ev); if (ev.isDefaultPrevented()) { return; } console.log(&#39;clicked&#39;) }); $(window).on(&#39;preclick&#39;,function(ev){ console.log(&#39;preclick&#39;) // 某些情况下，终止后面的执行。 if(ev.name = &#39;aaa&#39;) { ev.preventDefault(); } });  动态修改已绑定的 event handler ？
+已绑定 click 事件，移除它，然后用另外一个替代 document.getElementById(&amp;quot;test&amp;quot;).addEventListener(&#39;click&#39;, first); function first(e){ e.stopImmediatePropagation(); this.removeEventListener(&amp;quot;click&amp;quot;, first); document.onclick = second; } function second(){ alert(&amp;quot;I&#39;m not suppose to appear after the first click, only the second.&amp;quot;); }  &amp;lt;button type=&amp;quot;button&amp;quot; id=&amp;quot;test&amp;quot;&amp;gt;Click&amp;lt;/button&amp;gt;  使用jQuery批量填充表单元素的值 网上资料：
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: javascript常用代码片段
+permalink: javascript-snippet
+tags:
+
+Javascript
+
+
+收集一些常用的 JavaScript/jQuery 代码片段
+
+使用 CDN 加载外部 jQuery，在网络故障的时候使用本地 jQuery 文件
+if (typeof jQuery == &#39;undefined&#39;) { 
+	document.write(unescape(&quot;%3Cscript src=&#39;/js/jquery.min.js&#39; type=&#39;text/javascript&#39;%3E%3C/script%3E&quot;)); 
+}
+
+系统交互
+拷贝到剪贴板
+https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/
+第三方库  clipboard.js
+略
+原生 document.execCommand()方法   允许运行命令来操作可编辑区域的内容，注意，是可编辑区域。（意味着除了 、 这样的输入域以外，是无法使用这个方法的。）
+问题： 不兼容 IE11 以下   需要 input 无法直接复制文本
+如果是一个按钮呢？
+const btn = document.querySelector(&#39;#btn&#39;);
+btn.addEventListener(&#39;click&#39;,() =&gt; {
+    const input = document.createElement(&#39;input&#39;);
+    document.body.appendChild(input);
+    input.setAttribute(&#39;value&#39;, &#39;听说你想复制我&#39;);
+
+    //解决 iOS 下弹出键盘问题：代码中添加 
+    //input.setAttribute(&#39;readonly&#39;, &#39;readonly&#39;); 使这个 &lt;input&gt; 是只读的，就不会拉起键盘了。
+    //input.setSelectionRange(0, 9999); 并没有选中全部内容，我们需要使用另一个方法来选中内容
+
+    input.select();
+    
+    if (document.execCommand(&#39;copy&#39;)) {
+        document.execCommand(&#39;copy&#39;);
+        console.log(&#39;复制成功&#39;);
+    }
+    document.body.removeChild(input);
+});
+
+写成一个方法
+/**
+ * 一键粘贴
+ * @param  {String} id [需要粘贴的内容]
+ * @param  {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接]
+ *
+ * range &#43; selection
+ *
+ * 1.创建一个 range
+ * 2.把内容放入 range
+ * 3.把 range 放入 selection
+ *
+ * 注意：参数 attr 不能是自定义属性
+ * 注意：对于 user-select: none 的元素无效
+ * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容
+ */
+copy (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement(&#39;div&#39;);
+        target.id = &#39;tempTarget&#39;;
+        target.style.opacity = &#39;0&#39;;
+        if (id) {
+            let curNode = document.querySelector(&#39;#&#39; &#43; id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector(&#39;#&#39; &#43; id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand(&#39;copy&#39;);
+        window.getSelection().removeAllRanges();
+        console.log(&#39;复制成功&#39;)
+    } catch (e) {
+        console.log(&#39;复制失败&#39;)
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+}
+
+copy 事件
+document.addEventListener(&#39;copy&#39;, function (event) {
+    var clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) { return; }
+    var text = window.getSelection().toString();
+    if (text) {
+        event.preventDefault();
+        clipboardData.setData(&#39;text/plain&#39;, text &#43; &#39;\n\n鑫空间版权所有&#39;);
+    }
+});
+
+剪贴板粘贴
+数组
+js 数组 forEach 里  没有 continue.  应该用  return true 实现;
+arr = [1, 2, 3, 4]
+
+total = 0;
+arr.forEach(function(e) {
+    if(e == 2) {
+        return true;
+    }
+    total &#43;= e;
+
+});
+
+filter/map/reduce
+reduce((sum, val)=&gt;{return num;}, initSum) 实现统计总数， 案例，学生里男生总数
+boyCount = [{&#39;id&#39;: 1, &#39;gender&#39;: &#39;boy&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;girl&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;boy&#39;}].reduce(function(sum, rec){
+    if(rec.gender == &#39;boy&#39;) return sum&#43;1;
+}, 0);
+
+// 得到 2
+
+删除元素
+https://love2dev.com/blog/javascript-remove-from-array/
+pop 删除最后一个
+splice
+var a = [1,2,3,4,5,6]
+
+// 如果赋值给另外一个数组，那这个数组就是删除的 [4,5]
+var b = a.splice(a.indexOf(4), 2);
+
+// 此时 a 剩下 [1,2,3,6]
+console.log(a); 
+
+loadash 的方法。。 remove
+filter 方法
+数组有多个对象，按对象某个属性排序
+https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+最基本的，sort函数使用自定义的对比方法，这个只能按一个属性来排
+[
+    {id: 1, age: 12, height: 180}, 
+    {id: 2, age: 34, height: 170},
+    {id: 3, age: 32, height: 160}
+].sort((a, b) =&gt; (a.age &lt; b.age ? -1 : 1);
+
+如果要依次按几个属性来排序
+function dynamicSortMultiple() {
+    /*
+     * save the arguments object as it will be overwritten
+     * note that arguments object is an array-like object
+     * consisting of the names of the properties to sort by
+     */
+    var props = arguments;
+    return function (obj1, obj2) {
+        var i = 0, result = 0, numberOfProperties = props.length;
+        /* try getting a different result from 0 (equal)
+         * as long as we have extra properties to compare
+         */
+        while(result === 0 &amp;&amp; i &lt; numberOfProperties) {
+            result = dynamicSort(props[i])(obj1, obj2);
+            i&#43;&#43;;
+        }
+        return result;
+    }
+}
+
+var People = [
+    {Name: &quot;Name&quot;, Surname: &quot;Surname&quot;},
+    {Name:&quot;AAA&quot;, Surname:&quot;ZZZ&quot;},
+    {Name: &quot;Name&quot;, Surname: &quot;AAA&quot;}
+];
+
+People.sort(dynamicSort(&quot;Surname&quot;));
+People.sort(dynamicSort(&quot;-Surname&quot;));
+
+People.sort(dynamicSortMultiple(&quot;Name&quot;, &quot;-Surname&quot;));
+
+按字母顺序排
+delete 某个数组元素后，重排索引
+例如  arr = [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+delete(arr[2])后， 打印 arr
+[&lsquo;a&rsquo;, &lsquo;b&rsquo;, empty, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+被删掉的元素，还占着索引 2 不走。。 导致 d e 的索引数没能按预期往前挪
+用这个方式可以自动清理掉被删除元素的索引
+arr.splice(2, 1)  打印后就是 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]  索引按 0 1 2 3 重新排了
+还有资料
+https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array
+如果用 underscore 就更容易了
+var objs = [ 
+  { first_nom: &#39;Lazslo&#39;,last_nom: &#39;Jamf&#39; },
+  { first_nom: &#39;Pig&#39;, last_nom: &#39;Bodine&#39;  },
+  { first_nom: &#39;Pirate&#39;, last_nom: &#39;Prentice&#39; }
+];
+
+var sortedObjs = _.sortBy( objs, &#39;first_nom&#39; );
+
+但这样如果对象有 key，排序后会丢失 key( 变成数组)
+var   = {
+    &#39;aaa&#39;: {name: &#39;zhang&#39;, age: 12},
+    &#39;bbb&#39;: {name: &#39;li&#39;, age: 15},
+}
+
+var sortedObjs = _.sortBy( objs, &#39;name&#39; );
+
+// return
+[
+{name: &#39;li&#39;, age:15},
+{name: &#39;zhang&#39;, age:12}
+]
+
+如果要通过 key 找到某个元素，还是可以去原来那个对象里去找的，如objs[&#39;aaa&#39;]
+事件
+增加一个自定义事件并触发
+定义 event handler
+$(o).on(&#39;my-awesome-event&#39;, function(event){ ... });
+
+要触发这个 event
+$(o).trigger(&#39;my-awesome-event&#39;);
+
+关闭监听器?
+$(o).off(&#39;my-awesome-event&#39;);
+
+用 jQuery 在原有的事件监听器 后面 再添加一个事件监听器
+// 不影响之前绑定的, 在之前的 事件发生之 后。
+$( o ).bind( &quot;show&quot;, function() {} );
+
+如果要发生之前呢？ 下面的方法报错了。。。
+$.fn.preBind = function(type, data, fn) {
+  this.bind(type, data, fn);
+
+  var currentBindings = this.data(&#39;events&#39;)[type];  // 但是这里报错了！！！ data(&#39;event&#39;) Cannot read property &#39;click&#39; of undefined
+
+  var currentBindingsLastIndex = currentBindings.length - 1;
+
+  var newBindings = [];
+
+  newBindings.push(currentBindings[currentBindingsLastIndex]);
+
+  $.each(currentBindings, function (index) {
+    if (index &lt; currentBindingsLastIndex)
+      newBindings.push(this);
+  });
+
+  this.data(&#39;events&#39;)[type] = newBindings;
+
+  return this;
+};
+
+$(&#39;#button&#39;).preBind(&#39;click&#39;, function() {
+  console.log(&#39;hello&#39;);
+});
+
+另一个， Boss 写的， Form 里面对 openPicklist 之前手动 trigger 事件。。。。（不改造 click ，只是在需要的时候添加一些特殊的事件）
+$.fn.cgbForm = function (options) {
+
+    var $selector = $(this);
+    var triggerEvent = {}; 
+
+    //在 start() 里对 triggerEvent 扩充了一些 .info = ...
+
+    function openPicklist(target, runPrePicklist) {
+
+        // 一些数据初始化
+        options = {model: info[target].model,
+            title: info[target].title,
+            sel_id: getItemPLCode(target)};
+
+        if (info[target].relid != undefined) {
+            options.relation = {id: info[target].relcode, idwhere: info[target].relid};
+        }
+
+        options.plCallBack = afterPickList;
+
+        plOpenId = target;
+
+        // 如果要调用 &quot;pre&quot; picklist， 拦截
+        if (runPrePicklist == undefined) {
+            runPrePicklist = true;
+        }
+
+        if (runPrePicklist) {
+            // 一些要传回去的数据。 例如 id 就是表示哪个按钮被点了
+            var ev = {id: target, options: options, fielddata: info[target], pk: codePK}
+
+            // 把事件有有关的数据与刚要传过去的 合并， 以及 
+            // $.Event(&#39;prepicklist&#39;) 来自 jQuery 代码4964行，`function( src, props )`  得到 this.isDefaultPrevented    以及 this.type = src.type;
+            $.extend(ev, $.Event(&#39;prepicklist&#39;), triggerEvent);
+
+            // selector 这里就是 Form ,调用 trigger() 并传入 ev 参数 
+            $selector.trigger(ev);
+
+            // 如果执行完毕了，继续后面
+            if (ev.isDefaultPrevented()) {
+                return;
+            }
+        }
+
+        // 这是本来要操作的， 这个方法里调用 ajax 等
+        basicPickListOpen(options);
+    }
+};
+
+prepicklist 事件监听
+$(&#39;#formComment&#39;).on(&#39;prepicklist&#39;, function (ev) {
+    if (ev.fielddata.codefield == &#39;cd_project_power_type&#39;) {
+    }
+
+});
+
+因此要实现 click 注入，简化下更容易理解
+&lt;button class=&quot;btn&quot; data-name=&quot;btnName&quot;&gt;click&lt;/button&gt;
+
+给一个 click 事件
+$(&#39;.btn&#39;).on(&#39;click&#39;, function(e){
+
+    ev = e
+    $.extend(ev, $.Event(&#39;preclick&#39;), {});
+
+    //直接用 window 好了   触发事件。  等下在后面有  $(window).on(&#39;preclick&#39;, function(ev)) 去监听它并作出响应
+    $(window).trigger(ev);
+
+    if (ev.isDefaultPrevented()) {
+        return;
+    }
+
+    console.log(&#39;clicked&#39;)
+});
+
+
+$(window).on(&#39;preclick&#39;,function(ev){
+    console.log(&#39;preclick&#39;)
+
+    // 某些情况下，终止后面的执行。
+    if(ev.name = &#39;aaa&#39;) {
+        ev.preventDefault();
+    }
+});
+
+动态修改已绑定的 event handler
+？
+已绑定 click 事件，移除它，然后用另外一个替代
+document.getElementById(&quot;test&quot;).addEventListener(&#39;click&#39;, first);
+
+function first(e){
+    e.stopImmediatePropagation();
+    this.removeEventListener(&quot;click&quot;, first);
+    document.onclick = second;
+}
+function second(){
+    alert(&quot;I&#39;m not suppose to appear after the first click, only the second.&quot;);
+}
+
+&lt;button type=&quot;button&quot; id=&quot;test&quot;&gt;Click&lt;/button&gt;
+
+
+使用jQuery批量填充表单元素的值
+网上资料：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: javascript常用代码片段
+permalink: javascript-snippet
+tags:
+
+Javascript
+
+
+收集一些常用的 JavaScript/jQuery 代码片段
+
+使用 CDN 加载外部 jQuery，在网络故障的时候使用本地 jQuery 文件
+if (typeof jQuery == &#39;undefined&#39;) { 
+	document.write(unescape(&quot;%3Cscript src=&#39;/js/jquery.min.js&#39; type=&#39;text/javascript&#39;%3E%3C/script%3E&quot;)); 
+}
+
+系统交互
+拷贝到剪贴板
+https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/
+第三方库  clipboard.js
+略
+原生 document.execCommand()方法   允许运行命令来操作可编辑区域的内容，注意，是可编辑区域。（意味着除了 、 这样的输入域以外，是无法使用这个方法的。）
+问题： 不兼容 IE11 以下   需要 input 无法直接复制文本
+如果是一个按钮呢？
+const btn = document.querySelector(&#39;#btn&#39;);
+btn.addEventListener(&#39;click&#39;,() =&gt; {
+    const input = document.createElement(&#39;input&#39;);
+    document.body.appendChild(input);
+    input.setAttribute(&#39;value&#39;, &#39;听说你想复制我&#39;);
+
+    //解决 iOS 下弹出键盘问题：代码中添加 
+    //input.setAttribute(&#39;readonly&#39;, &#39;readonly&#39;); 使这个 &lt;input&gt; 是只读的，就不会拉起键盘了。
+    //input.setSelectionRange(0, 9999); 并没有选中全部内容，我们需要使用另一个方法来选中内容
+
+    input.select();
+    
+    if (document.execCommand(&#39;copy&#39;)) {
+        document.execCommand(&#39;copy&#39;);
+        console.log(&#39;复制成功&#39;);
+    }
+    document.body.removeChild(input);
+});
+
+写成一个方法
+/**
+ * 一键粘贴
+ * @param  {String} id [需要粘贴的内容]
+ * @param  {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接]
+ *
+ * range &#43; selection
+ *
+ * 1.创建一个 range
+ * 2.把内容放入 range
+ * 3.把 range 放入 selection
+ *
+ * 注意：参数 attr 不能是自定义属性
+ * 注意：对于 user-select: none 的元素无效
+ * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容
+ */
+copy (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement(&#39;div&#39;);
+        target.id = &#39;tempTarget&#39;;
+        target.style.opacity = &#39;0&#39;;
+        if (id) {
+            let curNode = document.querySelector(&#39;#&#39; &#43; id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector(&#39;#&#39; &#43; id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand(&#39;copy&#39;);
+        window.getSelection().removeAllRanges();
+        console.log(&#39;复制成功&#39;)
+    } catch (e) {
+        console.log(&#39;复制失败&#39;)
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+}
+
+copy 事件
+document.addEventListener(&#39;copy&#39;, function (event) {
+    var clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) { return; }
+    var text = window.getSelection().toString();
+    if (text) {
+        event.preventDefault();
+        clipboardData.setData(&#39;text/plain&#39;, text &#43; &#39;\n\n鑫空间版权所有&#39;);
+    }
+});
+
+剪贴板粘贴
+数组
+js 数组 forEach 里  没有 continue.  应该用  return true 实现;
+arr = [1, 2, 3, 4]
+
+total = 0;
+arr.forEach(function(e) {
+    if(e == 2) {
+        return true;
+    }
+    total &#43;= e;
+
+});
+
+filter/map/reduce
+reduce((sum, val)=&gt;{return num;}, initSum) 实现统计总数， 案例，学生里男生总数
+boyCount = [{&#39;id&#39;: 1, &#39;gender&#39;: &#39;boy&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;girl&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;boy&#39;}].reduce(function(sum, rec){
+    if(rec.gender == &#39;boy&#39;) return sum&#43;1;
+}, 0);
+
+// 得到 2
+
+删除元素
+https://love2dev.com/blog/javascript-remove-from-array/
+pop 删除最后一个
+splice
+var a = [1,2,3,4,5,6]
+
+// 如果赋值给另外一个数组，那这个数组就是删除的 [4,5]
+var b = a.splice(a.indexOf(4), 2);
+
+// 此时 a 剩下 [1,2,3,6]
+console.log(a); 
+
+loadash 的方法。。 remove
+filter 方法
+数组有多个对象，按对象某个属性排序
+https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+最基本的，sort函数使用自定义的对比方法，这个只能按一个属性来排
+[
+    {id: 1, age: 12, height: 180}, 
+    {id: 2, age: 34, height: 170},
+    {id: 3, age: 32, height: 160}
+].sort((a, b) =&gt; (a.age &lt; b.age ? -1 : 1);
+
+如果要依次按几个属性来排序
+function dynamicSortMultiple() {
+    /*
+     * save the arguments object as it will be overwritten
+     * note that arguments object is an array-like object
+     * consisting of the names of the properties to sort by
+     */
+    var props = arguments;
+    return function (obj1, obj2) {
+        var i = 0, result = 0, numberOfProperties = props.length;
+        /* try getting a different result from 0 (equal)
+         * as long as we have extra properties to compare
+         */
+        while(result === 0 &amp;&amp; i &lt; numberOfProperties) {
+            result = dynamicSort(props[i])(obj1, obj2);
+            i&#43;&#43;;
+        }
+        return result;
+    }
+}
+
+var People = [
+    {Name: &quot;Name&quot;, Surname: &quot;Surname&quot;},
+    {Name:&quot;AAA&quot;, Surname:&quot;ZZZ&quot;},
+    {Name: &quot;Name&quot;, Surname: &quot;AAA&quot;}
+];
+
+People.sort(dynamicSort(&quot;Surname&quot;));
+People.sort(dynamicSort(&quot;-Surname&quot;));
+
+People.sort(dynamicSortMultiple(&quot;Name&quot;, &quot;-Surname&quot;));
+
+按字母顺序排
+delete 某个数组元素后，重排索引
+例如  arr = [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+delete(arr[2])后， 打印 arr
+[&lsquo;a&rsquo;, &lsquo;b&rsquo;, empty, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+被删掉的元素，还占着索引 2 不走。。 导致 d e 的索引数没能按预期往前挪
+用这个方式可以自动清理掉被删除元素的索引
+arr.splice(2, 1)  打印后就是 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]  索引按 0 1 2 3 重新排了
+还有资料
+https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array
+如果用 underscore 就更容易了
+var objs = [ 
+  { first_nom: &#39;Lazslo&#39;,last_nom: &#39;Jamf&#39; },
+  { first_nom: &#39;Pig&#39;, last_nom: &#39;Bodine&#39;  },
+  { first_nom: &#39;Pirate&#39;, last_nom: &#39;Prentice&#39; }
+];
+
+var sortedObjs = _.sortBy( objs, &#39;first_nom&#39; );
+
+但这样如果对象有 key，排序后会丢失 key( 变成数组)
+var   = {
+    &#39;aaa&#39;: {name: &#39;zhang&#39;, age: 12},
+    &#39;bbb&#39;: {name: &#39;li&#39;, age: 15},
+}
+
+var sortedObjs = _.sortBy( objs, &#39;name&#39; );
+
+// return
+[
+{name: &#39;li&#39;, age:15},
+{name: &#39;zhang&#39;, age:12}
+]
+
+如果要通过 key 找到某个元素，还是可以去原来那个对象里去找的，如objs[&#39;aaa&#39;]
+事件
+增加一个自定义事件并触发
+定义 event handler
+$(o).on(&#39;my-awesome-event&#39;, function(event){ ... });
+
+要触发这个 event
+$(o).trigger(&#39;my-awesome-event&#39;);
+
+关闭监听器?
+$(o).off(&#39;my-awesome-event&#39;);
+
+用 jQuery 在原有的事件监听器 后面 再添加一个事件监听器
+// 不影响之前绑定的, 在之前的 事件发生之 后。
+$( o ).bind( &quot;show&quot;, function() {} );
+
+如果要发生之前呢？ 下面的方法报错了。。。
+$.fn.preBind = function(type, data, fn) {
+  this.bind(type, data, fn);
+
+  var currentBindings = this.data(&#39;events&#39;)[type];  // 但是这里报错了！！！ data(&#39;event&#39;) Cannot read property &#39;click&#39; of undefined
+
+  var currentBindingsLastIndex = currentBindings.length - 1;
+
+  var newBindings = [];
+
+  newBindings.push(currentBindings[currentBindingsLastIndex]);
+
+  $.each(currentBindings, function (index) {
+    if (index &lt; currentBindingsLastIndex)
+      newBindings.push(this);
+  });
+
+  this.data(&#39;events&#39;)[type] = newBindings;
+
+  return this;
+};
+
+$(&#39;#button&#39;).preBind(&#39;click&#39;, function() {
+  console.log(&#39;hello&#39;);
+});
+
+另一个， Boss 写的， Form 里面对 openPicklist 之前手动 trigger 事件。。。。（不改造 click ，只是在需要的时候添加一些特殊的事件）
+$.fn.cgbForm = function (options) {
+
+    var $selector = $(this);
+    var triggerEvent = {}; 
+
+    //在 start() 里对 triggerEvent 扩充了一些 .info = ...
+
+    function openPicklist(target, runPrePicklist) {
+
+        // 一些数据初始化
+        options = {model: info[target].model,
+            title: info[target].title,
+            sel_id: getItemPLCode(target)};
+
+        if (info[target].relid != undefined) {
+            options.relation = {id: info[target].relcode, idwhere: info[target].relid};
+        }
+
+        options.plCallBack = afterPickList;
+
+        plOpenId = target;
+
+        // 如果要调用 &quot;pre&quot; picklist， 拦截
+        if (runPrePicklist == undefined) {
+            runPrePicklist = true;
+        }
+
+        if (runPrePicklist) {
+            // 一些要传回去的数据。 例如 id 就是表示哪个按钮被点了
+            var ev = {id: target, options: options, fielddata: info[target], pk: codePK}
+
+            // 把事件有有关的数据与刚要传过去的 合并， 以及 
+            // $.Event(&#39;prepicklist&#39;) 来自 jQuery 代码4964行，`function( src, props )`  得到 this.isDefaultPrevented    以及 this.type = src.type;
+            $.extend(ev, $.Event(&#39;prepicklist&#39;), triggerEvent);
+
+            // selector 这里就是 Form ,调用 trigger() 并传入 ev 参数 
+            $selector.trigger(ev);
+
+            // 如果执行完毕了，继续后面
+            if (ev.isDefaultPrevented()) {
+                return;
+            }
+        }
+
+        // 这是本来要操作的， 这个方法里调用 ajax 等
+        basicPickListOpen(options);
+    }
+};
+
+prepicklist 事件监听
+$(&#39;#formComment&#39;).on(&#39;prepicklist&#39;, function (ev) {
+    if (ev.fielddata.codefield == &#39;cd_project_power_type&#39;) {
+    }
+
+});
+
+因此要实现 click 注入，简化下更容易理解
+&lt;button class=&quot;btn&quot; data-name=&quot;btnName&quot;&gt;click&lt;/button&gt;
+
+给一个 click 事件
+$(&#39;.btn&#39;).on(&#39;click&#39;, function(e){
+
+    ev = e
+    $.extend(ev, $.Event(&#39;preclick&#39;), {});
+
+    //直接用 window 好了   触发事件。  等下在后面有  $(window).on(&#39;preclick&#39;, function(ev)) 去监听它并作出响应
+    $(window).trigger(ev);
+
+    if (ev.isDefaultPrevented()) {
+        return;
+    }
+
+    console.log(&#39;clicked&#39;)
+});
+
+
+$(window).on(&#39;preclick&#39;,function(ev){
+    console.log(&#39;preclick&#39;)
+
+    // 某些情况下，终止后面的执行。
+    if(ev.name = &#39;aaa&#39;) {
+        ev.preventDefault();
+    }
+});
+
+动态修改已绑定的 event handler
+？
+已绑定 click 事件，移除它，然后用另外一个替代
+document.getElementById(&quot;test&quot;).addEventListener(&#39;click&#39;, first);
+
+function first(e){
+    e.stopImmediatePropagation();
+    this.removeEventListener(&quot;click&quot;, first);
+    document.onclick = second;
+}
+function second(){
+    alert(&quot;I&#39;m not suppose to appear after the first click, only the second.&quot;);
+}
+
+&lt;button type=&quot;button&quot; id=&quot;test&quot;&gt;Click&lt;/button&gt;
+
+
+使用jQuery批量填充表单元素的值
+网上资料：">
+
+<meta itemprop="wordCount" content="3875">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: javascript常用代码片段
+permalink: javascript-snippet
+tags:
+
+Javascript
+
+
+收集一些常用的 JavaScript/jQuery 代码片段
+
+使用 CDN 加载外部 jQuery，在网络故障的时候使用本地 jQuery 文件
+if (typeof jQuery == &#39;undefined&#39;) { 
+	document.write(unescape(&quot;%3Cscript src=&#39;/js/jquery.min.js&#39; type=&#39;text/javascript&#39;%3E%3C/script%3E&quot;)); 
+}
+
+系统交互
+拷贝到剪贴板
+https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/
+第三方库  clipboard.js
+略
+原生 document.execCommand()方法   允许运行命令来操作可编辑区域的内容，注意，是可编辑区域。（意味着除了 、 这样的输入域以外，是无法使用这个方法的。）
+问题： 不兼容 IE11 以下   需要 input 无法直接复制文本
+如果是一个按钮呢？
+const btn = document.querySelector(&#39;#btn&#39;);
+btn.addEventListener(&#39;click&#39;,() =&gt; {
+    const input = document.createElement(&#39;input&#39;);
+    document.body.appendChild(input);
+    input.setAttribute(&#39;value&#39;, &#39;听说你想复制我&#39;);
+
+    //解决 iOS 下弹出键盘问题：代码中添加 
+    //input.setAttribute(&#39;readonly&#39;, &#39;readonly&#39;); 使这个 &lt;input&gt; 是只读的，就不会拉起键盘了。
+    //input.setSelectionRange(0, 9999); 并没有选中全部内容，我们需要使用另一个方法来选中内容
+
+    input.select();
+    
+    if (document.execCommand(&#39;copy&#39;)) {
+        document.execCommand(&#39;copy&#39;);
+        console.log(&#39;复制成功&#39;);
+    }
+    document.body.removeChild(input);
+});
+
+写成一个方法
+/**
+ * 一键粘贴
+ * @param  {String} id [需要粘贴的内容]
+ * @param  {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接]
+ *
+ * range &#43; selection
+ *
+ * 1.创建一个 range
+ * 2.把内容放入 range
+ * 3.把 range 放入 selection
+ *
+ * 注意：参数 attr 不能是自定义属性
+ * 注意：对于 user-select: none 的元素无效
+ * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容
+ */
+copy (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement(&#39;div&#39;);
+        target.id = &#39;tempTarget&#39;;
+        target.style.opacity = &#39;0&#39;;
+        if (id) {
+            let curNode = document.querySelector(&#39;#&#39; &#43; id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector(&#39;#&#39; &#43; id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand(&#39;copy&#39;);
+        window.getSelection().removeAllRanges();
+        console.log(&#39;复制成功&#39;)
+    } catch (e) {
+        console.log(&#39;复制失败&#39;)
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+}
+
+copy 事件
+document.addEventListener(&#39;copy&#39;, function (event) {
+    var clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) { return; }
+    var text = window.getSelection().toString();
+    if (text) {
+        event.preventDefault();
+        clipboardData.setData(&#39;text/plain&#39;, text &#43; &#39;\n\n鑫空间版权所有&#39;);
+    }
+});
+
+剪贴板粘贴
+数组
+js 数组 forEach 里  没有 continue.  应该用  return true 实现;
+arr = [1, 2, 3, 4]
+
+total = 0;
+arr.forEach(function(e) {
+    if(e == 2) {
+        return true;
+    }
+    total &#43;= e;
+
+});
+
+filter/map/reduce
+reduce((sum, val)=&gt;{return num;}, initSum) 实现统计总数， 案例，学生里男生总数
+boyCount = [{&#39;id&#39;: 1, &#39;gender&#39;: &#39;boy&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;girl&#39;},{&#39;id&#39;: 2, &#39;gender&#39;: &#39;boy&#39;}].reduce(function(sum, rec){
+    if(rec.gender == &#39;boy&#39;) return sum&#43;1;
+}, 0);
+
+// 得到 2
+
+删除元素
+https://love2dev.com/blog/javascript-remove-from-array/
+pop 删除最后一个
+splice
+var a = [1,2,3,4,5,6]
+
+// 如果赋值给另外一个数组，那这个数组就是删除的 [4,5]
+var b = a.splice(a.indexOf(4), 2);
+
+// 此时 a 剩下 [1,2,3,6]
+console.log(a); 
+
+loadash 的方法。。 remove
+filter 方法
+数组有多个对象，按对象某个属性排序
+https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript
+最基本的，sort函数使用自定义的对比方法，这个只能按一个属性来排
+[
+    {id: 1, age: 12, height: 180}, 
+    {id: 2, age: 34, height: 170},
+    {id: 3, age: 32, height: 160}
+].sort((a, b) =&gt; (a.age &lt; b.age ? -1 : 1);
+
+如果要依次按几个属性来排序
+function dynamicSortMultiple() {
+    /*
+     * save the arguments object as it will be overwritten
+     * note that arguments object is an array-like object
+     * consisting of the names of the properties to sort by
+     */
+    var props = arguments;
+    return function (obj1, obj2) {
+        var i = 0, result = 0, numberOfProperties = props.length;
+        /* try getting a different result from 0 (equal)
+         * as long as we have extra properties to compare
+         */
+        while(result === 0 &amp;&amp; i &lt; numberOfProperties) {
+            result = dynamicSort(props[i])(obj1, obj2);
+            i&#43;&#43;;
+        }
+        return result;
+    }
+}
+
+var People = [
+    {Name: &quot;Name&quot;, Surname: &quot;Surname&quot;},
+    {Name:&quot;AAA&quot;, Surname:&quot;ZZZ&quot;},
+    {Name: &quot;Name&quot;, Surname: &quot;AAA&quot;}
+];
+
+People.sort(dynamicSort(&quot;Surname&quot;));
+People.sort(dynamicSort(&quot;-Surname&quot;));
+
+People.sort(dynamicSortMultiple(&quot;Name&quot;, &quot;-Surname&quot;));
+
+按字母顺序排
+delete 某个数组元素后，重排索引
+例如  arr = [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+delete(arr[2])后， 打印 arr
+[&lsquo;a&rsquo;, &lsquo;b&rsquo;, empty, &lsquo;d&rsquo;, &lsquo;e&rsquo;]
+被删掉的元素，还占着索引 2 不走。。 导致 d e 的索引数没能按预期往前挪
+用这个方式可以自动清理掉被删除元素的索引
+arr.splice(2, 1)  打印后就是 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]  索引按 0 1 2 3 重新排了
+还有资料
+https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array
+如果用 underscore 就更容易了
+var objs = [ 
+  { first_nom: &#39;Lazslo&#39;,last_nom: &#39;Jamf&#39; },
+  { first_nom: &#39;Pig&#39;, last_nom: &#39;Bodine&#39;  },
+  { first_nom: &#39;Pirate&#39;, last_nom: &#39;Prentice&#39; }
+];
+
+var sortedObjs = _.sortBy( objs, &#39;first_nom&#39; );
+
+但这样如果对象有 key，排序后会丢失 key( 变成数组)
+var   = {
+    &#39;aaa&#39;: {name: &#39;zhang&#39;, age: 12},
+    &#39;bbb&#39;: {name: &#39;li&#39;, age: 15},
+}
+
+var sortedObjs = _.sortBy( objs, &#39;name&#39; );
+
+// return
+[
+{name: &#39;li&#39;, age:15},
+{name: &#39;zhang&#39;, age:12}
+]
+
+如果要通过 key 找到某个元素，还是可以去原来那个对象里去找的，如objs[&#39;aaa&#39;]
+事件
+增加一个自定义事件并触发
+定义 event handler
+$(o).on(&#39;my-awesome-event&#39;, function(event){ ... });
+
+要触发这个 event
+$(o).trigger(&#39;my-awesome-event&#39;);
+
+关闭监听器?
+$(o).off(&#39;my-awesome-event&#39;);
+
+用 jQuery 在原有的事件监听器 后面 再添加一个事件监听器
+// 不影响之前绑定的, 在之前的 事件发生之 后。
+$( o ).bind( &quot;show&quot;, function() {} );
+
+如果要发生之前呢？ 下面的方法报错了。。。
+$.fn.preBind = function(type, data, fn) {
+  this.bind(type, data, fn);
+
+  var currentBindings = this.data(&#39;events&#39;)[type];  // 但是这里报错了！！！ data(&#39;event&#39;) Cannot read property &#39;click&#39; of undefined
+
+  var currentBindingsLastIndex = currentBindings.length - 1;
+
+  var newBindings = [];
+
+  newBindings.push(currentBindings[currentBindingsLastIndex]);
+
+  $.each(currentBindings, function (index) {
+    if (index &lt; currentBindingsLastIndex)
+      newBindings.push(this);
+  });
+
+  this.data(&#39;events&#39;)[type] = newBindings;
+
+  return this;
+};
+
+$(&#39;#button&#39;).preBind(&#39;click&#39;, function() {
+  console.log(&#39;hello&#39;);
+});
+
+另一个， Boss 写的， Form 里面对 openPicklist 之前手动 trigger 事件。。。。（不改造 click ，只是在需要的时候添加一些特殊的事件）
+$.fn.cgbForm = function (options) {
+
+    var $selector = $(this);
+    var triggerEvent = {}; 
+
+    //在 start() 里对 triggerEvent 扩充了一些 .info = ...
+
+    function openPicklist(target, runPrePicklist) {
+
+        // 一些数据初始化
+        options = {model: info[target].model,
+            title: info[target].title,
+            sel_id: getItemPLCode(target)};
+
+        if (info[target].relid != undefined) {
+            options.relation = {id: info[target].relcode, idwhere: info[target].relid};
+        }
+
+        options.plCallBack = afterPickList;
+
+        plOpenId = target;
+
+        // 如果要调用 &quot;pre&quot; picklist， 拦截
+        if (runPrePicklist == undefined) {
+            runPrePicklist = true;
+        }
+
+        if (runPrePicklist) {
+            // 一些要传回去的数据。 例如 id 就是表示哪个按钮被点了
+            var ev = {id: target, options: options, fielddata: info[target], pk: codePK}
+
+            // 把事件有有关的数据与刚要传过去的 合并， 以及 
+            // $.Event(&#39;prepicklist&#39;) 来自 jQuery 代码4964行，`function( src, props )`  得到 this.isDefaultPrevented    以及 this.type = src.type;
+            $.extend(ev, $.Event(&#39;prepicklist&#39;), triggerEvent);
+
+            // selector 这里就是 Form ,调用 trigger() 并传入 ev 参数 
+            $selector.trigger(ev);
+
+            // 如果执行完毕了，继续后面
+            if (ev.isDefaultPrevented()) {
+                return;
+            }
+        }
+
+        // 这是本来要操作的， 这个方法里调用 ajax 等
+        basicPickListOpen(options);
+    }
+};
+
+prepicklist 事件监听
+$(&#39;#formComment&#39;).on(&#39;prepicklist&#39;, function (ev) {
+    if (ev.fielddata.codefield == &#39;cd_project_power_type&#39;) {
+    }
+
+});
+
+因此要实现 click 注入，简化下更容易理解
+&lt;button class=&quot;btn&quot; data-name=&quot;btnName&quot;&gt;click&lt;/button&gt;
+
+给一个 click 事件
+$(&#39;.btn&#39;).on(&#39;click&#39;, function(e){
+
+    ev = e
+    $.extend(ev, $.Event(&#39;preclick&#39;), {});
+
+    //直接用 window 好了   触发事件。  等下在后面有  $(window).on(&#39;preclick&#39;, function(ev)) 去监听它并作出响应
+    $(window).trigger(ev);
+
+    if (ev.isDefaultPrevented()) {
+        return;
+    }
+
+    console.log(&#39;clicked&#39;)
+});
+
+
+$(window).on(&#39;preclick&#39;,function(ev){
+    console.log(&#39;preclick&#39;)
+
+    // 某些情况下，终止后面的执行。
+    if(ev.name = &#39;aaa&#39;) {
+        ev.preventDefault();
+    }
+});
+
+动态修改已绑定的 event handler
+？
+已绑定 click 事件，移除它，然后用另外一个替代
+document.getElementById(&quot;test&quot;).addEventListener(&#39;click&#39;, first);
+
+function first(e){
+    e.stopImmediatePropagation();
+    this.removeEventListener(&quot;click&quot;, first);
+    document.onclick = second;
+}
+function second(){
+    alert(&quot;I&#39;m not suppose to appear after the first click, only the second.&quot;);
+}
+
+&lt;button type=&quot;button&quot; id=&quot;test&quot;&gt;Click&lt;/button&gt;
+
+
+使用jQuery批量填充表单元素的值
+网上资料："/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3875字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: javascript常用代码片段
+permalink: javascript-snippet
+tags:</p>
+<ul>
+<li>Javascript</li>
+</ul>
+<hr>
+<p>收集一些常用的 JavaScript/jQuery 代码片段</p>
+<!-- raw HTML omitted -->
+<h1 id="使用-cdn-加载外部-jquery在网络故障的时候使用本地-jquery-文件">使用 CDN 加载外部 jQuery，在网络故障的时候使用本地 jQuery 文件</h1>
+<pre><code class="language-javascript">if (typeof jQuery == 'undefined') { 
+	document.write(unescape(&quot;%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E&quot;)); 
+}
+</code></pre>
+<h1 id="系统交互">系统交互</h1>
+<h2 id="拷贝到剪贴板">拷贝到剪贴板</h2>
+<p><a href="https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/">https://www.zhangxinxu.com/wordpress/2018/09/js-clipboard-api-paste-input/</a></p>
+<p>第三方库  clipboard.js</p>
+<p>略</p>
+<p>原生 document.execCommand()方法   允许运行命令来操作可编辑区域的内容，注意，是可编辑区域。（意味着除了 <!-- raw HTML omitted -->、<!-- raw HTML omitted --> 这样的输入域以外，是无法使用这个方法的。）
+问题： 不兼容 IE11 以下   需要 input 无法直接复制文本</p>
+<p>如果是一个按钮呢？</p>
+<pre><code class="language-js">const btn = document.querySelector('#btn');
+btn.addEventListener('click',() =&gt; {
+    const input = document.createElement('input');
+    document.body.appendChild(input);
+    input.setAttribute('value', '听说你想复制我');
+
+    //解决 iOS 下弹出键盘问题：代码中添加 
+    //input.setAttribute('readonly', 'readonly'); 使这个 &lt;input&gt; 是只读的，就不会拉起键盘了。
+    //input.setSelectionRange(0, 9999); 并没有选中全部内容，我们需要使用另一个方法来选中内容
+
+    input.select();
+    
+    if (document.execCommand('copy')) {
+        document.execCommand('copy');
+        console.log('复制成功');
+    }
+    document.body.removeChild(input);
+});
+</code></pre>
+<p>写成一个方法</p>
+<pre><code class="language-js">/**
+ * 一键粘贴
+ * @param  {String} id [需要粘贴的内容]
+ * @param  {String} attr [需要 copy 的属性，默认是 innerText，主要用途例如赋值 a 标签上的 href 链接]
+ *
+ * range + selection
+ *
+ * 1.创建一个 range
+ * 2.把内容放入 range
+ * 3.把 range 放入 selection
+ *
+ * 注意：参数 attr 不能是自定义属性
+ * 注意：对于 user-select: none 的元素无效
+ * 注意：当 id 为 false 且 attr 不会空，会直接复制 attr 的内容
+ */
+copy (id, attr) {
+    let target = null;
+
+    if (attr) {
+        target = document.createElement('div');
+        target.id = 'tempTarget';
+        target.style.opacity = '0';
+        if (id) {
+            let curNode = document.querySelector('#' + id);
+            target.innerText = curNode[attr];
+        } else {
+            target.innerText = attr;
+        }
+        document.body.appendChild(target);
+    } else {
+        target = document.querySelector('#' + id);
+    }
+
+    try {
+        let range = document.createRange();
+        range.selectNode(target);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        console.log('复制成功')
+    } catch (e) {
+        console.log('复制失败')
+    }
+
+    if (attr) {
+        // remove temp target
+        target.parentElement.removeChild(target);
+    }
+}
+</code></pre>
+<p>copy 事件</p>
+<pre><code class="language-js">document.addEventListener('copy', function (event) {
+    var clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) { return; }
+    var text = window.getSelection().toString();
+    if (text) {
+        event.preventDefault();
+        clipboardData.setData('text/plain', text + '\n\n鑫空间版权所有');
+    }
+});
+</code></pre>
+<h2 id="剪贴板粘贴">剪贴板粘贴</h2>
+<h1 id="数组">数组</h1>
+<h2 id="js-数组-foreach-里--没有-continue--应该用--return-true-实现">js 数组 forEach 里  没有 continue.  应该用  return true 实现;</h2>
+<pre><code class="language-js">arr = [1, 2, 3, 4]
+
+total = 0;
+arr.forEach(function(e) {
+    if(e == 2) {
+        return true;
+    }
+    total += e;
+
+});
+</code></pre>
+<h2 id="filtermapreduce">filter/map/reduce</h2>
+<p>reduce((sum, val)=&gt;{return num;}, initSum) 实现统计总数， 案例，学生里男生总数</p>
+<pre><code class="language-js">boyCount = [{'id': 1, 'gender': 'boy'},{'id': 2, 'gender': 'girl'},{'id': 2, 'gender': 'boy'}].reduce(function(sum, rec){
+    if(rec.gender == 'boy') return sum+1;
+}, 0);
+
+// 得到 2
+</code></pre>
+<h2 id="删除元素">删除元素</h2>
+<p><a href="https://love2dev.com/blog/javascript-remove-from-array/">https://love2dev.com/blog/javascript-remove-from-array/</a></p>
+<p>pop 删除最后一个</p>
+<p>splice</p>
+<pre><code class="language-js">var a = [1,2,3,4,5,6]
+
+// 如果赋值给另外一个数组，那这个数组就是删除的 [4,5]
+var b = a.splice(a.indexOf(4), 2);
+
+// 此时 a 剩下 [1,2,3,6]
+console.log(a); 
+</code></pre>
+<p>loadash 的方法。。 remove</p>
+<p>filter 方法</p>
+<h2 id="数组有多个对象按对象某个属性排序">数组有多个对象，按对象某个属性排序</h2>
+<p><a href="https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript">https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value-in-javascript</a></p>
+<p>最基本的，<code>sort</code>函数使用自定义的对比方法，这个只能按一个属性来排</p>
+<pre><code class="language-js">[
+    {id: 1, age: 12, height: 180}, 
+    {id: 2, age: 34, height: 170},
+    {id: 3, age: 32, height: 160}
+].sort((a, b) =&gt; (a.age &lt; b.age ? -1 : 1);
+</code></pre>
+<p>如果要依次按几个属性来排序</p>
+<pre><code class="language-js">function dynamicSortMultiple() {
+    /*
+     * save the arguments object as it will be overwritten
+     * note that arguments object is an array-like object
+     * consisting of the names of the properties to sort by
+     */
+    var props = arguments;
+    return function (obj1, obj2) {
+        var i = 0, result = 0, numberOfProperties = props.length;
+        /* try getting a different result from 0 (equal)
+         * as long as we have extra properties to compare
+         */
+        while(result === 0 &amp;&amp; i &lt; numberOfProperties) {
+            result = dynamicSort(props[i])(obj1, obj2);
+            i++;
+        }
+        return result;
+    }
+}
+
+var People = [
+    {Name: &quot;Name&quot;, Surname: &quot;Surname&quot;},
+    {Name:&quot;AAA&quot;, Surname:&quot;ZZZ&quot;},
+    {Name: &quot;Name&quot;, Surname: &quot;AAA&quot;}
+];
+
+People.sort(dynamicSort(&quot;Surname&quot;));
+People.sort(dynamicSort(&quot;-Surname&quot;));
+
+People.sort(dynamicSortMultiple(&quot;Name&quot;, &quot;-Surname&quot;));
+</code></pre>
+<p>按字母顺序排</p>
+<h2 id="delete-某个数组元素后重排索引">delete 某个数组元素后，重排索引</h2>
+<p>例如  arr = [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;c&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]</p>
+<p>delete(arr[2])后， 打印 arr</p>
+<p>[&lsquo;a&rsquo;, &lsquo;b&rsquo;, empty, &lsquo;d&rsquo;, &lsquo;e&rsquo;]</p>
+<p>被删掉的元素，还占着索引 2 不走。。 导致 d e 的索引数没能按预期往前挪</p>
+<p>用这个方式可以自动清理掉被删除元素的索引</p>
+<p>arr.splice(2, 1)  打印后就是 [&lsquo;a&rsquo;, &lsquo;b&rsquo;, &lsquo;d&rsquo;, &lsquo;e&rsquo;]  索引按 0 1 2 3 重新排了</p>
+<p>还有资料</p>
+<p><a href="https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array">https://stackoverflow.com/questions/4759745/javascript-reindexing-an-array</a></p>
+<h3 id="如果用-underscore-就更容易了">如果用 underscore 就更容易了</h3>
+<pre><code class="language-js">var objs = [ 
+  { first_nom: 'Lazslo',last_nom: 'Jamf' },
+  { first_nom: 'Pig', last_nom: 'Bodine'  },
+  { first_nom: 'Pirate', last_nom: 'Prentice' }
+];
+
+var sortedObjs = _.sortBy( objs, 'first_nom' );
+</code></pre>
+<p>但这样如果对象有 key，排序后会丢失 key( 变成数组)</p>
+<pre><code class="language-js">var   = {
+    'aaa': {name: 'zhang', age: 12},
+    'bbb': {name: 'li', age: 15},
+}
+
+var sortedObjs = _.sortBy( objs, 'name' );
+
+// return
+[
+{name: 'li', age:15},
+{name: 'zhang', age:12}
+]
+</code></pre>
+<p>如果要通过 key 找到某个元素，还是可以去原来那个对象里去找的，如<code>objs['aaa']</code></p>
+<h1 id="事件">事件</h1>
+<h2 id="增加一个自定义事件并触发">增加一个自定义事件并触发</h2>
+<p>定义 event handler</p>
+<pre><code class="language-js">$(o).on('my-awesome-event', function(event){ ... });
+</code></pre>
+<p>要触发这个 event</p>
+<pre><code class="language-js">$(o).trigger('my-awesome-event');
+</code></pre>
+<p>关闭监听器?</p>
+<pre><code class="language-js">$(o).off('my-awesome-event');
+</code></pre>
+<p>用 jQuery 在原有的事件监听器 后面 再添加一个事件监听器</p>
+<pre><code class="language-js">// 不影响之前绑定的, 在之前的 事件发生之 后。
+$( o ).bind( &quot;show&quot;, function() {} );
+</code></pre>
+<p>如果要发生之前呢？ 下面的方法报错了。。。</p>
+<pre><code class="language-js">$.fn.preBind = function(type, data, fn) {
+  this.bind(type, data, fn);
+
+  var currentBindings = this.data('events')[type];  // 但是这里报错了！！！ data('event') Cannot read property 'click' of undefined
+
+  var currentBindingsLastIndex = currentBindings.length - 1;
+
+  var newBindings = [];
+
+  newBindings.push(currentBindings[currentBindingsLastIndex]);
+
+  $.each(currentBindings, function (index) {
+    if (index &lt; currentBindingsLastIndex)
+      newBindings.push(this);
+  });
+
+  this.data('events')[type] = newBindings;
+
+  return this;
+};
+
+$('#button').preBind('click', function() {
+  console.log('hello');
+});
+</code></pre>
+<p>另一个， Boss 写的， Form 里面对 openPicklist 之前手动 trigger 事件。。。。（不改造 click ，只是在需要的时候添加一些特殊的事件）</p>
+<pre><code class="language-js">$.fn.cgbForm = function (options) {
+
+    var $selector = $(this);
+    var triggerEvent = {}; 
+
+    //在 start() 里对 triggerEvent 扩充了一些 .info = ...
+
+    function openPicklist(target, runPrePicklist) {
+
+        // 一些数据初始化
+        options = {model: info[target].model,
+            title: info[target].title,
+            sel_id: getItemPLCode(target)};
+
+        if (info[target].relid != undefined) {
+            options.relation = {id: info[target].relcode, idwhere: info[target].relid};
+        }
+
+        options.plCallBack = afterPickList;
+
+        plOpenId = target;
+
+        // 如果要调用 &quot;pre&quot; picklist， 拦截
+        if (runPrePicklist == undefined) {
+            runPrePicklist = true;
+        }
+
+        if (runPrePicklist) {
+            // 一些要传回去的数据。 例如 id 就是表示哪个按钮被点了
+            var ev = {id: target, options: options, fielddata: info[target], pk: codePK}
+
+            // 把事件有有关的数据与刚要传过去的 合并， 以及 
+            // $.Event('prepicklist') 来自 jQuery 代码4964行，`function( src, props )`  得到 this.isDefaultPrevented    以及 this.type = src.type;
+            $.extend(ev, $.Event('prepicklist'), triggerEvent);
+
+            // selector 这里就是 Form ,调用 trigger() 并传入 ev 参数 
+            $selector.trigger(ev);
+
+            // 如果执行完毕了，继续后面
+            if (ev.isDefaultPrevented()) {
+                return;
+            }
+        }
+
+        // 这是本来要操作的， 这个方法里调用 ajax 等
+        basicPickListOpen(options);
+    }
+};
+</code></pre>
+<p>prepicklist 事件监听</p>
+<pre><code class="language-js">$('#formComment').on('prepicklist', function (ev) {
+    if (ev.fielddata.codefield == 'cd_project_power_type') {
+    }
+
+});
+</code></pre>
+<p>因此要实现 click 注入，简化下更容易理解</p>
+<pre><code class="language-html">&lt;button class=&quot;btn&quot; data-name=&quot;btnName&quot;&gt;click&lt;/button&gt;
+</code></pre>
+<p>给一个 click 事件</p>
+<pre><code class="language-js">$('.btn').on('click', function(e){
+
+    ev = e
+    $.extend(ev, $.Event('preclick'), {});
+
+    //直接用 window 好了   触发事件。  等下在后面有  $(window).on('preclick', function(ev)) 去监听它并作出响应
+    $(window).trigger(ev);
+
+    if (ev.isDefaultPrevented()) {
+        return;
+    }
+
+    console.log('clicked')
+});
+
+
+$(window).on('preclick',function(ev){
+    console.log('preclick')
+
+    // 某些情况下，终止后面的执行。
+    if(ev.name = 'aaa') {
+        ev.preventDefault();
+    }
+});
+</code></pre>
+<h2 id="动态修改已绑定的-event-handler">动态修改已绑定的 event handler</h2>
+<p>？</p>
+<h2 id="已绑定-click-事件移除它然后用另外一个替代">已绑定 click 事件，移除它，然后用另外一个替代</h2>
+<pre><code class="language-js">document.getElementById(&quot;test&quot;).addEventListener('click', first);
+
+function first(e){
+    e.stopImmediatePropagation();
+    this.removeEventListener(&quot;click&quot;, first);
+    document.onclick = second;
+}
+function second(){
+    alert(&quot;I'm not suppose to appear after the first click, only the second.&quot;);
+}
+</code></pre>
+<pre><code class="language-html">&lt;button type=&quot;button&quot; id=&quot;test&quot;&gt;Click&lt;/button&gt;
+
+</code></pre>
+<h1 id="使用jquery批量填充表单元素的值">使用jQuery批量填充表单元素的值</h1>
+<p>网上资料：</p>
+<pre><code class="language-javascript">function loadData(jsonStr){
+    var obj = eval(&quot;(&quot;+jsonStr+&quot;)&quot;);
+    var key,value,tagName,type,arr;
+    for(x in obj){
+        key = x;
+        value = obj[x];
+
+        $(&quot;[name='&quot;+key+&quot;'],[name='&quot;+key+&quot;[]']&quot;).each(function(){
+            tagName = $(this)[0].tagName;
+            type = $(this).attr('type');
+            if(tagName=='INPUT'){
+                if(type=='radio'){
+                    $(this).attr('checked',$(this).val()==value);
+                }else if(type=='checkbox'){
+                    arr = value.split(',');
+                    for(var i =0;i&lt;arr.length;i++){
+                        if($(this).val()==arr[i]){
+                            $(this).attr('checked',true);
+                            break;
+                        }
+                    }
+                }else{
+                    $(this).val(value);
+                }
+            }else if(tagName=='SELECT' || tagName=='TEXTAREA'){
+                $(this).val(value);
+            }
+
+        });
+    }
+}
+</code></pre>
+<h1 id="jquery-包裹多个元素">jQuery 包裹多个元素</h1>
+<pre><code class="language-js">$(function(){
+    $(&quot;.div1,.div2&quot;).wrapAll(&quot;&lt;div class='wrapper'&gt;&quot;);
+    $(&quot;.div3,.div4&quot;).wrap(&quot;&lt;div class='wrapper'&gt;&quot;);
+    $(&quot;.div5,.div6&quot;).wrapInner(&quot;&lt;div class='inner'&gt;&quot;);
+})
+</code></pre>
+<h1 id="表单操作">表单操作</h1>
+<h2 id="可选中多个文件的-inputtypefile-组件选中后显示文件信息并马上上传">可选中多个文件的 input[type=file] 组件，选中后显示文件信息并马上上传</h2>
+<pre><code class="language-html">&lt;form action=&quot;/postFile.php&quot; method=&quot;post&quot;  enctype=&quot;multipart/form-data&quot;&gt;
+	&lt;input id=&quot;file-choose&quot; type=&quot;file&quot; name=&quot;pictures[]&quot; multiple=&quot;multiple&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<pre><code class="language-javascript">$(&quot;#file-choose&quot;).change(function(event) {
+      for(var i =0; i&lt;this.files.length; i++){
+          console.log(this.files[i])
+      }
+      $.post
+  });
+</code></pre>
+<h1 id="跳转">跳转</h1>
+<p>自动刷新页面的方法:
+1.页面自动刷新：把如下代码加入<!-- raw HTML omitted -->区域中</p>
+<pre><code class="language-html">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;20&quot;&gt;
+</code></pre>
+<p>其中20指每隔20秒刷新一次页面.</p>
+<p>2.页面自动跳转：把如下代码加入<!-- raw HTML omitted -->区域中</p>
+<pre><code class="language-html">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;20;url=http://www.wyxg.com&quot;&gt;
+</code></pre>
+<p>其中20指隔20秒后跳转到页面</p>
+<p>3.页面自动刷新js版</p>
+<pre><code class="language-js">function myrefresh()
+{
+window.location.reload();
+}
+setTimeout('myrefresh()',1000); //指定1秒刷新一次
+</code></pre>
+<p>如果想关闭窗口时刷新或者想开窗时刷新的话，在<!-- raw HTML omitted -->中调用以下语句即可。</p>
+<pre><code class="language-html">&lt;body onload=&quot;opener.location.reload()&quot;&gt; 开窗时刷新
+
+&lt;body onUnload=&quot;opener.location.reload()&quot;&gt; 关闭时刷新
+</code></pre>
+<pre><code class="language-js">window.opener.document.location.reload()
+</code></pre>
+<p>＝＝＝＝＝javascript中弹出选择框跳转到其他页面＝＝＝＝＝</p>
+<pre><code class="language-js">function logout()...{ if (confirm(&quot;你确定要注销身份吗？是－选择确定，否-选择取消&quot;))...{ window.location.href=&quot;logout.asp?act=logout&quot; } } 
+</code></pre>
+<p>＝＝＝＝＝javascript中弹出提示框跳转到其他页面＝＝＝＝＝</p>
+<pre><code class="language-js">function logout()...{ alert(&quot;你确定要注销身份吗？&quot;); window.location.href=&quot;logout.asp?act=logout&quot;
+ }
+
+</code></pre>
+<p>如果需要在新页面打开</p>
+<pre><code class="language-js">window.open(
+  'https://support.wwf.org.uk/earth_hour/index.php?type=individual',
+  '_blank'
+);
+</code></pre>
+<h1 id="filter-mapreducefilter-等方式来处理-对象数组">filter map/reduce/filter 等方式来处理 “对象数组”</h1>
+<h2 id="一个由多个对象组成的数组取某个-key-的值作为新数组">一个由多个对象组成的数组，取某个 key 的值作为新数组。</h2>
+<pre><code class="language-js">var students = [{
+    name: 'Nick',
+    age: 20
+}, {
+    name: 'Jordan',
+    age: 30
+}, {
+    name: 'Ramon',
+    age: 40
+}];
+
+var nameArray = students.map(function (el) { 
+    if(el.age &gt; 20) { return el.name }
+});
+
+//es6
+let new_arr = arr.map(obj =&gt; {return obj.name})
+</code></pre>
+<p>注意到 map 返回的数组总数和 students 一样，不满足的会返回 undefined.</p>
+<pre><code class="language-json">[undefined, 'Jordon', 'Ramon']
+</code></pre>
+<p>为了只返回需要的2个结果， 改成 &lsquo;filter&rsquo; 后,  数目是对了，但是并不是只有 <code>name</code>, 把 <strong>整个</strong> 元素都带回来了</p>
+<pre><code class="language-json">[{name: &quot;Jordan&quot;, age: 30}, {name: &quot;Ramon&quot;, age: 40}]
+</code></pre>
+<p>可见 处理一维数组是没问题的， 处理对象数组就不好办了。</p>
+<p>那就祭出 reduce 吧。。。</p>
+<pre><code class="language-js">var results = arr.reduce((results, item) =&gt; {
+    if (typeof item === 'string') results.push(modify(item)) // modify is a fictitious function that would apply some change to the items in the array
+    return results
+}, []);
+</code></pre>
+<h1 id="逻辑运算符简化代码例如取前取后">逻辑运算符简化代码，例如取前取后</h1>
+<p>1、JS中的||符号：
+运算方法：</p>
+<p>只要“||”前面为false,不管“||”后面是true还是false，都返回“||”后面的值。</p>
+<p>只要“||”前面为true,不管“||”后面是true还是false，都返回“||”前面的值。
+总结：真前假后  真前取前(真钱取钱。。)</p>
+<p>2、JS中的&amp;&amp;符号：
+运算方法：</p>
+<p>只要“&amp;&amp;”前面是false，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”前面的值;</p>
+<p>只要“&amp;&amp;”前面是true，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”后面的值;
+总结：假前真后   真前取后（假钱取钱。。。）</p>
+<p>3、位运算符：|
+运算方法：</p>
+<p>两个位只要有一个为1，那么结果都为1。否则就为0</p>
+<p>4、位运算符：&amp;
+运算方法：</p>
+<p>两个数值的个位分别相与，同时为1才得1，只要一个为0就为0。</p>
+<h1 id="localstorage">localStorage</h1>
+<p>基本：</p>
+<pre><code class="language-js">localStorage.setItem('key', value);
+
+localStorage.getItem('key');
+
+//clear
+</code></pre>
+<h2 id="注意转换的问题">注意转换的问题</h2>
+<ul>
+<li>
+<p>如果还没有保存一个数据， 直接 getItem() 会返回 <code>null</code></p>
+</li>
+<li>
+<p>而如果写入数据的时候是个空字符串， <code>setItem('key', '')</code>， 好像稍后读取会成为 undefined</p>
+</li>
+</ul>
+<pre><code class="language-js">/**
+ * check localStorage item. and return default value.
+ * @param {string} key 
+ * @param {string} val 
+ */
+function checkLS(key, val) {
+    if(localStorage.getItem(key) !== null &amp;&amp; localStorage.getItem(key) !== 'undefined') {
+        return localStorage.getItem(key);
+    }
+
+    if(val) {
+        return val;
+    }
+}
+</code></pre>
+<p>写入 localStorage 的数据，不管是数字还是什么，都会保存为字符串。  如果需要返回的时候还能得到原来的格式，需要 JSON 库来处理</p>
+<pre><code class="language-js">// 保存一个数字
+localStorage.setItem('user', 123456)
+
+localStorage.getItem('user'); // 返回 '123456' 字符串
+JSON.parse(localStorage.getItem('user')); // 返回 123456 数字
+
+
+// 另外，如果写入的时候是个字符串，没有提前转换
+localStorage.setItem('user', 'eric zhang')
+
+JSON.parse(localStorage.getItem('user')); //报错，Uncaught SyntaxError: Unexpected token e in JSON at position 0 at JSON.parse 因为它不是一个可以转换成 JSON 数据的字符串
+
+localStorage.setItem('user', JSON.stringify('eric zhang'));// 必须在保存的时候就处理好
+JSON.parse(localStorage.getItem('user')); //&quot;eric zhang&quot;
+</code></pre>
+<h1 id="树-变-数组-数组-变-树">树 变 数组， 数组 变 树。</h1>
+<p><a href="https://juejin.im/post/5d7c7b3be51d4561e43a6d4c">https://juejin.im/post/5d7c7b3be51d4561e43a6d4c</a></p>
+<p>数组</p>
+<pre><code class="language-json">var listData = [
+    {id: 1, name: 'Eric', pid: '-1'},
+    {id: 2, name: 'Bob', pid: '1'},
+    {id: 3, name: 'Jack', pid: '1'},
+    {id: 4, name: 'Tom', pid: '3'},
+    {id: 5, name: 'Zoe', pid: '-1'},
+];
+</code></pre>
+<p>树</p>
+<pre><code class="language-json">var treeData = {
+    id: 1,
+    name: 'Eric',
+    children: [
+        {
+            id: 2, 
+            name: 'Bob'
+        },
+        {
+            id: 3, 
+            name: 'Jack', 
+            children: [
+                {
+                    id: 4, 
+                    name: 'Tom'
+                }
+            ]
+        }
+    ]
+};
+</code></pre>
+<p>森林</p>
+<pre><code class="language-json">var forestData = [
+    {
+        id: 1,
+        name: 'Eric',
+        children: [
+            {
+                id: 2, 
+                name: 'Bob'
+            },
+            {
+                id: 3, 
+                name: 'Jack', 
+                children: [
+                    {
+                        id: 4, 
+                        name: 'Tom'
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id: 1,
+        name: 'Eric',
+        children: [
+            {
+                id: 2, 
+                name: 'Bob'
+            },
+            {
+                id: 3, 
+                name: 'Jack', 
+                children: [
+                    {
+                        id: 4, 
+                        name: 'Tom'
+                    }
+                ]
+            }
+        ]
+    }
+];
+</code></pre>
+<h2 id="树变列表">树变列表</h2>
+<pre><code class="language-js">const treeToList = (tree) =&gt; {
+    arr = [];
+    
+    function getNodes(node, pid=-1) {
+        if(node.children) {
+            // set the pid fro all children
+            node.children.map(child =&gt; getNodes(child, node.id))
+        }
+        arr.push({
+            id: node.id,
+            name: node.name,
+            pid: pid
+        });
+    }
+    
+    // 继续调用，一直到没有 children
+    getNodes(tree)
+
+    return arr;
+};
+
+list = treeToList(treeData);
+</code></pre>
+<p>方法2：数据结构中的广度优先遍历：</p>
+<p>function treeToList(tree) {
+var queen = [];
+var out = [];
+queen = queen.concat(tree);
+while(queen.length) {
+var first = queen.shift();
+if (first.children) {
+queen = queen.concat(first.children)
+delete first[&lsquo;children&rsquo;];
+}</p>
+<pre><code>out.push(first);
+</code></pre>
+<p>}
+return out;
+}</p>
+<p>var tree = [{&ldquo;id&rdquo;:1,&ldquo;pid&rdquo;:&quot;-1&rdquo;,&ldquo;children&rdquo;:[{&ldquo;id&rdquo;:11,&ldquo;pid&rdquo;:&ldquo;1&rdquo;,&ldquo;children&rdquo;:[]},{&ldquo;id&rdquo;:12,&ldquo;pid&rdquo;:&ldquo;1&rdquo;,&ldquo;children&rdquo;:[]}]}];
+treeToList(tree) //[{&ldquo;id&rdquo;:1,&ldquo;pid&rdquo;:&quot;-1&rdquo;},{&ldquo;id&rdquo;:11,&ldquo;pid&rdquo;:&ldquo;1&rdquo;},{&ldquo;id&rdquo;:12,&ldquo;pid&rdquo;:&ldquo;1&rdquo;}]</p>
+<h2 id="列表变树">列表变树</h2>
+<pre><code class="language-js">function listToTree(list){
+    
+    var obj = {}, trees = [];
+
+    list.forEach(function(val, idx) {
+        list[idx]['children'] = []
+        obj[val.id] = val
+    })
+
+    list.forEach(function(val, idx){
+        node = list[idx]
+
+        if(node.pid != -1) {
+            obj[node.pid].children.push(node)
+        }else {
+            trees.push(node)
+        }
+    })
+
+    //return trees; // [] 数组
+    return trees[0]; // {} 只需要一个元素即可
+}
+
+// 树，只能有一个根
+var list = [
+    {id: 1, name: 'Peppa', pid: 2},
+    {id: 2, name: 'George', pid: -1}, // 树 1
+    {id: 3, name: 'Susie', pid: 5},
+    {id: 4, name: 'Richard', pid: 2},
+    {id: 5, name: 'Rebecca', pid: 4},
+    {id: 6, name: 'Pedro', pid: 3},
+    {id: 7, name: 'Danny', pid: 5}
+];
+
+tree = listToTree(list);
+console.dir(tree, {depth: null});
+</code></pre>
+<h2 id="列表变森林">列表变森林</h2>
+<pre><code class="language-js">function listToForest(list){
+    
+    var obj = {}, trees = [];
+
+    // 如果 tree 需要名称 {tree1: {}, tree2: {}}
+    // trees = {}
+
+    list.forEach(function(val, idx) {
+        list[idx]['children'] = []
+        obj[val.id] = val
+    })
+
+    list.forEach(function(val, idx){
+        node = list[idx]
+
+        if(node.pid != -1) {
+            obj[node.pid].children.push(node)
+        }else {
+            trees.push(node);
+            //trees[node.id] = node // 如果tree 需要标识
+        }
+    })
+
+    return trees
+}
+
+
+// 森林，多棵树，多个根
+var list = [
+    {id: 1, name: 'Peppa', pid: 2},
+    {id: 2, name: 'George', pid: -1}, // 树1
+    {id: 3, name: 'Susie', pid: 5},
+    {id: 4, name: 'Richard', pid: 2},
+    {id: 5, name: 'Rebecca', pid: 4},
+    {id: 6, name: 'Pedro', pid: 3},
+    {id: 7, name: 'Danny', pid: 5},
+    {id: 8, name: 'Candy', pid: -1}, // 树2
+    {id: 9, name: 'Emily', pid: 8},
+]
+
+forest = listToForest(list);
+console.dir(forest, {depth: null});
+</code></pre>
+<h1 id="离线存储方案">离线存储方案</h1>
+<h2 id="localstorage-1">localStorage</h2>
+<h2 id="indexdb">indexDB</h2>
+<h2 id="用一些库">用一些库。</h2>
+<p>localForage.  (也可以支持 indexDB 的)</p>
+<h1 id="调试">调试</h1>
+<h2 id="打印出完整的对象而不是第二层显示为--object-object">打印出完整的对象，而不是第二层显示为  [Object, Object]</h2>
+<p>console.dir(tree, {depth: null})</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/javascript%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/javascript%E9%97%AE%E9%A2%98%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/javascript%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%BA%9B%E9%A1%B5%E9%9D%A2%E7%89%B9%E6%95%88/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

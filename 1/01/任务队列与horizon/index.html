@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="任务、队列与Horizon permalink: laravel-queue-horizon tags: laravel 简介 首先，你要先知道 Job(任务) Queue(任务队列) 两者的关系 一般是先创建多个任务，然后把一些耗时的任" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="任务、队列与Horizon permalink: laravel-queue-horizon tags: laravel 简介 首先，你要先知道 Job(任务) Queue(任务队列) 两者的关系 一般是先创建多个任务，然后把一些耗时的任" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="任务、队列与Horizon permalink: laravel-queue-horizon tags: laravel 简介 首先，你要先知道 Job(任务) Queue(任务队列) 两者的关系 一般是先创建多个任务，然后把一些耗时的任">
+
+<meta itemprop="wordCount" content="5258">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="任务、队列与Horizon permalink: laravel-queue-horizon tags: laravel 简介 首先，你要先知道 Job(任务) Queue(任务队列) 两者的关系 一般是先创建多个任务，然后把一些耗时的任"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5258字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>任务、队列与Horizon</p>
+<p>permalink: laravel-queue-horizon
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="简介">简介</h1>
+<p><strong>首先，你要先知道 Job(任务) Queue(任务队列) 两者的关系</strong></p>
+<p>一般是先创建多个任务，然后把一些耗时的任务放入队列。</p>
+<p>队列的目的是将耗时的 <strong>任务</strong> 延时处理（比如发送邮件、压缩转码用户上传的图片）从而大幅度缩短 Web 请求和相应的时间。 (或者一些可以延后处理不需要马上给用户看到结果的任务)</p>
+<p>Laravel <strong>队列</strong>为不同的<strong>后台队列服务</strong>(Amazon SQS，Redis，甚至其他基于关系型数据库的队列等)提供统一的 API</p>
+<p>在队列配置文件<code>config/queue.php</code>可以找到各种<strong>队列驱动</strong>的配置（数据库，Redis, Amazon SQS 等&hellip;）</p>
+<p><code>sync</code>（同步驱动）是本地使用的,也是默认驱动，<code>null</code> 驱动用于那些放弃队列的任务。</p>
+<pre><code class="language-php">'default' =&gt; env('QUEUE_DRIVER', 'sync'),
+</code></pre>
+<h2 id="连接--队列">连接 &amp; 队列</h2>
+<p>在配置文件中，<code>connections</code>配置给 Amazon SQS，Beanstalk，或者 Redis 这样的后端服务<strong>定义了一个特有的连接</strong>。</p>
+<p>一个给定的<strong>连接可能会有多个 「队列」</strong>（如发邮件队列、上传图片压缩队列,一般会有个<strong>默认队列</strong>（连接配置里的<code>queue</code>参数默认名就是<strong>default</strong>,见下文）），而 「队列」 可以被认为是不同的栈或者大量的队列任务。</p>
+<pre><code class="language-md">Laravel 应用  ---------&gt;  连接（配置了参数）  -----（连接到）----&gt; 队列服务(Redis，数据库等)
+                  (默认队列： 任务1 任务2 任务3 ....)
+                  (邮件队列： 任务1 任务2 任务3 ....)
+                  (其他队列： 任务1 任务2 任务3 ....)
+
+</code></pre>
+<p>配置文件中每个连接的配置示例中都包含一个 <code>queue</code> 属性，如果你分发 队列任务 的时候没有显式定义队列，被发给指定连接的时候，会被分发到这个队列中。</p>
+<p><img src="/media/15490412691335/15096872945656.jpg" alt=""></p>
+<pre><code class="language-php">// 这个任务将被分发到默认队列... （如 database 连接的 default，sqs 的 your-queue-name）
+Job::dispatch();
+
+// 这个任务将被发送到「emails」队列...
+Job::dispatch()-&gt;onQueue('emails');
+</code></pre>
+<p><strong>队列优先级</strong></p>
+<p>对于一些简单任务的来说，放到默认的队列就可以了。但是如果任务特别多，把任务推到不同的队列仍然是非常有用的，因为 Laravel <strong>队列处理器允许你定义队列的优先级</strong></p>
+<p>例如把任务推到 high 队列中，你就能让队列处理器优先处理这些任务了。下面的列子中，high 队列的优先级比 default 高。</p>
+<pre><code class="language-shell">php artisan queue:work --queue=high,default
+</code></pre>
+<p>怎么推到 high 去？ 看后面。</p>
+<h2 id="驱动设置">驱动设置</h2>
+<p>不同的队列驱动，需要进行不同的设置</p>
+<p><strong>Database 数据库</strong></p>
+<p>创建数据表的迁移并创建数据表</p>
+<pre><code class="language-shell">php artisan queue:table
+
+php artisan migrate
+</code></pre>
+<p><strong>redis</strong></p>
+<p>首先先配置<code>config/database.php</code>中的redis服务连接（如果你的 Redis 队列连接使用的是 Redis 集群，你的队列名称必须包含 key hash tag。这是为了确保所有的 Redis 键对于一个给定的队列都置于同一哈希中）</p>
+<pre><code class="language-php">'redis' =&gt; [
+    'driver' =&gt; 'redis',
+    'connection' =&gt; 'default',
+    'queue' =&gt; '{default}',
+    'retry_after' =&gt; 90,
+],
+</code></pre>
+<p><strong>其它队列驱动的依赖扩展包</strong></p>
+<p>在使用列表里的队列服务前，必须安装以下依赖扩展包：</p>
+<ul>
+<li>Amazon SQS: aws/aws-sdk-php ~3.0</li>
+<li>Beanstalkd: pda/pheanstalk ~3.0</li>
+<li>Redis: predis/predis ~1.0</li>
+</ul>
+<h1 id="创建任务job">创建任务（Job）</h1>
+<h2 id="生成任务类">生成任务类</h2>
+<pre><code class="language-shell">php artisan make:job SendReminderEmail
+</code></pre>
+<p>队列的任务类都默认放在 <code>app/Jobs </code>目录下, 生成的类实现了 <strong>Illuminate\Contracts\Queue\ShouldQueue</strong> 接口，这意味着这个任务将会<strong>被推送到队列中，而不是同步执行</strong>。</p>
+<p>任务类的结构很简单，一般来说只会包含一个<strong>让队列用来调用此任务</strong>的 <code>handle</code> 方法。</p>
+<p>例如下面的播客发布服务（因为音频转换很慢，网络上传也很慢，正适合放入队列中去慢慢执行）</p>
+<pre><code class="language-php">namespace App\Jobs;
+
+use App\Podcast;
+use App\AudioProcessor;
+use Illuminate\Bus\Queueable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+
+
+class ProcessPodcast implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $podcast;
+    
+    public function __construct(Podcast $podcast)
+        {
+            $this-&gt;podcast = $podcast;
+        }
+    
+        public function handle(AudioProcessor $processor)
+        {
+            // Process uploaded podcast...
+</code></pre>
+<p>注意，在这个例子中，我们在任务类的 构造器 <code>__construct</code> 中 直接传递了一个 Eloquent 模型。因为我们在任务类里引用了 <strong>SerializesModels</strong> 这个 <code>trait</code>，使得 Eloquent 模型在处理任务时可以被优雅地序列化和反序列化。
+如果你的队列任务类在构造器中接收了一个 Eloquent 模型，那么<strong>只有可识别出该模型的属性会被序列化到队列里</strong>。</p>
+<p>（注意：目前任务还没有被实际运行）</p>
+<p>当任务被实际运行时，<strong>队列系统便会自动从数据库中重新取回完整的模型</strong>。这整个过程对你的应用程序来说是完全透明的，这样可以<strong>避免在序列化完整的 Eloquent 模式实例时所带来的一些问题</strong>。</p>
+<p>在队列处理任务时，会调用 <code>handle</code> 方法，而这里我们也可以通过 handle 方法的参数类型提示，让 Laravel 的 服务容器 自动注入依赖对象（AudioProcessor $processor）。</p>
+<blockquote>
+<p>像图片内容这种二进制数据，在放入队列任务之前必须使用 base64_encode 方法转换一下。否则，当这项任务放置到队列中时，可能无法正确序列化为 JSON。</p>
+</blockquote>
+<h1 id="分发任务">分发任务</h1>
+<p>通过 <code>dispatch</code> 辅助函数来分发刚刚写好的任务类，参数是任务类的实例。例如在某个控制器里，开始分发任务（创建播客、上传保存播客——自动放入到队列里面去）</p>
+<pre><code class="language-php">use App\Jobs\ProcessPodcast;
+
+class PodcastController extends Controller
+{
+    public function store(Request $request)
+    {
+        // 创建播客...
+
+        ProcessPodcast::dispatch($podcast);
+</code></pre>
+<h2 id="延迟分发">延迟分发</h2>
+<p>用任务实例的 <code>delay</code> 方法，例如让任务在分配后10分钟内不可被处理。(Amazon SQS 队列服务最大延迟 15 分钟。)</p>
+<pre><code class="language-php">ProcessPodcast::dispatch($podcast)
+                -&gt;delay(Carbon::now()-&gt;addMinutes(10));
+</code></pre>
+<h2 id="工作链">工作链</h2>
+<p>指定应该按顺序运行的<strong>队列列表</strong>，如果<strong>其中一个任务失败了，则其余任务将不会运行</strong></p>
+<p>例如，先执行优化播客的任务，再执行发布播客任务。如果第一个失败了，就不会发布。</p>
+<pre><code class="language-php">ProcessPodcast::withChain([
+    new OptimizePodcast,
+    new ReleasePodcast
+])-&gt;dispatch();
+</code></pre>
+<h2 id="自定义队列--连接">自定义队列 &amp; 连接</h2>
+<h3 id="分发任务到指定-队列">分发任务到指定 队列</h3>
+<p>因为一个 连接（connection） 可以有多个队列，所以可以将任务推送到一个连接中指定的队列中。如果不指定，就默认放到 <code>default</code>队列里</p>
+<p>调用任务实例的 <code>onQueue</code> 方法，修改前面的代码。</p>
+<pre><code class="language-php">ProcessPodcast::dispatch($podcast)-&gt;onQueue('processing');
+</code></pre>
+<h3 id="分发到指定-连接">分发到指定 连接</h3>
+<p>当然，如果你定义了多个 连接，也可以把任务分发过去, 使用任务实例的<code>onConnection</code></p>
+<pre><code class="language-php">ProcessPodcast::dispatch($podcast)-&gt;onConnection('sqs');
+
+// 还可以链式调用 onConnection 和 onQueue 方法 来同时指定任务的连接和队列
+ProcessPodcast::dispatch($podcast)
+              -&gt;onConnection('sqs')
+              -&gt;onQueue('processing');
+</code></pre>
+<h3 id="指定任务最大尝试次数--超时值">指定任务最大尝试次数 / 超时值</h3>
+<pre><code class="language-shell"># 任务的最大尝试次数
+php artisan queue:work --tries=3
+
+# 任务可以运行的最大秒数
+php artisan queue:work --timeout=30
+</code></pre>
+<p>当然也可以在 <strong>任务类</strong>中定义最大尝试次数和超时 来实现更细致的设定</p>
+<pre><code class="language-php">namespace App\Jobs;
+
+class ProcessPodcast implements ShouldQueue
+{
+      public $tries = 5;
+      
+      public $timeout = 120;
+</code></pre>
+<h3 id="错误处理">错误处理</h3>
+<p>如果任务运行的时候抛出异常，这个任务就自动被释放回队列，这样它就能被再重新运行了。如果继续抛出异常，这个任务会继续被释放回队列，直到重试次数达到你应用允许的最多次数</p>
+<h2 id="运行--重启队列处理器">运行 &amp; 重启队列处理器</h2>
+<p>Laravel 包含一个队列处理器，<strong>当新任务被推到队列中时它能处理这些任务</strong>。你可以通过 queue:work 命令来运行处理器。要注意，一旦 <code>queue:work</code> 命令开始，它将一直运行，直到你手动停止或者你关闭控制台</p>
+<pre><code class="language-shell">php artisan queue:work
+</code></pre>
+<p>队列处理器是长时间运行的进程，并<strong>在内存里保存着已经启动的应用状态</strong>。这样的结果就是，处理器运行后如果你<strong>修改代码那这些改变是不会应用到处理器中</strong>的。所以在你重新部署过程中，一定要 <strong>重启队列处理器</strong> 。 (就像 <code>node index.js</code> 一样)</p>
+<pre><code class="language-shell">php artisan queue:restart
+</code></pre>
+<p><strong>原理</strong> 队列使用 缓存 来存储重新启动信号，所以在使用此功能之前，你应该确保应用程序的缓存驱动程序已正确配置</p>
+<p>要让 queue:work 进程<strong>永久在后台运行</strong>，你应该<strong>使用进程监控工具</strong>，比如 <code>Supervisor</code> 来保证队列处理器没有停止运行</p>
+<p><strong>仅对队列中的单一任务进行处理</strong></p>
+<pre><code class="language-shell">php artisan queue:work --once
+</code></pre>
+<p><strong>指定连接 &amp; 队列</strong></p>
+<pre><code class="language-shell"># 在 config/queue.php 配置文件里定义了多个连接, 名字要至少跟它们其中一个是一致的
+php artisan queue:work redis
+
+# 启动一个只处理某个特定队列（emails）的队列处理器
+php artisan queue:work redis --queue=emails
+</code></pre>
+<p><strong>注意：释放资源</strong>
+守护程序队列不会在处理每个作业之前 「重新启动」 框架。因此，在每个任务完成后，您应该释放任何占用过大的资源。例如，如果你使用 GD 库进行图像处理，你应该在完成后用 imagedestroy 释放内存。</p>
+<h3 id="队列优先级">队列优先级</h3>
+<p>前面介绍过在启动队列处理器时，指定多个队列的优先级。</p>
+<pre><code class="language-shell">php artisan queue:work --queue=high,default
+</code></pre>
+<p>这样任务默认会在 <code>default</code> 优先级。  如果想把某个任务中途推到高优先级的队列 <code>high</code>去，在调用任务处理时使用<code>onQueue</code>指定队列名称（high）。</p>
+<pre><code class="language-php">dispatch((new Job)-&gt;onQueue('high'));
+</code></pre>
+<h3 id="任务过期--超时">任务过期 &amp; 超时</h3>
+<p><strong>任务过期</strong></p>
+<p><code>config/queue.php</code> 配置文件里，每一个队列连接都定义了一个 <code>retry_after</code> 选项</p>
+<p><strong>队列处理器超时</strong></p>
+<p><code>queue:work</code> 命令对外有一个 &ndash;timeout 选项，这个选项指定了 Laravel 队列处理器最多执行多长时间后就应该被关闭掉</p>
+<p>retry_after <strong>配置选项</strong>和 &ndash;timeout <strong>命令行选项</strong>是不一样的，但是可以同时工作来保证任务不会丢失并且不会重复执行。 &ndash;timeout 应该永远都要比 retry_after 短至少几秒钟的时间
+这样的话，首先到达 timeout 超时时间(例如 55秒)，把任务杀死，然后到达 retry_after 时间（60秒）开始重新执行。  如果 timeout 反而比 retry_after 大，会造成这个任务重复执行不被杀死。</p>
+<p><strong>队列进程睡眠时间</strong></p>
+<p>当队列需要处理任务时，进程将继续处理任务，它们之间没有延迟。但是，如果没有新的工作可用，sleep 参数决定了工作进程将 「睡眠」 多长时间：</p>
+<pre><code class="language-shell">php artisan queue:work --sleep=3
+</code></pre>
+<h1 id="supervisor-配置">Supervisor 配置</h1>
+<p>官方文档
+<a href="http://supervisord.org/index.html">http://supervisord.org/index.html</a></p>
+<p>Supervisor 是一个 Linux 操作系统上的进程监控软件，它会在 queue:listen 或 queue:work 命令发生失败后自动重启它们。在 Ubuntu 安装 Supervisor，可以用以下命令</p>
+<pre><code class="language-shell">sudo apt-get install supervisor
+</code></pre>
+<p>配置文件一般是放在 <code>/etc/supervisor/conf.d</code> 目录下. 可以创建任意数量的配置文件来要求 Supervisor 怎样监控你的进程</p>
+<p>可以考虑使用 Laravel Forge，它能给你的 Laravel 项目<strong>自动安装与配置 Supervisor</strong></p>
+<p>例如我们创建一个 <code>laravel-worker.conf</code> 来启动与监控一个 <code>queue:work</code> 进程</p>
+<pre><code class="language-shell">[program:laravel-worker]
+process_name=%(program_name)s_%(process_num)02d
+command=php /home/forge/app.com/artisan queue:work sqs --sleep=3 --tries=3
+autostart=true
+autorestart=true
+user=forge
+numprocs=8
+redirect_stderr=true
+stdout_logfile=/home/forge/app.com/worker.log
+</code></pre>
+<p><code>numprocs</code> 命令会要求 Supervisor 运行并监控 8 个 queue:work 进程, 并且在它们运行失败后重新启动.<code>command</code>里修改驱动为你使用的</p>
+<p>创建完配置文件后，启动 supervisor，或者重新加载配置</p>
+<pre><code class="language-shell">sudo supervisorctl reread
+
+sudo supervisorctl update
+
+sudo supervisorctl start laravel-worker:*
+</code></pre>
+<h1 id="处理失败的任务">处理失败的任务</h1>
+<p>失败的任务，会有一个重试次数，超过后会被插入到<code>failed_jobs</code>数据表。</p>
+<pre><code class="language-shell">php artisan queue:work redis --tries=3
+</code></pre>
+<p>用 <code>queue:failed-table</code> 命令创建 failed_jobs 表的迁移文件，接着使用 migrate Artisan 命令生成 failed_jobs 表</p>
+<pre><code class="language-shell">php artisan queue:failed-table
+
+php artisan migrate
+</code></pre>
+<h2 id="清除失败任务">清除失败任务</h2>
+<p>在 任务类 里直接定义 failed 方法，它能在任务失败时运行任务的清除逻辑</p>
+<pre><code class="language-php">class ProcessPodcast implements ShouldQueue
+{
+    public function __construct(Podcast $podcast)
+    
+    public function handle(AudioProcessor $processor)
+    
+    public function failed(Exception $exception)
+    {
+        // 给用户发送失败通知，等等...
+    }
+</code></pre>
+<h2 id="任务失败事件">任务失败事件</h2>
+<p>用 <code>Queue::failing</code> 方法注册一个当队列任务失败时会被调用的事件，通过这个事件来用 e-mail 或 HipChat 通知你的团队。</p>
+<p>例如我们可以在 Laravel 内置的 AppServiceProvider 中对这个事件附加一个回调函数：</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use Illuminate\Support\Facades\Queue;
+use Illuminate\Queue\Events\JobFailed;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Queue::failing(function (JobFailed $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;exception
+        });
+    }
+
+    /**
+     * 注册服务提供者。
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+</code></pre>
+<h2 id="重试失败任务">重试失败任务</h2>
+<pre><code class="language-shell">// 查看你在 failed_jobs 数据表中的所有失败任务，会列出所有任务的 ID、连接、队列以及失败时间
+php artisan queue:failed
+
+// 重试一个 ID 为 5 的失败任务
+php artisan queue:retry 5
+
+//重试所有失败的任务
+php artisan queue:retry all
+
+//删除掉一个失败任务
+php artisan queue:forget 5
+
+//删除所有失败的任务
+php artisan queue:flush
+</code></pre>
+<h1 id="任务事件">任务事件</h1>
+<p>使用队列的 <code>before</code> 和 <code>after</code> 方法，你能指定任务处理前和处理后的回调处理（可以实现额外的日志记录或者增加统计数据）。</p>
+<p>继续修改上面处理“任务失败事件”相关的服务容器 AppServiceProvider</p>
+<pre><code class="language-php"> public function boot()
+    {
+        //任务失败事件
+        //Queue::failing(function (JobFailed $event) {
+        
+        Queue::before(function (JobProcessing $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;job-&gt;payload()
+        });
+
+        Queue::after(function (JobProcessed $event) {
+            // $event-&gt;connectionName
+            // $event-&gt;job
+            // $event-&gt;job-&gt;payload()
+        });
+    }
+</code></pre>
+<p>使用 <code>Queue</code>这个 Facade 的 <code>looping</code>方法，可以尝试在<strong>队列获取任务之前执行指定的回调方法</strong>
+，例如回滚之前已失败任务的事务</p>
+<pre><code class="language-php">Queue::looping(function () {
+    while (DB::transactionLevel() &gt; 0) {
+        DB::rollBack();
+    }
+});
+</code></pre>
+<h1 id="队列监控面板-horizon-使用了异步处理信号需要-php-71">队列监控面板 Horizon （使用了异步处理信号，需要 PHP 7.1+）</h1>
+<p>为 Redis 队列提供了一个可以通过代码进行配置的仪表盘，并且能够轻松监控队列的任务吞吐量、执行时间以及任务失败情况等关键指标。</p>
+<p>队列执行者 的所有 配置项 都存放在一个简单的配置文件中，所以团队可以通过版本控制进行协作维护</p>
+<h2 id="安装发布">安装,发布</h2>
+<pre><code class="language-shell">composer require laravel/horizon
+
+php artisan vendor:publish --provider=&quot;Laravel\Horizon\HorizonServiceProvider&quot;
+</code></pre>
+<h2 id="配置confighorizonphp">配置（config/horizon.php）</h2>
+<p><strong>负载均衡配置</strong></p>
+<p>三种负载均衡策略：simple、auto、 和 false</p>
+<pre><code class="language-php">'balance' =&gt; 'simple',
+</code></pre>
+<ul>
+<li>默认策略是 <code>simple</code>，会将接收到的任务均分给队列进程;</li>
+<li>策略 <code>auto</code> 会根据每个队列的压力自动调整其执行者进程数目;</li>
+</ul>
+<p>例如：有两个队列<code>notifications</code>和<code>render</code>, 其中一个 notifications 队列有 1000 个待执行的任务，但是另外一个 render 队列是空的，Horizon 会<strong>自动分派更多 执行者进程 给其中一个队列 （notifications）</strong>，直到队列任务全部执行完毕（即队列为空）。</p>
+<ul>
+<li><code>false</code>策略，Horizon 的执行策略与 Laravel 默认行为一致，及根据队列在配置文件中配置的顺序处理队列任务</li>
+</ul>
+<h2 id="仪表盘权限验证">仪表盘权限验证</h2>
+<p>路由是 <code>/horizon</code> ，默认只能在 <code>local</code> 环境中访问仪表盘.</p>
+<p>使用 Horizon::auth 函数定义更具体的访问策略, 它接受一个回调函数，此回调函数需要返回 true 或 false ，从而确认当前用户是否有权限访问 Horizon 仪表盘</p>
+<pre><code class="language-php">Horizon::auth(function ($request) {
+    // return true / false;
+});
+</code></pre>
+<h2 id="运行-horizon">运行 Horizon</h2>
+<pre><code class="language-shell">//启动所有已配置的执行者
+php artisan horizon
+
+//暂停队列执行
+php artisan horizon:pause
+
+//恢复队列执行
+php artisan horizon:continue
+
+//停止系统中的 Horizon 主进程, 当前执行中的任务会被正常完成，然后 Horizon 执行结束
+php artisan horizon:terminate
+</code></pre>
+<h2 id="部署-horizon">部署 Horizon</h2>
+<p>生产环境中，我们需要配置一个<strong>进程管理工具</strong>来<strong>监控</strong> <code>php artisan horizon</code> 命令的执行(在其意外退出时自动重启)</p>
+<p>当服务器部署新代码时，需要终止当前 Horizon 主进程(horizon:terminate)，然后通过进程管理工具来<strong>重启</strong>，从而使用最新的代码</p>
+<h3 id="进程管理工具-supervisor">进程管理工具 Supervisor</h3>
+<p>详细的 Supervisor 资料看前面</p>
+<p>配置文件参考</p>
+<pre><code class="language-shell">[program:horizon]
+process_name=%(program_name)
+command=php /home/forge/app.com/artisan horizon
+autostart=true
+autorestart=true
+user=forge
+redirect_stderr=true
+stdout_logfile=/home/forge/app.com/horizon.log
+</code></pre>
+<h3 id="laravel-forge">Laravel Forge</h3>
+<p>如果你不喜欢自己维护服务器，可以考虑使用 Laravel Forge ，Forge 提供了运行一个带有 Horizon 的现代、强大的 Laravel 应用所需的 PHP7+ 以及其他所有环境。</p>
+<p><a href="https://forge.laravel.com/">https://forge.laravel.com/</a></p>
+<h2 id="标签">标签</h2>
+<p><strong>Horizon 会自动给大多数任务打上标签</strong></p>
+<p>Horizon 允许我们给队列任务打上一系列标签（包括 mailables、事件广播、通知以及队列中的时间侦听器）。事实上，Horizon 会智能并且自动根据任务携带的 Eloquent 模型给大多数任务打上标签</p>
+<p>例如下面的任务 (&ldquo;App\Job&rdquo; &mdash;&gt; implements ShouldQuery )</p>
+<pre><code class="language-php">namespace App\Jobs;
+
+use App\Video;
+//... other use
+
+class RenderVideo implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    
+    public $video;
+    
+    public function __construct(Video $video)
+    {
+        $this-&gt;video = $video;
+    }
+</code></pre>
+<p>在放入队列时，携带了 <code>App\Video</code> 实例(<code>__construct()</code>方法的参数 <code>Video $video</code>), 实例的 id 为 1 ，那么这个任务就会接收到一个 <code>App\Video:1</code> 标签（这是因为 Horizon 会检查任务的所有属性是否携带 Eloquent 模型，如果发现携带，Horizon 会给该任务标记上模型的类名和主键）</p>
+<pre><code class="language-php">$video = App\Video::find(1);
+
+App\Jobs\RenderVideo::dispatch($video);
+</code></pre>
+<p><strong>自定义标签</strong></p>
+<p>在任务类中定义 <code>tags</code>函数。 <em>返回数组的第一个元素是?</em></p>
+<pre><code class="language-php">class RenderVideo implements ShouldQueue
+{
+    public function tags()
+    {
+        return ['render', 'video:'.$this-&gt;video-&gt;id];
+    }
+}
+</code></pre>
+<h2 id="通知notifications">通知（notifications）</h2>
+<p>先安装<code>guzzlehttp/guzzle</code>包，另外如果需要使用手机短信通知，请阅读“通知”里的相关内容（Nexmo 通知驱动的依赖条件）</p>
+<p>如果需要在<strong>队列等待时间过长时发起通知</strong>，可以在应用的 AppServiceProvider 中调用 Horizon::routeSlackNotificationsTo 和 Horizon::routeSmsNotificationsTo 函数：</p>
+<pre><code class="language-php">Horizon::routeSlackNotificationsTo('slack-webhook-url');
+
+Horizon::routeSmsNotificationsTo('15556667777');
+</code></pre>
+<p>同时在 <code>config/horizon.php</code> 配置等待时间过长通知的阈值（秒）</p>
+<pre><code class="language-php">'waits' =&gt; [
+    'redis:default' =&gt; 60,
+],
+</code></pre>
+<h2 id="metrics-仪表盘">metrics 仪表盘</h2>
+<p>提供任务和队列等待时间和吞吐量信息</p>
+<p>使用应用的 <code>scheduler</code>计划任务 每五分钟运行一次 Horizon 的 Artisan 命令 snapshot</p>
+<pre><code class="language-php">protected function schedule(Schedule $schedule)
+{
+    $schedule-&gt;command('horizon:snapshot')-&gt;everyFiveMinutes();
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E9%98%9F%E5%88%97%E4%B8%8Ehorizon/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BA%8B%E4%BB%B6/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

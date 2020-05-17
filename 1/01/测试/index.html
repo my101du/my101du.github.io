@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="测试
+permalink: laravel-test tags:
+ laravel  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="测试
+permalink: laravel-test
+tags:
+
+laravel
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="测试
+permalink: laravel-test
+tags:
+
+laravel
+
+">
+
+<meta itemprop="wordCount" content="3936">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="测试
+permalink: laravel-test
+tags:
+
+laravel
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%B5%8B%E8%AF%95/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%B5%8B%E8%AF%95/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3936字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>测试</p>
+<p>permalink: laravel-test
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<h1 id="背景">背景</h1>
+<p><strong>单元测试</strong></p>
+<p><code>单元测试</code>是针对你代码中<strong>相对独立而且非常少的一部分代码</strong>来进行测试
+（想想看，以前开发的时候，改一点代码，刷新一下界面；遇到表单还要重新填写一次内容。。。）</p>
+<p>大多数单元测试可能都是针对某一个方法来进行的</p>
+<p><strong>功能测试</strong></p>
+<p><code>功能测试</code>是针对你<strong>代码中大部分的代码</strong>来进行测试，包括几个对象的相互作用，甚至是一个完整的 HTTP 请求 JSON 实例</p>
+<p><strong>PHPUnit 学习</strong></p>
+<p>了解如何使用</p>
+<h1 id="laraval-测试环境">Laraval 测试环境</h1>
+<p>Laravel 默认就支持用 PHPUnit 来做测试，并为你的应用程序配置好了 <code>phpunit.xml</code> 文件。还有一些 helper functions 也可以直观地测试应用程序</p>
+<p>默认在 tests 目录下包含了两个子目录： <code>Feature</code> 和 <code>Unit</code> （功能测试 &amp; 单元测试），里面分别有<code>ExampleTest.php</code>示例文件。</p>
+<p><strong>运行下面的命令就可以开始测试</strong></p>
+<pre><code class="language-shell">phpunit
+</code></pre>
+<p>在运行测试时，Laravel 会根据 phpunit.xml 文件中设定好的环境变量，<strong>自动将环境变量设置为 testing</strong>，并将 <strong>Session 及缓存以 array 的形式存储</strong>，也就是说在测试时<strong>不会持久化</strong>任何 Session 或缓存数据（持久化保存这些数据必须是 file/redis/mysql 等方式）</p>
+<p>可以修改 phpunit.xml 文件里的配置参数，但在下次运行测试之前，<strong>请确保使用 config:clear Artisan 命令来清除配置信息的缓存</strong></p>
+<h1 id="创建一个测试用例">创建一个测试用例</h1>
+<p>使用<code>make:test</code> 的 artisan 命令</p>
+<pre><code class="language-shell">// 在 Feature 目录下创建一个测试类(默认是功能测试)...
+php artisan make:test UserTest
+
+// 在 Unit 目录下创建一个测试类（指定 --unit 参数是单元测试）...
+php artisan make:test UserTest --unit
+</code></pre>
+<p>编辑<code>tests/Unit/UserTest.php</code>文件</p>
+<pre><code class="language-php">namespace Tests\Unit;
+
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class UserTest extends TestCase
+{
+    public function testExample()
+    {
+        $this-&gt;assertTrue(true);
+    }
+}
+
+</code></pre>
+<h1 id="http-测试">HTTP 测试</h1>
+<p>打开 <code>Feature/ExampleTest.php</code>文件，里面有一个基础的测试用例<code>testBasicTest</code>。get 方法会创建一个 GET 请求来请求你的应用，而 assertStatus <strong>方法断言</strong>返回的响应是指定的 HTTP 状态码。</p>
+<p>除了这个，Laravel 还有检查响应标头、内容、JSON 结构等各种断言</p>
+<pre><code class="language-php">public function testBasicTest()
+    {
+        $response = $this-&gt;get('/');
+
+        $response-&gt;assertStatus(200);
+    }
+</code></pre>
+<h2 id="session--认证">Session / 认证</h2>
+<p><strong>通用的 Session 数据</strong></p>
+<p>在测试一些功能时，需要提前加载一些 Session 数据。（还记得前面说过，所有的测试用例，Session 及缓存以 array 的形式存储，不会持久化存储）</p>
+<pre><code class="language-php">public function testApplication()
+    {
+        $response = $this-&gt;withSession(['foo' =&gt; 'bar'])
+                         -&gt;get('/');
+    }
+</code></pre>
+<p><strong>模拟用户认证</strong></p>
+<p>一般使用 Session 都是用于用户认证的情况，有一个辅助函数<code>actingAs</code>简单地让某个指定用户认证为当前用户。（这里用一个技巧，用<strong>模型工厂</strong>来生成用户）</p>
+<pre><code class="language-php">public function testApplication()
+    {
+        $user = factory(User::class)-&gt;create();
+
+        $response = $this-&gt;actingAs($user)
+                         -&gt;withSession(['foo' =&gt; 'bar'])
+                         -&gt;get('/');
+    }
+</code></pre>
+<p>传递 guard 作为第二参数，指定用户通过哪种 guard 来认证</p>
+<pre><code class="language-php">$this-&gt;actingAs($user, 'api')
+</code></pre>
+<h2 id="testing-json-api">Testing JSON API</h2>
+<p>辅助函数来测试 JSON APIs 及其响应, json，get，post，put，patch 和 delete 方法可以用于发出各种 HTTP 动作的请求。你也可以轻松的传入数据或标头到这些方法上</p>
+<pre><code class="language-php">public function testBasicExample()
+    {
+        $response = $this-&gt;json('POST', '/user', ['name' =&gt; 'Sally']);
+
+        $response
+            -&gt;assertStatus(200)
+            -&gt;assertJson([
+                'created' =&gt; true,
+            ]);
+    }
+</code></pre>
+<p><strong>验证部分匹配</strong></p>
+<blockquote>
+<p>assertJson 方法会将响应转换为数组并且利用 PHPUnit::assertArraySubset 方法来验证传入的数组是否在应用返回的 JSON 中，也就是说，即使有其它的属性存在于该 JSON 响应中，但是只要指定的片段存在，此测试仍然会通过。 （本例子中就是，如果 $response 是 [&lsquo;created'=&gt;true, &lsquo;status'=&gt;1]，测试就通过）</p>
+</blockquote>
+<p><strong>验证完全匹配</strong></p>
+<p>如果上面的 <code>assertJson</code> 改成 <code>assertExactJson</code> 就表示 $response 要完全匹配</p>
+<h2 id="测试文件上传">测试文件上传</h2>
+<p>首先用 Illuminate\Http\UploadedFile 类提供的 fake 方法，<strong>生成</strong>用于测试的模拟<strong>文件或图像</strong>，再结合<strong>Storage facade 的 fake 方法</strong>。</p>
+<pre><code class="language-php">namespace Tests\Feature;
+
+use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class ExampleTest extends TestCase
+{
+    public function testAvatarUpload()
+    {
+        Storage::fake('avatars');
+
+        $response = $this-&gt;json('POST', '/avatar', [
+            'avatar' =&gt; UploadedFile::fake()-&gt;image('avatar.jpg')
+        ]);
+
+        // 断言文件已存储...
+        Storage::disk('avatars')-&gt;assertExists('avatar.jpg');
+
+        // 断言文件不存在...
+        Storage::disk('avatars')-&gt;assertMissing('missing.jpg');
+    }
+}
+</code></pre>
+<p>在生成模拟文件时，对 <code>fake</code>方法创建文件可以传入参数</p>
+<pre><code class="language-php">UploadedFile::fake()-&gt;image('avatar.jpg', $width, $height)-&gt;size(100);
+</code></pre>
+<p>除了<code>image</code>方法创建图片，还可以使用<code>create</code>创建任意类型文件</p>
+<pre><code class="language-php">UploadedFile::fake()-&gt;create('document.pdf', $sizeInKilobytes);
+</code></pre>
+<h2 id="可用的断言方法http-测试">可用的断言方法（HTTP 测试）</h2>
+<p>Laravel 为你的 PHPUnit 测试提供了各种各样的自定义断言方法。json，get，post，put 和 delete 这些测试方法返回的响应都可以使用这些断言方法：</p>
+<pre><code class="language-shell">$response-&gt;assertSuccessful();	断言该响应具有成功的状态码。
+$response-&gt;assertStatus($code);	断言该响应具有指定的状态码。
+$response-&gt;assertRedirect($uri);	断言该响应被重定向至指定的 URI。
+$response-&gt;assertHeader($headerName, $value = null);	断言该响应存在指定的标头。
+$response-&gt;assertCookie($cookieName, $value = null);	断言该响应包含了指定的 Cookie。
+$response-&gt;assertPlainCookie($cookieName, $value = null);	断言该响应包含了指定的 Cookie（未加密）。
+$response-&gt;assertSessionHas($key, $value = null);	断言该 Session 包含指定的数据。
+$response-&gt;assertSessionHasErrors(array $keys, $errorBag = 'default');	断言该 Session 包含指定的字段的错误信息。
+$response-&gt;assertSessionMissing($key);	断言该 Session 不包含指定的键。
+$response-&gt;assertJson(array $data);	断言该响应包含指定的 JSON 数据。
+$response-&gt;assertJsonFragment(array $data);	断言该响应包含指定的 JSON 片段。
+$response-&gt;assertJsonMissing(array $data);	断言该响应不包含指定的 JSON 片段。
+$response-&gt;assertExactJson(array $data);	断言该响应包含完全匹配指定的 JSON 数据。
+$response-&gt;assertJsonStructure(array $structure);	断言该响应存在指定的 JSON 结构。
+$response-&gt;assertViewIs($value);	断言该视图响应的视图名称为指定的值。
+$response-&gt;assertViewHas($key, $value = null);	断言该视图响应存在指定的数据。
+</code></pre>
+<h1 id="浏览器测试与-ci-持续集成">浏览器测试与 CI 持续集成</h1>
+<p>暂略</p>
+<h1 id="数据库测试">数据库测试</h1>
+<h2 id="基本了解">基本了解</h2>
+<p>如果我们想验证 users 数据表中是否存在 email 值为 <a href="mailto:sally@example.com">sally@example.com</a> 的数据
+(<strong>断言数据库中是否存在与指定条件互相匹配的数据</strong>)</p>
+<pre><code class="language-php">$this-&gt;assertDatabaseHas('users', [
+    'email' =&gt; 'sally@example.com'
+]);
+</code></pre>
+<p>相似的 <code>assertDatabaseMissing</code> ,<strong>断言数据不在数据库</strong></p>
+<p><strong>也可以随意使用 PHPUnit 内置的所有断言方法来扩充测试</strong></p>
+<h2 id="每次测试后重置数据库避免干扰后面的测试">每次测试后重置数据库，避免干扰后面的测试</h2>
+<h3 id="使用迁移">使用迁移</h3>
+<p>一种方式就是在每次测试后都还原数据库，并在下次测试前运行迁移。使用<code>DatabaseMigrations</code> trait，它会自动帮你处理好这些操作</p>
+<pre><code class="language-php">class ExampleTest extends TestCase
+{
+    //在测试类中使用`DatabaseMigrations` trait
+    use DatabaseMigrations;
+
+    public function testBasicExample()
+    {
+        $response = $this-&gt;get('/');
+
+    }
+}
+</code></pre>
+<h3 id="使用事务">使用事务</h3>
+<p>使用 <code>DatabaseTransactions</code> trait 来自动帮你处理好这些操作</p>
+<pre><code class="language-php">class ExampleTest extends TestCase
+{
+    use DatabaseTransactions;
+
+    public function testBasicExample()
+    {
+        $response = $this-&gt;get('/');
+
+        // ...
+    }
+}
+</code></pre>
+<p><strong>注意</strong></p>
+<p>此 trait 的事务只包含默认的数据库连接。 如果你的应用程序使用多个数据库连接，你需要在你的测试类中定义一个 <code>$connectionsToTransact</code> 属性，然后你就可以把你测试中需要用到的数据库连接名称以数组的形式放到这个属性中。</p>
+<h2 id="模型工厂">模型工厂</h2>
+<h3 id="创建模型工厂">创建模型工厂</h3>
+<p>常常需要在运行测试之前写入一些测试数据到数据库中，除了手动的来设置每个字段的值，还可以使用 Eloquent 模型 的「工厂」来设置每个属性的<strong>默认值</strong></p>
+<p>模型工厂还能用在 Seeder 里面， 用来大量创建数据。</p>
+<p>先查看下应用程序的 <code>database/factories/UserFactory.php</code> 文件。此文件包含一个现成的模型工厂定义。</p>
+<pre><code class="language-php">$factory-&gt;define(App\User::class, function (Faker $faker) {
+    static $password;
+
+    return [
+        'name' =&gt; $faker-&gt;name,
+        'email' =&gt; $faker-&gt;unique()-&gt;safeEmail,
+        'password' =&gt; $password ?: $password = bcrypt('secret'),
+        'remember_token' =&gt; str_random(10),
+    ];
+});
+</code></pre>
+<p><strong>闭包内为模型工厂的定义</strong>，你可以返回模型中所有属性的默认测试值。在该闭包内会接收到 Faker PHP 函数库的实例（资料 <a href="https://github.com/fzaninotto/Faker">https://github.com/fzaninotto/Faker</a>），它可以让你很方便的生成各种随机数据以进行测试</p>
+<p>例如除了上面的<code>$faker-&gt;name</code>生成姓名等，还有 <code>address</code>， <code>randomElement</code>(数组元素)等等。自己可以查阅</p>
+<p>你也可以自己<strong>为每个数据模型创建对应的模型工厂类</strong>，在 database/factories 目录中的文件都会被 Laravel <strong>自动加载</strong></p>
+<p>运行 artisan 命令来创建一个新的模型工厂</p>
+<pre><code class="language-shell">php artisan make:factory PostFactory
+</code></pre>
+<p>然后修改 <code>define()</code>的第一个参数，改成对应的模型，参考 <code>UserFactory</code>修改内部代码, 例如</p>
+<pre><code class="language-php">use Faker\Generator as Faker;
+
+$factory-&gt;define(App\Entities\Partner::class, function (Faker $faker) {
+    return [
+        'role' =&gt; $faker-&gt;randomElement($array = array ('distributor','representatives')),
+        'group' =&gt; $faker-&gt;randomElement($array = array ('Pulse World','Pulse R')),
+        'aera' =&gt; $faker-&gt;randomElement($array = array ('Asia','Europe', 'North America', 'South America')),
+        'country_or_state' =&gt; $faker-&gt;randomElement($array = array ($faker-&gt;country, $faker-&gt;state)),
+        'organization' =&gt; $faker-&gt;company,
+        'emails' =&gt; $faker-&gt;unique()-&gt;safeEmail,
+        'phones' =&gt; $faker-&gt;phoneNumber,
+        'address' =&gt; $faker-&gt;address,
+        'other' =&gt; $faker-&gt;sentence($nbWords = 6, $variableNbWords = true),
+    ];
+});
+
+</code></pre>
+<h2 id="使用模型工厂">使用模型工厂</h2>
+<h3 id="创建模型">创建模型</h3>
+<p>定义完模型工厂后，就可以通过全局的 <code>factory</code> 函数来生成实例，然后用<code>make</code>方法创建模型（但<strong>不会保存到数据库</strong>）。</p>
+<pre><code class="language-php">$user = factory(App\User::class)-&gt;make();
+
+// 在测试中使用模型...
+</code></pre>
+<p>或者创建一个<strong>集合</strong>，含有<strong>多个模型</strong></p>
+<pre><code class="language-php">$users = factory(App\User::class, 3)-&gt;make();
+</code></pre>
+<p>或者<strong>重写模型属性</strong>（重写模型中某些默认值）</p>
+<p>传递一个包含数值的数组至 make 方法。<strong>只有指定的数值会被替换</strong>，其它剩余的数值则会按照模型工厂指定的默认值来设置</p>
+<pre><code class="language-php">$user = factory(App\User::class)-&gt;make([
+    'name' =&gt; 'Abigail',
+]);
+</code></pre>
+<h3 id="工厂状态">工厂状态</h3>
+<p><code>工厂状态</code>可以让你任意组合你的模型工厂，仅需要做出适当差异化的修改，就可以达到让模型拥有多种不同的状态.</p>
+<p>例如，你的 User 模型中可以修改某个默认属性值来达到标识一种 <code>欠款</code> 的状态。你可以使用 <code>state</code> 方法来进行这种<strong>状态转换</strong>。</p>
+<p>对于简单的工厂状态，你可以直接传入要修改的属性数组. 修改之前的 Factory 类文件</p>
+<pre><code class="language-php">use Faker\Generator as Faker;
+
+$factory-&gt;define(App\Entities\Partner::class, function (Faker $faker) {
+    return [
+        //fields...
+    ]
+}
+
+//在 define factory 的代码后面添加
+$factory-&gt;state(App\User::class, 'delinquent', [
+    'account_status' =&gt; 'delinquent',
+]);
+
+// 另外一个状态 invalid, 通过将字段 status 设置为 0
+$factory-&gt;state(App\Entities\Partner::class, 'invalid', [
+    'status' =&gt; 0,
+]);
+</code></pre>
+<p>如果你的工厂状态需要计算或者需要使用 <code>$faker</code> 实例，你可以使用闭包方法来实现状态属性的修改：</p>
+<pre><code class="language-php">$factory-&gt;state(App\User::class, 'address', function ($faker) {
+    return [
+        'address' =&gt; $faker-&gt;address,
+    ];
+});
+</code></pre>
+<p><strong>实际上就是一个“状态”快捷方法来简化多个表示状态的 field 修改动作</strong></p>
+<p>这样，就可以在创建模型的时候 <strong>应用模型工厂状态</strong>，得到一个或多个具有某个“状态”的模型</p>
+<pre><code class="language-php">//应用状态
+$users = factory(App\User::class, 5)-&gt;states('delinquent')-&gt;make();
+
+//如果你想模型加上多种不同的状态，你只须指定每个你想添加的状态名称即可：
+$users = factory(App\User::class, 5)-&gt;states('premium', 'delinquent')-&gt;make();
+</code></pre>
+<h3 id="持久化模型">持久化模型</h3>
+<p>前面的<code>make</code>方法创建的模型并<strong>不会保存</strong>到数据库。</p>
+<p>使用<code>create</code>方法不仅会创建模型实例，<strong>同时会</strong>使用 Eloquent 的 <code>save</code> 方法来将它们<strong>保存至数据库</strong></p>
+<pre><code class="language-php">// 创建一个 App\User 实例
+$user = factory(App\User::class)-&gt;create();
+
+// 创建 3 个 App\User 实例
+$users = factory(App\User::class, 3)-&gt;create();
+</code></pre>
+<p>还能在持久化模型时，传入数组来重写属性</p>
+<pre><code class="language-php">$user = factory(App\User::class)-&gt;create([
+    'name' =&gt; 'Abigail',
+]);
+</code></pre>
+<h3 id="模型关联这个挺重要的对于模型之间有关联时创建模型工厂要注意">模型关联（这个挺重要的，对于模型之间有关联时，创建模型工厂要注意）</h3>
+<p>除了创建普通的模型，还可以增加<code>关联</code>至我们所创建的模型</p>
+<p>下面的例子中，当使用 <code>create</code> 方法创建<strong>多个模型</strong>时，它会返回一个 Eloquent 集合实例，让你能够使用集合所提供的便利函数。</p>
+<p>像 <code>each()</code>就是集合可以使用的一个函数。</p>
+<p>然后在每次循环中，Eloquent 集合实例中某个元素（<code>$u</code>），其关联的其他模型可以再调用模型方法。例如下面的<code>$u-&gt;posts()-&gt;save()</code>，表示每个测试用户添加一个和它关联的测试 Blog 模型实例（一篇博客）。</p>
+<pre><code class="language-php">$users = factory(App\User::class, 3)
+    -&gt;create()
+    -&gt;each(function ($u) {
+        $u-&gt;posts()-&gt;save(factory(App\Post::class)-&gt;make());
+    });
+</code></pre>
+<p><strong>关联和属性闭包</strong></p>
+<p>使用闭包参数来创建模型关联。</p>
+<p>例如如果你想在创建一个 Post 的顺便创建一个 User 实例</p>
+<pre><code class="language-php">$factory-&gt;define(App\Post::class, function ($faker) {
+    return [
+        'title' =&gt; $faker-&gt;title,
+        'content' =&gt; $faker-&gt;paragraph,
+        'user_id' =&gt; function () {
+            return factory(App\User::class)-&gt;create()-&gt;id;
+        }
+    ];
+});
+</code></pre>
+<p>这些闭包也可以获取到生成的模型工厂包含的属性数组</p>
+<pre><code class="language-php">$factory-&gt;define(App\Post::class, function ($faker) {
+    return [
+        'title' =&gt; $faker-&gt;title,
+        'content' =&gt; $faker-&gt;paragraph,
+        'user_id' =&gt; function () {
+            return factory(App\User::class)-&gt;create()-&gt;id;
+        },
+        'user_type' =&gt; function (array $post) {
+            return App\User::find($post['user_id'])-&gt;type;
+        }
+    ];
+});
+</code></pre>
+<h2 id="可用的断言方法数据库测试">可用的断言方法（数据库测试）</h2>
+<pre><code class="language-shell">$this-&gt;assertDatabaseHas($table, array $data);	断言数据库里含有指定表。
+$this-&gt;assertDatabaseMissing($table, array $data);	断言表里没有指定数据。
+$this-&gt;assertSoftDeleted($table, array $data);	断言指定记录已经被软删除。
+</code></pre>
+<h1 id="测试模拟器如事件邮件队列等">测试模拟器（如事件、邮件、队列等）</h1>
+<ul>
+<li>任务模拟</li>
+<li>事件模拟</li>
+<li>邮件模拟</li>
+<li>通知模拟</li>
+<li>队列模拟</li>
+<li>Storage 模拟</li>
+<li>Facades 模拟</li>
+</ul>
+<h1 id="问题">问题</h1>
+<h2 id="运行测试后所有的表都被删除了天哪-好可怕">运行测试后，所有的表都被删除了（天哪 好可怕。。。）</h2>
+<p><a href="https://stackoverflow.com/questions/48510661/laravel-5-5-testing-with-databasemigrations-deletes-all-tables">https://stackoverflow.com/questions/48510661/laravel-5-5-testing-with-databasemigrations-deletes-all-tables</a></p>
+<p>根据这里的说明，5.5 后有<code>RefreshDatabase</code>替代了之前的DatabaseMigrations and DatabaseTransactions.</p>
+<p>使用这个后，如果使用<code>in-memory</code>数据库，就会运行 <code>php artisan migrate</code>；如果没有使用内存数据库，就会do a <strong>fresh run</strong> of <code>php artisan migrate</code></p>
+<p>因此推荐在测试中使用 in-memory 数据库,修改 phpunit.xml</p>
+<p>添加 DB_CONNECTION 和 DB_DATABASE 两行</p>
+<pre><code class="language-xml">&lt;php&gt;
+    &lt;env name=&quot;APP_ENV&quot; value=&quot;testing&quot;/&gt;
+    &lt;env name=&quot;DB_CONNECTION&quot; value=&quot;sqlite&quot;/&gt;
+    &lt;env name=&quot;DB_DATABASE&quot; value=&quot;:memory:&quot;/&gt;
+    &lt;env name=&quot;CACHE_DRIVER&quot; value=&quot;array&quot;/&gt;
+    &lt;env name=&quot;SESSION_DRIVER&quot; value=&quot;array&quot;/&gt;
+    &lt;env name=&quot;QUEUE_DRIVER&quot; value=&quot;sync&quot;/&gt;
+&lt;/php&gt;
+</code></pre>
+<p>由于在 memory 里运行，phpunit 运行速度也变得更快了</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%B6%88%E6%81%AF%E9%80%9A%E7%9F%A5/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%9F%A5%E8%AF%A2%E6%9E%84%E9%80%A0%E5%99%A8%E4%B8%8E%E5%88%86%E9%A1%B5/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

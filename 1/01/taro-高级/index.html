@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="taro 高级 mobx 小程序与 react-native 共享代码 Taro-ui 不支持 taro-rn 因此 （1）把 taro-ui 组件全删除，全部改成 和 style 的方式（但这样很多组件的外观、事件全部要自己写，例如很基本的 tab" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="taro 高级 mobx 小程序与 react-native 共享代码 Taro-ui 不支持 taro-rn 因此 （1）把 taro-ui 组件全删除，全部改成 和 style 的方式（但这样很多组件的外观、事件全部要自己写，例如很基本的 tab" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/taro-%E9%AB%98%E7%BA%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="taro 高级 mobx 小程序与 react-native 共享代码 Taro-ui 不支持 taro-rn 因此 （1）把 taro-ui 组件全删除，全部改成 和 style 的方式（但这样很多组件的外观、事件全部要自己写，例如很基本的 tab">
+
+<meta itemprop="wordCount" content="2032">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="taro 高级 mobx 小程序与 react-native 共享代码 Taro-ui 不支持 taro-rn 因此 （1）把 taro-ui 组件全删除，全部改成 和 style 的方式（但这样很多组件的外观、事件全部要自己写，例如很基本的 tab"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/taro-%E9%AB%98%E7%BA%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/taro-%E9%AB%98%E7%BA%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2032字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>taro 高级</p>
+<h1 id="mobx">mobx</h1>
+<h1 id="小程序与-react-native-共享代码">小程序与 react-native 共享代码</h1>
+<p>Taro-ui 不支持 taro-rn 因此</p>
+<p>（1）把 taro-ui 组件全删除，全部改成 <!-- raw HTML omitted --> 和 style 的方式（但这样很多组件的外观、事件全部要自己写，例如很基本的 tab、drawer 等）</p>
+<p>（1.1）重写 taro - ui 同名组件， 不从 @taro-ui 引入，暂时自己实现这些组件</p>
+<p>（2）生成 h5 文件, 然后用 cordova 去加载（已尝试，cordova run browser 正常，但在 iOS 模拟器中 <!-- raw HTML omitted --> 不会运行 /lib/dll.js  /js/app.js 代码，显示空白，不知道是不是路由的问题，history-hash 还是什么）</p>
+<p>（3）继续做h5+小程序(继续 wordpress + woocommerce 适配)，等待 taro-ui 兼容 rn</p>
+<p>（4）单独 react native 一份代码，用 rn 的更多第三方组件（比taro-ui 更美观）</p>
+<ol>
+<li>抽出 taro 的业务代码，taro-ui 只负责微信端</li>
+<li>单独添加 RN 的文件夹，使用 RN 自己的 ui 库，共享业务代码</li>
+</ol>
+<h1 id="想法-使用-react--和-rn-同时开发共享一部分代码">想法： 使用 React  和 RN 同时开发，共享一部分代码</h1>
+<p>然后单独将 React 转成小程序
+<a href="https://zhuanlan.zhihu.com/p/41144332">https://zhuanlan.zhihu.com/p/41144332</a>  （anu 也有一些限制，非官方 react 不一定稳定）</p>
+<p>Share code RN and React</p>
+<p><a href="https://medium.com/react-native-training/sharing-code-between-react-web-and-react-native-applications-7f451af26378">https://medium.com/react-native-training/sharing-code-between-react-web-and-react-native-applications-7f451af26378</a></p>
+<p><a href="https://hackernoon.com/share-code-between-react-and-react-native-using-sdk-85c2dab552f8">https://hackernoon.com/share-code-between-react-and-react-native-using-sdk-85c2dab552f8</a></p>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="事件自动执行">事件自动执行</h2>
+<p>我的问题是，给一个按钮绑定了 Taro.navigateTo 跳转页面，结果运行后，一直会自动跳转并卡死浏览器。。。。</p>
+<p><a href="https://github.com/NervJS/taro/issues/395">https://github.com/NervJS/taro/issues/395</a></p>
+<pre><code class="language-js">handleClick(id) {
+</code></pre>
+<p>改用</p>
+<pre><code class="language-js">onClick = (e) =&gt; {}
+</code></pre>
+<p>并且不要在组件里绑定 onClick 的时候写参数</p>
+<pre><code class="language-js">// 错误 会自动跳转产生死循环
+&lt;Button onClick={this.handleClick(item.id)}
+</code></pre>
+<p>看这里，如果要传参数
+<a href="https://nervjs.github.io/taro/docs/event.html">https://nervjs.github.io/taro/docs/event.html</a></p>
+<pre><code class="language-js">&lt;button onClick={this.deleteRow.bind(this, id)}&gt;Delete Row&lt;/button&gt;
+
+
+// 你可以通过 bind 传入多个参数
+  preventPop (name, test, e) {    //事件对象 e 要放在最后
+    e.preventDefault()
+  }
+
+  render () {
+    // 这里 bind 中 this 放在最前面（反的）
+    return &lt;Button onClick={this.preventPop.bind(this, this.state.name, 'test')}&gt;&lt;/Button&gt;
+  }
+</code></pre>
+<h1 id="扩展">扩展</h1>
+<p>优秀案例和第三方库征集</p>
+<p><a href="https://github.com/NervJS/taro/issues/244">https://github.com/NervJS/taro/issues/244</a></p>
+<h2 id="webpack-chain--在-taro-配置里添加-webpack-修改配置">webpack chain  在 taro 配置里添加 webpack 修改配置</h2>
+<p><a href="https://github.com/neutrinojs/webpack-chain">https://github.com/neutrinojs/webpack-chain</a>  ？？</p>
+<h2 id="减少样版代码">减少样版代码</h2>
+<p><a href="https://redux.js.org/recipes/reducingboilerplate">https://redux.js.org/recipes/reducingboilerplate</a></p>
+<h2 id="taro-使用-dvamodel-的概念">Taro 使用 dva，Model 的概念</h2>
+<p><a href="https://github.com/zuoge85/taro-dva">https://github.com/zuoge85/taro-dva</a></p>
+<p>package.json</p>
+<pre><code>&quot;dva-core&quot;: &quot;^1.4.0&quot;,
+    &quot;dva-loading&quot;: &quot;^2.0.5&quot;,
+</code></pre>
+<p>dva.js</p>
+<pre><code class="language-js">import {create} from 'dva-core';
+import {createLogger} from 'redux-logger';
+import createLoading from 'dva-loading';
+let app;
+let store;
+let dispatch;
+
+function createApp(opt) {
+  opt.onAction = [createLogger()];
+  app = create(opt);
+  app.use(createLoading({}));
+
+  if (!global.registered) opt.models.forEach(model =&gt; app.model(model));
+  global.registered = true;
+  app.start();
+
+  store = app._store;
+  app.getStore = () =&gt; store;
+
+  dispatch = store.dispatch;
+
+  app.dispatch = dispatch;
+  return app;
+}
+
+export default {
+  createApp,
+  getDispatch() {
+    return app.dispatch;
+  }
+}
+</code></pre>
+<p>utils/action.js</p>
+<pre><code class="language-js">const action = (type, payload) =&gt; ({type, payload});
+
+export default action
+
+</code></pre>
+<p>util/delay.js</p>
+<pre><code class="language-js">export default function (time) {
+  return new Promise(function(r){
+    setTimeout(r, time)
+  });
+}
+</code></pre>
+<p>util/request.js</p>
+<pre><code class="language-js">import Taro from '@tarojs/taro'
+
+export default function request(opt) {
+  return Taro.request(opt).then((res) =&gt; {
+    let {statusCode, data} = res;
+    if (statusCode &gt;= 200 &amp;&amp; statusCode &lt; 300) {
+      return data;
+    } else {
+      throw new Error(`网络请求错误，状态码${statusCode}`);
+    }
+  })
+}
+</code></pre>
+<p>app.js</p>
+<pre><code class="language-js">import action from './utils/action'
+import dva from './dva'
+import models from './model'
+
+
+
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models,
+  onError(e, dispatch) {
+    dispatch(action(&quot;sys/error&quot;, e));
+  },
+});
+
+const store = dvaApp.getStore();
+
+class App extends Component {
+
+
+    componentDidMount() {
+        dvaApp.dispatch({type: 'sys/test'})
+    }
+      
+    render() {
+        return (&lt;Provider store={store}&gt;
+</code></pre>
+<p>models/index.js</p>
+<pre><code class="language-js">import sys from './sys'
+import feeds from './feeds'
+
+export default [
+  sys,feeds
+]
+</code></pre>
+<p>models/sys.js</p>
+<p><a href="https://github.com/zuoge85/taro-dva/blob/eafefe99df6f86e54619be27b302f2ab6005a1a4/src/model/sys.js">https://github.com/zuoge85/taro-dva/blob/eafefe99df6f86e54619be27b302f2ab6005a1a4/src/model/sys.js</a></p>
+<pre><code class="language-js">export default {
+  namespace: 'sys',
+  state: {},
+  reducers: {
+    save(state, {payload}) {
+      return {...state, ...payload};
+    },
+  },
+  effects: {
+    * error({payload: e}, {all, call, put}) {
+      // debugger;
+      console.error(&quot;error:&quot;, e);
+      // if (e instanceof String) {
+      //   toast(`${e}`);
+      // } else if (e instanceof Error) {
+      //   toast(`${e.message || e}`);
+      // } else if (e &amp;&amp; e.status) {
+      //   let msg = '';
+      //   if (e.status === -1) {
+      //     yield put(action(&quot;account/login&quot;));
+      //   } else {
+      //     if (e.status === 1) {
+      //       const msgMap = e.msgMap;
+      //       Object.keys(msgMap).forEach(key =&gt; {
+      //         msg += msgMap[key];
+      //         msg += '\n';
+      //       });
+      //       if (msg === null || msg.length === 0) {
+      //         msg = e.msg;
+      //       }
+      //     } else {
+      //       msg = e.msg;
+      //     }
+      //     toast(msg);
+      //   }
+      // } else {
+      //   toast(e.msg || e);
+      // }
+    },
+  },
+};
+</code></pre>
+<p>model/feeds.js</p>
+<pre><code class="language-js">import Taro from '@tarojs/taro'
+import action from &quot;../utils/action&quot;;
+import request from &quot;../utils/request&quot;;
+import delay from &quot;../utils/delay&quot;;
+
+export default {
+  namespace: 'feeds',
+  state: {list: []},
+  reducers: {
+    save(state, {payload}) {
+      return {...state, ...payload};
+    },
+    saveMore(state, {payload: list}) {
+      return {...state, list: [...state.list, ...list]};
+    },
+    
+    // 自己写的
+    savePosts(state, {payload}) {
+      const {items, id} = payload;
+      console.log(payload)
+      return {...state, postsByCategories: {...state.postsByCategories, [id]: items}}
+    }
+  },
+  effects: {
+    * search(_, {all, call, put}) {
+      Taro.showLoading({
+        title: '搜索中...',
+      });
+      try {
+        let loadPro = yield put(action(&quot;load&quot;));
+        yield call(() =&gt; loadPro);
+      } finally {
+        Taro.hideLoading();
+      }
+    },
+    * load({payload}, {all, call, put}) {
+      let {data} = yield call(request, {
+        url: 'https://easy-mock.com/mock/5b21d97f6b88957fa8a502f2/example/feed'
+      });
+      yield call(delay, 2000);//增加延迟测试效果
+      yield put(action(&quot;save&quot;, {list: data}))
+    },
+    * loadMore({payload}, {all, call, put}) {
+      let {data} = yield call(request, {
+        url: 'https://easy-mock.com/mock/5b21d97f6b88957fa8a502f2/example/feed'
+      });
+      yield call(delay, 2000);//增加延迟测试效果
+      yield put(action(&quot;saveMore&quot;, data))
+    },
+  },
+};
+</code></pre>
+<h2 id="使用-model-里的数据">使用 model 里的数据</h2>
+<p>首先 app.js 里，调用 createApp 传入参数 models</p>
+<pre><code class="language-js">import models from './model'
+
+const dvaApp = dva.createApp({
+    initialState: {},  //  {}
+    models: models,
+</code></pre>
+<p>在对应的 dva.js (createApp)里使用这些 model 来初始化 app</p>
+<pre><code class="language-js">app.model()
+</code></pre>
+<p>回到 app.js，调用 app 对象的 getStore() 方法得到 stores, 传入根组件 App</p>
+<pre><code>const dvaStore = dvaApp.getStore();
+
+class App extends Component {
+    render () {
+        return (
+            &lt;Provider store={store}&gt;
+</code></pre>
+<p>在子组件里 connect 这些 model</p>
+<p>注意 dispatch 里的第一个参数 action(&ldquo;feeds/load&rdquo;) 里的 feeds 就是 model 里定义的 namespace, load 就是 effect 名</p>
+<pre><code class="language-js">@connect(({feeds, loading}) =&gt; ({
+  ...feeds,
+  isLoad: loading.effects[&quot;feeds/load&quot;],
+  isLoadMore: loading.effects[&quot;feeds/loadMore&quot;],
+}))
+export default class Index extends Component {
+    componentDidMount = () =&gt; {
+        this.props.dispatch(action(&quot;feeds/load&quot;));
+      };
+      
+      
+    // 带参数
+    onClick = (e) =&gt; {
+        this.props.dispatch(action(&quot;feeds/load&quot;), {id: 123});
+    }
+</code></pre>
+<h2 id="dvaumi-与-一个电商案例-与封装-request">dva（umi） 与 一个电商案例 与封装 request</h2>
+<h2 id="actioncreator-和-reducercreator-生成代码">actionCreator 和 reducerCreator 生成代码</h2>
+<p><a href="https://juejin.im/post/5ac1f428f265da23884d3997">https://juejin.im/post/5ac1f428f265da23884d3997</a></p>
+<h2 id="redux-actions-库减少样板代码和-持久化数据">redux-actions 库减少样板代码和 持久化数据</h2>
+<p><a href="https://www.jianshu.com/p/0ed5355a626e">https://www.jianshu.com/p/0ed5355a626e</a></p>
+<p><a href="https://github.com/redux-utilities/redux-actions">https://github.com/redux-utilities/redux-actions</a></p>
+<h2 id="mirrorx-封装-redux-繁琐的-actions-reducers-样板代码">mirrorx 封装 redux 繁琐的 actions reducers 样板代码</h2>
+<h1 id="问题">问题</h1>
+<h2 id="使用-loash-吗">使用 loash 吗？</h2>
+<p><code>_.map</code> 可能会带来一些问题，而且也增大了包的体积，尽量用原生的 JavaScript 方法。例如 <code>map</code> 里同时有 item 和 index</p>
+<pre><code>brands.map((item, index) =&gt;{
+
+})
+</code></pre>
+<h2 id="error-node-sass-does-not-yet-support-your-current-environment">Error: Node Sass does not yet support your current environment</h2>
+<p>在一次 taro update project 后， 再运行 <code>npm run dev:h5</code>，爆出这个错误。</p>
+<p>完整的信息类似</p>
+<p>can not build  .temp/app.scss</p>
+<p>Error: Node Sass does not yet support your current environment： MacOS xxxxxx   (67) please check the node-sass  4.9.x （一个连接地址）</p>
+<p>查了一大堆资料， node重装，手动 <code>node rebuild node-sass</code>等等都不行。</p>
+<p>后来根据提示的那个关键 4.9.x，编辑 node_modules/sass-loader/package.json, 把里面一段</p>
+<pre><code class="language-json">&quot;node-sass&quot;: &quot;^4.5.0&quot;,
+</code></pre>
+<p>改成</p>
+<pre><code class="language-json">&quot;node-sass&quot;: &quot;^4.9.0&quot;,
+</code></pre>
+<p>在这个 sass-loader 目录里面 <code>npm install</code> 等待很久。</p>
+<p>回到项目目录，npm run dev:h5 成功了。</p>
+<p>估计是开发了很久没有去升级 taro update project, 突然升级下，而我的 macos 又升级了大版本从 10.13-&gt;10.14.  node-sass 4.5.x 太旧，无法兼容新的 macOS, 而taro 还没有更新里面那个版本号。。。。</p>
+<p>但是查看 <code>node_moduels/@tarojs/plugin-sass/package.json</code> 里</p>
+<p>只能说不知什么原因 sass-loader 的版本已经到了最新的  7.1.0，但是它 package.json 里使用的 node-sass 4.5.x 没升级。</p>
+<p><a href="https://github.com/webpack-contrib/sass-loader/blob/master/package.json">https://github.com/webpack-contrib/sass-loader/blob/master/package.json</a></p>
+<p>果然。。。</p>
+<h2 id="error-404-response-downloading-httpsrcnpmjsorgnodev1110node-v1110-headers">Error: 404 response downloading <a href="https://r.cnpmjs.org/node/v11.1.0/node-v11.1.0-headers">https://r.cnpmjs.org/node/v11.1.0/node-v11.1.0-headers</a></h2>
+<p>提示 node headers 一直 404 的问题， (不管是改成 node 8 还是 node 10 都是 404)</p>
+<p><img src="/media/15490412159443/15421745240329.jpg" alt="-w624"></p>
+<p>查看 <code>~/.npmrc</code>，咦，奇怪，我明明设置了 npm 去淘宝的源 registry.npm.taobao.org，怎么还是 r.cnpmjs.org ? （虽然淘宝的源也是从后者自动去拉取同步的。。。。）</p>
+<pre><code class="language-shell"># NPM Taobao registry
+registry=https://registry.npm.taobao.org
+</code></pre>
+<p>打开<strong>项目目录</strong>下的 <code>.npmrc</code> 文件, 赫然发现在这里覆盖了系统的参数。。。（r.cnpmjs.org）</p>
+<p>把 .npmrc 里的内容全部改成 npm.taobao.org</p>
+<p>再次运行 npm install，咦，还是报错，那个 node-sass 的问题</p>
+<p>最后在此处找到答案  <a href="https://github.com/NervJS/taro/issues/1034">https://github.com/NervJS/taro/issues/1034</a></p>
+<p>首先注释<strong>项目目录</strong>下 .npmrc 里的内容， 修改 <code>~/.npmrc</code>  添加两行。</p>
+<p>特别注意第二个地址，前面有<strong>cdn.</strong></p>
+<pre><code class="language-shell"># Taobao node binary mirrors
+fse_binary_host_mirror=https://npm.taobao.org/mirrors/fsevents
+sass_binary_site=http://cdn.npm.taobao.org/dist/node-sass
+</code></pre>
+<p>重新<code>npm install</code>,不再报错了，这次用的是一个新的地址  cdn.npm.taobao.org 来下载 node-sass</p>
+<p><img src="/media/15490412159443/15421747069534.jpg" alt="-w709"></p>
+<h1 id="微信登录涉及到小程序-rn">微信登录（涉及到小程序、 RN）</h1>
+<p><a href="https://juejin.im/post/5b97a762e51d450e9649a8fd">https://juejin.im/post/5b97a762e51d450e9649a8fd</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/taro-%E9%AB%98%E7%BA%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/taro-%E9%AB%98%E7%BA%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/taro-%E4%B8%89%E7%AB%AF%E5%BC%80%E5%8F%91/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

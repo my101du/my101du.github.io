@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: macOS基本使用与高效工作 permalink: os-x-skills tags:
+ 工具   一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。 但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。 为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: macOS基本使用与高效工作
+permalink: os-x-skills
+tags:
+
+工具
+
+
+
+一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/macos%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: macOS基本使用与高效工作
+permalink: os-x-skills
+tags:
+
+工具
+
+
+
+一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。">
+
+<meta itemprop="wordCount" content="20326">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: macOS基本使用与高效工作
+permalink: os-x-skills
+tags:
+
+工具
+
+
+
+一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/macos%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/macos%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 20326字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 41分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: macOS基本使用与高效工作
+permalink: os-x-skills
+tags:</p>
+<ul>
+<li>工具</li>
+</ul>
+<hr>
+<p><img src="/article_images/tools/macos_sierra.jpg" alt=""></p>
+<p>一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。</p>
+<p>OS X 的“时间机器”工具，我觉得太占空间，毕竟大部分软件都可以重装，只是配置起来稍微花点时间而已。
+而 OS X 的稳定性，让这种重装系统和应用程序的机会少之又少（我从 10.7 多次升级，直到 10.11 也没有发现什么问题）。
+另外文档和 git 代码库都可以定时复制到外置存储设备；软件的安装程序等不常用的数据，可以通过网盘随时同步。</p>
+<p>总之，为了将来的某一天需要对整个工作环境进行还原，还是详细记录一下吧</p>
+<h1 id="文件处理">文件处理</h1>
+<p>cmd+c 复制
+cmd+v 粘贴，保留原文件
+cmd+option+v 移动，删除原文件
+在粘贴或移动的时候，如果目标目录有同名文件，只需按下option键，”保留两个文件“便会变成”跳过“。这样就不会“替换”，或者把目标目录里的文件变成 xxx(1)</p>
+<h1 id="安装重装降级-os-x">安装/重装/降级 OS X</h1>
+<h2 id="制作系统安装u盘-不能联网">制作系统安装U盘 (不能联网)</h2>
+<p>Mac os官方镜像下载地址:
+1.Mac Sierra os 10.12.6,可Windows下载
+<a href="http://updates-http.cdn-apple.com/2019/cert/061-39476-20191023-48f365f4-0015-4c41-9f44-39d3d2aca067/InstallOS.dmgapp">http://updates-http.cdn-apple.com/2019/cert/061-39476-20191023-48f365f4-0015-4c41-9f44-39d3d2aca067/InstallOS.dmgapp</a> store地址
+2.Mac High Sierra10.13.6，必须App Store下载
+<a href="https://apps.apple.com/cn/app/macos-high-sierra/id1246284741?ls=1&amp;mt=12">https://apps.apple.com/cn/app/macos-high-sierra/id1246284741?ls=1&amp;mt=12</a>
+3.Mac Mojave10.14.6，必须App Store下载
+<a href="https://apps.apple.com/cn/app/macos-mojave/id1398502828?ls=1&amp;mt=12">https://apps.apple.com/cn/app/macos-mojave/id1398502828?ls=1&amp;mt=12</a></p>
+<p>制作 USB 启动盘</p>
+<p><a href="https://support.apple.com/zh-cn/HT201372">https://support.apple.com/zh-cn/HT201372</a></p>
+<p>将你装备好的U盘用Mac的磁盘工具，『抹掉』（格式化）成MacOS扩展（日志式），名称可随便输入，比如我输入disk。
+打开『终端』</p>
+<p>Mac重新启动时，同时按住Command和R键。Mac将进入“恢复模式”。</p>
+<p>在“ OS X Utilities Selector”下单击“ Disk Utility”。点击“继续”继续。</p>
+<p>选择“启动磁盘”，然后单击顶部的“擦除”选项卡。</p>
+<p>此时选择从 U 盘启动：
+点击“苹果”图标，然后从下拉菜单中选择“重新启动”。
+在Mac重新启动时，按住“ Option”键，您将可以选择启动盘。</p>
+<h2 id="从互联网上安装重装最新系统">从互联网上安装/重装最新系统</h2>
+<p>第一步。联网后正常关机</p>
+<p>第二步：恢复系统
+按下Command+R，电脑将自动重新安装你电脑在之前能正常使用的版本（如果10.15能开机，将也会重新安装本版本，所以建议选择下一个解决方案）</p>
+<p>按下Option+Command+R，恢复到目前苹果推送的最新版本</p>
+<p>按下Option+Command+Shift+R，电脑将恢复到电脑原始的出厂系统版本（*注意，如果你的出厂版本低于10.13.1版本，那么请在备份环节把其他分区文件也全部备份，因为10.13.1版本以下不支持APFS格式，可能会重新自动分区。）</p>
+<p>第三步。电脑上会显示恢复进度，自动重启后恢复系统界面。</p>
+<h1 id="设置与调整">设置与调整</h1>
+<h2 id="速度优化可能随着系统升级一些命令失效">速度优化（可能随着系统升级，一些命令失效）</h2>
+<p>关闭切换桌面的动画</p>
+<p>设置-&gt;辅助功能-&gt;显示-&gt;减弱动态效果 (勾选多桌面切换的时候变成渐变效果)</p>
+<p>关闭窗口和对话框弹出的动画特效</p>
+<pre><code class="language-shell">defaults write -g NSAutomaticWindowAnimationEnabled -bool FALSE
+defaults delete -g NSAutomaticWindowAnimationEnabled
+</code></pre>
+<p>关闭/打开文件快速预览的动画</p>
+<pre><code class="language-shell">defaults write com.apple.finder QLPanelAnimationDuration -int 0; killall Finder
+defaults delete com.apple.finder QLPanelAnimationDuration; killall Finder
+</code></pre>
+<p>关闭文件保存和打印对话框的动画效果</p>
+<pre><code class="language-shell">defaults write -g NSWindowResizeTime -float 0.01
+defaults delete -g NSWindowResizeTime
+</code></pre>
+<p>关闭 Dock 新开程序图标跳动动画</p>
+<pre><code class="language-shell">defaults write com.apple.dock launchanim -boolean false; killall Dock
+defaults write com.apple.dock launchanim -boolean true; killall Dock
+</code></pre>
+<p>关闭 Dock 自动隐藏动画</p>
+<pre><code class="language-shell">defaults write com.apple.dock autohide-time-modifier -float 0; killall Dock
+defaults write com.apple.dock autohide-time-modifier -float 0.7; killall Dock
+</code></pre>
+<p>取消鼠标唤起的触发有一个延迟时间设置</p>
+<pre><code class="language-shell">defaults write com.apple.Dock autohide-delay -float 0; killall Dock
+defaults delete com.apple.Dock autohide-delay; killall Dock
+</code></pre>
+<p>关闭 Mission Control 动画</p>
+<pre><code class="language-shell">defaults write com.apple.dock expose-animation-duration -int 0; killall Dock
+defaults delete com.apple.dock expose-animation-duration; killall Dock
+</code></pre>
+<p>关闭 Launchpad 动画</p>
+<pre><code class="language-shell">defaults write com.apple.dock springboard-show-duration -int 0
+defaults write com.apple.dock springboard-hide-duration -int 0;killall Dock
+defaults write com.apple.dock springboard-page-duration -int 0;killall Dock
+
+# 恢复
+defaults delete com.apple.dock springboard-show-duration
+defaults delete com.apple.dock springboard-hide-duration;killall Dock
+defaults delete com.apple.dock springboard-page-duration;killall Dock
+</code></pre>
+<h2 id="在-finder-顶部显示文件完整路径">在 Finder 顶部显示文件完整路径</h2>
+<pre><code class="language-shell">defaults write com.apple.finder _FXShowPosixPathInTitle -bool true; killall Finder
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool false; killall Finder
+</code></pre>
+<h2 id="系统偏好设置">系统偏好设置</h2>
+<p><strong>鼠标、触控板的方向</strong>
+去掉“滚动方向 自然”</p>
+<p><strong>三指取词</strong>
+触控板，look up &amp; data detectors  改成三指（原来是用力按）</p>
+<p><strong>鼠标的跟踪速度</strong>
+调大</p>
+<p><strong>Dock</strong>
+最小化窗口使用“缩放”效果</p>
+<p><strong>安全性与隐私</strong>
+“通用”-“允许从以下位置下载的应用程序”-“任何来源”</p>
+<p><strong>Spotlight</strong>
+“搜索结果”去掉不需要显示的，“隐私”中添加不想被索引的目录</p>
+<p><strong>通知</strong>
+把不想产生提醒和通知的软件，全部去掉（例如 QQ、微信等来消息的横幅提醒）</p>
+<p><strong>键盘</strong></p>
+<p><strong>mission controll</strong>
+关掉自动切换，让多桌面的时候不会把常用桌面自动更改顺序</p>
+<p><strong>语言</strong>
+把系统界面换成默认英文的</p>
+<p><strong>修改无线 &amp; 有线的优先级</strong>
+默认情况是无线优先，有时候插上有线网卡，还是很卡。导致总是要手动关闭 &amp; 启动无线，特别麻烦
+打开网络偏好设置，点击左下角的齿轮，选择“设定服务顺序”，拖动一下保存。</p>
+<p>*<strong>可访问性</strong></p>
+<p>Display , 勾上“减少动效” 和 “减少透明度”</p>
+<h2 id="眼睛总觉得炫目">眼睛总觉得&quot;炫目&rdquo;</h2>
+<p>看久了总觉得眼睛无法聚焦到文本上，虽然是有些散光，但感觉特别奇怪。</p>
+<p>对焦困难，眼睛干涩</p>
+<p>后来<strong>关了字体平滑</strong>。。。（以前好像叫 LCD 什么的，没找到）</p>
+<p><img src="/media/15490412483788/15530505881272.jpg" alt="-w196"></p>
+<p><strong>果然可以了！！</strong> （对比过，是因为开启这个后，字的笔画变粗了，然而retina 的屏幕小 -&gt; 字小，笔画混在一起反而让大脑识别起来这个字产生困难。）</p>
+<p>这里有说明</p>
+<p><a href="https://bbs.feng.com/read-htm-tid-11698148.html">https://bbs.feng.com/read-htm-tid-11698148.html</a></p>
+<p>贴磨砂屏（<strong>有效果</strong>，可能和我座位背后正好有一盏灯照在屏幕上反光导致，没有光线对着屏幕照，眼睛压力小了）</p>
+<p><strong>调成generic rgb色彩</strong> （对比强一些，厚重一些，没那么发白）
+<strong>调低亮度，打开 nightshift</strong></p>
+<p>等</p>
+<h2 id="升级-1014-后字体变细变虚">升级 10.14 后字体变细变虚</h2>
+<p>第1步 设置字体的粗细</p>
+<p>$ 表示之后在命令行输入
+可选择的粗细有：</p>
+<pre><code class="language-shell">#细
+$ defaults -currentHost write -globalDomain AppleFontSmoothing -int 1
+
+#中等(我选择)
+$ defaults -currentHost write -globalDomain AppleFontSmoothing -int 2
+
+#粗
+$ defaults -currentHost write -globalDomain AppleFontSmoothing -int 3
+
+#默认
+$ defaults -currentHost write -globalDomain AppleFontSmoothing -int 0
+</code></pre>
+<p>**第2步 设置 渲染字体平滑禁用=NO(这个很重要， chrome 、代码编辑器等常用软件下面的细字体简直看瞎眼了。。。) **</p>
+<pre><code class="language-shell">$ defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+</code></pre>
+<p>第3步 注销当前-重新登录 或者 重启计算</p>
+<h2 id="外接显示器导致系统卡顿问题">外接显示器导致系统卡顿问题</h2>
+<p>外接了一个 2k 显示器（dp/hdmi），发现系统有明显的“拖泥带水”现象（特别是滚动长页面的时候）</p>
+<p>刷新率从 60hz 改成 50hz 有好转</p>
+<p>如果不需要使用两块显示器，仅仅使用一个外接显示器，可以在设置里，把 banner 栏拖动到外部显示器来，然后把macbook的显示器调黑，这样就不会卡了（是不是 banner 栏在哪里，表示分配资源更多到这个“主”显示器？）</p>
+<p>你看看是不是60hz的输出，你用什么接口接上去的，如果不是dp、mini dp或者hdmi2.0的话，可能是<strong>30hz输出，那画面就很卡</strong>，一动就卡，只能展示一下静态图片</p>
+<p>4k输出之后如果刷新率只能达到30Hz的话，就我感觉而言，影响最大的不是显示效果，而且鼠标的操作感。因为刷新率低，鼠标使用时会出现鼠标飘、鼠标卡顿、不跟手、有延迟的问题，操作的时候很累。解决方案很简单，就是把刷新频率提升到60Hz时，问题就自然而然解决了。</p>
+<p>macbook pro 2015 13寸的显卡是核显，外接一个 1920 x 1080 分辨率的显示器没什么异常感觉，
+但是用<strong>dp1.2</strong>（版本区别）线外接了 4k 显示器之后，界面卡顿多了。</p>
+<p><strong>核显还想无压力带4K，那要独显有什么用</strong> 啊啊啊啊！</p>
+<p>亲测顶配rmbp15(Mid 2014)接dell P2715q，可以实现4k@60Hz，但操作有极轻微卡顿中配rmbp13(Early 2015)接dell p2715q，无法在4k@60Hz工作，只能工作在4k@30Hz或2k@60Hz，4K@30Hz卡顿严重，无法正常使用</p>
+<p>GPU是短板</p>
+<p><strong>只使用外部屏幕有好装， 合盖禁用macbook屏幕</strong></p>
+<p>不合盖也能禁用，使用镜像模式，适应外部显示器，然后调低亮度
+<a href="https://www.zhihu.com/question/22993457">https://www.zhihu.com/question/22993457</a></p>
+<p>把那个菜单条拖动到外部显示器顶部，内置的调低亮度即可</p>
+<p><a href="https://www.v2ex.com/t/508884">https://www.v2ex.com/t/508884</a>  mac 外接显示器还是得一步到位上 4k</p>
+<p>Dell 显示器残影。
+通过设置显示器里面的相应速度解决，因为显示器的刷新率大部分默认60Hz，所以如果响应速度设置快的话，显示器是跟不上的，就会出现残影，降低相应速度即可（测试没什么改善，本来就是 normal）</p>
+<h2 id="扩展">扩展</h2>
+<p>鼠标右键点击某个文件，其中有个“share&rdquo; 可以让你发送文件到蓝牙、邮件等</p>
+<p>如果希望能增加第三方应用的支持（例如发送到微信）。</p>
+<p><img src="/media/15490412483788/15342246543522.jpg" alt=""></p>
+<p><img src="/media/15490412483788/15342246358533.jpg" alt=""></p>
+<h2 id="侧边通知栏的-today-视图">侧边通知栏的 today 视图</h2>
+<p><img src="/media/15490412483788/15342247500520.jpg" alt=""></p>
+<h2 id="switchresx">SwitchResX</h2>
+<p>在 Custome Resolution 里添加自定义 scale 例如 3200 x 1800 后不能选择的问题。</p>
+<h2 id="解决-打一个字母出现一大堆字符的问题">解决 打一个字母，出现一大堆字符的问题</h2>
+<p>有一次访问了一个网站，不小心按了什么键， 导致后来一输入 1 就自动弹出一大堆文本（此时系统界面还有个小标签，里面显示文本内容），非常影响工作</p>
+<p>一直不知道怎么回事，卸载输入法，杀毒也不行。</p>
+<p>原来进入 系统设置-》键盘-》文本，这里保存了所有的&quot;快速输入&rdquo;。。。</p>
+<h1 id="一个开发人员必须要做的">一个开发人员必须要做的</h1>
+<h2 id="安装-brew--brew-cast">安装 Brew &amp; Brew Cast</h2>
+<p>Brew 是 Mac 下面的包管理工具，使用 OS X 自带的 ruby 来安装。</p>
+<pre><code class="language-shell"># 安装 homebrew
+$ /usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+$ ruby doctor # 执行自检
+
+# 常用命令，这里对软件的安装、卸载等操作以 php5 为例
+$ brew update                        #更新brew可安装包，建议每次执行一下
+$ brew search php55                  #搜索php5.5
+$ brew tap josegonzalez/php          #安装扩展&lt;gihhub_user/repo&gt;   
+$ brew tap                           #查看安装的扩展列表
+$ brew install php55                 #安装php5.5
+$ brew remove  php55                 #卸载php5.5
+$ brew upgrade php55                 #升级php5.5
+$ brew options php55                 #查看php5.5安装选项
+$ brew info    php55                 #查看php5.5相关信息
+$ brew home    php55                 #访问php5.5官方网站
+$ brew cleanup 					#如果进行过多次软件升级，要清空 /usr/local/Cellar 里面软件的旧版本，用
+
+# 下面的命令可能会被移除，不要使用了
+$ brew services list                 #查看系统通过 brew 安装的服务
+$ brew services cleanup              #清除已卸载无用的启动配置文件
+$ brew services restart php55        #重启php-fpm
+</code></pre>
+<p><strong>Brew Cast 与 Brew</strong></p>
+<p><code>brew</code> 是下载源码解压，然后 <code>./configure &amp;&amp; make install</code> ，同时会包含相关依存库。并自动配置好各种环境变量，而且易于卸载。能快速安装和升级本地的各种开发环境。例如 <code>curl</code>
+—— 一般安装开发工具，如 node php 等</p>
+<p>而 <code>brew cask</code> 是 已经编译好了的应用包 （.dmg/.pkg），仅仅是下载解压，放在统一的目录中（/opt/homebrew-cask/Caskroom），省略了自己去下载、解压、安装等步骤，包含很多在 AppStore 里没有的常用软件，并且更新速度很快。
+——一般安装应用程序， 如chrome  item2 等</p>
+<pre><code class="language-shell"># 安装 brew-cask 
+$ brew tap phinze/homebrew-cask &amp;&amp; brew install brew-cask 
+
+# 常用命令
+$ brew cask search        #列出所有可以被安装的软件
+$ brew cask search php    #查找所有和php相关的应用
+$ brew cask list          #列出所有通过cask安装的软件
+$ brew cask info phpstorm #查看 phpstorm 的信息
+$ brew cask uninstall qq  #卸载 QQ
+</code></pre>
+<h2 id="安装开发包">安装开发包</h2>
+<pre><code class="language-shell">$ brew install wget watch tmux cmake openssl imagemagick graphicsmagick gearman geoip readline autoconf multitail source-highlight autojump zsh-completions sshfs
+</code></pre>
+<h2 id="安装-zsh-与-oh-my-zshz-等增强命令行">安装 Zsh 与 oh-my-zsh、z 等增强命令行</h2>
+<pre><code class="language-shell"># 安装最新的 zsh，查看一下版本
+$ brew install zsh zsh-completions
+$ zsh --version
+
+# 安装 oh-my-zsh
+$ curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
+# 设置默认shell 为 zsh（使用 `cat /etc/shells`命令可以看到系统支持的 shell 列表）
+$ chsh -s /bin/zsh
+</code></pre>
+<h2 id="开发人员必备实用工具">开发人员必备实用工具</h2>
+<p>详细内容请阅读我们的 《OS X上那些神奇的工具和软件》中的“开发人员工具箱”部分</p>
+<p><a href="http://www.itjiaoshou.com/os-x-amazing-tools">OS X上那些神奇的工具和软件</a></p>
+<h2 id="使用-sshpass-远程-ssh-连接服务器从文件读取并记住密码">使用 sshpass, 远程 ssh 连接服务器，从文件读取并记住密码</h2>
+<p>linux 下可以直接安装 apt-get sshpass 。</p>
+<p>mac 下也可以 brew 安装（一个地址，而不是官方名称）</p>
+<pre><code class="language-shell">brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
+</code></pre>
+<p>因为把密码写入到一个文件中，也会有文件泄露的问题，改用 <strong>Termius</strong> 工具了。  密码信息保存到加密的 evernote 里了。(这个工具不能同时显示几个窗口。。。。放弃了)</p>
+<p>加密保存密码文件吧。。。</p>
+<h1 id="键盘流">键盘流</h1>
+<h2 id="alfred">alfred</h2>
+<p>如果屏蔽一些 application、文档 不出现在列表中？（例如我不想一些 app 影响快速启动）</p>
+<ol>
+<li>打开系统设置的 spotlight 设置</li>
+<li>打开隐私，然后<strong>拖动</strong>某些app或者folder进去（因为直接点 + 号，只能添加文件夹不能添加 app）</li>
+<li>启动 alfred，输入 reload 更新 alfred 的缓存</li>
+<li>已经排除了</li>
+</ol>
+<h2 id="flashlight">flashlight</h2>
+<p>无法运行了，破解方法太复杂
+<a href="https://www.ptt.cc/bbs/MAC/M.1440244623.A.228.html">https://www.ptt.cc/bbs/MAC/M.1440244623.A.228.html</a></p>
+<h2 id="spotlight-的词典查询结果排第一">SpotLight 的词典查询结果排第一</h2>
+<p>测试无效，可能新版关闭了</p>
+<p>For your convenience, I copy the steps here:</p>
+<p>Edit ~/Library/Preferences/com.apple.spotlight.plist (You may need to install Xcode, because this is a binary plist, or you can download a modified file in the post above)
+Within orderedItems node, add a Dictionary item, key-values is:enabled: YES (boolean), name: “MENU_DEFINITION” (string)
+Save the plist file
+Open System Preferences -&gt; Spotlight, you will find a blank entry, this is what we had added above. You can drag it like other entries to change the order as you like
+You are done!</p>
+<h2 id="触摸板">触摸板</h2>
+<p>在系统设置中修改触摸板，三指拖动等</p>
+<p>在触摸板右侧边缘两指左拖，可以打开“通知中心”</p>
+<h1 id="技巧">技巧</h1>
+<h2 id="让-preview预览-等系统应用支持多标签打开">让 Preview(预览) 等系统应用支持多标签打开</h2>
+<p>打开<strong>系统偏好设置</strong>，进入 Dock 设置，设置 prefer tabs when opening new document 为 <code>always</code></p>
+<h2 id="将扫描版-pdf-的对比度提高">将扫描版 pdf 的对比度提高</h2>
+<p>使用 preview</p>
+<p>Increase the Contrast of a PDF to Sharpen &amp; Darken Text
+Open the PDF file with Preview.
+From the &lsquo;File&rsquo; menu, choose “Export”
+Click on the “Quartz Filter” drop-down menu and choose “Lightness Decrease”
+Choose “Save”
+Oct 24, 2011
+Increase the Contrast of a PDF to Sharpen &amp; Darken Text - OSXDaily</p>
+<h2 id="解压与压缩">解压与压缩</h2>
+<p><strong>使用系统自带的压缩功能</strong></p>
+<p>右键点击文件夹，选择“压缩 xxx”。</p>
+<p><strong>常见问题1：解压含有中文文件名的压缩文件，文件名变成乱码</strong></p>
+<p>使用 <code>the unarchive</code> 可以确保解压后中文不会变成乱码</p>
+<p><strong>常见问题2：在 OS X 里压缩文件夹后，在 Windows 系统解压出现乱码</strong></p>
+<p>使用 <code>keka</code> 进行压缩</p>
+<p><strong>如何像 Windows 里的 WinRAR 一样，先预览压缩包文件列表结构，而不是直接解压</strong></p>
+<p>购买 <code>BetterZip</code>安装后，在压缩文件上点击空格键就可以看到压缩包的文件结构。
+但是这个软件价格不菲，我们可以只安装一个插件。</p>
+<p>下载 <code>BetterZip Quick Look Generator</code>插件，解压后将 <code>BetterZipQL.qlgenerator</code> 复制到 <code>/Library/QuickLook</code> 文件夹中，如果你想让客人用户和你 Mac 上的其他用户也可以直接用上插件，可以将文件复制到 <code>~/Library/QuickLook</code> 文件夹中。</p>
+<p>然后重启 <code>Finder</code>。</p>
+<p><strong>使用 <code>tar -zcvf</code> 命令压缩文件夹，排除里面某个子文件夹的问题</strong></p>
+<p>由于这个命令的参数排列顺序和 Linux 下有点不一样，如果写错了是无法将某个子文件夹排除在外的，主要是 <code>--exclude</code> 参数要放在最前面，如下</p>
+<pre><code class="language-shell">$ tar --exclude=folder/ex1 --exclude=folder/ex2 -zcvf folder.tar.gz folder
+</code></pre>
+<h2 id="自带的视频文件压缩转码">自带的视频文件压缩转码</h2>
+<p>选中某个视频文件，右键-服务-编码所选视频文件。</p>
+<p>或者使用一些功能更强大的视频处理软件</p>
+<ul>
+<li><a href="https://www.apple.com/final-cut-pro/compressor/">https://www.apple.com/final-cut-pro/compressor/</a></li>
+<li>compressor4</li>
+<li>finalcut pro</li>
+</ul>
+<h2 id="视频提取音频">视频提取音频</h2>
+<p><a href="https://sspai.com/post/34250">https://sspai.com/post/34250</a></p>
+<ol>
+<li>
+<p>可以打开 quicktime 单独导出</p>
+</li>
+<li>
+<p>也可以右键  服务 导出音频（Audio Only）</p>
+</li>
+<li>
+<p>但是据说上面导出的声音体积太大，用 ffmpeg 来导出</p>
+</li>
+</ol>
+<pre><code class="language-shell">ffmpeg -i video-filename -vn -ar 44100 -ac 2 -ab 192 -f mp3 sound.mp3
+</code></pre>
+<ol>
+<li>free mp4 converter</li>
+</ol>
+<p><img src="/media/15490412483788/15540813151733.jpg" alt="-w278"></p>
+<ol start="2">
+<li>windows 虚拟机 格式工厂</li>
+</ol>
+<h2 id="视频分割">视频分割</h2>
+<h3 id="方法1-使用-premiere-或-handbrake-的队列方式">方法1 使用 Premiere 或 HandBrake 的“队列”方式</h3>
+<p>I solved this by using <strong>Handbrake</strong>.</p>
+<p>Select the movie as the source file.
+Near the upper right of the Handbrake window, there&rsquo;s an option to select a range of chapters. Tell it to go from 1 to 1.
+Name the destination file 1.mp4, so that it can be distinguished from the other files that are soon to be created.
+Start the encoding.
+Repeat this process for every chapter of the movie, clicking Add to Queue so that the files will be lined up to be created immediately after 1 is finished.
+Sure enough, now I&rsquo;ve got 18 movie files that together make up an entire film!</p>
+<p>To my knowledge, no one has asked this question online before, so I figured I&rsquo;d share my answer with the world. Hope it helps someone!</p>
+<h3 id="方法2-使用-movavi-split-movie-软件手动分段导出">方法2 使用 Movavi split Movie 软件手动分段导出</h3>
+<p><a href="https://www.movavi.com/splitmoviemac/">https://www.movavi.com/splitmoviemac/</a></p>
+<p>不会再次转码，而是直接分段，速度非常快。</p>
+<p>但是这个软件的时间轴有点问题，分段后每个视频的前面会多处半秒左右，需要第一次导出后，预览一下，调整时间线再次导出。</p>
+<h3 id="方法3-录屏的时候就添加-chapter-maker然后用支持按章节分割的软件来导出">方法3 录屏的时候就添加 chapter maker，然后用支持按章节分割的软件来导出</h3>
+<p>例如 screenflow 添加标记，然后在导出的时候勾上“从标记添加章节”</p>
+<p>有一些收费软件如 iDealShare VideoGo ，SimpleMovieX 等
+有的只支持 DVD</p>
+<p><a href="http://www.bigasoft.com/downloads-mac.html">http://www.bigasoft.com/downloads-mac.html</a> 和那个 xilisoftware 的销售模式很像（拆开卖）。。。上面的那个 iDealShare VideoGo 长得和它简直一模一样……
+导入视频后，右键点击 split by chapter</p>
+<h3 id="方法4--命令行">方法4  命令行</h3>
+<p><a href="http://www.emmgunn.com/mkvtools-home/mkvtools-user-guide/">http://www.emmgunn.com/mkvtools-home/mkvtools-user-guide/</a>
+<a href="https://mkvtoolnix.download/doc/mkvmerge.html">https://mkvtoolnix.download/doc/mkvmerge.html</a></p>
+<pre><code class="language-shell">#you can use HandbrakeCLI, as originally mentioned in this post, this example extracts chapter 3 to 3.mkv
+$ HandBrakeCLI -c 3 -i originalfile.mkv -o 3.mkv
+
+# or another tool is mentioned in this post
+$ mkvmerge -o output.mkv --split chapters:all input.mkv
+</code></pre>
+<h2 id="自带的批量图片压缩">自带的批量图片压缩</h2>
+<p>选中所有图片，右键，选择“Open With……”，用“预览”软件打开。</p>
+<p>然后点击界面中的左侧（缩略图列表）空白处，Cmd + A 选中所有的，点击菜单中的 Tools - Adjust Size(调整大小)。</p>
+<p>设置图片将被压缩后的尺寸，点“OK”</p>
+<p><strong>注意</strong></p>
+<ol>
+<li>这个操作会覆盖原来的图片！！！操作要谨慎。</li>
+<li>点击 OK 后，如果你的图片数量很多，这个过程会很慢，不要强制退出，等待一段时间让它自己完成即可，你会看到图片列表中，每个图片都会先产生一个临时文件，然后替换原来的文件</li>
+</ol>
+<h2 id="os-x-的日历-同步-google-账号的日历">OS X 的“日历” 同步 google 账号的日历</h2>
+<p>使用 Google 给出的 CalDAV 设置方法，其中问题的关键是：
+在服务器地址中，要输入 <code>https://www.google.com/calendar/dav/你的帐号名称@gmail.com/user</code>，然后点击下一步。</p>
+<p>注意，是<code>user</code>而不是官方给出的<code>events</code>。</p>
+<p>到此问题解决，现在可以连上了！</p>
+<h2 id="在-android-和-mac--ios-之间跨平台同步-qq-日历">在 Android 和 Mac &amp; iOS 之间跨平台同步 QQ 日历</h2>
+<ol>
+<li>QQ邮箱开启 CalDAV</li>
+<li>生成“授权码”用来做第三方客户端的“密码”</li>
+<li>在Mac 里添加账号的时候，如果只需要同步日历，选择账号类型为“更多”里的<code>CalDAV</code></li>
+</ol>
+<p><img src="/media/14882481037230.jpg" alt=""></p>
+<h2 id="自带的词典软件随处翻译以及添加更多的词库">自带的词典软件“随处翻译”，以及添加更多的词库</h2>
+<p>自带的词典非常好用，并且和系统紧密结合，在任何地方如果遇到一个单词不认识，用三个手指同时点击单词就会自动弹出一个翻译窗口。</p>
+<p>不过默认的词典无法满足需求，需要自己下载词典扩展词库：</p>
+<ol>
+<li>到网上搜索自己需要的词库</li>
+<li>下载解压，放到 <code>/Library/Dictionaries</code> 下</li>
+<li>点开词典偏好设置，勾选上刚放进去的词典</li>
+</ol>
+<p>一般情况下添加两本牛津词典（英汉，汉英）基本够用了，下载地址：</p>
+<p><a href="">OSX 第三方词典-牛津英汉汉英</a></p>
+<h2 id="清除本地-dns-缓存">清除本地 DNS 缓存</h2>
+<p>OS X 12 (Sierra) and later
+macbook$ sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache
+OS X 11 (El Capitan) and OS X 12 (Sierra)
+macbook$ sudo killall -HUP mDNSResponder
+OS X 10.10 (Yosemite)
+Versions 10.10.4+
+macbook$ sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder
+Versions 10.10.1, 10.10.2, 10.10.3
+macbook$ sudo discoveryutil udnsflushcaches</p>
+<h2 id="使用-automator-定义全局快捷键打开常用软件">使用 Automator ，定义全局快捷键打开常用软件</h2>
+<p><strong>OSX 上不方便的应用切换方式</strong></p>
+<p>Windows 有个很不错的优点，很多软件在放入“右下角通知区域”后，是不会在底部任务栏中出现的，我们可以把一些不常用的软件统统扔到通知区域里面去（像音乐播放、截屏工具、QQ、360等），在按 alt+tab 键切换时，这些不常用的并不会出现在预览列表里，由于项目不多，很容易就能找到需要打开的软件。</p>
+<p>这个问题在 OSX 下就成了噩梦，由于很多软件都喜欢同时在 Docker 栏和菜单栏出现。工作时如果打开了多个软件，在它们之间用 Cmd+Tab 切换的时候就会面对一个非常花哨的很长的列表（像什么 QQ 啊、网易音乐、日历，其实完全可以不需要出现的）</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_0_app_list.jpg" alt=""></p>
+<p>除了 Cmd+Tab 快捷键切换，直接在 Docker 栏点选应用也有同样的问题，要花那么一点点时间去找。</p>
+<p>还有一些人使用 Alfred 或者是 Spotlight 快速搜索，通过输入应用的关键字来打开，省去了查找的工夫。但是这样也略显繁琐，并且可能有时候应用和文件名会有重复的需要再次选择。</p>
+<p>如果我们能直接给某个应用绑定一个快捷键来打开，那真的是太方便了！例如按 Cmd+Shift+1 就打开 Chrome，按 Cmd+Shift+2 打开 iTerm2……</p>
+<p>其实结合 Automator 和系统的快捷键设置就完全可以办到。</p>
+<p><strong>我们以按 Cmd+Shift+1 就打开 Chrome为例</strong></p>
+<ol>
+<li>
+<p>打开“应用程序”——“AutoMator”（图标就是一个抱着水管的机器人……）</p>
+</li>
+<li>
+<p>选取文稿类型为“服务”，点击“选取”按钮进入主界面 (10.14 改名叫 action 了好像，齿轮图标)</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_1.png" alt=""></p>
+</li>
+<li>
+<p>选中“资源库”——“实用工具”——“开启应用程序”，把它拖入右边；然后修改上面的“服务收到”改为“没有输入”；把刚刚自动创建的一个任务里下拉框中的应用程序改为你需要快速打开的应用（此例为 Google Chrome）。</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_2.png" alt=""></p>
+</li>
+<li>
+<p>在菜单中点“文件”——“存储”，取一个名称， 这里我取名为“快速打开 Chrome”，关闭 AutoMator。</p>
+</li>
+<li>
+<p>打开“系统偏好设置”——“键盘”，切换到“快捷键”，然后在左边的列表里选中“服务”，右边有很多的快捷键设置选项，我们慢慢找，会发现刚刚用 Automator 创建的那个条目。双击修改快捷键即可。</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_3.png" alt=""></p>
+</li>
+</ol>
+<p>按上面的步骤分别为最常用的几个应用设置全局快捷键，测试一下，是不是很方便啊~</p>
+<p><strong>如何为“Finder”设置快捷键呢？</strong></p>
+<p>如果想为“打开 Finder ”操作也设置一个快捷键，会发现一个问题：</p>
+<blockquote>
+<p>在上面第 3 步里，下拉框中的应用程序列表中，没有“Finder”</p>
+</blockquote>
+<p>可能因为 OSX 为了操作系统的安全，没有把它放入这个列表，那我们只好换一种方法去定位到 Finder 的真实路径了。</p>
+<ol>
+<li>
+<p>在应用程序下拉列表中，直接拉到最底部，找到“新建变量”</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_4_new_var.png" alt=""></p>
+</li>
+<li>
+<p>点“其他”</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_5_new_var_info.png" alt=""></p>
+</li>
+<li>
+<p>然后在打开的窗口中，首先在顶上的下拉列表里找到你的 Mac（可以认为是系统最顶级的路径），然后依次打开 “磁盘名（例如我的是Macintosh HD）”——“系统”——“资源库”——“CoreServices”，选取 Finder.app 即可。</p>
+<p><img src="/article_images/tools/mac-os-x-install-config-use-skills/fast_open_app_automator_6_new_var_path.png" alt=""></p>
+</li>
+</ol>
+<p>后面的操作还是一样，进入系统偏好设置，为它定义一个快捷键就可以了。</p>
+<p><strong>如果要编辑或删除这个 Automator</strong></p>
+<p>进入系统偏好设置，键盘，快捷键，选中服务，右键点击这个条目，在 Finder 中查看，然后就可以编辑或删除了。</p>
+<p>或者直接进入 Finder 后，Cmd+Shift+G，进入目录 <code>/Users/xxx/Library/Services</code>，就能找到所有服务了</p>
+<h2 id="应用多开">应用多开</h2>
+<pre><code class="language-shell">open -n /Applications/iTerm.app
+
+# 如果应用名中间有空格，要先把 app 改名，去掉空格，或者用转义
+open -n /Applications/Sublime\ Text.app
+</code></pre>
+<p>现在可以看到有两个应用了</p>
+<p><img src="/media/15490412483788/15476262142007.jpg" alt="-w110"></p>
+<p>如果想让两个应用 名称不同， 就复制一份</p>
+<p>例如我把 sublime 复制成 editor</p>
+<p>一个专门做 PHP 项目  另一个专门做 JS 项目</p>
+<h2 id="修改应用图标">修改应用图标</h2>
+<p>右键单击该应用程序并选择「显示简介」</p>
+<p>在应用程序信息面板的左上角，你可以看到应用程序的图标。现在将新的应用程序图标文件拖拽拖过来，然后释放鼠标按键即可。你还会看到一个更换动画。 （或者用复制粘贴。）</p>
+<p>打开「终端」应用程序，然后键入<code>killall Dock</code>，然后按下「Enter」键确认即可。</p>
+<p>如果要恢复到原来的， 像前面一样的步骤打开显示简介，按下「Delete」键。该应用程序的图标就会即刻恢复到原来的样子</p>
+<p>直接拖动 png 或 jpeg 会显示一个图片的预览图</p>
+<p>要使用<strong>icns</strong>格式</p>
+<p>Click on Show Package Contents
+Go to Contents &gt; Resources
+Check for icon file in the info.plist file located in Contents folder.
+Replace the icon file (icns) file with the desired icns file.</p>
+<h2 id="从文件夹创建-iso">从文件夹创建 ISO</h2>
+<pre><code class="language-shell">hdiutil makehybrid -o temp.iso foldertoadd
+</code></pre>
+<h1 id="系统服务配置">系统服务配置</h1>
+<h2 id="ssh登录mac远程登录功能">ssh登录mac（远程登录功能）</h2>
+<p>进入系统设置，共享，勾上远程登录。</p>
+<p>然后即可在putty或其他ssh工具上用
+ssh username@ip 来登录mac了。</p>
+<p><strong>中文显示乱码的处理</strong></p>
+<p>在Mac OS X命令行下输入set,输出中LANG=zh_CN.UTF-8。但是当使用putty或SecureCRT以 SSH方式操作时，中文会显示为？。
+解决方法：登录后，输入以下命令即可
+LANG=zh_CN.UTF-8
+export LANG</p>
+<h2 id="开启屏幕共享并通过vnc客户端远程桌面">开启屏幕共享，并通过VNC客户端远程桌面</h2>
+<h2 id="文件共享让windows可以访问共享文件夹">文件共享，让windows可以访问共享文件夹</h2>
+<h2 id="ftp服务">ftp服务</h2>
+<p>因为我是用adsl拨号方式，无法使用sftp的22端口（猜测电信封锁了低端口），还是只能求助于使用传统的ftp服务器</p>
+<p>启用隐藏的ftp服务，启用与关闭（貌似无效）
+sudo -s launchctl load -w /System/Library/LaunchDaemons/ftp.plist
+sudo -s launchctl unload -w /System/Library/LaunchDaemons/ftp.plist</p>
+<h1 id="安装开发环境">安装开发环境</h1>
+<h2 id="必备-xcode-command-line">必备 Xcode Command Line</h2>
+<p>登录苹果开发者中心后，在下面的地址搜索 <code>Command Line </code> 下载最新的版本</p>
+<p><a href="https://developer.apple.com/downloads/">Downloads for Apple Developers</a></p>
+<h2 id="node与一些前端开发工具">node与一些前端开发工具</h2>
+<p>虽然可以通过 <code>brew install node</code> 来安装 <code>node</code>，但是之前发现过一个问题，就是 <code>npm</code> 没有随之生效，所以还是直接下载 pkg 文件安装。</p>
+<p><a href="https://nodejs.org/en/">下载地址</a></p>
+<h2 id="android-sdk">Android SDK</h2>
+<p>使用 Android SDK Tools 工具来更新最新的 SDK 和相关安卓应用开发工具。注意修改下环境变量，添加如下的路径(这里假定把 android_sdk 目录放在“文稿”目录下)，以便各个开发工具可以识别到里面的一些二进制命令文件。</p>
+<p><a href="http://developer.android.com/tools/sdk/tools-notes.html">android sdk tools 下载地址:要先翻墙</a></p>
+<pre><code class="language-shell">ANDROID_HOME=/Users/zzy/Documents/android_sdk/
+ANDROID_TOOLS_HOME=/Users/zzy/Documents/android_sdk/tools/
+export PATH=$ANDROID_HOME:$ANDROID_TOOLS_HOME:$PHP_HOME:$NGINX_HOME:$MYSQL_H    OME:$PATH
+</code></pre>
+<h2 id="连接-android-真机进行开发">连接 Android 真机进行开发</h2>
+<p>在Mac下，可能会遇到adb无法连接android手机的情况，可以按如下操作步骤解决。</p>
+<p><strong>获取Android设备的Vendor ID</strong></p>
+<pre><code class="language-shell">$ system_profiler SPUSBDataType
+</code></pre>
+<p>例如 ”0x2a45”，就是所需要的Vender ID</p>
+<p>修改adb_usb.ini文件，添加你的Vender ID，每行一个</p>
+<pre><code class="language-shell">vim ~/.android/adb_usb.ini
+</code></pre>
+<p>重启adb</p>
+<pre><code class="language-shell">$ adb kill-server
+$ adb start-server
+$ adb devices
+</code></pre>
+<h1 id="os-x-系统下安装-phpmysqlnginx">OS X 系统下安装 PHP+MySQL+Nginx</h1>
+<h2 id="os-x-下的一键安装包">OS X 下的一键安装包</h2>
+<p>OS X 下比较知名的一键包主要有两个 <code>MAMP</code>和前面提到的多平台<code>XAMPP</code>。MAMP 的专业版是要收费的，而且安装包体积很大，我觉得开发者用免费的 XAMPP 就好了，不过你也可以尝试一下 MAMP，毕竟能收费一定有它的道理吧。</p>
+<ul>
+<li><a href="https://www.mamp.info/en/">MAMP下载地址</a></li>
+<li>XAMPP下载地址</li>
+</ul>
+<p>以上两个一键包都是安装 Apache ,而如果你需要 Nginx 或者灵活调整安装参数，那就要分别手动安装了，下面就详细来讲。</p>
+<h2 id="删除系统自带的-apache-和-php">删除系统自带的 Apache 和 PHP</h2>
+<p>因为 OS X 默认自带了 apache 和 PHP5.4，不符合我们的要求，所以先删除它们。</p>
+<pre><code class="language-shell"># 停止 apache 服务然后删掉
+$ httpd -v
+$ sudo apachectl stop
+$ sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+$ sudo rm /usr/sbin/apachectl
+$ sudo rm /usr/sbin/httpd
+$ sudo rm -r /etc/apache2/
+
+# 删除自带的 PHP
+$ php -v
+$ sudo rm -r /usr/bin/php
+</code></pre>
+<h2 id="安装-mysql">安装 MySQL</h2>
+<p>虽然可以使用 <code>brew</code> 来安装 MySQL，但是我还是比较喜欢能在图形界面里控制服务的启动，所以选择了 DMG 版。
+从下面的地址下载最新版的 MySQL DMG 文件，按提示安装。当然也可以点击“Looking for the latest GA version?”来下载历史版本。</p>
+<p><a href="http://dev.mysql.com/downloads/mysql/">下载 MySQL Community 版 for OS X</a></p>
+<p>安装完毕后，可以在“系统偏好设置”里找到 MySQL 的管理项，用于启动和关闭 MySQL 服务。</p>
+<p><strong>使用 Sequel Pro 连接数据库并修改默认密码</strong></p>
+<p>默认的 root 密码是空的，使用 Sequel Pro 连接到 MySQL 后，在 <code>Users</code> 里修改 root 的密码</p>
+<h2 id="卸载--mysql">卸载  MySQL</h2>
+<p>emove MySQL instance from macOS or OSX via the command line
+August 19, 2016 Leave a Comment
+To remove an instance of MySQL from your macOS or OSX installation you need to delete a number of files via the command line, but first ensure that you have database dumps of your databases and that then the database server is not running.</p>
+<p>Back Up any needed databases</p>
+<p>All of them</p>
+<pre><code class="language-shell">mysqldump --all-databases &gt; all_databases_export.sql
+</code></pre>
+<p>Or individually</p>
+<pre><code class="language-shell">mysqldump database_name &gt; database_exportname.sql
+</code></pre>
+<p>Stop the database server</p>
+<blockquote>
+<p>= MySQL 5.7</p>
+</blockquote>
+<pre><code class="language-shell">sudo launchctl unload -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+</code></pre>
+<p>&lt; MySQL 5.7</p>
+<pre><code class="language-shell">sudo /usr/local/mysql/support-files/mysql.server stop
+</code></pre>
+<p>Remove MySQL</p>
+<pre><code class="language-shell">sudo rm -rf /usr/local/mysq*
+sudo rm  /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+</code></pre>
+<p>Edit <code>/etc/hostconfig</code> and remove the line MYSQLCOM=</p>
+<pre><code class="language-shell">rm -rf ~/Library/PreferencePanes/MySQL*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /private/var/db/receipts/*mysql*
+</code></pre>
+<p>That’s it MySQL is now totally removed from your system</p>
+<h3 id="brew-安装">Brew 安装</h3>
+<pre><code class="language-shell">$brew install mysql
+
+# 安装结果（如果有冲突，要解决）
+Error: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+Could not symlink bin/mysql
+Target /usr/local/bin/mysql
+already exists. You may want to remove it:
+  rm '/usr/local/bin/mysql'
+
+To force the link and overwrite all conflicting files:
+  brew link --overwrite mysql
+
+To list all files that would be deleted:
+  brew link --overwrite --dry-run mysql
+
+Possible conflicting files are:
+/usr/local/bin/mysql -&gt; /Applications/XAMPP/xamppfiles/bin/mysql
+==&gt; Using the sandbox
+==&gt; /usr/local/Cellar/mysql/5.7.17/bin/mysqld --initialize-insecure --user=zzy --base
+==&gt; Caveats
+We've installed your MySQL database without a root password. To secure it run:
+    mysql_secure_installation
+
+To connect run:
+    mysql -uroot
+
+To have launchd start mysql now and restart at login:
+  brew services start mysql
+Or, if you don't want/need a background service you can just run:
+  mysql.server start
+==&gt; Summary
+🍺  /usr/local/Cellar/mysql/5.7.17: 321 files, 234.4M
+
+# 启动服务
+$brew services start mysql
+
+# 生成root密码，删除一些默认的数据库等，提高安全性
+$mysql_secure_installation
+</code></pre>
+<h2 id="安装-nginx">安装 Nginx</h2>
+<p><strong>方法1，下载源代码手动编译的方式安装</strong></p>
+<p><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">下载地址</a>，找到 <code>Source Releases</code> 那段，下载 <code>Stable</code> 稳定版的源码</p>
+<pre><code class="language-shell">$ tar zxvf nginx-1.10.0.tar.gz
+$ cd nginx-1.10.0
+
+# 默认会安装到 /usr/local/nginx 目录下
+$ ./configure
+$ sudo make &amp;&amp; sudo make install
+</code></pre>
+<p><strong>方法2： brew 的方式安装</strong></p>
+<pre><code class="language-shell"># 默认会安装到 /usr/local/Cellar/nginx/[版本号] 目录下
+$ brew install nginx --with-http_geoip_module
+
+$ brew services start nginx
+
+# 或者
+$ sudo nginx
+
+# 而默认的配置文件 nginx.conf 放在 /usr/local/etc/nginx/ 下，这个和编译源码方式安装后路径不一样
+$ vi /usr/local/etc/nginx/nginx.conf
+
+# 编辑上面的配置文件，修改默认的端口 8080 为 80（可能是 brew 安装方式为了避免和默认的 apache 80 端口冲突才设置的 8080）
+# 略（在后面 Nginx 的配置章节中有详细说明）
+
+$sudo nginx -s stop
+</code></pre>
+<h2 id="安装-php">安装 PHP</h2>
+<p>卸载自带的（建议另存为 .bak 等后缀，不要删除以备出现问题时可以恢复）</p>
+<pre><code class="language-xml">/private/etc/               sudo rm -rf php-fpm.conf.default php.ini php.ini.default
+/usr/bin/               sudo rm -rf php php-config phpdoc phpize
+/usr/include                sudo rm -rf php
+/usr/lib                sudo rm -rf php
+/usr/sbin               sudo rm -rf php-fpm
+/usr/share              sudo rm -rf php
+/usr/share/man/man1         sudo rm -rf php-config.1 php.1 phpize.1
+/usr/share/man/man8         sudo rm -rf php-fpm.8
+</code></pre>
+<p>用<code>brew</code>安装</p>
+<pre><code class="language-shell">$ brew update &amp; brew upgrade
+$ brew cleanup
+$ brew tap homebrew/services
+$ brew tap homebrew/dupes
+
+# 扩展
+$ brew install php56-gearman php56-msgpack php56-mcrypt php56-memcache php56-memcached php56-mongo  php56-phalcon php56-redis php56-xdebug php56-imagick
+
+# PHP 5.6 (这里面有几个 --without 会导致报错，删除了 --with-debug 等参数，以后再试)
+# 在上面安装中， php56-gearman 好像已经会自动安装  php56 作为 dependence
+$ brew install php56 --without-snmp --without-apache  --with-fpm --with-intl --with-homebrew-curl --with-homebrew-libxslt --with-homebrew-openssl --with-imap --with-mysql --with-tidy
+$ php-fpm -v
+
+# 如果运行 php -v 报错 &quot;Warning: PHP Startup: mcrypt: Unable to initialize module&quot; ，则运行下面的命令重装
+$ brew link --overwrite mcrypt
+$ brew reinstall mcrypt --build-from-source php56-mcrypt --build-from-source
+
+#安装完毕后可以通过以下指令启动和停止php-fpm
+
+php-fpm -D
+killall php-fpm
+#同时可以将php-fpm加入开机启动
+
+ln -sfv /usr/local/opt/php56/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.php56.plist
+
+$ brew services start php56
+$ brew services stop php56
+$ brew services restart php56
+</code></pre>
+<h2 id="如果是安装-php-7">如果是安装 PHP 7</h2>
+<pre><code>$ brew install php70 --with-fpm --with-homebrew-openssl --with-homebrew-curl --with-homebrew-libxslt --with-mcrypt --without-apache --with-imap --with-debug --without-snmp
+$ /usr/local/Cellar/php70/7.0.6/sbin/php-fpm -v
+
+$ brew services start php70
+$ brew services stop php70
+</code></pre>
+<p>如果有问题，可以重新安装</p>
+<pre><code class="language-shell">brew update &amp; brew upgrade
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/homebrew-php
+
+brew unlink php70
+
+# or
+brew install php71 --without-apache --with-fpm --with-mysql
+
+</code></pre>
+<p>PHP7.0 不再支持 mysql_ 开头的函数了。而且 Mac 下的 brew 安装的 PHP7 比较难通过 ext/phpize 来添加库。建议使用 php5.6 的最新版本。</p>
+<p>按照这篇</p>
+<p><a href="http://blog-ultrasimplified.rhcloud.com/installing-php5-6-or-greater-on-mac-os-x-el-capitan/">http://blog-ultrasimplified.rhcloud.com/installing-php5-6-or-greater-on-mac-os-x-el-capitan/</a></p>
+<p>如果得到一个错误</p>
+<p>使用<code>--build-from-source</code> 参数</p>
+<blockquote>
+<p>PHP Warning:  PHP Startup: Unable to load dynamic library &lsquo;/usr/local/opt/php56-intl/intl.so&rsquo; - dlopen(/usr/local/opt/php56-intl/intl.so, 9): Symbol not found: _compiler_globals
+Referenced from: /usr/local/opt/php56-intl/intl.so</p>
+</blockquote>
+<pre><code>brew reinstall php70-mcrypt --build-from-source
+
+# 以及
+brew reinstall --build-from-source php56-intl
+</code></pre>
+<p>warning 的内容大致如下:</p>
+<p>NOTICE: PHP message: PHP Warning:  PHP Startup: Unable to load dynamic library &lsquo;/usr/local/opt/php56-intl/intl.so&rsquo; - dlopen(/usr/local/opt/php56-intl/intl.so, 9): image not found in Unknown on line 0
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->Warning<!-- raw HTML omitted -->:  PHP Startup: Unable to load dynamic library &lsquo;/usr/local/opt/php56-intl/intl.so&rsquo; - dlopen(/usr/local/opt/php56-intl/intl.so, 9): image not found in <!-- raw HTML omitted -->Unknown<!-- raw HTML omitted --> on line <!-- raw HTML omitted -->0<!-- raw HTML omitted --><!-- raw HTML omitted -->
+Unknown(0) : Warning - PHP Startup: Unable to load dynamic library &lsquo;/usr/local/opt/php56-intl/intl.so&rsquo; - dlopen(/usr/local/opt/php56-intl/intl.so, 9): image not found
+[31-Dec-2016 22:40:38] NOTICE: PHP message: PHP Warning:  PHP Startup: mcrypt: Unable to initialize module
+Module compiled with build ID=API20131226,NTS
+PHP    compiled with build ID=API20131226,NTS,debug
+These options need to match
+in Unknown on line 0
+解决方案: 执行下面的命令, 即可解决.</p>
+<p>来源 Github</p>
+<p>brew reinstall &ndash;build-from-source php56-intl</p>
+<h2 id="php-71-最新">PHP 7.1 (最新)</h2>
+<pre><code class="language-shell">brew update
+brew upgrade
+
+# If you’re not already running php7 then you may need:
+
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/homebrew-php
+
+# 最新的，这些都被迁移到 homebrew/core 里面去了
+# https://github.com/nodejh/nodejh.github.io/issues/25
+
+brew unlink php70
+brew install php71
+
+$ php --version
+PHP 7.1.0 (cli) (built: Dec  2 2016 03:30:24) ( NTS )
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v3.1.0-dev, Copyright (c) 1998-2016 Zend Technologies
+</code></pre>
+<h2 id="安装-mcrypt-与升级-laravel-composer-需要">安装 mcrypt 与升级 (laravel composer 需要)</h2>
+<pre><code class="language-shell">brew update &amp; brew upgrade
+
+brew tap homebrew/dupes
+brew tap homebrew/versions
+brew tap homebrew/homebrew-php
+
+brew install php71-mcrpyt --build-from-source
+
+#Add this line to /private/etc/php.ini:
+extension=&quot;/usr/local/Cellar/php70-mcrypt/7.0.x/mcrypt.so&quot;
+
+# update
+brew reinstall -fs php71-mcrypt
+</code></pre>
+<h2 id="配置-nginx-和-php">配置 Nginx 和 PHP</h2>
+<p>然后在 nginx 的配置文件 <code>server</code> 节点下添加(默认站点或vhosts)，注意这个里面的内容和 linux 下那个 lnmp 一键包有些不一样，必须仔细检查，否则会显示空白页面。</p>
+<pre><code class="language-shell">location ~ \.php$ {
+             root           /home/wwwroot;
+             fastcgi_pass   127.0.0.1:9000;
+             fastcgi_index  index.php;
+             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+             include        fastcgi_params;
+         }
+</code></pre>
+<p>在站点目录下放一个测试文件 <code>phpinfo()</code></p>
+<p>如果有问题，nginx无法识别 PHP 代码（在 10.12 上遇到过，因为/usr 目录权限的问题），需要手动复制 php-fpm.conf 配置文件、创建日志目录。还要注意是不是和以前的 PHP 版本有冲突</p>
+<pre><code class="language-shell">whereis php
+whereis php-fpm
+php -v
+php-fpm -v
+
+#启动 php-fpm 会发现一些报错
+php-fpm -D
+
+#手动处理文件
+cp /etc/php-fpm.conf.default /etc/php-fpm.conf
+cp /etc/php.ini.default /etc/php.ini
+
+mkdir -p /usr/var/log
+touch /usr/var/log/php-fpm.log
+
+killall -9 php-fpm
+php-fpm -D
+</code></pre>
+<p>如果从 Apache 换成Nginx后，wordpress 提示建立数据库连接时出错（但直接 mysql_connect 等则正常）</p>
+<pre><code class="language-shell">MariaDB [(none)]&gt; show variables like 'socket'
+    -&gt; ;
++---------------+-----------------------------------------------------+
+| Variable_name | Value                                               |
++---------------+-----------------------------------------------------+
+| socket        | /Applications/XAMPP/xamppfiles/var/mysql/mysql.sock |
++---------------+-----------------------------------------------------+
+1 row in set (0.00 sec)
+
+# 编辑 php.ini
+mysql.default_socket =
+
+# 重启php-fpm
+</code></pre>
+<h1 id="自带终端工具">自带终端工具</h1>
+<h2 id="查看监听的端口列表">查看监听的端口列表</h2>
+<pre><code class="language-shell">$ netstat -ap tcp | grep -i &quot;listen&quot;
+
+tcp4       0      0  *.https                *.*                    LISTEN
+tcp4       0      0  *.http                 *.*                    LISTEN
+tcp4       0      0  localhost.hbci         *.*                    LISTEN
+tcp4       0      0  *.52762                *.*                    LISTEN
+tcp46      0      0  *.52761                *.*                    LISTEN
+tcp4       0      0  *.52761                *.*                    LISTEN
+tcp6       0      0  localhost.12993        *.*                    LISTEN
+tcp4       0      0  localhost.12993        *.*                    LISTEN
+tcp6       0      0  localhost.12995        *.*                    LISTEN
+tcp4       0      0  localhost.12995        *.*                    LISTEN
+tcp6       0      0  localhost.12143        *.*                    LISTEN
+tcp4       0      0  localhost.12143        *.*                    LISTEN
+</code></pre>
+<h1 id="safari">Safari</h1>
+<h2 id="最新的-13-版本彻底不支持旧插件开发模式builder-不见了">最新的 13 版本彻底不支持旧插件（开发模式、builder 不见了）</h2>
+<p>不过我常用的 instapaper 有，</p>
+<p>广告屏蔽用 adguard</p>
+<p>油猴居然也可以用 adguard 来实现了！</p>
+<p>打开 adguard for safari, 扩展</p>
+<h2 id="develop-版本">develop 版本</h2>
+<p><a href="https://developer.apple.com/safari/technology-preview/">https://developer.apple.com/safari/technology-preview/</a></p>
+<p>支持 tab 图标了。。。
+Safari 12
+Safari 12 ships with iOS 12 and macOS 10.14. It is also available for macOS 10.13.6 and 10.12.6.
+Icons in Tabs. Enable in Preferences to identify tabs visually with website icons.
+Automatic Strong Passwords. Safari now automatically generates strong, unique passwords when signing up for accounts or changing passwords on websites.
+3D &amp; AR Model Viewer. View 3D models or jump into an AR viewing experience in Safari on iOS 12.</p>
+<p>sourcegraph 插件安装提示</p>
+<blockquote>
+<p>Safari no longer supports unsafe extensions</p>
+</blockquote>
+<p>但实际上现在 app store 里的插件太少了</p>
+<p>在菜单  Developer 这里启用允许未注册扩展即可</p>
+<p><img src="/media/15490412483788/15321418601365.jpg" alt=""></p>
+<p>还是不行，按这个方法，在 extension builder 里处理</p>
+<p><a href="https://georgegarside.com/blog/macos/install-any-safari-extension-macos-mojave/">https://georgegarside.com/blog/macos/install-any-safari-extension-macos-mojave/</a></p>
+<p>先把后缀改成 zip 然后解压</p>
+<p><img src="/media/15490412483788/15321424710888.jpg" alt=""></p>
+<p><img src="/media/15490412483788/15321419892767.png" alt=""></p>
+<p><img src="/media/15490412483788/15321419935134.png" alt=""></p>
+<p><img src="/media/15490412483788/15321420052917.png" alt=""></p>
+<h2 id="在-tab-上显示图标">在 tab 上显示图标</h2>
+<p>脑残的默认不显示。。。</p>
+<p>使用这个 <a href="https://faviconographer.com">https://faviconographer.com</a> （已下载）</p>
+<p>挺占内存的，而且这个图标有问题，打开标签时在中间，突然一下飞到左边。。。。</p>
+<h2 id="清空缓存而不删除-cookie">清空缓存而不删除 cookie</h2>
+<p>chrome 在清空缓存的时候，可以选择只删除缓存文件，而保留 cookies、密码等。
+safari默认是全部清理，如果要实现保留cookie的话。</p>
+<p>点击菜单中的 safari， 按住 alt 键， 就可以看到变成<strong>Clear history</strong> 变成 <strong>Clear history and keep website data</strong>了</p>
+<h2 id="safari-extension-下载地址旧版">safari extension 下载地址（旧版）</h2>
+<p><a href="https://safari-extensions.apple.com">https://safari-extensions.apple.com</a></p>
+<h1 id="mac的终端下翻墙">mac的终端下翻墙</h1>
+<p>默认的 shadowsocks 适用于浏览器等的翻墙，而在使用命令行的时候，如果涉及到需要下载一些墙外的文件，需要让终端也能走代理通道。（例如我在安装 meteor 的时候就遇到 cloudfront.net 被墙导致安装失败）</p>
+<h2 id="mac-osx终端走shadowsocks代理">Mac OSX终端走shadowsocks代理</h2>
+<p><a href="https://blog.fazero.me/2015/09/15/%E8%AE%A9%E7%BB%88%E7%AB%AF%E8%B5%B0%E4%BB%A3%E7%90%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">https://blog.fazero.me/2015/09/15/%E8%AE%A9%E7%BB%88%E7%AB%AF%E8%B5%B0%E4%BB%A3%E7%90%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</a></p>
+<p>最快</p>
+<pre><code class="language-shell">export ALL_PROXY=socks5://127.0.0.1:1080
+</code></pre>
+<p>可以设置命令启动或者修改环境变量</p>
+<pre><code class="language-shell">vim ~/.zshrc  
+
+
+# 添加
+# proxy list
+alias proxy='export all_proxy=socks5://127.0.0.1:1080'
+alias unproxy='unset all_proxy'
+
+source ~/.zshrc
+
+
+# 当前ip
+curl cip.cc
+
+# 执行后，启动代理
+proxy
+curl cip.cc
+
+# 取消
+unproxy   
+curl cip.cc
+</code></pre>
+<h2 id="方法1-privoxy实现socks5代理转http代理">方法1 Privoxy实现socks5代理转http代理</h2>
+<p>首先全局翻墙。</p>
+<pre><code class="language-shell">#首先安装 privoxy
+$ brew install privoxy
+
+#修改配置文件 注意后面的 . 点符号（如果没有则添加），注意第一个 listen-address 0.0.0.0 表示可在局域网使用
+$ vim /usr/local/etc/privoxy/config
+listen-address 0.0.0.0:8118
+forward-socks5 / 127.0.0.1:1080 . 
+
+#启动privoxy
+$ sudo /usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+
+//设置代理环境变量(如果不需要的话，就删除掉)
+$ export http_proxy='http://localhost:8118'
+$ export https_proxy='https://localhost:8118' # 这行不需要，会导致有时候报错
+</code></pre>
+<h2 id="方法2-proxychain-ng-略">方法2 proxychain-ng 略</h2>
+<p>forward-socks5 / localhost:6666 . 【已经配置好的SOCKS服务器，注意后面的. 符号不能删掉】
+5 启动privoxy</p>
+<p>/usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+6 设置代理环境变量</p>
+<p>export http_proxy=’http://localhost:8118′</p>
+<p>export https_proxy=’https://localhost:8118′</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://segmentfault.com/a/1190000000606752">全新安装Mac OSX 开发者环境 同时使用homebrew搭建 PHP，Nginx ，MySQL，Redis，Memcache &hellip; &hellip; (LNMP开发环境)</a></p>
+<p>title: OS X安装与设置
+permalink: os-x-install-and-settings
+date: 2015/11/10 10:10:10
+categories:</p>
+<ul>
+<li>tools</li>
+</ul>
+<hr>
+<p><img src="/article_images/tools/osx-10-10-wallpaper.jpg" alt="osx-10-10"></p>
+<p>一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。</p>
+<!-- raw HTML omitted -->
+<p>OS X 的“时间机器”工具，我觉得太占空间，毕竟大部分软件都可以重装，只是配置起来稍微花点时间而已。
+而 OS X 的稳定性，让这种重装系统和应用程序的机会少之又少（我从 10.7 多次升级，直到 10.11 也没有发现什么问题）。
+另外文档和 git 代码库都可以定时复制到外置存储设备；软件的安装程序等不常用的数据，可以通过网盘随时同步。</p>
+<p>总之，为了将来的某一天需要对整个工作环境进行还原，还是详细记录一下吧</p>
+<h1 id="mac的终端下翻墙-1">mac的终端下翻墙</h1>
+<p>默认的 shadowsocks 适用于浏览器等的翻墙，而在使用命令行的时候，如果涉及到需要下载一些墙外的文件，需要让终端也能走代理通道。（例如我在安装 meteor 的时候就遇到 cloudfront.net 被墙导致安装失败）</p>
+<h2 id="方法1-privoxy实现socks5代理转http代理-1">方法1 Privoxy实现socks5代理转http代理</h2>
+<p>首先全局翻墙。</p>
+<pre><code class="language-shell">#首先安装 privoxy
+$ brew install privoxy
+
+#修改配置文件 注意后面的 . 点符号（如果没有则添加），注意第一个 listen-address 0.0.0.0 表示可在局域网使用
+$ vim /usr/local/etc/privoxy/config
+listen-address 0.0.0.0:8118
+forward-socks5 / 127.0.0.1:1080 . 
+
+#启动privoxy
+$ sudo /usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+
+//设置代理环境变量(如果不需要的话，就删除掉)
+$ export http_proxy='http://localhost:8118'
+$ export https_proxy='https://localhost:8118' # 这行不需要，会导致有时候报错
+</code></pre>
+<h2 id="方法2-proxychain-ng-略-1">方法2 proxychain-ng 略</h2>
+<p>forward-socks5 / localhost:6666 . 【已经配置好的SOCKS服务器，注意后面的. 符号不能删掉】
+5 启动privoxy</p>
+<p>/usr/local/sbin/privoxy /usr/local/etc/privoxy/config
+6 设置代理环境变量</p>
+<p>export http_proxy=’http://localhost:8118′</p>
+<p>export https_proxy=’https://localhost:8118′</p>
+<h1 id="参考资料-1">参考资料</h1>
+<p><a href="https://segmentfault.com/a/1190000000606752">全新安装Mac OSX 开发者环境 同时使用homebrew搭建 PHP，Nginx ，MySQL，Redis，Memcache &hellip; &hellip; (LNMP开发环境)</a></p>
+<p>title: OS X工作环境搭建
+permalink: os-x-work-environement
+date: 2015/11/10 10:10:10
+categories:</p>
+<ul>
+<li>tools</li>
+</ul>
+<hr>
+<p><img src="/article_images/tools/osx-10-10-wallpaper.jpg" alt="osx-10-10"></p>
+<p>一般情况下，Mac OS 的升级、在新旧机器之间迁移数据是比较平滑的，不会出现问题，可以完整地保持上一个版本的所有用户数据、软件设置。
+但机器使用几年后，随着不断地安装、删除软件，可能会留下一些垃圾文件；或者不小心系统文件被修改；又或者有一些洁癖，在大版本升级的时候想拥有一个“干净”的系统，这就需要重新配置环境了。
+为了在出现意外情况的时候（例如电脑硬件损坏，或操作系统崩溃），能尽快恢复熟悉的工作环境，特此记录，以备不时之需。</p>
+<!-- raw HTML omitted -->
+<p>OS X 的“时间机器”工具，我觉得太占空间，毕竟大部分软件都可以重装，只是配置起来稍微花点时间而已。
+而 OS X 的稳定性，让这种重装系统和应用程序的机会少之又少（我从 10.7 多次升级，直到 10.11 也没有发现什么问题）。
+另外文档和 git 代码库都可以定时复制到外置存储设备；软件的安装程序等不常用的数据，可以通过网盘随时同步。</p>
+<p>总之，为了将来的某一天需要对整个工作环境进行还原，还是详细记录一下吧</p>
+<h1 id="折腾-mac-双屏显示方案">折腾 Mac 双屏显示方案</h1>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/cover.png" alt=""></p>
+<p>windows 的电脑一般都是台式机，或者接口丰富的笔记本电脑，在扩展屏幕上没有太多的可玩性，基本上都是直接插上多个显示器就行了。
+而苹果公司专注于把设备做减法，不断削减接口（砍掉有线网卡接口，减少USB接口，没有VGA接口）、不断缩小接口体积（雷电口）……
+OS X 用户，特别是我这种喜欢折腾设备的人，在使用多屏方案上就会产生很多有意思的尝试。</p>
+<h2 id="最直接的多显示器连接方案">最直接的多显示器连接方案</h2>
+<p>这个不用多说，有几种方案：</p>
+<ol>
+<li>把显示器 HDMI 接口插上</li>
+<li>把带雷电接口的显示器插上</li>
+<li>使用雷电转接口，转成 HDMI、VGA或DVI接口，再接显示器</li>
+</ol>
+<p>然后就可以使用 OS X 的双屏功能了，10.10里已经加强了双屏功能，如多个dock、多菜单栏、自动隐藏dock等。</p>
+<p>这里有个小技巧</p>
+<p><strong>如何避免鼠标边缘触发太敏感，一不小心就滑动到扩展显示器上面去？</strong></p>
+<p>进入“系统偏好设置”，“显示器”，切换到“排列”。图画得比较丑，请无视。</p>
+<p>默认的“排列”方式是：扩展显示器“紧贴”着主显示器的，像下面这样。就会导致鼠标很容易越界到左边屏幕上去。</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/two-display-inline.png" alt=""></p>
+<p>我们按住左边的“扩展屏幕”，把它的位置拖放一下，像下面这样，只留一小部分与主显示器接触，这样就不容易触发鼠标越界了。</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/two-display-not-inline.png" alt=""></p>
+<h2 id="扩展-mac-的屏幕到另一个设备上如ipad安卓平板windows电脑">扩展 mac 的屏幕到另一个“设备”上（如ipad，安卓平板、windows电脑）</h2>
+<p>但是我们不可能天天把显示器背在包里带着走吧？而且显示器这玩意儿，要是不通电，它就是一坨金属和塑料，完全无法充分利用它的价值。</p>
+<p>而且显示器一般有两条线，电源线和信号线，都是比较黑粗的东西，拿出来一点逼格都没有。</p>
+<p>我们要的是，尽量让所有设备发挥作用，并且线缆最少！</p>
+<p>以下假设你随身有个 iPad，或者一个安卓平板，或者一个 Windows 平板，都可以。这个设备我们愿意天天带在身上，因为坐车等人的时候可以掏出来玩啊！</p>
+<h2 id="使用苹果公司自己的-airplay-mirror-技术">使用苹果公司自己的 airplay mirror 技术</h2>
+<p>这是一种类“视频压缩传输技术”（我自己取的名字），通过 wifi，把 mac 上当前的屏幕显示数据传送到局域网里的另外一台设备上面去。</p>
+<p>虽然可以买个 appleTV，它可以直接支持airplay mirror。</p>
+<p>但为了让适用性更广，例如扩展到 windows 电脑、安卓设备上，就只能使用软件方法了。我们可以用 mac电脑 + AirServer软件。</p>
+<p><strong>用windows机器作为airplay mirror server</strong></p>
+<p>在windows机器上下载<a href="http://pro.itools.cn/airplayer">&ldquo;苹果录屏大师&rdquo;</a> ,安装作为airplay server。</p>
+<p>安装过程中会提示你先安装一个“bonjour”的服务，照提示下载安装即可。</p>
+<p>然后运行这个软件。</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/windows-run-airdisplay-client.PNG" alt=""></p>
+<p>这时，回到同一个局域网内的 Mac 电脑上，如果网络正常，在顶部通知栏会自动出现一个显示器的小图标。</p>
+<blockquote>
+<p>如果没有出现的话，需要手动开启：
+“系统偏好设置”-&gt;“显示器”，勾上“在菜单栏显示镜像选项”</p>
+</blockquote>
+<p>点一下这个小图标，选择“连接到 AirPlay显示器”列表里你的设备名</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/mac-menubar-monitor-display.png" alt=""></p>
+<p>屏幕会闪一下，然后你就可以看到 Windows 电脑上打开的“苹果录屏大师”界面里出现了 Mac 的屏幕，可以把它全屏显示。</p>
+<p>在 Mac 里，你可以通过修改显示方式，来实现“镜像”和“扩展”两种方式</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/mac-menubar-monitor-display-run.png" alt=""></p>
+<p>好了，玩一下吧。你的 windows 电脑成了 mac 的小弟了。接下来试试 Android。</p>
+<p><strong>用android设备作为airplay mirror server</strong></p>
+<p>首先在安卓设备上<a href="https://play.google.com/store/apps/details?id=com.waxrain.airplaydmr2">下载这个软件</a>，安装并启动。</p>
+<p>同样，回到mac电脑，找到这个显示设备，选中并设置扩展方式即可。</p>
+<p><strong>总结</strong></p>
+<p>但是不得不说，操作起来很卡啊！延迟很严重啊！不知道用 5G wifi 的路由器、支持 5G wifi 的 windows 或 android 设备会不会有所改善？</p>
+<h2 id="使用第三方软件的类似视频压缩传输技术--数据线加速">使用第三方软件的类似“视频压缩传输”技术 + 数据线加速</h2>
+<p>我想应该有很多 Mac 爱好者发现这个通过 wifi 传输图像数据有延迟的问题了。于是有人弄出来了改造升级版！！！</p>
+<blockquote>
+<p><strong>把 ipad 用 数据线 连接到 Mac 上，降低无线网络导致的延迟</strong></p>
+</blockquote>
+<p>经过一番搜索，发现代表作有</p>
+<ul>
+<li>Duet Display：最先提出用数据线连接ipad的一个前苹果离职员工，据说还用到了什么私有API以提高性能</li>
+<li>AirDisplay2：一开始是用无线的方式，后来发现 Duet Display 抢了不少用户，赶紧升级支持数据线连接，很多人经过评测发现在CPU占用、显示效果方面比前者要好。</li>
+<li>iDisplay：目前为止只支持无线方式，是一个历史比较悠久的软件</li>
+<li>以及一个韩国人思密达开发的 Twomon USB</li>
+<li>其他不怎么知名的就算了，哈哈</li>
+</ul>
+<p>Duet Display 和 AirDisplay 主打 iOS 设备，并且网络上已经有很多评测文章，我这里就不废话了。</p>
+<p>作为一个穷光蛋，我肯定是没有 iPad 的，但有大屏幕手机和一个安卓寨板。 所以只能测试其中支持 Android 设备的软件了，也就是：</p>
+<ul>
+<li>Twomon USB</li>
+<li>iDisplay</li>
+<li>AirDisplay2</li>
+</ul>
+<blockquote>
+<p><strong>注意，这些软件都没法用 数据线 的方式连接安卓设备！只能用数据线连接 iPad。因此我的测试都是通过 wifi 方式连接安卓设备</strong></p>
+</blockquote>
+<p>首先分别下载他们的“控制端”，也就是安装到 Mac 电脑里的软件。</p>
+<p>无一例外，它们都要求重启——可见一定是涉及到比较底层的东西。</p>
+<p>然后在我的安卓手机和安卓平板上都装上了上面三个软件的 android 端 app，由于众所周知的原因，上面有的软件你在国内是下载不到的，必须去 google play 市场上去下载（购买）。</p>
+<p>为此，哥洗漱一番，翻墙注册了一个虚假的美国身份，并且花了若干美元买了 iDisplay 和 AirDisplay2。牺牲很大，如果你觉得这篇文章对你帮助很大，可以联系我捐款……</p>
+<p>测试结果：</p>
+<ul>
+<li>Twomon USB：安卓设备上一启动就白屏，直接卸载（可能我对韩国人的东西有点偏见，不想继续去研究了）</li>
+<li>iDisplay：安卓上能启动，Mac 上也正常连接，双显完美，拖动较流畅。但是有几个问题：
+<ol>
+<li>在公司网络里，不停断开连接，大概 5 分钟 ~20分钟 一次，断开又要重新连接，而我家里的小米路由器则没有这个问题，说明它的连接很容易受 wifi 不稳定的影响，严重影响正常操作</li>
+<li>连接上后，Mac 的 retina 分辨率会自动变成模糊的非视网膜分辨率，要手动进入设置，切换下分辨率才能恢复。这个在问题1不断发生的情况下很痛苦，因为你的眼睛一会清晰、一会模糊，而且重复操作很浪费时间！</li>
+</ol>
+</li>
+<li>AirDisplay2：非常完美！速度比 iDisplay 快很多，而且也没有出现过任何断开问题，连上后，Mac 也能保持 retina 分辨率不变!</li>
+</ul>
+<p><strong>总结</strong>
+安卓设备做 Mac 的第二显示器，建议入手 AirDisplay2 。相信 iOS 版也会表现优异，万事俱备，只差一个 iPad 了！</p>
+<h2 id="操作多台电脑远程思路">操作多台电脑：“远程”思路</h2>
+<p>以上都是让设备扩展 Mac 的显示，也就是说我们实际上还是只能操作“一台电脑”（Mac）</p>
+<p>但我有一个奇怪的需求，因为工作的性质，需要经常使用 Windows 系统测试 IE 浏览器下某个页面的显示效果。再加上我的笔记本只有 8G 内存，开虚拟机的话压力有一点点大……</p>
+<blockquote>
+<p>于是我想，能不能把自己的一台 Windows 8 寨板放在 macbook pro 旁边，实现如下目的呢？</p>
+</blockquote>
+<ol>
+<li>寨板跑 windows，没事的时候就打开一个技术文档看。</li>
+<li>在需要测试 IE 浏览器的时候，就到寨板上去操作和观察</li>
+<li>同时在 Mac 上能很方便地对它进行远程控制，例如输入一些字符啊，切换网页</li>
+</ol>
+<p>这不就是远程桌面吗？！！搞得这么玄乎。</p>
+<p>不对，首先你要知道</p>
+<ol>
+<li>Windows自带的远程桌面服务，当有用户连接上去的时候，它会自动锁定屏幕，只剩下一个“登录”界面，那么我就不能“对比着看”了。</li>
+<li>关键是寨板安装的 windows 8 是阉割版，不提供远程桌面服务组件啊，亲！</li>
+</ol>
+<h2 id="远程桌面控制和不锁屏实时显示-windows-界面">远程桌面控制和不锁屏实时显示 windows 界面</h2>
+<p>能实现远程连接 windows 后，不锁定屏幕而实时显示的，只有 VNC 服务了。</p>
+<p>我下载了 TightVNC ,在寨板上安装好并启动服务，关闭防火墙。</p>
+<p>然后在 Mac 上用 Vnc Viewer 连上去，哈哈成功了！然后就悲剧了，显示远程屏幕是个90度旋转的…… 不管怎么修改平板的旋转角度、进行分辨率设置，都无果。</p>
+<p><strong>于是寻找 TightVNC 的替代品，还真找到了，那就是 UltraVNC !</strong></p>
+<p>重新安装，再次在 Mac 上连接。</p>
+<p>完美！屏幕是“横向”，不再需要扭头啦。</p>
+<h2 id="只控制键盘鼠标">“只控制键盘鼠标”</h2>
+<p>但是，折腾的路是没有止境的，对于一个精益求精的人来说，VNC 服务的远程方式有两点我受不了。</p>
+<ol>
+<li>操作的“多一步”问题：假设我想切换到 windows 里去操作，必须先点击鼠标把 VNC Viewer 客户端的窗口激活，使鼠标聚焦到远程连接的 Windows 里面。这就多了个“寻找图标”和“点击聚焦”的操作，在需要频繁操作 windows 的时候特别麻烦（虽然一天次数不多）</li>
+<li>VNC 协议的原理是“压缩图像数据”，和 Windows 的 RDP 远程桌面协议只传输“键盘鼠标等的数据”不同，在网络不好的时候，也会有巨大的延迟。</li>
+</ol>
+<p>那么有没有办法让 windows 的屏幕和 Mac 融合更加紧密，不需要中间隔层纱呢？</p>
+<p><strong>Synergy：使用一套鼠标键盘同时控制多台电脑，支持跨平台</strong></p>
+<p>第一次知道这个软件的时候，我整个人的三观都被颠覆了。怎么可能有这种需求？怎么可能还专门有人针对这种需求做出如此牛逼的软件？</p>
+<p>这个不怎么好解释，看这个视频就明白了，太神奇了。</p>
+<p><a href="https://youtu.be/UdP1Rei2muw">注意 youtube 要翻墙</a></p>
+<p>我们在 Mac 和 Windows 上都安装好各自对应的 Synergy 版本。 然后在 Mac 上启动“Server”作为服务器，在 Windows 上启动 “Client”作为客户端，并设置好参数，连接好。</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/synergy-server.png" alt=""></p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/synergy-client.png" alt=""></p>
+<p>以后每次两台电脑在同一个局域网内内都会自动连接，不需要再次设置。</p>
+<p>因为两台电脑之间只传输“鼠标移动和键盘点击”的数据，因此数据量非常小，操作基本上没有延迟。当想操作 Windows 的时候，只要鼠标往边缘靠一靠，就“跑”到 Windows 系统去了。然后再往回拉一拉，就回到了 Mac 系统。</p>
+<p>还能互相复制粘贴文本！！！简直是黑科技啊……</p>
+<p><img src="/article_images/tools/dual-monitor-display-in-mac/synergy-desktop.jpg" alt=""></p>
+<p>如上图，红框处的鼠标实际上是从右边的 Mac 里滑过来的。</p>
+<p>于是我每天都过着如此愉快的生活：</p>
+<p>上班的时候，打开 Mac 和 Windows 平板，Windows 平板显示一些公网上的页面，或下载一些文件。Mac 作为主力工作机，跑开发测试环境，完全不用开虚拟机windows！！</p>
+<p>因为我的寨板是“双系统”，下班的时候，把 Windows 平板一拔，切换到 Android，然后就可以看书看视频进行有意思的娱乐活动了~</p>
+<p>我的笔记本没有闲着，Windows 平板没有闲着，在三个系统中间自由切换~，都发挥了最大的价值~</p>
+<h2 id="2k-显示器缩放模拟-hidpi-效果">2K 显示器，缩放模拟 HiDPI 效果</h2>
+<p>安装 switchResX, 添加一个 customer resolution, 设置为 3840 * 2560 （1920 * 1080 的双倍）。</p>
+<p>重启后，就可以在列表里看到  1920x1080 hidpi scale 的选项了。</p>
+<p>但是我的还是有点模糊。
+试过 1680 x 1050 都不太好
+改成 1440 x 900 hidpi 字体圆润清晰。。。 但内容太少</p>
+<p>最后<br>
+1600 x 900 （3200 x 1800）
+1650 x 1050 (3300 x 2100)</p>
+<p>显示”not installed&rdquo; 要付费。。。。?</p>
+<p><a href="https://my.oschina.net/u/3182047/blog/1503220">https://my.oschina.net/u/3182047/blog/1503220</a></p>
+<p><img src="/media/15490412483788/15283412835353.jpg" alt=""></p>
+<p>覆盖掉 vendor-id 文件后。</p>
+<p>要拔掉外接显示器插头，重新连接一下， RDM 的列表里才会出现那个 1600X900 （闪电）</p>
+<h2 id="只有-ntsc-模式刷新率-59x-的问题">只有 NTSC 模式，刷新率 59.x 的问题</h2>
+<p>看上去字虽然清晰一些，但是拖动网页明显有拖影，看久眼睛酸</p>
+<p>试试 <a href="http://www.mathewinkson.com/2013/03/force-rgb-mode-in-mac-os-x-to-fix-the-picture-quality-of-an-external-monitor">http://www.mathewinkson.com/2013/03/force-rgb-mode-in-mac-os-x-to-fix-the-picture-quality-of-an-external-monitor</a> 里的方法强制 macOS 在外接显示器上使用 RGB 模式。在 high sierra 上，文中的 overrides 目录位置是 /System/Library/Displays/Contents/Resources/Overrides.</p>
+<p><a href="https://www.jianshu.com/p/6274253b78d8">https://www.jianshu.com/p/6274253b78d8</a></p>
+<p>Macbook 外接显示器默认为 TV 模式，TV 渲染模式下，文字效果非常非常非常差，
+和你用什么线缆没有关系
+把 Macbook 外接的显示器在 Mac 系统中改为强制RGB渲染。</p>
+<p>覆盖配置文件</p>
+<p><img src="/media/15490412483788/15396822429700.jpg" alt="-w302"></p>
+<p>改完进显示器设置里，看到确实 NTSC 59 HZ 能够变成  60HZ 了，好像没那么闪了？</p>
+<p>这么折腾，还是直接用 4k 吧。。。</p>
+<h2 id="最后总结">最后总结</h2>
+<p>如果你有 iPad, 安装 AirDisplay2 用数据线连接 Mac 是体验最好，最 Apple 的方案。
+如果你没有 iPad，有一个安卓平板，安装 AirDisplay2，用 wifi 方式扩展 Mac 的屏幕，也是可以的
+如果你没有 iPad，有一个 Windows 平板，请安装 Synergy，能够免除虚拟机，轻松在两个生产力系统之间自由切换~
+如果你不用上班就能不眨眼买各种电子设备，请联系我！</p>
+<h2 id="另外其他-hidpi-问题">另外，其他 hidpi 问题</h2>
+<p><a href="https://www.v2ex.com/t/492796">https://www.v2ex.com/t/492796</a></p>
+<p>里面有个可视化在线生成 plist 文件的工具，还有一个黑苹果 hidpi 的命令行工具</p>
+<h1 id="mac-tree-命令中文文件名乱码">Mac tree 命令，中文文件名乱码</h1>
+<p>brew install tree
+google 中显示一个tree -N</p>
+<p>tree -N</p>
+<p>查看man pages</p>
+<p>-N  Print  non-printable  characters  as is instead of as escaped octal
+​          numbers.
+结论就是原样打印出字符。</p>
+<h1 id="macos-serria-的-finder-变得很慢的问题解决">macOS serria 的 Finder 变得很慢的问题解决</h1>
+<pre><code class="language-shell">$ rm ~/Library/Caches/CloudKit/CloudKitMetadata*;killall cloudd
+</code></pre>
+<h1 id="mac下crontab不保存的解决方案">mac下crontab不保存的解决方案</h1>
+<p>在mac下使用<code>crontab -e</code>来创建计划任务，并不会保存，再次运行<code>crontab -l</code>显示列表仍然是空的：</p>
+<pre><code class="language-shell">$ crontab -e
+crontab: no crontab for username – using an empty one
+crontab: “/usr/bin/vi” exited with status 1
+
+$ crontab -l
+crontab: no crontab for username
+</code></pre>
+<p>这是因为权限问题。需要使用root权限来操作。</p>
+<pre><code class="language-shell">$ sudo su 
+
+# 编辑username的crontab
+$ crontab -u username -e
+
+# 列出username的crontab，查看编辑后的数据
+$ crontab -u username -l
+</code></pre>
+<p>或者在创建、查看时都使用 sudo</p>
+<pre><code class="language-shell">sudo crontab -e
+
+sudo crontab -l
+</code></pre>
+<h1 id="mac-使用小度wifi360wifi-实现双无线网卡同时使用">Mac 使用小度wifi/360wifi， 实现双无线网卡同时使用</h1>
+<h2 id="如果有可能直接购买有-mac-驱动的无线网卡">如果有可能，直接购买有 Mac 驱动的无线网卡</h2>
+<h2 id="安装-virtualbox-等虚拟机软件把他们分配给虚拟机里的-windows-系统">安装 VirtualBox 等虚拟机软件，把他们分配给虚拟机里的 windows 系统</h2>
+<h2 id="使用第三方的小度wifi驱动mac版本">使用第三方的小度wifi驱动mac版本</h2>
+<p><a href="https://www.v2ex.com/t/179762">https://www.v2ex.com/t/179762</a></p>
+<p><a href="https://www.ianisme.com/it/1509.html">https://www.ianisme.com/it/1509.html</a></p>
+<p>无线网卡貌似没有办法做链路聚合。。
+最后使用了这个 proxy 解决的。
+可以支持所有网卡，无论有线无线还是3G。。。</p>
+<p><a href="https://github.com/Morhaus/dispatch-proxy">https://github.com/Morhaus/dispatch-proxy</a></p>
+<p>麻烦点的就是需要设置一下代理，支持 http/socks</p>
+<p><strong>静态路由表</strong>能做流量切割，要想叠加不太现实样。</p>
+<p>现了TL-WN725N这款产品，亲测可用，需要注意的是Mac版的Driver需要去TP-Link Global 版的官网才找的到。</p>
+<h3 id="1安装rtusb_d2870-42910_ui-50001dmg">1.安装RTUSB_D2870-4.2.9.10_UI-5.0.0.01.dmg</h3>
+<h3 id="叠加">叠加</h3>
+<p>先安装nodejs
+然后 <a href="https://github.com/Morhaus/dispatch-proxy">https://github.com/Morhaus/dispatch-proxy</a>
+npm 的方式安装 dispatch。
+安装完毕后 在终端里输入
+dispatch list
+查看有几个外网网卡 是否已连接
+然后输入
+dispatch start
+就可以创建一个 socks 代理，然后在第一个无线网卡里的高级-代理-设置 socks 代理 ip 127.0.0.1 端口1080</p>
+<p>以上。。完工。4M+4M，下载现在800多 k/s</p>
+<p>DWA-125的链接管理工具了嘛？
+如果安装了，就在系统偏好设置里面，打开这个连接管理工具
+然后看最下面是否发现了360 wifi的驱动信息，如果没有，拔掉重插。</p>
+<h2 id="将小度wifi的网络用-airport-共享出去做热点mac内置的无线网卡似乎没有这个功能">将小度wifi的网络用 AirPort 共享出去做热点（mac内置的无线网卡似乎没有这个功能）</h2>
+<h2 id="最后不想买无线网卡可以使用有线网卡设置低优先级">最后，不想买无线网卡，可以使用有线网卡（设置低优先级）</h2>
+<p><a href="http://www.vat58.com/mac-os-%E5%A6%82%E4%BD%95%E5%86%85%E5%A4%96%EF%BC%88%E7%BD%91%EF%BC%89%E5%85%BC%E5%85%B7/">http://www.vat58.com/mac-os-%E5%A6%82%E4%BD%95%E5%86%85%E5%A4%96%EF%BC%88%E7%BD%91%EF%BC%89%E5%85%BC%E5%85%B7/</a></p>
+<p><a href="http://beeant0512.github.io/2016/06/21/2016-06-21-11-18-00/">http://beeant0512.github.io/2016/06/21/2016-06-21-11-18-00/</a></p>
+<p>添加 &amp; 删除路由</p>
+<pre><code>netstat -nr
+
+sudo route -n add 172.0.0.0/24 172.17.27.1
+
+sudo route -n delete 172.0.0.0/24 172.17.27.1
+</code></pre>
+<h1 id="网页服务变成本地-app">网页服务变成本地 app</h1>
+<h2 id="fluid">fluid</h2>
+<p>见单独一篇</p>
+<h2 id="nativefier">nativefier</h2>
+<p>基于 electron</p>
+<p><a href="https://github.com/jiahaog/nativefier">https://github.com/jiahaog/nativefier</a></p>
+<pre><code class="language-shell"># install
+npm install nativefier -g
+
+# create
+nativefier &quot;http://medium.com&quot;
+
+# create with a name
+nativefier --name &quot;Some Awesome App&quot; &quot;http://medium.com&quot;
+</code></pre>
+<p>将文件移动到 Application 即可</p>
+<p><img src="/media/15490412483788/15168482193923.jpg" alt=""></p>
+<h2 id="另一种思路chrome-extension">另一种思路：chrome extension</h2>
+<p><a href="https://applicationize.me/">https://applicationize.me/</a></p>
+<h1 id="数据编辑">数据编辑</h1>
+<p>Excel 在编辑 CSV 时，会把一些数据变成 ____ ，要使用专用的工具</p>
+<p>Table Tool</p>
+<p><a href="https://itunes.apple.com/app/table-tool/id1122008420?mt=12">https://itunes.apple.com/app/table-tool/id1122008420?mt=12</a></p>
+<h1 id="降级到-1011">降级到 10.11</h1>
+<p>10.12 操作卡顿
+10.13 电量飞快</p>
+<p><strong>问题</strong></p>
+<p>XCode 无法支持最新版！！最大只支持到 8.2</p>
+<p>制作OS X El Capitan 10.11安装盘</p>
+<ol>
+<li>
+<p>首先，客人需要准备一个8G或以上空间的U盘或外置硬盘，并通过全新界面的磁盘工具抹掉， 确保U盘和外置硬盘使用的分区方式为：GUID， 格式为：os x扩展（日志式），分区名称：MyVolume （大小写要注意）</p>
+</li>
+<li>
+<p>需要在Mac Apps store的下载El Capitan的安装程序，并存放在默认的路径中。（默认路径为：Finder-&gt;Applications内）</p>
+</li>
+<li>
+<p>通过终端（Terminal）黏贴输入以下的命令，并输入管理员的密码 （请注意，密码输入密码过程中不会有任何显示）</p>
+</li>
+</ol>
+<p>sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia &ndash;volume /Volumes/MyVolume &ndash;applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app</p>
+<ol start="4">
+<li>终端会显示进度条，只要看到“Done”的字样，代表已经创建成功！</li>
+</ol>
+<p>备份好了，准备重启，启动界面按住option键，出现启动界面，选择优盘的那个盘，回车。进入实用工具，抹盘，然后安装OS X El Capitan，经过漫长安装过程，重启在黑色屏幕也要等20分钟左右，就可以进入全新的系统了。然后是重新设置系统和安装程序，恢复备份数据。</p>
+<h1 id="休眠合盖后-耗电问题">休眠/合盖后 耗电问题</h1>
+<p>除了在系统的“节能”里设置 电池/电源的一些属性</p>
+<p>本来应该是电池状态，15分钟会自动休眠，把后台程序暂时放到内存，不耗电</p>
+<p>但有时候拔掉电源，合盖后，不久拿出来发烫，掉电。    或者一晚上耗电到 只剩 80%</p>
+<p>可能是有什么阻止了休眠,运行下面的命令</p>
+<pre><code class="language-shell">pmset -g
+</code></pre>
+<p>类似下面（插上电源 ，这些数据都不一样了）</p>
+<blockquote>
+<p>System-wide power settings:
+Currently in use:
+standbydelay         10800
+standby              1
+halfdim              1
+hibernatefile        /var/vm/sleepimage
+powernap             0
+gpuswitch            2
+disksleep            10
+sleep                15 (sleep prevented by fud)
+autopoweroffdelay    28800
+hibernatemode        3
+autopoweroff         1
+ttyskeepawake        1
+displaysleep         15
+tcpkeepalive         0
+acwake               0
+lidwake              1</p>
+</blockquote>
+<p>这些参数的解释见https://www.cnblogs.com/zhengran/p/4802582.html</p>
+<p><a href="https://blog.csdn.net/qq285744011/article/details/61904162">https://blog.csdn.net/qq285744011/article/details/61904162</a></p>
+<p><code>sleep</code> 那里提示有个 prevented by <code>xxxxx</code>.</p>
+<p>(我发现 handshake 有这个问题-锤子的无线安卓手机管理传输工具)</p>
+<p><strong>彻底退出这软件</strong>，或者：打开这软件，点击系统左上角XXX，然后偏好设置（Performance），看看软件自己的设置里面有没有“阻止休眠”之类的选项，取消掉。</p>
+<p>例如爱奇艺app设置的“系统”那里，就有个“保持唤醒状态”，关闭就好。</p>
+<pre><code>  例如说：我用的DOCK插件Battery Widget就是防止休眠，设置里面也没有，只能关掉了。
+</code></pre>
+<p>然后看看assertion，这个时候，PreventUserIdleSystemSleep这个为1，就是不会sleep</p>
+<pre><code class="language-shell">pmset -g assertions
+</code></pre>
+<p>然后再观察到 <code>tcpkeepalive</code>值为1. 修改为 0</p>
+<pre><code class="language-shell">sudo pmset -b tcpkeepalive 0
+
+# 会提示警告：无法使用“find my mac”
+</code></pre>
+<p>再合盖之前关闭 蓝牙/WiFi</p>
+<p>重置了 Nvram 和 SMC</p>
+<p>Option+Command+P+R
+将 Mac 关机，然后开机并立即同时按住以下四个按键：Option、Command、P 和 R。您可以在大约 20 秒后松开这些按键，在此期间您的 Mac 可能看似在重新启动。</p>
+<p>选取苹果菜单 &gt;“关机”。
+在 Mac 关机后，按下内建键盘左侧的 Shift-Control-Option，然后同时按下电源按钮。按住这些按键和电源按钮 10 秒钟。如果您的 MacBook Pro 配有触控 ID，则触控 ID 按钮也是电源按钮。</p>
+<p>经过复杂的排查，还是会有很多程序自动唤醒。</p>
+<p>在看pmset的时候，有行standbydelay 10800  可能在尝试写hibernation image的时候出错，导致无法sleep  于是先将该值调大，调到7天sudo pmset -a standbydelay 604800，然后就不会醒来了。</p>
+<h1 id="升级1014mojave后chrome-字体变得太细">升级10.14（mojave）后，chrome 字体变得太细</h1>
+<pre><code class="language-shell">defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+</code></pre>
+<p>重启 chrome</p>
+<h1 id="安全里任何来源不见了">&ldquo;安全“里，”任何来源“不见了</h1>
+<p>允许认证开发者下面的  ”任何来源“不见了，导致一些 crack 的应用打开时会提示应用损坏，是否拖到回收站，无法运行的问题。</p>
+<pre><code class="language-shell">sudo spctl --master-disable
+</code></pre>
+<h1 id="安装-adobe-xd-后进程表里一大堆">安装 Adobe XD 后，进程表里一大堆</h1>
+<p><a href="https://forums.adobe.com/thread/2537223">https://forums.adobe.com/thread/2537223</a></p>
+<p>除了打开 Creative Could, 属性里关闭所有启动项，还要删除一些内容（上面页面）</p>
+<p>/Library/LaunchAgents
+/Library/LaunchDaemons
+~/Library/LaunchAgents</p>
+<p>注销或重启</p>
+<p>或</p>
+<p>293
+down vote
+accepted
+It is loaded by default by /Library/LaunchAgents/com.adobe.AdobeCreativeCloud.plist.</p>
+<p>If you run</p>
+<p>launchctl unload -w /Library/LaunchAgents/com.adobe.AdobeCreativeCloud.plist
+that will disable it for your user.</p>
+<p>To turn it back on</p>
+<p>launchctl load -w /Library/LaunchAgents/com.adobe.AdobeCreativeCloud.plist</p>
+<h2 id="修复-macos-1014mojave-中命令行复制文件提示--operation-not-permitted">修复 macOS 10.14(mojave) 中命令行复制文件提示  Operation not permitted</h2>
+<p>进隐私设置， full disk access.</p>
+<p>添加 terminal 或需要的app</p>
+<p><img src="/media/15490412483788/15451199009481.jpg" alt="-w504"></p>
+<p>如果还是不行，就关闭 SIP 后重启。。。</p>
+<p>进入 Recovery OS 模式 (开机 按住 cmd+R)</p>
+<pre><code class="language-shell">csrutil status
+
+csrutil disable; reboot
+
+# 重新开启
+csrutil enable
+</code></pre>
+<h1 id="night-shift">Night Shift</h1>
+<p>减少蓝光（特别是晚上对眼睛的刺激，辅助入睡。。）</p>
+<p>有说法会影响性能。。。。https://discussionschinese.apple.com/thread/140103588</p>
+<h1 id="转-windows-后一些替代工具和设值">转 windows 后一些替代工具和设值</h1>
+<p><a href="https://sspai.com/post/46989">https://sspai.com/post/46989</a></p>
+<h1 id="1015">10.15</h1>
+<h2 id="licecap-无法录制-以及-重置-privacy-里-screen-record-列表让之前不小心点了-deny-的应用重新获取">LICEcap 无法录制 以及 重置 privacy 里 screen record 列表，让之前不小心点了 deny 的应用重新获取</h2>
+<p>升级后， LICEcap 打开不小心点了 deny 屏幕录制。  后面就再也无法录制，而且 privacy 里也找不到 app 了</p>
+<p>运行</p>
+<pre><code class="language-shell">xattr -d com.apple.quarantine /Applications/LICEcap.app
+</code></pre>
+<p>重新打开 LICEcap, 等待弹出权限提示，重新赋给权限就好</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/macos%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/macos%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E9%AB%98%E6%95%88%E5%B7%A5%E4%BD%9C/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/macos%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/macos-%E4%B8%8B%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%B8%85%E7%90%86%E8%BD%AF%E4%BB%B6/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

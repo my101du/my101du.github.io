@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 持续集成与交付 permalink: devops-ci-cd tags:
+ server  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 持续集成与交付
+permalink: devops-ci-cd
+tags:
+
+server
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 持续集成与交付
+permalink: devops-ci-cd
+tags:
+
+server
+
+">
+
+<meta itemprop="wordCount" content="4773">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 持续集成与交付
+permalink: devops-ci-cd
+tags:
+
+server
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4773字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 持续集成与交付
+permalink: devops-ci-cd
+tags:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<h1 id="持续集成是什么">持续集成是什么？</h1>
+<p>提交 &amp; 测试 &amp; 部署</p>
+<p><strong>集中式</strong>管理代码、项目测试、编译、部署、交付</p>
+<h1 id="git">Git</h1>
+<h2 id="github">GitHub</h2>
+<h2 id="gilab">GiLab</h2>
+<h2 id="gitea">Gitea</h2>
+<p>一定要看英文的版本文档，中文的不全。例如下面的都没翻译。</p>
+<p><a href="https://docs.gitea.io/en-us/webhooks/">https://docs.gitea.io/en-us/webhooks/</a></p>
+<p>docker 方式安装比较简单</p>
+<pre><code class="language-yaml">version: '3.5'
+
+services:
+  gitea:
+    image: gitea/gitea
+    container_name: &quot;gitea&quot;
+    volumes:
+        - &quot;./gitea:/data&quot;
+    ports:
+        - &quot;10022:22&quot;
+        - &quot;3000:3000&quot;
+</code></pre>
+<p>保存为 ~/docker-app/nextcloud/docker-compose.yaml</p>
+<pre><code class="language-shell">docker-compose up -d
+</code></pre>
+<p>Code Review?</p>
+<h2 id="pull-request">Pull Request</h2>
+<p><a href="http://www.ruanyifeng.com/blog/2017/07/pull_request.html">http://www.ruanyifeng.com/blog/2017/07/pull_request.html</a></p>
+<p>首先 Fork a repo</p>
+<p><img src="/media/15490412289446/15372615799778.jpg" alt="-w802"></p>
+<p><img src="/media/15490412289446/15372616199218.jpg" alt="-w542"></p>
+<p>然后本地 commit push 等</p>
+<p>最后请求合并分支，发起 Pull Request 请求</p>
+<p>Base 和 Head 两个选项。Base 是你希望提交变更的<strong>目标</strong>，Head 是目前包含你的变更的那个分支或仓库。 (只有代码有变更，head 信息不一致，才能提交，否则提示错误，例如 两个 develop 分支并且本地代码未变更）</p>
+<p><img src="/media/15490412289446/15372618032953.jpg" alt="-w835"></p>
+<p>你提交完后，对方就能看到这个请求了。管理者就要决定是否接受该 PR</p>
+<h1 id="jenkins">Jenkins</h1>
+<p>见 jenkins 文章</p>
+<h1 id="私有dockerhub搭建">私有DockerHub搭建</h1>
+<h1 id="drone">Drone</h1>
+<p>(搞了几天，能够在 drone 和 gitea 中通过 webhook 连接，但是在 push 代码构建时，提示找不到 gitea 服务器的 host，无法从仓库中拉取代码。。。暂时停止研究)</p>
+<p>jenkins 是一个强大的平台，但是太臃肿了。</p>
+<p>是一个轻量级的 CI 工具，使用和 docker-compose.yaml 类似的 pipeline 风格。</p>
+<h2 id="启动">启动</h2>
+<p>运行在 Docker 容器中 （案例为与 Gitea 集成）</p>
+<pre><code class="language-yaml">version: &quot;3&quot;
+# ....
+
+drone-server:
+            image: drone/drone:0.8
+
+            ports:
+                - 8000:8000
+                - 9000
+            volumes:
+                - /docker/volumes/drone:/var/lib/drone/
+            restart: always
+            environment:
+                - DRONE_OPEN=true
+                - DRONE_HOST=http://localhost
+                - DRONE_GITHUB=true
+                - DRONE_GITHUB_CLIENT=${DRONE_GITHUB_CLIENT}
+                - DRONE_GITHUB_SECRET=${DRONE_GITHUB_SECRET}
+                
+                # 使用系统命令生成key  echo -n test_string | sha256sum
+                - DRONE_SECRET=c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2
+          
+        drone-agent:
+            image: drone/agent:0.8
+
+            command: agent
+            restart: always
+            depends_on:
+                - drone-server
+            volumes:
+                - /var/run/docker.sock:/var/run/docker.sock
+            environment:
+                - DRONE_SERVER=drone-server:9000
+                - DRONE_SECRET=c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2
+            
+</code></pre>
+<h2 id="集成版本控制系统">集成版本控制系统</h2>
+<p>案例：与 Gitea 集成（当然你可以选择与 GitHub/GitLab 等集成，默认的 drone_server 配置是与 GitHub 集成），然后后面就可以使用用户名/密码登录了</p>
+<p><a href="http://docs.drone.io/install-for-gitea/">http://docs.drone.io/install-for-gitea/</a></p>
+<pre><code class="language-yaml">DRONE_GITEA=true
+DRONE_GITEA_URL=http://gitea.sample.org:3000
+</code></pre>
+<h2 id="安全--访问控制">安全 &amp; 访问控制</h2>
+<h3 id="注册增加用户">注册/增加用户</h3>
+<p><strong>开放注册</strong></p>
+<p>drone-server 的配置中是否允许开放注册（建议关闭，将值设置为 false 即可）：</p>
+<pre><code class="language-git">    environment:
++     - DRONE_OPEN= true
+</code></pre>
+<p><strong>受限注册</strong></p>
+<p>只允许白名单中的成员</p>
+<pre><code class="language-yaml">environment:
++     DRONE_OPEN: true
++     DRONE_ORGS: dogpatch,dolores
+</code></pre>
+<h2 id="管理用户">管理用户</h2>
+<p>只有管理员可以管理用户，首先在配置文件中添加管理员, <strong>必须这个用户名必须和集成的版本控制系统中用户名匹配，并且是大小写敏感的</strong></p>
+<pre><code class="language-yaml">
+environment:
++     - DRONE_ADMIN=janedoe,johnsmith
+</code></pre>
+<p><strong>列出用户</strong></p>
+<pre><code class="language-shell">drone user ls
+</code></pre>
+<p><strong>通过命令行添加用户</strong></p>
+<pre><code class="language-shell">drone user add &lt;username&gt;
+</code></pre>
+<p><strong>删除</strong></p>
+<pre><code class="language-shell">drone user rm octocat
+</code></pre>
+<h2 id="服务器配置">服务器配置</h2>
+<p>默认使用 SQLite 存储</p>
+<p>GitHub 账户等</p>
+<p>集成的版本控制系统</p>
+<h2 id="登录">登录</h2>
+<p>使用集成的版本控制系统中用户账号登录（例如 admin）</p>
+<p><img src="/media/15490412289446/15204933366192.jpg" alt=""></p>
+<p>可能报错这个</p>
+<p><img src="/media/15490412289446/15204944407465.jpg" alt=""></p>
+<p><img src="/media/15490412289446/15204944873784.jpg" alt=""></p>
+<p>是因为在设置 DRONE_GITEA_URL 的时候，如果这个域名无法通过 DNS 解析出来（例如设置了一个外部网络的域名），会报错</p>
+<p>建议使用在容器之间网络的主机名或 IP 地址</p>
+<p>例如我的 Gitea 容器绑定的 IP 是 192.168.238.82，服务运行端口3000，则修改 drone-server 的配置如下</p>
+<pre><code class="language-yaml">- DRONE_GITEA_URL=http://192.168.238.82:3000
+</code></pre>
+<p>重新登录，看到关联到登录用户的所有版本库</p>
+<p><img src="/media/15490412289446/15204970726278.jpg" alt=""></p>
+<h2 id="webhook--连接版本控制系统和-pipeline">webhook  连接版本控制系统和 pipeline</h2>
+<p>点击仓库后面的开关，激活后， Drone 会自动添加 <code>webhooks</code> 到版本控制系统中</p>
+<p>webhooks 用于触发 pipeline 的执行。当你</p>
+<p>push 代码
+打开一个 pull request
+创建一个 tag</p>
+<p>你的版本控制系统会自动发送一个 webhook 指令到 drone，然后触发 pipeline 执行文件</p>
+<p><img src="/media/15490412289446/15204987442092.jpg" alt=""></p>
+<p>在 Gitea 里，已经可以看到这个 webhook (当代码有变动，就触发 drone 上的这个 webhook)</p>
+<p><img src="/media/15490412289446/15204990296086.jpg" alt=""></p>
+<h2 id="pipeline">Pipeline</h2>
+<p>pipeline 文件里，commands 是“依次执行”的， 如果某条命令返回 <strong>non-zero exit code</strong>，pipeline 会立即终止并返回错误状态。</p>
+<p>放一个 <code>.drone.yml</code>文件到<strong>仓库根目录</strong>，这个文件中定义了 <strong>pipeline</strong> 的所有步骤（看起来很像 docker compose 文件格式哦）例如</p>
+<p>以及 <strong>services</strong></p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: golang
+    commands:
+      - go get
+      - go build
+      - go test
+
+services:
+  postgres:
+    image: postgres:9.4.5
+    environment:
+      - POSTGRES_USER=myapp
+</code></pre>
+<p>在上面的例子中，<code>commands</code>里面的命令是依次执行的。 drone 内部实际上将这些命令转换成标准的 shell 命令</p>
+<pre><code class="language-shell">#!/bin/sh
+set -e
+
+go build
+go test
+</code></pre>
+<p>保存为 build.sh 并在启动 docker 容器的时候，作为 <code>entrypoint</code> 传入</p>
+<pre><code class="language-shell">docker run --entrypoint=build.sh golang
+</code></pre>
+<h3 id="并行执行">并行执行</h3>
+<p>通常情况下，先执行完一个任务再执行下一个（例如先 backend -&gt; frontend）</p>
+<p>但是通过把两个任务添加相同的<code>group</code>名，他们可以同时执行，全部完成后再执行后面的“publish”</p>
+<pre><code class="language-yaml">pipeline:
+  backend:
++   group: build
+    image: golang
+    commands:
+      - go build
+      - go test
+  frontend:
++   group: build
+    image: node
+    commands:
+      - npm install
+      - npm run test
+      - npm run build
+  publish:
+    image: plugins/docker
+    repo: octocat/hello-world
+</code></pre>
+<h3 id="条件执行">条件执行</h3>
+<p>设置<strong>只有在指定分支发生变化的时候</strong>才执行 pipeline(<a href="http://docs.drone.io/pipeline-conditions/">http://docs.drone.io/pipeline-conditions/</a> 更多条件)</p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+
++branches: master
+</code></pre>
+<p>除了对整个任务进行设置，还可以对任务中某个<strong>子任务</strong>进行设置</p>
+<pre><code class="language-yaml">pipeline:
+  slack:
+    image: plugins/slack
+    channel: dev
++   when:
++     branch: master
+</code></pre>
+<p><strong>状态条件</strong></p>
+<p>drone 通过检查 container exit code 判断构建是否成功。但是你可以设置即使构建失败，也会执行下去（例如发个消息通知）</p>
+<pre><code class="language-yaml">pipeline:
+  slack:
+    image: plugins/slack
+    channel: dev
++   when:
++     status: [ success, failure ]
+</code></pre>
+<h3 id="执行-pipeline-文件">执行 pipeline 文件~</h3>
+<p>推送代码，可以在界面里看到实时变化</p>
+<h2 id="services">Services</h2>
+<p>在 yaml 文件中，用<code>services</code>来定义容器. 通过自定义 hostname 来访问服务。例如下面的 MySQL 服务：<code>database:3306</code></p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+
+services:
+  database:
+    image: mysql
+
+  cache:
+    image: redis
+</code></pre>
+<p>使用 <strong>environment</strong> 修改 service 的启动参数</p>
+<pre><code class="language-yaml">services:
+  database:
+    image: mysql
++   environment:
++     - MYSQL_DATABASE=test
++     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
+  cache:
+    image: redis
+</code></pre>
+<p>你可以给服务一点时间去启动，然后再运行命令序列（在<code>commands</code>节中添加<code>- sleep 15</code>）</p>
+<pre><code class="language-yaml">pipeline:
+  test:
+    image: golang
+    commands:
++     - sleep 15
+      - go get
+      - go test
+
+services:
+  database:
+    image: mysql
+</code></pre>
+<h3 id="案例启动-mysql-服务然后构建">案例：启动 MySQL 服务然后构建</h3>
+<p>下例中，首先等待 15 秒，先等 database （MySQL 容器）服务启动，然后运行 pipeline 任务列表中的任务。</p>
+<pre><code class="language-yaml">pipeline:
+  test:
+    image: golang
+    commands:
++     - sleep 15
+      - go get
+      - go test
+
+services:
+  database:
+    image: mysql
+    +   entrypoint: [ &quot;mysqld&quot; ]
+    +   command: [ &quot;--character-set-server=utf8mb4&quot; ]
+</code></pre>
+<h2 id="workspace">Workspace</h2>
+<p>在多个 pipeline 步骤之间共享 volume 和 working directory. 默认的 workplace 基于仓库的 url。也可以自定义 base</p>
+<pre><code class="language-yaml">workspace:
++ base: /go
++ path: src/github.com/octocat/hello-world
+
+pipeline:
+  deps:
+    image: golang:latest
+    commands:
+      - go get
+      - go test
+  build:
+    image: node:latest
+    commands:
+      - go build
+</code></pre>
+<p>实际上等于下面的 docker 命令。（在多个容器之间使用相同的 volumes）</p>
+<pre><code class="language-shell">docker volume create my-named-volume
+
+docker run --volume=my-named-volume:/go golang:latest
+docker run --volume=my-named-volume:/go node:latest
+</code></pre>
+<p><strong>path</strong> 定义 你的 build working directory ，和 <strong>base</strong>组合起来（暂时有点不太明白）</p>
+<pre><code class="language-shell">git clone https://github.com/octocat/hello-world \
+  /go/src/github.com/octocat/hello-world
+</code></pre>
+<h2 id="cloning">Cloning</h2>
+<pre><code class="language-yaml">+clone:
++  git:
++   image: octocat/custom-git-plugin 
+
+pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+</code></pre>
+<h2 id="plugins-插件">Plugins 插件</h2>
+<p>插件也是 docker 容器，被预定义来执行一些任务，并且把它作为 pipeline 中的步骤。（例如部署代码、发布产品、发送通知等）例如下面的使用 slack plugin</p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+
+  publish:
+    image: plugins/docker
+    repo: foo/bar
+    tags: latest
+
+  notify:
+    image: plugins/slack
+    channel: dev
+</code></pre>
+<h3 id="插件隔离">插件隔离</h3>
+<p>插件在 docker 容器中运行，并且从你的 build pipeline 中隔离开。也可以共享 build workspace、挂载为 volumes，有权限访问你的源代码</p>
+<h3 id="插件市场">插件市场</h3>
+<p><a href="http://plugins.drone.io">http://plugins.drone.io</a></p>
+<h2 id="images">Images</h2>
+<p>支持来自 Docker registry 的所有 docker image</p>
+<p>默认不会强制拉取最新的版本，需要添加 <code>pull: true</code></p>
+<pre><code class="language-yaml">pipeline:
+  build:
++   image: golang:1.6
++   pull: true
+    commands:
+      - go build
+      - go test
+
+  publish:
++   image: plugins/docker
+    repo: foo/bar
+
+services:
+  database:
++   image: mysql
+</code></pre>
+<h2 id="pipeline-conditions">Pipeline Conditions</h2>
+<p>针对整个 pipeline 限制条件</p>
+<p>前面初始 pipeline 的时候，见到了输入一个 branches，它可以支持多个分支条件</p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+
++branches: [ master, develop ]
+</code></pre>
+<p>或者是批量</p>
+<pre><code class="language-yaml">+branches: [ master, feature/* ]
+</code></pre>
+<p>也支持 include 和 exclude</p>
+<pre><code class="language-yaml">+branches:
++  include: [ master, feature/* ]
+</code></pre>
+<pre><code class="language-yaml">+branches:
++  exclude: [ develop, feature/* ]
+</code></pre>
+<h2 id="step-conditions-branches-eventsenvironment-status">Step Conditions (Branches, Events，Environment, Status&hellip;.)</h2>
+<p>针对 pipeline 中某个步骤来限定。例如在 slack 步骤中，设置只有 branch 为 master 才执行</p>
+<pre><code class="language-yaml">pipeline:
+  slack:
+    image: plugins/slack
+    channel: dev
++   when:
++     branch: master
+</code></pre>
+<h3 id="branches">branches</h3>
+<p>和 pipeline 中的 branches 限定一样，可以支持多个、include等，如</p>
+<pre><code class="language-yaml">when:
+  branch: prefix/*
+</code></pre>
+<p>或</p>
+<pre><code class="language-yaml">when:
+  branch:
+    include: [ master, release/* ]
+    exclude: [ release/1.0.0, release/1.1.* ]
+</code></pre>
+<h3 id="events">Events</h3>
+<p>当 build 事件为 <code>tag</code> 时执行该步骤</p>
+<pre><code class="language-yaml">when:
+  event: tag
+</code></pre>
+<p>事件列表（这里列出了所有事件，注意 deployment）</p>
+<ul>
+<li>push</li>
+<li>pull_request</li>
+<li>tag</li>
+<li>deployment</li>
+</ul>
+<pre><code class="language-yaml">when:
+  event: [push, pull_request, tag, deployment]
+</code></pre>
+<h3 id="environment">Environment</h3>
+<p>匹配目标部署环境 (看下一节专门说到 环境)</p>
+<pre><code class="language-yaml">when:
+  environment: production
+  event: deployment
+</code></pre>
+<h3 id="status">Status</h3>
+<p>当 build 状态变化就执行步骤</p>
+<pre><code class="language-yaml">when:
+  status: changed
+</code></pre>
+<p>当 build 成功或失败才执行</p>
+<pre><code class="language-yaml">when:
+  status:  [ failure, success ]
+</code></pre>
+<h3 id="platform">Platform</h3>
+<p>在特定平台执行步骤</p>
+<pre><code class="language-yaml">when:
+  platform: linux/amd64
+</code></pre>
+<p>通配符</p>
+<pre><code class="language-yaml">when:
+  platform:  [ linux/*, windows/amd64 ]
+</code></pre>
+<h3 id="matrix--instance">Matrix &amp;&amp; Instance</h3>
+<pre><code class="language-yaml">when:
+  matrix:
+    GO_VERSION: 1.5
+    REDIS_VERSION: 2.8
+</code></pre>
+<pre><code class="language-yaml">when:
+  instance: stage.drone.company.com
+</code></pre>
+<h2 id="environment-1">Environment</h2>
+<p>drone 提供了环境变量范围来区分 <strong>build</strong> 步骤。</p>
+<h2 id="volumes">Volumes</h2>
+<h2 id="promoting-在理解它之前先看-conditions">Promoting (在理解它之前，先看 Conditions)</h2>
+<h2 id="matrix-builds--gated-builds">Matrix Builds &amp;&amp; Gated Builds</h2>
+<p>Matrix builds, where you build and test against multiple versions of a library or runtime to check compatibility</p>
+<h2 id="教程">教程</h2>
+<p><a href="http://hao.jobbole.com/drone/">http://hao.jobbole.com/drone/</a>  (很详细，讲了构建、部署)</p>
+<p>新大陆，外国人真会玩（并不是用于持续集成的 drone，而是制作字面上的“无人机”）
+<a href="http://beginnerflyer.com/build-a-drone/">http://beginnerflyer.com/build-a-drone/</a></p>
+<p>了解下 Heroku 服务平台
+<a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+<h2 id="drone-pipeline-文件案例">Drone pipeline 文件案例</h2>
+<p><a href="https://github.com/drone-demos/">https://github.com/drone-demos/</a></p>
+<p><a href="https://github.com/go-training/drone-nodejs-example/blob/master/.drone.yml">https://github.com/go-training/drone-nodejs-example/blob/master/.drone.yml</a></p>
+<p><a href="https://github.com/go-training">https://github.com/go-training</a>（有 laravel 等）</p>
+<p>较好的参考
+<a href="https://github.com/go-training/drone-nodejs-example/blob/master/.drone.yml">https://github.com/go-training/drone-nodejs-example/blob/master/.drone.yml</a></p>
+<pre><code class="language-yaml">publish:
+    dockerfile: Dockerfile
+    tags: [ latest, '${DRONE_TAG}' ]
+    when:
+      event: tag
+      
+# ...
+
+scp:
+</code></pre>
+<p><a href="https://www.zoulei.net/2017/07/05/drone/">https://www.zoulei.net/2017/07/05/drone/</a></p>
+<p>在使用之前。我现在/data目录使用ssh-agent生成了密匙对。在目标主机上放上公钥，让我们能够ssh连接远端主机。然后容器创建的时候将密匙挂载到容器目录(此处需要管理员权限将项目设置为可信)。然后就顺理成章了。搭建环境，生成静态文件，rsync同步就完成了。</p>
+<pre><code class="language-yaml">pipeline:
+  build:
+    image: ruby:2.3
+    commands:
+      - bundle config mirror.https://rubygems.org https://gems.ruby-china.org
+      - bundle install
+      - apt-get update &amp;&amp; apt-get install nodejs rsync -y &amp;&amp; bundle exec middleman build --clean
+      - rsync -r --rsh='ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes -i /data/id_rsa -p 22' build/* user@host:~/docs --progress --delete
+    volumes:
+      - /data:/data
+    when:
+      branch: master
+</code></pre>
+<h1 id="案例">案例</h1>
+<p>在一台机器上运行 Jenkins + GitLab 等 Application，实现快速交付。</p>
+<p>例如：
+blog.domain.com, jenkins.domain.com, gitlab.domain.com</p>
+<h2 id="使用-nginx-做反向代理-reverse-proxy">使用 Nginx 做反向代理 Reverse-proxy</h2>
+<p><img src="/media/15490412289446/15028482677257.png" alt=""></p>
+<h2 id="参考">参考</h2>
+<p><a href="https://blog.florianlopes.io/host-multiple-websites-on-single-host-docker/">https://blog.florianlopes.io/host-multiple-websites-on-single-host-docker/</a></p>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li><a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/">在Ubuntu下安装 Docker</a></li>
+<li><a href="https://github.com/my101du/docker-nginx-php-composer-laravel-or-lumen">我在 GitHub 上开源了一个能支持 Laravel PHP 框架的 Dockerfile</a></li>
+</ul>
+<h1 id="使用docker技术在daocloud上持续构建和持续部署laravellumen应用">使用Docker技术在DaoCloud上持续构建和持续部署laravel/lumen应用</h1>
+<p>请先阅读 Docker 的基础教程</p>
+<p><a href="http://www.itjiaoshou.com/docker-build-app-to-container">用Docker将应用打包成可移植的容器</a></p>
+<p>然后快速浏览一遍 DaoCloud` 的文档，内容很详尽而且案例丰富</p>
+<p><a href="http://docs.daocloud.io">DaoCloud 官方文档</a></p>
+<p>大致了解什么是<code>镜像构建</code> 、<code>持续构建</code>、 <code>持续部署</code>，不过即使看不太懂也没关系，后面实际案例中会对每个关键点进行说明。</p>
+<h1 id="使用-daocloud-自动构建镜像和持续部署应用">使用 DaoCloud 自动构建镜像和持续部署应用</h1>
+<p>到目前为止，我们都是在自己的服务器上运行的 Docker ，你可能会说这好像没什么用啊，只不过把网站/服务用<code>容器</code>包裹起来而已。例如把一个 Nginx 下若干站点拆成多个 Nginx 容器。而且好像隔离后管理起来还不怎么方便。</p>
+<p><strong>回答</strong></p>
+<p>的确，如果你只是自己玩个小网站，或者团队中开发的产品是一次部署后就很久不去更新，那可能 docker 确实不太适合，因为它反而增加了太多的学习成本。</p>
+<p>但是</p>
+<p>作为一个高效的互联网团队，或者产品需要快速更新的创业者，应该充分利用各种能提高工作效率的网络服务，把自己的精力放在编码和业务实现上，把而集成、部署、交付、测试、服务器维护等等都交给更加专业的人。</p>
+<h2 id="本地文件准备">本地文件准备</h2>
+<ol>
+<li>在你本地的开发环境中，进入本项目的 Web 目录，例如 <code>cd /usr/local/nginx/share/html/laravel-docker</code></li>
+<li>运行 <code>composer create-project laravel/laravel --prefer-dist app</code> 初始化一个 laravel 项目（或 lumen 项目）,程序文件现在放在 <code>app</code> 文件夹下</li>
+<li>运行 <code>git init</code> 和 <code>git remote add origin https://git.coding.net/</code></li>
+</ol>
+<h1 id="案例laravel-application-运行在-docker-中">案例：Laravel Application 运行在 Docker 中</h1>
+<h2 id="如果-compose-文件中需要对某个镜像进行扩展呢">如果 Compose 文件中需要对某个镜像进行扩展呢?</h2>
+<p>在上面的方案中，我们仅仅是让 PHP 和 Nginx 连接在一起并运行起来了。
+但是，如果一个 web 应用程序需要使用一些特殊的库（例如 PHP 中常用的 mcrypt pdo_mysql 等），在上面的 <code>docker-compose.yml</code>文件中怎么体现呢？如果把这些命令和信息都写在一个文件里，势必变得混乱和难以维护。</p>
+<p>等等?</p>
+<blockquote>
+<p>这些“对容器内的 Linux 系统进行操作”（例如一系列安装库，升级、复制文件的命令）不是之前都放在 Dockerfile 中的吗？</p>
+</blockquote>
+<p>是的，我们也可以在 docker-compose.yml 文件中调用这些 Dockerfile 来让配置过程更清晰。</p>
+<h2 id="docker-compose-version-2services">Docker Compose Version 2(services)</h2>
+<p>最新的<code>docker-compose-yml</code>格式，需要显式声明 version
+如下，是本章节的完整配置文件，注意里面的几个配置名<code>version</code>, <code>services</code>, <code>build</code>, <code>context</code>, <code>dockerfile</code>, <code>environment</code>等。</p>
+<pre><code class="language-shell">version: '2'
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: web.docker
+        volumes:
+            - ./:/var/www
+        ports:
+            - &quot;8080:80&quot;
+        links:
+            - app
+    app:
+        build:
+            context: ./
+            dockerfile: app.docker
+        volumes:
+            - ./:/var/www
+        links:
+            - database
+        environment:
+            - &quot;DB_PORT=3306&quot;
+            - &quot;DB_HOST=database&quot;
+    database:
+        image: mysql:5.6
+        environment:
+            - &quot;MYSQL_ROOT_PASSWORD=secret&quot;
+            - &quot;MYSQL_DATABASE=dockerApp&quot;
+        ports:
+            - &quot;33061:3306&quot;
+</code></pre>
+<h2 id="改造-docker-composeyml把容器的配置参数下放到各自的-dockerfile">改造 docker-compose.yml，把容器的配置参数下放到各自的 Dockerfile</h2>
+<p>创建两个 Dockefile 文件，分别对应两个容器（来自 Nginx 镜像和 PHP 镜像）</p>
+<ul>
+<li>web.docker</li>
+<li>php.docker</li>
+</ul>
+<p>其中<code>web.docker</code>内容如下：</p>
+<pre><code class="language-shell">FROM nginx:latest
+ADD ./vhost.conf /etc/nginx/conf.d/default.conf
+WORKDIR /var/www
+</code></pre>
+<p>另一个<code>app.docker</code>内容如下：</p>
+<pre><code class="language-shell">FROM php:7.1.8-fpm
+
+RUN apt-get update &amp;&amp; apt-get install -y libmcrypt-dev mysql-client \
+    &amp;&amp; docker-php-ext-install mcrypt pdo_mysql
+
+WORKDIR /var/www
+</code></pre>
+<h1 id="增加-mysql-相关的-databae-service-配置">增加 MySQL 相关的 databae &ldquo;service&rdquo; 配置</h1>
+<p>注意，这里把 app 和 database 这两个 container link 起来，以便让它们能够通信。</p>
+<h1 id="覆盖默认的配置信息环境变量">覆盖默认的配置信息，环境变量</h1>
+<h2 id="在-app-容器的配置中使用environment参数来指定-mysql-连接参数">在 app 容器的配置中，使用<code>environment</code>参数来指定 MySQL 连接参数</h2>
+<pre><code class="language-shell">environment:
+            - &quot;DB_PORT=3306&quot;
+            - &quot;DB_HOST=database&quot;
+</code></pre>
+<p>显式指定这一组参数后，即使我们在容器的 /var/www 目录（也就是宿主机的当前目录）中修改了<code>.env</code>文件里面的数据库连接信息，但在启动容器的时候，Docker 会自动使用这两个参数来替代 <code>.env</code> 文件中对应的参数值。</p>
+<p>例如，你可以在本地开发时跑一个数据库容器，修改 .env 文件中的 <code>DB_HOST</code>为 <code>local_database</code>，但是又希望在部署到公网的时候，连接另外一个数据库容器<code>prod_database</code>。</p>
+<p>总之，在 docker-compose.yaml 里定义的环境变量，优先级高于在目录中<code>.env</code>文件里定义的同名环境变量。</p>
+<h2 id="在-mysql-容器中指定-root-密码和数据库名">在 MySQL 容器中，指定 root 密码和数据库名</h2>
+<p>在创建容器时，会创建指定的数据库 dockerApp，并使用密码 secret</p>
+<pre><code class="language-shell">environment:
+            - &quot;MYSQL_ROOT_PASSWORD=secret&quot;
+            - &quot;MYSQL_DATABASE=dockerApp&quot;
+</code></pre>
+<p><strong>然后暴露主机的 33061 端口，并把请求转发给容器的 3306 端口</strong></p>
+<h2 id="laravel-项目与-mysql-容器通信">Laravel 项目与 MySQL 容器通信</h2>
+<p>修改 .env 文件。 这里可能会让你困惑，就是在 docker-compose.yml 里面配置的 HOST 和 PORT 不一样？</p>
+<p>解答： 前面的是“给 app 容器用的”，这里是即使不启动 app 容器，你也可以单独运行这个 Laravel Application（当然，MySQL 容器是一定要启动的）</p>
+<p>关键：
+Inside （3306）  Outside (33061)，so we have to configure the two connections this way in order for it to work everywhere.</p>
+<p>因为这样才能在本地运行 <code>php artisan</code>才读取/操作数据库</p>
+<pre><code class="language-env">B_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=33061
+DB_DATABASE=dockerApp
+DB_USERNAME=root
+DB_PASSWORD=secret
+</code></pre>
+<h2 id="测试一下">测试一下</h2>
+<pre><code class="language-shell">$ docker-compose kill
+$ docker-compose up -d
+
+$ docker ps
+
+# 看一些日志信息
+$ docker logs [NAME]
+</code></pre>
+<p>现在，修改你的 Laravel 里 app/routes.php, 看看是否运行？</p>
+<h2 id="再加点料来个和-laravel-配合的-redis-缓存服务吧">再加点料，来个和 Laravel 配合的 Redis 缓存服务吧</h2>
+<p>首先安装依赖库</p>
+<pre><code class="language-shell">$ composer require predis/predis:~1.0`
+</code></pre>
+<p>然后修改 docker-compose.yml ，增一个 service，还有记得 <code>app</code>容器中要增加环境变量。 (奇怪，怎么没见到修改 CACHE_DRIVER ？——因为在 .env 里定义了！重复的值不需要动它)</p>
+<p>还有别忘了让 app 容器 link 一下 cache 容器。</p>
+<pre><code class="language-shell">links:
+            - database
+            - cache
+# in app container configurations
+environment:
+            - &quot;DB_PORT=3306&quot;
+            - &quot;DB_HOST=database&quot;
+            # add redis envirounment settings
+            - &quot;REDIS_PORT=6379&quot;
+            - &quot;REDIS_HOST=cache&quot;
+#....
+cache:
+        image: redis:3.0
+        ports:
+            - &quot;63791:6379&quot;
+</code></pre>
+<p>重新运行</p>
+<pre><code class="language-shell">$ docker-compose kill
+$ docker-compose up -d
+</code></pre>
+<p>在<code>app/routes.php</code>增加一条路由，测试一下 Redis 是否正常运行</p>
+<pre><code class="language-php">Route::get('/testCache', function() {
+    Cache::put('someKey', 'foobar', 10);
+
+    return Cache::get('someKey');
+});
+</code></pre>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/cdn-%E9%85%8D%E7%BD%AE/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

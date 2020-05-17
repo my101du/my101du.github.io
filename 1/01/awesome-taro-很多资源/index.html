@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Awesome-taro 很多资源 https://github.com/NervJS/awesome-taro 包括一些项目案例，如何进行微信登录、脚手架等 项目配置 根目录下 config 目录中，包含三个文件 index.js 是通用配置 dev.js 是项目预览时的配置 prod.js 是项目打包时" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Awesome-taro 很多资源 https://github.com/NervJS/awesome-taro 包括一些项目案例，如何进行微信登录、脚手架等 项目配置 根目录下 config 目录中，包含三个文件 index.js 是通用配置 dev.js 是项目预览时的配置 prod.js 是项目打包时" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/awesome-taro-%E5%BE%88%E5%A4%9A%E8%B5%84%E6%BA%90/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Awesome-taro 很多资源 https://github.com/NervJS/awesome-taro 包括一些项目案例，如何进行微信登录、脚手架等 项目配置 根目录下 config 目录中，包含三个文件 index.js 是通用配置 dev.js 是项目预览时的配置 prod.js 是项目打包时">
+
+<meta itemprop="wordCount" content="4096">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Awesome-taro 很多资源 https://github.com/NervJS/awesome-taro 包括一些项目案例，如何进行微信登录、脚手架等 项目配置 根目录下 config 目录中，包含三个文件 index.js 是通用配置 dev.js 是项目预览时的配置 prod.js 是项目打包时"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/awesome-taro-%E5%BE%88%E5%A4%9A%E8%B5%84%E6%BA%90/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/awesome-taro-%E5%BE%88%E5%A4%9A%E8%B5%84%E6%BA%90/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4096字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="awesome-taro-很多资源">Awesome-taro 很多资源</h1>
+<p><a href="https://github.com/NervJS/awesome-taro">https://github.com/NervJS/awesome-taro</a></p>
+<p>包括一些项目案例，如何进行微信登录、脚手架等</p>
+<h1 id="项目配置">项目配置</h1>
+<p>根目录下 config 目录中，包含三个文件</p>
+<p>index.js 是通用配置
+dev.js 是项目预览时的配置
+prod.js 是项目打包时的配置</p>
+<p><strong>注意</strong></p>
+<p>改完后，要重新 npm run 让它生效。</p>
+<p>通用配置模板</p>
+<pre><code class="language-js">const config = {
+  // 项目名称
+  projectName: 'kj',
+  // 项目创建日期
+  date: '2018-6-8',
+  // 设计稿尺寸
+  designWidth: 750,
+  // 项目源码目录
+  sourceRoot: 'src',
+  // 项目产出目录
+  outputRoot: 'dist',
+  // 通用插件配置
+  plugins: {
+    babel: {
+      sourceMap: true,
+      presets: ['env'],
+      plugins: ['transform-class-properties', 'transform-decorators-legacy', 'transform-object-rest-spread']
+    },
+    // 添加的
+    uglify: {
+      enable: true,
+      config: {
+        // 配置项同 https://github.com/mishoo/UglifyJS2#minify-options
+      }
+    },
+    csso: {
+      enable: true,
+      config: {
+        // 配置项同 https://github.com/css/csso#minifysource-options
+      }
+    }
+  },
+  // 全局变量设置
+  defineConstants: {
+    A: '&quot;a&quot;' // JSON.stringify('a')
+  },
+  // 文件 copy 配置
+  copy: {
+    //用来指定需要拷贝的文件或者目录
+    patterns: [
+        { from: 'src/asset/tt/', to: 'dist/asset/tt/', ignore: '*.js' }, // 指定需要 copy 的目录
+        { from: 'src/asset/tt/sd.jpg', to: 'dist/asset/tt/sd.jpg' } // 指定需要 copy 的文件
+    ],
+    //拷贝配置，目前可以指定全局的 ignore
+    options: {
+        ignore: ['*.js', '*.css'] // 全局的 ignore
+    }
+  },
+  // 小程序端专用配置
+  weapp: {
+    module: {
+      postcss: {
+        autoprefixer: {
+          enable: true
+        },
+        // 小程序端样式引用本地资源内联配置
+        url: {
+          enable: true,
+          limit: 10240
+        }
+      }
+    }
+  },
+  // H5 端专用配置
+  h5: {
+    //更多，预览服务
+    devServer: {
+      port: 10086,
+      https: true
+    }
+    publicPath: '/',
+    staticDirectory: 'static',
+    module: {
+      postcss: {
+        autoprefixer: {
+          enable: true
+        }
+      }
+    },
+    // 自定义webpack配置 略
+    webpack: {
+        resolve: {
+         alias: {
+           'test': './test'
+         }
+        }
+    }
+  }
+};
+
+module.exports = function(merge) {
+  if (process.env.NODE_ENV === 'development') {
+    return merge({}, config, require('./dev'));
+  }
+  return merge({}, config, require('./prod'));
+};
+</code></pre>
+<h2 id="defineconstants">defineConstants</h2>
+<p>需要用<strong>单引号加双引号</strong>，否则会报错。</p>
+<p><a href="https://github.com/NervJS/taro/issues/358">https://github.com/NervJS/taro/issues/358</a></p>
+<h2 id="env">env</h2>
+<p>用来设置一些环境变量如 process.env.NODE_ENV，例如我们想设置区分预览、打包来做些不同的操作，可以如下配置：</p>
+<p>在 config/dev.js 中</p>
+<pre><code class="language-js">env: {
+  NODE_ENV: '&quot;development&quot;' // JSON.stringify('development')
+}
+</code></pre>
+<p>这样就能在代码中通过 process.env.NODE_ENV === &lsquo;development&rsquo; 来判断环境</p>
+<h1 id="异步编程">异步编程</h1>
+<p>安装包 <code>@tarojs/async-await</code>后就可以使用<code>async functions</code>功能了</p>
+<pre><code class="language-js">import '@tarojs/async-await'
+</code></pre>
+<h1 id="redux">Redux</h1>
+<p>详细看 redux 官方文档</p>
+<p>这里简单列出关系和核心代码</p>
+<h2 id="constants-目录放置所有的-action-type-常量">constants 目录：放置所有的 action type 常量</h2>
+<p><strong>与 <code>actions</code> 目录关联</strong></p>
+<p>个人理解：动作的类型名称清单 <strong>这里有一个动作类型的清单（只知道名称，并不知道具体怎么做）</strong></p>
+<p>如<code>counter.js</code> 文件</p>
+<pre><code class="language-js">export const ADD = 'ADD'
+export const MINUS = 'MINUS'
+</code></pre>
+<h2 id="actions-目录-放置所有的-actions">actions 目录: 放置所有的 actions</h2>
+<p><strong>和 <code>constants</code> 目录关联</strong>，例如 <code>actions/counter.js</code>就 import 了<code>constants/counter.js</code>里的常量</p>
+<p>个人理解：具体的动作（一些 同步 或 异步 函数），和数据无关。<strong>我能做一些动作，它属于动作类型清单的某个一项目，我还知道某个动作是马上有结果还是要等待一段时间才有结果</strong></p>
+<pre><code class="language-js">import {
+  ADD,
+  MINUS
+} from '../constants/counter'
+
+export const add = () =&gt; {
+  return {
+    type: ADD
+  }
+}
+export const minus = () =&gt; {
+  return {
+    type: MINUS
+  }
+}
+
+// 异步的 action
+export function asyncAdd () {
+  return dispatch =&gt; {
+    setTimeout(() =&gt; {
+      dispatch(add())
+    }, 2000)
+  }
+}
+</code></pre>
+<h2 id="reducers-目录放置所有的-reducers">reducers 目录：放置所有的 reducers</h2>
+<p><strong>和 <code>actions</code> （以及 <code>constants</code>里的 action type）关联</strong></p>
+<p>个人理解：一个函数，传入 initial state 和 action 参数，根据<code>action.type</code>,合并 state 数据和修改后的值并返回<strong>新</strong>的数据，并不会直接修改 state.  <strong>动作类型清单中，做某个动作就会返回对应的数据。你让我做哪个动作类型？</strong></p>
+<p>对应某一组动作类型 reducers/counter.js ==&gt; constants/counter.js</p>
+<pre><code class="language-js">import { ADD, MINUS } from '../constants/counter'
+
+const INITIAL_STATE = {
+  num: 0
+}
+
+export default function counter (state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case ADD:
+      return {
+        ...state,
+        num: state.num + 1
+      }
+     case MINUS:
+      return {
+        ...state,
+        num: state.num - 1
+      }
+     default:
+       return state
+  }
+}
+</code></pre>
+<p>把所有这些动作类型分组对应的 reducers 合并成一个对象</p>
+<pre><code class="language-js">import { combineReducers } from 'redux'
+import counter from './counter'
+
+export default combineReducers({
+  counter
+})
+</code></pre>
+<h2 id="stores-和-provider">stores 和 Provider</h2>
+<p><strong><code>stores</code>目录，和<code>reducers</code>关联</strong></p>
+<p>定义一个函数，使用<code>createStore</code>方法传入 <strong>reducers</strong>（不同的动作类型怎么影响数据） 和 <strong>middlewares</strong>（在数据变动过程中发生点什么），最后返回一个常量 store，稍后把它提供给 react 的 <strong>根组件</strong> 供其使用。</p>
+<p>index.js</p>
+<pre><code class="language-js">import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import rootReducer from '../reducers'
+
+const middlewares = [
+	thunkMiddleware,
+	createLogger()
+]
+
+export default function configStore () {
+	const store = createStore(rootReducer, applyMiddleware(...middlewares))
+	return store
+}
+</code></pre>
+<p>在 app.js 中通过 Provider 使用 store</p>
+<pre><code class="language-js">import { Provider } from '@tarojs/redux'
+import configStore from './store'
+
+const store = configStore()
+
+class App extends Component {
+
+    render () {
+        return (
+            &lt;Provider store={store}&gt;
+</code></pre>
+<h2 id="connect-将-storereducer-和-action-与页面连接起来">connect ：将 store/reducer 和 action 与页面连接起来</h2>
+<p>如 pages/index.js</p>
+<p>这里<code>@connect</code>用了装饰器语法，作用于 Index 组件。</p>
+<pre><code class="language-js">import { connect } from &quot;@tarojs/redux&quot;
+
+import { add, minus, asyncAdd } from '../../actions/counter'
+
+@connect(({ counter }) =&gt; ({
+  counter
+}), (dispatch) =&gt; ({
+  add () {
+    dispatch(add())
+  },
+  dec () {
+    dispatch(minus())
+  },
+  asyncAdd () {
+    dispatch(asyncAdd())
+  }
+}))
+export default class Index extends Component {
+  render () {
+    return (
+      &lt;View className='todo'&gt;
+        &lt;Button className='add_btn' onClick={this.props.add}&gt;+&lt;/Button&gt;
+        &lt;Button className='dec_btn' onClick={this.props.dec}&gt;-&lt;/Button&gt;
+        &lt;Button className='dec_btn' onClick={this.props.asyncAdd}&gt;async&lt;/Button&gt;
+        &lt;View&gt;{this.props.counter.num}&lt;/View&gt;
+      &lt;/View&gt;
+</code></pre>
+<p><code>connect</code> 方法接受两个参数 mapStateToProps 与 mapDispatchToProps</p>
+<p>mapStateToProps，函数类型，接受最新的 state 作为参数，用于将 state 映射到组件的 props
+mapDispatchToProps，函数类型，接收 dispatch() 方法并返回期望注入到展示组件的 props 中的回调方法</p>
+<p>个人理解：拆开看</p>
+<pre><code class="language-js">connect(
+    mapStateToProps({ counter }) {
+        return {counter: counter} //箭头函数，返回一个对象  =&gt;({counter})
+    },
+    mapDispatchToProps(dispatch) {
+        add () {
+            dispatch(add())
+        },
+        //...
+    }
+)
+</code></pre>
+<p>第一个 mapStateToProps ，参数 counter 来自根组件里 <code>&lt;Provider store={store}</code>&gt;，因为在 createStore 中传入的 reducer 里有 counter</p>
+<pre><code class="language-js">export default combineReducers({
+  counter
+})
+</code></pre>
+<p>store 的结构类似</p>
+<pre><code class="language-js">{
+    counter: {} 
+    //other reducer....
+}
+</code></pre>
+<p>然后就可以作为 <strong>props</strong> 来使用数据 <code>&lt;View&gt;{this.props.counter.num}&lt;/View&gt;</code></p>
+<p>第二个 mapDispatchToProps, 返回的 add dec asyncAdd 几个 props 方法，也作为 Button 组件的事件处理传入<code>onClick={this.props.add}</code></p>
+<p>这样，组件就不再和数据（结构、变化, reducers）和操作数据的方（actions）法有关了，全部放到 redux 里去维护，它只负责使用它们。</p>
+<p>Redux action 返回一个 JS 对象，被 Reducer 接收处理后返回新的 State</p>
+<blockquote>
+<p>view -&gt; actionCreator -&gt; action -&gt; reducer -&gt; newState -&gt;(map) container component</p>
+</blockquote>
+<h1 id="dva-taro">dva-taro</h1>
+<p>使用 dva-taro 来封装简化 actions reducers 等分开的 redux 文件，用 model</p>
+<p>虽然不用写 ACTION 什么的，但是好像对于 reducer  effect model 还是觉得难以理解。。。
+而且似乎对 rn 的编译有些问题，老提示依赖不对</p>
+<p>查看 单独的 dva 章节</p>
+<h1 id="mobx">Mobx</h1>
+<p>最新 1.2 已经支持 mobx 了!!</p>
+<p><a href="https://nervjs.github.io/taro/docs/mobx.html">https://nervjs.github.io/taro/docs/mobx.html</a></p>
+<h1 id="微信小程序第三方组件">微信小程序第三方组件</h1>
+<p>例如 echarts-for-weixin 等，将第三方组件库下载到项目的 src 目录下，随后在页面或者组件里通过配置 usingComponents 指定需要引用的第三方组件即可，组件调用的时候需要按照 JSX 的使用规范来进行传参和事件绑定</p>
+<pre><code class="language-js">import Taro, { Component } from '@tarojs/taro'
+import { View } from '@tarojs/components'
+
+function initChart () {
+  // ....
+}
+
+export default class Menu extends Component {
+  static defaultProps = {
+    data: []
+  }
+
+  config = {
+    // 定义需要引入的第三方组件
+    usingComponents: {
+      'ec-canvas': '../../components/ec-canvas/ec-canvas' // 书写第三方组件的相对路径
+    }
+  }
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      ec: {
+        onInit: initChart
+      }
+    }
+  }
+
+  componentWillMount () {
+    console.log(this) // this -&gt; 组件 Menu 的实例
+  }
+
+  render () {
+    return (
+      &lt;View&gt;
+        &lt;ec-canvas id='mychart-dom-area' canvas-id='mychart-area' ec={this.state.ec}&gt;&lt;/ec-canvas&gt;
+      &lt;/View&gt;
+    )
+  }
+}
+</code></pre>
+<h1 id="taro-与小程序代码混写">Taro 与小程序代码混写</h1>
+<p>只需要将原生的页面、组件代码放入 src 目录下，随后在 入口文件 <code>app.js</code> 中定义好 pages 配置指向对应的原生的页面即可，在原生页面的配置中，你可以通过 usingComponents 来定义需要引入的组件，这里可以指定 Taro 组件同时也可以指定小程序原生的组件。</p>
+<h1 id="react-native-的样式">React Native 的样式</h1>
+<h2 id="暂时-taro-ui-还不支持-rn">暂时 taro-ui 还不支持 RN</h2>
+<p><strong>通过对比干净 taro 项目下的 .rn_temp/package.json， 估计问题是 taro-ui 导致</strong></p>
+<p>截止 12月10日。。。好像还不支持， 啊啊啊啊啊！  UI 要重写么</p>
+<p>暂时还不支持，RN 的支持还没有排期，目前优先级更高的是自定义主题和百度、支付宝小程序适配的工作哦</p>
+<p><a href="https://github.com/NervJS/taro-ui/issues/92">https://github.com/NervJS/taro-ui/issues/92</a></p>
+<p><strong>只能纯手写 CSS???</strong></p>
+<h2 id="组件库">组件库</h2>
+<p>google 下“react native css framework”</p>
+<p>比如这种组件库</p>
+<p><a href="https://nativebase.io/">https://nativebase.io/</a>
+<a href="https://galio.io/">https://galio.io/</a> （漂亮）</p>
+<p>因为 Taro 不支持 React UI 库的组件（<!-- raw HTML omitted --> 这样的）</p>
+<p>只能用 <code>&lt;View&gt;</code> 和 <code>className</code> 以及<strong>能和小程序兼容</strong>的 taro component 组件结合。</p>
+<h2 id="然后考虑一些纯-css-样式文件">然后考虑一些纯 css 样式文件</h2>
+<p><a href="https://framework7.io/docs/">https://framework7.io/docs/</a> （太大了，而且一些事件好像和 Angular 有关）
+<a href="https://github.com/framework7io/Framework7/releases">https://github.com/framework7io/Framework7/releases</a> (react 版)</p>
+<p><a href="https://purecss.io/">https://purecss.io/</a> （小，但是不全）</p>
+<p><a href="https://www.muicss.com/docs/v1/css-js/reference">https://www.muicss.com/docs/v1/css-js/reference</a> （Material 风格）</p>
+<p>但是 taro 不支持 html 标签。。。（太偏向微信小程序了。。。）</p>
+<p><img src="/media/15490412159241/15447743220406.jpg" alt="-w624"></p>
+<p>还原 mui.css 后，里面有 RN 不支持的属性。。。不可能去改了。</p>
+<p><img src="/media/15490412159241/15447752668256.jpg" alt="-w320"></p>
+<p>bootstrap&hellip;. (熟悉)</p>
+<p><a href="https://bulma.io/">https://bulma.io/</a>  基于 FlexBox!</p>
+<p>但是。。。emm&hellip;
+<img src="/media/15490412159241/15447754385481.jpg" alt="-w682"></p>
+<p>看来要开发一个 bootstrap/muicss 等 html 标签转 <!-- raw HTML omitted --> 的工具了。。。</p>
+<p><strong>唉，像 EasyTuan/taro-msparis一样纯手写 CSS 吧。。。</strong></p>
+<p>其实他也没做 RN 适配的</p>
+<p><a href="https://github.com/EasyTuan/taro-msparis/issues/20">https://github.com/EasyTuan/taro-msparis/issues/20</a></p>
+<h3 id="将生成的-taro-h5-用-wap2app-改成-app就绕过了-taro-rn-对样式的限制了">将生成的 taro-h5 用 wap2app 改成 app，就绕过了 taro-rn 对样式的限制了</h3>
+<p><a href="https://www.dcloud.io/wap2app.html">https://www.dcloud.io/wap2app.html</a></p>
+<h2 id="scrollview-滚动在-rn-问题">ScrollView 滚动在 RN 问题</h2>
+<p>react native 中ScrollView 滚动显示不全问题
+2018年06月01日 11:05:58 三七二十几 阅读数：1048更多
+个人分类： react-native
+使用ScrollView的时候,遇到一个问题,里面的内容靠下的部分需要用力拉才能看见,一松开又弹回去了(原谅我拙劣的叙述,不知道用什么样的专业术语)</p>
+<p>看了官网的解释才知道原因:</p>
+<p>ScrollView 的功能就是把其包含的不确定高度的内容通过滚动操作在一个固定高度的窗口显示,所以</p>
+<p>ScrollView必须有一个确定的高度才能正常工作!!!
+要给一个ScrollView确定一个高度的话，要么直接给它设置高度（不建议），要么确定所有的父容器都有确定的高度。一般来说我们会给ScrollView设置flex: 1以使其自动填充父容器的空余空间，但前提条件是所有的父容器本身也设置了flex或者指定了高度，否则就会导致无法正常滚动，</p>
+<h1 id="微信小程序转-taro-from-12">微信小程序转 Taro (from 1.2)</h1>
+<p><a href="https://nervjs.github.io/taro/docs/taroize.html">https://nervjs.github.io/taro/docs/taroize.html</a></p>
+<h1 id="最佳实践">最佳实践</h1>
+<p><strong>关于 JSX 支持程度补充说明</strong></p>
+<p>不能在自定义组件中写 children
+不能在包含 JSX 元素的 map 循环中使用 if 表达式
+不能使用 Array#map 之外的方法操作 JSX 数组
+不能在 JSX 参数中使用匿名函数
+暂不支持在 render() 之外的方法定义 JSX
+不允许在 JSX 参数(props)中传入 JSX 元素
+不能在 JSX 参数中使用对象展开符
+不支持无状态组件</p>
+<p><strong>全局变量</strong></p>
+<p>对于小型应用，不需要使用 Redux 的，新增一个自行命名的 JS 文件，例如 <code>global_data.js</code>，示例代码如下</p>
+<pre><code class="language-js">const globalData = {}
+
+export function set (key, val) {
+  globalData[key] = val
+}
+
+export function get (key) {
+  return globalData[key]
+}
+</code></pre>
+<p>使用时</p>
+<pre><code class="language-js">import { set as setGlobalData, get as getGlobalData } from './path/name/global_data'
+
+setGlobalData('test', 1)
+
+getGlobalData('test')
+</code></pre>
+<h1 id="错误记录">错误记录</h1>
+<h2 id="run-devh5-能打开页面但提示uncaught-error-can-not-find-proper-registered-route-for-">run dev:h5 能打开页面，但提示Uncaught Error: Can not find proper registered route for &lsquo;/&rsquo;</h2>
+<p><a href="https://github.com/NervJS/taro/issues/1467">https://github.com/NervJS/taro/issues/1467</a></p>
+<pre><code class="language-shell"> 升级到最新版 taro  
+taro update self
+
+ 项目也要升级, 安装最新依赖版本
+cd project-name
+taro update project
+</code></pre>
+<h2 id="run-devrn-提示-cannot-find-module-xdl进入-rn_temp-目录找不到那个-page">run dev:rn 提示 Cannot find module &lsquo;xdl&rsquo;，进入 .rn_temp 目录找不到那个 page</h2>
+<p>这里有讨论
+<a href="https://github.com/facebook/react-native/issues/14209">https://github.com/facebook/react-native/issues/14209</a></p>
+<p>有说重启电脑就好？</p>
+<p>downgraded to v 0.44.0</p>
+<p>模拟器中</p>
+<p><img src="/media/15490412159241/15447581813142.jpg" alt="-w309"></p>
+<p>在命令行发现</p>
+<p><img src="/media/15490412159241/15447581586811.jpg" alt="-w742"></p>
+<p>进入 <code>.rn_temp</code>，没有这个文件</p>
+<p><img src="/media/15490412159241/15447582303311.jpg" alt="-w568"></p>
+<p>发现有的依赖有问题</p>
+<pre><code class="language-shell">npm ls
+</code></pre>
+<p><img src="/media/15490412159241/15447581342976.jpg" alt="-w706"></p>
+<p>例如，需要 react-native 0.55.4,  而在 <code>.rn_temp</code>里找到<code>package.json</code>里看到的版本比较旧</p>
+<p><img src="/media/15490412159241/15447587968968.jpg" alt="-w282"></p>
+<p>手动修改这个配置文件里的版本参数。然后重新 npm install 逐个解决依赖  （为什么官方 taro-rn 没有自动解决这些问题？）</p>
+<pre><code class="language-shell">cd project
+
+rm -rf node_modules
+
+rm .rn_temp
+
+npm run dev:h5
+
+
+cd .rn_temp
+npm install
+</code></pre>
+<p>删除 <code>.rn_temp</code> 目录，重新 <code>npm run dev:rn</code></p>
+<p>然后在 <code>.rn_temp</code> 目录下运行 <code>npm install</code></p>
+<p>安装<code>npm-check</code>, 检查过期的 dva 等</p>
+<pre><code class="language-shell"> npm-check
+npm -g install npm-check
+npm-check -u  -g 检查全局包
+
+ 另一个 npm-check-updates （简写 ncu）
+npm -g install npm-check-updates
+
+ 或
+npm outdated
+</code></pre>
+<p><strong>彻底退出并重启模拟器</strong></p>
+<h3 id="用干净的-taro-项目">用干净的 taro 项目</h3>
+<pre><code class="language-shell">taro init test-taro-rn
+#(SASS + Redux)
+
+# 很重要别忘了 支持 rn
+npm install @tarojs/taro-rn
+
+npm run dev:rn
+</code></pre>
+<p>编辑 config/index.js, 添加配置信息，注意 sdkVersion 是 <strong>27</strong></p>
+<p><strong>为什么是这个数字呢？ 因为<code>.rn_temp/package.json</code>里 expo 就是 27.0.1</strong></p>
+<p>虽然出现了下面的提示，但应用在模拟器里跑出来了!</p>
+<p><img src="/media/15490412159241/15447661577031.jpg" alt="-w569"></p>
+<p><img src="/media/15490412159241/15447709507273.jpg" alt="-w317"></p>
+<p><strong>以下可能出现错误</strong></p>
+<p><img src="/media/15490412159241/15447660999010.jpg" alt="-w295"></p>
+<p>尝试过步骤：</p>
+<p>进入 .rn_temp 运行 <code>npm install</code> 重试</p>
+<p>按 Shift + R 清空 cache 并重新打包</p>
+<p>在模拟器中，按 Cmd + R 刷新</p>
+<p>module  /pages/Home/index.js can not resolve.</p>
+<pre><code class="language-shell">yarn build:rn
+</code></pre>
+<p>看到有一些</p>
+<p><img src="/media/15490412159241/15450162590121.jpg" alt="-w704"></p>
+<p>删掉这些 在组件里直接用 <code>style=&quot;&quot;</code> 字符串， 并且根据提示去掉 scss 里不支持的 css 属性</p>
+<p><img src="/media/15490412159241/15450162941802.jpg" alt="-w346"></p>
+<p><img src="/media/15490412159241/15450163957607.jpg" alt="-w443"></p>
+<p>全部搞定，重新</p>
+<pre><code class="language-shell">yarn dev:rn
+</code></pre>
+<p>啥 calendar?</p>
+<p><img src="/media/15490412159241/15450170028803.jpg" alt="-w711"></p>
+<p>发现 node_modules/taro-ui/src 里有个 calendar 组件是用 typescript 写的，并且生成到 /dist 里去后，还是保留了  .ts 后缀。 导致引用失败。</p>
+<p>删除 taro-ui 咯。。。</p>
+<pre><code class="language-shell">npm uninstall taro-ui
+</code></pre>
+<p>嗯。。漏了。。</p>
+<p><img src="/media/15490412159241/15450194131967.jpg" alt="-w657"></p>
+<p><img src="/media/15490412159241/15450199546241.jpg" alt="-w739"></p>
+<p>注释这些代码</p>
+<p><img src="/media/15490412159241/15450199330855.jpg" alt="-w466"></p>
+<p>终于可以 js bundle 成功了，再解决这些问题</p>
+<p><img src="/media/15490412159241/15450213889595.jpg" alt="-w598"></p>
+<p><code>View</code> 上有些事件不能绑定，要使用链接</p>
+<p><img src="/media/15490412159241/15450215194523.jpg" alt="-w650"></p>
+<p>color supplied to View 问题</p>
+<p><img src="/media/15490412159241/15450322000694.jpg" alt="-w554"></p>
+<p>全局搜发现错误地把 color 直接给 View了</p>
+<p><img src="/media/15490412159241/15450322412011.jpg" alt="-w381"></p>
+<p><img src="/media/15490412159241/15450322648897.jpg" alt="-w358"></p>
+<p>还有错误，和 scss 的 mixin 变量有关，（费劲啊。。。）</p>
+<p>都注释掉。（rn 改颜色怎么弄？ 等下处理吧）</p>
+<p><img src="/media/15490412159241/15450338236069.jpg" alt="-w299"></p>
+<p><img src="/media/15490412159241/15450344939890.jpg" alt="-w229"></p>
+<p>下面这个可能是版本不对应</p>
+<p><img src="/media/15490412159241/15447688261121.jpg" alt="-w339"></p>
+<h3 id="直接用-expo-init-生成的项目测试-正常">直接用 expo init 生成的项目测试: 正常</h3>
+<pre><code class="language-shell">npm -g install expo
+
+expo init
+
+cd test-expo
+expo start
+</code></pre>
+<p><img src="/media/15490412159241/15447678050102.jpg" alt="-w1054"></p>
+<p>运行 <code>npm build:rn --watch</code>, 发现和 <code>npm run dev:rn</code> 不一样，有个提示你进入 <code>.rn_temp</code>目录后手动 <code>expo build:ios</code> 及输入用户名密码的</p>
+<p><img src="/media/15490412159241/15447681307804.jpg" alt="-w682"></p>
+<h2 id="坑swiper-缺少自定义样式报错">坑：Swiper 缺少自定义样式报错</h2>
+<p>TypeError: Cannot read property &lsquo;height&rsquo; of undefined</p>
+<p><img src="/media/15490412159241/15450293689827.jpg" alt="-w546"></p>
+<p>点开 _Swipser.render() index.js 看</p>
+<p><img src="/media/15490412159241/15450293920442.jpg" alt="-w259"></p>
+<p>发现</p>
+<p><img src="/media/15490412159241/15450294274437.jpg" alt="-w279"></p>
+<p>解决办法，给这个 <code>Swiper</code>手动添加style height</p>
+<p><img src="/media/15490412159241/15450293044607.jpg" alt="-w399"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/awesome-taro-%E5%BE%88%E5%A4%9A%E8%B5%84%E6%BA%90/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/awesome-taro-%E5%BE%88%E5%A4%9A%E8%B5%84%E6%BA%90/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/taro-%E4%B8%89%E7%AB%AF%E5%BC%80%E5%8F%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/swift%E7%B1%BB%E5%9E%8B%E5%B7%A5%E7%A8%8B%E4%BD%BF%E7%94%A8%E6%9C%80%E6%96%B0%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEsdk.md/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: AngularJS教程 (1.x 旧版本) permalink: study-angularjs tags:
+ AngularJS   Angular是Google出品的一个MV*前端框架.
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: AngularJS教程 (1.x 旧版本)
+permalink: study-angularjs
+tags:
+
+AngularJS
+
+
+
+Angular是Google出品的一个MV*前端框架." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: AngularJS教程 (1.x 旧版本)
+permalink: study-angularjs
+tags:
+
+AngularJS
+
+
+
+Angular是Google出品的一个MV*前端框架.">
+
+<meta itemprop="wordCount" content="2594">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: AngularJS教程 (1.x 旧版本)
+permalink: study-angularjs
+tags:
+
+AngularJS
+
+
+
+Angular是Google出品的一个MV*前端框架."/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2594字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: AngularJS教程 (1.x 旧版本)
+permalink: study-angularjs
+tags:</p>
+<ul>
+<li>AngularJS</li>
+</ul>
+<hr>
+<p><img src="/media/15490411859301/angularjs.png" alt=""></p>
+<p>Angular是Google出品的一个MV*前端框架.</p>
+<h1 id="angular简介以及与jquerybackbone等的区别">Angular简介，以及与jQuery，Backbone等的区别</h1>
+<h2 id="首先看看我们熟悉的jquery">首先看看我们熟悉的jQuery</h2>
+<p>它是一个<code>前端库</code>，一般用于对DOM的定位、操作等，例如下面一个例子，找到页面里id=test的元素，然后把它内部的html改为“hello world”，最后添加一个样式。
+在这个过程中，html和jquery的代码都是<strong>独立</strong>的。</p>
+<pre><code class="language-html">&lt;p id=&quot;test&quot;&gt;&lt;/p&gt;
+</code></pre>
+<pre><code class="language-javascript">$(&quot;#test&quot;).html(&quot;hello world&quot;).addClass(&quot;newClass&quot;);
+</code></pre>
+<h2 id="angular的特性">Angular的特性</h2>
+<p>用于简化和规范javascript程序的开发过程，只要给DOM添加一些angular定义的metadata属性，就能够实现HTML和Javascript的“紧密关联”。特别是，它相对比较独立，你可以把它和jQuery等前端库混在一起使用。
+你现在可能不太理解，不用着急，后面会有很多例子。只要知道Angular好像一个网络交换机，HTML和javascript都连在上面，通过它来很好地互相传输数据。</p>
+<h2 id="backbone还有emberjs">Backbone（还有EmberJS)</h2>
+<p>也是类似的<code>前端框架</code>，但要求开发者继承他们的一些javascript对象，“污染”了开发者自己的代码，也有更高的记忆成本。</p>
+<p>#试试开发一个最简单的应用</p>
+<p>首先写一个js文件main.js，在里面里创建模块“myApp”</p>
+<pre><code class="language-javascript">var app = angular.module('myApp', []);
+</code></pre>
+<p>然后写一个index.html，调用了上面的js文件</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+ &lt;html ng-app=&quot;myApp&quot;&gt;
+   &lt;head&gt;
+     &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js&quot;&gt;&lt;/script&gt;
+     &lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+<p>注意html标签里的 <code>ng-app=&quot;myApp&quot;</code>,这个指令实现了：</p>
+<ul>
+<li>实例化myApp模块</li>
+<li>告诉Angular，这个模块拥有该标签，以及标签内所有DOM的结构(因为这个例子写在<!-- raw HTML omitted -->根元素上，所以myApp模块拥有整个页面的DOM）</li>
+</ul>
+<blockquote>
+<p>如果你的应用不需要拥有对整个页面的控制权，那可以把 ng-app 写在其他任意的html元素上（例如一个div）</p>
+</blockquote>
+<h2 id="指令属性">指令属性</h2>
+<p>我们知道DOM元素有很多“属性”，例如 <code>&lt;a&gt;</code> 就有 href、src、target 等属性。</p>
+<p>而Angular里的“指令属性”，实际上看上去也和“属性”类似（上面例子里的 <code>&lt;html ng-app=&quot;myApp&quot;&gt;</code>），但它更像一种绑定在DOM上的“函数”，因为它能够调用方法、定义行为、绑定$controller及$scope对象，操作DOM，以及更多。</p>
+<p>启动浏览器的时候，DOM元素上“指令属性”和普通的属性一起被解析。</p>
+<p>Angular应用的动态性和响应能力，都是通过指令属性来实现的。</p>
+<p>例如</p>
+<pre><code class="language-html">&lt;input ng-model=&quot;name&quot; name=&quot;Name&quot; placeholder=&quot;Enter your name&quot;/&gt;
+&lt;h4&gt;Your name: {{ name }}&lt;/h4&gt;
+</code></pre>
+<p>这段代码里的 ng-model 指令属性，用来将DOM文本框输入的值，与controller里的$scope model 绑定起来。（具体实现是在这个值上绑定一个$watch函数，这个函数运行在Angular的$digest事件循环里，让Angular能对DOM进行更新）</p>
+<h2 id="常见的指令属性">常见的指令属性</h2>
+<ul>
+<li>
+<p><code>{{ 表达式 }}</code>
+这个双大括号指令属性使用$watch函数，给括号内的表达式注册一个监听器。
+关于表达式的更多说明在下一节</p>
+</li>
+<li>
+<p>ng-init</p>
+</li>
+</ul>
+<h3 id="表达式">表达式</h3>
+<p>先看一个例子</p>
+<pre><code class="language-html">{{ 8 + 1 }}9
+{{ person }}{&quot;name&quot;:&quot;Ari Lerner&quot;}
+{{ 10 * 3.3 | currency }}$33.00
+</code></pre>
+<h1 id="scope">$scope</h1>
+<p>##什么是$scope</p>
+<p>$scope是一个javascript对象，存储数据和函数，在controller和view之间传递信息，用传统的mvc来帮助理解：</p>
+<blockquote>
+<p>MVC结构
+view &lt;&mdash;&mdash;-&gt; (model)  &lt;&mdash;&mdash;-&gt; controller
+对应着
+DOM &lt;&mdash;&mdash;-&gt; (scope)</p>
+</blockquote>
+<p>##顶级的$rootScopte</p>
+<p>每一个Angular应用都有一个顶级的$rootScope，对应着含有np-app指令属性的那个DOM。例如上一节的main.js的代码中，添加一段</p>
+<pre><code class="language-javascript">app.run(function($rootScope) {
+  $rootScope.name = &quot;Ari Lerner&quot;;
+});
+</code></pre>
+<p>html文件里的<code>{{ name }}</code>，就会被替换成&quot;Ari Lerner&rdquo;</p>
+<p>###自己创建一个$scope对象</p>
+<p>为了给指定的DOM元素创建一个$scope，需要用到 <code>ng-controller</code> 指令属性</p>
+<pre><code class="language-html">&lt;div ng-controller=&quot;MyController&quot;&gt;
+  {{ person.name }}
+&lt;/div&gt;
+</code></pre>
+<p>现在，可以在这个创建的$scope对象里新建一个person对象。</p>
+<pre><code class="language-javasccript">app.controller('MyController', function($scope) {
+  $scope.person = {
+    name: &quot;Ari Lerner&quot;
+  };
+});
+</code></pre>
+<p>这样，拥有ng-controller=&quot;MyController&quot;属性的DOM元素的任意子元素里访问这个person对象了，即<code>{{ person.name }}</code></p>
+<p>##原型继承与独立的scope</p>
+<p>所有的scope遵循原型继承（prototypal inheritance）,能从它们的父级scope里寻找和访问自己找不到的属性和方法，一直到$rootScope；同时子scope也能修改父scope的属性和访问。如下例</p>
+<pre><code class="language-javascript">app.controller('ParentController', function($scope) {
+  $scope.person = {greeted: false};
+});
+
+app.controller('ChildController', function($scope) {
+  $scope.sayHello = function() {
+    $scope.person.greeted = true;
+  }
+});
+</code></pre>
+<pre><code class="language-html">&lt;div ng-controller=&quot;ParentController&quot;&gt;
+  &lt;div ng-controller=&quot;ChildController&quot;&gt;
+    &lt;input type=&quot;text&quot; ng-model=&quot;person.name&quot; placeholder=&quot;Name&quot;&gt;&lt;/input&gt;
+    &lt;a ng-click=&quot;sayHello()&quot;&gt;Say hello&lt;/a&gt;
+  &lt;/div&gt;
+  {{ person }}
+&lt;/div&gt;
+</code></pre>
+<p>input元素使用 ng-model 进行了数据的双向绑定，修改里面的值时，同时会修改它所属scope的对应属性值。
+a元素添加了一个 ng-click 指令属性，表示当点击时，ChildController 的 sayHello 方法会将 ParentController 的 person.greeted 属性从false改成true。（因为子scope可以修改父scope的属性和方法）</p>
+<blockquote>
+<p>有些指令属性可以选择性地创建一个独立的scope，不继承父级</p>
+</blockquote>
+<p>#通过controller创建DOM元素</p>
+<p>前面我们所有的DOM元素都是通过手写html代码来实现的。
+那么有没有办法直接通过controller来创建DOM呢？特别是这在需要动态生成一些DOM元素的时候特别有用。</p>
+<p>例如下例，生成一个audio元素（需要html5支持）,并加载一个音频。默认是不会自动播放的，我们需要在html里加入两个按钮来控制播放和暂停，并且需要处理它们的点击事件。</p>
+<pre><code class="language-html">&lt;div ng-controller=&quot;PlayerController&quot;&gt;
+  &lt;button ng-click=&quot;play()&quot; class=&quot;button&quot; ng-show=&quot;!playing&quot;&gt;Play&lt;/button&gt;
+  &lt;button ng-click=&quot;stop()&quot; class=&quot;button alert&quot; ng-show=&quot;playing&quot;&gt;Stop&lt;/button&gt;
+  Playing audio: &lt;b&gt;{{ playing }}&lt;/b&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">var app = angular.module('myApp', []);
+
+app.controller('PlayerController', ['$scope', function($scope) {
+  $scope.playing = false;
+  $scope.audio = document.createElement('audio');
+  $scope.audio.src =media/npr.mp4';
+
+  $scope.play = function() {
+      $scope.audio.play();
+      $scope.playing = true;
+  };
+
+  $scope.stop = function() {
+    $scope.audio.pause();
+    $scope.playing = false;
+  };
+
+  $scope.audio.addEventListener('ended', function() {
+    $scope.$apply(function() {
+      $scope.stop()
+    });
+  });
+
+}]);
+
+app.controller('RelatedController', ['$scope', function($scope) {
+}]);
+</code></pre>
+<p>#数据绑定</p>
+<p>##双向绑定
+首先看下面的例子，input里添加有 <code>ng-model</code> 属性，下面有一个<code>{{yourName}}</code>，当在输入框里填写不同的内容时，下面&lt;h1&gt;里的名字也随之改变，这就是 <code>view到model的绑定</code>。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; ng-model=&quot;yourName&quot; placeholder=&quot;Enter a name here&quot;&gt;
+&lt;h1&gt;Hello, {{ yourName }}&lt;/h1&gt;
+</code></pre>
+<p>那么怎么实现在model里修改值，从而在前端html里体现出来改变呢？看下一个例子，使用一个定时器不断改变clock变量的值，然后在html文件的<code>{{clock}}</code>里显示最新的值。</p>
+<pre><code class="language-javascript">app.controller('MyController', function($scope) {  
+    $scope.person = { name: &quot;Ari Lerner&quot; };  
+
+    var updateClock = function() {    
+        $scope.clock = new Date();  
+    };  
+
+    var timer = setInterval(function() {    
+        $scope.$apply(updateClock);  
+    }, 1000);  
+
+    updateClock();
+});
+</code></pre>
+<pre><code class="language-html">&lt;div ng-controller=&quot;MyController&quot;&gt;
+  &lt;h5&gt;{{ clock }}&lt;/h5&gt;
+&lt;/div&gt;
+</code></pre>
+<p>##调用函数
+除了可以通过绑定来调用数据，也可以调用 $scope 中的函数，前面有例子提到的 ng-click 指令就可以将DOM元素的点击事件绑定到一个方法上。</p>
+<p>#Ajax获取远程服务器资源(使用$http对象)</p>
+<pre><code class="language-html">&lt;div ng-controller=&quot;PlayerController&quot;&gt;
+{{ programs }}
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">$http({  
+    method: 'JSONP',  
+    url: 'http://api.openbeerdatabase.com/v1/beers.json?callback=JSON_CALLBACK'
+})
+.success(function(data, status, headers, config) {  
+    // data contains the response  
+    // status is the HTTP status  
+    // headers is the header getter function  
+    // config is the object that was used to create the HTTP request
+        $scope.programs = data.list.story;
+})
+.error(function(data, status, headers, config) {
+
+});
+</code></pre>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/antd-react-%E6%A1%88%E4%BE%8B/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/angularjs/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

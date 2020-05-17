@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Docker 技巧与问题 permalink: docker-qa-skill tags: server 其他容器操作命令 如何进入容器内部的 Linux 命令行？ 因为每个容器都是一个轻量级的 linux 环境，因此我们也可以执行一些命令，例如，你想" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Docker 技巧与问题 permalink: docker-qa-skill tags: server 其他容器操作命令 如何进入容器内部的 Linux 命令行？ 因为每个容器都是一个轻量级的 linux 环境，因此我们也可以执行一些命令，例如，你想" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Docker 技巧与问题 permalink: docker-qa-skill tags: server 其他容器操作命令 如何进入容器内部的 Linux 命令行？ 因为每个容器都是一个轻量级的 linux 环境，因此我们也可以执行一些命令，例如，你想">
+
+<meta itemprop="wordCount" content="5474">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Docker 技巧与问题 permalink: docker-qa-skill tags: server 其他容器操作命令 如何进入容器内部的 Linux 命令行？ 因为每个容器都是一个轻量级的 linux 环境，因此我们也可以执行一些命令，例如，你想"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5474字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Docker 技巧与问题
+permalink: docker-qa-skill
+tags:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="其他容器操作命令">其他容器操作命令</h1>
+<h2 id="如何进入容器内部的-linux-命令行">如何进入容器内部的 Linux 命令行？</h2>
+<p>因为每个容器都是一个轻量级的 linux 环境，因此我们也可以执行一些命令，例如，你想管理一下容器内的 nginx 服务？</p>
+<p>在主机上执行容器内的命令，格式是 <code>docker exec -ti [NAME] bash</code>  (或者是 sh,一般 基于精简内核的 alpine 镜像不包含 bash)</p>
+<pre><code class="language-shell"># 找到容器的名称，也就是“NAMES”里面的值
+docker ps
+
+# 例如名称是“nginx-proxy”, 跟在它后面的命令就和你平时在主机里执行的一样（nginx -t 等）
+docker exec -ti nginx-proxy nginx -t
+docker exec -ti nginx-proxy nginx -s reload
+
+# 进入容器的命令行后
+docker exec -it dream-nginx bash
+</code></pre>
+<p><img src="/media/15490412287129/15057896208874.jpg" alt=""></p>
+<h2 id="命令行内容太长不换行而是从开头覆盖的问题">命令行内容太长不换行而是从开头覆盖的问题</h2>
+<p>解决DOCKER TTY窗口太小，命令换行的问题</p>
+<p><strong>第一种办法是在输入 exec 命令的时候指定 <code>Columnes</code></strong></p>
+<pre><code class="language-shell">docker exec -it -e LINES=$(tput lines) -e COLUMNS=$(tput cols) ed08 bash
+</code></pre>
+<p><strong>修改 .bashrc</strong></p>
+<p>经验证无效。。。。</p>
+<p>正常的Linux服务器只要输入长度超过屏宽就会换行、但我的现在长度达到了、就是不自动换行、还会从开头输出、把PS1都掩盖了、不是键盘的问题、我是用Xshell登录的、其他的服务器都正常、设置也一样、就算用其他的软件登录有问题的那台服务器、也是不换</p>
+<p>我的终端命令打的太长了，不会自动换到下一行继续，而是会从行首覆盖下去，使用的时候特别的不方便。今天我才发现是在 <code>.bashrc</code> 文件中设置了 PS1 的问题。</p>
+<p>修改了一下，在最后添加一行</p>
+<pre><code class="language-shell">export PS1='\[\e[32;1m\]\u\[\e[0m\]@\h \W\$ '
+</code></pre>
+<p>问题解决！</p>
+<p><strong>手动设置宽度</strong></p>
+<p>这里有详细讨论
+<a href="https://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly">https://unix.stackexchange.com/questions/105958/terminal-prompt-not-wrapping-correctly</a></p>
+<pre><code class="language-shell">stty columns 120
+</code></pre>
+<h2 id="案例备份与恢复-sql-文件到容器内的-mysqldocker-命令行与宿主机文件">案例：备份与恢复 sql 文件到容器内的 MySQL（docker 命令行与宿主机文件）</h2>
+<p>用到 cat 和<code>管道</code></p>
+<pre><code class="language-shell"># Backup
+docker exec -i CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE &gt; backup.sql
+
+# Restore
+cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
+</code></pre>
+<h2 id="如果进入命令行后没有-vi-命令">如果进入命令行后，没有 vi 命令</h2>
+<p>有的镜像没有把 vim 包含进去</p>
+<pre><code class="language-shell">docker exec -it &lt;container&gt; bash
+and run:
+
+apt-get update
+apt-get install vim
+</code></pre>
+<h2 id="docker-的网络模式">Docker 的网络模式</h2>
+<p><a href="http://cizixs.com/2016/06/12/docker-network-modes-explained">http://cizixs.com/2016/06/12/docker-network-modes-explained</a></p>
+<p>注意 &ndash;net=host 不能和 &ndash;link 一起使用</p>
+<p>使用宿主机的 IP</p>
+<h2 id="查看容器的-ip-地址">查看容器的 “IP 地址”</h2>
+<p>Docker 会在容器之间维护一个“内部网络”，拥有自己的 IP 网段。</p>
+<p>除了使用 <code>docker ps -a</code> 可以看到容器的端口映射、name 外，还可以查看单独一个容器的 IP 地址，例如容器的 id 为 234baq4asdf323</p>
+<pre><code class="language-shell">docker inspect --format='{{.NetworkSettings.IPAddress}}' 234baq4asdf323
+</code></pre>
+<h2 id="查看-docker-服务的运行状态">查看 docker 服务的运行状态</h2>
+<p>运行 <code>docker info</code> 查看 docker 服务的参数配置和运行情况</p>
+<pre><code class="language-shell">docker info
+</code></pre>
+<blockquote>
+<p>docker info
+Containers: 0
+Running: 0
+Paused: 0
+Stopped: 0
+Images: 6
+Server Version: 17.06.2-ce
+Storage Driver: overlay2
+Backing Filesystem: extfs
+Supports d_type: true
+Native Overlay Diff: true
+Logging Driver: json-file
+Cgroup Driver: cgroupfs
+Plugins:
+Volume: local
+Network: bridge host ipvlan macvlan null overlay
+Log: awslogs fluentd gcplogs gelf journald json-file logentries splunk syslog
+Swarm: inactive
+Runtimes: runc
+Default Runtime: runc
+Init Binary: docker-init
+containerd version: 6e23458c129b551d5c9871e5174f6b1b7f6d1170
+runc version: 810190ceaa507aa2727d7ae6f4790c76ec150bd2
+init version: 949e6fa
+Security Options:
+seccomp
+Profile: default
+Kernel Version: 4.9.41-moby
+Operating System: Alpine Linux v3.5
+OSType: linux
+Architecture: x86_64
+CPUs: 1
+Total Memory: 992.7MiB
+Name: moby
+ID: B6GO:GI6F:5LJE:RWVQ:OXE3:NIVF:XMO4:S2F2:VVJJ:ODWO:MVY5:YC6N
+Docker Root Dir: /var/lib/docker
+Debug Mode (client): false
+Debug Mode (server): true
+File Descriptors: 18
+Goroutines: 31
+System Time: 2017-09-14T06:40:48.720521702Z
+EventsListeners: 1
+Registry: <a href="https://index.docker.io/v1/">https://index.docker.io/v1/</a>
+Experimental: true
+Insecure Registries:
+127.0.0.0/8
+Registry Mirrors:
+<a href="http://04c46f5e.m.daocloud.io/">http://04c46f5e.m.daocloud.io/</a>
+Live Restore Enabled: false</p>
+</blockquote>
+<h2 id="查看各个容器占用资源cpu-内存等">查看各个容器占用资源(CPU 内存等)</h2>
+<p>运行 <code>docker stats -a</code> ，结果是即时刷新的。</p>
+<pre><code class="language-shell">docker stats -a
+</code></pre>
+<p><img src="/media/15490412287129/15058901716614.jpg" alt=""></p>
+<h2 id="查看修改容器的环境变量">查看、修改容器的“环境变量”</h2>
+<p>运行容器内的 env 命令可以查看容器当前的环境变量(这对于需要找到镜像默认的配置文件，然后用自定义的配置文件覆盖很有帮助)</p>
+<pre><code class="language-shell">docker exec -ti [CONTAINER_NAME] env
+</code></pre>
+<p>例如在前面 php-fpm-container 上可以得到下面的列表，例如 PHP_INI_DIR</p>
+<p><img src="/media/15490412287129/15058020595104.jpg" alt=""></p>
+<p>同时，在关联到它的容器 nginx-server 上也能得到它的环境变量（毕竟它们关联了！），只不过都会自动加上前缀。前面的名称就是 <code>[连接的容器的别名]_[ENV]_[在连接容器上的环境变量名]</code></p>
+<p><img src="/media/15490412287129/15058023222559.jpg" alt=""></p>
+<h2 id="重启">重启</h2>
+<p><a href="https://www.v2ex.com/t/429960">https://www.v2ex.com/t/429960</a></p>
+<p>修改配置后，再次运行即可重启</p>
+<h2 id="批量关闭--删除所有容器或镜像">批量关闭 &amp; 删除所有容器或镜像</h2>
+<pre><code class="language-shell">docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+</code></pre>
+<h1 id="容器打包成镜像">容器打包成镜像</h1>
+<h2 id="单个容器">单个容器</h2>
+<p>如果你只是提供一个静态文件 web 的服务器给客户，现在就可以打包了！</p>
+<p>首先创建项目目录，例如<code>~/docker-nginx</code>，然后在里面创建</p>
+<ul>
+<li>容器配置文件 <code>Dockerfile</code>（容器将会调用这个文件里的参数来选择镜像、目录、端口）</li>
+<li><code>www</code>目录，里面是我们 web 项目的文件，先放一个静态的 <code>index.html</code>做测试。</li>
+</ul>
+<p>结构如下</p>
+<pre><code class="language-shell">$ tree ~/docker-nginx
+.
+|-- www
+|   `-- index.html
+`-- Dockerfile
+</code></pre>
+<p>编辑 <code>Dockerfile</code>文件，在里面先写两行简单的配置</p>
+<pre><code class="language-shell"># 指定容器来自哪个镜像(如果本地没有，会自动从镜像中心来 pull 下来)
+FROM nginx:latest
+
+# 容器创建后，把当前“主机”的 www 目录复制到“容器”（一个轻量级 Linux 环境）里的 /usr/share/nginx/html 目录。
+COPY ./www /usr/share/nginx/html
+</code></pre>
+<p>运行命令 <code>docker build -t 新镜像的名称</code>，会自动根据目录里面的 <code>Dockerfile</code>来构建一个新镜像。 <strong>注意后面有个 点</strong></p>
+<pre><code class="language-shell">$ sudo docker build -t my-nginx-image .
+</code></pre>
+<p><strong>从此这个新镜像里会拥有./www 里的文件</strong> ，把镜像复制到别的机器也会一起带着过去，并且拥有配套的 nginx 环境。</p>
+<p>你可以把这个镜像发布到 Docker 市场，别的用户只需要简单地 pull 镜像、创建容器就可以运行你的程序了（不用考虑部署目标服务器的操作系统、软件环境版本）</p>
+<p>更多 Dockerfile 支持的特性，可以查看</p>
+<p><a href="https://github.com/nginxinc/docker-nginx/blob/f8fad321cf58d5cbcafa3d9fa15314b8a77b5e65/mainline/stretch/Dockerfile">https://github.com/nginxinc/docker-nginx/blob/f8fad321cf58d5cbcafa3d9fa15314b8a77b5e65/mainline/stretch/Dockerfile</a></p>
+<h1 id="其他">其他</h1>
+<h2 id="别名">别名</h2>
+<p>输入 docker 太长了。看了一下 d 开头的系统命令，就选 dk 做别名吧！</p>
+<p>然后可以继续给 docker-compose docker-machine 做个别名</p>
+<pre><code class="language-shell">vi ~/.bash_profile
+
+# 添加
+alias dk='/usr/local/bin/docker'
+
+# 刷新
+source ~/.bash_profile
+</code></pre>
+<h2 id="重启电脑后容器-exit-没有自动启动的问题">重启电脑后，容器 exit 没有自动启动的问题</h2>
+<p>在运行docker容器时可以加如下参数来保证每次docker服务重启后容器也自动重启：</p>
+<pre><code class="language-shell">docker run --restart=always
+</code></pre>
+<p>如果已经启动了则可以使用如下命令：</p>
+<pre><code class="language-shell">docker update --restart=always &lt;CONTAINER ID&gt;
+</code></pre>
+<h2 id="如何重启一个容器内的服务">如何重启一个容器内的服务？</h2>
+<p>以 php-fpm 为例</p>
+<pre><code class="language-shell"># 可以看到里面只有极少的几个进程
+docker exec -it test123 ps aux
+
+# 这句就是， 1 是进程 id
+docker exec -it test123 kill -USR2 1
+
+# 已经重启了（pid 变化）
+docker exec -it test123 ps aux
+</code></pre>
+<h2 id="镜像重命名">镜像重命名</h2>
+<p>例如把 php-fpm-alpine:latest 改名为 my-php:latest</p>
+<pre><code class="language-shell">docker tag php-fpm-alpine:latest my-php:latest
+
+# 然后可以删除旧的 image
+docker rmi php-fpm-alpine
+</code></pre>
+<h2 id="laravel-55-容器一次浏览器-500-报错误但没有记录到-laravel-错误日志的处理">Laravel 5.5 容器一次浏览器 500 报错误但没有记录到 laravel 错误日志的处理</h2>
+<p>普通的 phpinfo() 正常。但是打开在 Volume 里的 Laravel 项目就出问题（从已经在宿主机运行正常的拷贝出来）</p>
+<p>修改了 php.ini 里 display_error = On
+/public/index.php 里直接 error_reporting(E_ALL)
+修改 /.env 里的 debug 为 true 没效果
+修改文件权限 /storage 和 /bootstrap</p>
+<p>都不会记录或显示错误。只有浏览器里有一个</p>
+<blockquote>
+<p>localhost is currently unable to handle this request.
+HTTP ERROR 500</p>
+</blockquote>
+<p>因为无法从浏览器里看出问题，只有进入到容器内部，直接用 php 自带的 web 服务器看看</p>
+<pre><code class="language-shell"># 宿主机
+docker exec -ti php-fpm php /app/laravel-project/artisan -S
+# 或
+docker exec -ti php-fpm php -S 0.0.0.0:8000 /app/laravel-project/public/index.php
+
+# 提示已运行，然后重新开一个终端
+docker exec -ti php-fpm curl -l http://127.0.0.1:8000
+</code></pre>
+<p><img src="/media/15490412287129/15058239013015.jpg" alt=""></p>
+<p>在 php-fpm 镜像里添加 php7-session 扩展！！</p>
+<p>重新build 一个镜像，启动容器，搞定！</p>
+<p>还可以运行</p>
+<pre><code class="language-shell">rm bootstrap/cache/compiled.php then run  composer dump-autoload and
+php artisan clear-compiled
+</code></pre>
+<h1 id="在-vmware-创建的-centos7-中每次启动-docker-服务网络就断掉">在 vmware 创建的 CentOS7 中，每次启动 docker 服务，网络就断掉</h1>
+<p>现象</p>
+<blockquote>
+<p>在 VMWare 的 client 中，运行 CentOS，一启动 docker 服务 <code>systemctl start docker</code>，网络就完全掉线，服务器断开，需要重启服务器才能再次 ssh 连上去。（Ubuntu 也试过，一样的）</p>
+</blockquote>
+<p>找了半天原因，这个问题在自己的 macOS 笔记本、Vultr VPS 以及 virtualbox 虚拟机内部都没有遇到过。（甚至之前的一台同样的 VMWare centos 都不会发生）</p>
+<p>后来公司的巴基斯坦兄弟发现是 <strong>bridge 的名称不匹配</strong>，导致 client 和 host 在启动 docker 服务的瞬间产生冲突，使服务器网络中断。（可能是和某个时间，修改了 VMWare 的网络配置有关）</p>
+<p>解决办法
+<a href="https://docs.docker.com/engine/userguide/networking/default_network/build-bridges/">https://docs.docker.com/engine/userguide/networking/default_network/build-bridges/</a></p>
+<p>首先，运行<code>ifconfig</code>找到桥接名称，例如下面的 &ldquo;virbr0&rdquo;</p>
+<blockquote>
+<p>lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+inet 127.0.0.1  netmask 255.0.0.0
+inet6 ::1  prefixlen 128  scopeid 0x10<!-- raw HTML omitted -->
+loop  txqueuelen 1  (Local Loopback)
+RX packets 4482  bytes 456706 (446.0 KiB)
+RX errors 0  dropped 0  overruns 0  frame 0
+TX packets 4482  bytes 456706 (446.0 KiB)
+TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</p>
+</blockquote>
+<blockquote>
+<p>virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+ether 52:54:00:77:fb:a7  txqueuelen 1000  (Ethernet)
+RX packets 0  bytes 0 (0.0 B)
+RX errors 0  dropped 0  overruns 0  frame 0
+TX packets 0  bytes 0 (0.0 B)
+TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</p>
+</blockquote>
+<p>如果没有这个网桥（首次安装完 docker 后，不要去启动服务。）,</p>
+<pre><code class="language-json">{
+    &quot;bip&quot;: &quot;192.168.0.1/24&quot;
+}
+</code></pre>
+<p>然后编辑 <code>/etc/docker/daemon.json</code> (没有就创建一个)，内容如下，这样下次 docker 启动时就会使用这个桥接名。</p>
+<pre><code class="language-json">{
+  &quot;bridge&quot;: &quot;virbr0&quot;
+}
+</code></pre>
+<p>记住，这个时候<strong>一定要重启服务器</strong>， 让系统里缓存的 bridge 信息失效，匹配这个 daemon.json 里的名称。否则这时候 start docker 还是会导致丢失网络。</p>
+<p>再次启动，运行OK</p>
+<pre><code class="language-shell">systemctl start docker
+</code></pre>
+<p>后来发现在运行 <code>docker-compose</code>启动根据 docker-compose.yaml 里一组容器的时候的时候，又会自动创建新的虚拟网卡导致中断。</p>
+<p>运行 ifconfig 查看虚拟网卡的地址，发现 172.17 开头</p>
+<p>和同事一起研究，才发现是因为 Docker 的默认网络地址 172.17.xx.xx 和公司的内部网络地址相同，而 <strong>Docker 新建的网卡排序在前面，优先于vmware 分配给宿主机的 ip</strong>，导致和 vmware 分配的不一样，因此外部无法访问了（这时候在 vmware 的图形界面里直接登录进去，发现服务、container 都启动了。）</p>
+<p><a href="https://docs.docker.com/network/bridge/#connect-a-container-to-the-default-bridge-network">https://docs.docker.com/network/bridge/#connect-a-container-to-the-default-bridge-network</a></p>
+<p>首先修改在新建 container 的时候的地址范围.</p>
+<pre><code class="language-json">{
+  &quot;bip&quot;: &quot;192.168.1.5/24&quot;
+}
+</code></pre>
+<p>然后修改 docker 服务默认的网卡bridge ip 范围</p>
+<p><a href="https://yeasy.gitbooks.io/docker_practice/content/advanced_network/">https://yeasy.gitbooks.io/docker_practice/content/advanced_network/</a>
+<a href="https://yeasy.gitbooks.io/docker_practice/content/advanced_network/bridge.html">https://yeasy.gitbooks.io/docker_practice/content/advanced_network/bridge.html</a>
+<a href="https://yeasy.gitbooks.io/docker_practice/content/advanced_network/docker0.html">https://yeasy.gitbooks.io/docker_practice/content/advanced_network/docker0.html</a></p>
+<p>在启动 Docker 服务的时候，使用 -b BRIDGE或&ndash;bridge=BRIDGE 来指定使用的网桥</p>
+<p>创建一个网桥 bridge0</p>
+<p>对于第二步，容器创建时的 ip 绑定。根据</p>
+<p><a href="https://docs.docker.com/compose/compose-file/#pid">https://docs.docker.com/compose/compose-file/#pid</a>
+<a href="https://runnable.com/docker/docker-compose-networking">https://runnable.com/docker/docker-compose-networking</a></p>
+<p>修改 docker-compose.yaml ,设置网路即可</p>
+<pre><code class="language-yaml">version: '2.1'
+
+services:
+  app:
+    image: busybox
+    command: ifconfig
+    networks:
+      app_net:
+        ipv4_address: 172.16.238.10
+        ipv6_address: 2001:3984:3989::10
+
+networks:
+  app_net:
+    driver: bridge
+    enable_ipv6: true
+    ipam:
+      driver: default
+      config:
+      -
+        subnet: 172.16.238.0/24
+      -
+        subnet: 2001:3984:3989::/64
+</code></pre>
+<p>如果出现错误</p>
+<blockquote>
+<p>ERROR: cannot create network 06f5abfdde4c11c73333c78a8ffd47756c0xxxxxx conflicts with network xxxxxxx networks have overlapping IPv4</p>
+</blockquote>
+<p>根据</p>
+<p><a href="https://serverfault.com/questions/888907/docker-compose-returns-error-networks-have-overlapping-ipv4">https://serverfault.com/questions/888907/docker-compose-returns-error-networks-have-overlapping-ipv4</a></p>
+<p>先找到这个网络，然后查看</p>
+<pre><code class="language-shell">docker network ls
+
+docker network inspect xxxxxx
+</code></pre>
+<p>要先删除之前存在的那个旧 bridge 网络。再启动</p>
+<pre><code class="language-shell">docker network rm xxxxxx
+docker-compose up
+</code></pre>
+<h3 id="如果单独把创建网络的操作放到-docker-composeyaml-里面可能会有问题最好手动创建网络">如果单独把创建网络的操作放到 docker-compose.yaml 里面可能会有问题，最好手动创建网络</h3>
+<p>有个 custom-net/docker-compose.yaml，内容如下，仅仅是创建一个网络</p>
+<pre><code class="language-yaml">version: '3.5'
+
+networks:
+    custom-net:
+        name: custom-net
+        driver: bridge
+        ipam:
+          driver: default
+          config:
+          -
+            subnet: 192.168.239.0/24
+</code></pre>
+<p>运行<code>docker-compose up</code>后，会提示</p>
+<blockquote>
+<p>WARNING: Some networks were defined but are not used by any service: custom-net
+Attaching to</p>
+</blockquote>
+<p>使用<code>docker network ls</code>发现网络名并没有创建成功。并且其他依赖这个网络的容器也无法启动</p>
+<p>只能通过命令行方式，来手动创建（而且这样也减少了一个 docker-compose.yaml file 的管理）</p>
+<pre><code class="language-shell">docker network create --driver=bridge --subnet=192.168.238.0/24 custom-net
+</code></pre>
+<h1 id="容器内执行计划任务">容器内执行计划任务</h1>
+<h2 id="node-应用程序使用-node-schedule-其他语言也可以用一些类似的库">node 应用程序使用 node-schedule (其他语言也可以用一些类似的库)</h2>
+<h2 id="如果底包是-centosubuntu-等在-etccrond-目录下创建任务">如果底包是 CentOS/Ubuntu 等，在 /etc/cron.d 目录下创建任务</h2>
+<p>首先新建一个文件，假设为 <code>crond</code> <strong>注意</strong> 底部需要一个空白行</p>
+<pre><code class="language-shell">* * * * * root echo &quot;Hello world&quot; &gt;&gt; /var/log/cron.log 2&gt;&amp;1
+#empty line
+
+</code></pre>
+<p>DockerFile 中做如下修改</p>
+<pre><code class="language-shell">FROM ubuntu:latest
+
+RUN apt-get update &amp;&amp; apt-get -y install cron
+
+# Add crontab file in the /etc/cron.d directory
+ADD crontab /etc/cron.d/hello-cron
+
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/hello-cron
+
+# Add job (necessary)
+RUN crontab /etc/cron.d/hello-cron
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# Run the command on container startup
+CMD cron &amp;&amp; tail -f /var/log/cron.log
+</code></pre>
+<h2 id="如果底包是-alpine--计划任务目录位置不一样">如果底包是 alpine , 计划任务目录位置不一样</h2>
+<p>实际上自带的是 busybox 的 <code>crond</code> ，但<strong>需要手动启动服务</strong></p>
+<p>容器内默认自带一些计划任务文件，例如  <code>/var/spool/cron/crontabs/root</code></p>
+<p><img src="/media/15490412287129/15194574706964.jpg" alt=""></p>
+<p>首先在项目目录中，创建一个自己的 <code>crontab.sh</code> 列表文件，</p>
+<blockquote>
+<p>wwwroot
+|&ndash; Dockerfile
+|&ndash; crontab.sh
+|&ndash; html/</p>
+</blockquote>
+<p>内容如下(格式就是标准的)</p>
+<pre><code class="language-shell">* * * * * php /your_laravel_app_path/artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre>
+<p>如果是 build 一个镜像，修改 Dockerfile，替换系统自带的<code>/var/spool/cron/crontabs/root</code>文件，并在启动容器的时候执行<code>crontab</code>命令，参数就是这个计划任务列表文件</p>
+<pre><code class="language-shell">COPY ./crontab.sh /var/spool/cron/crontabs/root
+RUN chmod 0644 /var/spool/cron/crontabs/root
+
+# 使 crontab 配置生效
+RUN crontab /var/spool/cron/crontabs/root
+</code></pre>
+<p>或者在 docker-compose.yaml 里处理：</p>
+<p>首先新建一个文件 script.sh，不要替换 root 文件，启动时好像会报错“Resource busy”，把计划任务附加到底部。</p>
+<p><strong>注意</strong>
+要在命令里手动启动 “<strong>crond</strong>&rdquo; (而不是 crontab )</p>
+<pre><code class="language-shell">#!/bin/sh
+
+echo &quot;*/5 * * * * curl -l http://localhost:4008/?action=full&quot; &gt;&gt; /var/spool/cron/crontabs/root \
+&amp;&amp; crond
+</code></pre>
+<p>然后在 yaml 的 command 里修改文件权限，运行文件</p>
+<pre><code class="language-yaml">volumes:
+        - &quot;./crontab.sh:/var/spool/cron/crontabs/test_crontab&quot;
+command: [&quot;sh&quot;, &quot;-c&quot;, &quot;chmod +x /app/script.sh &amp;&amp; /app/script.sh&quot;]
+</code></pre>
+<h2 id="如果没有执行检查看是什么原因">如果没有执行，检查看是什么原因？</h2>
+<p>（1）进入容器后，手动添加任务，发现提示 cron 文件底部没空行</p>
+<pre><code class="language-shell">crontab /etc/cron.d/cron-laravel
+new crontab file is missing newline before EOF, can\'t install.
+</code></pre>
+<p>（2）手动执行命令能成功，但不会自动执行？</p>
+<p>在 cron 文件里，程序要使用“完整路径”，例如 php &hellip; 是不行的。要使用 /usr/local/bin/php xxx 这种</p>
+<p>（3）忘记在添加完 custom-cron 文件后，运行 <code>crontab /etc/cron.d/custom-cron</code>把它加入到系统计划任务队列里面去</p>
+<h1 id="kitematic-图形界面管理镜像和容器">Kitematic 图形界面管理镜像和容器</h1>
+<p>坑 如果一个镜像的 Dockerfile  没有暴露多个 Volume，那么无法添加更多的 -v （在需要修改配置文件的时候很痛苦）</p>
+<h1 id="安全相关">安全相关</h1>
+<h2 id="端口暴露后外网能直接访问防火墙无记录">端口暴露后，外网能直接访问，防火墙无记录</h2>
+<p>参考：</p>
+<p><a href="https://chaifeng.com/to-fix-ufw-and-docker-security-flaw-without-disabling-iptables/">https://chaifeng.com/to-fix-ufw-and-docker-security-flaw-without-disabling-iptables/</a></p>
+<p><a href="https://www.oschina.net/question/2450896_2217983">https://www.oschina.net/question/2450896_2217983</a></p>
+<p><a href="http://dockone.io/question/653">http://dockone.io/question/653</a>（使用-p 参数指定容器的端口绑定到宿主机之后，docker会直接开放这个端口的外网访问，怎么屏蔽这种特性）</p>
+<p>假设启动了一个 MySQL 容器，运行<code>docker ps -a </code>可以看到</p>
+<blockquote>
+<p>5e056ae98048        mysql:5.7           &ldquo;docker-entrypoint.sh&rdquo;   2 hours ago         Up 2 hours                 0.0.0.0:5306-&gt;3306/tcp</p>
+</blockquote>
+<p>使用 <code>firewall-cmd --zone=public --list-ports</code>查看防火墙端口，没有发现</p>
+<p><strong>但是在外网可以直接连上3306端口！！</strong> docker 暴露的端口 6306,5306，在外网也能进行访问。但是我firewall上并没有显示这两个端口</p>
+<p>改成下面的命令来启动</p>
+<pre><code class="language-shell">docker run -itd -p 127.0.0.1:3000:3000 ubuntu
+</code></pre>
+<p>但这样会让其他容器连不上。。。指定了 ip 不能通过主机名吗</p>
+<p>如果是docker-compose.yaml启动的呢？</p>
+<p>用 <code>--link</code></p>
+<h1 id="性能相关">性能相关</h1>
+<p><a href="https://docs.docker.com/storage/storagedriver/overlayfs-driver/">https://docs.docker.com/storage/storagedriver/overlayfs-driver/</a></p>
+<p><a href="https://github.com/docker-library/php/issues/493">https://github.com/docker-library/php/issues/493</a></p>
+<p><a href="https://github.com/smrealms/smr/issues/297">https://github.com/smrealms/smr/issues/297</a></p>
+<p><a href="https://github.com/moby/moby/issues/21485">https://github.com/moby/moby/issues/21485</a></p>
+<h1 id="案例">案例</h1>
+<h2 id="wordpress-with-php-fpm-alpine">wordpress with php-fpm alpine</h2>
+<pre><code class="language-shell">FROM php:5.6-fpm-alpine
+
+# docker-entrypoint.sh dependencies
+RUN apk add --no-cache \
+# in theory, docker-entrypoint.sh is POSIX-compliant, but priority is a working, consistent image
+		bash \
+# BusyBox sed is not sufficient for some of our sed expressions
+		sed
+
+# install the PHP extensions we need
+RUN set -ex; \
+	\
+	apk add --no-cache --virtual .build-deps \
+		libjpeg-turbo-dev \
+		libpng-dev \
+	; \
+	\
+	docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr; \
+	docker-php-ext-install gd mysqli opcache; \
+	\
+	runDeps=&quot;$( \
+		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/lib/php/extensions \
+			| tr ',' '\n' \
+			| sort -u \
+			| awk 'system(&quot;[ -e /usr/local/lib/&quot; $1 &quot; ]&quot;) == 0 { next } { print &quot;so:&quot; $1 }' \
+	)&quot;; \
+	apk add --virtual .wordpress-phpexts-rundeps $runDeps; \
+	apk del .build-deps
+
+# set recommended PHP.ini settings
+# see https://secure.php.net/manual/en/opcache.installation.php
+RUN { \
+		echo 'opcache.memory_consumption=128'; \
+		echo 'opcache.interned_strings_buffer=8'; \
+		echo 'opcache.max_accelerated_files=4000'; \
+		echo 'opcache.revalidate_freq=2'; \
+		echo 'opcache.fast_shutdown=1'; \
+		echo 'opcache.enable_cli=1'; \
+	} &gt; /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+VOLUME /var/www/html
+
+ENV WORDPRESS_VERSION 4.9.4
+ENV WORDPRESS_SHA1 0e630bf940fd586b10e099cd9195b3e825fb194c
+
+RUN set -ex; \
+	curl -o wordpress.tar.gz -fSL &quot;https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz&quot;; \
+	echo &quot;$WORDPRESS_SHA1 *wordpress.tar.gz&quot; | sha1sum -c -; \
+# upstream tarballs include ./wordpress/ so this gives us /usr/src/wordpress
+	tar -xzf wordpress.tar.gz -C /usr/src/; \
+	rm wordpress.tar.gz; \
+	chown -R www-data:www-data /usr/src/wordpress
+
+COPY docker-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT [&quot;docker-entrypoint.sh&quot;]
+CMD [&quot;php-fpm&quot;]
+</code></pre>
+<h2 id="wordpress-with-nginx">wordpress with nginx</h2>
+<p><a href="https://github.com/eugeneware/docker-wordpress-nginx/blob/master/Dockerfile">https://github.com/eugeneware/docker-wordpress-nginx/blob/master/Dockerfile</a></p>
+<h2 id="php-fpm-72-无法安装-mcrpyt">php-fpm 7.2 无法安装 mcrpyt</h2>
+<p>在Dockerfile里有一段，导致在build 的时候一直报错</p>
+<blockquote>
+<p>usage: /usr/local/bin/docker-php-ext-configure ext-name [configure flags]</p>
+</blockquote>
+<p>根据提示 <a href="https://github.com/docker-library/php/issues/541">https://github.com/docker-library/php/issues/541</a>  PHP 7.2 移除了这个包。。。 退回到 7.1</p>
+<h1 id="磁盘不足问题删除-dockerqcow2-文件">磁盘不足问题：删除 Docker.qcow2 文件</h1>
+<p><a href="http://www.jianshu.com/p/2b756f9c10c1">http://www.jianshu.com/p/2b756f9c10c1</a>
+<a href="https://github.com/docker/for-mac/issues/371">https://github.com/docker/for-mac/issues/371</a></p>
+<p>可能是根据可用磁盘空间乘以一个比例去设置的</p>
+<p>~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/</p>
+<p>里面有个 Docker.qcow2 特别大。随着添加 images 体积不断增加，即使删除了 image 也没有变化。</p>
+<p>容易容器启动失败，提示磁盘不足，进入容器 <code>docker exec</code> 运行 <code>df -h</code>可以看到磁盘</p>
+<p>用 qemu-image 重建，但会丢失 images 等信息。</p>
+<h2 id="查看镜像和容器占用的空间">查看镜像和容器占用的空间</h2>
+<pre><code>docker system df
+
+TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE
+Images              9                   3                   1.195GB             495.7MB (41%)
+Containers          3                   2                   2.202MB             0B (0%)
+Local Volumes       8                   2                   965.3MB             663.9MB (68%)
+</code></pre>
+<h1 id="alpine-替代-ubuntu-做底包">Alpine 替代 Ubuntu 做底包</h1>
+<p><a href="http://www.infoq.com/cn/news/2016/01/Alpine-Linux-5M-Docker">http://www.infoq.com/cn/news/2016/01/Alpine-Linux-5M-Docker</a></p>
+<p>如果空间足够，不建议使用，因为 Ubuntu 等常见发行版在遇到一些依赖问题时更容易解决问题。</p>
+<p>如果需要占用空间小且没有什么特殊的依赖关系，使用 Alpine 更轻量快速（有自己的包管理工具<code>apk</code>）</p>
+<p>例如，php-fpm 如果要支持 laravel 应用，就需要安装一些依赖，用 Ubuntu 的底包可以轻松<code>apt-get install</code>，而用 alpine 就不一定那么方便了。</p>
+<p>allpine 的源</p>
+<p><a href="http://dl-3.alpinelinux.org/alpine/edge/testing">http://dl-3.alpinelinux.org/alpine/edge/testing</a></p>
+<p>淘宝</p>
+<p><a href="https://mirrors.aliyun.com/alpine/edge/testing">https://mirrors.aliyun.com/alpine/edge/testing</a></p>
+<p>在使用了一段时间后，发现 alpine 默认没有带 bash， 它的 /bin/sh 比较难用（有时候在命令行历史中导航会发生排版错误）
+使用 debian:stretch-slim 也会更小(但是没有 vi， 看这里https://segmentfault.com/q/1010000010170010)</p>
+<h2 id="php-可用">php 可用</h2>
+<p>Possible values for ext-name:
+bcmath bz2 calendar ctype curl dba dom enchant exif fileinfo filter ftp gd gettext gmp hash iconv imap interbase intl json ldap mbstring mcrypt mysqli oci8 odbc opcache pcntl pdo pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pdo_sqlite pgsql phar posix pspell readline recode reflection session shmop simplexml snmp soap sockets spl standard sysvmsg sysvsem sysvshm tidy tokenizer wddx xml xmlreader xmlrpc xmlwriter xsl zip</p>
+<h1 id="参考资料">参考资料</h1>
+<ul>
+<li><a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/">在Ubuntu下安装 Docker</a></li>
+<li><a href="https://github.com/my101du/docker-nginx-php-composer-laravel-or-lumen">我在 GitHub 上开源了一个能支持 Laravel PHP 框架的 Dockerfile</a></li>
+<li><a href="https://segmentfault.com/a/1190000002949036">https://segmentfault.com/a/1190000002949036</a></li>
+</ul>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="dockerraw-文件体积极大">Docker.raw 文件体积极大</h2>
+<p>在 Mac 下用 Macreviver 查看磁盘，发现 Docker 目录下有个 Docker.raw 文件极大，64G&hellip;</p>
+<p>删除后还会创建。</p>
+<p>查询到 <a href="https://github.com/docker/for-mac/issues/2297">https://github.com/docker/for-mac/issues/2297</a></p>
+<p>在这里修改默认的大小即可。</p>
+<p><img src="/media/15490412287129/15240339871309.jpg" alt=""></p>
+<h2 id="添加其他共享目录给容器使用">添加其他共享目录给容器使用</h2>
+<p>默认只有 /Users /Volumes /private /tmp 这几个目录。 如果有其他目录要添加，在这里输入即可（如果这个目录是已经存在的目录列表里的软链接，会提示重复无法添加，<strong>手动输入</strong>路径即可）</p>
+<p><img src="/media/15490412287129/15355094908985.jpg" alt="-w497"></p>
+<h2 id="dockerraw-文件很大">docker.raw 文件很大</h2>
+<p>mac 下  ~/Library/Container/com.docker.docker/Data/vms/0/Docker.raw(linux 在 ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux)</p>
+<p>体积很大 几个G</p>
+<p>这个文件就算删除，重启docker后也会生成</p>
+<p>其实这个只是系统分配给docker的逻辑硬盘大小，应该是指docker最大可用的硬盘空间，实际占用没有这么大</p>
+<p>通过这里可以设置</p>
+<p><img src="/media/docker/set-disk-size.jpg" alt=""></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/docker-%E9%87%8C%E8%BF%90%E8%A1%8C%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E7%9A%84-chrome/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

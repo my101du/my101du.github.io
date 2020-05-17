@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="功能：ldap https://adldap2.github.io/Adldap2/#/setup composer require adldap2/adldap2 Laravel ADLP （建议） composer require adldap2/adldap2-laravel 发布配置文件ldap.php php artisan vendor:publish --provider=&amp;quot;Adldap\Laravel\AdldapServiceProvider&amp;quot; 开始使用 use Adldap\Laravel\Facades\Adldap; // Finding a user: $user = Adldap::search()-&amp;gt;users()-&amp;gt;find(&#39;john doe&#39;); // Searching for a user: $search = Adldap::search()-&amp;gt;where(&#39;cn&#39;, &#39;=&#39;, &#39;John Doe&#39;)-&amp;gt;get(); // Running an operation under a different" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="功能：ldap https://adldap2.github.io/Adldap2/#/setup composer require adldap2/adldap2 Laravel ADLP （建议） composer require adldap2/adldap2-laravel 发布配置文件ldap.php php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapServiceProvider&quot; 开始使用 use Adldap\Laravel\Facades\Adldap; // Finding a user: $user = Adldap::search()-&gt;users()-&gt;find(&#39;john doe&#39;); // Searching for a user: $search = Adldap::search()-&gt;where(&#39;cn&#39;, &#39;=&#39;, &#39;John Doe&#39;)-&gt;get(); // Running an operation under a different" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BDldap/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="功能：ldap https://adldap2.github.io/Adldap2/#/setup composer require adldap2/adldap2 Laravel ADLP （建议） composer require adldap2/adldap2-laravel 发布配置文件ldap.php php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapServiceProvider&quot; 开始使用 use Adldap\Laravel\Facades\Adldap; // Finding a user: $user = Adldap::search()-&gt;users()-&gt;find(&#39;john doe&#39;); // Searching for a user: $search = Adldap::search()-&gt;where(&#39;cn&#39;, &#39;=&#39;, &#39;John Doe&#39;)-&gt;get(); // Running an operation under a different">
+
+<meta itemprop="wordCount" content="3676">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="功能：ldap https://adldap2.github.io/Adldap2/#/setup composer require adldap2/adldap2 Laravel ADLP （建议） composer require adldap2/adldap2-laravel 发布配置文件ldap.php php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapServiceProvider&quot; 开始使用 use Adldap\Laravel\Facades\Adldap; // Finding a user: $user = Adldap::search()-&gt;users()-&gt;find(&#39;john doe&#39;); // Searching for a user: $search = Adldap::search()-&gt;where(&#39;cn&#39;, &#39;=&#39;, &#39;John Doe&#39;)-&gt;get(); // Running an operation under a different"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%8A%9F%E8%83%BDldap/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%8A%9F%E8%83%BDldap/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3676字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>功能：ldap</p>
+<h1 id="heading"></h1>
+<p><a href="https://adldap2.github.io/Adldap2/#/setup">https://adldap2.github.io/Adldap2/#/setup</a></p>
+<pre><code class="language-shell">composer require adldap2/adldap2
+</code></pre>
+<h1 id="laravel-adlp-建议">Laravel ADLP （建议）</h1>
+<pre><code class="language-shell">composer require adldap2/adldap2-laravel
+</code></pre>
+<p>发布配置文件<code>ldap.php</code></p>
+<pre><code class="language-shell">php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapServiceProvider&quot;
+
+</code></pre>
+<p>开始使用</p>
+<pre><code class="language-php">use Adldap\Laravel\Facades\Adldap;
+
+// Finding a user:
+$user = Adldap::search()-&gt;users()-&gt;find('john doe');
+
+// Searching for a user:
+$search = Adldap::search()-&gt;where('cn', '=', 'John Doe')-&gt;get();
+
+// Running an operation under a different connection:
+$users = Adldap::getProvider('other-connection')-&gt;search()-&gt;users()-&gt;get();
+
+// Creating a user:
+$user = Adldap::make()-&gt;user([
+    'cn' =&gt; 'John Doe',
+]);
+
+// Modifying Attributes:
+$user-&gt;cn = 'Jane Doe';
+
+// Saving a user:
+$user-&gt;save();
+</code></pre>
+<p>第二种方法是使用注入的 Interface</p>
+<pre><code class="language-php">use Adldap\AdldapInterface;
+
+class UserController extends Controller
+{
+    /**
+     * @var Adldap
+     */
+    protected $ldap;
+
+    /**
+     * Constructor.
+     *
+     * @param AdldapInterface $adldap
+     */
+    public function __construct(AdldapInterface $ldap)
+    {
+        $this-&gt;ldap = $ldap;
+    }
+
+    /**
+     * Displays the all LDAP users.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $users = $this-&gt;ldap-&gt;search()-&gt;users()-&gt;get();
+
+        return view('users.index', compact('users'));
+    }
+
+    /**
+     * Displays the specified LDAP user.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $user = $this-&gt;ldap-&gt;search()-&gt;findByGuid($id);
+
+        return view('users.show', compact('user'));
+    }
+}
+</code></pre>
+<h1 id="直接使用-ldap-账号登录并处理登录后的用户验证状态no-admin">直接使用 ldap 账号登录，并处理登录后的用户验证状态（no admin）</h1>
+<p><a href="https://github.com/jotaelesalinas/laravel-simple-ldap-auth">https://github.com/jotaelesalinas/laravel-simple-ldap-auth</a></p>
+<p>基于 adlp2-laravel 来改造（遵循下一章的 “自定义认证”）</p>
+<p>添加 alias</p>
+<pre><code class="language-php">'Adldap' =&gt; Adldap\Laravel\Facades\Adldap::class,
+</code></pre>
+<p>publish service provider</p>
+<pre><code class="language-shell">php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapServiceProvider&quot;
+php artisan vendor:publish --provider=&quot;Adldap\Laravel\AdldapAuthServiceProvider&quot;
+</code></pre>
+<p>修改 auth 的 drive<code>config/auth.php</code></p>
+<pre><code class="language-php">'providers' =&gt; [
+    'users' =&gt; [
+        'driver' =&gt; 'ldap', // was 'eloquent'
+        'model'  =&gt; App\User::class,
+    ],
+],
+
+</code></pre>
+<h2 id="修改-user-表-如果还没有-migrate-就修改-migration-文件否则直接改-mysql-表">修改 user 表 （如果还没有 migrate 就修改 migration 文件，否则直接改 MySQL 表）</h2>
+<p><strong>注</strong>  不修改也可以， 最新版的 ldap_auth 和项目的教程已经变了很多。 代码<code>sync_attributes</code>里直接用 email 来存储 userprincipalname, 不需要再修改字段了;另外无需保存 phone</p>
+<p>email -&gt; username
+添加 phone
+删除 email_verified_at</p>
+<pre><code class="language-php">  // remove this line:
+        // $table-&gt;string('email')-&gt;unique();
+        // and replace it with this one:
+        $table-&gt;string('username')-&gt;unique();
+
+        // remove this line as well:
+        // $table-&gt;timestamp('email_verified_at')-&gt;nullable();
+
+        // add this line:
+        $table-&gt;string('phone');
+</code></pre>
+<p>删除 rm database/migrations/2014_10_12_100000_create_password_resets_table.php</p>
+<p>让 Auth 的 LoginController 使用 username 替代 email</p>
+<pre><code class="language-php">class LoginController extends Controller
+{
+    /* rest of the class */
+
+    public function username()
+    {
+        return config('ldap_auth.usernames.eloquent');
+    }
+}
+
+</code></pre>
+<p>删除 auth routes（去掉 register 注册模块， password 重置模块）, 换成 ldap 的自写路由</p>
+<pre><code class="language-php">// replace this line:
+// Auth::routes();
+// with these ones:
+Route::get('login', 'Auth\LoginController@showLoginForm')-&gt;name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')-&gt;name('logout');
+</code></pre>
+<p>删除多余的文件</p>
+<pre><code class="language-shell">rm app/Http/Controllers/Auth/ForgotPasswordController.php
+rm app/Http/Controllers/Auth/RegisterController.php
+rm app/Http/Controllers/Auth/ResetPasswordController.php
+rm app/Http/Controllers/Auth/VerificationController.php
+rm resources/views/auth/register.blade.php
+rm resources/views/auth/verify.blade.php
+rm -r resources/views/auth/passwords
+</code></pre>
+<p>在 LoginController 里修改代码（最合适的方式还是添加自定义 User Provider <a href="https://laravel.com/docs/5.7/authentication#adding-custom-user-providers,">https://laravel.com/docs/5.7/authentication#adding-custom-user-providers,</a> 这里只是简单对代码进行修改）</p>
+<pre><code class="language-php">use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Adldap\Laravel\Facades\Adldap;
+
+class LoginController extends Controller
+{
+    // if not added in a previous step
+    public function username()
+    {
+        //就是 “username”
+        return config('ldap_auth.usernames.eloquent');
+    }
+    
+    protected function validateLogin(Request $request)
+    {
+        $this-&gt;validate($request, [
+            $this-&gt;username() =&gt; 'required|string|regex:/^\w+$/',
+            'password' =&gt; 'required|string',
+        ]);
+    }
+    
+    protected function attemptLogin(Request $request)
+    {
+        $credentials = $request-&gt;only($this-&gt;username(), 'password');
+        $username = $credentials[$this-&gt;username()];
+        $password = $credentials['password'];
+
+        $user_format = env('LDAP_USER_FORMAT', 'cn=%s,'.env('LDAP_BASE_DN', ''));
+        $userdn = sprintf($user_format, $username);
+
+        // you might need this, as reported in
+        // [#14](https://github.com/jotaelesalinas/laravel-simple-ldap-auth/issues/14):
+        // Adldap::auth()-&gt;bind($userdn, $password);
+
+        if(Adldap::auth()-&gt;attempt($userdn, $password, $bindAsUser = true)) {
+            // the user exists in the LDAP server, with the provided password
+
+            $user = \App\User::where($this-&gt;username(), $username)-&gt;first();
+            if (!$user) {
+                // the user doesn't exist in the local database, so we have to create one
+
+                $user = new \App\User();
+                $user-&gt;username = $username;
+                $user-&gt;password = '';
+
+                // you can skip this if there are no extra attributes to read from the LDAP server
+                // or you can move it below this if(!$user) block if you want to keep the user always
+                // in sync with the LDAP server 
+                $sync_attrs = $this-&gt;retrieveSyncAttributes($username);
+                foreach ($sync_attrs as $field =&gt; $value) {
+                    $user-&gt;$field = $value !== null ? $value : '';
+                }
+            }
+
+            // by logging the user we create the session, so there is no need to login again (in the configured time).
+            // pass false as second parameter if you want to force the session to expire when the user closes the browser.
+            // have a look at the section 'session lifetime' in `config/session.php` for more options.
+            $this-&gt;guard()-&gt;login($user, true);
+            return true;
+        }
+
+        // the user doesn't exist in the LDAP server or the password is wrong
+        // log error
+        return false;
+    }
+
+    protected function retrieveSyncAttributes($username)
+    {
+        $ldapuser = Adldap::search()-&gt;where(env('LDAP_USER_ATTRIBUTE'), '=', $username)-&gt;first();
+        if ( !$ldapuser ) {
+            // log error
+            return false;
+        }
+        // if you want to see the list of available attributes in your specific LDAP server:
+        // var_dump($ldapuser-&gt;attributes); exit;
+
+        // needed if any attribute is not directly accessible via a method call.
+        // attributes in \Adldap\Models\User are protected, so we will need
+        // to retrieve them using reflection.
+        $ldapuser_attrs = null;
+
+        $attrs = [];
+
+        foreach (config('ldap_auth.sync_attributes') as $local_attr =&gt; $ldap_attr) {
+            if ( $local_attr == 'username' ) {
+                continue;
+            }
+
+            $method = 'get' . $ldap_attr;
+            if (method_exists($ldapuser, $method)) {
+                $attrs[$local_attr] = $ldapuser-&gt;$method();
+                continue;
+            }
+
+            if ($ldapuser_attrs === null) {
+                $ldapuser_attrs = self::accessProtected($ldapuser, 'attributes');
+            }
+
+            if (!isset($ldapuser_attrs[$ldap_attr])) {
+                // an exception could be thrown
+                $attrs[$local_attr] = null;
+                continue;
+            }
+
+            if (!is_array($ldapuser_attrs[$ldap_attr])) {
+                $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr];
+            }
+
+            if (count($ldapuser_attrs[$ldap_attr]) == 0) {
+                // an exception could be thrown
+                $attrs[$local_attr] = null;
+                continue;
+            }
+
+            // now it returns the first item, but it could return
+            // a comma-separated string or any other thing that suits you better
+            $attrs[$local_attr] = $ldapuser_attrs[$ldap_attr][0];
+            //$attrs[$local_attr] = implode(',', $ldapuser_attrs[$ldap_attr]);
+        }
+
+        return $attrs;
+    }
+
+    protected static function accessProtected ($obj, $prop)
+    {
+        $reflection = new \ReflectionClass($obj);
+        $property = $reflection-&gt;getProperty($prop);
+        $property-&gt;setAccessible(true);
+        return $property-&gt;getValue($obj);
+    }
+
+</code></pre>
+<p>里面 ldap 登录后同步系统登录状态，最关键的代码是<code>attempLogin</code>里的这几个地方：</p>
+<pre><code class="language-php">// 认证需要的字段是
+$credentials = $request-&gt;only($this-&gt;username(), 'password');
+
+//格式化用户名，得到 $userdn 带 cn=xxx,
+$user_format = ''
+$userdn = ''
+
+// 开始ldap验证，检查用户是否存在
+Adldap::auth()-&gt;attempt($userdn, $password, $bindAsUser = true)
+
+//如果本地数据库没有这个用户，则写入到本地数据库（当然我觉得如果只是登录下，不需要写入到数据库。。）
+$user = \App\User::where($this-&gt;username(), $username)-&gt;first();
+//...
+
+//写入其他用户资料到本地数据库（可不做）
+
+//记录登录状态到 session
+$this-&gt;guard()-&gt;login($user, true);
+</code></pre>
+<h1 id="自定义认证">自定义认证</h1>
+<p>我个人的理解是， <code>providers</code> 就是背后处理输入账号、密码的一套东西。</p>
+<p>同一个登录表单，默认里面有email/password 两个字段，但我们需要改成 username 和 password, 并且验证的不是 users 表里的对应数据，而是其他数据来源（比如 ldap ，token 啥的），就用不同的 <code>driver</code></p>
+<p><a href="https://learnku.com/articles/3825/laravel-authentication-principle-and-full-custom-authentication">https://learnku.com/articles/3825/laravel-authentication-principle-and-full-custom-authentication</a></p>
+<p><a href="https://laravel.com/docs/5.7/authentication#adding-custom-user-providers">https://laravel.com/docs/5.7/authentication#adding-custom-user-providers</a></p>
+<p>关键：</p>
+<p><strong>Authenticatable 接口</strong></p>
+<p>如果需要用一个自定义的类来做认证，需要实现<code>Illuminate\Contracts\Auth\Authenticatable</code>这个接口定义的方法</p>
+<p>Authenticatable 定义了被用来认证的模型或类需要实现的接口</p>
+<pre><code class="language-php">// 获取唯一标识的，可以用来认证的字段名，比如 id，uuid
+public function getAuthIdentifierName();
+// 获取该标示符对应的值
+public function getAuthIdentifier();
+// 获取认证的密码
+public function getAuthPassword();
+// 获取remember token
+public function getRememberToken();
+// 设置 remember token
+public function setRememberToken($value);
+// 获取 remember token 对应的字段名，比如默认的 'remember_token'
+public function getRememberTokenName();
+</code></pre>
+<p><strong>Authenticatable trait</strong></p>
+<p><code>Illuminate\Auth\Authenticatable</code>是 Laravel auth 默认的 User 模型使用的 trait，定义了 User 模型默认认证标示符为 &lsquo;id&rsquo;，密码字段为 &lsquo;password&rsquo;，remember token 对应的字段为 remember_token 等等</p>
+<p>重写 User 模型的这些方法可以修改一些设置</p>
+<p><strong>Guard 接口</strong></p>
+<p><code>Illuminate\Contracts\Auth\Guard</code>定义了某个实现了 Authenticatable (可认证的) 模型或类的认证方法以及一些常用的接口</p>
+<pre><code class="language-php">// 判断当前用户是否登录
+public function check();
+// 判断当前用户是否是游客（未登录）
+public function guest();
+// 获取当前认证的用户
+public function user();
+// 获取当前认证用户的 id，严格来说不一定是 id，应该是上个模型中定义的唯一的字段名
+public function id();
+// 根据提供的消息认证用户
+public function validate(array $credentials = []);
+// 设置当前用户
+public function setUser(Authenticatable $user);
+</code></pre>
+<p><strong>StatefulGuard 接口</strong></p>
+<p><code>Illuminate\Contracts\Auth\StatefulGuard</code>继承自 Guard 接口，除了 Guard 里面定义的一些基本接口外，还增加了更进一步、有状态的 Guard.</p>
+<pre><code class="language-php">// 尝试根据提供的凭证验证用户是否合法
+public function attempt(array $credentials = [], $remember = false);
+// 一次性登录，不记录session or cookie
+public function once(array $credentials = []);
+// 登录用户，通常在验证成功后记录 session 和 cookie 
+public function login(Authenticatable $user, $remember = false);
+// 使用用户 id 登录
+public function loginUsingId($id, $remember = false);
+// 使用用户 ID 登录，但是不记录 session 和 cookie
+public function onceUsingId($id);
+// 通过 cookie 中的 remember token 自动登录
+public function viaRemember();
+// 登出
+public function logout();
+</code></pre>
+<p>Laravel 中默认提供了 3 中 guard：RequestGuard，TokenGuard，SessionGuard.</p>
+<p>RequestGuard
+Illuminate\Auth\RequestGuard</p>
+<p>RequestGuard 是一个非常简单的 guard. RequestGuard 是通过传入一个闭包来认证的。可以通过调用 Auth::viaRequest 添加一个自定义的 RequestGuard.</p>
+<p>SessionGuard
+Illuminate\Auth\SessionGuard</p>
+<p>SessionGuard 是 Laravel web 认证默认的 guard.</p>
+<p>TokenGuard
+Illuminate\Auth\TokenGuard</p>
+<p>TokenGuard 适用于无状态 api 认证，通过 token 认证.</p>
+<p><strong>UserProvider 接口</strong></p>
+<p><code>Illuminate\Contracts\Auth\UserProvider</code>定义了获取认证模型的方法，比如根据 id 获取模型，根据 email 获取模型等等.</p>
+<pre><code class="language-php">// 通过唯一标示符获取认证模型
+public function retrieveById($identifier);
+// 通过唯一标示符和 remember token 获取模型
+public function retrieveByToken($identifier, $token);
+// 通过给定的认证模型更新 remember token
+public function updateRememberToken(Authenticatable $user, $token);
+// 通过给定的凭证获取用户，比如 email 或用户名等等
+public function retrieveByCredentials(array $credentials);
+// 认证给定的用户和给定的凭证是否符合
+public function validateCredentials(Authenticatable $user, array $credentials); 
+</code></pre>
+<p>Laravel 中默认有两个 user provider: DatabaseUserProvider &amp; EloquentUserProvider.</p>
+<p>DatabaseUserProvider
+Illuminate\Auth\DatabaseUserProvider</p>
+<p>直接通过数据库表来获取认证模型.</p>
+<p>EloquentUserProvider
+Illuminate\Auth\EloquentUserProvider</p>
+<p>通过 eloquent 模型来获取认证模型</p>
+<p><strong>AuthManager</strong></p>
+<p><code>Illuminate\Auth\AuthManager</code>.Guard 用来认证一个用户是否认证成功， UserProvider 用来提供认证模型的来源，而根据项目的 config 管理 guard 以及自定义 guard 等等功能，则是通过 AuthManager 来实现。</p>
+<p>AuthManager 应该是有点像策略模式里面的 Context 类以及工厂方法里面的工厂，一方面管理 Guard，另外一方面通过 __call 魔术方法调用具体的策略 (Guard) 方法。</p>
+<p>Auth facade 对应的实现类就是 AuthManager，AuthManager 在容器中注册为单例，用来管理所有的 guard、user provider 以及 guard 的代理工作。</p>
+<p><strong>创建 自定义认证 步骤</strong></p>
+<p>创建认证模型
+创建一个自定义的认证模型，实现 Authenticatable 接口；</p>
+<p>创建自定义的 UserProvider
+创建一个自定义的 UserProvider，实现 UserProvider 接口，可以返回上面自定义的认证模型；</p>
+<p>创建自定义的 Guard
+创建一个自定义的 Guard，实现 Guard 或 StatefulGuard 接口</p>
+<p>添加 guard creator 和 user provider creator 到 AuthManager 中</p>
+<p>在 AppServiceProvider 的 boot 方法添加如下代码：</p>
+<pre><code class="language-php">Auth::extend('myguard', function(){
+    ...
+    return new MyGuard();   //返回自定义 guard 实例
+    ...
+});
+
+Auth::provider('myuserprovider', function(){
+    return new MyUserProvider();    // 返回自定义的 user provider
+});
+</code></pre>
+<p>在 config\auth.php 的 guards 数组中添加自定义 guard，一个自定义 guard 包括两部分： driver 和 provider.</p>
+<pre><code class="language-php">'oustn' =&gt; [
+    'driver' =&gt; 'myguard',
+    'provider' =&gt; 'myusers',
+],
+</code></pre>
+<p>在 config\auth.php 的 providers 数组中添加自定义 user provider.</p>
+<pre><code class="language-php">'myusers' =&gt; [
+    'driver' =&gt; 'myuserprovider'    // 里面具体的字段可以根据你创建 user provider 需要的信息自由添加，可以通过 Auth::createUserProvider('myuserprovider') 创建
+],
+</code></pre>
+<p>设置 config\auth.php 的 defaults.guard 为 <code>oustn</code>.</p>
+<h1 id="从数据库导入-ldap-用户列表">从数据库导入 ldap 用户列表</h1>
+<p>安装ldap包后，会得到一个 command, 方便从一个数据库快速导入用户（可以做成定期任务，从公司的联系人中定期更新）</p>
+<p>adldap:import         Imports LDAP users into the local database with a random 16 character hashed password.</p>
+<h1 id="补充">补充</h1>
+<p>代码剖析
+<a href="https://learnku.com/articles/13434/the-laravel-framework-extends-auth-authentication-to-implement-custom-driver-guard">https://learnku.com/articles/13434/the-laravel-framework-extends-auth-authentication-to-implement-custom-driver-guard</a></p>
+<p>实现过程
+<a href="https://juejin.im/post/5b41118af265da0fa21a6553">https://juejin.im/post/5b41118af265da0fa21a6553</a></p>
+<p>例子 mongodb json
+<a href="https://code.tutsplus.com/tutorials/how-to-create-a-custom-authentication-guard-in-laravel--cms-29667">https://code.tutsplus.com/tutorials/how-to-create-a-custom-authentication-guard-in-laravel--cms-29667</a></p>
+<h1 id="案例学">案例学</h1>
+<p><a href="https://medium.com/@sirajul.anik/laravel-api-authenticate-user-with-custom-driver-different-table-using-auth-middleware-fa2cabec2d61">https://medium.com/@sirajul.anik/laravel-api-authenticate-user-with-custom-driver-different-table-using-auth-middleware-fa2cabec2d61</a></p>
+<h2 id="laravel-middlewareweb--api">Laravel Middleware — Web &amp; API</h2>
+<p>打开 <code>app/Providers/RouteServiceProvider.php</code>可以看到</p>
+<p>web.php 里的 route，都使用了<code>web</code> middleware (提供 session 和 cookie 处理)
+api.php 里的 route，都使用了<code>api</code> middleware（提供 throttling 处理）</p>
+<p>但是，不管 web 还是 api, 同样都会使用 Authentication middleware, 一般表现为在路由里用 <code>auth</code> （用户必须登录才能访问），或者<code>guest</code>(不需要登录)</p>
+<pre><code class="language-php">// routes/web.php
+Route::group(['middleware' =&gt; 'auth'], function(){
+    // AUTHENTICATED USER
+    // ENLIST routes here
+});
+Route::group(['middleware' =&gt; 'guest'], function(){
+    // GUEST/UNAUTHORIZED USERS
+    // ENLIST routes here
+});
+</code></pre>
+<h2 id="使用-guards-来让用户通过验证失效">使用 guards 来让用户通过验证/失效</h2>
+<p>默认使用  web/api 这两个 guards, 如果使用了 <code>auth</code> middleware,默认使用 <code>web</code> guard.</p>
+<p>可以在 <code>config/auth.php</code>里看到</p>
+<pre><code class="language-php">'guards' =&gt; [
+        'web' =&gt; [
+            'driver' =&gt; 'session',
+            'provider' =&gt; 'users',
+        ],
+
+        'api' =&gt; [
+            'driver' =&gt; 'token',
+            'provider' =&gt; 'users',
+        ],
+    ],
+</code></pre>
+<p>如何定义 guard?  使用<code>:</code>来隔开 middleware 名和 guard 名，就像<code>auth:web</code> or <code>auth:api</code></p>
+<p>（因为默认不指定 guard 的话会使用<code>web</code>,因此 auth 和 auth:web 是相同的）</p>
+<pre><code class="language-php">// routes/api.php
+Route::group(['middleware' =&gt; 'auth:api'], function(){
+    // AUTHENTICATED users here,
+    // define routes here
+});
+</code></pre>
+<p>对于<code>web</code> 这个 guard, Laravel 使用 session 和 cookie （来验证用户）</p>
+<p>对于 <code>api</code> 这个 guard, 则在提交过来的数据中的 header, form body, query string 找 <code>api_token</code>，如果找不到就表示未通过身份验证，如果找到了，就到数据表中去匹配 api_token</p>
+<p>因此，如果在 auth middleware 上使用 api guard, 就需要在 users 数据表中一个字段 api_token 来保存用户的 access_token.</p>
+<p>但是在 users 表里面，每行用户记录只能绑定一个 token，为了记录用户多次登录、更新、过期，以及在多个设备上登录。</p>
+<p>再创建一个表 tokens，这样就能创建多个 token 了（除非过期）</p>
+<pre><code class="language-php">public function up () {
+   Schema::create('tokens', function (Blueprint $table) {
+      $table-&gt;increments('id');
+      $table-&gt;integer('user_id');
+      $table-&gt;string('access_token');
+      $table-&gt;string('refresh_token');
+      $table-&gt;dateTime('expires_in');
+      $table-&gt;timestamps();
+   });
+}
+</code></pre>
+<p>到这里，users 表由于还是没有 api_token 了，我们怎样才能使用<code>auth:api</code>以及 <code>Auth</code> facde 来调用登录方法？</p>
+<h2 id="自定义-guard-来把它传入-auth-middleware">自定义 guard 来把它传入 auth middleware</h2>
+<p>创建一个 ServiceProvider，调用 <code>Auth::extend</code>方法</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BDldap/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BDldap/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD%E5%A4%84%E7%90%86-excel-%E6%95%B0%E6%8D%AE/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-captcha-%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: wordpress插件开发 permalink: wordpress-plugin-development date: 2017/07/01 10:10:10 header-img: &amp;ldquo;http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg&amp;quot; tags:
+ wordpress   " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: wordpress插件开发
+permalink: wordpress-plugin-development
+date: 2017/07/01 10:10:10
+header-img: &ldquo;http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg&quot;
+tags:
+
+wordpress
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/wordpress%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: wordpress插件开发
+permalink: wordpress-plugin-development
+date: 2017/07/01 10:10:10
+header-img: &ldquo;http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg&quot;
+tags:
+
+wordpress
+
+
+">
+
+<meta itemprop="wordCount" content="16478">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: wordpress插件开发
+permalink: wordpress-plugin-development
+date: 2017/07/01 10:10:10
+header-img: &ldquo;http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg&quot;
+tags:
+
+wordpress
+
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wordpress%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wordpress%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 16478字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 33分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: wordpress插件开发
+permalink: wordpress-plugin-development
+date: 2017/07/01 10:10:10
+header-img: &ldquo;<a href="http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg%22">http://oi6ms93e0.bkt.clouddn.com/upload/c2d38e4c4faf5ca5c7e54b6e0bd9a9ab.jpg&quot;</a>
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<p><img src="/media/15490412570239/14973588188702.jpg" alt=""></p>
+<h1 id="入口文件">入口文件</h1>
+<h2 id="创建插件目录规划文件结构">创建插件目录，规划文件结构</h2>
+<p>在<code>wp-content/plugins/</code>下创建目录<code>my-plugin</code>。</p>
+<p>创建插件入口文件<code>my-plugin.php</code>和 删除插件的处理文件<code>uninstall.php</code>。</p>
+<h2 id="修改插件入口文件">修改插件入口文件</h2>
+<p>然后在里面新建同名文件<code>my-plugin.php</code>。并按照如下的格式添加内容： （如果你使用 GPL2 的 license，可以添加一段关于 license 的说明）</p>
+<pre><code class="language-php">/*
+Plugin Name: World Clock
+Plugin URI:  https://www.pulseelectronics.com
+Description: Display the world clock
+Version:     1.0.0
+Author:      my101du@gmail.com
+Author URI:  https://www.macode365.com
+License:     GPL2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wporg
+Domain Path: /languages
+
+{Plugin Name} is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+any later version.
+ 
+{Plugin Name} is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+ 
+You should have received a copy of the GNU General Public License
+along with {Plugin Name}. If not, see {License URI}.
+ */
+
+//
+</code></pre>
+<blockquote>
+<p>注意，一些自动生成注释的插件会添加多余的一个 “*”符号，导致 wp 系统无法识别到插件。</p>
+</blockquote>
+<pre><code class="language-php">/**
+* Plugin Name: My Plugin (注意多了一个 * 号)
+*/
+</code></pre>
+<p><strong>特别注意</strong></p>
+<p>在插件的描述和插件正式 PHP 代码之间，不要把它们分开成两段写，否则会在激活插件的时候报如下错误</p>
+<blockquote>
+<p>The plugin generated 1 characters of unexpected output during activation</p>
+</blockquote>
+<p><img src="/media/15490412570239/14966413030945.jpg" alt=""></p>
+<h1 id="激活禁用插件">激活/禁用插件</h1>
+<p>然后就可以在后台的“Plugins”中找到这个插件了，点击“Activate”激活它。</p>
+<p><img src="/media/15490412570239/14944004113693.jpg" alt=""></p>
+<p>当然，目前这个插件还没有任何用处。在写代码实现功能之前，先了解一下<code>hook</code>（钩子）的概念。</p>
+<h1 id="hooks-与-actionfilter-概述">Hooks 与 Action/Filter 概述</h1>
+<h2 id="什么是-hooks">什么是 hooks</h2>
+<p><code>Hook</code>字面意思是“钩子”。</p>
+<p>在 Wordpress 里面，它是可以让一段代码与另外一段代码交互的方法。可以与 WP
+的核心进行交互，或者扩展 WP 的核心功能。</p>
+<p>你可以把 Wordpress 想象成一辆汽车，通过挂接其他部件来实现各种想法，而不会影响汽车的核心功能和部件。</p>
+<ol>
+<li>如果有小孩，就买个安全座椅，通过自带的座椅接口插上；</li>
+<li>如果觉得行驶声音不够性感，就加装一个加大声浪的排气管；</li>
+<li>加装平衡杠提高劈弯稳定性；</li>
+<li>一些汽车会有“经济模式”，通过控制驾驶员踩油门的时候输出到发动机的燃料来省油</li>
+<li>更多……</li>
+</ol>
+<p>这些附加的功能都可以叫做“钩子”。</p>
+<h2 id="钩子类别action-和-filter以及自定义">钩子类别：<code>Action</code> 和 <code>Filter</code>以及自定义</h2>
+<p>WP 系统有很多的 hook，可以使用它们挂上自己的动作函数。这些钩子分为两类，分别是 <code>Action</code> 和 <code>Filter</code>。</p>
+<p><strong><code>Action</code>类型</strong>
+在 WP 的核心程序、插件、主题运行的过程中，有产生很多个“特定的点”(例如某某方法开始执行，某某方法执行完毕)。<code>Action</code>类型的钩子为我们提供了渠道，让我们可以在这些“特定的点”触发时执行一个函数。</p>
+<p>作用全局的。</p>
+<p><strong><code>Filter</code>类型</strong>
+提供了方法，用来修改其他函数产生的数据。</p>
+<p>作用不是全局的。</p>
+<p><strong>自定义钩子</strong>
+当然，如果你开发了一个插件，也可以给它添加钩子，让另外的开发者基于你的插件进行扩展开发。</p>
+<p>可以查看 wp 的 action reference 和 filter reference 详细列表</p>
+<h1 id="激活与禁用插件时触发一些动作">激活与禁用插件时触发一些动作</h1>
+<ul>
+<li>register_activation_hook()</li>
+<li>register_deactivation_hook()</li>
+<li>register_uninstall_hook().</li>
+</ul>
+<p>激活插件的时候，可以创建一些配置信息的数据，进行一些检查等。</p>
+<p>禁用插件时一般会删除一些临时文件、缓存，Permalinks等，但保留配置数据表等以备下次激活。</p>
+<p>卸载插件一般会进行<strong>干净删除</strong>，把{$wpdb-&gt;prefix}_options 和其他相关数据表也删掉。</p>
+<h2 id="激活和禁用插件">激活和禁用插件</h2>
+<pre><code class="language-php">function pluginprefix_activation()
+{
+}
+register_activation_hook( __FILE__, 'pluginprefix_activation' );
+
+function pluginprefix_deactivation()
+{
+}
+register_deactivation_hook( __FILE__, 'pluginprefix_deactivation' );
+</code></pre>
+<h2 id="安装与卸载插件">安装与卸载插件</h2>
+<pre><code class="language-php">//
+function pluginprefix_install()
+{
+}
+register_activation_hook( __FILE__, 'pluginprefix_install' );
+
+
+//默认执行卸载插件钩子的方法
+register_uninstall_hook(__FILE__, 'pluginprefix_function_to_run');
+</code></pre>
+<p>除了上面的<code>register_uninstall_hook</code>，还可以在 <code>uninstall.php</code>里写。注意判断常量<code>WP_UNINSTALL_PLUGIN</code>，避免在外部被运行</p>
+<pre><code class="language-php">// if uninstall.php is not called by WordPress, die
+if (!defined('WP_UNINSTALL_PLUGIN')) {
+    die;
+}
+ 
+$option_name = 'wporg_option';
+ 
+delete_option($option_name);
+ 
+// for site options in Multisite
+delete_site_option($option_name);
+ 
+// drop a custom database table
+global $wpdb;
+$wpdb-&gt;query(&quot;DROP TABLE IF EXISTS {$wpdb-&gt;prefix}mytable&quot;);
+</code></pre>
+<h1 id="详解钩子">详解钩子</h1>
+<h2 id="action-类型">Action 类型</h2>
+<h3 id="创建-action-类型的钩子">创建 Action 类型的钩子</h3>
+<p>创建一个 Action 类型的钩子，格式为 <code>do_action(钩子名称，参数列表)</code></p>
+<pre><code class="language-php">do_action('save_post', $post-&gt;ID, $post);
+</code></pre>
+<h3 id="向钩子注册回调函数">向钩子注册回调函数</h3>
+<p><code>add_action</code>函数包括两个参数，一个是“tag”，另一个是一个回调函数的名称。</p>
+<pre><code class="language-php">function wporg_custom()
+{
+    // do something
+}
+add_action('init', 'wporg_custom');
+</code></pre>
+<p>通过阅读 wp 的代码，可以看到很多 hook 的用法。</p>
+<h4 id="在类中使用-add_action">在类中使用 <code>add_action</code></h4>
+<p>多种方式详细解说
+<a href="https://gist.github.com/chrisguitarguy/3803077">https://gist.github.com/chrisguitarguy/3803077</a></p>
+<p><a href="https://stackoverflow.com/questions/3732083/how-does-array-class-work-in-wordpress">https://stackoverflow.com/questions/3732083/how-does-array-class-work-in-wordpress</a></p>
+<p>例子</p>
+<pre><code class="language-php">class MCCore
+{
+    public static function init()
+        //以下三种方法均可
+        add_shortcode('renqizx_login_logout', __CLASS__.'::shortcodeOfLogin');
+        
+        add_shortcode('renqizx_login_logout', [__CLASS__, 'shortcodeOfLogin']);
+        
+        add_shortcode('renqizx_login_logout', ['MCCore', 'shortcodeOfLogin']);
+    }
+}
+
+// 在主文件中调用
+add_action('init', array('MCCore', 'init'), 10);
+</code></pre>
+<h3 id="优先级">优先级</h3>
+<p>决定回调函数与其他函数的执行顺序关系。优先级数字小，表示执行时间越早。默认是10。</p>
+<pre><code class="language-php">add_action('init', 'run_me_early', 9);
+add_action('init', 'run_me_normal'); 
+add_action('init', 'run_me_late', 11);
+</code></pre>
+<h3 id="对应的钩子有参数">对应的钩子有参数</h3>
+<p>前面的<code>init()</code>是一个没有参数的钩子，因此我们只需要在<code>add_action()</code>中传入回调函数就可以了。</p>
+<p>那么如果钩子有参数怎么办呢？</p>
+<p>例如 wp 系统有个叫<code>save_post</code>的钩子，作用是<strong>保存数据</strong>，它执行的时候需要两个参数，一个是<code>ID</code>，一个是这个 post 对象本身。</p>
+<p>在 wp 核心程序里是这么创建它的</p>
+<pre><code class="language-php">do_action('save_post', $post-&gt;ID, $post);
+</code></pre>
+<p>现在我们想添加一个回调函数，让它在系统调用<code>save_post</code>钩子的时候被执行。我们要<strong>在定义回调函数里使用相同的参数</strong>。</p>
+<pre><code class="language-php">//定义回调函数
+function wporg_custom($post_id, $post)
+{
+    // do something
+}
+</code></pre>
+<p>将回调函数<code>wporg_custom</code>注册到<code>save_post</code> 钩子上，，指定传入的 <code>$post_id</code> 值为 <strong>2</strong>(前面那个 10 是优先级？)</p>
+<pre><code class="language-php">add_action('save_post', 'wporg_custom', 10, 2);
+</code></pre>
+<p>另一个例子：有一个<code>pre_get_posts</code>钩子，是系统获取文章时被调用的，默认传入的参数是<code>$query</code>，现在我们想修改它的行为，只筛选需要的文章。</p>
+<p>在它上面注册一个回调函数<code>wporg_search</code>，并将钩子<code>pre_get_posts</code>的参数传入，在函数内部修改 $quey。</p>
+<p>最后在系统正式进行文章读取的时候，触发<code>pre_get_posts</code>钩子，就会使用这个回调函数了。</p>
+<pre><code class="language-php">function wporg_search($query)
+{
+    if (!is_admin() &amp;&amp; $query-&gt;is_main_query() &amp;&amp; $query-&gt;is_search) {
+        $query-&gt;set('post_type', ['post', 'movie']);
+    }
+}
+add_action('pre_get_posts', 'wporg_search');
+</code></pre>
+<h2 id="filter-类型">Filter 类型</h2>
+<h3 id="创建-filter-类型的钩子">创建 Filter 类型的钩子</h3>
+<p>类似于<code>do_action()</code>，创建 Filter 类型的钩子的函数是<code>apply_filters(钩子名称, 参数列表)</code></p>
+<h3 id="向钩子注册回调函数-1">向钩子注册回调函数</h3>
+<p>例子，在显示标题的钩子<code>the_title</code>被触发时，调用<code>wporg_filter_title</code>函数，在标题的前后添加一些字符串</p>
+<pre><code class="language-php">function wporg_filter_title($title)
+{
+    return 'The ' . $title . ' was filtered';
+}
+add_filter('the_title', 'wporg_filter_title');
+</code></pre>
+<h3 id="同样也支持优先级参数">同样也支持优先级、参数</h3>
+<pre><code class="language-php">function wporg_css_body_class($classes)
+{
+    if (!is_admin()) {
+        $classes[] = 'wporg-is-awesome';
+    }
+    return $classes;
+}
+add_filter('body_class', 'wporg_css_body_class', 7);
+</code></pre>
+<h2 id="自定义钩子">自定义钩子</h2>
+<p>使用<code>do_action()</code>和<code>apply_filters()</code> 来创建自定义钩子。</p>
+<p>这样别人就可以开发函数来挂载你的钩子上了。（也是通过<code>add_action()</code>和<code>add_filter()</code>）</p>
+<h3 id="基本例子">基本例子</h3>
+<p>我们新建了一个自定义钩子<code>wporg_after_settings_page_html</code>，然后在它上面注册了一个回调函数<code>myprefix_add_settings</code>。</p>
+<pre><code class="language-php">do_action('wporg_after_settings_page_html');
+
+function myprefix_add_settings()
+{
+    ?&gt;
+    New 1: &lt;input id=&quot;new_setting&quot; name=&quot;new_settings&quot; type=&quot;text&quot;&gt;
+    &lt;?php
+}
+add_action('wporg_after_settings_page_html', 'myprefix_add_settings');
+
+</code></pre>
+<h3 id="避免名称冲突">避免名称冲突</h3>
+<p>因为有很多开发者会为 wp 开发插件，因此在你的插件中，要避免使用可能会和别人重名的钩子名、回调函数名。</p>
+<p>例如使用带前缀**wporg_**的钩子名称<code>myprefix_add_settings()</code> 就很难和 wp 系统本身或者别人可能使用的 <code>add_setting()</code> 重复。</p>
+<h3 id="分析一个例子">分析一个例子</h3>
+<p>下面这个官方例子，对于初学者来说理解起来有困难。</p>
+<p>首先来到“你的插件”。</p>
+<ol>
+<li>定义一个函数<code>wporg_create_post_type</code>，作用是“创建 post 类型”</li>
+<li>在这个函数中，调用 wp 系统函数<code>register_post_type</code>，第一个参数是 post 类型的名称；第二个参数要求是一个数组，但这里用<code>apply_filters</code>函数调用 FIlter 类型的 hook<code>wporg_post_type_params</code>，<code>$post_type_params</code>是(mixed) (Required) The value on which the filters hooked to $tag are applied on。</li>
+<li>当然了可以为<code>apply_filters</code>定义更多附加参数，如 <code>,$arg1, $arg2</code></li>
+<li><code>apply_filters</code>返回值 (mixed) The filtered value after all hooked functions are applied to it.</li>
+</ol>
+<pre><code class="language-php">function wporg_create_post_type()
+{
+    $post_type_params = [/* ... */];
+ 
+    register_post_type(
+        'post_type_slug',
+        apply_filters('wporg_post_type_params', $post_type_params)
+    );
+}
+</code></pre>
+<p>然后来到<strong>别人</strong>开发的插件，向你的 hook <code>wporg_post_type_params</code>注册回调函数<code>myprefix_change_post_type_params</code></p>
+<pre><code class="language-php">function myprefix_change_post_type_params($post_type_params)
+{
+    $post_type_params['hierarchical'] = true;
+    return $post_type_params;
+}
+add_filter('wporg_post_type_params', 'myprefix_change_post_type_params');
+
+</code></pre>
+<h2 id="移除-actions-和-filters">移除 Actions 和 Filters</h2>
+<p>有时候需要从钩子上移除来自外部的被注册函数。</p>
+<p>可以用<code>remove_action()</code>或<code>remove_filter()</code>来移除挂载在某个钩子上的<strong>某个回调函数</strong>。</p>
+<p>也可以用 <code>remove_all_actions()</code> 和 <code>remove_all_filters()</code>在移除挂载某个钩子上的<strong>所有回调函数</strong>。</p>
+<p>下面的例子中，首先在<code>template_redirect</code>钩子上注册了函数<code>my_theme_setup_slider</code>。</p>
+<pre><code class="language-php">function my_theme_setup_slider()
+{
+    // ...
+}
+add_action('template_redirect', 'my_theme_setup_slider', 9);
+</code></pre>
+<p>然后在另一个钩子<code>after_setup_theme</code>上注册另一个函数<code>wporg_disable_slider</code>。
+一旦这个钩子<code>after_setup_theme</code>被调用，就会执行回调函数<code>wporg_disable_slider</code>里的<code>remove_action</code>动作，移除前面代码中注册在<code>template_redirect</code>钩子上的函数<code>my_theme_setup_slider</code>。</p>
+<pre><code class="language-php">function wporg_disable_slider()
+{
+    // make sure all parameters match the add_action() call exactly
+    remove_action('template_redirect', 'my_theme_setup_slider', 9);
+}
+// make sure we call remove_action() after add_action() has been called
+add_action('after_setup_theme', 'wporg_disable_slider');
+</code></pre>
+<h2 id="获取当前的-hook-名称">获取当前的 Hook 名称</h2>
+<p>有这么一个需求：很多个不同的钩子，都注册了一个功能十分相似的函数，典型的一个场景如：</p>
+<blockquote>
+<p>把文章的 <code>正文</code> 和 <code>摘要</code> 两处文本中，“提醒”两个字全部加粗；另外还要把<code>摘要</code>里的这两个字加红。</p>
+</blockquote>
+<p>如果按之前的写法，要写两个 callback 函数</p>
+<pre><code class="language-php">function callback_content(){
+	//加粗
+}
+function callback_excerpt(){
+	//加粗
+	//加红
+}
+
+add_filter('the_content', 'callback_content');
+add_filter('the_excerpt', 'callback_excerpt');
+</code></pre>
+<p>两个 callback 函数里有重复的代码。 完全可以合并成一个函数，然后使用<code>current_filter()</code>判断当前调用它的钩子名称来进行分支处理。</p>
+<pre><code class="language-php">function wporg_modify_content($content)
+{
+	//都加粗
+    switch (current_filter()) {
+        case 'the_content':
+            // 不用做什么，完全可以删除
+            break;
+        case 'the_excerpt':
+            // 除了加粗，还要加红
+            break;
+    }
+    return $content;
+}
+add_filter('the_content', 'wporg_modify_content');
+add_filter('the_excerpt', 'wporg_modify_content');
+</code></pre>
+<h2 id="检查一个钩子执行了多少次计数器">检查一个钩子执行了多少次（计数器）</h2>
+<p>在程序执行过程中，一个钩子可以被多次调用。通过<code>did_action()</code>函数，可以统计这个钩子被调用的次数。</p>
+<pre><code class="language-php">function wporg_custom()
+{
+    if (did_action('save_post') !== 1) {
+        return;
+    }
+    // ...
+}
+add_action('save_post', 'wporg_custom');
+</code></pre>
+<h2 id="在全部的钩子中都注册一个函数">在全部的钩子中都注册一个函数</h2>
+<p>在 debug 的时候，可能我们需要定位系统在哪里出错，或者查看执行了哪些钩子，可以向<code>all</code>这个特殊的钩子上注册一个函数。</p>
+<pre><code class="language-php">function wporg_debug()
+{
+    echo '&lt;p&gt;' . current_action() . '&lt;/p&gt;';
+}
+add_action('all', 'wporg_debug');
+</code></pre>
+<h1 id="其他">其他</h1>
+<p>如果插件用类来写</p>
+<pre><code class="language-php">add_action( 'admin_menu', array( &amp;$this, 'admin_menu' ) );
+</code></pre>
+<p>filter和action的写法类似</p>
+<pre><code class="language-php">function wporg_css_body_class($classes)
+{
+    if (!is_admin()) {
+        $classes[] = 'wporg-is-awesome';
+    }
+    return $classes;
+}
+add_filter('body_class', 'wporg_css_body_class');
+</code></pre>
+<h2 id="wordpress-提供的-apis">Wordpress 提供的 APIs</h2>
+<p>WP 提供了大量的 API，来帮助你简化编程工作。例如<code>Options_API</code>可以快速实现将插件有关的数据存储到 WP 的数据库，免于写繁琐的“连接数据库-&gt;选择表-&gt;书写SQL-&gt;退出连接&hellip;”</p>
+<p><a href="https://codex.wordpress.org/Options_API">https://codex.wordpress.org/Options_API</a>
+<a href="https://codex.wordpress.org/HTTP_API">https://codex.wordpress.org/HTTP_API</a>
+<a href="https://codex.wordpress.org/Plugin_API">https://codex.wordpress.org/Plugin_API</a></p>
+<h1 id="shortcodes">ShortCodes</h1>
+<h2 id="使用场景">使用场景</h2>
+<p>考虑到安全因素，是<strong>不允许在 WP 的文章内容中执行 PHP 代码</strong>的。
+（试想下如果有个编辑者的账号被盗，有人恶意发布了一篇文章，在文章内容中包含“删除所有文章”的 PHP 代码，后果是很严重的）</p>
+<p>但是有时候又确实需要能<strong>在文章中实现一些“分支处理”/“判断”等特性</strong>，可以使用<code>ShortCode</code>（短代码）功能。</p>
+<p>常用的场景如：</p>
+<blockquote>
+<p>读取文章的所有图片附件，并展示成一个幻灯片</p>
+</blockquote>
+<pre><code class="language-php">//短代码示例
+</code></pre>
+<p>因为它只是一段非常灵活的短代码，因此它</p>
+<ol>
+<li>可以保持文章干净，不用在里面写 HTML 代码来指定样式，可以把它们写到外部去加载</li>
+<li>可以传入一些参数来实现特殊需求</li>
+</ol>
+<h2 id="系统内置的短代码">系统内置的短代码</h2>
+<p>试试看在文章编辑器中插入这些短代码。例如做个自己的 Podcast 列表、相册等等。</p>
+<p><a href="https://developer.wordpress.org/plugins/shortcodes/tinymce-enhanced-shortcodes/">https://developer.wordpress.org/plugins/shortcodes/tinymce-enhanced-shortcodes/</a></p>
+<ul>
+<li>[caption] – shortcode that allows you to wrap captions around content</li>
+<li>[gallery] – shortcode that allows you to show image galleries</li>
+<li>[audio] – shortcode that allows you to embed and play audio files</li>
+<li>[video] – shortcode that allows you to embed and play video files</li>
+<li>[playlist] – shortcode that allows you to display collection of audio or video files</li>
+<li>[embed] – shortcode that allows you to wrap embedded items</li>
+</ul>
+<h2 id="添加一个短代码">添加一个短代码</h2>
+<p>使用<code>add_shortcode(短代码名称, 回调函数)</code>来添加自己的短代码。然后就可以在主题、文章里使用<code>[wporg]</code>了。</p>
+<p><strong>在主题中使用</strong></p>
+<p>回调函数的参数<code>$content</code>就是被包含在<code>[wporg]</code>这个短代码 tag 里的文本内容，参数<code>$attr[]</code>就是这个短代码支持的所有参数。</p>
+<p>补充：其实还有第三个字符串类型的参数<code>$tag = ''</code>。可以定义短代码标签的名称</p>
+<pre><code class="language-php">function wporg_shortcode($atts = [], $content = null)
+{
+    // do something to $content
+ 
+    // always return
+    return $content;
+}
+add_shortcode('wporg', 'wporg_shortcode');
+</code></pre>
+<p><strong>在插件中使用有一些不同</strong>，因为在 WP 的执行过程中，插件的执行时间是非常早的（可能还早于 WP 的一部分核心功能），为了避免插件执行的时候 WP 的所有核心功能还没完全加载，因此需要人为延迟短代码的创建，将它放入 <code>init</code>钩子，让它在 WP 加载完毕之后 再执行就可以了。</p>
+<pre><code class="language-php">function wporg_shortcodes_init()
+{
+    function wporg_shortcode($atts = [], $content = null)
+    {
+        // do something to $content
+ 
+        // always return
+        return $content;
+    }
+    add_shortcode('wporg', 'wporg_shortcode');
+}
+add_action('init', 'wporg_shortcodes_init');
+</code></pre>
+<p><strong>测试</strong></p>
+<p>编辑一篇文章，在任意位置插入短代码。</p>
+<p><img src="/media/14949058219098.jpg" alt=""></p>
+<p>刷新下前台对应的页面，就可以看到短代码生效了。</p>
+<p><img src="/media/14949058945819.jpg" alt=""></p>
+<h2 id="解析短代码内部的其他短代码">解析<strong>短代码内部</strong>的<strong>其他短代码</strong></h2>
+<p>默认不解析，例如</p>
+<pre><code class="language-html">[wporg]another [shortcode] is included[/wporg]
+</code></pre>
+<p>需要在 <code>add_shortcode</code>函数中，对 <code>$content</code> 进行<code>do_shortcode()</code>函数特别处理后再返回。</p>
+<pre><code class="language-php">function wporg_shortcode($atts = [], $content = null)
+{
+    // do something to $content
+ 
+    // run shortcode parser recursively
+    $content = do_shortcode($content);
+ 
+    // always return
+    return $content;
+}
+add_shortcode('wporg', 'wporg_shortcode');
+</code></pre>
+<h2 id="删除一个指定的短代码">删除一个指定的短代码</h2>
+<pre><code class="language-php">remove_shortcode(
+    string $tag
+);
+</code></pre>
+<h2 id="检查短代码是否存在">检查短代码是否存在</h2>
+<pre><code class="language-php"> shortcode_exists()
+</code></pre>
+<h2 id="短代码的参数">短代码的参数</h2>
+<p>短代码的标签可以接受<strong>参数</strong>，写法就和 HTML 标签的<strong>属性</strong>差不多，如下面的<code>title</code></p>
+<pre><code class="language-html">[wporg title=&quot;WordPress.org&quot;]
+Having fun with WordPress.org shortcodes.
+[/wporg]
+</code></pre>
+<p>对普通用户来说，并不知道短代码支持哪些参数。可能会多写，也可能少写参数，甚至可能大小写不统一。为了避免发生问题，因此开发者需要：</p>
+<ol>
+<li>在短代码处理函数中指定默认参数。</li>
+<li>将参数的名称规范化（一般是用<code>array_change_key_case()</code>函数转成小写）。</li>
+<li>使用<code>shortcode_atts()</code>解析默认参数和用户输入的参数（将它们覆盖、合并）</li>
+<li>在输出到页面之前，对内容进行安全处理(避免恶意代码)，例如调用<code>esc_html__()</code>函数，应用<code>the_content()</code>钩子</li>
+</ol>
+<p>完整例子：</p>
+<pre><code class="language-php">function wporg_shortcode($atts = [], $content = null, $tag = '')
+{
+    $atts = array_change_key_case((array)$atts, CASE_LOWER);
+ 
+    $wporg_atts = shortcode_atts([
+                                     'title' =&gt; 'WordPress.org',
+                                 ], $atts, $tag);
+ 
+    $o = '';
+    $o .= '&lt;div class=&quot;wporg-box&quot;&gt;';
+    $o .= '&lt;h2&gt;' . esc_html__($wporg_atts['title'], 'wporg') . '&lt;/h2&gt;';
+ 
+    // enclosing tags
+    if (!is_null($content)) {
+        $o .= apply_filters('the_content', $content);
+ 
+        // run shortcode parser recursively
+        $o .= do_shortcode($content);
+    }
+ 
+    $o .= '&lt;/div&gt;';
+ 
+    return $o;
+}
+ 
+function wporg_shortcodes_init()
+{
+    add_shortcode('wporg', 'wporg_shortcode');
+}
+ 
+add_action('init', 'wporg_shortcodes_init');
+</code></pre>
+<h1 id="菜单在后台管理界面中">菜单（在后台管理界面中）</h1>
+<p>如果你的插件需要自定义调整一些参数，可以在 WP 的后台管理界面中添加菜单和对应的界面，方便用户进行操作。</p>
+<p>可以添加<code>顶级菜单</code>，以及<code>子菜单</code>两种类型。
+如下图，Posts, Media 等都是顶级菜单；另外 Plugins 顶级菜单下还包括了几个子菜单。</p>
+<h2 id="创建一个主菜单以及对应的页面">创建一个主菜单（以及对应的页面）</h2>
+<p>一般在<code>admin_menu</code>这个钩子上注册一个回调函数，然后在回调函数中使用<code>add_menu_page()</code>函数来创建菜单(及对应的页面)。</p>
+<pre><code class="language-php">function wporg_options_page()
+{
+    add_menu_page(
+        'WPOrg', //页面标题
+        'WPOrg Options', //菜单标题
+        'manage_options', //capability 需要当前用户拥有这个操作的权限才可以访问
+        'wporg', // slug name 让这个菜单可以被引用的“引用名”
+        'wporg_options_page_html', //回调函数（一般在里面使用 Settings API 和 Options API 来完成表单页面，例如有哪些可编辑选项，下一节会讲述）
+        plugin_dir_url(__FILE__) . 'images/icon_wporg.png', // 菜单的图标
+        20 // 排序
+    );
+}
+add_action('admin_menu', 'wporg_options_page');
+</code></pre>
+<p>现在可以来实现<code>add_menu_page</code>里的<code>wporg_options_page_html</code>（菜单点击对应的页面），在页面中显示一段测试文本。在后面的章节里，会使用 Settings API 和 Options API 实现配置参数编辑。</p>
+<pre><code class="language-php">function wporg_options_page_html(){
+	echo '&lt;h1&gt;this is the page when click menu&lt;/h1&gt;';
+}
+</code></pre>
+<p><img src="/media/15490412570239/14950068987163.jpg" alt=""></p>
+<h2 id="创建子菜单">创建子菜单</h2>
+<p>和创建主菜单非常相似，只不过函数名是<code>add_submenu_page</code>，而且需要制定父级的主菜单引用名</p>
+<pre><code class="language-php">function wporg_options_page()
+{
+    add_submenu_page(
+        'tools.php', //父级菜单的“slug name”
+        'WPOrg Options', //页面标题
+        'WPOrg Options', //菜单标题
+        'manage_options', //指定访问权限
+        'wporg', //这个子菜单的引用别名
+        'wporg_options_page_html' //回调函数
+    );
+}
+add_action('admin_menu', 'wporg_options_page');
+</code></pre>
+<p>WP 系统主菜单的一些 slug</p>
+<p>“设置” general-options.php</p>
+<h2 id="保持整洁以及向-wp-内置的主菜单中添加子菜单的简化写法">保持整洁，以及向 WP 内置的主菜单中添加子菜单的简化写法</h2>
+<p><strong>注意</strong></p>
+<p>一般情况下建议开发者在 WP 系统本身的“Settings”或者“Tools”下创建一个子菜单就可以了。这样可以保持后台界面的整洁。</p>
+<p>除非你的插件非常强大，并且有很多的设置选项，那就可以创建独立的主菜单和子菜单。</p>
+<p><img src="/media/15490412570239/14950059737474.jpg" alt=""></p>
+<p>如果要向 WP 自带的 Posts， Settings，Tools 等主菜单中添加子菜单，但不知道它们的“slug name”，或者不想写繁琐的<code>add_submenu_page</code>？可以使用一些辅助函数（helper functions）</p>
+<ul>
+<li>add_dashboard_page() – index.php</li>
+<li>add_posts_page() – edit.php</li>
+<li>add_media_page() – upload.php</li>
+<li>add_pages_page() – edit.php?post_type=page</li>
+<li>add_comments_page() – edit-comments.php</li>
+<li>add_theme_page() – themes.php</li>
+<li>add_plugins_page() – plugins.php</li>
+<li>add_users_page() – users.php</li>
+<li>add_management_page() – tools.php</li>
+<li>add_options_page() – options-general.php</li>
+<li>add_options_page() – settings.php</li>
+<li>add_links_page() – link-manager.php – requires a plugin since WP 3.5+</li>
+<li>Custom Post Type – edit.php?post_type=wporg_post_type</li>
+<li>Network Admin – settings.php</li>
+</ul>
+<h2 id="移除菜单">移除菜单</h2>
+<p>使用<code>remove_menu_page</code>函数可以把这个菜单从界面中移除。（注意不是彻底删除，而是有点像“隐藏”，因为你还可以直接通过在浏览器地址栏中输入菜单的链接来访问到这个页面）</p>
+<p>这里就用到了<code>slug name</code>(引用名)这个参数。</p>
+<pre><code class="language-php">function wporg_remove_options_page()
+{
+    remove_menu_page('tools.php');
+}
+add_action('admin_menu', 'wporg_remove_options_page', 99);
+</code></pre>
+<p>移除子菜单的方法也非常类似。</p>
+<h1 id="settings-和-options">Settings 和 Options</h1>
+<p>在前面，我们知道如何创建一个菜单，并且在创建菜单hook的回调函数里生成一个页面并显示一些内容。</p>
+<p>其实已经可以在这个里面来写代码，例如写一个表单来实现插件参数的修改。</p>
+<p>但是一般情况下我们对 WP 的内部运行机制并不是特别熟悉，自己写表单、数据库操作来实现这些功能将会非常麻烦。</p>
+<p>因此 WP 提供了两种非常方便的数据管理接口，这样开发者就不用写复杂的数据处理代码了。另外还能：</p>
+<ul>
+<li>能够保持和 WP 其他的设置界面风格一致</li>
+<li>因为使用 WP 的核心 API，更稳定，而且可以很好地保持将来升级时的兼容性</li>
+<li>帮开发者完成很多背后的工作，提高开发效率（如数据提交检验、安全性等）</li>
+</ul>
+<h2 id="settings-api">Settings API</h2>
+<p>在管理界面中容纳设置表单，可以定义设置页面、设置分组、设置项。</p>
+<p>可以创建新的设置页面（settings pages），在里面包含设置分组、设置项。也可以向已经存在的设置页面添加设置分组和设置项。</p>
+<h3 id="开始">开始</h3>
+<p>在<code>admin_init()</code>这个钩子中注册一个函数。在里面依次完成以下任务（后面会分别说明）</p>
+<ul>
+<li>注册设置页面</li>
+<li>添加设置分组</li>
+<li>添加设置选项</li>
+</ul>
+<pre><code class="language-php">function wporg_settings_init(){
+	//register_setting()
+	
+	//add_settings_section()
+	
+	//add_settings_field()
+}
+
+add_action('admin_init', 'wporg_settings_init');
+</code></pre>
+<h3 id="注册设置页面">注册设置页面</h3>
+<p><code>register_setting( string $option_group, string $option_name, array $args = array() )</code>。</p>
+<p>第一个参数是<code>设置页面</code>的“名称”（后面的<code>设置分组</code>和<code>设置条目</code>都要归属于它），第二个参数是<strong>数据表中</strong>的“参数条目名”。</p>
+<p>它<strong>以后将</strong>会在 WP 的数据表 <code>prefix_options</code> 中创建一个设置条目。现在是找不到数据的。
+——时机？在真正写 option 数据的时候</p>
+<pre><code class="language-php">register_setting('reading', 'wporg_setting_name');
+</code></pre>
+<p><strong>注意！！</strong>
+在开发中，发现最后那个参数(数据验证函数)，要么就填完整的函数名，要么就干脆不要写，千万别写成<code>''</code>空字符串（或者<code>array($this, '')</code>）, 否则提交数据的时候，即使提示</p>
+<blockquote>
+<p>Settings saved.</p>
+</blockquote>
+<p>options 表的 item 中，数据会一直是空的（因为会去找一个空名称的验证函数&hellip;.）</p>
+<pre><code class="language-php">register_setting('ml_setting_group', $this-&gt;option_name, array($this, 'ml_validate_options'));
+
+function ml_validate_options($input){
+	$valid = array();
+	return $valid;
+}
+</code></pre>
+<h3 id="添加设置分组">添加设置分组</h3>
+<p><code>add_settings_section( string $id,  string $title,  callable $callback,string $page);</code>，（在 WP 的配置页面中，他们表现为具有相同的头部）。
+在一个设置页面中，可以显示多个组，而不用创建多个页面。</p>
+<p>下面的例子中，在<code>reading</code>页面（还记得吗，来自前面的<code>register_setting</code>函数）中注册一个新的 section。</p>
+<pre><code class="language-php">    add_settings_section(
+        'wporg_settings_section',
+        'WPOrg Settings Section',
+        'wporg_settings_section_cb',
+        'reading'
+    );
+</code></pre>
+<h3 id="最后添加一个设置字段field">最后添加一个设置字段(field)</h3>
+<p><code>add_settings_field(string $id, string $title, callable $callback, string $page, string $section = 'default', array $args = []);</code></p>
+<p>在前面注册的<code>reading</code>这个设置页面中的<code>wporg_settings_section</code>分组中，新建一个设置字段</p>
+<pre><code class="language-php">   add_settings_field(
+       'wporg_settings_field',
+       'WPOrg Setting',
+       'wporg_settings_field_cb',
+       'reading',
+       'wporg_settings_section',
+       [
+           'label_for'         =&gt; 'wporg_field_pill',
+           'class'             =&gt; 'wporg_row',
+           'wporg_custom_data' =&gt; 'custom',
+       ]
+   );
+}
+</code></pre>
+<h3 id="完善-sectionfield-创建方法里的回调函数">完善 section、field 创建方法里的回调函数</h3>
+<p>例如创建 section 后，显示一段文本</p>
+<pre><code class="language-php">function wporg_settings_section_cb()
+{
+    echo '&lt;p&gt;WPOrg Section Introduction.&lt;/p&gt;';
+}
+</code></pre>
+<p>以及创建一个 field 后，读取保存在数据表中 option 参数数据。
+用到了一个很有用的函数<code>get_option()</code>来方便地读取配置数据，不需要自己写数据库连接、读取代码后面会详细说明 Options 相关的 API</p>
+<p>一般是读取 option 值并显示编辑框</p>
+<pre><code class="language-php">function wporg_settings_field_cb( $args ) {
+	 $options = get_option( 'wporg_options' );
+	 ?&gt;
+	 &lt;select id=&quot;&lt;?php echo esc_attr( $args['label_for'] ); ?&gt;&quot;
+	 data-custom=&quot;&lt;?php echo esc_attr( $args['wporg_custom_data'] ); ?&gt;&quot;
+	 name=&quot;wporg_options[&lt;?php echo esc_attr( $args['label_for'] ); ?&gt;]&quot;
+	 &gt;
+	 &lt;option value=&quot;red&quot; &lt;?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'red', false ) ) : ( '' ); ?&gt;&gt;
+	 &lt;?php esc_html_e( 'red pill', 'wporg' ); ?&gt;
+	 &lt;/option&gt;
+	 &lt;option value=&quot;blue&quot; &lt;?php echo isset( $options[ $args['label_for'] ] ) ? ( selected( $options[ $args['label_for'] ], 'blue', false ) ) : ( '' ); ?&gt;&gt;
+	 &lt;?php esc_html_e( 'blue pill', 'wporg' ); ?&gt;
+	 &lt;/option&gt;
+	 &lt;/select&gt;
+	 &lt;p class=&quot;description&quot;&gt;
+	 &lt;?php esc_html_e( 'You take the blue pill and the story ends. You wake in your bed and you believe whatever you want to believe.', 'wporg' ); ?&gt;
+	 &lt;/p&gt;
+	 &lt;?php
+}
+
+</code></pre>
+<h3 id="总结-settings-相关函数">总结 Settings 相关函数</h3>
+<p><strong>Setting Register/Unregister</strong>
+register_setting()
+unregister_setting()</p>
+<p><strong>Add Field/Section</strong>
+add_settings_section()
+add_settings_field()</p>
+<p><strong>Options Form Rendering</strong>
+settings_fields()
+do_settings_sections()
+do_settings_fields()</p>
+<p><strong>Errors</strong>
+add_settings_error()
+get_settings_errors()
+settings_errors()</p>
+<h2 id="options">Options</h2>
+<p>前面的 Settings 有关的函数，实际上<strong>并没有操作数据</strong>，和“页面”的关联更紧密一些。</p>
+<p>而 Options API 允许 读、写、删、更新 WP 的参数数据(options)，一般和 Settings API 结合起来使用，用来处理在 Settings 页面中的数据。</p>
+<h3 id="保存-options">保存 Options</h3>
+<p>还记得在 <code>register_setting()</code>里第二个参数<code>wporg_setting_name</code>吗？现在正式向它里面写入参数数据。</p>
+<p>使用 <code>add_option()</code>来保存字符串、数组等类型的数据。数据会保存在数据表 <code>{$prefix}_options</code> 里面</p>
+<p>在开发中，我们倾向于尽可能将一个插件的配置数据保存在一个数组中。因为如果保存到多条记录中，可能会需要多次读取数据库，降低系统的性能。</p>
+<pre><code class="language-php">//string
+add_option('wporg_custom_option', 'hello world!');
+
+// array of options
+$data_r = ['title' =&gt; 'hello world!', 1, false];
+// add a new option
+add_option('wporg_custom_option', $data_r);
+// get an option
+$options_r = get_option('wporg_custom_option');
+// output the title
+echo esc_html($options_r['title']);
+</code></pre>
+<h3 id="options-相关函数">Options 相关函数</h3>
+<p><strong>Add Option</strong>		
+add_option()
+add_site_option()</p>
+<p><strong>Get Option</strong>
+get_option()
+get_site_option()</p>
+<p><strong>Update Option</strong>
+update_option()
+update_site_option()</p>
+<p><strong>Delete Option</strong>
+delete_option()
+delete_site_option()</p>
+<h3 id="接着创建菜单并在回调函数里">接着创建菜单，并在回调函数里</h3>
+<p>重要的几个函数 <code>settings_fields</code>，<code>do_settings_sections</code>，<code>submit_button</code></p>
+<p>一般我们会在<code>add_menu_page</code> 的参数列表中，调用一个回调函数，然后在回调函数中写一些混杂了 HTML 和 PHP 的代码。如下：</p>
+<p>注意里面几个重要的地方</p>
+<pre><code class="language-php">function wporg_options_page_html()
+{
+    // check user capabilities
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    ?&gt;
+    &lt;div class=&quot;wrap&quot;&gt;
+        &lt;h1&gt;&lt;?= esc_html(get_admin_page_title()); ?&gt;&lt;/h1&gt;
+        &lt;form action=&quot;options.php&quot; method=&quot;post&quot;&gt;
+            &lt;?php
+            // output security fields for the registered setting &quot;wporg_options&quot;
+            settings_fields('wporg_options');
+            // output setting sections and their fields
+            // (sections are registered for &quot;wporg&quot;, each field is registered to a specific section)
+            do_settings_sections('wporg');
+            // output save settings button
+            submit_button('Save Settings');
+            ?&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;?php
+}
+</code></pre>
+<p>刷新页面后，插件源代码</p>
+<p><code>settings_fields( $option_group )</code>会自动生成一系列的表单隐藏元素</p>
+<pre><code class="language-html">&lt;input type=&quot;hidden&quot; name=&quot;option_page&quot; value=&quot;ml_setting_options&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;action&quot; value=&quot;update&quot;&gt;
+&lt;input type=&quot;hidden&quot; id=&quot;_wpnonce&quot; name=&quot;_wpnonce&quot; value=&quot;413a703008&quot;&gt;
+&lt;input type=&quot;hidden&quot; name=&quot;_wp_http_referer&quot; value=&quot;/wp-admin/options-general.php?page=menu_ml&quot;&gt;
+</code></pre>
+<p><code>do_settings_sections('wporg')</code>则会把这个 section 里的所有fields都生成并显示出来，例如</p>
+<pre><code class="language-html">&lt;h2&gt;section_1&lt;/h2&gt;
+&lt;div&gt;this is the section&lt;/div&gt;
+&lt;table class=&quot;form-table&quot;&gt;
+	&lt;tbody&gt;
+		&lt;tr&gt;
+			&lt;th scope=&quot;row&quot;&gt;field_1&lt;/th&gt;
+			&lt;td&gt;	&lt;input type=&quot;text&quot; name=&quot;test&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p>而<code>submit_button('Save Settings')</code>则会生成一个提交按钮</p>
+<pre><code class="language-html">&lt;p class=&quot;submit&quot;&gt;&lt;input type=&quot;submit&quot; name=&quot;submit&quot; id=&quot;submit&quot; class=&quot;button button-primary&quot; value=&quot;Save Settings&quot;&gt;&lt;/p&gt;
+</code></pre>
+<p>如果在设置项很多的情况下，这样的代码可读性就非常差了。
+可以使用另外一种方式，把设置页面作为一个文件“包含进来”，而不是直接在回调函数里面写。如下。</p>
+<p>实际上就是把<code>add_menu_page</code>的参数“slug”设置成一个文件路径，然后把原本的回调函数这个参数改成 null。</p>
+<pre><code class="language-php">function wporg_options_page()
+{
+    add_menu_page(
+        'WPOrg',
+        'WPOrg Options',
+        'manage_options',
+        plugin_dir_path(__FILE__) . 'admin/view.php',
+        null,
+        plugin_dir_url(__FILE__) . 'images/icon_wporg.png',
+        20
+    );
+}
+add_action('admin_menu', 'wporg_options_page');
+</code></pre>
+<h1 id="wpdb">WPDB</h1>
+<p>处理数据</p>
+<h1 id="保存数据到自定义的新数据表">保存数据到自定义的新数据表</h1>
+<p>当插件的数据变动不频繁，或者仅仅只是一些“设置参数”类型的数据，完全可以用前面的 <code>Settings API</code> 和 <code>Options API</code>把数据存储到 {prefix}_options 表中。</p>
+<p>另外，如果插件的一些数据和“Post”有关（例如 Custome Field），可以把他们存储到 <code>Post Meta 表</code>里面去。</p>
+<p>但是如果插件的数据量比较大，或者结构复杂，最好时创建一个<strong>分开的数据表</strong>来专门存储插件的数据。</p>
+<h2 id="创建表">创建表</h2>
+<p>有下面的方法来创建</p>
+<ol>
+<li>在插件安装的时候执行一个安装脚本</li>
+<li>直接在 phpMyAdmin 等工具里创建表</li>
+</ol>
+<p>但是上面的方法都有问题，例如会忘记执行安装脚本，或者无法使用 phpMyAdmin。因此最好是</p>
+<ol>
+<li>写一个创建表的函数，并且在插件激活时调用它</li>
+<li>创建“升级”函数，在插件升级需要变更数据结构时调用它</li>
+</ol>
+<p>下面的代码中，注意几个地方</p>
+<ol>
+<li><code>jal_install</code>就是创建表的函数，并在<code>register_activation_hook</code>(激活插件的钩子)中调用</li>
+<li><code>jal_install_data</code>插入了一些初始数据，同样也是在<code>register_activation_hook</code>中调用</li>
+<li>严格注意<code>$sql</code>的格式（大小写、空格等），否则<code>dbDelta</code>函数无法执行</li>
+<li><code>$wpdb</code>是 WP 中非常重要的一个对象实例，它有很多的属性和方法，例如代码中获取表前缀、插入数据等。</li>
+</ol>
+<p>格式要求</p>
+<ul>
+<li>You must put each field on its own line in your SQL statement.</li>
+<li>You must have two spaces between the words PRIMARY KEY and the definition of your primary key.</li>
+<li>You must use the key word KEY rather than its synonym INDEX and you must include at least one KEY.</li>
+<li>KEY must be followed by a SINGLE SPACE then the key name then a space then open parenthesis with the field name then a closed parenthesis.</li>
+<li>You must not use any apostrophes or backticks around field names.</li>
+<li>Field types must be all lowercase.</li>
+<li>SQL keywords, like CREATE TABLE and UPDATE, must be uppercase.</li>
+<li>You must specify the length of all fields that accept a length parameter. int(11), for example.</li>
+</ul>
+<p>补充一点在实践中遇到的坑</p>
+<p>因为激活插件的时候，如果 sql 格式不对也不会报错，有一次把这个 default 值中，添加了一个空格符，一直无法创建表，去掉就好了。</p>
+<p><img src="/media/15490412570239/14966435033566.jpg" alt=""></p>
+<pre><code class="language-php">global $jal_db_version;
+$jal_db_version = '1.0';
+
+function jal_install() {
+	global $wpdb;
+	global $jal_db_version;
+
+	$table_name = $wpdb-&gt;prefix . 'liveshoutbox';
+	
+	$charset_collate = $wpdb-&gt;get_charset_collate();
+
+	$sql = &quot;CREATE TABLE $table_name (
+		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		name tinytext NOT NULL,
+		text text NOT NULL,
+		url varchar(55) DEFAULT '' NOT NULL,
+		PRIMARY KEY  (id)
+	) $charset_collate;&quot;;
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	add_option( 'jal_db_version', $jal_db_version );
+}
+
+function jal_install_data() {
+	global $wpdb;
+	
+	$welcome_name = 'Mr. WordPress';
+	$welcome_text = 'Congratulations, you just completed the installation!';
+	
+	$table_name = $wpdb-&gt;prefix . 'liveshoutbox';
+	
+	$wpdb-&gt;insert( 
+		$table_name, 
+		array( 
+			'time' =&gt; current_time( 'mysql' ), 
+			'name' =&gt; $welcome_name, 
+			'text' =&gt; $welcome_text, 
+		) 
+	);
+}
+
+register_activation_hook( __FILE__, 'jal_install' );
+register_activation_hook( __FILE__, 'jal_install_data' );
+</code></pre>
+<p>在后台激活插件的同时，就可以看到这个新的表已经被创建了。</p>
+<p><img src="/media/15490412570239/14962157938765.jpg" alt=""></p>
+<h2 id="更新表">更新表</h2>
+<p>修改代码中的版本，然后对比之前保存到 options 中的值，如果不一致，则运行升级的代码。最后更新 options 中的值为最新版本。</p>
+<pre><code class="language-php">$installed_ver = get_option( &quot;jal_db_version&quot; );
+
+if ( $installed_ver != $jal_db_version ) {
+
+	$table_name = $wpdb-&gt;prefix . 'liveshoutbox';
+
+	$sql = &quot;CREATE TABLE $table_name (
+		id mediumint(9) NOT NULL AUTO_INCREMENT,
+		time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		name tinytext NOT NULL,
+		text text NOT NULL,
+		url varchar(100) DEFAULT '' NOT NULL,
+		PRIMARY KEY  (id)
+	);&quot;;
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+	dbDelta( $sql );
+
+	update_option( &quot;jal_db_version&quot;, $jal_db_version );
+}
+</code></pre>
+<p>插件要升级的时候，是不会运行<code> register_activation_hook()</code>的，因此要在<code>plugins_loaded</code>这个钩子上调用插件是否需要升级的检测函数。</p>
+<pre><code class="language-php">function myplugin_update_db_check() {
+    global $jal_db_version;
+    if ( get_site_option( 'jal_db_version' ) != $jal_db_version ) {
+        jal_install();
+    }
+}
+add_action( 'plugins_loaded', 'myplugin_update_db_check' );
+</code></pre>
+<h2 id="清理数据或者直接删除表">清理数据或者直接删除表</h2>
+<p>在禁用或者删除插件的时候，需要清理数据。只需要在钩子上注册一个函数即可。</p>
+<pre><code class="language-php">register_deactivation_hook( __FILE__, 'ps_disty_deactive' );
+function ps_disty_deactive(){
+    	global $wpdb;
+    	$sql = &quot;DROP TABLE {$wpdb-&gt;prefix}ps_disty&quot;;
+    	$wpdb-&gt;query($sql);
+ }
+</code></pre>
+<p><img src="/media/15490412570239/14962210502936.jpg" alt=""></p>
+<h1 id="metadata元数据">Metadata(元数据)</h1>
+<p><code>元数据</code>是一个比较宽泛的概念，有个拗口的解释“有关信息的 信息”。</p>
+<p>在 WP 中默认就有很多元数据，<strong>文章</strong>数据带有作者、发布时间等信息；<strong>评论</strong>也有时间、作者等信息，它们都可以叫<code>Metadata</code>。</p>
+<p>当然你也可以<strong>添加自定义元数据</strong>：例如有一篇文章，内容是描述某个销售的商品，可以给它添加一个元数据“价格”（WP 默认是没有这个元数据的），让这篇“文章”看起来就像是商品展示了。</p>
+<p>WP 的这些元数据的值，保存在几个数据表<code>{$prefix}_postmeta</code>，<code>{$prefix}_usermeta</code>，<code>{$prefix}_termmeta</code>和<code>{$prefix}_commentmeta</code>中。</p>
+<p><img src="/media/15490412570239/14950060034987.jpg" alt=""></p>
+<p>以<code>prefix_usermeta</code>为例，就保存了“用户数据”的“元数据”（昵称、个人设置等）。</p>
+<p><img src="/media/15490412570239/14950060503450.jpg" alt=""></p>
+<h2 id="管理文章的元数据">管理文章的元数据</h2>
+<h3 id="添加">添加</h3>
+<p>关键函数<code>add_post_meta()</code>，例如</p>
+<pre><code class="language-php">add_post_meta(68, 'prefix_plugin_color', 'red', true);
+</code></pre>
+<p>参数列表</p>
+<ul>
+<li><code>$post_id</code>  文章的 ID</li>
+<li><code>$meta_key</code>  在你的代码中插件如何引用元数据的值，不同的文章可以拥有同一个 meta_key 名，但存储不同的值，例如一本书有多个共同的作者</li>
+<li><code>$meta_value</code>  可以是字符串，数字，数组（会被序列化）等</li>
+<li><code>$unique flag</code> 如果你定义了这个值为 true， 那么这篇文章只能拥有一个 <code>$meta_key</code>值，例如规定一本书只能有一个 ISBN 码</li>
+</ul>
+<h3 id="更新如果不存在会自动创建">更新（如果不存在，会自动创建）</h3>
+<p>参数和 <code>add_post_meta()</code>一样，如果之前没有创建过，会自动创建</p>
+<pre><code class="language-php">update_post_meta()
+</code></pre>
+<h3 id="获取元数据与要注意的存储数据时自动去掉斜杠问题">获取元数据与要注意的存储数据时“自动去掉斜杠”问题</h3>
+<pre><code class="language-php">get_post_meta($id, 'escaped_json', true);
+</code></pre>
+<p>但是，由于 WP 在将 meta data 存储到数据库的时候，会自动调用<code>stripslashes()</code>函数去掉斜杠，因此如果你要保存的内容中必须含有斜杠(例如下例 json 中有转义符号)，则要在存储之前手动多添加一个斜杠（使用<code>wp_slash()</code>）。</p>
+<pre><code class="language-php">$escaped_json = '{&quot;key&quot;:&quot;value with \&quot;escaped quotes\&quot;&quot;}';
+update_post_meta($id, 'double_escaped_json', wp_slash($escaped_json));
+$fixed = get_post_meta($id, 'double_escaped_json', true);
+/*
+$fixed, after stripslashes(), ends up as desired:
+{&quot;key&quot;:&quot;value with \&quot;escaped quotes\&quot;&quot;}
+*/
+</code></pre>
+<h3 id="隐藏的自定义字段">隐藏的自定义字段</h3>
+<p><strong>使用“_”开头的 meta_key 名</strong></p>
+<p>如果你想用 custom fields 来存储一些参数，可以<strong>使用“_”开头的 meta_key 名</strong>，这样 WP 就不会在文章编辑页面的 custom fields 列表中显示它们，同时使用<code> the_meta()</code>模板函数时也不会显示。例如</p>
+<pre><code class="language-php">add_post_meta(68, '_color', 'red', true);
+</code></pre>
+<p>这在使用非常规方法使用<code>add_meta_box()</code>函数来显示这些自定义字段时很有用（下章说）</p>
+<p><strong>注意：meta_value是数组的也不会显示</strong></p>
+<p>即使没有用“_”前缀，如果 meta_value 是一个数组，它也不会显示在文章编辑页面</p>
+<h3 id="删除">删除</h3>
+<pre><code class="language-php">delete_post_meta()
+</code></pre>
+<h2 id="自定义-meta-box">自定义 Meta Box</h2>
+<blockquote>
+<p>注意前面的这些函数是通过代码<strong>直接向数据表写入</strong>自定义 meta 数据。而本章节 <code>Meta Box</code> 可以实现我们自己<strong>在输入框/等表单中填写数据</strong>。</p>
+</blockquote>
+<p>在编辑一篇文章的时候，我们可以看到很多“Meta Box”，例如编辑器，发布区域，类别设置，Tag 设置等。我们的插件可以添加自定义 Meta Box。</p>
+<p><strong>通常他们都是一些表单元素</strong>，与当前编辑的文章数据有关，用户可以输入任何想要的内容。并且用户可以按自己的喜好调整他们的排序。</p>
+<p>正如前面所说，插件开发者也可以隐藏一些不想给用户看见的 meta key。</p>
+<p><strong>注意</strong></p>
+<p>要注意输入/输出数据的安全性，严格遵守“安全”部分的内容，对数据进行过滤、检查验证。</p>
+<h3 id="添加-meta-box">添加 Meta Box</h3>
+<p>注册一个<code>add_meta_boxes</code> hook 的回调函数。并使用<code>add_meta_box()</code>函数来添加 Meta Box</p>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>没有 “提交按钮”！</p>
+</blockquote>
+<p>在设计的时候，需要把功能相似的一组 metabox 放在一组，保持页面的整洁和功能一致。</p>
+<p>下面案例就是一个读取某个 meta key 的值，然后显示在 meta box 中编辑（有个名为<code> selected()</code>的 helper function）</p>
+<pre><code class="language-php">function wporg_add_custom_box()
+{
+    $screens = ['post', 'wporg_cpt'];
+    foreach ($screens as $screen) {
+        add_meta_box(
+            'wporg_box_id',           // Unique ID
+            'Custom Meta Box Title',  // Box title
+            'wporg_custom_box_html',  // Content callback, must be of type callable
+            $screen                   // Post type
+        );
+    }
+}
+add_action('add_meta_boxes', 'wporg_add_custom_box');
+
+function wporg_custom_box_html($post)
+{
+    $value = get_post_meta($post-&gt;ID, '_wporg_meta_key', true);
+    ?&gt;
+    &lt;label for=&quot;wporg_field&quot;&gt;Description for this field&lt;/label&gt;
+    &lt;select name=&quot;wporg_field&quot; id=&quot;wporg_field&quot; class=&quot;postbox&quot;&gt;
+        &lt;option value=&quot;&quot;&gt;Select something...&lt;/option&gt;
+        &lt;option value=&quot;something&quot; &lt;?php selected($value, 'something'); ?&gt;&gt;Something&lt;/option&gt;
+        &lt;option value=&quot;else&quot; &lt;?php selected($value, 'else'); ?&gt;&gt;Else&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;?php
+}
+</code></pre>
+<h3 id="在编辑文章界面中发生了什么">在编辑文章界面中发生了什么</h3>
+<p>在编辑文章的界面中，实际上WP核心代码调用了 <code>do_meta_boxes()</code>函数，它会把所有可见的 meta box 数据进行循环，然后添加<code>div</code>容器，最后显示出来。</p>
+<h3 id="保存-meta-box-输入的数据">保存 Meta Box 输入的数据</h3>
+<p>在保存一篇文章的时候，会触发 WP 系统的很多 Hook，我们可以根据特定情况选择合适的 Hook 来保存 meta box 数据。</p>
+<p>一般使用<code>save_post</code> 这个 action hook。（注意它可能被触发多次）</p>
+<p>除了 WP 内部保存数据，你可能还会在外部来读写 meta data 相关数据表（如 这里的 postmeta 表）</p>
+<p>下例会保存一个隐藏的 field（特别是当 meta data 数据较多，需要合并保存，下次读取时再分离时）</p>
+<p><code>meta key</code>是&rdquo;_wporg_meta_key&rdquo;，值$_POST[&lsquo;wporg_field&rsquo;]</p>
+<pre><code class="language-php">function wporg_save_postdata($post_id)
+{
+    if (array_key_exists('wporg_field', $_POST)) {
+        update_post_meta(
+            $post_id,
+            '_wporg_meta_key',
+            $_POST['wporg_field']
+        );
+    }
+}
+add_action('save_post', 'wporg_save_postdata');
+</code></pre>
+<p><strong>注意</strong>
+在生产环境中，要考虑到输入/输出的安全性</p>
+<h3 id="移除-meta-box">移除 Meta Box</h3>
+<p>使用 <code>remove_meta_box()</code></p>
+<h3 id="更多不同的实现方法">更多不同的实现方法</h3>
+<p>上面我们都是用的是常规的 meta box 操作方法，但是在开发插件时可能需要更多的形式才能满足需求。</p>
+<h4 id="oop-的方式添加-meta-box">OOP 的方式添加 meta box</h4>
+<p>使用 OOP 的方式可以避免在全局名称空间中产生命名冲突。</p>
+<p>下面的例子使用抽象类和静态方法（abstract Class with static methods）来更简单地实现meta box（再也不用记那么长的函数名啦！）</p>
+<pre><code class="language-php">abstract class WPOrg_Meta_Box
+{
+    public static function add()
+    {
+        $screens = ['post', 'wporg_cpt'];
+        foreach ($screens as $screen) {
+            add_meta_box(
+                'wporg_box_id',          // Unique ID
+                'Custom Meta Box Title', // Box title
+                [self::class, 'html'],   // Content callback, must be of type callable
+                $screen                  // Post type
+            );
+        }
+    }
+ 
+    public static function save($post_id)
+    {
+        if (array_key_exists('wporg_field', $_POST)) {
+            update_post_meta(
+                $post_id,
+                '_wporg_meta_key',
+                $_POST['wporg_field']
+            );
+        }
+    }
+ 
+    public static function html($post)
+    {
+        $value = get_post_meta($post-&gt;ID, '_wporg_meta_key', true);
+        ?&gt;
+        &lt;label for=&quot;wporg_field&quot;&gt;Description for this field&lt;/label&gt;
+        &lt;select name=&quot;wporg_field&quot; id=&quot;wporg_field&quot; class=&quot;postbox&quot;&gt;
+            &lt;option value=&quot;&quot;&gt;Select something...&lt;/option&gt;
+            &lt;option value=&quot;something&quot; &lt;?php selected($value, 'something'); ?&gt;&gt;Something&lt;/option&gt;
+            &lt;option value=&quot;else&quot; &lt;?php selected($value, 'else'); ?&gt;&gt;Else&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;?php
+    }
+}
+ 
+add_action('add_meta_boxes', ['WPOrg_Meta_Box', 'add']);
+add_action('save_post', ['WPOrg_Meta_Box', 'save']);
+</code></pre>
+<h4 id="使用-ajax">使用 AJAX</h4>
+<p>常规情况下，我们的 meta 数据是通过点击文章编辑页面的 Submit 按钮（以及使用 save_post 等 hook）来保存的。</p>
+<p>而使用 ajax 的方式，我们可以直接输入和处理动作，而不需点击 submit 按钮。</p>
+<p><strong>首先定义个 trigger （触发器）</strong>
+它可以是一个按钮的点击，或者是值变化，等 js <code>事件</code>。 下面例子中，当修改一个 meta box 里的值时，因为数据有变化，会触发一个 POST request</p>
+<p><strong>注意</strong>
+<code>wporg_meta_box_obj</code>这个 js 自定义对象是 WP 动态创建的，可以让我们动态获取 WordPress 的 AJAX file URL ，下一步会处理。</p>
+<p>如果你的 meta box 仅仅需要 WordPress AJAX file URL，还有个<code>ajaxurl</code>的预定义js变量可以使用，而不需要动态创建。 仅仅在 wordpress administrtor 中可用。</p>
+<pre><code class="language-js">/*jslint browser: true, plusplus: true */
+(function ($, window, document) {
+    'use strict';
+    // execute when the DOM is ready
+    $(document).ready(function () {
+        // js 'change' event triggered on the wporg_field form field
+        $('#wporg_field').on('change', function () {
+            // jQuery post method, a shorthand for $.ajax with POST
+            $.post(wporg_meta_box_obj.url,                        // or ajaxurl
+                   {
+                       action: 'wporg_ajax_change',               // POST data, action
+                       wporg_field_value: $('#wporg_field').val() // POST data, wporg_field_value
+                   }, function (data) {
+                        // handle response data
+                        if (data === 'success') {
+                            // perform our success logic
+                        } else if (data === 'failure') {
+                            // perform our failure logic
+                        } else {
+                            // do nothing
+                        }
+                    }
+            );
+        });
+    });
+}(jQuery, window, document));
+</code></pre>
+<p>然后把 javascript 代码放入 <code>/plugin-name/admin/meta-boxes/js/admin.js</code> 文件，并使用<code>Enqueue</code>机制，将它加载到编辑文章的界面中。</p>
+<p>下面的例子中，post, wporg_cpt 类型的文章中，会加载这个 js 文件（注意一些有用 函数和类属性，如 get_current_screen，$screen-&gt;post_type，wp_enqueue_script，wp_localize_script）</p>
+<pre><code class="language-php">function wporg_meta_box_scripts()
+{
+    // get current admin screen, or null
+    $screen = get_current_screen();
+    // verify admin screen object
+    if (is_object($screen)) {
+        // enqueue only for specific post types
+        if (in_array($screen-&gt;post_type, ['post', 'wporg_cpt'])) {
+            // enqueue script
+            wp_enqueue_script('wporg_meta_box_script', plugin_dir_url(__FILE__) . 'admin/meta-boxes/js/admin.js', ['jquery']);
+            // localize script, create a custom js object
+            wp_localize_script(
+                'wporg_meta_box_script',
+                'wporg_meta_box_obj',
+                [
+                    'url' =&gt; admin_url('admin-ajax.php'),
+                ]
+            );
+        }
+    }
+}
+add_action('admin_enqueue_scripts', 'wporg_meta_box_scripts');
+</code></pre>
+<p>最后添加服务器端代码</p>
+<p>[未完]</p>
+<h2 id="渲染-post-metadata">渲染 Post Metadata</h2>
+<p>除了前面的<code>get_post_meta()</code>，还有</p>
+<pre><code class="language-php">get_post_custom(
+    int $post_id
+);
+</code></pre>
+<h1 id="自定义文章类型">自定义文章类型</h1>
+<p>[暂停]</p>
+<h1 id="分类">分类</h1>
+<p>[暂停]</p>
+<h1 id="用户">用户</h1>
+<p>[暂停]</p>
+<h1 id="http-api">HTTP API</h1>
+<p>[暂停]</p>
+<h1 id="javascript-ajax-和-jquery">JavaScript, Ajax 和 jQuery</h1>
+<p>WP 自身捆绑了一些很有用的 js 库，例如大名鼎鼎的 jQuery。</p>
+<h2 id="jquery-与-ajax">jQuery 与 Ajax</h2>
+<p>关于 jQuery 和 Ajax 的使用，可学习相关教程。</p>
+<h2 id="加载-javascript-文件">加载 JavaScript 文件</h2>
+<p>如果想在主题中引入其他的 JavaScript 工具库，或者自己写的 js 代码文件，可以通过<code>wp_enqueue_script</code>函数来实现自动插入到页面中，而不需要修改模板。</p>
+<pre><code class="language-php">wp_enqueue_script( 'ajax-script',
+    plugins_url( '/js/myjquery.js', __FILE__ ),
+    array('jquery')
+);
+</code></pre>
+<h1 id="cron-计划任务">Cron 计划任务</h1>
+<p>Linux 有个任务调度系统 Cron，通过<code>crontab</code>系列命令可以实现定时执行一些任务。</p>
+<p>而利用 WP-Cron ，也可以让 WP 实现很多定时执行的任务，例如检查更新、定义发布文章等。</p>
+<p>它和 Linux 系统的 Cron 有点不一样，只有在每次加载页面的时候（用户访问动作），才被触发检查是否要运行一组 scheduled tasks。</p>
+<p>这是因为很多人用的并不是独立的服务器，而是“共享虚拟主机”，无法添加系统级别的计划任务。所以 WP-Cron 并不是真的在定义的每个时间段会运行（因为这个时间段内可能没有用户访问来触发它）,可能会在超过时间后的某个时间点继续把前面没完成的任务进行。</p>
+<h2 id="wp-cron-的时间安排">WP-Cron 的时间安排</h2>
+<p>不像 Linux 系统的 Cron 那么强大，可以指定“每个小时的第5分钟”这种特定时间点。</p>
+<p>WP-Cron 是以“间隔”的方式来执行计划任务的，就是说你只能指定“间隔多久”。并且单位是“秒”级别。</p>
+<p>例如</p>
+<pre><code class="language-php">add_filter( 'cron_schedules', 'example_add_cron_interval' );
+ 
+function example_add_cron_interval( $schedules ) {
+    $schedules['five_seconds'] = array(
+        'interval' =&gt; 5,
+        'display'  =&gt; esc_html__( 'Every Five Seconds' ),
+    );
+ 
+    return $schedules;
+}
+</code></pre>
+<p>WP 默认提供了</p>
+<ul>
+<li>hourly</li>
+<li>twicedaily</li>
+<li>daily</li>
+</ul>
+<h2 id="安排-wp-cron-事件">安排 WP Cron 事件</h2>
+<h3 id="安排一个重复任务">安排一个重复任务</h3>
+<p>为了执行你的任务，首先要创建一个自定义 hook，以及对应的函数。</p>
+<pre><code class="language-php">add_action( 'bl_cron_hook', 'bl_cron_exec' );
+</code></pre>
+<p>使用<code>wp_schedule_event</code>函数来安排一个重复执行的任务。第一个参数是该任务第一次执行的时间；第二个是间隔时间；第三个是被调用的自定义 hook 的名称</p>
+<pre><code class="language-php">wp_schedule_event( time(), '5seconds', 'bl_cron_hook' );
+</code></pre>
+<p>在实际执行的时候要注意，因为任务是被 hook 驱动的，因此每当遇到<code>wp_schedule_event()</code>的时候，WP 都会傻傻地去安排，即使 hook name 是相同的。因此如果你在页面里添加了它的代码，这个事件将会被重复安排多次！</p>
+<p>因此为了检查一个特定的 hook 是否已经被安排过了，应该使用<code>wp_next_scheduled</code>方法，它会返回下一次执行的时间戳（已经被安排），或者 false 表示该任务还没有被安排</p>
+<pre><code class="language-php">if ( ! wp_next_scheduled( 'bl_cron_hook' ) ) {
+    wp_schedule_event( time(), '5seconds', 'bl_cron_hook' );
+}
+</code></pre>
+<h3 id="取消安排任务">取消安排任务</h3>
+<p>当不再需要运行计划任务的时候，记得要取消它们（使用<code>wp_unschedule_event</code>），否则 WP 会一直去尝试执行它们。
+一般禁用插件的时候要做这个事情。</p>
+<pre><code class="language-php">register_deactivation_hook( __FILE__, 'bl_deactivate' );
+ 
+function bl_deactivate() {
+   $timestamp = wp_next_scheduled( 'bl_cron_hook' );
+   wp_unschedule_event( $timestamp, 'bl_cron_hook' );
+}
+</code></pre>
+<h2 id="把-wp-cron-和操作系统的任务调度系统连接起来">把 WP-Cron 和操作系统的任务调度系统连接起来</h2>
+<p>正如前面所说，WP-Cron 的计划任务是“不连续”的，只有用户访问才会触发这些任务。那么如果我们确实有一些任务需要定时执行，或者在某个固定的时间点执行怎么办？</p>
+<p>可以结合<strong>操作系统自带的计划任务</strong>，来定时向<code>wp-cron.php</code>这个特定的文件发请求。</p>
+<p>首先是在<code>wp-config.php</code>配置文件里禁用掉 WP-Cron（否则会出现用户触发、操作系统计划任务触发两种动作，引起资源消耗）</p>
+<pre><code class="language-php">define('DISABLE_WP_CRON', true);
+</code></pre>
+<p>根据 windows 或 linux，有不同的系统计划任务安排方式</p>
+<pre><code class="language-shell"># windows powershell
+powershell &quot;Invoke-WebRequest http://YOUR_SITE_URL/wp-cron.php&quot;
+
+# linux
+crontab -e 
+0 0 * * * wget http://YOUR_SITE_URL/wp-cron.php
+</code></pre>
+<h2 id="测试">测试</h2>
+<p>在前面学会了创建一个计划任务，现在我们再添加一个插件来测试它。</p>
+<p>WP 有个很方便的函数<code>_get_cron_array</code>可以用来显示所有当前的计划任务。</p>
+<pre><code class="language-php">function bl_print_tasks() {
+    echo '&lt;pre&gt;'; print_r( _get_cron_array() ); echo '&lt;/pre&gt;';
+}
+</code></pre>
+<h1 id="国际化插件internationalization-i18n">国际化插件（Internationalization i18n）</h1>
+<p>让你的插件能方便地被翻译成多国语言。</p>
+<p>开发者不需要自己将插件里的所有文本翻译成多国语言，借助于一些其他的翻译插件，它们可以自动进行翻译。</p>
+<h2 id="本地化-localization-l10n">本地化 （Localization l10n）</h2>
+<p>“国际化”插件后，“本地化”是后续的处理。</p>
+<h3 id="localization-files-本地化文件">Localization files 本地化文件</h3>
+<h1 id="上传插件到-wordpressorg-托管">上传插件到 WordPress.org 托管</h1>
+<p>可以查看下载数、用户反馈，以及和用户交流</p>
+<h1 id="一些开发者工具">一些开发者工具</h1>
+<p>你可以用 <img src="http://xdebug.org/" alt="xdebug"> <img src="https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards" alt="PHPCS">等工具，但 WP 本身也提供了一些很方便的开发辅助工具。</p>
+<h2 id="debug-bar-and-add-ons">Debug Bar and Add-Ons</h2>
+<p>看起来都比较老了</p>
+<h3 id="安装-debug-bar-插件">安装 Debug Bar 插件</h3>
+<p><a href="https://wordpress.org/plugins/debug-bar/">https://wordpress.org/plugins/debug-bar/</a></p>
+<p>如果打开 <code>WP_DEBUG</code> 开关，会在 admin bar 上添加一个 debug menu 来显示 query（数据库查询），cache（缓存）等其他 debug 信息。</p>
+<p>还可以追踪 PHP 的错误、提示信息</p>
+<p>SAVEQUERIES 开关打开，可以追踪和 MySQL 的 queries</p>
+<h3 id="debug-bar-console">Debug Bar Console</h3>
+<p><a href="https://wordpress.org/plugins/debug-bar-console/">https://wordpress.org/plugins/debug-bar-console/</a></p>
+<h3 id="其他-debug-bar-工具-略">其他 Debug Bar 工具 略</h3>
+<h3 id="query-monitor">Query Monitor</h3>
+<p>强烈推荐</p>
+<p>You can view debugging and performance information on database queries, hooks, conditionals, HTTP requests, redirects and more</p>
+<p>查看大量的信息，包括性能。以及包括了一些工具</p>
+<h1 id="用户-1">用户</h1>
+<h1 id="安全">安全</h1>
+<p>如果很多用户安装了你的插件，如何保护他们网站上的用户信息和数据？</p>
+<p>另外，如果你的插件有一些危险操作，如何避免被普通的用户（例如 编辑人员）误操作呢？</p>
+<p>在开发插件的时候，安全问题是一定要首要考虑到的。包括用户权限、输入验证和输出的过滤等等。</p>
+<h2 id="检查用户权限user-capabilities">检查用户权限（User Capabilities）</h2>
+<p>只要有提交数据功能（不管是前台还是后台），都要对当前操作的用户进行检查。</p>
+<p>在“用户”一章中，有对<code>角色</code>和<code>用户权限</code>的说明。</p>
+<p><code>Role</code>（角色）表示了用户属于哪一个“组”，每个“组”都包含了一系列预定义的权限集合。</p>
+<p><code>User capabilities</code>（用户权限）则是对某个用户或组赋予的特定许可。例如<strong>管理员</strong>角色被许可“manage_options”（管理系统配置），这样才能查看、编辑网站的配置；而**Editor(编辑)**角色则因为没有许可，就能够阻止他们操作修改系统配置</p>
+<p>如下面的例子中，显示一个<strong>删除文章</strong>的链接。</p>
+<p>一开始没有对当前登录用户的权限进行检查，因此任意用户(包括游客)都能删除文章！</p>
+<pre><code class="language-php">function wporg_generate_delete_link($content)
+{
+    if (is_single() &amp;&amp; in_the_loop() &amp;&amp; is_main_query()) {
+        $url = add_query_arg(
+            [
+                'action' =&gt; 'wporg_frontend_delete',
+                'post'   =&gt; get_the_ID(),
+            ],
+            home_url()
+        );
+        return $content . ' &lt;a href=&quot;' . esc_url($url) . '&quot;&gt;' . esc_html__('Delete Post', 'wporg') . '&lt;/a&gt;';
+    }
+    return null;
+}
+ 
+
+function wporg_delete_post()
+{
+    if (isset($_GET['action']) &amp;&amp; $_GET['action'] === 'wporg_frontend_delete') {
+ 
+        $post_id = (isset($_GET['post'])) ? ($_GET['post']) : (null);
+ 
+        $post = get_post((int)$post_id);
+        if (empty($post)) {
+            return;
+        }
+ 
+        wp_trash_post($post_id);
+ 
+        $redirect = admin_url('edit.php');
+        wp_safe_redirect($redirect);
+ 
+        die;
+    }
+}
+ 
+add_filter('the_content', 'wporg_generate_delete_link');
+
+add_action('init', 'wporg_delete_post');
+</code></pre>
+<p>这太危险了，必须加上验证措施，通过判断<code>current_user_can()</code>返回结果，只有当前用户所属的角色拥有这个能力才允许 WP 显示删除按钮和执行删除操作。</p>
+<pre><code class="language-php">if (current_user_can('edit_others_posts')) {
+    add_filter('the_content', 'wporg_generate_delete_link');
+    add_action('init', 'wporg_delete_post');
+}
+</code></pre>
+<h2 id="数据验证">数据验证</h2>
+<p>通过定义规则，检查数据的状态是<strong>有效</strong>还是<strong>无效</strong>。（例如必填项，邮箱格式，数字格式等）</p>
+<p>一般用于检查外部数据源，例如用户的输入，或者从网络请求过来的数据。尽可能在进行其他任何操作前，先进行数据验证。</p>
+<h3 id="验证方法">验证方法</h3>
+<p><strong>使用php自带的函数</strong></p>
+<p>isset() and empty() for checking whether a variable exists and isn’t blank
+mb_strlen() or strlen() for checking that a string has the expected number of characters
+preg_match(), strpos() for checking for occurrences of certain strings in other strings
+count() for checking how many items are in an array
+in_array() for checking whether something exists in an array</p>
+<p><strong>wp 的函数</strong></p>
+<p>is_email() will validate whether an email address is valid.
+term_exists() checks whether a tag, category, or other taxonomy term exists.
+username_exists() checks if username exists.
+validate_file() will validate that an entered file path is a real path (but not whether the file exists).</p>
+<p>除了上面的，还可以在 <img src="https://developer.wordpress.org/reference/" alt="WordPress Core Reference"> 里搜索<code>*_exists(), *_validate(), and is_*()</code></p>
+<h3 id="也可以自己-php-代码来进行自定义认证以及用-javascript-写的前端验证">也可以自己 php 代码来进行自定义认证，以及用 javascript 写的前端验证</h3>
+<p>例如写一个<code>is_us_zipcode()</code>函数检查是否符合美国邮编</p>
+<h3 id="格式化输入数据与限制数据范围">格式化输入数据与限制数据范围</h3>
+<p>假设现在有个列表页面，显示了若干文章，我们允许用户输入“排序条件”对这个列表进行排序，要考虑到两点：</p>
+<ol>
+<li>用户可能会恶意输入一些代码（如 SQL 注入？）</li>
+<li>用户可能会胡乱输入一些排序条件，例如大小写夹杂，或者错误单词等</li>
+</ol>
+<p>因此在下面的代码中，首先用<code>sanitize_key()</code>函数来“净化”输入的数据（这个函数是 WP 自带的，会统一转换成小写），然后用<code>in_array()</code>来判断用户的输入是否在允许的一个范围。</p>
+<pre><code class="language-php">$allowed_keys = ['author', 'post_author', 'date', 'post_date'];
+ 
+$orderby = sanitize_key($_POST['orderby']);
+ 
+if (in_array($orderby, $allowed_keys, true)) {
+    // modify the query to sort by the orderby key
+}
+</code></pre>
+<h2 id="安全的输入与输出">安全的输入与输出</h2>
+<p>强烈建议除了对数据进行清理、过滤，还要进行“数据验证”。因为任何外部输入都可能有风险。</p>
+<h3 id="使用-wp-内置的-sanitize_-系列函数来净化数据">使用 WP 内置的 sanitize_*() 系列函数来净化数据</h3>
+<pre><code class="language-php">sanitize_email()
+sanitize_file_name()
+sanitize_html_class()
+sanitize_key()
+sanitize_meta()
+sanitize_mime_type()
+sanitize_option()
+sanitize_sql_orderby()
+sanitize_text_field()
+sanitize_title()
+sanitize_title_for_query()
+sanitize_title_with_dashes()
+sanitize_user()
+esc_url_raw()
+wp_filter_post_kses()
+wp_filter_nohtml_kses()
+</code></pre>
+<p>例如<code>sanitize_key($_POST['['orderby']'])</code></p>
+<p>在这些函数的背后，完成了工作</p>
+<ul>
+<li>Checks for invalid UTF-8</li>
+<li>Converts single less-than characters (&lt;) to entity</li>
+<li>Strips all tags</li>
+<li>Removes line breaks, tabs and extra white space</li>
+<li>Strips octets</li>
+</ul>
+<h3 id="安全的输出">安全的输出</h3>
+<p>过滤不需要的数据，例如不合法的 HTML 标签等。
+当输出数据的时候，一定要进行过滤，<strong>防止 XSS 攻击</strong>。（有关这个话题，可以参考相关教程）</p>
+<p><strong>WP 有一些内置的辅助函数来完成过滤功能</strong></p>
+<ul>
+<li>esc_html() – Use this function anytime an HTML element encloses a section of data being displayed.</li>
+<li>esc_url() – Use this function on all URLs, including those in the src and href attributes of an HTML element.</li>
+<li>esc_js() – Use this function for inline Javascript.</li>
+<li>esc_attr() – Use this function on everything else that’s printed into an HTML element’s attribute.</li>
+</ul>
+<p>不过，大部分WP 的内置函数都已经进行了过滤操作了，你无需重复操作，例如<code>the_title()</code>输出标题函数。</p>
+<p><strong>过滤的时候也本地化</strong></p>
+<p>比<code>echo</code>更简单的方法是使用内置的 <code>_e()</code> 或<code>__()</code>函数</p>
+<pre><code class="language-php">esc_html_e( 'Hello World', 'text_domain' );
+// same as
+echo esc_html( __( 'Hello World', 'text_domain' ) );
+</code></pre>
+<p>一些辅助函数</p>
+<pre><code class="language-php">esc_html_e( 'Hello World', 'text_domain' );
+esc_html__()
+esc_html_e()
+esc_html_x()
+esc_attr__()
+esc_attr_e()
+esc_attr_x()
+</code></pre>
+<p><strong>使用自定义的过滤方法</strong></p>
+<p>下面例子中，<code>wp_kses</code>函数将只允许规定的 HTML 元素、属性、属性值出现，并且规范化 HTML 实体。</p>
+<pre><code class="language-php">$allowed_html = [
+    'a'      =&gt; [
+        'href'  =&gt; [],
+        'title' =&gt; [],
+    ],
+    'br'     =&gt; [],
+    'em'     =&gt; [],
+    'strong' =&gt; [],
+];
+echo wp_kses( $custom_content, $allowed_html );
+</code></pre>
+<p>还有<code>wp_kses_post( $post_content );</code></p>
+<p>wp_kses_post() is a wrapper function for wp_kses where $allowed_html is a set of rules used by post content.</p>
+<h2 id="nonces-临时验证数据">Nonces (临时验证数据)</h2>
+<p>场景：在前面生成删除文章的链接中，如果你生成了一个类似这样的URL</p>
+<blockquote>
+<p><a href="http://www.test.com/?action=delete_post&amp;post=1001">http://www.test.com/?action=delete_post&amp;post=1001</a></p>
+</blockquote>
+<p>如果某个别有用心的用户发现规律，只要把后面那个<code>post</code>参数的值改成 1001, 1002 就可以删除你的其他文章。</p>
+<p>或者有人在外面伪造了一个表单，也向你的网站某个 URL 提交数据。那是很不安全的。</p>
+<p>Nonces 实际上就是 WP 生成的一个唯一 hash 值，附加在前台提交过来的数据一起，在后台对这个值进行对比验证，只有生成的值和提交过来的值一致，才表示是安全的操作。</p>
+<p><a href="https://www.sitepoint.com/what-are-wordpress-nonces/">https://www.sitepoint.com/what-are-wordpress-nonces/</a></p>
+<p>修改一下前面的代码，注意<code>wp_create_nonce()</code>和<code>wp_verify_nonce()</code></p>
+<pre><code class="language-php">function wporg_generate_delete_link($content)
+{
+    if (is_single() &amp;&amp; in_the_loop() &amp;&amp; is_main_query()) {
+        $url = add_query_arg(
+            [
+                'action' =&gt; 'wporg_frontend_delete',
+                'post'   =&gt; get_the_ID(),
+                'nonce'  =&gt; wp_create_nonce('wporg_frontend_delete'),
+            ],
+            home_url()
+        );
+        return $content . ' &lt;a href=&quot;' . esc_url($url) . '&quot;&gt;' . esc_html__('Delete Post', 'wporg') . '&lt;/a&gt;';
+    }
+    return null;
+}
+
+function wporg_delete_post()
+{
+    if (
+        isset($_GET['action']) &amp;&amp;
+        isset($_GET['nonce']) &amp;&amp;
+        $_GET['action'] === 'wporg_frontend_delete' &amp;&amp;
+        wp_verify_nonce($_GET['nonce'], 'wporg_frontend_delete')
+    ) {
+ 
+        $post_id = (isset($_GET['post'])) ? ($_GET['post']) : (null);
+ 
+        $post = get_post((int)$post_id);
+        if (empty($post)) {
+            return;
+        }
+ 
+        wp_trash_post($post_id);
+ 
+        $redirect = admin_url('edit.php');
+        wp_safe_redirect($redirect);
+ 
+        die;
+    }
+}
+ 
+if (current_user_can('edit_others_posts')) {
+    add_filter('the_content', 'wporg_generate_delete_link');
+
+    add_action('init', 'wporg_delete_post');
+}
+</code></pre>
+<p>同样可以在模板里用</p>
+<pre><code class="language-php">&lt;?php wp_nonce_field('update-options'); ?&gt;
+</code></pre>
+<h1 id="写插件的最佳实践与注意事项">写插件的最佳实践与注意事项</h1>
+<p><a href="https://developer.wordpress.org/plugins/the-basics/best-practices/">https://developer.wordpress.org/plugins/the-basics/best-practices/</a></p>
+<h2 id="避免名称的冲突">避免名称的冲突</h2>
+<p>因为都是全局的</p>
+<h3 id="对函数和变量使用个性化前缀">对函数和变量使用个性化前缀</h3>
+<h3 id="要对变量和类进行存在检测">要对变量和类进行存在检测</h3>
+<p>Variables: isset() (includes arrays, objects, etc.)
+Functions: function_exists()
+Classes: class_exists()
+Constants: defined()</p>
+<p>例如</p>
+<pre><code class="language-php">if ( !function_exists( 'wporg_get_foo' ) ) {
+    function wporg_get_foo() {
+        return get_option( 'wporg_option_foo' );
+    }
+}
+</code></pre>
+<h3 id="根据不同的分支条件处理代码的加载">根据不同的分支条件处理代码的加载</h3>
+<pre><code class="language-php">if ( is_admin() ) {
+    // we are in admin mode
+    require_once( dirname( __FILE__ ) . '/admin/plugin-name-admin.php' );
+}
+</code></pre>
+<p>有一些文章参考
+<a href="http://jaco.by/2012/12/12/slash-architecture-my-approach-to-building-wordpress-plugins/">http://jaco.by/2012/12/12/slash-architecture-my-approach-to-building-wordpress-plugins/</a>
+<a href="http://www.renegadetechconsulting.com/tutorials/an-mvc-inspired-approach-to-wordpress-plugin-development">http://www.renegadetechconsulting.com/tutorials/an-mvc-inspired-approach-to-wordpress-plugin-development</a>
+Implementing the MVC Pattern in WordPress Plugins</p>
+<p>或者一些“样板”和“Bootstrap”
+<a href="https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate">https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate</a>
+<a href="https://github.com/claudiosmweb/wordpress-plugin-boilerplate">https://github.com/claudiosmweb/wordpress-plugin-boilerplate</a>
+<a href="https://github.com/ptahdunbar/wp-skeleton-plugin">https://github.com/ptahdunbar/wp-skeleton-plugin</a>
+<a href="https://github.com/search?q=wordpress+plugin+boilerplate&amp;ref=reposearch">https://github.com/search?q=wordpress+plugin+boilerplate&amp;ref=reposearch</a></p>
+<h3 id="可以用类来写">可以用类来写</h3>
+<pre><code class="language-php">&lt;?php
+if ( !class_exists( 'WPOrg_Plugin' ) ) {
+    class WPOrg_Plugin
+    {
+    		
+    
+        public static function init() {
+            register_setting( 'wporg_settings', 'wporg_option_foo' );
+        }
+ 
+        public static function get_foo() {
+            return get_option( 'wporg_option_foo' );
+        }
+    }
+ 
+    WPOrg_Plugin::init();
+    WPOrg_Plugin::get_foo();
+}
+</code></pre>
+<h2 id="文件结构规划其他有关的文件尽量放到子文件夹保持清晰的目录">文件结构规划：其他有关的文件尽量放到子文件夹，保持清晰的目录。</h2>
+<pre><code class="language-shell">my-plugin.php
+uninstall.php
+/languages
+     /includes
+     /admin
+          /js
+          /css
+          /images
+     /public
+          /js
+          /css
+          /images
+</code></pre>
+<h2 id="shortcode-best-practices">Shortcode Best Practices</h2>
+<p>Best practices for developing shortcodes include the plugin development best practices and the list below:</p>
+<p><a href="https://developer.wordpress.org/plugins/the-basics/best-practices/">https://developer.wordpress.org/plugins/the-basics/best-practices/</a></p>
+<p>Always return!
+Shortcodes are essentially filters, so creating “side effects” will lead to unexpected bugs.
+Prefix your shortcode names to avoid collisions with other plugins.
+Sanitize the input and escape the output.
+Provide users with clear documentation on all shortcode attributes.</p>
+<h1 id="提交插件到-wordpressorg">提交插件到 Wordpress.org</h1>
+<h1 id="其他-1">其他</h1>
+<h2 id="向回调函数传递参数">向回调函数传递参数</h2>
+<p><a href="https://wordpress.stackexchange.com/questions/16415/passing-arguments-to-a-admin-menu-page-callback">https://wordpress.stackexchange.com/questions/16415/passing-arguments-to-a-admin-menu-page-callback</a></p>
+<pre><code class="language-php">class WPSE16415_Plugin
+{
+    protected $views = array();
+
+    function load_view() {
+        // current_filter() also returns the current action
+        $current_views = $this-&gt;views[current_filter()];
+        include(dirname(__FILE__).'/views/'.$current_views.'.php');
+    }
+
+    function myplugin_create_menus() {
+        $view_hook_name = add_menu_page( 'Plugin name',
+            'Plugin name',
+            'manage_options',
+            'my-plugin-settings',
+            array(&amp;$this, 'load_view'),
+        );
+        $this-&gt;views[$view_hook_name] = 'options';
+    }
+}
+
+</code></pre>
+<h2 id="wp-自动转义提交的数据">WP 自动转义提交的数据</h2>
+<p>在提交数据的时候，WP 因为历史的原因（在老的PHP5.3以下，默认打开了 magic_quote_ 为 on），会对 $_POST 等数据自动转码，导致提交到数据库中的引号前面会有<code>\</code>符号，可以使用下面的办法来去掉</p>
+<pre><code class="language-php">$_POST = array_map( 'stripslashes_deep', $_POST );
+$_GET = array_map( 'stripslashes_deep', $_GET );
+</code></pre>
+<h2 id="使用-options-api-的时候如果需要中途处理保存的数据">使用 Options API 的时候，如果需要中途处理保存的数据</h2>
+<p>如果使用 Settings 和 Options API 来写插件的配置数据处理表单，一切都是由 WP 自动获取并保存到数据表的，那么如何捕获和处理提交的数据？ （手动写 form，可以用 $_POST 来获取）</p>
+<p>使用<code>pre_update_option()</code>这个filter hook</p>
+<p>以及简化的 <code>pre_update_option_(option name)</code></p>
+<pre><code class="language-php">function myplugin_update_field_foo( $new_value, $old_value ) {
+	$new_value = intval( $new_value );
+	$new_value ++;
+	return $new_value;
+}
+
+function myplugin_init() {
+	add_filter( 'pre_update_option_foo', 'myplugin_update_field_foo', 10, 2 );
+}
+
+add_action( 'init', 'myplugin_init' );
+</code></pre>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/wordpress%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/wordpress%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/wordpress%E6%9D%83%E9%99%90%E8%AE%BE%E7%BD%AE/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/wordpress%E6%8F%92%E4%BB%B6-%E5%86%85%E5%AE%B9%E7%BC%96%E8%BE%91%E5%A2%9E%E5%BC%BA/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

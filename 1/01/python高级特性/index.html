@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="python高级特性 切片 取一个list或tuple的部分元素 (直接用自带的 Slice 操作符，而不是循环) 对 list 切片 &amp;gt;&amp;gt;&amp;gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;] # 第一个索引是0, 可" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="python高级特性 切片 取一个list或tuple的部分元素 (直接用自带的 Slice 操作符，而不是循环) 对 list 切片 &gt;&gt;&gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;] # 第一个索引是0, 可" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="python高级特性 切片 取一个list或tuple的部分元素 (直接用自带的 Slice 操作符，而不是循环) 对 list 切片 &gt;&gt;&gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;] # 第一个索引是0, 可">
+
+<meta itemprop="wordCount" content="11529">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="python高级特性 切片 取一个list或tuple的部分元素 (直接用自带的 Slice 操作符，而不是循环) 对 list 切片 &gt;&gt;&gt; L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;] # 第一个索引是0, 可"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11529字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 24分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="python高级特性">python高级特性</h1>
+<h2 id="切片">切片</h2>
+<p>取一个list或tuple的部分元素 (直接用自带的 Slice 操作符，而不是循环)</p>
+<h3 id="对-list-切片">对 list 切片</h3>
+<pre><code class="language-py">&gt;&gt;&gt; L = ['Michael', 'Sarah', 'Tracy', 'Bob', 'Jack']
+
+# 第一个索引是0, 可以省略成 L[:3]
+&gt;&gt;&gt; L[0:3]
+['Michael', 'Sarah', 'Tracy']
+
+&gt;&gt;&gt; L[1:3]
+['Sarah', 'Tracy']
+
+# 倒数切片(第一个元素的索引是-1)
+&gt;&gt;&gt; L[-2:]
+['Bob', 'Jack']
+&gt;&gt;&gt; L[-2:-1]
+['Bob']
+
+&gt;&gt;&gt; L = list(range(100))
+
+# 前10个数，每两个取一个
+&gt;&gt;&gt; L[:10:2]
+[0, 2, 4, 6, 8]
+
+# 所有数，每5个取一个：
+&gt;&gt;&gt; L[::5]
+
+# 只写[:]就可以原样复制一个list
+L[:]
+</code></pre>
+<h3 id="对不可变的-tuple-切片">对不可变的 tuple 切片</h3>
+<pre><code class="language-py">&gt;&gt;&gt; (0, 1, 2, 3, 4, 5)[:3]
+(0, 1, 2)
+</code></pre>
+<h3 id="对字符串切片">对字符串切片</h3>
+<p>字符串&rsquo;xxx&rsquo;也可以看成是一种list，每个元素就是一个字符。因此，字符串也可以用切片操作，只是操作结果仍是字符串：</p>
+<p>在很多编程语言中，针对字符串提供了很多各种截取函数（例如，substring），其实目的就是对字符串切片。Python没有针对字符串的截取函数，只需要切片一个操作就可以完成</p>
+<pre><code class="language-py">&gt;&gt;&gt; 'ABCDEFG'[:3]
+'ABC'
+&gt;&gt;&gt; 'ABCDEFG'[::2]
+'ACEG'
+</code></pre>
+<h2 id="迭代">迭代</h2>
+<p>过<code>for...in</code>循环来遍历list或tuple，这种遍历我们称为迭代（Iteration）</p>
+<p>对比其他 C系语言, py 的for 循环抽象程度较高</p>
+<pre><code class="language-c">for (i=0; i&lt;list.length; i++) {
+    n = list[i];
+}
+</code></pre>
+<p>list这种数据类型虽然有下标，但很多其他数据类型是没有下标的，但是，只要是<strong>可迭代对象</strong>，无论有无下标，都可以迭代。</p>
+<p><strong>比如 dict 就可以迭代</strong>：</p>
+<pre><code class="language-py">&gt;&gt;&gt; d = {'a': 1, 'b': 2, 'c': 3}
+
+# 默认情况下，dict迭代的是key
+&gt;&gt;&gt; for key in d:
+...     print(key)
+
+# 如果要迭代value   `.values()`
+&gt;&gt;&gt; for value in d.values():
+
+# 同时迭代key和value,  `.items()` 得到形式： dict_items([('a', 1), ('b', 2), ('c', 3)])  元组列表？
+for k, v in d.items()
+</code></pre>
+<p><strong>字符串也是可迭代对象</strong></p>
+<pre><code class="language-py">&gt;&gt;&gt; for ch in 'ABC':
+...     print(ch)
+</code></pre>
+<p><strong>如何判断一个对象是可迭代对象呢</strong></p>
+<p>通过collections模块的Iterable类型判断</p>
+<pre><code class="language-py">&gt;&gt;&gt; from collections import Iterable
+&gt;&gt;&gt; isinstance('abc', Iterable) # str是否可迭代
+True
+&gt;&gt;&gt; isinstance([1,2,3], Iterable) # list是否可迭代
+True
+&gt;&gt;&gt; isinstance(123, Iterable) # 整数是否可迭代
+False
+</code></pre>
+<p><strong>对 list实现, 在for循环中同时迭代索引和元素本身(类似Java那样的下标循环)</strong></p>
+<p>Python内置的<code>enumerate</code>函数可以把一个list变成<strong>索引-元素对</strong></p>
+<pre><code class="language-py">&gt;&gt;&gt; for i, value in enumerate(['A', 'B', 'C']):
+...     print(i, value)
+...
+0 A
+1 B
+2 C
+</code></pre>
+<p><strong>上面的for循环里，同时引用了两个变量</strong></p>
+<p>在Python里是很常见的 (在前面，对 dict 类型的数据同时迭代 key 和 value, 用的 <code>.items()</code>就得到了下面类似的[(1, 1), (2, 4), (3, 9)])</p>
+<pre><code class="language-py">&gt;&gt;&gt; for x, y in [(1, 1), (2, 4), (3, 9)]:
+...     print(x, y)
+...
+1 1
+2 4
+3 9
+</code></pre>
+<h2 id="列表生成式list-comprehensions--创建list的生成式">列表生成式（List Comprehensions） —— 创建list的生成式</h2>
+<p>例如前面学到的生成list</p>
+<pre><code class="language-py">&gt;&gt;&gt; list(range(1, 11))
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</code></pre>
+<p>但如果要生成 <code>[1x1, 2x2, 3x3, ..., 10x10]</code> 呢？</p>
+<p>可以用循环，但是太繁琐了, 用列表生成式只需要一行</p>
+<pre><code class="language-py"># 循环
+&gt;&gt;&gt; L = []
+&gt;&gt;&gt; for x in range(1, 11):
+...    L.append(x * x)
+
+# 列表生成式
+# 把要生成的元素x * x放到前面， 后面跟for循环，就可以把list创建出来
+&gt;&gt;&gt; [x * x for x in range(1, 11)]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+# for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方
+&gt;&gt;&gt; [x * x for x in range(1, 11) if x % 2 == 0]
+[4, 16, 36, 64, 100]
+
+# 还可以使用两层循环，可以生成全排列： （三层和三层以上的循环就很少用到了。）
+&gt;&gt;&gt; [m + n for m in 'ABC' for n in 'XYZ']
+['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+</code></pre>
+<p>可以极大简化代码, 例如，列出当前目录下的所有文件和目录名，可以通过一行代码实现</p>
+<pre><code class="language-py">&gt;&gt;&gt; import os # 导入os模块，模块的概念后面讲到
+&gt;&gt;&gt; [d for d in os.listdir('.')] # os.listdir可以列出文件和目录
+['.emacs.d', '.ssh', '.Trash', 'Adlm', 'Applications', 'Desktop', 'Documents', 'Downloads', 'Library', 'Movies', 'Music', 'Pictures', 'Public', 'VirtualBox VMs', 'Workspace', 'XCode']
+</code></pre>
+<p>前面提到过for循环其实可以同时使用两个甚至多个变量，比如dict的items()可以同时迭代key和value。</p>
+<p>列表生成式也可以使用两个变量来生成list：</p>
+<pre><code class="language-py">&gt;&gt;&gt; d = {'x': 'A', 'y': 'B', 'z': 'C' }
+&gt;&gt;&gt; [k + '=' + v for k, v in d.items()]
+['y=B', 'x=A', 'z=C']
+</code></pre>
+<p>把一个list中所有的字符串变成小写(第一个 生成的元素，除了计算、组合字符串，还可以调用自身的函数（<code>.lower()</code>）)</p>
+<pre><code class="language-py">&gt;&gt;&gt; L = ['Hello', 'World', 'IBM', 'Apple']
+&gt;&gt;&gt; [s.lower() for s in L]
+['hello', 'world', 'ibm', 'apple']
+
+# 如果list中既包含字符串，又包含整数，由于非字符串类型没有lower()方法，所以列表生成式会报错
+&gt;&gt;&gt; L = ['Hello', 'World', 18, 'Apple', None]
+&gt;&gt;&gt; [s.lower() for s in L]
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;listcomp&gt;
+AttributeError: 'int' object has no attribute 'lower'
+
+#使用内建的isinstance函数可以判断一个变量是不是字符串：
+&gt;&gt;&gt; x = 'abc'
+&gt;&gt;&gt; y = 123
+&gt;&gt;&gt; isinstance(x, str)
+True
+&gt;&gt;&gt; isinstance(y, str)
+False 
+</code></pre>
+<h2 id="生成器-generator">生成器 generator</h2>
+<p>前面的<code>列表生成式</code>，我们可以直接创建一个列表。但是受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了</p>
+<p>如果<strong>列表元素可以按照某种算法推算出来</strong>，那我们是否可以<strong>在循环的过程中不断推算出后续的元素</strong>呢？这样就<strong>不必创建完整的list</strong>，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器：<code>generator</code>。</p>
+<h3 id="方法1-把一个列表生成式的改成">方法1： 把一个列表生成式的[]改成()</h3>
+<pre><code class="language-py"># 列表生成式， L是一个list
+&gt;&gt;&gt; L = [x * x for x in range(10)]
+&gt;&gt;&gt; L
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# 生成器 Generator， g是一个generator
+&gt;&gt;&gt; g = (x * x for x in range(10))
+&gt;&gt;&gt; g
+&lt;generator object &lt;genexpr&gt; at 0x1022ef630&gt;
+</code></pre>
+<p>list 可以直接打印出每个元素（一开始就有），但 generator 的元素是”推算“出来的，怎么打印呢？</p>
+<p>generator保存的是算法，每次调用<code>next(g)</code>，就计算出g的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的错误。</p>
+<pre><code class="language-py">&gt;&gt;&gt; next(g)
+0
+&gt;&gt;&gt; next(g)
+1
+&gt;&gt;&gt; next(g)
+4
+....略
+&gt;&gt;&gt; next(g)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+StopIteration
+</code></pre>
+<p>但是实际中，不可能去不断调用 <code>next(g)</code>.</p>
+<p>因为<code>generator</code>也是<strong>可迭代对象</strong>， 使用<code>for</code>循环</p>
+<pre><code class="language-py">&gt;&gt;&gt; g = (x * x for x in range(10))
+&gt;&gt;&gt; for n in g:
+...     print(n)
+... 
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+</code></pre>
+<h3 id="方法2-用函数的形式来实现">方法2 用函数的形式来实现</h3>
+<p>如果推算的算法比较复杂，用类似列表生成式的for循环无法实现的时候，还可以用函数来实现。</p>
+<p>比如，著名的斐波拉契数列（Fibonacci），除第一个和第二个数外，任意一个数都可由前两个数相加得到：</p>
+<blockquote>
+<p>1, 1, 2, 3, 5, 8, 13, 21, 34, &hellip;</p>
+</blockquote>
+<p>用列表生成式写不出来，用<strong>函数</strong>实现如下</p>
+<pre><code class="language-py">def fib(max):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        print(b)
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+</code></pre>
+<p>注意，赋值语句：<code>a, b = b, a + b</code> 相当于如下（不必显式写出临时变量t就可以赋值）</p>
+<pre><code class="language-py">t = (b, a + b) # t是一个tuple
+a = t[0]
+b = t[1]
+</code></pre>
+<p>调用函数</p>
+<pre><code class="language-py">&gt;&gt;&gt; fib(6)
+1
+1
+2
+3
+5
+8
+'done'
+</code></pre>
+<p>这个函数实际上是<strong>定义了斐波拉契数列的推算规则</strong>，从第一个元素开始，推算出后续任意的元素，这种逻辑其实非常类似generator</p>
+<p>因此，简单地把函数代码中的 <code>print(b)</code> 改成 <code>yield b</code>就得到了一个生成器。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：</p>
+<pre><code class="language-py">def fib(max):
+    n, a, b = 0, 0, 1
+    while n &lt; max:
+        yield b
+        a, b = b, a + b
+        n = n + 1
+    return 'done'
+</code></pre>
+<p>运行试试， f 是一个生成器类型</p>
+<pre><code class="language-py">&gt;&gt;&gt; f = fib(6)
+&gt;&gt;&gt; f
+&lt;generator object fib at 0x104feaaa0&gt;
+</code></pre>
+<p><strong>最难理解的就是generator和函数的执行流程不一样</strong></p>
+<ul>
+<li>
+<p>函数是顺序执行，遇到return语句或者最后一行函数语句就返回</p>
+</li>
+<li>
+<p>变成generator的函数，只有在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行</p>
+</li>
+</ul>
+<p>举例，依次返回数字1，3，5 的 generateor</p>
+<pre><code class="language-py">def odd():
+    print('step 1')
+    yield 1
+    print('step 2')
+    yield(3)
+    print('step 3')
+    yield(5)
+</code></pre>
+<p>调用该generator时，首先要生成一个generator对象，然后用next()函数不断获得下一个返回值：</p>
+<p>在执行过程中，遇到yield就中断，下次又继续执行。执行3次yield后，已经没有yield可以执行了，所以，第4次调用next(o)就报错。</p>
+<pre><code class="language-py">&gt;&gt;&gt; o = odd()
+&gt;&gt;&gt; next(o)
+step 1
+1
+&gt;&gt;&gt; next(o)
+step 2
+3
+&gt;&gt;&gt; next(o)
+step 3
+5
+&gt;&gt;&gt; next(o)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+StopIteration
+</code></pre>
+<p>同样的，把函数改成generator后，我们基本上从来不会用next()来获取下一个返回值，而是直接使用for循环来迭代：（要给循环设置一个条件来退出循环，不然就会产生一个无限数列出来）</p>
+<pre><code class="language-py">&gt;&gt;&gt; for n in fib(6):
+...     print(n)
+</code></pre>
+<p>用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中：</p>
+<p>注意里面用到 <code>try...except</code>关键字，查阅后面<code>捕获错误</code>部分</p>
+<pre><code class="language-py">&gt;&gt;&gt; g = fib(6)
+&gt;&gt;&gt; while True:
+...     try:
+...         x = next(g)
+...         print('g:', x)
+...     except StopIteration as e:
+...         print('Generator return value:', e.value)
+...         break
+...
+g: 1
+g: 1
+g: 2
+g: 3
+g: 5
+g: 8
+Generator return value: done
+</code></pre>
+<p>练习：杨辉三角</p>
+<h2 id="迭代器-iterator">迭代器 Iterator</h2>
+<p>可以直接作用于for循环的数据类型有以下几种， 这些可以<strong>直接作用于for循环的对象</strong>统称为<strong>可迭代对象</strong>：<code>Iterable</code>。</p>
+<ul>
+<li>集合数据类型，如list、tuple、dict、set、str等</li>
+<li>generator，包括生成器和带yield的generator function。</li>
+</ul>
+<p><code>isinstance()</code>判断一个对象是否是Iterable</p>
+<pre><code class="language-py">&gt;&gt;&gt; from collections import Iterable
+&gt;&gt;&gt; isinstance([], Iterable)
+True
+&gt;&gt;&gt; isinstance({}, Iterable)
+True
+&gt;&gt;&gt; isinstance('abc', Iterable)
+True
+&gt;&gt;&gt; isinstance((x for x in range(10)), Iterable)
+True
+&gt;&gt;&gt; isinstance(100, Iterable)
+False
+
+</code></pre>
+<p>而生成器不但可以作用于for循环，还可以被<code>next()</code>函数不断调用并返回下一个值，直到最后抛出StopIteration错误表示无法继续返回下一个值了。</p>
+<p>可以被<code>next()</code>函数调用并不断返回下一个值的对象称为迭代器：<code>Iterator</code></p>
+<p>因此 生成器都是<code>Iterator</code>迭代器对象，但list、dict、str虽然是Iterable可迭代对象，却不是Iterator迭代器。</p>
+<pre><code class="language-py">&gt;&gt;&gt; from collections import Iterator
+&gt;&gt;&gt; isinstance((x for x in range(10)), Iterator)
+True
+&gt;&gt;&gt; isinstance([], Iterator)
+False
+&gt;&gt;&gt; isinstance({}, Iterator)
+False
+&gt;&gt;&gt; isinstance('abc', Iterator)
+False
+</code></pre>
+<p>把list、dict、str等Iterable变成Iterator可以使用<code>iter()</code>函数：</p>
+<pre><code class="language-py">&gt;&gt;&gt; isinstance(iter([]), Iterator)
+True
+&gt;&gt;&gt; isinstance(iter('abc'), Iterator)
+True
+</code></pre>
+<p>为什么list、dict、str等数据类型不是Iterator？ (不可以用 <code>next()</code>函数调用来返回下一个值)</p>
+<p>因为Python的<strong><code>Iterator</code>对象</strong>表示的是一个<strong>数据流</strong>，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。可以把这个<strong>数据流看做是一个有序序列</strong>，但我们却<strong>不能提前知道序列的长度</strong>，<strong>只能不断通过next()函数实现按需计算下一个数据</strong>，所以Iterator的<strong>计算是惰性的</strong>，<strong>只有在需要返回下一个数据时它才会计算</strong>。</p>
+<p>Iterator甚至可以表示一个无限大的数据流，例如全体自然数。而使用list是永远不可能存储全体自然数的</p>
+<p>ython的<code>for</code>循环本质上就是通过不断调用<code>next()</code>函数实现的，例如：</p>
+<pre><code class="language-py">for x in [1, 2, 3, 4, 5]:
+    pass
+    
+# 实际上完全等价于：
+# 首先获得Iterator对象:
+it = iter([1, 2, 3, 4, 5])
+# 循环:
+while True:
+    try:
+        # 获得下一个值:
+        x = next(it)
+    except StopIteration:
+        # 遇到StopIteration就退出循环
+        break
+
+</code></pre>
+<h1 id="函数式编程-functional-programming">函数式编程 Functional Programming</h1>
+<p>函数式编程就是一种<strong>抽象程度很高的编程范式</strong>，纯粹的函数式编程语言编写的函数<strong>没有变量</strong>，因此，任意一个函数，<strong>只要输入是确定的，输出就是确定的</strong>，这种纯函数我们称之为没有副作用。</p>
+<p>而允许使用变量的程序设计语言，由于函数内部的变量状态不确定，同样的输入，可能得到不同的输出，因此，这种函数是有副作用的。</p>
+<p>函数式编程的一个特点就是，允许把函数本身作为参数传入另一个函数，还允许返回一个函数！</p>
+<p>Python对函数式编程提供部分支持。由于Python允许使用变量，因此，Python不是纯函数式编程语言</p>
+<h2 id="高阶函数-higher-order-function">高阶函数 Higher-order function</h2>
+<p><strong>变量可以指向函数</strong></p>
+<pre><code class="language-py">&gt;&gt;&gt; f = abs
+&gt;&gt;&gt; f(-10)
+</code></pre>
+<p>变量f现在已经指向了abs函数本身。直接调用abs()函数和调用变量f()完全相同</p>
+<p><strong>函数名也是变量</strong></p>
+<p>函数名其实就是指向函数的变量！对于abs()这个函数，完全可以把函数名<code>abs</code>看成变量，它<strong>指向一个可以计算绝对值的函数</strong>！.</p>
+<p>如果把abs指向其他对象，会有什么情况发生？ abs这个变量已经不指向求绝对值函数而是指向一个整数10！无法通过abs(-10)调用该函数。</p>
+<p>（要恢复abs函数，请重启Python交互环境）</p>
+<p>由于abs函数实际上是定义在<code>import builtins</code>模块中的，所以要让修改abs变量的指向在其它模块也生效，要用<code>import builtins; builtins.abs = 10</code>。</p>
+<pre><code class="language-py">&gt;&gt;&gt; abs = 10
+&gt;&gt;&gt; abs(-10)
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: 'int' object is not callable
+</code></pre>
+<p><strong>高阶函数</strong></p>
+<p>一个函数可以接收另一个函数作为参数.</p>
+<p>例如 <code>f</code> 就是一个函数名, 被作为参数传入了函数 <code>add</code></p>
+<pre><code class="language-py">def add(x, y, f):
+    return f(x) + f(y)
+</code></pre>
+<p>当我们调用<code>add(-5, 6, abs)</code>时，参数x，y和f分别接收<code>-5</code>，<code>6</code>和<code>abs</code>，根据函数定义，我们可以推导计算过程为：</p>
+<pre><code class="language-py">x = -5
+y = 6
+f = abs
+f(x) + f(y) ==&gt; abs(-5) + abs(6) ==&gt; 11
+return 11
+</code></pre>
+<h2 id="mapreduce">map/reduce</h2>
+<p>看到这里，我默默想起了 javascript&hellip;</p>
+<p><a href="http://research.google.com/archive/mapreduce.html">http://research.google.com/archive/mapreduce.html</a></p>
+<h3 id="map">map</h3>
+<p><code>map()</code>函数接收两个参数，一个是函数，一个是<code>Iterable</code>，map将传入的函数依次作用到序列的每个元素，并把结果作为新的Iterator返回。</p>
+<p>比如我们有一个函数<code>f(x)=x2</code>，要把这个函数作用在一个list [1, 2, 3, 4, 5, 6, 7, 8, 9]上</p>
+<pre><code class="language-py"># 先定义函数
+&gt;&gt;&gt; def f(x):
+...     return x * x
+...
+
+# 然后把函数作为第一个参数传入 map()
+&gt;&gt;&gt; r = map(f, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+&gt;&gt;&gt; list(r)
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre>
+<p>虽然不用 <code>map()</code>, 在循环里调用 <code>f(n)</code>也能实现，但总体上看来 （1）代码不够精简 （2）无法直观看出：把一个函数作用于list的每一个元素并生成一个新list</p>
+<pre><code class="language-py">L = []
+for n in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
+    L.append(f(n))
+print(L)
+</code></pre>
+<p>高阶函数，事实上它把运算规则抽象了。 例如，直接把 str 函数传入，将所有数字改成字符串，只要一行代码</p>
+<pre><code class="language-py">&gt;&gt;&gt; list(map(str, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+</code></pre>
+<h3 id="reduce">reduce</h3>
+<p><code>reduce</code> <strong>把结果继续和序列的下一个元素做累积计算</strong></p>
+<p>比方说对一个序列, 前一个值 * 10 累加（x 一直是上一次计算的和）</p>
+<pre><code class="language-py">&gt;&gt;&gt; from functools import reduce
+&gt;&gt;&gt; def fn(x, y):
+...     return x * 10 + y
+...
+&gt;&gt;&gt; reduce(fn, [1, 3, 5, 7, 9])
+13579
+
+1*10+3=13, 13*10+5=135, 135*10+7=1357, 1357*10+9=13579
+</code></pre>
+<h3 id="综合运用">综合运用</h3>
+<pre><code class="language-py">from functools import reduce
+
+DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+
+def str2int(s):
+    def fn(x, y):
+        return x * 10 + y
+    def char2num(s):
+        return DIGITS[s]
+    return reduce(fn, map(char2num, s))
+</code></pre>
+<h3 id="lambda函数">lambda函数</h3>
+<p>lambda函数的用法在后面介绍。这里简单看看</p>
+<pre><code class="language-py">from functools import reduce
+
+DIGITS = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}
+
+def char2num(s):
+    return DIGITS[s]
+
+def str2int(s):
+    return reduce(lambda x, y: x * 10 + y, map(char2num, s))
+</code></pre>
+<h2 id="filter">filter</h2>
+<p>过滤序列</p>
+<p>和map()不同的是，<code>filter()</code>把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。(map()是返回作用后的新元素)</p>
+<pre><code class="language-py">def is_odd(n):
+    return n % 2 == 1
+
+list(filter(is_odd, [1, 2, 4, 5, 6, 9, 10, 15]))
+# 结果: [1, 5, 9, 15]
+</code></pre>
+<p>空字符串删掉</p>
+<pre><code class="language-py">def not_empty(s):
+    return s and s.strip()
+
+list(filter(not_empty, ['A', '', 'B', None, 'C', '  ']))
+# 结果: ['A', 'B', 'C']
+</code></pre>
+<p><strong>注意到filter()函数返回的是一个Iterator，也就是一个惰性序列，所以要强迫filter()完成计算结果，需要用list()函数获得所有结果并返回list。</strong></p>
+<p>问题：在计算中，把 list 转换成了迭代器？为什么呢</p>
+<p><strong>练习：用filter求素数</strong></p>
+<p>数学不行，时间不够，告辞。</p>
+<p>注意到Iterator是惰性计算的序列，所以我们可以用Python表示“全体自然数”，“全体素数”这样的序列，而代码非常简洁。</p>
+<h3 id="排序-sorted函数">排序 sorted()函数</h3>
+<p>可以对list进行排序, 不传入任何排序方式</p>
+<pre><code class="language-py">&gt;&gt;&gt; sorted([36, 5, -12, 9, -21])
+[-21, -12, 5, 9, 36]
+</code></pre>
+<p>此外，sorted()函数也是一个高阶函数，它还可以<strong>接收一个key函数来实现自定义的排序</strong>，例如按绝对值大小排序：</p>
+<pre><code class="language-py">&gt;&gt;&gt; sorted([36, 5, -12, 9, -21], key=abs)
+[5, 9, -12, -21, 36]
+</code></pre>
+<p>原始：
+list = [36, 5, -12, 9, -21]</p>
+<p>先计算得到绝对值
+keys = [36, 5,  12, 9,  21]</p>
+<p>按照绝对值排序
+[5, 9,  12,  21, 36]</p>
+<p>最终使用原始的数据
+[5, 9, -12, -21, 36]</p>
+<p><strong>字符串排序</strong></p>
+<p>字符串不像整数，但也能排序 默认情况下，<strong>对字符串排序，是按照ASCII的大小比较的</strong></p>
+<pre><code class="language-py"># 由于'Z' &lt; 'a'，结果，大写字母Z会排在小写字母a的前面
+&gt;&gt;&gt; sorted(['bob', 'about', 'Zoo', 'Credit'])
+['Credit', 'Zoo', 'about', 'bob']
+</code></pre>
+<p>现在，我们提出排序<strong>应该忽略大小写，按照字母序排序</strong>。</p>
+<p>只需要使用key函数，把字符串映射为忽略大小写排序即可。</p>
+<pre><code class="language-py">&gt;&gt;&gt; sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower)
+['about', 'bob', 'Credit', 'Zoo']
+</code></pre>
+<p>要<strong>反向排序</strong>只需传入第三个参数</p>
+<pre><code class="language-py">&gt;&gt;&gt; sorted(['bob', 'about', 'Zoo', 'Credit'], key=str.lower, reverse=True)
+['Zoo', 'Credit', 'bob', 'about']
+</code></pre>
+<h2 id="返回函数--闭包">返回函数 &amp; 闭包</h2>
+<h3 id="函数作为返回值">函数作为返回值</h3>
+<p>高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。</p>
+<p>例如，一个可变参数的求和，不需要立刻求和，而是在后面的代码中，根据需要再计算. &mdash;-返回求和的函数</p>
+<pre><code class="language-py">def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+</code></pre>
+<p>当我们调用lazy_sum()时，返回的并不是求和结果，而是求和函数</p>
+<pre><code class="language-py">&gt;&gt;&gt; f = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f
+&lt;function lazy_sum.&lt;locals&gt;.sum at 0x101c6ed90&gt;
+
+# 调用函数f时，才真正计算求和的结果：
+&gt;&gt;&gt; f()
+25
+</code></pre>
+<h3 id="闭包">闭包</h3>
+<p>在上面的例子中，内部函数<code>sum</code>可以引用外部函数<code>lazy_sum</code>的参数和局部变量，当lazy_sum返回函数sum时，相关参数和变量都保存在返回的函数中&mdash;-称为“闭包（Closure）”</p>
+<p>当我们调用<code>lazy_sum()</code>时，每次调用都会<strong>返回一个新的函数</strong>，<strong>即使传入相同的参数</strong>：</p>
+<p>f1()和f2()的调用结果互不影响。</p>
+<pre><code class="language-py">&gt;&gt;&gt; f1 = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f2 = lazy_sum(1, 3, 5, 7, 9)
+&gt;&gt;&gt; f1==f2
+False
+</code></pre>
+<p>注意到</p>
+<ol>
+<li>返回的函数在其定义内部引用了局部变量<code>args</code>, 当一个函数返回了一个函数后，其内部的局部变量还被新函数引用</li>
+<li>返回的函数并没有立刻执行，而是直到调用了f()才执行</li>
+</ol>
+<p>就会产生 js 里见过的类似情况，循环体中的函数导致执行结果和预期不一致</p>
+<p>例如下例，每次循环，都创建了一个新的函数</p>
+<pre><code class="language-py">def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+             return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+</code></pre>
+<p>分析下这段代码， fs = []，是一个列表</p>
+<p>在循环里每次调用 <code>append(f)</code>, 都是往 fs list 里面添加一个“函数”，成为一个保存了若干 函数 的列表。</p>
+<pre><code class="language-py">[f(): return 1*1,  fn(): return 2*2,  fn(): return 3*3]
+</code></pre>
+<p>打印出来也可以看到这个情况</p>
+<pre><code class="language-py">&gt;&gt;&gt; fs = []
+&gt;&gt;&gt; for i in range(1, 4):
+...     def f():
+...             return i*i
+...     fs.append(f)
+&gt;&gt;&gt; fs
+[&lt;function f at 0x104753510&gt;, &lt;function f at 0x104753598&gt;, &lt;function f at 0x104753620&gt;]
+</code></pre>
+<p>然后，把这个列表里三个元素分别赋值给了 f1  f2  f3   （记得这个语法么 多个逗号批量变量赋值。。。 一开始和 js 的赋值搞混了  var a,b,c=12这种）
+<strong>但是三个函数都没有被执行过</strong></p>
+<pre><code class="language-py">f1, f2, f3 = count()
+</code></pre>
+<p>每次执行一次函数，我们想象执行 f1() 会计算 1<em>1=1  f2()会计算 2</em>2=4  f3() 会计算 3*3=9</p>
+<p>但是由于 f1 f2 f3 并没有被调用，实际结果</p>
+<pre><code class="language-py">&gt;&gt;&gt; f1()
+9
+&gt;&gt;&gt; f2()
+9
+&gt;&gt;&gt; f3()
+9
+</code></pre>
+<p>原因就在于返回的函数<strong>引用了变量i</strong>，但它<strong>并非立刻执行</strong>。等到<strong>3个函数都返回时，它们所引用的变量i已经变成了3</strong>，因此最终结果为9。</p>
+<p><strong>返回闭包时牢记一点：返回函数不要引用任何循环变量，或者后续会发生变化的变量。</strong></p>
+<p>如果一定要引用循环变量怎么办？方法是再创建一个函数，用该函数的参数绑定循环变量当前的值，无论该循环变量后续如何更改，<strong>已绑定到函数参数的值不变</strong>：</p>
+<pre><code class="language-py">def count():
+    def f(j):
+        def g():
+            return j*j
+        return g
+    fs = []
+    for i in range(1, 4):
+        fs.append(f(i)) # f(i)立刻被执行，因此i的当前值被传入f()
+    return fs
+
+</code></pre>
+<p>代码较长，可利用lambda函数缩短代码。</p>
+<pre><code class="language-py">&gt;&gt;&gt; f1, f2, f3 = count()
+&gt;&gt;&gt; f1()
+1
+&gt;&gt;&gt; f2()
+4
+&gt;&gt;&gt; f3()
+9
+</code></pre>
+<h2 id="匿名函数--lambda关键字">匿名函数 &amp; Lambda关键字</h2>
+<p>在传入函数时，有些时候，不需要显式地定义函数，直接传入匿名函数更方便</p>
+<p>以map()函数为例</p>
+<pre><code class="language-py">&gt;&gt;&gt; list(map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9]))
+[1, 4, 9, 16, 25, 36, 49, 64, 81]
+</code></pre>
+<p>匿名函数<code>lambda x: x * x</code>实际上就是没有写函数名的下面这个函数</p>
+<pre><code class="language-py">def f(x):
+    return x * x
+</code></pre>
+<p><strong>关键字lambda表示匿名函数</strong>，<strong>冒号前面的x表示函数参数</strong>。</p>
+<p>匿名函数限制，就是</p>
+<blockquote>
+<p>只能有一个表达式，不用写return，返回值就是该表达式的结果</p>
+</blockquote>
+<p>用匿名函数好处：</p>
+<ul>
+<li>因为函数没有名字，<strong>不必担心函数名冲突</strong>。</li>
+<li>此外，匿名函数也是一个函数对象，也可以把匿名函数赋值给一个变量，再利用变量来调用该函数：</li>
+</ul>
+<pre><code class="language-py">&gt;&gt;&gt; f = lambda x: x * x
+&gt;&gt;&gt; f
+&lt;function &lt;lambda&gt; at 0x101c6ef28&gt;
+&gt;&gt;&gt; f(5)
+25
+</code></pre>
+<p>同样，也可以把匿名函数作为返回值返回，比如</p>
+<pre><code class="language-py">def build(x, y):
+    return lambda: x * x + y * y
+</code></pre>
+<h2 id="装饰器-代码运行期间动态增加功能">装饰器: 代码运行期间动态增加功能</h2>
+<p>函数对象有一个__name__属性，可以拿到函数的名字：</p>
+<pre><code class="language-py">&gt;&gt;&gt; def now():
+...     print('2015-3-25')
+...
+&gt;&gt;&gt; f = now
+&gt;&gt;&gt; f()
+2015-3-25
+
+&gt;&gt;&gt; now.__name__
+'now'
+&gt;&gt;&gt; f.__name__
+'now'
+</code></pre>
+<p>假设我们要增强now()函数的功能，比如，在函数调用前后自动打印日志，但又不希望修改now()函数的定义，</p>
+<p>这种<strong>在代码运行期间动态增加功能的方式，称之为“装饰器”（Decorator）。</strong></p>
+<p>**本质上，decorator就是一个返回函数的高阶函数。**所以，我们要定义一个能打印日志的decorator，可以定义如下：</p>
+<p>接受一个函数作为参数，并返回一个函数
+<code>wrapper()</code>函数的参数定义是<code>(*args, **kw)</code>，因此，wrapper()函数可以接受任意参数的调用。在wrapper()函数内，首先打印日志，再紧接着调用原始函数。</p>
+<pre><code class="language-py">def log(func):
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+</code></pre>
+<p>使用<code>@</code>语法，把decorator<code>log()</code>置于函数的定义处</p>
+<pre><code class="language-py">@log
+def now():
+    print('2015-3-25')
+
+# 把@log放到now()函数的定义处，相当于执行了语句
+now = log(now)
+</code></pre>
+<p>调用now()函数，不仅会运行now()函数本身，还会在运行now()函数前打印一行日志：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; now()
+call now():
+2015-3-25
+</code></pre>
+<p>如果<code>decorator</code>本身需要传入参数，那就需要编写一个<strong>返回decorator的高阶函数</strong>，写出来会更复杂。比如，要自定义log的文本：</p>
+<pre><code class="language-py">def log(text):
+    def decorator(func):
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+</code></pre>
+<pre><code class="language-py">@log('execute')
+def now():
+    print('2015-3-25')
+</code></pre>
+<p>执行, 相当于<code>now = log('execute')(now)</code>，首先执行<code>log('execute')</code>，返回的是decorator函数，再调用返回的函数，参数是now函数，返回值最终是wrapper函数。</p>
+<pre><code class="language-shell">&gt;&gt;&gt; now()
+execute now():
+2015-3-25
+</code></pre>
+<p><strong>注意，经过装饰后的函数，签名 <strong>name</strong> 会变化</strong></p>
+<p>经过decorator装饰之后的函数，它们的__name__已经从原来的&rsquo;now&rsquo;变成了&rsquo;wrapper&rsquo;.</p>
+<pre><code class="language-shell">&gt;&gt;&gt; now.__name__
+'wrapper'
+</code></pre>
+<p>因为返回的那个wrapper()函数名字就是&rsquo;wrapper&rsquo;，所以，需要把原始函数的__name__(&ldquo;now&rdquo;)等属性复制到wrapper()函数中，否则，有些依赖函数签名的代码执行就会出错。</p>
+<p>使用内置的 <code>functools.wraps()</code> （不需要编写wrapper.<strong>name</strong> = func.__name__这样的代码）</p>
+<pre><code class="language-py">import functools
+
+# 不带参数的 decorator
+def log(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kw):
+        print('call %s():' % func.__name__)
+        return func(*args, **kw)
+    return wrapper
+
+
+# 带参数的decorator
+def log2(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            print('%s %s():' % (text, func.__name__))
+            return func(*args, **kw)
+        return wrapper
+    return decorator
+</code></pre>
+<h2 id="偏函数-partial-function">偏函数 Partial function</h2>
+<p>Python的functools模块提供了很多有用的功能，其中一个就是偏函数（Partial function）</p>
+<p>前面介绍函数参数的时候，我们讲到，通过设定<strong>参数的默认值</strong>，可以降低函数调用的难度.</p>
+<p>当函数的参数个数太多，需要简化时，使用<code>functools.partial</code>可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。</p>
+<p>例如 <code>int()</code>函数还提供额外的base参数，默认值为10。如果传入base参数，就可以做N进制的转换：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; int('12345', base=8)
+5349
+&gt;&gt;&gt; int('12345', 16)
+74565
+</code></pre>
+<p>假设要转换大量的二进制字符串，每次都传入int(x, base=2)非常麻烦，于是，我们想到，可以<strong>定义一个int2()的函数，默认把base=2传进去</strong>：</p>
+<pre><code class="language-py">def int2(x, base=2):
+    return int(x, base)
+</code></pre>
+<pre><code class="language-shell">&gt;&gt;&gt; int2('1000000')
+64
+&gt;&gt;&gt; int2('1010101')
+85
+</code></pre>
+<p>其实不需要自己来定义在这个<code>int2()</code>和实现内部代码。</p>
+<p>直接使用<code>functools.partial</code>来创建一个偏函数会更简单，直接<strong>把一个函数的某些参数给固定住</strong>（也就是<strong>设置默认值</strong>），<strong>返回一个新的函数</strong></p>
+<pre><code class="language-shell">&gt;&gt;&gt; import functools
+&gt;&gt;&gt; int2 = functools.partial(int, base=2)
+&gt;&gt;&gt; int2('1000000')
+64
+&gt;&gt;&gt; int2('1010101')
+85
+</code></pre>
+<p>虽然<code>int2</code>把参数固定了，但它其实还能实现之前函数 <code>int</code>一样的功能，例如传入另外一个参数<code>base=10</code></p>
+<pre><code class="language-shell">&gt;&gt;&gt; int2('1000000', base=10)
+1000000
+</code></pre>
+<p>创建偏函数时，实际上可以接收<code>函数对象</code>、<code>*args</code>和<code>**kw</code>这3个参数</p>
+<pre><code class="language-py">int2('10010')
+
+# 相当于
+kw = { 'base': 2 }
+int('10010', **kw)
+</code></pre>
+<p>创建另一个偏函数<code>max2</code></p>
+<pre><code class="language-py">max2 = functools.partial(max, 10)
+</code></pre>
+<p>传入的参数 10，实际上会把 10 作为<code>*args</code> （不是 <code>**kw</code>）的一部分自动加到左边，也就是：</p>
+<pre><code class="language-py">max2(5, 6, 7)
+
+# 相当于 结果为10
+args = (10, 5, 6, 7)
+max(*args)
+</code></pre>
+<h1 id="模块">模块</h1>
+<h2 id="模块-与-包">模块 与 包</h2>
+<h3 id="什么是模块">什么是模块</h3>
+<p>为了编写可维护的代码，我们把很多函数分组，分别放到不同的文件里，这样，每个文件包含的代码就相对较少，很多编程语言都采用这种组织代码的方式。在Python中，<strong>一个.py文件就称之为一个模块（Module）</strong></p>
+<ul>
+<li>当一个模块编写完毕，就可以被其他地方引用。</li>
+<li>大大提高了代码的可维护性</li>
+<li>还可以避免函数名和变量名冲突（相同名字的函数和变量完全可以分别存在不同的模块中）</li>
+</ul>
+<p>注意函数名也不要和 Python 内置函数重名冲突</p>
+<p><a href="http://docs.python.org/3/library/functions.html">http://docs.python.org/3/library/functions.html</a></p>
+<h3 id="包">包</h3>
+<p>如果不同的人编写的模块名相同怎么办？<strong>为了避免模块名冲突</strong>，Python又引入了<strong>按目录来组织模块的方法，称为包（Package）</strong>。</p>
+<p>举个例子，一个<code>abc.py</code>的文件就是一个名字叫<code>abc</code>的模块，一个<code>xyz.py</code>的文件就是一个名字叫<code>xyz</code>的模块，选择一个顶层包名，比如<code>mycompany</code>，按照如下目录存放：</p>
+<blockquote>
+<p>mycompany
+├─ <strong>init</strong>.py
+├─ abc.py
+└─ xyz.py</p>
+</blockquote>
+<p>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突。现在，abc.py模块的名字就变成了<code>mycompany.abc</code>，类似的，xyz.py的模块名变成了mycompany.xyz。</p>
+<p><strong>自己创建模块时要注意命名，不能和Python自带的模块名称冲突。例如，系统自带了sys模块，自己的模块就不可命名为sys.py，否则将无法导入系统自带的sys模块。</strong></p>
+<h3 id="不可缺少的__init__py文件">不可缺少的<code>__init__.py</code>文件</h3>
+<p>每一个包目录下面都会有一个<code>__init__.py</code>的文件，必须存在。否则，Python就把这个目录当成普通目录而不是一个包。</p>
+<h3 id="多级层次的包结构">多级层次的包结构</h3>
+<p>类似的，可以有多级目录，组成多级层次的包结构。比如如下的目录结构：</p>
+<blockquote>
+<p>mycompany
+├─ web
+│  ├─ <strong>init</strong>.py
+│  ├─ utils.py
+│  └─ www.py
+├─ <strong>init</strong>.py
+├─ abc.py
+├─ utils.py
+└─ xyz.py</p>
+</blockquote>
+<p>文件<code>www.py</code>的模块名就是mycompany.web.www
+两个文件<code>utils.py</code>的模块名分别是<code>mycompany.utils</code>和<code>mycompany.web.utils</code>。</p>
+<h2 id="使用模块">使用模块</h2>
+<p>举一个<strong>Python模块的标准文件模板</strong>为例，编写一个<code>hello</code>的模块：保存为 hello.py 文件</p>
+<pre><code class="language-py">#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# 表示模块的文档注释，任何模块代码的第一个字符串都被视为模块的文档注释
+' a test module '
+
+__author__ = 'Michael Liao'
+
+# 先要导入内建的`sys`模块，就有了变量sys指向该模块
+import sys
+
+def test():
+    args = sys.argv
+    if len(args)==1:
+        print('Hello, world!')
+    elif len(args)==2:
+        print('Hello, %s!' % args[1])
+    else:
+        print('Too many arguments!')
+
+if __name__=='__main__':
+    test()
+</code></pre>
+<p><code>sys</code>模块有一个<code>argv</code>变量，用list存储了命令行的所有参数。argv至少有一个元素，因为<strong>第一个参数永远是该.py文件的名称</strong></p>
+<p>运行<code>python3 hello.py</code>获得的sys.argv就是<code>['hello.py']</code>；
+运行<code>python3 hello.py Michael</code>获得的sys.argv就是[&lsquo;hello.py&rsquo;, &lsquo;Michael]。</p>
+<p>最后，注意到这两行代码：</p>
+<pre><code class="language-py">if __name__=='__main__':
+    test()
+</code></pre>
+<p>当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量<code>__name__</code>置为<code>__main__</code>，而如果在其他地方导入该hello模块时，if判断将失败，因此，<strong>这种if测试可以让一个模块通过命令行运行时执行一些额外的代码</strong>，最常见的就是<strong>运行测试</strong>。</p>
+<p>python 命令直接运行 hello 模块</p>
+<pre><code class="language-shell">$ python3 hello.py
+Hello, world!
+$ python hello.py Michael
+Hello, Michael!
+</code></pre>
+<p>如果在交互环境中先导入 hello 模块. 导入时，没有打印Hello, word!，因为没有执行test()函数。调用hello.test()时才能打印出Hello, word!：</p>
+<pre><code class="language-shell">&gt;&gt;&gt; import hello
+
+&gt;&gt;&gt; hello.test()
+Hello, world!
+</code></pre>
+<h3 id="作用域">作用域</h3>
+<p><strong>私有</strong></p>
+<p>在一个模块中，我们可能会定义很多函数和变量，但有的函数和变量我们希望给别人使用，<strong>有的函数和变量</strong>我们希望<strong>仅仅在模块内部使用</strong>。在Python中，是通过<code>_</code>前缀来实现的。  (就不能用 private 等关键字吗！)</p>
+<p>类似_xxx和__xxx这样的函数或变量就是非公开的（private），<strong>不应该</strong>被直接引用，比如_abc，__abc等（注意这个词，不是“不能”，因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量）</p>
+<p><strong>公开</strong></p>
+<p>正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；</p>
+<p><strong>特殊</strong></p>
+<p>类似__xxx__这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的__author__，__name__就是特殊变量，hello模块定义的文档注释也可以用特殊变量__doc__访问，我们自己的变量一般不要用这种变量名</p>
+<h3 id="private函数或变量有什么用处呢">private函数或变量有什么用处呢</h3>
+<p>我们在模块里公开<code>greeting()</code>函数，而把内部逻辑用private函数隐藏起来了，这样，调用greeting()函数不用关心内部的private函数细节，这也是一种非常有用的代码封装和抽象的方法，即：</p>
+<p>外部不需要引用的函数全部定义成private，只有外部需要引用的函数才定义为public。</p>
+<pre><code class="language-py">def _private_1(name):
+    return 'Hello, %s' % name
+
+def _private_2(name):
+    return 'Hi, %s' % name
+
+def greeting(name):
+    if len(name) &gt; 3:
+        return _private_1(name)
+    else:
+        return _private_2(name)
+</code></pre>
+<h2 id="通过包管理工具pip-安装第三方模块">通过包管理工具pip 安装第三方模块</h2>
+<p>例如 Python Imaging Library (支持 2.7， 基于PIL的Pillow的支持 Python3)</p>
+<pre><code class="language-shell">pip install Pillow
+</code></pre>
+<h3 id="用-anaconda-安装常用模块">用 Anaconda 安装常用模块</h3>
+<blockquote>
+<p>评论： anaconda含有几百个包，又必要去装这玩意？</p>
+</blockquote>
+<p>常用很多模块 MySQL驱动程序，Web框架Flask，科学计算Numpy等一个个装很费事，还要考虑到兼容性</p>
+<p>直接用 Anaconda（基于Python的数据处理和科学计算平台，它已经内置了许多非常有用的第三方库）</p>
+<p><a href="https://www.anaconda.com/">https://www.anaconda.com/</a>
+[内置库] <a href="http://docs.anaconda.com/anaconda/packages/py3.7_osx-64/">http://docs.anaconda.com/anaconda/packages/py3.7_osx-64/</a></p>
+<p>可以从Anaconda官网下载GUI安装包，安装包有500~600M，所以需要耐心等待下载。网速慢的同学请移步国内镜像。</p>
+<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/">https://mirror.tuna.tsinghua.edu.cn/help/anaconda/</a></p>
+<p>下载后直接安装，Anaconda会把系统Path中的python指向自己自带的Python，并且，Anaconda安装的第三方模块会安装在Anaconda自己的路径下，不影响系统已安装的Python目录。</p>
+<p>安装好Anaconda后，重新打开命令行窗口，输入python，可以看到Anaconda的信息：</p>
+<p>可以尝试直接<code>import numpy</code>等已安装的第三方模块。</p>
+<p><strong>Miniconda 是一个 Anaconda 的轻量级替代 默认只包含了 python 和 conda</strong></p>
+<h3 id="模块搜索路径">模块搜索路径</h3>
+<p>加载一个模块时，Python会在指定的路径下搜索对应的.py文件，如果找不到，就会报错</p>
+<pre><code class="language-shell">&gt;&gt;&gt; import mymodule
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+ImportError: No module named mymodule
+</code></pre>
+<p>默认情况下，Python解释器会搜索当前目录、所有已安装的内置模块和第三方模块，搜索路径存放在<code>sys</code>模块的<code>path</code>变量中</p>
+<pre><code class="language-shell">&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.path
+['', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python36.zip', '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6', ..., '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages']
+</code></pre>
+<p><strong>如果我们要添加自己的搜索目录，有两种方法</strong></p>
+<p>一是直接修改sys.path，添加要搜索的目录(在运行时修改，运行结束后失效)</p>
+<pre><code class="language-shell">&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.path.append('/Users/michael/my_py_scripts')
+</code></pre>
+<p>第二种方法是设置环境变量<code>PYTHONPATH</code>,会被自动添加到模块搜索路径中. (只需要添加你自己的搜索路径)</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/scrapy/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/python/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

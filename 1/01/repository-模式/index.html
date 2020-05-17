@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Repository 模式 都是从 Java 里面学习来的。。。 这是什么 Repository 模式主要思想是建立一个数据操作代理层，把controller里的数据操作剥离出来 an architectural layer that handles communication between the application" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Repository 模式 都是从 Java 里面学习来的。。。 这是什么 Repository 模式主要思想是建立一个数据操作代理层，把controller里的数据操作剥离出来 an architectural layer that handles communication between the application" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/repository-%E6%A8%A1%E5%BC%8F/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Repository 模式 都是从 Java 里面学习来的。。。 这是什么 Repository 模式主要思想是建立一个数据操作代理层，把controller里的数据操作剥离出来 an architectural layer that handles communication between the application">
+
+<meta itemprop="wordCount" content="8148">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Repository 模式 都是从 Java 里面学习来的。。。 这是什么 Repository 模式主要思想是建立一个数据操作代理层，把controller里的数据操作剥离出来 an architectural layer that handles communication between the application"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/repository-%E6%A8%A1%E5%BC%8F/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/repository-%E6%A8%A1%E5%BC%8F/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8148字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 17分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="repository-模式">Repository 模式</h1>
+<p>都是从 Java 里面学习来的。。。</p>
+<h1 id="这是什么">这是什么</h1>
+<p>Repository 模式主要思想是建立一个数据操作代理层，把controller里的数据操作剥离出来</p>
+<blockquote>
+<p>an architectural layer that handles communication between the application and data source</p>
+</blockquote>
+<p>处理<strong>应用程序</strong>和<strong>数据源</strong>之间<strong>通信</strong>的体系结构<strong>层</strong></p>
+<p>让应用程序不需要知道实现了哪个数据源，以及是怎么实现的。这样在切换到别的数据源，或者更改现有数据源结构时更容易。</p>
+<p>向业务层屏蔽了数据访问逻辑的细节, 也可以这样理解, 在不清楚数据层设计结构的情况下, 我们也能按照业务逻辑来访问数据层.</p>
+<p>repository interface 定义了如何让应用程序和数据源通信，每一个数据源都有实现了repository interface的类，让 Controller 只需要调用在repository interface里定义的方法即可。</p>
+<ul>
+<li>把数据处理逻辑分离使得代码更容易维护</li>
+<li>数据处理逻辑和业务逻辑分离，可以对这两个代码分别进行测试</li>
+<li>减少代码重复</li>
+<li>降低代码出错的几率</li>
+<li>让controller代码的可读性大大提高</li>
+</ul>
+<p><img src="/media/15490412690191/15423454532776.png" alt="">
+简化下中间的部分，并举了几个仓库例子 <code>ActorRepository</code> <code>MovieRepository</code></p>
+<p><img src="/media/15490412690191/15423456397093.png" alt=""></p>
+<p>例如通常在 Controller 有大量这样的 Eloquent 数据查询代码</p>
+<pre><code class="language-php">public function index()
+{
+    $posts = Post::whereIn('category_id',[1,2])-&gt;where('is_draft',0)-&gt;orderBy('created_at', 'desc')-&gt;take(5)-&gt;get();
+    return view('front.index',compact('posts'));
+}
+</code></pre>
+<p>到处写的话，维护起来很费劲。想象下，突然要把 category_id 的范围改成 [3, 4], 如果项目里到处是几百个这样随意写的参数，工作量多大！</p>
+<p>观察到这条查询语句有三部分</p>
+<ul>
+<li>第一是Post,数据模型；</li>
+<li>第二个是whereIn，数据操作条件</li>
+<li>第三个是get()，数据获取的方法</li>
+</ul>
+<p>下面就来逐步深入。</p>
+<h1 id="轻型项目使用-query-scope-查询作用域来让代码解耦复用">轻型项目使用 Query Scope 查询作用域来让代码解耦、复用</h1>
+<p>复习下 Eloquent 里的 <code>Query Scope</code>查询作用域，来精简查询条件</p>
+<p>首先为模型创建本地作用域</p>
+<pre><code class="language-php">public function scopeOfCategory($query, $categories)
+{
+    return $query-&gt;whereIn('category_id', $categories);
+}
+   
+public function scopeIsDraft($query)
+{
+    return $query-&gt;where('is_draft', 0);
+} 
+</code></pre>
+<p>精简后</p>
+<pre><code class="language-php">Post::ofCategory([1,2])-&gt;isDraft()-&gt;orderBy('created_at', 'desc')-&gt;take(5)-&gt;get();
+</code></pre>
+<p>啥，你说这条代码长度没精简多少啊？</p>
+<p>其实我们重点是<strong>实现代码解耦和复用</strong>  比如说<code>isDraft()</code>, 这个代码可以到处用（简化了到处写 SQL 的繁琐工作），并且你可以修改 isDraft 里面的代码（而不会影响到其他代码），不用担心<strong>耦合问题</strong>。</p>
+<p>那么，如果你还嫌自己要写多个 scope 太麻烦了，有没有可能更简单些？</p>
+<ol>
+<li>让模型自动带 N 个好用的方法，例如叫 <code>findFirst()</code>  <code>findLast()</code> 这种一看就知道干什么的，省的自己去一个个实现</li>
+<li>模型还有个很灵活强大的方法，例如叫 <code>findPost()</code>, 只需要往里面塞多个参数就能自动完成查询、排序、过滤一跳龙。 这样在<strong>业务逻辑中</strong>只需要调用一个 <code>findPosts()</code>，并按需要传入一个或者多个参数值就可以了。</li>
+</ol>
+<p>像这样:</p>
+<pre><code class="language-php">Post::findPosts([1,2],0,'desc',5)-&gt;get();
+</code></pre>
+<p>就好比你想让电脑经常做一件事：把某个盘下，某个国家的文件夹里，某个作者，哪个年份，最新的几篇作品找出来。</p>
+<p>只要说一句 <code>查找作品('d', 'jp', 'julia', '2018', '5')</code> ，  而不需要每次都说上面那句很长的命令。毕竟“怎么一步步查找数据”是电脑的事，要让业务逻辑尽可能干净一些。</p>
+<h1 id="repository-pattern-就是要把第一第二第三部分全部解耦">Repository Pattern 就是要把第一，第二，第三部分全部解耦</h1>
+<p>在更复杂的项目中，<code>Query Scope</code>就不够用了。因为<strong>它和数据模型还是一种强耦合</strong> （对数据模型绑定一些作用域）</p>
+<h2 id="建立相关的文件夹">建立相关的文件夹</h2>
+<pre><code>app
+|- Repositories
+    |- Interfaces //接口  （有时候这个文件夹也命名为 Contracts）
+    |- Eloquent //接口的实现 （有时候这个文件夹如果命名为 Implements 会和关键字冲突）
+    |- Exceptions // 异常类
+    |- Providers //把服务提供者放到这里（如果不使用系统 AppProvider 的话）
+</code></pre>
+<h2 id="接口">接口</h2>
+<p>接口就是一个协议, 协议说明某一个具体的类必须被实现.</p>
+<p>有两个数据对象 Actor 和 Film, 通常我们对这些对象都有哪些操作呢?</p>
+<ul>
+<li>获取所有记录</li>
+<li>获取分页记录</li>
+<li>添加一条记录</li>
+<li>根据主键获取记录</li>
+<li>根据其他属性获取记录</li>
+<li>更新记录</li>
+<li>删除记录</li>
+</ul>
+<p>如果我们对这两个数据对象都执行这些操作的话, 我们需要写好多重复的代码, 当然, 如果项目比较小的话, 是没有问题的, 但是当项目变得很大的时候, 就比较麻烦了.</p>
+<p>现在我们定义这些<strong>通用操作</strong>, 并且创建一个接口:</p>
+<p>注意下里面的方法签名中，参数的默认值、类型。</p>
+<pre><code class="language-php">interface RepositoryInterface { 
+    public function all($columns = array('*')); 
+    public function paginate($perPage = 15, $columns = array('*')); 
+    public function create(array $data); 
+    public function update(array $data, $id); 
+    public function delete($id); 
+    public function find($id, $columns = array('*')); 
+    public function findBy($field, $value, $columns = array('*')); 
+} 
+</code></pre>
+<p>好了，现在创建一个文件：<code>Interfaces/PostInterface.php</code>。 里面定义了<code>findPosts</code>和<code>getAllByUser</code>方法.</p>
+<pre><code class="language-php">namespace App\Repositories\Interfaces;
+
+Interface PostInterface{
+    public function findPosts(Array $cat_id,$is_draft,$order,$take){
+    
+    }
+    
+    //other
+    public function getAllByUser($user_id);
+    
+    //...
+}
+</code></pre>
+<h2 id="接口的实现">接口的实现</h2>
+<p>仓库指的就是一个仓库接口的实现；这里定义你的业务逻辑。（每一个子仓库都应该继承这个抽象的仓库）</p>
+<p>创建文件：<code>Implements/PostRepository.php</code></p>
+<pre><code class="language-php">namespace App\Repositories\Implements;
+
+use Post;
+
+class PostRepository implements PostInterface{
+    public function findPosts(Array $cat_id,$is_draft,$order,$take){
+        $query = Post::whereIn('category_id',$cat_id)-&gt;where('is_draft',$is_draft)-&gt;orderBy('created_at', $order)-&gt;take($take)-&gt;get();
+        return $query;
+    }
+    
+    //other
+    public function getAllByUser($user_id)
+   {
+      return Product::where('user_id', '=', $user_id)
+         -&gt;get();
+   }
+   //...
+}
+</code></pre>
+<p><strong>抽象类</strong></p>
+<p>实际上，我们还可以定义一个抽象类，然后让接口实现类来继承它。这里为了简化就没有必要了</p>
+<p><a href="https://blog.csdn.net/sunjinyan_1/article/details/80927781">https://blog.csdn.net/sunjinyan_1/article/details/80927781</a></p>
+<h2 id="接着在-serviceprovider-中绑定接口和具体的仓库">接着在 <code>ServiceProvider</code> 中绑定接口和具体的仓库</h2>
+<p>例如<code>app/Providers/AppServiceProvider</code>在<code>register()</code>加入代码如下</p>
+<pre><code class="language-php">namespace App\Providers;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+    }
+    
+    public function register()
+    {
+        $this-&gt;app-&gt;bind(
+            'App\Repositories\Interfaces\PostInterface', 
+            // To change the data source, replace this class name
+            // with another implementation
+            'App\Repositories\Implements\PostRepository'
+        );
+    }
+}
+</code></pre>
+<p>上面一段代码主要说的是，当你在 <code>Controller</code> 层的方法中注入类型提示 <code>PostInterface</code> 时, 自动使用与它关联的 <code>PostRepository</code>.</p>
+<p>原理说明：<code>ServiceProvider</code>是Laravel IOC容器实现动态换接口实现的地方，在这里绑定一下，这样我们在使用的时候，不直接使用接口实现，而是用ioc容器解析接口，它会帮你自动找到对应好的实现。</p>
+<p><strong>这就意味着，以后需要更换仓库的实现，可以在这里更换</strong>。</p>
+<p>例如同一个 PostInterface, 项目一开始使用 MySQL 的数据，就创建一个 PostMySQLRepository； 后来因为业务变更换成了 Mongo 数据库，完全只需要再创建一个 PostMongoRepository 就可以了，不影响在 Controller 等地方的代码里调用这个接口里约定的方法</p>
+<pre><code class="language-shell">$posts::findPosts()
+</code></pre>
+<p>如果为了更好地隔离，可以在 <code>app/Repositories/</code>里单独增加目录 <code>Providers</code>, 把代码写在这里面。然后在配置文件<code>config/app.php</code>的<code>providers</code>里注册它</p>
+<pre><code class="language-php">'providers' =&gt; [
+
+    //...
+    App\Repositories\Providers\
+      ProductRepositoryServiceProvider::class,
+</code></pre>
+<h2 id="好了可以在-controller-等地方使用了">好了，可以在 Controller 等地方使用了</h2>
+<p>首先是<code>use App\Repositories\Interfaces\PostInterface;</code></p>
+<p>然后要在类的 <code>__constructor</code> 方法里，注入<code>PostInterface $post</code>，赋值给类的<code>$postRepo</code>属性。</p>
+<p>然后就可以调用了</p>
+<pre><code class="language-php">use App\Repositories\Interfaces\PostInterface;
+
+class PostController extends BaseController{
+    
+    protected $postRepo;
+
+    public function __construct(PostInterface $post){
+        $this-&gt;postRepo = $post;
+    }
+    
+    public function index(){
+        $this-&gt;postRepo-&gt;findPosts([1,2],0,'desc',5);
+    }
+}
+</code></pre>
+<ul>
+<li>我们的<strong>业务逻辑</strong>变得非常<strong>精简</strong>，完全不用管查询（都在仓库 <code>PostRepository.php</code> 里）</li>
+<li>实现了<strong>数据查询部分的解耦</strong></li>
+</ul>
+<p>上面的三个部分中，（2）数据查询方法 已经解耦了，在业务代码里，只要简单调用<code>findPosts()</code>就可以了，这在现实需求中有什么好处呢？</p>
+<p>以后可以先在 controller 里写成<code>$this-&gt;postRepo-&gt;findPosts([1,2],0,'desc',5);</code>拿到数据，具体的<strong>查询逻辑先不写</strong>，<strong>把整个应用的 业务逻辑 先跑一遍</strong>，最后再来写 接口实现 来支持业务逻辑。（即使后期需要修改拿数据的方式，也不会影响当前的业务逻辑）</p>
+<p>接下来 DDD（Domain Driven Design 领域驱动设计）</p>
+<h1 id="service--model-等-项目分层">Service &amp; Model 等， 项目分层</h1>
+<p>比较容易理解的：（这篇文章也讲了 Service, Validator，Presenter 等对 Model 分层的原因以及各自用途）</p>
+<p><a href="https://www.jianshu.com/p/dcaaf801c294">https://www.jianshu.com/p/dcaaf801c294</a></p>
+<h1 id="l5-repository-库laravel-5-repositories">l5-repository 库（Laravel 5 Repositories）</h1>
+<p><a href="http://andersonandra.de/l5-repository/">http://andersonandra.de/l5-repository/</a></p>
+<p><a href="https://www.jianshu.com/p/dcaaf801c294">https://www.jianshu.com/p/dcaaf801c294</a></p>
+<p><a href="https://www.jianshu.com/p/d640a61d8631">https://www.jianshu.com/p/d640a61d8631</a> 实录</p>
+<p>当然，因为我们的工作大部分都是对数据进行 CRUD, 那么直接使用成熟的仓库模式有关扩展就可以了，不用自己去实现那么多常用的方法。</p>
+<p>数据层抽象, 自动帮助创建仓库模式对应的接口、方法（只需要继承即可使用这些方法）</p>
+<h2 id="安装--配置-与自动生成">安装 &amp; 配置 与自动生成</h2>
+<pre><code class="language-shell">composer require prettus/l5-repository
+</code></pre>
+<p>配置</p>
+<p><strong>Laravel</strong></p>
+<p>5.5 以上，ServiceProvider will be attached automatically</p>
+<p>其他低版本需要手动添加到 Providers</p>
+<pre><code class="language-php">'providers' =&gt; [
+    ...
+    Prettus\Repository\Providers\RepositoryServiceProvider::class,
+],
+</code></pre>
+<p><strong>Lumen</strong></p>
+<pre><code class="language-php">$app-&gt;register(Prettus\Repository\Providers\LumenRepositoryServiceProvider::class);
+</code></pre>
+<p><strong>Publish Configuration</strong></p>
+<p>生成配置文件 <code>config/repository.php</code></p>
+<pre><code class="language-shell">php artisan vendor:publish --provider &quot;Prettus\Repository\Providers\RepositoryServiceProvider&quot;
+</code></pre>
+<h3 id="generators-生成器-轻松创建-repository">Generators 生成器 轻松创建 repository</h3>
+<p>首先要配置 repositories 文件的存储位置（默认在 app 目录，namespace App）, 在 <code>paths</code>中的值将会被用到</p>
+<p>打开配置文件<code>config/repository.php</code></p>
+<pre><code class="language-php">...
+    'generator'=&gt;[
+        'basePath'=&gt;app()-&gt;path(),
+        'rootNamespace'=&gt;'App\\',
+        'paths'=&gt;[
+            'models'       =&gt; 'Entities',
+            'repositories' =&gt; 'Repositories', // XXXRepositoryEloquent (和 Model 有关)
+            'interfaces'   =&gt; 'Repositories', // XXXRepository (仅 Repository)
+            'transformers' =&gt; 'Transformers',
+            'presenters'   =&gt; 'Presenters',
+            'validators'   =&gt; 'Validators',
+            'controllers'  =&gt; 'Http/Controllers',
+            'provider'     =&gt; 'RepositoryServiceProvider',
+            'criteria'     =&gt; 'Criteria',
+        ]
+    ]
+</code></pre>
+<p>如果不喜欢这些默认的命名，可以改成别的(例如 models -&gt; Models， 分开保存 repositories 到 Repositories\Eloquent, interfaces 到 Contracts\Repositories)</p>
+<pre><code class="language-php">'generator'=&gt;[
+        'basePath'=&gt;app()-&gt;path(),
+        'rootNamespace'=&gt;'App\\',
+        'paths'=&gt;[
+            'models'=&gt;'Models',
+            'repositories'=&gt;'Repositories\\Eloquent',
+            'interfaces'=&gt;'Contracts\\Repositories',
+            'transformers'=&gt;'Transformers',
+            'presenters'=&gt;'Presenters'
+            'validators'   =&gt; 'Validators',
+            'controllers'  =&gt; 'Http/Controllers',
+            'provider'     =&gt; 'RepositoryServiceProvider',
+            'criteria'     =&gt; 'Criteria',
+        ]
+    ]
+</code></pre>
+<p>运行命令创建 相关的文件</p>
+<pre><code class="language-shell">php artisan make:entity Post
+</code></pre>
+<p><img src="/media/15490412690191/15439866822926.jpg" alt="-w422"></p>
+<p>就是说在 l5-repository 里，<code>Entity</code>的概念包括了下面这些</p>
+<ul>
+<li>Controller RESTfull控制器</li>
+<li>the Validator 验证器</li>
+<li>the Model 模型</li>
+<li>the Repository 仓库</li>
+<li>the Presenter</li>
+<li>the Transformer  用于model数据格式化输出</li>
+<li>CreateRequest 创建数据请求</li>
+<li>UpdateRequest 更新数据请求</li>
+</ul>
+<p><img src="/media/15490412690191/15439868354365.jpg" alt="-w239"></p>
+<h3 id="如果仅创建一个-repository以及有关的-model-无-transformervalidators">如果仅创建一个 Repository，以及有关的 Model (无 Transformer，Validators&hellip;)</h3>
+<pre><code class="language-shell">php artisan make:repository Post
+
+# namespace
+php artisan make:repository &quot;Blog\Post&quot;
+
+# 同时添加 fillable 的 fields 列表
+php artisan make:repository &quot;Blog\Post&quot; --fillable=&quot;title,content&quot;
+
+# 同时添加 validations
+php artisan make:entity Cat --fillable=&quot;title:string,content:text&quot; --rules=&quot;title=&gt;required|min:2, content=&gt;sometimes|min:10&quot;
+</code></pre>
+<h2 id="结构">结构</h2>
+<p>Interface 接口（Contracts） 与 Repository 仓库通过 Provider 定义自动关联</p>
+<h3 id="entities-与-models">Entities 与 Models</h3>
+<p>注：其实就是把之前 <code>php artisan make:model Post</code> 得到的模型进行了替代和扩展，不再使用直接放在 app 目录下的模型文件了</p>
+<p>命令创建完毕后，会得到一个 Entities 文件夹，里面的 Post 类</p>
+<ul>
+<li>继承 Laravel 里的 Eloquent Model</li>
+<li><strong>实现<code>Transformable</code>接口</strong>（和 Repository Pattern 有关）</li>
+<li>使用了<code>TransformableTrait</code> Trait （结合上一个 Transformable 接口，这里实现接口中约定的方法）</li>
+</ul>
+<p>例如<code>Entities/Post.php</code>,</p>
+<pre><code class="language-php">namespace App\Entities;
+
+use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
+
+class Partner extends Model implements Transformable
+{
+    use TransformableTrait;
+    
+    //根据需要定义`$fillable`属性（能够在表单中填写提交的）
+    protected $fillable = [
+        'title',
+        'author',
+        ...
+     ];
+
+    protected $table = 'pulse_partners';
+    
+    // 其他模型的属性和方法
+    //...
+</code></pre>
+<h3 id="接口-xxxxrepository继承自repositoryinterfacecontract">接口 XXXXRepository，继承自<code>RepositoryInterface</code>（Contract）</h3>
+<p>对应后面的那个 XXXEloquent.php, 如果 <strong>implements</strong> 了它，就必须<strong>要实现接口 Prettus\Repository\Contracts\RepositoryInterface 中定义的所有方法签名</strong></p>
+<pre><code class="language-php">namespace App\Repositories;
+
+use Prettus\Repository\Contracts\RepositoryInterface;
+interface PartnerRepository extends RepositoryInterface
+{
+</code></pre>
+<p>方法列表参看后面的列表</p>
+<h3 id="接口实现-xxxxrepositoryeloquent-类">接口实现 <code>XXXXRepositoryEloquent</code> 类</h3>
+<p>（1）由于它 implements <code>PartnerRepository</code>,所以必须实现这个接口里面定义的方法
+（2）同时由于它继承了 <code>Prettus\Repository\Eloquent\BaseRepository</code>，实际上这个父类里就已经把<code>PartnerRepository</code>接口中定义的需要实现的方法签名都已经实现了。</p>
+<p>其中最重要的就是<code>model()</code>方法，用于<strong>绑定 Model</strong>(这里就是前面的 <code>Post</code> 模型)。</p>
+<pre><code class="language-php">namespace App\Repositories;
+
+use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use App\Repositories\PartnerRepository;
+use App\Entities\Partner;
+use App\Validators\PartnerValidator;
+
+class PartnerRepositoryEloquent extends BaseRepository implements PartnerRepository
+{
+    //在 `model()`方法中绑定了 Model (这里就是前面的 `Post` 模型)，以及其他的方法。
+    public function model()
+    {
+        return Partner::class;
+    }
+    
+    public function validator()
+    {
+        return PartnerValidator::class;
+    }
+    
+    // 更多...
+</code></pre>
+<h3 id="关联接口和接口实现repositoryserviceprovider">关联接口和接口实现：RepositoryServiceProvider</h3>
+<p>除了 Interface, Repository 等类文件，同时也会创建一个 service provider <code>RepositoryServiceProvider</code>,内容如下</p>
+<pre><code class="language-php">public function register()
+    {
+        $this-&gt;app-&gt;bind(\App\Repositories\PostRepository::class, \App\Repositories\PostRepositoryEloquent::class);
+    }
+</code></pre>
+<p>用于绑定 <code>Eloquent Repository</code> 和它相关的 <code>Repository Interface</code></p>
+<p><strong>把这个 Provider 注册到 App Providers 列表中</strong></p>
+<p>把下面的代码添加到 <code>AppServiceProvider@register</code> method 中去， 不然访问路由时会报错：</p>
+<blockquote>
+<p>lluminate \ Contracts \ Container \ BindingResolutionException
+Target [App\Repositories\PartnerRepository] is not instantiable while building [App\Http\Controllers\PartnersController].</p>
+</blockquote>
+<p>编辑 <code>App/Providers/AppServiceProviders</code>文件，添加一行：</p>
+<pre><code class="language-php">$this-&gt;app-&gt;register(RepositoryServiceProvider::class);
+</code></pre>
+<p>或者运行 artisan 命令完成 binding</p>
+<pre><code class="language-shell">php artisan make:bindings Cats
+</code></pre>
+<h3 id="其他-controller--requests--validators--presenters--transformers">其他： Controller &amp; Requests &amp; Validators &amp; Presenters &amp; Transformers</h3>
+<p>这些后面再介绍</p>
+<p><img src="/media/15490412690191/15439870726290.jpg" alt="-w245"></p>
+<h2 id="使用">使用</h2>
+<h3 id="controller-注入-repository">Controller 注入 Repository</h3>
+<p>创建完毕文件后，会自动生成一个 RESTfull 类型的 Controller,</p>
+<p><img src="/media/15490412690191/15439869861828.jpg" alt="-w868"></p>
+<p>可以看到在 <code>__construct</code>构造函数的参数中<strong>注入</strong>了某个 <code>Repository</code>类</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\PostRepository;
+
+class PostsController extends BaseController {
+
+    /**
+     * @var PostRepository
+     */
+    protected $repository;
+
+    public function __construct(PostRepository $repository){
+        $this-&gt;repository = $repository;
+    }
+
+    ....
+}
+</code></pre>
+<h3 id="在路由-routerswebphp中添加下面的代码-指向-controller-类就有了一个-basic-crud">在路由 （routers/web.php）中添加下面的代码, 指向 Controller 类，就有了一个 basic CRUD</h3>
+<pre><code class="language-php">Route::resource('cats', CatsController::class);
+</code></pre>
+<h3 id="在-controller-里可以使用-interface-里的这些方法了">在 Controller 里可以使用 Interface 里的这些方法了</h3>
+<p>从方法名称可以看出是简化了很多 Eloquent ORM 的操作。 例如 <code>findWhereIn(field_name, range)</code> 就相当于 <code>whereIn(field_name, range)-&gt;get()</code>  不用写<code>get()</code>了</p>
+<p><strong>查询类</strong></p>
+<pre><code class="language-php">//Find all results in Repository
+$posts = $this-&gt;repository-&gt;all();
+
+//Find all results in Repository with pagination
+$posts = $this-&gt;repository-&gt;paginate($limit = null, $columns = ['*']);
+
+//Find by result by id
+$post = $this-&gt;repository-&gt;find($id);
+
+//Hiding attributes of the model
+$post = $this-&gt;repository-&gt;hidden(['country_id'])-&gt;find($id);
+
+//Showing only specific attributes of the model
+$post = $this-&gt;repository-&gt;visible(['id', 'state_id'])-&gt;find($id);
+
+//Loading the Model relationships
+$post = $this-&gt;repository-&gt;with(['state'])-&gt;find($id);
+
+//Find by result by field name
+$posts = $this-&gt;repository-&gt;findByField('country_id','15');
+
+//Find by result by multiple fields
+$posts = $this-&gt;repository-&gt;findWhere([
+    //Default Condition =
+    'state_id'=&gt;'10',
+    'country_id'=&gt;'15',
+    //Custom Condition
+    ['columnName','&gt;','10']
+]);
+
+//Find by result by multiple values in one field
+$posts = $this-&gt;repository-&gt;findWhereIn('id', [1,2,3,4,5]);
+
+//Find by result by excluding multiple values in one field
+$posts = $this-&gt;repository-&gt;findWhereNotIn('id', [6,7,8,9,10]);
+
+//Find all using custom scope
+$posts = $this-&gt;repository-&gt;scopeQuery(function($query){
+    return $query-&gt;orderBy('sort_order','asc');
+})-&gt;all();
+
+</code></pre>
+<p><strong>创建 &amp; 更新 &amp; 删除类</strong></p>
+<pre><code class="language-php">//Create new entry in Repository
+$post = $this-&gt;repository-&gt;create( Input::all() );
+
+//Update entry in Repository
+$post = $this-&gt;repository-&gt;update( Input::all(), $id );
+
+//Delete entry in Repository
+$this-&gt;repository-&gt;delete($id)
+
+//Delete entry in Repository by multiple fields
+$this-&gt;repository-&gt;deleteWhere([
+    //Default Condition =
+    'state_id'=&gt;'10',
+    'country_id'=&gt;'15',
+])
+
+</code></pre>
+<h2 id="criteria-扩展-baserepository-提供的查询接口实现更多复杂查询条件">Criteria： 扩展 BaseRepository 提供的查询接口，实现更多复杂查询条件</h2>
+<p><strong>注意</strong> 经测试，只对“查询”生效，如果是 <code>find($id)</code>，<code>delete($id)</code>是可以任意删除的</p>
+<p>单词翻译：标准，条件（criterion的复数）</p>
+<p>观察<code>class TicketRepositoryEloquent extends BaseRepository implements TicketRepository</code></p>
+<p>BaseRepository 基本上就是对 Eloquent\Builder 的一个封装</p>
+<p>虽然 <code>BaseRepository</code> 已经实现了上面的大量查询接口（,<code>findByField</code>, <code>findWhere</code>&hellip;.），</p>
+<p>但是一些更复杂的查询怎么满足呢？不可能每次有新的查询都去修改 repository 的代码，新增一个接口。</p>
+<p><strong>备注，在代码中发现 -&gt;findWhere  -&gt;orderBy 连续使用，会提示 Method Illuminate\Database\Eloquent\Collection::xxxxx does not exist. 这是因为调用一次 repository 的方法后，就自动得到了 Collection 返回结果，而不是像 Model 一样继续返回 Builder 能链式调用， repository 不能链式调用。。。</strong></p>
+<p>尤其是某些查询条件可以在<strong>多个</strong> Repository 上“<strong>通用</strong>”的时候。</p>
+<p>假如有两个 Repository：  <code>BookRepository</code> 和 <code>OrderRepository</code>, 想让它们同时拥有一个 “获取 <strong>我的</strong> 数据”查询条件，那么需要在两个 Repository 上分别调用一次，很不方便。</p>
+<pre><code class="language-php">// Book or Order
+$this-&gt;repository-&gt;findWhere([
+    'user_id'=&gt;Auth::user()-&gt;id
+ ])
+</code></pre>
+<p>而使用 Crteria 就可以<strong>把这个查询条件给单独抽出来定义</strong>，然后分别“推”到<strong>多个</strong> Repository 上面去应用它。</p>
+<h3 id="创建-criteria">创建 Criteria</h3>
+<p>创建一个名为 <code>MyCriteria</code> 的 Criteria 类， 在它的<code>apply()</code>方法中，限制查询条件为“当前登录用户”（我的）。</p>
+<pre><code class="language-shell">php artisan make:criteria My
+</code></pre>
+<p><strong>Criteria 类都需要 implements <code>CriteriaInterface</code>，并且实现<code>apply</code>方法，方法内修改查询方法，返回被修改了查询条件后的模型</strong></p>
+<p>例如定义一个 <code>My</code> 的 Criteria 来对<code>$model</code>新增查询(实现前面查询“我的”数据的需求)，这样我们每次有新的查询条件，只要新建 Criteria 即可，不需要去改动 Repository Interface 和关联的 Repository Eloquent.</p>
+<p>满足了<strong>开放封闭</strong>原则</p>
+<pre><code class="language-php">use Prettus\Repository\Contracts\RepositoryInterface;
+use Prettus\Repository\Contracts\CriteriaInterface;
+
+class MyCriteria implements CriteriaInterface {
+    public function apply($model, Repository $repository)
+    {
+        $model = $model-&gt;where('status', '&gt;', 0);
+        $model = $model-&gt;where('user_id','=', Auth::user()-&gt;id );
+        return $model;
+    }
+}
+</code></pre>
+<h3 id="调用-pushcriteria为-repository-添加-criteria">调用 <code>pushCriteria()</code>为 Repository 添加 Criteria</h3>
+<p>在controller中，通过下面的方式查询.</p>
+<pre><code class="language-php">public function index()
+{
+  $this-&gt;repository-&gt;pushCriteria(new MyCriteria());
+  $books = $this-&gt;repository-&gt;all();
+  ...
+}
+</code></pre>
+<p>然后可以根据需要，再使用多个 Criteria，就可以连续调用 <code>pushCriteria()</code></p>
+<pre><code class="language-php">public function index()
+    {
+        $this-&gt;repository-&gt;pushCriteria(new MyCriteria1());
+        $this-&gt;repository-&gt;pushCriteria(MyCriteria2::class);
+        
+        $posts = $this-&gt;repository-&gt;all();
+</code></pre>
+<h3 id="从-criteria-获取结果">从 Criteria 获取结果</h3>
+<p>好比 <code>where(Criteria 定义的查询条件)</code></p>
+<pre><code class="language-php">$posts = $this-&gt;repository-&gt;getByCriteria(new MyCriteria());
+</code></pre>
+<h3 id="为-repository-设置默认-criteria">为 Repository 设置默认 Criteria</h3>
+<p>在 RepositoryEloquent 的<code>boot</code>方法里添加</p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+
+class PartnerRepositoryEloquent extends BaseRepository {
+
+    public function boot(){
+        $this-&gt;pushCriteria(new MyCriteria());
+        // or
+        $this-&gt;pushCriteria(AnotherCriteria::class);
+        ...
+    }
+
+    function model(){
+       return &quot;App\\Post&quot;;
+    }
+}
+</code></pre>
+<h3 id="查询时临时跳过-criteria">查询时临时跳过 Criteria</h3>
+<pre><code class="language-php">$posts = $this-&gt;repository-&gt;skipCriteria()-&gt;all();
+</code></pre>
+<h3 id="删除-criteria">删除 criteria</h3>
+<pre><code class="language-php">$this-&gt;repository-&gt;popCriteria(new Criteria1());
+// or
+$this-&gt;repository-&gt;popCriteria(Criteria1::class);
+</code></pre>
+<h3 id="requestcriteria根据请求-query-动态查询筛选">RequestCriteria：根据请求 query 动态查询筛选</h3>
+<p><code>RequestCriteria</code>是一个标准 Criteria  实现。它允许把<strong>从 request 里发送过来的参数作为 filters 并作用于 Repository</strong></p>
+<p>就是说你可以<strong>直接自定义 query 来动态地查询、过滤数据</strong>（直接在请求里组装各种查询、筛选动作）<strong>而不需要后台预先定义这些条件</strong></p>
+<p>举例来说， <code>http://prettus.local/users</code> 这个请求是没有任何 filter 的，会返回所有数据</p>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;john@gmail.com&quot;,
+        &quot;created_at&quot;: &quot;-0001-11-30 00:00:00&quot;,
+        &quot;updated_at&quot;: &quot;-0001-11-30 00:00:00&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Lorem Ipsum&quot;,
+        &quot;email&quot;: &quot;lorem@ipsum.com&quot;,
+        &quot;created_at&quot;: &quot;-0001-11-30 00:00:00&quot;,
+        &quot;updated_at&quot;: &quot;-0001-11-30 00:00:00&quot;
+    },
+</code></pre>
+<p>为了实现发送请求时，<strong>在 query 里直接指定查询条件，后台就能根据条件动态筛选数据（而不需要后台预先定义这些条件）</strong></p>
+<p>例如下面这些规则的 query</p>
+<pre><code class="language-shell">//
+http://prettus.local/users?search=John%20Doe
+
+# 指定 searchFields, 例如 `name:like` 下面的相当于  where('name', 'like', 'John)
+http://prettus.local/users?search=John&amp;searchFields=name:like
+
+http://prettus.local/users?search=john@gmail.com&amp;searchFields=email:=
+
+http://prettus.local/users?search=name:John Doe;email:john@gmail.com
+
+# 指定两个 searchFields, 例如 `name:like;email:=` 相当于  where(['name', 'like', 'John], ['email', '=', 'john@gmail.com'])
+http://prettus.local/users?search=name:John;email:john@gmail.com&amp;searchFields=name:like;email:=
+</code></pre>
+<p>服务器收到这些请求，自动根据条件筛选数据并返回满足条件的</p>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;email&quot;: &quot;john@gmail.com&quot;,
+        &quot;created_at&quot;: &quot;-0001-11-30 00:00:00&quot;,
+        &quot;updated_at&quot;: &quot;-0001-11-30 00:00:00&quot;
+    }
+]
+</code></pre>
+<h4 id="为-repository-启用-requestcriteria-或者单独为-controller-的方法添加">为 Repository 启用 RequestCriteria （或者单独为 Controller 的方法添加）</h4>
+<blockquote>
+<p>其实就是 <code>$request-&gt;input('serach')</code>的解析，转换成 Criteria 类里面的 <code>apply()</code>方法里， <code>$model-&gt;query(xxxxx)</code></p>
+</blockquote>
+<p>如果需要让 Repository 默认启用 RequestCriteria 特性。</p>
+<ul>
+<li>首先在<code>boot()</code>里<code>pushCriteria()</code>添加<code>app('Prettus\Repository\Criteria\RequestCriteria')</code></li>
+<li>然后必须定义 <code>$fieldSearchable</code>: 哪些字段可以被查询 (避免query 里可以密码给查询出来！)</li>
+</ul>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+
+// use it
+use Prettus\Repository\Criteria\RequestCriteria;
+
+class PostRepository extends BaseRepository {
+
+	/**
+     * @var array
+     */
+    protected $fieldSearchable = [
+        'name',
+        'email', // searchable field
+        'product.name'  // relation to field
+    ];
+
+    public function boot(){
+        $this-&gt;pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        ...
+    }
+
+    function model(){
+       return &quot;App\\Post&quot;;
+    }
+}
+</code></pre>
+<p>如果不想成为“默认”的 Criteria ,单独为 Controller 的方法添加它</p>
+<pre><code class="language-php">public function index()
+{
+    $this-&gt;repository-&gt;pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+    $posts = $this-&gt;repository-&gt;all();
+	...
+}
+
+</code></pre>
+<h4 id="修改默认条件--为like或其他">修改默认条件 <code>=</code> 为<code>like</code>或其他</h4>
+<pre><code class="language-php">protected $fieldSearchable = [
+	'name'=&gt;'like',
+	'email', // Default Condition &quot;=&quot;
+	'your_field'=&gt;'condition'
+];
+</code></pre>
+<h4 id="searchjoinand修改默认-sql-比较运算符-or-为-and"><code>searchJoin=and</code>修改默认 SQL 比较运算符 <code>OR</code> 为 <code>AND</code></h4>
+<p>以这个请求为例</p>
+<blockquote>
+<p><a href="http://prettus.local/users?search=age:17;email:john@gmail.com">http://prettus.local/users?search=age:17;email:john@gmail.com</a></p>
+</blockquote>
+<p>RequestCriteria 会把这些 query 参数进行默认的 <code>OR</code> 连接, 最后执行这条 SQL 语句。</p>
+<pre><code class="language-sql">SELECT * FROM users WHERE age = 17 OR email = 'john@gmail.com';
+</code></pre>
+<p>如果想以 <code>AND</code> 来处理查询参数，需要在请求链接尾部添加 <code>&amp;searchJoin=and</code></p>
+<blockquote>
+<p><a href="http://prettus.local/users?search=age:17;email:john@gmail.com&amp;searchJoin=and">http://prettus.local/users?search=age:17;email:john@gmail.com&amp;searchJoin=and</a></p>
+</blockquote>
+<p>例子：下面的图中可以观察到</p>
+<p><img src="/media/15490412690191/15468425043764.jpg" alt="-w656"></p>
+<h4 id="filterab过滤字段只取回需要的"><code>filter=a;b</code>过滤字段（只取回需要的）</h4>
+<p>添加 <code>filter=id;name</code></p>
+<blockquote>
+<p><a href="http://prettus.local/users?filter=id;name">http://prettus.local/users?filter=id;name</a></p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Lorem Ipsum&quot;
+    }
+]
+</code></pre>
+<h4 id="orderby和sortedby排序结果以及通过关联表排序"><code>orderBy</code>和<code>sortedBy</code>排序结果，以及通过关联表排序</h4>
+<blockquote>
+<p>&amp;orderBy=id&amp;sortedBy=desc</p>
+</blockquote>
+<p>通过关联表排序 Sorting through related tables</p>
+<blockquote>
+<p><a href="http://prettus.local/users?orderBy=posts">http://prettus.local/users?orderBy=posts</a>|title&amp;sortedBy=desc</p>
+</blockquote>
+<p>其实执行了下面的 SQL （<code>INNER JOIN</code>）</p>
+<p>如果 user 表和 post 关联默认的 “外键”名是 post_id, 只需要指定表名<code>post</code>就可以了</p>
+<pre><code class="language-sql">...
+INNER JOIN posts ON users.post_id = posts.id
+...
+ORDER BY title
+...
+</code></pre>
+<p>如果不是默认外键名，还需要指定字段名<code>posts:custom_id</code></p>
+<blockquote>
+<p><a href="http://prettus.local/users?orderBy=posts:custom_id">http://prettus.local/users?orderBy=posts:custom_id</a>|posts.title&amp;sortedBy=desc</p>
+</blockquote>
+<p>对应的 SQL</p>
+<pre><code class="language-sql">...
+INNER JOIN posts ON users.custom_id = posts.id
+...
+ORDER BY posts.title
+...
+</code></pre>
+<p><strong>添加关系 Add relationship</strong></p>
+<blockquote>
+<p><a href="http://prettus.local/users?with=groups">http://prettus.local/users?with=groups</a></p>
+</blockquote>
+<p><strong>Overwrite params name</strong></p>
+<p>You can change the name of the parameters in the configuration file config/repository.php</p>
+<h2 id="cache-缓存-为仓库添加缓存层">Cache 缓存 （为仓库添加缓存层）</h2>
+<h3 id="启用-cache">启用 Cache</h3>
+<p>只要让 Repository 类 use <code>CacheableRepository</code> Trait 和实现 <code>CacheableInterface</code> 接口即可。 这样 repository 就能被缓存了（当数据被创建、修改或删除时，自动清空缓存）</p>
+<p>可被缓存的方法包括：</p>
+<p><code>all</code>, <code>paginate</code>, <code>find</code>, <code>findByField</code>, <code>findWhere</code>, <code>getByCriteria</code></p>
+<p>代码如下：</p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
+
+class PostRepository extends BaseRepository implements CacheableInterface {
+
+    use CacheableRepository;
+
+    ...
+}
+</code></pre>
+<p><strong>注意 implements 多个接口，不要删除原来那个 RepositoryInterface</strong></p>
+<p>之前代码可能是自动生成的，<code>implements PartnerRepository</code>（一个自己创建的 Repository Interface 类）</p>
+<pre><code class="language-php">use App\Repositories\PartnerRepository;
+
+class PartnerRepositoryEloquent extends BaseRepository implements PartnerRepository {
+</code></pre>
+<p>这里改成<code>implements PartnerRepository, CacheableInterface</code>，<strong>用逗号隔开</strong>多个 Interface 类名</p>
+<pre><code class="language-php">class PartnerRepositoryEloquent extends BaseRepository implements PartnerRepository, CacheableInterface {
+</code></pre>
+<h3 id="cache-config-配置">Cache Config 配置</h3>
+<p>修改<code>config/repository.php</code></p>
+<pre><code class="language-php">'cache'=&gt;[
+    //Enable or disable cache repositories
+    'enabled'   =&gt; true,
+
+    //Lifetime of cache
+    'minutes'   =&gt; 30,
+
+    //Repository Cache, implementation Illuminate\Contracts\Cache\Repository
+    'repository'=&gt; 'cache',
+
+    //Sets clearing the cache
+    'clean'     =&gt; [
+        //Enable, disable clearing the cache on changes
+        'enabled' =&gt; true,
+
+        'on' =&gt; [
+            //Enable, disable clearing the cache when you create an item
+            'create'=&gt;true,
+
+            //Enable, disable clearing the cache when upgrading an item
+            'update'=&gt;true,
+
+            //Enable, disable clearing the cache when you delete an item
+            'delete'=&gt;true,
+        ]
+    ],
+    'params' =&gt; [
+        //Request parameter that will be used to bypass the cache repository
+        'skipCache'=&gt;'skipCache'
+    ],
+    'allowed'=&gt;[
+        //Allow caching only for some methods
+        'only'  =&gt;null,
+
+        //Allow caching for all available methods, except
+        'except'=&gt;null
+    ],
+],
+</code></pre>
+<p>如果需要在 repository 里覆盖这些配置参数</p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Contracts\CacheableInterface;
+use Prettus\Repository\Traits\CacheableRepository;
+
+class PostRepository extends BaseRepository implements CacheableInterface {
+
+    // Setting the lifetime of the cache to a repository specifically
+    protected $cacheMinutes = 90;
+
+    protected $cacheOnly = ['all', ...];
+    //or
+    protected $cacheExcept = ['find', ...];
+
+    use CacheableRepository;
+
+    ...
+}
+</code></pre>
+<h2 id="validators-验证器">Validators 验证器</h2>
+<p>首先安装库<code>laravel-validator</code>, 更多资料 <a href="https://github.com/prettus/laravel-validator">https://github.com/prettus/laravel-validator</a></p>
+<pre><code class="language-shell">composer require prettus/laravel-validation
+</code></pre>
+<p>当验证失败的时候，会抛出<code>Prettus\Validator\Exceptions\ValidatorException</code>异常</p>
+<h3 id="创建-validator-类">创建 Validator 类</h3>
+<p>为创建、编辑动作同时定义一些规则</p>
+<pre><code class="language-php">use \Prettus\Validator\LaravelValidator;
+
+class PostValidator extends LaravelValidator {
+
+    protected $rules = [
+        'title' =&gt; 'required',
+        'text'  =&gt; 'min:3',
+        'author'=&gt; 'required'
+    ];
+
+}
+</code></pre>
+<p>如果需要为不同动作定义具体的规则, 需要实现<code>ValidatorInterface</code>接口，分别写 <code>RULE_CREATE</code>和<code>RULE_UPDATE</code></p>
+<pre><code class="language-php">use \Prettus\Validator\Contracts\ValidatorInterface;
+use \Prettus\Validator\LaravelValidator;
+
+class PostValidator extends LaravelValidator {
+
+    protected $rules = [
+        ValidatorInterface::RULE_CREATE =&gt; [
+            'title' =&gt; 'required',
+            'text'  =&gt; 'min:3',
+            'author'=&gt; 'required'
+        ],
+        ValidatorInterface::RULE_UPDATE =&gt; [
+            'title' =&gt; 'required'
+        ]
+   ];
+
+}
+</code></pre>
+<h3 id="为-repository-应用-validator">为 Repository 应用 Validator</h3>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+
+class PostRepository extends BaseRepository {
+
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    function model(){
+       return &quot;App\\Post&quot;;
+    }
+
+    /**
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
+    public function validator()
+    {
+        return &quot;App\\PostValidator&quot;;
+    }
+}
+</code></pre>
+<h3 id="直接在-repository-里定义规则">直接在 Repository 里定义规则</h3>
+<p>除了上面的方法：先定义一个 Validator 类，然后应用到 Repository 上外，还可以直接在 Repository 里定义规则</p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Validator\Contracts\ValidatorInterface;
+
+class PostRepository extends BaseRepository {
+
+    /**
+     * Specify Validator Rules
+     * @var array
+     */
+     protected $rules = [
+        ValidatorInterface::RULE_CREATE =&gt; [
+            'title' =&gt; 'required',
+            'text'  =&gt; 'min:3',
+            'author'=&gt; 'required'
+        ],
+        ValidatorInterface::RULE_UPDATE =&gt; [
+            'title' =&gt; 'required'
+        ]
+   ];
+
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    function model(){
+       return &quot;App\\Post&quot;;
+    }
+
+}
+</code></pre>
+<h2 id="presenters">Presenters</h2>
+<p>a <code>wrapper</code> and <code>renderer</code> for objects</p>
+<h3 id="fractal-presenter">Fractal Presenter</h3>
+<p>先安装 <code>Fractal</code>（http://fractal.thephpleague.com/）</p>
+<pre><code class="language-shell">composer require league/fractal
+</code></pre>
+<p>有两种方式可实现 Presenter</p>
+<ol>
+<li>创建一个类 <code>TransformerAbstract</code>，然后按照 Create a Transformer Class 描述的，使用 Presenter class 类设置它</li>
+<li>让 Model 实现 <code>Transformable</code>接口，然后使用默认的 Presenter ModelFractarPresenter</li>
+</ol>
+<h3 id="方法-1创建-transformer-和-presenter-绑定到-repository">方法 1，创建 Transformer 和 Presenter, 绑定到 Repository</h3>
+<p><strong>创建一个 <code>Transformer</code> 类</strong></p>
+<pre><code class="language-php">php artisan make:transformer Post
+</code></pre>
+<p>编辑生成的内容</p>
+<pre><code class="language-php">use League\Fractal\TransformerAbstract;
+
+class PostTransformer extends TransformerAbstract
+{
+    public function transform(\Post $post)
+    {
+        return [
+            'id'      =&gt; (int) $post-&gt;id,
+            'title'   =&gt; $post-&gt;title,
+            'content' =&gt; $post-&gt;content
+        ];
+    }
+}
+
+</code></pre>
+<p><strong>创建一个 <code>Presenter</code>,关联 Transfomer</strong></p>
+<p>下面的命令会提示你创建 Transformer（如果还没有）</p>
+<pre><code class="language-shell">php artisan make:presenter Post
+
+</code></pre>
+<p>内容</p>
+<pre><code class="language-php">use Prettus\Repository\Presenter\FractalPresenter;
+
+class PostPresenter extends FractalPresenter {
+
+    /**
+     * Prepare data to present
+     *
+     * @return \League\Fractal\TransformerAbstract
+     */
+    public function getTransformer()
+    {
+        return new PostTransformer();
+    }
+}
+</code></pre>
+<p><strong>在 Repository 里应用 Presenter</strong></p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+
+class PostRepository extends BaseRepository {
+
+    ...
+
+    public function presenter()
+    {
+        return &quot;App\\Presenter\\PostPresenter&quot;;
+    }
+}
+</code></pre>
+<p>或者手动在控制器里，调用 Repository 的<code>setPresenter()</code>方法对 repository 应用 Presenter</p>
+<pre><code class="language-php">$this-&gt;repository-&gt;setPresenter(&quot;App\\Presenter\\PostPresenter&quot;);
+</code></pre>
+<p><strong>特殊情况，Repository 和 Model 分别应用、跳过 presenter</strong></p>
+<p>如果您记录了一个 Presenter ，并且有时使用了<code>skipPresenter()</code>方法，或者您不希望 Presenter 自动更改结果。(这段 没太懂)
+可以在 Model 上实现 Presentable 接口，这样就能 present your model at any time</p>
+<p>In your model, implement the interface Prettus\Repository\Contracts\Presentable and Prettus\Repository\Traits\PresentableTrait</p>
+<pre><code class="language-php">namespace App;
+
+use Prettus\Repository\Contracts\Presentable;
+use Prettus\Repository\Traits\PresentableTrait;
+
+class Post extends Eloquent implements Presentable {
+
+    use PresentableTrait;
+
+    protected $fillable = [
+        'title',
+        'author',
+        ...
+     ];
+
+     ...
+}
+
+</code></pre>
+<p>现在，可以单独提交你的 Model 了。 这例子可以看到对 repository 调用 <code>skipPresenter()</code>后查找的结果  <code>$post</code> 和 应用了 Presenter 的 <code>$post-&gt;presenter()</code>结果不一样</p>
+<pre><code class="language-php">$repository = app('App\PostRepository');
+$repository-&gt;setPresenter(&quot;Prettus\\Repository\\Presenter\\ModelFractalPresenter&quot;);
+
+//Getting the result transformed by the presenter directly in the search
+$post = $repository-&gt;find(1);
+
+print_r( $post ); //It produces an output as array
+
+...
+
+//Skip presenter and bringing the original result of the Model
+$post = $repository-&gt;skipPresenter()-&gt;find(1);
+
+print_r( $post ); //It produces an output as a Model object
+print_r( $post-&gt;presenter() ); //It produces an output as array
+
+</code></pre>
+<p>因此，你可以让 Repository 直接忽略 presenter（这样就不用每次都调用<code>-&gt;skipPresenter()</code>）。 只有在需要时，让它作用于 Model</p>
+<p>为 Repository 类添加<code>protected $skipPresenter = true;</code></p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+
+class PostRepository extends BaseRepository {
+
+    /**
+    * @var bool
+    */
+    protected $skipPresenter = true;
+
+    public function presenter()
+    {
+        return &quot;App\\Presenter\\PostPresenter&quot;;
+    }
+}
+</code></pre>
+<h3 id="方法2-让-model-实现-transformable-接口然后再应用到-repository">方法2, 让 Model 实现 Transformable 接口，然后再应用到 Repository</h3>
+<pre><code class="language-php">namespace App;
+
+use Prettus\Repository\Contracts\Transformable;
+
+class Post extends Eloquent implements Transformable {
+     ...
+     /**
+      * @return array
+      */
+     public function transform()
+     {
+         return [
+             'id'      =&gt; (int) $this-&gt;id,
+             'title'   =&gt; $this-&gt;title,
+             'content' =&gt; $this-&gt;content
+         ];
+     }
+}
+
+</code></pre>
+<p><code>Prettus\Repository\Presenter\ModelFractalPresenter</code> is a Presenter default for Models implementing Transformable</p>
+<pre><code class="language-php">use Prettus\Repository\Eloquent\BaseRepository;
+
+class PostRepository extends BaseRepository {
+
+    ...
+
+    public function presenter()
+    {
+        return &quot;Prettus\\Repository\\Presenter\\ModelFractalPresenter&quot;;
+    }
+}
+</code></pre>
+<p>或者调用 <code>setPresenter()</code>来设置</p>
+<pre><code class="language-php">$this-&gt;repository-&gt;setPresenter(&quot;Prettus\\Repository\\Presenter\\ModelFractalPresenter&quot;);
+</code></pre>
+<h3 id="跳过在-repository-里定义的-presenter">跳过在 Repository 里定义的 Presenter</h3>
+<p>在链式方法<strong>之前</strong>调用<code>skipPresenter()</code></p>
+<pre><code class="language-php">$posts = $this-&gt;repository-&gt;skipPresenter()-&gt;all();
+
+//or
+$this-&gt;repository-&gt;skipPresenter();
+$posts = $this-&gt;repository-&gt;all();
+</code></pre>
+<h2 id="l5-repsitory-中已经实现的方法列表">l5-repsitory 中已经实现的方法列表</h2>
+<p>Prettus\Repository\Contracts\RepositoryInterface</p>
+<pre><code class="language-php">all($columns = array(‘*’))
+first($columns = array(‘*’))
+paginate($limit = null, $columns = [‘*’])
+find($id, $columns = [‘*’])
+findByField($field, $value, $columns = [‘*’])
+findWhere(array $where, $columns = [‘*’])
+findWhereIn($field, array $where, $columns = [*])
+findWhereNotIn($field, array $where, $columns = [*])
+create(array $attributes)
+update(array $attributes, $id)
+updateOrCreate(array $attributes, array $values = [])
+delete($id)
+deleteWhere(array $where)
+orderBy($column, $direction = ‘asc’);
+with(array $relations);
+has(string $relation);
+whereHas(string $relation, closure $closure);
+hidden(array $fields);
+visible(array $fields);
+scopeQuery(Closure $scope);
+getFieldsSearchable();
+setPresenter($presenter);
+skipPresenter($status = true);
+</code></pre>
+<h3 id="prettusrepositorycontractsrepositorycriteriainterface">Prettus\Repository\Contracts\RepositoryCriteriaInterface</h3>
+<pre><code class="language-php">pushCriteria($criteria)
+popCriteria($criteria)
+getCriteria()
+getByCriteria(CriteriaInterface $criteria)
+skipCriteria($status = true)
+getFieldsSearchable()
+</code></pre>
+<h3 id="prettusrepositorycontractscacheableinterface">Prettus\Repository\Contracts\CacheableInterface</h3>
+<pre><code class="language-php">setCacheRepository(CacheRepository $repository)
+getCacheRepository()
+getCacheKey($method, $args = null)
+getCacheMinutes()
+skipCache($status = true)
+</code></pre>
+<h3 id="prettusrepositorycontractspresenterinterface">Prettus\Repository\Contracts\PresenterInterface</h3>
+<pre><code class="language-php">present($data);
+</code></pre>
+<h3 id="prettusrepositorycontractspresentable">Prettus\Repository\Contracts\Presentable</h3>
+<pre><code class="language-php">setPresenter(PresenterInterface $presenter);
+presenter();
+</code></pre>
+<h3 id="prettusrepositorycontractscriteriainterface">Prettus\Repository\Contracts\CriteriaInterface</h3>
+<pre><code class="language-php">apply($model, RepositoryInterface $repository);
+</code></pre>
+<h3 id="prettusrepositorycontractstransformable">Prettus\Repository\Contracts\Transformable</h3>
+<pre><code class="language-php">transform();
+</code></pre>
+<h1 id="问题记录">问题记录</h1>
+<h2 id="repository-interface-的-hidden-和-visable无效">repository interface 的 hidden() 和 visable（）无效</h2>
+<pre><code class="language-php">$partners = $this-&gt;repository-&gt;hidden(['created_at', 'updated_at'])-&gt;all();
+</code></pre>
+<p><img src="/media/15490412690191/15468416672395.jpg" alt="-w259"></p>
+<p>2.5 和 2.6 都没解决，作者看起来好久没来了。。。</p>
+<p><a href="https://github.com/andersao/l5-repository/issues/92">https://github.com/andersao/l5-repository/issues/92</a></p>
+<p>自己写吧。。。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/repository-%E6%A8%A1%E5%BC%8F/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/repository-%E6%A8%A1%E5%BC%8F/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/laravel-debugger/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

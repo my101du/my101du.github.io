@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="类库 用的时候查 基准测试类(观察脚本性能) 计算两个标记点之间的时间差 缓存驱动器 (文件 Redis 等快速缓存的封装 ) 几种最常用的快速缓存的封装 日历类 (何不" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="类库 用的时候查 基准测试类(观察脚本性能) 计算两个标记点之间的时间差 缓存驱动器 (文件 Redis 等快速缓存的封装 ) 几种最常用的快速缓存的封装 日历类 (何不" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/codeigniter-%E7%B1%BB%E5%BA%93%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0-topics/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="类库 用的时候查 基准测试类(观察脚本性能) 计算两个标记点之间的时间差 缓存驱动器 (文件 Redis 等快速缓存的封装 ) 几种最常用的快速缓存的封装 日历类 (何不">
+
+<meta itemprop="wordCount" content="1010">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="类库 用的时候查 基准测试类(观察脚本性能) 计算两个标记点之间的时间差 缓存驱动器 (文件 Redis 等快速缓存的封装 ) 几种最常用的快速缓存的封装 日历类 (何不"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/codeigniter-%E7%B1%BB%E5%BA%93%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0-topics/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/codeigniter-%E7%B1%BB%E5%BA%93%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0-topics/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1010字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="类库">类库</h1>
+<p>用的时候查</p>
+<h2 id="基准测试类观察脚本性能">基准测试类(观察脚本性能)</h2>
+<p>计算两个标记点之间的时间差</p>
+<h2 id="缓存驱动器-文件-redis-等快速缓存的封装-">缓存驱动器 (文件 Redis 等快速缓存的封装 )</h2>
+<p>几种最常用的快速缓存的封装</p>
+<h2 id="日历类-何不用-js-的">日历类 (何不用 js 的？)</h2>
+<h2 id="购物车类-已废弃">购物车类 (已废弃)</h2>
+<h2 id="配置类-获取配置参数">配置类 (获取配置参数)</h2>
+<h2 id="email-类">Email 类</h2>
+<h2 id="加密类--加密类新版">加密类 &amp; 加密类（新版）</h2>
+<h2 id="文件上传类">文件上传类</h2>
+<h2 id="表单验证类">表单验证类</h2>
+<h3 id="如果是-rest-api">如果是 rest api</h3>
+<p>要改成</p>
+<pre><code>//$config = [];
+
+$data = $this-&gt;input-&gt;post();
+
+$this-&gt;form_validation-&gt;set_data($data);
+$this-&gt;form_validation-&gt;set_rules($config);
+</code></pre>
+<h2 id="ftp-类">FTP 类</h2>
+<h2 id="图像处理类">图像处理类</h2>
+<h2 id="输入类-输入数据预处理与辅助方法">输入类 (输入数据预处理与辅助方法)</h2>
+<h2 id="javascript-类-目前只能加载-jquery">Javascript 类 (目前只能加载 jQuery)</h2>
+<h2 id="语言类-实现国际化">语言类 (实现国际化)</h2>
+<h2 id="加载器类-加载库视图模型等文件">加载器类 (加载库、视图、模型等文件)</h2>
+<h2 id="迁移类-migration">迁移类 (Migration)</h2>
+<h2 id="输出类">输出类</h2>
+<h2 id="分页类">分页类</h2>
+<h2 id="模板解析类">模板解析类</h2>
+<p>在模板中除了用 php 原生语法来显示数据，还可以用模板解析器来处理简化的语法</p>
+<p>首先加载这个 library</p>
+<pre><code class="language-php">$this-&gt;load-&gt;library('parser');
+</code></pre>
+<p>然后把原来的 <code>$this-&gt;load-&gt;view('template/header', $data)</code>改成下面的代码（<code>load-&gt;view()</code> 改成 <code>parser-&gt;parse()</code>）</p>
+<pre><code class="language-php">$this-&gt;parser-&gt;parse('blog_template', $data);
+</code></pre>
+<h2 id="安全类">安全类</h2>
+<h2 id="session-类">Session 类</h2>
+<h2 id="html-表格类">HTML 表格类</h2>
+<h2 id="引用通告类-trackback-用于发送和接受引用通告数据">引用通告类 (trackback 用于发送和接受引用通告数据)</h2>
+<h2 id="排版类-格式化文本">排版类 (格式化文本)</h2>
+<h2 id="单元测试类自带的-unit-test">单元测试类(自带的 Unit Test)</h2>
+<p>/libraries/unit_testing.html</p>
+<p><strong>注意</strong>CI 的 UnitTest 只是简化的测试模块，如果需要更强大的 还是建议 PHP Unit (但是问题是无法共享 session 等)</p>
+<h3 id="使用">使用</h3>
+<pre><code class="language-php">Class Unittest extends Controller {
+
+    function Unittest()
+    {
+        parent::Controller();
+        $this-&gt;load-&gt;library('unit_test'); 
+    }
+      
+    function index()
+    {
+        $this-&gt;load-&gt;model('test_model');
+
+        $this-&gt;unit-&gt;run($this-&gt;test_model-&gt;func_name('22'), 'is_array', 'testname');
+
+        // where $this-&gt;test_model-&gt;func_name('22') is the test data ;
+        // is_array : expected datatype
+        // testname : name to your test
+
+        echo $this-&gt;unit-&gt;report();
+    }
+}
+</code></pre>
+<pre><code class="language-php">function test_func() {
+    $this-&gt;load-&gt;library('unit_test');
+
+    //格式
+    //$this-&gt;unit-&gt;run(‘test’, ‘expected result’, ‘test name’, ‘notes’);
+
+    //例如
+    $test = 1 + 1;
+    $expected_result = 2;
+    $test_name = 'Adds one plus one';
+    $this-&gt;unit-&gt;run($test, $expected_result, $test_name);
+}
+</code></pre>
+<p>第二个参数 <code>expected result</code>期望值，可以是数据，也可以是“类型”</p>
+<pre><code class="language-php">$this-&gt;unit-&gt;run('Foo', 'Foo');
+
+$this-&gt;unit-&gt;run('Foo', 'is_string');
+</code></pre>
+<p>有这些类型判断</p>
+<ul>
+<li>is_object</li>
+<li>is_string</li>
+<li>is_bool</li>
+<li>is_true</li>
+<li>is_false</li>
+<li>is_int</li>
+<li>is_numeric</li>
+<li>is_float</li>
+<li>is_double</li>
+<li>is_array</li>
+<li>is_null</li>
+<li>is_resource</li>
+</ul>
+<h3 id="生成报告">生成报告</h3>
+<p>可以对单独一个测试来输出报告， 或者在全部测试跑完后，一次性输出</p>
+<pre><code class="language-php">echo $this-&gt;unit-&gt;run($test, $expected_result);
+
+// html 格式
+echo $this-&gt;unit-&gt;report();
+
+// 原始格式 raw
+echo $this-&gt;unit-&gt;result();
+</code></pre>
+<h3 id="严格模式">严格模式</h3>
+<p>默认情况下是松散模式</p>
+<pre><code class="language-php">// 1 也可以和一个 布尔值 相等
+$this-&gt;unit-&gt;run(1, TRUE);
+</code></pre>
+<p>启用严格模式，就会判断类型了</p>
+<pre><code class="language-php">$this-&gt;unit-&gt;use_strict(TRUE);
+</code></pre>
+<h3 id="disable-保留单元测试代码但是不运行">disable: 保留单元测试代码，但是不运行</h3>
+<pre><code class="language-php">$this-&gt;unit-&gt;active(FALSE);
+</code></pre>
+<h3 id="显示自定义内容">显示自定义内容</h3>
+<p>在报告中会显示这些内容</p>
+<p>Test Name (test_name)
+Test Datatype (test_datatype)
+Expected Datatype (res_datatype)
+Result (result)
+File Name (file)
+Line Number (line)
+Any notes you entered for the test (notes)</p>
+<p>如果需要限定某些 item</p>
+<pre><code class="language-php">$this-&gt;unit-&gt;set_test_items(array('test_name', 'result'));
+
+</code></pre>
+<p>或者新建一个模板</p>
+<pre><code class="language-html">$str = '
+&lt;table border=&quot;0&quot; cellpadding=&quot;4&quot; cellspacing=&quot;1&quot;&gt;
+{rows}
+        &lt;tr&gt;
+                &lt;td&gt;{item}&lt;/td&gt;
+                &lt;td&gt;{result}&lt;/td&gt;
+        &lt;/tr&gt;
+{/rows}
+&lt;/table&gt;';
+
+// 必须先定义模板
+$this-&gt;unit-&gt;set_template($str);
+</code></pre>
+<h2 id="uri-类-从-uri-字符串路由中获取信息">URI 类 (从 URI 字符串/路由中获取信息)</h2>
+<h2 id="用户代理类识别访客信息">用户代理类(识别访客信息)</h2>
+<h2 id="xml-rpc-与-xml-rpc-服务器类">XML-RPC 与 XML-RPC 服务器类</h2>
+<h2 id="zip-类-创建-zip-压缩文档">Zip 类 (创建 Zip 压缩文档)</h2>
+<h1 id="辅助函数">辅助函数</h1>
+<h2 id="数组辅助函数">数组辅助函数</h2>
+<p><code>$this-&gt;load-&gt;helper('array');</code></p>
+<p>element($item, $array[, $default = NULL])</p>
+<h2 id="验证码辅助函数">验证码辅助函数</h2>
+<h2 id="cookie-辅助函数">Cookie 辅助函数</h2>
+<h2 id="日期辅助函数">日期辅助函数</h2>
+<h2 id="目录辅助函数">目录辅助函数</h2>
+<h2 id="下载辅助函数">下载辅助函数</h2>
+<h2 id="邮件辅助函数-不鼓励建议改用-email-类">邮件辅助函数 (不鼓励，建议改用 Email 类)</h2>
+<h2 id="文件辅助函数">文件辅助函数</h2>
+<h2 id="表单辅助函数">表单辅助函数</h2>
+<h2 id="html-辅助函数">HTML 辅助函数</h2>
+<h2 id="inflector-辅助函数-英语-单词转换为单复数或驼峰格式">Inflector 辅助函数 (英语 单词转换为单复数或驼峰格式)</h2>
+<h2 id="语言辅助函数">语言辅助函数</h2>
+<h2 id="数字辅助函数">数字辅助函数</h2>
+<h2 id="路径辅助函数">路径辅助函数</h2>
+<h2 id="安全辅助函数">安全辅助函数</h2>
+<h2 id="表情辅助函数">表情辅助函数</h2>
+<h2 id="字符串辅助函数">字符串辅助函数</h2>
+<h2 id="文本辅助函数">文本辅助函数</h2>
+<h2 id="排版辅助函数">排版辅助函数</h2>
+<h2 id="url-辅助函数">URL 辅助函数</h2>
+<h2 id="xml-辅助函数">XML 辅助函数</h2>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/codeigniter-%E7%B1%BB%E5%BA%93%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0-topics/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/codeigniter-%E7%B1%BB%E5%BA%93%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0-topics/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/php%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83-codeigniter/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/codeigniter-%E6%95%B0%E6%8D%AE%E5%BA%93/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

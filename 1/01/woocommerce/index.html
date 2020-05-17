@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="WooCommerce permalink: wordpress-woocommerce tags: wordpress 首先安装商城插件 Woocommerce 略 “可变商品”实现一个产品多个“套餐组合” 使用产品的“属性”和“变量” 添加“属性” 首先在 “产品” 菜单的“属性”下" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="WooCommerce permalink: wordpress-woocommerce tags: wordpress 首先安装商城插件 Woocommerce 略 “可变商品”实现一个产品多个“套餐组合” 使用产品的“属性”和“变量” 添加“属性” 首先在 “产品” 菜单的“属性”下" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/woocommerce/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="WooCommerce permalink: wordpress-woocommerce tags: wordpress 首先安装商城插件 Woocommerce 略 “可变商品”实现一个产品多个“套餐组合” 使用产品的“属性”和“变量” 添加“属性” 首先在 “产品” 菜单的“属性”下">
+
+<meta itemprop="wordCount" content="4286">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="WooCommerce permalink: wordpress-woocommerce tags: wordpress 首先安装商城插件 Woocommerce 略 “可变商品”实现一个产品多个“套餐组合” 使用产品的“属性”和“变量” 添加“属性” 首先在 “产品” 菜单的“属性”下"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/woocommerce/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/woocommerce/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4286字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="woocommerce">WooCommerce</h1>
+<p>permalink: wordpress-woocommerce
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="首先安装商城插件-woocommerce-略">首先安装商城插件 Woocommerce 略</h1>
+<h1 id="可变商品实现一个产品多个套餐组合">“可变商品”实现一个产品多个“套餐组合”</h1>
+<h2 id="使用产品的属性和变量">使用产品的“属性”和“变量”</h2>
+<h3 id="添加属性">添加“属性”</h3>
+<p>首先在  “产品” 菜单的“属性”下添加多个属性，“类型”下拉框，可以保持默认的<code>选择</code>（即 select 控件），或者是<code>Text</code>（文本输入框）</p>
+<p><img src="/media/15490412570787/15197156368417.jpg" alt=""></p>
+<h3 id="配置属性的类别">配置“属性”的类别</h3>
+<p>如果“属性”是<code>选择</code>（select）类型，点击“配置类别”，添加该属性<strong>所有可选的值</strong></p>
+<p><img src="/media/15490412570787/15197156665055.jpg" alt=""></p>
+<p>添加多个类别</p>
+<p><img src="/media/15490412570787/15197157386023.jpg" alt=""></p>
+<h3 id="更改产品的类型为可变商品">更改产品的类型为“可变商品”</h3>
+<p>创建/编辑某个产品，默认是<code>单个产品</code>， 更改为<code>可变产品</code>（意思是在这个产品页面中，通过切换不同的选项，让一个产品有多种“套餐”——可变，就像淘宝买手机，一个 iphone 6s，用户可以通过点击切换颜色、存储容量来显示不同的价格）</p>
+<p><img src="/media/15490412570787/15197158168144.jpg" alt=""></p>
+<h3 id="分配可以用作变量的属性">分配可以用作<code>变量</code>的属性</h3>
+<p>切换到“属性”标签，如果希望把某个<code>属性</code>作为<code>变量</code>（能够切换，以显示不同的价格），就把它添加到列表里去。</p>
+<p><strong>注意</strong></p>
+<ol>
+<li>勾上<code>用于变量</code>这个复选框</li>
+<li>在<code>值</code>输入框里，可以点击<strong>全选</strong>按钮，把前面步骤中<code>配置类别</code>里添加的值都包含进来（如果不够，可以点<strong>新添</strong>按钮再增加）</li>
+<li>别忘了点击<strong>保存属性</strong>按钮</li>
+</ol>
+<p><img src="/media/15490412570787/15197160991410.jpg" alt=""></p>
+<h3 id="使用前面用作变量的属性来生成多个条件">使用前面用作“变量”的属性来生成多个条件</h3>
+<p>首先可以设置一个“默认”的表单值。</p>
+<p><img src="/media/15490412570787/15197164057210.jpg" alt=""></p>
+<p>你可以一个个条件来添加，但是这样太繁琐了。估算一下，像上面的例子，城市有5个，区域有8个，套餐有10个。那就要手动添加  5x8x10 = 400 次！</p>
+<p>使用“为全部属性创建变量”这个工具来为所有的属性生成全部可能的组合条件，然后再去删除、调整。</p>
+<p><img src="/media/15490412570787/15197165326454.jpg" alt=""></p>
+<p>点击展开每条变量条件，可以分别为它编辑价格、库存状态等等</p>
+<p><img src="/media/15490412570787/15197166210948.jpg" alt=""></p>
+<h2 id="批量编辑可变产品数据">批量编辑可变产品数据</h2>
+<h3 id="wp-all-import">wp all import</h3>
+<p><a href="http://www.wpallimport.com/documentation/woocommerce/variable-products/">http://www.wpallimport.com/documentation/woocommerce/variable-products/</a></p>
+<p>安装 Import Products from any XML or CSV to WooCommerce</p>
+<h3 id="pw-woocommerce-bulk-edit">PW WooCommerce Bulk Edit</h3>
+<p><a href="https://www.pimwick.com/pw-bulk-edit/">https://www.pimwick.com/pw-bulk-edit/</a></p>
+<p>表格形式，在线编辑所有产品</p>
+<p>免费版无法编辑可变产品</p>
+<h3 id="类似的批量编辑工具">类似的批量编辑工具</h3>
+<p><a href="https://www.wpmania.download/woocommerce-advanced-bulk-edit-v4-2-2/">https://www.wpmania.download/woocommerce-advanced-bulk-edit-v4-2-2/</a></p>
+<p>国内：（这个“云核平台”很多插件）
+<a href="http://www.yunnut.com/woocommerce-advanced-bulk-edit-v4-2-5-wp-plugin/">http://www.yunnut.com/woocommerce-advanced-bulk-edit-v4-2-5-wp-plugin/</a></p>
+<h2 id="修改默认的-select-下拉组件为其他样式文本图片等">修改默认的 select 下拉组件为其他样式（文本、图片等）</h2>
+<p>搜索关键词 Variation</p>
+<h3 id="woocommerce-variation-swatches">WooCommerce Variation Swatches</h3>
+<p>Emran Ahmed 开发</p>
+<p>这个设置项目比较丰富（在产品属性管理里 button 可以设置 方形、圆形）</p>
+<p>安装完后，编辑某个属性，改成 Button 即可</p>
+<p><img src="/media/15490412570787/15197179003911.jpg" alt=""></p>
+<p>默认是圆形的，我们要把按钮改成方形。</p>
+<p>进入 Swatches Settings，切换 Shape Styles。</p>
+<p><img src="/media/15490412570787/15179196590289.jpg" alt=""></p>
+<h3 id="variation-swatches-for-woocommerce">Variation Swatches for WooCommerce</h3>
+<p>ThemeAlien |开发</p>
+<p>漂亮一点，但问题是只有圆形的外观，比较适合服装类（颜色、尺码）这种属性的值比较简单的</p>
+<p><img src="/media/15490412570787/15179189671607.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15179188828122.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15179189311594.jpg" alt=""></p>
+<h3 id="wc-variations-radio-buttons">WC Variations Radio Buttons</h3>
+<p>启用，只有 radio，要自己加样式</p>
+<h3 id="其他">其他</h3>
+<p><a href="https://www.narga.net/best-improve-woocommerce-product-variations-plugins/">https://www.narga.net/best-improve-woocommerce-product-variations-plugins/</a></p>
+<h2 id="让选项可以联动例如省份和城市">让选项可以“联动”（例如省份和城市）</h2>
+<p>有人问是否可以用 js 实现</p>
+<p><a href="https://stackoverflow.com/questions/37280060/woocommerce-product-options-conditional?rq=1">https://stackoverflow.com/questions/37280060/woocommerce-product-options-conditional?rq=1</a></p>
+<p>推荐插件：</p>
+<p>(1)https://codecanyon.net/item/woocommerce-extra-product-options/7908619</p>
+<p>(2)https://wordpress.org/plugins/woo-extra-product-options/#reviews</p>
+<p>免费版的，条件不支持“字段变化”，只能是 category/product</p>
+<h1 id="其他设置">其他设置</h1>
+<h2 id="设置某个产品为默认的模板">设置某个产品为默认的模板</h2>
+<p>每个商品都这么操作一遍实在是太浪费时间了。我们把它保存为模板。</p>
+<p><img src="/media/15490412570787/15197184961996.jpg" alt=""></p>
+<h2 id="在菜单中可以添加产品类别产品">在“菜单”中可以添加产品类别、产品</h2>
+<p>默认的菜单管理中，没有把 woocommerce 里的分类和产品列出来可以快速添加，必须手动显示出来。</p>
+<p><img src="/media/15490412570787/15230048790269.jpg" alt=""></p>
+<h1 id="支付">支付</h1>
+<h2 id="strip">strip</h2>
+<p>国外的支付平台 paypal 等</p>
+<p>WooCommerce Stripe Payment Gateway</p>
+<h2 id="微信">微信</h2>
+<h3 id="wordpress-woocommerce-微信支付插件迅虎网络">WordPress WooCommerce 微信支付插件（迅虎网络）</h3>
+<p><a href="https://www.wpweixin.net/blog/312.html">https://www.wpweixin.net/blog/312.html</a></p>
+<p><img src="/media/15490412570787/15199677529165.jpg" alt=""></p>
+<p><strong>推荐购买更强大的企业版（更多渠道）例如 H5、红包等等</strong></p>
+<p><a href="https://www.wpweixin.net/products/14.html">https://www.wpweixin.net/products/14.html</a></p>
+<p>企业版本支持微信原生支付（H5公众号）、微信登录、微信红包推广/促销、微信收货地址同步、微信退款等功能。若需要企业版本，请访问http://www.wpweixin.net</p>
+<h3 id="wechat-payments-for-woocommerce个人开发者-shudong-zhu">WeChat Payments for WooCommerce（个人开发者 Shudong Zhu）</h3>
+<p>未更新了</p>
+<h2 id="支付宝">支付宝</h2>
+<h3 id="插件">插件</h3>
+<p><a href="https://www.dpweixin.com/download/4728.html">https://www.dpweixin.com/download/4728.html</a></p>
+<h3 id="alipay-for-woocommerce下架了">Alipay for woocommerce（下架了）</h3>
+<p>本地已保存 alipay-for-woocommerce-master</p>
+<p>使用上传 zip 文件的方式安装。</p>
+<p><img src="/media/15490412570787/15199709303515.jpg" alt=""></p>
+<h3 id="代码--方法">代码  方法</h3>
+<p><a href="https://www.mywpku.com/wordpress-integration-alipay-without-the-plug.html">https://www.mywpku.com/wordpress-integration-alipay-without-the-plug.html</a></p>
+<h3 id="strip-可以开通-alipay">strip 可以开通 alipay</h3>
+<p>不过好像只是“国外用户”，还要修改货币单位。
+目前好像无法显示在 woocommerce 的支付界面中</p>
+<h3 id="wordpress-woocommerce支付宝个人版个人版">WordPress WooCommerce支付宝个人版（个人版）</h3>
+<h2 id="ping--只有个支付按钮要改代码">ping ++ （只有个支付按钮，要改代码）</h2>
+<p><a href="https://github.com/PingPlusPlus/pingpp-wordpress">https://github.com/PingPlusPlus/pingpp-wordpress</a> （不更新了，只有PC渠道）</p>
+<h2 id="自己开发-woocommerce-接口-httpswwwwpzhikucomwoo-commerce-payment-api">自己开发 woocommerce 接口 ：https://www.wpzhiku.com/woo-commerce-payment-api/</h2>
+<h2 id="wp-支付平台httpswwwwpweixinnetproduct345html">WP 支付平台（https://www.wpweixin.net/product/345.html）</h2>
+<p><a href="http://www.wordpresshl.com/7307.html">http://www.wordpresshl.com/7307.html</a></p>
+<p>要收费！  2% 提现手续 + 45元3个月费用</p>
+<h1 id="小程序woocommerce微信小程序-wordpress商城小程序">小程序（WooCommerce微信小程序 WordPress商城小程序）</h1>
+<p><a href="https://www.qwqoffice.com/article.php?mod=view&amp;tid=30">https://www.qwqoffice.com/article.php?mod=view&amp;tid=30</a></p>
+<h1 id="sensei-创建课程">Sensei 创建课程</h1>
+<h1 id="其他-1">其他</h1>
+<h2 id="浮动登录">浮动登录</h2>
+<h3 id="woocommerce-login-popup-and-shortcodes">WooCommerce Login Popup and Shortcodes</h3>
+<p>虽然美观，但是操作不方便。（代码有时逻辑混乱）</p>
+<h1 id="其他插件与辅助工具">其他插件与辅助工具</h1>
+<h2 id="woocommerce-manager-工具">Woocommerce Manager 工具</h2>
+<p><a href="https://woocommerce-manager.com/">https://woocommerce-manager.com/</a></p>
+<h2 id="wp-all-import从-excel-csv-或-xml-导入-postpage-或其他类型的数据">WP All Import，从 Excel CSV 或 XML 导入 post、page 或其他类型的数据</h2>
+<p><a href="http://www.wpallimport.com/documentation/woocommerce/variable-products/">http://www.wpallimport.com/documentation/woocommerce/variable-products/</a> 批量导入（普通产品、可变产品）</p>
+<p>如果需要支持 woocommerce 产品数据，需要再安装 add-on &ldquo;WooCommerce Add-On &quot;</p>
+<p>可以在这里下载 CSV 或 XML 模板文件</p>
+<p><a href="http://www.wpallimport.com/documentation/woocommerce/example-files/">http://www.wpallimport.com/documentation/woocommerce/example-files/</a></p>
+<p>步骤1. 上传 CSV 文件/使用本地或远程问津</p>
+<p>步骤2. 设置 CSV 与数据对应的方式</p>
+<p><img src="/media/15490412570787/15198671764048.jpg" alt=""></p>
+<p>例如通过 groupid， 通过相同 title，通过 parent SKU 等</p>
+<p>步骤3. 字段关联</p>
+<p>拖动 CSV 文件里的字段名到输入框中</p>
+<p><img src="/media/15490412570787/15198658774245.jpg" alt=""></p>
+<p>可变产品-通用</p>
+<p><img src="/media/15490412570787/15198659630120.jpg" alt=""></p>
+<p>属性，不建议勾上，会创建大量唯一的产品（而不是以一个产品，多个变量的形式在产品管理界面中出现）</p>
+<p><img src="/media/15490412570787/15198660853513.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15198684855381.jpg" alt=""></p>
+<p>关键：</p>
+<p><img src="/media/15490412570787/15198673262595.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15198690720929.jpg" alt=""></p>
+<p>其他（略）</p>
+<p><img src="/media/15490412570787/15198661586286.jpg" alt=""></p>
+<p>保存为模板</p>
+<p><img src="/media/15490412570787/15198661873249.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15198662585751.jpg" alt=""></p>
+<p>可以设置保存/删除现有数据</p>
+<p><img src="/media/15490412570787/15198662324039.jpg" alt=""></p>
+<h1 id="销售数据产品序列号等">销售数据产品（序列号等）</h1>
+<p><a href="https://wordpress.org/plugins/easy-digital-downloads/">https://wordpress.org/plugins/easy-digital-downloads/</a></p>
+<h1 id="移除不需要的用户字段简化付款页面">移除不需要的用户字段，简化付款页面</h1>
+<p>代码</p>
+<p><a href="https://wpthememakeover.com/2016/07/21/how-to-remove-form-fields-in-woocommerce-account-page/">https://wpthememakeover.com/2016/07/21/how-to-remove-form-fields-in-woocommerce-account-page/</a></p>
+<p><a href="https://docs.woocommerce.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/">https://docs.woocommerce.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/</a></p>
+<p><a href="https://sarathlal.com/remove-default-woocommerce-checkout-input-fields-wordpress/">https://sarathlal.com/remove-default-woocommerce-checkout-input-fields-wordpress/</a></p>
+<p>插件（搜“WooCommerce Checkout”）</p>
+<p><a href="https://cn.wordpress.org/plugins/woocommerce-checkout-manager/">https://cn.wordpress.org/plugins/woocommerce-checkout-manager/</a></p>
+<p><a href="https://www.templatemonster.com/help/woocommerce-how-to-remove-checkout-fields.html">https://www.templatemonster.com/help/woocommerce-how-to-remove-checkout-fields.html</a></p>
+<h1 id="重写-woocommerce-的页面">重写 WooCommerce 的页面</h1>
+<p><a href="https://docs.woocommerce.com/document/template-structure/">https://docs.woocommerce.com/document/template-structure/</a></p>
+<p>建议在你的主题下面创建 <code>/theme/xxxx/woocommerce</code> 目录。并且和 woocommerce 插件目录下的 <code>templates</code> 保持一致</p>
+<p>其他：
+<a href="https://www.sitepoint.com/customize-woocommerce-product-pages/">https://www.sitepoint.com/customize-woocommerce-product-pages/</a></p>
+<h1 id="插件开发">插件开发</h1>
+<p><a href="https://docs.woocommerce.com/document/create-a-plugin/">https://docs.woocommerce.com/document/create-a-plugin/</a></p>
+<p><a href="https://docs.woocommerce.com/wc-apidocs/index.html">内部的函数与文件结构</a></p>
+<h1 id="rest-api">REST API</h1>
+<p><a href="http://woocommerce.github.io/woocommerce-rest-api-docs/">文档</a></p>
+<p><strong>关于 api 版本号</strong></p>
+<p>网站上有一堆 v1 v2 v3 啥的，用 <strong>v2</strong> ，v1 只能在 3.x 的 woocommerce 运行， v3 已经不用了。例如</p>
+<pre><code>/wp-json/wc/v2/products
+</code></pre>
+<h2 id="library">Library</h2>
+<p><a href="https://www.npmjs.com/package/woocommerce-api">Node.js</a>
+<a href="https://pypi.python.org/pypi/WooCommerce">Python</a>
+<a href="https://packagist.org/packages/automattic/woocommerce">PHP</a> 可以参考做成 wordpress 的插件？
+<a href="https://rubygems.org/gems/woocommerce_api">Ruby</a></p>
+<h2 id="php-library">PHP Library</h2>
+<p><a href="https://packagist.org/packages/automattic/woocommerce">https://packagist.org/packages/automattic/woocommerce</a>（https://github.com/woocommerce/wc-api-php）</p>
+<p>composer 安装包</p>
+<pre><code class="language-shell">composer require automattic/woocommerce
+</code></pre>
+<pre><code class="language-php">require __DIR__ . '/vendor/autoload.php';
+
+use Automattic\WooCommerce\Client;
+use Automattic\WooCommerce\HttpClient\HttpClientException;
+
+$woocommerce = new Client(
+    'http://example.com', 
+    'ck_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 
+    'cs_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    [
+        'wp_api' =&gt; true,
+        'version' =&gt; 'wc/v1',
+    ]
+);
+
+try {
+    // Array of response results.
+    $results = $woocommerce-&gt;get('customers');
+    // Example: ['customers' =&gt; [[ 'id' =&gt; 8, 'created_at' =&gt; '2015-05-06T17:43:51Z', 'email' =&gt; ...
+
+    // Last request data.
+    $lastRequest = $woocommerce-&gt;http-&gt;getRequest();
+    $lastRequest-&gt;getUrl(); // Requested URL (string).
+    $lastRequest-&gt;getMethod(); // Request method (string).
+    $lastRequest-&gt;getParameters(); // Request parameters (array).
+    $lastRequest-&gt;getHeaders(); // Request headers (array).
+    $lastRequest-&gt;getBody(); // Request body (JSON).
+
+    // Last response data.
+    $lastResponse = $woocommerce-&gt;http-&gt;getResponse();
+    $lastResponse-&gt;getCode(); // Response code (int).
+    $lastResponse-&gt;getHeaders(); // Response headers (array).
+    $lastResponse-&gt;getBody(); // Response body (JSON).
+
+} catch (HttpClientException $e) {
+    $e-&gt;getMessage(); // Error message.
+    $e-&gt;getRequest(); // Last request data.
+    $e-&gt;getResponse(); // Last response data.
+}
+</code></pre>
+<p>GET
+<code>$woocommerce-&gt;get($endpoint, $parameters = [])</code>
+POST
+<code>$woocommerce-&gt;post($endpoint, $data)</code>
+PUT
+<code>$woocommerce-&gt;put($endpoint, $data)</code>
+DELETE
+<code>$woocommerce-&gt;delete($endpoint, $parameters = [])</code>
+OPTIONS
+<code>$woocommerce-&gt;options($endpoint)</code></p>
+<h2 id="获取产品与相关数据">获取产品与相关数据</h2>
+<h3 id="产品类别">产品类别</h3>
+<p>/wp-json/wc/v2/products/categories
+/wp-json/wc/v2/products/categories/<!-- raw HTML omitted --></p>
+<h3 id="产品属性详情">产品属性详情</h3>
+<p>获取产品属性的更详细数据 <code>GET /wp-json/wc/v2/products/attributes/&lt;id&gt;</code></p>
+<p>从 /products/123 里看到该产品的属性列表以及可用选项</p>
+<p><img src="/media/15490412570787/15236011324167.jpg" alt=""></p>
+<p>而单独用这个接口，可以看到 &ldquo;type&rdquo; 和 &ldquo;order_by&rdquo; 等这个属性的数据</p>
+<p><img src="/media/15490412570787/15236038865708.jpg" alt=""></p>
+<h2 id="产品属性相关">产品属性相关</h2>
+<p>/wp-json/wc/v2/products/attributes/&lt;attribute_id&gt;/terms/<!-- raw HTML omitted --></p>
+<h2 id="订单">订单</h2>
+<h3 id="创建订单">创建订单</h3>
+<p>POST 方式 /v2/orders</p>
+<p>因为一个订单可以有多个产品，并且其中一个产品还可以数量大于1.所以生成订单这里一般放在购物che</p>
+<p><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/?php#create-an-order">发送数据的模板从这里查</a></p>
+<p><strong>坑</strong> 文档中，shipping_lines, total 要改成字符串（官方文档是个数字格式）</p>
+<p><img src="/media/15490412570787/15244527225068.jpg" alt=""></p>
+<h2 id="webhook">webhook</h2>
+<h2 id="settings">settings&hellip;</h2>
+<h2 id="综合可变产品的处理">(综合)“可变”产品的处理</h2>
+<p>展示出可变所有的属性和下面的选项（，例如属性“城市”，下面选项有北京、上海等)，并且在点击生成组合时，更新价格和属性关联组合。</p>
+<h3 id="可变产品的属性变量">可变产品的属性/变量</h3>
+<p>首先通过 <code>/products/123</code> 获得产品信息.如果 type 是 variable 就表示是一个可变产品（默认是 <code>simple</code>简单产品）</p>
+<p><img src="/media/15490412570787/15236008193267.jpg" alt=""></p>
+<p>看到<code>attributes</code>和<code>variations</code> 下面是该产品的属性和变量。</p>
+<p><img src="/media/15490412570787/15243872552671.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15243873806221.jpg" alt=""></p>
+<p>问题来了</p>
+<ol>
+<li>如图一，只是列出了可用的属性(例如第一个 城市，第二个 套餐)，以及该属性下可用的选项（options）,<strong>并没有体现出他们之间的“组合关系”</strong>（例如点击第一个属性某个选项 北京，第二个属性的属性列表会只显示和 北京 有关的套餐）</li>
+<li>如图二，只显示了组合变量的 id （属性1 某个选项 + 属性2 某个选项 的组合），而<strong>没有对应价格数据</strong>（想想，在产品页面里，一开始也只显示默认价格，通过点击属性组合，发送 ajax 请求更新价格）</li>
+<li>属性的不同组合，是怎么和某个变量对应的呢？（城市选”北京“，套餐选”高级套餐“后，马上更新显示某个变量对应的价格）</li>
+</ol>
+<h3 id="把属性和选项显示出来">把属性和选项显示出来</h3>
+<p>首先分别循环 <code>attributes</code> 里面的值，来把可选项列出来</p>
+<pre><code class="language-php">foreach($attributes as $attribute_item){
+    
+    echo $attribute_item['name'];
+    
+    foreach($attribute_item['options'] as $option){
+        echo $option;
+    }
+}
+</code></pre>
+<p>因为产品的属性可能会有个默认选中值，和下图中<code>default_attributes</code>和<code>meta_data 下 _first_variation_attributes</code>有关?</p>
+<p><img src="/media/15490412570787/15243910426844.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15243889511583.jpg" alt=""></p>
+<h3 id="获取到某个产品所有的变量并关联属性的组合">获取到某个产品所有的变量（并关联属性的组合）</h3>
+<p>通过接口 <code>/wp-json/wc/v2/products/&lt;product_id&gt;/variations</code> 得到一个数组</p>
+<p>有该变量的价格</p>
+<p><img src="/media/15490412570787/15243927968195.jpg" alt=""></p>
+<p>以及对应的属性组合</p>
+<p><img src="/media/15490412570787/15243928272834.jpg" alt=""></p>
+<p>通过循环<code>variations</code>里每个元素的<code>attributes</code>进行分组，可以得到一个&quot;属性关联&rdquo;(当选择某个属性的选项时，另外一个属性有哪些选项显示出来)</p>
+<p>模仿省市县的级联数据处理</p>
+<pre><code class="language-php">foreach($variations as $variation){
+    
+}
+</code></pre>
+<p>当选择完毕所有可用选项后，得到的组合实际上就匹配到某个<code>variation</code>的<code>attributes</code>了（例如城市=北京，套餐=高级套餐，就对应到了 variation id = 1234）</p>
+<h3 id="获取某个-attribute-的所有-options">获取某个 attribute 的所有 options</h3>
+<p>因为 <code>/variations</code> 接口返回的 attributes &gt; option 的值有 slug 坑(看后面)
+所以要得到 option 的&rsquo;name&rsquo;</p>
+<p><code>products/attributes/&lt;attribute_id&gt;/terms</code></p>
+<p><strong>注意</strong> 默认有个 <code>per_page</code>（default 10 个）会导致取出不齐全。。。。要修改为一个大的值例如100等</p>
+<p><img src="/media/15490412570787/15244104011582.jpg" alt=""></p>
+<h3 id="多余获取某个产品的某个变量的数据">[多余？]获取某个产品的某个变量的数据</h3>
+<p>然后请求 <code>/wp-json/wc/v2/products/&lt;product_id&gt;/variations/&lt;id&gt;</code>来把<strong>某个 变量id 对应的“属性组合”查询出来</strong>，得到每个变量对应的价格。</p>
+<p>和价格有关的</p>
+<p><img src="/media/15490412570787/15243891261061.jpg" alt=""></p>
+<p>这个便是该 变量id 对应的“属性组合”了（例如城市=上海，套餐=基础版），这个 option 值的字符串要通过 url_decode() 函数来解码。</p>
+<p><img src="/media/15490412570787/15243893173746.jpg" alt=""></p>
+<h2 id="常见问题">常见问题</h2>
+<p>说明请求里写错rest api版本号了，改成 <code>v2</code> 即可</p>
+<pre><code class="language-json">{
+    &quot;code&quot;: &quot;rest_no_route&quot;,
+    &quot;message&quot;: &quot;未找到匹配URL和请求方式的路由。&quot;,
+    &quot;data&quot;: {
+        &quot;status&quot;: 404
+    }
+}
+</code></pre>
+<h1 id="其他问题与坑">其他问题与坑</h1>
+<h2 id="rest-api-create-order-的一些参数">REST API create order 的一些参数</h2>
+<p>payment_method 支付方式，官方文档没找到</p>
+<p><img src="/media/15490412570787/15243735093957.jpg" alt=""></p>
+<p>get_post_meta _payment_method</p>
+<p><a href="https://stackoverflow.com/questions/26011837/how-to-check-payment-method-on-a-woocommerce-order-by-id">https://stackoverflow.com/questions/26011837/how-to-check-payment-method-on-a-woocommerce-order-by-id</a></p>
+<p>在这个表里面搜索。</p>
+<p><img src="/media/15490412570787/15243740466048.jpg" alt=""></p>
+<h2 id="产品属性attribute的选项option值编码中丢失特殊符号的问题">产品属性（attribute）的选项（option）值编码中丢失特殊符号的问题</h2>
+<p>使用 REST API <code>/products/123/variations</code> 请求得到某个产品所有的 variations</p>
+<p>在<code>attribute</code>(该变量对应的属性组合)中，发现某个值被编码过了（应该是 encodeURI/encodeURIComponent 等函数）。</p>
+<p><img src="/media/15490412570787/15244041121521.jpg" alt=""></p>
+<p>一开始没觉得什么。</p>
+<p>使用接口 <code>/products/123</code>获得的 <code>attributes</code>数据循环显示出所有选项</p>
+<p><img src="/media/15490412570787/15244042747759.jpg" alt=""></p>
+<p>然后去对比</p>
+<ul>
+<li>这 options 里面某个 option 的值（也进行了 encodeURI 转码操作，让汉字变成代码）</li>
+<li>和前面的该产品某个 variation 对应的 attribute 的 option 时</li>
+</ul>
+<p>发现对不上。。。。 多了个 <code>%2b</code> &hellip;</p>
+<p><img src="/media/15490412570787/15244044246374.jpg" alt=""></p>
+<p>仔细检查，发现接口 /products/123/variations 返回的 attributes 里 option 把 ”+“ 给丢了。</p>
+<p>跟踪数据库发现（具体过程不是特别明确，有待继续考证代码等）, 在保存时使用的 slug 字段里就删掉了这些字符</p>
+<p><img src="/media/15490412570787/15244046503542.jpg" alt=""></p>
+<p>跟踪</p>
+<p><img src="/media/15490412570787/15244057742659.jpg" alt=""></p>
+<p>通过 term_taxonnomy_id 找</p>
+<p><img src="/media/15490412570787/15244058407802.jpg" alt=""></p>
+<p>通过上表的 term_id 找具体（相当于 option)</p>
+<p><img src="/media/15490412570787/15244059577071.jpg" alt=""></p>
+<p>那么它是怎么丢掉 + 的呢？在产品-属性-编辑选项里可以看到。。。</p>
+<p><img src="/media/15490412570787/15244062503404.jpg" alt=""></p>
+<p>如果强行添加 + ，会报错</p>
+<p><img src="/media/15490412570787/15244062939126.jpg" alt=""></p>
+<p>下面的提问可以看到 wp 在提交数据会把这些字符删掉。</p>
+<p><a href="https://wordpress.stackexchange.com/questions/18032/modify-wordpress-to-not-replace-plus-characters-from-urls">https://wordpress.stackexchange.com/questions/18032/modify-wordpress-to-not-replace-plus-characters-from-urls</a></p>
+<p>这是 wp 函数<code>sanitize_title</code>的功劳。。。。</p>
+<p><img src="/media/15490412570787/15244067383784.jpg" alt=""></p>
+<p><img src="/media/15490412570787/15244067616540.jpg" alt=""></p>
+<p>我们不想去找代码为什么 Woocommerce 的 <code>/products/123/variations</code> 里不返回 option 的”name&quot;却返回了&quot;slug&rdquo;，只好自己模仿 sanitize_title 自己处理了</p>
+<p>js 方案 （尝试失败）
+<a href="https://salferrarello.com/wordpress-sanitize-title-javascript/">https://salferrarello.com/wordpress-sanitize-title-javascript/</a></p>
+<p>那么就只能用<code>products/attributes/&lt;attribute_id&gt;/terms</code>把 attribute 的所有选项都列出来去对应匹配了（见前面）</p>
+<h2 id="提交-order-时官方-shipping_lines-的-total-不是-string">提交 order 时，官方 shipping_lines 的 total 不是 string</h2>
+<p><a href="https://github.com/woocommerce/woocommerce/wiki/Order-and-Order-Line-Item-Data#shipping-line">https://github.com/woocommerce/woocommerce/wiki/Order-and-Order-Line-Item-Data#shipping-line</a></p>
+<p>官方文档 <a href="https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-an-order">https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#create-an-order</a></p>
+<p><img src="/media/15490412570787/15244525329473.jpg" alt=""></p>
+<p>但是返回</p>
+<p><img src="/media/15490412570787/15244525158432.jpg" alt=""></p>
+<h1 id="研究">研究</h1>
+<p>WooCommerce API Manager</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/woocommerce/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/woocommerce/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/visual-composer/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

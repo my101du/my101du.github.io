@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="使用 SharePoint 和 Flow 实现 Pulse 的内部工作流 一些概念 一个工作流的例子 按我的理解，工作流简单来说就是一个数据在不同的节点之间，根据条件或用户操作，不断变动状态" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="使用 SharePoint 和 Flow 实现 Pulse 的内部工作流 一些概念 一个工作流的例子 按我的理解，工作流简单来说就是一个数据在不同的节点之间，根据条件或用户操作，不断变动状态" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="使用 SharePoint 和 Flow 实现 Pulse 的内部工作流 一些概念 一个工作流的例子 按我的理解，工作流简单来说就是一个数据在不同的节点之间，根据条件或用户操作，不断变动状态">
+
+<meta itemprop="wordCount" content="4594">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="使用 SharePoint 和 Flow 实现 Pulse 的内部工作流 一些概念 一个工作流的例子 按我的理解，工作流简单来说就是一个数据在不同的节点之间，根据条件或用户操作，不断变动状态"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4594字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>使用 SharePoint 和 Flow 实现 Pulse 的内部工作流</p>
+<hr>
+<h1 id="一些概念">一些概念</h1>
+<h2 id="一个工作流的例子">一个工作流的例子</h2>
+<p>按我的理解，工作流简单来说就是<strong>一个数据</strong>在不同的<strong>节点</strong>之间，<strong>根据条件或用户操作</strong>，<strong>不断变动状态</strong>。</p>
+<p>举一个简单例子“Eric 要请假”来便于理解</p>
+<p><strong>角色</strong></p>
+<ul>
+<li>IT 部门，经理是 Bob, 有一个员工 Eric</li>
+<li>行政部门，经理是 Jenny，还有一个助理 Bess</li>
+</ul>
+<p><strong>节点</strong></p>
+<ul>
+<li>Eric 先填写一个请假单， 处于<code>开始</code>节点</li>
+<li>Eric 提交这个请假单，自动发给他的经理 Bob, 处于<code>等待经理批准</code>节点</li>
+<li>如果 Bob 通过，请假单自动发给人力资源 Jenny 审核，变成<code>经理通过，等待人力资源</code>节点</li>
+<li>如果 Bob 拒绝，请假单的处于节点<code>经理拒绝</code>，整个工作流结束</li>
+<li>Jenny 或者 Bess 通过，则处于 <code>人力资源通过</code>节点</li>
+<li>如果 Jenny 或者 Bess 拒绝，则处于<code>人力资源拒绝</code>节点，工作流结束</li>
+</ul>
+<p><strong>数据</strong></p>
+<p>请假单是由一系列字段组成的表单，例如请假人，部门，时间等等。
+对应地就是一个<code>数据表</code>，先根据字段设计好表结构</p>
+<p>Eric, Tim, Taylor 每次请假都填一个新的请假申请单，那么就是表的 N 条“记录”，是一个 <code>List</code></p>
+<p>这个请假单长什么样子，是在网页上运行，还是在手机上运行？ 需要<code>设计表单</code></p>
+<p><strong>转换与条件</strong></p>
+<p>在节点之间变化，是通过<strong>条件来触发</strong>的, 包括自动或手动。并且可以在转换发生时<strong>产生事件（例如发送邮件通知给相关的人）</strong></p>
+<p>例如 Bob 点了“允许”按钮， 或者到时间了自动拒绝等等，然后决定节点是否<strong>跳转</strong>到下一个节点</p>
+<h2 id="sharepoint-与-list--item-管理数据表结构和存储记录">SharePoint 与 List &amp; Item 管理数据表结构和存储记录</h2>
+<p>在 SharePoint 里处理保存网页（Page），文件（视频等等），还能创建 “App”，其中有种叫 <code>List</code>. 就能用来<strong>保存工作流的数据</strong>。</p>
+<h2 id="powerapps--infopath-与管理表单布局与关联-list-数据">PowerApps &amp; InfoPath 与管理表单布局与关联 List 数据</h2>
+<p>Form/App:  这个申请表单的体现形式，例如有输入框、日期选择器等</p>
+<h2 id="microsoft-flow处理数据流动">Microsoft Flow，处理数据流动</h2>
+<p>用图形化的方式，创建一个工作流的节点、转换、条件、触发事件等。</p>
+<h1 id="创建和管理-sharepoint-里的-list">创建和管理 SharePoint 里的 List</h1>
+<h2 id="创建-list-类型的-app">创建 List 类型的 App</h2>
+<p>SharePoint 里创建多重数据类型</p>
+<p>常见的 Page（ 一个页面）, 这里要创建的是 App</p>
+<p>点击右上角的齿轮，点 <strong>Add an app</strong></p>
+<p><img src="/media/15490412929099/15489946114327.jpg" alt="-w217"></p>
+<p>App 有多重类型</p>
+<ul>
+<li>Document Library</li>
+<li>Custom List</li>
+<li>Tasks</li>
+<li>Simple MailBox</li>
+</ul>
+<p>Other</p>
+<ul>
+<li>Calendar</li>
+<li>Contacts</li>
+<li>Form Library</li>
+<li>Issue Tracking</li>
+<li>Custom list in datasheet View (ActiveX)</li>
+<li>Survey</li>
+<li>Discusssion Board</li>
+</ul>
+<p>这里选 <strong>Custom List</strong></p>
+<p><img src="/media/15490412929099/15489975457615.jpg" alt="-w720"></p>
+<h2 id="编辑-list-的表结构增加修改字段">编辑 List 的表结构，增加/修改字段</h2>
+<p>例如编辑这个 Business Travel (出差申请)的 List</p>
+<p><img src="/media/15490412929099/15489241439723.jpg" alt="-w716"></p>
+<p>例如，要添加一个字段拉到最后，点击 “add column&rdquo; 添加新字段</p>
+<p><img src="/media/15490412929099/15489898642244.jpg" alt="-w378"></p>
+<p>下图中，可以看到添加了一些字段</p>
+<ul>
+<li>出差者</li>
+<li>部门/职称</li>
+<li>职务代理人</li>
+<li>行动电话</li>
+<li>其他</li>
+</ul>
+<p><img src="/media/15490412929099/15489246702273.jpg" alt="-w941"></p>
+<h3 id="特别说明person-类型会生成一个自动提示所属组织用户的输入框">特别说明：Person 类型会生成一个<strong>自动提示</strong>所属组织用户的输入框</h3>
+<p>只需要输入一部分，自动弹出整个组织里找到的匹配的用户</p>
+<p><img src="/media/15490412929099/15499572191979.jpg" alt="-w317"></p>
+<h3 id="与创建-flow-时关联的最关键字段">与创建 Flow 时关联的最关键字段</h3>
+<ul>
+<li><strong>Approve/Reject</strong>  是、否  审批者可以选择，<strong>类型是 Yes/No</strong>，</li>
+<li><strong>ApproverComments</strong>  审批者可以注释，例如 Bob 在点击 “拒绝”时，可以填一句 为什么不通过 的原因，同样可以添加多层审批对应的 N 个字段</li>
+</ul>
+<p><img src="/media/15490412929099/15490062520035.jpg" alt="-w452"></p>
+<p>为了细分，可以添加多个字段，如果有多层审批，可以添加更多个字段。例如直属主管审批完了，还需要人力资源部门审批</p>
+<p>注意选择 Type 为 Yes/No ， 默认值 No (新的申请单，这两个值肯定是 No)</p>
+<p><img src="/media/15490412929099/15490066631209.jpg" alt="-w316"></p>
+<p><img src="/media/15490412929099/15490067482913.jpg" alt="-w263"></p>
+<p><strong>与 Flow 怎么关联？</strong></p>
+<p>当在 Flow 的设置里添加一个 <code>条件分支</code>的操作步骤时（例如 审批通过/审批拒绝），需要对这个字段值进行修改。（请求审批者不能把它设置为 true）</p>
+<p>这里不赘述，后面有说明</p>
+<h2 id="quick-edit-快速编辑字段模式">quick edit 快速编辑字段模式</h2>
+<p>如果要批量添加大量字段，可以使用 <code>quick edit</code></p>
+<p><img src="/media/15490412929099/15489898327756.jpg" alt="-w930"></p>
+<h2 id="手动添加-item-使用默认-form-界面">手动添加 Item （使用默认 Form 界面）</h2>
+<p>点击 New，就可以基于目前 List 的表结构添加新记录了。</p>
+<p>例如，假设我目前以 Eric 身份登录，填写一个请假申请</p>
+<p><img src="/media/15490412929099/15489253507363.jpg" alt="-w1018"></p>
+<h2 id="查看属于该-list-的-items">查看属于该 List 的 Items</h2>
+<p>当 Eric, Tim, Taylor 等等用户分别在不同的时间提交新的请假申请后，在这个 List 里就能看到<strong>所有历史提交的请假申请</strong></p>
+<p><img src="/media/15490412929099/15499577644268.jpg" alt="-w1056"></p>
+<h2 id="list-高级设置权限表单外观等等">List 高级设置（权限、表单外观等等）</h2>
+<p>点击顶部齿轮，<code>List Settings</code></p>
+<p><img src="/media/15490412929099/15489246184396.jpg" alt="-w349"></p>
+<p><strong>特别注意这里的 Form Settings, 表示让 List 对应的表单以怎样的样式展示出来，在后面“设计表单”会再详细说明</strong></p>
+<p><img src="/media/15490412929099/15489250213761.jpg" alt="-w853"></p>
+<h3 id="设置智能看到自己添加的-list">设置智能看到自己添加的 list</h3>
+<p>list setting &ndash;&gt; advanced setting</p>
+<p><img src="/media/15490412929099/15514024167228.jpg" alt="-w604"></p>
+<h2 id="其他">其他</h2>
+<h3 id="基于-list-创建不同的视图">基于 List 创建不同的视图</h3>
+<p>例如不需要展示全部字段</p>
+<p><img src="/media/15490412929099/15489918441890.jpg" alt="-w288"></p>
+<p>或者在“List Setting&rdquo; 里设置</p>
+<p><img src="/media/15490412929099/15522680019071.jpg" alt="-w1061"></p>
+<h2 id="lookup-类型的字段-类似关联数据查询">lookup 类型的字段 (类似关联数据查询)</h2>
+<p><a href="https://support.office.com/en-us/article/create-list-relationships-by-using-unique-and-lookup-columns-80a3e0a6-8016-41fb-ad09-8bf16d490632">https://support.office.com/en-us/article/create-list-relationships-by-using-unique-and-lookup-columns-80a3e0a6-8016-41fb-ad09-8bf16d490632</a></p>
+<h1 id="使用-powerapps--infopath-为-list-设计表单">使用 PowerApps &amp; Infopath 为 List 设计表单</h1>
+<h2 id="list-item-的默认样式自定义表单与扩展">List Item 的默认样式，自定义表单与扩展</h2>
+<p>List 默认添加新记录是直接在当前页面的右侧展开一个浮动窗口，如下，非常简单</p>
+<p><img src="/media/15490412929099/15491674498895.jpg" alt="-w1105"></p>
+<p>如果想要让它</p>
+<ul>
+<li>有不同的背景色</li>
+<li>添加更多的步骤，例如第一步需要先阅读一个协议才能正式开始填表</li>
+<li>其他复杂的样式（例如表格）</li>
+</ul>
+<p>这就要用到 <strong>PowerApps</strong> 来设计表单了</p>
+<h2 id="打开-powerapps-设计自定义的-list-对应表单">打开 PowerApps 设计自定义的 List 对应表单</h2>
+<p><img src="/media/15490412929099/15499587793250.jpg" alt="-w598"></p>
+<p><strong>注意</strong></p>
+<p>点击 <code>Create an App</code> 创建的，相当于“基于这个 List，创建一个<strong>单独的</strong>应用”
+而<code>Customize forms</code>, 相当于&quot;绑定默认应用&rdquo;</p>
+<p>如果两个都依次点击，会创建两个应用</p>
+<p>Customize forms 的默认名字和 List 名有关</p>
+<p><img src="/media/15490412929099/15501929886119.jpg" alt="-w390"></p>
+<p>点击 <code>Create an App</code> 创建的，是一个带有列表、详情、编辑的“完整”APP，在这里打开 <a href="https://as.create.powerapps.com/studio/#">https://as.create.powerapps.com/studio/#</a> ，可以看到</p>
+<p><img src="/media/15490412929099/15501931392611.jpg" alt="-w779"></p>
+<p>而<code>Customize forms</code>，则是一个单独的form</p>
+<p>这里有一些模板，例如创建使用于手机设备上的app布局模板。</p>
+<p><img src="/media/15490412929099/15499589891393.jpg" alt="-w1221"></p>
+<p>如果不是从 List 创建应用，也可以先打开 PowerApps 后续来连接数据源</p>
+<p><img src="/media/15490412929099/15499592929581.jpg" alt="-w1243"></p>
+<p>例如</p>
+<p><img src="/media/15490412929099/15499595557485.jpg" alt="-w1177"></p>
+<h2 id="功能">功能</h2>
+<h3 id="屏幕-与-主题">屏幕 与 主题</h3>
+<p><img src="/media/15490412929099/15489215772622.jpg" alt="-w125"></p>
+<p>一个 App 通常会包括多个屏幕。</p>
+<p>例如</p>
+<ul>
+<li>启动屏幕</li>
+<li>操作成功提示</li>
+<li>操作说明与帮助</li>
+<li>以及本案例用到的 “窗体”（App 主要功能）</li>
+</ul>
+<p><img src="/media/15490412929099/15489215996292.jpg" alt="-w322"></p>
+<p>根据公司 VI 修改主题</p>
+<p><img src="/media/15490412929099/15499600459401.jpg" alt="-w490"></p>
+<h3 id="库组件">库（组件）</h3>
+<p>例如图片文本列表， 幻灯，空白， 画廊等</p>
+<p><img src="/media/15490412929099/15489215037442.jpg" alt="-w447"></p>
+<h3 id="关键-窗体-连接-list-数据元"><strong>关键</strong> 窗体 连接 List 数据元</h3>
+<p><img src="/media/15490412929099/15489211486676.jpg" alt="-w232"></p>
+<p><img src="/media/15490412929099/15489211866083.jpg" alt="-w509"></p>
+<p>如果已经插入过数据源，只需要选择数据源</p>
+<p><img src="/media/15490412929099/15489806793627.jpg" alt="-w339"></p>
+<p>例如，在平板设计模式下，自动连接了 List 对应数据源的所有字段</p>
+<p><img src="/media/15490412929099/15499597545783.jpg" alt="-w912"></p>
+<h3 id="设计">设计</h3>
+<p>默认表单里的元素会占用一行</p>
+<p><img src="/media/15490412929099/15501967557625.jpg" alt="-w579"></p>
+<p>如果需要调整成自由排列，关闭“对齐到列”</p>
+<p><img src="/media/15490412929099/15501967458350.jpg" alt="-w382"></p>
+<p>就能通过拖动、缩放来改变外观了</p>
+<p><img src="/media/15490412929099/15501969707229.jpg" alt="-w470"></p>
+<h3 id="操作-类似事件">操作 （类似事件）</h3>
+<p><img src="/media/15490412929099/15489232560344.jpg" alt="-w653"></p>
+<h3 id="数据源">数据源</h3>
+<h4 id="删除多余的数据源">删除多余的数据源</h4>
+<p>每次从 SharePoint 里的 List 点 Custom Form 就基于 List 创建一个数据源。。。。</p>
+<p><img src="/media/15490412929099/15489256354387.jpg" alt="-w1280"></p>
+<h3 id="可见性例如隐藏默认创建的-title-字段">可见性（例如隐藏默认创建的 Title 字段）</h3>
+<p><img src="/media/15490412929099/15489807274836.jpg" alt="-w245"></p>
+<p><img src="/media/15490412929099/15489807195107.jpg" alt="-w353"></p>
+<h3 id="编辑字段">编辑字段</h3>
+<p>选中 Form 然后展开“编辑字段”选项，对单个字段进行编辑</p>
+<p><img src="/media/15490412929099/15489259155411.jpg" alt="-w643"></p>
+<h2 id="数据">数据</h2>
+<p>就是“数据源”，有实体、选择列表、连接等等</p>
+<p>实体： 人、组织、部门、用户分组 等等
+选择列表:  多个可选项成为一个选择
+连接：可以连接到邮件等
+自定义连接器：以连接到任何现有的 REST API
+网关：</p>
+<p><img src="/media/15490412929099/15489217587379.jpg" alt="-w200"></p>
+<h2 id="使用代码来调整">使用代码来调整</h2>
+<p>例如自动创建的一个基于某个 List 的 PowerApp, 其 Browse Gallery 组件默认，它绑定了一个“规则”</p>
+<p><img src="/media/15490412929099/15516811108022.jpg" alt="-w1203"></p>
+<p>点一下“文本格式”，可以格式化这段代码。
+可以看到它组成:</p>
+<p><code>SortByColumns</code>根据哪几个值排序</p>
+<ul>
+<li>第一个是个 <code>Filter()</code>函数</li>
+<li>第二个是 <code>Title</code>(就是对应 list 的 title 字段)</li>
+<li>第三个是。。。</li>
+</ul>
+<p><code>Filter()</code>第一个参数是 list 的名称，第二个是 <code>StartWith()</code>查询在上面那个输入框里的内容是否能匹配 title 的值</p>
+<pre><code class="language-js">SortByColumns(
+    Filter(
+        PulseTravelBusinessTest,
+        StartsWith(
+            Title,
+            TextSearchBox1.Text
+        )
+    ),
+    &quot;Title&quot;,
+    If(
+        SortDescending1,
+        Descending,
+        Ascending
+    )
+)
+</code></pre>
+<p>例如这里需要改成列表所有的项目中，某个字段（&lsquo;Immediate Supervisor&rsquo;.Email）的值里有字符串 ”当前用户的email&rdquo; <code>User().Email</code></p>
+<pre><code class="language-sql">SortByColumns(
+    Filter(
+        PulseTravelBusinessTest,
+        StartsWith(
+            'Immediate Supervisor'.Email,
+            User().Email
+        )
+    ),
+    &quot;Title&quot;,
+    If(
+        SortDescending1,
+        Descending,
+        Ascending
+    )
+)
+</code></pre>
+<h2 id="保存-发布">保存 发布</h2>
+<p>PowerApp 创建的应用(表单)必须要先发布后，才能被 SharePoint 里的 List 找到</p>
+<p><img src="/media/15490412929099/15489216769506.jpg" alt="-w586"></p>
+<p><img src="/media/15490412929099/15491690462071.jpg" alt="-w755"></p>
+<h2 id="修改-list-的表单样式改成刚-powerapps-设计的外观">修改 List 的表单样式，改成刚 PowerApps 设计的外观</h2>
+<p>回到 SharePoint 的 List 里，修改 Settings ,将 <code>form settings</code> 的默认值改成第二项</p>
+<p><img src="/media/15490412929099/15491664416065.jpg" alt="-w257"></p>
+<p><img src="/media/15490412929099/15491664845630.jpg" alt="-w628"></p>
+<p>现在再添加新 Item, 就会使用自定义的外观来替换默认的那个列表了。</p>
+<p><img src="/media/15490412929099/15491692968150.jpg" alt="-w421"></p>
+<p>再改个样式（平板横向布局）</p>
+<p><img src="/media/15490412929099/15499609990427.jpg" alt="-w1150"></p>
+<h2 id="待研究-powerapps-的功能">待研究 PowerApps 的功能</h2>
+<ol>
+<li>触发逻辑与数据自动匹配 （例如自动得到当前填表者的经理）</li>
+<li>List 与 Form 组件联动更新</li>
+<li>mobile 模式、web 模式布局自适应切换</li>
+</ol>
+<h2 id="使用-infopath-设计更复杂的表单待研究">使用 InfoPath 设计更复杂的表单（待研究）</h2>
+<p>然而，如果要实现更<strong>加复杂的表单</strong>（例如 Yageo 那个 word 版本的在线复刻版）</p>
+<p><img src="/media/15490412929099/15499611448316.jpg" alt="-w640"></p>
+<p>就需要借助 InfoPath 这个工具了</p>
+<p><img src="/media/15490412929099/15489184768319.jpg" alt="-w704"></p>
+<p><img src="/media/15490412929099/15489191759199.jpg" alt="-w926"></p>
+<h1 id="创建-flow-并绑定-list">创建 Flow 并绑定 List</h1>
+<p>当准备好数据结构、以及数据对应的输入表单后，就要设计数据的流动了。</p>
+<p>打开 MicroSoft Flow （之前创建的 Flow 都会在这里出现）</p>
+<p><img src="/media/15490412929099/15499628978893.jpg" alt="-w958"></p>
+<h2 id="第一步-当为-list-创建新-item-场景eric-提交了一个出差申请">第一步: 当为 List 创建新 Item (场景：Eric 提交了一个出差申请)</h2>
+<p>为流绑定一个来自于 SharePoint 的 List</p>
+<p><code>站点地址</code>填写 List 保存在 SharePoint 里的位置， <code>列表名称</code>就是  List 的名称。</p>
+<p><img src="/media/15490412929099/15489233806516.jpg" alt="-w1251"></p>
+<h2 id="flow-第二步开始进入审批状态场景bob-在邮件审批列表里收到-eric-的申请通知">flow 第二步：开始进入审批状态（场景：Bob 在邮件/审批列表里收到 Eric 的申请通知）</h2>
+<p>这一步就是根据用户填写的申请表数据，组成一条新的申请记录，并流动到下一个节点，同时通知 Approver (Bob)</p>
+<p><strong>Assigned To</strong> 需要发给审批的人关联起来。</p>
+<p>将会把这条请求</p>
+<ol>
+<li>通过邮件的方式发给经理 Bob</li>
+<li>同时在他个人的 <code>我的Flow</code> 列表里也会出现一条新记录，等待审批操作</li>
+</ol>
+<p><img src="/media/15490412929099/15490031708869.jpg" alt="-w1009"></p>
+<p><strong>Item Link</strong></p>
+<p>选择 <code>Link to item</code>, 这样用户可以直接点击连接来查看这个请求表单的详情</p>
+<h2 id="condition-与条件处理是否">Condition 与条件处理（是/否）</h2>
+<p>Condition 节点这里，有很多种判断条件可以选择。</p>
+<p>这里仅以**“审批人”对这个请求的“响应”是否为 Approve** 来作为判断条件</p>
+<p><img src="/media/15490412929099/15490057016618.jpg" alt="-w623"></p>
+<p><img src="/media/15490412929099/15490057705294.jpg" alt="-w152"></p>
+<p><code>Approve</code>是状态的值</p>
+<p><img src="/media/15490412929099/15490055791012.jpg" alt="-w598"></p>
+<h3 id="if-yes">If Yes</h3>
+<p>添加一个条件分支：审核通过 后，工作流自动进行哪些操作</p>
+<h4 id="通知这个请求的创建者">通知这个请求的创建者</h4>
+<p>第一个动作是 “inform item creator of approval&rdquo;</p>
+<p><img src="/media/15490412929099/15490059379390.jpg" alt="-w577"></p>
+<h4 id="修改这条请求记录的状态字段的值为-yes">修改这条请求记录的<strong>状态</strong>字段的值为 <code>Yes</code></h4>
+<p>这里添加动作</p>
+<p><img src="/media/15490412929099/15490058880905.jpg" alt="-w151"></p>
+<p>选**“更新项”** <code>Update Item</code></p>
+<p>选择<code>“SharePoint”连接器</code>，然后选择<code>“SharePoint - 更新项”</code>操作</p>
+<p>看到这里把 SharePoint 里设计的 List 的字段都列出来，并且显示了当前 Item 的所有值。</p>
+<p>找到和 List 设计时对应的 <strong>Approve/Reject 字段</strong></p>
+<p><img src="/media/15490412929099/15490061502119.jpg" alt="-w667"></p>
+<p><strong>将这个字段的值改为 <code>Yes</code></strong></p>
+<p>同时 <strong>对于“ID”</strong>：添加动态内容列表中的“ID”（这是 workflow 系统自动创建的一个唯一值）</p>
+<p><img src="/media/15490412929099/15490060339023.jpg" alt="-w577"></p>
+<p>然后选择“ApproverComments”(自己在 List 里创建的字段)，并将值设置为动态内容列表中的“注释”（这是 Flow 系统里操作时，系统分配的一个填写字段）</p>
+<h3 id="if-no">If No</h3>
+<p>略，类似，只是修改 Approve/Reject 值不一样，下拉框选 No</p>
+<h3 id="审批完成要发一个电子邮件给相关人员">审批完成要发一个电子邮件给相关人员</h3>
+<p><img src="/media/15490412929099/15490064937280.jpg" alt="-w555"></p>
+<h2 id="最高主管审批在-condition-分支里再添加新的-condition">最高主管审批，在 Condition 分支里再添加新的 Condition</h2>
+<p>在 Yes 这个条件分支里， 当直接主管通过后，再走下一个审批节点<code>最高主管</code></p>
+<p>添加新 Action</p>
+<p><img src="/media/15490412929099/15490113375803.jpg" alt="-w210"></p>
+<p><img src="/media/15490412929099/15490114623618.jpg" alt="-w618"></p>
+<p>添加一个操作， 这里有海量的选项给你~</p>
+<p><img src="/media/15490412929099/15490081933224.jpg" alt="-w599"></p>
+<p>无所不能（我能发布一篇文章，然后自动推送到 Facebook/Twitter/LinkedIn，而不用走 WordPress 的那个插件了。。。）</p>
+<p><img src="/media/15490412929099/15490082063945.jpg" alt="-w557"></p>
+<p>这里要最高级主管审批，因此选 <code>Approvals</code>,</p>
+<p><img src="/media/15490412929099/15490082908402.jpg" alt="-w588"></p>
+<p>Action、trigger 太多了, 怎么找得到这个呢？搜索关键词</p>
+<p><img src="/media/15490412929099/15490079942603.jpg" alt="-w502"></p>
+<h3 id="这里其实就是核签和会签一个人过了就行--一定要列表里所有人过了才行">这里其实就是“核签”和“会签”（一个人过了就行 / 一定要列表里所有人过了才行）</h3>
+<p><img src="/media/15490412929099/15490084518266.jpg" alt="-w633"></p>
+<p><img src="/media/15490412929099/15490112087255.jpg" alt="-w632"></p>
+<h3 id="再为这个-approve-动作添加-condition-判断-yesno">再为这个 Approve 动作添加 Condition 判断 yes/no</h3>
+<p>继续添加 action, 选 <code>Condition</code></p>
+<p><img src="/media/15490412929099/15500195815834.jpg" alt="-w629"></p>
+<h3 id="处理-yes-和-no-分支在里面更新项和发通知邮件">处理 Yes 和 No 分支，在里面“更新项”和“发通知邮件”</h3>
+<p>后续和前面的一样，只不过判断和修改的是”最高主管/人力资源“的字段</p>
+<p><img src="/media/15490412929099/15500197657608.jpg" alt="-w606"></p>
+<p>注意通过 ID 来绑定</p>
+<p><img src="/media/15490412929099/15500198090802.jpg" alt="-w1008"></p>
+<p>以及这两个值</p>
+<p><img src="/media/15490412929099/15500198961460.jpg" alt="-w547"></p>
+<h2 id="检查和测试">检查和测试</h2>
+<p>最后整个流程大概是这个样子</p>
+<p><img src="/media/15490412929099/15500213763926.jpg" alt="-w1083"></p>
+<p>在这里可以先测试下</p>
+<p><img src="/media/15490412929099/15500203670038.jpg" alt="-w252"></p>
+<h2 id="参考">参考</h2>
+<p><a href="https://docs.microsoft.com/zh-cn/learn/modules/build-more-flows/3-flow-process-approval-request">https://docs.microsoft.com/zh-cn/learn/modules/build-more-flows/3-flow-process-approval-request</a></p>
+<p><a href="https://docs.microsoft.com/zh-cn/flow/modern-approvals">https://docs.microsoft.com/zh-cn/flow/modern-approvals</a> (审批流)</p>
+<h1 id="验证-flow">验证 Flow</h1>
+<h2 id="提交申请">提交申请</h2>
+<p>以 Eric 身份登录，提交一个申请。 <strong>注意两个审核人员</strong></p>
+<p><img src="/media/15490412929099/15500236673674.jpg" alt="-w751"></p>
+<h2 id="直接主管节点">直接主管节点</h2>
+<p>以直属主管身份登录 Office365</p>
+<h3 id="处理申请">处理申请</h3>
+<p>过一会，直接主管收到一封邮件，带有两个按钮。</p>
+<p>点击 Link 可以到 Approval 的详情查看</p>
+<p><img src="/media/15490412929099/15500249244233.jpg" alt="-w1233"></p>
+<p>同时，在 Flow 里，也看到了这个请求出现了。（可能会需要等几分钟。。。。一开始没收到，还以为 Flow 失败了&hellip;）</p>
+<p><img src="/media/15490412929099/15500250126379.jpg" alt="-w896"></p>
+<p>分别点击下 “Approve” 和 “Reject” 试试，这里以 Approve 动作为例</p>
+<p>注意到这里的显示内容和前面 Flow 设计时的字段是对应的。</p>
+<p><img src="/media/15490412929099/15500257099517.jpg" alt="-w950"></p>
+<p>确认</p>
+<p><img src="/media/15490412929099/15500258350657.jpg" alt="-w263"></p>
+<p><img src="/media/15490412929099/15500258562436.jpg" alt="-w463"></p>
+<h3 id="检查处理结果">检查处理结果</h3>
+<p>过一会儿，在 SharePoint 的 List 里看到，这个字段的值已经变成了 <strong>YES</strong></p>
+<p><img src="/media/15490412929099/15500287975534.jpg" alt="-w383">
+Eric （申请提交者）的邮箱收到提醒（inform email）, 经理通过了！</p>
+<p><img src="/media/15490412929099/15500289149151.jpg" alt="-w785"></p>
+<h2 id="最高主管节点">最高主管节点</h2>
+<h3 id="处理申请-1">处理申请</h3>
+<p>因为“直接主管”通过了请求，来到这个 Flow 的下一级: “最高主管”</p>
+<p>也收到了信息</p>
+<p><img src="/media/15490412929099/15500297734019.jpg" alt="-w1006"></p>
+<p>通过/拒绝申请</p>
+<p><img src="/media/15490412929099/15500299351250.jpg" alt="-w744"></p>
+<h3 id="再次检查处理结果">再次检查处理结果</h3>
+<p>Eric 收到一封邮件</p>
+<p><img src="/media/15490412929099/15500300295108.jpg" alt="-w1024"></p>
+<p>此时，最高主管意见也变成 YES</p>
+<p><img src="/media/15490412929099/15500300679783.jpg" alt="-w654"></p>
+<h2 id="在手机上用-flow-app-来审批">在手机上用 Flow App 来审批</h2>
+<p><img src="/media/15490412929099/15514109794057.jpg" alt="-w571"></p>
+<h2 id="后续扩展">后续扩展</h2>
+<p>这个例子非常简单，还需要根据实际需求实现更多，例如</p>
+<ol>
+<li>用户新建申请的时候，自动匹配他的经理，而不需要手动输入</li>
+<li>完成 Flow 全部通过后，甚至可以自动生成一份 Word/PDF 进行备案，自动打印出来，给用户签字</li>
+<li>涉及到财务报销的 flow，能对上传的文件进行检查。</li>
+</ol>
+<h1 id="issues">Issues</h1>
+<h2 id="点击-list-里-item-一直-getting-data">点击 List 里 Item, 一直 Getting Data</h2>
+<p>回到 PowerApps 设计，看到这有问题</p>
+<p><img src="/media/15490412929099/15501362652718.jpg" alt="-w388"></p>
+<p>If(IsBlank(SharePointIntegration.Selected) || IsEmpty(SharePointIntegration.Selected),First(&lsquo;Travelling Request&rsquo;),SharePointIntegration.Selected)</p>
+<p>Form 左上角有个小红叉叉。</p>
+<p>删掉这个form，然后重新插入表单，绑定数据源</p>
+<p>好了。。。</p>
+<p>看到</p>
+<p><img src="/media/15490412929099/15501950690153.jpg" alt="-w1023"></p>
+<h1 id="其他相关工具">其他相关工具</h1>
+<h2 id="infopath">InfoPath</h2>
+<h3 id="design-a-complex-table-layout-form-runs-on-pc">design a complex table layout form runs on PC</h3>
+<p>looks like Word &amp; Front Page</p>
+<p><img src="/media/15490412929099/15507263742724.jpg" alt="-w1208"></p>
+<h3 id="infopath-创建复杂表格样式的表单">InfoPath 创建复杂表格样式的表单</h3>
+<p><a href="https://blog.csdn.net/fogyisland2000/article/details/51176124">https://blog.csdn.net/fogyisland2000/article/details/51176124</a></p>
+<h2 id="microsoft-form-">Microsoft Form :</h2>
+<p>虽然有个“Form”，但侧重创建调查、测验和投票类型的&quot;交互式问卷&rdquo;</p>
+<h1 id="原-simplenote-记录">原 simplenote 记录</h1>
+<p>自定义样式（代码模式）
+<a href="https://social.technet.microsoft.com/wiki/contents/articles/23955.sharepoint-2013-building-custom-forms.aspx">https://social.technet.microsoft.com/wiki/contents/articles/23955.sharepoint-2013-building-custom-forms.aspx</a></p>
+<p>表格/单元格只能在页面里处理， ”表单“很难去处理（移动端无所谓）
+<a href="https://support.office.com/zh-cn/article/%E5%90%91%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%A1%A8%E6%A0%BC-0c99f916-9d62-4b49-b20a-904201118372">https://support.office.com/zh-cn/article/%E5%90%91%E9%A1%B5%E9%9D%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%A1%A8%E6%A0%BC-0c99f916-9d62-4b49-b20a-904201118372</a></p>
+<p>InfoPath
+<a href="https://www.cnblogs.com/jianyus/p/3472243.html">https://www.cnblogs.com/jianyus/p/3472243.html</a></p>
+<h2 id="坑">坑</h2>
+<p>（1）表单中有一个 approver  手动输入邮箱， 如何让它能自动成为“审批人”？</p>
+<p>在flow设计中 approve-assign to, 默认值显示一个 create email 和 modified email,  <strong>点右上角灰色的“更多选项”</strong></p>
+<p>（2）表单的输入框，自动弹出用户列表来选择，而不需要自己输入
+在添加 column 的时候，选 person/group  ，或者“更多”里再选 person、</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/openvc/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/sharepoint/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

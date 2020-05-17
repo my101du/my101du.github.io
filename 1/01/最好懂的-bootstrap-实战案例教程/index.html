@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 最好懂的 Bootstrap 实战案例教程 permalink: study-bootstrap tags: 前端 我们在开发前端页面的时候，如果每一个按钮、样式、处理浏览器兼容性的代码都要自己从零开始去写，那就太浪费时间" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 最好懂的 Bootstrap 实战案例教程 permalink: study-bootstrap tags: 前端 我们在开发前端页面的时候，如果每一个按钮、样式、处理浏览器兼容性的代码都要自己从零开始去写，那就太浪费时间" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%9C%80%E5%A5%BD%E6%87%82%E7%9A%84-bootstrap-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 最好懂的 Bootstrap 实战案例教程 permalink: study-bootstrap tags: 前端 我们在开发前端页面的时候，如果每一个按钮、样式、处理浏览器兼容性的代码都要自己从零开始去写，那就太浪费时间">
+
+<meta itemprop="wordCount" content="29078">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 最好懂的 Bootstrap 实战案例教程 permalink: study-bootstrap tags: 前端 我们在开发前端页面的时候，如果每一个按钮、样式、处理浏览器兼容性的代码都要自己从零开始去写，那就太浪费时间"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%9C%80%E5%A5%BD%E6%87%82%E7%9A%84-bootstrap-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%9C%80%E5%A5%BD%E6%87%82%E7%9A%84-bootstrap-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 29078字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 59分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 最好懂的 Bootstrap 实战案例教程
+permalink: study-bootstrap
+tags:</p>
+<ul>
+<li>前端</li>
+</ul>
+<hr>
+<p><img src="/article_images/foreground/bootstrap.png" alt=""></p>
+<p>我们在开发前端页面的时候，如果每一个按钮、样式、处理浏览器兼容性的代码都要自己从零开始去写，那就太浪费时间了。所以我们需要一个<strong>框架</strong>，帮我们实现一个页面的<strong>基础部分</strong>和解决一些<strong>繁琐的细节</strong>，只要在它的基础上进行<strong>个性化定制</strong>就可以了。</p>
+<p><code>Bootstrap</code> 就是这样一个简洁、直观、强悍的<strong>前端开发框架</strong>，只要学习并遵守它的标准，即使是没有学过网页设计的开发者，也能做出很专业、美观的页面，极大地提高了工作效率。像下面这个漂亮的网站就是基于<code>Bootstrap</code>来开发的。</p>
+<!-- raw HTML omitted -->
+<p><img src="/article_images/foreground/bootstrap/%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9.png" alt=""></p>
+<p><code>Bootstrap</code>的中文文档地址在这里 <a href="http://v3.bootcss.com">Bootstrap 中文文档</a>，目前<strong>主流版本为 3.3.x</strong>。不过因为文档的内容结构比较零散，只是从头到尾把一个个组件拆开来讲一遍，缺乏趣味性和实战性（这也是现在很多教程的通病），因此在本教程中，我们会自己动手开发几个<strong>完整案例</strong>，在实践的过程中来学习和理解 <code>Bootstrap</code>这个前端开发框架的知识。</p>
+<ul>
+<li>企业网站</li>
+<li>后台管理系统</li>
+</ul>
+<p><strong>注意</strong></p>
+<p>为了锻炼你阅读文档和主动学习的能力，我们只会把每个知识点最核心的知识告诉你，而它的扩展知识将以链接的形式附在后面。</p>
+<h1 id="第一部分做一个企业网站">第一部分：做一个企业网站</h1>
+<p>企业网站是十分常见的一种页面形式。一般包括一个展示企业形象的首页、几个介绍企业资料的文章页、一个“关于”页面。如下就是最终的首页效果。（当然了，这个界面还是比较粗糙的，不过我们这个教程重点是<code>Bootstrap</code>的学习，如果你要深入学习 CSS 样式方面的知识，请参看我们的相关教程）</p>
+<p><img src="/article_images/foreground/bootstrap/%E4%BC%81%E4%B8%9A%E7%BD%91%E7%AB%99.jpg" alt=""></p>
+<h2 id="项目结构与页面规划">项目结构与页面规划</h2>
+<p>我们先创建站点目录，例如放在  web 站点 <code>/home/wwwroot/htdocs/wx-xxmm</code>下，在里面新建一个 <code>Template</code>目录，用于存放页面 html 文件，新建一个 <code>assets</code>目录，存放图片、自定义样式表等静态资源文件，以及一个 <code>js</code>目录，存放自己写的 javascript 代码。</p>
+<p><img src="/article_images/foreground/bootstrap/%E7%AB%99%E7%82%B9%E7%9B%AE%E5%BD%95.png" alt=""></p>
+<p>然后在<code>Template</code>目录里，把这个项目的所有文件创建好：</p>
+<ul>
+<li>首页(Home_index.html)</li>
+<li>客户案例详情(Home_case.html)</li>
+<li>联系方式及意见反馈表单(Home_about.html)</li>
+</ul>
+<h1 id="首页">首页</h1>
+<p>首页的效果图前面有展示，它包括这<strong>几个区域</strong>。做任何页面之前，我们都要先把结构规划好，这样脑子里有清晰的思路，工作起来才有效率。</p>
+<p><img src="/article_images/foreground/bootstrap/%E9%A6%96%E9%A1%B5%E7%BB%93%E6%9E%84.png" alt=""></p>
+<ul>
+<li>导航条</li>
+<li>轮播图</li>
+<li>客户案例列表</li>
+<li>产品截图列表</li>
+<li>底部网站信息</li>
+</ul>
+<h2 id="首页-html-骨架与素材准备">首页 HTML 骨架与素材准备</h2>
+<p>然后准备几张图片素材（分别是轮播图、客户案例、产品截图，各 3 张），把它们放到 <code>assets</code>目录里面。然后在 <code>assets</code>目录里面新建一个 <code>style.css</code> 文件，用于保存自定义样式。</p>
+<p><img src="/article_images/foreground/bootstrap/assets%E7%9B%AE%E5%BD%95.png" alt=""></p>
+<p>然后在 <code>Template</code> 目录里新建文件 <code>Home_index.html</code> ，按照上面规划的页面结构，写好这些基础的 HTML 和 CSS 代码，把页面的骨架搭好。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;link href=&quot;../assets/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!--导航--&gt;
+    &lt;div class=&quot;nav&quot;&gt;
+        &lt;a href=&quot;&quot;&gt;微信公众号管家&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;&quot;&gt;登录&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!--轮播图--&gt;
+    &lt;div class=&quot;slide&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;轮播图1&lt;/h1&gt;
+            &lt;img src=&quot;../assets/slide_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;h1&gt;轮播图2&lt;/h1&gt;&lt;img src=&quot;../assets/slide_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;h1&gt;轮播图3&lt;/h1&gt;&lt;img src=&quot;../assets/slide_3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!--案例--&gt;
+    &lt;div class=&quot;case&quot;&gt;
+        &lt;div&gt;
+            &lt;h2&gt;案例1&lt;/h2&gt;
+            &lt;img src=&quot;../assets/case_1.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;案例2&lt;/h2&gt;
+            &lt;img src=&quot;../assets/case_2.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;案例3&lt;/h2&gt;
+            &lt;img src=&quot;../assets/case_3.jpg&quot; alt=&quot;&quot;&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!--产品功能截图--&gt;
+    &lt;div class=&quot;screenshoot&quot;&gt;
+        &lt;div&gt;
+            &lt;h2&gt;截图1&lt;/h2&gt;&lt;img src=&quot;../assets/screenshot_1.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;截图2&lt;/h2&gt;&lt;img src=&quot;../assets/screenshot_2.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+        &lt;div&gt;
+            &lt;h2&gt;截图3&lt;/h2&gt;&lt;img src=&quot;../assets/screenshot_3.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!--底部--&gt;
+    &lt;div class=&quot;footer&quot;&gt;
+        版权所有 2016
+        &lt;a href=&quot;&quot;&gt;四光年科技&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>注意我们在页面里引入了样式表文件 <code>../assets/style.css</code>（目前这个文件里面是空的）</p>
+<p>在浏览器里打开这个页面，看看是否正常访问。因为<strong>没有写任何 CSS 样式代码</strong>，看上去挺丑的。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%9F%BA%E7%A1%80%E6%9E%B6%E5%AD%90.png" alt=""></p>
+<h2 id="引入-bootstrap-框架相关文件">引入 Bootstrap 框架相关文件</h2>
+<p>前面说到 <code>Bootstrap</code>是一个<strong>前端开发框架</strong>。其实说白了就是一个<strong>样式表文件</strong>（bootstrap.min.css）和一个<strong>javascript 文件</strong>（bootstrap.min.js），在页面里把它们引入进来后，就可以直接使用里面的 CSS 规则和各种组件了。</p>
+<h3 id="远程-cdn-引入方式">远程 CDN 引入方式</h3>
+<p>编辑 <code>Home_index.html</code>，把几个<code>Bootstrap</code>框架包含的文件添加进来，这里推荐使用 CDN 源 上的<strong>远程文件</strong>，可以节约本地的带宽。
+另外，由于 <code>Bootstrap</code>还依赖<code>jQuery</code>库，所以也要一并把这个 <code>jquery.min.js</code> 文件引入。</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css&quot;&gt;
+&lt;link href=&quot;../assets/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;//cdn.bootcss.com/jquery/1.11.3/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>注意这几个文件的<strong>前后顺序</strong>，如果不对，会导致页面无法正常运行。</p>
+<ol>
+<li>先引入 bootstrap.min.css （Bootstrap的样式表文件）</li>
+<li>然后引入自己写的 css 文件（style.css）</li>
+<li>然后引入 jQuery（javascript 库）</li>
+<li>最后引入 bootstrap.min.js 程序文件</li>
+</ol>
+<h3 id="本地文件引入方式">本地文件引入方式</h3>
+<p>如果在没有联网的环境，或者用上面的方式引入文件后浏览器报错，可以把<code>Bootstrap</code>的所有文件下载到本地后再引用到页面中。打开下面这个地址，把压缩包下载后解压，全部放到 <code>assets</code> 目录的 <code>bootstrap</code>里面。</p>
+<p><a href="http://v3.bootcss.com/getting-started/#download">下载Bootstrap包含的文件到本地</a></p>
+<p><img src="/article_images/foreground/bootstrap/%E4%B8%8B%E8%BD%BDbootstrap.png" alt=""></p>
+<p><img src="/article_images/foreground/bootstrap/bootstrap%E7%9B%AE%E5%BD%95.png" alt=""></p>
+<p>然后修改<code>Home_index.html</code>里的引入文件代码，使用<strong>本地引用文件</strong>的方式来使用<code>Bootstrap</code>。</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;../assets/bootstrap/css/bootstrap.min.css&quot;&gt;
+&lt;link href=&quot;../assets/style.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;../assets/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h3 id="bootstrap-做了些什么">Bootstrap 做了些什么？</h3>
+<p>打开<code>assets/bootstrap/</code>目录下的样式表文件<code>bootstrap.min.css</code>，可以看到里面定义了<strong>大量的 CSS 规则</strong>，例如下面这段就定了一个类名为<code>btn-primary</code>的规则。</p>
+<pre><code class="language-css">.btn-primary{color:#fff;background-color:#337ab7;border-color:#2e6da4}
+</code></pre>
+<p>现在测试一下，在 <code>Home_index.html</code>文件里面写一个按钮，添加 <code>class</code> 为 <code>btn btn-primary</code>。</p>
+<pre><code class="language-html">&lt;body&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;按钮&lt;/button&gt;
+&lt;/body&gt;
+</code></pre>
+<p>刷新页面，你会看到一个蓝色的按钮。<strong>不需要自己写一行 CSS 代码</strong>，只要在页面里面给某个元素指定一个<code>class</code>，就可以直接显示出预定的样式—— 这就是使用<code>Bootstrap</code>前端框架的魔力。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%8C%89%E9%92%AE.png" alt=""></p>
+<h2 id="使用导航条组件">使用导航条组件</h2>
+<p>导航条位于页面最顶部，提供整个网站所有页面的链接，最终效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%AF%BC%E8%88%AA%E6%9D%A1%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C.png" alt=""></p>
+<p>我们可以直接使用<code>Bootstrap</code>的<code>导航条组件</code></p>
+<pre><code class="language-html">&lt;!--导航--&gt;
+&lt;nav class=&quot;navbar navbar-default&quot;&gt;
+   &lt;div class=&quot;container-fluid&quot;&gt;
+       &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+           &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+           &lt;li&gt;&lt;a href=&quot;&quot;&gt;关于&lt;/a&gt;&lt;/li&gt;
+           &lt;li&gt;&lt;a href=&quot;&quot;&gt;登录&lt;/a&gt;&lt;/li&gt;
+       &lt;/ul&gt;
+   &lt;/div&gt;
+&lt;/nav&gt;
+</code></pre>
+<ol>
+<li>添加一个 <code>nav</code> 标签，并设置 <code>class</code> 为 <code>navbar navbar-default</code>，<code>role</code> 为 <code>navigation</code>。</li>
+<li>然后在里面添加一个类名为 <code>container-fluid</code>的 <code>div</code> ，用来容纳导航条里的其他元素（链接、按钮等）。</li>
+<li>添加一些导航链接<code>&lt;li&gt;</code>，然后把第一个 <code>&lt;li&gt;</code> 的 <code>class</code>指定为<code>active</code>，表示<strong>激活状态</strong>。</li>
+</ol>
+<p>刷新页面，一个漂亮的导航条就诞生了！我们只是写了一些 HTML 代码，没有写一句 CSS 代码，非常省时省力。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%AF%BC%E8%88%AA%E6%9D%A1%E5%AE%B9%E5%99%A8.png" alt=""></p>
+<p>导航条还漏了一个“网站标题”，把下面这段<code>&lt;div class=&quot;navbar-header&quot;&gt;</code>添加到<code>&lt;ul class=&quot;nav navbar-nav&quot;&gt;</code>的前面就可以了</p>
+<pre><code class="language-html">	&lt;div class=&quot;navbar-header&quot;&gt;
+	    &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
+	      &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+	      &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+	      &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+	      &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+	    &lt;/button&gt;
+	    &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;微信公众号管家&lt;/a&gt;
+	  &lt;/div&gt;
+	  
+	  &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+	  	&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;&quot;&gt;首页&lt;/a&gt;&lt;/li&gt;
+</code></pre>
+<p>如果要添加更多的效果，例如下拉菜单、固定在顶部等等，请在文档中查看，相信你现在应该很容易看明白了。</p>
+<p><a href="http://v3.bootcss.com/components/#navbar-fixed-top">Bootstrap文档——导航条</a></p>
+<p>学一门新知识的最好办法是<strong>通过实践操作，由浅入深，先入门再填坑</strong>，不要从头到尾去看枯燥的文档，先用起来，掌握最核心的知识点，然后再去了解其他延伸的内容。我们的课程不是“照本宣科读文档”，更重要的是培养你的学习方法。</p>
+<h2 id="使用轮播图组件">使用轮播图组件</h2>
+<p>为了实现一个轮播图效果（也有人叫“幻灯片”），以前我们可能会自己写代码，或者去找 <code>jQuery</code> 的插件。其实 Bootstrap 已经自带了一个轮播组件——<code>Carousel</code>，效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BD%AE%E6%92%AD%E5%9B%BE.png" alt=""></p>
+<pre><code class="language-html">&lt;!--轮播图--&gt;
+&lt;div id=&quot;carousel-example-generic&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot;&gt;
+   &lt;!-- Indicators --&gt;
+   &lt;ol class=&quot;carousel-indicators&quot;&gt;
+       &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+       &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+       &lt;li data-target=&quot;#carousel-example-generic&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+   &lt;/ol&gt;
+
+   &lt;!-- Wrapper for slides --&gt;
+   &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+       &lt;div class=&quot;item active&quot;&gt;
+           &lt;img src=&quot;../assets/slide_1.jpg&quot; alt=&quot;...&quot;&gt;
+           &lt;div class=&quot;carousel-caption&quot;&gt;
+               &lt;h1&gt;轮播1的标题&lt;/h1&gt;
+               &lt;p&gt;这里是轮播图1的说明&lt;/p&gt;
+           &lt;/div&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;item&quot;&gt;
+           &lt;img src=&quot;../assets/slide_2.jpg&quot; alt=&quot;...&quot;&gt;
+           &lt;div class=&quot;carousel-caption&quot;&gt;
+               &lt;h1&gt;轮播2的标题&lt;/h1&gt;
+               &lt;p&gt;这里是轮播图2的说明&lt;/p&gt;
+           &lt;/div&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;item&quot;&gt;
+           &lt;img src=&quot;../assets/slide_3.jpg&quot; alt=&quot;...&quot;&gt;
+           &lt;div class=&quot;carousel-caption&quot;&gt;
+               &lt;h1&gt;轮播3的标题&lt;/h1&gt;
+               &lt;p&gt;这里是轮播图3的说明&lt;/p&gt;
+           &lt;/div&gt;
+       &lt;/div&gt;
+   &lt;/div&gt;
+
+   &lt;!-- Controls --&gt;
+   &lt;a class=&quot;left carousel-control&quot; href=&quot;#carousel-example-generic&quot; role=&quot;button&quot; data-slide=&quot;prev&quot;&gt;
+       &lt;span class=&quot;glyphicon glyphicon-chevron-left&quot;&gt;&lt;/span&gt;
+       &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+   &lt;/a&gt;
+   &lt;a class=&quot;right carousel-control&quot; href=&quot;#carousel-example-generic&quot; role=&quot;button&quot; data-slide=&quot;next&quot;&gt;
+       &lt;span class=&quot;glyphicon glyphicon-chevron-right&quot;&gt;&lt;/span&gt;
+       &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
+   &lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p>轮播图组件分三部分</p>
+<ul>
+<li><code> &lt;ol class=&quot;carousel-indicators&quot;&gt;</code>是“指示器”，就是下方的那三个白色小点，标记<strong>当前播放到哪张图片</strong>了。</li>
+<li><code>&lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;</code>里面是<strong>主体内容区域</strong>，包括几张图片和对应说明，分别用 <code>&lt;div class=&quot;item&quot;&gt;</code>包裹起来</li>
+<li>最后的两个<code>&lt;a class=&quot;left carousel-control&quot;</code>元素是<strong>手动操作图片左右切换</strong>的按钮。</li>
+</ul>
+<h3 id="使用自定义样式来完善-bootstrap-默认样式">使用自定义样式来完善 Bootstrap 默认样式</h3>
+<p>刷新页面，几张图片开始自动播放。但是我们会发现一个问题——如果三张图片大小不一致，这个轮播区域会忽大忽小地变化。</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%9C%AA%E8%AE%BE%E7%BD%AE%E5%A4%A7%E5%B0%8F.gif" alt=""></p>
+<p>这种情况就是 <code>Bootstrap</code> <strong>力不能及的范围</strong>了，因为<strong>它不知道我们将会使用什么样的素材</strong>，因此要自己写一些<strong>自定义样式</strong>的 CSS 代码来<strong>处理这些特殊的情况</strong>。</p>
+<p>打开自定义样式表文件 <code>assets/style.css</code>，在里面添加如下的代码，把图片高度固定设置为 500px，并且设置最小宽度为 100% ，撑满页面。</p>
+<pre><code class="language-css">.carousel-inner &gt; .item &gt; img {
+  min-width: 100%;
+  height: 500px;
+}
+</code></pre>
+<p>好了，现在轮播图的图片滚动很正常了。</p>
+<h2 id="客户案例列表">客户案例列表</h2>
+<p>在这个区域中，有三个<strong>宽度均等</strong>的横向排列的小块，每个小块是由一个圆形图片和一些说明文字组成。最终效果如下:</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%AE%A2%E6%88%B7%E6%A1%88%E4%BE%8B%E5%88%97%E8%A1%A8.png" alt=""></p>
+<h3 id="栅格布局">栅格布局</h3>
+<p>想想看，如果是你自己写 CSS ，准备怎样实现这个均等排列的效果？例如下面通过设置固定宽度/百分比来处理：</p>
+<pre><code class="language-css">.item { float:left, width: 300px; /*或者 width: 33%*/ }
+</code></pre>
+<p>如果一行要显示4个、6个、或者更多呢？这样计算起来就太不灵活了（100/6 等于 16.6666666……）。</p>
+<p><strong>其实我们并不关心每一份的宽度是多少像素/百分比，我们只关心能不能自动地平均划分成多少份</strong>，<code>Bootstrap</code>的<code>栅格系统布局</code>就是为了实现<strong>自动计算每一份的宽度</strong>而诞生的。</p>
+<p>首先看看这货来帮助理解什么是“栅格”</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%A0%85%E6%A0%8F%E9%97%A8.jpg" alt=""></p>
+<p>这是一个伸缩门，它的<strong>总长度</strong>可以拉长，可以缩短，但是<strong>总的间隔数量是不变的</strong>，并且所有间隔的<strong>宽度都一样</strong>。</p>
+<p>这个伸缩的过程，像不像我们把浏览器拉宽、变窄的操作？<code>Bootstrap</code>的<code>栅格系统</code>规定了每个页面的宽度被<strong>平均划分为 12 等份</strong>，不管整个页面的宽度是 1000像素，还是500像素，都会自动计算每一份（1/12）的宽度是多少。</p>
+<p>通过给栅格布局内部的元素指定 class 为 <code>col-md-份数</code>，来告诉它的宽度<strong>占据这12份里面的几份</strong>。</p>
+<p>例如下面的代码中，有<strong>3 个</strong> div 的 <code>class</code>为 <code>col-md-4</code>（先不管中间那个 <code>-md-</code>是什么，关注这个数字就好），算一算<strong>4 + 4 + 4 是不是正好等于 12</strong>？</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;bb&lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;cc&lt;/div&gt;
+        &lt;div class=&quot;col-md-4&quot;&gt;ee&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>刷新页面，然后用 Chrome 浏览器的开发工具看看效果，发现整个页面的宽度正好被平均<strong>分成了 3 份</strong>(12/4 = 3)。<code>栅格系统</code>自动帮我们计算了这 3 份的宽度。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%A0%85%E6%A0%BC.png" alt=""></p>
+<p>举一反三，如果要把页面平均分为 6 份，那每一份的<code>class</code> 就应该指定 <code>col-md-2</code>(12/6 = 2)；如果是 4 份，<code>class</code> 就是 <code>col-md-3</code>（12/4 = 3）</p>
+<p>完整的栅格布局的说明在这里，一开始看不懂没有关系，自己多动手试试就明白了。<strong>一定要动手实践！</strong></p>
+<p><a href="http://v3.bootcss.com/css/#grid">Bootstrap 文档——栅格系统</a></p>
+<h3 id="圆形图片样式">圆形图片样式</h3>
+<p>虽然自己写一个 CSS 规则 <code>border-radius: 50%</code>也可以实现圆形图片，但是如果能够少写一行代码，为什么不偷个懒呢（不要重复造轮子），<code>Bootstrap</code>提供了一个圆形图片的 CSS 类—— <code>img-circle</code>（从名称就能看出来它的作用是什么）。</p>
+<p>好了，知道栅格布局方式，和圆形图片样式，可以把“案例列表”的 HTML 代码改造一下了。</p>
+<pre><code class="language-html">&lt;!--案例--&gt;
+&lt;div class=&quot;case container&quot;&gt;
+   &lt;div class=&quot;row&quot;&gt;
+       &lt;div class=&quot;col-md-4&quot;&gt;
+           &lt;img class=&quot;img-circle&quot; src=&quot;../assets/case_1.jpg&quot; alt=&quot;&quot; /&gt;
+           &lt;h2&gt;案例1&lt;/h2&gt;
+           &lt;p&gt;非常不错的产品，我很喜欢&lt;/p&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;col-md-4&quot;&gt;
+           &lt;img class=&quot;img-circle&quot; src=&quot;../assets/case_2.jpg&quot; alt=&quot;&quot; /&gt;
+           &lt;h2&gt;案例2&lt;/h2&gt;
+           &lt;p&gt;非常不错的产品，我很喜欢&lt;/p&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;col-md-4&quot;&gt;
+           &lt;img class=&quot;img-circle&quot; src=&quot;../assets/case_3.jpg&quot; alt=&quot;&quot; /&gt;
+           &lt;h2&gt;案例3&lt;/h2&gt;
+           &lt;p&gt;非常不错的产品，我很喜欢&lt;/p&gt;
+       &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>另外，和<code>轮播图</code>一样，为了防止图片大小不一致导致的页面错乱，还要在 <code>style.css</code> 里添加一些自定义的样式，固定图片大小，然后把每个元素的内部设置为居中对齐。</p>
+<pre><code class="language-css">.case {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.case img {
+  height: 200px;
+}
+</code></pre>
+<p><code>Bootstrap</code>还提供了“圆角图片”、带边框线的“缩略图样式”等图片样式，也可以直接使用，在这里查看文档</p>
+<p><a href="http://v3.bootcss.com/css/#images">Bootstrap文档-图片</a></p>
+<h2 id="产品截图列表用栅格布局将页面拆分成左右宽度不一样的两栏">产品截图列表——用栅格布局将页面拆分成左右宽度不一样的两栏</h2>
+<p>先回顾一下前面的知识：<strong>怎样用栅格布局把页面切割成若干等份？</strong></p>
+<p>思考一下：如果我们要<strong>把页面分成左右两栏，但是两栏宽度不一样</strong>，应该怎么做呢？</p>
+<p>其实<code>Bootstrap</code>的栅格布局同样可以实现这种“宽度不一致的分割”。最终效果：</p>
+<p><img src="/article_images/foreground/bootstrap/%E4%BA%A7%E5%93%81%E6%88%AA%E5%9B%BE.png" alt=""></p>
+<pre><code class="language-html"> &lt;div class=&quot;container&quot;&gt;
+   &lt;div class=&quot;row&quot;&gt;
+       &lt;div class=&quot;col-md-4&quot;&gt;bb&lt;/div&gt;
+       &lt;div class=&quot;col-md-8&quot;&gt;cc&lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>左边的<code>&lt;div&gt;</code> 占有 4 份（<code>col-md-4</code>），右边的<!-- raw HTML omitted --> 占有 8 份（<code>col-md-8</code>），但是<strong>加起来总数还是 12 份</strong></p>
+<p>在 Chrome 里看到效果如下，确实是左边的一栏相对较窄，右边的一栏较宽一些。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%A0%85%E6%A0%BC-48.png" alt=""></p>
+<p>开始修改“产品截图”区域的代码，从上到下共有三行，每行的一栏是图片，占有 5 份宽度（col-md-5）；另一栏是说明文字，占据剩下的 7 份宽度（col-md-7）。</p>
+<pre><code class="language-html">&lt;!--产品功能截图--&gt;
+    &lt;div class=&quot;container screenshot&quot;&gt;
+        &lt;div class=&quot;row item&quot;&gt;
+            &lt;div class=&quot;col-md-5&quot;&gt;&lt;img src=&quot;../assets/screenshot_1.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;col-md-7&quot;&gt;
+                &lt;h2&gt;截图1&lt;/h2&gt;
+                &lt;p&gt;截图说明1，截图说明1，截图说明1，截图说明1，截图说明1，&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row item&quot;&gt;
+            &lt;div class=&quot;col-md-7&quot;&gt;
+                &lt;h2&gt;截图2&lt;/h2&gt;
+                &lt;p&gt;截图说明2，截图说明2，截图说明2，截图说明2，截图说明2，&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;col-md-5&quot;&gt;&lt;img src=&quot;../assets/screenshot_2.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;row item&quot;&gt;
+            &lt;div class=&quot;col-md-5&quot;&gt;&lt;img src=&quot;../assets/screenshot_3.jpg&quot; alt=&quot;&quot; class=&quot;img-responsive&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;col-md-7&quot;&gt;
+                &lt;h2&gt;截图3&lt;/h2&gt;
+                &lt;p&gt;截图说明3，截图说明3，截图说明3，截图说明3，截图说明3，&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<p><strong>注意</strong>，我们在第二行把图片和文字的左右顺序交换了一下，这样看起来错落有致、更美观一些。</p>
+<p>同样，再添加一点自定义的 CSS 代码，在每一行之间显示一条分割线，并且预留一些空白。</p>
+<pre><code class="language-css">.screenshot .item {
+  border-top: 1px solid #CCC;
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+</code></pre>
+<h2 id="页面底部">页面底部</h2>
+<p>这部分没什么特别的内容，使用 HTML5 的新增标签<code>&lt;footer&gt;&lt;/footer&gt;</code>，使之更“语义化”（代码也少了几个字母……）。</p>
+<pre><code class="language-html"> &lt;!--底部--&gt;
+&lt;div class=&quot;container&quot;&gt;
+   &lt;footer&gt;
+       微信公众号管家版权所有 2016
+       &lt;a href=&quot;&quot;&gt;四光年科技&lt;/a&gt;
+   &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="覆盖-bootstrap-的默认样式">覆盖 Bootstrap 的默认样式</h2>
+<p>其实除了可以<strong>添加</strong>自定义样式外，还可以<strong>覆盖</strong>掉<code>Bootstrap</code>的默认样式，让它更符合我们的要求。</p>
+<p>比如，把顶部的导航条改成黑色底，白色文字。</p>
+<pre><code class="language-css">.navbar {
+  background-color: #000;
+}
+
+.navbar-nav li a, .navbar-nav li a:focus, .navbar-nav li a:visited {
+  color: #FFF;
+}
+</code></pre>
+<p>其实这个效果完全不用这么麻烦，直接用一个<code>Bootstrap</code>自带的<code>class</code>就可以实现。我们在做页面的时候，<strong>尽可能优先使用已有的组件、样式</strong>，不要自己去写，一来节省时间，二来可以避免很多不可预料的问题。</p>
+<p><a href="http://v3.bootcss.com/components/#navbar-inverted">Bootstrap 反色导航条</a></p>
+<h1 id="客户案例详情页">客户案例详情页</h1>
+<p>新建一个文件<code>Home_case.html</code>，客户案例详情页实际上和平时常见的 “新闻内容页”、“产品介绍页”非常类似，我们这里先做个简化版。最终效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%A1%88%E4%BE%8B%E8%AF%A6%E6%83%85%E9%A1%B5.png" alt=""></p>
+<h2 id="布局">布局</h2>
+<p>把页面分成左右两栏，左边是<strong>正文区域</strong>，右边是<strong>相关信息</strong>，通过栅格系统来布局可以很容易实现。</p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+	 &lt;div class=&quot;col-md-9&quot;&gt;
+	   &lt;!--正文--&gt;
+	 &lt;/div&gt;
+	 &lt;div class=&quot;col-md-3&quot;&gt;
+	    &lt;!--相关信息--&gt;
+	 &lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="大标题与小标题">大标题与小标题</h2>
+<p>进入正文区域（在 <code>&lt;div class=&quot;col-md-9&quot;&gt;</code>内部），首先添加大标题与小标题，在<code>Bootstrap</code>里有专门的类<code>&lt;div class=&quot;page-header&quot;&gt;</code>。
+<code>&lt;small&gt;</code>标签可以让里面的文本大小为父元素的 85%，比如下面的代码中， <code>&lt;small&gt;</code>里面的文本大小，是 <code>&lt;h1&gt;</code>里面其他文本大小的 85%。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%A4%A7%E6%A0%87%E9%A2%98%E4%B8%8E%E5%B0%8F%E6%A0%87%E9%A2%98.png" alt=""></p>
+<pre><code class="language-html">	&lt;div class=&quot;page-header&quot;&gt;
+       &lt;h1&gt;四光年科技&lt;small&gt;有价值的、有趣的信息服务&lt;/small&gt;&lt;/h1&gt;
+     &lt;/div&gt;
+</code></pre>
+<h2 id="内容摘要使用引用">内容摘要——使用“引用”</h2>
+<p><img src="/article_images/foreground/bootstrap/%E6%91%98%E8%A6%81-%E5%BC%95%E7%94%A8.png" alt=""></p>
+<pre><code class="language-html">&lt;blockquote&gt;
+  &lt;p&gt;交给你全栈开发的一招一式，我们不会装作什么都懂，也不会教你花架子，只是能保证你学完后，拥有自己的一套内功心法，能举一反三，轻松写代码&lt;/p&gt;
+&lt;/blockquote&gt;
+</code></pre>
+<h2 id="在正文内容区域使用各种文本效果">在正文内容区域使用各种文本效果</h2>
+<p>除了平时常用的<code>&lt;b&gt;</code>（加粗）、<code>&lt;i&gt;</code>（斜体）、<code>&lt;u&gt;</code>（删除）等，还可以使用这几个更“语义化”的 HTML5 标签。</p>
+<ul>
+<li>高亮 <code>&lt;mark&gt;&lt;/mark&gt;</code></li>
+<li>删除 <code>&lt;del&gt;&lt;/del&gt;</code></li>
+<li>着重 <code>&lt;strong&gt;&lt;/strong&gt;</code></li>
+<li>插入的文本 <code>&lt;ins&gt;&lt;/ins&gt;</code></li>
+</ul>
+<p><img src="/article_images/foreground/bootstrap/%E6%96%87%E6%9C%AC1.png" alt=""></p>
+<pre><code class="language-html">&lt;p&gt;
+     &lt;strong&gt;程序员修炼之道&lt;/strong&gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+&lt;mark&gt;“衣带渐宽终不悔，为伊消得人憔悴”&lt;/mark&gt;，编程大约有三个境界，新手、高手和&lt;del&gt;高不成低不就的中手&lt;/del&gt;，适合新手的教程很多，指导中手的教程却很少；没有几十万行代码的锤炼或者长期在一个高手团队里打磨切磋，中手需要在这个层次“众里寻他千百度”，才能“蓦然回首”。 &lt;ins&gt;我们偏好实践，以正确的原则指导正确的行动&lt;/ins&gt;
+ &lt;/p&gt;
+</code></pre>
+<p>另有几种文本样式不太常见，请自行阅读文档</p>
+<p><a href="http://v3.bootcss.com/css/#type-inline-text">Bootstrap文档-内联文本元素</a></p>
+<h2 id="居中对齐">居中对齐</h2>
+<p><img src="/article_images/foreground/bootstrap/%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD.png" alt=""></p>
+<p>在正文中插入一张图片，默认是左对齐的。我们将它用一个<code>&lt;div class=&quot;text-center&quot;&gt;</code>包裹起来，这样它内部的所有元素都居中对齐了。</p>
+<pre><code class="language-html">&lt;p class=&quot;text-center&quot;&gt;
+     &lt;img src=&quot;../assets/screenshot_1.jpg&quot; class=&quot;img-thumbnail&quot; alt=&quot;&quot;&gt;
+ &lt;/p&gt;
+</code></pre>
+<p>实际上这个类的作用和下面的 CSS 规则产生的效果是一样的</p>
+<pre><code class="language-css">.text-center {
+	text-align: center;
+}
+</code></pre>
+<h2 id="显示代码">显示“代码”</h2>
+<p>如果这篇文章是和程序开发有关的，很有可能需要显示一段代码，为了和其他普通文本区分开来，我们要把代码用 <code>&lt;code&gt;</code>或者<code>&lt;pre&gt;</code>包裹起来，前者是<code>行内代码</code>，后者是<code>块代码</code></p>
+<p><img src="/article_images/foreground/bootstrap/%E4%BB%A3%E7%A0%81.png" alt=""></p>
+<pre><code class="language-html">&lt;p&gt;听说 PHP 很简单，常用的函数有&lt;code&gt;echo&lt;/code&gt;、&lt;code&gt;is_array&lt;/code&gt;、&lt;code&gt;mysql_connect&lt;/code&gt;等等&lt;/p&gt;
+
+&lt;p&gt;
+	例如
+     &lt;pre&gt;
+     // example
+     if($a == 1){
+         echo 'variable a = 1';
+     }else{
+         echo 'variable a = 2';
+     }
+     &lt;/pre&gt;
+ &lt;/p&gt;
+</code></pre>
+<p>更多可以使用的<code>代码</code>样式，请参看文档</p>
+<p><a href="http://v3.bootcss.com/css/#code">Bootstrap文档-代码</a></p>
+<h2 id="顶和踩按钮的使用与外观">顶和踩——按钮的使用与外观</h2>
+<p>在文章的最后，我们可以让用户表达下自己的看法，是喜欢还是讨厌。这里添加两个按钮，一个是“顶”，一个是“踩”，并且用不同的颜色来区分。效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E9%A1%B6%E5%92%8C%E8%B8%A9.png" alt=""></p>
+<p>在<code>Bootstrap</code>框架里，“按钮”这个组件十分常见，属性也比较复杂。我们先从最简单的“<strong>默认按钮</strong>”开始吧。</p>
+<p><img src="/article_images/foreground/bootstrap/%E9%BB%98%E8%AE%A4%E6%8C%89%E9%92%AE.png" alt=""></p>
+<pre><code class="language-html">&lt;button class=&quot;btn&quot;&gt;基本按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-default&quot;&gt;默认按钮&lt;/button&gt;
+</code></pre>
+<p>给一个元素（通常是<code>&lt;button&gt;</code>或<code>&lt;a&gt;</code>）添加 class <code>btn btn-default</code>，就形成了一个默认按钮。<code>btn-default</code>的样式是一个灰色的按钮外观。</p>
+<p>为了让按钮显示不同的<strong>颜色</strong>来代表不同的含义，我们把<code>btn-default</code>修改成其他的类名。比如 <code>btn-danger</code> 表示“危险”，在外观上看来就是红色按钮；<code>btn-info</code>表示“信息”，是一个浅蓝色的按钮。</p>
+<p><img src="/article_images/foreground/bootstrap/%E9%A2%9C%E8%89%B2%E6%8C%89%E9%92%AE.png" alt=""></p>
+<pre><code class="language-html">&lt;button class=&quot;btn btn-primary&quot;&gt;按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-success&quot;&gt;按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-info&quot;&gt;按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-danger&quot;&gt;按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-warning&quot;&gt;按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-link&quot;&gt;按钮&lt;/button&gt;
+</code></pre>
+<p>通过添加<code>btn-lg</code>、<code>btn-xs</code>等 class，还可以调整按钮的<strong>大小</strong>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%8C%89%E9%92%AE%E5%A4%A7%E5%B0%8F.png" alt=""></p>
+<pre><code class="language-html">&lt;button class=&quot;btn btn-primary btn-xs&quot;&gt;最小的按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-sm&quot;&gt;小按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary&quot;&gt;普通大小按钮&lt;/button&gt;
+&lt;button class=&quot;btn btn-primary btn-lg&quot;&gt;加大按钮&lt;/button&gt;
+</code></pre>
+<p>更多按钮的用法，可以在这里查看</p>
+<p><a href="http://v3.bootcss.com/css/#buttons">Bootstrap文档-按钮</a></p>
+<p>知道如何灵活使用按钮组件后，回到我们的案例，添加两个在页面中居中的按钮，一个红色、一个蓝色。</p>
+<pre><code class="language-html">&lt;p class=&quot;text-center&quot;&gt;
+     &lt;button class=&quot;btn btn-primary&quot;&gt;顶&lt;/button&gt;
+     &lt;button class=&quot;btn btn-danger&quot;&gt;踩&lt;/button&gt;
+ &lt;/p&gt;
+</code></pre>
+<h2 id="右侧列表组件">右侧——列表组件</h2>
+<p>我们最后来处理右侧的区域，这里有一张图片，下方是一个“相关内容”的列表，直接用<code>&lt;ul&gt;&lt;li&gt;</code>列表元素会在每个列表项前面显示一个圆点，<code>Bootstrap</code>里有个作用于<code>&lt;ul&gt;</code>的<code>list-unstyled</code>类，可以隐藏这个圆点。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%8F%B3%E4%BE%A7.png" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;col-md-3&quot;&gt;
+ &lt;p&gt;
+     &lt;img src=&quot;../assets/case_1.jpg&quot; alt=&quot;...&quot; class=&quot;img-circle&quot;&gt;
+ &lt;/p&gt;
+ &lt;h3&gt;相关内容&lt;/h3&gt;
+ &lt;ul class=&quot;list-unstyled&quot;&gt;
+     &lt;li&gt;&lt;a href=&quot;&quot;&gt;深圳市四光年信息技术有限公司&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;&quot;&gt;深圳市腾讯计算机系统&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;&quot;&gt;北京市百度互联网计算有限公司&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;&quot;&gt;杭州市阿里巴巴集团&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre>
+<h1 id="联系方式及意见反馈使用表单">联系方式及意见反馈——使用表单</h1>
+<p>新建一个文件<code>Home_about.html</code>。关于”页面能够让潜在的客户联系自己，包括两块内容：公司信息（地址、联系方式），以及一个提交建议的<strong>表单</strong>。效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%85%B3%E4%BA%8E%E9%A1%B5%E9%9D%A2.png" alt=""></p>
+<h2 id="联系方式">联系方式</h2>
+<p>我们可以直接使用“地址”标签(<code>&lt;address&gt;</code>)，这也是一个 HTML5 规范里的语义化标签。
+这里还有个很有意思的<code>&lt;abbr&gt;</code>标签，给它添加一个<code>title</code>属性后，鼠标放在文本上面，会浮动显示一个小提示。</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F.gif" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;container&quot;&gt;
+   &lt;h2&gt;联系方式&lt;/h2&gt;
+   &lt;address&gt;
+       &lt;strong&gt;深圳市四光年信息技术有限公司.&lt;/strong&gt;&lt;br&gt; 深圳市南山区深南大道100号&lt;br&gt;
+       &lt;abbr title=&quot;Phone&quot;&gt;联系电话:&lt;/abbr&gt; 400-123-123
+   &lt;/address&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="表单">表单</h2>
+<h3 id="表单的骨架">表单的骨架</h3>
+<p>普通的表单组件如果不添加任何样式，看起来是很粗糙的，通过给这些控件添加<code>Bootstrap</code>框架预设的<code>class</code>，可以马上让表单看起来更加专业、更美观。</p>
+<p>先把这个表单的 HTML 代码写好（默认样式比较丑陋）。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%97%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8%E5%8D%95.png" alt=""></p>
+<p>代码如下：</p>
+<pre><code class="language-html">&lt;h2&gt;建议&lt;/h2&gt;
+&lt;form action=&quot;&quot;&gt;
+  &lt;div&gt;
+      &lt;label for=&quot;&quot;&gt;姓名&lt;/label&gt;
+      &lt;input id=&quot;truename&quot; type=&quot;text&quot; /&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+      &lt;label&gt;称呼&lt;/label&gt;
+      &lt;input type=&quot;radio&quot; checked /&gt;先生
+      &lt;input type=&quot;radio&quot; /&gt;女士
+  &lt;/div&gt;
+
+  &lt;div&gt;
+      &lt;label for=&quot;job&quot;&gt;你的职位&lt;/label&gt;
+      &lt;select name=&quot;&quot; id=&quot;job&quot;&gt;
+          &lt;option value=&quot;&quot;&gt;开发者&lt;/option&gt;
+          &lt;option value=&quot;&quot;&gt;运营&lt;/option&gt;
+          &lt;option value=&quot;&quot;&gt;管理人员&lt;/option&gt;
+      &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+      &lt;label for=&quot;&quot;&gt;你最喜欢”公众号管家“的哪个功能&lt;/label&gt;
+      &lt;input type=&quot;checkbox&quot; checked&gt;文章高级排版
+      &lt;input type=&quot;checkbox&quot;&gt;多公众号切换
+      &lt;input type=&quot;checkbox&quot;&gt;素材集中管理
+      &lt;input type=&quot;checkbox&quot;&gt;其他
+  &lt;/div&gt;
+
+  &lt;div&gt;
+      &lt;label for=&quot;&quot;&gt;更多建议&lt;/label&gt;
+      &lt;textarea rows=&quot;3&quot; cols=&quot;&quot;&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;p&gt;请不要超过500个字&lt;/p&gt;
+
+  &lt;div&gt;
+      &lt;button class=&quot;btn btn-primary&quot;&gt;提交&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<h3 id="绑定-bootstrap-样式">绑定 Bootstrap 样式</h3>
+<p>给<code>&lt;form&gt;</code>增加一个<code>role</code>属性，值为<code>form</code>，表示它是一个“表单”。</p>
+<pre><code class="language-html">&lt;form action=&quot;&quot; role=&quot;form&quot;&gt;
+</code></pre>
+<p>修改第一个<code>&lt;input type=&quot;text&quot;&gt;</code>输入框控件，先把包裹它的<code>&lt;div&gt;</code>添加一个类名<code>form-group</code>，然后给它自己添加一个类名<code>form-control</code>。</p>
+<pre><code class="language-html">&lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;&quot;&gt;姓名&lt;/label&gt;
+      &lt;input class=&quot;form-control&quot; id=&quot;truename&quot; type=&quot;text&quot; /&gt;
+  &lt;/div&gt;
+</code></pre>
+<p><strong>记住这两个 class</strong></p>
+<p><code>form-group</code>表示它内部的两个控件（<code>&lt;label&gt;</code>和<code>&lt;input&gt;</code>）<strong>在功能上是一个整体</strong>，“group”字面上就是组的意思。</p>
+<p>再看<code>form-control</code>，表示让表单组件显示<code>Bootstrap</code>规定的样式。（不仅仅用于<code>&lt;input&gt;</code>，还包括<code>&lt;textarea&gt;</code>等）</p>
+<p>我们把代码里所有的表单组件全部加上<code>class=&quot;form-control&quot;</code></p>
+<p><img src="/article_images/foreground/bootstrap/%E6%B7%BB%E5%8A%A0form-control.png" alt=""></p>
+<p>刷新下页面，比之前顺眼多了！已经显示了<code>Bootstrap</code>的样式。</p>
+<h3 id="特殊的-checkbox-多选框和-radio-单选框组件">特殊的 checkbox 多选框和 radio 单选框组件</h3>
+<p>但是<code>checkbox</code>和<code>radio</code>好像有点奇怪——换行有错误。那是因为<code>checkbox</code>多选框、<code>radio</code>单选框和<code>&lt;label&gt;</code>一起用的时候，是不能直接添加一个<code>class=&quot;form-control&quot;</code>类名的。</p>
+<p>请仔细观察修改后的代码（看起来啰嗦了不少）。</p>
+<p><img src="/article_images/foreground/bootstrap/checkbox%E5%92%8Cradio.png" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;form-group&quot;&gt;
+ &lt;label for=&quot;&quot;&gt;称呼&lt;/label&gt;
+ &lt;div class=&quot;radio&quot;&gt;
+     &lt;label&gt;
+         &lt;input type=&quot;radio&quot; checked /&gt;先生
+     &lt;/label&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;radio&quot;&gt;
+     &lt;label&gt;
+         &lt;input type=&quot;radio&quot; /&gt;女士
+     &lt;/label&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-group&quot;&gt;
+	 &lt;label for=&quot;&quot;&gt;你最喜欢”公众号管家“的哪个功能&lt;/label&gt;
+	 &lt;div class=&quot;checkbox&quot;&gt;
+	     &lt;label&gt;
+	         &lt;input type=&quot;checkbox&quot; checked&gt;文章高级排版
+	     &lt;/label&gt;
+	 &lt;/div&gt;
+	 &lt;div class=&quot;checkbox&quot;&gt;
+	     &lt;label&gt;
+	         &lt;input type=&quot;checkbox&quot;&gt;多公众号切换
+	     &lt;/label&gt;
+	 &lt;/div&gt;
+	 &lt;div class=&quot;checkbox&quot;&gt;
+	     &lt;label&gt;
+	         &lt;input type=&quot;checkbox&quot;&gt;素材集中管理
+	     &lt;/label&gt;
+	 &lt;/div&gt;
+	 &lt;div class=&quot;checkbox&quot;&gt;
+	     &lt;label&gt;
+	         &lt;input type=&quot;checkbox&quot;&gt;其他
+	     &lt;/label&gt;
+	 &lt;/div&gt;
+	&lt;/div&gt;
+</code></pre>
+<ol>
+<li>首先要用一个 <code>&lt;div class=&quot;checkbox&gt;</code>或<code>&lt;div class=&quot;radio&gt;</code>把<strong>整个组件</strong>包裹起来</li>
+<li>然后用<code>&lt;label&gt;</code>把多选框/单选框（<code>&lt;input type=&quot;checkbox&gt;</code>或<code>&lt;input type=&quot;radio&quot;&gt;</code>）包裹起来（而普通的文本输入框中，<code>&lt;label&gt;</code>和<code>&lt;input&gt;</code>是并列的）</li>
+<li>最后<strong>一定要删掉<code>&lt;input type=&quot;radio&quot;&gt;</code>或<code>&lt;input type=&quot;checkbox&quot;&gt;</code>上面的<code>form-control</code>类名</strong>。</li>
+</ol>
+<h3 id="让-label-和-input-水平布局节省页面空间">让 label 和 input 水平布局，节省页面空间</h3>
+<p>“姓名”输入框看起来太长了，把整个页面宽度都占满了，有没有办法<strong>控制输入框的宽度</strong>呢？
+还有<code>&lt;label&gt;</code>和<code>&lt;input&gt;</code>组件默认是<strong>从上到下垂直排列</strong>，每一项都占据了一整行，也挺浪费空间的。能不能让它们<strong>在同一行左右水平排列</strong>？</p>
+<p><strong>首先在<code>&lt;form&gt;</code>上添加一个类名<code>form-horizontal</code></strong>，这一步很关键。</p>
+<pre><code class="language-html">&lt;form action=&quot;&quot; class=&quot;form-horizontal&quot; role=&quot;form&quot;&gt;
+</code></pre>
+<p>刷新，咦，没变化？
+那是因为虽然<code>&lt;form&gt;</code>通知了它里面的组件进行水平分布，但是这些组件<strong>还没有设置“宽度”</strong>。我们给<code>&lt;label&gt;</code>添加 class <code>control-label</code>和<code>col-md-宽度</code>，然后将<code>&lt;input&gt;</code>用一个<code>&lt;div&gt;</code>包裹起来，并给这个<code>&lt;div&gt;</code>设置一个固定的较小宽度，让它不再占满一整行的空间（例如<code>col-md-4</code>）。</p>
+<pre><code class="language-html">&lt;div class=&quot;form-group&quot;&gt;
+	 &lt;label for=&quot;&quot; class=&quot;col-md-2 control-label&quot;&gt;姓名&lt;/label&gt;
+	 &lt;div class=&quot;col-md-4&quot;&gt;
+	     &lt;input class=&quot;form-control&quot; id=&quot;truename&quot; type=&quot;text&quot; /&gt;
+	 &lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;div class=&quot;form-group&quot;&gt;
+	 &lt;label for=&quot;&quot; class=&quot;col-md-2 control-label&quot;&gt;称呼&lt;/label&gt;
+	 &lt;div class=&quot;col-md-4&quot;&gt;
+	     &lt;div class=&quot;radio&quot;&gt;
+	         &lt;label&gt;
+	         &lt;input type=&quot;radio&quot; checked /&gt;先生
+	     &lt;/label&gt;
+	     &lt;/div&gt;
+	     &lt;div class=&quot;radio&quot;&gt;
+	         &lt;label&gt;
+	         &lt;input type=&quot;radio&quot; /&gt;女士
+	     &lt;/label&gt;
+	     &lt;/div&gt;
+	 &lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;!--略，将所有组件都修改成合适的宽度--&gt;
+</code></pre>
+<p>好了，现在看起很紧凑了。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%B0%B4%E5%B9%B3%E8%A1%A8%E5%8D%95.png" alt=""></p>
+<p>有关表单组件的更多资料，请阅读</p>
+<p><a href="http://v3.bootcss.com/css/#forms-controls">Bootstrap-支持的控件</a></p>
+<h1 id="拒绝千篇一律使用第三方主题">拒绝千篇一律——使用第三方主题</h1>
+<p>正因为<code>Bootstrap</code>框架如此流行，所以你在上网的时候会经常看到它（尤其是那个灰头土脸的默认风格出现次数特别多）。看多了就容易审美疲劳了。</p>
+<p>我们可以使用一些第三方的<code>Bootstrap</code><strong>主题</strong>，给我们的页面<strong>换个漂亮的皮肤</strong>。</p>
+<p>打开 <code>https://bootswatch.com</code>这个网站，里面有很多免费的<code>Bootstrap</code>主题可以下载。</p>
+<p><a href="https://bootswatch.com">Bootstrap主题</a></p>
+<p><img src="/article_images/foreground/bootstrap/bootswatch.png" alt=""></p>
+<p>找一个你最喜欢的，点击“Download”按钮，会下载一个 <code>bootstrap.min.css</code>到本地。我们把 <code>assets</code>目录里旧的那个同名文件改成<code>bootstrap_default.min.css</code>（不要删除，以备以后可以恢复），然后把这个新的文件复制进去。</p>
+<p>刷新页面，瞬间耳目一新！</p>
+<p><img src="/article_images/foreground/bootstrap/.png" alt=""></p>
+<h1 id="第二部分后台管理系统">第二部分：后台管理系统</h1>
+<p>在这个部分里，我们会搭建一个名叫“<strong>微信公众号管家</strong>”的<strong>后台管理系统</strong>，用户<strong>注册</strong>并用自己的账号密码<strong>登录</strong>后，可以管理自己的微信公众号和各种素材资源。</p>
+<p>关于这个管理系统的介绍和功能模块说明，请查看《最好懂的微信公众平台开发教程(3)——同时管理多个公众号》。因为我们这个教程是讲<code>Bootstrap</code>的，所以重点放在页面制作上。</p>
+<h2 id="需要制作的页面说明">需要制作的页面说明</h2>
+<p>根据这个系统的模块结构，列出需要制作的页面：(和本教程关系不大，不需要理解里面是什么，这部分内容你可以直接忽略)</p>
+<ul>
+<li>登录/注册</li>
+<li>后台首页 Dashboard（列出一些数据概况）</li>
+<li>系统设置
+<ul>
+<li>公众号管理
+<ul>
+<li>公众号列表</li>
+<li>添加公众号/编辑公众号信息（结构相似，合并成一个页面）</li>
+</ul>
+</li>
+<li>运营人员管理
+<ul>
+<li>运营人员列表</li>
+<li>新建、编辑运营人员（用户名/密码、权限）</li>
+</ul>
+</li>
+<li>客服管理
+<ul>
+<li>客服列表（状态）</li>
+<li>新建客服</li>
+<li>编辑客服（禁用、分配用户等）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>公众号设置
+<ul>
+<li>公众号列表</li>
+<li>设置自定义菜单</li>
+<li>设置个性化菜单</li>
+<li>设置自动回复（包括被关注、关键词）</li>
+</ul>
+</li>
+<li>用户管理
+<ul>
+<li>用户列表（含条件筛选）</li>
+<li>用户标签管理</li>
+<li>用户编辑（打标签、备注、拉黑）</li>
+</ul>
+</li>
+<li>消息管理
+<ul>
+<li>历史消息列表（含筛选）</li>
+<li>回复消息/聊天</li>
+<li>群发消息</li>
+<li>模板消息管理</li>
+<li>客服聊天记录（要先启用客服功能）</li>
+</ul>
+</li>
+<li>素材管理
+<ul>
+<li>素材列表</li>
+<li>新增多媒体素材（图片、视频、音频）</li>
+<li>新增图文素材</li>
+</ul>
+</li>
+</ul>
+<p>由于这些页面大部分结构比较相似（包括列表、添加/编辑等），所以只<strong>选取几个最具有代表性的</strong>来讲解。我会在这几个页面里尽可能覆盖所有<code>Bootstrap</code>组件的知识。学完后你完全可以<strong>举一反三</strong>，自己来完成剩余的页面。</p>
+<ul>
+<li>登录与注册</li>
+<li>Dashboard 页面</li>
+<li>用户管理相关</li>
+<li>素材管理相关</li>
+</ul>
+<h1 id="登录与注册">登录与注册</h1>
+<h2 id="注册页面">注册页面</h2>
+<p>创建一个新的文件<code>register.html</code>。
+用户在进入管理后台之前，必须要进行注册、登录。我们用刚刚学过表单的知识来完成。最终效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%B3%A8%E5%86%8C%E9%A1%B5%E9%9D%A2.png" alt=""></p>
+<h3 id="核心代码">核心代码</h3>
+<pre><code class="language-html"> &lt;div class=&quot;container&quot;&gt;
+   &lt;h2&gt;注册&lt;/h2&gt;
+   &lt;form action=&quot;&quot; role=&quot;form&quot;&gt;
+       &lt;div class=&quot;form-group&quot;&gt;
+           &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;用户名&quot; /&gt;
+           &lt;input type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;密码&quot; /&gt;
+           &lt;input type=&quot;password&quot; class=&quot;form-control&quot; placeholder=&quot;确认密码&quot; /&gt;
+       &lt;/div&gt;
+       &lt;div&gt;
+
+           &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;确定&lt;/button&gt;
+           &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;直接登录&lt;/button&gt;
+
+       &lt;/div&gt;
+   &lt;/form&gt;
+&lt;/div&gt;
+</code></pre>
+<p>注意：输入框<code>&lt;input&gt;</code>前面没有放一个<code>&lt;label&gt;</code>，我们把说明文字挪到它的<code>placeholder</code>属性里面去了，更节省空间。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%B3%A8%E5%86%8C-%E5%AE%BD%E5%BA%A6.png" alt=""></p>
+<h3 id="使用栅格布局的偏移来控制宽度">使用栅格布局的“偏移”来控制宽度</h3>
+<p>这个表单好像太宽了，输入框把整个页面都撑满了，看起来不够美观。</p>
+<p>我们可以用前面学到的<strong>栅格系统</strong>布局的知识，通过如下的代码，给每一个<code>&lt;input&gt;</code>组件添加 class <code>col-md-x</code>来控制宽度。但是这样太麻烦了，<strong>要同时修改几个组件，写很多重复的代码</strong>。</p>
+<pre><code class="language-html">&lt;!--第一个 input --&gt;
+&lt;div class=&quot;row&quot;&gt;
+	&lt;div class=&quot;col-md-3&quot;&gt;
+		&lt;div class=&quot;form-group&quot;&gt;
+                &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;用户名&quot; /&gt;
+             &lt;/div&gt;
+      &lt;/div&gt;
+&lt;/div&gt;
+&lt;!--第二个 input --&gt;
+&lt;div class=&quot;row&quot;&gt;
+	&lt;!--略--&gt;
+</code></pre>
+<p>如果把<strong>整个表单</strong>缩小宽度并<strong>居中</strong>，这样不就一次性把它里面的所有<code>&lt;input&gt;</code>都缩小了吗？</p>
+<p>我们首先想到的是用栅格系统来“均分页面”：在表单的<strong>左右两边添加两个<code>&lt;div&gt;</code></strong>，里面没有任何元素，只用来<strong>占满空间</strong>。</p>
+<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-3&quot;&gt;&lt;!--左边留空--&gt;&lt;/div&gt;
+  &lt;div class=&quot;col-md-6&quot;&gt;我是表单区域&lt;/div&gt;
+  &lt;div class=&quot;col-md-3&quot;&gt;&lt;!--右边留空--&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>不过这样还是浪费代码，更优雅的方法是用栅格布局里的<code>偏移</code>特性。只需要<strong>给元素添加一个偏移量</strong>，它就会自动在左侧留出一定的空间来。</p>
+<p>例如下面代码就表示设置表单的<strong>宽度为 6 份</strong>，<strong>偏移 3 份</strong>（表示<strong>左边留出 3 份宽度的空白</strong>，那么右边通过自动计算剩下了 12-6-3 = 3 份单位宽度）</p>
+<pre><code class="language-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-md-6 col-md-offset-3&quot;&gt;
+  	&lt;form&gt;表单&lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>只用了非常少的代码就实现了目的！这种<strong>偏移</strong>的布局方式非常灵活，可以让某一个元素“漂浮”在页面的一个区域。你可以自己多尝试一下，体会其中的好处。</p>
+<p><strong>想想看如何用最少的代码，让两个小图片分别位于页面左右两端？</strong></p>
+<h2 id="登录页面">登录页面</h2>
+<p>登录页面<code>login.html</code>就不啰嗦了，比注册页面还要简单（少了个“确认密码”的输入框）</p>
+<h1 id="后台页面布局">后台页面布局</h1>
+<p>在<code>Template</code>目录下新建一个文件<code>Admin_dashboard.html</code>。我们用<code>Admin_</code>前缀开头的文件来区分前台和后台页面。</p>
+<h2 id="页面结构">页面结构</h2>
+<p>基本上所有后台页面都有相同的结构，分为三部分</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0%E5%8E%9F%E5%9E%8B.png" alt=""></p>
+<ul>
+<li><strong>主导航区域</strong>，位于页面顶部</li>
+<li>位于页面左侧的<strong>次级导航区域</strong>（点击主功能导航区域某个链接后，显示它下级的功能列表）</li>
+<li><strong>主显示区域</strong>：显示数据、操作等，位于页面右侧</li>
+</ul>
+<h2 id="顶部的主导航区域">顶部的主导航区域</h2>
+<p>在前面的企业网站案例中已经讲过<code>导航条</code>组件了，所以可以直接复制前面的代码，然后添加、修改导航链接。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA.png" alt=""></p>
+<pre><code class="language-html">&lt;ul class=&quot;nav navbar-nav&quot;&gt;
+      &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;后台首页&lt;/a&gt;&lt;/li&gt;
+      &lt;li class=&quot;dropdown&quot;&gt;
+          &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;系统设置 &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+          &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;公众号管理&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;运营人员管理&lt;/a&gt;&lt;/li&gt;
+              &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;客服管理&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;!--略--&gt;
+</code></pre>
+<h3 id="下拉菜单">下拉菜单</h3>
+<p>在这个导航条里，因为<code>系统设置</code>这个大的功能模块下面还有<code>公众号管理</code>、<code>运营人员管理</code>等几个子模块，所以做成了一个<code>下拉菜单</code>节省空间。<code>下拉菜单</code>是<code>Bootstrap</code>提供的一个组件，在后面我们会详细讲解，这里你只要复制<code>&lt;li class=&quot;dropdown&quot;&gt;</code>这块代码即可。</p>
+<p>我们希望导航条能够在<strong>往下拉动页面时一直固定在顶部不会消失</strong>，给它添加一个类<code> navbar-fixed-top</code>。</p>
+<pre><code class="language-html">&lt;nav class=&quot;navbar navbar-default navbar-fixed-top&quot;&gt;
+</code></pre>
+<h3 id="居右对齐">居右对齐</h3>
+<p>最后，将用户名和退出登录的链接，放在导航条右侧（通过给<code>&lt;ul class=&quot;nav navbar-nav&gt;</code>添加一个类<code> navbar-right</code>）</p>
+<pre><code>&lt;/ul&gt;&lt;!--导航条中的内容默认居左--&gt;
+
+&lt;!--设置居右--&gt;
+&lt;ul class=&quot;nav navbar-nav navbar-right&quot;&gt;
+ &lt;li&gt;&lt;a href=&quot;#&quot;&gt;admin&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&quot;#&quot;&gt;退出&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h2 id="左侧的次级导航区域和右侧主显示区域">左侧的次级导航区域和右侧主显示区域</h2>
+<p>顶部主导航往下的部分，实际上是分为<strong>左右两栏</strong>，左侧是次级导航区域；右侧是主显示区域。可以用<strong>栅格系统</strong>来布局。</p>
+<pre><code class="language-html"> &lt;div class=&quot;container&quot;&gt;
+   &lt;div class=&quot;row&quot;&gt;
+       &lt;div class=&quot;col-md-3&quot;&gt;
+		&lt;!--次级导航区域--&gt;
+       &lt;/div&gt;
+       &lt;div class=&quot;col-md-9&quot;&gt;
+		&lt;!--主显示区域--&gt;
+       &lt;/div&gt;
+   &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="列表">列表</h3>
+<p>次级导航区域实际上<strong>是一些链接的列表</strong>，可以使用<code>Bootstrap</code>的<code>列表组</code>这个组件来制作，它用<code>&lt;ul class=&quot;list-group&quot;&gt;</code>包裹住多个列表项（<code>&lt;li class=&quot;list-group-item&quot;&gt;</code>）。例如：</p>
+<pre><code class="language-html">&lt;div class=&quot;col-md-3&quot;&gt;
+      &lt;!--次级导航区域--&gt;
+      &lt;!--消息管理--&gt;
+      &lt;ul class=&quot;list-group&quot;&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;&lt;a href=&quot;&quot;&gt;历史消息列表&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;&lt;a href=&quot;&quot;&gt;群发消息&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;&lt;a href=&quot;&quot;&gt;模板消息管理&lt;/a&gt;&lt;/li&gt;
+          &lt;li class=&quot;list-group-item&quot;&gt;&lt;a href=&quot;&quot;&gt;客服聊天记录&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+  &lt;/div&gt;
+</code></pre>
+<p><img src="/article_images/foreground/bootstrap/%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA-%E9%81%AE%E7%9B%96.png" alt=""></p>
+<p>有关<code>列表组</code>的更多使用方法，请阅读文档的更多相关内容。</p>
+<p><a href="http://v3.bootcss.com/components/#list-group">Bootstrap-列表组</a></p>
+<h3 id="导航条固定在顶部产生的问题">导航条固定在顶部产生的问题</h3>
+<p>如上图所示，显示有一些问题——这个列表的上面一部分被遮住了！</p>
+<p>这是因为当导航条组件<code>&lt;nav class=&quot;navbar navbar-default&quot;&gt;</code>添加了<strong>固定在顶部</strong>的类<code>navbar-fixed-top</code>后，其定位方式变成了<code>position: fixed</code>（可以用 chrome 的开发者工具看到），使得导航条后面的元素直接跑到原来导航条占据的空间去了，所以被导航条覆盖了一部分。</p>
+<p>因此，给整个导航条后面的元素添加一个样式，给它与顶部的距离增加一些的空白。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%B7%A6%E4%BE%A7%E5%AF%BC%E8%88%AA-%E6%B7%BB%E5%8A%A0margin.png" alt=""></p>
+<h3 id="用徽章组件显示数字提示">用“徽章”组件显示数字提示</h3>
+<p>我们注意到有一些页面是用于展示“数据列表”的（例如用户列表、消息列表等等），可以在列表项的后面添加一个小的<strong><code>徽章</code></strong>组件，用来提示<strong>有几条新的数据</strong>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%BE%BD%E7%AB%A0.png" alt=""></p>
+<pre><code class="language-html">&lt;li class=&quot;list-group-item&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;5&lt;/span&gt;
+    &lt;a href=&quot;&quot;&gt;历史消息列表&lt;/a&gt;
+&lt;/li&gt;
+</code></pre>
+<p><code>徽章</code>组件经常放在按钮、列表项的旁边，用于<strong>显示数字标记</strong>。它和后面我们会遇到<code>标签</code>组件组件看上去有点像，但又有很大的不同：</p>
+<ol>
+<li><code>徽章</code>自带一个“浮动居右”的样式<code>float: right</code></li>
+<li>边缘的弧度比标签要更圆</li>
+<li>只能显示灰色的背景色</li>
+</ol>
+<p>以下是<code>徽章</code>的更多信息。关于与它有一些相似的<code>标签</code>组件，我们会在后面的章节来讲解。</p>
+<p><a href="http://v3.bootcss.com/components/#badges">Bootstrap-徽章</a></p>
+<h1 id="dashboard-页面">Dashboard 页面</h1>
+<p>注意：因为顶部主导航和左侧的次级导航在每个页面都是一样的（除了当前激活状态有一点点变化）。为了节省篇幅，从这里开始的所有内容都是与**“主显示区”**对应的。</p>
+<p>Dashboard 页面一般在当用户刚登陆系统的时候显示，会列出<strong>系统环境变量</strong>（例如服务器版本、当前时间）；一些<strong>统计数据</strong>（比如用户量、文章数量等）；或者把一些<strong>常用操作</strong>单独拿出来做快捷方式（有的功能藏得比较深，要点击多次才能找到）。</p>
+<p>这些信息看起来很像汽车的“<strong>仪表盘</strong>”，所以习惯把这个页面叫<strong>Dashboard</strong>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-dashboard.png" alt=""></p>
+<pre><code class="language-html">&lt;!--主显示区域--&gt;
+&lt;div class=&quot;col-md-9&quot;&gt;
+	&lt;!--环境变量--&gt;
+	&lt;!--统计数据--&gt;
+	&lt;!--通知--&gt;
+	&lt;!--更多信息--&gt;
+&lt;/div&gt;
+</code></pre>
+<p>下面我们来一边完善这个页面一边学习新的<code>Bootstrap</code>组件。</p>
+<h2 id="用警告框显示重要信息">用“警告框”显示重要信息</h2>
+<p><code>警告框</code>是一个彩色背景的大色块，上面显示文字，用不同的颜色来区分信息的重要程度。可以用于显示<strong>提示</strong>、<strong>通知</strong>、<strong>错误</strong>等。</p>
+<p>例如这里我们在 Dashboard 页面里显示一条<strong>通知</strong>，告诉管理员今天公众号共新增了多少订阅用户，点击“X”按钮可以关闭这个警告框：</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%AD%A6%E5%91%8A%E6%A1%86.gif" alt=""></p>
+<pre><code class="language-html">&lt;!--警告框--&gt;
+ &lt;div class=&quot;alert alert-info alert-dismissible&quot; role=&quot;alert&quot;&gt;
+     &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;&lt;/button&gt;
+     &lt;strong&gt;提示&lt;/strong&gt;
+     你的公众号“鲜鲜美美”新增了 6 个订阅者.
+     &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;[查看]&lt;/a&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>实现一个警告框的方法如下：</p>
+<ol>
+<li>使用 <code>&lt;div class=&quot;alert alert-info alert-dismissible&quot; role=&quot;alert&quot;&gt;</code>包裹（可以用<code>alert-danger</code>等来替代 <code>alert-info</code>，见后面有说明）</li>
+<li>添加一个<code>&lt;button class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;</code>的按钮用来关闭这个警告框</li>
+<li>警告框里面除了普通文本，还可以放超链接，这些超链接有一个 class 是<code>alert-link</code></li>
+</ol>
+<p><strong>警告框组件的样式有哪些？</strong></p>
+<p>还记得前面学过的<code>按钮</code>组件吗？按钮可以通过使用<code>btn-danger</code>、<code>btn-info</code>等类名来显示不同颜色，警告框组件也可以：</p>
+<pre><code class="language-html">&lt;div class=&quot;alert alert-success&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-info&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<h2 id="用面板组件显示系统参数">用“面板组件”显示系统参数</h2>
+<p><code>面板</code>组件是一个类似盒子的容器，可以把文本、图片等等都放在里面。它的<strong>外部有一个边框</strong>，在上方和下方有一栏<strong>标题</strong>和一栏<strong>脚注</strong>（都是可选的）。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E9%9D%A2%E6%9D%BF%E7%BB%84%E4%BB%B6.png" alt=""></p>
+<pre><code class="language-html">&lt;!--面板--&gt;
+ &lt;div class=&quot;panel panel-default&quot;&gt;
+     &lt;div class=&quot;panel-heading&quot;&gt;系统概况&lt;/div&gt;
+     &lt;div class=&quot;panel-body&quot;&gt;
+         &lt;p&gt;操作系统：Ubuntu 14.04 x64, PHP版本：5.5.9, MySQL 版本：5.6&lt;/p&gt;
+         &lt;p&gt;公众号总数：5&lt;/p&gt;
+         &lt;p&gt;素材统计：图片(223) 视频(13) 图文素材(36)&lt;/p&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;panel-footer&quot;&gt;当前时间：2016-10-10 21:02&lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>实现面板组件的方法</p>
+<ol>
+<li>使用<code>&lt;div class=&quot;panel panel-default&quot;&gt;</code>包裹内部的 DOM。和<code>按钮</code>、<code>警告框</code>类似，可用<code>panel-info</code>，<code>panel-danger</code>等来显示不同的颜色</li>
+<li><code>&lt;div class=&quot;panel-heading&quot;&gt;</code>是标题</li>
+<li><code>&lt;div class=&quot;panel-body&quot;&gt;</code>面板的主体区域</li>
+<li><code>&lt;div class=&quot;panel-footer&quot;&gt;</code>是脚注</li>
+</ol>
+<p>面板的主体区域里可以放文本、表格、列表等等各种元素。你可以读一下文档，看看它的用途：</p>
+<p><a href="http://v3.bootcss.com/components/#panels">Bootstrap-面板组件</a></p>
+<h2 id="用缩略图组件来显示挂件">用“缩略图组件”来显示“挂件”</h2>
+<p><code>缩略图组件</code>实际上是一张<strong>特殊样式的图片</strong>和与它有关信息的组合（例如标题、按钮等）。在 Dashboard 页面中，有一个“快捷方式”区域，我们用缩略图组件来制作它们：</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E7%BC%A9%E7%95%A5%E5%9B%BE%E7%BB%84%E4%BB%B6.png" alt=""></p>
+<pre><code class="language-html">&lt;!--缩略图--&gt;
+ &lt;h2&gt;快捷方式&lt;/h2&gt;
+ &lt;div class=&quot;row&quot;&gt;
+ 	&lt;!--第一个缩略图组件--&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;
+         &lt;div class=&quot;thumbnail&quot;&gt;
+             &lt;img src=&quot;../assets/dashboard-setting.png&quot; style=&quot;height:150px;&quot; alt=&quot;...&quot;&gt;
+             &lt;div class=&quot;caption&quot;&gt;
+                 &lt;h3&gt;公众号管理&lt;/h3&gt;
+                 &lt;p&gt;设置公众号的 AppID 和KEY 等&lt;/p&gt;
+                 &lt;p&gt;
+                     &lt;a href=&quot;#&quot; class=&quot;btn btn-primary&quot; role=&quot;button&quot;&gt;进入&lt;/a&gt;
+                     &lt;a href=&quot;#&quot; class=&quot;btn btn-default&quot; role=&quot;button&quot;&gt;删除挂件&lt;/a&gt;
+                 &lt;/p&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+     &lt;/div&gt;
+     &lt;!--第二个缩略图组件 代码略--&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;
+         &lt;div class=&quot;thumbnail&quot;&gt;
+</code></pre>
+<p>如上所示，如果有多个缩略图组件要同时显示，可以使用<code>栅格系统</code>布局，并设置每个组件的宽度。然后把相关的文字、按钮放在<code>&lt;div class=&quot;caption&gt;</code>里面。</p>
+<h1 id="用户管理">用户管理</h1>
+<h2 id="用户列表">用户列表</h2>
+<p>在<code>Template</code>目录里新建一个文件<code>Admin_userList.html</code>。把前面<code>Admin_dashboard.html</code>里的顶部导航、左侧次级导航、主显示区域代码全部复制进来，删掉主显示区域内部的代码。</p>
+<p><strong>题外话</strong></p>
+<p>如果你会 PHP 等<strong>web开发语言</strong>，可以用<code>包含文件</code>的形式，把顶部导航、左侧导航等都做成可以<strong>重复调用</strong>的<code>模板文件</code>，这样就不用重复去写这些代码了。</p>
+<p>这个页面的最终效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E7%94%A8%E6%88%B7%E5%88%97%E8%A1%A8.png" alt=""></p>
+<h3 id="用户导入与进度条组件">用户导入与进度条组件</h3>
+<p>系统刚开始运行的时候，我们的数据库里还没有数据，因此需要<strong>手动导入</strong>。由于需要导入的用户的数据量可能会比较大，<strong>为了避免漫长的等待让操作者误以为系统失去响应</strong>，因此在导入过程中，添加一个<code>进度条</code>组件来<strong>提示目前进行中的任务实时进度</strong>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E6%99%AE%E9%80%9A.png" alt=""></p>
+<p><strong>进度条上面显示了一个数字</strong>，表示任务完成的百分比，这个需要配合后台程序进行实时更新。</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E6%9C%89%E5%88%BB%E5%BA%A6.png" alt=""></p>
+<p>在页面里添加一个<code>按钮</code>以及一个<code>进度条</code>组件。进度条默认是隐藏的。点击按钮后，显示进度条，同时触发导入数据的动作，并根据任务进度更新进度条上的数字。（这里为了简化，用一段 javascript 代码来模拟后台写入数据的进度。）</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BF%9B%E5%BA%A6%E6%9D%A1-%E5%8A%A8%E7%94%BB.gif" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;col-md-9&quot;&gt;
+	&lt;button class=&quot;btn btn-primary&quot; id=&quot;btn-import&quot;&gt;导入&lt;/button&gt;
+      &lt;div id=&quot;progress-demo&quot; class=&quot;hide&quot;&gt;
+          &lt;p id=&quot;progress-status&quot;&gt;&lt;/p&gt;
+          &lt;div class=&quot;progress&quot;&gt;
+              &lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; aria-valuenow=&quot;0&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 0%;&quot;&gt;
+                  0%
+              &lt;/div&gt;
+          &lt;/div&gt;
+      &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+   var i = 0;
+   
+   $(&quot;#btn-import&quot;).click(function(event) {
+       $(&quot;#progress-demo&quot;).removeClass('hide');
+       window.setInterval(function(){
+           if(i &gt; 100) {
+               window.clearInterval();
+               return false;
+           }
+
+           $(&quot;.progress-bar&quot;).attr(&quot;aria-valuenow&quot;, i);
+           $(&quot;.progress-bar&quot;).css({'width': i + &quot;%&quot;});
+           $(&quot;.progress-bar&quot;).html(i + &quot;%&quot;);
+           $(&quot;#progress-status&quot;).html('已完成' + i + &quot;%&quot;);
+           i += 10;
+       }, 400);
+   });
+&lt;/script&gt;
+</code></pre>
+<p>如果需要对进度条的外观进行更多设置（这货还真能玩出不少花样来……），请阅读文档</p>
+<p><a href="http://v3.bootcss.com/components/#progress">Bootstrap-进度条</a></p>
+<h3 id="用媒体对象组件来显示用户列表">用“媒体对象”组件来显示用户列表</h3>
+<p>现在我们已经导入了不少用户数据，可以把它们显示出来了。“用户”都有头像、昵称、订阅时间等属性，正适合用<code>媒体对象</code>组件来展示。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E7%94%A8%E6%88%B7%E5%88%97%E8%A1%A8.png" alt=""></p>
+<pre><code class="language-html">&lt;ul class=&quot;media-list&quot;&gt;
+	&lt;!--第一个媒体对象--&gt;
+    &lt;li class=&quot;media&quot;&gt;
+        &lt;a class=&quot;media-left&quot; href=&quot;#&quot;&gt;
+            &lt;img src=&quot;../assets/avatar_1.jpg&quot; alt=&quot;...&quot;&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;media-body&quot;&gt;
+            &lt;h4 class=&quot;media-heading&quot;&gt;小美&lt;/h4&gt;
+            &lt;p&gt;2016/10/10 12:00 加入，广东 深圳&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;!--第二个媒体对象--&gt;
+    &lt;li class=&quot;media&quot;&gt;
+    &lt;!--略--&gt;
+</code></pre>
+<p><code>媒体对象</code>是由一个图片和一些相关信息组成的。</p>
+<ol>
+<li>可以是单独的一个<code>&lt;div class=&quot;media&quot;&gt;</code>，也可以是多个媒体对象组成的列表<code>&lt;ul class=&quot;media-list&gt;&quot;</code></li>
+<li>图片部分<code>&lt;a class=&quot;media-left&quot; &gt;</code><strong>默认是居左对齐</strong>，如果要让它居右对齐，就要改成<code>&lt;div class=&quot;media-right&gt;</code>，并且要把代码放在<code>&lt;div class=&quot;media-body&quot;&gt;</code>的后面</li>
+</ol>
+<h2 id="用标签对用户进行分组管理">用“标签”对用户进行分组管理</h2>
+<p>用户量增加后，需要对这些数据进行<strong>分组管理</strong>，通过给用户<strong>打标签</strong>，就可以把用户归入某个分组。</p>
+<h3 id="管理所有标签">管理所有标签</h3>
+<p>创建一个新的页面<code>Template/Admin_userTags.html</code>，用于管理所有的用户标签（添加、删除等）。最终页面效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86.png" alt=""></p>
+<pre><code class="language-html">&lt;!-- 添加新标签 --&gt;
+ &lt;div class=&quot;panel panel-default&quot;&gt;
+     &lt;div class=&quot;panel-body&quot;&gt;
+         &lt;form action=&quot;&quot;&gt;
+             &lt;input type=&quot;text&quot; value=&quot;&quot; placeholder=&quot;添加新标签&quot; /&gt;
+             &lt;button class=&quot;btn btn-primary&quot;&gt;提交&lt;/button&gt;
+         &lt;/form&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+
+ &lt;!-- 管理已有标签 --&gt;
+ &lt;div class=&quot;row&quot;&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;标签列表&lt;/div&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;操作&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;row&quot;&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;
+         &lt;input type=&quot;text&quot; value=&quot;吃货&quot; /&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;&lt;a href=&quot;&quot;&gt;修改&lt;/a&gt; &lt;a href=&quot;&quot;&gt;删除&lt;/a&gt;&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;row&quot;&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;
+         &lt;input type=&quot;text&quot; value=&quot;美女&quot; /&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;&lt;a href=&quot;&quot;&gt;修改&lt;/a&gt; &lt;a href=&quot;&quot;&gt;删除&lt;/a&gt;&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;row&quot;&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;
+         &lt;input type=&quot;text&quot; value=&quot;爱玩&quot; /&gt;
+     &lt;/div&gt;
+     &lt;div class=&quot;col-md-4&quot;&gt;&lt;a href=&quot;&quot;&gt;修改&lt;/a&gt; &lt;a href=&quot;&quot;&gt;删除&lt;/a&gt;&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;!--更多标签--&gt;
+</code></pre>
+<p>在这个页面里，综合了栅格系统布局、表单、按钮、警告框等知识，赶紧复习下吧。</p>
+<h3 id="编辑用户在同一行内排列多选框和单选框">编辑用户，在同一行内排列多选框和单选框</h3>
+<p>添加了一些标签后，我们就可以给用户打标签了。同时，还可以给用户添加备注名，以及把一些恶意用户放入黑名单。</p>
+<p>新建文件<code>Template/Admin_userInfo.html</code>，作为<strong>编辑用户</strong>的页面。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E7%BC%96%E8%BE%91%E7%94%A8%E6%88%B7.png" alt=""></p>
+<pre><code class="language-html">&lt;form action=&quot;&quot; role=&quot;form&quot;&gt;
+     &lt;h4&gt;请勾选用户标签&lt;/h4&gt;
+     &lt;label class=&quot;checkbox-inline&quot;&gt;
+         &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option1&quot;&gt; 吃货
+     &lt;/label&gt;
+     &lt;label class=&quot;checkbox-inline&quot;&gt;
+         &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option1&quot;&gt; 美女
+     &lt;/label&gt;
+     &lt;label class=&quot;checkbox-inline&quot;&gt;
+         &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option1&quot;&gt; 爱玩
+     &lt;/label&gt;
+     &lt;label class=&quot;checkbox-inline&quot;&gt;
+         &lt;input type=&quot;checkbox&quot; id=&quot;inlineCheckbox1&quot; value=&quot;option1&quot;&gt; 宅男
+     &lt;/label&gt;
+     &lt;h4&gt;是否放入黑名单&lt;/h4&gt;
+     &lt;label class=&quot;radio-inline&quot;&gt;
+         &lt;input type=&quot;radio&quot; name=&quot;inlineRadioOptions&quot; id=&quot;inlineRadio3&quot; value=&quot;option3&quot;&gt; 是
+     &lt;/label&gt;
+     &lt;label class=&quot;radio-inline&quot;&gt;
+         &lt;input type=&quot;radio&quot; name=&quot;inlineRadioOptions&quot; id=&quot;inlineRadio3&quot; value=&quot;option3&quot; checked&gt; 否
+     &lt;/label&gt;
+
+     &lt;p&gt;
+         &lt;div class=&quot;btn btn-primary&quot;&gt;提交&lt;/div&gt;
+         &lt;div class=&quot;btn btn-danger&quot;&gt;取消&lt;/div&gt;
+     &lt;/p&gt;
+ &lt;/form&gt;
+</code></pre>
+<p>这些大部分都是前面学过的<code>表单</code>有关的控件，只不过有个地方要注意。</p>
+<p>多选框和单选框使用了<code>内联</code>的排列方式，把之前<strong>一行一个</strong>改成<strong>全部在同一行内显示</strong>（使用<code>&lt;label class=&quot;checkbox-inline&quot;&gt;</code>或<code>&lt;label class=&quot;radio-inline&quot;&gt;</code>）。</p>
+<h3 id="显示标签">显示标签</h3>
+<p>回到文件<code>Template/Admin_userList.html</code>，用户被添加标签进行分组后，就可以用<code>标签</code>组件来把它们显示出来了：</p>
+<p><strong><code>标签</code>组件专门用于显示一些简短的、描述性的文本，或者醒目的小提示</strong>。（还记得前面学过的<code>徽章</code>吗？徽章经常用于显示数字，请把这两个组件联系起来记忆）</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E7%94%A8%E6%88%B7%E6%A0%87%E7%AD%BE.png" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;filte-user&quot;&gt;
+     &lt;span&gt;只看标签&lt;/span&gt;
+     &lt;span class=&quot;label label-default&quot;&gt;吃货&lt;/span&gt;
+     &lt;span class=&quot;label label-success&quot;&gt;吃货&lt;/span&gt;
+     &lt;span class=&quot;label label-success&quot;&gt;美女&lt;/span&gt;
+     &lt;span class=&quot;label label-default&quot;&gt;白富美&lt;/span&gt;
+     &lt;span class=&quot;label label-default&quot;&gt;爱玩&lt;/span&gt;
+     &lt;span class=&quot;label label-success&quot;&gt;御姐&lt;/span&gt;
+ &lt;/div&gt;
+ 
+ &lt;!--某个用户--&gt;
+ &lt;div class=&quot;media-body&quot;&gt;
+       &lt;h4 class=&quot;media-heading&quot;&gt;小美&lt;/h4&gt;
+       &lt;p&gt;
+           &lt;span class=&quot;label label-info&quot;&gt;吃货&lt;/span&gt;
+           &lt;span class=&quot;label label-info&quot;&gt;美女&lt;/span&gt;
+       &lt;/p&gt;
+       &lt;p&gt;2016/10/10 12:00 加入，广东 深圳&lt;/p&gt;
+   &lt;/div&gt;
+</code></pre>
+<p><code>标签</code>组件是一个用<code>&lt;span class=&quot;label label-标识&quot;&gt;</code>包裹住标签文本的元素。同样，和<code>按钮</code>、<code>警告框</code>等组件一样，可以通过修改 class 来显示几种不同的颜色。</p>
+<h1 id="素材管理">素材管理</h1>
+<p>素材除了有图片、视频、音频这种<code>多媒体文件</code>，还有综合了文本和多媒体文件的<code>图文</code>（可以认为是“新闻”吧）。</p>
+<h2 id="新增多媒体文件">新增多媒体文件</h2>
+<p>创建一个文件<code>Admin_createMaterial.html</code>，在页面里添加一个支持文件多选的 <code>&lt;input type=&quot;file&quot; multiple=&quot;multiple&quot;&gt;</code>上传组件。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.png" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;col-md-9&quot;&gt;
+      &lt;h4&gt;1. 请选择本地文件(图片、视频、音频)&lt;/h4&gt;
+      &lt;form role=&quot;form&quot; action=&quot;/test.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+              &lt;input id=&quot;file-choose&quot; type=&quot;file&quot; name=&quot;pictures[]&quot; multiple=&quot;multiple&quot; class=&quot;btn btn-default&quot; /&gt;
+              &lt;span class=&quot;help-block&quot;&gt;支持同时选择多个文件&lt;/span&gt;
+          &lt;/div&gt;
+      &lt;/form&gt;
+      &lt;h4&gt;2. 保存可上传的文件(不支持的格式不会上传)&lt;/h4&gt;
+      &lt;form action=&quot;&quot;&gt;
+          &lt;div&gt;    
+              &lt;ul id=&quot;upload-files&quot; class=&quot;list-unstyled&quot;&gt;
+                 &lt;li&gt;&lt;span class=&quot;glyphicon glyphicon-film&quot;&gt;&lt;/span&gt; 素材-图片.mp4&lt;/li&gt;
+                 &lt;li class=&quot;text-danger&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-ban-circle&quot;&gt;&lt;/span&gt; 不支持格式new JavaScript tests.doc&lt;/li&gt;
+                 &lt;li&gt;&lt;span class=&quot;glyphicon glyphicon-picture&quot;&gt;&lt;/span&gt; tigtag.jpg&lt;/li&gt;
+                 &lt;li&gt;&lt;span class=&quot;glyphicon glyphicon-picture&quot;&gt;&lt;/span&gt; scanface.png&lt;/li&gt;
+                 &lt;li&gt;&lt;span class=&quot;glyphicon glyphicon-music&quot;&gt;&lt;/span&gt; 7891.mp3&lt;/li&gt;
+             &lt;/ul&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+              &lt;input type=&quot;submit&quot; class=&quot;btn btn-primary&quot; value=&quot;保存&quot; /&gt;
+          &lt;/div&gt;
+      &lt;/form&gt;
+  &lt;/div&gt;
+</code></pre>
+<p>在这段代码中，选中多个<strong>本地文件</strong>后，首先通过<strong>判断文件类型</strong>，看看它们是不是微信支持的格式：图片、视频、音频（并且文件格式限制在mp3，mp4，jpg，png等几种），如果不是，则标记出来。</p>
+<h2 id="图标">图标</h2>
+<p>为了更加直观地区分这几种不同的文件类型，我们使用<code>图标</code>组件。用<code>&lt;span class=&quot;glyphicon glyphicon-特定的图标类名&quot;&gt;</code>来生成一个图标。<code>Bootstrap</code>框架自带了很多常见的图标，你可以在这里选用：</p>
+<p><a href="http://v3.bootcss.com/components/#glyphicons">Bootstrap-图标</a></p>
+<p>使用合适的图标对整个页面有画龙点睛的效果。例如<code>&lt;span class=&quot;glyphicon glyphicon-picture&quot;&gt;</code>图标来表示图片文件，用<code>&lt;span class=&quot;glyphicon glyphicon-music&quot;&gt;</code>图标来表示音频文件。</p>
+<h2 id="新增图文素材">新增图文素材</h2>
+<p>创建一个新文件<code>Template/Admin_createNews.html</code>。这个页面和我们平时在论坛发帖、在新闻后台添加文章是差不多的，都是一个大的<code>表单</code>和一些<code>组件</code>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E6%96%B0%E5%A2%9E%E5%9B%BE%E6%96%87.png" alt=""></p>
+<pre><code class="language-html">&lt;h4&gt;新增图文素材&lt;/h4&gt;
+&lt;form action=&quot;&quot; role=&quot;form&quot; method=&quot;post&quot; class=&quot;form-horizontal&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;标题&lt;/label&gt;
+    &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;title&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;作者&lt;/label&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;author&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;原文地址&lt;/label&gt;
+    &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;content_source_url&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;封面图片&lt;/label&gt;
+    &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;button class=&quot;btn btn-primary&quot;&gt;选取&lt;/button&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;thumb_media_id&quot; /&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;摘要&lt;/label&gt;
+    &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;textarea class=&quot;form-control&quot; name=&quot;digest&quot; cols=&quot;50&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;col-md-2 control-label&quot; for=&quot;&quot;&gt;正文内容&lt;/label&gt;
+    &lt;div class=&quot;col-md-10&quot;&gt;
+        &lt;script id=&quot;editor-container&quot; name=&quot;content&quot; type=&quot;text/plain&quot;&gt;&lt;/script&gt;
+        &lt;!-- &lt;textarea class=&quot;form-control&quot; cols=&quot;50&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt; --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script src=&quot;../assets/ueditor.config.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../assets/ueditor.all.min.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+   var ue = UE.getEditor('editor-container');
+&lt;/script&gt;
+</code></pre>
+<p>很多代码之前都学过，因此不再重复。在正文内容输入区域我们用了<code>UEditor</code>这个插件，详细的资料请查阅：（这不是本教程的范畴，你可以直接忽略）</p>
+<p><a href="http://fex.baidu.com/ueditor/">所见即所得编辑器-UEditor</a></p>
+<h2 id="素材列表与管理">素材列表与管理</h2>
+<p>当我们上传完一些多媒体文件和图文素材后，就可以创建一个页面来对它们进行管理了，新建一个文件<code>Template/Admin_manageMaterial.html</code>。</p>
+<h3 id="使用表格组件列出所有素材">使用<code>表格</code>组件列出所有素材</h3>
+<p>当<strong>数据量较大</strong>，并且<strong>每条数据的结构比较复杂</strong>的时候，应该使用<code>表格</code>组件来展示它们。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%90%8E%E5%8F%B0-%E8%A1%A8%E6%A0%BC%E4%B8%8E%E5%BC%B9%E5%87%BA%E6%A1%86.png" alt=""></p>
+<pre><code class="language-html">&lt;div&gt;
+     &lt;strong&gt;数据统计:&lt;/strong&gt; 图片(332), 视频(141), 音频(98)
+ &lt;/div&gt;
+ &lt;table class=&quot;table table-striped table-bordered table-condensed&quot;&gt;
+     &lt;thead&gt;
+         &lt;tr&gt;
+             &lt;th&gt;&lt;input type=&quot;checkbox&quot;&gt;&lt;/th&gt;
+             &lt;th&gt;文件名&lt;/th&gt;
+             &lt;th&gt;类型&lt;/th&gt;
+             &lt;th&gt;已同步到公众号(点击查看media_id)&lt;/th&gt;
+             &lt;th&gt;操作&lt;/th&gt;
+         &lt;/tr&gt;
+     &lt;/thead&gt;
+     &lt;tbody&gt;
+         &lt;tr&gt;
+             &lt;td&gt;&lt;input type=&quot;checkbox&quot;&gt;&lt;/td&gt;
+             &lt;td class=&quot;file-name&quot;&gt;测试图片_1.jpg&lt;/td&gt;
+             &lt;td&gt;&lt;span class=&quot;glyphicon glyphicon-picture&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+             &lt;td&gt;
+                 &lt;a class=&quot;toggle-popover&quot; href=&quot;#&quot; role=&quot;button&quot; data-toggle=&quot;popover&quot; title=&quot;素材信息&quot; data-html=&quot;true&quot; data-content=&quot;&lt;div style='word-wrap:break-word;'&gt;&lt;b&gt;media_id: &lt;/b&gt;xa34bdsgbs2341456 &lt;b&gt;url: &lt;/b&gt;http://cdn.mp.weixin.qq.com/material/2342345334534&lt;/div&gt;&quot;&gt;养生100&lt;/a&gt;,
+                 &lt;a class=&quot;toggle-hide&quot; href=&quot;&quot;&gt;谈股论经&lt;/a&gt;,
+                 &lt;a href=&quot;&quot;&gt;做最好的自己&lt;/a&gt;
+             &lt;/td&gt;
+             &lt;td&gt;
+                 &lt;a href=&quot;&quot;&gt;删除&lt;/a&gt;
+             &lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;&lt;/tr&gt;
+         &lt;tr&gt;&lt;/tr&gt;
+         &lt;!--更多的行--&gt;
+     &lt;/tbody&gt;
+ &lt;/table&gt;
+ 
+ &lt;script type=&quot;text/javascript&quot;&gt;
+        $(document).ready(function($) {
+        	$(&quot;a.toggle-popover&quot;).popover();
+        });
+  &lt;/script&gt;
+</code></pre>
+<p>一个<code>表格组件</code>是通过<code>&lt;table class=&quot;table 其他表格样式&gt;</code>来定义的，其中“<strong>其他表格样式</strong>”可以是有边框、紧凑型等等（代码中的<code>class=&quot;table-striped table-bordered table-condensed&quot;</code>），你可以对照文档来自定义更多外观</p>
+<p><a href="http://v3.bootcss.com/css/#tables">Bootstrap-表格</a></p>
+<h3 id="使用弹出框组件显示附加信息">使用<code>弹出框</code>组件显示附加信息</h3>
+<p>页面中不重要的附加信息可以先不展示出来，在需要的时候点击才显示。这样可以节省很多屏幕空间，有利于信息的高效组织。例如下图中，素材对应每个公众号都会有一个 media_id，但这个数据平时并不会用到。所以像这样的情况就可以使用<code>弹出框</code>组件。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%BC%B9%E5%87%BA%E6%A1%86.png" alt=""></p>
+<p>使用<code>弹出框</code>需要经过以下几个步骤（注意：官方的文档翻译不全，根本没有说清楚用法）：</p>
+<ol>
+<li>找到被点击触发弹出框的元素，例如上面代码里的<code>&lt;a class=&quot;toggle-popover&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;</code></li>
+<li>给这个元素添加属性<code>data-toggle=&quot;popover&quot;</code></li>
+<li>给这个元素添加<code>title</code>和<code>data-content</code>属性，设置点击它后显示的<strong>弹出框的标题</strong>和<strong>内容</strong></li>
+<li>如果弹出框的内容要显示 HTML 代码，则添加属性<code>data-html=&quot;true&quot;</code>(<strong>默认只支持显示纯文本</strong>)</li>
+<li>最后一步<strong>最重要</strong>，在 javascript 代码里，给这些元素绑定弹出框事件触发器 <code>$(&quot;a.toggle-popover&quot;).popover();</code></li>
+<li>另外，还可以给被点击元素添加<code>onclick=&quot;需要触发的点击事件&quot;</code>属性，在点击的时候除了显示弹出框，还会同时触发这个事件</li>
+</ol>
+<p>完整的<code>弹出框</code>文档如下：（可以通过 javascript 来手动控制弹出框显示、隐藏，修改参数等）</p>
+<p><a href="http://v3.bootcss.com/javascript/#popovers">Bootstrap-弹出框</a></p>
+<h3 id="分页显示">分页显示</h3>
+<p>当数据总数到达一定量的时候，在一个页面里显示所有数据就显然是不可能的了。所以我们要使用<code>分页</code>组件。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%88%86%E9%A1%B5.png" alt=""></p>
+<pre><code class="language-html">&lt;nav&gt;
+   &lt;ul class=&quot;pagination&quot;&gt;
+     &lt;li class=&quot;disabled&quot;&gt;&lt;a href=&quot;#&quot;&gt;&amp;laquo;&lt;/a&gt;&lt;/li&gt;
+     &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot; &gt;1&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;5&lt;/a&gt;&lt;/li&gt;
+     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;&amp;raquo;&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;/nav&gt;
+</code></pre>
+<p><code>分页组件</code>中，通过设置<code>&lt;li class=&quot;disabled&quot;</code>来禁用这个按钮（例如到了最后一页，“下一页”按钮就不可用了，到了第一页，那么“上一页”按钮也是无效的）；通过设置<code>&lt;li class=&quot;active&quot;</code>来让按钮显示激活状态，标记当前是第几页。</p>
+<p>分页组件还可以只显示<code>上一页</code>、<code>下一页</code>按钮，以及让按钮显示不同的布局，具体请查看文档</p>
+<p><a href="http://v3.bootcss.com/components/#pagination">Bootstrap-分页</a></p>
+<h3 id="素材分类显示导航与标签页">素材分类显示——导航与标签页</h3>
+<p>如果把所有的图片、视频、音频全部放在一起显示，不仅看起来很混乱，而且也不便于分类管理。我们可以使用<code>导航</code>组件或者<code>标签页</code>组件将<strong>不同类型</strong>的数据放到<strong>不同的子页面里面</strong>，并且在不同的子页面之间<strong>切换</strong>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%AF%BC%E8%88%AA.png" alt=""></p>
+<p>注意<code>导航</code>组件和我们前面学习的<code>导航条</code>组件，虽然只有一字之差，却是完全不同的两个组件。</p>
+<p><code>导航</code>一般用于将数据放到几个子页面<strong>分类显示</strong>，但是各个子页面里不用类型的数据之间还是<strong>有关联，或者有共同的特征</strong>的（就像图片、视频、音频都是多媒体素材一样）。
+而<code>导航条</code>仅仅用于<strong>整个网站的连接与全局功能</strong>，导航条内部的<strong>各个元素之间可能并没有什么关联</strong>。</p>
+<p>代码如下：</p>
+<pre><code class="language-html">&lt;ul class=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+  &lt;li role=&quot;presentation&quot; class=&quot;dropdown active&quot;&gt;
+    &lt;a class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot;&gt;
+      多媒体素材 &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;图片&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;视频&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;&quot;&gt;音频&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li role=&quot;presentation&quot;&gt;&lt;a href=&quot;#&quot;&gt;图文&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>上面的代码创建了一个<code>导航</code>组件，可以在几个子页面之间切换，一个是多媒体素材，一个是图文素材。其中“多媒体素材”标签页又带有<code>下拉菜单</code>，有图片、视频、音频这几种情况可以选择。</p>
+<p><code>导航</code>组件还可以设置样式，例如竖向排列等。关于<code>导航</code>组件的资料在这里：</p>
+<p><a href="http://v3.bootcss.com/components/#nav">Bootstrap-导航与标签页</a></p>
+<p>另外，和<code>导航</code>极为相似的组件叫<code>标签页</code>，它们拥有类似的外观，区别在于</p>
+<ol>
+<li><code>导航</code>组件默认只显示<strong>当前激活的一部分数据</strong>，在点击标签的时候，<strong>浏览器跳转到另外一个页面，然后加载另外一部分数据</strong>，这种方式确保<strong>每次点击的时候，都会刷新数据</strong>；</li>
+<li>而<code>标签页</code>组件<strong>一开始就把所有数据全部加载完毕</strong>，然后<strong>只显示当前激活的一部分数据，把其他的隐藏</strong>，点击标签切换后，<strong>显示被激活的另外一部分数据，同时把其他的数据隐藏</strong>，这种方式<strong>响应速度很快</strong>，但<strong>页面不刷新，所以数据更新不是很及时</strong>。</li>
+</ol>
+<p>请根据自己的需要来选择</p>
+<p><a href="http://v3.bootcss.com/javascript/#tabs">Bootstrap-标签页</a></p>
+<h2 id="批量操作素材">批量操作素材</h2>
+<p>现在已经在本地保存了很多的素材，我们要把它们批量同步到微信公众号的素材库上去。每次操作的时候，都需要补充填写一些信息，确认后才能继续完成提交动作。</p>
+<h3 id="模态框">模态框</h3>
+<p>这种<strong>功能上比较独立</strong>，但是又<strong>和当前页面的数据有紧密关联</strong>，<strong>不适合跳转到一个新页面</strong>的操作（例如“上传图片”），可以用<strong>弹出窗口</strong>来实现，也就是<code>Bootstrap</code>称之为<code>模态框</code>的组件。</p>
+<p><img src="/article_images/foreground/bootstrap/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87.png" alt=""></p>
+<p>我们这里的<strong>批量同步素材到公众号</strong>操作正好符合做成一个<code>模态框</code>的条件。效果如下：</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%A8%A1%E6%80%81%E6%A1%86-%E5%90%8C%E6%AD%A5%E7%B4%A0%E6%9D%90.gif" alt=""></p>
+<pre><code class="language-html">&lt;!--触发模态框的显示--&gt;
+&lt;button class=&quot;btn btn-danger&quot; data-toggle=&quot;modal&quot; data-target=&quot;#sync-materials-modal&quot;&gt;同步素材&lt;/button&gt;
+
+&lt;!--模态框--&gt;
+&lt;div class=&quot;modal fade&quot; id=&quot;sync-materials-modal&quot; tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-labelledby=&quot;myModalLabel&quot; aria-hidden=&quot;true&quot; aria-describedby=&quot;同步素材到公众号的模态框&quot;&gt;
+     &lt;div class=&quot;modal-dialog&quot;&gt;
+         &lt;div class=&quot;modal-content&quot;&gt;
+             &lt;div class=&quot;modal-header&quot;&gt;
+                 &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;&lt;span class=&quot;sr-only&quot;&gt;Close&lt;/span&gt;&lt;/button&gt;
+                 &lt;h4 class=&quot;modal-title&quot; id=&quot;myModalLabel&quot;&gt;同步素材到公众号&lt;/h4&gt;
+             &lt;/div&gt;
+             &lt;div class=&quot;modal-body&quot;&gt;
+                 模态框内要显示的内容
+             &lt;/div&gt;
+             &lt;div class=&quot;modal-footer&quot;&gt;
+                 &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;关闭&lt;/button&gt;
+                 &lt;button type=&quot;button&quot; id='start-sync' class=&quot;btn btn-primary&quot;&gt;确定同步&lt;/button&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+     &lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>要实现一个<code>模态框</code>需要经过几个步骤：</p>
+<ol>
+<li><strong>创建一个模态框</strong>，这是一个<code>class=modal</code>的<code>div</code>，给它<strong>添加一个<code>id</code></strong>，例如叫<code>sync-materials-modal</code>，然后添加<code>role</code>等属性，模态框在没有激活之前默认是隐藏的。</li>
+<li>在需要点击激活模态框显示的元素上（button、a 等都可以）添加两个属性，一个是<code>data-toggle=&quot;modal&quot;</code>；另外一个是<strong><code>data-target=&quot;模态框的id&quot;</code></strong>，它的值是前面第一步创建的模态框的<code>id</code>，例如<code>#sync-materials-modal</code></li>
+<li>在模态框内部的<code>&lt;div class=&quot;modal-header&quot;&gt;</code>里添加<strong>标题</strong></li>
+<li>在模态框内部的<code>&lt;div class=&quot;modal-body&quot;&gt;</code>里添加要显示的<strong>主体内容</strong></li>
+<li>在模态框内部的<code>&lt;div class=&quot;modal-footer&quot;&gt;</code>里添加模态框<strong>底部的按钮</strong>，例如取消、确定等</li>
+</ol>
+<p>如果需要对模态框的大小、动画进行调整，或者使用 JavaScript 来手动控制模态框显示/隐藏，请参看文档：</p>
+<p><a href="http://v3.bootcss.com/javascript/#modals">Bootstrap-模态框</a></p>
+<h3 id="带图标的按钮">带图标的按钮</h3>
+<p>最后，我们复习一下前面学习的<code>图标</code>，并把图标和按钮结合起来，制作一个美观的按钮。</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%8C%89%E9%92%AE-%E5%B8%A6%E5%9B%BE%E6%A0%87.png" alt=""></p>
+<pre><code class="language-html">&lt;button class=&quot;btn btn-danger&quot; data-toggle=&quot;modal&quot; data-target=&quot;#sync-materials&quot;&gt;
+   &lt;span class=&quot;glyphicon glyphicon-cloud-upload&quot;&gt;&lt;/span&gt;
+   同步素材
+&lt;/button&gt;
+</code></pre>
+<p><code>Bootstrap</code>的图标不仅仅可以单独使用，还可以和其他元素组合起来，例如上面代码中，要在按钮上显示一个“上传”的图标，只需要在<code>&lt;button&gt;</code>内部添加图标的代码<code>&lt;span class=&quot;glyphicon glyphicon-cloud-upload&quot;&gt;&lt;/span&gt;</code>就可以了。</p>
+<p>你可以自己试试看，找一找页面中还有没有可以美化的按钮等元素，都加上合适的图标吧。</p>
+<h3 id="搜索关键词输入框组">搜索关键词——输入框组</h3>
+<p>数据量达到一定程度的时候，通过肉眼去查找某条数据就很困难了。所以我们来添加一个关键词搜索功能。一般情况下都是先在一个输入框里填写关键词，然后点击“搜索”按钮。</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%BE%93%E5%85%A5%E6%A1%86%E7%BB%84-%E6%90%9C%E7%B4%A2.png" alt=""></p>
+<p>要通过<code>Bootstrap</code>来实现这个搜索功能很容易。前面我们学过表单里的<code>输入框</code>组件<code>&lt;input type=&quot;text&quot;&gt;</code>，也学过<code>按钮</code>组件，只要把它们拼合起来就可以了。</p>
+<pre><code class="language-html">&lt;div class=&quot;input-group&quot;&gt;
+   &lt;span class=&quot;input-group-addon&quot;&gt;输入关键词&lt;/span&gt;
+   &lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;
+   &lt;span class=&quot;input-group-btn&quot;&gt;
+       &lt;button class=&quot;btn btn-primary&quot; type=&quot;button&quot;&gt;搜索&lt;/button&gt;
+   &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p><code>输入框组</code>顾名思义，就是<strong>把输入框和其他组件拼接起来</strong>。</p>
+<ol>
+<li>一个<code>输入框组</code>是由<code>&lt;div class=&quot;input-group&quot;&gt;</code>包裹起来的</li>
+<li>内部的<code>&lt;input type=&quot;text&quot; class=&quot;form-control&quot;&gt;</code>是必不可少的</li>
+<li><code>&lt;span class=&quot;input-group-addon&quot;&gt;</code>一般用于显示“附加信息”</li>
+<li><code>&lt;span class=&quot;input-group-btn&quot;&gt;</code>内部是一个按钮<code>&lt;button class=&quot;btn &quot;&gt;</code>，它会和输入框连成一个整体</li>
+</ol>
+<p>除了和按钮、附加信息组合，输入框还可以和下拉框等组合，详细的文档在这里</p>
+<p><a href="http://v3.bootcss.com/components/#input-groups">Bootstrap-输入框组</a></p>
+<h3 id="筛选使用下拉菜单">筛选——使用下拉菜单</h3>
+<p>除了通过关键词搜索，还可以通过数据的一些“共同特征”去筛选。比如在这个例子中，我们就可以把“只看公众号”作为一个筛选条件。</p>
+<p>回忆一下我们前面学过的<code>导航条</code>组件，<code>&lt;li class=&quot;dropdown&quot;&gt;</code>以及内部的<code>&lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;</code>就组成了一个<code>下拉菜单</code>。</p>
+<p><img src="/article_images/foreground/bootstrap/%E5%AF%BC%E8%88%AA%E6%9D%A1%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95.png" alt=""></p>
+<pre><code class="language-html">&lt;ul class=&quot;nav navbar-nav&quot;&gt;
+	 &lt;!--略--&gt;
+	 &lt;!--这一部分就是导航条内部的下拉菜单--&gt;
+	 &lt;li class=&quot;dropdown&quot;&gt;
+	     &lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;系统设置 &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+	     &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+	         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;公众号管理&lt;/a&gt;&lt;/li&gt;
+	         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;运营人员管理&lt;/a&gt;&lt;/li&gt;
+	         &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+	         &lt;li&gt;&lt;a href=&quot;#&quot;&gt;客服管理&lt;/a&gt;&lt;/li&gt;
+	     &lt;/ul&gt;
+	 &lt;/li&gt;
+	 &lt;!--略--&gt;
+</code></pre>
+<p>其实<code>下拉菜单</code>组件不仅仅用在导航条内部，在其他任何地方都可以<strong>作为一个独立组件使用</strong>，还可以调整它的对齐方式、外观。例如下面这个下拉菜单就是独立的，并且用一个“按钮”的形式而不是平面化的<code>&lt;li&gt;</code>文本形式。</p>
+<p><img src="/article_images/foreground/bootstrap/%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95.png" alt=""></p>
+<pre><code class="language-html">&lt;div class=&quot;pull-right&quot;&gt;
+    &lt;span class=&quot;dropdown&quot;&gt;
+      &lt;button class=&quot;btn btn-default dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenu1&quot; data-toggle=&quot;dropdown&quot;&gt;
+        只看公众号&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+        &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; aria-labelledby=&quot;dropdownMenu1&quot;&gt;
+            &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;养生100&lt;/a&gt;&lt;/li&gt;
+            &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;谈股论经&lt;/a&gt;&lt;/li&gt;
+            &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;最最好的自己&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/span&gt;
+    &lt;button class=&quot;btn btn-danger&quot; data-toggle=&quot;modal&quot; data-target=&quot;#sync-materials&quot;&gt;
+        &lt;span class=&quot;glyphicon glyphicon-cloud-upload&quot;&gt;&lt;/span&gt; 同步素材
+    &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="排序按钮组">排序——按钮组</h3>
+<p>我们还可以对数据进行排序，比如通过文件创建时间、标题的字母顺序、文件体积大小等等。虽然通过<code>下拉菜单</code>也可以实现，但这里我们来使用一个更美观的新组件——<code>按钮组</code>。</p>
+<p>既然叫<code>按钮组</code>，那肯定就是<strong>把几个按钮拼合起来</strong>了（前面学过的<code>输入框组</code>还记得吗？拼合输入框和按钮的）。例如我们想使用这几种排序方式：</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%8C%89%E9%92%AE%E7%BB%84-%E6%8E%92%E5%BA%8F.png" alt=""></p>
+<pre><code class="language-html">&lt;span&gt;排序&lt;/span&gt;
+&lt;div class=&quot;btn-group&quot;&gt;
+ &lt;button type=&quot;button&quot; class=&quot;btn btn-default active&quot;&gt;文件名&lt;/button&gt;
+ &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;时间&lt;/button&gt;
+ &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;文件大小&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p><code>按钮组</code>用<code>&lt;div class=&quot;btn-group&quot;&gt;</code>把多个按钮包裹起来。更多关于调整按钮组的外观、以及与下拉菜单组合、组成按钮工具栏等信息请查看</p>
+<p><a href="http://v3.bootcss.com/components/#btn-groups">Bootstrap-按钮组</a></p>
+<h3 id="排序按钮式下拉菜单">排序——按钮式下拉菜单</h3>
+<p>但是，用<code>按钮组</code>可能会产生一个问题，那就是当条件增多的时候，整个按钮组<code>&lt;div&gt;</code>的宽度会变得很长，甚至把整个页面宽度都撑满。</p>
+<p>我们想让内部的<strong>这些按钮能“垂直”显示</strong>，就要用到<code>按钮式下拉菜单</code>了。本质上其实<strong>还是一个<code>按钮组</code>，只不过外观改成下拉菜单</strong>的形式。（很奇怪吧，下拉菜单变成按钮外观，按钮也可以变成下拉菜单的外观……后面再来讲这个问题）</p>
+<p><img src="/article_images/foreground/bootstrap/%E6%8C%89%E9%92%AE%E5%BC%8F%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95.png" alt=""></p>
+<pre><code class="language-html">&lt;!--普通下拉菜单 外观和按钮式下拉菜单看起来十分相似--&gt;
+&lt;span class=&quot;dropdown&quot;&gt;
+	&lt;button class=&quot;btn btn-default dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenu1&quot; data-toggle=&quot;dropdown&quot;&gt;
+   只看公众号&lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;&lt;/button&gt;
+   &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot; aria-labelledby=&quot;dropdownMenu1&quot;&gt;
+       &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;养生100&lt;/a&gt;&lt;/li&gt;
+       &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;谈股论经&lt;/a&gt;&lt;/li&gt;
+       &lt;li role=&quot;presentation&quot;&gt;&lt;a role=&quot;menuitem&quot; tabindex=&quot;-1&quot; href=&quot;#&quot;&gt;最最好的自己&lt;/a&gt;&lt;/li&gt;
+   &lt;/ul&gt;
+&lt;/span&gt;
+
+&lt;!-- 按钮式下拉菜单 --&gt;
+&lt;span&gt;按钮式下拉菜单&lt;/span&gt;
+&lt;span class=&quot;btn-group&quot;&gt;
+ &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;文件名A-Z&lt;/button&gt;
+ &lt;button type=&quot;button&quot; class=&quot;btn btn-danger dropdown-toggle&quot; data-toggle=&quot;dropdown&quot;&gt;
+   &lt;span class=&quot;caret&quot;&gt;&lt;/span&gt;
+   &lt;span class=&quot;sr-only&quot;&gt;Toggle Dropdown&lt;/span&gt;
+ &lt;/button&gt;
+ &lt;ul class=&quot;dropdown-menu&quot; role=&quot;menu&quot;&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文件名A-Z&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文件名Z-A&lt;/a&gt;&lt;/li&gt;
+   &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;时间(新-旧)&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;时间(旧-新)&lt;/a&gt;&lt;/li&gt;
+   &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文件大小(大-小)&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href=&quot;#&quot;&gt;文件大小(小-大)&lt;/a&gt;&lt;/li&gt;
+ &lt;/ul&gt;
+&lt;/span&gt;
+</code></pre>
+<p>注意<code>按钮式下拉菜单</code>和前面的<code>下拉菜单用按钮外观</code>虽然<strong>看起来简直神似</strong>，但从结构上来看，还是有很大不同的。</p>
+<ul>
+<li><code>下拉菜单</code>结构上是个“菜单”（用<code>&lt;div class=&quot;dropdown&quot;&gt;</code>包裹）</li>
+<li>而<code>按钮式下拉菜单</code>结构上是个“按钮组”（用<code>&lt;div class=&quot;btn-group&quot;&gt;</code>包裹）</li>
+</ul>
+<p>其实我觉得<code>Bootstrap</code>完全可以把这两个组件统一起来，减少学习时候的迷惑，关于<code>按钮式下拉菜单</code>的更多样式，可以查看</p>
+<p><a href="http://v3.bootcss.com/components/#btn-dropdowns">Bootstrap-按钮式下拉菜单</a></p>
+<h1 id="一些技巧">一些技巧</h1>
+<h2 id="改造丑陋的默认file文件上传表单组件">改造丑陋的默认“File”文件上传表单组件</h2>
+<p>以下代码可以隐藏多余的“已选择xxxx”字样，只显示一个按钮，一般绑定一个 ajax 事件，用于点击选择后直接上传，而不需要再点击 submit。</p>
+<pre><code class="language-html">&lt;style&gt;
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+&lt;/style&gt;
+
+&lt;!--html--&gt;
+&lt;div class=&quot;fileUpload btn btn-primary&quot;&gt;
+    &lt;span&gt;Upload&lt;/span&gt;
+    &lt;input type=&quot;file&quot; class=&quot;upload&quot; /&gt;
+&lt;/div&gt;
+</code></pre>
+<p>上面的代码会导致在选择文件后，如果仍然要显示“你已选择文件”，可以添加一个 input 来变通处理</p>
+<pre><code class="language-html">&lt;input id=&quot;uploadFile&quot; placeholder=&quot;Choose File&quot; disabled=&quot;disabled&quot; /&gt;
+&lt;div class=&quot;fileUpload btn btn-primary&quot;&gt;
+    &lt;span&gt;Upload&lt;/span&gt;
+    &lt;input id=&quot;uploadBtn&quot; type=&quot;file&quot; class=&quot;upload&quot; /&gt;
+&lt;/div&gt;
+
+&lt;!--javascript--&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+document.getElementById(&quot;uploadBtn&quot;).onchange = function () {
+    document.getElementById(&quot;uploadFile&quot;).value = this.value;
+};
+&lt;/script&gt;
+</code></pre>
+<h2 id="tabs-的元素居中对齐">tabs 的元素居中对齐</h2>
+<pre><code class="language-html">&lt;ul class=&quot;nav nav-tabs nav-justified&quot; &gt;
+</code></pre>
+<h2 id="使用-bootswatchcom-等第三方主题时googlefonts-导致无法打开的问题">使用 bootswatch.com 等第三方主题时，googlefonts 导致无法打开的问题</h2>
+<p>打开对应 bootstrap.min.css 文件，把第一行注释</p>
+<pre><code class="language-css">/**@import url(&quot;https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic&quot;);*/
+
+</code></pre>
+<h1 id="总结">总结</h1>
+<p>我们通过开发一个企业网站和一个后台管理系统，基本上已经把<code>Bootstrap</code>的大部分最常见的组件、布局知识都学完了。接下来希望你多练习，把一些常见的组件记到脑袋里，一些不常见的属性、动作，在工作的时候可以快速在文档中找到就可以了。</p>
+<h1 id="超强扩展">超强扩展</h1>
+<p>更多组件（Steps 等），有 jQuery、Vue，React 版，Pro 版更有很多模板和2k+组件</p>
+<p><a href="https://mdbootstrap.com/components/">https://mdbootstrap.com/components/</a></p>
+<p><a href="https://github.com/mdbootstrap/bootstrap-material-design">https://github.com/mdbootstrap/bootstrap-material-design</a></p>
+<p><a href="https://www.22vd.com/en/22024.html">https://www.22vd.com/en/22024.html</a></p>
+<p>更多免费的
+<a href="https://graygrids.com/best-bootstrap-html-material-design-templates-themes/">https://graygrids.com/best-bootstrap-html-material-design-templates-themes/</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%9C%80%E5%A5%BD%E6%87%82%E7%9A%84-bootstrap-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%9C%80%E5%A5%BD%E6%87%82%E7%9A%84-bootstrap-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/electron-%E8%B7%A8%E5%B9%B3%E5%8F%B0-gui-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/w2ui/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

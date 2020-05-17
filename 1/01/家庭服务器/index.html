@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="https://post.smzdm.com/p/674680/ https://post.smzdm.com/p/aqnd9rv2/ windows server 2016 安装与配置 UltraISO WinPE 装系统、激活 驱动、软件 备份 添加虚拟交换机后， 虚拟机的 ip 固定的问题 会把某个外部网卡变成”网桥“。 并添加一个虚拟交换机，" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="https://post.smzdm.com/p/674680/ https://post.smzdm.com/p/aqnd9rv2/ windows server 2016 安装与配置 UltraISO WinPE 装系统、激活 驱动、软件 备份 添加虚拟交换机后， 虚拟机的 ip 固定的问题 会把某个外部网卡变成”网桥“。 并添加一个虚拟交换机，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="https://post.smzdm.com/p/674680/ https://post.smzdm.com/p/aqnd9rv2/ windows server 2016 安装与配置 UltraISO WinPE 装系统、激活 驱动、软件 备份 添加虚拟交换机后， 虚拟机的 ip 固定的问题 会把某个外部网卡变成”网桥“。 并添加一个虚拟交换机，">
+
+<meta itemprop="wordCount" content="16668">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="https://post.smzdm.com/p/674680/ https://post.smzdm.com/p/aqnd9rv2/ windows server 2016 安装与配置 UltraISO WinPE 装系统、激活 驱动、软件 备份 添加虚拟交换机后， 虚拟机的 ip 固定的问题 会把某个外部网卡变成”网桥“。 并添加一个虚拟交换机，"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 16668字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 34分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><a href="https://post.smzdm.com/p/674680/">https://post.smzdm.com/p/674680/</a>
+<a href="https://post.smzdm.com/p/aqnd9rv2/">https://post.smzdm.com/p/aqnd9rv2/</a></p>
+<h1 id="windows-server-2016-安装与配置">windows server 2016 安装与配置</h1>
+<p>UltraISO   WinPE 装系统、激活</p>
+<p>驱动、软件</p>
+<p>备份</p>
+<h2 id="添加虚拟交换机后-虚拟机的-ip-固定的问题">添加虚拟交换机后， 虚拟机的 ip 固定的问题</h2>
+<p>会把某个外部网卡变成”网桥“。 并添加一个虚拟交换机， IP 地址就是该win server 的 IP</p>
+<p>其他虚拟机 ip 老是变化。导致从其他外部访问不方便</p>
+<p>如果是物理机访问虚拟机，那么添加一个”内部网络“的虚拟交换机，并设置IP 为 192.168.xx.1  并修改虚拟机为静态IP</p>
+<p>如果是局域网内其他机器也要访问虚拟机，那就必须是”外部网络“（桥接）了， 修改虚拟机设置一个静态IP 即可</p>
+<p>威联通： 控制面板-&gt; 网络-&gt; 网络界面 -&gt; 编辑， 使用静态IP</p>
+<p>ubuntu:</p>
+<pre><code class="language-shell"># 查看系统版本
+lsb_release -a
+
+# 查看网卡
+ip addr
+ifconfig -a
+
+# 重新安装激活 ifupdown
+sudo apt install ifupdown
+
+# 之前的版本网卡配置信息配置在/etc/network/interfaces文件，可以如下配置，
+# 在18.04上也是可以用的，只是要重启才能生效。通过service networking restart无效。
+auto ens33
+iface ens33 inet static
+address 192.168.0.111a
+netmask 255.255.255.0
+gateway 192.168.0.1
+
+# 上面的测试无效。。。重启后也是老 ip
+
+# 在18.04上新采用的netplan命令
+# 网卡信息配置在/etc/netplan/01-network-manager-all.yaml文件，需做如下配置
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  # renderer: NetworkManager
+  ethernets:
+          ens33:
+                  addresses: [192.168.0.111/24]
+                  gateway4: 192.168.0.1
+                  nameservers:
+                        addresses: [192.168.0.1]
+
+# 然后
+netplan apply
+</code></pre>
+<h2 id="teamviewer--可以外网访问远程桌面内网速度更快">teamviewer  可以外网访问（远程桌面内网速度更快）</h2>
+<h1 id="linux-开发机">Linux 开发机</h1>
+<p>Ubuntu ！<br>
+debian 改了很多命令，都不能 shutdown -h now 关机了。。。
+CentOS 一些软件包比较老</p>
+<h2 id="vscode-remote-development-ssh">VSCode Remote Development (SSH)</h2>
+<pre><code class="language-shell">ssh-copy-id user@xxxxx
+</code></pre>
+<h1 id="软路由">软路由</h1>
+<p>可以实现在软路由上配置 SS / Vray 让家里的设备自动 FQ.  而不需要在手机/电脑上设置 （例如装个盒子，可以看 Netflix 什么的）</p>
+<p>如果你的设备很少，而且经常要带来带去，就不用费劲折腾了。</p>
+<p>因为如果 windows 这台机器坏了/升级维护，家里人都上不了网了。。。 <br>
+而一个单独的路由器专做一件事，不会影响其他的家人设备。</p>
+<p>流行的有 lede , openwrt,  爱快等等免费的。  还有收费的什么海蜘蛛啥的</p>
+<h2 id="设置虚拟交换机">设置虚拟交换机</h2>
+<p>例如 主板上的网口做wan口，其他两个网口做lan口 (特别要看清楚网卡的型号)</p>
+<p>给群晖用的内网选择 内部</p>
+<h2 id="爱快-选-32-位-64位要3g-内存以上">爱快 （选 32 位， 64位要3G 内存以上）</h2>
+<p><a href="https://www.ikuai8.com/component/download">https://www.ikuai8.com/component/download</a></p>
+<h2 id="安装-lede">安装 lede</h2>
+<p>准备好lede固件(img 格式)</p>
+<p>satrwind v2v converter 将 .img 转成 hyper-v 的磁盘格式 .vhdx (如果是 vmware 就要其他格式了)</p>
+<p>新建虚拟机， 1G  1代</p>
+<p>网络适配器先不选，后面来选。</p>
+<p>磁盘选刚生成的 vhdx 文件</p>
+<p>设置bios的启动顺序，将ide移动到最上边</p>
+<p>选中硬盘驱动器，可以看到我们选中的虚拟硬盘，然后点击右侧的编辑，扩展一下硬盘空间.  10G 左右</p>
+<p>添加网络适配器, 对应好前边设置的虚拟交换机的接口</p>
+<ul>
+<li>一个是内网的“win10”用来和虚拟机通信，</li>
+<li>一个wan口，用来接外部网络或者猫</li>
+</ul>
+<p>选择网络适配器的高级功能，然后点选mac地址欺骗，用lede就选动态的就行了，爱快的话可以选动态的，自己瞎写一个mac地址，方便自己后期识别，因为爱快是可以识别mac地址的</p>
+<p>启动</p>
+<p>回到 <strong>宿主机（win server）</strong> 来设置网络</p>
+<p>因为软路由默认都没有开启dhcp，无法自动分配ip，我们要人工指定ip。本机要设置同一个ip段的ip。</p>
+<p>然后才能在浏览器里进入软路由的设置，主要包括wan口的设置和lan口的设置。
+浏览器打开192.168.1.1.跳转到管理页面，密码一般是这三个其中的一个 password root coolshare</p>
+<p>登录后设置网络: wan口  根据你的宽带 设置上网方式 (先看下你原来的路由器里是什么)</p>
+<p>找到合适的对应 wan 的网卡（例如 eth1）,保存</p>
+<p>然后把 lede 虚拟机关机。  再添加 LAN 口</p>
+<p>按着前边的步骤添加两个lan口，记得开启mac地址欺骗。</p>
+<p>启动 lede 虚拟机并进入管理界面, 修改 LAN 口</p>
+<p>自己用的话，我把内网和两个lan口都设置成一个局域网了，这样比较容易管理。我们选中&quot;桥接接口&rdquo;，然后把eth0、eth2、eth3都选中，保存并应用就可以了。</p>
+<p>这时，重新回到宿主机的网络适配器，</p>
+<p>然后把我们指定的ip改成自动获取，如果能正常上网，就说明没有什么问题了，该接交换机接交换机，该接别的接别的。</p>
+<p>重要：在爱快的安装中，可能配置好之后依然无法上网，这个时候需要设置一下DNS，我最开始安装爱快就碰到了这个问题，什么都对就是无法上网，那么就把DNS主地址设置成网关的地址，也就是192.168。1.1</p>
+<h1 id="下载机">下载机</h1>
+<p>在 windows 上安装 utorrent 等工具，挂 bt/pt 下载</p>
+<p>只需要设置种子监控文件夹和下载地址就可以了(自动加载种子, + 完成后将种子移动到别处)</p>
+<h1 id="htpc">HTPC</h1>
+<p>win10 ， 可以安装相应的视频播放软件和音乐播放软件</p>
+<h1 id="黑群晖">黑群晖</h1>
+<p>黑群晖已经安装了DSM(DiskStation Manager)，和官方硬件版的还是有一定区别；例如:不能使用Synology QuickConnect(官方版DDNS)，不能绑定Synology账户。</p>
+<p><a href="https://wp.gxnas.com/2450.html">https://wp.gxnas.com/2450.html</a></p>
+<h2 id="黑群晖版本选择">黑群晖版本选择</h2>
+<p>Hyper-V 下 5.x 版本正常， 6.x 需要 vmware .(但缺点是不如 hyper-v 和 windows server 集成度高)</p>
+<p>强行装 6.0x 到 hyper-v 上也能运行（刷引导文件），但是有 bug (也不知道现在解决没有)</p>
+<p>所以这里还是选 5.2 吧！</p>
+<h2 id="安装在虚拟机上">安装在虚拟机上</h2>
+<ol>
+<li>外部网卡</li>
+<li>内存 1G</li>
+<li>创建虚拟硬盘，这里我建议10-20G都可以，以后用来安装套件比较方便 (用 NFS 的方式挂载 win 共享文件夹)</li>
+</ol>
+<p>需要用到两个文件，一个是引导文件，另外一个是群晖5.2版本的系统文件</p>
+<p>网络选择lan口就行，比如内网win10或者lan1,lan2都可以。(如果你没有软路由，直接就设置个“外部”就可以了, 接入家里的路由器)</p>
+<p>虚拟硬盘这里我们选择 &ldquo;以后附加虚拟硬盘&rdquo;，因为这里我们准备把一块机械硬盘直通给群晖。（方便在 win server 和群晖共享使用文件）</p>
+<p>设置虚拟机</p>
+<p>DVD驱动器】-挂在启动引导的映像文件（网盘下载）——点击应用 <strong>以后每次都要用这个 ISO 来启动引导黑群晖?  后面好像如果用 Install/Upgrade 到硬盘，就不需要用这个 ISO 了, 否则就选第一项</strong></p>
+<p>进行硬盘的设置，选择【SCSI控制器】——新添加一个【硬盘驱动器】</p>
+<p>添加一个【硬盘驱动器】后，我们就能看到已经挂载的硬盘驱动器，这里有两种方式挂载硬盘：</p>
+<p>1、虚拟硬盘，如果没有准备单独一块硬盘直通个群晖的话就选择【虚拟硬盘】(vhd 文件)，新建一个即可
+2、物理硬盘，这里相当于设置硬盘的直通了，相当于将一块物理硬盘直接挂载到群晖上。在设置物理硬盘的时候请注意！！！ <strong>请将准备挂载的硬盘在 win10的磁盘管理器中设置为【脱机】</strong>，否则挂载时列表中是不会显示硬盘的。</p>
+<p>(分支) 不确定脱机后是否方便在 windows 和群晖之间共享。
+<a href="https://post.smzdm.com/p/439699/">https://post.smzdm.com/p/439699/</a>
+通过NFS实现主系统和虚拟群晖之间的文件共享
+主系统采用Windows Server 2019，并使用存储池管理4块硬盘。在Windows下开启NFS共享文件夹。通过Hyper-V虚拟黑群晖5.2，最后黑群晖通过NFS挂载Windows的共享文件夹作为黑群晖本地文件夹。
+硬盘可以用Windows Server自带的存储池管理，可以灵活配置各个硬盘的Raid方案。可以非常方便添加硬盘调整存储空间大小。最重要的是存储池不依赖操作系统。主系统重装，或者换个电脑，原来的存储池可以直接识别。
+群晖通过NFS挂载windows磁盘后，就跟群晖下本地磁盘一样。Photo Station等预览都可以实现。并且不影响磁盘休眠。
+Windows原生的NFS功能 有很多问题：在MAC下连接死活没权限  服务器端编码格式没有UTF-8，客户端版本低的话，连上后中文都是乱码</p>
+<p>推荐使用第三方NFS软件，haneWIN NFS Server
+下载后安装，安装完后记得重启下系统，避免一些奇怪的问题。</p>
+<p><strong>非常重要， 一般nas 找不到挂载的共享文件夹就是这个原因</strong>
+重启后在系统Pogram Files文件夹下找到nfsd文件夹。右键管理员权限运行firewall文件。这是个批处理文件，目的是让让nfsd服务能够通过windows防火墙。不运行的话，客户端连接会被防火墙阻挡。(或者手动 入站规则”然后右击》新建规则“端口”》“特定本地端口”》“TCP” 》输入端口号：111,1058,1149（必须用英文逗号分割）  允许连接”&ndash;配置文件全选》下一步后输入规则名称（自定义）》点击完成。    提示：完成TCP规则的设定后，再次返回到添加特定本地端口界面，选择“UDP”，然后再重复后面的步骤进行建立UDP通信规则，端口号和TCP通信规则一致。)</p>
+<p>打开桌面上的NFS Server。软件是英文的，但都比较简单，不影响使用。
+在主界面上点击Edit，选择Preference，打开配置页面。</p>
+<p>选择 Server,  charset 选 utf-8</p>
+<p>选择Export页，点击Edit export file。在这里我们可以编辑Export文件，添加你需要共享的文件夹。(直接在Export文件末尾添加要共享的文件夹)</p>
+<p>D:\photo -name:photo -maproot:0 -range 192.168.1.2 192.168.1.254</p>
+<p>如果你只想要你的群晖有权限连接这个共享文件夹，去掉-range，然后只写上你群晖的IP地址</p>
+<p>配置黑群晖端，目的实现启动自动挂载NFS文件夹，并给群晖套件使用，比如Photo Station。</p>
+<p>添加完毕后，restart server（NFS）</p>
+<p>这时可以在别的电脑下载个 XBMC ，安装以后设置中文的方法，设置好以后在电影-文件-添加视频-添加网络文件系统（NFS），如果可以添加就证明成功了</p>
+<p>群晖设置界面下开启SSH。</p>
+<p>输入 ssh root@你群晖的名字或者IP地址Windows系统可以使用Putty）。输入密码后，就以root账号登录你的群晖。密码就是初始化群晖是输入的密码</p>
+<p>输入群晖 vi /usr/syno/etc/defaylts/rc/d/S99mount.sh 来编辑脚本文件，将挂载命令添加进这个文件中。这样群晖启动时就会自动运行这个脚本，挂载NFS文件夹。
+添加挂载文件夹命令道脚本文件中，以群晖下photo文件夹为例（安装完photo station组件后群晖就会自动创建photo文件夹）。</p>
+<p>/bin/mount -t nfs -o hard qiu-server:/photo /volume1/photo</p>
+<p>/bin/mount -t nfs -o hard 这段不要动，作为mount指令固定格式</p>
+<p>qiu-server:/photo 这是windows下nfs共享文件夹 qiu-server是我的NAS计算机名，也可以用IP地址。photo是nfs共享文件夹名字。也就是刚才命令D:photo -name:photo -maproot:0 -range 192.168.1.2 192.168.1.254中-name:参数后面的名字</p>
+<p>/volume1/photo 是你要挂载到的群晖文件夹。可以通过下面这个图看到这个地址</p>
+<p>编辑并保存文件后，输入命令，使得脚本能够被运行</p>
+<p>输入reboot，重启群晖。重启后打开file station，就能看到photo文件夹挂载成功了</p>
+<p>重建下媒体文件夹索引，photo station就可以看到缩略图了</p>
+<p>使用同样的方式，还可以挂载像docker文件夹，video文件夹等。
+首先，要在套件中心，装好自己需要用到的套件。然后再控制面板-共享文件夹中，系统会自动添加几个文件夹。(photo  video 等)</p>
+<p>此时回到 haneWIN， 可以在 ”mount“ tab 里看到 NAS 挂载了这几个共享文件夹</p>
+<p>如果要套件中心提供的默认文件夹之外的文件夹，手工点击新增按钮，自行添加。(如“我的电脑”， 对应 NFS 的 D:)</p>
+<p>可以不需要手动修改 /usr/&hellip;. (前面那个麻烦的 ssh 登录)，而是在控制面板，任务计划里 添加NFS挂载命令到计划任务中，注意添加完毕后，手动运行一下。以后如果重启都需要先手动运行(缺点是，每次人工启动DSM后，还是需要手工运行一遍计划任务。</p>
+<p>)
+/bin/mount -t nfs -o hard 192.168.2.2:/电影 /volume1/video</p>
+<p>/bin/mount -t nfs -o hard 192.168.2.2:/我的音乐 /volume1/music</p>
+<p>/bin/mount -t nfs -o hard 192.168.2.2:/我的照片 /volume1/photo</p>
+<p>/bin/mount -t nfs -o hard 192.168.2.2:/我的电脑 /volume1/我的电脑</p>
+<p>/bin/mount -t nfs -o hard 192.168.2.2:/kugou /volume1/music</p>
+<p>启动虚拟机 (启动速度挺慢的！要加载不少的东西，耐心等等吧。 hyper-v 打开虚拟机里看看)</p>
+<p>首次启动后，系统的启动页面我们要选择第三个选项，进行系统的安装 (XPEnology DSM xxxxx  Install/Upgrade)</p>
+<p>出现如下界面就可以打开群晖助手进行安装了 (字符界面底部显示diskstation login)  （群辉助手可以在官网下载，网盘里也提供了）</p>
+<p>群晖助手在 windows 里打开（类似威联通的那个 QNAP Connect 自动检测寻找局域网内的 NAS 设备）</p>
+<p>双击群晖助手里面的设备，便会弹出网页安装的界面.  192.168.x.x</p>
+<p>在浏览器上输入fing.synology.com,就会搜到黑群晖，选择设置</p>
+<p>选择手动安装</p>
+<p>安装的镜像选择网盘中提供的文件：【DSM_DS3615xs_5967.pat】，点击立即安装即可</p>
+<p>重启完成后通过【群晖助手】就可以进入群晖的欢迎界面进行设置了【ps：如提示输入用户名和密码，初始的用户名是：admin 密码：不填写】</p>
+<p>开始会让你输入账号密码。 例如 admin  123456</p>
+<p>不要勾上给共享位置，以便访问。。。。你懂的</p>
+<p>如果不想让群晖创建SHR类型存储空间，请不要勾选，安装后可另行配置，后面我会介绍群晖集中存储空间类型。请牢记管理员密码。</p>
+<p>请选择固定IP，防止IP变更。</p>
+<p>登录系统</p>
+<pre><code>在浏览器输入http://192.168.1.76（IP地址在前面步骤已设置），系统会自动跳转到http://192.168.1.76:5000/webman/index.cgi页面，5000是DSM默认管理端口
+</code></pre>
+<p>登录后自动进入DSM更新设置界面。注意不要选第一项：自动安装最新版本，因为是黑群晖，升级到6.0以上版本后会导致系统无法启动 虚拟机Hyper V的设置 &amp; Synology 群晖5.2安装+存储空间扩容+为啥不值得洗白。</p>
+<p>第二项：自动安装重要更新，主要是安装系统安全补丁。经我测试，安全补丁不会影响系统启动，目前我的系统已升级到DSM5.2-Update5版本。第</p>
+<p>三项：下载DSM更新，但让我选择是否安装。这个选项由管理员决定是否升级，是最安全的方式，我们先选这项。安全补丁可以手动升级。</p>
+<p>QuickConnect 跳过步骤. 以后设置端口转发来访问 DiskStation</p>
+<p>进入控制面板→还原和更新界面，看到已经有6.0的升级包，千万别手贱点立即更</p>
+<p>点更新设置，选择“仅重要更新”，系统只会自动下载重要补丁文件，避免误升级。</p>
+<p>进入HDD/SSD界面，可以看到有一个容量为1TB的虚拟硬盘，这和之前在虚拟机中设置的虚拟硬盘容量一致。有童鞋问我如何增容，很遗憾对于已经设置好容量的虚拟硬盘是无法增容的（即使在虚拟机中调大虚拟硬盘容量，群晖也无法识别），只能通过增加硬盘或替换硬盘的方式增容</p>
+<p>设置存储空间</p>
+<pre><code>进入存储空间界面，点击新增
+</code></pre>
+<p>有两种模式选择，SHR和自定义。先科普下SHR（资料来自网络）：SHR是Synology Hybrid RAID的缩写，是群晖公司自行开发的一种RAID模式；当NAS里面只有一颗硬盘的时候，磁盘阵列的模式为Basic，无数据保护。当再添加为一个硬盘的时候磁盘阵列的模式自动转换成类似RAID1模式，空间大小不变，但是多了个数据保护。当再加入一个硬盘的时候会自动转换成类似RAID5模式（前提是你的NAS可以放3个及以上的硬盘），容量为N-1个硬盘的总容量，假如3个3Ｔ的硬盘，此时的SHR空间总容量为（3-1）*3T为6T的空间，后期可以慢慢加硬盘数据也不影响的。SHR模式对硬盘大小没有限制，例如可以用1TB、2TB、3TB硬盘各一块组成类似RAID5模式，由系统在数据保护的基础上自动分配最大空间。看着好像很复杂，简单说SHR就是智能RAID模式，会根据硬盘数量自动选择数据保护模式虚拟机Hyper V的设置 &amp; Synology 群晖5.2安装+存储空间扩容+为啥不值得洗白 。</p>
+<p>自定义选项适合对RAID有深刻了解的用户，可以选择有数据保护的类型：SHR/RAID1/5/6/10，或者没有数据保护的类型：Basic/JBOD/RAID0（几种RAID模式区别不再赘述，请自行百度）。由于目前只有一块硬盘，只能选择SHR或Basic（相当于单盘RAID0），其它选项为灰色不可选。我群晖存储空间主要存放不重要的下载电影文件，需要空间最大化，所以选Basic模式。</p>
+<p>硬盘检查，相当于WIN系统下扫描硬盘坏扇区，耗时较长，如果是新盘可以跳过。</p>
+<p>下一步配置存储空间容量，如果没有特别需求最好把所有容量都给存储空间。我这里配置了10GB容量给存储空间1。</p>
+<p>初始化完成后我们看下磁盘组和存储空间信息：原来1TB的虚拟硬盘划分了10GB空间给存储空间1，实际上宿主机物理硬盘上的虚拟硬盘文件大小只有1.91GB，随着数据量增加，硬盘文件会自动扩容虚拟机Hyper V的设置 &amp; Synology 群晖5.2安装+存储空间扩容+为啥不值得洗白 。</p>
+<p>套件安装</p>
+<pre><code>进入套件中心，自己可以挑选需要的套件安装，非常方便。群晖推荐的套件都是使用较多的软件，大家可以随意尝试。下一篇我再详细介绍Photo Station和Video Station套件和对应APP的应用。
+</code></pre>
+<p>群晖存储空间扩容</p>
+<p>（一）扩容方式</p>
+<pre><code>在创建群晖虚拟硬盘时，容量一旦设定就不能更改（即使在虚拟机中调大虚拟硬盘容量，群晖也无法识别），所以容量尽量设大些（可以大于物理硬盘容量，随着数据量增长动态扩容，物理盘没空间可以拷贝到更大的硬盘）虚拟机Hyper V的设置 &amp; Synology 群晖5.2安装+存储空间扩容+为啥不值得洗白 。所以存储空间扩容主要有以下几种方式：
+
+1、增加硬盘，这是最简单的方式，前提是你有足够多的盘位。
+
+2、对于没有数据保护模式的存储空间：插入新硬盘，创建群晖虚拟硬盘，然后将小硬盘上的数据拷贝到大硬盘里，最后删除小硬盘。
+
+3、对于有数据保护模式的存储空间：先拔出一块旧硬盘，系统提示存储空间降级，再插入一块新硬盘修复数据；然后再拔出另一块旧硬盘，重复以上步骤（没有经验的童鞋请勿随便尝试，有风险）虚拟机Hyper V的设置 &amp; Synology 群晖5.2安装+存储空间扩容+为啥不值得洗白 。
+
+4、通过NFS或SMB方式挂载WIN系统下的共享目录，这个其实不能算真正意义上的扩容，但非常灵活。
+</code></pre>
+<h2 id="爱快阿里域名dnspod实现ddns">爱快+阿里域名+DNSPod实现DDNS</h2>
+<h2 id="一些问题">一些问题</h2>
+<p>亲测，2016 hyperv 可用：</p>
+<ol>
+<li>IDE挂虚拟的boot那个vhd</li>
+<li>SCSI 0 挂虚拟的那个vhd</li>
+<li>SCSI 1 开始 直通物理硬盘
+第一次启动会很慢，估计会超过5分钟，然后助手才可以找到，安装6.0.3
+装完后创建存储空间（SCSI 0挂的那个vhd虚拟磁盘不要选，因为之后要移除它），磁盘选basic，否则没法用，会提示损毁
+关机，虚拟机设置里面移除SCSI 1 挂的那个vhd硬盘（没用了，群晖装完之后每个硬盘都第一个分区里面都有系统的镜像）
+重启，Enjoy!</li>
+</ol>
+<p>存在的问题：</p>
+<ol>
+<li>
+<p>启动非常的慢，这也是很多兄弟说一直助手找不到DSM的原因，真的启动非常非常非常的慢
+注：只是启动慢，启动之后速度正常，网速也正常但是会提示是百兆，实际可以跑90-150几兆
+（我是双千兆网卡做的聚合，然后创建虚拟交换机绑定到聚合的网卡）<br>
+解决办法：
+等，耐心的等</p>
+</li>
+<li>
+<p>一般正常运行一段时间后（5-7天），会突然提示没有存储空间，
+解决办法：
+什么都不要做，直接重启，启动后会找到了之前的存储空间，文件完好无损</p>
+</li>
+<li>
+<p>无法升级
+目前无解，等破解吧，HyperV驱动注入6.0核心实在是太麻烦了</p>
+</li>
+</ol>
+<p>谢谢楼主搬运，终于有了一个HyperV可用的DSM 6 黑群晖解决方案啦！</p>
+<h2 id="洗白">洗白</h2>
+<p>通过修改网卡MAC地址和对应的序列号让硬件更加仿真原版机型使得QuickConnect(官方版DDNS)可以使用，能绑定Synology账户的硬件就是洗白群晖。</p>
+<p>由于策略的升级，洗白群晖越发困难，如需研究自行百度；目前来看该功能没有特别的影响，只是在DDNS上和关机状态唤醒，DDNS可参考本站文章更高效的解决；关机状态唤醒考虑放弃。 请尊重知识产权，使用正版！</p>
+<p>不值得：</p>
+<ol>
+<li>群晖的内网穿透分配带宽肯定有限（从威联通的使用体验可以看出来），可以自己用花生壳什么的来实现</li>
+<li>转码功能好像 5.2 黑群晖也能做到</li>
+</ol>
+<h2 id="放弃-nfs-共享过来给群晖的文件夹无法添加其他非管理员用户权限">放弃： NFS 共享过来给群晖的文件夹，无法添加其他非管理员用户权限</h2>
+<p>如 win10 上通过 nfs 共享的 video 等，虽然在虚拟机黑群晖里挂载ok了。但是当添加用户，分配目录时，报错</p>
+<blockquote>
+<p>文件夹所在的空间并不支持 ACL</p>
+</blockquote>
+<p><a href="https://www.chiphell.com/thread-1322291-1-1.html">https://www.chiphell.com/thread-1322291-1-1.html</a></p>
+<p>因为你必须把整个硬盘以 EXT4 的格式给群晖，才能使用 DSM 的账号权限体系。 从 win 上 NFS 过去的 NTFS 格式不能的。</p>
+<blockquote>
+<p>所以，还是在 win 上 （1）win 自己的共享文件夹 (2)用 NextCloud 等搭网盘吧。。。。</p>
+</blockquote>
+<p>但是 win 没有群晖那么多的工具、也不方便手机客户端同步文件（nextcloud app 对比 ds file 等就是渣）</p>
+<h1 id="局域网链接和穿透">局域网链接和穿透</h1>
+<p>资料：</p>
+<p><a href="https://sspai.com/post/52523">https://sspai.com/post/52523</a></p>
+<p>其实就是</p>
+<ol>
+<li>
+<p>群晖控制面板启用 ssh</p>
+</li>
+<li>
+<p>登录 ssh 后， 下载 frp 并配置客户端 frpc.ini</p>
+</li>
+</ol>
+<pre><code class="language-config">[common]
+server_addr = ip
+server_port = 7000
+auth_token = 和服务器端对应
+pool_count = 1
+
+[ssh]
+type = tcp
+local_ip = NAS 局域网ip
+local_port = 22
+remote_port = 6000
+
+[nas]
+type = http
+local_port = 5000
+subdomain = nas
+
+[web]
+type = http
+local_port = 80
+subdomain = web
+</code></pre>
+<p>web station 如果没有可以不填 web</p>
+<h2 id="公网ip--光猫桥接">公网ip ， 光猫桥接</h2>
+<p>百度搜索IP，百度会显示你当前的IP地址，</p>
+<p>你把这个IP地址和你路由器的IP地址作比较，如果一致，说明你是公网IP，如果不一致，说明你是运营商用一个IP然后经过多层NAT之后分配给你的内网IP
+例如我联通的光猫登录后就是 10.216.21.183  不用想了后面 ddns 什么的都不适用你， 用穿透方案</p>
+<p>一般在光猫的背后可以看到信息
+如果你的光猫是带拨号功能的 (pppoe模式)，那么请改成桥接模式，让路由器来拨号，否则你即便有公网IP，还是要做内网穿透，</p>
+<h2 id="hyper-v-网络模式解析">Hyper-V 网络模式解析</h2>
+<p>外部网络的简单来讲就是可以上外网，和宿主机的网络一样，此外和其他虚拟机和可以互相通信。内部网络则只能在虚拟机之间或者虚拟机和宿主机之间进行网络通信，不能上外网。专用网络就相当于虚拟机之间构建的一个局域网，连宿主机都无法进行网络连接。</p>
+<h3 id="外部网络bridge-桥接-由路由器分配ip-和宿主机在一个网段-通过路由器访问互联网">外部网络(Bridge 桥接) 由路由器分配IP 和宿主机在一个网段， 通过路由器访问互联网</h3>
+<p>但是 HUAWEI/荣耀路由  在做端口转发的时候， <strong>找不到设备！！！</strong> (宿主机用无线网卡)
+听说其他 TP-LINK 的能找到</p>
+<p>好像还有个选项“允许xxxx 控制xxxx&rdquo; 最关键是连接类型千万要选外部网络，然后勾选允许管理操作系统共享此网络适配器，</p>
+<p>(最终： 是 windows 系统的问题， 装的 win server 2016 可能是修改版。。  某个服务被关掉了。)</p>
+<p>换成win 10</p>
+<p>下载的 win10 的 LTSC 企业版有问题：找不到网络邻居里的计算机 NAS&hellip;</p>
+<p>安装 专业版 就好了。</p>
+<h3 id="内部网络nat--和宿主机不在一个网段可以和宿主机通信也能通过设置宿主机设置的-网络共享-访问互联网">内部网络(NAT)  和宿主机不在一个网段，可以和宿主机通信，也能通过设置宿主机设置的 &ldquo;网络共享&rdquo; 访问互联网</h3>
+<p>前面 桥接 方式很简单，很便利，但是也有其不完美的地方，比如物理机所在的外部环境的网络发生变化的时候，虚拟机的IP地址也会相应的发生变化，这对于需要虚拟机有固定IP地址的需求来说不是一个好的事情，譬如假设我们把虚拟机作为服务器的话，IP经常变动简直要命！解决办法就是NAT</p>
+<p>需要开启网络共享和网络发现，针对windows虚拟机如果不行必要的时候还需要安装Integration Service
+用CDROM挂载vmguest.iso, 在虚拟机里面打开该盘并找到setup.exe进行安装，附上vmguest.iso下载链接：http://pan.baidu.com/s/1hrDvxlU密码：zxk4</p>
+<p>添加内部网络后，来到“网络和共享中心” 找到那块虚拟网卡，切到“共享” 勾上 xxxx</p>
+<p>新建一个内部虚拟交换机，然后将物理机的网络共享给虚拟交换机，最后将虚拟机的网络适配器设置为这个虚拟交换机就达到了NAT的目的</p>
+<p>在关闭Hyper-V虚拟机的情况下，选择Hyper-V管理界面中的“虚拟交换机管理器”
+在弹出的对话框中“新建虚拟网络交换机”，选择“内部”，点击“创建虚拟交换机”。
+在IP网卡 切换到“共享”标签下，勾选“允许其他网络用户通过此计算机的Internet连接来连接”并在下方“家庭网络连接”中选择刚刚创建的虚拟交换机——vEthernet (Hyper-V Switch)，点击“确认</p>
+<p>为了让局域网或外网用户直接远程访问或访问虚拟机里的服务，可以将实机端口直接映射到Hyper-V的虚拟机里面，省去很多麻烦。</p>
+<p>此时物理机和虚拟机是在两个不同的网络中的，虚拟机通过windows的网络共享功能上网，他和物理机之间可以相互访问，但是物理机所在的网络中的其他主机如果没有做别的设置是相互访问不到的。这种方式虚拟机自带网络，网络环境比较稳定，不容易出现IP变动，如果需要IP固定的话可以直接给虚拟机设置IP地址，这个交换机的网络地址可以通过cmd下的ipconfig看到，这个值其实就是可以看做网关。</p>
+<h2 id="下面是hyper-v共享ip端口映射一些常用命令">下面是hyper-v共享IP端口映射一些常用命令</h2>
+<p>在 PowerShell 里打开</p>
+<p>共享IP端口映射一些常用命令
+一、查询端口映射情况
+netsh interface portproxy show v4tov4
+查询这个IP所有的端口映射。
+netsh interface portproxy show v4tov4|find &ldquo;192.168.1.1&rdquo;
+二、增加一个端口映射
+netsh interface portproxy add v4tov4 listenport=外网端口 listenaddress=主IP connectaddress=私网IP connectport=私网IP端口
+例如：
+netsh interface portproxy add v4tov4 listenport=8888 listenaddress=118.123.13.180 connectaddress=192.168.1.10 connectport=2222
+三、删除一个端口映射
+netsh interface portproxy delete v4tov4 listenaddress=主IP listenport=外网端口</p>
+<h3 id="host-only-无法访问互联网-只能和宿主机通信">Host-Only 无法访问互联网 只能和宿主机通信</h3>
+<h2 id="不要用群晖官方的-quickconnect">不要用群晖官方的 QuickConnect.</h2>
+<p>打通家里和单位局域网的链接，</p>
+<ol>
+<li>黑裙不能用官方那个 connect</li>
+<li>如果你的宽带有公网IP 可以搞个DDNS动态域名花生壳之类的。路由器防火墙做一下端口映射，就可以直接访问。外网访问速度，取决于你的上传带宽。</li>
+<li>没有公网IP的宽带 就需要 内网穿透 了(第三方服务器来转发数据)</li>
+</ol>
+<p>可用通过 frp、蒲公英的设备、其他方式(ngrok 不考虑了，收费很高, frp 开源)</p>
+<p>我选 frp + 买一台便宜的服务器(FQ，web 穿透多用途  如搬瓦工的， 国内1M水管不是很好。。)</p>
+<h2 id="如果有固定的公网ip最简单路由器做一个端口转发即可">如果有固定的公网IP，最简单，路由器做一个端口转发即可</h2>
+<p>最简单</p>
+<h2 id="有动态公网-ip--用-ddns--自己的域名">有动态公网 IP  用 DDNS + 自己的域名</h2>
+<p>如果有NAS分享Synology Drive内文件至公网需求的话，只能使用自己域名绑定NAS才行了（不然是DDNS服务商那丑丑的域名=。=</p>
+<p>目前网上大部分的教程都是通过python或php运行环境运行阿里云DDNS客户端更新IP，操作起来很麻烦。群晖支持DNSPod.cn的DDNS服务（虽然DNSPod没宣传），只是设置方法有些不同。DNSPod是国内老牌DNS解析服务商，现在已经属于腾讯云，具有解析稳定、更新快的特点，个人是其老用户所以更倾向于使用DNSPod的DDNS服务。</p>
+<p>依照DNSPod中提示，前往域名注册的地方将DNS修改为DNSPod的DNS服务器。</p>
+<p>添加一个自己想要的二级域名，记录类型A，记录值随便填写一个IP即可。</p>
+<p>用户中心→安全设置→API Token项目中点击“激活”或“查看”。 (改版后移动到 账号中心-&gt;密钥管理-&gt;  添加)</p>
+<p>记录保存好ID和Token，仅创建时显示一遍，没记录就只能删除重新创建了。</p>
+<p>在群晖DSM中点击控制面板→外部访问→DDNS→“新增”按钮，
+主机名称：填写刚刚添加的域名解析记录IP， 对应的 <strong>域名</strong>  如 nas.test.org
+用户名/电子邮箱：填写API ID
+密码/密钥：填写API TOKEN，然后保存</p>
+<p>点击一下立即更新，显示正常后表示DDNS已成功生效。</p>
+<p>如果”主机名不存在“。</p>
+<p>路由器上添加端口转发。 (外部 5000 -&gt; 内部:nas 5000)</p>
+<p>由于这里是 hyper-v 里的虚拟机 nas.  而且只有一个”外部网络“的虚拟交换机。 在路由器的 NAT 设置里里是找不到这个设备的。</p>
+<p>因此需要： google 下&hellip; hyper-v 端口映射。。</p>
+<p>最后：记得域名要加上NAS的端口号一起访问。例如：cloud.tenlonstudio.com:5000</p>
+<p>路由器设置： (如果你的路由器能被 NAS 支持。可以直接快速设置， 否则就只能登陆路由器设置端口转发了)</p>
+<p>检查路由器信息：检查网络环境失败。</p>
+<p><a href="http://www.synology.com/tutorials/how_to_internet.php?#t3.10">http://www.synology.com/tutorials/how_to_internet.php?#t3.10</a></p>
+<h2 id="配置-frp">配置 frp</h2>
+<p>完整说明：https://github.com/fatedier/frp/blob/master/README_zh.md</p>
+<p>登录 vps, 输入 arch 命令下载合适的版本</p>
+<p><a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<p>wget xxxx</p>
+<p>解压改名</p>
+<p>tar -zxvf frp_0.22.0_linux_amd64.tar.gz
+cp -r frp_0.22.0_linux_amd64 frp</p>
+<p>服务器端
+frps
+frps.ini</p>
+<p>客户端
+frpc
+frpc.ini</p>
+<h3 id="服务器端">服务器端</h3>
+<p>修改服务器端配置文件：vim frps.ini</p>
+<pre><code class="language-config">[common]
+bind_port = 7000
+dashboard_port = 7500
+token = 12345678
+dashboard_user = admin
+dashboard_pwd = admin
+vhost_http_port = 10080  # 用于处理 frpc 客户端里的 web
+vhost_https_port = 10443
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">./frps -c frps.ini
+
+# Ctrl+C停止或者关闭SSH窗口后，frps均会停止运行，因而我们使用 nohup命令将其运行在后台。
+nohup ./frps -c frps.ini &amp;
+
+#nohup: ignoring input and appending output to 'nohup.out'
+
+# Ctrl+C关闭nohup, 使用jobs命令查看后台运行的程序
+jobs
+
+# 看到frps正在后台正常运行
+[1]+  Running                 nohup ./frps -c frps.ini &amp;
+
+# 关闭后重新启动, 这是 job id ,而不是process id
+kill %1
+</code></pre>
+<p>访问 x.x.x.x:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面</p>
+<p>注意到两点：</p>
+<ol>
+<li>只暴露一个 7000 端口就可以了，  客户端任何 N 个服务，不同端口都共享这个（稍后可见）</li>
+<li>token 表示客户端启动服务后，与服务端通信需要的凭证。</li>
+</ol>
+<h3 id="客户端">客户端</h3>
+<p>如 windows</p>
+<p>下载了“frp_0.22.0_windows_amd64.zip”，将其解压在了C盘根目录下，并且将文件夹重命名为“frp”，可以删除其中的frps和frps.ini文件。</p>
+<p>打开frpc.ini</p>
+<p>注意 token 是和服务端一样的！！
+虽然这里不同的服务，用了 N 个端口 80-&gt;8000  22-&gt;6000  但服务器端其实只有 7000。</p>
+<pre><code class="language-config">[common]
+server_addr = x.x.x.x
+server_port = 7000
+token = won517574356
+
+[web]
+type = http
+local_ip = 127.0.0.1
+local_port = 80
+
+#remote_port = 8000 #不需要
+custom_domains=   # 必须有一个 subdomains
+# remote_port = 8000
+custom_domains=   
+# 必须有一个 subdomains， 将 www.yourdomain.com 的域名 A 记录解析到 IP x.x.x.x，如果服务器已经有对应的域名，也可以将 CNAME 记录解析到服务器原先的域名。  然后访问 域名:10080 (服务端的vhost_http_port)
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000
+token = 12345678
+
+[rdp]
+type = tcp
+local_ip = 127.0.0.1           
+local_port = 3389
+remote_port = 7001  
+
+[smb]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 445
+remote_port = 7002
+</code></pre>
+<p>同样用 nohup 启动</p>
+<p>自定义规则</p>
+<p>“[xxx]”表示一个规则名称，自己定义，便于查询即可。
+“type”表示转发的协议类型，有TCP和UDP等选项可以选择，如有需要请自行查询frp手册。
+“local_port”是本地应用的端口号，按照实际应用工作在本机的端口号填写即可。
+“remote_port”是该条规则在服务端开放的端口号，自己填写并记录即可。</p>
+<p>frpc程序不能直接双击运行！</p>
+<p>使用命令提示符或Powershell进入该目录下
+cd C:\frp
+并执行
+./frpc -c frpc.ini</p>
+<p>不要关闭命令行窗口，此时可以在局域网外使用相应程序访问 x.x.x.x:xxxx （IP为VPS的IP，端口为自定义的remote_port）即可访问到相应服务。</p>
+<p>后台运行及开机自启</p>
+<p>“frpc.bat”，编辑</p>
+<pre><code class="language-shell">@echo off
+if &quot;%1&quot; == &quot;h&quot; goto begin
+mshta vbscript:createobject(&quot;wscript.shell&quot;).run(&quot;&quot;&quot;%~nx0&quot;&quot; h&quot;,0)(window.close)&amp;&amp;exit
+:begin
+REM
+cd C:\frp
+frpc -c frpc.ini
+exit
+</code></pre>
+<p>直接运行这个 .bat 文件即可启动frpc并隐藏窗口（可在任务管理器中退出）。</p>
+<p>开机启动，把这个 .bat 文件直接扔进Windows的开机启动文件夹</p>
+<h2 id="域名-nginx-多端口">域名， nginx 多端口</h2>
+<p><a href="https://juejin.im/post/5c49313f6fb9a049eb3c488f">https://juejin.im/post/5c49313f6fb9a049eb3c488f</a></p>
+<p>用frp运行多个web服务，那么可以结合nginx实现</p>
+<p>在 server 上配置 nginx. 代理 frps 服务端 8080 的请求（并处理多个域名）</p>
+<pre><code class="language-config">server {
+ listen 80;
+ server_name app1.* app2.* app3.*;
+ ## send request back to apache ##
+ location / {
+     client_max_body_size 1000m; 
+     # 假设frps端口8080
+     proxy_pass http://127.0.0.1:8080;  
+     proxy_redirect off;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_set_header Host $http_host;
+     proxy_set_header X-NginX-Proxy true;
+ }
+}
+
+
+server
+{
+    listen 443 ssl http2;
+    server_name home2222.zhishibee.com;
+
+  ssl_certificate     /www/server/panel/ssl/domain_chain.crt;
+    ssl_certificate_key /www/server/panel/ssl/domain_key.key;
+
+    location / {
+      proxy_pass ....
+    }
+}
+</code></pre>
+<p>frps</p>
+<pre><code class="language-config">[common]
+bind_addr = 0.0.0.0
+bind_port = 7000
+vhost_http_port = 8080
+auth_token = openittoken
+subdomain_host = testapp.com
+ 
+; 注意!!  一直无法成功，我屏蔽了下面的才OK 了 有的教程说 服务端要加这些，其实搞错了，服务器端的配置很简单，就上面那些就可以了
+;[app1]
+;type = http
+;auth_token = openittoken
+;subdomain = app1
+;[app2]
+;type = http
+;auth_token = openittoken
+;subdomain = app2
+;[app3]
+;type = http
+;auth_token = openittoken
+;subdomain = app3
+</code></pre>
+<p>frpc</p>
+<pre><code class="language-config">[common]
+server_addr = *.23.72.*
+server_port = 7000
+#auth_token =openittoken
+# 好像是 token 而不是 auth_token 
+token=1234566
+ 
+[app1]
+type = http
+local_port = 8081
+ 
+[app2]
+type = http
+local_port = 8082
+ 
+[app3]
+type = http
+local_port = 8083
+custom_domains = www.your_domain.com
+# 设置认证的用户名
+http_user = flyzy2005
+# 设置认证的密码
+http_pwd = flyzy2005
+</code></pre>
+<p>然后 将 *.testapp.com解析到你的服务器ip，这样就实现了：</p>
+<p>启动frpc即可</p>
+<p>这样就实现了</p>
+<p>app1.xxx.com  (nginx 80) -&gt; frps (vhost_http_port 8080) -&gt; frpc (app1 8081)
+app2.xxx.com  (nginx 80) -&gt; frps (vhost_http_port 8080) -&gt; frpc (app2 8082)</p>
+<p>这时打开域名，可能会提示 Not Found  (下方有 frp 的链接)</p>
+<p>需要不使用 nohup 运行，而直接运行 frps  多刷新几次，观看输出，一直到出现 success 就可以打开页面了</p>
+<p>再重新用 nohup 就好（可能是个bug?）</p>
+<p><strong>疑问</strong></p>
+<p>如果直接用  webssh.xxx.com:8080 直接用 frp 的 http 8080 端口来访问，  是不是连 nginx 的 80:8080 反向代理都不需要了？？？</p>
+<h2 id="windows-上-frpc-客户端3389-远程桌面">windows 上 frpc 客户端，3389 远程桌面</h2>
+<h2 id="没有动态公网-ip-用-frp-或者-花生壳内网穿透访问群晖">没有动态公网 IP, 用 frp, 或者 花生壳内网穿透访问群晖</h2>
+<p>frp内网穿透。frp与ngrok比较像，都是反向代理。但frp更开源，而且是国人开发，只要能找到一台在公网的vps服务器并稍作配置就能使用，frp开发者提供了多个版本，s，nas，路由器都有对应使用版本。只要设备能上网。不管有没有公网 IP，都可以让任何一个能上网的机子访问该设备。</p>
+<p>打开群晖的SSH服务。（控制面板-终端机和SNMP）</p>
+<p>打开home文件夹。“用户账户–高级设置”下有个“启动家目录服务”。这样就可以让home目录可见，frp文件需在这个目录启用。</p>
+<p>到www.chuantou.org下载客户端文件，先选择版本，我选的是0.16.1。</p>
+<p>选择类型。群晖是linux操作系统，根据配置选型号，我的是386型。</p>
+<p>把这三个文件下载下来放到刚才群晖的home文件夹内。</p>
+<p>配置frpc.ini文件。右键打开frpc.ini-用文本编辑器打开，参照网上的配置。</p>
+<p>xshell 5连接群晖，输入帐号密码登陆linux，</p>
+<p>输入命令 启动frp客户端。</p>
+<p>./frpc -c ./frpc.ini</p>
+<p>为了能够frp客户端后台启动，最后输入命令行:</p>
+<p>nohup ./frpc -c ./frpc.ini &amp;</p>
+<p>在浏览器输入：(******为刚才配置文件里的自定义名称，frp3.chuantou.org为frp服务器地址）。)</p>
+<p>******.frp3.chuantou.org</p>
+<p>如果要通过手机端的群晖APP访问，则需要在域名后面加上80端口。</p>
+<p>所有访问内网服务器的操作都要走frp服务器的流量</p>
+<p>如果是自己的服务器， 就需要修改配置文件， 并在服务器上启动服务端了。</p>
+<h2 id="webssh">webssh</h2>
+<h3 id="webssh2-通过-frp-nginx-端口转发后-bundlejs-报-404-问题">webssh2 通过 frp +nginx 端口转发后, bundle.js 报 404 问题</h3>
+<p>cd webssh2/app</p>
+<p>pm2 start npm &ndash; start</p>
+<p>浏览器打开：
+http://192.168.3.17:2222/ssh/host/127.0.0.1</p>
+<h3 id="改用-gateone">改用 GateOne</h3>
+<p><a href="https://www.moerats.com/archives/582/">https://www.moerats.com/archives/582/</a></p>
+<p>传统方式，太麻烦了。</p>
+<pre><code class="language-shell"># 先要有 python2.7 和 tornado 框架
+sudo pip install tornado kerberos
+
+#centos
+sudo rpm -Uvh gateone*.rpm
+
+# ubuntu
+sudo dpkg -i gateone*.deb
+
+# from source
+tar zxvf gateone*.tar.gz; cd gateone*; sudo python setup.py install
+</code></pre>
+<p>docker 方式（占用磁盘， 虚拟机不够用。。。）</p>
+<pre><code class="language-shell"># 安装Docker
+curl -sSL https://get.docker.com/ | sh
+service docker start
+
+sudo docker pull liftoff/gateone
+
+#命令
+docker run [-d/-t] -p [443]:8000 -h [hostname] --name gateone liftoff/gateone gateone
+#示例，如果服务器上443被占用，请使用其它未被占用的端口
+docker run -t -p 443:8000 -h Rats --name gateone liftoff/gateone gateone
+docker run -t -p 2222:8000 -h webssh --name gateone liftoff/gateone gateone
+</code></pre>
+<p>-d/-t：决定镜像是使用Deamon（后台）模式启动，或者显示启动过程
+-p 443:8000：绑定端口，注意：GateOne强制使用SSL，8000端口为Docker容器内的固定映射端口，请只改动冒号前面的端口，不要动后面的端口号！
+-h hostname：设置Docker容器的主机名（这个将会显示在你的浏览器标题中）
+&ndash;name gateone：设置Docker容器的名称（不是主机名），用来docker ps时识别用
+liftoff/gateone：镜像名称
+gateone：启动命令行，勿动（默认命令行会发生Python io_loop报错，故使用此命令行来避免错误）</p>
+<p>安装完成后，进入https://xx.com:端口，如果端口是443，可直接进入https://xx.com，xx.com
+可以为IP也可以为域名，地址前面的https别漏掉了，访问时浏览器可能会报不安全，无视即可，如果你想添加SSL证书，请将域名解析到服务器，然后继续往下看。</p>
+<p>mac 下 chrome 必须要 SSL 证书 否则无法访问。。。  （而windows 可以点“继续访问”。。。  因为这个证书是 gateone 自签名的。 ）</p>
+<p>添加SSL
+想添加SSL证书的，继续看，不想的就跳过。</p>
+<p>1、停掉容器</p>
+<pre><code class="language-shell">docker kill gateone
+</code></pre>
+<p>2、导入SSL证书</p>
+<p>在root目录创建Dockerfile。</p>
+<p>将以下整体复制到命令行</p>
+<pre><code class="language-shell">echo &quot;FROM liftoff/gateone
+ADD gateone-ssl/ssl.crt /etc/gateone/ssl/certificate.pem
+ADD gateone-ssl/ssl.key /etc/gateone/ssl/keyfile.pem
+CMD [ &quot;gateone&quot; ]&quot; &gt; ~/Dockerfile
+</code></pre>
+<p>同目录创建gateone-ssl文件夹，并上传SSL证书。</p>
+<pre><code class="language-shell">mkdir gateone-ssl
+</code></pre>
+<p>然后通过FTP客户端上传SSL证书到gateone-ssl文件夹。没有SSL证书的，请在本博客搜索关键词，很多申请方法。</p>
+<p>3、重建镜像
+上传SSL成功后，重建镜像，执行命令：名称为 gateone-ssl</p>
+<pre><code class="language-shell">docker build -t=&quot;gateone-ssl&quot; .  #英文.别漏掉了
+</code></pre>
+<p>当出现Successfully Built即重建成功。</p>
+<p>4、启动镜像
+执行命令：</p>
+<pre><code class="language-shell"># 命令 运行来源于镜像名为 gateone-ssl 的容器
+docker run [-d/-t] -p [443]:8000 -h [hostname] --name gateone gateone-ssl gateone 
+
+#示例，具体参数参考上面
+# 注意和前面的 docker 镜像名区分 docker run -t -p 2222:8000 -h webssh --name gateone liftoff/gateone gateone
+docker run -t -p 443:8000 -h Rats --name gateone gateone-ssl gateone
+</code></pre>
+<p>再去访问https://xx.com:端口/查看SSL证书是否生效。</p>
+<p>如果最后一步出现 &ldquo;/gateone&rdquo; is already in use by container错误，请先使用命令：</p>
+<p>docker rm gateone
+搭建完成后，打开地址，输入IP、端口、用户名、密码就可以登录操作VPS服务器了。</p>
+<h2 id="问题">问题:</h2>
+<ol start="0">
+<li>frpc 里，已经给 docker 版 gateone 配置了 ssl 证书！</li>
+<li>frps 所在机器搭建 nginx, 配置 443 -&gt; proxy_pass 127.0.0.1:10443 (已添加证书)， 一直报 502 错误  nginx 错误日志也不行</li>
+<li>关掉 nginx, 直接用 frps 的 10443 端口， 用 ip:10443 端口，也报错，page not work</li>
+<li>一定要用 frpc 里配置的 custome_domain:10443  就可以访问了</li>
+<li>注意除了 webssh（gateone） 还要 frpc 里开 ssh remote 10022 这样， webssh 仅仅是个工具，不能连 127.0.0.1 的</li>
+</ol>
+<p>太奇怪了， frps 上 nginx 的转发ssl 为啥 502.  (而 80 普通 http 又是ok 的。。。)</p>
+<p>解决之道！ 其实把 80 、443 全部转发到 vhost_http_port 就可以了</p>
+<p>我遇到了一个坑，我在 README 中看到了 vhost_https_port，以为 HTTP 请求全部走 vhost_http_port 端口，而 HTTPS 请求需要走 vhost_https_port 端口。</p>
+<p>于是，在配置 Nginx 的时候就把 listen 80 和 listen 443 写成两个 server。 80 端口的请求转发到 http://127.0.0.1:6666，443 端口的请求转发到 https://127.0.0.1:8443。</p>
+<p>理论上似乎可行，但运行起来后， HTTPS 穿透失败了，一直都出现 502 异常。Github 上的 关于「nginx 反代 frp Https 502」的 issues 有好几个，但都没有解决的方案。作者认为，不使用 Nginx 直接请求 frps 的 https 端口是正常的，所以问题应该是在 nginx 那边，他似乎对很多人提这个 issues 感到很反感和无奈。</p>
+<p>后面想到 Nginx 的502有可能是 SSL 证书的问题，Nginx 会验证被反代网站的证书。试了一下反代12306同样出现502，而换成百度就可以成功访问。成功锁定问题，就是内网的那台设备没有 SSL 证书。</p>
+<p>于是试了一下自签，仍然会出现502。看来自签也不行，估计 Nginx 还会验 CA 证书，只有权威机构颁发的才能验证通过。</p>
+<p>正当我想用 Let’s Encrypt，分一个域名去签的 SSL 证书的时候，突然发现，我的公网服务器已经签了一个证书了，为什么我的内网服务器还要再签一个？frps 和 frpc 的连接通讯应该不需要 HTTPS 了，又不是直接暴露的。</p>
+<p>只要公网的域名上了 SSL 就够了，不管访问公网服务器的时候是 http 还是 https 请求，统一走 frp 的 http 隧道即可。</p>
+<p><a href="https://bingozb.github.io/55.html">https://bingozb.github.io/55.html</a></p>
+<pre><code class="language-config">server {
+  listen 80;
+  listen 443 ssl http2;
+
+  ssl_certificate /usr/local/nginx/conf/ssl/pi.bingo.ren.crt;
+  ssl_certificate_key /usr/local/nginx/conf/ssl/pi.bingo.ren.key;
+
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+  ssl_prefer_server_ciphers on;
+  ssl_session_timeout 10m;
+  ssl_session_cache builtin:1000 shared:SSL:10m;
+  ssl_buffer_size 1400;
+  add_header Strict-Transport-Security max-age=15768000;
+  ssl_stapling on;
+  ssl_stapling_verify on;
+
+  server_name pi.bingo.ren;
+  access_log /data/wwwlogs/pi.bingo.ren_nginx.log combined;
+  index index.html index.htm index.jsp;
+  root /data/wwwroot/pi.bingo.ren;
+
+  client_max_body_size 1000m;
+
+  location ~ {
+    proxy_pass http://127.0.0.1:6666;
+    
+    #include proxy.conf;
+
+    proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+  }
+}
+</code></pre>
+<p>然后 frpc 那边，那个本来要 https 的，改回 http</p>
+<pre><code>[bingo_pi_web]
+type = http
+local_port = 80
+remote_port = 6666
+custom_domains = pi.bingo.ren
+</code></pre>
+<p>然后 gateone 改成不需要证书的模式</p>
+<p>测试失败。。。。。The page you visit not found.</p>
+<p>还是恢复成两个 80， 443，</p>
+<p>443 的： 转发到 https 端口+。 客户端 frpc 不需要启动带ssl 的docker容器 + 改成 http</p>
+<p>关键： 测试下反代带百度/对比自己的  看是否同样失败 和CA 证书有关  (我估计上面那篇文章是对的， 只不过是针对普通 web 站点的，而我这里 gateone 的 ssl 有某些问题，导致不能这样做 因为这里有 nginx + ssl 443 -&gt; frps https 10443 -&gt; frpc 2222 -&gt; gateone docker 8000 + SSL 环节太多了)</p>
+<h3 id="注意如果把-gateone-部署到腾讯云阿里云需要访问家里的-frpc-客户端-ssh-需要打开-出站规则">注意，如果把 gateone 部署到腾讯云/阿里云，需要访问家里的 frpc 客户端 ssh. 需要打开 &ldquo;出站规则&rdquo;</h3>
+<p>入站
+出站</p>
+<p>都要开同样的端口。</p>
+<p>入站，一般用在非 frpc 运行的无防火墙的任意机器。
+出站，主要是在腾讯云上，ssh 连接 frpc 所在的机器，它要往外连接，就必须放行端口。</p>
+<h1 id="其他-">其他 ：</h1>
+<h2 id="httpswwwbilibilicomvideoav62508677--nrp-另外一个"><a href="https://www.bilibili.com/video/av62508677/">https://www.bilibili.com/video/av62508677/</a>  （nrp 另外一个）</h2>
+<h2 id="自动启动-frp">自动启动 frp</h2>
+<p><a href="https://free-e.net/109">https://free-e.net/109</a></p>
+<h2 id="frp-图形界面管理">frp 图形界面管理？</h2>
+<h1 id="基于网页的-ssh">基于网页的 ssh</h1>
+<h2 id="web-console-的尝试">web console 的尝试</h2>
+<p>例如在线的， <a href="https://www.bytelang.com/online/ssh">https://www.bytelang.com/online/ssh</a>  （不安全，慢）</p>
+<p>自己搭建的（web console.）</p>
+<p>发现即使穿透后，如果公司屏蔽了 TCP 请求。  那也是无法访问的。 （所以上面的这些，只有真正基于浏览器，并不是本地请求的，才OK）</p>
+<p>所以需要一些“基于网页”的服务器（走 HTTP）</p>
+<h2 id="http-请求转成-tcp">http 请求转成 tcp?</h2>
+<p>例如 1.2.3.4:1234(http)  -&gt;  1.2.3.4:22(tcp)</p>
+<p>就是下面这些了！！</p>
+<h2 id="gateone-比较复杂基于python-的-">gateone 比较复杂，基于python 的 ()</h2>
+<p><a href="https://github.com/liftoff/GateOne">https://github.com/liftoff/GateOne</a></p>
+<p>先下载文件。 然后</p>
+<p>tar zxvf gateone*.tar.gz; cd gateone*; sudo python setup.py install</p>
+<h2 id="同类的还有httpsgithubcombillchurchwebssh2-node-的简单">同类的还有https://github.com/billchurch/webssh2 ,node 的简单。</h2>
+<p>git clone
+cd app
+npm install &ndash;production</p>
+<p>npm start</p>
+<p>http://localhost:2222/ssh/host/127.0.0.1</p>
+<p>Docker 安装</p>
+<p>更多参数查看主页</p>
+<h1 id="自建云存储-nextcloud-一般用于工作资料备份使用手机端-app-进行图片自动备份等">自建云存储 NextCloud (一般用于工作资料备份、使用手机端 app 进行图片自动备份等)</h1>
+<p>对比下 owncloud nextcloud (php 的 效率似乎不高,,直接放在存储目录) resxxx （p2p 点对点？）   seafile (对文件切分和加密)</p>
+<p><a href="https://www.zhihu.com/question/46318905">https://www.zhihu.com/question/46318905</a></p>
+<p>最后 <code>nextcloud</code></p>
+<h2 id="直接在-php-环境">直接在 php 环境</h2>
+<p>在线安装器：https://download.nextcloud.com/server/installer/setup-nextcloud.php</p>
+<p>放到一个 php 站点里
+填写管理员和数据库信息。（默认使用 SQLite，不用手动设置）</p>
+<p>不过我用在线安装器发生502错误，还是下载完整版吧  <a href="https://nextcloud.com/install/#instructions-server">https://nextcloud.com/install/#instructions-server</a> (挺大 80M&hellip;)</p>
+<p>如果要用客户端文件同步，创建一个 MYSQL 数据库. 并建立一个管理员账号</p>
+<p>安装等了好久，要有耐心  （不要安装推荐的 日历、邮件、等等，节省资源）</p>
+<p>nginx 要配置 SSL / rewrite</p>
+<p><a href="https://docs.nextcloud.com/server/18/admin_manual/installation/nginx.html">https://docs.nextcloud.com/server/18/admin_manual/installation/nginx.html</a></p>
+<h2 id="docker-方式">Docker 方式</h2>
+<p>最简单的，启动一个 nextcloud 容器，数据持久保存到 nextcloud 目录</p>
+<pre><code class="language-shell"># apache
+docker run -d --name nextcloud -p 8080:80 -v /www/share/nextcloud/html:/var/www/html nextcloud
+
+# fpm-alpine 更节省磁盘空间 （或 fpm）
+docker run -d --name nextcloud -p 8080:80 -v /www/share/nextcloud/html:/var/www/html nextcloud:fpm-alpine
+
+</code></pre>
+<p>这种方法还要启动一个 MYSQL (当然了 可以和其他的应用共用。)</p>
+<pre><code class="language-shell">docker run -d --name mysql57 -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /www/share/mysql:/var/lib/mysql mysql:5.7
+
+# 发现报错 /var/lib/mysql 无法创建, 可能是因为我的 virtualbox 挂载目录没有权限导致的
+# 这里有详细的解释  https://github.com/docker-library/mysql/issues/99
+# 方法就是 build 一个包含了 localdb-run.sh 的新镜像，然后启动它
+
+#!/bin/bash
+set -e # fail on any error
+
+echo '* Working around permission errors locally by making sure that &quot;mysql&quot; uses the same uid and gid as the host volume'
+TARGET_UID=$(stat -c &quot;%u&quot; /var/lib/mysql)
+echo '-- Setting mysql user to use uid '$TARGET_UID
+usermod -o -u $TARGET_UID mysql || true
+TARGET_GID=$(stat -c &quot;%g&quot; /var/lib/mysql)
+echo '-- Setting mysql group to use gid '$TARGET_GID
+groupmod -o -g $TARGET_GID mysql || true
+echo
+echo '* Starting MySQL'
+chown -R mysql:root /var/run/mysqld/
+/entrypoint.sh mysqld --user=mysql --console
+
+# 新建一个 Dockerfile
+FROM mysql:5.7
+MAINTAINER Ian Edington &quot;IanEdington@gmail.com&quot;
+
+ENV MYSQL_ROOT_PASSWORD password
+ENV MYSQL_PASSWORD password
+ENV MYSQL_DATABASE databasename
+
+# this need to stay the same for script to work
+ENV MYSQL_USER mysql
+
+COPY ./localdb-run.sh /
+RUN chmod 755 /localdb-run.sh
+
+ENTRYPOINT [&quot;/localdb-run.sh&quot;] 
+
+# build
+docker build -t mysql-vm-folder .
+
+# 启动命令改成
+docker run -d --name mysql57 -e MYSQL_ROOT_PASSWORD=my-secret-pw -v /www/share/mysql:/var/lib/mysql mysql-vm-folder
+
+
+# 进去建账号、库
+docker exec -it some-mysql bash
+
+# 备份恢复
+docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p&quot;$MYSQL_ROOT_PASSWORD&quot;' &gt; /some/path/on/your/host/all-databases.sql
+docker exec -i some-mysql sh -c 'exec mysql -uroot -p&quot;$MYSQL_ROOT_PASSWORD&quot;' &lt; /some/path/on/your/host/all-databases.sql
+</code></pre>
+<p>如果以 docker-composer 方式 就可以直接整合在一起了.</p>
+<p>保存为 ~/docker-app/nextcloud/docker-compose.yaml</p>
+<p><code>docker-compose up -d</code></p>
+<pre><code class="language-yaml">version: '2'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  app:
+    image: nextcloud
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    restart: always
+</code></pre>
+<h2 id="客户端下载">客户端下载：</h2>
+<p><a href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>。</p>
+<h1 id="在浏览器上访问远程桌面">在浏览器上访问远程桌面</h1>
+<p>mstsc 就不多说了。   如果公司的网络防火墙禁用了这些协议，那么是无法访问的。</p>
+<p>VNC 如果你的内网是通过穿透，而不是 ddns 直连的话，受限于中转服务器的带宽可能会很卡。</p>
+<p>这个技术可以在浏览器访问 MS 远程桌面
+<a href="https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin">https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-web-client-admin</a></p>
+<p><a href="https://blog.51cto.com/jqq1982/992157">https://blog.51cto.com/jqq1982/992157</a></p>
+<ol>
+<li>
+<p>安装服务器角色： 远程桌面 web 访问。  客户端-&gt; 服务器 https 443( http 协议) -&gt;  真实机器（3389 RDP 协议）</p>
+</li>
+<li>
+<p>如果要完全走 443 https, 还需要 远程桌面 web 网关服务。</p>
+</li>
+<li>
+<p>iis 里为在默认站点上右键点击【编辑绑定】，绑定 ssl 证书</p>
+</li>
+<li>
+<p>打开网站   https://ip/rdweb  ，输入域/用户, 登录后可以看到 remote app/ 远程桌面等 (<strong>必须要用IE, 安装 activeX 插件，否则看不到那几个选项卡</strong>)
+如果没有域，要安装 AD 并创建一个</p>
+</li>
+</ol>
+<p>真正浏览器运行：https://www.sysgeek.cn/remote-desktop-html5-web-client/</p>
+<p>在设置 HTML5 Web 客户端之前，您需要在 Windows Server 2016 上运行远程桌面（RD）网关，RD 连接代理和 RD Web 访问。
+授权方面，RDS 部署必须针对每用户的客户端访问许可证进行配置（CAL）。
+RD 网关必需安装了 KB4025334（Build 14393.1532）更新。
+必须为 RD 网关和 RD Web 访问服务器角色配置公用信任证书。</p>
+<p>或者有 vmware 公司的方案  ESXi/vSphere
+<a href="https://36kr.com/p/92565?preview=wechat">https://36kr.com/p/92565?preview=wechat</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/macbook-pro/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%B6%E5%BA%AD%E6%9C%8D%E5%8A%A1%E5%99%A8-%E5%A4%9A%E5%AA%92%E4%BD%93/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

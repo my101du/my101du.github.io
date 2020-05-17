@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="wp cli 命令行操作 permalinnk: wp-cli-of-wordpress tags: wordpress 是一个命令行操作 Wordpress 工具。例如安装插件、删除操作等。 https://github.com/wp-cli/wp-cli 可以在本地运行测试，也可以使用 travis CI 在远程运行 本地运行测试 安装 PHPUnit 全局" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="wp cli 命令行操作 permalinnk: wp-cli-of-wordpress tags: wordpress 是一个命令行操作 Wordpress 工具。例如安装插件、删除操作等。 https://github.com/wp-cli/wp-cli 可以在本地运行测试，也可以使用 travis CI 在远程运行 本地运行测试 安装 PHPUnit 全局" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/wp-cli-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="wp cli 命令行操作 permalinnk: wp-cli-of-wordpress tags: wordpress 是一个命令行操作 Wordpress 工具。例如安装插件、删除操作等。 https://github.com/wp-cli/wp-cli 可以在本地运行测试，也可以使用 travis CI 在远程运行 本地运行测试 安装 PHPUnit 全局">
+
+<meta itemprop="wordCount" content="1796">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="wp cli 命令行操作 permalinnk: wp-cli-of-wordpress tags: wordpress 是一个命令行操作 Wordpress 工具。例如安装插件、删除操作等。 https://github.com/wp-cli/wp-cli 可以在本地运行测试，也可以使用 travis CI 在远程运行 本地运行测试 安装 PHPUnit 全局"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wp-cli-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wp-cli-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1796字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="wp-cli-命令行操作">wp cli 命令行操作</h1>
+<p>permalinnk: wp-cli-of-wordpress
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>是一个命令行操作 Wordpress 工具。例如安装插件、删除操作等。</p>
+<p><a href="https://github.com/wp-cli/wp-cli">https://github.com/wp-cli/wp-cli</a></p>
+<p>可以在本地运行测试，也可以使用 travis CI 在远程运行</p>
+<h1 id="本地运行测试">本地运行测试</h1>
+<h2 id="安装-phpunit">安装 PHPUnit</h2>
+<p>全局</p>
+<pre><code class="language-shell">wget -O phpunit https://phar.phpunit.de/phpunit-7.phar
+chmod +x phpunit
+./phpunit --version
+
+mv ./phpunit /usr/local/bin/
+</code></pre>
+<p>对某个项目用 composer</p>
+<pre><code class="language-shell">composer require --dev phpunit/phpunit ^7
+
+./vendor/bin/phpunit --version
+</code></pre>
+<h2 id="安装升级-wp-cli">安装&amp;升级 WP-CLI</h2>
+<pre><code class="language-shell"># download
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+# check it's working
+php wp-cli.phar --info
+
+# make the file executable
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+
+# test!
+wp --info
+
+# update
+wp cli update
+</code></pre>
+<p>命令行 支持 tab 自动完成（Tab completions）</p>
+<p>下载 <a href="https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash">https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash</a></p>
+<p>然后在 ~/.bash_profile 里引用<code>source /path_of_it/wp-completion.bash</code>它。并运行<code>source ~/.bash_profile</code>命令使之生效</p>
+<p>如果使用zsh,则添加下面的（load and start bashcompinit before sourcing）</p>
+<pre><code class="language-shell">autoload bashcompinit
+bashcompinit
+source /FULL/PATH/TO/wp-completion.bash
+</code></pre>
+<h2 id="创建插件">创建插件</h2>
+<p>略，假设名字叫 <code>my-plugin</code></p>
+<h2 id="自动生成插件的-tests-文件">自动生成插件的 tests 文件</h2>
+<p>下面的命令会生成所有 phpunit 所需文件，包括 <code>.travis.yml</code> 等。</p>
+<pre><code class="language-shell">wp scaffold plugin-tests my-plugin
+</code></pre>
+<p><img src="/media/15490412570088/15480567531445.jpg" alt="-w277"></p>
+<h2 id="初始化本地测试环境">初始化本地测试环境</h2>
+<p><code>install-wp-tests.sh</code>默认会在 <code>/tmp</code>下下载、创建一个 wordpress 副本（latest 表示最新版，你可以自己改成 3.x  4.x 来测试兼容性），以及一个测试数据库<code>wordpress_test</code>（在运行时修改数据，）</p>
+<pre><code class="language-shell">cd wwwroot/wordpress/wp-content/plugins/my-plugin
+
+# 根据实际情况修改 mysql 的验证信息
+bash bin/install-wp-tests.sh wordpress_test root '' localhost latest
+</code></pre>
+<h2 id="运行测试">运行测试</h2>
+<pre><code class="language-shell">phpunit
+</code></pre>
+<p>出现这样的提示</p>
+<blockquote>
+<p>PHP Fatal error:  Class PHPUnit_Util_Test may not inherit from final class (PHPUnit\Util\Test) in /private/var/folders/7g/hk8r20fd003ftkl_q69mkds40000gn/T/wordpress-tests-lib/includes/phpunit6-compat.php on line 18</p>
+</blockquote>
+<p>是因为 wordpress 的版本（或者 PHP）与 PHPUnit 的版本不匹配</p>
+<p>例如我这个项目是 Wordpress 4.9.4 的版本。  <strong>全局安装</strong>的 PHPUnit 是（phpunit &ndash;version）7.5.2</p>
+<p>（1）全局的 phpunit 降级</p>
+<pre><code class="language-shell">wget -O phpunit https://phar.phpunit.de/phpunit-6.phar
+</code></pre>
+<p>（2）方法2：在 wordpress 插件的目录下, 单独指定安装 PHPUnit 6</p>
+<pre><code class="language-shell">composer require --dev phpunit/phpunit ^6
+</code></pre>
+<p>再运行<code>vendor</code>下的 phpunit ，就不报这个错误了.</p>
+<p>如果代码里有</p>
+<pre><code class="language-php">session_start();
+
+session_regenerate_id(true);
+</code></pre>
+<p>会提示</p>
+<blockquote>
+<p>Warning: session_start(): Cannot send session cookie - headers already sent by (output started at /private/var/folders/7g/hk8r20fd003ftkl_q69mkds40000gn/T/wordpress-tests-lib/includes/bootstrap.php:72) in &hellip;&hellip;</p>
+</blockquote>
+<p>改成(屏蔽错误)， 更好的处理方法是判断在 TEST 环境下不运行</p>
+<pre><code class="language-php">@session_start();
+@session_regenerate_id(true);
+</code></pre>
+<h2 id="写测试文件">写测试文件</h2>
+<p>在<code>tests</code>目录下 <code>test-wp-meta-verify.php</code></p>
+<p>在方法前面添加<code>test</code>前缀，则被视为单元测试，另外最佳实践是为测试的类添加 Test 前缀</p>
+<pre><code class="language-php">class WP_Meta_VerifyTest extends WP_UnitTestCase
+{
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this-&gt;class_instance = new WP_Meta_Verify();
+    }
+
+    public function test_google_site_verification()
+    {
+        $meta_tag = $this-&gt;class_instance-&gt;google_site_verification('B6wFaCRbzWE42SyxSvKUOyyPxZfJCb5g');
+        $expected = '&lt;meta name=&quot;google-site-verification&quot; content=&quot;B6wFaCRbzWE42SyxSvKUOyyPxZfJCb5g&quot;&gt;';
+
+        $this-&gt;assertEquals($expected, $meta_tag);
+    }
+
+    public function test_bing_site_verification()
+    {
+
+    }
+}
+</code></pre>
+<h3 id="支持-wordpress-自有方法的-wp_unittestcase-类">支持 wordpress 自有方法的 <code>WP_UnitTestCase</code> 类</h3>
+<p><strong>注意</strong></p>
+<p><code>WP_UnitTestCase</code>这个类，和其他php应用使用的原生<code>PHPUnit_Framework_TestCase</code>不同，它还支持 wordpress 自身的特有函数。</p>
+<h4 id="wordpress-test-assertions">WordPress Test Assertions</h4>
+<pre><code class="language-php">//Assertions for Errors
+
+$this-&gt;assertWPError($actual, $message)
+$this-&gt;assertNotWPError($actual, $message)
+$this-&gt;assertIXRError($actual, $message)
+$this-&gt;assertNotIXRError($actual, $message)
+
+
+//Assertions to test WP_Query for conditional tags
+
+$this-&gt;assertQueryTrue($args)
+
+//E.g. $this-&gt;assertQueryTrue('is_single', 'is_feed') means is_single() and is_feed() must be true to pass.
+
+</code></pre>
+<h4 id="wordpress-object-factories">WordPress Object Factories</h4>
+<p><strong>factories</strong>:</p>
+<p>可以简化创建 post page user taxonomies 等</p>
+<p>WordPress Trac 查看更多 factories
+<a href="https://core.trac.wordpress.org/browser/trunk/tests/phpunit/includes/factory">https://core.trac.wordpress.org/browser/trunk/tests/phpunit/includes/factory</a></p>
+<pre><code class="language-php">//create() – returns the object ID of the created object
+//create_and_get() – creates and return the entire object
+//create_many($count) – creates multiple posts based on $count
+
+
+$user_id = $this-&gt;factory-&gt;user-&gt;create();
+$user_id = $this-&gt;factory-&gt;user-&gt;create( array( 'role' =&gt; 'author' ) );
+
+//create a tag
+$tag_id = $this-&gt;factory-&gt;tag-&gt;create( array( 'slug' =&gt; 'tag-slug' ) );
+$tax_with_slug_id = $this-&gt;factory-&gt;term-&gt;create( array( 'taxonomy' =&gt; 'tax', 'slug' =&gt; 'tax-slug-1' ) );
+//create a category
+$cat_id = $this-&gt;factory-&gt;category-&gt;create( array( 'slug' =&gt; 'cat-slug' ) );
+$cat_with_slud_id = $this-&gt;factory-&gt;term-&gt;create( array( 'taxonomy' =&gt; 'tax', 'slug' =&gt; 'tax-slug-2' ) );
+//create posts
+$page_id = $this-&gt;factory-&gt;post-&gt;create( array( 'post_title' =&gt; 'My Page') ); $this-&gt;factory-&gt;post-&gt;create_many(15);
+</code></pre>
+<h3 id="setup等方法"><code>setUp()</code>等方法</h3>
+<p>它在所有单元测试之前运行。这里<code>$this-&gt;class_instance = new WP_Meta_Verify();</code>表示创建一个<code>WP_Meta_Verify</code>类的实例。</p>
+<p>然后就可以在其他方法里使用了。例如<code>test_google_site_verification()</code>中<code>$meta_tag = $this-&gt;class_instance-&gt;google_site_verification</code></p>
+<p>类似的方法还有<code>tearDown()</code>，<code>setUpBeforeClass()</code>，<code>tearDownAfterClass()</code>等</p>
+<pre><code class="language-php">public function setUp() {
+		parent::setUp();  
+		
+		$this-&gt;editor_user_id = $this-&gt;factory-&gt;user-&gt;create( array( 'role' =&gt; 'editor' ) );
+		//set the current user to the newly created user
+		wp_set_current_user( $this-&gt;editor_user_id );
+	}
+		
+	public function tearDown() () {
+		parent::tearDown();  
+	}
+</code></pre>
+<h3 id="修改当前运行页面">修改当前运行页面</h3>
+<p>默认运行在 root page, 如要修改为别的页面。 （例如后台管理的 编辑文章 页面），修改 <code>setUp()</code>,添加代码</p>
+<pre><code class="language-php">set_current_screen('edit.php');
+//this will cause is_admin to return true
+	
+$this-&gt;assertTrue( is_admin() );
+	
+}
+
+</code></pre>
+<p>还可以在页面之间跳转</p>
+<pre><code class="language-php">$this-&gt;go_to( '/' );
+$this-&gt;assertQueryTrue ( 'is_home', 'is_front_page' );
+    
+$this-&gt;go_to( '/?p=123456789' );
+$this-&gt;assertQueryTrue( 'is_404' );
+</code></pre>
+<h3 id="callback-和-优先级">callback 和 优先级</h3>
+<pre><code class="language-php">function test_callback_for_user_register {
+    $this-&gt;assertGreaterThan(
+        10,
+        has_action('user_register', 'nds_custom_meta_add')
+    );
+}
+</code></pre>
+<h3 id="表单提交">表单提交</h3>
+<pre><code class="language-php">function test_nds_custom_meta_update_for_editors() {
+        $factory_editor_id = $this-&gt;factory-&gt;user-&gt;create( array('role' =&gt; 'editor') );                                              
+        $get_editor_user_meta = get_user_meta($factory_editor_id, 'preferred_browser', true );
+        
+        //for new users with editor role the default meta value for preferred_browser is chrome
+        $this-&gt;assertEquals($get_editor_user_meta, 'chrome');
+        
+        //spoof $_POST
+        $_POST['preferred_browser'] = 'opera';
+        
+        //make sure we are admin
+        wp_set_current_user(1);
+        
+        //call the update method
+        nds_update_usermeta_field_browser($factory_editor_id);
+        $get_editor_user_meta = get_user_meta($factory_editor_id, 'preferred_browser', true );
+        
+        //test the meta value was updated correctly
+        $this-&gt;assertEquals($get_editor_user_meta, 'opera');
+}
+</code></pre>
+<h3 id="例子">例子</h3>
+<p><a href="https://github.com/karannagupta/nds-user-meta-manager/tree/master/tests">https://github.com/karannagupta/nds-user-meta-manager/tree/master/tests</a></p>
+<p><a href="https://github.com/nuancedesignstudio/phpunit-demo-plugin/blob/master/tests/test-phpunit-demo-plugin.php">https://github.com/nuancedesignstudio/phpunit-demo-plugin/blob/master/tests/test-phpunit-demo-plugin.php</a></p>
+<h1 id="wordpress-的-unit">Wordpress 的 Unit</h1>
+<p><a href="https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/">https://make.wordpress.org/core/handbook/testing/automated-testing/phpunit/</a></p>
+<p><a href="https://make.wordpress.org/core/handbook/testing/automated-testing/writing-phpunit-tests/">https://make.wordpress.org/core/handbook/testing/automated-testing/writing-phpunit-tests/</a></p>
+<h1 id="高级-流程ajax测试woocomerceadmin-相关等等">高级 （流程、ajax测试、woocomerce、admin 相关等等）</h1>
+<p>来自 <a href="https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/">https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/</a></p>
+<h2 id="ajax">ajax</h2>
+<p>参看phpunit 部分，用 guzzle</p>
+<p>处理 nonce</p>
+<p><a href="https://deliciousbrains.com/unit-testing-ajax-api-requests-wordpress-plugins/">https://deliciousbrains.com/unit-testing-ajax-api-requests-wordpress-plugins/</a></p>
+<p><a href="http://www.codetab.org/wordpress-plugin-development-tutorial/wordpress-plugin-ajax-unit-tests/">http://www.codetab.org/wordpress-plugin-development-tutorial/wordpress-plugin-ajax-unit-tests/</a></p>
+<p><a href="https://jhtechservices.com/wp_verify_nonce-and-phpunit-testing/">https://jhtechservices.com/wp_verify_nonce-and-phpunit-testing/</a></p>
+<p>post 要用 url-form-encode 模式，不用 json</p>
+<h2 id="主题-theme">主题 theme</h2>
+<p><a href="https://codex.wordpress.org/Theme_Unit_Test">https://codex.wordpress.org/Theme_Unit_Test</a>
+<a href="https://premium.wpmudev.org/blog/daily-tip-quick-content-creation-for-new-sites-with-the-theme-unit-test/">https://premium.wpmudev.org/blog/daily-tip-quick-content-creation-for-new-sites-with-the-theme-unit-test/</a>
+<a href="https://github.com/tommcfarlin/Basic-Theme">https://github.com/tommcfarlin/Basic-Theme</a></p>
+<h2 id="mock">mock</h2>
+<p><a href="https://jtreminio.com/blog/unit-testing-tutorial-part-v-mock-methods-and-overriding-constructors/">https://jtreminio.com/blog/unit-testing-tutorial-part-v-mock-methods-and-overriding-constructors/</a></p>
+<h2 id="test-driven-development-tdd">Test Driven Development (TDD)</h2>
+<h1 id="持续自动测试-travis-ci">持续自动测试 Travis CI</h1>
+<p>Travis CI is a hosted, distributed continuous integration service used to build and test software projects hosted on GitHub.</p>
+<h2 id="将代码托管到-git-当commit-等操作时进行自动测试">将代码托管到 Git 当commit 等操作时进行自动测试</h2>
+<p>首先要把代码部署到 Github:  <a href="https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/">https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/</a></p>
+<p>依照 WP-CLI sample plugin（https://github.com/wp-cli/sample-plugin）</p>
+<p>要有这些文件</p>
+<ul>
+<li>.travis.yml, phpunit.xml.dist and phpcs.ruleset.xml files</li>
+<li>tests folder</li>
+</ul>
+<p>查看文档 explanation of what each file does (<a href="https://developer.wordpress.org/cli/commands/scaffold/plugin-tests/">https://developer.wordpress.org/cli/commands/scaffold/plugin-tests/</a>)，来运行指定的 tests</p>
+<p>这些文件在前面已经用<code>wp scaffold plugin-tests my-plugin</code>自动过生成了</p>
+<p><img src="/media/15490412570088/15481220208758.jpg" alt="-w611"></p>
+<p>全部测试通过后</p>
+<p><img src="/media/15490412570088/15481221351713.jpg" alt=""></p>
+<h1 id="wordpress-编码标准与-psrphp-standards-recommendations">Wordpress 编码标准与 PSR(PHP Standards Recommendations)</h1>
+<p>Wordpress 编码标准：
+<a href="https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/">https://make.wordpress.org/core/handbook/best-practices/coding-standards/php/</a></p>
+<p>PSR
+<a href="http://www.php-fig.org/psr/">http://www.php-fig.org/psr/</a></p>
+<h1 id="扩展">扩展</h1>
+<h1 id="references">References</h1>
+<p><a href="https://make.wordpress.org/cli/handbook/plugin-unit-tests/">https://make.wordpress.org/cli/handbook/plugin-unit-tests/</a></p>
+<p><a href="https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/">https://pippinsplugins.com/unit-tests-wordpress-plugins-introduction/</a></p>
+<p><a href="https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/">https://premium.wpmudev.org/blog/unit-testing-wordpress-plugins-phpunit/</a></p>
+<p><a href="https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/">https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/wp-cli-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/wp-cli-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%93%8D%E4%BD%9C/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%B8%80%E6%AC%A1%E6%80%A7%E5%8F%91%E5%B8%83%E5%86%85%E5%AE%B9%E5%88%B0%E5%A4%9A%E4%B8%AA%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/wordpress%E9%97%AE%E9%A2%98%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

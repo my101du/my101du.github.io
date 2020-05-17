@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: API 文档与工具 permalink: api-doc-tools tags: skill 讨论 https://www.v2ex.com/t/472126?p=2 清单 APIJSONAuto 从数据表定义得到（关联呢？） APIDOC （直接写在函数上面） Swagger （自己根据格式写） postman (边测试完直接发布) showdoc apizza http://www.sphinx-doc.org/en/master/ 需求 api 数" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: API 文档与工具 permalink: api-doc-tools tags: skill 讨论 https://www.v2ex.com/t/472126?p=2 清单 APIJSONAuto 从数据表定义得到（关联呢？） APIDOC （直接写在函数上面） Swagger （自己根据格式写） postman (边测试完直接发布) showdoc apizza http://www.sphinx-doc.org/en/master/ 需求 api 数" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: API 文档与工具 permalink: api-doc-tools tags: skill 讨论 https://www.v2ex.com/t/472126?p=2 清单 APIJSONAuto 从数据表定义得到（关联呢？） APIDOC （直接写在函数上面） Swagger （自己根据格式写） postman (边测试完直接发布) showdoc apizza http://www.sphinx-doc.org/en/master/ 需求 api 数">
+
+<meta itemprop="wordCount" content="1189">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: API 文档与工具 permalink: api-doc-tools tags: skill 讨论 https://www.v2ex.com/t/472126?p=2 清单 APIJSONAuto 从数据表定义得到（关联呢？） APIDOC （直接写在函数上面） Swagger （自己根据格式写） postman (边测试完直接发布) showdoc apizza http://www.sphinx-doc.org/en/master/ 需求 api 数"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1189字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: API 文档与工具
+permalink: api-doc-tools
+tags:</p>
+<ul>
+<li>skill</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="讨论">讨论</h1>
+<p><a href="https://www.v2ex.com/t/472126?p=2">https://www.v2ex.com/t/472126?p=2</a></p>
+<p>清单</p>
+<ul>
+<li>APIJSONAuto 从数据表定义得到（关联呢？）</li>
+<li>APIDOC （直接写在函数上面）</li>
+<li>Swagger  （自己根据格式写）</li>
+<li>postman  (边测试完直接发布)</li>
+<li>showdoc</li>
+<li>apizza
+<a href="http://www.sphinx-doc.org/en/master/">http://www.sphinx-doc.org/en/master/</a></li>
+</ul>
+<p>需求</p>
+<ol>
+<li>api</li>
+<li>数据表的结构</li>
+</ol>
+<h1 id="rest-api-测试">REST API 测试</h1>
+<h1 id="postman">Postman</h1>
+<h2 id="postman-处理-sessioncookie">postman 处理 session/cookie</h2>
+<p>因为 postman chrome app 版/或者 native desktop 版，都无法使用 cookie/session.  （restlet 倒是可以直接用 cookie 但是很卡，常打不开而且，对结果无法格式化成 json 显示）</p>
+<ol>
+<li>先安装 chrome store 里的 postman interceptor 插件</li>
+<li>点击图标，启用它</li>
+<li>回到 postman app</li>
+<li>点击顶上的相同的图标，打通两个之间的传输通道</li>
+<li>现在 postman app 可以用 chrome 保存的 session/cookie 了</li>
+</ol>
+<h2 id="生成各种编程语言的网络请求代码">生成各种编程语言的网络请求代码</h2>
+<p>添加 Cookie</p>
+<p><img src="/media/15235212213420.jpg" alt=""></p>
+<p><img src="/media/15235212009212.jpg" alt=""></p>
+<p>填写完 URL，请求参数等后，点击 Code</p>
+<p><img src="/media/15235212373073.jpg" alt=""></p>
+<p>各种编程语言的网络请求自动生成</p>
+<p><img src="/media/15235212908910.jpg" alt=""></p>
+<h2 id="自动生成文档">自动生成文档</h2>
+<p>在 workspace 里，自动生成使用文档</p>
+<p><img src="/media/15490412409932/15269525065884.jpg" alt=""></p>
+<h2 id="常见问题">常见问题</h2>
+<p>出现<strong>Expected &lsquo;:&rsquo; instead of &lsquo;'</strong></p>
+<p>如果服务器端返回 json 数据较大，而“response”又设置了显示 json 的“pretty”方式，会有这个问题。
+改成 raw 模式显示返回数据即可</p>
+<h1 id="chrome-advanced-rest-client">chrome: Advanced Rest client</h1>
+<p>除了 chrome 插件，还有 arc-electron 打包的独立版</p>
+<h1 id="cocoa-rest-client">cocoa rest client</h1>
+<p><a href="https://github.com/mmattozzi/cocoa-rest-client/releases">https://github.com/mmattozzi/cocoa-rest-client/releases</a></p>
+<h1 id="insomnia-类似-postman-界面更清爽漂亮">insomnia 类似 Postman 界面更清爽漂亮</h1>
+<p>免费版好像无法同步</p>
+<p><a href="https://insomnia.rest/pricing/">https://insomnia.rest/pricing/</a></p>
+<h1 id="httpsgithubcomwisdom-projectsrest-client"><a href="https://github.com/Wisdom-Projects/rest-client">https://github.com/Wisdom-Projects/rest-client</a></h1>
+<p>java 的，可运行 api 测试</p>
+<h1 id="mac-下的-paw-是收费的更好用更漂亮">Mac 下的 Paw 是收费的，更好用更漂亮</h1>
+<h1 id="swagger">Swagger</h1>
+<p><a href="https://github.com/swagger-api/swagger-ui">https://github.com/swagger-api/swagger-ui</a></p>
+<p>下载后，把 dist 拷贝到项目目录下， 例如 <code>/public/swagger</code></p>
+<p>默认指向到这个文档 <a href="https://petstore.swagger.io/v2/swagger.json">https://petstore.swagger.io/v2/swagger.json</a></p>
+<p><img src="/media/15490412409932/15429668970546.jpg" alt="-w507"></p>
+<p>要改成我们自己的文档，修改 <code>swagger-ui/dist/index.html</code> 文件，将</p>
+<pre><code class="language-php">url: &quot;http://petstore.swagger.io/v2/swagger.json&quot;,
+
+//改成
+url: &quot;openapi.yml&quot;,
+</code></pre>
+<p>swagger 支持 json / <strong>yml</strong> 两种格式（注意，如果用后缀 yaml, 在打开的时候可能会提示下面的错误）</p>
+<p><img src="/media/15490412409932/15429674689661.jpg" alt="-w254"></p>
+<p>json 格式，新建文件 <code>/swagger/openapi.json</code></p>
+<pre><code class="language-json">{
+    &quot;swagger&quot;: &quot;2.0&quot;,
+    &quot;info&quot;: {
+        &quot;title&quot;: &quot;Sample API&quot;,
+        &quot;contact&quot;: {
+            &quot;name&quot;: &quot;Marco Raddatz&quot;,
+            &quot;url&quot;: &quot;https://www.marcoraddatz.com&quot;
+        },
+        &quot;version&quot;: &quot;1.0&quot;
+    },
+    &quot;host&quot;: &quot;laravel.localhost&quot;,
+    &quot;basePath&quot;: &quot;&quot;,
+    &quot;schemes&quot;: [
+        &quot;http&quot;
+    ],
+    &quot;paths&quot;: {
+        &quot;/api/dashboard&quot;: {
+            &quot;get&quot;: {
+                &quot;tags&quot;: [
+                    &quot;dashboard&quot;
+                ],
+                &quot;description&quot;: &quot;Returns dashboard overview.&quot;,
+                &quot;operationId&quot;: &quot;api.dashboard.index&quot;,
+                &quot;produces&quot;: [
+                    &quot;application/json&quot;
+                ],
+                &quot;responses&quot;: {
+                    &quot;200&quot;: {
+                        &quot;description&quot;: &quot;Dashboard overview.&quot;
+                    },
+                    &quot;401&quot;: {
+                        &quot;description&quot;: &quot;Unauthorized action.&quot;
+                    }
+                }
+            }
+        }
+    },
+    &quot;definitions&quot;: {
+        &quot;Error&quot;: {
+            &quot;required&quot;: [
+                &quot;code&quot;,
+                &quot;message&quot;
+            ],
+            &quot;properties&quot;: {
+                &quot;code&quot;: {
+                    &quot;description&quot;: &quot;Class ApiController&quot;,
+                    &quot;type&quot;: &quot;integer&quot;,
+                    &quot;format&quot;: &quot;int32&quot;
+                },
+                &quot;message&quot;: {
+                    &quot;description&quot;: &quot;Class ApiController&quot;,
+                    &quot;type&quot;: &quot;string&quot;
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<p><img src="/media/15490412409932/15429675015305.jpg" alt="-w177"></p>
+<p>（没有 yml 节省空间）</p>
+<pre><code class="language-yaml">openapi: 3.0.0
+
+info:
+  title: Yahoo Japan Auction MicroService API
+  description:
+  contact: 
+    name: studio@phyworks.cn/
+  version: 1.0.0
+servers: 
+- url: http://ms-yahoo.rinkya_new.com/api/v1
+  description: local test
+
+paths:
+
+  /productList:
+    $ref: 'auction.yml#paths/productList'
+  #/categoryTree:
+  #  $ref: './auction.yml#paths/categoryTree'
+  #/categoryLeaf:
+  #  $ref: './auction.yml#paths/categoryLeaf'
+
+components:
+  schemas:
+    Category:
+      $ref: './components/definitions.yml#components/schemas/Category'
+    Acution:
+      $ref: './components/definitions.yml#components/schemas/Auction'
+  securitySchemes:
+    apiAuth:
+      type: http
+      scheme: bearer
+
+security:
+  - apiAuth: []
+
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+</code></pre>
+<h2 id="引用--组件">引用 &amp; 组件</h2>
+<p>如果所有 api 信息都写在一个文件，会导致文件很长，不方便维护。我们可以把它拆分出来</p>
+<pre><code class="language-yaml">/productList:
+    $ref: 'auction.yml#paths/productList'
+
+</code></pre>
+<p>新建 <code>auction.yml</code> 文件，内容如下</p>
+<pre><code class="language-yaml">paths:
+  productList:
+    get:
+      tags:
+      - Auction - Product List API
+      security: []
+      summary: get products list and child categories of category (like categoryTree + categoryLeaf)
+      description: 
+      operationId: getProductList
+      parameters:
+        - name: category
+          in: query
+          description: 
+          required: true
+          schema:
+            type: int
+        - name: page
+          in: query
+          description: 
+          required: false
+          schema:
+            type: int
+        - name: sort
+          in: query
+          description: (s1) feature end bidorbuy bids cbids score2
+          required: false
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: (o1) a d
+          required: flase
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ResultSet:
+                    properties:
+                      Result:
+                        type: object
+                        properties:
+                          Category:
+                            type: object
+                            $ref: 'components/definitions.yml#components/schemas/Category'
+                          Auctions:
+                            type: array
+                            items:
+                              $ref: 'components/definitions.yml#components/schemas/Auction'
+                        
+                      attributes:
+                        type: object
+                        properties:
+                          pagination:
+                            $ref: 'components/definitions.yml#components/schemas/Pagination'
+</code></pre>
+<p>可以看到在这个被引用的文件里，又引用了外部文件<code>components/definitions.yml</code>, 还有个类似“锚点”的，定位到某个 schemas 位置</p>
+<pre><code class="language-yaml">Category:
+    type: object
+    $ref: 'components/definitions.yml#components/schemas/Category'
+</code></pre>
+<p>文件<code>components/definitions.yml</code>内容如下，注意里面 <code>Category</code> 还能引用本文件内的另外一个 scheme <code>ChildCategory</code></p>
+<pre><code class="language-yaml">openapi: 3.0.0
+
+components:
+  schemas:
+    Category:
+      type: object
+      title: Category model
+      properties:
+        CategoryId:
+          type: integer
+          format: int32
+        CategoryName:
+          type: string
+        ChildCategory:
+          type: array
+          items:
+            $ref: '#components/schemas/ChildCategory'
+      example:
+        CategoryId: 0,
+        CategoryName: オークション,
+        ChildCategory: 
+          items:
+            $ref: '#components/schemas/ChildCategory/example'
+    ChildCategory:
+      type: object
+      title: Category model
+      properties:
+        CategoryId:
+          type: integer
+          format: int32
+        CategoryName:
+          type: string
+        NumOfAuctions:
+          type: integer
+          format: int32
+      example:
+        CategoryId: 23336,
+        CategoryName: コンピュータ,
+        IsLeafToLink: false
+</code></pre>
+<p>注意到，这里还有个 <code>example</code> 的技巧，就是直接应用另外一个 scheme 的 exmaple</p>
+<pre><code class="language-yaml"> ChildCategory: 
+  items:
+    $ref: '#components/schemas/ChildCategory/example'
+</code></pre>
+<h2 id="swagger-editor">Swagger-editor</h2>
+<p>在同一个界面里，一边编辑，一边预览</p>
+<p>web 版： <a href="http://editor.swagger.io/">http://editor.swagger.io/</a></p>
+<p>本地版的</p>
+<pre><code class="language-shell">git clone https://github.com/swagger-api/swagger-editor.git
+ 
+cd swagger-editor
+npm install
+npm run build
+npm start
+</code></pre>
+<h2 id="laravel-集成">Laravel 集成</h2>
+<p><a href="https://blog.marcoraddatz.com/en/2015/07/21/integrate-swagger-into-laravel/">https://blog.marcoraddatz.com/en/2015/07/21/integrate-swagger-into-laravel/</a></p>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://blog.csdn.net/lamp_yang_3533/article/details/80114083">https://blog.csdn.net/lamp_yang_3533/article/details/80114083</a></p>
+<h1 id="slate">Slate</h1>
+<p><a href="https://github.com/lord/slate">https://github.com/lord/slate</a></p>
+<p>左中右布局。  在 react-router 和 woocommerce rest api 文档上使用。</p>
+<p><img src="/media/15490412409932/15236001519182.png" alt=""></p>
+<h1 id="apidoc--直接在代码里定义好接口说明自动生成">Apidoc  直接在代码里定义好接口说明，自动生成</h1>
+<h2 id="api-接口与-typescript-interface">API 接口与 Typescript Interface</h2>
+<p><a href="https://www.v2ex.com/t/500580">https://www.v2ex.com/t/500580</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/adobe-%E5%85%8D%E8%B4%B9%E7%9A%84%E4%BA%A7%E5%93%81/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

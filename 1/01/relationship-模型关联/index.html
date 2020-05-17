@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="RelationShip 模型关联 数据表之间经常会互相进行关联。例如， 一篇 博客文章可能会有N 条 评论 一张 订单可能对应一个 下单客户. 可以使用 Eloquent 来管理和处理这些关联. 一对" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="RelationShip 模型关联 数据表之间经常会互相进行关联。例如， 一篇 博客文章可能会有N 条 评论 一张 订单可能对应一个 下单客户. 可以使用 Eloquent 来管理和处理这些关联. 一对" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="RelationShip 模型关联 数据表之间经常会互相进行关联。例如， 一篇 博客文章可能会有N 条 评论 一张 订单可能对应一个 下单客户. 可以使用 Eloquent 来管理和处理这些关联. 一对">
+
+<meta itemprop="wordCount" content="7413">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="RelationShip 模型关联 数据表之间经常会互相进行关联。例如， 一篇 博客文章可能会有N 条 评论 一张 订单可能对应一个 下单客户. 可以使用 Eloquent 来管理和处理这些关联. 一对"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7413字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="relationship-模型关联">RelationShip 模型关联</h1>
+<p>数据表之间经常会互相进行关联。例如，</p>
+<p><strong>一篇 博客</strong>文章可能会有<strong>N 条 评论</strong>
+<strong>一张 订单</strong>可能对应<strong>一个 下单客户</strong>.</p>
+<p>可以使用 Eloquent 来管理和处理这些关联.</p>
+<ul>
+<li>一对一</li>
+<li>一对多</li>
+<li>多对多</li>
+<li>远层一对多</li>
+<li>多态关联</li>
+<li>多态多对多关联</li>
+</ul>
+<h1 id="先看一个完整例子一对一关联不然后面绕来绕去就看不懂了以及踩坑">先看一个完整例子(一对一关联)，不然后面绕来绕去就看不懂了。。。（以及踩坑）</h1>
+<h2 id="两个表">两个表</h2>
+<p>这里以模仿 WP 的数据分类方法. (来就来烧脑的，这个比较怪异的名称的例子，比 User 和 Profile 这么简单直观的难理解。只要弄明白了，简单的不在话下)</p>
+<p>一个表叫 <code>terms</code> (类比 user),字段如下：</p>
+<ul>
+<li>term_id</li>
+<li>name</li>
+</ul>
+<p>一个表叫 <code>term_taxonomy</code> (类比 profile)，字段如下：</p>
+<ul>
+<li>term_taxonomy_id</li>
+<li><strong>term_id</strong></li>
+<li>title</li>
+<li>parent</li>
+</ul>
+<p>很明显，两个表通过第二个表<code>term_taxonomy</code>的<code>term_id</code>字段产生关联。</p>
+<h2 id="弄清-主表-和-子表">弄清 主表 和 子表</h2>
+<ul>
+<li><code>user</code>表字段： user_id  user_name</li>
+<li><code>profile</code>表字段： profile_id  <strong>user_id</strong>  age  gender</li>
+</ul>
+<p>先看 user 和 profile 关联</p>
+<p><code>user</code> (hasOne) <code>profile</code>
+<code>profile</code> (belongsTo) <code>user</code></p>
+<p><strong>因此，只要表里有 <code>xxx_id</code> 这个字段和另一个表关联起来的，统一叫它 子表，那么这里 User 就是 主表，Profile 就是 子表</strong></p>
+<p>那么下面的主表就是 terms, 子表就是 term_taxonomy</p>
+<p><code>terms</code> (hasOne) <code>term_taxonomy</code>
+<code>term_taxonomy</code> (belongsTo) <code>terms</code></p>
+<p><strong>诀窍</strong>
+所以遇到这种命名比较奇怪的表，脑子里直接把它替换成 User 和 Profile 去做就好，去思考它的字面意思会头晕的。</p>
+<h2 id="在-mysql-上给表添加外键">在 MySQL 上给表添加外键</h2>
+<p><strong>当然，你如果不想在 MySQL 数据表层面去添加外键约束，在代码层面去处理这个约束也可以，只不过一定要检查处理删除、更新的时候关联的表</strong></p>
+<p>修改 MySQL 添加外键，只要在<strong>子表</strong>上添加就可以了</p>
+<p><img src="/media/15490412690272/15459022466827.jpg" alt="-w379"></p>
+<p>成功后，点击 子表 上这个外键字段上的小箭头</p>
+<p><img src="/media/15490412690272/15459022770745.jpg" alt="-w659"></p>
+<p>会跳到主表对应的行</p>
+<p><img src="/media/15490412690272/15459022854876.jpg" alt="-w357"></p>
+<p>子表 的 SQL 语句上多了这么一行</p>
+<p><img src="/media/15490412690272/15459023596184.jpg" alt="-w758"></p>
+<p>如果写到 migration 里是这样的</p>
+<pre><code class="language-php">Schema::table('term_taxonomy', function ($table) {
+    $table-&gt;integer('term_taxonomy_id')-&gt;unsigned();
+    //....
+    $table-&gt;foreign('term_id')-&gt;references('term_id')-&gt;on('terms')-&gt;onDelete('cascade');;
+});
+</code></pre>
+<p>要删除一个外键，可以使用dropForeign方法。外键约束和索引使用同样的命名规则——连接表名、外键名然后加上”_foreign”后缀：</p>
+<pre><code class="language-php">$table-&gt;dropForeign('posts_user_id_foreign');
+</code></pre>
+<h2 id="创建模型">创建模型</h2>
+<p>知道了谁是主表，谁是子表，来创建模型</p>
+<ul>
+<li>因为主键都不是 id 这个标准的名称改成了自定义的，所以模型里要特别声明<code>primaryKey</code></li>
+<li>同样因为字段名变了，<strong>主表</strong> 上的<code>hasOne()</code>参数要分别指定：（子表 的类，子表 上的外键字段名, 主表 主键字段名)</li>
+<li><strong>子表</strong>的 <code>belongsTo()</code>参数分别指定：(主表 的类，子表 上的外键字段名, 主表 主键字段名)， 和主表上后面两个参数一样的&hellip;.</li>
+</ul>
+<pre><code class="language-php">/**
+* Terms 主表， hasOne
+*/
+class Terms extends Model {
+    protected $primaryKey = 'term_id';
+    
+    public function taxonomy():hasOne {
+    	return $this-&gt;hasOne(TermTaxonomy::class, 'term_id', 'term_taxonomy_id');  //first tem_id is in term_taxonomy, second is primaray key
+    }
+}
+
+/**
+* TermTaxonomy 子表  belongsTo
+*/
+
+class TermTaxonomy extends Model{
+    protected $primaryKey = 'term_taxonomy_id';
+    
+    public function term() : belongsTo {
+    	return $this-&gt;belongsTo(Terms::class, 'term_id', 'term_id'); //, 'term_taxonomy_id'
+    }
+}
+</code></pre>
+<h2 id="获取关联模型以及关联模型上的属性值">获取关联模型，以及关联模型上的属性值</h2>
+<p>这里出了不少错，主要是子表上 <code>belongsTO</code> 的那个 <code>term()</code> 的写法。。。。</p>
+<p>从 子表模型 的实例上得到关联的 主表 模型实例。</p>
+<pre><code class="language-php">$subModel = new TermTaxonomy();
+$r = $subModel::where('term_id', 1)-&gt;first();
+
+
+// 获取关联模型实例的某个属性值
+// 注意！！ 这里 term 没有括号，不是 `term()-&gt;name`, 有括号得到的是一个 Relation 实例，而不是 主表的模型实例。
+dd($r-&gt;term);
+echo $r-&gt;term-&gt;name;
+
+//用括号返回的数据类型的区别（Relation 类）
+dd(get_class_methods($r-&gt;term()));
+</code></pre>
+<h1 id="mysql-中-table-的-foreign-key">MySQL 中 table 的 Foreign Key</h1>
+<p><a href="https://blog.csdn.net/u013457382/article/details/49120725">https://blog.csdn.net/u013457382/article/details/49120725</a></p>
+<ul>
+<li>MySQL中只有InnoDB类型的表才支持外键（对于非InnoDB表，FOREIGN KEY子句会被忽略掉。）</li>
+<li>所有要建立外键的字段必须建立索引</li>
+</ul>
+<h1 id="定义关联">定义关联</h1>
+<p>在 Eloquent 模型类中，可以将 Eloquent 关联<strong>定义为函数</strong>，就像查询语句构造器一样。</p>
+<p>例如下例中，<code>post()</code>就是<code>关联</code>. （这里的作用是 User 模型取回与它有关联的的 Posts 集合）</p>
+<pre><code class="language-php">$user-&gt;posts()-&gt;where('active', 1)-&gt;get();
+</code></pre>
+<p>后面来看这个 <code>posts()</code> 是怎么定义的</p>
+<h1 id="一对一-one-to-one">一对一 One to One</h1>
+<p>一个用户（User Model）一般对应一个手机号码(Phone Model)，因此可以为 User 定义个<code>phone()</code>方法，在里面使用<code>hasOne()</code>方法来返回结果。</p>
+<p>我们称 User Model 为 <code>parent model</code>（父模型）， Phone Model 为 <code>child model</code>（子模型）</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    public function phone()
+    {
+        return $this-&gt;hasOne('App\Phone');
+</code></pre>
+<p><code>hasOne()</code>方法的第一个参数是相关模型的名称，一旦关联被定义，就可以用模型的&quot;动态属性&rdquo;(dynamic properties) 来取回关联的记录</p>
+<pre><code class="language-php">$phone = User::find(1)-&gt;phone;
+</code></pre>
+<p>那么关联的内部是如何处理的呢？</p>
+<p>Eloquent 假定关联的 foreign key 是基于<code>hasOne()</code>中作为参数的那个模型（App\Phone）的。
+也就是说，<code>Phone</code> 模型会假定它拥有一个 <strong>foreign key</strong>  <code>user_id</code>。</p>
+<p>(如果你的 Phone 模型里这个外键不叫<code>user_id</code>，可以在第二个参数中重写它, 不过一般习惯用 <code>父模型表名_id</code>来命名)</p>
+<pre><code class="language-php">return $this-&gt;hasOne('App\Phone', 'foreign_key');
+</code></pre>
+<p>另外，Eloquent 还假定，你的 parent 模型（User）应该有一个名为 <code>id</code>的列，并且foreign key 有一个值与它相匹配。 也就是说 Eloquent 会在 Phone 记录的 user_id 列中查找 user 的 id 列的值。</p>
+<p>如果不想使用默认的 id（或者主键不叫 id），也可以使用<code>自定义 key </code>作为第三个参数传入。</p>
+<pre><code class="language-php">return $this-&gt;hasOne('App\Phone', 'foreign_key', 'local_key');
+</code></pre>
+<p>例如 User 模型对应的数据表里有一条记录</p>
+<ul>
+<li><strong>id</strong>: 14</li>
+<li><strong>name</strong>: test_user</li>
+</ul>
+<p>那么 Phone 模型的 foreign key <code>user_id</code> 如果等于 15，就与前面的 User 模型关联</p>
+<ul>
+<li>id: 199</li>
+<li>phone_number: 13888888888</li>
+<li>user_id: 14</li>
+</ul>
+<p>foreign_key: user_id</p>
+<h2 id="定义反向关联">定义反向关联</h2>
+<p>当前我们可以从 User 中访问 Phone Model（就是说“用户<strong>拥有</strong>的手机号”），如果要反过来，“查找某个手机号<strong>属于</strong>哪个用户”？</p>
+<p>我们可以在 Phone Model 里定义 <code>belongsTo</code>方法</p>
+<pre><code class="language-php">class Phone extends Model
+{
+    public function user()
+    {
+        return $this-&gt;belongsTo('App\User');
+</code></pre>
+<p>Eloquent 会自动拿着 Phone Model 里的 foreign key <code>user_id</code>去匹配 User Model 的 <code>id</code>。</p>
+<h1 id="一对多-one-to-many">一对多 One to many</h1>
+<p>如果一个模型拥有多个其他模型，就可以用 <code>hasMany()</code>方法来定义一个“一对多”关联。</p>
+<p>例如一篇博客 <code>Post</code>可能有很多条评论<code>Comment</code>。  （同时一个 Comment 只能属于一篇 Post）</p>
+<pre><code class="language-php">class Post extends Model
+{
+    public function comments()
+    {
+        return $this-&gt;hasMany('App\Comment');
+</code></pre>
+<p>Eloquent 会自动检查 Commet Model 中合适的 foreign key。通常是模型的“snake case”名并加上<code>_id</code>后缀。</p>
+<p>例如上面的例子中，Eloquent 会假定 <code>Comment</code> 模型中外键就是<code>post_id</code>。</p>
+<p>一旦定义好关联，就可以通过 Model 的“动态属性”来访问</p>
+<p><strong>关联数据，在定义时是一个方法 <code>comments()</code> （有括号）, 然而调用时像一个属性  <code>-&gt;comments</code>（没有括号）</strong></p>
+<pre><code class="language-php">$comments = App\Post::find(1)-&gt;comments;
+
+foreach ($comments as $comment) {
+    //
+}
+</code></pre>
+<p>关联也可以像 query builder 一样，因此你可以改用<code>comment()</code><strong>方法</strong>(前面是动态属性)，然后在 query 里添加更多的约束条件来链式查询。最后用 <code>first()</code> <code>get()</code>等得到 collection</p>
+<p><strong>所以 comments() 有点像一组封装的 SQL条件</strong></p>
+<pre><code class="language-php">$comments = App\Post::find(1)-&gt;comments()-&gt;where('title', 'foo')-&gt;first();
+</code></pre>
+<p><strong>相似</strong>
+同样可以使用和一对一关联一样的<code>反向关联</code>、自定义 foreign-key 等。</p>
+<h1 id="多对多-many-to-many">多对多 Many To Many</h1>
+<p>典型的一个例子是：<strong>用户</strong>可能拥有多个<strong>角色</strong>，同时一个<strong>角色</strong>可以同时被多个<strong>用户</strong>所拥有</p>
+<p>例如我们在使用<code>entrust</code>等权限管理库后，会自动生成几个表。其中就有三个表对应了如何处理两个模型的关系</p>
+<ul>
+<li>users: 用户  id, email(<a href="mailto:test@test.com">test@test.com</a>, <a href="mailto:admin@test.com">admin@test.com</a>, <a href="mailto:normal@test.com">normal@test.com</a>)</li>
+<li>roles:  角色  id, name(admin, test, normal)</li>
+<li>role-user:  角色和用户的对应</li>
+</ul>
+<p>user_id   role_id
+1            1
+1            2
+2            2
+3            3</p>
+<p>在 base Eloquent class 里调用<code>belongsToMany</code>方法。</p>
+<pre><code class="language-php">// User Model
+ public function roles()
+{
+    return $this-&gt;belongsToMany('App\Role');
+}
+
+// 访问
+$user = App\User::find(1);
+
+foreach ($user-&gt;roles as $role) {
+    //
+}
+
+// 可以使用链式查询约束
+$roles = App\User::find(1)-&gt;roles()-&gt;orderBy('name')-&gt;get();
+</code></pre>
+<h2 id="关于中间表的命名">关于“中间表”的命名</h2>
+<p>默认地，<code>many to many</code> 关联使用的数据表会以两个模型名称的字母排序来决定顺序。
+例如前面 user 和 role， 因为 <code>r</code>在<code>u</code>前面，所以关联会默认使用表<code>role_user</code>匹配。</p>
+<p>如果你想修改它，需要在<code>belongToMany()</code>方法中传入第二个参数，作为自定义的表名（是的，有时候如果按字母顺序，关系看起来确实比较别扭）</p>
+<p>同样，还可以继续定义第三、第四个参数，来使用不同的字段名。
+第三个参数：你定义的关联的模型上的外键名称（User）
+第四个参数：连接到的 Model 上的外键（Role）</p>
+<pre><code class="language-php">return $this-&gt;belongsToMany('App\Role', 'user_roles');
+return $this-&gt;belongsToMany('App\Role', 'user_roles', 'user_id', 'role_id');
+</code></pre>
+<h2 id="反向关联">反向关联</h2>
+<p>使用同样的<code>belongsToMany()</code>方法，只不过交换了“主模型”和“relatd 模型”的位置</p>
+<pre><code class="language-php">class Role extends Model
+{
+    /**
+     * The users that belong to the role.
+     */
+    public function users()
+    {
+        return $this-&gt;belongsToMany('App\User');
+    }
+}
+</code></pre>
+<h2 id="取回中间表的列">取回“中间表”的列</h2>
+<p>在访问到关联后，可以在模型上继续使用<code>pivot</code>属性来得到中间表(如下例，在我们取回的 Role 模型上，Eloquent 会自动分配一个 <code>pivot</code> 属性)。</p>
+<pre><code class="language-php">$user = App\User::find(1);
+
+foreach ($user-&gt;roles as $role) {
+    echo $role-&gt;pivot-&gt;created_at;
+}
+</code></pre>
+<p>默认情况下，只有模型的 key 会包含在 pivot 对象中，如果中间表还有其他更多的属性需要展示，可以在定义关联的时候指定</p>
+<pre><code class="language-php">return $this-&gt;belongsToMany('App\Role')-&gt;withPivot('column1', 'column2');
+</code></pre>
+<p>如果想中间表自动维护<code>create_at</code>和 <code>update_at</code>，可以在关联定义中使用<code>withTimestamps</code></p>
+<pre><code class="language-php">return $this-&gt;belongsToMany('App\Role')-&gt;withTimestamps();
+</code></pre>
+<h1 id="多对多的案例写入关联模型中删除的动作">多对多的案例，“写入关联模型”中“删除”的动作</h1>
+<p>在使用 laravel-admin 时，能够正常在添加一个模型时（User），自动创建关联的模型(Role, user_role)。</p>
+<p>但是删除 role 后，不会自动删除 user .</p>
+<p>这在某些情况下有问题，要实现它看后面 “写入关联模型”的 <code>detatch</code></p>
+<h1 id="has-many-through-远层一对多">Has Many Through 远“层”一对多</h1>
+<p>假设有三个表，<code>countries</code>表示国家，<code>users</code>表示用户，<code>posts</code>表示文章。
+每个用户都属于一个国家，并且每篇文章都属于某个用户。</p>
+<pre><code class="language-json">countries
+    id - integer
+    name - string
+    
+users
+    id - integer
+    country_id - integer
+    name - string
+    
+posts
+    id - integer
+    user_id - integer
+    title - string
+
+</code></pre>
+<p>如果想找到某个<code>country</code>下的<code>posts</code>，通常情况下，必须先找出 users，然后再通过 users 去找posts。</p>
+<p>但可以通过在 Country Model 中定义<code>Has Many Through</code>关联，来简化这个过程，实现一步查找某个国家下的posts <code>$country-&gt;posts</code>。</p>
+<p>需要让 User Model 承担一个“中间人”的作用。</p>
+<pre><code class="language-php">class Country extends Model
+{
+    /**
+     * Get all of the posts for the country.
+     */
+    public function posts()
+    {
+        return $this-&gt;hasManyThrough('App\Post', 'App\User');
+    }
+}
+</code></pre>
+<p>如果需要自定义关联使用的外键，第三个参数是中间模型（User）的外键名，第四个参数是“final Model”（Post）的外键名</p>
+<pre><code class="language-php">public function posts()
+    {
+        return $this-&gt;hasManyThrough('App\Post', 'App\User', 'country_id', 'user_id');
+    }
+</code></pre>
+<h1 id="多态关联">多态关联</h1>
+<p>使用一个关联，就可以让一个 model 属于一个/多个 model。</p>
+<p>场景：有一个 photos 表，用来存储图片。但是这里面有两种类型：一种是注册用户（user）的头像，另外一种是用户上传的产品图片（product）。</p>
+<p>我们没有必要创建两个单独的表，只需要在一个表里面保存记录，然后使用字段来区分它们的类别即可。</p>
+<pre><code class="language-json">staff
+    id - integer
+    name - string
+
+products
+    id - integer
+    price - integer
+
+photos
+    id - integer
+    path - string
+    imageable_id - integer
+    imageable_type - string
+</code></pre>
+<p>注意 <code>imageable_id</code> 和 <code>imageable_type</code> 两个列。第一个值是 <code>staff</code>表 或者 <code>product</code>表 的 ID 的值，<code>imageable_type</code> 是属主 model 的 class name（取值）</p>
+<p>在 Photos Model 中定义<code>imageable</code>方法，返回自己的 imageable models.</p>
+<pre><code class="language-php">class Photo extends Model
+{
+    public function imageable()
+    {
+        return $this-&gt;morphTo();
+    }
+}
+</code></pre>
+<p>在 Staff Model 中获取属于用户的图片</p>
+<pre><code class="language-php">class Staff extends Model
+{
+    public function photos()
+    {
+        return $this-&gt;morphMany('App\Photo', 'imageable');
+    }
+}
+</code></pre>
+<p>在 Product Model 中获取产品图片</p>
+<pre><code class="language-php">class Product extends Model
+{
+    public function photos()
+    {
+        return $this-&gt;morphMany('App\Photo', 'imageable');
+    }
+}
+</code></pre>
+<h2 id="获取属主信息">获取“属主”信息</h2>
+<p>因为已经在 Photo Model 上定义了 <code>imageable()</code> 方法（里面使用了<code>morphTo()</code>方法来返回属主数据），因此可以通过它来得到 Staff 或 Product 实例（根据 photo 的所有者信息返回不同的类型）。</p>
+<pre><code class="language-php">$photo = App\Photo::find(1);
+
+$imageable = $photo-&gt;imageable;
+</code></pre>
+<h2 id="取回多态关联的数据">取回多态关联的数据</h2>
+<p>一旦数据表和模型已经定义好，你就可以在模型上访问关联，例如使用动态属性来得到某个用户的图片</p>
+<pre><code class="language-php">$staff = App\Staff::find(1);
+
+foreach ($staff-&gt;photos as $photo) {
+    //
+}
+</code></pre>
+<h2 id="自定义多态类型的类型字段">自定义多态类型的类型字段</h2>
+<p>默认情况下，Laravel 会保存这一组关联相关的 model 的完全 class name，举例来说，一个 Like Model 可以同时属于 Comment 和 Post，你可以在数据表中添加一个 likeble_type 字段，并在 Like Model 中定义<code>likeble()</code>。</p>
+<p>这样 likeble_type 的值可能是 App\Post 或 App\Comment（默认）。</p>
+<p>有时候你为了让应用程序和数据库能更好地解耦，不愿意使用默认的 App\Post or App\Comment 的 class name，而更愿意直接使用数据表的名称</p>
+<p>（以下<code>morphMap</code>在 <code>AppServiceProvider</code> 中或一个独立的 service provider 中创建）</p>
+<pre><code class="language-php">Relation::morphMap([
+    App\Post::class,
+    App\Comment::class,
+]);
+</code></pre>
+<p>或者为每个模型指定自定义的字符串</p>
+<pre><code class="language-php">Relation::morphMap([
+    'posts' =&gt; App\Post::class,
+    'likes' =&gt; App\Like::class,
+]);
+</code></pre>
+<p>##多态多对多关联  Many To Many Polymorphic Relations</p>
+<p>在上面的多态关联例子中，photo 表（模型），每一条记录(实例)只能对应一个 staff 或 product。</p>
+<p>而如果有一个需求，项目中的 Post 和 Video 模型都可以打标签（Tag），这是<strong>Many To Many 的关联</strong> (一个 Post 可以有多个标签，同时一个标签可以被多个 Post 共享；Video 也是一样)</p>
+<p>并且它们共用多态关联。因为我们想让 Post 和 Video 的标签数据能同时使用一个 tag 数据表，这又是属于<strong>多态关联</strong>了</p>
+<p>因此这就把两种关联关系结合在一起了。 首先看数据表</p>
+<pre><code class="language-json">posts
+    id - integer
+    name - string
+
+videos
+    id - integer
+    name - string
+
+tags
+    id - integer
+    name - string
+
+taggables
+    tag_id - integer
+    taggable_id - integer
+    taggable_type - string
+</code></pre>
+<h2 id="简化">简化</h2>
+<p>为了方便理解，我们首先把 posts 和 videos <strong>看成一个统一的模型</strong> Item</p>
+<p>并且和 tags 来组成 <strong>ManyToMany 关联</strong>。</p>
+<pre><code class="language-json">items
+	id - integer
+	name - string
+tags
+	id - integer
+	name - string
+taggables
+	item_id
+	tag_id
+</code></pre>
+<p>上面的例子中，按默认的规则，应该<code>taggables</code>表命名为 <code>item_tag</code>。但为了便于下一步的理解，这里使用了自定义的表名。</p>
+<p>然后在 Item Model 和 Tag Model 里分别使用<code>belongsToMany()</code>来定义关联。</p>
+<p><strong>接着把 Item 再拆分回两种 Model （Post 和 Video）</strong></p>
+<p>在保存 tag 的时候，要使用 taggable_id 和 taggable_type 来进行区分。</p>
+<p>因此<code>taggables</code>表中，<code>item_id</code> 就被拆成了两个字段<code>taggable_id</code>和<code>taggable_type</code>，用来区分 Post 和 Video</p>
+<pre><code class="language-json">taggables
+    tag_id - integer
+    taggable_id - integer
+    taggable_type - string
+</code></pre>
+<p>总之理解的时候，先看“多对多”（合并）然后变“多态”（拆分）</p>
+<h2 id="模型">模型</h2>
+<p>在 Post 和 Video 中<strong>都</strong>拥有 <code>tags</code>方法，在内部调用 Eloquent 类的 morphToMany 方法</p>
+<pre><code class="language-php">//两个 Model 都要定义
+public function tags()
+{
+    return $this-&gt;morphToMany('App\Tag', 'taggable');
+}
+</code></pre>
+<p>在 Tag Model 上，要为每一个关联的模型定义一个方法</p>
+<pre><code class="language-php">class Tag extends Model
+{
+    public function posts()
+    {
+        return $this-&gt;morphedByMany('App\Post', 'taggable');
+    }
+
+    public function videos()
+    {
+        return $this-&gt;morphedByMany('App\Video', 'taggable');
+    }
+}
+</code></pre>
+<h2 id="获取关联">获取关联</h2>
+<p>获取 post 的 tags</p>
+<pre><code class="language-php">$post = App\Post::find(1);
+
+foreach ($post-&gt;tags as $tag) {
+    //
+}
+</code></pre>
+<p>获取某个 tag 被哪些 videos/posts 使用 (拥有者，在 Tag Model 里通过 morphedByMany 来定义)</p>
+<pre><code class="language-php">$tag = App\Tag::find(1);
+
+foreach ($tag-&gt;videos as $video) {
+    //
+}
+</code></pre>
+<h1 id="查找关联">查找关联</h1>
+<h2 id="关联函数查询语句构造器">关联函数，查询语句构造器</h2>
+<p>所有的关联都是通过函数来定义的，可以通过调用它们来得到关联的一个实例而不需要运行关联的查找。同样，它们也提供了<code>查询语句构造器</code>功能，在数据库运行 SQL 之前，在关联查找后面链式调用条件。</p>
+<pre><code class="language-php">// 关联定义的代码 略
+
+$user-&gt;posts()-&gt;where('active', 1)-&gt;get();
+</code></pre>
+<h2 id="动态属性的方式">动态属性的方式</h2>
+<p>除了使用前面的关联方法，如果不需要额外的条件，则可以直接像访问属性一样访问关联</p>
+<pre><code class="language-php">$user = App\User::find(1);
+
+foreach ($user-&gt;posts as $post) {}
+</code></pre>
+<p><strong>注意</strong>
+动态属性是「延迟加载」的，意味着它们只会在被访问的时候才加载关联数据。
+因此为了让关联数据在<strong>模型加载后</strong>（而不是被访问时）被访问，需要使用<code>预加载</code>来减少 SQL 查询语句。</p>
+<p>疑惑：访问时被访问，是不是表示访问 N 次，就查询 N #次？</p>
+<h2 id="查找关联数据是否存在">查找关联数据是否存在</h2>
+<p>有时候需要根据关联的存在，对结果进行限制。（例如想获取博客中，至少有一条/多条评论的文章）</p>
+<pre><code class="language-php">$posts = App\Post::has('comments')-&gt;get();
+$posts = Post::has('comments', '&gt;=', 3)-&gt;get();
+</code></pre>
+<p>如果有嵌套的<code>has</code>语句，可以使用点符号。</p>
+<pre><code class="language-php">// 获取所有至少有一条评论被评分的文章...
+$posts = Post::has('comments.votes')-&gt;get();
+</code></pre>
+<p>高级用法，使用 <code>whereHas</code> 和 <code>orWhereHas</code> 方法，在 has 查找里设置「where」条件</p>
+<pre><code class="language-php">// 获取那些至少有一条评论包含 foo 的文章
+$posts = Post::whereHas('comments', function ($query) {
+    $query-&gt;where('content', 'like', 'foo%');
+})-&gt;get();
+</code></pre>
+<p>不存在</p>
+<pre><code class="language-php">$posts = App\Post::doesntHave('comments')-&gt;get();
+
+$posts = Post::whereDoesntHave('comments', function ($query) {
+    $query-&gt;where('content', 'like', 'foo%');
+})-&gt;get();
+</code></pre>
+<h2 id="数据计数只想统计结果数而不需要加载实际数据">数据计数（只想统计结果数而不需要加载实际数据）</h2>
+<p><code>withCount()</code>方法会在您的结果集模型中添加一个 <code>{关联名}_count</code> 字段。例如：</p>
+<pre><code class="language-php">$posts = App\Post::withCount('comments')-&gt;get();
+
+foreach ($posts as $post) {
+    echo $post-&gt;comments_count;
+}
+</code></pre>
+<p>您可以为多个关联数据「计数」，并为其查询添加约束条件：</p>
+<pre><code class="language-php">$posts = Post::withCount(['votes', 'comments' =&gt; function ($query) {
+    $query-&gt;where('content', 'like', 'foo%');
+}])-&gt;get();
+
+echo $posts[0]-&gt;votes_count;
+echo $posts[0]-&gt;comments_count;
+</code></pre>
+<p>可以为关联数据计数结果起别名，允许在同一个关联上多次计数：</p>
+<pre><code class="language-php">$posts = Post::withCount([
+    'comments',
+    'comments as pending_comments_count' =&gt; function ($query) {
+        $query-&gt;where('approved', false);
+    }
+])-&gt;get();
+
+echo $posts[0]-&gt;comments_count;
+
+echo $posts[0]-&gt;pending_comments_count;
+</code></pre>
+<h1 id="预加载数据">预加载数据</h1>
+<p><strong>通过属性</strong>访问 Eloquent 关联时，该关联数据会被「延迟加载」，意味着该关联数据只有在你<strong>使用属性访问它时才会被加载</strong></p>
+<h2 id="n1-查找问题">N+1 查找问题</h2>
+<p>假设一个关联到 <code>Author</code> 的 <code>Book</code> 模型。</p>
+<pre><code class="language-php">class Book extends Model
+{
+    public function author()
+    {
+        return $this-&gt;belongsTo('App\Author');
+    }
+}
+</code></pre>
+<p>获取所有书籍和作者，假设有 N 本书。</p>
+<pre><code class="language-php">$books = App\Book::all();
+
+foreach ($books as $book) {
+    echo $book-&gt;author-&gt;name;
+}
+</code></pre>
+<p>第一次 SQL 是取回所有的<strong>Book 的数据</strong>。（可以认为 <strong>并没有把关联的 author 数据都一起取出来</strong>）</p>
+<p>然后在循环中使用<code>$book-&gt;author</code>时，会执行 N 次 SQL，每本书会运行一次查找作者的操作。（使用属性访问它时被加载）</p>
+<p><strong>总共执行 N+1 次 SQL。</strong></p>
+<h2 id="预加载使用-with-来指定想要的数据">预加载：使用 with() 来指定想要的数据</h2>
+<p>太可怕了，它们不是“关联”吗？其实关联只是定义了一种模型之间的关系。</p>
+<p>那么我们怎么样在取回<strong>书籍</strong>数据的时候，同时把<strong>关联的作者</strong>数据一起取回来呢？——使用<code>with</code>方法来指定想要预加载的关联数据。</p>
+<pre><code class="language-php">$books = App\Book::with('author')-&gt;get();
+
+foreach ($books as $book) {
+    echo $book-&gt;author-&gt;name;
+}
+</code></pre>
+<p>这样就相当于在第一句 SQL 执行的时候，显式地告诉 Eloquent 在取 Book 的时候，也把它的关联<code>author</code>数据一起取出来。然后在 foreach 中实际上就只是从结果集合中读数据，并不会执行 SQL。</p>
+<p>相当于</p>
+<pre><code class="language-sql">/*第一步 读取 books 数据*/
+select * from books
+
+/*第二步 根据关联，读取与这些 books 相关的 authors 数据*/
+select * from authors where id in (1, 2, 3, 4, 5, ...)
+</code></pre>
+<p>可以把多种关联添加到预加载的参数中去</p>
+<pre><code class="language-php">$books = App\Book::with('author', 'publisher')-&gt;get();
+</code></pre>
+<h2 id="预加载嵌套">预加载：嵌套</h2>
+<p>和前面“查找关联存在”一样，可以用点语法来实现嵌套预加载。例如加载作者，以及作者的联系方式</p>
+<pre><code class="language-php">$books = App\Book::with('author.contacts')-&gt;get();
+</code></pre>
+<h2 id="预加载关联条件限制">预加载：关联条件限制</h2>
+<p>预加载指定额外条件</p>
+<pre><code class="language-php">$users = App\User::with(['posts' =&gt; function ($query) {
+    $query-&gt;where('title', 'like', '%first%');
+
+}])-&gt;get();
+</code></pre>
+<p>或者自定义预加载的操作(对关联的 posts 数据排序)</p>
+<pre><code class="language-php">$users = App\User::with(['posts' =&gt; function ($query) {
+    $query-&gt;orderBy('created_at', 'desc');
+
+}])-&gt;get();
+</code></pre>
+<h2 id="预加载模型延迟预加载关联">预加载：模型延迟预加载关联</h2>
+<p>并不需要马上预加载关联模型。例如需要在上层模型被获取后才预加载关联</p>
+<pre><code class="language-php">$books = App\Book::all();
+
+if ($someCondition) {
+    $books-&gt;load('author', 'publisher');
+}
+
+
+$books-&gt;load(['author' =&gt; function ($query) {
+    $query-&gt;orderBy('published_date', 'asc');
+}]);
+</code></pre>
+<h1 id="写入关联模型">写入关联模型</h1>
+<h2 id="save--savemany">save &amp; saveMany</h2>
+<p>Eloquent 提供了便捷的方法来将新的模型增加至关联中。例如，也许你需要为一个 Post 模型插入一个新的 Comment。这是你无须为 Comment 手动设置 posts 属性，直接在关联上使用 save 方法插入 Comment 即可：</p>
+<p>例如，向 Post 模型写入新的 Comment。除了可以手动设置 Comment 的 <code>post_id</code>。可以直接使用关联的 <code>save</code>方法在 Comment 模型中<strong>自动添加</strong>正确的 post_id 值。</p>
+<p><strong>注意</strong></p>
+<p>这里不是<strong>动态属性 -&gt;comments, 而是用 -&gt;comments() 方法来获取关联的实例</strong></p>
+<pre><code class="language-php">$comment = new App\Comment(['message' =&gt; 'A new comment.']);
+$post = App\Post::find(1);
+
+//使用关联 comments 的 save 方法写入, 这样 $comment 可以自动得到 $post 的 id 吧？
+$post-&gt;comments()-&gt;save($comment);
+
+//保存多条关联模型
+$post-&gt;comments()-&gt;saveMany([
+    new App\Comment(['message' =&gt; 'A new comment.']),
+    new App\Comment(['message' =&gt; 'Another comment.']),
+]);
+</code></pre>
+<h3 id="写入关联数据失败的问题">写入关联数据失败的问题</h3>
+<p><code>Terms</code> hasOne <code>TermTaxomony</code></p>
+<pre><code class="language-php">// 这一步成功写入数据表 terms
+$term = Terms::create(['name' =&gt; $request-&gt;input('term_name'), 'term_group' =&gt; 0]);
+
+//获取最新的 
+$term = Terms::with('taxonomy')-&gt;findOrFail($term-&gt;term_id);
+
+$taxonomy = new TermTaxonomy(['taxonomy' =&gt; $request-&gt;input('taxonomy'), 'parent_id' =&gt; $request-&gt;input('parent_id')]);
+
+//写入失败        
+$term-&gt;taxonomy()-&gt;save($taxonomy);
+</code></pre>
+<p>报错，外键 term_id 值为空。</p>
+<blockquote>
+<p>QueryException In Connection.php line 664 :
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column &lsquo;term_id&rsquo; cannot be null (SQL: insert into <code>pulse_term_taxonomy</code> (<code>taxonomy</code>, <code>term_id</code>, <code>updated_at</code>, <code>created_at</code>) values (resource_category, , 2019-01-03 05:46:49, 2019-01-03 05:46:49))</p>
+</blockquote>
+<p>首先 <a href="https://laracasts.com/discuss/channels/eloquent/relationship-not-being-saved-id-is-null?page=1">https://laracasts.com/discuss/channels/eloquent/relationship-not-being-saved-id-is-null?page=1</a></p>
+<p>前面那个人的不用看，讲了一堆没用的。我已经在“从属表”上设置了 term_id, 且 fillable</p>
+<p>说不能从上一个模型创建得到的 id 里来传入，必须设置好路由和form ？？</p>
+<pre><code class="language-php">Route::post('/reviews/{visit}', 'ReviewsController@store');
+
+&lt;form role=&quot;form&quot; method=&quot;POST&quot; action=&quot;/reviews/{{ $visit-&gt;id }}&quot;&gt;
+
+</code></pre>
+<p>然后再看 <a href="https://stackoverflow.com/questions/41082608/eloquent-hasone-relationship-returns-null-even-when-related-records-exist">https://stackoverflow.com/questions/41082608/eloquent-hasone-relationship-returns-null-even-when-related-records-exist</a></p>
+<p>没什么效果</p>
+<p>接着
+<a href="https://discuss.laravel-admin.org/d/167--">https://discuss.laravel-admin.org/d/167--</a></p>
+<p><strong>最后发现 是在主模型上，第三个参数是“主表”的key； 子模型也是一样，设置成了子模型的主键就提示空</strong></p>
+<pre><code class="language-php">class Terms extends Model {
+    public function taxonomy() {
+    	return $this-&gt;hasOne(TermTaxonomy::class, 'term_id', 'term_id');   //改自 'term_taxonomy_id'
+    	
+    	
+
+class TermTaxonomy extends Model  	
+    public function term() {
+        // 第二个id 是指“主表”的主键?
+        return $this-&gt;belongsTo(Terms::class, 'term_id', 'term_id'); // 'term_id', 'term_id'
+    }
+</code></pre>
+<h2 id="create-方法-createmany">create 方法 (createMany)</h2>
+<p>它接收一个属性数组、创建模型并插入数据库。</p>
+<p><strong>save 和 create 的不同之处</strong>在于，save 接收的是一个完整的 Eloquent 模型实例，而 create 接收的是一个纯 PHP 数组：</p>
+<pre><code class="language-php">$post = App\Post::find(1);
+
+$comment = $post-&gt;comments()-&gt;create([
+    'message' =&gt; '一条新的评论。',
+]);
+
+$post = App\Post::find(1);
+
+$post-&gt;comments()-&gt;createMany([
+    [
+        'message' =&gt; '一条新的评论。',
+    ],
+    [
+        'message' =&gt; '另一条新的评论。',
+    ],
+]);
+</code></pre>
+<h2 id="save-在多对多关联中写入额外属性">save 在多对多关联中，写入额外属性</h2>
+<p>除了向中间表写入基本的关联字段的数据外（两个表的外键），如果中间表还有一些额外的数据，可以在 save 方法中传入第二个参数。例如下例中，为用户添加角色后有个过期时间。</p>
+<pre><code class="language-php">App\User::find(1)-&gt;roles()-&gt;save($role, ['expires' =&gt; $expires]);
+</code></pre>
+<h2 id="对于插入和更新有不同的写法">对于插入和更新，有不同的写法</h2>
+<pre><code class="language-php">$user = User::with('company')-&gt;findOrFail(1);
+if ($user-&gt;company === null)
+{
+    $company = new Company(['name' =&gt; 'Test']);
+    $user-&gt;company()-&gt;save($company);
+}
+else
+{
+    $user-&gt;company-&gt;update(['name' =&gt; 'Test']);
+}
+</code></pre>
+<h2 id="更新-belongsto-关联">更新 belongsTo 关联</h2>
+<p>在更新 belongsTo 关联时，通过使用 associate 方法，可以将外键设置到下层模型</p>
+<pre><code class="language-php">$account = App\Account::find(10);
+$user-&gt;account()-&gt;associate($account);
+$user-&gt;save();
+</code></pre>
+<p>删除 belongs 关联</p>
+<pre><code class="language-php">$user-&gt;account()-&gt;dissociate();
+
+$user-&gt;save();
+</code></pre>
+<h2 id="多对多关联的的写入">多对多关联的的写入</h2>
+<p>要<strong>附加一个规则</strong>至一个用户，并连接模型以及将记录写入至中间表，则可以使用 attach 方法：</p>
+<pre><code class="language-php">$user = App\User::find(1);
+$user-&gt;roles()-&gt;attach($roleId);
+
+// 传递一个需要被写入至中间表的额外数组
+$user-&gt;roles()-&gt;attach($roleId, ['expires' =&gt; $expires]);
+</code></pre>
+<p><strong>和前面 save 的不同？</strong>
+<a href="https://stackoverflow.com/questions/35756469/laravel-5-many-to-many-attach-versus-save">https://stackoverflow.com/questions/35756469/laravel-5-many-to-many-attach-versus-save</a></p>
+<p>save 还支持同时创建一个新的 Role，并稍后调用 attach()</p>
+<p><strong>移除</strong></p>
+<p>使用 detach 方法</p>
+<pre><code class="language-php">// 从用户身上移除单个身份...
+$user-&gt;roles()-&gt;detach($roleId);
+
+// 从用户身上移除所有身份...
+$user-&gt;roles()-&gt;detach();
+
+//为了方便，attach 与 detach 都允许传入 ID 数组：
+$user = App\User::find(1);
+$user-&gt;roles()-&gt;detach([1, 2, 3]);
+$user-&gt;roles()-&gt;attach([1 =&gt; ['expires' =&gt; $expires], 2, 3]);
+</code></pre>
+<p><strong>同步</strong> (可以用来大量处理数据，这个在 role/user 那个插件里里面用到)</p>
+<p>使用 sync 来构建多对多关联。通过传入放置于中间表的 ID 数组，任何不在指定数组中的 ID 都将会从中间表中删除</p>
+<p>(待测试)</p>
+<pre><code class="language-php">$user-&gt;roles()-&gt;sync([1 =&gt; ['expires' =&gt; true], 2, 3]);
+</code></pre>
+<h2 id="与上层的时间戳联动">与上层的时间戳联动</h2>
+<p>当一个模型 belongsTo 或 belongsToMany 另一个模型时，下层模型被更新，同时要更新上层的时间戳。（例如 Comment 和 Post 的关系，当一个 Comment 被更新，需要“联动”更新 Post 的 update_at 时间戳）</p>
+<p>只要在关联的下层模型中增加一个包含名称的 touches 属性即可：</p>
+<pre><code class="language-php">class Comment extends Model
+{
+    protected $touches = ['post'];
+</code></pre>
+<p>现在，当你更新一个 Comment 时，它所属的 Post 拥有的 updated_at 字段也会被同时更新</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BA%8B%E4%BB%B6/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/migration-%E8%BF%81%E7%A7%BB/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="邮件 permalink: laravel-send-email tags: laravel Laravel 基于 SwiftMailer 函数库提供了一套干净、简洁的邮件 API ，Laravel 为 SMTP 、Mailgun 、SparkPost 、 Amazon SES 、 PHP 的 mail 函数及 sendmail 提供驱动" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="邮件 permalink: laravel-send-email tags: laravel Laravel 基于 SwiftMailer 函数库提供了一套干净、简洁的邮件 API ，Laravel 为 SMTP 、Mailgun 、SparkPost 、 Amazon SES 、 PHP 的 mail 函数及 sendmail 提供驱动" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E9%82%AE%E4%BB%B6/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="邮件 permalink: laravel-send-email tags: laravel Laravel 基于 SwiftMailer 函数库提供了一套干净、简洁的邮件 API ，Laravel 为 SMTP 、Mailgun 、SparkPost 、 Amazon SES 、 PHP 的 mail 函数及 sendmail 提供驱动">
+
+<meta itemprop="wordCount" content="3524">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="邮件 permalink: laravel-send-email tags: laravel Laravel 基于 SwiftMailer 函数库提供了一套干净、简洁的邮件 API ，Laravel 为 SMTP 、Mailgun 、SparkPost 、 Amazon SES 、 PHP 的 mail 函数及 sendmail 提供驱动"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E9%82%AE%E4%BB%B6/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E9%82%AE%E4%BB%B6/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3524字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>邮件</p>
+<p>permalink: laravel-send-email
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>Laravel 基于 <code>SwiftMailer</code> 函数库提供了一套干净、简洁的邮件 API ，Laravel 为 SMTP 、Mailgun 、SparkPost 、 Amazon SES 、 PHP 的 mail 函数及 sendmail 提供驱动，让你可以快速从本地或云端服务自由地发送邮件</p>
+<h1 id="使用外部邮件服务驱动">使用外部邮件服务驱动</h1>
+<h2 id="推荐使用-mailgun-和-sparkpost-等基于-api-的驱动通常比-smtp-服务器更简单快速">推荐使用 Mailgun 和 SparkPost 等基于 API 的驱动，通常比 SMTP 服务器更简单快速。</h2>
+<p>因为是请求的外部网络服务，需要安装 Guzzle HTTP 函数库</p>
+<pre><code class="language-shell">composer require guzzlehttp/guzzle
+</code></pre>
+<p>修改<code>/config/mail.php</code>中的 邮件 driver 类型（因为 <code>.env</code>里默认使用 SMTP 驱动<code>MAIL_DRIVER=smtp</code>）</p>
+<pre><code class="language-php">'driver' =&gt; env('MAIL_DRIVER', 'mailgun'),//from smtp, or sparkpost
+</code></pre>
+<p>然后修改 config/services.php ，针对每个服务添加参数</p>
+<pre><code class="language-php">'mailgun' =&gt; [
+    'domain' =&gt; 'your-mailgun-domain',
+    'secret' =&gt; 'your-mailgun-key',
+],
+
+// 或者
+'sparkpost' =&gt; [
+    'secret' =&gt; 'your-sparkpost-key',
+],
+</code></pre>
+<h2 id="amazon-ses-驱动">Amazon SES 驱动</h2>
+<p>必须安装 PHP 的 <strong>Amazon AWS SDK</strong>. 在 composer.json 添加下面内容，然后 update</p>
+<pre><code class="language-json">&quot;aws/aws-sdk-php&quot;: &quot;~3.0&quot;
+</code></pre>
+<p>修改 driver 为 <code>ses</code>, 然后修改 config/services.php</p>
+<pre><code class="language-php">'ses' =&gt; [
+    'key' =&gt; 'your-ses-key',
+    'secret' =&gt; 'your-ses-secret',
+    'region' =&gt; 'ses-region',  // e.g. us-east-1
+],
+</code></pre>
+<h1 id="配置-smtp">配置 SMTP</h1>
+<pre><code>MAIL_DRIVER=smtp
+MAIL_HOST=mail_server.sample.org
+MAIL_PORT=25
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=
+MAIL_FROM_ADDRESS=&quot;admin@sample.org&quot;
+MAIL_FROM_NAME=&quot;Admin Of Server&quot;
+</code></pre>
+<h1 id="mailable">Mailable</h1>
+<p>每种类型的邮件都代表一个「Mailable」对象, 存储在 app/Mail 目录中.</p>
+<h2 id="生成-mailable">生成 Mailable</h2>
+<p>在首次使用 make:mail 命令创建 Mailable 类时这个目录会被创建</p>
+<pre><code class="language-shell">php artisan make:mail OrderShipped
+</code></pre>
+<h2 id="编写-mailable">编写 Mailable</h2>
+<p>所有的 「Mailable」类都在其 build 方法中完成配置,在这个方法中调用其他各种方法，如 from 、 subject 、 view 和 attach 来配置完成邮件的详情</p>
+<h3 id="发送者">发送者</h3>
+<p>发送者：邮件的参数 「from」，既谁发送了邮件</p>
+<p>第一种方法是你可以在 build 方法中使用 from 方法</p>
+<pre><code class="language-php">public function build()
+{
+    return $this-&gt;from('example@example.com')
+                -&gt;view('emails.orders.shipped');
+}
+</code></pre>
+<p>或者在 <code>config/mail.php</code> 配置文件使用一个全局 <code>from</code> 地址，在没有单独指定 「from」时是默认的 from</p>
+<pre><code class="language-php">'from' =&gt; [
+    'address' =&gt; env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+    'name' =&gt; env('MAIL_FROM_NAME', 'Example'),
+],
+</code></pre>
+<h3 id="配置视图">配置视图</h3>
+<p><strong>模板</strong></p>
+<p>在 <code>build</code>方法内，你可以使用 <code>view</code> 方法指定邮件的模板，以渲染邮件的内容。因为所有邮件都会使用 Blade 模板 渲染内容，你能很容易的使用 Blade 模板引擎构建邮件的 HTML：</p>
+<pre><code class="language-php">public function build()
+{
+    return $this-&gt;view('emails.orders.shipped');
+}
+</code></pre>
+<blockquote>
+<p>你可以创建一个 resources/views/emails 目录来存放所有的邮件模板；然而，这不是强制要求，你可以在有的将邮件模板放在 resources/views 目录的任意位置。</p>
+</blockquote>
+<p><strong>纯文本邮件</strong></p>
+<p>如同 view 方法，text 方法接受一个模板名称，这个名称告诉方法使用哪个模板来渲染邮件，可以自由定义邮件 HTML 和纯文本消息</p>
+<pre><code class="language-php">public function build()
+{
+    return $this-&gt;view('emails.orders.shipped')
+                -&gt;text('emails.orders.shipped_plain');
+}
+</code></pre>
+<h3 id="邮件视图中填充数据">邮件视图中填充数据</h3>
+<p>传递一些数据来渲染你的邮件的 HTML 。</p>
+<p>有两种方法可以让视图获得数据。</p>
+<p><strong>第一种，使用 Mailable 类任何公共属性</strong></p>
+<p>Mailable 类任何公共属性都可以在视图中使用。所以，例如你可以传递数据到 Mailable 类的<code>构造函数</code>并且在类中定义数据的<strong>公共属性</strong>，</p>
+<pre><code class="language-php">class OrderShipped extends Mailable
+{
+    use Queueable, SerializesModels;
+    
+    // order 实例（公共属性）
+    public $order;
+    
+    // 传递数据到构造函数
+    public function __construct(Order $order)
+    {
+        $this-&gt;order = $order;
+    }
+    
+    public function build()
+    {
+        return $this-&gt;view('emails.orders.shipped');
+    }
+</code></pre>
+<p>它们将自动在视图中加载，所以你可以访问像访问其他 Blade 模板数据一样访问它们</p>
+<pre><code class="language-html">&lt;div&gt;
+    Price: {{ $order-&gt;price }}
+&lt;/div&gt;
+</code></pre>
+<p><strong>第二种，使用 with() 方法</strong></p>
+<p>如果只允许在模板里使用规定的数据（例如，订单的一些信息是敏感的，不能被模板开发人员随便调取出来，应该只暴露允许显示的部分信息。）</p>
+<p>仍然是使用 Mailable 类的构造函数来接受数据传参，但是需要为这些数据属性设置 <strong>protected</strong> 或 <strong>private</strong> 声明（否则这些数据会被自动加载到模板中）</p>
+<p>然后使用 with 方法接受键值数组传参来传递数据给模板，就如控制器里为视图传参一样</p>
+<pre><code class="language-php">class OrderShipped extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * order 实例。注意是 protected 类型
+     */
+    protected $order;
+    
+    public function __construct(Order $order)
+    {
+        $this-&gt;order = $order;
+    }
+    
+    public function build()
+    {
+        return $this-&gt;view('emails.orders.shipped')
+                    -&gt;with([
+                        'orderName' =&gt; $this-&gt;order-&gt;name,
+                        'orderPrice' =&gt; $this-&gt;order-&gt;price,
+                    ]);
+</code></pre>
+<p>一旦数据已经用 <code>with</code> 方法传递，它们将自动在视图中加载，所以你可以访问像访问其他 Blade 模板数据一样访问它们：</p>
+<pre><code class="language-html">&lt;div&gt;
+    Price: {{ $orderPrice }}
+&lt;/div&gt;
+</code></pre>
+<h3 id="附件">附件</h3>
+<p>在 build 方法中使用 attach 方法。attach 方法接受文件的绝对路径作为它的第一个参数：</p>
+<pre><code class="language-php">public function build()
+    {
+        return $this-&gt;view('emails.orders.shipped')
+                    -&gt;attach('/path/to/file');
+    }
+</code></pre>
+<p>也可以传递 数组 给 attache 方法作为第二个参数，以指定显示名称和 / 或是 MIME 类型</p>
+<pre><code class="language-php">return $this-&gt;view('emails.orders.shipped')
+                    -&gt;attach('/path/to/file', [
+                        'as' =&gt; 'name.pdf',
+                        'mime' =&gt; 'application/pdf',
+                    ]);
+</code></pre>
+<p><strong>原始数据附件</strong></p>
+<p>将内存中生成而没有保存到磁盘中的 PDF 附加到邮件中,<code>attachData</code> 方法第一个参数接收原始字节数据，第二个参数为文件名，第三个参数接受一个数组以指定其他参数：</p>
+<pre><code class="language-php">return $this-&gt;view('emails.orders.shipped')
+                    -&gt;attachData($this-&gt;pdf, 'name.pdf', [
+                        'mime' =&gt; 'application/pdf',
+                    ]);
+</code></pre>
+<h3 id="内部附件">内部附件</h3>
+<p>是不是指<strong>直接在邮件正文中显示</strong>的内容？（图片等）</p>
+<p>在邮件模板的 <code>$message</code> 变量上调用 <code>embed</code> 方法，Laravel 会自动让你所有邮件模板都能够获取到 <code>$message</code> 变量</p>
+<pre><code class="language-html">&lt;body&gt;
+    这是一张图片：
+
+    &lt;img src=&quot;{{ $message-&gt;embed($pathToFile) }}&quot;&gt;
+&lt;/body&gt;
+</code></pre>
+<p><strong>嵌入原始数据附件</strong></p>
+<p>你已经有想嵌入原始数据，希望嵌入邮件模板，你可以调用 $message 变量的 embedData 方法：</p>
+<pre><code class="language-html">&lt;body&gt;
+    这是一张原始数据图片：
+
+    &lt;img src=&quot;{{ $message-&gt;embedData($data, $name) }}&quot;&gt;
+&lt;/body&gt;
+</code></pre>
+<h3 id="自定义-swiftmailer-消息">自定义 SwiftMailer 消息</h3>
+<p><strong>Mailable</strong> 基类的 <code>withSwiftMessage</code> 方法允许你注册一个回调，该回调将在邮件发送之前调用，参数是原始 SwiftMailer 消息实例。这让你有机会在邮件发送之前自定义消息：</p>
+<pre><code class="language-php">public function build()
+    {
+        $this-&gt;view('emails.orders.shipped');
+
+        $this-&gt;withSwiftMessage(function ($message) {
+            $message-&gt;getHeaders()
+                    -&gt;addTextHeader('Custom-Header', 'HeaderValue');
+        });
+    }
+</code></pre>
+<h2 id="markdown-格式的-mailable-类">Markdown 格式的 Mailable 类</h2>
+<p>Markdown 格式的 Mailable 消息允许你从预编译的模板和你的 Mailable 类中的邮件提醒组件中受益。因为消息是用 Markdown 格式写的， Laravel 能为消息体渲染出漂亮、响应式的 HTML 模板，也能自动生成一个纯文本的副本。</p>
+<h3 id="生成-markdown-格式的-mailable">生成 Markdown 格式的 Mailable</h3>
+<p>要生成一个包含友好的 Markdown 模板的 Mailable 类，你在使用 make:mail 这个 Artisan 命令时，要加上 &ndash;markdown 选项：</p>
+<pre><code class="language-shell">php artisan make:mail OrderShipped --markdown=emails.orders.shipped
+</code></pre>
+<p>然后，在使用 build 方法配置 Mailable 时，用 markdown 方法来换掉 view 方法， markdown 方法接受一个 Markdown 模板的名称和一个将在模板中可用的选项数组：</p>
+<pre><code class="language-php">public function build()
+{
+    return $this-&gt;from('example@example.com')
+                -&gt;markdown('emails.orders.shipped');
+}
+</code></pre>
+<h3 id="编写-markdown-格式的消息">编写 Markdown 格式的消息</h3>
+<p>Markdown Mailable 使用 Blade 组件和 Markdown 语法的组合，允许你轻松地构建邮件消息，同时利用 Laravel 的预制组件。</p>
+<pre><code class="language-html">@component('mail::message')
+
+# Order Shipped
+
+Your order has been shipped!
+
+@component('mail::button', ['url' =&gt; $url])
+View Order
+@endcomponent
+
+Thanks,&lt;br&gt;
+{{ config('app.name') }}
+
+@endcomponent
+</code></pre>
+<p><strong>按钮组件</strong></p>
+<p>渲染一个居中的连接按钮，组件接受两个参数，一个 url 和一个可选的 color 。支持的颜色有 blue 、 green 、 和 red 。你可以在邮件消息体中加入随便多个你想要的按钮。</p>
+<pre><code class="language-html">@component('mail::button', ['url' =&gt; $url, 'color' =&gt; 'green'])
+View Order
+@endcomponent
+</code></pre>
+<p><strong>面板组件</strong></p>
+<p>给定的一块文字的背景渲染成跟其他的消息体背景稍微不同</p>
+<pre><code class="language-html">@component('mail::panel')
+This is the panel content.
+@endcomponent
+</code></pre>
+<p><strong>表格组件</strong></p>
+<p>将一个 Markdown 格式的表格转换成一个 HTML 格式的表格。组件接受 Markdown 格式的表格作为它的内容。表格列对齐方式按照默认的 Markdown 对齐风格而定。</p>
+<pre><code class="language-html">@component('mail::table')
+| Laravel       | Table         | Example  |
+| ------------- |:-------------:| --------:|
+| Col 2 is      | Centered      | $10      |
+| Col 3 is      | Right-Aligned | $20      |
+@endcomponent
+</code></pre>
+<h3 id="自定义组件">自定义组件</h3>
+<p>为了自定义而导出你应用中所有的 Markdown 邮件组件。使用 <code>vendor:publish</code> 这个 Artisan 命令来发布资源文件标签。</p>
+<p>会发布 Markdown 邮件组件到 <code>resources/views/vendor/mail</code> 文件夹。而 mail 文件夹会包含一个 html 文件夹和一个 markdown 文件夹，每个文件夹都包含他们的可用组件的描述。你可以按照你的意愿自定义这些组件。</p>
+<pre><code class="language-shell">php artisan vendor:publish --tag=laravel-mail
+</code></pre>
+<h3 id="自定义样式表-css">自定义样式表 CSS</h3>
+<p>在导出组件之后，<code>resources/views/vendor/mail/html/themes</code> 文件夹将包含一个默认的 <code>default.css</code> 文件。你可以在这个文件中自定义 CSS ，你定义的这些样式将会在 Markdown 格式消息体转换成 HTML 格式时自动得到应用。</p>
+<blockquote>
+<p>如果你想为 Markdown 组件构建一个全新的主题，只要写一个新的 CSS 文件，放在 html/themes 文件夹，然后在你的 mail 配置文件中改变 theme 选项就可以了。</p>
+</blockquote>
+<h1 id="在浏览器中预览邮件">在浏览器中预览邮件</h1>
+<p>当你设计一个邮件模板时，可以很方便地在浏览器中快速预览渲染出来的邮件，就像典型的 Blade 模板一样。为此， Laravel 允许你直接从路由闭包或者控制器中返回任何的邮件。当邮件被返回时，他会被渲染并显示在浏览器中，允许你快速预览其设计，而不必发送到实际的电子邮件地址。</p>
+<pre><code class="language-php">Route::get('/mailable', function () {
+    $invoice = App\Invoice::find(1);
+
+    return new App\Mail\InvoicePaid($invoice);
+});
+</code></pre>
+<h1 id="发送邮件">发送邮件</h1>
+<h2 id="to-与-send-方法">to 与 send 方法</h2>
+<p>使用 <code>Mail</code> facade 的 <code>to</code> 方法。to 方法接受一个邮件地址，一个 user 实现或一个 users 集合。如果传递一个对象或集合，mailer 将自动使用 email 和 name 属性来设置邮件收件人（所以确保你的对象里有这些属性）。</p>
+<p>一旦指定收件人，你可以传递一个实现到 Mailable 类的 <code>send</code> 方法</p>
+<pre><code class="language-php">use App\Mail\OrderShipped; // Mailable 类
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail; // Mail Facade
+use App\Http\Controllers\Controller;
+
+class OrderController extends Controller
+{
+    public function ship(Request $request, $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+
+        // Ship order...
+
+        Mail::to($request-&gt;user())-&gt;send(new OrderShipped($order));
+</code></pre>
+<p>当然，不局限于只使用「to」给收件人发送邮件，你可以通过一个单一的链式调用来自由的设置 「to」，「cc」和 「bcc」接收者：</p>
+<pre><code class="language-php">Mail::to($request-&gt;user())
+    -&gt;cc($moreUsers)
+    -&gt;bcc($evenMoreUsers)
+    -&gt;send(new OrderShipped($order));
+</code></pre>
+<h3 id="队列-mail">队列 Mail</h3>
+<p>由于发送消息会大幅延迟应用响应时间，许多开发者选择将邮件消息加入队列在后台进行发送。Laravel 使用内置的 统一的队列 API 来轻松完成此工作。将邮件消息加入队列，使用 Mail facade 的 <code>queue</code> 方法：(在使用这个功能前，你需要 设置你的队列 。)</p>
+<pre><code class="language-php">Mail::to($request-&gt;user())
+    -&gt;cc($moreUsers)
+    -&gt;bcc($evenMoreUsers)
+    -&gt;queue(new OrderShipped($order));
+</code></pre>
+<p><strong>延迟邮件消息队列</strong></p>
+<p>希望延迟发送已加入队列的邮件消息，你可以使用 <code>later</code> 方法。later 第一个参数接受一个 <strong>DateTime</strong> 实现以告知这个消息应该何时发送：</p>
+<pre><code class="language-php">$when = Carbon\Carbon::now()-&gt;addMinutes(10);
+
+Mail::to($request-&gt;user())
+    -&gt;cc($moreUsers)
+    -&gt;bcc($evenMoreUsers)
+    -&gt;later($when, new OrderShipped($order));
+</code></pre>
+<p><strong>推送到特定队列</strong></p>
+<p>因为所有 Mailable 类是通过 <code>make:mail</code> 命令生成并使用 <code>Illuminate\Bus\Queueable trait</code> ，你可以在任何 Mailable 类实现中调用 <code>onQueue</code> 来指定队列名称，还有 <code>onConnection</code> 方法来指定队列链接名称：</p>
+<pre><code class="language-php">$message = (new OrderShipped($order))
+                -&gt;onConnection('sqs')
+                -&gt;onQueue('emails');
+
+Mail::to($request-&gt;user())
+    -&gt;cc($moreUsers)
+    -&gt;bcc($evenMoreUsers)
+    -&gt;queue($message);
+</code></pre>
+<p><strong>默认(放入)队列</strong></p>
+<p>如果你的 Mailable 类想要默认使用队列，你可以在类中实现 <code>ShouldQueue</code> 接口契约。现在，即便你调用 <code>send</code> 方法来发送邮件， Mailable 类仍将邮件放入队列中发送。</p>
+<pre><code class="language-php">use Illuminate\Contracts\Queue\ShouldQueue;
+
+class OrderShipped extends Mailable implements ShouldQueue
+{
+    //
+}
+</code></pre>
+<h1 id="本地开发">本地开发</h1>
+<p>当应用开发发送邮件时，你或许不想真实的发送邮件到真实的邮件地址。Laravel 提供几种方法以在本地开发时真实发送 「失去能力」。</p>
+<p><strong>日志</strong></p>
+<p>代替真实发送，<code>log</code> 邮件驱动将所有邮件消息写入日志文件以供检查，需要更多根据环境来设置应用程序的信息，可参考 配置文件.</p>
+<p><strong>通用收件者</strong></p>
+<p>设置一个通用邮件接收者，由框架发送邮件。这个方法将所有邮件发送到一个邮件地址，而不是发送给实际收件人。这可以通过 <code>config/mail.php</code> 配置文件的 <code>to</code> 选项来完成：</p>
+<pre><code class="language-php">'to' =&gt; [
+    'address' =&gt; 'example@example.com',
+    'name' =&gt; 'Example'
+],
+</code></pre>
+<p><strong>Mailtrap</strong></p>
+<p>可以使用像 Mailtrap 和 smtp 驱动来将你的邮件消息发送到一个 「虚假的」邮箱中，你却可以在一个真实的邮件客户端中查看它们。这个方法的好处是让你可以在 Mailtrap 的消息阅读器中查看最终的实际邮件。</p>
+<h1 id="事件">事件</h1>
+<p>Laravel 会在发送邮件消息之前触发一个事件。切记，这个事件只会在邮件 发送 时触发，在加入队列时不触发。你可以在你的 <code>EventServiceProvider</code> 注册一个事件监听器：</p>
+<pre><code class="language-php">protected $listen = [
+    'Illuminate\Mail\Events\MessageSending' =&gt; [
+        'App\Listeners\LogSentMessage',
+    ],
+];
+</code></pre>
+<h1 id="问题">问题</h1>
+<h2 id="报错-no-hint-path-defined-for-mail">报错 No hint path defined for [mail]</h2>
+<p>把 <code>-&gt;view('emails.order.send')</code> 改成 <code>markdown()</code>方法。（但实际上我在邮件模板里没有使用 markdown 语法啊）</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E9%82%AE%E4%BB%B6/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E9%82%AE%E4%BB%B6/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E9%9B%86%E5%90%88collection%E4%B8%8E%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0helper-functions/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

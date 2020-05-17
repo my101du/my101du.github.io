@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="一些 workflow 引擎： https://symfony.com/doc/current/workflow/usage.html https://github.com/brexis/laravel-workflow（Use the Symfony Workflow component in Laravel） https://github.com/phpmentors-jp/workflower https://github.com/formapro/pvm http://phpworkflow.cn/ BPMN" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="一些 workflow 引擎： https://symfony.com/doc/current/workflow/usage.html https://github.com/brexis/laravel-workflow（Use the Symfony Workflow component in Laravel） https://github.com/phpmentors-jp/workflower https://github.com/formapro/pvm http://phpworkflow.cn/ BPMN" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%B8%80%E4%BA%9B-workflow-%E5%BC%95%E6%93%8E/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="一些 workflow 引擎： https://symfony.com/doc/current/workflow/usage.html https://github.com/brexis/laravel-workflow（Use the Symfony Workflow component in Laravel） https://github.com/phpmentors-jp/workflower https://github.com/formapro/pvm http://phpworkflow.cn/ BPMN">
+
+<meta itemprop="wordCount" content="14578">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="一些 workflow 引擎： https://symfony.com/doc/current/workflow/usage.html https://github.com/brexis/laravel-workflow（Use the Symfony Workflow component in Laravel） https://github.com/phpmentors-jp/workflower https://github.com/formapro/pvm http://phpworkflow.cn/ BPMN"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%B8%80%E4%BA%9B-workflow-%E5%BC%95%E6%93%8E/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%B8%80%E4%BA%9B-workflow-%E5%BC%95%E6%93%8E/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 14578字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 30分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>一些 workflow 引擎：</p>
+<p><a href="https://symfony.com/doc/current/workflow/usage.html">https://symfony.com/doc/current/workflow/usage.html</a></p>
+<p><a href="https://github.com/brexis/laravel-workflow">https://github.com/brexis/laravel-workflow</a>（Use the Symfony Workflow component in Laravel）</p>
+<p><a href="https://github.com/phpmentors-jp/workflower">https://github.com/phpmentors-jp/workflower</a></p>
+<p><a href="https://github.com/formapro/pvm">https://github.com/formapro/pvm</a></p>
+<p><a href="http://phpworkflow.cn/">http://phpworkflow.cn/</a></p>
+<h2 id="bpmn-20-一个标准">BPMN 2.0 一个标准</h2>
+<h2 id="来自phpmentors-jp">来自：phpmentors-jp</h2>
+<p><strong>Features</strong></p>
+<p>Workflow
+The workflow engine and domain model
+Process（步骤 ）
+Some interfaces to work with Workflow objects
+Definition (定义)
+BPMN 2.0 process definitions
+Persistence （workflow 对象数据的持久化）
+Serialize/deserialize interfaces for Workflow objects</p>
+<p><strong>了解 workflow elements</strong></p>
+<p>Connecting objects
+Sequence flows
+Flow objects
+Activities
+Tasks
+Service tasks
+Send tasks
+Events
+Start events
+End events
+Gateways
+Exclusive gateways
+Swimlanes
+Lanes</p>
+<p><strong>更多关于 process 组件的模型、关系等，以及 BPMN2.0资料</strong></p>
+<p><a href="https://github.com/phpmentors-jp/workflower/blob/master/docs/quick-start-guide.md">https://github.com/phpmentors-jp/workflower/blob/master/docs/quick-start-guide.md</a></p>
+<h2 id="php流程引擎的简单设计及实现参考仅后端">php流程引擎的简单设计及实现（参考，仅后端）</h2>
+<p><a href="https://blog.csdn.net/qq_15090841/article/details/81413268">https://blog.csdn.net/qq_15090841/article/details/81413268</a></p>
+<p><a href="https://github.com/uej/process">https://github.com/uej/process</a> （由于说明信息不完整，代码已下载，自行研究，如 FlowController）</p>
+<p>主要功能</p>
+<ul>
+<li>流程创建</li>
+<li>设置流程使用：单独某人可用/每个部门可用/某个角色可用</li>
+<li>流程
+<ul>
+<li>设置自己的编号规则</li>
+<li>工作节点
+<ul>
+<li>审批类型（或签 /会签）</li>
+<li>审批人（固定人审批/某个部门某个角色的人审批)</li>
+<li>抄送人</li>
+<li>根据申请人提交的表单数据来确定是否经过这个节点</li>
+</ul>
+</li>
+<li>创建成功后自动生成该流程对应的数据表</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据表">数据表</h3>
+<p>只取了部分重要字段</p>
+<h4 id="流程-cmf_workflow-以及相关表">流程 cmf_workflow 以及相关表</h4>
+<p>一个<strong>流程有很多属性</strong>， 例如规定“谁能用这个流程”（部门/角色/用户）；流程类型；等等</p>
+<p><strong>流程节点</strong>: 为流程定义多个流程节点，在这些节点里，要通过审批才能进入另外的节点，参看后面<code>定义流程节点</code></p>
+<p><strong>编号规则</strong> 参看后面<code>定义流程的编号规则</code></p>
+<ul>
+<li>Id</li>
+<li>Name</li>
+<li><strong>FlowNodes</strong>: 流程节点 json</li>
+<li>DepartmentID: 可用部门ID   &mdash;&ndash; 对应 <code>部门表</code> cmf_department（ID, Department）</li>
+<li>RoleID：可用角色ID         &mdash;&ndash; 对应 <code>角色表</code> cmf_role（ID, Role）</li>
+<li>UserID: 可用用户ID        &mdash;&ndash; 对应 <code>用户表</code> cmf_user（name, role_id, department_id)</li>
+<li>TypeID: 流程类型ID         &mdash;&mdash; 对应 <code>流程类型表</code> cmf_workflowtype （ID, Type）</li>
+<li>OrderRule: <strong>编号规则</strong></li>
+<li>Status: 1 / 0</li>
+</ul>
+<h4 id="流程字段表单--cmf_flowform-保存-流程表单-的-字段">流程字段表单  cmf_flowform （保存 流程表单 的 字段）</h4>
+<p>一般<strong>一个流程会对应有一个或多个表单</strong>，表单中有多个字段。可以通过图形界面来设计</p>
+<ul>
+<li>Id</li>
+<li>Type  数据类型</li>
+<li>TypeId  字段类型ID</li>
+<li>FieldName  字段名</li>
+<li>FieldTitle</li>
+<li>PlaceHolder</li>
+<li>Direction 排列方向 1/2 横竖</li>
+<li>TimeType  如果是 time 类型，1 年月 2年月日 3年月日时分</li>
+<li>FieldLength</li>
+<li>FieldNote</li>
+<li>must   是否必填</li>
+<li><strong>WorkFlowID</strong>  关联流程ID</li>
+<li>Value  字段可选值</li>
+</ul>
+<h4 id="审批项申请-cmf_program--与某个用户某个工作流某个表单关联当前节点审批人等关联">审批项（申请） cmf_program  （与某个用户、某个工作流、某个表单关联、当前节点、审批人等关联）</h4>
+<ul>
+<li>“申请人”添加一条新的申请记录</li>
+<li>然后进入审批人/角色/部门</li>
+<li>一个流程有多个<strong>流程节点</strong>，当 审批人/角色/部门 对 审批项 进行 通过/拒绝等动作后，审批项“流入”其他 流程节点。</li>
+</ul>
+<p>场景：多个不同的用户在 N个时间点，创建了 N 个审批项。</p>
+<ul>
+<li>ID</li>
+<li><strong>OrderNum</strong> 编号  来自“编号规则”-见后面解释  可以通过 workflow 关联得到</li>
+<li>UserID</li>
+<li><strong>WorkFlowID</strong>   关联的 workflow （其实可以和表单id 跨表关联）</li>
+<li><strong>FormID</strong>   关联的表单ID  也可以通过 workflow 来关联</li>
+<li><strong>NowNode</strong>   当前流程节点（workflow 有多个 nodes, 这里标记某个审批项处于哪个节点）</li>
+<li>isEdit    申请人是否在修改中</li>
+<li><strong>CheckUserID</strong>   当前审批人ID</li>
+<li><strong>CheckRoleID</strong>   审批角色ID</li>
+<li><strong>CheckDepartmentID</strong>  审批部门ID</li>
+<li><strong>Result</strong>      审批结果  0 审核中  1 通过 2 不通过</li>
+<li>Status      1 正常 2 删除</li>
+<li><strong>CopyUserID</strong>  抄送给用户ID</li>
+</ul>
+<h4 id="审批记录-cmf_flowlog">审批记录 cmf_flowlog</h4>
+<p>每个审批项关联的主体(人/角色/部门)，操作了审批项后(提交申请/通过/拒绝)，都会生成一条审批记录。并附上有关信息：描述、票据文件等等</p>
+<ul>
+<li>ID</li>
+<li>WorkFlowID   工作流  （多余的吧，可以通过 ProgramID 来关联）</li>
+<li><strong>ProgramID</strong>    审批（申请）记录</li>
+<li>UserID       用户ID</li>
+<li><strong>NodeID</strong>       节点ID  (一个工作流有多个节点)</li>
+<li><strong>Type</strong>         操作类型  1 审批  2 申请（申请人创建审批的时候，就是申请）</li>
+<li>Content       审批意见</li>
+<li>Files        附件</li>
+<li><strong>Result</strong>        本次审批结果  1 通过  2 打回  3 拒绝</li>
+<li>CreateTime</li>
+</ul>
+<h3 id="定义流程节点">定义流程节点</h3>
+<p>一个 流程 有很多的 流程节点。</p>
+<p>用一个php数组来定义一个节点的属性/跳转条件，转换成json后保存下来到流程表的 FlowNodes 字段。</p>
+<p><strong>熟悉：<code>need</code>和<code>needtype</code>的规则</strong></p>
+<p>例如提交的表单里，</p>
+<ol>
+<li>普通员工 提交的 “请假日期”这个字段大于3，则自动跳转到行政部； 如果小于 3， 则部门经理先审批，然后流转到行政部备案（无需再次审批）</li>
+<li>部门经理提交的，提交到人事部审批。</li>
+</ol>
+<p>也就是说，每个状态不是固定的。根据提交人的角色等信息（这些就是“满足条件”），跳转到不同节点。</p>
+<p>（这个过程你可以自己写 json、php 代码，或者是 xml 等等，还可以用前端js代码来实现拖拽式设计等等）</p>
+<pre><code class="language-php">$flowNodes = [
+    [
+        'type'  =&gt; // 1:会签  2:或签
+        'role'  =&gt; // 审批人角色id
+        'department =&gt; // 审批人部门id
+        'user'=&gt; // 审批人id
+        'self'  =&gt; // 1：本部门对应角色签批
+        'copy'  =&gt; // 抄送人id
+        'need'  =&gt; [
+            [
+                'field' =&gt; // 字段
+                'type'  =&gt; // 1:值大于  2:值相等  3:值小于
+                'value' =&gt; // 需要时字段条件值
+            ],
+            //...[]
+        ]
+        'needtype'  =&gt; // 1:且  2:或
+    ],
+    [],
+    //....
+];
+</code></pre>
+<h4 id="知识-会签与或签">知识： 会签与或签</h4>
+<p><a href="https://www.sohu.com/a/212801424_369000">https://www.sohu.com/a/212801424_369000</a></p>
+<p>会签：一个事项需要多人同意方可通过，可以选择会签
+或签：一个事项可以选择多个审批人，其中任意一人同意就OK</p>
+<p><img src="/media/15490410132948/15469505750370.jpg" alt=""></p>
+<h3 id="定义流程的-编号规则为每一个新的审批项分配一个编号">定义流程的 编号规则，为每一个新的审批项分配一个编号</h3>
+<p>每个流程都有自己的一个编号规则，用来标记每次基于这个流程来创建 审批项 时，<code>OrderNum</code>字段自动分配的值，这样能一目了然看到审批项的属于什么流程。</p>
+<p>例如我们希望</p>
+<ul>
+<li>加班流程，每次创建新的审批项，自动得到的 OrderNum 是 &ldquo;JB20180301001&rdquo;</li>
+<li>出差申请流程，得到 &ldquo;CC201803002&rdquo;</li>
+</ul>
+<p>下面的代码就是在流程里定义 变化规则  （当然，这里比较麻烦，我们可以通过自己写一个“变化规则”表单，简化这个属性）</p>
+<pre><code class="language-php">$orderRule = [
+    [
+        'type'      =&gt; // 1:标签 2:日期 3:增长值
+        'value'     =&gt; // type为1时有值，字符串，例如：HQ
+        'datetype'  =&gt; // type为2时有值  1:年 2:年月 3:年月日
+        'length'    =&gt; // 增长值最高长度 type为3时有值
+    ]
+];
+
+// 下面这个编号规则第一个编号就是HT201803001
+$orderRule = [
+    [
+        'type'  =&gt; 1,
+        'value' =&gt; 'HT'
+    ],
+    [
+        'type'  =&gt; 2,
+        'datetype'  =&gt; 2
+    ],
+    [
+        'type'  =&gt; 3,
+        'length'=&gt; 3,
+    ]
+];
+</code></pre>
+<h3 id="工作流类-核心">工作流类 (核心)</h3>
+<pre><code class="language-php">namespace process;
+
+class Workflow
+{
+    public $config;
+
+
+    public function __construct()
+    {
+        $this-&gt;config   = include(__DIR__ . '/config.php');
+    }
+
+    /**
+     * 流程进行
+     * 
+     * @param integer $programID 申请项目id
+     * @param integer $userID 审批人id
+     * @param array $data 审批数据
+     * @return type 处理结果
+     */
+    public function doFlow($programID, $userID, $data)
+    {
+        return flow\FlowControl::doflow($programID, $userID, $data);
+    }
+
+    /**
+     * 新的申请
+     * 
+     * @param integer $flowID 流程id
+     * @param integer $userID 申请用户id
+     * @param array $data 申请表单数据
+     * @return array 处理结果
+     */
+    public function startNew($flowID, $userID, $data)
+    {
+        return flow\FlowControl::startNew($flowID, $userID, $data);
+    }
+
+    /**
+     * 编辑申请
+     * 
+     * @param integer $programID 申请id
+     * @param integer $userID 申请人id
+     * @param array $data 申请表单数据
+     * @return array 编辑结果
+     */
+    public function editProgram($programID, $userID, $data)
+    {
+        return flow\FlowControl::edit($programID, $userID, $data);
+    }
+
+    /**
+     * 新建流程
+     * 
+     * @param array $data 流程数据
+     * @access public
+     */
+    public function createFlow($data)
+    {
+        return flow\FlowControl::createFlow($data);
+    }
+
+    /**
+     * 撤回申请（仅当没有审核记录时能撤回）
+     * 
+     * @param integer $programID 申请项id
+     * @param integer $userID 申请人id
+     * @return array 处理结果
+     */
+    public function revoke($programID, $userID)
+    {
+        return flow\FlowControl::revoke($programID, $userID);
+    }
+
+
+    public function editFlow($flowID, $data)
+    {
+        return flow\FlowControl::editFlow($flowID, $data);
+    }
+
+    /**
+     * 获取medoo数据库操作类实例
+     */
+    public static function connectdb()
+    {
+        static $db = '';
+
+       略
+            return $db;
+        }
+    }
+
+    /**
+     * 获取流程表单所有可以设置的项
+     * 
+     * @access public
+     */
+    public function getAllFrom()
+    {
+        return flow\Form::$fields;
+    }
+
+    /**
+     * 创建数据
+     * 
+     * @param integer $flowID 流程id
+     * @return mixed 生成数据
+     * @access public
+     */
+    public static function create($flowID)
+    {
+        $data = filter_input_array(INPUT_POST);
+        if (empty($flowID)) {
+            return FALSE;
+        }
+        $tableName  = &quot;formtable$flowID&quot;;
+
+        $arr = [];
+
+        $columns = self::connectdb()-&gt;query(&quot;SHOW COLUMNS FROM `{$this-&gt;config['dbPrefix']}$tableName`&quot;)-&gt;fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($columns as $val) {
+            $keys[] = $val['Field'];
+        }
+        foreach ($data as $key =&gt; $val) {
+            if (in_array($key, $keys)) {
+                $arr[$key] = htmlspecialchars(trim($val));      // 全局转换html元素
+            }
+        }
+
+        if ($res) {
+            return $res;
+        } else {
+            return FALSE;
+        }
+    }
+
+}
+</code></pre>
+<h3 id="新建流程-createflowdata">新建流程 <code>createFlow($data)</code></h3>
+<p>注意</p>
+<ul>
+<li><code>FlowNodes</code>，<code>OrderRule</code>，<code>Form</code> 三个元素的数据</li>
+<li><code>TypeID</code>: 流程类型ID</li>
+<li>FlowNodes 第二个<code>need</code>，表示 <code>TimeBetween1Total</code>字段的值大于3？  （这里也应该自己写一个表单来简化过程。）</li>
+</ul>
+<pre><code class="language-php">$data = [
+    'Name'      =&gt; '事假',
+    'Introduce' =&gt; '用户事假申请',
+    'FlowNodes' =&gt; [
+        [
+            'type'          =&gt; 2,
+            'role'          =&gt; 2,
+            'self'          =&gt; 1,
+            'need'          =&gt; 1,
+        ],
+        [
+            'type'          =&gt; 2,
+            'role'          =&gt; 4,
+            'copy'          =&gt; 4,
+            'need'          =&gt; [
+                [
+                    'field' =&gt; 'TimeBetween1Total',
+                    'type'  =&gt; 1,
+                    'value' =&gt; 3,
+                ]
+            ],
+            'needtype'      =&gt; 1,
+        ]
+    ],
+    'DepartmentID'  =&gt; NULL,
+    'RoleID'        =&gt; 1,
+    'TypeID'        =&gt; 1,
+    'UserID'        =&gt; NULL,
+    'OrderRule'     =&gt; [
+        [
+            'type'  =&gt; 1,
+            'value' =&gt; 'SJ'
+        ],
+        [
+            'type'  =&gt; 2,
+            'datetype'  =&gt; 2
+        ],
+        [
+            'type'  =&gt; 3,
+            'length'=&gt; 3,
+        ]
+    ],
+    'Form'  =&gt; [
+        [
+            'fieldtypeid'   =&gt; 1,
+            'FieldName'     =&gt; 'Content',
+            'FieldTitle'    =&gt; '原因',
+            'Placeholder'   =&gt; '请输入请假原因',
+            'Must'          =&gt; 1,
+        ],
+        [
+            'fieldtypeid'   =&gt; 8,
+            'FieldName'     =&gt; 'TimeBetween',
+            'FieldTitle'    =&gt; '起止时间',
+            'Timetype'      =&gt; 3,
+            'Must'          =&gt; 1,
+        ]
+    ]
+];
+
+$workflow   = new \process\Workflow();
+$res    = $workflow-&gt;createFlow($data);
+
+</code></pre>
+<h3 id="流程表单">流程表单</h3>
+<h4 id="fields定义了常用的一些表单字段"><code>$fields</code>定义了常用的一些表单字段</h4>
+<p>前端编辑创建流程表单的时候需按照这里设定的来</p>
+<pre><code class="language-php">public static $fields   = [
+    0 =&gt; ['fieldname' =&gt; 'Title', 'name' =&gt; '单行文本', 'type' =&gt; 'varchar', 'length' =&gt; 255, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'text', 'config' =&gt; ['placeholder']],
+    1 =&gt; ['fieldname' =&gt; 'Content', 'name' =&gt; '多行文本', 'type' =&gt; 'text', 'formtype' =&gt; 'textarea', 'config' =&gt; ['placeholder']],
+    2 =&gt; ['fieldname' =&gt; 'Phone', 'name' =&gt; '手机号', 'type' =&gt; 'char', 'length' =&gt; 11, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'text', 'pattern' =&gt; '/^1(3|4|5|7|8|9)\d{9}$/', 'config' =&gt; ['placeholder']],
+    3 =&gt; ['fieldname' =&gt; 'Num', 'name' =&gt; '整数', 'type' =&gt; 'int', 'length' =&gt; 11, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'number', 'config' =&gt; ['placeholder']],
+    4 =&gt; ['fieldname' =&gt; 'ChooseOne', 'name' =&gt; '单选框', 'type' =&gt; 'varchar', 'length' =&gt; 255, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'radio', 'config' =&gt; ['textarea', 'direction']],
+    5 =&gt; ['fieldname' =&gt; 'Checkbox', 'name' =&gt; '复选框', 'type' =&gt; 'varchar', 'length' =&gt; 255, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'checkbox', 'config' =&gt; ['textarea', 'direction']],
+    6 =&gt; ['fieldname' =&gt; 'Chooseval', 'name' =&gt; '下拉框', 'type' =&gt; 'varchar', 'length' =&gt; 255, 'formtype' =&gt; 'select', 'config' =&gt; ['textarea']],
+    7 =&gt; ['fieldname' =&gt; 'Time', 'name' =&gt; '时间', 'type' =&gt; 'int', 'formtype' =&gt; 'input', 'inputtype' =&gt; 'text', 'config' =&gt; ['timetype']],
+    8 =&gt; ['fieldname' =&gt; 'TimeBetween', 'name' =&gt; '时间区间', 'type' =&gt; 'int', 'formtype' =&gt; 'input', 'inputtype' =&gt; 'text', 'config' =&gt; ['timetype']],
+    9 =&gt; ['fieldname' =&gt; 'FileName', 'name' =&gt; '上传附件', 'type' =&gt; 'varchar',  'length' =&gt; 255, 'formtype' =&gt; 'input', 'inputtype' =&gt; 'file', 'config' =&gt; ['placeholder']],
+    10 =&gt; ['fieldname' =&gt; 'Decimal', 'name' =&gt; '小数', 'type' =&gt; 'double', 'formtype' =&gt; 'input', 'inputtype' =&gt; 'text', 'config' =&gt; ['placeholder']],
+];
+</code></pre>
+<h4 id="createfield方法负责创建字段"><code>createField</code>方法负责创建字段</h4>
+<p>(为了防止字段重复，在字段名称后面加了对应的数字键值,但是这种方法在编辑修改流程表单的时候如果要新加字段还是可能会导致字段重复，所以这个方法也不是最好的)</p>
+<pre><code class="language-php">/**
+ * 生成字段信息数组
+ * 
+ * @param array $formData 字段信息数据
+ * @param integer $flowID 流程id
+ * @return array 生成的数据数组和结果
+ */
+private static function createField($formData, $flowID)
+{
+    foreach ($formData as $key =&gt; $val) {
+        if (empty($val)) {
+            $result['errormsg'] = '流程表单未设置';
+            return $result;
+        }
+
+        /* 表单类型设置数据验证 */
+        if (!in_array($val['fieldtypeid'], self::$fieldstype)) {
+            return ['code' =&gt; 0, 'errormsg' =&gt; '流程表单类型id错误'];
+        }
+        if (empty($val['FieldTitle'])) {
+            return ['code' =&gt; 0, 'errormsg' =&gt; '表单字段标题不能为空'];
+        }
+        if (in_array($val['fieldtypeid'], [4,5,6])) {
+            if (count(explode(&quot;\n&quot;, $val['Value'])) &lt; 2) {
+                return ['code' =&gt; 0, 'errormsg' =&gt; '选项过少'];
+            }
+        }
+
+        $data   = [];
+        $data['TypeID']         = intval($val['fieldtypeid']);
+        $data['Type']           = self::$fields[$data['TypeID']]['type'];
+        $data['FieldName']      = $val['FieldName'] . $key;
+        if (!empty(self::$fields[$data['TypeID']]['length']))
+            $data['FieldLength']    = self::$fields[$data['TypeID']]['length'];
+        $data['FieldTitle']     = htmlspecialchars(trim($val['FieldTitle']));
+        $data['FieldNote']      = $data['FieldTitle'];
+        $data['Must']           = intval($val['Must']);
+        if (!empty($val['Placeholder']))
+            $data['Placeholder']    = htmlspecialchars(trim($val['Placeholder']));
+        if (in_array($data['TypeID'], [4,5]))
+            $data['Direction']  = intval($val['Direction']);
+        if (in_array($val['fieldtypeid'], [4,5,6]))
+            $data['Value']      = htmlspecialchars(trim($val['Value']));
+        if (in_array($data['Type'], [7,8])) {
+            $data['Timetype']   = intval($val['Timetype']);
+            if (!in_array($data['Timetype'], [1,2,3,4,5])) {
+                return ['code' =&gt; 0, 'errormsg' =&gt; '时间类型不对'];
+            }
+        }
+        $data['WorkflowID'] = $flowID;
+
+        if ($val['fieldtypeid'] == 8) {
+            $data['FieldName']  = $data['FieldName'] . 'Start';
+            $form[] = $data;
+            $data['FieldName']  = $data['FieldName'] . 'End';
+            $form[] = $data;
+            $data['FieldName']  = $data['FieldName'] . 'Total';
+            $data['FieldTitle'] = $data['FieldNote'] = '总时长(天)';
+            $data['Type']       = 'double';
+            $form[] = $data;
+            continue;
+        }
+        $form[] = $data;
+    }
+
+    return ['code' =&gt; 1, 'data' =&gt; $form];
+}
+
+</code></pre>
+<h4 id="添加流程表单数据和创建表单表">添加流程表单数据和创建表单表</h4>
+<p>在执行创建数据表的时候不太对，执行修改表结构，创建表这种非增删改查的操作会自动提交事务，代码里创建表那里的事务其实是起不到作用的</p>
+<pre><code class="language-php">/**
+ * 添加流程表单数据和创建表单表
+ * 
+ * @param array $formData 表单字段数据
+ * @param integer $flowID 流程id
+ * @param string $flowName 流程名称
+ * @return array 结果
+ */
+public static function createDbTable($formData, $flowID, $flowName)
+{
+    $result = ['code' =&gt; 0];
+
+    if (empty($formData)) {
+        $result['errormsg'] = '流程表单未设置';
+        return $result;
+    }
+
+    $fieldRes   = self::createField($formData, $flowID);
+    if ($fieldRes['code'] != 1) {
+        return $fieldRes;
+    } elseif (empty($fieldRes['data'])) {
+        $result['errormsg'] = '流程表单生成失败';
+        return $result;
+    }
+    $form   = $fieldRes['data'];
+
+    $medoo  = \process\Workflow::connectdb();
+    if ($medoo-&gt;insert('flowform', $form)-&gt;errorCode() !== '00000') {
+        $medoo-&gt;pdo-&gt;rollBack();
+        $result['errormsg'] = '创建流程表单失败';
+        return $result;
+    }
+
+    /* 创建流程表单表 */
+    $config = include(__DIR__ . '/../config.php');
+    $sql    = &quot;CREATE TABLE `{$config['dbPrefix']}formtable$flowID` ( &quot;
+            . &quot;`ID` INT NOT NULL AUTO_INCREMENT , &quot;;
+    foreach ($form as $val) {
+        $null   = $val['Must'] == 1 ? 'NOT NULL' : 'NULL';
+
+        if ($val['Type'] == 'int' || $val['Type'] == 'text') {
+            $type   = $val['Type'];
+        } else if ($val['Type'] == 'varchar' || $val['Type'] == 'char') {
+            $type   = &quot;{$val['Type']}({$val['FieldLength']})&quot;;
+        }
+        $sql   .= &quot;`{$val['FieldName']}` $type $null COMMENT '{$val['FieldNote']}' ,&quot;;
+    }
+    $sql   .= &quot;PRIMARY KEY (`ID`)) ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci COMMENT = '{$flowName}流程表单$flowID';&quot;;
+    $pdoStatement   = $medoo-&gt;query($sql);
+    if ($pdoStatement-&gt;errorCode() !== '00000') {
+        $medoo-&gt;pdo-&gt;rollBack();
+        $result['errormsg'] = '创建流程表单表失败';
+        return $result;
+    }
+
+    $result['code'] = 1;
+    $result['errormsg'] = '';
+    return $result;
+}
+</code></pre>
+<h2 id="一个真正符合中国国情的工作流设计注意看评论里的一些现状讨论和思考">一个真正符合中国国情的工作流设计（注意看评论里的一些现状讨论和思考）</h2>
+<p><a href="https://blog.csdn.net/bjash/article/details/8471405">https://blog.csdn.net/bjash/article/details/8471405</a></p>
+<p>标题吓死人，其实没什么。评论有意思</p>
+<p>总结几个和上面的章节不同的新资料：</p>
+<ul>
+<li>流程节点单独定义一张表， 而不是前面放到流程的 Nodes 字段里用 json 保存，更便于维护</li>
+<li>权限、模板引擎等用已有框架/系统的</li>
+<li>节点具有“自动处理”和“事件”特性，并不需要人工， 还有<code>分支</code>、<code>汇总</code>、<code>结束</code>等类型 （遵循“状态机”）</li>
+<li>hook : 函数  （symfony 里的工作流事件- guard 等事件）</li>
+</ul>
+<h3 id="workflow_node-流程节点表">workflow_node 流程节点表</h3>
+<ul>
+<li>workflow_id</li>
+<li>node_index 节点序号</li>
+<li>node_name</li>
+<li>node_type   1人为决策，2自动处理(直接执行execute_function)，3等待外部响应(例如外部WS触发),4分支，5汇总 6结束结点（此结点执行时候自动终止进程）</li>
+<li>init_function  流程初始函数</li>
+<li>run_function   流程运行函数</li>
+<li>save_function  流程保存函数</li>
+<li>transit_function   流程流转函数</li>
+<li>prev_node_index   前结点序号  例如1。开始结点没有   执行前，通过此来校验一下流程</li>
+<li>next_node_index   后结点序号   例如[同意]3,[不同意]4。尾结点或要结束的结点没有，若没有，直接调用end</li>
+<li>executor    执行角色  role[1,2] group[1,2] user[1,2],为空由运行时决定</li>
+<li>execute_type   执行类型  0需所有人执行 1只需一人执行</li>
+<li>remind  0不提醒 1邮件 2短信 3邮件和短信&rsquo;</li>
+<li>field  可编辑的字段   name,content</li>
+<li>max_day   最长时间(天)</li>
+</ul>
+<h3 id="workflow_process-流程线程对比前面的审批项">workflow_process 流程线程——对比前面的“审批项”</h3>
+<ul>
+<li>process_id</li>
+<li>workflow_id</li>
+<li>context  上下文  例如关联业务表的id</li>
+<li>current_node_index 当前结点序号 （nowNode）</li>
+<li>start_time   流程启动时间  如遇分支、汇合显示为： 1＝》3,4＝》3,5＝》6</li>
+<li>finish_time  流程完成时间</li>
+<li>state   1运行 2结束</li>
+<li>start_user   发起人，用于显示自己的流程</li>
+</ul>
+<h3 id="workflow_thread-流程执行线程对比前面的-审批记录">workflow_thread 流程执行线程——对比前面的 审批记录</h3>
+<ul>
+<li>thread_id</li>
+<li>process_id</li>
+<li>node_id</li>
+<li>executor</li>
+<li>start_time</li>
+<li>receive_time</li>
+<li>finish_time 完成时间</li>
+<li>max_time   结点规定的最长时间</li>
+<li>state  0未接收 1已接收 2已处理</li>
+</ul>
+<h3 id="常见流程">常见流程</h3>
+<p>人工决策</p>
+<ul>
+<li>领导传阅</li>
+<li>部门领导审批</li>
+<li>填写表单</li>
+<li>结束</li>
+<li>放弃</li>
+<li>提交</li>
+<li>同意</li>
+<li>重填（退回）</li>
+<li>不同意</li>
+<li>完成</li>
+</ul>
+<p>外部响应</p>
+<ul>
+<li>发送支付信息</li>
+<li>接收支付成功响应（外部WS触发该流程）</li>
+</ul>
+<h2 id="tp工作流插件-中国功能完善可参考代码">TP工作流插件 中国，功能完善，可参考代码</h2>
+<p>会签，回退等等</p>
+<p><a href="http://www.thinkphp.cn/topic/55342.html">http://www.thinkphp.cn/topic/55342.html</a>
+<a href="https://gitee.com/ntdgg/tpflow">https://gitee.com/ntdgg/tpflow</a></p>
+<h2 id="php开发业务工作流的设计小结前端库实现拖拽等">php开发业务工作流的设计小结（前端库实现拖拽等）</h2>
+<p><a href="https://www.jianshu.com/p/e66de4c91a92">https://www.jianshu.com/p/e66de4c91a92</a></p>
+<ul>
+<li>流程要可配置，每个流<strong>程节点有其固定的key来标识它</strong>，包括每个节点的<strong>处理结果</strong></li>
+<li>实现一个<strong>流程引擎</strong>来<strong>统一管理流程</strong></li>
+<li>每个<strong>节点有与之对应的处理类</strong></li>
+<li>因为部分<strong>节点的跳转并无特殊逻辑</strong>，应该有一个<strong>默认的节点处理类</strong>，<strong>它只有保存数据和提交流程结果</strong>的逻辑</li>
+<li>在流程引擎处对每个<strong>节点的处理过程</strong>预埋几个<strong>钩子</strong>，这样要另外<strong>加入三方逻辑时就不必改动现有的文件</strong></li>
+</ul>
+<p><strong>jsPlumb</strong> 前端库
+社区版免费，Toolkit 版是商业的
+This project is the &lsquo;Community Edition&rsquo; of jsPlumb. The &lsquo;Toolkit Edition&rsquo; is a commercially-licensed wrapper around this</p>
+<p><a href="https://jsplumbtoolkit.com/community/doc/home.html">https://jsplumbtoolkit.com/community/doc/home.html</a></p>
+<p><img src="/media/15490410132948/15468624152595.jpg" alt=""></p>
+<p><img src="/media/15490410132948/15468624042743.jpg" alt=""></p>
+<p>提交的数据格式</p>
+<pre><code class="language-json">{
+    &quot;workflow_group&quot;:&quot;normal&quot;,
+    &quot;conf&quot;:{
+        &quot;node_1&quot;:{
+            &quot;name&quot;:&quot;节点一&quot;,&quot;key&quot;:&quot;node_1&quot;,&quot;workflow_group&quot;:&quot;normal&quot;,
+            &quot;status&quot;:{
+                &quot;pass&quot;:{&quot;key&quot;:&quot;pass&quot;,&quot;name&quot;:&quot;通过&quot;,&quot;apply_step&quot;:&quot;2&quot;,&quot;next_workflow_key&quot;:&quot;node_2&quot;},
+                &quot;visit&quot;:{&quot;key&quot;:&quot;visit&quot;,&quot;name&quot;:&quot;考察&quot;,&quot;apply_step&quot;:&quot;2&quot;,&quot;next_workflow_key&quot;:&quot;node_3&quot;}
+            },
+            &quot;style&quot;:{&quot;left&quot;:&quot;407px&quot;,&quot;top&quot;:&quot;354px&quot;}
+        },
+        &quot;node_2&quot;:{
+            &quot;name&quot;:&quot;节点二&quot;,&quot;key&quot;:&quot;node_2&quot;,&quot;workflow_group&quot;:&quot;normal&quot;,
+            &quot;status&quot;:{
+                &quot;pass&quot;:{&quot;key&quot;:&quot;pass&quot;,&quot;name&quot;:&quot;通过&quot;,&quot;apply_step&quot;:&quot;3&quot;,&quot;next_workflow_key&quot;:&quot;node_4&quot;}
+            },
+            &quot;style&quot;:{&quot;left&quot;:&quot;609px&quot;,&quot;top&quot;:&quot;356px&quot;}
+        },
+        &quot;node_3&quot;:{
+            &quot;name&quot;:&quot;节点三&quot;,&quot;key&quot;:&quot;node_3&quot;,&quot;workflow_group&quot;:&quot;normal&quot;,
+            &quot;status&quot;:{
+                &quot;back&quot;:{&quot;key&quot;:&quot;back&quot;,&quot;name&quot;:&quot;退回&quot;,&quot;apply_step&quot;:&quot;99&quot;,&quot;next_workflow_key&quot;:&quot;node_1&quot;},
+                &quot;pass&quot;:{&quot;key&quot;:&quot;pass&quot;,&quot;name&quot;:&quot;通过&quot;,&quot;apply_step&quot;:&quot;&quot;,&quot;next_workflow_key&quot;:&quot;node_2&quot;}
+            },
+            &quot;style&quot;:{&quot;left&quot;:&quot;513px&quot;,&quot;top&quot;:&quot;501px&quot;}
+        },
+        &quot;node_4&quot;:{
+            &quot;name&quot;:&quot;节点四&quot;,&quot;key&quot;:&quot;node_4&quot;,&quot;workflow_group&quot;:&quot;normal&quot;,
+            &quot;status&quot;:{
+                &quot;back&quot;:{&quot;key&quot;:&quot;back&quot;,&quot;name&quot;:&quot;退回&quot;,&quot;apply_step&quot;:&quot;2&quot;,&quot;next_workflow_key&quot;:&quot;node_3&quot;},
+                &quot;pass&quot;:{&quot;key&quot;:&quot;pass&quot;,&quot;name&quot;:&quot;通过&quot;,&quot;apply_step&quot;:&quot;4&quot;,&quot;next_workflow_key&quot;:&quot;apply_end&quot;}
+            },
+            &quot;style&quot;:{&quot;left&quot;:&quot;816px&quot;,&quot;top&quot;:&quot;359px&quot;}
+        },
+        &quot;apply_end&quot;:{
+            &quot;name&quot;:&quot;业务结束&quot;,&quot;key&quot;:&quot;apply_end&quot;,&quot;workflow_group&quot;:&quot;normal&quot;,
+            &quot;status&quot;:{},
+            &quot;style&quot;:{&quot;left&quot;:&quot;781px&quot;,&quot;top&quot;:&quot;551px&quot;}
+        }
+    }
+}
+
+</code></pre>
+<h3 id="数据表-1">数据表</h3>
+<p>三张流程相关的表，一张定义流程组,一张定义流程组的节点，一张定义节点可选的结果</p>
+<pre><code class="language-sql">CREATE TABLE `workflow_group` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '0:监听流程组',
+  `group_name` varchar(20) NOT NULL COMMENT '流程组名',
+  `group_key` varchar(20) NOT NULL COMMENT '流程组标识',
+  `enable` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='流程组表';
+
+CREATE TABLE `workflow_node` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `workflow_group_id` int(11) unsigned NOT NULL COMMENT '流程组ID,0:监听流程组',
+  `node_name` varchar(20) NOT NULL COMMENT '节点名称',
+  `node_key` varchar(20) NOT NULL COMMENT '流程节点标识',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否被删除',
+  `style` varchar(255) DEFAULT NULL COMMENT '节点样式',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `workflow_group_id` (`workflow_group_id`,`node_key`),
+  CONSTRAINT `workflow_node_ibfk_1` FOREIGN KEY (`workflow_group_id`) REFERENCES `workflow_group` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='流程节点表';
+
+CREATE TABLE `workflow_result` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `workflow_node_id` int(11) unsigned NOT NULL COMMENT '所属工作流节点ID',
+  `result_name` varchar(20) NOT NULL COMMENT '结论名称',
+  `result_key` varchar(20) NOT NULL COMMENT '结论标识',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否被删除',
+  `next_node_id` int(11) DEFAULT NULL COMMENT '下一个流程',
+  `next_node_key` varchar(20) NOT NULL DEFAULT '' COMMENT '下一个流程标识'
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `workflow_id` (`workflow_node_id`,`result_key`),
+  CONSTRAINT `workflow_result_ibfk_1` FOREIGN KEY (`workflow_node_id`) REFERENCES `workflow_node` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='流程节点结论表';
+
+</code></pre>
+<h3 id="怎样判断节点是否处理呢">怎样判断节点是否处理呢</h3>
+<p>比方说一份合同，在经过工作流处理后，每个环节都会产生一条轨迹记录，一条轨迹记录了当时所在的流程及流程处理的结果，这样<strong>想知道这份合同是否经过某个环节处理，只需要查询是否有这个环节轨迹就可以了</strong></p>
+<h3 id="流程引擎-没有给代码">流程引擎 (没有给代码)</h3>
+<p>Workflow.class.php final类</p>
+<pre><code class="language-php">public function getConf($workflow_group){}  //获取配置
+public function setConf($conf,$workflow_group){} //设置配置
+public function getNodeResults($workflow_key,$workflow_group){} //获取节点结果集
+public function getListClass($workflow_key, $uid){}//获取节点列表处理类
+public function getCommitClass($id, $workflow_key, $uid){}//获取节点提交处理类
+</code></pre>
+<p>WorkflowCommit.class.php   abstract类
+每个节点处理类都继承于这个抽象类，要实现如下两个抽象方法:</p>
+<pre><code class="language-php">// 提交处理
+abstract protected function _commit($resultKey, array $data);
+// 页面输出显示
+abstract protected function _output($id);
+</code></pre>
+<p>WorkflowHook.class.php    abstract类
+每个节点的钩子文件都继承于这个类</p>
+<p>WorkflowList.class.php    abstract类
+列表类，主要有以下方法:</p>
+<pre><code class="language-php">public function getTpl(){} // 获取列表模板
+public function getMod(){} // 获取列表模型
+public function listFilter(array &amp;$list){} // 列表数据过滤
+public function setVars(){} // 设置模板变量
+
+</code></pre>
+<p>可以定义一个空类继承它，作为默认列表类，特殊节点则定义节点列表类继承它覆盖相关方法(基本上只用默认类就可以了)</p>
+<h2 id="httpphpworkflowcn-bob-推荐运行有些问题"><a href="http://phpworkflow.cn/">http://phpworkflow.cn/</a> Bob 推荐，运行有些问题</h2>
+<h1 id="symfony-workflow-component-以及-laravel-的那个封装">symfony workflow component （以及 Laravel 的那个封装）</h1>
+<p>安装</p>
+<pre><code class="language-shell">composer require symfony/workflow
+</code></pre>
+<h2 id="工作流组件process-stepsplace">工作流组件，process, steps(place)</h2>
+<p>workflow component 用面向对象的方式定义了：<strong>一个 <code>process</code> 有自己的生命周期，包括多个 <code>steps</code></strong>.</p>
+<p>在 <code>process</code> 中每一个 <code>step</code> 或 <code>stage</code> 都叫做 <code>place</code></p>
+<p><code>transitions</code>用来描述从一个 place 到另一个 place 的动作（action）</p>
+<p><img src="/media/15490410132948/15450992587620.jpg" alt="-w716"></p>
+<p>一系列的 <code>places</code> 和 <code>transactions</code> 创建了 <code>definition</code>(<strong>定义</strong>)。</p>
+<p>一个 <code>workflow</code> 需要一个<code>definition</code>，和一种<strong>向对象写入<code>states</code>（状态） 的方法</strong>。</p>
+<p>例如这个发布博客的例子，一篇文章有多种预定义的状态：<code>draft</code>, <code>review</code>, <code>rejected</code>, <code>published</code>。</p>
+<h2 id="定义一个-workflow">定义一个 workflow</h2>
+<h3 id="用代码的方式">用代码的方式</h3>
+<p>步骤如下</p>
+<ol>
+<li>创建一个<code>DefinitionBuilder</code> 的实例 <code>$definitionBuilder</code></li>
+<li>调用<code>addPlaces()</code>来添加 places (不同的状态节点)</li>
+<li>调用<code>addTransition()</code>来添加 palce 之间跳转的动作(<code>Transition</code>类的实例)</li>
+<li>调用<code>build()</code>，得到一个<code>$definition</code></li>
+<li>创建一个<code>SingleStateMarkingStore()</code>的实例<code>$marking</code>,参数其实就是这个 workflow 关联的 model 的一个字段名（后面的yaml中 <code>supports</code>和<code>marking_store</code>的<code>arguments</code> 有讲）</li>
+<li>传入 4、5步得到的<code>$definition</code>和<code>$marking</code>作为参数，初始化<code>Workflow</code>对象，得到最终的 <code>$workflow</code>实例</li>
+</ol>
+<pre><code class="language-php">// DefinitionBuilder 创建 definition 实例
+// definition-&gt;addPlaces(place_1, place_2...)
+use Symfony\Component\Workflow\DefinitionBuilder;
+
+//Transition 创建 transition 实例 
+// definition-&gt;addTransition(name, from, to)
+use Symfony\Component\Workflow\Transition;
+
+// Workflow 创建 workflow 实例
+// new Workflow($definition, $marking)
+use Symfony\Component\Workflow\Workflow;
+
+//??  new SingleStateMarkingStore('currentState');
+use Symfony\Component\Workflow\MarkingStore\SingleStateMarkingStore;
+
+$definitionBuilder = new DefinitionBuilder();
+$definition = $definitionBuilder-&gt;addPlaces(['draft', 'review', 'rejected', 'published'])
+    // Transitions are defined with a unique name, an origin place and a destination place
+    -&gt;addTransition(new Transition('to_review', 'draft', 'review'))
+    -&gt;addTransition(new Transition('publish', 'review', 'published'))
+    -&gt;addTransition(new Transition('reject', 'review', 'rejected'))
+    -&gt;build()
+;
+
+$marking = new SingleStateMarkingStore('currentState');
+
+$workflow = new Workflow($definition, $marking);
+</code></pre>
+<h3 id="或者用-yamlxmlphp-数组来直接定义">或者用 yaml、xml、php 数组来直接定义</h3>
+<p><strong>注意这里定义 workflow 的yaml, 区别后面的 state machine 文件</strong>，虽然都是 <code>yaml</code>格式，但里面的字段不一样的）</p>
+<p>这一个配置信息标注了区别： <code>type:  workflow</code></p>
+<pre><code class="language-yaml"># config/packages/workflow.yaml
+framework:
+    workflows:
+        blog_publishing:
+            type: 'workflow' # or 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'multiple_state' # or 'single_state'
+                arguments:
+                    - 'currentPlace'
+            supports:
+                - App\Entity\BlogPost
+            initial_place: draft
+            places:
+                - draft
+                - review
+                - rejected
+                - published
+            transitions:
+                to_review:
+                    from: draft
+                    to:   review
+                publish:
+                    from: review
+                    to:   published
+                reject:
+                    from: review
+                    to:   rejected
+</code></pre>
+<p><strong>marking_store</strong>:</p>
+<p><code>type</code>:可以是 <code>multiple_state</code> 或者<code>single_state</code>， 如果设置了<code>single_state</code>，那么不支持一个 model 在同一时刻有多个 places</p>
+<p><code>arguments</code>: 参数， 可以有多个参数</p>
+<p><strong>audit_trail.enabled</strong></p>
+<p>程序会为 workflow activity 生成详细的 log messages</p>
+<p><strong>supports</strong></p>
+<p>绑定实体 (Model)</p>
+<h2 id="在相关的-post-模型上定义一个属性-currentplace用于-marking-store-上面">在相关的 Post 模型上，定义一个属性 <code>currentPlace</code>用于 marking store （上面）</h2>
+<pre><code class="language-php">class BlogPost
+{
+    // This property is used by the marking store
+    public $currentPlace;
+    
+    public $title;
+    public $content;
+}
+</code></pre>
+<h2 id="使用-workflowregistry-向模型类例如-blogpost绑定工作流">使用 Workflow\Registry 向模型类（例如 BlogPost）绑定工作流</h2>
+<h3 id="方法1手动绑定">方法1：手动绑定</h3>
+<p>决定了某个数据实例（如 blog）有哪些 places 和 transitions</p>
+<pre><code class="language-php">use Symfony\Component\Workflow\Registry;
+use Symfony\Component\Workflow\SupportStrategy\InstanceOfSupportStrategy;
+use Acme\Entity\BlogPost;
+use Acme\Entity\Newsletter;
+
+$blogWorkflow = ...
+$newsletterWorkflow = ...
+
+$registry = new Registry();
+
+// add workflow to a model
+$registry-&gt;addWorkflow($blogWorkflow, new InstanceOfSupportStrategy(BlogPost::class));
+
+// add another workflow to another model
+$registry-&gt;addWorkflow($newsletterWorkflow, new InstanceOfSupportStrategy(Newsletter::class));
+</code></pre>
+<p>Registry 配置完工作流后，就可以使用了</p>
+<pre><code class="language-php">$post = new BlogPost();
+
+// 首先要获取某个实例(如 post)拥有的工作流
+$workflow = $registry-&gt;get($post);
+
+// 检查实例是否有某个 transition
+$workflow-&gt;can($post, 'publish'); // False
+$workflow-&gt;can($post, 'to_review'); // True
+
+// 应用某个 transition, 让状态产生变化
+$workflow-&gt;apply($post, 'to_review');
+$workflow-&gt;can($post, 'publish'); // True
+
+// 获取可用的 transition
+$workflow-&gt;getEnabledTransitions($post); // ['publish', 'reject']
+</code></pre>
+<h3 id="方法2-在-workflow-yaml-文件里已经定义-supports-后使用依赖注入的方式使用-workflow">方法2 ：在 Workflow yaml 文件里已经定义 <code>supports</code> 后，使用依赖注入的方式使用 workflow</h3>
+<p>例如一个 Controller 的方法中,</p>
+<ul>
+<li>在参数里注入<code>Symfony\Component\Workflow\Registry</code> <code>$workflows</code></li>
+<li>然后<code>$workflows-&gt;get($post);</code>得到与当前模型实例<code>$post</code>相关的<code>$workflow</code></li>
+<li>或者用<code>$workflows-&gt;all($post);</code>得到多个</li>
+<li><code>$workflow-&gt;can()</code>检查是否能修改状态</li>
+<li><code>$workflow-&gt;getEnabledTransitions()</code>得到所有与当前workflow 有关的 transitions</li>
+<li><code>$workflow-&gt;apply()</code>修改状态</li>
+</ul>
+<pre><code class="language-php">// ...
+use Symfony\Component\Workflow\Registry;
+use App\Entity\BlogPost;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Workflow\Exception\TransitionException;
+
+class BlogController extends AbstractController
+{
+    public function edit(Registry $workflows)
+    {
+        // 一个新的 Model 实例
+        $post = new BlogPost();
+        
+        $workflow = $workflows-&gt;get($post);
+
+        // 如果一个模型有多个 workflow, 则第二个参数传入 workflow 的名称
+        $workflow = $workflows-&gt;get($post, 'blog_publishing');
+
+        // you can also get all workflows associated with an object, which is useful
+        // for example to show the status of all those workflows in a backend
+        $postWorkflows = $workflows-&gt;all($post);
+
+        $workflow-&gt;can($post, 'publish'); // False
+        $workflow-&gt;can($post, 'to_review'); // True
+
+        // Update the currentState on the post
+        try {
+            $workflow-&gt;apply($post, 'to_review');
+        } catch (TransitionException $exception) {
+            // ... if the transition is not allowed
+        }
+
+        // See all the available transitions for the post in the current state
+        $transitions = $workflow-&gt;getEnabledTransitions($post);
+    }
+}
+</code></pre>
+<blockquote>
+<p>The <code>TransitionException</code> class was introduced in Symfony 4.1.
+The <code>all()</code> method was introduced in Symfony 4.1.</p>
+</blockquote>
+<h2 id="使用事件events">使用事件(Events)</h2>
+<p>将 WorkFlow 对象和 <code>EventDispatcher</code>关联起来.</p>
+<p>通过创建<code>event listeners</code> 来 block <code>transitions</code>（取决于数据，如 blog）.
+还可以在 workflow 操作发生时触发更多的 action（例如发送一封邮件给有关人员）</p>
+<h3 id="每一个-step-都有三个按顺序发生的事件">每一个 <code>step</code> 都有三个按顺序发生的事件</h3>
+<ul>
+<li>An event for every workflow;   （与所有workflow 有关）</li>
+<li>An event for the workflow concerned;   （与关联 workflow 有关）</li>
+<li>An event for the workflow concerned with the specific transition or place name.  （与关联workflow 以及特定的 place/transition 有关）</li>
+</ul>
+<h3 id="当一个-state-transition-初始化这些事件被按顺序派发">当一个 <code>state transition</code> 初始化，这些事件被按顺序派发</h3>
+<p><strong>workflow.guard</strong> （Validate whether the transition is allowed at all）</p>
+<pre><code>workflow.guard
+workflow.[workflow name].guard
+workflow.[workflow name].guard.[transition name]
+</code></pre>
+<p><strong>workflow.leave</strong>（The subject is about to leave a place）</p>
+<pre><code>workflow.leave
+workflow.[workflow name].leave
+workflow.[workflow name].leave.[place name]
+</code></pre>
+<p><strong>workflow.transition</strong>（subject is going through this transition.）</p>
+<pre><code>workflow.transition
+workflow.[workflow name].transition
+workflow.[workflow name].transition.[transition name]
+</code></pre>
+<p><strong>workflow.enter</strong> （subject is about to enter a new place，This event is triggered just before the subject places are updated, which means that the marking of the subject is not yet updated with the new places）</p>
+<pre><code>workflow.enter
+workflow.[workflow name].enter
+workflow.[workflow name].enter.[place name]
+</code></pre>
+<p><strong>workflow.entered</strong>（subject has entered in the places and the marking is updated (making it a good place to flush data in Doctrine).）</p>
+<pre><code>workflow.entered
+workflow.[workflow name].entered
+workflow.[workflow name].entered.[place name]
+</code></pre>
+<p><strong>workflow.completed</strong> （object has completed this transition.）</p>
+<pre><code>workflow.completed
+workflow.[workflow name].completed
+workflow.[workflow name].completed.[transition name]
+</code></pre>
+<p><strong>workflow.announce</strong>（Triggered for each transition that now is accessible for the subject.）</p>
+<pre><code>workflow.announce
+workflow.[workflow name].announce
+workflow.[workflow name].announce.[transition name]
+</code></pre>
+<p>下面是一个例子，让 workflow 在 leave place 动作发生时的时候进行日志记录</p>
+<pre><code class="language-php">use Psr\Log\LoggerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Workflow\Event\Event;
+
+class WorkflowLogger implements EventSubscriberInterface
+{
+    public function __construct(LoggerInterface $logger)
+    {
+        $this-&gt;logger = $logger;
+    }
+
+    public function onLeave(Event $event)
+    {
+        $this-&gt;logger-&gt;alert(sprintf(
+            'Blog post (id: &quot;%s&quot;) performed transaction &quot;%s&quot; from &quot;%s&quot; to &quot;%s&quot;',
+            $event-&gt;getSubject()-&gt;getId(),
+            $event-&gt;getTransition()-&gt;getName(),
+            implode(', ', array_keys($event-&gt;getMarking()-&gt;getPlaces())),
+            implode(', ', $event-&gt;getTransition()-&gt;getTos())
+        ));
+    }
+
+    public static function getSubscribedEvents()
+    {
+        return array(
+            'workflow.blog_publishing.leave' =&gt; 'onLeave',
+        );
+    }
+}
+</code></pre>
+<h3 id="特殊的--guard-events-与-event-methods-事件方法">特殊的  Guard Events 与 Event Methods 事件方法</h3>
+<p>这些事件的监听器在每次执行 <code>Workflow::can</code>, <code>Workflow::apply</code> or <code>Workflow::getEnabledTransitions</code> 时都会被调用。</p>
+<p>因此可以添加自定义逻辑来决定哪些 transitions 有效或无效。</p>
+<p>案例： 确保 bolg 如果没有设置 标题 的时候，不能被移动到 <code>review</code> place</p>
+<pre><code class="language-php">use Symfony\Component\Workflow\Event\GuardEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+class BlogPostReviewListener implements EventSubscriberInterface
+{
+    public function guardReview(GuardEvent $event)
+    {
+        /** @var \App\Entity\BlogPost $post */
+        $post = $event-&gt;getSubject();
+        $title = $post-&gt;title;
+
+        if (empty($title)) {
+            // Posts with no title should not be allowed
+            $event-&gt;setBlocked(true);
+        }
+    }
+
+    public static function getSubscribedEvents()
+    {
+        return array(
+            'workflow.blogpost.guard.to_review' =&gt; array('guardReview'),
+        );
+    }
+}
+</code></pre>
+<p>前面的 guard 事件中</p>
+<p>当检查事件关联的实体，就是通过调用 <code>$event-&gt;getSubject()</code>得到 <code>$post</code></p>
+<p>发现 title 不存在，就不允许设置为 to_review， 就是通过调用<code>setBlocked()</code>方法。</p>
+<pre><code class="language-php">$post = $event-&gt;getSubject();
+
+$event-&gt;setBlocked(true);
+</code></pre>
+<p>这些方法包括包括</p>
+<ul>
+<li>getMarking()  ：  Returns the Marking of the workflow.</li>
+<li>getSubject() ： Returns the object that dispatches the event.</li>
+<li>getTransition()  ： Returns the Transition that dispatches the event.</li>
+<li>getWorkflowName() ： Returns a string with the name of the workflow that triggered the event.</li>
+</ul>
+<p>对于 <code>Guard</code> 事件（一个继承类 GuardEvent），还有两个方法</p>
+<ul>
+<li>isBlocked() ： Returns a string with the name of the workflow that triggered the event.</li>
+<li>setBlocked()</li>
+</ul>
+<h3 id="usage-in-twig-在-view-模板中使用laravel-版本的也有对应的-trait-">Usage in Twig （在 view 模板中使用，laravel 版本的也有对应的 Trait ）</h3>
+<ul>
+<li>
+<p>workflow_can()  ： Returns true if the given object can make the given transition.</p>
+</li>
+<li>
+<p>workflow_transitions() ： Returns an array with all the transitions enabled for the given object.</p>
+</li>
+<li>
+<p>workflow_marked_places() ： Returns an array with the place names of the given marking.</p>
+</li>
+<li>
+<p>workflow_has_marked_place() ： Returns true if the marking of the given object has the given state.</p>
+</li>
+</ul>
+<pre><code class="language-html">&lt;h3&gt;Actions&lt;/h3&gt;
+{% if workflow_can(post, 'publish') %}
+    &lt;a href=&quot;...&quot;&gt;Publish article&lt;/a&gt;
+{% endif %}
+{% if workflow_can(post, 'to_review') %}
+    &lt;a href=&quot;...&quot;&gt;Submit to review&lt;/a&gt;
+{% endif %}
+{% if workflow_can(post, 'reject') %}
+    &lt;a href=&quot;...&quot;&gt;Reject article&lt;/a&gt;
+{% endif %}
+
+{# Or loop through the enabled transitions #}
+{% for transition in workflow_transitions(post) %}
+    &lt;a href=&quot;...&quot;&gt;{{ transition.name }}&lt;/a&gt;
+{% else %}
+    No actions available.
+{% endfor %}
+
+{# Check if the object is in some specific place #}
+{% if workflow_has_marked_place(post, 'review') %}
+    &lt;p&gt;This post is ready for review.&lt;/p&gt;
+{% endif %}
+
+{# Check if some place has been marked on the object #}
+{% if 'waiting_some_approval' in workflow_marked_places(post) %}
+    &lt;span class=&quot;label&quot;&gt;PENDING&lt;/span&gt;
+{% endif %}
+</code></pre>
+<h2 id="workflow-作为状态机-state-machines">workflow 作为状态机 state machines</h2>
+<h3 id="顺序工作流与状态机工作流">顺序工作流与状态机工作流</h3>
+<p>顺序工作流：</p>
+<p>顺序工作流的执行过程是一个连续的步骤序列,它在完成一个活动之后会自动去执行到下一个.比如用顺序工作流模拟新生报到的流程操作：第一步,点击开始新生报到;第二步,完善个人信息;第三步,填写家庭成员和教育经历；第四步，选择缴费方式；第五步，报到成功.尽管顺序工作流也可以使用分支和循环,并且可以接收外部事件,但它的执行过程是可以预料的,并且总是向前执行直到完成为止. 用上面的例子讲就是，顺序工作流是在点击新生报到后启动了报到的流程，然后页面自动渲染出完善个人信息的页面然后又会自动执行获得下一个将要渲染出的页面需要的信息，这样直到整个报到流程的结束。</p>
+<p>状态机工作流：</p>
+<p>事件驱动工作流则依赖外部事件来驱动执行直到完成.事件驱动工作流也叫做状态机(state machine)工作流.状态机中包含一系列状态(包括初始状态和结束状态)和事件.状态机总是停在一个预设的状态中,直到事件触发之后才会跳转到新的状态上.状态机工作流这样做的好处就是它可以定义状态，定义工作流如何从一个状态到另外一个状态。当外面的事件发生的时候，状态机工作流可以移动到不同的状态。外部行为可以是宿主程序引发工作流内部事件，也可以是宿主程序编程实现的下一个状态，也可以利用SetState Activity移动到下一个状态。</p>
+<p>举个例子来说明状态机工作流：员工提交申请请假表单信息（员工姓名、所在部门、职位）等信息&mdash;&gt;如果是普通员工，自动流转到员工所在部门审批，如果部门审批通过且请假天数&lt;=3则成功并系统备案，如果请假天数&gt;3则自动流转到综合部审批，综合部审批通过则请假成功并备案&mdash;&gt;如果是部门领导，自动流转到综合部门审批，综合部审批通过则请假成功并备案。</p>
+<p>总结：顺序工作流就是流程中的每一个节点都是相对固定的，一个页面渲染完成后，一个页面的渲染信息都完成了。而状态机工作流就像请假的例子一样，不同的人会有不同的请假流程，所以下一个状态是相对不固定的。</p>
+<h3 id="参考资料-1">参考资料 1</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/29779717">https://zhuanlan.zhihu.com/p/29779717</a></p>
+<p>工作流（workflow）本质是一个状态机（State Machine），由多个状态（State）组成。状态机可以从一个状态扭转（transition）到另一个状态。状态机从一个起始状态开始执行，到一个终结状态结束。状态之间以JSON格式传递数据。状态分为多种不同的类型，不同的类型的状态有不同的功能。</p>
+<p>Success：工作流的出口，表示当前工作流执行成功。
+Faile：工作流的出口，表示当前工作流执行失败
+Pass：过渡状态，可以对上个状态的输出做某些处理并将结果流转到下一个状态
+Task：工作流的远程调用状态，访问一个远程接口（微服务、Http、Queue、Redis、Docker镜像、新的工作流等），获取结果。
+Wait：等待状态，是当前工作流等待一段时间或等待到某个固定的时间点
+Choice：判断状态，提供逻辑判断操作。
+工作流系统执行的对象是工作流，产研通过定制不同的工作流来驱动业务的进行。</p>
+<p><img src="/media/15490410132948/15469243784790.jpg" alt=""></p>
+<p>典型的使用场景有：定时执行某项任务；分批处理大量数据的任务；接收队列消息进行处理；异步化耗时任务；微服务编排；通过事件来统一消息的补偿；依赖反转与解耦，以插件形式扩展现有业务；结合api gateway驱动业务。</p>
+<p>借助工作流系统，产研只需提供无状态的接口，无需关心状态的流转、执行中断和恢复等，只需关心当前数据，进而提升开发和运维效率，降低成本，并在此基础上提升服务的健壮性、稳定性和可扩展性。</p>
+<p>三、系统架构
+工作流系统主要有三个部分组成：控制台、触发器和工作流引擎。</p>
+<p>控制台：用于管理工作流的元数据、触发器以及一些配置信息，同时也是http流量的入口。
+触发器：用于定时触发和监听队列触发工作流的执行。
+工作流引擎：整个工作流执行的核心，根据预定义的工作流，使用数据驱动状态的流转。</p>
+<ol>
+<li>触发器</li>
+</ol>
+<p>触发器是一个运行在Docker中的微服务。用户通过自定义时间触发规则，或通过监听 Queue，获取数据驱动工作流的执行。</p>
+<p>定时触发：用户预先定义好cron表达式和输入，来驱动工作流的执行。触发器解析cron表达式后，会计算出下次触发的时间点，并计算出距离当前时间点需要等待的时间，将消息放入延时队列中。触发器集群竞争监听等待事件的到来，并消费此事件触发本次执行。同时计算下次触发时间，重新将事件放入延时队列中。通过上述逻辑将触发事件的节点分散到集群的各个机器上，一定程度上做到时间触发的高可用。
+队列监听：用户预先将队列信息注册进入触发器；触发器汇报到微服务的注册中心Huskar中。Huskar将注册事件广播到所有的服务节点上。此时每个服务节点都会去竞争消费指定队列。通过上述逻辑将队列的消费事件分散到各个服务节点上，分散队列消费端的压力，同时能够做到快速扩容。</p>
+<ol start="2">
+<li>工作流引擎</li>
+</ol>
+<p>工作流引擎是一个运行在Docker中的微服务，是工作流执行的核心。工作流引擎本质是通过输入数据驱动状态机的执行来实现业务逻辑。</p>
+<p>状态机包括流转状态和业务执行状态两类。流转状态包括Success、Faile、Pass、Wait、Choice；而业务执行状态为Task。</p>
+<p>流转状态：Pass状态用于处理工作流执行的中间数据，包括数据的裁剪、增加以及数值计算；Wait状态可以是工作流的执行等待一段时间或等待到某个时间点；Choice状态是工作流具有分支选择的能力，通过对中间数据的判断决定下个状态，目前支持空值判断、布尔类型的判断、字符串、数值、时间等大小判断、以及上述判断的与或非的组合判断；
+业务执行状态：Task状态可以自定义访问的远程接口，通过远程接口的调用实现业务逻辑，支持接口访问错误的自定义处理、重试策略（包括重试次数、重试频率等）。同时，远程接口的访问又可以分成同步和异步两个部分。异步情况下，Task在访问远程接口后将等待到被调用方的回调或超时事件的发生才会向下继续流转，此时被调用方可以自定义心跳的方式向工作流汇报当前状态。</p>
+<p>四、异地多活
+由于饿了么目前的服务基本都是异地多活状态，工作流在流转过程中也需要考虑这一因素。饿了么作为本地生活服务平台，数据天然带有地域属性，所以一次服务的调用基本都会根据地理位置信息被流转到某个机房内部处理，通常不会跨机房调用。因此，工作流的服务都会在每个机房部署独立的集群，一次工作流的流转尽量在一个机房内部完成；整个执行过程会被DRC同步到所有机房。</p>
+<p>工作流的状态机定义本身不具有机房属性，所有的机房可以公用一个工作流。但是工作流的某次执行是有机房属性，某次执行入口处会根据数据信息决定调用到某个特定的机房；工作流调用的第三方服务也会被自动识别调用本机房内部的相应服务。</p>
+<p>四、总结与展望
+本文简单介绍了饿了么工作流系统的主要结构与功能，以及饿了么对工作流的使用现状。工作流系统为产研提供了一个统一的流程系统；产研只需要提供无状态的接口，而不需要关心和实现整个数据流转过程中可能出现的诸如各种性能问题、跨机房同步问题等，保证程序的高可用性；将各个相关处理流程的接口解耦合，以可视化的方式显示。</p>
+<p>当然目前工作流系统在处理工作流时，需要产研自己保证数据的幂等性，只关心数据的流转、不关心数据本身的属性，没有提供对某个状态的查询和搜索功能。将来，我们将引入CQRS(Command Query Responsibility Seperation)，针对上述问题给出一个相对合适且合理的解决方案。</p>
+<h3 id="实现">实现</h3>
+<p>工作流组件：以<code>工作流网络</code>为模型（是 Petri 网的一个子类。https://baike.baidu.com/item/%E4%BD%A9%E7%89%B9%E9%87%8C%E7%BD%91%E8%AE%BA）</p>
+<p>通过添加更多限制，你可以得到一个 <code>状态机</code>  （最重要的： 状态机不能同时位于多个位置。  工作流在定义图中通常没有循环路径，但在状态机中很常见）</p>
+<p>举个<code>pull request</code>的例子。</p>
+<p>当 pull request 处于“review”状态，贡献者可以在此要求 <code>request_change</code> 、<code>reject</code> 或 <code>accept</code> pull request。</p>
+<p>在任何时候，您也可以“update”拉请求，这将导致另一个Travis运行</p>
+<p><img src="/media/15490410132948/15451026957932.jpg" alt="-w705"></p>
+<p>“pull request” 这个 state machine，可以分别用 yaml  xml 或 php 数组的形式来表示。可以很清晰看出来。 <code>update</code> 这个 transition 可以来自多个 places</p>
+<p>（xml php 版本的模板，查阅 <a href="https://symfony.com/doc/current/workflow/usage.html">https://symfony.com/doc/current/workflow/usage.html</a>）</p>
+<pre><code class="language-yaml"># config/packages/workflow.yaml
+framework:
+    workflows:
+        pull_request:
+            type: 'state_machine'
+            supports:
+                - App\Entity\PullRequest
+            initial_place: start
+            places:
+                - start
+                - coding
+                - travis
+                - review
+                - merged
+                - closed
+            transitions:
+                submit:
+                    from: start
+                    to: travis
+                update:
+                    from: [coding, travis, review]
+                    to: travis
+                wait_for_review:
+                    from: travis
+                    to: review
+                request_change:
+                    from: review
+                    to: coding
+                accept:
+                    from: review
+                    to: merged
+                reject:
+                    from: review
+                    to: closed
+                reopen:
+                    from: closed
+                    to: review
+</code></pre>
+<p>通过注入 <code>Workflow Registry</code> 这个 Service，你可以获得状态机</p>
+<pre><code class="language-php">// ...
+use Symfony\Component\Workflow\Registry;
+
+class SomeService
+{
+    private $workflows;
+
+    public function __construct(Registry $workflows)
+    {
+        $this-&gt;workflows = $workflows;
+    }
+
+    public function someMethod($subject)
+    {
+        $stateMachine = $this-&gt;workflows-&gt;get($subject, 'pull_request');
+        // ...
+    }
+
+    // ...
+}
+</code></pre>
+<h2 id="dump-workflow-输出工作流的信息">dump workflow 输出工作流的信息</h2>
+<p><strong>图形</strong>：</p>
+<p>用 <code>GraphvizDumper</code>或<code>StateMachineGraphvizDumper</code>创建 DOT 文件</p>
+<p><img src="/media/15490410132948/15451056350750.jpg" alt="-w695"></p>
+<p><strong>UML</strong>:</p>
+<p>用 <code>PlantUmlDumper</code> 创建 PlantUML 文件</p>
+<p><img src="/media/15490410132948/15451056471661.jpg" alt="-w286"></p>
+<p>它们都可以被转成  PNG or SVG</p>
+<p>在php代码中写 dump DOT 文件 或 PUML 文件的代码</p>
+<pre><code class="language-php">use Symfony\Component\Workflow\Dumper\GraphvizDumper;
+
+// dump-graph-dot.php
+$dumper = new GraphvizDumper();
+echo $dumper-&gt;dump($definition);
+
+// dump-graph-puml.php
+$dumper = new PlantUmlDumper();
+echo $dumper-&gt;dump($definition);
+</code></pre>
+<p><strong><code>$definition</code></strong></p>
+<p>官方文档缺了太多。例如 <code>$definition</code> 如何拿到，就得找文档 <a href="https://github.com/symfony/symfony/blob/master/src/Symfony/Component/Workflow/Workflow.php">https://github.com/symfony/symfony/blob/master/src/Symfony/Component/Workflow/Workflow.php</a></p>
+<pre><code class="language-php">$definition = $workflow-&gt;getDefinition()
+</code></pre>
+<p>echo 出来是这个样子  digraph workflow</p>
+<p><img src="/media/15490410132948/15469309761012.jpg" alt="-w707"></p>
+<p>在命令行调用这些代码</p>
+<pre><code class="language-shell"> php dump-graph-dot.php | dot -Tpng -o dot_graph.png
+ php dump-graph-dot.svg | dot -Tpng -o dot_graph.svg
+ 
+ php dump-graph-puml.php | java -jar plantuml.jar -p  &gt; puml_graph.png
+</code></pre>
+<p>或者直接在命令行中调用自带的 <code>workflow:dump</code> 命令</p>
+<p>The dot command is part of Graphviz. You can download it and read more about it on Graphviz.org.</p>
+<p><a href="http://www.graphviz.org/">http://www.graphviz.org/</a></p>
+<p>Graphviz - Graph Visualization Software</p>
+<p><a href="https://graphviz.gitlab.io/documentation/">https://graphviz.gitlab.io/documentation/</a></p>
+<p>The plantuml.jar command is part of PlantUML. You can download it and read more about it on PlantUML.com. <a href="http://plantuml.com/">http://plantuml.com/</a></p>
+<pre><code class="language-shell"> php bin/console workflow:dump name | dot -Tsvg -o graph.svg
+ php bin/console workflow:dump name --dump-format=puml | java -jar plantuml.jar -p  &gt; workflow.png
+</code></pre>
+<p>转成图片</p>
+<p><a href="https://packagist.org/packages/graphp/graphviz">https://packagist.org/packages/graphp/graphviz</a></p>
+<p>dot 命令默认是没有的，要安装到系统中</p>
+<pre><code class="language-shell">
+</code></pre>
+<p>如果不想改动系统，可以用 js 库来画图。</p>
+<p><a href="https://stackoverflow.com/questions/29176172/drawing-a-graph-with-graphviz-in-php">https://stackoverflow.com/questions/29176172/drawing-a-graph-with-graphviz-in-php</a></p>
+<p><a href="https://github.com/mdaines/viz.js/">https://github.com/mdaines/viz.js/</a>
+<a href="http://visjs.org/">http://visjs.org/</a>
+<a href="https://code.google.com/p/canviz/">https://code.google.com/p/canviz/</a></p>
+<p>最后使用了 viz.js</p>
+<pre><code class="language-php">// 不能有换行符， 否则 viz.js 解析失败
+$dotContent = str_replace(PHP_EOL, '', $dumper-&gt;dump($definition));
+
+&lt;div id='digraph'&gt;&lt;/div&gt;
+&lt;script src=&quot;/js/viz.js&quot;&gt;&lt;/script&gt;&lt;script src=&quot;/js/lite.render.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  var viz = new Viz();
+  
+  // 默认是 SVG 不方便通过css 控制宽度
+  //renderImageElement renderSVGElement renderJSONObject renderString
+  viz.renderImageElement('{$dotContent}')
+  .then(function(element) {
+    //document.body
+    document.getElementById('digraph').appendChild(element);
+    
+    //width of image  修改图片宽度，不能超过容器
+    $('#digraph img').css({&quot;width&quot;: '95%', 'height': 'auto'});
+  })
+  .catch(error =&gt; {
+    // Create a new Viz instance (@see Caveats page for more info)
+    viz = new Viz();
+
+    // Possibly display the error
+    console.error(error);
+  });
+&lt;/script&gt;
+</code></pre>
+<h3 id="用-dumperinterface-输出-state-machine">用 DumperInterface 输出 state machine</h3>
+<h1 id="laravel-封装的更加简单对-workflow-和实体的关系更清晰-只需要-use-workflowtrait就可以绑定了有示例代码">Laravel 封装的更加简单，对 workflow 和实体的关系更清晰 只需要 use WorkflowTrait;就可以绑定了（有示例代码）</h1>
+<p><a href="https://github.com/brexis/laravel-workflow">https://github.com/brexis/laravel-workflow</a></p>
+<h2 id="install">Install</h2>
+<pre><code class="language-shell">composer require brexis/laravel-workflow
+</code></pre>
+<p>Facade</p>
+<pre><code class="language-php">'Workflow' =&gt; Brexis\LaravelWorkflow\Facades\WorkflowFacade::class,
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<pre><code class="language-shell">php artisan vendor:publish --provider=&quot;Brexis\LaravelWorkflow\WorkflowServiceProvider&quot;
+</code></pre>
+<p>配置 <code>config/workflow.php</code></p>
+<pre><code class="language-php">return [
+    'straight'   =&gt; [
+        'type'          =&gt; 'workflow', // or 'state_machine'
+        'marking_store' =&gt; [
+            'type'      =&gt; 'multiple_state',
+            'arguments' =&gt; ['currentPlace']
+        ],
+        'supports'      =&gt; ['App\BlogPost'],
+        'places'        =&gt; ['draft', 'review', 'rejected', 'published'],
+        'transitions'   =&gt; [
+            'to_review' =&gt; [
+                'from' =&gt; 'draft',
+                'to'   =&gt; 'review'
+            ],
+            'publish' =&gt; [
+                'from' =&gt; 'review',
+                'to'   =&gt; 'published'
+            ],
+            'reject' =&gt; [
+                'from' =&gt; 'review',
+                'to'   =&gt; 'rejected'
+            ]
+        ],
+    ]
+];
+</code></pre>
+<h2 id="在-class-中使用-workflowtrait关联-workflow-">在 Class 中使用 <code>WorkflowTrait</code>(关联 Workflow )</h2>
+<pre><code class="language-php">&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Brexis\LaravelWorkflow\Traits\WorkflowTrait;
+
+class BlogPost extends Model
+{
+  use WorkflowTrait;
+
+}
+</code></pre>
+<h2 id="使用-workflow-facade-得到与-model-实例关联的-workflow">使用 WorkFlow Facade 得到与 model 实例关联的 <code>$workflow</code></h2>
+<pre><code class="language-php">use App\BlogPost;
+use Workflow;
+
+$post = BlogPost::find(1);
+$workflow = Workflow::get($post);
+// if more than one workflow is defined for the BlogPost class
+$workflow = Workflow::get($post, $workflowName);
+
+$workflow-&gt;can($post, 'publish'); // False
+$workflow-&gt;can($post, 'to_review'); // True
+$transitions = $workflow-&gt;getEnabledTransitions($post);
+
+// Apply a transition
+$workflow-&gt;apply($post, 'to_review');
+$post-&gt;save(); // Do not forget to persist the state
+
+// Using the WorkflowTrait
+$post-&gt;workflow_can('publish'); // True
+$post-&gt;workflow_can('to_review'); // False
+
+// Get the post transitions
+foreach ($post-&gt;workflow_transitions() as $transition) {
+    echo $transition-&gt;getName();
+}
+
+// Apply a transition
+$post-&gt;workflow_apply('publish');
+$post-&gt;save();
+</code></pre>
+<h2 id="事件">事件：</h2>
+<ul>
+<li>Brexis\LaravelWorkflow\Events\Guard</li>
+<li>Brexis\LaravelWorkflow\Events\Leave</li>
+<li>Brexis\LaravelWorkflow\Events\Transition</li>
+<li>Brexis\LaravelWorkflow\Events\Enter</li>
+<li>Brexis\LaravelWorkflow\Events\Entered</li>
+</ul>
+<p>订阅事件</p>
+<pre><code class="language-php">namespace App\Listeners;
+
+use Brexis\LaravelWorkflow\Events\GuardEvent;
+
+class BlogPostWorkflowSubscriber
+{
+    /**
+     * Handle workflow guard events.
+     */
+    public function onGuard(GuardEvent $event) {
+        /** Symfony\Component\Workflow\Event\GuardEvent */
+        $originalEvent = $event-&gt;getOriginalEvent();
+
+        /** @var App\BlogPost $post */
+        $post = $originalEvent-&gt;getSubject();
+        $title = $post-&gt;title;
+
+        if (empty($title)) {
+            // Posts with no title should not be allowed
+            $originalEvent-&gt;setBlocked(true);
+        }
+    }
+
+    /**
+     * Handle workflow leave event.
+     */
+    public function onLeave($event) {}
+
+    /**
+     * Handle workflow transition event.
+     */
+    public function onTransition($event) {}
+
+    /**
+     * Handle workflow enter event.
+     */
+    public function onEnter($event) {}
+
+    /**
+     * Handle workflow entered event.
+     */
+    public function onEntered($event) {}
+
+    /**
+     * Register the listeners for the subscriber.
+     *
+     * @param  Illuminate\Events\Dispatcher  $events
+     */
+    public function subscribe($events)
+    {
+        $events-&gt;listen(
+            'Brexis\LaravelWorkflow\Events\GuardEvent',
+            'App\Listeners\BlogPostWorkflowSubscriber@onGuard'
+        );
+
+        $events-&gt;listen(
+            'Brexis\LaravelWorkflow\Events\LeaveEvent',
+            'App\Listeners\BlogPostWorkflowSubscriber@onLeave'
+        );
+
+        $events-&gt;listen(
+            'Brexis\LaravelWorkflow\Events\TransitionEvent',
+            'App\Listeners\BlogPostWorkflowSubscriber@onTransition'
+        );
+
+        $events-&gt;listen(
+            'Brexis\LaravelWorkflow\Events\EnterEvent',
+            'App\Listeners\BlogPostWorkflowSubscriber@onEnter'
+        );
+
+        $events-&gt;listen(
+            'Brexis\LaravelWorkflow\Events\EnteredEvent',
+            'App\Listeners\BlogPostWorkflowSubscriber@onEntered'
+        );
+    }
+
+}
+</code></pre>
+<h2 id="dump-workflows">Dump Workflows</h2>
+<p>Symfony workflow uses GraphvizDumper to create the workflow image. You may need to install the dot command of Graphviz</p>
+<pre><code class="language-shell">php artisan workflow:dump workflow_name --class App\\BlogPost
+
+php artisan workflow:dump workflow_name --format=jpg
+</code></pre>
+<h2 id="issues">Issues</h2>
+<h3 id="use-in-blade-template">use in blade template</h3>
+<p><a href="https://github.com/brexis/laravel-workflow/issues/31">https://github.com/brexis/laravel-workflow/issues/31</a></p>
+<h3 id="load-config-from-database">load config from database</h3>
+<h1 id="知识与资料">知识与资料</h1>
+<p><a href="https://www.tonymarston.net/php-mysql/workflow.html">https://www.tonymarston.net/php-mysql/workflow.html</a></p>
+<p><a href="http://mamchenkov.net/wordpress/2017/03/20/getting-started-with-workflows-in-php/">http://mamchenkov.net/wordpress/2017/03/20/getting-started-with-workflows-in-php/</a></p>
+<p>网络课程
+<a href="http://www.ibeifeng.com/goods.php?id=83">http://www.ibeifeng.com/goods.php?id=83</a></p>
+<h1 id="一些已有的系统">一些已有的系统</h1>
+<p><a href="https://www.quora.com/What-is-the-best-workflow-management-software-if-I%E2%80%99m-especially-interested-in-open-source-solutions-and-web-based-software">https://www.quora.com/What-is-the-best-workflow-management-software-if-I%E2%80%99m-especially-interested-in-open-source-solutions-and-web-based-software</a></p>
+<h2 id="免费开源可以在本地服务器运行的">免费，开源，可以在本地服务器运行的</h2>
+<p>以下这些 java 的, 这些都可以拖拽式生成 activity, 但比较庞大，可定制不够强</p>
+<h3 id="joget">joget</h3>
+<h3 id="bonina">Bonina</h3>
+<h2 id="以-sass-服务形式">以 Sass 服务形式</h2>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%B8%80%E4%BA%9B-workflow-%E5%BC%95%E6%93%8E/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%B8%80%E4%BA%9B-workflow-%E5%BC%95%E6%93%8E/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BB%80%E4%B9%88%E6%98%AF-trait/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/thinkphp3.2.3/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

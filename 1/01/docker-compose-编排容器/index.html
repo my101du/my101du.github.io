@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: docker compose 编排容器 permalink: docker-compose tags: docker 关于 你可以把 Compose 认为 一次操作多个容器/镜像构成的“组合”（如同时 pull 多个属于一个组合的镜像，同时启动多个容器） 上面依次手动" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: docker compose 编排容器 permalink: docker-compose tags: docker 关于 你可以把 Compose 认为 一次操作多个容器/镜像构成的“组合”（如同时 pull 多个属于一个组合的镜像，同时启动多个容器） 上面依次手动" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: docker compose 编排容器 permalink: docker-compose tags: docker 关于 你可以把 Compose 认为 一次操作多个容器/镜像构成的“组合”（如同时 pull 多个属于一个组合的镜像，同时启动多个容器） 上面依次手动">
+
+<meta itemprop="wordCount" content="4225">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: docker compose 编排容器 permalink: docker-compose tags: docker 关于 你可以把 Compose 认为 一次操作多个容器/镜像构成的“组合”（如同时 pull 多个属于一个组合的镜像，同时启动多个容器） 上面依次手动"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4225字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: docker compose 编排容器
+permalink: docker-compose
+tags:</p>
+<ul>
+<li>docker</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="关于">关于</h1>
+<p>你可以把 Compose 认为</p>
+<blockquote>
+<p>一次操作多个容器/镜像构成的“组合”（如同时 pull 多个属于一个组合的镜像，同时启动多个容器）</p>
+</blockquote>
+<p>上面依次手动启动两个 docker，并让他们之间产生关联，这在只有很少的容器运行时没有问题。</p>
+<p>但是如果关联启动的容器较多，手动输入命令不仅容易出错，而且由于没有一份“操作记录”，所以很不方便下次再运行。</p>
+<p><strong>启动顺序搞错了也很头疼</strong></p>
+<p>因此需要通过一个配置文件，把多个 container 之间的启动关系和配置写在一起。</p>
+<p>下面这个例子，让 Nginx 和 PHP-FPM 7两个容器关联起来</p>
+<h1 id="开始让-nginx-容器运行起来">开始，让 Nginx 容器运行起来！</h1>
+<p>首先创建一个文件 <code>docker-compose.yml</code>，内容如下。里面制定了 image，ports 信息。</p>
+<p><strong>注意</strong>第二行开始的是“空格”而不是 tab 占位符，否则稍后命令运行时会报错</p>
+<pre><code class="language-yaml">web:
+ image: nginx:latest
+ ports: 
+ - &quot;8080:80&quot;
+</code></pre>
+<p>运行命令，<strong>如果加上“-d”参数，表示可以后台运行</strong>。</p>
+<pre><code class="language-shell"># 启动
+$docker-compose up
+
+# 强制 rebuild Dockerfiles
+$docker-compose up -d --build
+
+Creating dockercomposernginxphp7_web_1 ...
+Creating dockercomposernginxphp7_web_1 ... done
+Attaching to dockercomposernginxphp7_web_1
+
+# 看看当前运行的容器
+$ docker-compose ps
+           Name                           Command              State              Ports
+----------------------------------------------------------------------------------------------------
+dockercomposernginxphp7_php_1   docker-php-entrypoint php-fpm   Up      9000/tcp
+dockercomposernginxphp7_web_1   nginx -g daemon off;            Up      80/tcp, 0.0.0.0:80-&gt;8080/tcp
+
+# 停止 或 销毁
+$docker-compose kill
+# remove stopped containers
+$docker-compose rm            
+</code></pre>
+<p>就可以得到一个能通过 8080 端口访问的 Nginx 容器</p>
+<p><img src="/media/15490412289230/15027753589208.jpg" alt="">
+每次访问还能在命令行中看到日志记录</p>
+<p><img src="/media/15490412289230/15027761017182.jpg" alt=""></p>
+<h2 id="挂载宿主机目录到容器中暴露容器的两个端口创建两个虚拟主机">挂载宿主机目录到容器中，暴露容器的两个端口，创建两个虚拟主机</h2>
+<p>向 docker-compose.yml 文件中添加<code>volumes:</code>配置参数。表示把当前目录下的 <code>code</code>目录进行映射，让容器挂载到内部的 <code>/code</code>根目录，（当前主机和容器之间用“:”分隔）</p>
+<p>因为容器内的 Nginx 默认配置文件已经使用了 80 端口，所以我们新添加的这个虚拟主机（以及指定的 root 目录），要使用别的端口</p>
+<pre><code class="language-yaml">web:
+    image: nginx:latest
+    ports:
+        #- &quot;8080:80&quot;
+        - &quot;8080:8080&quot;
+    volumes:
+        - ./code:/code
+        - ./site.conf:/etc/nginx/conf.d/site.conf
+</code></pre>
+<p>注意下面的那个 site.conf 是干什么的呢？(它也是挂载到了容器的 <code>/etc/nginx/conf.d/</code>目录下)</p>
+<p>为了让容器内的 Nginx 能把 <code>/code</code> 目录作为 web 根目录（默认的 nginx 配置文件可能默认是指向了什么 /usr/local/nginx/html 地方），再创建一个名为<code>site.conf</code>的nginx 配置文件，主要是指定<code>root</code>的正确路径。</p>
+<pre><code class="language-shell">server {
+    listen 8080;
+    index index.html;
+    server_name localhost;
+    error_log  /var/log/nginx/error.log;
+    access_log /var/log/nginx/access.log;
+    root /code;
+}
+</code></pre>
+<p>以下这段没太懂</p>
+<blockquote>
+<p>the server name is php-docker.local and it should be pointing (update your hosts file) to your Docker environment (localhost if you are on Linux or the docker machine if you are on Mac or Windows), we point the error logs to be the ones exposed by the default container, so that we will see the errors in our docker compose log,</p>
+</blockquote>
+<p>现在在<code>code</code>目录里添加一个 <code>index.html</code>文件，内容写上“Hello World”</p>
+<p>然后再启动</p>
+<pre><code class="language-shell">docker-compose up
+</code></pre>
+<p><img src="/media/15490412289230/15027780284085.jpg" alt=""></p>
+<h1 id="链接-php-fpm-容器">链接 PHP-FPM 容器</h1>
+<p>继续修改 <code>docker-compose.yml</code> 文件，向<code>web</code>容器的配置信息中添加<code>links</code>参数，并添加另一个容器（php-fpm）的配置参数</p>
+<p><strong>注意</strong>
+不要忘了 php 这个容器中，也要添加<code>volumes</code>配置信息！ 否则后面启动的时候会提示文件找不到。。</p>
+<pre><code class="language-shell">web:
+    image: nginx:latest
+    ports:
+        #- &quot;8080:80&quot;
+        - &quot;8080:8080&quot;
+    volumes:
+        - ./code:/code
+        - ./site.conf:/etc/nginx/conf.d/site.conf
+    links:
+        - php
+php:
+    image: php:7.1.8-fpm
+    volumes:
+        - ./code:/code
+</code></pre>
+<p>然后前面的 Nginx 配置文件<code>site.conf</code>还没有指明支持 PHP，修改它，在里面添加内容。
+<strong>注意</strong> fastcgi_pass 的值，前面的“php”就表示连接的容器的名称，也就是上面<code>docker-compose.yml</code>文件中定义的 php 容器的名称。</p>
+<pre><code class="language-shell">	# ....
+	root /code;
+
+	location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass php:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+    }
+</code></pre>
+<p>然后可以在 web 项目目录 <code>codes</code>里添加一个<code>index.php</code></p>
+<pre><code class="language-php">&lt;?php 
+	phpinfo();
+</code></pre>
+<p>启动</p>
+<pre><code class="language-shell">$ docker-compose up
+</code></pre>
+<p>注意到比之前单独的 Nginx 启动，多了一些信息。表示 php-fpm 运行&amp;连接成功</p>
+<p><img src="/media/15490412289230/15027786538253.jpg" alt=""></p>
+<p>打开浏览器<code>localhost:8080/index.php</code>, got it!</p>
+<p><img src="/media/15490412289230/15027786975080.jpg" alt=""></p>
+<p>有一行访问日志</p>
+<p><img src="/media/15490412289230/15027787329052.jpg" alt=""></p>
+<h1 id="网络相关">网络相关</h1>
+<h2 id="使用其他-ip-网段的自定义网络例如解决-vmware-分配-172x-冲突">使用其他 IP 网段的自定义网络（例如解决 vmware 分配 172.x 冲突）</h2>
+<p>以下就创建了一个<code>custom-net</code>网段，IP 范围 192.168.238.0/24，并且各个容器都使用了这个网段内的地址。</p>
+<pre><code class="language-yaml">version: '3'
+
+services:
+    nginx:
+        #
+        networks:
+            custom-net:
+                ipv4_address: 192.168.238.10
+    php：
+        #
+        networks:
+            custom-net:
+                ipv4_address: 192.168.238.10
+
+networks:
+    # redis-net:
+    custom-net:
+        driver: bridge
+        ipam:
+          driver: default
+          config:
+          -
+            subnet: 192.168.238.0/24
+</code></pre>
+<p>当然你可以简化每个服务中的 IP 地址，不需要<code>ipv4_address</code>，让 docker 自动分配 ip</p>
+<pre><code class="language-yaml">
+    networks:
+           - custom-net
+</code></pre>
+<h2 id="在多个项目多个-docker-composeyaml-文件之间共享网络">在多个项目（多个 docker-compose.yaml 文件之间共享网络）</h2>
+<p>例如，在上面的 yaml 文件中，创建了一个网段 custom-net,</p>
+<p>希望在另外一个项目 app2/docker-compose-yaml 里链接上一个 yaml 里面的容器/网络，怎么办呢？</p>
+<p>用 external (暂时不知道如何给前面那个网络命名，只能通过 docker network ls 查看到这个自动创建的名称 )</p>
+<pre><code class="language-yaml">version &quot;3.5&quot;
+services:
+    nginx：
+
+
+networks:
+    custom-net:
+        driver: bridge
+        name: custom-net
+        ipam:
+          driver: default
+          config:
+          -
+            subnet: 192.168.238.0/24          
+</code></pre>
+<p>注意，
+根据 <a href="https://github.com/docker/compose/issues/3736">https://github.com/docker/compose/issues/3736</a></p>
+<p>只有 version &gt;= 3.5 版本，才支持 name=xxx, 否则会自动创建 applicationname_networkname</p>
+<p>然后，在另外一个项目中，用下面的配置连接, 这里版本不用 3.5 也可以， external 指定 name 是一个外部的网络</p>
+<pre><code class="language-yaml">version: 3
+
+# services
+servers:
+ app:
+
+# define networks
+networks:
+  custom-net:
+    external:
+      name: custom-net
+</code></pre>
+<h2 id="管理网络">管理网络</h2>
+<pre><code class="language-shell">docker network ls
+
+# docker network create
+
+docker network inspect network_name
+
+docker network rm network_name
+
+docker network prune
+</code></pre>
+<h2 id="手动创建网络">手动创建网络</h2>
+<p><a href="https://docs.docker.com/engine/reference/commandline/network_create/">https://docs.docker.com/engine/reference/commandline/network_create/</a></p>
+<p>我们不想在 docker-compose 文件里面去创建网络，而直接通过命令行来创建（随服务启动？）</p>
+<pre><code class="language-shell"># 格式 docker network create [OPTIONS] NETWORK
+
+# 例如 上节中的对应命令行
+docker network create --driver bridge --subnet 192.168.238.0/24 --ipam-driver bridge custom-net
+</code></pre>
+<p>提示错误</p>
+<blockquote>
+<p>Error response from daemon: plugin &ldquo;bridge&rdquo; not found</p>
+</blockquote>
+<p>去掉<code>--ipam-driver bridge</code>（待研究 &ndash;ipam-driver  使用 bridge 的问题（可否删除docker-compose 里的））</p>
+<h1 id="volume-文件访问共享">Volume 文件访问共享</h1>
+<p>在 docker-compose 的 Version 2 里，可以直接用 <code>volumes_from</code> 来实现一个容器访问另外一个容器的共享目录。但到了 Version 3 里，只能借助于第三方的插件来实现了</p>
+<p><a href="https://stackoverflow.com/questions/42232051/docker-compose-volumes-from-equivalent-with-version-3">https://stackoverflow.com/questions/42232051/docker-compose-volumes-from-equivalent-with-version-3</a></p>
+<p><a href="https://forums.docker.com/t/sharing-host-volumes-without-volumes-from-in-compose-version-3-between-services/31688">https://forums.docker.com/t/sharing-host-volumes-without-volumes-from-in-compose-version-3-between-services/31688</a></p>
+<p>用<code>命名卷</code></p>
+<pre><code class="language-yaml">services:
+    web:
+        volumes:
+          - php:/var/www/html #&lt;container_name&gt;:&lt;mount_point&gt;
+    
+    php:
+      volumes:
+        - php:/var/www/html
+
+volumes:
+  data-volume:
+</code></pre>
+<h1 id="command-有关">command 有关</h1>
+<h2 id="报错-docker-entrypointsh-exec-line-12-cd-not-found">报错 <code>/docker-entrypoint.sh: exec: line 12: cd: not found</code></h2>
+<p>在 docker-compose.yaml 里有一行</p>
+<pre><code class="language-yaml">command &quot;cd /var/www/html/project &amp;&amp; composer install&quot;
+</code></pre>
+<p>运行 docker-compose up 报错</p>
+<blockquote>
+<p>exec: line 12: cd: not found</p>
+</blockquote>
+<p>根据 <a href="https://serverfault.com/questions/634883/why-cant-i-cd-to-a-directory-with-docker-run">https://serverfault.com/questions/634883/why-cant-i-cd-to-a-directory-with-docker-run</a>， 改成<code>/bin/sh -c '' </code> 把命令放到里面</p>
+<pre><code class="language-yaml">command &quot;/bin/sh -c 'cd /var/www/html/project &amp;&amp; composer install'&quot;
+</code></pre>
+<h2 id="解决在-docker-composer-文件中运行-command启动时-exit-code-0-的问题">解决在 docker-composer 文件中运行 command，启动时 exit code 0 的问题</h2>
+<p>有一个 php-fpm 的 laravel 应用，需要在启动的时候运行 <code>composer install</code> 安装第三方包。docker-compouse up 查看，安装完毕后不断重新启动重新安装，并最后提示 php-container exited with code 0.</p>
+<p>这时候因为 composer install 执行完后，给系统返回了一个信号导致容器不能保持状态.</p>
+<p>试过这个无效http://www.sail.name/2017/10/09/container-exited-with-code-0-created-by-docker-compose/</p>
+<p>因此需要添加一些命令 php-fpm 等后台一直执行的命令，例如</p>
+<pre><code class="language-yaml">command: &quot;/bin/sh -c 'cd /var/www/html/project &amp;&amp; composer install &amp;&amp; php-fpm &amp;&amp; tail -f /dev/null'&quot;
+
+# 另外一种写法 看起来更加清晰一些
+command: [&quot;/bin/sh&quot;, &quot;-c&quot; &quot;cd /var/www/html &amp;&amp; composer install &amp;&amp; php-fpm &amp;&amp; tail -f /dev/null&quot;]
+</code></pre>
+<p>这样容器就能一直运行而不会返回 exit code 0</p>
+<h2 id="在-entrypointsh-文件执行后docker-composeyaml-里的-command-不执行的问题">在 entrypoint.sh 文件执行后，docker-compose.yaml 里的 command 不执行的问题</h2>
+<p>在镜像的 Dockerfile 里定义一行</p>
+<pre><code class="language-shell"># .....
+
+ENTRYPOINT [&quot;/docker-entrypoint.sh&quot;]
+</code></pre>
+<p><code>docker-entrypoint.sh</code>文件内容大致如下</p>
+<pre><code class="language-shell">#!/bin/sh
+
+set -e
+echo &quot;Starting Entry Point...&quot;
+
+php-fpm
+
+composer install
+
+exec &quot;$@&quot;
+</code></pre>
+<p>然后在 docker-compose.yaml 里有一段</p>
+<pre><code class="language-yaml">command: &quot;sh......&quot;
+</code></pre>
+<p>发现 docker-compose up 的时候，这个<code>command</code>里的内容不会执行。只会显示 docker-entrypoint.sh 里 php-fpm 的执行结果，看起来是在系统前台执行，并且阻塞后面的命令（composer install）了。。。</p>
+<blockquote>
+<p>test-php    | Starting Entry Point&hellip;
+test-php    | [16-May-2018 08:29:16] NOTICE: fpm is running, pid 5
+test-php    | [16-May-2018 08:29:16] NOTICE: ready to handle connections</p>
+</blockquote>
+<p>后来注释掉 docke-entry.sh 里 <code>php-fpm</code> 命令后，这段 command 就执行了</p>
+<p>可见 entrypoint 先于 docker-compose 的 command 执行，并且如果类似 php-fpm 等命令阻塞后续命令，会让 command 不执行。</p>
+<p>办法就是把这些挪到 command 里面去</p>
+<h1 id="build-的镜像来自-github">build 的镜像来自 github</h1>
+<p>如果某个基础镜像需要经常修改，最好在 docker-compose.yaml 文件里的 build 把 image 来源写成外部目录，但如果有多台机器使用这个镜像定义文件。</p>
+<p>那最好是在 github 里维护</p>
+<p><a href="https://stackoverflow.com/questions/34120504/how-can-i-make-docker-compose-build-an-image-from-a-remote-git-repository">https://stackoverflow.com/questions/34120504/how-can-i-make-docker-compose-build-an-image-from-a-remote-git-repository</a></p>
+<pre><code class="language-yaml">version: '2'
+
+services:
+  redis:
+    image: &quot;redis:3.2.3&quot;
+    hostname: redis
+
+  redis-commander:
+    build: https://github.com/joeferner/redis-commander.git
+    command: --redis-host redis
+    links:
+      - &quot;redis:redis&quot;
+    ports:
+      - 8081
+</code></pre>
+<h1 id="更改基础镜像自动更新容器">更改基础镜像，自动更新容器</h1>
+<p>在 docker-compose.yaml 中使用 <code>build</code>来引用一个镜像定义</p>
+<pre><code class="language-yaml">#....
+
+services:
+    test:
+        build: /env/docker_images/php_ext
+</code></pre>
+<p>但是发现在更新了 <code>/env/docker_images/php_ext/Dockerfile</code> 文件后</p>
+<h1 id="复用-docker-composeyaml-和覆盖-service-的变量">复用 docker-compose.yaml 和覆盖 service 的变量</h1>
+<h2 id="多个-composer-files-启动">多个 composer files 启动</h2>
+<p>假设要启动两个容器，他们的 docker-compose.yaml 大部分是一样的，只是部分参数（例如 volume 不一样）。</p>
+<p>我们可以使用 <code>-f</code> 指定两个文件，来复用和覆盖</p>
+<p><a href="https://docs.docker.com/compose/reference/overview/#use--f-to-specify-name-and-path-of-one-or-more-compose-files">https://docs.docker.com/compose/reference/overview/#use--f-to-specify-name-and-path-of-one-or-more-compose-files</a></p>
+<p><a href="https://docs.docker.com/compose/extends/#example-use-case-1">https://docs.docker.com/compose/extends/#example-use-case-1</a></p>
+<p><a href="https://docs.docker.com/compose/extends/#multiple-compose-files">https://docs.docker.com/compose/extends/#multiple-compose-files</a></p>
+<pre><code class="language-shell">$ docker-compose -f docker-compose.yml -f docker-compose.admin.yml run backup_db
+
+</code></pre>
+<p>其中 <code>docker-compose.yml</code> 内容 (一般只定义好 image links 等非常基础的参数)</p>
+<pre><code class="language-yaml">webapp:
+  image: examples/web
+  ports:
+    - &quot;8000:8000&quot;
+  volumes:
+    - &quot;/data&quot;
+</code></pre>
+<p>另一个文件<code>docker-compose.admin.yml</code>里，仅仅是覆盖了 webapp 这个 service 的部分参数</p>
+<pre><code class="language-yaml">webapp:
+  build: .
+  environment:
+    - DEBUG=1
+  volumes:
+    - &quot;/data/2&quot;
+</code></pre>
+<p>注意。 这其实是“合并”并不是“整体替换&rdquo;, 例如上面的例子， 并不会把第二个 volume 的 <code>/data/2</code>替换<code>/data</code>,而是成为最终</p>
+<pre><code class="language-yaml">volumes:
+    - &quot;/data&quot;
+    - &quot;/data/2&quot;
+</code></pre>
+<h2 id="如果是-version-21-以下用-extending-service-扩展-extends">如果是 version 2.1 以下，用 Extending service 扩展 <code>extends</code></h2>
+<h1 id="环境变量">环境变量</h1>
+<p>例如一些 docker-compose.yaml 文件里，会使用到 GITHUB_KEY 等敏感信息. 或者，一份配置文件，在测试环境、生产环境使用不同的配置值</p>
+<pre><code class="language-yaml">services:
+  app:
+    . . . #snipped
+    environment:
+	  - GITHUB_CLIENT_ID=${CLIENT_ID}
+	  - GITHUB_CLIENT_SECRET=${CLIENT_SECRET}
+</code></pre>
+<p>可以在启动命令时，指定这些值</p>
+<pre><code class="language-shell">APP_PORT=8080 DB_PORT=33060 docker-compose up -d
+</code></pre>
+<p>变量太多，可以写到 .env 文件，在 .gitignore 里忽略。</p>
+<p><a href="https://blog.agchapman.com/using-variables-in-docker-compose-files/">https://blog.agchapman.com/using-variables-in-docker-compose-files/</a></p>
+<pre><code class="language-shell">CLIENT_ID=yourclientid
+CLIENT_SECRET=yourclientsecret
+</code></pre>
+<p><strong>在 command 里调用变量</strong></p>
+<p>用 <code>${VAR_NAME}</code></p>
+<h2 id="环境变量与指定-docker-compose-文件结合">环境变量与指定 docker-compose 文件结合</h2>
+<p>当我们添加完一个“通用”的 docker-compose.yaml 文件，在内部设置好变量填充位置。例如放在 <code>/docker/app/common/laravel-redis/docker-compose.yaml</code></p>
+<pre><code class="language-shell">version: '3'
+
+services:
+    nginx:
+        image: nginx:alpine
+        ports:
+            - &quot;80${PORT_ID}:80&quot;
+            - &quot;443${PORT_ID}:443&quot;
+        container_name: &quot;${PROJECT_NAME}_nginx&quot;
+        restart: always
+        volumes:
+            - &quot;/env/configs/common/nginx-alpine/nginx.conf:/etc/nginx/nginx.conf&quot;
+            - &quot;/env/configs/common/nginx-alpine/conf.d/disabled_default.conf:/etc/nginx/conf.d/default.conf&quot;
+            ## vhost
+            - &quot;/env/configs/${GROUP_NAME}/nginx/vhosts/${PROJECT_NAME}.conf:/etc/nginx/conf.d/${PROJECT_NAME}.conf&quot;
+            ## ssl files
+            - &quot;/env/configs/${GROUP_NAME}/ssl/${PROJECT_NAME}:/etc/letsencrypt/live/${PROJECT_NAME}&quot;
+            ## wwwroot
+            - &quot;/env/wwwroot/${GROUP_NAME}/${PROJECT_NAME}:/var/www/html/${GROUP_NAME}/${PROJECT_NAME}&quot;
+        networks:
+            - custom-net
+
+    php: 
+        #build: /env/env_common/docker_images/php71_ext
+        image: php71_ext
+        container_name: &quot;${PROJECT_NAME}_php&quot;
+        restart: always
+        volumes:
+            ## cron job for laravle
+            - &quot;./cron-laravel:/etc/cron.d/cron-laravel&quot;
+            ## wwwroot
+            - &quot;/env/wwwroot/${GROUP_NAME}/${PROJECT_NAME}:/var/www/html/${GROUP_NAME}/${PROJECT_NAME}&quot;
+        # Operation not permitted: &amp;&amp; chmod -R 777 ./bootstrap/cache &amp;&amp; chmod -R 777 ./public/files &amp;&amp; chmod -R 777 ./storage
+        # &amp;&amp; composer dump-autoload 
+        command: &quot;/bin/sh -c 'echo $GROUP_NAME &amp;&amp; export WWW_PATH=/var/www/html/${GROUP_NAME}/${PROJECT_NAME} &amp;&amp; crontab /etc/cron.d/cron-laravel &amp;&amp; cd ./${GROUP_NAME}/${PROJECT_NAME} &amp;&amp; pwd &amp;&amp; composer install &amp;&amp; php-fpm &amp;&amp; tail -f /dev/null'&quot;
+        networks:
+            - custom-net
+
+    redis:
+        container_name: redis
+        image: redis:alpine
+        ports:
+          - &quot;6379:6379&quot;
+        volumes:
+          - /env/volumes/redis_data:/data
+        entrypoint: redis-server --appendonly yes
+        restart: always
+        networks:
+            - custom-net
+            
+networks:
+    custom-net:
+        external:
+            name: custom-net
+</code></pre>
+<p>虽然可以每次启动都可以在命令行里指定变量</p>
+<pre><code class="language-shell">PORT_ID=01 GROUP_NAME='test' PROJECT_NAME='my_project' docker-compose up
+</code></pre>
+<p>但这样略显繁琐。一来，每次都要进入这个通用文件的目录，容易出错。二来不容易维护</p>
+<p>新建一个目录 <code>/docker/app/custom/laravel-project</code>, 只在里面放一个 <code>.env</code> 文件</p>
+<pre><code class="language-shell">PORT_ID=01
+GROUP_NAME=test
+PROJECT_NAME=my_project
+</code></pre>
+<p>启动时，只需要指定“通用”文件，并自动读取 .env 内的变量</p>
+<p>不同的项目，只需要新建不同的目录和用 <code>.env</code> 储存变量就可以了</p>
+<p>启动时用<code>-f</code>指定文件</p>
+<pre><code class="language-shell">docker-compose -f /docker/app/common/laravel-redis/docker-compose.yaml up
+</code></pre>
+<p>以后 docker-compose 的 <code>ps</code>  <code>stop</code>  <code>rm</code> 都要带着这个 <code>-f /the/file/path/yaml</code> 了</p>
+<p>可以在命令行快速指定 目录，而不需要切换到不同的目录, 使用<code>--project-directory</code>. <a href="https://github.com/docker/compose/issues/4841">https://github.com/docker/compose/issues/4841</a></p>
+<p>/prod/.env
+/test/.env
+/local/.env</p>
+<pre><code class="language-shell">docker-compose -f /compose_files/docker-compose.yaml --project-directory /local
+docker-compose -f /compose_files/docker-compose.yaml --project-directory /prod
+</code></pre>
+<p><strong>问题</strong></p>
+<p>同时指定到一个相同的 yaml 文件，容器会被<strong>删除</strong>！！ (旧容器名被替代变成新容器名)</p>
+<p>例如第一次创建了 test_1_nginx 和 test_1_php</p>
+<p>第二次并不会新增 test_2_nginx 和 test_2_php</p>
+<p>而是直接覆盖了之前的容器（用新名称）</p>
+<p><strong>最后</strong></p>
+<p>还是只能**复制多个基础yaml文件，**用 <code>-f 基础yaml</code>指定image等 再 <code>-f 自定义yaml</code>指定容器名等 结合的方式</p>
+<p>第一个容器用了某个基础yaml文件，后面的容器再使用，都会覆盖掉。</p>
+<p>也就是说，必须把多个基础文件分别复制到不同的项目目录里面去，不能共用。。。。</p>
+<p>这里提到 extend same file</p>
+<p><a href="https://github.com/docker/compose/issues/1988">https://github.com/docker/compose/issues/1988</a></p>
+<p>还没看
+<a href="https://docs.docker.com/compose/compose-file/#extension-fields">https://docs.docker.com/compose/compose-file/#extension-fields</a></p>
+<h1 id="docker-中-nginx-和-php-使用-unix-socket-方式替换-tcp-方式通信">Docker 中 Nginx 和 PHP 使用 unix socket 方式替换 TCP 方式通信</h1>
+<p><a href="https://stackoverflow.com/questions/47056062/how-to-connect-nginx-to-php-fpm-using-unix-socket-in-docker">https://stackoverflow.com/questions/47056062/how-to-connect-nginx-to-php-fpm-using-unix-socket-in-docker</a></p>
+<p>unix socket 在低于 1000 并发下性能更好，高了会产生一些等待问题， TCP 方式则更加稳定（通过负载均衡等方式来解决性能问题）</p>
+<p>跨两个容器，必须要共享一个 socket 文件</p>
+<h1 id="问题">问题</h1>
+<h2 id="mysql-容器的环境变量-mysql_root_password-不生效导致外部连接提示-access-denied-for-user-">MySQL 容器的环境变量 <code>MYSQL_ROOT_PASSWORD</code> 不生效导致外部连接提示 <code>Access denied for user </code></h2>
+<p>我之前已经在主机环境中安装过 MySQL，因此遗留下来一个目录  /volumes/mysql/var, 之前的 root 密码是 123456</p>
+<p>现在用 docker-compose 的 Volume 来映射, 并设置 root 密码为 123456,配置如下（省略了其他部分），也暴露了 3306端口到主机</p>
+<pre><code class="language-yaml">mysql-server:
+    image: mysql:5.5
+    container_name: &quot;mysql&quot;
+    ports:
+        - &quot;3306:3306&quot;
+    restart: always
+    environment:
+        - &quot;MYSQL_ROOT_PASSWORD=123456&quot;
+    volumes:
+        - &quot;/volumes/mysql/var:/var/lib/mysql&quot;    
+</code></pre>
+<p>正常启动后，发现用 SQl GUI 工具连不上，提示不允许密码、账号登录</p>
+<pre><code>**Access Denied**
+Unable to connect to host 127.0.0.1 because access was denied.
+
+Double-check your username and password and ensure that access from your current location is permitted.
+
+MySQL said: Access denied for user 'root'@'192.168.238.1' (using password: YES)
+</code></pre>
+<p>想到是不是 my.cnf 里没有开启 bind-ip 允许任意ip 链接? 于是打开</p>
+<pre><code class="language-shell">[mysqld]
+bind-address = 0.0.0.0
+</code></pre>
+<p>还是不行。</p>
+<p>后来找到 github 上有个 issue 提到，原因是 <code>MySQL_ROOT_PASSWORD=123456</code> <strong>只适用于全新的数据目录，如果是用了之前别的 MySQL 服务使用过的目录，这个就失效了，要重新给 root 允许外部的IP权限</strong></p>
+<p>进去 docker 容器里的 MySQL, 给来自任意IP的 root 用户访问权限</p>
+<pre><code class="language-shell">grant all privilege on *.* to 'root'@'%' identified by '123456';
+flush privilege;
+</code></pre>
+<p>为了安全，最好不要用 %，改成 IP 段就可以了</p>
+<pre><code class="language-shell">docker network ls
+
+# 找到那个网卡,例如 192.168.238....
+docker inspect 4fd1e57d6cce
+
+grant all privilege on *.* to 'root'@'192.168.%.%' identified by '123456';
+flush privilege;
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/sql-server/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

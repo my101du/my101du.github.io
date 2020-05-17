@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 一台电脑两个浏览器分别访问同一个域名的本地绑定hosts和公网IP permalink: two-browser-visit-a-domain-localhost-and-website tags: 技能 标题有些拗口，但做 web 开发的同学应该更容易理解，因为很可能你会经" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 一台电脑两个浏览器分别访问同一个域名的本地绑定hosts和公网IP permalink: two-browser-visit-a-domain-localhost-and-website tags: 技能 标题有些拗口，但做 web 开发的同学应该更容易理解，因为很可能你会经" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9Ahosts%E5%92%8C%E5%85%AC%E7%BD%91ip/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 一台电脑两个浏览器分别访问同一个域名的本地绑定hosts和公网IP permalink: two-browser-visit-a-domain-localhost-and-website tags: 技能 标题有些拗口，但做 web 开发的同学应该更容易理解，因为很可能你会经">
+
+<meta itemprop="wordCount" content="2121">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 一台电脑两个浏览器分别访问同一个域名的本地绑定hosts和公网IP permalink: two-browser-visit-a-domain-localhost-and-website tags: 技能 标题有些拗口，但做 web 开发的同学应该更容易理解，因为很可能你会经"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9Ahosts%E5%92%8C%E5%85%AC%E7%BD%91ip/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9Ahosts%E5%92%8C%E5%85%AC%E7%BD%91ip/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2121字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 一台电脑两个浏览器分别访问同一个域名的本地绑定hosts和公网IP
+permalink: two-browser-visit-a-domain-localhost-and-website
+tags:</p>
+<ul>
+<li>技能</li>
+</ul>
+<hr>
+<p>标题有些拗口，但做 web 开发的同学应该更容易理解，因为很可能你会经常遇到这个问题。</p>
+<p>假设一个场景：需要对某个文件进行一些修改，然后分别在“本机环境”和“远程环境”上对比查看，观察这同一个修改在不同环境下显示效果是否完全一致（例如 PHP版本不一致、内存的大小等都有可能影响运行结果）。</p>
+<p>为便于理解，以下测试域名均使用 <code>www.test.com</code>，本地环境 ip 用 <code>127.0.0.1</code>，远程环境 ip 用 <code>111.222.333.444</code></p>
+<p>按照之前的流程，我们需要进行下面几个步骤：</p>
+<!-- raw HTML omitted -->
+<ol>
+<li>本地修改完代码文件</li>
+<li>编辑 /etc/vhosts 文件，绑定 <code>127.0.0.1 www.test.com</code></li>
+<li>打开浏览器，查看代码在“本机环境”的效果</li>
+<li>再次修改 vhosts 文件，绑定 <code>111.222.333.444 www.test.com</code></li>
+<li>把修改后的代码文件上传到 <code>远程服务器</code></li>
+<li>打开浏览器，查看代码在“远程服务器”的效果</li>
+<li>对比完成后，如果有问题，可能又要重新进行一次上述步骤</li>
+</ol>
+<p>非常繁琐有没有！</p>
+<p>那么我们下面要做的，就是让两个浏览器，在访问相同域名的时候，一个走“本地服务器”，一个走“远程服务器”，并且不需要进行 vhosts 文件的修改！</p>
+<h1 id="浏览器优先使用代理还是vhosts">浏览器优先使用“代理”还是“vhosts”？</h1>
+<h2 id="1-一个浏览器在访问某个域名的时候如果遇到两个对-dns-解析过程的干扰先执行谁">1. 一个浏览器在访问某个域名的时候，如果遇到两个对 DNS 解析过程的“干扰”，先执行谁？</h2>
+<ul>
+<li>代理服务器说：因为你走的是代理，而我是使用的公共 DNS 解析服务，因此 <code>www.test.com</code> 对应的 ip 地址是公网的<code>111.222.333.444</code>。</li>
+<li>vhosts 文件说：因为我定义了一个规则<code>127.0.0.1 www.test.com</code>，因此<code>www.test.com</code>对应的 ip 地址是本地 <code>127.0.0.1</code></li>
+</ul>
+<h2 id="2-搭建本地服务器环境">2. 搭建本地服务器环境</h2>
+<p>我们做个测试，首先在本地服务器环境下建立一个测试站点<code>www.test.com</code>，这里以 Nginx 的虚拟主机配置文件为例</p>
+<pre><code class="language-shell">server
+{
+	listen       80;
+	server_name www.test.com;
+	index index.html index.htm;
+	root  /home/wwwroot/www_test_com;
+}
+</code></pre>
+<p><code>/home/wwwroot/www_test_com/index.html</code> 文件是很简单的一个字符串</p>
+<pre><code class="language-html">&lt;h1&gt;I'm a local site&lt;/h1&gt;
+</code></pre>
+<h2 id="3-然后定义一条-vhosts-绑定规则">3. 然后定义一条 vhosts 绑定规则</h2>
+<p>编辑 vhosts 文件，添加下面一条绑定规则</p>
+<pre><code class="language-shell">127.0.0.1 www.test.com
+</code></pre>
+<p>ping一下，发现已经指向本地了。</p>
+<blockquote>
+<p>~  ping <a href="http://www.test.com">www.test.com</a>
+PING <a href="http://www.test.com">www.test.com</a> (127.0.0.1): 56 data bytes
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.087 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.079 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.101 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.091 ms</p>
+</blockquote>
+<p>然后打开浏览器访问 <code>www.test.com</code>域名，发现已经正常指向到本地服务器了</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/visit_local_test_domain.png" alt="指向127.0.0.1的测试域名"></p>
+<h2 id="4-然后上代理">4. 然后上代理！</h2>
+<p>打开 <code>shadowsocks</code> 这个代理客户端，使用“自动代理模式”，然后选择“编辑自动模式的PAC”，在<code>gfwlist.js</code>文件顶部添加一行，让 <code>www.test.com</code> 域名走代理。</p>
+<pre><code class="language-javascript">var domains = {
+  &quot;test.com&quot;:1,
+  &quot;google.com&quot;:1,
+略
+</code></pre>
+<p>重启浏览器，发现已经使用公网的DNS，提示一个访问错误（<strong>即使这时候 ping 这个域名，仍然显示为 127.0.0.1</strong>）</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/visit_remote_test_domain.png" alt="使用代理访问测试域名"></p>
+<h2 id="5-结论">5. 结论</h2>
+<p><strong>也就是说，“代理”的优先级是高于“vhosts 文件”的。</strong></p>
+<h1 id="让-chrome-浏览器绕过代理优先级访问本地服务器">让 Chrome 浏览器绕过代理优先级，访问本地服务器</h1>
+<p>因此对于某个测试域名，如果在代理里设置了某个域名的规则，会导致<strong>全部的浏览器</strong>都会走这条规则。</p>
+<p>比方说 <a href="http://www.test.com">www.test.com</a> 在代理里，在 chrome  safari 里都会显示远程服务器的效果</p>
+<p>然而我们希望能在两个浏览器 chrome/safari 之间，同时对比 本地开发机器/远程服务器 的同一个域名</p>
+<ol>
+<li>在 chrome 里查看 <a href="http://www.test.com">www.test.com</a> 的本地效果</li>
+<li>在 safari 里查看 <a href="http://www.test.com">www.test.com</a> 远程效果</li>
+</ol>
+<h2 id="1-首先需要安装一个-chrome-的插件">1. 首先需要安装一个 Chrome 的插件</h2>
+<p><a href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif">Proxy SwitchyOmega</a></p>
+<h2 id="2-然后打开这个插件的选项界面新建一个代理服务器的情景模式">2. 然后打开这个插件的选项界面，新建一个“代理服务器”的情景模式</h2>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/click_omega_option.png" alt="SwitchyOmega选项"></p>
+<p>点击“新建情景模式”，建立一个**“代理服务器”**，取名叫“本地测试域名绕过shadowsocks代理”（为了理解方便，所以取这么长 O(∩_∩)O哈哈~）。</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/new_mode_proxy.png" alt="新建代理服务器"></p>
+<p>然后按下图填写信息，代理协议选 <code>SOCKS5</code>，代理服务器选<code>127.0.0.1</code>，代理端口选<code>1080</code>（实际上就
+是我们 shadowsocks 的默认代理参数）</p>
+<p><strong>关键（测试域名绕过代理）</strong></p>
+<p>然后在 <code>不代理的地址列表</code> 里填写我们想走本地的测试域名通配符 <code>*.test.com</code> (二级域名是一个星号)</p>
+<p>记得一定要点击左侧的“应用选项”按钮</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/save_mode_proxy.png" alt="保存代理服务器"></p>
+<p>如果启用这个模式，那么所有访问都会走代理服务器  socks5  127.0.0.1:1080，就相当于“全局模式” (注意，这时我的 ss 里是用的自动模式，没有走全局哦！)</p>
+<p><img src="/media/15490412484075/15229872459474.jpg" alt=""></p>
+<p>说明 SwitchyOmega 是跑了代理，但是没有一个“过滤列表”来区分哪些走代理，哪些不需要。
+这就导致如果我们的代理服务器在国外，在访问百度等国内网站，也会变慢（从国外绕回来）。</p>
+<p>那就来为 SwitchyOmega 加一个过滤列表吧（就对应 ss 的自动模式里的 PAC gfwlist）</p>
+<h2 id="3-然后再建立一个pac情景模式作为等下自动切换的默认模式">3. 然后再建立一个“PAC情景模式”，作为等下自动切换的“默认模式”</h2>
+<p>点击“新建情景模式”，选择<strong>PAC情景模式</strong>（还记得我们刚刚建立了一个代理服务器模式么？）名称“和shadowsocks翻墙域名列表保持一致”</p>
+<p>把 shadowsocks 的“编辑自动模式的PAC”里那个 <code>gfwlist.js</code> 里的内容全部复制进来(或者用在线地址下载和更新)，点击“应用选项”</p>
+<p><img src="/media/15490412484075/15229883318708.jpg" alt=""></p>
+<p>实际上就是实现了 ss 客户端的“自动代理模式”+PAC 列表</p>
+<p>备注：</p>
+<p>如果能在 PAC 模式添加一个“绕过地址”的参数就好了，就不用上面第一步和下面的第三步了。
+可惜没有，只能这么复杂。。。</p>
+<h2 id="4-自动识别不同域名默认不走代理直连在-pac-列表里的">4. 自动识别不同域名，默认不走代理直连，在 PAC 列表里的</h2>
+<p>点击“新建情景模式”，选择**“自动切换模式”**，命名为“自动识别域名”。</p>
+<p><img src="/media/15490412484075/15229885277428.jpg" alt=""></p>
+<p>如下图设置，点击<code>+添加条件</code>按钮，把测试域名添加进去，情境模式选择“本地测试域名绕过shadowsocks代理”。</p>
+<p><img src="/media/15490412484075/15229885080641.jpg" alt=""></p>
+<p>“<strong>默认情境模式</strong>”一定要选“和shadowsocks翻墙域名列表保持一致”（PAC），否则我们的 chrome 就不能翻墙了……  direct 就是不走 ss 代理</p>
+<p><img src="/media/15490412484075/15229883890242.jpg" alt=""></p>
+<p>最后点击“应用选项”</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/save_mode_auto.png" alt="保存自动模式"></p>
+<h2 id="5-完成">5. 完成</h2>
+<p>这样我们就可以让 chrome 访问 <code>www.test.com</code> 这个域名是走的“本地服务器”，而用其他的浏览器（例如 safari、firefox 等）访问这个域名，则使用代理的方式访问公网服务器。</p>
+<p>对比一下看看！</p>
+<p><img src="/article_images/web/two-browser-visit-a-domain-localhost-and-website/browser_compare.png" alt="对比"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9Ahosts%E5%92%8C%E5%85%AC%E7%BD%91ip/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E4%B8%A4%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%86%E5%88%AB%E8%AE%BF%E9%97%AE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D%E7%9A%84%E6%9C%AC%E5%9C%B0%E7%BB%91%E5%AE%9Ahosts%E5%92%8C%E5%85%AC%E7%BD%91ip/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BC%98%E7%A7%80%E7%9A%84%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6%E4%B8%8E%E5%90%8E%E6%9C%9F%E7%BC%96%E8%BE%91%E8%BD%AF%E4%BB%B6screenflow%E6%95%99%E7%A8%8B/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-%E5%B7%A5%E4%BD%9C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

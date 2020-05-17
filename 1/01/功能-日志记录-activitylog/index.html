@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="功能: 日志记录 activityLog permalink: laravel-log-activies tags:
+ laravel  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="功能: 日志记录 activityLog
+permalink: laravel-log-activies
+tags:
+
+laravel
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95-activitylog/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="功能: 日志记录 activityLog
+permalink: laravel-log-activies
+tags:
+
+laravel
+
+">
+
+<meta itemprop="wordCount" content="4155">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="功能: 日志记录 activityLog
+permalink: laravel-log-activies
+tags:
+
+laravel
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%8A%9F%E8%83%BD-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95-activitylog/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%8A%9F%E8%83%BD-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95-activitylog/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4155字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>功能: 日志记录 activityLog
+permalink: laravel-log-activies
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<h1 id="系统自带">系统自带</h1>
+<p>当您启动一个新的 Laravel 项目时，错误和异常处理就已为您配置就绪。应用程序触发的所有异常都被 App\Exceptions\Handler 类记录下来，然后渲染给用户</p>
+<p>Laravel 使用 <strong>Monolog</strong> 库进行日志处理，它能为各种强大的日志处理程序提供支持。Laravel 配置了多几种日志处理程序，方便您在单个日志文件、多个交替日志文件之间进行选择写入，或将错误信息写入系统日志</p>
+<h2 id="配置">配置</h2>
+<h3 id="是否向用户显示错误信息">是否向用户显示错误信息</h3>
+<p>修改 config/app.php 文件的 debug 选项 或者 .env 文件中的 APP_DEBUG 环境变量。决定是否向用户显示错误信息</p>
+<p><strong>注意</strong>
+本地开发环境下，应该将 APP_DEBUG 环境变量设置为 true 。在您的生产环境中，此值应始终保持 false 。如果你在生产中将该值设置为 true ，则可能会将敏感的配置值暴露给应用程序的最终用户。</p>
+<h3 id="存储">存储</h3>
+<p>支持 single 、daily 、 syslog 和 errorlog 日志写入模式。</p>
+<p>修改 config/app.php 配置文件中的 log 选项。例如按天来生成独立的日志文件</p>
+<pre><code class="language-php">'log' =&gt; 'daily'
+</code></pre>
+<p>默认保留5天，如果要调整这个限制</p>
+<pre><code class="language-php">'log_max_files' =&gt; 30
+</code></pre>
+<h3 id="日志级别">日志级别</h3>
+<p>默认存储全部日志级别，生产环境中应当记录的最低的日志级别</p>
+<pre><code class="language-php">//默认的 log_level 被设置为 error 那么将会记录 error , critical , alert 和 emergency 日志信息：
+'log_level' =&gt; env('APP_LOG_LEVEL', 'error'),
+</code></pre>
+<p>Monolog 识别以下严重级别 - 从低到高为: debug, info, notice, warning, error, critical, alert, emergency。</p>
+<h3 id="自定义-monolog-日志">自定义 Monolog 日志</h3>
+<p>如果你想让你的应用程序完全控制 Monolog ，可以使用应用程序的 configureMonologUsing 方法。你应该放置一个回调方法到 bootstrap/app.php 文件中，在文件返回 $app 变量之前，调用这个方法：</p>
+<pre><code class="language-php">$app-&gt;configureMonologUsing(function ($monolog) {
+    $monolog-&gt;pushHandler(...);
+});
+
+return $app;
+</code></pre>
+<h2 id="异常处理">异常处理</h2>
+<p>所有异常都由 App\Exceptions\Handler 类处理。 这个类包含两个方法：</p>
+<p>report
+render</p>
+<h3 id="report-方法">Report 方法</h3>
+<p>report 方法用于记录异常或将其发送到外部服务，如 Bugsnag 或 Sentry。默认情况将异常传递给记录异常的基类</p>
+<p>例如，如果您需要以不同的方式报告不同类型的异常，您可以使用 PHP instanceof 比较运算符</p>
+<pre><code class="language-php">public function report(Exception $exception)
+{
+    if ($exception instanceof CustomException) {
+        //
+    }
+
+    return parent::report($exception);
+}
+</code></pre>
+<p><strong>对应的辅助函数<code>report()</code></strong></p>
+<p>报告一个异常，但又想继续处理当前的请求.report 辅助函数允许您使用异常 handler 的 report 方法快速报告一个异常而不抛出一个错误页面：</p>
+<pre><code class="language-php">public function isValid($value)
+{
+    try {
+        // 校验值...
+    } catch (Exception $e) {
+        report($e);
+
+        return false;
+    }
+}
+</code></pre>
+<p><strong>通过类型忽略异常</strong></p>
+<p>异常 handler 的 $dontReport 属性包含不会记录的异常类型数组。例如，404错误导致的异常以及其他几种类型的错误不会写入您的日志文件。您可以根据需要向此数组添加其他异常类型：</p>
+<pre><code class="language-php">protected $dontReport = [
+    \Illuminate\Auth\AuthenticationException::class,
+    \Illuminate\Auth\Access\AuthorizationException::class,
+    \Symfony\Component\HttpKernel\Exception\HttpException::class,
+    \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+    \Illuminate\Validation\ValidationException::class,
+];
+</code></pre>
+<h3 id="render-方法">Render 方法</h3>
+<p>render 方法负责将给定的异常转换成一个需要回传给浏览器的 HTTP 响应</p>
+<p>默认情况下，异常会被传递给为您生成响应的基类。但是，您可以自由检查异常类型或返回您自己的自定义响应</p>
+<pre><code class="language-php">public function render($request, Exception $exception)
+{
+    if ($exception instanceof CustomException) {
+        return response()-&gt;view('errors.custom', [], 500);
+    }
+
+    return parent::render($request, $exception);
+}
+</code></pre>
+<h3 id="自定义异常的-report--render-方法">自定义异常的 report &amp; render 方法</h3>
+<p>您并不一定要在异常 handler 中的 report 和 render 方法中处理异常，而是可以直接在自定义异常中定义 report 和 render 方法。如果这些方法存的在话，框架会自动调用他们：</p>
+<pre><code class="language-php">namespace App\Exceptions;
+
+use Exception;
+
+class RenderException extends Exception
+{
+    /**
+     * 报告异常
+     *
+     * @return void
+     */
+    public function report()
+    {
+        //
+    }
+
+    /**
+     * 报告异常
+     *
+     * @param  \Illuminate\Http\Request
+     * @return void
+     */
+    public function render($request)
+    {
+        return response(...);
+    }
+}
+</code></pre>
+<h2 id="http-异常">HTTP 异常</h2>
+<p>一些异常描述了来自服务器的 HTTP 错误代码。例如这可能是「找不到页面」 错误（404），「未授权错误」（401）甚至是由开发者造成的 500 错误。</p>
+<p>可以使用 <code>abort</code> 辅助函数，<strong>在应用程序中的任何地方生成这样的响应（以及文本）</strong>
+将立即创建一个被异常 handler 渲染过的异常.</p>
+<pre><code class="language-php">abort(404);
+abort(403, 'Unauthorized action.');
+abort(503, 'Server Error.');
+
+</code></pre>
+<p>然后修改对应的视图文件<code>resources/views/errors/503.blade.php</code></p>
+<p>把错误消息显示出来<code>{{ $exception-&gt;getMessage() }}</code>（显示上面的 Server Error .）</p>
+<pre><code class="language-html"> &lt;div class=&quot;content&quot;&gt;
+    &lt;div class=&quot;title&quot;&gt;Error: {{ $exception-&gt;getMessage() }}&lt;/div&gt;
+
+&lt;/div&gt;
+</code></pre>
+<h3 id="自定义-http-错误页面">自定义 HTTP 错误页面</h3>
+<p>例如，如果您要自定义 404 HTTP 状态代码的错误页面，请创建一个 <code>resources/views/errors/404.blade.php</code></p>
+<p>此文件将会用于渲染您应用中产生的所有 404 错误。此目录中的视图文件命名应与它们对应的 HTTP 状态代码匹配</p>
+<p>由 abort 函数引发的 HttpException 实例将作为 $exception 变量传递给视图。</p>
+<pre><code class="language-html">&lt;h2&gt;{{ $exception-&gt;getMessage() }}&lt;/h2&gt;
+</code></pre>
+<h2 id="记录使用-log-facade-将信息写入日志">记录：使用 Log Facade 将信息写入日志</h2>
+<p>Laravel 在强大的 Monolog 库上提供了一个简单的抽象层。默认情况下，Laravel 日志文件的存储目录被配置为 storage/logs</p>
+<p>可以使用 Log facade 将信息写入日志</p>
+<pre><code class="language-php">//...
+use Illuminate\Support\Facades\Log;
+//..
+
+Log::info('Showing user profile for user: '.$id);
+</code></pre>
+<p>除了 <code>info</code>,可以按级别来记录</p>
+<ul>
+<li>Log::emergency($message);</li>
+<li>Log::alert($message);</li>
+<li>Log::critical($message);</li>
+<li>Log::error($message);</li>
+<li>Log::warning($message);</li>
+<li>Log::notice($message);</li>
+<li>Log::info($message);</li>
+<li>Log::debug($message);</li>
+</ul>
+<p><strong>记录上下文信息</strong></p>
+<p>以数组格式传递给日志方法，将被格式化并与日志消息一起显示</p>
+<pre><code class="language-php">Log::info('User failed to login.', ['id' =&gt; $user-&gt;id]);
+</code></pre>
+<p><strong>访问底层 Monolog 实例</strong></p>
+<p>多种额外的 handler 用来记录日志</p>
+<pre><code class="language-php">$monolog = Log::getMonolog();
+</code></pre>
+<h2 id="通过-event-来实现">通过 Event 来实现</h2>
+<p>Model 的 create update 等动作中都会产生一些事件，通过监听这些事件，然后进行记录。</p>
+<h1 id="使用库-laravel-activitylog">使用库 Laravel ActivityLog</h1>
+<p>当然更方便地是使用一些第三方的包</p>
+<p><a href="https://github.com/spatie/laravel-activitylog">https://github.com/spatie/laravel-activitylog</a>
+<a href="https://docs.spatie.be/laravel-activitylog/v1/introduction">https://docs.spatie.be/laravel-activitylog/v1/introduction</a></p>
+<p>除了记录用户动作,还会记录 modle actiongs</p>
+<p>会记录在数据表 <code>activity_log</code> 中</p>
+<h2 id="安装">安装</h2>
+<pre><code class="language-shell">composer require spatie/laravel-activitylog
+</code></pre>
+<p>添加到 providers</p>
+<pre><code class="language-php">'providers' =&gt; [
+    ...
+    Spatie\Activitylog\ActivitylogServiceProvider::class,
+];
+</code></pre>
+<p>publish the migration</p>
+<pre><code class="language-shell">## publish migration
+php artisan vendor:publish --provider=&quot;Spatie\Activitylog\ActivitylogServiceProvider&quot; --tag=&quot;migrations&quot;
+
+## publish the config file, 生成配置文件
+php artisan vendor:publish --provider=&quot;Spatie\Activitylog\ActivitylogServiceProvider&quot; --tag=&quot;config&quot;
+</code></pre>
+<p>(当然上面的两步可以直接简化成 <code>php artisan vendor:publish</code>)</p>
+<p>通过 run migrationgs, 创建表 <code>activity_log</code></p>
+<pre><code class="language-php">php artisan migrate
+</code></pre>
+<p><img src="/media/15490412692166/15040597237847.jpg" alt=""></p>
+<h2 id="基本用法">基本用法</h2>
+<h3 id="创建用于测试的-controller-和-方法-以及一个测试-model">创建用于测试的 Controller 和 方法, 以及一个测试 Model</h3>
+<pre><code class="language-shell">php artisan make:controller TestActivityLogController --plain
+
+php artisan make:model ItemModel
+</code></pre>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
+use App\Item;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+class TestController extends Controller
+{
+    public function writeLog()
+    {
+        
+    }
+    
+    public function retrieveLog()
+    {
+        
+    }
+}
+</code></pre>
+<h3 id="记录日志-writelog">记录日志 (writeLog)</h3>
+<pre><code class="language-php">activity()-&gt;log('Look, I logged something');
+
+activity()-&gt;log('Look, I logged another thing');
+</code></pre>
+<p>注意到日志内容保存在<code>description</code>字段中</p>
+<p><img src="/media/15490412692166/15040613184114.jpg" alt=""></p>
+<h3 id="取回日志retrievelog">取回日志（retrieveLog）</h3>
+<pre><code class="language-php">dd(\Spatie\Activitylog\Models\Activity::all());
+
+$lastActivity = Activity::all()-&gt;last();
+echo $lastActivity-&gt;description; 
+</code></pre>
+<p><img src="/media/15490412692166/15040620881208.jpg" alt=""></p>
+<p><img src="/media/15490412692166/15040616251142.jpg" alt=""></p>
+<h3 id="设置-subject">设置 &ldquo;subject&rdquo;</h3>
+<p>指定作用于哪个对象</p>
+<pre><code class="language-php">$itemModel = new Item();
+
+// performedOn 可以简写成 on
+activity()
+    -&gt;performedOn($itemModel)
+    -&gt;log('edited');
+
+$lastActivity = Activity::all()-&gt;last();
+    
+echo $lastActivity-&gt;subject_type;
+</code></pre>
+<p><img src="/media/15490412692166/15040625417959.jpg" alt=""></p>
+<h3 id="设置-causer-原因">设置 causer (原因)</h3>
+<pre><code class="language-php">use App\User;
+...
+
+class TestController extends BaseController
+{
+	...
+	public function testLog() 
+	{
+	    $userModel = User::firstOrFail();
+	    $itemModel = new Item();
+	
+	    // causedBy 可简写为 by
+	    activity()
+	        -&gt;causedBy($userModel)
+	        -&gt;performedOn($itemModel)
+	        -&gt;log('edited');
+	
+	    $lastActivity = Activity::all()-&gt;last();
+	    
+	    echo $lastActivity-&gt;causer_type;
+</code></pre>
+<p><img src="/media/15490412692166/15040631704703.jpg" alt=""></p>
+<h3 id="设置获取日志内容中的自定义属性">设置/获取日志内容中的“自定义属性”</h3>
+<pre><code class="language-php">$userModel = User::firstOrFail();
+$itemModel = new Item();
+
+activity()
+    -&gt;causedBy($userModel)
+    -&gt;performedOn($itemModel)
+    -&gt;withProperties(['key_1' =&gt; 'value_1', 'key_2'=&gt;'value_2'])
+    -&gt;log('edited');
+
+$lastActivity = Activity::all()-&gt;last();
+echo $lastActivity-&gt;getExtraProperty('key_1');
+dd($lastActivity);
+</code></pre>
+<p><img src="/media/15490412692166/15040653958889.jpg" alt=""></p>
+<p><img src="/media/15490412692166/15040654728968.jpg" alt=""></p>
+<p><img src="/media/15490412692166/15040654488503.jpg" alt=""></p>
+<h3 id="清理日志">清理日志</h3>
+<p>你可以使用 artisan 命令来清理超过多少天的日志,</p>
+<pre><code class="language-shell">php artisan activitylog:clean
+</code></pre>
+<p>这个时间在 config 文件有配置, 名称<code>delete_records_older_than_days</code></p>
+<p>或者使用 Scheduler 来实现</p>
+<pre><code class="language-php">//app/Console/Kernel.php
+protected function schedule(Schedule $schedule)
+{
+   $schedule-&gt;command('activitylog:clean')-&gt;daily();
+}
+</code></pre>
+<h2 id="记录特定-model-的-events">记录特定 Model 的 events</h2>
+<p>除了自己<strong>手动</strong>指定 subject (发生事件的主体，一个模型)，还可以让 Model 在发生一些事件的时候 <strong>自动</strong>记录日志(例如创建, 修改, 删除删除数据，就和我们前面在模型发生 updated, created 等消息时手动记录日志信息一样)</p>
+<h3 id="让模型能在事件发生时自动记录日志">让模型能在事件发生时自动记录日志</h3>
+<p>只需要让模型使用<code>Spatie\Activitylog\Traits\LogsActivity</code>这个 trait</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+    //...
+</code></pre>
+<p>然后在模型类上设置<code>$logAttributes</code>, 记录该模型哪些属性的变化会记录日志.</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+
+    protected $fillable = ['name', 'text'];
+    
+    protected static $logAttributes = ['name', 'text'];
+}
+</code></pre>
+<h3 id="那么当创建一个模型时-一个-activity-实例会记录哪些内容">那么当<strong>创建</strong>一个模型时, 一个 $activity 实例会记录哪些内容?</h3>
+<pre><code class="language-php">$newsItem = NewsItem::create([
+   'name' =&gt; 'original name',
+   'text' =&gt; 'Lorum'
+]);
+
+//creating the newsItem will cause an activity being logged
+$activity = Activity::all()-&gt;last();
+
+$activity-&gt;description; //returns 'created'
+$activity-&gt;subject; //returns the instance of NewsItem that was created
+$activity-&gt;changes; //returns ['attributes' =&gt; ['name' =&gt; 'original name', 'text' =&gt; 'Lorum']];
+</code></pre>
+<p>以 User 模型为例</p>
+<p><img src="/media/15490412692166/15045131016563.jpg" alt=""></p>
+<h3 id="然后看看在更新的时候-会记录哪些">然后看看在<strong>更新</strong>的时候, 会记录哪些?</h3>
+<pre><code class="language-php">$newsItem-&gt;name = 'updated name'
+$newsItem-&gt;save();
+
+//updating the newsItem will cause an activity being logged
+$activity = Activity::all()-&gt;last();
+
+$activity-&gt;description; //returns 'updated'
+$activity-&gt;subject; //returns the instance of NewsItem that was created
+
+$activity-&gt;changes;
+//return this array
+/*
+[
+   'attributes' =&gt; [
+        'name' =&gt; 'updated name',
+        'text' =&gt; 'Lorum',
+    ],
+    'old' =&gt; [
+        'name' =&gt; 'original name',
+        'text' =&gt; 'Lorum',
+    ],
+];
+*/
+</code></pre>
+<p>例如，当修改了某个用户的密码后，会记录如下的信息</p>
+<p>description 字段的值是<code>updated</code></p>
+<p><img src="/media/15490412692166/15045122039409.jpg" alt=""></p>
+<p>其中<code>proterties</code>字段里保存的信息如下</p>
+<p><img src="/media/15490412692166/15045122274351.jpg" alt=""></p>
+<p>注意，我修改了密码（password），但是这里没有记录下来，是因为 User 模型里设置了</p>
+<pre><code class="language-php">protected $hidden = ['password', 'remember_token'];
+</code></pre>
+<p>去掉 password 后，正常记录了</p>
+<p><img src="/media/15490412692166/15045130081896.jpg" alt=""></p>
+<h3 id="删除模型的时候呢"><strong>删除模型的时候呢?</strong></h3>
+<pre><code class="language-php">$newsItem-&gt;delete();
+
+//deleting the newsItem will cause an activity being logged
+$activity = Activity::all()-&gt;last();
+
+$activity-&gt;description; //returns 'deleted'
+$activity-&gt;changes; //returns ['attributes' =&gt; ['name' =&gt; 'updated name', 'text' =&gt; 'Lorum']];
+</code></pre>
+<p><img src="/media/15490412692166/15045131629335.jpg" alt=""></p>
+<h3 id="自定义记录的事件">自定义记录的事件</h3>
+<p>默认会记录 <code>created</code> <code>updated</code> <code>deleted</code> 类型的事件, 如果不需要全部记录, 只需要记录某种事件. 通过设置<code>$recordEvents</code> 成员可以实现。</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+
+    //only the `deleted` event will get logged automatically
+    protected static $recordEvents = ['deleted'];
+}
+</code></pre>
+<h3 id="自定义-description-的内容">自定义 description 的内容</h3>
+<p>默认情况下 description 只会记录几个简单的字符串 如 created, updated, deleted.
+如果想让它看起来更易读, 可以重写<code>getDescriptionForEvent()</code>方法</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+
+    protected $fillable = ['name', 'text'];
+
+    public function getDescriptionForEvent(string $eventName): string
+    {
+        return &quot;This model has been {$eventName}&quot;;
+    }
+
+}
+</code></pre>
+<p>再次修改 model 后, 记录的 activity 中，description 字段的内容就变成了</p>
+<blockquote>
+<p>&lsquo;This model has been created&rsquo;</p>
+</blockquote>
+<h3 id="忽略特定属性的记录">忽略特定属性的记录</h3>
+<p>如果想让 model 的某些属性不被记录, 可以定义 <code>$ignoreChangedAttributes</code> 的值</p>
+<p>如下, 首先通过<code>logAttributes</code>记录&rsquo;name&rsquo;, &lsquo;text&rsquo;两个属性的变化, 然后通过<code>ignoreChangedAttributes</code>忽略 text 的 change action 记录.(会记录 created deleted ?)</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+    
+    protected static $ignoreChangedAttributes = ['text'];
+
+    protected $fillable = ['name', 'text'];
+    
+    protected static $logAttributes = ['name', 'text'];
+}
+
+</code></pre>
+<h3 id="只记录被改变的属性">只记录被改变的属性</h3>
+<p>如果定义了<code>$logAttributes</code>成员，里面定义了要记录的所有字段。
+同时，希望只记录“actually changed after the update”的属性，可以使用<code>$logOnlyDirty</code></p>
+<blockquote>
+<p>Changing only name means only the name attribute will be logged in the activity, and text will be left out.</p>
+</blockquote>
+<p>(这段不甚明白，是不是说一个模型的某个属性值被改变，但没有真实 update 到数据表，就不会记录？ 要通过代码测试)</p>
+<pre><code class="language-php">use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+
+    protected $fillable = ['name', 'text'];
+    
+    protected static $logAttributes = ['name', 'text'];
+    
+    protected static $logOnlyDirty = true;
+}
+</code></pre>
+<h3 id="使用-causesactivity-这个-trait让-model-能得到属于自己的-activities">使用 CausesActivity 这个 trait，让 Model 能得到属于自己的 activities</h3>
+<p>为了得到满足条件的 activities 记录，可以使用 Eloquent 的方法。</p>
+<p>例如前面我们已经知道的</p>
+<pre><code class="language-php">$activityResult = Activity::all()-&gt;last();
+</code></pre>
+<p>或者取回作用在某个 Model 上的 activities（“subject_type”字段记录）</p>
+<pre><code class="language-php">$activityResult = Activity::where('subject_type', 'App\User')-&gt;get();
+</code></pre>
+<p><img src="/media/15490412692166/15045153206526.jpg" alt=""></p>
+<p>这样的方式是以“Activity”模型来修改查询条件得到结果的。</p>
+<p>我们还可以直接让 Model 来查询属于它的 activity（自动筛选）</p>
+<p>通过<strong>向 Model 添加</strong> 获取 activities 的方法，它提供了一个<code>activity</code>的“关联”(relationship)，会返回所有作用在 Model 上的 activities</p>
+<p>例如，在一个 User 模型中包含它，则会返回当前用户的 activities</p>
+<p>修改 <code>\App\User.php</code> 这个模型</p>
+<pre><code class="language-php">//...
+use Spatie\Activitylog\Traits\CausesActivity;
+
+class User extends Model{
+	use CausesActivity;
+	//....
+</code></pre>
+<p>然后在 Controller 某个方法中</p>
+<pre><code class="language-php">public function getLogs(){
+	dd(\Auth::user()-&gt;activity);
+}
+</code></pre>
+<p>就会把所有当前登录用户触发的 activities 全部返回来</p>
+<p><img src="/media/15490412692166/15045202380124.jpg" alt=""></p>
+<p><strong>问题</strong></p>
+<p>使用这个特性后，会导致原来的 <code>use Spatie\Activitylog\Traits\LogsActivity;</code>（让 Model 自动记录 activity） 和它产生 <code>activity</code>冲突。。。两者不能同时用。。。。</p>
+<blockquote>
+<p>FatalErrorException in User.php line 17:
+Trait method activity has not been applied, because there are collisions with other trait methods on App\User</p>
+</blockquote>
+<h3 id="禁用启用-logging">禁用、启用 logging</h3>
+<p>如果不想对指定的 Model 进行 log，则可以禁用</p>
+<p>同样，可以对已经禁用了 logging 的 Model 重新启用日志记录</p>
+<pre><code class="language-php">$newsItem = NewsItem::create([
+   'name' =&gt; 'original name',
+   'text' =&gt; 'Lorum'
+]);
+
+// Updating with logging disabled
+$newsItem-&gt;disableLogging();
+
+$newsItem-&gt;update(['name' =&gt; 'The new name is not logged']);
+
+// Updating with logging enabled
+$newsItem-&gt;enableLogging();
+
+$newsItem-&gt;update(['name' =&gt; 'The new name is logged']);
+</code></pre>
+<h2 id="使用占位符">使用占位符</h2>
+<p>在记录 activity 的时候，可以使用占位符 :subject, :causer or :properties 来自动获取和替换成实际的数据。例如：</p>
+<pre><code class="language-php">activity()
+    -&gt;performedOn($article)
+    -&gt;causedBy($user)
+    -&gt;withProperties(['laravel' =&gt; 'awesome'])
+    -&gt;log('The subject name is :subject.name, the causer name is :causer.name and Laravel is :properties.laravel');
+</code></pre>
+<h2 id="多个-log">多个 log</h2>
+<h3 id="默认-log-name">默认 log name</h3>
+<p>如果不特别指定<code>log_name</code>, 则把所有 activities 保存到&quot;default&rdquo; 这个默认 log name</p>
+<p><img src="/media/15490412692166/15045997298080.jpg" alt=""></p>
+<p>这个“default”名字可以在配置文件中修改<code>default_log_name</code>实现</p>
+<pre><code class="language-php">activity()-&gt;log('hi');
+
+$lastActivity = Spatie\Activitylog\Models\Activity::all()-&gt;last();
+
+$lastActivity-&gt;log_name; //returns 'default';
+</code></pre>
+<h3 id="在写入-activity-的时候指定-log-name">在写入 activity 的时候指定 log name</h3>
+<p>传递一个参数给<code>activity()</code>来指定 log name</p>
+<pre><code class="language-php">activity('other-log')-&gt;log(&quot;hi&quot;);
+
+Activity::all()-&gt;last()-&gt;log_name; //returns 'other-log';
+</code></pre>
+<h3 id="为不同的-model-指定一个-log-name">为不同的 Model 指定一个 log name</h3>
+<p>默认情况下， LogsActivity traits 使用配置文件中定义的 <code>default_log_name</code>， 可以通过重写 Model 的 <code>getLogNameToUse</code>函数来指定 log name</p>
+<pre><code class="language-php">public function getLogNameToUse(string $eventName = ''): string
+{
+   return 'custom_log_name_for_this_model';
+}
+</code></pre>
+<h3 id="取回指定-log-的-activitys">取回指定 log 的 activitys</h3>
+<p>实际上 Activity 就是一个 Eloquent Model，因此要获取一个 log name 下的所有满足条件的 activities，也可以使用 Eloquent 的方法</p>
+<pre><code class="language-php">Activity::where('log_name' , 'other-log')-&gt;get(); //returns all activity from the 'other-log'
+</code></pre>
+<p>或者用一个<code>inLog</code>方法来指定查找 activities 的作用域（scope？是不是就是 log name）</p>
+<pre><code class="language-php">Activity::inLog('other-log')-&gt;get();
+
+//you can pass multiple log names to the scope
+Activity::inLog('default', 'other-log')-&gt;get();
+
+//passing an array is just as good
+Activity::inLog(['default', 'other-log'])-&gt;get();
+</code></pre>
+<h2 id="案例结合event-listener来记录用户的登录退出等动作">案例，结合“event listener”来记录用户的登录、退出等动作</h2>
+<p>请查看 “Event”资料</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95-activitylog/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95-activitylog/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-captcha-%E5%9B%BE%E5%BD%A2%E9%AA%8C%E8%AF%81%E7%A0%81/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%8A%9F%E8%83%BD-html%E5%92%8C%E8%A1%A8%E5%8D%95%E6%9E%84%E5%BB%BA%E5%99%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

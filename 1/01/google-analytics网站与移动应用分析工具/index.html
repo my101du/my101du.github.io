@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Google Analytics网站与移动应用分析工具 permalink: google-analytics tags:
+ skill google analytics   最新更新
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Google Analytics网站与移动应用分析工具
+permalink: google-analytics
+tags:
+
+skill
+google analytics
+
+
+最新更新" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Google Analytics网站与移动应用分析工具
+permalink: google-analytics
+tags:
+
+skill
+google analytics
+
+
+最新更新">
+
+<meta itemprop="wordCount" content="3284">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Google Analytics网站与移动应用分析工具
+permalink: google-analytics
+tags:
+
+skill
+google analytics
+
+
+最新更新"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3284字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Google Analytics网站与移动应用分析工具
+permalink: google-analytics
+tags:</p>
+<ul>
+<li>skill</li>
+<li>google analytics</li>
+</ul>
+<hr>
+<p>最新更新</p>
+<h1 id="注册">注册</h1>
+<h1 id="获取统计代码">获取统计代码</h1>
+<h1 id="概览-google-analytics报告解读">概览： Google Analytics报告解读</h1>
+<p>来自 <a href="https://yq.aliyun.com/wenji/14844">https://yq.aliyun.com/wenji/14844</a></p>
+<h2 id="segment">segment</h2>
+<p><a href="http://blog.sina.com.cn/s/blog_72ef7bea0102w2nv.html">http://blog.sina.com.cn/s/blog_72ef7bea0102w2nv.html</a></p>
+<p><strong>Segment类型</strong></p>
+<p>Segment代表会话子集或用户子集：</p>
+<p>会话子集：例如，源自广告系列 A 的所有会话；发生购买行为的所有会话
+用户子集：例如，之前有过购买行为的用户；向其购物车添加了商品，但未完成购买的用户</p>
+<p>先了解一下 Google Analytics（分析）用户模型有助于了解segment的工作原理。 Google Analytics（分析）用户模型由三大要素构成：</p>
+<p>用户
+会话 - 用户到达您的网站资源并与之互动。所有这些用户互动都会被划组到所谓的会话中。
+点击（Hit）- 在会话中，用户会与您的网站资源互动。每次互动都被称为一次点击。这些点击包括网页浏览、事件、交易等等。</p>
+<p>一个用户可以有多个会话，每个会话可以有多次点击。下图直观显示了这一关系：</p>
+<p><img src="/media/15490412409762/15434595270907.jpg" alt="-w288">
+Google <!-- raw HTML omitted -->Analytics之segment（分块、分割、细分）</p>
+<p><strong>使用Segment</strong></p>
+<p>Segment是非破坏性的过滤器，不会更改您的基础数据。应用segment之后，它会在您浏览报告的过程中始终保持有效状态，直到您将其移除。您一次最多可以应用四个细分，并可在报告中将各个细分的结果放在一起比较。</p>
+<p>除分析数据之外，Segment还可以用于构建再营销受众群体。</p>
+<p>Google Analytics（分析）包含预定义segment（系统segment），您可以按原样使用这些segment，也可以通过复制并修改这些segment来创建新的自定义segment。您也可以从头开始构建自己的segment。另外，您可以从 Google Analytics（分析）解决方案库导入segment，这是一个免费的市场，Google Analytics（用户）可在其中分享各种segment以及开发的其他解决方案。</p>
+<p><strong>Segment的定义和范围</strong>
+在 Google Analytics（分析）报告中，您可以通过<strong>创建基于维度和指标的过滤器来定义segment</strong>：</p>
+<p>用户类型完全匹配“回访用户”
+国家/地区完全匹配“美国”
+电子商务转化率&gt;“0.2%”
+除了您在过滤器中使用的维度和指标之外，您还可以为过滤器设置数据范围。您可以使用三种范围：</p>
+<p>点击：单次操作中的行为，例如查看网页或播放视频。
+会话：单次会话中的行为；例如在会话过程中用户完成的目标或产生的收入。
+用户：在所用日期范围（最多 90 天）内所有会话中的行为；例如，在日期范围内的所有会话中用户完成的所有目标或产生的所有收入。
+你可以使用segment生成工具定义组成segment的过滤器。</p>
+<p><strong>Segment限制</strong></p>
+<p>略</p>
+<p><strong>Segment与filter的区别</strong></p>
+<p>在Google analytics中，Segment与filter都侧重于对数据的切片。在很多情况下，应用这两者返回的结果是相同的，但其本质是不同的。那么，何时应该使用segment，何时应该使用filter呢？</p>
+<p>如果你想<strong>选择整个访问则使用 segment</strong>，如果想<strong>查找所有访问中的特定事件、pageviews等则使用 filter</strong>。</p>
+<p>Segment：对于segment，每个访问都检查是否符合segment条件。对于满足条件的会话，所有行都会被获得。对于不满足条件的会话，不会获得任何行。</p>
+<p>Filter：对于filter，所有访问的所有行都会检查是否满足条件，仅满足过滤器条件的行会被获得。</p>
+<p>个人感受：
+Google analytics中的filter就像SQL中的where语句（按条件筛选数据）
+而segment就像SQL中group by相应的having语句。(按分组条件对数据分组)</p>
+<h1 id="用户分析">用户分析</h1>
+<h1 id="内容分析">内容分析</h1>
+<h1 id="使用-api-定制功能">使用 API 定制功能</h1>
+<p><a href="https://developers.google.com/analytics/devguides/reporting/core/v4/?hl=zh-cn">https://developers.google.com/analytics/devguides/reporting/core/v4/?hl=zh-cn</a></p>
+<p><strong>任务：定时导出报告</strong></p>
+<h1 id="gdpr-与-ga">GDPR 与 GA</h1>
+<p>参考： <a href="https://www.jeffalytics.com/google-analytics-gdpr/">https://www.jeffalytics.com/google-analytics-gdpr/</a></p>
+<p>来自 Google 的一封邮件</p>
+<p><img src="/media/15490412409762/15434615416403.png" alt=""></p>
+<h2 id="数据保留期">数据保留期</h2>
+<p>Admin -&gt; Property -&gt; Tracking Info -&gt; Data Retension</p>
+<p>当数据的保留期限结束后，Google Analytics(分析)将按月自动删除数据。如果您更改了保留期限，则任何受影响的数据将在下一个月度流程中删除。例如，如果您将 26 个月更改为 14 个月，那么任何留存时间超过 14 个月的数据都将在下一个月度流程中删除。我自己也简单的看了一下，然后去google analysis的后台设置下，今天跟大家简单闲扯下原文链接</p>
+<h1 id="数据突然变少">数据突然变少</h1>
+<p>google: sudden drop in traffic</p>
+<p><img src="/media/15490412409762/15434631113652.jpg" alt="-w918"></p>
+<p>在 admin -&gt; Property setting 里</p>
+<p><img src="/media/15490412409762/15434714351366.jpg" alt="-w261">
+查了一些资料：</p>
+<ol>
+<li>filter 问题  ——可是我没有设置 filter</li>
+<li>add a new View,  也没什么变化</li>
+</ol>
+<h2 id="首先定位到具体是什么时候出现问题的">首先定位到具体是什么时候出现问题的</h2>
+<p>不断缩小数据范围，直到确定哪一天开始</p>
+<h2 id="和-it-合作使用工具进行排查">和 IT 合作，使用工具进行排查</h2>
+<h3 id="浏览器插件-google-tag-assistant-可以看到一些错误">浏览器插件 Google Tag Assistant 可以看到一些错误</h3>
+<p><img src="/media/15490412409762/15434765300693.jpg" alt="-w441"></p>
+<h3 id="google-analytics-debugger">Google Analytics Debugger</h3>
+<p>还不知道怎么用</p>
+<h3 id="然后检查和更新-ga-js-代码">然后检查和更新 GA js 代码</h3>
+<p>从旧网站复制过来的代码，能运行，但是否会有失效日期？</p>
+<p>打开 GA 控制台， Tracking ID 里找出来最新的代码放到 <!-- raw HTML omitted --> 里面去</p>
+<h3 id="google-search-console-查看问题">Google Search Console 查看问题</h3>
+<p><a href="https://search.google.com/search-console">https://search.google.com/search-console</a></p>
+<p>先验证站点</p>
+<p><img src="/media/15490412409762/15434771762429.jpg" alt="-w606"></p>
+<p>还有 <a href="https://yoast.com/webmaster-tools-search-analytics/">https://yoast.com/webmaster-tools-search-analytics/</a></p>
+<h2 id="如果不是技术问题那么检查是哪个流量源的减少">如果不是技术问题，那么检查是哪个“流量源”的减少</h2>
+<p>First, have a look at the Channels you’ve got and plot rows of each channel, you can plot six channels at a time:</p>
+<p>后面没看了，详情看这里
+<a href="https://yoast.com/analyze-drop-traffic/">https://yoast.com/analyze-drop-traffic/</a></p>
+<h2 id="设置一个告警">设置一个告警</h2>
+<p>Admin -&gt; View -&gt; Custom Alerts</p>
+<h2 id="可能是一个设置参数问题其他用户">可能是一个设置参数问题（其他用户）</h2>
+<p>报表中启用了用户度量
+<a href="https://support.google.com/analytics/answer/2992042?hl=en">https://support.google.com/analytics/answer/2992042?hl=en</a></p>
+<p>展开“Previous calculation method” 看看</p>
+<p><a href="https://moz.com/community/q/google-analytics-bug-sudden-drop-in-traffic-not-a-drop-off-but-a-collective-drop-in-volume-retroactively-applied-too">https://moz.com/community/q/google-analytics-bug-sudden-drop-in-traffic-not-a-drop-off-but-a-collective-drop-in-volume-retroactively-applied-too</a></p>
+<p>I also noticed the same problem in my Google Analytics account a few days ago. All of the websites were showing less data for sessions from what I had recorded a few weeks/month ago. I also checked the internet for possible answers or any updates from Google, but could only find this post ;)</p>
+<p>But, I am glad to share that I have found the cure. Actually, there was no data loss in any of the websites. It was just that someone (who also has my account access) had turned on &lsquo;Enable Users Metric in Reporting&rsquo; (<a href="https://support.google.com/analytics/answer/2992042?hl=en">https://support.google.com/analytics/answer/2992042?hl=en</a>) under the Property settings. After this change, the sessions were visible in the 3rd column of every report screen instead of their usual position, i.e., 1st. (see attached image)</p>
+<p>As our eyes are used to finding the sessions in the first column, we are not able to see that the sessions are actually in the 3rd column now and 1st one contains the &lsquo;Users&rsquo;.</p>
+<p>I hope this will answer your query. :)</p>
+<p>Although I did find one bug that enabling user metrics of a specific property, enables it for all the website properties in my analytics email ID. Strange.. huh..!!</p>
+<p>Propety Setti</p>
+<p><img src="/media/15490412409762/15434705918196.jpg" alt="-w106"></p>
+<p>View Setting</p>
+<p><img src="/media/15490412409762/15434706845264.jpg" alt="-w135"></p>
+<h1 id="第三方数据分析">第三方数据分析</h1>
+<h2 id="使用-google-sheet-电子表格的google-analytics-插件生成报表">使用 Google Sheet (电子表格)的Google Analytics 插件生成报表</h2>
+<p><a href="https://www.jianshu.com/p/df942a1ca55b">https://www.jianshu.com/p/df942a1ca55b</a></p>
+<p>完整的插件说明
+<a href="https://developers.google.com/analytics/solutions/google-analytics-spreadsheet-add-on">https://developers.google.com/analytics/solutions/google-analytics-spreadsheet-add-on</a></p>
+<h3 id="创建报表">创建报表</h3>
+<p>打开谷歌共享表格</p>
+<p><img src="/media/15490412409762/15434564483124.jpg" alt="-w476"></p>
+<p>找到插件&gt;获取插件 ，搜索Google Analytics，添加插件</p>
+<p><img src="/media/15490412409762/15434565109064.jpg" alt="-w706"></p>
+<p><img src="/media/15490412409762/15434565809069.jpg" alt="-w241"></p>
+<p>然后创建一个新的 Google Analytics 报表 (或者后面运行报表、设置定期运行)</p>
+<p><img src="/media/15490412409762/15434570063739.jpg" alt=""></p>
+<p>报告名称，站点选择。  最重要的是 3)</p>
+<p>metrics 指标，包括我们经常看的会话数，跳出率，退出率，停留时间等等
+Dimensions 维度，可以按照时间，国家，着陆页面等等来对数据进行维度限制
+Segments 分块，例如，在你的整个用户群中，你可使用一个segment指定来自特定国家或城市的用户，使用另一个segment指定购买特定产品系列或访问网站上特定部分的用户</p>
+<p>具体的参数查询这里 <a href="https://developers.google.com/analytics/devguides/reporting/core/dimsmets">https://developers.google.com/analytics/devguides/reporting/core/dimsmets</a></p>
+<p><img src="/media/15490412409762/15434583142262.jpg" alt="-w311"></p>
+<p>点击创建之后，会出现如下的一个表</p>
+<p><strong>注意：这个表一定不能删，有这个表才能运行数据</strong></p>
+<p><img src="/media/15490412409762/15434603505632.jpg" alt=""></p>
+<p>如果创建失败，弹出提示框（Google 下很多人都遇到过。。。）</p>
+<blockquote>
+<p>ScriptError: Authorization is required to perform that action.</p>
+</blockquote>
+<p>进入“隐身模式”登录就可以了。。。</p>
+<p>右侧的白色部分：报表生成所需要的各项数据</p>
+<p>每列数据会生成一张表，且可以通过直接在新一列进行相关数据的填写来<strong>创建新的报表</strong></p>
+<ul>
+<li>第5列和第6列就是数据的起止日期，这里可以直接填上日期（日期格式：年-月-日），也可以设置需要的日期函数（常用的日期函数：Today函数（=TODAY()），显示当天日期；想要昨天的日期的话，可以用：=TODAY()-1   <a href="https://support.google.com/docs/table/25273?hl=zh-Hans&amp;ref_topic=3105385">https://support.google.com/docs/table/25273?hl=zh-Hans&amp;ref_topic=3105385</a>）</li>
+<li>第7行Last N Days，只生成最近N天的数据，和上面的起止日期不共存， 如果上方已经写了起止日期，这里留空</li>
+<li>第8行Metrics和第九行Dimensions对应的就是Create new report窗口界面第三点的内容</li>
+<li>Metics和Dimensions都支持选多个，即生成的同一张表中会出现不同纬度的多个数据项，这里需要<strong>慎重选择，尽量是有关联的，不然可能会报错或出现数据杂乱的问题</strong></li>
+<li>Sort，排序功能，会对生成的表格进行排序，默认是正序，倒序的话，可以在前面加上负号，例：-ga:sessions  则会对数据进行会话数从大到小的排序</li>
+<li>Filters，过滤器，用于过滤表格数据，可通过页面类型，数据渠道等过滤生成的数据 <a href="https://link.jianshu.com/?t=https%3A%2F%2Fdevelopers.google.com%2Fanalytics%2Fdevguides%2Freporting%2Fcore%2Fv3%2Freference%23filters">https://link.jianshu.com/?t=https%3A%2F%2Fdevelopers.google.com%2Fanalytics%2Fdevguides%2Freporting%2Fcore%2Fv3%2Freference%23filters</a></li>
+<li>Max Results，生成数据的最大行数，这个可以自定义生成多少条数据，但最大只能为10000</li>
+<li>Spreadsgeet URL， 可以通过填写其他共享表地址，将当前列的数据生成到其他共享表中去，前提是另外的表格有当前数据读取权限</li>
+</ul>
+<h3 id="运行报表">运行报表</h3>
+<p>各项数据都填写好了之后，点击插件里面的 Run Reports，就可以生成相关的数据报表了</p>
+<p><img src="/media/15490412409762/15434609491699.jpg" alt="-w478"></p>
+<p><img src="/media/15490412409762/15434609866735.jpg" alt="-w466"></p>
+<p><img src="/media/15490412409762/15434610619126.jpg" alt="-w631"></p>
+<h2 id="zoho-报表这个网站专门开发-saas-和企业服务">zoho 报表（这个网站专门开发 SaaS 和企业服务）</h2>
+<p><a href="https://www.zoho.com.cn/content/reports3.html">https://www.zoho.com.cn/content/reports3.html</a></p>
+<h2 id="google-data-studio">Google data studio</h2>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/github-pages-%E6%89%98%E7%AE%A1%E5%8D%9A%E5%AE%A2/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

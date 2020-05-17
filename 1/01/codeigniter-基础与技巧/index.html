@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="文档地址：https://www.codeigniter.com/user_guide/index.html 简介 特点 Model-View-Controller Based System Extremely Light Weight Full Featured database classes with support" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="文档地址：https://www.codeigniter.com/user_guide/index.html 简介 特点 Model-View-Controller Based System Extremely Light Weight Full Featured database classes with support" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="文档地址：https://www.codeigniter.com/user_guide/index.html 简介 特点 Model-View-Controller Based System Extremely Light Weight Full Featured database classes with support">
+
+<meta itemprop="wordCount" content="6850">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="文档地址：https://www.codeigniter.com/user_guide/index.html 简介 特点 Model-View-Controller Based System Extremely Light Weight Full Featured database classes with support"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6850字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>文档地址：https://www.codeigniter.com/user_guide/index.html</p>
+<h1 id="简介">简介</h1>
+<h2 id="特点">特点</h2>
+<ul>
+<li>Model-View-Controller Based System</li>
+<li>Extremely Light Weight</li>
+<li>Full Featured database classes with support for several platforms.</li>
+<li>Query Builder Database Support</li>
+<li>Form and Data Validation</li>
+<li>Security and XSS Filtering</li>
+<li>Session Management</li>
+<li>Email Sending Class. Supports Attachments, HTML/Text email, multiple protocols (sendmail, SMTP, and Mail) and more.</li>
+<li>Image Manipulation Library (cropping, resizing, rotating, etc.). Supports GD, ImageMagick, and NetPBM</li>
+<li>File Uploading Class</li>
+<li>FTP Class</li>
+<li>Localization</li>
+<li>Pagination</li>
+<li>Data Encryption</li>
+<li>Benchmarking</li>
+<li>Full Page Caching</li>
+<li>Error Logging</li>
+<li>Application Profiling</li>
+<li>Calendaring Class</li>
+<li>User Agent Class</li>
+<li>Zip Encoding Class</li>
+<li>Template Engine Class</li>
+<li>Trackback Class</li>
+<li>XML-RPC Library</li>
+<li>Unit Testing Class</li>
+<li>Search-engine Friendly URLs</li>
+<li>Flexible URI Routing</li>
+<li>Support for Hooks and Class Extensions</li>
+<li>Large library of “helper” functions</li>
+</ul>
+<h2 id="应用结构数据在系统中的流动">应用结构，数据在系统中的流动</h2>
+<p><img src="/media/codeigniter/15598035579283.jpg" alt=""></p>
+<p><code>index.php</code> front controller，初始化 CI 框架有关的资源
+<code>Router</code> 处理 HTTP 请求
+如果 <code>cache</code> 文件存在，则直接返回结果给浏览器，跳过系统的执行
+<code>Security</code>：一旦 application controller 被加载完，就过滤所有 HTTP 请求和表单的 submit 提交
+<code>Controller</code>加载 model, core libraries, helpers, 以及其他需要处理的资源
+最终 <code>View</code> 将结果渲染到浏览器显示出来，如果启用 cache, 则后续的请求可以使用它。</p>
+<h2 id="mvc">MVC</h2>
+<ul>
+<li>The <code>**Model**</code> represents your data structures. Typically your model classes will contain <strong>functions</strong> that help you retrieve, insert, and update information in your <code>**database**</code>.</li>
+<li>The <code>**View**</code> is the information that is being <strong>presented</strong> to a user. A View will normally be a web <strong>page</strong>, but in CodeIgniter, a view can also be a page <strong>fragment</strong> like a header or footer. It can also be an RSS page, or any other type of “page”.</li>
+<li>The <code>**Controller**</code> serves as an intermediary between the Model, the View, and any other resources needed to process the HTTP request and generate a web page.</li>
+</ul>
+<h2 id="设计和架构的目标">设计和架构的目标</h2>
+<p>为了达到极致的性能。</p>
+<ul>
+<li><strong>Dynamic Instantiation</strong>. In CodeIgniter, components are loaded and routines executed only when requested, rather than globally. No assumptions are made by the system regarding what may be needed beyond the minimal core resources, so the system is very light-weight by default. The events, as triggered by the HTTP request, and the controllers and views you design will determine what is invoked.</li>
+</ul>
+<blockquote>
+<p>动态初始化，每个组件只有在被请求时才加载。（而不是全局的），由http请求触发的事件，以及控制器/视图来决定调用什么</p>
+</blockquote>
+<ul>
+<li><strong>Loose Coupling</strong>. Coupling is the degree to which components of a system rely on each other. The less components depend on each other the more reusable and flexible the system becomes. Our goal was a very loosely coupled system.</li>
+</ul>
+<blockquote>
+<p>系统的各个组件之间连接尽可能松散，以提高可扩展性。</p>
+</blockquote>
+<ul>
+<li><strong>Component Singularity</strong>. Singularity is the degree to which components have a narrowly focused purpose. In CodeIgniter, each class and its functions are highly autonomous in order to allow maximum usefulness.</li>
+</ul>
+<blockquote>
+<p>每个类及其函数都是高度自治的，以便最大限度地发挥作用</p>
+</blockquote>
+<h1 id="安装与运行">安装与运行</h1>
+<h2 id="传统方式安装">传统方式安装</h2>
+<p>比 laravel 简单，不需要命令行， 直接下载 zip 包，放在 web 目录。运行！</p>
+<p>你可以把目录下的<code>user_guide</code>删除，或者挪到别处以便以后部署时缩小体积，这是文档，和核心目录并没有关系(核心才2M多)</p>
+<p>如果要绑定一个域名， 修改<code>application/config/config.php</code>文件</p>
+<p>如果使用数据库，修改<code>application/config/database.php</code>文件</p>
+<p>注意一些安全措施，例如隐藏系统核心目录和文件，修改 <code>index.php</code>，</p>
+<h2 id="composer-方式安装-且自动隐藏核心目录需要最新版">Composer 方式安装 （且自动隐藏核心目录）需要最新版</h2>
+<p><a href="https://github.com/kenjis/codeigniter-composer-installer">https://github.com/kenjis/codeigniter-composer-installer</a></p>
+<pre><code class="language-shell">composer create-project kenjis/codeigniter-composer-installer codeigniter
+</code></pre>
+<h2 id="运行时常见-404-或者-no-input-file-specified-问题">运行时常见 404 或者 no input file specified 问题</h2>
+<p>关于这些问题，官方文档不太详细，但网上能找到很多类似的问题。</p>
+<h3 id="nginx-下处理-rewrite-处理404-报错">nginx 下处理 rewrite ，处理404 报错</h3>
+<p>在<code>config.php</code>里写了 <code>$config['uri_protocol'] = 'AUTO';</code></p>
+<p>输入 http://localhost/index.php/login 会报 404</p>
+<p>需要修改 nginx 配置，增加下面的处理</p>
+<pre><code class="language-shell">location / {
+        try_files $uri $uri/ /index.php;
+}
+</code></pre>
+<h3 id="修改-phpini-支持pathinfo">修改 php.ini 支持pathinfo</h3>
+<p>和 no input file specified 关联最紧密的参数，网上很多资料都没谈到这点。</p>
+<pre><code class="language-ini">cgi.fix_pathinfo=1
+</code></pre>
+<h3 id="configconfigphp">config/config.php</h3>
+<pre><code class="language-php">$config['base_url'] = 'http://1.abc.com/';
+$config['index_page'] = '';
+$config['uri_protocol']    = 'REQUEST_URI';
+</code></pre>
+<h2 id="修改-application-和-system-目录">修改 application 和 system 目录</h2>
+<p>有时候为了安全，你可以把 application 和 system 目录改名，或者让入口文件、静态资料文件不和应用的 php 代码放在一层目录（这样就无法通过浏览器列出这些敏感的文件了），如下</p>
+<pre><code class="language-shell">/wwwroot/ci-app
+    /app (application 改名)
+    /sys（system 改名）
+    /public （原来留下的文件 index.php 等）
+        |- index.php
+        |- composer.json
+</code></pre>
+<p>首先修改 nginx 的配置，把 <code>root</code> 改成 <code>/wwwroot/ci-app/public</code> 指向新的 <code>public</code>目录</p>
+<p>然后修改 <code>index.php</code>, 把这两个参数改成上级目录</p>
+<pre><code class="language-php">$system_path = '../sys';
+$application_folder = '../app';
+</code></pre>
+<h1 id="从一个新闻系统开始快速了解">从一个新闻系统开始快速了解</h1>
+<h2 id="控制器与-url-处理-页面">控制器与 URL： 处理 “页面”</h2>
+<p>例如有一个 URL</p>
+<blockquote>
+<p><a href="http://example.com/news/latest/10">http://example.com/news/latest/10</a></p>
+</blockquote>
+<p>对应到 控制器-方法-参数</p>
+<blockquote>
+<p><a href="http://example.com/%5Bcontroller-class%5D/%5Bcontroller-method%5D/%5Barguments%5D">http://example.com/[controller-class]/[controller-method]/[arguments]</a></p>
+</blockquote>
+<p>控制器是http请求的处理者，并把 model 和 view 连接起来</p>
+<p>现在创建一个控制器类<code>application/controllers/Pages.php</code></p>
+<p>类名<code>Pages</code>
+扩展自类 <code>CI_Controller</code> (system/core/Controller.php)
+有一个公共方法 <code>view</code>
+参数为 <code>$page</code>(默认值 home)</p>
+<pre><code class="language-php">class Pages extends CI_Controller {
+
+        public function view($page = 'home')
+        {
+        }
+}
+</code></pre>
+<h2 id="views-视图页面模板-page-templates">Views 视图（页面模板 page templates）</h2>
+<p>创建一个“头部”模板<code>application/views/templates/header.php</code></p>
+<pre><code class="language-html">&lt;html&gt;
+        &lt;head&gt;
+                &lt;title&gt;CodeIgniter Tutorial&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+
+                &lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+</code></pre>
+<p>再创建一个“底部”模板<code>application/views/templates/footer.php</code></p>
+<pre><code class="language-html">    &lt;em&gt;&amp;copy; 2015&lt;/em&gt;
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="添加逻辑到-controller-并加载视图动态加载页面的模板">添加逻辑到 controller 并加载视图：动态加载“页面”的模板</h2>
+<p>注意到前面模板文件 <code>header.php</code> 有个php变量<code>$title</code>，需要在调用模板渲染的控制器方法里定义。</p>
+<p>下面的代码中，<code>view()</code>方法能够根据传入的<code>$page</code>参数的值，加载对应名称的模板文件。例如 <code>pages/home.php</code>。 如果文件不存在，就返回 404 错误</p>
+<p>同时，把 <code>$title</code>变量传入到模板里面去。</p>
+<pre><code class="language-php">public function view($page = 'home')
+{
+        if ( ! file_exists(APPPATH.'views/pages/'.$page.'.php'))
+        {
+                // Whoops, we don't have a page for that!
+                show_404();
+        }
+
+        $data['title'] = ucfirst($page); // Capitalize the first letter
+
+        $this-&gt;load-&gt;view('templates/header', $data);
+        $this-&gt;load-&gt;view('pages/'.$page, $data);
+        $this-&gt;load-&gt;view('templates/footer', $data);
+}
+</code></pre>
+<h2 id="路由">路由</h2>
+<p>我们希望用户访问<code>index.php/pages/view/about</code>的时候，能显示 about 这个 page.(并且加载 header 和 footer)</p>
+<p>使用自定义的路由规则，你可以将 URI 与控制器/方法/参数匹配起来</p>
+<blockquote>
+<p><a href="http://example.com/%5Bcontroller-class%5D/%5Bcontroller-method%5D/%5Barguments%5D">http://example.com/[controller-class]/[controller-method]/[arguments]</a></p>
+</blockquote>
+<p>打开路由定义文件<code>application/config/routes.php</code>，添加两行</p>
+<pre><code class="language-php">$route['default_controller'] = 'pages/view';
+$route['(:any)'] = 'pages/view/$1';
+</code></pre>
+<p>第二行的意思是使用通配符<code>(:any)</code>来匹配 <code>any</code> （任意）请求，然后将参数传递给<code>Pages</code>类的<code>view()</code>方法</p>
+<p>现在访问这个地址试试。能正确地处理路由了。（用户请求 -&gt; 路由 -&gt; 控制器/方法/参数 -&gt; 显示页面）</p>
+<blockquote>
+<p>index.php/about</p>
+</blockquote>
+<p>如果 views/pages/about.php 不存在，就会返回 404</p>
+<p><img src="/media/codeigniter/15598090910364.jpg" alt="-w243"></p>
+<p>如果文件存在，则正常渲染出模板、页面</p>
+<p><img src="/media/codeigniter/15598091487198.jpg" alt="-w276"></p>
+<p>详细的路由说明在  /general/routing.html</p>
+<h2 id="增删改查model-模型--在控制器里调用模型方法">增删改查：Model 模型 / 在控制器里调用模型方法</h2>
+<h3 id="创建数据表news结构">创建数据表<code>news</code>结构</h3>
+<pre><code class="language-sql">CREATE TABLE news (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    title varchar(128) NOT NULL,
+    slug varchar(128) NOT NULL,
+    text text NOT NULL,
+    PRIMARY KEY (id),
+    KEY slug (slug)
+);
+</code></pre>
+<h3 id="创建-news_model-模型并加载数据库操作类">创建 News_model 模型并加载数据库操作类</h3>
+<p>为了更好地组织代码，我们尽可能不要在 controller 里面写数据库查询语句。而是在 <code>model</code>里来统一处理 sql 的 queries 操作，便于代码的复用。</p>
+<p>不过，首先要在 <code>config/database.php</code> 里把数据库连接配置好。（参考后面“数据库”部分）</p>
+<p>在<code>application/models/</code>里新建一个 Model 类 <code>News_model.php</code>，继承自<code>CI_Model</code>。</p>
+<p>然后在构造函数里加载数据库类 <code>$this-&gt;load-&gt;database()</code>，这样当前模型类 News_model 就拥有一个属性 <code>db</code>（通过 <code>$this-&gt;db</code>获取），并能调用这个属性拥有的方法（如<code>$this-&gt;db-&gt;get()</code>）</p>
+<pre><code class="language-php">class News_model extends CI_Model
+{
+    public function __construct() {
+        $this-&gt;load-&gt;database();
+    }
+}
+</code></pre>
+<h3 id="创建一个模型方法-get_news-使用-query-builder-查询数据库">创建一个模型方法 <code>get_news()</code>, 使用 Query Builder 查询数据库</h3>
+<p>这个方法通过参数 <code>$slug</code>(默认值 FALSE ) 可以同时处理两种情况：</p>
+<ul>
+<li>查询全部 news</li>
+<li>查询 slug 等于某个字符串的指定文章</li>
+</ul>
+<p>两种情况下调用的方法名称有不同如下：
+第一种情况，读取全部 news 数据，使用了 <code>$this-&gt;db</code> 的 <code>get('[数据表名]')</code>方法，然后用 <code>$query</code>对象的<code>result_array()</code>方法返回结果数组。
+对比第二种情况（指定news）,则分别用方法 <code>get_where</code>（并传入第二个参数作为“查询条件”），返回结果数组则用 <code>row_array()</code>方法</p>
+<pre><code class="language-php">public function get_news($slug = FALSE) {
+	if($slug === FALSE) {
+		$query = $this-&gt;db-&gt;get('news');
+		return $query-&gt;result_array();
+	}
+
+	$query = $this-&gt;db-&gt;get_where('news', array('slug'=&gt;$slug));
+	return $query-&gt;row_array();
+} 
+</code></pre>
+<h3 id="在控制器方法中调用模型方法获取数据">在控制器方法中调用模型方法，获取数据</h3>
+<p>新建一个控制器 <code>News</code>, 对应文件 <code>controllers/News.php</code></p>
+<p>在构造函数里完成(这里的两个加载类的方法很重要)</p>
+<ol>
+<li>调用父类的构造函数</li>
+<li>调用 <code>$this-&gt;load</code> 的 <code>model()</code>方法 加载 news_model 这个模型类(后续就能使用模型及其方法了)。</li>
+<li>调用 <code>$this-&gt;load</code> 的 <code>helper()</code>方法 加载 url_helper 这个类（后续就能获取 <code>$slug</code>了）。</li>
+</ol>
+<p>接着，index() 和 view() 方法分别调用了 News_model 模型类里的 <code>get_news()</code>方法，只不过一个传入参数，一个没有。</p>
+<p>稍后这两个控制器方法会和路由的 “首页”和“详情页”关联起来</p>
+<pre><code class="language-php">class News extends CI_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this-&gt;load-&gt;model('news_model');
+        $this-&gt;load-&gt;helper('url_helper');
+    }
+
+    public function index(){
+        $data['news'] = $this-&gt;news_model-&gt;get_news();
+    }
+
+    public function view($slug = NULL) {
+        $data[&quot;news_item&quot;] = $this-&gt;news_mode-&gt;get_news($slug);
+    }
+}
+</code></pre>
+<h3 id="控制器方法-将获取到的数据在视图文件里显示出来">控制器方法 将获取到的数据在视图文件里显示出来</h3>
+<p>在 <code>views</code> 目录下创建两个视图文件 /news/index.php 和 /news/view.html  (和 templates 目录同级)</p>
+<p>然后修改控制器方法 <code>index()</code>，添加内容如下</p>
+<pre><code class="language-php">public function index() {
+    $data['news'] = $this-&gt;news_model-&gt;get_news();
+    $data['title'] = 'News archive';
+
+    $this-&gt;load-&gt;view('templates/header', $data);
+    $this-&gt;load-&gt;view('news/index', $data);
+    $this-&gt;load-&gt;view('templates/footer');
+}
+</code></pre>
+<p>首先是 <code>index()</code>方法, 增加一个 &ldquo;title&rdquo; 元素到 <code>$data</code>数组里(页面的标题)</p>
+<p>调用调用 <code>$this-&gt;load</code>的 <code>view()</code>方法，一个参数是要加载的模板文件，第二个参数是要向模板文件中传入的数据（<code>$data</code>）</p>
+<p>到目前，我们知道三个 <code>$this-&gt;load</code> 对象的方法了</p>
+<ul>
+<li><code>database()</code> :在模型里，表示加载数据库操作类，后面能得到 <code>$this-&gt;db</code>对象并调用 <code>get()</code> <code>get_where()</code>等方法</li>
+<li><code>model()</code>: 在控制器里，加载某个模型，例如 <code>$this-&gt;load-&gt;model('news_model')</code></li>
+<li><code>helper()</code>: 在控制器里，加载某个 Helper 类，例如 <code>$this-&gt;load-&gt;helper('url_helper')</code></li>
+<li><code>view()</code>: 在控制器里，加载模板文件，例如 <code>$this-&gt;load-&gt;view('templage_name', [data])</code></li>
+</ul>
+<p>类似的，详情页的控制器方法. 这里处理了 404</p>
+<pre><code class="language-php">public function view($slug = NULL)
+{
+        $data['news_item'] = $this-&gt;news_model-&gt;get_news($slug);
+
+        if (empty($data['news_item']))
+        {
+                show_404();
+        }
+
+        $data['title'] = $data['news_item']['title'];
+
+        $this-&gt;load-&gt;view('templates/header', $data);
+        $this-&gt;load-&gt;view('news/view', $data);
+        $this-&gt;load-&gt;view('templates/footer');
+}
+</code></pre>
+<h3 id="在视图中显示数据原生php语法以及模板解析器">在视图中显示数据（原生php语法，以及模板解析器）</h3>
+<p>这里用 php 原生的语法来循环显示 item</p>
+<pre><code class="language-html">&lt;h2&gt;&lt;?php echo $title; ?&gt;&lt;/h2&gt;
+
+&lt;?php foreach ($news as $news_item): ?&gt;
+
+        &lt;h3&gt;&lt;?php echo $news_item['title']; ?&gt;&lt;/h3&gt;
+        &lt;div class=&quot;main&quot;&gt;
+                &lt;?php echo $news_item['text']; ?&gt;
+        &lt;/div&gt;
+        &lt;p&gt;&lt;a href=&quot;&lt;?php echo site_url('news/'.$news_item['slug']); ?&gt;&quot;&gt;View article&lt;/a&gt;&lt;/p&gt;
+
+&lt;?php endforeach; ?&gt;
+</code></pre>
+<pre><code class="language-html">&lt;?php
+echo '&lt;h2&gt;'.$news_item['title'].'&lt;/h2&gt;';
+echo $news_item['text'];
+</code></pre>
+<p>CI 还有模板解析器语法，来简化这些 php 的标签。略微牺牲一点性能，换取书写时的简便。</p>
+<p>默认使用 <code>{}</code>花括号对来包裹变量(<code>blog_title</code>)，以及需要循环的一对”标签“(<code>blog_entries</code> <code>/blog_entries</code>)</p>
+<p>具体参看文档 libraries/parser.html</p>
+<pre><code class="language-html">&lt;html&gt;
+        &lt;head&gt;
+                &lt;title&gt;{blog_title}&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+                &lt;h3&gt;{blog_heading}&lt;/h3&gt;
+
+        {blog_entries}
+                &lt;h5&gt;{title}&lt;/h5&gt;
+                &lt;p&gt;{body}&lt;/p&gt;
+        {/blog_entries}
+
+        &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3 id="路由关联到控制器方法">路由（关联到控制器方法）</h3>
+<p>在之前处理 pages 的路由前面，添加两条路由规则，来处理前面的两个控制器方法</p>
+<p><code>$route['news'] = 'news';</code> 其实简化了 <code>$route['news'] = 'news/index';</code> (不指定方法的话，默认会读取控制器的 index() 方法)</p>
+<pre><code class="language-php">// news
+$route['news/(:any)'] = 'news/view/$1';
+$route['news'] = 'news';
+
+// pages
+$route['(:any)'] = 'pages/view/$1';
+$route['default_controller'] = 'pages/view';
+</code></pre>
+<h3 id="分别增加模型方法和控制器方法路由处理创建数据表单提交">分别增加模型方法，和控制器方法，路由，处理“创建数据”表单提交</h3>
+<p>截止目前， news 数据表里还是空白的，所以无法展示任何数据。 我们需要一个表单来提交新数据。</p>
+<h4 id="添加路由">添加路由</h4>
+<pre><code class="language-php">$route['news/create'] = 'news/create';
+</code></pre>
+<h4 id="增加-create-控制器方法">增加 create() 控制器方法</h4>
+<p>默认显示一个表单；如果是提交动作则插入数据</p>
+<p>首先加载类库</p>
+<ul>
+<li>首先加载一个 helper <code>form</code> (用于在模板中调用 form 有关的方法)</li>
+<li>然后加载 library <code>form_validation</code> 这个类库，专门处理表单字段的验证</li>
+</ul>
+<p>接着，使用<code>form_validation</code>这个类库的<code>set_rules()</code>方法来添加一些表单验证规则。</p>
+<p>使用<code>$this-&gt;form_validation-&gt;run()</code>判断表单验证结果</p>
+<ol>
+<li>如果通过，则调用模型类的 <code>set_news()</code> 方法插入数据（稍后添加），并显示”成功“页面</li>
+<li>如果没通过，说明是首次加载表单，或者提交验证不符合规则，也显示表单</li>
+</ol>
+<pre><code class="language-php">public function create()
+    {
+        $this-&gt;load-&gt;helper('form');
+        $this-&gt;load-&gt;library('form_validation');
+
+        $data['title'] = &quot;Creata a new item&quot;;
+
+        $this-&gt;form_validation-&gt;set_rules('title', 'Title', 'trim|required|min_length[5]|max_length[12]');
+        $this-&gt;form_validation-&gt;set_rules('text', 'Text', 'trim|required|min_length[5]|max_length[200]');
+
+        if ($this-&gt;form_validation-&gt;run() == false) {
+            $this-&gt;load-&gt;view('tempaltes/header', $data, false);
+            $this-&gt;load-&gt;view('views/create');
+            $this-&gt;load-&gt;view('tempaltes/footer', $data, false);
+
+        } else {
+            $this-&gt;news_model-&gt;set_news();
+            $this-&gt;load-&gt;view('news/success');
+
+        }
+    }
+
+</code></pre>
+<h4 id="新增表单模板文件使用前面加载的-form-helper">新增表单模板文件(使用前面加载的 form helper)</h4>
+<p>新建模板文件 /news/create.php</p>
+<pre><code class="language-html">&lt;div style=&quot;color: #F00&quot;&gt;
+    &lt;?php echo validation_errors(); ?&gt;
+&lt;/div&gt;
+
+&lt;?php echo form_open('news/create'); ?&gt;
+    &lt;label for=&quot;&quot;&gt;Title&lt;/label&gt;
+    &lt;input type=&quot;text&quot; name=&quot;title&quot; id=&quot;&quot;&gt;
+
+    &lt;label for=&quot;&quot;&gt;Text&lt;/label&gt;
+    &lt;textarea name=&quot;text&quot; id=&quot;&quot; cols=&quot;30&quot; rows=&quot;10&quot;&gt;&lt;/textarea&gt;
+
+    &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Create&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>这里<code>echo validation_errors();</code> 会显示表单验证的错误。 你可以试试 title 留空然后提交</p>
+<p><img src="/media/codeigniter/validation_errors.png" alt="validation_errors" title="Optional title"></p>
+<p><code>echo form_open()</code>则会自动创建表单的有关代码。</p>
+<p>例如 action  method 等</p>
+<p>如果在配置文件里启用了 CSRF 保护, 还会生成一个隐藏的字段</p>
+<pre><code class="language-php">$config['csrf_protection'] = TRUE; // default is FALSE
+</code></pre>
+<p><img src="/media/codeigniter/form_open_html.jpg" alt="xxx"></p>
+<h4 id="新建模型方法-set_news-处理插入数据">新建模型方法 set_news() ，处理插入数据</h4>
+<pre><code class="language-php">public function set_news() {
+    $this-&gt;load-&gt;helper('url');
+
+    $slug = url_title($this-&gt;input-&gt;post('title'), 'dash', TRUE);
+
+    $data = array(
+        'title' =&gt; $this-&gt;input-&gt;post('title'),
+        'slug' =&gt; $slug,
+        'text' =&gt; $this-&gt;input-&gt;post('text'),
+    );
+
+    return $this-&gt;db-&gt;insert('news', $data);
+}
+</code></pre>
+<p>生成 slug</p>
+<ol>
+<li>使用<code>$this-&gt;load-&gt;helper('url');</code> 来加载 <code>url</code> 这个 Helper 类</li>
+<li>稍后就能调用 <code>url_title()</code> 方法，来将表单中 title 字段的内容转换成一个别名（例如 &ldquo;i have a dream&rdquo; -&gt; &ldquo;i-have-a-dream&rdquo;）</li>
+</ol>
+<p>然后调用数据库类的 <code>insert()</code>方法插入数据到 news 表</p>
+<p>数据插入成功~</p>
+<p><img src="/media/codeigniter/insert_item_to_db.png" alt="form_open_html" title="Optional title"></p>
+<h3 id="测试">测试</h3>
+<p>这时候在浏览器分别访问下面的地址试试(还记得之前创建路由，还有对应的 index() view() 方法吗)</p>
+<p><code>127.0.0.1/news/create</code>   创建 Title &ldquo;First News&rdquo; 的新闻
+<code>127.0.0.1/news/</code>
+<code>127.0.0.1/news/first-news</code></p>
+<p><img src="/media/codeigniter/news-list.jpg" alt=""></p>
+<h1 id="集成-composer-的方式安装第三方库-以及-autoload-自动加载">集成 composer 的方式安装第三方库, 以及 autoload 自动加载</h1>
+<p><a href="https://www.codeigniter.com/user_guide/general/autoloader.html">https://www.codeigniter.com/user_guide/general/autoloader.html</a></p>
+<p><a href="https://arjunphp.com/how-to-use-composer-with-codeigniter/">https://arjunphp.com/how-to-use-composer-with-codeigniter/</a></p>
+<p>打开自动加载 autoload 特性，需要区分 CI 版本</p>
+<h2 id="旧版-ci-默认没有-composerjson-文件-configphp-也没有-configcomposer_autoload配置">旧版 CI (默认没有 composer.json 文件， config.php 也没有 <code>$config['composer_autoload']</code>配置)</h2>
+<p>安装完 composer 后，在项目根目录下创建文件 <code>composer.json</code>, 在里面放入需要添加到项目的包名</p>
+<p>以及使用 <code>repositories</code>来设置仓库</p>
+<pre><code class="language-json">{
+  &quot;require&quot; : {
+    &quot;php&quot; : &quot;&gt;= 5.6.7&quot;,
+    &quot;filp/whoops&quot; : &quot;*&quot;
+  },
+  &quot;repositories&quot;: {
+    &quot;packagist&quot;: {
+      &quot;type&quot;: &quot;composer&quot;,
+      &quot;url&quot;: &quot;https://packagist.phpcomposer.com&quot;
+    }
+  }
+}
+</code></pre>
+<p>在 <code>index.php</code> 文件的 <code>require_once BASEPATH.’core/CodeIgniter.php’;</code>  <strong>前面</strong> 添加</p>
+<pre><code class="language-php">//载入composer
+require_once './vendor/autoload.php';
+</code></pre>
+<p>如果不想通过修改 index.php 的方式，可以用 library 的 autload 方式</p>
+<pre><code class="language-php">//application/libraries/MY_Composer.php 文件
+class MY_Composer
+{
+    function __construct()
+    {
+        include(&quot;./vendor/autoload.php&quot;);
+    }
+}
+</code></pre>
+<p>修改 application/config/autoload.php，把它 <code>MY_Composer</code> 添加进来</p>
+<pre><code class="language-php">$autoload['libraries'] = array('MY_Composer','database','session');
+</code></pre>
+<h2 id="新版-ci">新版 CI</h2>
+<p>【对于 2018年后新版 ci】 打开配置 <code>application/config/config.php</code></p>
+<pre><code class="language-php"> $config['composer_autoload'] = TRUE
+</code></pre>
+<h2 id="然后运行安装命令">然后运行安装命令</h2>
+<pre><code class="language-shell">php composer install
+</code></pre>
+<h2 id="实例化-composer-引入的类">实例化 composer 引入的类</h2>
+<p>如何使用这些引入的类？ 这里假设在控制器的 index() 方法里，</p>
+<h3 id="在需要的时候手动实例化">在需要的时候，手动实例化</h3>
+<p>先 <code>user Namespace\Package\ClassName</code> 引入
+然后用 <code>new mPDF()</code>来创建类的实例</p>
+<pre><code class="language-php">use \Curl\Curl;
+use [Namspace]\[Package]\[ClassName]
+
+class Welcome extends CI_Controller {
+    
+    public function index() {
+        $curl = new Curl();
+        $curl-&gt;get('http://www.baidu.com/');
+
+        
+        $pdf= new mPDF();
+               // data to views
+        $data = array();
+        //load the view and saved it into $html variable
+        $html = $this-&gt;load-&gt;view('pdf_output',$data,true);
+        //this the the PDF filename that user will get to download
+        $pdfFilePath = &quot;output_pdf_name.pdf&quot;;
+        
+        //generate the PDF from the given html
+        $pdf-&gt;WriteHTML($html);
+        
+        //download it.
+        $pdf-&gt;Output($pdfFilePath,&quot;D&quot;);
+    }
+    
+}
+</code></pre>
+<h3 id="以-ci-的方式-load-libraries-下的类便于共享和进行单元测试">以 CI 的方式 load() libraries 下的类，便于共享和进行单元测试</h3>
+<p>上面的方法不太方便，如果需要在多个控制器里使用这个类，需要实例化多次。</p>
+<p>希望让 CI 来 load() library, 或者放入 autoload</p>
+<p>创建一个文件 <code>application/libraries/Pdf.php</code> 在里面继承这个类。 作为一个 “library”</p>
+<pre><code class="language-php">defined('BASEPATH') OR exit('No direct script access allowed.');
+ 
+class Pdf extends \mPDF {
+ 
+    public function __construct($params = array()) {
+    
+        $params = $params['params'] ? $params['params'] : '&quot;en-GB-x&quot;,&quot;A4&quot;,&quot;&quot;,&quot;&quot;,10,10,10,10,6,3';
+        
+        parent::__construct($param);
+        
+    }
+ 
+}  
+</code></pre>
+<p>然后就可以把前面的 <code>new mPDF()</code> 代码改成 <code>$this-&gt;load-&gt;library()</code> 了</p>
+<pre><code class="language-php">//load mPDF library
+$this-&gt;load-&gt;library('pdf');
+
+// use this if you want to customize pdf
+//$this-&gt;load-&gt;library('pdf',array('params' =&gt; ''));
+
+//generate the PDF from the given html
+$this-&gt;pdf-&gt;WriteHTML($html);
+
+//download it.
+$this-&gt;pdf-&gt;Output($pdfFilePath, &quot;D&quot;);
+</code></pre>
+<h2 id="composer-类识别-ci-的类">composer 类，识别 CI 的类</h2>
+<h3 id="在第三方类库中使用-ci-instance-等">在第三方类库中使用 CI instance 等</h3>
+<p><a href="https://stackoverflow.com/questions/11107173/ci-instance-in-custom-library-for-codeigniter">https://stackoverflow.com/questions/11107173/ci-instance-in-custom-library-for-codeigniter</a></p>
+<h3 id="composer-里有-namespace-的类如何识别-ci_controller-等类">composer 里有 NameSpace 的类，如何识别 CI_Controller 等类？</h3>
+<p>例如 org/lib/src 下的文件 ControllerExtend.php 类，属于命名空间 <code>Org\Lib</code> 那么直接 extend <code>CI_Controller</code> 会报错，提示</p>
+<p>Org\Lib\CI_Controller 不存在（默认先搜索同级的命名空间 <code>Org\Lib\</code>）</p>
+<p>需要改成 <code>\CI_Controller</code></p>
+<pre><code class="language-php">namespace Org\Lib;
+
+class controllerExtend extends \CI_Controller{}
+</code></pre>
+<p>然后之前的 <code>require APPPATH . 'controller/controllerExtend.php</code> 的代码就可以改成</p>
+<pre><code class="language-php">use Org\Lib\controllerExtend;
+
+//remove
+//require ....
+
+class NewController extends controllerExtend {
+
+}
+</code></pre>
+<p>还有，composer.json 这里的 <code>classmap</code> 配置部分，不知是否必需?</p>
+<pre><code class="language-json">&quot;autoload&quot;: {
+    &quot;psr-4&quot;: {
+      &quot;Org\\Lib\\&quot;: &quot;vendor/org/lib/src&quot;
+    },
+    &quot;classmap&quot;: [&quot;system/core&quot;]
+};
+</code></pre>
+<h1 id="在-codeigniter-中使用-laravel-模板引擎-blade以及-写-helper-">在 CodeIgniter 中使用 Laravel 模板引擎 Blade（以及 写 helper ）</h1>
+<p>CI 自带的模板解析器不是很好用。。。写 php 的语法又很繁琐   然后我又不喜欢 smarty  （真矫情啊）</p>
+<p>那么使用 Laravel 的 Blade 模板语法吧。(类似于 Laravel 中的使用方式: <code>return view('view', $data);</code>)</p>
+<p>首先在 composer.json 里添加, 然后 <code>composer install</code></p>
+<pre><code class="language-json">&quot;philo/laravel-blade&quot;: &quot;3.*&quot;
+</code></pre>
+<p>官方文档里使用方式比较繁琐, 需要在使用的 Controller 里相应的位置添加下面代码</p>
+<pre><code class="language-php">require 'vendor/autoload.php';
+
+use Philo\Blade\Blade;
+
+$views = __DIR__ . '/../views';
+$cache = __DIR__ . '/../cache';
+
+$blade = new Blade($views, $cache);
+echo $blade-&gt;view()-&gt;make('welcome_message')-&gt;render();
+</code></pre>
+<p>然后在 view 文件名种添加 <code>.blade</code>, 类似于 welcome_message.blade.php</p>
+<p>将 <code>application/cache</code> 设置为 webserver 可读写</p>
+<p>Laravel 方式使用</p>
+<p>添加一个自定义的 helper, 在 application/helpers 里添加一个 helper, 名为 <code>view_helper.php</code>,内容</p>
+<pre><code class="language-php">require_once 'vendor/autoload.php';
+use Philo\Blade\Blade;
+
+if (!function_exists('view')) {
+    function view($name = NULL, $data = [], $mergeData = []) {
+        $CI =&amp; get_instance();
+        if (!isset($CI-&gt;blade)) {
+            $views = __DIR__ . '/../views';
+            $cache = __DIR__ . '/../cache';
+            $CI-&gt;blade = new Blade($views, $cache);
+        }
+        echo $CI-&gt;blade-&gt;view()-&gt;make($name, $data, $mergeData)-&gt;render();
+    }
+}
+</code></pre>
+<p>然后在 autoload.php 中的 <code>$autoload['helper']</code> 中添加 <code>view</code>. 后面就可以直接在 Controller 里按照 Laravel 的方式使用了.</p>
+<h1 id="安装-whoops-包像-laravel-一样调试-使用-dd-函数--详细的报错信息-行文件trace">安装 <code>whoops</code> 包，像 laravel 一样调试 /使用 dd 函数 / 详细的报错信息 (行，文件，trace)</h1>
+<p>whoops 是个非常好用的报错跟踪工具（就是 laravel 里面的）
+装了 filp/whoops 包后，当出错时，就能显示详细的信息了（一般只在测试环境载入，见前面部分）</p>
+<p>这个包还自动安装了 symfony/var-dumper  就有我们熟悉的 <code>dd()</code> 了！</p>
+<p>在 <code>index.php</code> 文件的 `require_once BASEPATH.’core/CodeIgniter.php’ 后面添加</p>
+<pre><code class="language-php">//判断在开发环境时接入
+if (ENVIRONMENT == 'development' ){
+
+    //载入whoops
+    $whoops = new \Whoops\Run;
+    $whoops-&gt;pushHandler(new \Whoops\Handler\PrettyPageHandler);
+    $whoops-&gt;register();
+}
+</code></pre>
+<h1 id="在命令行跑-controller-function-parames">在命令行跑 controller /function/ parames</h1>
+<p>对于一些不需要老是在界面里测试的，很有用。 (毕竟 切换到浏览器、刷新、等待。。。太耗时间了 )</p>
+<p>例如，导入数据</p>
+<ol>
+<li>先备份旧数据</li>
+<li>删表/删数据等</li>
+<li>新建表</li>
+<li>导入数据</li>
+</ol>
+<pre><code class="language-shell">php index.php myFolder myController myFunc myParam1 myParam2 ...
+</code></pre>
+<h2 id="环境变量_server找不到的问题同样也是-phpunit-里遇到-_serverdatabase-等不存在的问题">环境变量（<code>$_SERVER</code>）找不到的问题。（同样也是 PHPUnit 里遇到 <code>$_SERVER['database']</code> 等不存在的问题）</h2>
+<p>因为脱离了 nginx 环境，读取不到一些系统配置参数如 <code> fastcgi_param  pgsqldb            test_db;</code>,</p>
+<p>所以对应地 php 环境里的 <code>$_SERVER['pgsqldb']</code> 的值为空。 直接运行 <code>php index.php</code> 提示报错</p>
+<p>方法1, 先传入系统变量</p>
+<pre><code class="language-shell">export APPLICATION_ENV=staging &amp;&amp; php index.php
+</code></pre>
+<p>如果有多个系统变量的话，把他们写入一个文件</p>
+<pre><code class="language-shell">touch .bash_exports
+
+# 内容
+export pgsqlserver=&quot;192.168.56.101&quot; &amp;&amp; \
+export pgsqldb=&quot;database_name&quot; &amp;&amp; \
+export pgsqluser=&quot;qasystems&quot; &amp;&amp; \
+export pgsqlpass=&quot;333333&quot; &amp;&amp; \
+export pgsqlport=&quot;4322&quot; &amp;&amp; \
+export custinfo=&quot;MILRELLabNS&quot; &amp;&amp; \
+export isprod=&quot;N&quot; &amp;&amp; \
+export base_url=&quot;10.211.55.3,10.211.55.7,192.168.1.127,192.168.181.48,localhost&quot; &amp;&amp; \
+export HTTP_HOST=&quot;192.168.56.101&quot; &amp;&amp; \
+export HTTP_USER_AGENT=&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36&quot;
+
+# 然后在 .bashrc 里包含它
+if [ -f $HOME/.bash_exports ]; then
+    . $HOME/.bash_exports
+fi
+</code></pre>
+<p>然后在 php 前面跟上这个命令, 注意最前面有个 &ldquo;点&rdquo; 符号</p>
+<pre><code class="language-shell">. ~/.bash_exports &amp;&amp; php index.php
+</code></pre>
+<p>用 dot env 方式
+<a href="https://scotch.io/tutorials/how-to-use-environment-variables">https://scotch.io/tutorials/how-to-use-environment-variables</a></p>
+<h2 id="session-expired-问题">session expired 问题</h2>
+<p>需要在代码里跳过验证， 例如一个特殊的用户，专门用来做这种 Command Line</p>
+<pre><code class="language-php">if (isset($_GET[&quot;key&quot;])) {
+   $key = $_GET[&quot;key&quot;];
+   if ($key == 'eae3ba3d23a0bb588f40ae538f66da36') {
+       $msg = $this-&gt;CI-&gt;cdbhelper-&gt;check_database('op&amp;ra@t0r', 'operator');
+       if ($msg != 'OK') {
+           die ($msg);
+       }
+       
+       return true;
+   }
+   
+}
+</code></pre>
+<p>运行网络请求，带 key 参数</p>
+<pre><code class="language-shell">curl -l &quot;http://192.168.3.1/?rfq/shipping/importFromExcel?key=eae3ba3d23a0bb588f40ae538f66da36&quot;
+</code></pre>
+<h2 id="get-post-的问题">GET POST 的问题</h2>
+<p>默认 php 不支持传入参数，因为是服务器上的 <code>$_GET</code>, <code>$_POST</code></p>
+<p><a href="https://stackoverflow.com/questions/4186392/php-passing-get-in-linux-command-prompt">https://stackoverflow.com/questions/4186392/php-passing-get-in-linux-command-prompt</a></p>
+<p>用 php-cgi 可以?</p>
+<p>如果没有 php-cgi 可以用下面的方法模拟</p>
+<pre><code class="language-shell">% alias php-cgi=&quot;php -r '&quot;'parse_str(implode(&quot;&amp;&quot;, array_slice($argv, 2)), $_GET); include($argv[1]);'&quot;' --&quot;
+% php-cgi test1.php foo=123
+&lt;html&gt;
+You set foo to 123.
+&lt;/html&gt;
+
+%cat test1.php
+&lt;html&gt;You set foo to &lt;?php print $_GET['foo']?&gt;.&lt;/html&gt;
+</code></pre>
+<p>失败了. 还是提示 参数里有特殊字符.</p>
+<h2 id="前面的方法都实在不行-用-phpunit-的-request-方法吧">前面的方法都实在不行, 用 PHPUnit 的 request 方法吧.</h2>
+<pre><code class="language-php">$this-&gt;request('GET', 'rfq/shipping/importFromExcel?key=eae3ba3d23a0bb588f40ae538f66da36');
+</code></pre>
+<h1 id="phpunit-测试库">PHPUnit 测试库</h1>
+<p>自带的 Unit Test 比较简单，对于普通的应用应该足够了。</p>
+<p>但是最大的问题是，不能 <strong>在命令行里</strong> 直接像 phpunit 那样跑测试。 只能像网页一样在控制器里写代码然后刷新页面。。。</p>
+<p>(我勒个去, 要你何用? 而且花时间学这个特殊的测试库语法也浪费时间啊， 好处是不是就是能获取到 CI 实例？)</p>
+<p>查了一些资料，这个库比较方便。 其他的要么自己修改代码，或者和 CI 本身结合不是很好。</p>
+<p><a href="https://github.com/kenjis/ci-phpunit-test">https://github.com/kenjis/ci-phpunit-test</a></p>
+<p>还有一个这个:  <a href="https://github.com/yidas/codeigniter-phpunit">https://github.com/yidas/codeigniter-phpunit</a> 比较新一点</p>
+<p>结构</p>
+<p>codeigniter/
+├── application/
+│   └── tests/
+│        ├── _ci_phpunit_test/ &hellip; don&rsquo;t touch! files ci-phpunit-test uses
+│        ├── Bootstrap.php     &hellip; bootstrap file for PHPUnit
+│        ├── DbTestCase.php    &hellip; DbTestCase class
+│        ├── TestCase.php      &hellip; TestCase class
+│        ├── controllers/      &hellip; put your controller tests
+│        ├── libraries/        &hellip; put your library tests
+│        ├── mocks/
+│        │   └── libraries/    &hellip; mock libraries
+│        ├── models/           &hellip; put your model tests
+│        └── phpunit.xml       &hellip; config file for PHPUnit
+└── vendor/</p>
+<h2 id="安装-phpunit-">安装 phpunit .</h2>
+<p>略</p>
+<h2 id="写测试代码">写测试代码</h2>
+<p>完整文档： <a href="https://github.com/kenjis/ci-phpunit-test/blob/master/docs/HowToWriteTests.md">https://github.com/kenjis/ci-phpunit-test/blob/master/docs/HowToWriteTests.md</a></p>
+<p>例如，测试某个 model: Inventory_model  的代码</p>
+<pre><code class="language-php">class Inventory_model_test extends TestCase
+{
+    // 初始化环境
+    public function setUp()
+    {
+        // reset 实例
+        &lt;!-- $this-&gt;resetInstance(); --&gt;
+
+        // 直接使用
+        $this-&gt;CI =&amp; get_instance();
+
+        // load model, libraries 等, 必须要用  $this-&gt;xxxx = $this-&gt;CI-&gt;xxxx_model/library 来明确指定,
+        // load() 后不会自动给 $this 添加 model/library 属性
+        // 注意大小写!!!  必须和 model 类名相同，另外还有如果是子目录里，不要丢掉了目录名
+        $this-&gt;CI-&gt;load-&gt;model('tr/Inventory_model');
+        $this-&gt;obj = $this-&gt;CI-&gt;Inventory_model;
+
+        // &quot;隐式&quot;不支持像下面的.   不然提示 LogicException: No such property: xxxxx
+        $this-&gt;CI-&gt;load-&gt;libary('cexcel');
+        $xls = $this-&gt;cexcel; // 报错
+        $this-&gt;cexcel = $this-&gt;CI-&gt;cexcel;
+    }
+
+    public function test_get_category_list()
+    {
+        $expected = [
+            1 =&gt; 'Book',
+            2 =&gt; 'CD',
+            3 =&gt; 'DVD',
+        ];
+        $list = $this-&gt;obj-&gt;get_category_list();
+        foreach ($list as $category) {
+            $this-&gt;assertEquals($expected[$category-&gt;id], $category-&gt;name);
+        }
+    }
+
+    public function test_get_category_name()
+    {
+        // 也可以在某个方法里 load
+        $this-&gt;CI-&gt;load-&gt;model('Inventory_model');
+        $this-&gt;obj = $this-&gt;CI-&gt;Inventory_model;
+
+        $actual = $this-&gt;obj-&gt;get_category_name(1);
+        $expected = 'Book';
+        $this-&gt;assertEquals($expected, $actual);
+    }
+}
+</code></pre>
+<p>以及测试 controller: Welcome controller</p>
+<pre><code class="language-php">class Welcome_test extends TestCase
+{
+    public function test_index()
+    {
+        $output = $this-&gt;request('GET', 'welcome/index');
+        $this-&gt;assertContains(
+            '&lt;title&gt;Welcome to CodeIgniter&lt;/title&gt;', $output
+        );
+    }
+}
+</code></pre>
+<h2 id="运行">运行</h2>
+<pre><code class="language-shell">$ cd application/tests/
+$ phpunit
+PHPUnit 4.8.31 by Sebastian Bergmann and contributors.
+
+# 或者指定一个文件来测试
+$ phpunit testController.php
+
+# 测试指定的类
+#phpunit controllers/Inventory_model.php
+
+# 测试指定的 类 + 方法
+phpunit --filter methodName Class_file.php
+</code></pre>
+<h2 id="函数和类-reference">函数和类 Reference</h2>
+<p><a href="https://github.com/kenjis/ci-phpunit-test/blob/master/docs/FunctionAndClassReference.md">https://github.com/kenjis/ci-phpunit-test/blob/master/docs/FunctionAndClassReference.md</a></p>
+<h3 id="报错--fatal-error-declaration-of">报错  Fatal error: Declaration of</h3>
+<blockquote>
+<p>CIPHPUnitTestCase::setUpBeforeClass() must be compatible with PHPUnit\Framework\TestCase::setUpBeforeClass(): void in /media/sf_MyProjectWeb/QASystems/site/QASystems/application/tests/_ci_phpunit_test/CIPHPUnitTestCase.php on line 22</p>
+</blockquote>
+<p>把 phpunit 降到版本 7 (可能是因为 PHPUnit8 有一些函数不兼容了)</p>
+<h2 id="tips">tips</h2>
+<p><a href="https://github.com/kenjis/ci-phpunit-test/blob/master/docs/Tips.md">https://github.com/kenjis/ci-phpunit-test/blob/master/docs/Tips.md</a></p>
+<h2 id="更多">更多</h2>
+<p><a href="https://github.com/kenjis/ci-phpunit-test#related-projects-for-codeigniter-3x">https://github.com/kenjis/ci-phpunit-test#related-projects-for-codeigniter-3x</a></p>
+<p>CodeIgniter Composer Installer
+Cli for CodeIgniter 3.0
+CodeIgniter Simple and Secure Twig
+CodeIgniter Doctrine
+CodeIgniter Deployer
+CodeIgniter3 Filename Checker
+CodeIgniter Widget (View Partial) Sample
+CodeIgniter3 Namespaced Controller</p>
+<h1 id="技巧">技巧</h1>
+<h2 id="favi-icon-添加">favi icon 添加</h2>
+<p>要指定 base_url()  不然直接指定 /favicon.ico 不加载。。  还要清空浏览器缓存</p>
+<pre><code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;&lt;?=base_url()?&gt;/favicon.ico&quot; type=&quot;image/x-icon&quot;&gt;
+</code></pre>
+<h1 id="问题">问题</h1>
+<h2 id="是否可以使用第三方系统的-controller-">是否可以使用第三方系统的 controller ?</h2>
+<p>例如有一个 admin portal</p>
+<p>不可以，必须在 controller 目录下</p>
+<p><a href="https://forum.codeigniter.com/thread-69463.html">https://forum.codeigniter.com/thread-69463.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/codeigniter-%E6%95%B0%E6%8D%AE%E5%BA%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/codeigniter-%E4%B8%BB%E9%A2%98/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

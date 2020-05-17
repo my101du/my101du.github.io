@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Ubuntu 安装与配置 permalink: ubuntu-install-settings tags: server 安装的时候一定要修改源 在安装的时候，默认源是 cn.ubuntu-archive.org 会导致 (1)过程很慢 （2）在后面结束的时候 update security 一直报错。（其实系统安装是" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Ubuntu 安装与配置 permalink: ubuntu-install-settings tags: server 安装的时候一定要修改源 在安装的时候，默认源是 cn.ubuntu-archive.org 会导致 (1)过程很慢 （2）在后面结束的时候 update security 一直报错。（其实系统安装是" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/ubuntu-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Ubuntu 安装与配置 permalink: ubuntu-install-settings tags: server 安装的时候一定要修改源 在安装的时候，默认源是 cn.ubuntu-archive.org 会导致 (1)过程很慢 （2）在后面结束的时候 update security 一直报错。（其实系统安装是">
+
+<meta itemprop="wordCount" content="1848">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Ubuntu 安装与配置 permalink: ubuntu-install-settings tags: server 安装的时候一定要修改源 在安装的时候，默认源是 cn.ubuntu-archive.org 会导致 (1)过程很慢 （2）在后面结束的时候 update security 一直报错。（其实系统安装是"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/ubuntu-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/ubuntu-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1848字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Ubuntu 安装与配置
+permalink: ubuntu-install-settings
+tags:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="安装的时候一定要修改源">安装的时候一定要修改源</h1>
+<p>在安装的时候，默认源是 cn.ubuntu-archive.org  会导致 (1)过程很慢 （2）在后面结束的时候 update security 一直报错。（其实系统安装是成功的）</p>
+<p>改成阿里的源就会很快了。</p>
+<p>不过发现还是会在最后一步”downloading and installing &hellip;&ldquo;等很久，大概 10分钟。。，因此最后一步可以选择 “cancel update and reboot&rdquo; 跳过去，等进了系统再来安装就好。</p>
+<p><a href="http://mirrors.aliyun.com/ubuntu/">http://mirrors.aliyun.com/ubuntu/</a></p>
+<p>后来发现阿里云的源老失败，换 163</p>
+<p><a href="http://mirrors.163.com/ubuntu">http://mirrors.163.com/ubuntu</a></p>
+<h1 id="ubuntu-的-root-密码">Ubuntu 的 root 密码</h1>
+<p>安装完Ubuntu后忽然意识到没有设置root密码，不知道密码自然就无法进入根用户下。到网上搜了一下，原来是这麽回事。Ubuntu的<strong>默认root密码是随机的</strong>，即每次开机都有一个新的root密码。我们可以在终端输入命令</p>
+<pre><code class="language-shell">sudo paasswd
+</code></pre>
+<p>然后输入当前用户的密码（<strong>实际上是让 root 密码和当前密码保持一致</strong>？），enter，终端会提示我们输入新的密码并确认，此时的密码就是root新密码。</p>
+<p>修改成功后，输入命令</p>
+<pre><code class="language-shell">su root
+</code></pre>
+<p>再输入新的密码就ok了。</p>
+<h1 id="自带软件">自带软件</h1>
+<h2 id="vim-不能使用方向键和空格键">vim 不能使用方向键和空格键</h2>
+<p>方案一：
+问题：
+ubuntu中vi在编辑状态下方向键不能用，还有回格键不能删除等我们平时习惯的一些键都不能使用。
+解决办法：
+可以安装vim full版本，在full版本下键盘正常，安装好后同样使用vi命令。
+安装vim：
+ubuntu预装的是vim tiny版本，而需要的是vim full版本。执行下面的语句安装vim full版本：
+$sudo apt-get remove vim-common
+$sudo apt-get install vim
+这样就行了，vim是一款优秀的软件，可以在运用中体会到。</p>
+<p>方案二：
+在vi命令行使用命令“：set nocompatible”，就是设置vi不使用兼容模式。</p>
+<h1 id="网络">网络</h1>
+<h2 id="添加网卡后无法自动识别">添加网卡后无法自动识别</h2>
+<p>添加一块网卡后，通过 <code>ifconfig</code> 还是只能看到一块之前的网卡，按下面的步骤添加进来</p>
+<pre><code class="language-shell"># 以下命令都只能看到一块网卡
+ifconfig
+cat /etc/network/interfaces
+
+# 查看系统识别到的网卡信息,记住那个没有在 /etc/network/interfaces 里存在的网卡名
+ip link
+
+# 编辑配置文件
+sudo vi /etc/network/interfaces
+
+# 把识别到的网卡名添加到文件末尾，配置信息和之前的网卡一样，也是  
+# auto [网卡名 如 enp0s8]
+# iface [网卡名] inet dhcp
+
+# 重启服务，使配置生效
+sudo /etc/init.d/networking restart
+</code></pre>
+<h2 id="ubuntu-server-修改-ip-为静态地址">Ubuntu Server 修改 IP 为静态地址</h2>
+<pre><code class="language-shell"># 先查看网卡名称
+ifconfig
+</code></pre>
+<p>修改网卡配置文件sudo  vim /etc/network/interfaces 这个好像已经被淘汰了</p>
+<pre><code class="language-shell">auto ens33
+iface ens33 inet static
+address 192.168.1.244   #ip地址
+netmask 255.255.255.0  #子网掩码
+gateway 192.168.1.1    #网关
+dns-nameserver 114.114.114.114   #dns服务器
+</code></pre>
+<pre><code class="language-shell">#重启网络：
+sudo /etc/init.d/networking restart
+
+</code></pre>
+<p>前面的方法 18.04 好像用不了了！！！重启也没用 会报错
+最新的 办法，使用 netplan !</p>
+<p>Ubuntu Server
+To configure a static IP address on your Ubuntu 18.04 server you need to modify a relevant netplan network configuration file within <code>/etc/netplan/</code> directory. 例如 <code>50-cloud-init.yaml</code></p>
+<p>For example you might find there a default netplan configuration file called 01-netcfg.yaml or 50-cloud-init.yaml with a following content instructing the networkd deamon to configure your network interface via DHCP:</p>
+<pre><code class="language-yaml"># This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  #renderer: networkd
+  ethernets:
+    enp0s3:
+      dhcp4: yes
+</code></pre>
+<p>To set your network interface enp0s3 to static IP address 192.168.1.222 with gateway 192.168.1.1 and DNS server as 8.8.8.8 and 8.8.4.4 replace the above configuration with the one below.
+WARNING:
+You must adhere to a correct code indent for each line of the block. In other words the prefix number of spaces for each line is important. Othersiwe you may end up with an error message similar to: Invalid YAML at //etc/netplan/01-netcfg.yaml line 7 column 6: did not find expected key</p>
+<pre><code class="language-yaml"># This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  #1
+  a: networkd
+  ethernets:
+    enp0s3:
+     dhcp4: no
+     addresses: [192.168.1.222/24]
+     gateway4: 192.168.1.1s
+</code></pre>
+<pre><code class="language-shell">$ sudo netplan apply
+</code></pre>
+<p>In case you run into some issues execute:</p>
+<pre><code class="language-shell">$ sudo netplan --debug apply
+</code></pre>
+<h1 id="ubuntu-的-alias-设置在-sudo-下不生效">Ubuntu 的 alias 设置，在 sudo 下不生效</h1>
+<p>在 .bashrc 里，除了增加你的 alias 外，还要加一条</p>
+<pre><code class="language-shell">alias sudo=&quot;sudo &quot;
+</code></pre>
+<h1 id="ubuntu-升级默认的-go-语言版本121-到更高">Ubuntu 升级默认的 go 语言版本(1.2.1 到更高)</h1>
+<p>解决低版本的 go 在安装一些软件的时候报错</p>
+<blockquote>
+<p>unknown tls.Config field &lsquo;GetCertificate&rsquo; in struct literal</p>
+</blockquote>
+<pre><code class="language-shell"># 卸载
+sudo apt-get purge golang*
+
+#下载最新版并解压 https://golang.org/dl/
+wget https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.7.1.linux-amd64.tar.gz
+
+#创建目录
+mkdir ~/.go
+
+# 设置环境变量
+vi ~/.profile
+export GOROOT=/usr/local/go
+export GOPATH=~/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+source .profile
+
+# 升级
+sudo update-alternatives --install &quot;/usr/bin/go&quot; &quot;go&quot; &quot;/usr/local/go/bin/go&quot; 0
+sudo update-alternatives --set go /usr/local/go/bin/go
+go version
+</code></pre>
+<h1 id="安装-lemp-栈">安装 LEMP 栈</h1>
+<p><a href="https://joyqi.com/php/install-lemp-on-ubuntu-through-apt_get.html">https://joyqi.com/php/install-lemp-on-ubuntu-through-apt_get.html</a></p>
+<h2 id="为什么要用apt-get不用编译安装">为什么要用apt-get不用编译安装</h2>
+<h1 id="1804-开机启动的变化-rclocal-实现">18.04 开机启动的变化 rc.local 实现</h1>
+<p>buntu18.04不再使用initd管理系统，改用systemd。
+然而systemd很难用，改变太大，跟之前的完全不同。</p>
+<p>使用systemd设置开机启动
+为了像以前一样，在 <code>/etc/rc.local</code> 中设置开机启动程序，需要以下几步：</p>
+<p>1、systemd默认读取/etc/systemd/system下的配置文件，该目录下的文件会链接/lib/systemd/system/下的文件。一般系统安装完/lib/systemd/system/下会有rc-local.service文件，即我们需要的配置文件。
+链接过来：</p>
+<pre><code class="language-shell">ln -fs /lib/systemd/system/rc-local.service /etc/systemd/system/rc-local.service
+cd /etc/systemd/system/
+cat rc-local.service
+</code></pre>
+<p>rc-local.service内容</p>
+<pre><code class="language-shell">#  SPDX-License-Identifier: LGPL-2.1+
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+# This unit gets pulled automatically into multi-user.target by
+# systemd-rc-local-generator if /etc/rc.local is executable.
+[Unit]
+Description=/etc/rc.local Compatibility
+Documentation=man:systemd-rc-local-generator(8)
+ConditionFileIsExecutable=/etc/rc.local
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/etc/rc.local start
+TimeoutSec=0
+RemainAfterExit=yes
+GuessMainPID=no
+
+[Install]
+WantedBy=multi-user.target
+Alias=rc-local.service
+</code></pre>
+<ol>
+<li>
+<p>[Unit] 区块：启动顺序与依赖关系。 </p>
+</li>
+<li>
+<p>[Service] 区块：启动行为,如何启动，启动类型。 </p>
+</li>
+<li>
+<p>[Install] 区块，定义如何安装这个配置文件，即怎样做到开机启动。</p>
+</li>
+</ol>
+<p>2、创建/etc/rc.local文件</p>
+<pre><code class="language-shell">touch /etc/rc.local
+</code></pre>
+<p>3、赋可执行权限</p>
+<pre><code class="language-shell">chmod 755 /etc/rc.local
+</code></pre>
+<p>4、编辑rc.local，添加需要开机启动的任务</p>
+<pre><code class="language-shell">#!/bin/bash
+
+echo &quot;test rc &quot; &gt; /var/test.log
+</code></pre>
+<p>5、执行reboot重启系统，然后查看test.log</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/ubuntu-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/ubuntu-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/vnc%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/ssh%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

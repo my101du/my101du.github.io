@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="laravel-admin 表单,模型，前端组件，RBAC权限 表单 （基于数据模型） 基本使用 Encore\Admin\Form类用于生成基于数据模型的表单。 还是以 movies 表和" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="laravel-admin 表单,模型，前端组件，RBAC权限 表单 （基于数据模型） 基本使用 Encore\Admin\Form类用于生成基于数据模型的表单。 还是以 movies 表和" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="laravel-admin 表单,模型，前端组件，RBAC权限 表单 （基于数据模型） 基本使用 Encore\Admin\Form类用于生成基于数据模型的表单。 还是以 movies 表和">
+
+<meta itemprop="wordCount" content="10052">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="laravel-admin 表单,模型，前端组件，RBAC权限 表单 （基于数据模型） 基本使用 Encore\Admin\Form类用于生成基于数据模型的表单。 还是以 movies 表和"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 10052字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="laravel-admin-表单模型前端组件rbac权限">laravel-admin 表单,模型，前端组件，RBAC权限</h1>
+<h1 id="表单-基于数据模型">表单 （基于数据模型）</h1>
+<h2 id="基本使用">基本使用</h2>
+<p><code>Encore\Admin\Form</code>类用于生成基于数据模型的表单。</p>
+<p>还是以 movies 表和对应的 Movie Model 为例，生成movies的数据表单</p>
+<pre><code class="language-php">use App\Models\Movie;
+use Encore\Admin\Form;
+use Encore\Admin\Facades\Admin;
+
+$grid = Admin::form(Movie::class, function(Form $form){
+
+    // 显示记录id
+    $form-&gt;display('id', 'ID');
+
+    // 添加text类型的input框
+    $form-&gt;text('title', '电影标题');
+
+    $directors = [
+        'John'  =&gt; 1,
+        'Smith' =&gt; 2,
+        'Kate'  =&gt; 3,
+    ];
+
+    $form-&gt;select('director', '导演')-&gt;options($directors);
+
+    // 添加describe的textarea输入框
+    $form-&gt;textarea('describe', '简介');
+
+    // 数字输入框
+    $form-&gt;number('rate', '打分');
+
+    // 添加开关操作
+    $form-&gt;switch('released', '发布？');
+
+    // 添加日期时间选择框
+    $form-&gt;dateTime('release_at', '发布时间');
+
+    // 两个时间显示，不能操作。
+    $form-&gt;display('created_at', '创建时间');
+    $form-&gt;display('updated_at', '修改时间');
+});
+</code></pre>
+<h3 id="自定义工具">自定义工具</h3>
+<p>表单右上角默认有返回和跳转列表两个按钮工具, 可以使用下面的方式修改它:</p>
+<pre><code class="language-php">$form-&gt;tools(function (Form\Tools $tools) {
+
+    // 去掉`列表`按钮
+    $tools-&gt;disableList();
+
+    // 去掉`删除`按钮
+    $tools-&gt;disableDelete();
+
+    // 去掉`查看`按钮
+    $tools-&gt;disableView();
+
+    // 添加一个按钮, 参数可以是字符串, 或者实现了Renderable或Htmlable接口的对象实例
+    $tools-&gt;add('&lt;a class=&quot;btn btn-sm btn-danger&quot;&gt;&lt;i class=&quot;fa fa-trash&quot;&gt;&lt;/i&gt;&amp;nbsp;&amp;nbsp;delete&lt;/a&gt;');
+});
+</code></pre>
+<h3 id="表单脚部">表单脚部</h3>
+<p>使用下面的方法去掉form脚部的元素</p>
+<pre><code class="language-php">$form-&gt;footer(function ($footer) {
+
+    // 去掉`重置`按钮
+    $footer-&gt;disableReset();
+
+    // 去掉`提交`按钮
+    $footer-&gt;disableSubmit();
+
+    // 去掉`查看`checkbox
+    $footer-&gt;disableViewCheck();
+
+    // 去掉`继续编辑`checkbox
+    $footer-&gt;disableEditingCheck();
+
+    // 去掉`继续创建`checkbox
+    $footer-&gt;disableCreatingCheck();
+
+});
+</code></pre>
+<h3 id="表单的其它方法">表单的其它方法</h3>
+<pre><code class="language-php">//去掉提交按钮:
+$form-&gt;disableSubmit();
+
+//去掉重置按钮:
+$form-&gt;disableReset();
+
+//忽略掉不需要保存的字段
+$form-&gt;ignore(['column1', 'column2', 'column3']);
+
+//设置宽度
+$form-&gt;setWidth(10, 2);
+
+//设置表单提交的action
+$form-&gt;setAction('admin/users');
+</code></pre>
+<h3 id="关联模型">关联模型</h3>
+<h4 id="一对一">一对一</h4>
+<p>SQL 和 模型定义</p>
+<pre><code class="language-sql">CREATE TABLE `users` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `profiles` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`user_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`age` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`gender` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+</code></pre>
+<pre><code class="language-php">class User extends Model
+{
+    public function profile()
+    {
+        return $this-&gt;hasOne(Profile::class);
+    }
+}
+
+class Profile extends Model
+{
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class);
+    }
+}
+</code></pre>
+<p>过下面的代码可以关联在一个form里面:</p>
+<p>这里 <code>User</code> 是当前模型(可能是 Post)关联的， 而里面的 <code>profile.age</code>，又是 User 关联的另外一个模型 <code>Profile</code> 里的字段 age</p>
+<p><code>Post</code> &lt;&ndash;(has many)&ndash; <code>User</code> &lt;&ndash;(belongs to one)&ndash;<code>Profile</code> (age, gender&hellip;)</p>
+<pre><code class="language-php">Admin::form(User::class, function (Form $form) {
+
+    $form-&gt;display('id');
+
+    $form-&gt;text('name');
+    $form-&gt;text('email');
+
+    $form-&gt;text('profile.age');
+    $form-&gt;text('profile.gender');
+
+    $form-&gt;datetime('created_at');
+    $form-&gt;datetime('updated_at');
+});
+</code></pre>
+<p>如果没有这么复杂，profile 数据都保存到 User 里面，不用单独的 Profile 来保存</p>
+<p><code>Post</code> &lt;&ndash;(has many)&ndash; <code>User</code> (age, gender)</p>
+<pre><code class="language-php">//post title
+$form-&gt;text('title');
+
+//user name
+$form-&gt;text('user.username');
+</code></pre>
+<p><strong>问题</strong></p>
+<p>虽然里面有表单元素 <code>$form-text('user.username')</code>, 但是创建的时候，如果“主表单”的某个字段，例如 &lsquo;user_id&rsquo;, 依赖于这个&quot;子表单元素&rdquo; username 创建完毕后得到的 id</p>
+<p>例如, 在同一个表单中，需要先创建完用户后，返回 user_id 再赋值给 Post 模型的 user_id 属性。</p>
+<p>这个方法就会报错（看 table 内容，这个地方是 0）</p>
+<pre><code class="language-sql">表 Post  
+----------
+post_id
+user_id
+
+表 User
+-----------
+user_id 
+username
+</code></pre>
+<p>需要自己写代码来处理先后顺序。</p>
+<p>当然，如果不需要创建 user, 仅需要一个<strong>已经存在用户的id</strong>,那就放一个 select 就可以了</p>
+<h2 id="文件图片上传">文件/图片上传</h2>
+<p>通过以下的调用来生成form的 file 元素。</p>
+<pre><code>$form-&gt;file('file_column');
+$form-&gt;image('image_column');
+</code></pre>
+<h3 id="修改存储路径或文件名">修改存储路径或文件名</h3>
+<p>支持本地和云存储的文件上传</p>
+<pre><code class="language-php">// 修改上传目录
+$form-&gt;image('picture')-&gt;move('public/upload/image1/');
+
+// 使用随机生成文件名 (md5(uniqid()).extension)
+$form-&gt;image('picture')-&gt;uniqueName();
+
+// 自定义文件名
+$form-&gt;image('picture')-&gt;name(function ($file) {
+    return 'test.'.$file-&gt;guessExtension();
+});
+</code></pre>
+<h3 id="本地上传">本地上传</h3>
+<p>先添加存储配置，<code>config/filesystems.php</code> 添加一项disk:（admin, 专门用于后台的文件上传）</p>
+<pre><code class="language-php">'disks' =&gt; [
+    ... ,
+
+    'admin' =&gt; [
+        'driver' =&gt; 'local',
+        'root' =&gt; public_path('uploads'),
+        'visibility' =&gt; 'public',
+        'url' =&gt; env('APP_URL').'/uploads',
+    ],
+],
+</code></pre>
+<p>再编辑 Laravel-Admin 的配置文件，打开<code>config/admin.php</code>找到.</p>
+<p>将<code>disk</code>设置为上面添加的<code>admin</code>，<code>directory.image</code>和<code>directory.file</code>分别为用<code>$form-&gt;image($column)</code>和<code>$form-&gt;file($column)</code>上传的图片和文件的上传目录。</p>
+<pre><code class="language-php">'upload'  =&gt; [
+
+    'disk' =&gt; 'admin',
+
+    'directory'  =&gt; [
+        'image'  =&gt; 'images',
+        'file'   =&gt; 'files',
+    ]
+],
+</code></pre>
+<h3 id="云盘上传">云盘上传</h3>
+<p>安装对应laravel storage的适配器(例如 七牛云存储 首先安装 zgldh/qiniu-laravel-storage)</p>
+<p>配置好disk，在config/filesystems.php 添加一项</p>
+<pre><code class="language-php">'disks' =&gt; [
+    ... ,
+    'qiniu' =&gt; [
+        'driver'  =&gt; 'qiniu',
+        'domains' =&gt; [
+            'default'   =&gt; 'xxxxx.com1.z0.glb.clouddn.com', //你的七牛域名
+            'https'     =&gt; 'dn-yourdomain.qbox.me',         //你的HTTPS域名
+            'custom'    =&gt; 'static.abc.com',                //你的自定义域名
+         ],
+        'access_key'=&gt; '',  //AccessKey
+        'secret_key'=&gt; '',  //SecretKey
+        'bucket'    =&gt; '',  //Bucket名字
+        'notify_url'=&gt; '',  //持久化处理回调地址
+        'url'       =&gt; 'http://of8kfibjo.bkt.clouddn.com/',  // 填写文件访问根url
+    ],
+],
+</code></pre>
+<p>Laravel-Admin 配置文件里改成 <code>qiniu</code>即可</p>
+<h2 id="组件使用">组件使用</h2>
+<p>这让我想起了 collection-html 这个扩展，也是用 php 代码的方式快速生成 html 表单组件的复杂代码</p>
+<h3 id="公共方法">公共方法</h3>
+<pre><code class="language-php">// 设置保存值
+$form-&gt;text('title')-&gt;value('text...');
+
+// 设置默认值
+$form-&gt;text('title')-&gt;default('text...');
+
+//help 信息
+$form-&gt;text('title')-&gt;help('help...');
+
+// 设置属性
+$form-&gt;text('title')-&gt;attribute(['data-title' =&gt; 'title...']);
+$form-&gt;text('title')-&gt;attribute('data-title', 'title...');
+
+// placeholder
+$form-&gt;text('title')-&gt;placeholder('请输入。。。');
+</code></pre>
+<p>表单元素太多，为了避免表单太长，用<code>tab</code>来分隔form</p>
+<pre><code class="language-php">$form-&gt;tab('Basic info', function ($form) {
+
+    $form-&gt;text('username');
+    $form-&gt;email('email');
+
+})-&gt;tab('Profile', function ($form) {
+
+   $form-&gt;image('avatar');
+   $form-&gt;text('address');
+   $form-&gt;mobile('phone');
+
+})-&gt;tab('Jobs', function ($form) {
+
+     $form-&gt;hasMany('jobs', function () {
+         $form-&gt;text('company');
+         $form-&gt;date('start_date');
+         $form-&gt;date('end_date');
+     });
+
+  })
+</code></pre>
+<h3 id="基础控件">基础控件</h3>
+<h4 id="输入框文本密码隐藏域ip数字-等等">输入框(文本、密码、隐藏域、ip、数字 等等)</h4>
+<pre><code class="language-php">// 普通文本
+$form-&gt;text($column, [$label]);
+
+//隐藏域
+$form-&gt;hidden($column);
+
+// 添加提交验证规则
+$form-&gt;text($column, [$label])-&gt;rules('required|min:10');
+
+//email
+$form-&gt;email($column[, $label]);
+
+//密码
+$form-&gt;password($column[, $label]);
+
+// url
+$form-&gt;url($column[, $label]);
+
+// ip
+$form-&gt;ip($column[, $label]);
+
+// 电话
+$form-&gt;mobile($column[, $label])-&gt;options(['mask' =&gt; '999 9999 9999']);
+
+//颜色
+$form-&gt;color($column[, $label])-&gt;default('#ccc');
+
+//时间
+$form-&gt;time($column[, $label]);
+// 设置时间格式，更多格式参考http://momentjs.com/docs/#/displaying/format/
+$form-&gt;time($column[, $label])-&gt;format('HH:mm:ss');
+
+//日期
+$form-&gt;date($column[, $label]);
+// 设置日期格式，更多格式参考http://momentjs.com/docs/#/displaying/format/
+$form-&gt;date($column[, $label])-&gt;format('YYYY-MM-DD');
+
+//日期时间
+$form-&gt;datetime($column[, $label]);
+// 设置日期格式，更多格式参考http://momentjs.com/docs/#/displaying/format/
+$form-&gt;datetime($column[, $label])-&gt;format('YYYY-MM-DD HH:mm:ss');
+
+//时间范围
+$form-&gt;timeRange($startTime, $endTime, 'Time Range');
+
+//日期范围
+$form-&gt;dateRange($startDate, $endDate, 'Date Range');
+
+//时间日期范围
+$form-&gt;datetimeRange($startDateTime, $endDateTime, 'DateTime Range');
+
+//货币
+$form-&gt;currency($column[, $label]);
+// 设置单位符号
+$form-&gt;currency($column[, $label])-&gt;symbol('￥');
+
+//数字
+$form-&gt;number($column[, $label]);
+// 设置最大值
+$form-&gt;number($column[, $label])-&gt;max(100);
+// 设置最小值
+$form-&gt;number($column[, $label])-&gt;min(10);
+
+//比例
+$form-&gt;rate($column[, $label]);
+</code></pre>
+<h4 id="select-选择框">select 选择框</h4>
+<pre><code class="language-php">$form-&gt;select($column[, $label])-&gt;options([1 =&gt; 'foo', 2 =&gt; 'bar', 'val' =&gt; 'Option name']);
+</code></pre>
+<p>从 API</p>
+<pre><code class="language-php">$form-&gt;select($column[, $label])-&gt;options('/api/users');
+</code></pre>
+<p>格式必须为下面格式</p>
+<blockquote>
+<p>[
+{
+&ldquo;id&rdquo;: 9,
+&ldquo;text&rdquo;: &ldquo;xxx&rdquo;
+},
+{
+&ldquo;id&rdquo;: 21,
+&ldquo;text&rdquo;: &ldquo;xxx&rdquo;
+},
+&hellip;
+]</p>
+</blockquote>
+<p>如果选项过多，可通过ajax方式动态分页载入选项</p>
+<pre><code class="language-php">$form-&gt;select('user_id')-&gt;options(function ($id) {
+    $user = User::find($id);
+
+    if ($user) {
+        return [$user-&gt;id =&gt; $user-&gt;name];
+    }
+})-&gt;ajax('/admin/api/users');
+</code></pre>
+<p>API /admin/api/users接口的代码</p>
+<pre><code class="language-php">public function users(Request $request)
+{
+    $q = $request-&gt;get('q');
+
+    return User::where('name', 'like', &quot;%$q%&quot;)-&gt;paginate(null, ['id', 'name as text']);
+}
+</code></pre>
+<p>接口返回的数据结构为</p>
+<pre><code class="language-json">{
+    &quot;total&quot;: 4,
+    &quot;per_page&quot;: 15,
+    &quot;current_page&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;next_page_url&quot;: null,
+    &quot;prev_page_url&quot;: null,
+    &quot;from&quot;: 1,
+    &quot;to&quot;: 3,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 9,
+            &quot;text&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;text&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;id&quot;: 42,
+            &quot;text&quot;: &quot;xxx&quot;
+        },
+        {
+            &quot;id&quot;: 48,
+            &quot;text&quot;: &quot;xxx&quot;
+        }
+    ]
+}
+</code></pre>
+<h4 id="select-联动父子关系的单向联动">select 联动（父子关系的单向联动）</h4>
+<pre><code class="language-php">$form-&gt;select('province')-&gt;options(...)-&gt;load('city', '/api/city');
+
+$form-&gt;select('city');
+</code></pre>
+<p>中load(&lsquo;city&rsquo;, &lsquo;/api/city&rsquo;);的意思是，在当前select的选项切换之后，会把当前选项的值通过参数<code>q</code>, 调用接口/api/city，并把api返回的数据填充为city选择框的选项，其中api/api/city返回的数据格式必须符合:</p>
+<pre><code class="language-json">[
+    {
+        &quot;id&quot;: 9,
+        &quot;text&quot;: &quot;xxx&quot;
+    },
+    {
+        &quot;id&quot;: 21,
+        &quot;text&quot;: &quot;xxx&quot;
+    },
+    ...
+]
+</code></pre>
+<p>对应的 action</p>
+<pre><code class="language-php">public function city(Request $request)
+{
+    $provinceId = $request-&gt;get('q');
+
+    return ChinaArea::city()-&gt;where('parent_id', $provinceId)-&gt;get(['id', DB::raw('name as text')]);
+}
+</code></pre>
+<h4 id="多选框">多选框</h4>
+<pre><code class="language-php">$form-&gt;multipleSelect($column[, $label])-&gt;options([1 =&gt; 'foo', 2 =&gt; 'bar', 'val' =&gt; 'Option name']);
+</code></pre>
+<p>多选框可以处理两种情况</p>
+<p>第一种是<code>ManyToMany</code>的关系。</p>
+<pre><code class="language-php">class Post extends Models
+{
+    public function tags()
+    {
+        return $this-&gt;belongsToMany(Tag::class);
+    }
+}
+
+$form-&gt;multipleSelect('tags')-&gt;options(Tag::all()-&gt;pluck('name', 'id'));
+</code></pre>
+<p>第二种是将选项数组存储到单字段中，（例如表中的 options 字段，值是字符串 &lsquo;a,b,c,d&rsquo;）.那就需要在模型里面为该字段定义<code>访问器</code>和<code>修改器</code>来存储和读取了(将字符串变成数组)。</p>
+<pre><code class="language-php">class Post extends Model
+{
+    public function getTagsAttribute($value)
+    {
+        return explode(',', $value);
+    }
+
+    public function setTagsAttribute($value)
+    {
+        $this-&gt;attributes['tags'] = implode(',', $value);
+    }
+}
+</code></pre>
+<p>同样地，选项过多，可以用 ajax 分页(官方文档这里有错吧，应该是 <code>multipleSelect('friends')</code>？)</p>
+<pre><code class="language-php">$form-&gt;select('friends')-&gt;options(function ($ids) {
+
+    return User::find($ids)-&gt;pluck('name', 'id');
+
+})-&gt;ajax('/admin/api/users');
+</code></pre>
+<p><strong>多传递了一个 null 数据的问题</strong></p>
+<p><img src="/media/15490412689614/15463990286705.jpg" alt="-w271"></p>
+<h4 id="listbox使用方法和multipleselect类似">listbox(使用方法和multipleSelect类似)</h4>
+<pre><code class="language-php">$form-&gt;listbox($column[, $label])-&gt;options([1 =&gt; 'foo', 2 =&gt; 'bar', 'val' =&gt; 'Option name']);
+
+</code></pre>
+<h4 id="textarea输入框">textarea输入框</h4>
+<pre><code class="language-php">$form-&gt;textarea($column[, $label])-&gt;rows(10);
+
+</code></pre>
+<h4 id="radio">radio</h4>
+<pre><code class="language-php">$form-&gt;radio($column[, $label])-&gt;options(['m' =&gt; 'Female', 'f'=&gt; 'Male'])-&gt;default('m');
+
+// 竖排
+$form-&gt;radio($column[, $label])-&gt;options(['m' =&gt; 'Female', 'f'=&gt; 'Male'])-&gt;stacked();
+</code></pre>
+<h4 id="checkbox">checkbox</h4>
+<p>和 multiSelect 一样，可以处理两种数据存储情况</p>
+<pre><code class="language-php">$form-&gt;checkbox($column[, $label])-&gt;options([1 =&gt; 'foo', 2 =&gt; 'bar', 'val' =&gt; 'Option name']);
+
+// 竖排
+$form-&gt;checkbox($column[, $label])-&gt;options([1 =&gt; 'foo', 2 =&gt; 'bar', 'val' =&gt; 'Option name'])-&gt;stacked();
+</code></pre>
+<h3 id="图片--文件上传">图片 &amp; 文件上传</h3>
+<p>首先要完成上传配置<code>config/admin.php</code>参考前面内容</p>
+<p><strong>图片</strong></p>
+<p>如果使用压缩、裁切、添加水印等各种方法,需要先安装<code>intervention/image</code>.</p>
+<pre><code class="language-php">$form-&gt;image($column[, $label]);
+
+// 修改图片上传路径和文件名
+$form-&gt;image($column[, $label])-&gt;move($dir, $name);
+
+// 剪裁图片
+$form-&gt;image($column[, $label])-&gt;crop(int $width, int $height, [int $x, int $y]);
+
+// 加水印
+$form-&gt;image($column[, $label])-&gt;insert($watermark, 'center');
+
+// 添加图片删除按钮
+$form-&gt;image($column[, $label])-&gt;removable();
+</code></pre>
+<p><strong>文件</strong></p>
+<pre><code class="language-php">$form-&gt;file($column[, $label]);
+
+// 修改文件上传路径和文件名
+$form-&gt;file($column[, $label])-&gt;move($dir, $name);
+
+// 并设置上传文件类型
+$form-&gt;file($column[, $label])-&gt;rules('mimes:doc,docx,xlsx');
+
+// 添加文件删除按钮
+$form-&gt;file($column[, $label])-&gt;removable();
+</code></pre>
+<p><strong>多图/文件上传</strong></p>
+<pre><code class="language-php">// 多图
+$form-&gt;multipleImage($column[, $label]);
+
+// 添加删除按钮
+$form-&gt;multipleImage($column[, $label])-&gt;removable();
+
+// 多文件
+$form-&gt;multipleFile($column[, $label]);
+
+// 添加删除按钮
+$form-&gt;multipleFile($column[, $label])-&gt;removable();
+</code></pre>
+<p>多图/文件上传的时候提交的数据为<strong>文件路径数组</strong>,可以直接用mysql的JSON类型字段存储,如果用mongodb的话也能直接存储.</p>
+<p>但是如果用<strong>字符串类型</strong>来存储的话,就需要<strong>指定数据的存储格式</strong>了, 比如,如果要用json字符串来存储文件数据,就需要在模型中定义字段的mutator,比如字段名为pictures,定义mutator:</p>
+<pre><code class="language-php">public function setPicturesAttribute($pictures)
+{
+    if (is_array($pictures)) {
+        $this-&gt;attributes['pictures'] = json_encode($pictures);
+    }
+}
+
+public function getPicturesAttribute($pictures)
+{
+    return json_decode($pictures, true);
+}
+</code></pre>
+<p>得到的 post 信息</p>
+<p><img src="/media/15490412689614/15463990977627.jpg" alt="-w469"></p>
+<h3 id="地图控件">地图控件</h3>
+<p>默认关闭（因为引用了网络资源）。</p>
+<p>地图控件，用来选择经纬度,<code>$latitude</code>, <code>$longitude</code>为经纬度字段，Laravel的locale设置为zh_CN的时候使用腾讯地图，否则使用Google地图：</p>
+<pre><code class="language-php">$form-&gt;map($latitude, $longitude, $label);
+</code></pre>
+<h3 id="滑动选择控件">滑动选择控件</h3>
+<p>可以用来数字类型字段的选择，比如年龄：</p>
+<p>更多参考 <a href="https://github.com/IonDen/ion.rangeSlider#settings">https://github.com/IonDen/ion.rangeSlider#settings</a></p>
+<pre><code class="language-php">$form-&gt;slider($column[, $label])-&gt;options(['max' =&gt; 100, 'min' =&gt; 1, 'step' =&gt; 1, 'postfix' =&gt; 'years old']);
+
+</code></pre>
+<h3 id="富文本编辑框">富文本编辑框</h3>
+<p>编辑器组件引用了网络资源，默认关闭</p>
+<pre><code class="language-php">$form-&gt;editor($column[, $label]);
+</code></pre>
+<h3 id="开关选择">开关选择</h3>
+<p>on和off对用开关的两个值1和0:  （在 表格 里面也看到这类似的处理）</p>
+<pre><code class="language-php">$states = [
+    'on'  =&gt; ['value' =&gt; 1, 'text' =&gt; '打开', 'color' =&gt; 'success'],
+    'off' =&gt; ['value' =&gt; 0, 'text' =&gt; '关闭', 'color' =&gt; 'danger'],
+];
+
+$form-&gt;switch($column[, $label])-&gt;states($states);
+</code></pre>
+<h3 id="只显示字段不做任何操作">只显示字段，不做任何操作</h3>
+<pre><code class="language-php">$form-&gt;display($column[, $label]);
+
+//更复杂的显示
+$form-&gt;display($column[, $label])-&gt;with(function ($value) {
+    return &quot;&lt;img src=&quot;$value&quot; /&gt;&quot;;
+});
+</code></pre>
+<h3 id="其他分割线html标签图标">其他（分割线，Html，标签，图标）</h3>
+<pre><code class="language-php">$form-&gt;divide();
+
+//插入html内容，参数可以是实现了Htmlable、Renderable或者实现了__toString()方法的类
+$form-&gt;html('你的html内容', $label = '');
+
+//插入逗号(,)隔开的字符串tags
+$form-&gt;tags('keywords');
+
+//选择font-awesome图标
+$form-&gt;icon('icon');
+</code></pre>
+<h2 id="补充关联数据的编辑创建">补充：关联数据的编辑、创建</h2>
+<p>例如 <code>TermTaxonomy</code> belongsTo  <code>Terms</code>, 有一个 <code>term()</code>关联方法</p>
+<pre><code class="language-php">public function term() {
+    return $this-&gt;belongsTo(Terms::class, 'term_id');
+}
+</code></pre>
+<p>那么在 create 和 edit 里调用 <code>$form = new Form(new TermTaxonomy);</code>时，可以用 点语法 得到数据</p>
+<pre><code class="language-php">$form-&gt;text('term.name');
+</code></pre>
+<p>生成 html 代码是<code>&lt;input name=term[name] /&gt;</code></p>
+<p>同样，在<strong>create</strong>获取表单数据的时候, 也用 点语法</p>
+<pre><code class="language-php">$term = Terms::create(['name' =&gt; $request-&gt;input('term.name'), 'term_group' =&gt; 0]);
+</code></pre>
+<p>在处理 <strong>update</strong> 的时候，由于提交过来的数据 term.name 并不会自动保存到 term_taxonomy 里去（字段不匹配）</p>
+<p>因此使用 Model 的“更新 belongsTo”章节</p>
+<pre><code class="language-php">$account = App\Account::find(10);
+$user-&gt;account()-&gt;associate($account);
+$user-&gt;save();
+</code></pre>
+<h3 id="一对多关联的表单">一对多关联的表单</h3>
+<p>使用<code>$form-&gt;hasMany</code> 和内嵌表单 <code>Form\NestedForm $form</code></p>
+<pre><code class="language-php">$form-&gt;display('id', 'ID');
+
+$form-&gt;text('username')-&gt;rules('required');
+$form-&gt;textarea('bio')-&gt;rules('required');
+
+$form-&gt;hasMany('paintings', function (Form\NestedForm $form) {
+    $form-&gt;text('title');
+    $form-&gt;image('body');
+    $form-&gt;datetime('completed_at');
+});
+
+$form-&gt;display('created_at', 'Created At');
+$form-&gt;display('updated_at', 'Updated At');
+
+// 也可以设置label
+
+$form-&gt;hasMany('paintings', '画作', function (Form\NestedForm $form) {
+
+});
+</code></pre>
+<h3 id="内嵌">内嵌</h3>
+<p>用于处理mysql的JSON类型字段数据（或者mongodb的object类型数据），也可以将多个field的数据值以JSON字符串的形式存储在mysql的字符串类型字段中</p>
+<p>比如<code>orders</code>表中的JSON或字符串类型的<code>extra</code>字段，用来<strong>存储多个field的数据</strong></p>
+<pre><code class="language-php">class Order extends Model
+{
+    protected $casts = [
+        'extra' =&gt; 'json',
+    ];
+}
+</code></pre>
+<p>在表单中使用<code>embeds()</code></p>
+<pre><code class="language-php">$form-&gt;embeds('extra', function ($form) {
+
+    $form-&gt;text('extra1')-&gt;rules('required');
+    $form-&gt;email('extra2')-&gt;rules('required');
+    $form-&gt;mobile('extra3');
+    $form-&gt;datetime('extra4');
+
+    $form-&gt;dateRange('extra5', 'extra6', '范围')-&gt;rules('required');
+
+});
+
+// 自定义标题
+$form-&gt;embeds('extra', '附加信息', function ($form) {
+    ...
+});
+</code></pre>
+<h2 id="form-组件管理">form 组件管理</h2>
+<h3 id="移除已有组件">移除已有组件</h3>
+<p>form表单内置的map和editor组件通过cdn的方式引用了前端文件，如果网络方面有问题，可以通过下面的方式将它们移除。</p>
+<p>找到文件app/Admin/bootstrap.php,如果文件不存在，请更新laravel-admin，然后新建该文件</p>
+<pre><code class="language-php">use Encore\Admin\Form;
+
+Form::forget('map');
+Form::forget('editor');
+
+// or
+
+Form::forget(['map', 'editor']);
+
+</code></pre>
+<h3 id="扩展自定义组件举例-集成富文本编辑器ckeditor">扩展自定义组件（举例 集成富文本编辑器ckeditor）</h3>
+<p>下载ckeditor 并解压到/public目录，比如放在/public/packages/目录下。</p>
+<p>然后新建扩展文件app/Admin/Extensions/Form/CKEditor.php:</p>
+<pre><code class="language-php">namespace App\Admin\Extensions\Form;
+
+use Encore\Admin\Form\Field;
+
+class CKEditor extends Field
+{
+    public static $js = [
+        '/packages/ckeditor/ckeditor.js',
+        '/packages/ckeditor/adapters/jquery.js',
+    ];
+
+    protected $view = 'admin.ckeditor';
+
+    public function render()
+    {
+        $this-&gt;script = &quot;$('textarea.{$this-&gt;getElementClassString()}').ckeditor();&quot;;
+
+        return parent::render();
+    }
+}
+</code></pre>
+<p>新建view resources/views/admin/ckeditor.blade.php:</p>
+<pre><code class="language-html">&lt;div class=&quot;form-group {!! !$errors-&gt;has($errorKey) ?: 'has-error' !!}&quot;&gt;
+
+    &lt;label for=&quot;{{$id}}&quot; class=&quot;col-sm-2 control-label&quot;&gt;{{$label}}&lt;/label&gt;
+
+    &lt;div class=&quot;col-sm-6&quot;&gt;
+
+        @include('admin::form.error')
+
+        &lt;textarea class=&quot;form-control {{ $class }}&quot; name=&quot;{{$name}}&quot; placeholder=&quot;{{ $placeholder }}&quot; {!! $attributes !!} &gt;{{ old($column, $value) }}&lt;/textarea&gt;
+
+        @include('admin::form.help-block')
+
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+<p>然后在app/Admin/bootstrap.php中引入扩展：</p>
+<pre><code class="language-php">use App\Admin\Extensions\Form\CKEditor;
+use Encore\Admin\Form;
+
+Form::extend('ckeditor', CKEditor::class);
+</code></pre>
+<p>然后就能在form中使用了:</p>
+<pre><code class="language-php">$form-&gt;ckeditor('content');
+</code></pre>
+<h3 id="扩展一个基于codemirror的php代码编辑器">扩展一个基于codemirror的PHP代码编辑器</h3>
+<p>先将codemirror库下载并解压到前端资源目录下，比如放在public/packages/codemirror-5.20.2目录下。</p>
+<p>新建组件类app/Admin/Extensions/PHPEditor.php:</p>
+<pre><code class="language-php">namespace App\Admin\Extensions;
+
+use Encore\Admin\Form\Field;
+
+class PHPEditor extends Field
+{
+    protected $view = 'admin.php-editor';
+
+    protected static $css = [
+        '/packages/codemirror-5.20.2/lib/codemirror.css',
+    ];
+
+    protected static $js = [
+        '/packages/codemirror-5.20.2/lib/codemirror.js',
+        '/packages/codemirror-5.20.2/addon/edit/matchbrackets.js',
+        '/packages/codemirror-5.20.2/mode/htmlmixed/htmlmixed.js',
+        '/packages/codemirror-5.20.2/mode/xml/xml.js',
+        '/packages/codemirror-5.20.2/mode/javascript/javascript.js',
+        '/packages/codemirror-5.20.2/mode/css/css.js',
+        '/packages/codemirror-5.20.2/mode/clike/clike.js',
+        '/packages/codemirror-5.20.2/mode/php/php.js',
+    ];
+
+    public function render()
+    {
+        $this-&gt;script = &lt;&lt;&lt;EOT
+
+CodeMirror.fromTextArea(document.getElementById(&quot;{$this-&gt;id}&quot;), {
+    lineNumbers: true,
+    mode: &quot;text/x-php&quot;,
+    extraKeys: {
+        &quot;Tab&quot;: function(cm){
+            cm.replaceSelection(&quot;    &quot; , &quot;end&quot;);
+        }
+     }
+});
+
+EOT;
+        return parent::render();
+
+    }
+}
+</code></pre>
+<p>创建视图resources/views/admin/php-editor.blade.php:</p>
+<pre><code class="language-php">&lt;div class=&quot;form-group {!! !$errors-&gt;has($label) ?: 'has-error' !!}&quot;&gt;
+
+    &lt;label for=&quot;{{$id}}&quot; class=&quot;col-sm-2 control-label&quot;&gt;{{$label}}&lt;/label&gt;
+
+    &lt;div class=&quot;col-sm-6&quot;&gt;
+
+        @include('admin::form.error')
+
+        &lt;textarea class=&quot;form-control&quot; id=&quot;{{$id}}&quot; name=&quot;{{$name}}&quot; placeholder=&quot;{{ trans('admin::lang.input') }} {{$label}}&quot; {!! $attributes !!} &gt;{{ old($column, $value) }}&lt;/textarea&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+<p>bootstarp.php</p>
+<pre><code class="language-php">use App\Admin\Extensions\PHPEditor;
+use Encore\Admin\Form;
+
+Form::extend('php', PHPEditor::class);
+</code></pre>
+<p>使用</p>
+<pre><code class="language-php">$form-&gt;php('code');
+</code></pre>
+<h2 id="表单验证">表单验证</h2>
+<p>使用laravel的验证规则来验证表单提交的数据. 参考 <a href="https://laravel.com/docs/5.5/validation">https://laravel.com/docs/5.5/validation</a></p>
+<pre><code class="language-php">$form-&gt;text('title')-&gt;rules('required|min:3');
+
+// 复杂的验证规则可以在回调里面实现
+$form-&gt;text('title')-&gt;rules(function ($form) {
+
+    // 如果不是编辑状态，则添加字段唯一验证
+    if (!$id = $form-&gt;model()-&gt;id) {
+        return 'unique:users,email_address';
+    }
+
+});
+
+
+//给验证规则自定义错误提示消息
+$form-&gt;text('code')-&gt;rules('required|regex:/^\d+$/|min:10', [
+    'regex' =&gt; 'code必须全部为数字',
+    'min'   =&gt; 'code不能少于10个字符',
+]);
+
+
+//如果要允许字段为空，首先要在数据库的表里面对该字段设置为NULL，然后
+$form-&gt;text('title')-&gt;rules('nullable');
+</code></pre>
+<h2 id="表单回调函数">表单回调函数</h2>
+<p>几种接收回调函数的方法</p>
+<pre><code class="language-php">// 在表单提交前调用
+$form-&gt;submitted(function (Form $form) {
+    //...
+});
+
+//保存前回调
+$form-&gt;saving(function (Form $form) {
+    //...
+});
+
+//保存后回调
+$form-&gt;saved(function (Form $form) {
+    //...
+});
+
+//从回调参数$form中获取当前提交的表单数据
+$form-&gt;saving(function (Form $form) {
+
+    dump($form-&gt;username);
+
+});
+
+//获取模型中的数据
+$form-&gt;saved(function (Form $form) {
+
+    $form-&gt;model()-&gt;id;
+
+});
+
+//可以直接在回调中返回Symfony\Component\HttpFoundation\Response的实例，来跳转或进入页面：
+$form-&gt;saving(function (Form $form) {
+
+    // 返回一个简单response
+    return response('xxxx');
+
+});
+
+$form-&gt;saving(function (Form $form) {
+
+    // 跳转页面
+    return redirect('/admin/users');
+
+});
+
+$form-&gt;saving(function (Form $form) {
+
+    // 抛出异常
+    throw new \Exception('出错啦。。。');
+
+});
+
+
+//或者在页面上返回 错误或者成功信息
+use Illuminate\Support\MessageBag;
+
+// 抛出错误信息
+$form-&gt;saving(function ($form) {
+
+    $error = new MessageBag([
+        'title'   =&gt; 'title...',
+        'message' =&gt; 'message....',
+    ]);
+
+    return back()-&gt;with(compact('error'));
+});
+
+// 抛出成功信息
+$form-&gt;saving(function ($form) {
+
+    $success = new MessageBag([
+        'title'   =&gt; 'title...',
+        'message' =&gt; 'message....',
+    ]);
+
+    return back()-&gt;with(compact('success'));
+});
+</code></pre>
+<h1 id="模型-详情-区别于前面的-表格那个是-列表">模型 详情 （区别于前面的 “表格”，那个是 列表）</h1>
+<p><code>Encore\Admin\Show</code>用来显示数据详情</p>
+<h2 id="显示字段">显示字段</h2>
+<p>例如 posts 表(Post Model), 用<code>Admin::show(modelInstancen, callback($show))</code>
+来显示数据详情</p>
+<pre><code class="language-php">use App\Models\Post;
+use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Show;
+
+class PostController extends Controller
+{
+    public function show($id, Content $content)
+    {
+        // 分别显示字段
+        return $content-&gt;header('Post')
+            -&gt;description('详情')
+            -&gt;body(Admin::show(Post::findOrFail($id), function (Show $show) {
+
+                $show-&gt;id('ID');
+                $show-&gt;title('标题');
+                $show-&gt;content('内容');
+                
+                // 如果想添加一条分割线
+                $show-&gt;divider();
+                
+                $show-&gt;rate();
+                $show-&gt;created_at();
+                $show-&gt;updated_at();
+                $show-&gt;release_at();
+
+        }));
+        
+        //如果要直接显示所有的字段，可以用下面的简单方式，不需要使用 callback 函数得到 $show
+        $content-&gt;body(Admin::show(Post::findOrFail($id)));
+        
+        //直接显示指定的字段, 只需要传入一个字段名数组
+        $content-&gt;body(Admin::show(Post::findOrFail($id), ['id', 'title', 'content']));
+        
+        //指定每一个字段的label:
+        $content-&gt;body(Admin::show(Post::findOrFail($id), [
+            'id'        =&gt; 'ID',
+            'title'     =&gt; '标题',
+            'content'   =&gt; '内容'
+        ]));
+    }
+}
+</code></pre>
+<p>如果需要数据以别的形式显示用<code>as</code></p>
+<pre><code class="language-php">$show-&gt;contents()-&gt;as(function ($content) {
+    return &quot;&lt;pre&gt;{$content}&lt;/pre&gt;&quot;;
+});
+</code></pre>
+<h2 id="方法">方法</h2>
+<h3 id="内容转义">内容转义</h3>
+<p>为了防止XSS攻击, 默认输出的内容都会使用HTML转义，如果你想输出渲染并HTML，可以调用unescape方法</p>
+<pre><code class="language-php">$show-&gt;avatar()-&gt;unescape()-&gt;as(function ($avatar) {
+
+    return &quot;&lt;img src='{$avatar}' /&gt;&quot;;
+
+});
+</code></pre>
+<h3 id="修改面板">修改面板</h3>
+<h4 id="样式和标题">样式和标题</h4>
+<p>style的取值可以是primary、info、danger、warning、default</p>
+<pre><code class="language-php">$show-&gt;panel()
+    -&gt;style('danger')
+    -&gt;title('post基本信息...');
+</code></pre>
+<h4 id="面板工具设置">面板工具设置</h4>
+<p>面板右上角默认有三个按钮编辑、删除、列表，可以分别用下面的方式关掉它们：</p>
+<pre><code class="language-php">$show-&gt;panel()
+    -&gt;tools(function ($tools) {
+        $tools-&gt;disableEdit();
+        $tools-&gt;disableList();
+        $tools-&gt;disableDelete();
+    });;
+</code></pre>
+<h3 id="修改显示内容">修改显示内容</h3>
+<pre><code class="language-php">$show-&gt;title()-&gt;as(function ($title) {
+    return &quot;&lt;{$title}&gt;&quot;;
+});
+
+$show-&gt;contents()-&gt;as(function ($content) {
+    return &quot;&lt;pre&gt;{$content}&lt;/pre&gt;&quot;;
+});
+</code></pre>
+<p>通过<code>as</code>方法内置实现的几个常用的显示样式</p>
+<p>参数参考 <a href="https://github.com/z-song/laravel-admin/blob/master/src/Show/Field.php#L216">https://github.com/z-song/laravel-admin/blob/master/src/Show/Field.php#L216</a></p>
+<pre><code class="language-php">//图片的路径或者url，可以将它显示为图片：(image()方法的参数参考Field::image())
+$show-&gt;avatar()-&gt;image();
+
+//文件的路径或者url，可以将它显示为文件 
+$show-&gt;avatar()-&gt;file();
+
+//url链接,显示为HTML链接
+$show-&gt;homepage()-&gt;link();
+
+//内容显示为label(参数 参考Field::label())
+$show-&gt;tag()-&gt;label();
+
+//badge
+$show-&gt;rate()-&gt;badge();
+
+//using: 如果字段gender的取值为f、m，分别需要用女、男来显示
+$show-&gt;gender()-&gt;using(['f' =&gt; '女', 'm' =&gt; '男']);
+</code></pre>
+<h2 id="关联关系显示">关联关系显示</h2>
+<h3 id="一对一-1">一对一</h3>
+<p>Post 模型中有<code>belongsTo(User::class, 'author_id')</code></p>
+<p>用下面的方式显示post所属的用户的详细</p>
+<pre><code class="language-php">$show-&gt;author('作者信息', function ($author) {
+
+    $author-&gt;setResource('/admin/users');
+
+    $author-&gt;id();
+    $author-&gt;name();
+    $author-&gt;email();
+});
+</code></pre>
+<p>其中<code>$author</code>对象也是Show实例，同样可以使用上面的各种方法</p>
+<p><strong>注意</strong>：为了能够正常使用这个面板右上角的工具，必须用<code>setResource()</code>方法设置用户资源的url访问路径</p>
+<h3 id="一对多或多对多">一对多或多对多</h3>
+<pre><code class="language-php">$show-&gt;comments('评论', function ($comments) {
+
+    $comments-&gt;resource('/admin/comments');
+
+    $comments-&gt;id();
+    $comments-&gt;content()-&gt;limit(10);
+    $comments-&gt;created_at();
+    $comments-&gt;updated_at();
+
+    $comments-&gt;filter(function ($filter) {
+        $filter-&gt;like('content');
+    });
+});
+</code></pre>
+<p><code>$comments</code>是一个<code>Encore\Admin\Grid</code>实例，详细的使用方法可以参考model-grid</p>
+<p><strong>注意</strong>：为了能够正常使用这个数据表格的功能，必须用<code>resource()</code>方法设置comments资源的url访问路径</p>
+<h1 id="模型树-与-树状组件">模型树 与 树状组件</h1>
+<p>通过model-tree来实现一个树状组件，可以用拖拽的方式实现数据的层级、排序等操作</p>
+<h2 id="表结构和模型">表结构和模型</h2>
+<pre><code class="language-sql">CREATE TABLE `demo_categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `order` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+</code></pre>
+<p>对应的模型为<code>app/Models/Category.php</code></p>
+<pre><code class="language-php">namespace App\Models\Demo;
+
+use Encore\Admin\Traits\AdminBuilder;
+use Encore\Admin\Traits\ModelTree;
+use Illuminate\Database\Eloquent\Model;
+
+class Category extends Model
+{
+    use ModelTree, AdminBuilder;
+
+    protected $table = 'demo_categories';
+    
+    //表结构中的三个默认字段 parent_id、order、title 名称也是可以修改的：
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this-&gt;setParentColumn('pid');
+        $this-&gt;setOrderColumn('sort');
+        $this-&gt;setTitleColumn('name');
+    }
+}
+</code></pre>
+<h2 id="在页面中使用model-tree了">在页面中使用model-tree了</h2>
+<p>在 <code>body()</code>中渲染<code>Category::tree())</code></p>
+<p>注意要注释掉 <code>use HasResourceActions;</code> (在前面创建普通 grid 的时候生成的)</p>
+<pre><code class="language-php">namespace App\Admin\Controllers\Demo;
+
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Encore\Admin\Form;
+use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Controllers\ModelForm;
+use Encore\Admin\Tree;
+
+class CategoryController extends Controller
+{
+    use ModelForm;
+    
+    // use HasResourceActions;
+
+    public function index()
+    {
+        return Admin::content(function (Content $content) {
+            $content-&gt;header('树状模型');
+            $content-&gt;body(Category::tree());
+        });
+    }
+}
+</code></pre>
+<h3 id="修改行数据的显示">修改行数据的显示</h3>
+<p>在<code>Category::tree())</code>的回调函数里处理</p>
+<p>在回调函数中返回的字符串类型数据，就是在树状组件中的每一行的显示内容，<code>$branch</code>参数是当前行的数据数组。</p>
+<pre><code class="language-php">Category::tree(function ($tree) {
+    $tree-&gt;branch(function ($branch) {
+        $src = config('admin.upload.host') . '/' . $branch['logo'] ;
+        $logo = &quot;&lt;img src='$src' style='max-width:30px;max-height:30px' class='img'/&gt;&quot;;
+
+        return &quot;{$branch['id']} - {$branch['title']} $logo&quot;;
+    });
+})
+</code></pre>
+<p>如果要修改模型的查询，用下面的方式</p>
+<pre><code class="language-php">Category::tree(function ($tree) {
+
+    $tree-&gt;query(function ($model) {
+        return $model-&gt;where('type', 1);
+    });
+
+})
+</code></pre>
+<h1 id="前端组件联系-bootstrap-组件-和-collection-html-">前端组件（联系 bootstrap 组件 和 Collection-HTML ）</h1>
+<h2 id="notifications">Notifications</h2>
+<p>调用toastr组件，在页面的右上角添加一条浮动的提示</p>
+<pre><code class="language-php">admin_toastr('Message...', 'success');
+admin_toastr('Message...', 'info');
+admin_toastr('Message...', 'warning');
+admin_toastr('Message...', 'error');
+</code></pre>
+<p>接收第三个参数，给toastr添加设置参数,更多参数参考toastr(<a href="https://github.com/CodeSeven/toastr">https://github.com/CodeSeven/toastr</a>)</p>
+<pre><code class="language-php">admin_toastr('Message...', 'success', ['timeOut' =&gt; 5000]);
+
+</code></pre>
+<h2 id="alerts">Alerts</h2>
+<pre><code class="language-php">namespace App\Admin\Controllers;
+
+use Encore\Admin\Layout\Content;
+use App\Http\Controllers\Controller;
+
+class PostController extends Controller
+{
+    public function index(Content $content)
+    {
+        return $content
+            -&gt;withError('Title', 'messages..');
+            
+        //其他类型
+        $content-&gt;withWarning('Title', 'messages..');
+
+        $content-&gt;withInfo('Title', 'messages..');
+
+        $content-&gt;withSuccess('Title', 'messages..');
+        
+        // 也可以用下面的几个方法, 效果是一样的
+        admin_success($title, $message);
+        admin_warning($title, $message);
+        admin_error($title, $message);
+        admin_info($title, $message);
+    }
+}
+</code></pre>
+<h2 id="box组件">Box组件</h2>
+<p>Encore\Admin\Widgets\Box用来生成box组件</p>
+<pre><code class="language-php">use Encore\Admin\Widgets\Box;
+
+$box = new Box('Box标题', 'Box内容');
+
+$box-&gt;removable(); //可关闭
+
+$box-&gt;collapsable(); //可展开和收起
+
+$box-&gt;style('info'); //样式 primary,info,danger,warning,success,default
+
+$box-&gt;solid(); //添加边框
+
+echo $box;
+
+</code></pre>
+<h2 id="collapse组件">Collapse组件</h2>
+<p>Encore\Admin\Widgets\Collapse类用来生成折叠插件</p>
+<pre><code class="language-php">use Encore\Admin\Widgets\Collapse;
+
+$collapse = new Collapse();
+
+$collapse-&gt;add('Bar', 'xxxxx');
+$collapse-&gt;add('Orders', new Table());
+
+echo $collapse-&gt;render();
+</code></pre>
+<h2 id="表单和前面基于数据模型的表单不同这里没有和数据模型关联">表单（和前面基于数据模型的表单不同，这里没有和数据模型关联）</h2>
+<p>Encore\Admin\Widgets\Form类用来快速构建表单：</p>
+<pre><code class="language-php">$form = new Form();
+
+$form-&gt;action('example');
+
+$form-&gt;email('email')-&gt;default('qwe@aweq.com');
+$form-&gt;password('password');
+$form-&gt;text('name', '输入框');
+$form-&gt;url('url');
+$form-&gt;color('color');
+$form-&gt;map('lat', 'lng');
+$form-&gt;date('date');
+$form-&gt;json('val');
+$form-&gt;dateRange('created_at', 'updated_at');
+
+echo $form-&gt;render();
+</code></pre>
+<p><code>Form::__construct($data = [])</code>生成一个<code>form</code>对象，如果传入了<code>$data</code>参数，<code>$data</code>数组中的元素将会按照key对应填入form对应name的表单中。</p>
+<p><code>Form::action($uri)</code>方法用来设置表单提交地址。</p>
+<p><code>Form::method($method)</code>方法用来设置form表单的提交方法,默认为POST方法。</p>
+<p><code>Form::disablePjax()</code> 不使用pjax方式提交表单。</p>
+<h2 id="infobox组件">Infobox组件</h2>
+<p>Encore\Admin\Widgets\InfoBox类用来生成信息展示块：</p>
+<pre><code class="language-Php">use Encore\Admin\Widgets\InfoBox;
+
+$infoBox = new InfoBox('New Users', 'users', 'aqua', '/admin/users', '1024');
+
+echo $infoBox-&gt;render();
+</code></pre>
+<p>效果请参考后台首页的布局文件HomeController.php的index()方法中，关于InfoBox的部分。</p>
+<h2 id="tab组件">Tab组件</h2>
+<p>Encore\Admin\Widgets\Tab类用来生成选项卡组件：</p>
+<pre><code class="language-php">use Encore\Admin\Widgets\Tab;
+
+$tab = new Tab();
+
+$tab-&gt;add('Pie', $pie);
+$tab-&gt;add('Table', new Table());
+$tab-&gt;add('Text', 'blablablabla....');
+
+echo $tab-&gt;render();
+</code></pre>
+<h2 id="table">Table</h2>
+<p>Encore\Admin\Widgets\Table类用来生成表格：</p>
+<pre><code class="language-php">use Encore\Admin\Widgets\Table;
+
+// table 1
+$headers = ['Id', 'Email', 'Name', 'Company'];
+$rows = [
+    [1, 'labore21@yahoo.com', 'Ms. Clotilde Gibson', 'Goodwin-Watsica'],
+    [2, 'omnis.in@hotmail.com', 'Allie Kuhic', 'Murphy, Koepp and Morar'],
+    [3, 'quia65@hotmail.com', 'Prof. Drew Heller', 'Kihn LLC'],
+    [4, 'xet@yahoo.com', 'William Koss', 'Becker-Raynor'],
+    [5, 'ipsa.aut@gmail.com', 'Ms. Antonietta Kozey Jr.'],
+];
+
+$table = new Table($headers, $rows);
+
+echo $table-&gt;render();
+
+// table 2
+$headers = ['Keys', 'Values'];
+$rows = [
+    'name'   =&gt; 'Joe',
+    'age'    =&gt; 25,
+    'gender' =&gt; 'Male',
+    'birth'  =&gt; '1989-12-05',
+];
+
+$table = new Table($headers, $rows);
+
+echo $table-&gt;render();
+</code></pre>
+<h1 id="权限控制">权限控制</h1>
+<p>laravel-admin已经内置了<code>RBAC</code>权限控制模块，展开左侧边栏的Auth，下面有用户、角色、权限三项的管理面板</p>
+<h2 id="路由控制">路由控制</h2>
+<p>目前，<code>权限</code>和<code>路由</code>是绑定在一起的</p>
+<p><img src="/media/15490412689614/15453696609803.jpg" alt="-w1182"></p>
+<p>在 编辑权限 页面里面设置当前权限能访问的路由，在HTTP方法select框中选择访问路由的方法，在HTTP路径textarea中填写能访问的路径</p>
+<p>如果要访问前缀是/admin/users的<strong>所有路径</strong>，那么HTTP路径填写<code>/users*</code>，
+如果权限包括 <strong>多个访问路径</strong>, 换行填写每条路径。</p>
+<p><img src="/media/15490412689614/15453701144889.jpg" alt="-w443"></p>
+<p>然后把这个权限（绑定了路由），分配给 <code>Role</code> 或者 <code>User</code></p>
+<p><img src="/media/15490412689614/15453703517523.jpg" alt="-w835"></p>
+<p><img src="/media/15490412689614/15453703888574.jpg" alt="-w621"></p>
+<h2 id="在页面中控制用户的权限">在页面中控制用户的权限</h2>
+<p>前面对<strong>路由</strong>进行权限设置后，可以让 用户/角色 只能访问允许的路由。</p>
+<p>那<strong>页面</strong>中控制用户的权限的应用场景是什么呢？</p>
+<p>所有的用户都 看到 自己和其他人发布的文章（ 通过路由权限设置，角色<code>User</code>(普通用户) 和 <code>Editor</code> （编辑）角色都能访问该页面）</p>
+<p>但是，只有<code>Editor</code>能够编辑文章，包括：</p>
+<ol>
+<li>显示“编辑”按钮</li>
+<li>查看文章详情并编辑内容后，能够正式<strong>提交</strong>写入数据库</li>
+</ol>
+<h3 id="控制用户对元素的显示">控制用户对元素的显示</h3>
+<p>例如定义两个权限 <code>delete-image</code>、和<code>view-title-column</code>，分别用来 控制有删除图片 的权限和 显示某一列 的权限，赋予给角色后，在grid中加入代码</p>
+<pre><code class="language-php">$grid-&gt;actions(function ($actions) {
+
+    // 没有`delete-image`权限的角色不显示删除按钮
+    if (!Admin::user()-&gt;can('delete-image')) {
+        $actions-&gt;disableDelete();
+    }
+});
+
+// 只有具有`view-title-column`权限的用户才能显示`title`这一列
+if (Admin::user()-&gt;can('view-title-column')) {
+    $grid-&gt;column('title');
+}
+</code></pre>
+<h3 id="是否允许用户提交编辑一篇文章">是否允许用户提交编辑一篇文章</h3>
+<p><strong>这个 “动作” 权限， 和 路由 没有关联起来，控制粒度更细一些</strong></p>
+<p>因此，首先建好<code>edit-post</code>权限(权限名称填写编辑文章)，并赋予给角色</p>
+<pre><code class="language-php">use Encore\Admin\Auth\Permission;
+
+class PostController extends Controller
+{
+    public function store()
+    {
+        // 检查权限，有edit-post权限的用户或者角色可以访问创建文章页面
+        Permission::check('edit-post');
+    }
+}
+</code></pre>
+<h2 id="相关方法">相关方法</h2>
+<pre><code class="language-php">//获取当前用户对象/用户id
+Admin::user();
+Admin::user()-&gt;id;
+
+//是否超级管理员
+Admin::user()-&gt;isAdministrator();
+
+//获取用户角色/权限
+Admin::user()-&gt;roles;
+Admin::user()-&gt;permissions;
+
+//是否某个角色/是其中的角色
+Admin::user()-&gt;isRole('developer');
+Admin::user()-&gt;inRoles(['editor', 'developer']);
+
+//是否有/没有某个权限
+Admin::user()-&gt;can('create-post');  //Permission::check('edit-post');
+Admin::user()-&gt;cannot('delete-post');
+</code></pre>
+<h2 id="权限中间件">权限中间件</h2>
+<p>可以在路由配置上结合权限中间件来控制路由的权限</p>
+<pre><code class="language-php">// 允许administrator、editor两个角色访问group里面的路由
+Route::group([
+    'middleware' =&gt; 'admin.permission:allow,administrator,editor',
+], function ($router) {
+
+    $router-&gt;resource('users', UserController::class);
+    ...
+
+});
+
+// 禁止developer、operator两个角色访问group里面的路由
+Route::group([
+    'middleware' =&gt; 'admin.permission:deny,developer,operator',
+], function ($router) {
+
+    $router-&gt;resource('users', UserController::class);
+    ...
+
+});
+
+// 有edit-post、create-post、delete-post三个权限的用户可以访问group里面的路由
+Route::group([
+    'middleware' =&gt; 'admin.permission:check,edit-post,create-post,delete-post',
+], function ($router) {
+
+    $router-&gt;resource('posts', PostController::class);
+    ...
+
+});
+</code></pre>
+<h1 id="自定义登录">自定义登录</h1>
+<p>如果不使用laravel-admin内置的认证登陆逻辑，可以参考下面的方式自定义登陆认证逻辑。</p>
+<p>首先要先定义一个<code>user provider</code>，用来获取用户身份, 比如<code>app/Providers/CustomUserProvider.php</code>：</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\UserProvider;
+
+class CustomUserProvider implements UserProvider
+{
+    public function retrieveById($identifier)
+    {}
+
+    public function retrieveByToken($identifier, $token)
+    {}
+
+    public function updateRememberToken(Authenticatable $user, $token)
+    {}
+
+    public function retrieveByCredentials(array $credentials)
+    {
+        // 用$credentials里面的用户名密码去获取用户信息，然后返回Illuminate\Contracts\Auth\Authenticatable对象
+    }
+
+    public function validateCredentials(Authenticatable $user, array $credentials)
+    {
+        // 用$credentials里面的用户名密码校验用户，返回true或false
+    }
+}
+</code></pre>
+<p>在方法<code>retrieveByCredentials</code>和<code>validateCredentials</code>中, 传入的<code>$credentials</code>就是登陆页面提交的用户名和密码数组，然后你可以使用<code>$credentials</code>去实现自己的登陆逻辑</p>
+<p>Interface Illuminate\Contracts\Auth\Authenticatable的定义如下：(参考https://laravel.com/docs/5.5/authentication#adding-custom-user-providers)</p>
+<pre><code class="language-php">namespace Illuminate\Contracts\Auth;
+
+interface Authenticatable {
+
+    public function getAuthIdentifierName();
+    public function getAuthIdentifier();
+    public function getAuthPassword();
+    public function getRememberToken();
+    public function setRememberToken($value);
+    public function getRememberTokenName();
+
+}
+</code></pre>
+<p>定义好了User provider之后，打开app/Providers/AuthServiceProvider.php注册它</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application authentication / authorization services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this-&gt;registerPolicies();
+
+        Auth::provider('custom', function ($app, array $config) {
+
+            // Return an instance of Illuminate\Contracts\Auth\UserProvider...
+            return new CustomUserProvider();
+        });
+    }
+}
+</code></pre>
+<p>然后修改 laravel-admin 的配置 <code>config/admin.php</code>，<code>auth</code>部分</p>
+<pre><code class="language-php">'auth' =&gt; [
+    'guards' =&gt; [
+        'admin' =&gt; [
+            'driver' =&gt; 'session',
+            'provider' =&gt; 'admin',
+        ]
+    ],
+
+    // 修改下面
+    'providers' =&gt; [
+        'admin' =&gt; [
+            'driver' =&gt; 'custom',
+        ]
+    ],
+],
+</code></pre>
+<p>这样就完成了自定义登陆认证的逻辑</p>
+<h1 id="自定义头部导航条">自定义头部导航条</h1>
+<p>可以在顶部导航条上添加html元素。 打开app/Admin/bootstrap.php</p>
+<p>方法参数可以是任何可以渲染的对象(实现了Htmlable、Renderable接口或者包含__toString()方法的对象)或字符串</p>
+<pre><code class="language-php">use Encore\Admin\Facades\Admin;
+
+Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
+
+    $navbar-&gt;left('html...');
+
+    $navbar-&gt;right('html...');
+
+});
+</code></pre>
+<p>例如左侧添加一个搜索。</p>
+<p>先创建一个blade视图resources/views/search-bar.blade.php：</p>
+<pre><code class="language-html">&lt;style&gt;
+
+.search-form {
+    width: 250px;
+    margin: 10px 0 0 20px;
+    border-radius: 3px;
+    float: left;
+}
+.search-form input[type=&quot;text&quot;] {
+    color: #666;
+    border: 0;
+}
+
+.search-form .btn {
+    color: #999;
+    background-color: #fff;
+    border: 0;
+}
+
+&lt;/style&gt;
+
+&lt;form action=&quot;/admin/posts&quot; method=&quot;get&quot; class=&quot;search-form&quot; pjax-container&gt;
+    &lt;div class=&quot;input-group input-group-sm &quot;&gt;
+        &lt;input type=&quot;text&quot; name=&quot;title&quot; class=&quot;form-control&quot; placeholder=&quot;Search...&quot;&gt;
+        &lt;span class=&quot;input-group-btn&quot;&gt;
+            &lt;button type=&quot;submit&quot; name=&quot;search&quot; id=&quot;search-btn&quot; class=&quot;btn btn-flat&quot;&gt;&lt;i class=&quot;fa fa-search&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+          &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<p>然后加入头部导航条：</p>
+<pre><code class="language-php">$navbar-&gt;left(view('search-bar'));
+
+</code></pre>
+<h2 id="右侧">右侧</h2>
+<p>导航右侧只能添加<!-- raw HTML omitted -->标签, 比如要添加一些提示图标，新建渲染对象app/Admin/Extensions/Nav/Links.php</p>
+<pre><code class="language-php">namespace App\Admin\Extensions\Nav;
+
+class Links
+{
+    public function __toString()
+    {
+        return &lt;&lt;&lt;HTML
+
+&lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;i class=&quot;fa fa-envelope-o&quot;&gt;&lt;/i&gt;
+      &lt;span class=&quot;label label-success&quot;&gt;4&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;i class=&quot;fa fa-bell-o&quot;&gt;&lt;/i&gt;
+      &lt;span class=&quot;label label-warning&quot;&gt;7&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      &lt;i class=&quot;fa fa-flag-o&quot;&gt;&lt;/i&gt;
+      &lt;span class=&quot;label label-danger&quot;&gt;9&lt;/span&gt;
+    &lt;/a&gt;
+&lt;/li&gt;
+
+HTML;
+    }
+}
+</code></pre>
+<p>加入导航条</p>
+<pre><code class="language-php">$navbar-&gt;right(new \App\Admin\Extensions\Nav\Links());
+</code></pre>
+<p>或者用下面的html加入下拉菜单：（更多下拉组件信息，参考 bootstrap）</p>
+<pre><code class="language-html">&lt;li class=&quot;dropdown notifications-menu&quot;&gt;
+&lt;a href=&quot;#&quot; class=&quot;dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
+  &lt;i class=&quot;fa fa-bell-o&quot;&gt;&lt;/i&gt;
+  &lt;span class=&quot;label label-warning&quot;&gt;10&lt;/span&gt;
+&lt;/a&gt;
+&lt;ul class=&quot;dropdown-menu&quot;&gt;
+  &lt;li class=&quot;header&quot;&gt;You have 10 notifications&lt;/li&gt;
+  &lt;li&gt;
+    &lt;!-- inner menu: contains the actual data --&gt;
+    &lt;ul class=&quot;menu&quot;&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+          &lt;i class=&quot;fa fa-users text-aqua&quot;&gt;&lt;/i&gt; 5 new members joined today
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+          &lt;i class=&quot;fa fa-warning text-yellow&quot;&gt;&lt;/i&gt; Very long description here that may not fit into the
+          page and may cause design problems
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+          &lt;i class=&quot;fa fa-users text-red&quot;&gt;&lt;/i&gt; 5 new members joined
+        &lt;/a&gt;
+      &lt;/li&gt;
+
+      &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+          &lt;i class=&quot;fa fa-shopping-cart text-green&quot;&gt;&lt;/i&gt; 25 sales made
+        &lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+          &lt;i class=&quot;fa fa-user text-red&quot;&gt;&lt;/i&gt; You changed your username
+        &lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;footer&quot;&gt;&lt;a href=&quot;#&quot;&gt;View all&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%85%B6%E4%BB%96-admin-%E9%9D%A2%E6%9D%BF/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

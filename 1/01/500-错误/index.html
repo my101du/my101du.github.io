@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="500 错误 （1）打开 php-fpm.d/www.conf 的 log 记录，并把日志文件给定可写 （2）打开 php.ini 的 display_errors = on （3）设置 error_reporting = E_ALL | E_STRICT （4）重启 php 服务 wordpress wp-config.php define(&amp;lsquo;WP_DEBUG&amp;rsquo;, true); define(&amp;lsquo;WP_DEBUG_DISPLAY&amp;rsquo;, true); 如果还是不显示错误，看”" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="500 错误 （1）打开 php-fpm.d/www.conf 的 log 记录，并把日志文件给定可写 （2）打开 php.ini 的 display_errors = on （3）设置 error_reporting = E_ALL | E_STRICT （4）重启 php 服务 wordpress wp-config.php define(&lsquo;WP_DEBUG&rsquo;, true); define(&lsquo;WP_DEBUG_DISPLAY&rsquo;, true); 如果还是不显示错误，看”" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/500-%E9%94%99%E8%AF%AF/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="500 错误 （1）打开 php-fpm.d/www.conf 的 log 记录，并把日志文件给定可写 （2）打开 php.ini 的 display_errors = on （3）设置 error_reporting = E_ALL | E_STRICT （4）重启 php 服务 wordpress wp-config.php define(&lsquo;WP_DEBUG&rsquo;, true); define(&lsquo;WP_DEBUG_DISPLAY&rsquo;, true); 如果还是不显示错误，看”">
+
+<meta itemprop="wordCount" content="2115">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="500 错误 （1）打开 php-fpm.d/www.conf 的 log 记录，并把日志文件给定可写 （2）打开 php.ini 的 display_errors = on （3）设置 error_reporting = E_ALL | E_STRICT （4）重启 php 服务 wordpress wp-config.php define(&lsquo;WP_DEBUG&rsquo;, true); define(&lsquo;WP_DEBUG_DISPLAY&rsquo;, true); 如果还是不显示错误，看”"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/500-%E9%94%99%E8%AF%AF/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/500-%E9%94%99%E8%AF%AF/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2115字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="500-错误">500 错误</h1>
+<p>（1）打开 php-fpm.d/www.conf 的 log 记录，并把日志文件给定可写
+（2）打开 php.ini 的 display_errors = on
+（3）设置 error_reporting = E_ALL | E_STRICT
+（4）重启 php 服务</p>
+<p>wordpress</p>
+<p>wp-config.php
+define(&lsquo;WP_DEBUG&rsquo;, true);</p>
+<p>define(&lsquo;WP_DEBUG_DISPLAY&rsquo;, true);</p>
+<p>如果还是不显示错误，看”worpdrespre&rdquo; 安全里，可能是木马文件阻拦了</p>
+<p>删除后，正常显示</p>
+<p><img src="/media/15490410132848/15476074634799.jpg" alt="-w830"></p>
+<h1 id="基础调试法">基础调试法</h1>
+<h2 id="打印变量值">打印变量值</h2>
+<p>php有几种非常简便的调试,相信大多数人都是知道的,echo,print,print_r,var_dump,var_export
+这几种都是php自带的调试方法,非常常用,为了便于理解,所以做成了表格</p>
+<ul>
+<li>echo	语言结构	只能打印出简单类型变量的值(如int，string)	没有返回值</li>
+<li>print	语言结构	只能打印出简单类型变量的值(如int，string)	总是返回1</li>
+<li>print_r	函数	可以打印出复杂类型变量的值(如数组、对象）以列表的形式显示，并以array、object开头	如果想捕捉 print_r() 的输出，可使用 第二个(return) 参数。若此参数设为 TRUE，print_r() 将不打印结果，而是返回其输出。</li>
+<li>var_dump	函数	可判断多个变量的类型和长度，并输出变量的数值,更适合调试	没有返回值</li>
+<li>var_export	函数	和 var_dump() 类似，不同的是其返回的表示是合法的 PHP 代码。	同print_r</li>
+<li>dump	函数	大部分框架自带的调试函数,用于var_dump()友好(格式化)的输出,有些框架可能没有	见具体函数</li>
+</ul>
+<h2 id="打印脚本运行时间">打印脚本运行时间</h2>
+<p>在开始前调用一次,再在结束前调用此,最后用开始的时间减去结束的时间便可以拿到脚本运行时间</p>
+<pre><code class="language-php">function get_microtime() 
+{
+      list( $usec, $sec) = explode(&quot; &quot;, microtime());
+      return ((float)$usec + (float)$sec); 
+}
+</code></pre>
+<h2 id="打印脚本占用内存">打印脚本占用内存</h2>
+<pre><code class="language-php">$memoryByte = memory_get_usage();
+
+function convert($size)
+{
+    $unit=array('b','kb','mb','gb','tb','pb');
+    return @round($size/pow(1024,($i=floor(log($size,1024)))),2).' '.$unit[$i];
+}
+
+echo convert($memoryByte);
+</code></pre>
+<h2 id="堆栈追踪stack-trace-打印出程序运行到异常时所加载的文件和执行的函数">堆栈追踪(Stack Trace) 打印出程序运行到异常时所加载的文件和执行的函数</h2>
+<p>我们可以很方便的确定是程序在哪里出了问题(特别是在自己不熟悉的项目内).大多数框架都会为你集成这个功能,但是掌握此函数会让你更加灵活的利用堆栈去熟悉,调试代码</p>
+<pre><code class="language-php">debug_print_backtrace()
+
+debug_backtrace()
+
+//直接调用异常类中的函数
+$e = new Exception;  
+var_dump($e-&gt;getTraceAsString()); 
+</code></pre>
+<h2 id="打印到文件线上调试时是不能直接打印到页面输出">打印到文件(线上调试时,是不能直接打印到页面输出)</h2>
+<pre><code class="language-php">function mlog(){
+        $args = func_get_args();
+        foreach ($args as $arg){
+            file_put_contents('debug.txt', var_export($arg,true).&quot;\n&quot;,FILE_APPEND);
+        }
+    }
+</code></pre>
+<h1 id="xdebug">XDebug</h1>
+<blockquote>
+<p>报错只有一句话，不知道有哪些文件与这个错误有关？
+还在用 var_dump() 看运行结果? 不停地切换到浏览器刷新页面？
+不知道当前程序的执行时间、内存占用？</p>
+</blockquote>
+<p>xdebug是一个开源的PHP调试器，以php<strong>模块</strong>的形式加载并被使用。能够检查PHP脚本的执行效率和跟踪程序运行过程中很多细节</p>
+<h2 id="安装">安装</h2>
+<p>macOS 下</p>
+<pre><code class="language-shell">brew install php71-xdebug
+
+# 如果失败的话，No similarly named formulae found， 先运行这个
+brew tap homebrew/core
+</code></pre>
+<p>mac 10.13 后安装 php71 有些问题</p>
+<blockquote>
+<p>migrated from homebrew/php to homebrew/core</p>
+</blockquote>
+<pre><code class="language-shell">brew tap
+
+brew search php71
+==&gt; Searching local taps...
+==&gt; Searching taps on GitHub...
+==&gt; Searching blacklisted, migrated and deleted formulae...
+It was migrated from homebrew/php to homebrew/core.
+</code></pre>
+<p>from brew.sh/2018/01/19/homebrew-1.5.0 &ldquo;By 31st March 2018 we will deprecate and archive the Homebrew/php tap. Unfortunately we have been unable to maintain an acceptable, consistent user or contributor experience and CI workload through non-core formula taps in the Homebrew organisation so we are continuing to migrate widely used formulae into Homebrew/core and encourage more niche formulae and options to be supported outside the Homebrew organisation.&rdquo;</p>
+<p><a href="https://xdebug.org/docs/install">https://xdebug.org/docs/install</a></p>
+<p><a href="https://xdebug.org/docs/install#pecl">https://xdebug.org/docs/install#pecl</a></p>
+<p>Installation on Mac OS X
+PHP is available from the unofficial Mac OS X package manager Homebrew. Homebrew recommend using PECL to install Xdebug, so please follow the instructions above for installing via PECL.</p>
+<pre><code class="language-shell"># 升级
+brew upgrade
+</code></pre>
+<p>改成使用 PECL 的方式安装</p>
+<p>先要安装PECL, PECL is bundled with PEAR</p>
+<pre><code class="language-shell">curl -O http://pear.php.net/go-pear.phar
+sudo php -d detect_unicode=0 go-pear.phar
+</code></pre>
+<p>直接按回车键默认安装，会提示一个错误</p>
+<blockquote>
+<p>Unable to create PHP code directory ($php_dir) /usr/share/pear</p>
+</blockquote>
+<p><img src="/media/15490410132848/15434531461974.jpg" alt="-w573"></p>
+<p>输入1 使用 <code>/usr/local/pear</code>
+输入4 使用<code>/usr/local/bin</code>
+回车</p>
+<p>完成后</p>
+<blockquote>
+<p>The &lsquo;pear&rsquo; command is now at your service at /usr/local/bin/pear</p>
+</blockquote>
+<p>验证下</p>
+<pre><code class="language-shell">pear version
+</code></pre>
+<p>开始安装 xdebug</p>
+<pre><code class="language-shell">
+sudo pecl install xdebug
+
+Build process completed successfully
+Installing '/usr/local/Cellar/php@7.1/7.1.17/pecl/20160303/xdebug.so'
+install ok: channel://pecl.php.net/xdebug-2.6.0
+Extension xdebug enabled in php.ini
+</code></pre>
+<p>如果 macOS mojave 版本出现这个错误</p>
+<blockquote>
+<p>/private/tmp/pear/install/xdebug/xdebug.c:25:10: fatal error: &lsquo;php.h&rsquo; file not found</p>
+</blockquote>
+<pre><code class="language-shell">brew doctor
+
+# 由于我指定了 php 版本，如果是最新的 7.2 不需要指定版本
+brew link --overwrite php@7.1 --force
+
+# 再安装
+sudo pecl install xdebug
+</code></pre>
+<p>修改 php.ini (/usr/local/etc/php/7.1/php.ini) 文件, 找到上面安装成完毕的 xdebug.so 路径 添加</p>
+<pre><code class="language-shell">zend_extension=&quot;/usr/local/Cellar/php@7.1/7.1.17/pecl/20160303/xdebug.so&quot;
+</code></pre>
+<p>重启 php 服务，让配置文件生效</p>
+<pre><code class="language-shell">brew services restart php@7.1
+
+# 检查是否加载了扩展。发现没有使用 brew install 的 php 版本，在信息显示中没 xdebug 字样
+# 而使用了 macOS 自带的 php (/usr/bin/php)
+php -v
+which php
+
+# 修改环境变量，改成指定的目录
+echo 'export PATH=&quot;/usr/local/opt/php@7.1/bin:$PATH&quot;' &gt;&gt; ~/.zshrc
+echo 'export PATH=&quot;/usr/local/opt/php@7.1/sbin:$PATH&quot;' &gt;&gt; ~/.zshrc
+
+source ~/.zshrc
+
+# 现在ok了， 有 xdebug 字样了
+php -v
+
+PHP 7.1.24 (cli) (built: Nov  8 2018 21:45:45) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
+    with Xdebug v2.6.1, Copyright (c) 2002-2018, by Derick Rethans
+    with Zend OPcache v7.1.24, Copyright (c) 1999-2018, by Zend Technologies
+</code></pre>
+<p>运行 php -v 可能报错</p>
+<blockquote>
+<p>Failed loading /usr/local/Cellar/php@7.1/7.1.17/lib/php/20160303/xdebug.so:  dlopen(/usr/local/Cellar/php@7.1/7.1.17/lib/php/20160303/xdebug.so, 9): image not found</p>
+</blockquote>
+<p>装到哪里去了？
+<a href="https://stackoverflow.com/questions/44365973/cant-locate-xdebug-so-on-linux">https://stackoverflow.com/questions/44365973/cant-locate-xdebug-so-on-linux</a></p>
+<p><img src="/media/15490410132848/15259442739735.jpg" alt=""></p>
+<p>复制文件过去，然后 php -v 正常加载！</p>
+<p><img src="/media/15490410132848/15259443717936.jpg" alt=""></p>
+<p>现在报错信息更详细了</p>
+<p><img src="/media/15490410132848/15259597970391.jpg" alt=""></p>
+<h2 id="暂时关闭-xdebug">暂时关闭 xdebug</h2>
+<p><strong>XDebug断点调试比较消耗资源，用不着时请记得关闭</strong></p>
+<p>开启后，可能某些情况会导致无法进行下一步操作（例如有个 wordpress，在登陆阶段就提示 iTheme secuity 的 PHPMailer 报错，无法进入插件管理去关闭它）</p>
+<pre><code class="language-shell">#In Linux Ubuntu(maybe also another - it's not tested) distribution with PHP 5 on board, you can use:
+sudo php5dismod xdebug
+
+#And with PHP 7
+sudo phpdismod xdebug
+
+#And after that, please restart the server:
+sudo service apache2 restart
+</code></pre>
+<p>或者添加代码</p>
+<pre><code class="language-php">if(function_exists('xdebug_disable')) { xdebug_disable(); }
+</code></pre>
+<h1 id="详细设置">详细设置</h1>
+<p>php.ini:</p>
+<pre><code class="language-shell">[xdebug]
+
+;基本调试配置
+xdebug.auto_trace = on
+xdebug.collect_params = on
+xdebug.collect_return = on
+xdebug.profiler_enable = on
+xdebug.profiler_output_dir =&quot;/php/ext/xdebug_profilers&quot;
+xdebug.trace_output_dir = &quot;/tmp/ext/xdebug_traces&quot;
+
+;远程调试设置
+xdebug.remote_enable = on
+xdebug.remote_host = localhost
+xdebug.remote_port = 9010
+xdebug.remote_autostart = on
+</code></pre>
+<h1 id="代码覆盖">代码覆盖</h1>
+<p><a href="https://blog.csdn.net/why_2012_gogo/article/details/51170609">https://blog.csdn.net/why_2012_gogo/article/details/51170609</a></p>
+<h1 id="输出分析工具">输出分析工具</h1>
+<p>WebGrind</p>
+<h1 id="编辑器中使用-xdebug">编辑器中使用 XDebug</h1>
+<p><a href="https://segmentfault.com/a/1190000011332021">https://segmentfault.com/a/1190000011332021</a></p>
+<h2 id="sublime">Sublime</h2>
+<p><a href="https://www.sitepoint.com/debugging-xdebug-sublime-text-3/">https://www.sitepoint.com/debugging-xdebug-sublime-text-3/</a></p>
+<h3 id="首先配置-xdebug-远程调试信息">首先配置 xdebug 远程调试信息</h3>
+<pre><code class="language-shell">[xdebug]
+xdebug.remote_enable=1
+xdebug.remote_handler=dbgp
+xdebug.remote_host=127.0.0.1
+xdebug.remote_port=9000
+xdebug.remote_log=&quot;/var/log/xdebug/xdebug.log&quot;
+</code></pre>
+<p>重启 php 让配置生效</p>
+<p>在 ST 安装包  <code>Xdebug client</code></p>
+<h3 id="然后设置项目和-xdebug-关联">然后设置项目和 Xdebug 关联</h3>
+<p>先把项目另存为，然后打开生成的 project 文件,在里面添加 settings 信息</p>
+<pre><code class="language-json">{
+	&quot;folders&quot;:
+	[
+		{
+			&quot;path&quot;: &quot;.&quot;
+		}
+	],
+    &quot;settings&quot;: {
+        &quot;xdebug&quot;: {
+             &quot;url&quot;: &quot;http://my.local.website/&quot;,
+        }
+    }
+	
+}
+</code></pre>
+<h3 id="启动-xdebug-session">启动 Xdebug Session</h3>
+<p>tools -&gt; Xdebug， 启动 debugging  (launch browser) 在浏览器里打开， 或者也可以不选 browser 直接在 Sublime 底部</p>
+<p>会看到<code>?XDEBUG_SESSION_START=sublime.xdebug</code></p>
+<p><img src="/media/15490410132848/15435452099706.jpg" alt="-w953"></p>
+<h3 id="breakpoints-打断点">Breakpoints 打断点</h3>
+<p>让程序在这个地方停止下来，可以查看变量内容等   右键添加</p>
+<p><img src="/media/15490410132848/15435451376630.jpg" alt="-w627"></p>
+<p>然后在浏览器里继续运行</p>
+<h2 id="chrome">Chrome</h2>
+<p>安装浏览器插件 调试php
+安装chrome插件.Xdebug helper 配置xdebug helper .打开chrome扩展选项.
+如图配置:</p>
+<h2 id="visual-studio-code---php-debug">Visual Studio Code - PHP Debug</h2>
+<p>VSCode是目前最流行的开发工具之一，虽然轻量，但是对标各类IDE毫不逊色，微软良心之作，通过安装不同的插件可以扩展它的能力，其中有一款 PHP Debug 的插件，可以作为Xdebug的桥梁，方便直接通过Xdebug调试PHP，官方的描述十分贴切：</p>
+<p>PHP Debug Adapter for Visual Studio Code</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/500-%E9%94%99%E8%AF%AF/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/500-%E9%94%99%E8%AF%AF/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/codeigniter-%E4%B8%BB%E9%A2%98/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%AE%A9%E5%8A%A8%E5%9B%BE%E6%9B%B4%E7%9C%81%E7%A9%BA%E9%97%B4webp%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E6%8A%80%E6%9C%AF/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

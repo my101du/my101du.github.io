@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Git版本控制 permalink: study-git-skill date: 2017/07/01 10:10:10 tags: git 技能 Git 是一个非常好用的分布式版本控制系统 安装 Git 服务器 安装软件包 # Ubuntu $ apt-get install git # 或者 centos $ yum -y install git 升级 git (vscode 的 remote ssh 开发，" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Git版本控制 permalink: study-git-skill date: 2017/07/01 10:10:10 tags: git 技能 Git 是一个非常好用的分布式版本控制系统 安装 Git 服务器 安装软件包 # Ubuntu $ apt-get install git # 或者 centos $ yum -y install git 升级 git (vscode 的 remote ssh 开发，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Git版本控制 permalink: study-git-skill date: 2017/07/01 10:10:10 tags: git 技能 Git 是一个非常好用的分布式版本控制系统 安装 Git 服务器 安装软件包 # Ubuntu $ apt-get install git # 或者 centos $ yum -y install git 升级 git (vscode 的 remote ssh 开发，">
+
+<meta itemprop="wordCount" content="6219">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Git版本控制 permalink: study-git-skill date: 2017/07/01 10:10:10 tags: git 技能 Git 是一个非常好用的分布式版本控制系统 安装 Git 服务器 安装软件包 # Ubuntu $ apt-get install git # 或者 centos $ yum -y install git 升级 git (vscode 的 remote ssh 开发，"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6219字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Git版本控制</p>
+<p>permalink: study-git-skill
+date: 2017/07/01 10:10:10
+tags:</p>
+<ul>
+<li>git</li>
+<li>技能</li>
+</ul>
+<hr>
+<p>Git 是一个非常好用的<strong>分布式</strong>版本控制系统</p>
+<!-- raw HTML omitted -->
+<h1 id="安装-git-服务器">安装 Git 服务器</h1>
+<h2 id="安装软件包">安装软件包</h2>
+<pre><code class="language-shell"># Ubuntu
+$ apt-get install git
+
+# 或者 centos
+$ yum -y install git
+</code></pre>
+<h2 id="升级-git-vscode-的-remote-ssh-开发经常提示-git-18-版本低需要20以上">升级 git (vscode 的 remote ssh 开发，经常提示 git 1.8 版本低，需要2.0以上)</h2>
+<pre><code class="language-shell">yum remove git
+sudo yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+sudo yum -y install  git2u-all
+
+git --version
+</code></pre>
+<h2 id="服务器创建-git-用户">服务器创建 git 用户</h2>
+<p>在<strong>服务器上</strong>创建一个专用的 git 用户，用来运行 git 服务：</p>
+<pre><code class="language-shell">$ sudo adduser git
+</code></pre>
+<p>然后让创建的git用户不允许登录shell
+通过编辑<code>/etc/passwd</code>文件完成。找到类似下面的一行：</p>
+<blockquote>
+<p>git❌1001:1001:,,,:/home/git:/bin/bash</p>
+</blockquote>
+<p>改为：</p>
+<blockquote>
+<p>git❌1001:1001:,,,:/home/git:/usr/bin/git-shell</p>
+</blockquote>
+<p>git用户可以正常通过ssh使用git，但无法登录shell，因为我们为git用户指定的git-shell每次一登录就自动退出</p>
+<h2 id="然后创建证书登录">然后创建证书登录</h2>
+<p>收集所有需要登录的用户的公钥（id_rsa.pub），导入到 /home/git/.ssh/authorized_keys文件里</p>
+<p>在每台设备上</p>
+<pre><code class="language-shell">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+
+# 一直回车，在当前用户目录下生成 .ssh/id_rsa.pub 文件
+
+# 复制文件内容，粘贴到 github/coding/git服务器 的公钥管理
+</code></pre>
+<h2 id="初始化git裸仓库">初始化Git(裸)仓库</h2>
+<p>裸仓库没有工作区，因为服务器上的Git仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区。</p>
+<p>然后修改 owner 为 git</p>
+<pre><code class="language-shell">sudo git init --bare sample.git
+
+sudo chown -R git:git sample.git
+</code></pre>
+<h2 id="clone-仓库">clone 仓库</h2>
+<p>把远程仓库的所有分支都下载到本地</p>
+<pre><code class="language-shell">git clone git@server:/srv/sample.git
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000</a></p>
+<h1 id="配置">配置</h1>
+<p>查看配置</p>
+<pre><code class="language-shell">git config --global --list
+</code></pre>
+<h2 id="global-email-和-user">global email 和 user</h2>
+<pre><code class="language-shell">git config --global user.email 'test@company.com'
+git config --global user.name 'test'
+</code></pre>
+<h2 id="代理服务器-http_proxy-和-https_proxy">代理服务器 http_proxy 和 https_proxy</h2>
+<pre><code class="language-shell">git config --global http.proxy 'http://user:password@192.168.1.1:8080'
+
+git config --global https.proxy 'http://user:password@192.168.1.1:8080'
+
+
+# 取消
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre>
+<h1 id="使用-nginx-搭建-http-访问和验证的-git-server">使用 nginx 搭建 http 访问和验证的 git server</h1>
+<p>默认用 ssh 协议 <code>user@server:/path/to/repo</code> 来 clone /push 代码</p>
+<p>但是也可以搭建一个类似 github 支持 http 协议的 git server.(例如 php composer 仓库就需要 http 类型)</p>
+<p><a href="https://beginor.github.io/2016/03/12/http-git-server-on-nginx.html">https://beginor.github.io/2016/03/12/http-git-server-on-nginx.html</a></p>
+<p>使用 <code>git-http-backend</code> 搭建 git 服务的原理都是类似的， 主要是利用 web 服务器 (apache/nginx) 进行用户认证， 并将用户信息传递给 CGI 程序 git-http-backend ， 从而实现通过 http 完成 git 操作。</p>
+<p>Nginx &mdash; git-http-backend &mdash;- git repo</p>
+<h2 id="安装-fcgiwrap">安装 <strong>fcgiwrap</strong></h2>
+<p>Nginx 作为 Web 服务器，本身是不能执行外部 CGI 脚本的，需要通过 fcgiwrap 来中转，就像使用 php-fpm 来执行 PHP 脚本一样。</p>
+<pre><code class="language-shell">apt-get install git-core nginx fcgiwrap
+</code></pre>
+<h2 id="nginx">nginx</h2>
+<p>添加一个虚拟目录 /git/ ， 通过访问 /git/xxx.git 的形式来访问服务器上的 xxx.git 代码库</p>
+<p>修改一下 nginx 默认网站的配置文件 /etc/nginx/sites-available/default</p>
+<p>注意：
+这个 <code>location ~ /git(/.*)</code> 无效。。。也会报错 not found, 改成  <code>/</code> 才行
+GIT_PROJECT_ROOT 不支持“虚拟机映射的宿主机目录”，后面会提示 not found</p>
+<p>例子：root 目录是  /var/html/git   然后 location 是 <code>/</code>.  然后项目目录放在 /var/www/git/test.git  （注意权限问题）</p>
+<pre><code class="language-shell"># 配置以 /git 开始的虚拟目录
+location ~ /git(/.*) {
+    # 使用 Basic 认证
+    auth_basic &quot;Restricted&quot;;
+    # 认证的用户文件
+    auth_basic_user_file /etc/nginx/passwd;
+    # FastCGI 参数
+    fastcgi_pass  unix:/var/run/fcgiwrap.socket;
+    fastcgi_param SCRIPT_FILENAME /usr/lib/git-core/git-http-backend;
+    fastcgi_param GIT_HTTP_EXPORT_ALL &quot;&quot;;
+    # git 库在服务器上的跟目录
+    fastcgi_param GIT_PROJECT_ROOT    /var/git-repos;
+    fastcgi_param PATH_INFO           $1;
+    # 将认证用户信息传递给 fastcgi 程序
+    fastcgi_param REMOTE_USER $remote_user;
+    # 包涵默认的 fastcgi 参数；
+    include       fastcgi_params;
+    # 将允许客户端 post 的最大值调整为 100 兆
+    max_client_body_size 100M;
+}
+</code></pre>
+<h2 id="创建-nginx-认证用户文件">创建 nginx 认证用户文件</h2>
+<p>参考 nginx ngx http auth basic module ，</p>
+<pre><code class="language-shell"># comment
+name1:password1
+name2:password2:comment
+name3:password3
+</code></pre>
+<p>或更简单地用 <code>htpasswd</code> 命令</p>
+<pre><code class="language-shell"># 如果没有安装
+apt-get install apache2-utils
+
+htpasswd /etc/nginx/passwd user1
+# 输入密码
+</code></pre>
+<h2 id="创建-git-代码库">创建 git 代码库</h2>
+<pre><code class="language-shell">cd /var/git-repos
+git init --bare test.git
+
+# 权限
+chmod a+rw -R test.git
+</code></pre>
+<h2 id="重启-nginxfcgiwrap-测试-clone">重启 nginx/fcgiwrap 测试 clone</h2>
+<pre><code class="language-shell">service nginx start
+service fcgiwrap start
+</code></pre>
+<p>运行下面命令，会弹出一个输入用户/密码的窗口</p>
+<pre><code class="language-shell">git clone http://xxxxxxx/git/test.git
+</code></pre>
+<h2 id="git-clone时总是报错-empty-reply-from-server">git clone时总是报错 Empty reply from server</h2>
+<p>用 ssh 协议正常，但是 http 协议就一直报这个错误。
+检查下是不是开了代理。</p>
+<pre><code class="language-language">echo $http_proxy
+
+# 删掉
+unset $http_proxy
+export $http_proxy=''
+</code></pre>
+<h2 id="凭证管理解决每次都要输入用户密码的问题">凭证管理，解决每次都要输入用户密码的问题</h2>
+<p><a href="https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html">https://www.aneasystone.com/archives/2018/12/build-your-own-git-server.html</a></p>
+<h1 id="基本命令">基本命令</h1>
+<p><a href="https://www.cnblogs.com/niit-soft-518/p/6767171.html">https://www.cnblogs.com/niit-soft-518/p/6767171.html</a></p>
+<h2 id="分支查看与切换">分支查看与切换</h2>
+<pre><code class="language-shell"># 列出当前分支 ，以及最后一个提交对象的信息
+git branch
+git branch -v
+
+# 切换到分支, -b 参数表示先新建一个分支
+git checkout master
+git checkout -b develop
+
+</code></pre>
+<h2 id="跟踪远程分支">跟踪远程分支</h2>
+<p>如果远程新建了一个分支，本地没有该分支，可以利用** git checkout &ndash;track origin/branch_name** ，这时本地会新建一个分支名叫 branch_name ，会自动跟踪****远程的同名分支 branch_name。</p>
+<h2 id="删除分支">删除分支</h2>
+<h3 id="删除本地分支">删除本地分支</h3>
+<pre><code class="language-shell">git branch -d testing
+</code></pre>
+<h3 id="删除远程分支">删除远程分支</h3>
+<pre><code class="language-shell"># 先看下远程分支
+git branch -r
+
+git branch -r -d origin/branch-name
+
+# 上面只是把本地的 远程跟踪分支 删除了，远程的分支还没有删除，这里是真正的删除远程分支
+git push origin :branch-name
+</code></pre>
+<h2 id="分支重命名">分支重命名</h2>
+<p>首先是本地的分支重命名</p>
+<pre><code class="language-shell"># if you are on the branch you want to rename
+git branch -m new-name
+
+# if not on the branch
+git branch -m old-name new-name
+</code></pre>
+<p>删除远端旧分支名，并且push 新的本地分支</p>
+<pre><code class="language-shell">git push origin :old-name new-name
+</code></pre>
+<p>重置新名称本地分支的上游分支</p>
+<pre><code class="language-shell"># Switch to the branch and then
+git push origin -u new-name
+
+&gt;Branch 'feature/sync-redirect' set up to track remote branch 'feature/sync-redirect' from 'origin'.
+</code></pre>
+<h2 id="仓库管理">仓库管理</h2>
+<pre><code class="language-shell"># 先查看当前的远程仓库
+git remote -v
+
+origin https://git.coding.net/asdfasdf
+origin-test https://git.coding.net/asdfasdf
+
+
+# 添加远程仓库
+git remote add origin root@1.2.3.45:/root/project.git
+
+# 删除一个远程仓库
+git remote rm origin-test
+
+# 重命名
+git remote rename old new
+</code></pre>
+<h2 id="暂存-add">暂存 add</h2>
+<p>修改完文件后保存和提交</p>
+<pre><code class="language-shell">git add README.md
+
+# 或整个目录的所有变化
+git add .
+</code></pre>
+<h2 id="提交-commit">提交 commit</h2>
+<pre><code class="language-shell">git commit -m &quot;fix bug: lost data&quot;
+</code></pre>
+<p>可以创建一个别名来简化这两条命令（特别是有时候仅仅只是做测试用，不想每次都输入 commit message）</p>
+<pre><code class="language-shell">vi ~/.bash_profile
+
+# 添加别名
+alias gitone=&quot;git add . &amp;&amp; git commit 'just test'&quot;
+
+source ~/.bash_profile
+
+cd project_folder
+gitone
+</code></pre>
+<h2 id="合并分支-merge--rebase">合并分支 merge &amp; rebase</h2>
+<p>两种方式： merge 和 rebase</p>
+<p>例如，有一个分支 bugfix 从 master 分叉出来</p>
+<p><img src="/media/git/master-bugfix-branch.png" alt=""></p>
+<h3 id="merge-方式">merge 方式</h3>
+<p>根据 master 分支在 bugfix 分支变化期间，自身是否有变化，又分两种情况：</p>
+<h4 id="master-分支有变化需要汇总后生成一个新提交">master 分支有变化：需要汇总后，生成一个新提交</h4>
+<p><img src="/media/git/normal-merge.png" alt=""></p>
+<p>把两个分支修改的内容汇合起来！生成一个提交. master分支的HEAD会移动到该新的提交上</p>
+<p><img src="/media/git/normal-merge-new.png" alt=""></p>
+<h4 id="master-如果没有变化fast-forward快进合并直接移动-head-位置">master 如果没有变化：fast-forward（快进合并），直接移动 HEAD 位置</h4>
+<p>假设在 bugfix 的多次修改中，master 分支都没有变化, 这时 通过把master分支的位置移动到bugfix的最新分支上，Git 就会合并</p>
+<p><img src="/media/git/fast-forward-merge.png" alt=""></p>
+<p>当然，如果你想强行即使满足 fast-forward 也不要快速合并，而是生成新的提交并合并。可以使用参数<code>non fast-forward</code>，那么就是下面的图了</p>
+<p><img src="/media/git/fast-forward-merge-force-new.png" alt=""></p>
+<pre><code class="language-shell"># 1: do something in develop branch, and commit the changes
+git checkout develop
+&lt;in develop&gt; vi README.md
+&lt;in develop&gt; git add .
+&lt;in develop&gt; git commit -m &quot;modify readme&quot;
+
+# 2. switch to master
+git checkout master
+
+# 3. merge the changes from develop to master
+&lt;in master&gt; git merge develop
+</code></pre>
+<h3 id="rebase-方式">rebase 方式</h3>
+<p>但是，上面用 merge 的方式有点“脏”，因为最终会看到多个分支 （master, bugfix）的变化历史记录</p>
+<p>使用 <code>rebase</code>, 可以把历史记录成一条线，更加整洁</p>
+<p>首先，rebase bugfix 分支到master分支, bugfix分支的历史记录会添加在master分支的后面.
+因为 rebase 之后，master的HEAD位置不变, 要合并master分支和bugfix分支，即是将master的HEAD移动到bugfix的HEAD这里</p>
+<p><img src="/media/git/rebase-move-master-HEAD.png" alt=""></p>
+<p>如果在这个过程中(提交 X 和 Y),会提示冲突, 这时要修改各自提交时发生冲突的部分</p>
+<p><img src="/media/git/rebase-fix-conflict.png" alt=""></p>
+<p>最终</p>
+<p><img src="/media/git/rebase-bugfix-to-master.png" alt=""></p>
+<h3 id="对比两种方式">对比两种方式</h3>
+<ul>
+<li>merge: 保持修改内容的历史记录，但是历史记录会很复杂</li>
+<li>rebase: 历史记录简单，是在原有提交的基础上将差异内容反映进去。因此，可能导致原本的提交内容无法正常运行</li>
+</ul>
+<p>根据开发团队的需要分别使用merge和rebase。
+例如，想简化历史记录</p>
+<p>在topic分支中更新merge分支的最新代码，请使用rebase。
+向merge分支导入topic分支的话，先使用rebase，再使用merge。</p>
+<h2 id="解决冲突">解决冲突</h2>
+<p>模拟两个人同时修改一个文件：</p>
+<p>假设 A 和 B 分别从 master 分支创建了 feature-1 和 feature-2 分支</p>
+<p>A 在 feature-1 上修改文本 readme.txt</p>
+<pre><code>1. git add
+2. git commit
+</code></pre>
+<h3 id="merge-合并">merge 合并</h3>
+<p>在 master 上合并(由于 master 分支并没有变化，会执行 fast-forward（快进）合并)，一切正常</p>
+<pre><code class="language-shell">git merge feature-1
+</code></pre>
+<p>然后 B 修改同一个文件，内容</p>
+<pre><code>1. git add
+2. git push
+</code></pre>
+<p>回到 master 运行合并, 报了冲突错误</p>
+<pre><code class="language-shell">git merge feature-2
+
+Auto-merging myfile.txt
+CONFLICT (content): Merge conflict in myfile.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+<p>这是因为两个分支同时改动了文件的第二行，内容不一致，需要手动解决冲突</p>
+<pre><code>1. git add
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+2. git commit
+=======
+3. git push
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-2
+</code></pre>
+<p>用文本编辑器改成</p>
+<pre><code>1. git add
+2. git commit
+3. git push
+</code></pre>
+<p>重新提交</p>
+<pre><code class="language-shell">git add myfile.txt
+$ git commit -m &quot;合并分支&quot;
+</code></pre>
+<p>因为在这次合并中修改了冲突部分，所以会重新创建合并修改的提交记录。这样，master的HEAD就移动到这里了。这种合并不是fast-forward合并，而是non fast-forward合并。</p>
+<p><img src="/media/git/fix-conflict.png" alt=""></p>
+<h3 id="假如改成在-feature-2-上对-master-执行-rebase-合并呢">假如改成在 feature-2 上对 master 执行 rebase 合并呢？</h3>
+<ol>
+<li>先暂时取消刚才的合并操作</li>
+</ol>
+<pre><code class="language-shell">git reset --hard HEAD~
+</code></pre>
+<p>情况是这样</p>
+<p><img src="/media/git/reset-merge.png" alt=""></p>
+<ol start="2">
+<li>
+<p>切到 feature-2 分支，<strong>B 这时已经知道 master 分支已经把 A 提交的 feature-2 分支给合并进去了</strong></p>
+</li>
+<li>
+<p>于是对 master 执行 <code>rebase</code> （有点类似 pull?）</p>
+</li>
+</ol>
+<pre><code class="language-shell">git checkout feature-2
+
+git rebase master
+
+# First, rewinding head .....
+# &lt;stdin&gt;:13: new blank line at EO....
+# CONFLICT (content): Merge conflict in myfile.txt.....
+</code></pre>
+<p>和之前 merge时的操作相同，修改发生冲突的部分(略)</p>
+<ul>
+<li>此时，修改冲突发生在 feature-2 分支上，而不是前面在 master 上去合并它（发生位置刚好是个反的）</li>
+</ul>
+<ol start="4">
+<li>commit 提交解决冲突</li>
+</ol>
+<p>rebase的时候，修改冲突后的提交不是使用commit命令，而是执行rebase命令指定 &ndash;continue选项。若要取消rebase，指定 &ndash;abort选项</p>
+<pre><code class="language-shell">git add myfile.txt
+
+git rebase --continue
+</code></pre>
+<ol start="5">
+<li>回到 master 进行 fast-forward 合并</li>
+</ol>
+<p>由于刚才在 feature-2 上对 master 进行 rebase，然后已经把 feature-2 的冲突解决了。</p>
+<p>这时 master 分支可以进行fast-forward 合并</p>
+<pre><code class="language-shell">$ git checkout master
+Switched to branch 'master'
+
+$ git merge feature-2
+
+Updating 8f7aa27..96a0ff0
+Fast-forward
+ myfile.txt |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+</code></pre>
+<p>注意对比前面在 master 分支上解决冲突的历史记录，当前的情景干净多了</p>
+<p><img src="/media/git/after-rebase-and-merge.png" alt=""></p>
+<h2 id="rebase-适合什么场景">rebase 适合什么场景</h2>
+<p>按我自己的理解</p>
+<p><code>merge</code> 会记录所有历史记录，所以比较适合在 <strong>master</strong> 分支上对其他分支进行合并，比较看重<strong>整个项目中别人的工作情况</strong>。</p>
+<p><code>rebase</code> 一般发生在<strong>非 master 分支</strong>上，是开发者自己把 master 上已经产生的变化合并到本地，<strong>不太关心别人做了什么具体的，只关心自己当前的代码是不是保持最新的</strong></p>
+<p>非常适合一个开发者的下面的场景</p>
+<ol>
+<li>正在开发一个新功能，分支 feature-1</li>
+<li>突然被告知线上 master 有个 bug 要处理</li>
+<li>如果是分配给自己处理，自己赶紧把工作保存，再去基于 master 新建个分支 bugfix-1</li>
+<li>如果是别人处理，那就只要知道就可以了</li>
+<li>修改完 bug，合并到 master</li>
+<li>继续回来开发 feature-1, 因为<strong>这时代码已经不是最新的了</strong>，所以先 rebase 下 master 分支，<strong>因为当前分支主要是开发新功能，只要能和 master 保持同步就好，没有必要merge bugfix-1 分支去保存多余的信息</strong></li>
+</ol>
+<p>使用git rebase是有条件的，你的本地仓库要“足够干净”。可以用git status命令查看当前改动：</p>
+<p>本地没有任何未提交的改动，这是最“干净”的。 或者 本地只有新增文件未提交，没有改动文件</p>
+<h2 id="merge-分支到主分支不保留历史记录">merge 分支到主分支，不保留历史记录</h2>
+<p>默认情况下。 如果在 develop 分支上，有了两个修订版，再合并回 master 后，两次修改的记录都会保留。</p>
+<pre><code class="language-shell">git commit -m &quot;initial&quot;
+
+git checkout -b develop
+
+# modify 1  -&gt; add  -&gt; commit
+# modify 2  -&gt; add  -&gt; commit
+
+git checkout master
+
+git merge develop
+</code></pre>
+<p>current
+modify 2
+modify 1
+initial</p>
+<p>【未完】</p>
+<p>多个提交的时候，配合squash参数，可以确保多个commit合并为单个commit</p>
+<p>资料：</p>
+<p><a href="https://www.zhihu.com/question/36509119">https://www.zhihu.com/question/36509119</a></p>
+<h2 id="push-代码">push 代码</h2>
+<pre><code class="language-shell">git push origin master
+
+#强制 push
+git push origin master -f
+</code></pre>
+<h3 id="如果在非标准-22-80-端口">如果在非标准 22/ 80 端口</h3>
+<pre><code class="language-shell">git remote add origin-remote ssh://root@1.2.3.4:6000/root/repos/my.git
+
+git push origin-remote master
+</code></pre>
+<h2 id="一次性push-所有分支">一次性push 所有分支</h2>
+<pre><code class="language-shell">git push REMOTE '*:*'
+git push REMOTE --all
+</code></pre>
+<h2 id="回退操作包括-add-commit-push">回退操作(包括 add commit push)</h2>
+<p>4个区与三个步骤</p>
+<p>工作区(Working Area)
+<code>git add .</code>把所有文件放入暂存区；
+暂存区(Stage)
+<code>git commit</code>把所有文件从暂存区提交进本地仓库；
+本地仓库(Local Repository)
+<code>git push</code>把所有文件从本地仓库推送进远程仓库。
+远程仓库(Remote Repository)</p>
+<p>5种状态</p>
+<p>未修改(Origin)
+已修改(Modified)
+已暂存(Staged)
+已提交(Committed)
+已推送(Pushed)</p>
+<p>检查修改</p>
+<pre><code class="language-shell">git diff # 检查工作区和暂存区之间的差异（运行 git add . 后，本地又有修改）
+
+git diff --cached # 检查暂存区和本地仓库之间的差异 （已暂存，未提交, 即上次 git commit 后，又 git add .）
+
+git diff master origin/master # 检查本地仓库和远程仓库区别 (已提交，未推送到远端 即上次 git push 后，本地又 git commit)
+</code></pre>
+<h3 id="已修改未暂存的回退">已修改，未暂存的回退</h3>
+<p>如果我们只是在编辑器里修改了文件，但还没有执行git add .，这时候我们的文件还在工作区，并没有进入暂存区</p>
+<pre><code class="language-shell">git checkout .
+
+#或者
+git reset --hard
+</code></pre>
+<h3 id="git-add-添加-多余文件">git add 添加 多余文件</h3>
+<p>有的时候 <code>git add .</code> 把不需要的文件给 add 进去了. (还没有执行<code>git commit -m “comment”</code>)可以通过下面的方法撤销</p>
+<pre><code class="language-shell">git reset # 把修改退回到了git add .之前的状态(处于已修改未暂存状态)
+git checkout . # 继续退回未修改状态
+
+#或者替代的一句：
+git reset --hard
+
+# 退回某个文件
+git status #先看一下add 中的文件
+git reset HEAD #如果后面什么都不跟的话 就是上一次add 里面的全部撤销 
+git reset HEAD XXX/XXX/XXX.java #对某个文件进行撤销
+</code></pre>
+<h3 id="git-commit-错误">git commit 错误</h3>
+<p>如果不小心 弄错了 <code>git add</code>后 ， 又 <code>git commit</code> 了(代码已经进入了你的本地仓库)</p>
+<pre><code class="language-shell"># 相当于从远程仓库把代码取回
+git reset --hard origin/master
+</code></pre>
+<p>如果要恢复到倒数第二次提交</p>
+<pre><code class="language-shell">git log #查看节点 
+
+# 最新的一次提交（当前）
+commit xxxxxxxxxxxxxxxxxxxxxxxxx3 
+Merge: 
+Author: 
+Date:
+
+# 倒数第二次提交
+commit xxxxxxxxxxxxxxxxxxxxxxxxx2 
+
+# 倒数第三次提交
+commit xxxxxxxxxxxxxxxxxxxxxxxxx1 
+
+# 保持代码不变, 还是最近一次提交的状态
+git reset xxxxxxxxxxxxxxxxxxxxxxxxx2
+
+# 加上 --hard 参数，代码也恢复到倒数第二次提交的状态
+git reset --hard commit_id
+</code></pre>
+<h3 id="push-以后代码已经进入远程仓库">push 以后(代码已经进入远程仓库)</h3>
+<p>先恢复本地仓库，再强制push到远程仓库</p>
+<pre><code class="language-shell">git reset --hard HEAD^
+git push -f
+</code></pre>
+<p>还原已经提交的修改
+此次操作之前和之后的commit和history都会保留，并且把这次撤销作为一次最新的提交</p>
+<p><code>git revert</code>是 <strong>提交一个新的版本</strong>，将需要revert的版本的内容再反向修改回去，版本会递增，不影响之前提交的内容。</p>
+<pre><code class="language-shell">git revert HEAD #撤销前一次 commit 
+git revert HEAD^ #撤销前前一次 commit 
+git revert commit-id #(撤销指定的版本，撤销也会作为一次提交进行保存） 
+</code></pre>
+<h1 id="基础知识">基础知识</h1>
+<h2 id="在本地创建一个仓库并拉取远程分支或创建一个本地分支跟踪远程分支">在本地创建一个仓库，并拉取远程分支，或创建一个本地分支跟踪远程分支</h2>
+<h3 id="最简单的方法就是从远程主机克隆一个版本库了远程主机自动命名为origin">最简单的方法就是从远程主机克隆一个版本库了(远程主机自动命名为origin)</h3>
+<pre><code class="language-shell">$ git clone https://github.com/jquery/jquery.git
+
+# if is ssh
+$ git clone ssh://username@hostname/your/project/name/test.git
+
+# 默认会进入 master 分支
+$ git branch
+* master
+
+# 如果要进入 develop 分支开发，需要指定远程库的 origin/develop 分支，把它 checkout 到本地
+# 拉取本地不存在的远程分支
+$ git checkout -b develop origin/develop
+
+# git clone的时候，所有本地分支会自动与远程主机的同名分支之间建立追踪关系，所以无需手动建立跟踪关系
+# 不对
+# 默认 clone 的是这个仓库的 master 分支。如果最新的代码不在 master 分支上，该如何拿到呢？
+
+git branch -r #查看远程分支
+git branch -a #查看所有分支
+git checkout origin/daily/1.4.1  # 直接用这个完整的
+
+# 原来写的这个方法更多的是：设置已有的本地分支跟踪一个刚刚拉取下来的远程分支，或者想要修改正在跟踪的上游分支。
+</code></pre>
+<h3 id="通过添加远程主机的方式">通过添加远程主机的方式</h3>
+<pre><code class="language-shell">$ mkdir myproject
+$ cd myproject
+
+#把本地一个目录初始化为 git 管理的项目(会自动创建一个 .git 隐藏目录)
+$ git init
+
+#把远程主机上的版本库添加进来，别名为 origin 
+$ git remote add origin https://git.github.com/username/myproject.git   
+
+#对比一下本地和远程主机，显示如下
+$ git remote -v
+origin	https://github.com/username/myproject.git (fetch)
+origin	https://github.com/username/myproject.git (push)
+
+#最后把远程主机的所有更新取回本地，也可以只取回特定分支如 git fetch origin master
+$ git fetch origin
+
+# 查看远程主机的分支 ， -a 参数查看所有分支(包括本地)
+$ git branch -r 
+
+# 可以在取回远程主机的更新后，在本地仓库创建一个新分支(最好让本地仓库和远程仓库的分支名保持一样)
+$ git checkout -b develop origin/develop #会自动切换到这个新的分支上
+
+# 合并远程分支内容到本地当前工作分支
+$ git branch -a # 先查看当前工作在哪个分支（前面有星号`*`的）
+* develop
+  remotes/origin/develop
+  remotes/origin/master
+$ git merge origin/develop # 然后可以在当前工作分支上，把远程分支合并进当前工作分支
+ 
+# 上面的先 fetch 取回更新，然后与本地指定分支 merge 合并，可以使用 pull 代替，pull=fetch+merge
+$ git pull origin develop  # 默认是与当前分支(初始化的时候就是 master )合并，如果用 develop:master 表示取回远程主机的 develop 分支，与本地 master 分支(非当前分支)合并
+
+# 建立本地分支与远程分支之间的追踪关系（pull 的时候用到）
+$ git branch --set-upstream master origin/next # 手动建立追踪关系
+</code></pre>
+<h2 id="本地修改文件后提交到本地分支最后推送到远程分支">本地修改文件后，提交到本地分支，最后推送到远程分支</h2>
+<pre><code class="language-shell">$ vi README.md
+$ git add ./README.md
+$ git commit -m &quot;modify readme.md&quot;
+
+# 推送到远程分支
+# git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt; ，如果本地分支和远程分支有追踪关系，可以省略远程分支名(甚至如果当前分支有追踪关系，可以直接省略本地分支名)
+$ git push origin develop
+
+# 如果当前分支与多个主机存在追踪关系，可以使用 -u 指定默认主机
+$ git push -u origin develop
+
+#如果远程主机的版本比本地版本更新，推送时Git会报错，要求先在本地做git pull合并差异，然后再推送到远程主机
+</code></pre>
+<h2 id="使用-statsh-来暂存将暂时不想提交的内容临时保存">使用 statsh 来暂存，将暂时不想提交的内容临时保存</h2>
+<p>较常用的几个命令：</p>
+<ul>
+<li>git stash</li>
+<li>git stash list</li>
+<li>git stash clear</li>
+<li>git stash apply</li>
+</ul>
+<p>git stash 将当前所有修改项(未提交的)暂存，压栈。此时代码回到你上一次的提交，用git status可查看状态。</p>
+<ul>
+<li>git stash list将列出所有暂存项。</li>
+<li>git stash clear 清除所有暂存项。</li>
+<li>git stash apply 将暂存的修改重新应用，使用git status可以看到以前暂存的修改又回来了</li>
+</ul>
+<p>这几个命令常用来干几件事情。当修改项还不确定要提交，又要将代码更新或则回去改bug，此时可以用git stash将修改项暂存，然后想干嘛干嘛，干完之后git stash apply，以前的修改项又回来了，可以继续完成修改。</p>
+<h2 id="与团队协作的时候">与团队协作的时候</h2>
+<pre><code class="language-shell"># 如果你和团队成员编辑了同样的文件，在 push 的时候会提示冲突
+$ git push origin develop
+! [rejected]      
+
+# 所以需要先拉取远程的最新更新
+$ git pull origin develop # 如果当前分支与远程分支已经有追踪关系，pull 可以用省略分支名
+
+# 如果自动 merge 的时候提示冲突，需要手动修改文件解决冲突，本地提交，然后再 push
+CONFLICT (content): Merge conflict in
+</code></pre>
+<h1 id="hooks">hooks</h1>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks">https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks</a></p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://backlog.com/git-tutorial/cn/stepup/stepup4_1.html">https://backlog.com/git-tutorial/cn/stepup/stepup4_1.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/gist/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

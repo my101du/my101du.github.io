@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 微信小程序-高级开发 permalink: wechat-app-dev-enhance tags: mobile 会话管理 通常的用户登录和登录态维护 https://www.jianshu.com/p/c5f6c98b2685 需要 session 的情况 在开发 wordpress 的对接中，需要对图片验证码的 session 进行核对，但小程序的 request 并" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 微信小程序-高级开发 permalink: wechat-app-dev-enhance tags: mobile 会话管理 通常的用户登录和登录态维护 https://www.jianshu.com/p/c5f6c98b2685 需要 session 的情况 在开发 wordpress 的对接中，需要对图片验证码的 session 进行核对，但小程序的 request 并" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 微信小程序-高级开发 permalink: wechat-app-dev-enhance tags: mobile 会话管理 通常的用户登录和登录态维护 https://www.jianshu.com/p/c5f6c98b2685 需要 session 的情况 在开发 wordpress 的对接中，需要对图片验证码的 session 进行核对，但小程序的 request 并">
+
+<meta itemprop="wordCount" content="5586">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 微信小程序-高级开发 permalink: wechat-app-dev-enhance tags: mobile 会话管理 通常的用户登录和登录态维护 https://www.jianshu.com/p/c5f6c98b2685 需要 session 的情况 在开发 wordpress 的对接中，需要对图片验证码的 session 进行核对，但小程序的 request 并"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5586字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 微信小程序-高级开发
+permalink: wechat-app-dev-enhance
+tags:</p>
+<ul>
+<li>mobile</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="会话管理">会话管理</h1>
+<h2 id="通常的用户登录和登录态维护">通常的用户登录和登录态维护</h2>
+<p><a href="https://www.jianshu.com/p/c5f6c98b2685">https://www.jianshu.com/p/c5f6c98b2685</a></p>
+<h2 id="需要-session-的情况">需要 session 的情况</h2>
+<p>在开发 wordpress 的对接中，需要对图片验证码的 session 进行核对，但小程序的 request 并不携带 cookie 因此无法进行 session 认证。</p>
+<h3 id="hack实现模拟浏览器的session-cookie行为">hack实现，模拟浏览器的session cookie行为</h3>
+<p><a href="https://zhuanlan.zhihu.com/p/33586841">https://zhuanlan.zhihu.com/p/33586841</a> (captcha 图片生成的 session 和 url 是脱离的)</p>
+<p><a href="http://www.apkbj.com/language/show-24119.html">http://www.apkbj.com/language/show-24119.html</a></p>
+<p>结合 redis / memcache 来处理了</p>
+<h3 id="要么使用下面的类库">要么使用下面的类库</h3>
+<p><a href="https://github.com/CFETeam/weapp-session">https://github.com/CFETeam/weapp-session</a> （官方，node）
+<a href="http://wxopen.club/topic/58364112bc94e573596843f7">http://wxopen.club/topic/58364112bc94e573596843f7</a>
+<a href="https://cloud.tencent.com/document/product/448/6424">https://cloud.tencent.com/document/product/448/6424</a></p>
+<p><a href="https://github.com/BeijiYang/minaSmsVerification">https://github.com/BeijiYang/minaSmsVerification</a></p>
+<p><a href="https://segmentfault.com/a/1190000007477525">https://segmentfault.com/a/1190000007477525</a> （composer/redis, PHP）</p>
+<p><a href="https://feizhaojun.com/?p=1128(laravel)">https://feizhaojun.com/?p=1128(laravel)</a></p>
+<h1 id="资料">资料</h1>
+<p><a href="https://github.com/opendigg/awesome-github-wechat-weapp">https://github.com/opendigg/awesome-github-wechat-weapp</a></p>
+<h1 id="wept-直接在-chrome-浏览器运行和调试小程序而不需要使用官方的开发者工具">wept 直接在 chrome 浏览器运行和调试小程序，而不需要使用官方的开发者工具</h1>
+<p><a href="https://github.com/chemzqm/wept">https://github.com/chemzqm/wept</a></p>
+<p><a href="https://chemzqm.github.io/wept/#/">https://chemzqm.github.io/wept/#/</a> 文档等</p>
+<p>wept可以让小程序脱离开发者工具或者微信客户端<strong>直接运行在浏览器</strong>上面，后台使用node，提供<strong>小程序API的模拟返回</strong>（wx.login、wx.getUserInfo等），前端实现了 view 层、service 层和控制层之间的相关通讯逻辑。</p>
+<pre><code class="language-shell">npm i -g wept
+</code></pre>
+<ol>
+<li>直接在小程序根目录上面执行 <code>wept</code></li>
+</ol>
+<p>2 然后打开chrome，访问 <code>http://localhost:3000</code> ，就可以看到小程序运行在chrome上了</p>
+<h2 id="结合-puppeteer-自动化测试">结合 puppeteer 自动化测试</h2>
+<p>让puppeteer去抓取小程序里面的内容, 就可以不用老是在界面里测试了。</p>
+<p>来源 <a href="https://cloud.tencent.com/developer/article/1006183">https://cloud.tencent.com/developer/article/1006183</a></p>
+<h3 id="获取小程序里需要的内容">获取小程序里需要的内容</h3>
+<p>wept 运行起来后（在 chrome localhost:3000 打开了小程序）, 在 puppeteer-test 里建立一个文件 test-wechat-app.js</p>
+<pre><code class="language-javascript">const puppeteer = require('puppeteer');
+
+// 设备
+const devices = require('puppeteer/DeviceDescriptors');
+
+(async () =&gt; {
+        const browser = await puppeteer.launch({executablePath: '/chromium/chrome.exe',headless: true});
+        const page = await browser.newPage();
+        //设置展示的设备https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js
+        await page.emulate(devices['iPhone 6']);
+        //多一个参数waitUntil，指跳转之后等待网络空闲之后再执行下一步操作，没有这个的话，截图很有可能是白屏，因为内容还没渲染出来
+        await page.goto('http://localhost:3000/#!pages/index/index', {waitUntil: 'networkidle'});
+        //小程序的内容其实是放在一个iframe里面，外面是无法直接抓取到iframe里面的内容，所以这里需要获取页面所有的iframe
+        const frames = await page.frames();
+        //根据iframe的name属性来获取正确的iframe
+        const weChatFrame = frames.find(f =&gt; f.name() === 'view-0');
+        //在上下文环境中获取需要抓取的内容
+        const outerText = await weChatFrame.evaluate(() =&gt; {
+        //上下文执行环境，跟H5一致
+            const anchors = Array.from(document.querySelectorAll('.container'));
+            return anchors.map(anchor =&gt; anchor.textContent);
+        });
+        console.log('the outerText: ', outerText);
+        await browser.close();
+
+})();
+</code></pre>
+<p>报错 <code>networkidle</code>不再被支持，改为<code>networkidle2</code></p>
+<h3 id="对内容进行单元测试">对内容进行单元测试</h3>
+<p>拿到内容后，结合 mocha 来测试输出是否符合预期，例如</p>
+<pre><code class="language-javascript">const puppeteer = require('puppeteer');
+const devices = require('puppeteer/DeviceDescriptors');
+const expect = require('chai').expect;
+describe('output test', () =&gt; {
+    it('should return Hello 测试帐号 ', () =&gt; {
+        (async () =&gt; {
+            //小程序内容获取代码跟上述一致
+            //...
+            expect(outerText[0]).to.equal('Hello 测试帐号');
+            //...
+        })
+    })
+})
+</code></pre>
+<h3 id="更多">更多</h3>
+<p>小程序其实也有上线一个云测试，但是我觉得有个不好的地方，假如你的小程序是依赖于后台CGI返回数据作为展示，那么你必须先上线CGI才能使用云测试，不够灵活，更希望有一个能自己mock数据来测试不同情况下的小程序的展示。</p>
+<p>本篇文章介绍使用wept和puppeteer来对小程序做E2E测试，对于测试环境和正式环境还是有差异的，比如Object.defineProperty小程序是不支持这个API的，但是测试环境是可以跑通的，当然测试环境下面也可以通过某种方式（比如delete）来禁用不支持小程序的API，从而达到测试环境尽可能的贴近小程序的正式环境。当然更希望的是小程序官方能给出相应的单元测试方案吧。</p>
+<h1 id="组件化--预编译">组件化 &amp; 预编译</h1>
+<p>在开发 woocommerce rest api 对接小程序的时候，发现没法在 wx.request 的 headers 里添加必须的 basic authentication 来验证 Woocommerce Customer 身份</p>
+<p>直接发送请求，会提示 401 未验证错误。</p>
+<p>于是查了一些资料，想把 Username &amp; password 的 Basic Auth 放到 GET 请求里去，看了半天也不知所以然。</p>
+<p><a href="https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#authentication-over-http">https://woocommerce.github.io/woocommerce-rest-api-docs/?javascript#authentication-over-http</a> （oauth 登录生成 “signature base string”？）
+<a href="https://github.com/rameshvoltella/WoocommerceAndroidOAuth1">https://github.com/rameshvoltella/WoocommerceAndroidOAuth1</a></p>
+<p>好吧。既然残缺，那就看能不能安装官方的 node.js 包，放到小程序的代码里运行。</p>
+<p>坑爹的是，不支持 npm。。。以及 CommonJS 的 import，如果 npm 安装包后，手动引入 node_modules 里某个文件，会把目录下所有的 js 全部导进去（想想），导致体积剧增。。。</p>
+<p>而且微信小程序貌似天生残缺，对异步什么的都支持不好，而且也没法拥有 ES6/7，组件化等（它只能 import 一些 wxml 模板。。。并不是真正的组件化）</p>
+<p>于是又发现了一些有意思的“微信小程序框架”，主要目的是使用类似 react/vue 的思路做开发，生成的文件再转换到微信小程序的 wxml/js/wxss 等文件</p>
+<p><a href="https://github.com/maichong/labrador">labrador 微信小程序模块化开发框架 很久没更新了</a>
+<a href="https://github.com/tinajs/tina">tina 一款轻巧的渐进式微信小程序框架</a>
+<a href="https://github.com/Tencent/wepy">wepy 小程序组件化开发框架 腾讯出品的</a>
+<a href="https://github.com/Meituan-Dianping/mpvue">mpvue 基于 Vue.js 的小程序开发框架，从底层支持 Vue.js 语法和构建工具体系 美团出的</a></p>
+<p>一些探讨 <a href="https://www.v2ex.com/t/437339">https://www.v2ex.com/t/437339</a>
+wepy bug 较多？</p>
+<p><a href="https://my.oschina.net/thinker4self/blog/1647338">https://my.oschina.net/thinker4self/blog/1647338</a>
+wepy 语法更像 react ，但又不完全是</p>
+<p><a href="https://blog.csdn.net/yang450712123/article/details/79623518">https://blog.csdn.net/yang450712123/article/details/79623518</a>
+mpvue 可以直接用 vue 开发小程序和 H5，一套语法</p>
+<p><a href="https://www.cnblogs.com/fayin/p/7655620.html">https://www.cnblogs.com/fayin/p/7655620.html</a></p>
+<p>对比 原生小程序/mpvue/wepy
+<a href="https://blog.csdn.net/yang450712123/article/details/79623518">https://blog.csdn.net/yang450712123/article/details/79623518</a>
+<a href="https://github.com/wuweijia/wuweijia.github.io/issues/32">https://github.com/wuweijia/wuweijia.github.io/issues/32</a></p>
+<h2 id="mpvue-美团出品有没有-react-的">mpvue 美团出品（有没有 react 的？）</h2>
+<p>基于 Vue.js 的小程序开发框架，从底层支持 Vue.js 语法和构建工具体系。</p>
+<p><a href="http://mpvue.com">http://mpvue.com</a></p>
+<p><a href="https://github.com/Meituan-Dianping/mpvue">https://github.com/Meituan-Dianping/mpvue</a></p>
+<p><a href="https://www.zhihu.com/question/268421668">https://www.zhihu.com/question/268421668</a></p>
+<h2 id="腾讯出品-小程序组件化开发框架-wepy-区别上面那个-wept-这个是开发框架上面那个是个第三方工具">腾讯出品 小程序组件化开发框架 wepy （区别上面那个 wept, 这个是开发框架，上面那个是个第三方工具）</h2>
+<p>Awesome wepy 资源</p>
+<p><a href="https://github.com/aben1188/awesome-wepy">https://github.com/aben1188/awesome-wepy</a></p>
+<p>类Vue开发风格
+支持自定义组件开发
+支持引入NPM包
+支持Promise
+支持ES2015+特性，如Async Functions
+支持多种编译器，Less/Sass/Stylus/PostCSS、Babel/Typescript、Pug
+支持多种插件处理，文件压缩，图片压缩，内容替换等
+支持 Sourcemap，ESLint等
+小程序细节优化，如请求列队，事件优化等</p>
+<h2 id="用-react-来开发小程序">用 React 来开发小程序</h2>
+<p><a href="https://github.com/flyjennyetn/wechat-react">https://github.com/flyjennyetn/wechat-react</a></p>
+<p><a href="https://segmentfault.com/a/1190000012841276">https://segmentfault.com/a/1190000012841276</a></p>
+<p><a href="https://www.npmjs.com/package/react-wxapp">https://www.npmjs.com/package/react-wxapp</a></p>
+<p><a href="https://www.v2ex.com/t/461378">https://www.v2ex.com/t/461378</a></p>
+<p>小程序开发终于迎来 React 生态的玩家: 京东 Taro</p>
+<p><a href="https://taro.aotu.io/">https://taro.aotu.io/</a> <a href="http://github.com/nervjs/taro">http://github.com/nervjs/taro</a></p>
+<p>一个月之前我在找小程序开发框架的时候，发现只有 Vue 生态的 mpvue 和 wepy。</p>
+<p>当时一直在想为什么没有 React 风格的框架。今天终于看到了。 但是我已经选择了 mpvue 了。</p>
+<p>初看了一下，虽然 taro 属于新发，但是配套其实比前 mpvue 完善一些。</p>
+<p>暂时也不打算换了。毕竟跳车有风险。</p>
+<p>TO mpvue 用户：</p>
+<p>小程序 API 自动补全和类型提示，可以通过引入 wechat-mp-types 这个 TS 声明库来实现。
+自动补全，代码片段的话也有 mpvue-snippets 库。
+组件封装，我正在带一个叫 mpvue-starter 的库。里面正在做 weui 组件 + vue + 小程序组件的封装。
+加入 mpex 包， 为你的小程序开发助力</p>
+<h1 id="mpvue">mpvue</h1>
+<p>(暂时弃坑，不喜欢 vue&hellip; 转 taro（React 风格）)</p>
+<h2 id="开始">开始</h2>
+<p><strong>框架原理</strong></p>
+<p>mpvue 保留了 vue.runtime 核心方法，无缝继承了 Vue.js 的基础能力
+mpvue-template-compiler 提供了将 vue 的模板语法转换到小程序的 wxml 语法的能力
+修改了 vue 的建构配置，使之构建出符合小程序项目结构的代码格式： json/wxml/wxss/js 文件</p>
+<p><strong>第一个 mpvue 项目</strong></p>
+<pre><code class="language-shell"># 全局安装 vue-cli
+$ npm install --global vue-cli
+
+# 创建一个基于 mpvue-quickstart 模板的新项目
+$ vue init mpvue/mpvue-quickstart my-project
+
+# 安装依赖
+$ cd my-project
+$ npm install
+# 启动构建
+$ npm run dev
+
+# 会自动生成 dist 目录，并且编译 vue 代码到里面，得到微信小程序特有的 wxml wxss 文件
+</code></pre>
+<p>然后启动微信开发者工具，新建项目，把目录指向到<code>my-project</code></p>
+<p>修改项目里的文件，微信开发者工具的“预览”窗口会自动刷新</p>
+<h2 id="vue-实例与生命周期">Vue 实例与生命周期</h2>
+<p><a href="https://cn.vuejs.org/v2/guide/instance.html">Vue 实例</a></p>
+<p>做了一些修改，来适应小程序的独特加载逻辑</p>
+<p><strong>实例生命周期</strong></p>
+<p>同 vue，不同的是我们会在小程序 onReady 后，再去触发 vue mounted 生命周期，详细的 vue 生命周期文档请看生命周期钩子</p>
+<ul>
+<li>beforeCreate</li>
+<li>created</li>
+<li>beforeMount</li>
+<li>mounted</li>
+<li>beforeUpdate</li>
+<li>updated</li>
+<li>activated</li>
+<li>deactivated</li>
+<li>beforeDestroy</li>
+<li>destroyed</li>
+</ul>
+<p>除了 Vue 本身的生命周期外，mpvue 还兼容了小程序生命周期，这部分生命周期钩子的来源于微信小程序的 Page， 除特殊情况外，不建议使用小程序的生命周期钩子（app 和 Page）。（小程序生命周期的钩子略）</p>
+<p>例如下面的混合 <code>created</code> 是 vue 组件的生命周期钩子，而<code>onShow</code>是小程序的</p>
+<pre><code class="language-js">new Vue({
+  data: {
+    a: 1
+  },
+  created () {
+    // `this` 指向 vm 实例
+    console.log('a is: ' + this.a)
+  },
+  onShow () {
+    // `this` 指向 vm 实例
+    console.log('a is: ' + this.a, '小程序触发的 onshow')
+  }
+})
+// =&gt; &quot;a is: 1&quot;
+</code></pre>
+<p><strong>注意</strong></p>
+<ol>
+<li>
+<p>不要在选项属性或回调上使用箭头函数，比如 <code>created: () =&gt; console.log(this.a)</code> 或 <code>vm.$watch('a', newValue =&gt; this.myMethod())</code>。因为箭头函数是和父级上下文绑定在一起的，<code>this</code> 不会是如你做预期的 Vue 实例，且 this.a 或 this.myMethod 也会是未定义的</p>
+</li>
+<li>
+<p>微信小程序的页面的 <code>query</code> 参数是通过 <code>onLoad</code> 获取的，mpvue 对此进行了优化，直接通过 <code>this.$root.$mp.query</code> 获取相应的参数数据，其调用需要在 onLoad 生命周期触发之后使用，比如 onShow 等，具体生命周期调用顺序，见下图。</p>
+</li>
+</ol>
+<p>生命周期的调用关系和顺序图。（略）
+<a href="http://mpvue.com/mpvue/#vue">http://mpvue.com/mpvue/#vue</a></p>
+<h2 id="模板语法">模板语法</h2>
+<p>几乎全支持 官方文档：模板语法，下面讲下不支持的情况。</p>
+<ul>
+<li>
+<p>不支持 纯-HTML：小程序里所有的 BOM／DOM 都不能用，也就是说 <code>v-html</code> 指令不能用。</p>
+</li>
+<li>
+<p>不支持过滤器:渲染部分会转成 wxml ，wxml 不支持过滤器，所以这部分功能不支持。</p>
+</li>
+<li>
+<p>不支持部分复杂的 JavaScript 渲染表达式</p>
+</li>
+</ul>
+<p>我们会把 template 中的 <code>{{}}</code> 双花括号的部分，<strong>直接编码到 wxml 文件中</strong>，由于微信小程序的能力限制，所以无法支持复杂的 JavaScript 表达式</p>
+<p>小程序的数据绑定(与限制)：
+<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/data.html">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/data.html</a></p>
+<pre><code class="language-js">&lt;!-- 这种就不支持，建议写 computed --&gt;
+&lt;p&gt;{{ message.split('').reverse().join('') }}&lt;/p&gt;
+
+&lt;!-- 但写在 @event 里面的表达式是都支持的，因为这部分的计算放在了 vdom 里面 --&gt;
+&lt;ul&gt;
+    &lt;li v-for=&quot;item in list&quot;&gt;
+        &lt;div @click=&quot;clickHandle(item, index, $event)&quot;&gt;{{ item.value }}&lt;/p&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<h2 id="计算属性">计算属性</h2>
+<p>参看 vue</p>
+<h2 id="不支持在-template-内使用-methods-中的函数">不支持在 template 内使用 methods 中的函数。</h2>
+<h2 id="class-与-style-绑定">Class 与 Style 绑定</h2>
+<p>为节约性能，我们将 Class 与 Style 的表达式通过 compiler 硬编码到 wxml 中，支持语法和转换效果如下</p>
+<p>class 支持的语法</p>
+<pre><code class="language-html">&lt;p :class=&quot;{ active: isActive }&quot;&gt;111&lt;/p&gt;
+&lt;p class=&quot;static&quot; v-bind:class=&quot;{ active: isActive, 'text-danger': hasError }&quot;&gt;222&lt;/p&gt;
+&lt;p class=&quot;static&quot; :class=&quot;[activeClass, errorClass]&quot;&gt;333&lt;/p&gt;
+&lt;p class=&quot;static&quot; v-bind:class=&quot;[isActive ? activeClass : '', errorClass]&quot;&gt;444&lt;/p&gt;
+&lt;p class=&quot;static&quot; v-bind:class=&quot;[{ active: isActive }, errorClass]&quot;&gt;555&lt;/p&gt;
+</code></pre>
+<p>被转换成</p>
+<pre><code class="language-html">&lt;view class=&quot;_p {{[isActive ? 'active' : '']}}&quot;&gt;111&lt;/view&gt;
+&lt;view class=&quot;_p static {{[isActive ? 'active' : '', hasError ? 'text-danger' : '']}}&quot;&gt;222&lt;/view&gt;
+&lt;view class=&quot;_p static {{[activeClass, errorClass]}}&quot;&gt;333&lt;/view&gt;
+&lt;view class=&quot;_p static {{[isActive ? activeClass : '', errorClass]}}&quot;&gt;444&lt;/view&gt;
+&lt;view class=&quot;_p static {{[[isActive ? 'active' : ''], errorClass]}}&quot;&gt;555&lt;/view&gt;
+</code></pre>
+<p>style 支持的语法:</p>
+<pre><code class="language-html">&lt;p v-bind:style=&quot;{ color: activeColor, fontSize: fontSize + 'px' }&quot;&gt;666&lt;/p&gt;
+&lt;p v-bind:style=&quot;[{ color: activeColor, fontSize: fontSize + 'px' }]&quot;&gt;777&lt;/p&gt;
+</code></pre>
+<p>转换成</p>
+<pre><code class="language-html">&lt;view class=&quot;_p&quot; style=&quot; {{'color:' + activeColor + ';' + 'font-size:' + fontSize + 'px' + ';'}}&quot;&gt;666&lt;/view&gt;
+&lt;view class=&quot;_p&quot; style=&quot; {{'color:' + activeColor + ';' + 'font-size:' + fontSize + 'px' + ';'}}&quot;&gt;777&lt;/view&gt;
+</code></pre>
+<p><strong>不支持</strong>  classObject 和 styleObject 语法。 <a href="https://cn.vuejs.org/v2/guide/class-and-style.html">官方文档：Class 与 Style 绑定</a></p>
+<p><strong>暂不支持在组件上使用 Class 与 Style 绑定</strong></p>
+<p>此外还可以用 computed 方法生成 class 或者 style <strong>字符串</strong>，插入到页面中，</p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;!-- 支持 --&gt;
+    &lt;div class=&quot;container&quot; :class=&quot;computedClassStr&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;container&quot; :class=&quot;{active: isActive}&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- 不支持 --&gt;
+    &lt;div class=&quot;container&quot; :class=&quot;computedClassObject&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    export default {
+        data () {
+            return {
+                isActive: true
+            }
+        },
+        computed: {
+            computedClassStr () {
+                return this.isActive ? 'active' : ''
+            },
+            computedClassObject () {
+                return { active: this.isActive }
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h2 id="条件渲染">条件渲染</h2>
+<h2 id="列表渲染">列表渲染</h2>
+<p>嵌套列表渲染，必须指定不同的索引！</p>
+<pre><code class="language-js">&lt;!-- 在这种嵌套循环的时候， index 和 itemIndex 这种索引是必须指定，且别名不能相同，正确的写法如下 --&gt;
+&lt;template&gt;
+    &lt;ul v-for=&quot;(card, index) in list&quot;&gt;
+        &lt;li v-for=&quot;(item, itemIndex) in card&quot;&gt;
+            {{item.value}}
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/template&gt;
+</code></pre>
+<h2 id="事件处理器">事件处理器</h2>
+<p>我们的 compiler 在 wxml 上绑定了小程序的事件，并做了相应的映射，所以你在真实点击的时候通过 runtime 中 <code>handleProxy</code> 通过事件类型分发到 vnode 的事件上，同 Vue 在 WEB 的机制一样，所以可以做到无损支持。同时还顺便支持了自定义事件和 <code>$emit</code> 机制</p>
+<pre><code class="language-json">// 事件映射表，左侧为 WEB 事件，右侧为 小程序 对应事件
+{
+    click: 'tap',
+    touchstart: 'touchstart',
+    touchmove: 'touchmove',
+    touchcancel: 'touchcancel',
+    touchend: 'touchend',
+    tap: 'tap',
+    longtap: 'longtap',
+    input: 'input',
+    change: 'change',
+    submit: 'submit',
+    blur: 'blur',
+    focus: 'focus',
+    reset: 'reset',
+    confirm: 'confirm',
+    columnchange: 'columnchange',
+    linechange: 'linechange',
+    error: 'error',
+    scrolltoupper: 'scrolltoupper',
+    scrolltolower: 'scrolltolower',
+    scroll: 'scroll'
+}
+</code></pre>
+<p>在 input 和 textarea 中 change 事件会被转为 blur 事件。</p>
+<p><strong>踩坑注意</strong>：</p>
+<ul>
+<li>列表中没有的原生事件也可以使用例如 bindregionchange 事件直接在 dom 上将bind改为@ @regionchange,同时这个事件也非常特殊，它的 event type 有 begin 和 end 两个，导致我们无法在handleProxy 中区分到底是什么事件，所以你在监听此类事件的时候同时监听事件名和事件类型既 &lt;map @regionchange=&quot;functionName&rdquo; @end=&quot;functionName&rdquo; @begin=&quot;functionName&quot;&gt;<!-- raw HTML omitted --></li>
+<li>小程序能力所致，bind 和 catch 事件同时绑定时候，只会触发 bind ,catch 不会被触发，要避免踩坑。</li>
+<li>事件修饰符
+<ul>
+<li>.stop 的使用会阻止冒泡，但是同时绑定了一个非冒泡事件，会导致该元素上的 catchEventName 失效！</li>
+<li>.prevent 可以直接干掉，因为小程序里没有什么默认事件，比如submit并不会跳转页面</li>
+<li>.capture 支持 1.0.9</li>
+<li>.self 没有可以判断的标识</li>
+<li>.once 也不能做，因为小程序没有 removeEventListener, 虽然可以直接在 handleProxy 中处理，但非常的不优雅，违背了原意，暂不考虑</li>
+</ul>
+</li>
+<li>其他 键值修饰符 等在小程序中压根没键盘，所以。。。</li>
+</ul>
+<h2 id="表单控件绑定">表单控件绑定</h2>
+<p>几乎全支持 <a href="https://cn.vuejs.org/v2/guide/forms.html">官方文档：表单控件绑定</a></p>
+<p>建议开发过程中直接使用 微信小程序：表单组件 ，例如 select 组件用 picker 组件进行代替,表单元素 radio 用 radio-group 组件进行代替</p>
+<pre><code class="language-js">&lt;template&gt;
+  &lt;div&gt;
+    &lt;picker @change=&quot;bindPickerChange&quot; :value=&quot;index&quot; :range=&quot;array&quot;&gt;
+      &lt;view class=&quot;picker&quot;&gt;
+        当前选择：{{array[index]}}
+      &lt;/view&gt;
+    &lt;/picker&gt;
+    
+    &lt;radio-group class=&quot;radio-group&quot; @change=&quot;radioChange&quot;&gt;
+      &lt;label class=&quot;radio&quot; v-for=&quot;(item, index) in items&quot; :key=&quot;item.name&quot;&gt;
+        &lt;radio :value=&quot;item.name&quot; :checked=&quot;item.checked&quot;/&gt; {{item.value}}
+      &lt;/label&gt;
+    &lt;/radio-group&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data () {
+    return {
+      index: 0,
+      array: ['A', 'B', 'C'],
+      items: [
+        {name: 'USA', value: '美国'},
+        {name: 'CHN', value: '中国', checked: 'true'},
+        {name: 'BRA', value: '巴西'},
+        {name: 'JPN', value: '日本'},
+        {name: 'ENG', value: '英国'},
+        {name: 'TUR', value: '法国'}
+      ]
+    }
+  },
+  methods: {
+    bindPickerChange (e) {
+      console.log(e)
+    },
+    radioChange (e) {
+      console.log('radio发生change事件，携带value值为：', e.target.value)
+    }
+  }
+}
+
+&lt;/script&gt;
+</code></pre>
+<h2 id="组件">组件</h2>
+<p><strong>有且只能使用单文件组件（.vue 组件）的形式进行支持</strong>。其他的诸如：动态组件，自定义 render，和<!-- raw HTML omitted --> 字符串模版等都不支持。原因很简单，因为我们要预编译出 wxml。</p>
+<p>（如果未来小程序支持了动态增删改查 wxml 节点信息，那我们就能做到全支持）</p>
+<p><strong>详细的不支持列表</strong>：</p>
+<p>暂不支持在组件引用时，在组件上定义 click 等原生事件、v-show（可用 v-if 代替）和 class style 等样式属性(例：<!-- raw HTML omitted --> <!-- raw HTML omitted --> 样式是不会生效的)，因为编译到 wxml，小程序不会生成节点，建议写在内部顶级元素上。
+Slot（scoped 暂时还没做支持）
+动态组件
+异步组件
+inline-template
+X-Templates
+keep-alive
+transition
+class
+style</p>
+<p>mpvue 可以支持<strong>小程序的原生组件</strong>，比如： picker,map 等，需要注意的是原生组件上的事件绑定，需要以 vue 的事件绑定语法来绑定，如 <code>bindchange=&quot;eventName&quot;</code> 事件，需要写成 <code>@change=&quot;eventName&quot;</code></p>
+<h2 id="最佳实践">最佳实践</h2>
+<ol>
+<li>精简 data 数据: 冗余数据不要挂在 data 里，所有在 data/props/computed 中的数据，每次变更都会从微信小程序的 JSCore 进程，通过 setData 序列化成字符串后发送到 JSRender 进程。所以，如果你的数据量巨大的时候，会导致页面非常卡顿。</li>
+<li>优化长列表性能: 避免在 v-for 中嵌套子组件;建议产品思考更好的展示形态。比如只展示热门，多余的折叠等形式</li>
+<li>合理使用双向绑定 mpvue 建议使用 v-model.lazy 绑定方式以优化性能</li>
+<li>谨慎选择直接使用小程序的 API 如果你有小程序和H5复用代码的需要，业务代码需要保持对 WEB Vue.js 的兼容性。此时我们不建议在代码中直接调用小程序API，更好的选择是通过桥接适配层屏蔽两端差异</li>
+</ol>
+<h2 id="常见问题">常见问题</h2>
+<ul>
+<li>获取小程序在 page onLoad 时候传递的 options</li>
+</ul>
+<p>在所有 <strong>页面</strong> 的组件内可以通过 <code>this.$root.$mp.query</code> 进行获取</p>
+<ul>
+<li>获取小程序在 app onLaunch/onShow 时候传递的 options</li>
+</ul>
+<p>所有的<strong>组件</strong>内可以通过 <code>this.$root.$mp.appOptions</code> 进行获取。</p>
+<ul>
+<li>捕获 app 的 onError</li>
+</ul>
+<p>由于 onError 并不是完整意义的生命周期，所以只提供一个捕获错误的方法，在 app 的根组件上添加名为 onError 的回调函数即可</p>
+<pre><code class="language-js">export default {
+   // 只有 app 才会有 onLaunch 的生命周期
+   onLaunch () {
+       // ...
+   },
+
+   // 捕获 app error
+   onError (err) {
+       console.log(err)
+   }
+}
+</code></pre>
+<h2 id="mpvue-simple">mpvue-simple</h2>
+<p>快速开发 Page 级小程序页面的工具</p>
+<p>mpvue QuickStart 只支持项目级应用开发，对 Page 级和自定义组件 Component 级小程序页面开发场景缺少支持，而 simple 刚好来填补这部分需求，用以支持 mpvue 和原生小程序（或者其他方式小程序）的混用。</p>
+<h2 id="mpvue-loader">mpvue-loader</h2>
+<p>vue-loader : Webpack loader for Vue.js components
+<a href="https://github.com/vuejs/vue-loader">https://github.com/vuejs/vue-loader</a></p>
+<h1 id="踩坑">踩坑</h1>
+<h2 id="微信调整了登录逻辑必须用-button-授权导致之前正常的-wxgetuserinfo-报scope-unauthorized">微信调整了登录逻辑，必须用 button 授权，导致之前正常的 wx.getUserInfo 报scope unauthorized</h2>
+<p><a href="http://www.wxapp-union.com/article-4036-1.html">http://www.wxapp-union.com/article-4036-1.html</a></p>
+<p><a href="https://developers.weixin.qq.com/blogdetail?action=get_post_info&amp;lang=zh_CN&amp;token=&amp;docid=0000a82f00ce583cdbb60604e56c00">https://developers.weixin.qq.com/blogdetail?action=get_post_info&amp;lang=zh_CN&amp;token=&amp;docid=0000a82f00ce583cdbb60604e56c00</a></p>
+<p>官方修改了getUserInfo接口么，最新的开发版 必须手动调用才能执行</p>
+<p>新增一个page，里面放个按钮，美化一下(例如和 about 合并)</p>
+<pre><code class="language-html">&lt;button open-type='getUserInfo' bindgetuserinfo='userinfo'&gt;点击获取&lt;/button&gt; 
+</code></pre>
+<p>执行 userinfo方法 (例如跳转回去首页)</p>
+<p><a href="https://developers.weixin.qq.com/blogdetail?action=get_post_info&amp;lang=zh_CN&amp;token=919259923&amp;docid=000aee01f98fc0cbd4b6ce43b56c01&amp;inwindow=1">https://developers.weixin.qq.com/blogdetail?action=get_post_info&amp;lang=zh_CN&amp;token=919259923&amp;docid=000aee01f98fc0cbd4b6ce43b56c01&amp;inwindow=1</a></p>
+<h2 id="微信开发者工具">微信开发者工具</h2>
+<h3 id="当前系统代理不是安全代理">当前系统代理不是安全代理</h3>
+<p><img src="/media/15490412158968/15457394331417.jpg" alt="-w420"></p>
+<p>微信web开发者工具\package.nw\js，找到233d77ecf0781f44985f684f70e316d0.js文件</p>
+<p>用记事本打开这个js文件，用查找功能搜索“当前系统代理不是安全代理”，把<code>!confirm(当前系统代理不是安全代理，是否信任？)</code>修改为<code>false</code>。</p>
+<h2 id="woocommerce">Woocommerce</h2>
+<p><img src="/media/15490412158968/15457409015831.jpg" alt="-w696"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AB%98%E7%BA%A7%E5%BC%80%E5%8F%91/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E4%B8%8E-wordpresswoocommerce%E9%9B%86%E6%88%90/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

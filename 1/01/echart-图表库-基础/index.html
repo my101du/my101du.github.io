@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: EChart 图表库 permalink: echarts-library tags: 前端 echarts 如果你手中有很多的数据，需要把它们制作成直观的图表在网页、手机上显示出来，那么使用各种Javascript 图表库可以帮" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: EChart 图表库 permalink: echarts-library tags: 前端 echarts 如果你手中有很多的数据，需要把它们制作成直观的图表在网页、手机上显示出来，那么使用各种Javascript 图表库可以帮" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/echart-%E5%9B%BE%E8%A1%A8%E5%BA%93-%E5%9F%BA%E7%A1%80/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: EChart 图表库 permalink: echarts-library tags: 前端 echarts 如果你手中有很多的数据，需要把它们制作成直观的图表在网页、手机上显示出来，那么使用各种Javascript 图表库可以帮">
+
+<meta itemprop="wordCount" content="6502">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: EChart 图表库 permalink: echarts-library tags: 前端 echarts 如果你手中有很多的数据，需要把它们制作成直观的图表在网页、手机上显示出来，那么使用各种Javascript 图表库可以帮"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/echart-%E5%9B%BE%E8%A1%A8%E5%BA%93-%E5%9F%BA%E7%A1%80/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/echart-%E5%9B%BE%E8%A1%A8%E5%BA%93-%E5%9F%BA%E7%A1%80/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6502字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: EChart 图表库
+permalink: echarts-library
+tags:</p>
+<ul>
+<li>前端</li>
+<li>echarts</li>
+</ul>
+<hr>
+<p>如果你手中有很多的数据，需要把它们制作成<strong>直观的图表</strong>在网页、手机上显示出来，那么使用各种<strong>Javascript 图表库</strong>可以帮助你快速解决问题。现在流行的图表库有<code>D3.js</code>、<code>Highcharts</code>、<code>ECharts</code>等。</p>
+<p>其中<code>ECharts</code>是由百度的前端开发团队出品，兼容 PC 端和移动端以及多种浏览器，体积小巧，性能强大，能够提供非常直观，生动，可交互，可高度个性化定制的数据可视化图表。特别是有详细的中文文档，对本土的开发者十分友好。</p>
+<p>本套教程就来通过几个实际的案例，帮助你学会如何使用<code>Echarts</code>来制作专业和强大的图表。</p>
+<!-- raw HTML omitted -->
+<h1 id="快速开始">快速开始</h1>
+<p>npm/webpack 方式略（SPA 等应用中）</p>
+<p>这里直接传统的web页面里引入 <code>echarts.min.js</code>, 以及一个主题文件</p>
+<pre><code class="language-html">&lt;script src=&quot;{{ asset('js/echarts.min.js') }}&quot; defer&gt;&lt;/script&gt;
+&lt;script src=&quot;{{ asset('js/themes/shine.js') }}&quot; defer&gt;&lt;/script&gt;
+</code></pre>
+<p>创建一个 dom 容器显示图表</p>
+<pre><code class="language-html">&lt;div id=&quot;sales-data&quot; style=&quot;width:800px; height:600px;&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>然后在 js 代码中依次</p>
+<ol>
+<li>初始化一个 echart 对象</li>
+<li>设置 options (echart 对象的属性：包括数据、定制参数等)</li>
+<li>调用<code>setOption</code>向这个对象赋值</li>
+</ol>
+<pre><code class="language-js">jQuery( document ).ready(function($) {
+    // step 1
+    var chartSalesData = echarts.init(document.getElementById('sales-data'), 'dark');
+    
+    // step 2
+    var optionSalesData = {
+        title: {
+            text: 'Sales data(Monthly/BU)'
+        },
+        tooltip: {},
+        //图例？
+        legend: { 
+            data:['Power', &quot;Network&quot;, &quot;Auto&quot;, &quot;Wireless&quot;, &quot;Comsumer&quot;]
+        },
+        xAxis: {
+        		type: 'category',
+                data: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;]
+        },
+        yAxis: {
+        	type: 'value'
+        },
+        series: [{
+            name: 'Power',
+            type: 'bar',
+            stack: 'total',
+            data: [20,32,42,34,23,55,67,11,44,43]
+        },
+        {
+            name: 'Network',
+            type: 'bar',
+            stack: 'total',
+            data: [23,55,67,11,44,43,20,32,42,34]
+        },
+        //...
+    ]
+    };
+    
+    // step 3
+    chartSalesData.setOption(optionSalesData); 
+});
+</code></pre>
+<h1 id="层级">层级</h1>
+<p>全局、系列、数据</p>
+<h1 id="样式--个性化图表样式">样式 &amp; 个性化图表样式</h1>
+<h2 id="theme--色系">Theme / 色系</h2>
+<h2 id="个性化">个性化</h2>
+<p>例如“饼图”， 它和柱状图的区别就是：没有 X Y 轴。(只有一维的数值，不需要给类目)</p>
+<p>下面的 <code>data</code> 除了指定 value, 还有 name，和前面柱状图的 data 里只有数据不一样</p>
+<pre><code class="language-js">myChart.setOption({
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            data:[
+                {value:235, name:'视频广告'},
+                {value:274, name:'联盟广告'},
+                {value:310, name:'邮件营销'},
+                {value:335, name:'直接访问'},
+                {value:400, name:'搜索引擎'}
+            ]
+        }
+    ]
+});
+</code></pre>
+<p>然后配置 阴影、背景、标签、文字等等</p>
+<h1 id="异步加载数据-以及动态更新">异步加载数据, 以及动态更新</h1>
+<p>除了在初始化后setOption中直接填入, 还可以通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项</p>
+<h2 id="先加载-json-数据然后在-callback-里调用-setoption">先加载 json 数据，然后在 callback 里调用 setOption</h2>
+<pre><code class="language-js">$.get('data.json').done(function (data) {
+    myChart.setOption({
+        title: {
+            text: '异步数据加载示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: [&quot;衬衫&quot;,&quot;羊毛衫&quot;,&quot;雪纺衫&quot;,&quot;裤子&quot;,&quot;高跟鞋&quot;,&quot;袜子&quot;]
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    });
+});
+</code></pre>
+<h2 id="先-setoption-设置一个空的直角坐标轴然后获取数据后填入比上面一开始空白要好">先 setOption 设置一个空的直角坐标轴，然后获取数据后填入(比上面一开始空白要好)</h2>
+<pre><code class="language-js">// 显示标题，图例和空的坐标轴
+myChart.setOption({
+    title: {
+        text: '异步数据加载示例'
+    },
+    tooltip: {},
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: []
+    },
+    yAxis: {},
+    series: [{
+        name: '销量',
+        type: 'bar',
+        data: []
+    }]
+});
+
+// 异步加载数据
+$.get('data.json').done(function (data) {
+    // 填入数据
+    myChart.setOption({
+        xAxis: {
+            data: data.categories
+        },
+        series: [{
+            // 根据名字对应到相应的系列
+            name: '销量',
+            data: data.data
+        }]
+    });
+});
+</code></pre>
+<h2 id="loading-动画">loading 动画</h2>
+<p>如果加载数据太慢，可以使用一个动画</p>
+<pre><code class="language-js">// 先显示加载动画
+myChart.showLoading();
+
+$.get('data.json').done(function (data) {
+    //拿到数据后隐藏
+    myChart.hideLoading();
+    myChart.setOption(...);
+});
+</code></pre>
+<h2 id="数据动态更新">数据动态更新</h2>
+<p>定时获取数据，setOption 填入数据，而不用考虑数据到底产生了那些变化，ECharts 会找到两组数据之间的差异然后通过合适的动画去表现数据的变化</p>
+<p>如果是 React Echarts 库，数据变化后，不需要定时获取，就能自动反应出来吧？</p>
+<h1 id="dataset-管理数据">dataset 管理数据</h1>
+<h2 id="好处对比在-series-里的-data">好处，对比在 series 里的 <code>data</code></h2>
+<p>用于单独的数据集声明，从而数据可以单独管理，被多个组件复用</p>
+<p>ECharts 4 以前，数据只能声明在各个“系列 <code>series</code>”中, 类似这样子</p>
+<pre><code class="language-js">{
+    xAxis: {
+        type: 'category'
+        data: ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie']
+    },
+    yAxis: {},
+    series: [{
+        type: 'bar',
+        name: '2015',
+        data: [89.3, 92.1, 94.4, 85.4]
+    }, {
+        type: 'bar',
+        name: '2016',
+        data: [95.8, 89.4, 91.2, 76.9]
+    }, {
+        type: 'bar',
+        name: '2017',
+        data: [97.7, 83.1, 92.5, 78.1]
+    }]
+}
+</code></pre>
+<p>缺点是，为匹配这种数据输入形式，常需要有数据处理的过程，把数据分割设置到各个系列（和类目轴）中.</p>
+<p>不利于多个系列共享一份数据，也不利于基于原始数据进行图表类型、系列的映射安排</p>
+<p>而 dataset</p>
+<ul>
+<li>能够贴近这样的数据可视化常见思维方式：基于数据（dataset 组件来提供数据），指定数据到视觉的映射（由 encode 属性来指定映射），形成图表。</li>
+<li>数据和其他<strong>配置可以被分离开来</strong>，使用者相对便于进行<strong>单独管理</strong>，也省去了一些数据处理的步骤。</li>
+<li>数据可以被多个系列或者组件<strong>复用</strong>，对于大数据，不必为每个系列创建一份。</li>
+<li>支持<strong>更多的数据的常用格式</strong>，例如二维数组、对象数组等，一定程度上避免使用者为了数据格式而进行转换。</li>
+</ul>
+<h2 id="定义-dataset形式--数量">定义 dataset(形式 / 数量)</h2>
+<h3 id="二维数组形式">二维数组形式</h3>
+<p>例如前面的案例可以简化成 <code>source</code>里的二维数组（就像一个表格的表头、多个行。 表头是<strong>维度</strong>）</p>
+<p>x轴是<code>category</code>，对应第一列，也就是说 x 轴会依次把 Matcha Latte, Milk Tea, &hellip; 列出来</p>
+<p>然后 <code>series</code> 只需要声明 <code>type</code>就可以了，自动对应 dataset 每一列。</p>
+<p>那么 Matcha Latte 会看起来像一组数据，有三个bar,分别显示 2015 2016 2017 的数据(下面有简称)</p>
+<pre><code class="language-js">option = {
+    legend: {},
+    tooltip: {},
+    dataset: {
+        // 提供一份数据。
+        source: [
+            ['product', '2015', '2016', '2017'],
+            ['Matcha Latte', 43.3, 85.8, 93.7],
+            ['Milk Tea', 83.1, 73.4, 55.1],
+            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+            ['Walnut Brownie', 72.4, 53.9, 39.1]
+        ]
+    },
+    // 声明一个 X 轴，类目轴（category）。默认情况下，类目轴对应到 dataset 第一列。
+    xAxis: {type: 'category'},
+    // 声明一个 Y 轴，数值轴。
+    yAxis: {},
+    // 声明多个 bar 系列，默认情况下，每个系列会自动对应到 dataset 的每一列。
+    series: [
+        {type: 'bar'},
+        {type: 'bar'},
+        {type: 'bar'}
+    ]
+}
+</code></pre>
+<h3 id="key-value-形式">key-value 形式</h3>
+<p>或者用更清晰的对象数据 (key-value) 的形式，把 维度 和数据分开来定义</p>
+<pre><code class="language-js">//...
+    dataset: {
+        // 这里指定了维度名的顺序，从而可以利用默认的维度到坐标轴的映射。
+        // 如果不指定 dimensions，也可以通过指定 series.encode 完成映射，参见后文。
+        dimensions: ['product', '2015', '2016', '2017'],
+        
+        // 按行的 key-value 形式（对象数组），这是个比较常见的格式。
+        source: [
+            {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
+            {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
+            {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
+            {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
+        ]
+    }
+ //...
+
+</code></pre>
+<p>而 key-value 的形式又分两种，分别是</p>
+<ul>
+<li>按 每一行 的 key-value 形式 （这时的 key 是多个 列名: 数据 中的）</li>
+<li>按 列名: [全部数据] 的 key-value 形式 (这时的 key 是一个列名)</li>
+</ul>
+<pre><code class="language-js">dataset: [{
+    // 按行的 key-value 形式（对象数组），这是个比较常见的格式。
+    source: [
+        {product: 'Matcha Latte', count: 823, score: 95.8},
+        {product: 'Milk Tea', count: 235, score: 81.4},
+        {product: 'Cheese Cocoa', count: 1042, score: 91.2},
+        {product: 'Walnut Brownie', count: 988, score: 76.9}
+    ]
+}, {
+    // 按列的 key-value 形式。
+    source: {
+        'product': ['Matcha Latte', 'Milk Tea', 'Cheese Cocoa', 'Walnut Brownie'],
+        'count': [823, 235, 1042, 988],
+        'score': [95.8, 81.4, 91.2, 76.9]
+    }
+}]
+</code></pre>
+<h3 id="同时定义多个-dataset系列可以通过-seriesdatasetindex-来指定引用哪个-dataset">同时定义多个 dataset。系列可以通过 series.datasetIndex 来指定引用哪个 dataset</h3>
+<pre><code class="language-js">var option = {
+    dataset: [{
+        // 序号为 0 的 dataset。
+        source: [...],
+    }, {
+        // 序号为 1 的 dataset。
+        source: [...]
+    }, {
+        // 序号为 2 的 dataset。
+        source: [...]
+    }],
+    series: [{
+        // 使用序号为 2 的 dataset。
+        datasetIndex: 2
+    }, {
+        // 使用序号为 1 的 dataset。
+        datasetIndex: 1
+    }]
+};
+</code></pre>
+<h2 id="数据到图形的映射">数据到图形的映射</h2>
+<h3 id="指定-columnrow-映射-series">指定 column/row 映射 series</h3>
+<p>使用 <code>series.seriesLayoutBy</code> 属性来配置, <strong>默认是 column</strong></p>
+<p>注意，dataset 只有二维数组格式可以用， <code>{key: '', value: ''}</code>这种对象数组目前并不支持 <code>seriesLayoutBy</code></p>
+<p>改造前面的例子，对比默认用 <code>column</code> 和改成 <code>row</code>作为 layoutBy</p>
+<pre><code class="language-js">dataset: {
+    source: [
+        ['product', '2012', '2013', '2014', '2015'],
+        ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
+        ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
+        ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
+    ]
+},
+xAxis: [
+    {type: 'category', gridIndex: 0},
+    {type: 'category', gridIndex: 1}
+],
+yAxis: [
+    {gridIndex: 0},
+    {gridIndex: 1}
+],
+grid: [
+    {bottom: '55%'},
+    {top: '55%'}
+],
+series: [
+    // 这几个系列会在第一个直角坐标系中，每个系列对应到 dataset 的每一行。
+    {type: 'bar', seriesLayoutBy: 'row'},
+    {type: 'bar', seriesLayoutBy: 'row'},
+    {type: 'bar', seriesLayoutBy: 'row'},
+    // 这几个系列会在第二个直角坐标系中，每个系列对应到 dataset 的每一列。
+    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1}
+]
+</code></pre>
+<p>思考理顺：</p>
+<ol>
+<li>grid 有两个元素，表示这个图表“组”里有两个独立的图表</li>
+<li>声明一个 X 轴为类目轴（category）：默认情况下，类目轴对应到 dataset 第一列（几个产品的名称），因此其他列就是类目外的&quot;数据&rdquo;</li>
+<li>xAxis 和 yAxis 分别指定了 grid 里两个元素的 index</li>
+<li>最重要的 <code>series</code>中，前面3个指定 layoutBy <strong>row</strong>, 什么意思呢？</li>
+</ol>
+<h4 id="假设默认是-column就是以列为组产品名行为组内的元素年份">假设默认是 <strong>column</strong>，就是以“列”为“组”（产品名），“行”为组内的元素（年份）</h4>
+<p>那么除了第一列（类目轴），剩下的数据中，以第二列为例，从上到下</p>
+<pre><code>2012
+41.1
+86.5
+24.1
+</code></pre>
+<blockquote>
+<p>就是： 2012年，三个产品 A  B  C 的数据。</p>
+</blockquote>
+<p>在图表中就是展示：“产品为组名，年份为元素，再显示某产品某年的数据”</p>
+<pre><code>      |             |                           |
+  |   |     |       |   |     |       |   |     |
+2012 2013 2014    2012 2013 2014    2012 2013 2014
+      A                 B                 C       
+</code></pre>
+<h4 id="那如果是--row-就是以行为组年份列为组内的元素产品">那如果是  <strong>row</strong>, 就是以“行”为“组”（年份），“列”为组内的元素（产品）</h4>
+<p>剩下的数据中，第二行是</p>
+<pre><code>'Matcha Latte', 41.1, 30.4, 65.1, 53.3
+</code></pre>
+<blockquote>
+<p>就是： Matcha Latte 这个产品，2012 2013 2014 三年的数据</p>
+</blockquote>
+<p>图表中. 年份 为组名，然后组的元素是 产品</p>
+<pre><code>      |             |                           |
+  |   |     |       |   |     |       |   |     |
+  A   B     C       A   B     C       A   B     C    
+    2012               2013                 2014       
+</code></pre>
+<h3 id="指定-dimension-映射-xy以及-label-等">指定 dimension 映射 x/y（以及 label 等）</h3>
+<p>从 dataset 的维度（一个“维度”的意思是一行/列）映射到坐标轴（如 X、Y 轴）、提示框（tooltip）、标签（label）、图形元素大小颜色等（visualMap）</p>
+<p>使用 <code>series.encode</code> 属性，以及 <code>visualMap</code> 组件来配置</p>
+<p><strong>默认映射</strong>
+X 坐标轴声明为类目轴，默认情况下会自动对应到 <code>dataset.source</code> 中的第一列；
+三个柱图系列，一一对应到 dataset.source 中后面每一列。</p>
+<h4 id="维度-dimention-的概念">&ldquo;维度&rdquo; dimention 的概念</h4>
+<p>常用图表所描述的数据大部分是“二维表”结构</p>
+<p>当我们把系列（series）对应到“列”的时候，那么每一列就称为一个“维度（dimension）”，而每一行称为数据项（item）。
+反之，如果我们把系列（series）对应到表行，那么每一行就是“维度（dimension）”，每一列就是数据项（item）。</p>
+<p><strong>维度名（dimension name）</strong></p>
+<p>可以在定义在 dataset 的第一行（或者第一列）</p>
+<pre><code class="language-js">//...
+    dataset: {
+        // 这里指定了维度名的顺序，从而可以利用默认的维度到坐标轴的映射。
+        // 如果不指定 dimensions，也可以通过指定 series.encode 完成映射，参见后文。
+        dimensions: ['product', '2015', '2016', '2017'],
+        source: [
+            {product: 'Matcha Latte', '2015': 43.3, '2016': 85.8, '2017': 93.7},
+            {product: 'Milk Tea', '2015': 83.1, '2016': 73.4, '2017': 55.1},
+            {product: 'Cheese Cocoa', '2015': 86.4, '2016': 65.2, '2017': 82.5},
+            {product: 'Walnut Brownie', '2015': 72.4, '2016': 53.9, '2017': 39.1}
+        ]
+    }
+ //...
+</code></pre>
+<p>上面的例子&quot;对象数组形式&quot;中，&lsquo;score&rsquo;、&lsquo;amount&rsquo;、&lsquo;product&rsquo; 就是维度名,从第二行开始，才是正式的数据.</p>
+<p>dataset.source 中第一行（列）到底包含不包含维度名，ECharts 默认会自动探测。(<code>dataset.sourceHeader: true</code> 显示声明第一行（列）就是维度, 否则第一行（列）开始就直接是数据)</p>
+<p>维度可以使用单独的 <code>dataset.dimensions</code> 或者 <code>series.dimensions</code> 来定义. 可以同时指定维度名，和维度的类型（dimension type）：</p>
+<p><strong>维度的类型（dimension type）</strong></p>
+<p>一般不需要设置维度的类型，如果因为数据为空之类原因导致判断不足够准确时，可以手动设置维度类型</p>
+<pre><code class="language-js">var option1 = {
+    dataset: {
+        dimensions: [
+            {name: 'score'},
+            // 可以简写为 string，表示维度名。
+            'amount',
+            // 可以在 type 中指定维度类型。
+            {name: 'product', type: 'ordinal'}
+        ],
+        source: [...]
+    },
+    ...
+};
+
+var option2 = {
+    dataset: {
+        source: [...]
+    },
+    series: {
+        type: 'line',
+        // 在系列中设置的 dimensions 会更优先采纳。
+        dimensions: [
+            null, // 可以设置为 null 表示不想设置维度名
+            'amount',
+            {name: 'product', type: 'ordinal'}
+        ]
+    },
+    ...
+};
+</code></pre>
+<p>可以取这些值：</p>
+<ul>
+<li>&lsquo;number&rsquo;: 默认，表示普通数据。</li>
+<li>&lsquo;ordinal&rsquo;: 对于类目、文本这些 string 类型的数据，如果需要能在数轴上使用，须是 &lsquo;ordinal&rsquo; 类型。ECharts * 默认会自动判断这个类型。但是自动判断也是不可能很完备的，所以使用者也可以手动强制指定。*</li>
+<li>&lsquo;time&rsquo;: 表示时间数据。设置成 &lsquo;time&rsquo; 则能支持自动解析数据成时间戳（timestamp），比如* 该维度的数据是 * &lsquo;2017-05-10&rsquo;，会自动被解析。如果这个维度被用在时间数轴（axis.type 为 &lsquo;time&rsquo;）上，* 那么会被自动设置* 为 &lsquo;time&rsquo; * 类型。时间类型的支持参见 data。*</li>
+<li>&lsquo;float&rsquo;: 如果设置成 &lsquo;float&rsquo;，在存储时候会使用 TypedArray，对性能优化有好处。</li>
+<li>&lsquo;int&rsquo;: 如果设置成 &lsquo;int&rsquo;，在存储时候会使用 TypedArray，对性能优化有好处。</li>
+</ul>
+<h3 id="数据到图形的映射encode">数据到图形的映射（encode）</h3>
+<p>下例，指定了 dataset，第一行是三个维度的名称(&lsquo;score&rsquo;, &lsquo;amount&rsquo;, &lsquo;product&rsquo;)，就好比数据表的“field”, 下面每行都是一组数据，分别是有关维度的数值</p>
+<pre><code class="language-js">var option = {
+    dataset: {
+        source: [
+            ['score', 'amount', 'product'],
+            [89.3, 58212, 'Matcha Latte'],
+            [57.1, 78254, 'Milk Tea'],
+            [74.4, 41032, 'Cheese Cocoa'],
+            [50.1, 12755, 'Cheese Brownie'],
+            [89.7, 20145, 'Matcha Cocoa'],
+            [68.1, 79146, 'Tea'],
+            [19.6, 91852, 'Orange Juice'],
+            [10.6, 101852, 'Lemon Juice'],
+            [32.7, 20112, 'Walnut Brownie']
+        ]
+    },
+    xAxis: {},
+    yAxis: {type: 'category'},
+    series: [
+        {
+            type: 'bar',
+            encode: {
+                // 将 &quot;amount&quot; 列映射到 X 轴。
+                x: 'amount',
+                // 将 &quot;product&quot; 列映射到 Y 轴。
+                y: 'product'
+            }
+        }
+    ]
+};
+</code></pre>
+<p>在 <code>series</code>中，用 <code>encode</code>指定 x y 轴分别映射哪个维度。</p>
+<ul>
+<li>x 轴显示“amount&rdquo;</li>
+<li>y 轴显示 &ldquo;product&rdquo;</li>
+</ul>
+<p>那么当 x(amout)=20112 时，表示最后一行数据，它的 y(product)就是&rsquo;Walnut Brownie&rsquo; 依次类推</p>
+<p><img src="/media/echarts/dimension-x-y.png" alt=""></p>
+<p><code>encode</code>格式：</p>
+<p>冒号左边是坐标系、标签等特定名称，如 &lsquo;x&rsquo;, &lsquo;y&rsquo;, &lsquo;tooltip&rsquo; 等，冒号右边是数据中的维度名（string 格式）或者维度的序号（number 格式，从 0 开始计数），可以指定一个或多个维度（使用数组）。通常情况下，下面各种信息不需要所有的都写，按需写即可。</p>
+<p>完整的参数</p>
+<p>以及一个复杂的示例（认真学习下）  <a href="https://www.echartsjs.com/gallery/editor.html?c=dataset-encode1">https://www.echartsjs.com/gallery/editor.html?c=dataset-encode1</a></p>
+<pre><code class="language-js">// 在任何坐标系和系列中，都支持：
+encode: {
+    // 使用 “名为 product 的维度” 和 “名为 score 的维度” 的值在 tooltip 中显示
+    tooltip: ['product', 'score']
+    // 使用 “维度 1” 和 “维度 3” 的维度名连起来作为系列名。（有时候名字比较长，这可以避免在 series.name 重复输入这些名字）
+    seriesName: [1, 3],
+    // 表示使用 “维度2” 中的值作为 id。这在使用 setOption 动态更新数据时有用处，可以使新老数据用 id 对应起来，从而能够产生合适的数据更新动画。
+    itemId: 2,
+    // 指定数据项的名称使用 “维度3” 在饼图等图表中有用，可以使这个名字显示在图例（legend）中。
+    itemName: 3
+}
+
+// 直角坐标系（grid/cartesian）特有的属性：
+encode: {
+    // 把 “维度1”、“维度5”、“名为 score 的维度” 映射到 X 轴：
+    x: [1, 5, 'score'],
+    // 把“维度0”映射到 Y 轴。
+    y: 0
+}
+
+// 单轴（singleAxis）特有的属性：
+encode: {
+    single: 3
+}
+
+// 极坐标系（polar）特有的属性：
+encode: {
+    radius: 3,
+    angle: 2
+}
+
+// 地理坐标系（geo）特有的属性：
+encode: {
+    lng: 3,
+    lat: 2
+}
+
+// 对于一些没有坐标系的图表，例如饼图、漏斗图等，可以是：
+encode: {
+    value: 3
+}
+</code></pre>
+<p>例如，要实现</p>
+<ol>
+<li>第三列设置为 X 轴，第五列设置为 Y 轴</li>
+</ol>
+<pre><code class="language-js">series: {
+    // 注意维度序号（dimensionIndex）从 0 开始计数，第三列是 dimensions[2]。
+    encode: {x: 2, y: 4},
+    ...
+}
+</code></pre>
+<ol start="2">
+<li>第三行设置为 X 轴，第五行设置为 Y 轴</li>
+</ol>
+<pre><code class="language-js">series: {
+    encode: {x: 2, y: 4},
+    seriesLayoutBy: 'row',
+    ...
+}
+</code></pre>
+<ol start="3">
+<li>第二列设置为标签</li>
+</ol>
+<pre><code class="language-js">series: {
+    label: {
+        // `'{@score}'` 表示 “名为 score” 的维度里的值。
+        // `'{@[4]}'` 表示引用序号为 4 的维度里的值。
+        formatter: 'aaa{@product}bbb{@score}ccc{@[4]}ddd'
+    }
+}
+</code></pre>
+<ol start="4">
+<li>第 2 列和第 3 列显示在提示框（tooltip）中</li>
+</ol>
+<pre><code class="language-js">series: {
+    encode: {
+        tooltip: [1, 2]
+        ...
+    },
+    ...
+}
+</code></pre>
+<ol start="5">
+<li>把第四列映射为气泡图的点的大小</li>
+</ol>
+<pre><code class="language-js">var option = {
+    dataset: {
+        source: [
+            [12, 323, 11.2],
+            [23, 167, 8.3],
+            [81, 284, 12],
+            [91, 413, 4.1],
+            [13, 287, 13.5]
+        ]
+    },
+    visualMap: {
+        show: false,
+        dimension: 2, // 指向第三列（列序号从 0 开始记，所以设置为 2）。
+        min: 2, // 需要给出数值范围，最小数值。
+        max: 15, // 需要给出数值范围，最大数值。
+        inRange: {
+            // 气泡尺寸：5 像素到 60 像素。
+            symbolSize: [5, 60]
+        }
+    },
+    xAxis: {},
+    yAxis: {},
+    series: {
+        type: 'scatter'
+    }
+};
+</code></pre>
+<h3 id="visualmap-视觉通道颜色尺寸等的映射">visualMap 视觉通道（颜色、尺寸等）的映射</h3>
+<p>详见 visualMap 文档的介绍</p>
+<h3 id="默认映射的规则不能满足采用-encode">默认映射的规则(不能满足采用 encode)</h3>
+<p>针对最常见直角坐标系中的图表（折线图、柱状图、散点图、K线图等）、饼图、漏斗图，给出了简单的默认的映射，从而不需要配置 encode 也可以出现图表（<strong>一旦给出了 encode，那么就不会采用默认映射</strong>）。</p>
+<p>默认的映射规则不易做得复杂，基本规则大体是</p>
+<p>在坐标系中（如直角坐标系、极坐标系等）</p>
+<ul>
+<li>如果有类目轴（axis.type 为 &lsquo;category&rsquo;），则将第一列（行）映射到这个轴上，后续每一列（行）对应一个系列。</li>
+<li>如果没有类目轴，假如坐标系有两个轴（例如直角坐标系的 X Y 轴），则每两列对应一个系列，这两列分别映射到这两个轴上。</li>
+</ul>
+<p>如果没有坐标系（如饼图）</p>
+<ul>
+<li>取第一列（行）为名字，第二列（行）为数值（如果只有一列，则取第一列为数值）。</li>
+</ul>
+<p>默认的规则不能满足要求时，就可以自己来配置 encode</p>
+<h3 id="常见的映射设置方式-与-技巧">常见的映射设置方式 与 技巧</h3>
+<h2 id="例子多个图表共享一个-dataset并带有联动交互">例子：多个图表共享一个 dataset，并带有联动交互</h2>
+<p><img src="/media/echarts/dataset-multi-interaction.gif" alt=""></p>
+<pre><code class="language-js">
+setTimeout(function () {
+
+    option = {
+        legend: {},
+        tooltip: {
+            trigger: 'axis',
+            showContent: false
+        },
+        dataset: {
+            source: [
+                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                ['Matcha Latte', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
+                ['Milk Tea', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
+                ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                ['Walnut Brownie', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
+            ]
+        },
+        xAxis: {type: 'category'},
+        yAxis: {gridIndex: 0},
+        grid: {top: '55%'},
+        series: [
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {
+                type: 'pie',
+                id: 'pie',
+                radius: '30%',
+                center: ['50%', '25%'],
+                label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+                encode: {
+                    itemName: 'product',
+                    value: '2012',
+                    tooltip: '2012'
+                }
+            }
+        ]
+    };
+
+    myChart.on('updateAxisPointer', function (event) {
+        var xAxisInfo = event.axesInfo[0];
+        if (xAxisInfo) {
+            var dimension = xAxisInfo.value + 1;
+            myChart.setOption({
+                series: {
+                    id: 'pie',
+                    label: {
+                        formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                    },
+                    encode: {
+                        value: dimension,
+                        tooltip: dimension
+                    }
+                }
+            });
+        }
+    });
+
+    myChart.setOption(option);
+
+});
+</code></pre>
+<h1 id="交互组件">交互组件</h1>
+<p>图例组件 legend、标题组件 title、视觉映射组件 visualMap、数据区域缩放组件 dataZoom、时间线组件 timeline</p>
+<h2 id="datazoom">dataZoom</h2>
+<p>『概览数据整体，按需关注数据细节』是数据可视化的基本交互需求。dataZoom 组件能够在直角坐标系（grid）、极坐标系（polar）中实现这一功能。</p>
+<ul>
+<li>对 数轴（axis） 进行『数据窗口缩放』『数据窗口平移』操作。</li>
+<li>可同时存在多个，起到共同控制的作用  会自动联动</li>
+<li>运行原理是通过『数据过滤』来达到『数据窗口缩放』的效果(可设置过滤模式)</li>
+<li>数据窗口范围的设置（百分比形式 绝对值形式）</li>
+</ul>
+<p>几种子组件</p>
+<p>代码：</p>
+<h1 id="移动端自适应">移动端自适应</h1>
+<h1 id="visualmap">visualMap</h1>
+<h1 id="httpsgithubcomecomfeecharts-stat--学习中"><a href="https://github.com/ecomfe/echarts-stat">https://github.com/ecomfe/echarts-stat</a>  学习中</h1>
+<h1 id="个性化-1">个性化</h1>
+<h2 id="柱状堆叠图显示总数">柱状堆叠图，显示总数</h2>
+<p>默认只把几个分类的数字显示</p>
+<pre><code class="language-js">label: {
+    normal: {
+        show: false,
+        position: 'right'
+    }
+}
+</code></pre>
+<p><a href="https://gallery.echartsjs.com/editor.html?c=xBJ1Dpr8-z&amp;v=2">https://gallery.echartsjs.com/editor.html?c=xBJ1Dpr8-z&amp;v=2</a></p>
+<p>数据</p>
+<pre><code class="language-js">var data3 = function() {
+    var datas = [];
+    for (var i = 0; i &lt; data1.length; i++) {
+
+        datas.push(data1[i] + data2[i]);
+    }
+    return datas;
+}();
+</code></pre>
+<p>添加一个 series</p>
+<pre><code class="language-js">{
+    name: '总计',
+    type: 'bar',
+    stack: 'sum',
+    label: {
+        normal: {
+            offset:['50', '80'],
+            show: true,
+            position: 'insideBottom',
+            formatter:'{c}',
+            textStyle:{ color:'#000' }
+        }
+    },
+    itemStyle:{
+        normal:{
+            color:'rgba(128, 128, 128, 0)'
+        }
+    },
+    data: data3
+}
+</code></pre>
+<h1 id="其他">其他</h1>
+<h2 id="直接在后端生成-不需要前端拼接">直接在后端生成， 不需要前端拼接。</h2>
+<p>java:
+<a href="https://blog.csdn.net/w05980598/article/details/79272029">https://blog.csdn.net/w05980598/article/details/79272029</a></p>
+<p>php 简单封装
+<a href="https://github.com/hisune/Echarts-PHP">https://github.com/hisune/Echarts-PHP</a></p>
+<p>laraval 的（不是 echarts 了）
+<a href="https://github.com/ConsoleTVs/Charts">https://github.com/ConsoleTVs/Charts</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/echart-%E5%9B%BE%E8%A1%A8%E5%BA%93-%E5%9F%BA%E7%A1%80/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/echart-%E5%9B%BE%E8%A1%A8%E5%BA%93-%E5%9F%BA%E7%A1%80/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/lodash/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/calendar-%E6%97%A5%E5%8E%86%E5%BA%93/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

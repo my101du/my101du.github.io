@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="laravel 入门 title: 优雅的PHP框架——Laravel快速入门 permalink: laravel-basic date: 2017/07/01 10:10:10 tags: laravel PHP 作为世界上最好的语言，它的框架也是层出不穷百花齐放。其中 Laravel 以其优雅的开发体" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="laravel 入门 title: 优雅的PHP框架——Laravel快速入门 permalink: laravel-basic date: 2017/07/01 10:10:10 tags: laravel PHP 作为世界上最好的语言，它的框架也是层出不穷百花齐放。其中 Laravel 以其优雅的开发体" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/laravel-%E5%85%A5%E9%97%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="laravel 入门 title: 优雅的PHP框架——Laravel快速入门 permalink: laravel-basic date: 2017/07/01 10:10:10 tags: laravel PHP 作为世界上最好的语言，它的框架也是层出不穷百花齐放。其中 Laravel 以其优雅的开发体">
+
+<meta itemprop="wordCount" content="12457">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="laravel 入门 title: 优雅的PHP框架——Laravel快速入门 permalink: laravel-basic date: 2017/07/01 10:10:10 tags: laravel PHP 作为世界上最好的语言，它的框架也是层出不穷百花齐放。其中 Laravel 以其优雅的开发体"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/laravel-%E5%85%A5%E9%97%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/laravel-%E5%85%A5%E9%97%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 12457字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 25分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>laravel 入门</p>
+<p>title: 优雅的PHP框架——Laravel快速入门
+permalink: laravel-basic
+date: 2017/07/01 10:10:10
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<p><img src="/article_images/web/elegant-php-framework-laravel/cover.png" alt=""></p>
+<p>PHP 作为世界上最好的语言，它的框架也是层出不穷百花齐放。其中 Laravel 以其优雅的开发体验赢得了大量程序员的青睐，在 Github 上的热度很快就超过了一众老牌 PHP 框架。
+至于为什么优雅呢？作为一个渣渣，我在学习的过程中，感觉它除了紧跟潮流、文档丰富，社区活跃外，确实是无时无刻都在装逼的，除了各种高大上的变量名、命令名、甚至从安装到崩溃都一路优雅……</p>
+<!-- raw HTML omitted -->
+<p>书</p>
+<p><a href="https://laravel-china.org/topics/3383/laravel-the-first-chinese-new-book-laravel-tutorial">https://laravel-china.org/topics/3383/laravel-the-first-chinese-new-book-laravel-tutorial</a></p>
+<h1 id="安装--composer">安装 &amp; Composer</h1>
+<p>如果你想快速开始工作，可以使用这个 <a href="http://laravel-china.org/docs/5.1/homestead">homestead</a>。但是强烈建议一步步熟悉，毕竟以后要部署到生产环境，很多概念和问题还是会遇到的。</p>
+<p>装逼第0波：homestead的意思是“家园，田产”</p>
+<p>首先要下载 <code>composer</code> 这个包管理器（类似 Python 的 pip，node 的 npm）</p>
+<p><a href="https://getcomposer.org">地址</a></p>
+<pre><code class="language-shell"># 很慢  很慢。 
+curl -sS https://getcomposer.org/installer | php
+
+# 也很慢
+php -r &quot;readfile('https://getcomposer.org/installer');&quot; | php
+
+# # 还是改成直接下载 composer.phar 移动到 /bin 吧
+
+mv composer.phar /usr/local/bin/composer
+</code></pre>
+<p>装逼第一波：<code>composer</code> 的意思是“作曲家/作家/设计者”，官网首页就是一个洋人在指挥乐队。国内诸多自称“码农”的赶紧退下吧。</p>
+<h2 id="composer-常用命令">composer 常用命令</h2>
+<pre><code class="language-shell">composer show
+composer show monolog/*
+
+composer search monolog
+
+composer require xxx/yyyyy
+composer require monolog/monolog:1.19
+
+composer remove xxx/yyyyy
+
+composer install
+
+
+composer update
+composer update monolog/monolog
+composer update monolog/monolog symfony/dependency-injection
+composer update monolog/monolog symfony/*
+</code></pre>
+<h2 id="修改-composer-使用国内镜像">修改 composer 使用国内镜像</h2>
+<p>如果在国内，在使用 <code>composer require</code> 或 <code>composer install</code> 很可能会由于网络问题导致安装失败，改成国内镜像加速。</p>
+<p><a href="https://pkg.phpcomposer.com/#how-to-use-packagist-mirror">https://pkg.phpcomposer.com/#how-to-use-packagist-mirror</a></p>
+<pre><code class="language-shell">composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+<p><a href="http://pkg.phpcomposer.com">http://pkg.phpcomposer.com</a></p>
+<p>现在阿里云有镜像了！！</p>
+<pre><code class="language-shell">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+</code></pre>
+<p><strong>开始安装</strong></p>
+<pre><code class="language-shell">$ php -r &quot;readfile('https://getcomposer.org/installer');&quot; &gt; composer-setup.php
+$ php -r &quot;if (hash_file('SHA384', 'composer-setup.php') === 'a52be7b8724e47499b039d53415953cc3d5b459b9d9c0308301f867921c19efc623b81dfef8fc2be194a5cf56945d223') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;&quot;
+$ php composer-setup.php
+$ php -r &quot;unlink('composer-setup.php');&quot;
+
+$ mv composer.phar /usr/local/bin/composer
+</code></pre>
+<p><strong>下载 laravel 安装包</strong></p>
+<p>首先确保满足如下的 PHP 最低版本需求和扩展</p>
+<ul>
+<li>PHP &gt;= 5.5.9</li>
+<li>OpenSSL PHP Extension</li>
+<li>PDO PHP Extension</li>
+<li>Mbstring PHP Extension</li>
+<li>Tokenizer PHP Extension</li>
+</ul>
+<p>装逼第二波：5.5.9 以下的 PHP 全部不支持。那些还在用 PHP5.2 的虚拟主机用户赶紧回去吧。</p>
+<pre><code class="language-shell">composer global require &quot;laravel/installer&quot;
+</code></pre>
+<p>哈哈哈，你会发现有时候 <strong>根本无法下载</strong>。</p>
+<p>装逼第三波：不翻墙的话，很多文件根本就下载不下来。</p>
+<h3 id="composer-升级与改用另一个镜像">composer 升级与改用另一个镜像</h3>
+<pre><code class="language-shell"># 升级
+composer selfupdate
+
+# 这个中国镜像最近好像也出问题，导致卡在 updating dependence 很久不动
+# https://www.phpcomposer.com/
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
+
+# 改成这个就好了
+# https://packagist.laravel-china.org/
+composer config -g repo.packagist composer https://packagist.laravel-china.org
+
+</code></pre>
+<h2 id="使用-satis-搭建私有的composer-包仓库">使用 Satis 搭建私有的Composer 包仓库</h2>
+<p>有时候公司内部的一些包不方便放到互联网，但又希望团队共享。</p>
+<ol>
+<li>进入安装目录，创建项目</li>
+</ol>
+<pre><code class="language-shell">cd /data/www/
+
+composer create-project composer/satis --stability=dev --keep-vcs
+
+mv satis packages.dev.com
+
+cd packages.dev.com
+</code></pre>
+<ol start="2">
+<li>配置 Satis</li>
+</ol>
+<p>在当前目录新建一个 <code>satis.json</code>。</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;My Repository&quot;,
+    &quot;homepage&quot;: &quot;http://packages.dev.com&quot;,
+    // 指定去哪获取包，url 中需要带.git
+    &quot;repositories&quot;: [
+        {&quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://git.dev.com/maxincai/package1.git&quot;},
+        {&quot;type&quot;: &quot;vcs&quot;, &quot;url&quot;: &quot;http://git.dev.com/maxincai/package1.git&quot;},
+    ],
+    // 如果想获取所有包，使用 require-all: true,
+    &quot;require&quot;: {
+        &quot;maxincai/package1&quot;: &quot;*&quot;,
+        &quot;maxincai/package2&quot;: &quot;*&quot;,
+    }
+}
+</code></pre>
+<ol start="3">
+<li>生成</li>
+</ol>
+<p>一般会生成 html 和 paceages.json 文件. 会在 public 目录下生成相应的文件，如果出错，根据错误提示去解决即可，常用的问题可能是权限问题，或是 git 版本过低等。</p>
+<pre><code class="language-shell">php bin/satis build .
+
+php bin/satis build satis.json public/
+
+# 如果只需要生成某几个包，则可以在后面增加包的名字
+php bin/satis build satis.json web/ this/package that/other-package
+
+</code></pre>
+<ol start="4">
+<li>配置 nginx</li>
+</ol>
+<pre><code class="language-config">server {
+    listen  80;
+    server_name packages.dev.com;
+    root /data/www/packages.dev.com/public;
+
+    //...
+}
+</code></pre>
+<ol start="5">
+<li>项目中使用</li>
+</ol>
+<pre><code class="language-json">{
+    &quot;repositories&quot;: [
+      { &quot;type&quot;: &quot;composer&quot;, &quot;url&quot;: &quot;http://packages.dev.com/&quot; }
+    ],
+    &quot;require&quot;: {
+        &quot;company/package&quot;: &quot;1.2.0&quot;,
+        &quot;company/package2&quot;: &quot;1.5.2&quot;,
+        &quot;company/package3&quot;: &quot;dev-master&quot;
+    }
+}
+</code></pre>
+<ol start="6">
+<li>下载与加速</li>
+</ol>
+<p>composer update 的时候会去我们的 git 中 clone，有时候会比较慢，我们并不希望每次都 clone，其实我们也可以缓存在我们的仓库中，这样每次 update 的时候就只用下载了。</p>
+<p>在 satis.json 中增加</p>
+<pre><code class="language-json">{
+    &quot;archive&quot;: {
+        &quot;directory&quot;: &quot;dist&quot;,
+        &quot;format&quot;: &quot;tar&quot;,
+        &quot;prefix-url&quot;: &quot;http://packages.dev.com/&quot;,
+        &quot;skip-dev&quot;: true
+    }
+}
+</code></pre>
+<p>参数说明：</p>
+<p>directory: 必需要的，表示生成的压缩包存放的目录，会在我们 build 时的目录中
+format: 压缩包格式，zip（默认） tar
+prefix-url: 下载链接的前缀的 Url, 默认会从 homepage 中取
+skip-dev: 默认为假，是否跳过开发分支
+absolute-directory: 绝对目录
+whitelist: 白名单，只下载哪些
+blacklist: 黑名单，不下载哪些
+checksum: 可选，是否验证 sha1
+再次生成</p>
+<pre><code class="language-shell">php bin/satis build satis.json public/
+</code></pre>
+<p>会发现 public 目录多了一个 dist 目录，里面有很多 tar 的压缩包，这就是我们的 package。</p>
+<p>之后再执行 composer update 就会发现快了很多。</p>
+<p>其他：  使用 Toran Proxy 搭建在内部服务器上（不维护了），还是买的 packagist.com 的服务（官方主推 private 服务）</p>
+<h3 id="最后在本地每次-pull-最新后如果发现-composer-版本有变化就运行-composer-install-更新本地的库">最后，在本地每次 pull 最新后，如果发现 composer 版本有变化，就运行 composer install 更新本地的库</h3>
+<h1 id="临时在本地把一个-composer-包进行修改并排除被更新">临时在本地把一个 composer 包进行修改，并排除被更新</h1>
+<p>（也适用于 windows 宿主机，linux 虚拟机中， 使用 path 方式报错，不能链接 而是 mirror 导致频繁更新代码很麻烦的问题）</p>
+<p>修改一部分代码让这个包能够去运行，同时不使用 composer 进行更新，否则代码会再更新的时候再次被覆盖掉。</p>
+<p>下边是以下几个步骤：</p>
+<p>在 <code>composer.json</code> 中去掉调用(require 和 dev)</p>
+<p>一般情况下，去掉包，包在进行更新的时候会自己删除。</p>
+<p>在 <code>vendor/composer/installed.json</code> 中去掉这个已经安装的引用(一大段 json)</p>
+<p>这样在再次安装的时候这个包就会保留到本地，不会被删除掉。</p>
+<p>在 <code>composer.json</code> 中加入对这个包的命名空间的映射</p>
+<p>因为composer 的包都会自动进行加载，如果没有进行加载，则也是找不到这个文件，所以需要对命名空间做下映射
+比如我们引用一个第三方包，他的命名空间是这样的：</p>
+<pre><code class="language-json">&quot;autoload&quot;: {
+    &quot;psr-4&quot;: {
+        &quot;Imvkmark\\L5Thumber\\&quot;: &quot;src/L5Thumber&quot;
+    }
+},
+</code></pre>
+<p>我们需要在根目录下的 composer.json加入 (注意大小写！！ 前面部分是 组织名/命名空间 一般有首字母大写, 后面是目录名-一般小写， 这里如果代码直接就在 src/ 后面的目录部分就不需要跟个 L5Thumber )</p>
+<pre><code class="language-json">&quot;autoload&quot;: {
+    &quot;psr-4&quot;: {
+        &quot;Imvkmark\\L5Thumber\\&quot;: &quot;vendor/imvkmark/l5-thumber/src/L5Thumber&quot;,
+    }
+},
+</code></pre>
+<p>这样便能够对包的命名空间进行映射，同时进行修改了。</p>
+<p>更新 composer.json</p>
+<p>其实到这里已经结束，并且完成了自己的功能了。</p>
+<p>这样我们可以不受顾忌的修改代码，并且同时给作者发送推送请求，等待作者更新这个代码，然后我们再改回来，这样我们又能够使用最新的库了。</p>
+<p><strong>容易犯的一个小错</strong></p>
+<p>当时修改了 vendr/org/namespace/src/ClassName.php 里一个变量， 怎么刷新都都没发现变化</p>
+<p>删了除这个包外其他所有 vendor  下文件重新 install 也一样。 还怀疑是什么 autoload 缓存问题。</p>
+<p>后来发现是 VSCode 打开文件错了，直接打开之前“源 compser 包&rdquo; 去编辑。。。（因为加入了 .gitignore，VSCode 默认不把它列出来，而是打开了之前打开过的老文件。。。。）</p>
+<h1 id="本地开发和调试composer包-type-path-引用本地路径开发完后提交到-git-comopesr-仓库">本地开发和调试composer包 (<code>&quot;type&quot;: &quot;path&quot;</code> 引用本地路径，开发完后，提交到 git-&gt;comopesr 仓库)</h1>
+<p><a href="https://github.com/ionepub/ionepub.github.io/issues/72">https://github.com/ionepub/ionepub.github.io/issues/72</a></p>
+<p>开发和调试一个composer包的过程中，往往比较笨的方法是每次调试将包上传到svn或git，然后再composer update这个包的内容，比较繁琐。</p>
+<p>composer提供了本地引用的方法，方便本地开发和调试</p>
+<p>例如 包名为 clock，测试包时使用的包名为clock-test</p>
+<h2 id="开发包-准备填写信息">开发包 准备，填写信息</h2>
+<p>在开发目录创建一个文件夹，比如 D:/www/clock</p>
+<pre><code class="language-shell">composer init
+
+# Package name (&lt;vendor&gt;/&lt;name&gt;) 输入包名（公司或团队为前缀） ionepub/clock  不能有大写字母
+# Author  带邮箱
+# Minimum Stability []: 最小稳定版本号：在本地开发时，可以设置为 dev，有时候可能会因为这一项没有设置导致后面安装包的时候报找不到版本号的错误。
+</code></pre>
+<h2 id="添加包程序">添加包程序</h2>
+<p>一般较复杂的包下会增加一个 src 目录，在src目录中添加多个类文件，简单的包也可以不设置这个目录，直接将类文件放在最外层。</p>
+<p>/clock
+-composer.json
+- /src/ 源码
+- Clock.php
+- /tests/ 测试用例
+- README.md
+- LICENSE</p>
+<p>Clock.php文件内容：</p>
+<pre><code class="language-php">namespace Ionepub\Clock;
+
+class Clock
+{
+    public static function index(){
+        return 'success';
+    }
+}
+</code></pre>
+<p>命名空间 <code>Ionepub\Clock</code>, 那么在composer.json中需要声明一下自动加载的位置</p>
+<pre><code class="language-json">{
+    ...,
+    &quot;autoload&quot;: {
+        &quot;psr-4&quot;: {
+            &quot;Ionepub\\Clock\\&quot;: &quot;src/&quot;
+        }
+    },
+    &quot;autoload-dev&quot;: {
+        &quot;psr-4&quot;: {
+            &quot;Ionepub\\Clock\\Tests\\&quot;: &quot;tests/&quot;
+        }
+    },
+    ...
+}
+</code></pre>
+<h2 id="创建测试包项目-用于引入和测试前面的开发包">创建测试包项目 (用于引入和测试前面的开发包)</h2>
+<p>ionepub
+├── clock
+└── test-clock</p>
+<p>同样用 init命令初始化（略 ，包名：<code>ionepub/clock-test</code>，最小版本号也可以设置为 dev）</p>
+<p>编辑 composer.json  有一行 <code>require</code> 引入了包 clock.</p>
+<p><strong>关键是 repositories 中，声明这个包来自本地路径，用 <code>&quot;type&quot;: &quot;path&quot;</code>, 并用 <code>path</code>指向本地路径</strong></p>
+<pre><code class="language-json"> ...,
+&quot;require&quot;: {
+    &quot;ionepub/clock&quot;: &quot;dev-master&quot;
+},
+&quot;repositories&quot;: {
+    &quot;ionepub&quot;: {
+        &quot;type&quot;: &quot;path&quot;,
+        &quot;url&quot;: &quot;D:/WWW/clock&quot;  // 相对路径或者绝对路径(这里是项目 clock 的路径，而不是 ionepub..)
+    }
+}
+</code></pre>
+<p>安装开发包(以及 path 的实现实际上是做了一个软链接)</p>
+<p>使用 composer install/require 命令安装前面的开发包clock。</p>
+<pre><code class="language-shell">composer require ionepub/clock:dev-master -vvv 
+</code></pre>
+<p>命令行工具中会出现比一般安装包更多的一些提示信息。完成之后，会发现，其实并没有将clock目录的文件复制过来，只是做了个软连接。</p>
+<p>因此 可以 <strong>直接修改</strong> 开发包中的文件（composer.json除外），然后 <strong>不需要composer update</strong> ，就能立即更新测试包中的关联文件</p>
+<h2 id="更新开发包的配置">更新开发包的配置</h2>
+<p>如果出现已经在代码里 use 了 composer 包， 调用方法时还提示“undefind method&hellip;”</p>
+<pre><code class="language-php">use Org\Lib\ClassName;
+
+class Test {
+    $c = new ClassName();
+
+    $c-&gt;test();
+}
+</code></pre>
+<p>检查下 vendor 目录下是否已经从“真实”的开发目录把文件同步过来了。 例如我在一个项目就遇到过，修改了没同步到项目的 vendor 下，说明目录链接创建失败了。
+删除这个 vendor/xx 目录， 重新 composer install , 报了个错
+Package operations: 1 install, 0 updates, 0 removals</p>
+<ul>
+<li>Installing cgb/tti (dev-master): Symlinking from /var/www/composer/cgb/tti
+<strong>Symlink failed, fallback to use mirroring!</strong>
+Mirroring from /var/www/composer/cgb/tti
+Generating autoload files</li>
+</ul>
+<p><img src="../../../../images/2019-08-15-10-32-42.png" alt=""></p>
+<p>这样的话，下次源目录改了文件， 在这里都要重新删除。。。。（应该是我这个源目录是宿主机里共享过来的，所以有问题。。。）</p>
+<p>这里有提到， windows 做宿主机时， 虚拟机内的 linux 无法创建。 更好的办法是， 在虚拟机设置里的 shared folder 来开机就做好。
+<a href="https://barryvanveen.nl/blog/44-package-development-run-a-package-from-a-local-directory">https://barryvanveen.nl/blog/44-package-development-run-a-package-from-a-local-directory</a></p>
+<p>如果不是管理员身份，就无解了。。。
+<a href="https://learnku.com/laravel/t/8740/composer-extension-development-local-run-extension-package">https://learnku.com/laravel/t/8740/composer-extension-development-local-run-extension-package</a></p>
+<p>镜像复制就复制吧，在虚拟机做个定时操作或者触发， 当源包有改动，自动复制下就好（频繁改动情况下就麻烦了）</p>
+<p>如果对开发包 clock 中的 composer.json 有修改或者在clock中输入了 composer config &hellip; 命令，那么需要更新 <strong>测试包</strong> 才能生效。</p>
+<pre><code class="language-shell">cd clock-test
+composer update ionepub/clock
+</code></pre>
+<h1 id="vcs-方式-fork-别人的包并修改">VCS 方式 fork 别人的包并修改</h1>
+<p><a href="https://getcomposer.org/doc/05-repositories.md#vcs">https://getcomposer.org/doc/05-repositories.md#vcs</a></p>
+<h1 id="本地开发-laravel-包前面说的是-composer-包可适用于除了-laravel-外的其他框架">本地开发 Laravel 包（前面说的是 Composer 包，可适用于除了 laravel 外的其他框架）</h1>
+<h2 id="文件结构创建一个-packages-目录">文件结构，创建一个 <code>packages</code> 目录</h2>
+<p>jcc/taxi (vendor/name) 为我们要发布的 Laravel 包，jcc 对应为 github username，taxi 对应为 项目名。</p>
+<p>laravel
+├── app
+├── &hellip;
+└── packages
+└── jcc
+└── taxi
+├── LICENSE
+├── README.md
+├── composer.json
+├── src
+│   ├── Taxi.php
+│   └── TaxiServiceProvider.php
+└── tests</p>
+<h2 id="完善扩展包逻辑代码">完善扩展包逻辑代码</h2>
+<p>例如 AdminServiceProvider.php、Admin.php 文件</p>
+<pre><code class="language-php">namespace Angkee\Admin;
+
+use Illuminate\Support\ServiceProvider;
+
+class AdminServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        //
+    }
+
+    public function register()
+    {
+        $this-&gt;app-&gt;singleton('admin', function () {
+            return new Admin;
+        });
+    }
+}
+</code></pre>
+<pre><code class="language-php">namespace Angkee\Admin;
+
+class Admin
+{
+    public function printRunning()
+    {
+        echo 'running';
+    }
+}
+</code></pre>
+<h2 id="扩展包本地测试">扩展包本地测试</h2>
+<p>AdminServiceProvider 添加到项目的 config/app.php providers 数组中</p>
+<pre><code class="language-php">'providers' =&gt; [
+    ...,
+    Angkee\Admin\AdminServiceProvider::class,
+],
+</code></pre>
+<p>修改项目下的 composer.json 文件</p>
+<pre><code class="language-json">{
+    &quot;require&quot;: {
+        ...,
+        &quot;angkee/laradmin&quot;: &quot;dev-master&quot;
+    },
+    ...,
+    &quot;autoload&quot;: {
+        ...,
+        &quot;psr-4&quot;: {
+            ...,
+            &quot;Angkee\\Admin\\&quot;: &quot;packages/laradmin/src/&quot;
+        }
+    },
+    ...
+}
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">composer dump-autoload
+composer update
+</code></pre>
+<p>修改一下 routes/web.php 文件, 测试包的功能  （打开浏览器访问此项目，显示 running）</p>
+<pre><code class="language-php">Route::get('/', function () {
+    app('admin')-&gt;printRunning();
+});
+</code></pre>
+<h2 id="扩展包发布到-packagist">扩展包发布到 Packagist</h2>
+<h3 id="首先-提交代码到-github">首先 提交代码到 GitHub</h3>
+<h3 id="访问-packagist-官网登录后点击右上角submit按钮进入发布向导">访问 Packagist 官网，登录后，点击右上角Submit按钮，进入发布向导:</h3>
+<p>将 GitHub 版本库的地址填写至 Repository URL 输入框中，然后点击 Submit 提交按钮，一切顺利，可以看到发布成功。</p>
+<h3 id="设置代码同步">设置代码同步</h3>
+<p>一旦在 Pakagist上发布了包，之后的版本更新和代码同步，有一个机制来保证，就是 GitHub 中的事件通知服务，用于代码递交时触发一个事件，将代码同步到其他环境中。</p>
+<p>添加服务，服务列表中选择 Packagist，主要填写两项 Packagist 配置信息：
+用户名： 注意是 Packagist 上的用户名
+Token： 通讯令牌
+Domain： 可不用填写
+其中 Token 需要到 Packagist 的个人设置里面去获取。
+填写完毕，提交后，记得测试一次，完成首次同步，成功会提示信息。</p>
+<p>Okay, the test payload is on its way.</p>
+<p>回到Packagist，刷新，应该没有再出现 (Not Auto-Updated) 的提示，说明同步机制已经生效，之后每次 GitHub 变化，会自动通知并同步。</p>
+<h3 id="设置版本信息">设置版本信息</h3>
+<p>版本默认是 dev-master，Composer 包的版本号会从 Git 的 tag 中同步过来。</p>
+<pre><code class="language-shell">git tag 1.0.0
+git push --tag
+</code></pre>
+<p>刚发布，此时安装，可能会报找不到安装包的错误，需要稍等一下服务器同步(几分钟)</p>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.pigjian.com/article/composer-laravel-package-of-local-development">https://www.pigjian.com/article/composer-laravel-package-of-local-development</a></p>
+<h1 id="创建项目">创建项目</h1>
+<pre><code class="language-shell"># 默认安装最新版
+$ composer create-project laravel/laravel your-project-name --prefer-dist
+
+# 推荐安装支持到 2018年的 5.1 LTS 版.  目前 6.x 是最新的LTS 版
+$ composer create-project laravel/laravel your-project-name --prefer-dist &quot;5.5.*&quot;
+</code></pre>
+<h1 id="基本配置">基本配置</h1>
+<p><strong>Nginx的“优雅链接”配置</strong></p>
+<pre><code class="language-json">location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+</code></pre>
+<p>要注意 <code>root</code> 路径后面是 <code>public</code>，这个很容易被忽视</p>
+<pre><code class="language-json">root  /usr/local/nginx/html/laravelblog/public/;
+</code></pre>
+<h1 id="运行">运行</h1>
+<p>在浏览器运行你的 web 站点，这时候又报错了！（显示 403 或 500 错误），目录权限问题</p>
+<pre><code class="language-shell">chmod -R 755 storage
+chmod -R 755 bootstrap/cache
+</code></pre>
+<p>刷新，接着报错</p>
+<blockquote>
+<p>No supported encrypter found. The cipher and / or key length are invalid.</p>
+</blockquote>
+<p>这是因为最新的 Laravel 的配置文件里需要一个类似于密钥的 32 位长度字符串，如果在创建项目的时候没有正常写入到 <code>.env</code> 文件的 <code>APP_KEY</code> 配置项上，则需要手动运行：</p>
+<pre><code class="language-shell">php artisan key:generate
+</code></pre>
+<p>装逼第四波：这个 “artisan”的英文意思是“工匠”，就是说老罗罗永浩的团队可能也是用 Laravel 开发他们的锤子手机官网的……</p>
+<p>好了，总算可以运行了，官方文档上的维护模式、配置参数读取等等以后再来学。</p>
+<h1 id="配置文件">配置文件</h1>
+<p>Laravel 会读取根目录下的 <code>.env</code> 文件，使用 dotenv 来解析里面的配置</p>
+<h2 id="如果配置值中间有空格怎么办">如果配置值中间有空格怎么办？</h2>
+<p>例如 “Test Product System&rdquo;， 必须要用双引号括起来，否则会有问题。</p>
+<h1 id="可能的问题">可能的问题</h1>
+<h2 id="一键包-lnmp-的composer-create-project-运行后没反应">一键包 lnmp 的composer create-project 运行后没反应</h2>
+<p>可以先修改源 <a href="http://pkg.phpcomposer.com/">http://pkg.phpcomposer.com/</a></p>
+<p>然后 <code>composer self-update</code> 升级</p>
+<h2 id="一键包-lnmp-跨站问题导致-warning-require-open_basedir-restriction-in-effect">一键包 lnmp 跨站问题导致 Warning: require(): open_basedir restriction in effect.</h2>
+<p>首先如果是用 lnmp 的命令建站的</p>
+<p>.user.ini文件无法直接修改，如要修或删除需要先执行：chattr -i /网站目录/.user.ini
+可以使用winscp文件管理、vim编辑器或nano编辑器进行修改。
+删除的话rm -f /网站目录/.user.ini 就可以。
+修改完成后再执行：chattr +i /网站目录/.user.ini
+.user.ini不需要重启一般5分钟左右生效，也可以重启一下php-fpm立即生效。</p>
+<p>如果不是：</p>
+<p>修改 /usr/local/nginx/confg/fastcgi.conf</p>
+<p>找到最后一行，把项目的public的上级目录添加进去</p>
+<pre><code class="language-shell">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=$document_root/:/tmp/:/proc/:/data/.composer/vendor/testapp/&quot;;
+</code></pre>
+<h2 id="php-环境关闭了某些函数执行">PHP 环境关闭了某些函数执行</h2>
+<blockquote>
+<p>[Symfony\Component\Process\Exception\RuntimeException]
+The Process class relies on proc_open, which is not available on your PHP installation.</p>
+</blockquote>
+<blockquote>
+<pre><code>proc_get_status() has been disabled for security reasons
+</code></pre>
+</blockquote>
+<p>注意别搞错了 php.ini 的位置。有时候会发现 /etc/php.ini 下有，其实是在另一个目录，用phpinfo可以看真实的地址</p>
+<p>在 disable_functions 里删掉这两个函数即可</p>
+<h2 id="lnmp-报错-warning-require-open_basedir-restriction-in-effect">lnmp 报错 Warning: require(): open_basedir restriction in effect</h2>
+<p><a href="https://segmentfault.com/q/1010000007777295">https://segmentfault.com/q/1010000007777295</a></p>
+<p>在创建 vhost 的时候，会生成一个 .user.ini 文件</p>
+<p>我这个是手动加进去，没有用 lnmp 的 vhost 创建命令，所以修改  config/fastcgi.conf 添加目录就可以了</p>
+<pre><code class="language-shell">fastcgi_param PHP_ADMIN_VALUE &quot;open_basedir=$document_root/:/mnt/web_site_log/www.abc.com/目录&quot;
+</code></pre>
+<p><strong>注意</strong>是重启整个服务 <code>lnmp restart</code>（fastcgi.conf 是nginx 的配置）,  而不仅仅 php-fpm <code>/etc/init.d/php-fpm restart</code></p>
+<p>如果无效。。。
+注释这行，然后 php.ini 注释 <code>doc_root =</code></p>
+<h2 id="报错">报错</h2>
+<blockquote>
+<p>Call to undefined function Illuminate\View\Compilers\token_get_all()</p>
+</blockquote>
+<p>需要安装 <code>Tokenizer PHP Extension</code></p>
+<p>在编译的时候 &ndash;php7-tokenizer 默认启用  或 <code>php7-common</code></p>
+<p>在这里查看到所有的扩展包名</p>
+<p><a href="https://steemit.com/centos7/@flying8/centos7-php7-nginx-php-fpm">https://steemit.com/centos7/@flying8/centos7-php7-nginx-php-fpm</a></p>
+<h1 id="composerjson-配置">Composer.json 配置</h1>
+<p>一些常用的包。（如开发阶段的 Debug，Test 等，分开）</p>
+<p>此文件来自
+<a href="https://github.com/ozdemirburak/laravel-5-simple-cms/blob/master/composer.json">https://github.com/ozdemirburak/laravel-5-simple-cms/blob/master/composer.json</a></p>
+<pre><code class="language-shell">{
+	&quot;name&quot;: &quot;ozdemirburak/laravel-5-simple-cms&quot;,
+	&quot;description&quot;: &quot;Simple Laravel 5 CMS (Content Management System) for starters.&quot;,
+	&quot;keywords&quot;: [&quot;php&quot;, &quot;laravel&quot;, &quot;cms&quot;],
+	&quot;license&quot;: &quot;MIT&quot;,
+	&quot;type&quot;: &quot;project&quot;,
+	&quot;require&quot;: {
+		&quot;php&quot;: &quot;&gt;=7.0&quot;,
+		&quot;barryvdh/laravel-elfinder&quot;: &quot;~0.3&quot;,
+		&quot;barryvdh/laravel-snappy&quot;: &quot;~0.3.3&quot;,
+		&quot;baum/baum&quot;: &quot;~1.1&quot;,
+		&quot;caffeinated/menus&quot;: &quot;~3.0&quot;,
+		&quot;cviebrock/eloquent-sluggable&quot;: &quot;~4.2&quot;,
+		&quot;h4cc/wkhtmltoimage-amd64&quot;: &quot;~0.12&quot;,
+		&quot;h4cc/wkhtmltopdf-amd64&quot;: &quot;~0.12&quot;,
+		&quot;kris/laravel-form-builder&quot;: &quot;~1.11.0&quot;,
+		&quot;laracasts/flash&quot;: &quot;~2.0&quot;,
+		&quot;laravel/framework&quot;: &quot;5.4.*&quot;,
+		&quot;laravelcollective/html&quot;: &quot;5.4.*&quot;,
+		&quot;predis/predis&quot;: &quot;~1.1&quot;,
+		&quot;spatie/laravel-analytics&quot;: &quot;~2.4&quot;,
+		&quot;spatie/laravel-backup&quot;: &quot;~3.10&quot;,
+		&quot;watson/sitemap&quot;: &quot;~2.0&quot;,
+		&quot;yajra/laravel-datatables-buttons&quot;: &quot;~1.1&quot;,
+		&quot;yajra/laravel-datatables-oracle&quot;: &quot;7.0.x-dev&quot;
+	},
+	&quot;require-dev&quot;: {
+		&quot;barryvdh/laravel-debugbar&quot;: &quot;~2.0&quot;,
+		&quot;barryvdh/laravel-ide-helper&quot;: &quot;~2.0&quot;,
+		&quot;doctrine/dbal&quot;: &quot;~2.5&quot;,
+		&quot;laracasts/generators&quot;: &quot;dev-master&quot;,
+		&quot;laravel/browser-kit-testing&quot;: &quot;^1.0&quot;,
+		&quot;fzaninotto/faker&quot;: &quot;~1.4&quot;,
+		&quot;mockery/mockery&quot;: &quot;~0.9&quot;,
+		&quot;phpunit/phpunit&quot;: &quot;~5.7&quot;
+	},
+	&quot;autoload&quot;: {
+		&quot;classmap&quot;: [
+			&quot;database&quot;
+		],
+		&quot;psr-4&quot;: {
+			&quot;App\\&quot;: &quot;app/&quot;
+		}
+	},
+	&quot;autoload-dev&quot;: {
+		&quot;psr-4&quot;: {
+			&quot;Tests\\&quot;: &quot;tests/&quot;
+		}
+	},
+	&quot;scripts&quot;: {
+		&quot;post-root-package-install&quot;: [
+			&quot;php -r \&quot;file_exists('.env') || copy('.env.example', '.env');\&quot;&quot;
+		],
+		&quot;post-create-project-cmd&quot;: [
+			&quot;php artisan key:generate&quot;
+		],
+		&quot;post-install-cmd&quot;: [
+			&quot;Illuminate\\Foundation\\ComposerScripts::postInstall&quot;,
+			&quot;php artisan optimize&quot;
+		],
+		&quot;post-update-cmd&quot;: [
+			&quot;Illuminate\\Foundation\\ComposerScripts::postUpdate&quot;,
+			&quot;php artisan optimize&quot;,
+			&quot;php artisan elfinder:publish&quot;
+		]
+	},
+	&quot;config&quot;: {
+		&quot;preferred-install&quot;: &quot;dist&quot;,
+		&quot;sort-packages&quot;: true
+	}
+}
+</code></pre>
+<h1 id="系统架构一些非常重要的概念术语laravel-运行的原理">系统架构(一些非常重要的概念、术语，Laravel 运行的原理)</h1>
+<p>首先有个大概了解，在使用中加深理解</p>
+<h2 id="请求的生命周期">请求的生命周期</h2>
+<h3 id="入口">入口</h3>
+<p>index.php 此文件会加载由 Composer 生成的自动加载器定义，</p>
+<pre><code class="language-php">require __DIR__.'/../bootstrap/autoload.php';
+</code></pre>
+<p>并获取由 bootstrap/app.php 文件中所生成的 Laravel 应用程序实例。Laravel 自身的第一个动作就是创建一个应用程序／ 服务容器 的实例。</p>
+<pre><code class="language-php">$app = require_once __DIR__.'/../bootstrap/app.php';
+</code></pre>
+<h3 id="http--终端核心apphttpkernelphp">HTTP / 终端核心（app/Http/Kernel.php）</h3>
+<p>此处待补充，如何连接的？</p>
+<p>进入应用程序的请求的会被送往 HTTP 核心(或终端核心)，其实意思就是通过网页请求 php，还是在命令行里 php ？</p>
+<p>HTTP 核心，它位于 app/Http/Kernel.php，扩展了 Illuminate\Foundation\Http\Kernel 类（这个类定义了一个 bootstrappers 数组，在请求被运行前会先行运作。这些启动器设置了错误处理、日志记录、侦测应用程序环境，并运行其它需要在请求实际处理前就该被完成掉的工作）</p>
+<p>回到当前的 HTTP 核心类<code>app/Http/Kernel.php</code></p>
+<h3 id="定义了一份-http-中间件清单">定义了一份 HTTP 中间件清单</h3>
+<p><strong>所有的请求在被应用程序处理之前都必须经过它们</strong>。例如处理 Session 读写，验证 CSRF 令牌，检查是否在维护模式等。</p>
+<pre><code class="language-php">protected $middleware = [
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+    ];
+</code></pre>
+<h3 id="定义路由中间件清单">定义路由中间件清单</h3>
+<pre><code class="language-php">protected $routeMiddleware = [
+        'auth' =&gt; \App\Http\Middleware\Authenticate::class,
+        'auth.basic' =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest' =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'pulseAuth' =&gt; \App\Http\Middleware\PulseAuthMiddleware::class,//pulse BU access auth
+        'pulseCors' =&gt; \App\Http\Middleware\PulseCorsMiddleware::class//pulse cors
+    ];
+</code></pre>
+<p>对应地，你可以在路由规则定义里让某条路由规则执行某个路由中间件。如</p>
+<pre><code class="language-php">Route::group(['prefix' =&gt; 'test', 'middleware' =&gt; ['auth','pulseCors']], function (){
+	//
+});
+</code></pre>
+<h3 id="应用程序的服务提供者">应用程序的“服务提供者”</h3>
+<p>服务提供者负责<strong>在启动时加载框架的所有组件</strong>，例如数据库、队列、验证、以及路由组件。服务提供者启动加载并设置框架提供的各种功能。</p>
+<p><code>config/app.php</code> 配置文件的 <code>providers</code> 数组中，设置了应用程序的所有服务提供者。可以在里面添加新的，例如</p>
+<pre><code class="language-php">//other
+Maatwebsite\Excel\ExcelServiceProvider::class,
+</code></pre>
+<p>（默认的服务器提供者类文件放在 <code>app/Providers</code>目录下）</p>
+<p>它们的<code>register</code>方法被调用时，这个服务提供者就被注册了</p>
+<p>然后<code>boot</code>方法就被调用。</p>
+<p>后面再详细说明这个非常重要的<code>服务提供者</code>，以及在<code>AppServiceProvider</code>里添加一些内容</p>
+<h3 id="请求分派">请求分派</h3>
+<p>一旦<strong>应用程序被启动</strong>且<strong>所有的服务提供者都被注册之后</strong>，<code>Request</code> 将被移转给路由器进行分派。</p>
+<p>会分派给路由或控制器，并运行所有特定路由的中间件</p>
+<h2 id="应用程序结构">应用程序结构</h2>
+<h3 id="根目录">根目录</h3>
+<ul>
+<li>app 目录，如你所料，这里面包含应用程序的核心代码。我们之后将很快对这个目录的细节进行深入探讨。</li>
+<li>bootstrap 目录包含了几个框架启动跟自动加载设置的文件。以及在 cache 文件夹中包含着一些框架在启动性能优化时所生成的文件。</li>
+<li>config 目录，顾名思义，包含所有应用程序的配置文件。</li>
+<li>database 目录包含数据库迁移与数据填充文件。如果你愿意的话，你也可以在此文件夹存放 SQLite 数据库。</li>
+<li>public 目录包含了前端控制器和资源文件（图片、JavaScript、CSS，等等）。</li>
+<li>resources 目录包含了视图、原始的资源文件 (LESS、SASS、CoffeeScript) ，以及语言包。</li>
+<li>storage 目录包含编译后的 Blade 模板、基于文件的 session、文件缓存和其它框架生成的文件。此文件夹分格成 app、framework，及 logs 目录。app 目录可用于存储应用程序使用的任何文件。framework 目录被用于保存框架生成的文件及缓存。最后，logs 目录包含了应用程序的日志文件。</li>
+<li>tests 目录包含自动化测试。这有一个现成的 PHPUnit 例子。</li>
+<li>vendor 目录包含你的 Composer 依赖模块。</li>
+</ul>
+<h3 id="app-目录">App 目录</h3>
+<p>应用程序的「内容」存在于 app 目录中。默认情况下，这个目录在 App 命名空间下借助 Composer 使用 PSR-4 自动加载标准自动加载。你可以使用 app:name Artisan 命令修改这个命名空间</p>
+<ul>
+<li>Console 目录包含你全部的 Artisan 命令</li>
+<li>Http 目录包含你的控制器、中间件和请求。（可以将 Console 和 Http 目录试想为提供 API 进入应用程序的「核心」。HTTP 协定和 CLI 都是跟应用程序进行交互的机制，但实际上并不包含应用程序逻辑。换句话说，它们是两种简单地发布命令给应用程序的方法）</li>
+<li>Providers</li>
+<li>Jobs 目录用于放置应用程序 可队列的任务。任务可以被应用程序放到队列中，也可以在当前请求生命周期内同步运行。</li>
+<li>Events 目录，如你所料，是用来放置 事件类 的。事件可以被用于当指定动作发生时，通知你应用程序的其它部分，提供了很棒的灵活性及解耦。</li>
+<li>Listeners 目录了包含事件的处理类。处理进程接收一个事件，并针对该事件运行逻辑。例如，UserRegistered 事件可能由 SendWelcomeEmail 侦听器处理。</li>
+<li>Exceptions 目录包含应用程序的异常处理进程，同时也是个处置应用程序抛出异常的好位置。</li>
+</ul>
+<p>在 app 目录中的许多类可以通过 Artisan 命令生成。若要查看可以使用的命令，只要在命令行运行 php artisan list make 命令即可。</p>
+<h3 id="修改命名空间">修改命名空间</h3>
+<p>默认的应用程序命名空间为 App</p>
+<pre><code class="language-shell">php artisan app:name SocialNet
+</code></pre>
+<p>也可以接着使用 App 命名空间。</p>
+<h1 id="服务提供者-service-provider">服务提供者 Service Provider</h1>
+<p><code>服务提供者</code>是所有 <strong>Laravel 应用程序</strong> <strong>启动</strong>的中心所在。包括你自己的应用程序，以及<strong>所有的 Laravel 核心服务</strong>.都是通过服务提供者启动的</p>
+<p>启动？</p>
+<p>指的是 注册 事物。包括注册服务容器绑定、事件侦听器、中间件，甚至路由。服务提供者是设置你的应用程序的中心所在。</p>
+<p>打开 Laravel 的 config/app.php 文件，你将会看到 providers 数组。这些都是你的应用程序会加载到的所有服务提供者类（很多属于「延迟」提供者，意味着除非真正需要它们所提供的服务，否则它们并不会在每一个请求中都被加载）</p>
+<p>接下来学习编写你自己的服务提供者，并将它们注册于你的 Laravel 应用程序</p>
+<h3 id="编写-service-provider">编写 Service Provider</h3>
+<p>继承了 Illuminate\Support\ServiceProvider 类，定义至少一个方法：register</p>
+<p>在 register 方法中，你应该 <strong>只将事物绑定至 服务容器 之中</strong>。不要试图在 register 方法中注册任何事件侦听器、路由或任何其它功能，否则的话，你可能会意外地使用到由尚未加载的服务提供者所提供的服务</p>
+<p>生成新的服务提供者</p>
+<pre><code class="language-shell">php artisan make:provider RiakServiceProvider
+</code></pre>
+<h3 id="注册方法">注册方法</h3>
+<p>todo</p>
+<h1 id="服务容器">服务容器</h1>
+<p>是<strong>管理****类依赖</strong>与<strong>运行依赖注入</strong>的强力工具</p>
+<p><strong>依赖注入</strong>？
+类的依赖通过构造器或在某些情况下通过「setter」方法「注入」</p>
+<h1 id="contracts">Contracts</h1>
+<p>这是一组定义了框架核心服务的<strong>接口</strong>，框架对于每个 contract 都有提供对应的实现。</p>
+<p>打开 Illuminate\Contracts\Queue\Queue （在 /vendor/laravel/framework 目录里）</p>
+<p><img src="/media/15490412690537/14968048160398.jpg" alt=""></p>
+<p>Laravel 所有的 contracts 都放在 各自的 GitHub 代码库。除了提供给所有可用的 contracts 一个快速的参考，也可以单独作为一个低耦合的扩展包来让其他扩展包开发者使用。</p>
+<h3 id="contracts-对比-facades">Contracts 对比 Facades</h3>
+<p>Laravel 的 facades 提供<strong>一个简单的方法</strong>来<strong>使用服务</strong>，而不需要使用类型提示和在服务容器之外解析 contracts。然而，使用 contracts 可以明显地定义出类的依赖，对大部分应用进程而言，使用 facade 就足够了，然而，若你实在需要特别的低耦合，使用 contracts 可以做到这一点</p>
+<h3 id="为什么要使用-contracts接口">为什么要使用 Contracts（接口）</h3>
+<p>低耦合
+简单性</p>
+<h3 id="低耦合">低耦合</h3>
+<p>程序和缓存实现之间是高耦合。因为它是依赖于扩展包的特定缓存类。一旦这个扩展包的 API 更改了，我们的代码也要跟着改变。</p>
+<p>同样的，如果想要将底层的缓存技术（比如 Memcached ）切换成另一种（像 Redis ），又一次的我们必须修改这个 Repository 类。我们的 Repository 类不应该知道这么多关于谁提供了数据，或是如何提供等细节。</p>
+<pre><code class="language-php">namespace App\Orders;
+
+class Repository
+{
+    /**
+     * 缓存实例。
+     */
+    protected $cache;
+
+    /**
+     * 创建一个新的仓库实例。
+     *
+     * @param  \SomePackage\Cache\Memcached  $cache
+     * @return void
+     */
+    public function __construct(\SomePackage\Cache\Memcached $cache)
+    {
+        $this-&gt;cache = $cache;
+    }
+
+    public function find($id)
+    {
+        if ($this-&gt;cache-&gt;has($id)) {
+            //
+        }
+    }
+}
+</code></pre>
+<p>使用一个简单、和扩展包无关的接口来改进代码</p>
+<pre><code class="language-php">namespace App\Orders;
+
+use Illuminate\Contracts\Cache\Repository as Cache;
+
+class Repository
+{
+    /**
+     * 缓存实例。
+     */
+    protected $cache;
+
+    /**
+     * 创建一个新的仓库实例。
+     *
+     * @param  Cache  $cache
+     * @return void
+     */
+    public function __construct(Cache $cache)
+    {
+        $this-&gt;cache = $cache;
+    }
+}
+</code></pre>
+<p>代码没有跟任何扩展包耦合，甚至是 Laravel。既然 contracts 扩展包没有包含实现和任何依赖，你就可以很简单的对任何 contract 进行实现，你可以很简单的写一个替换的实现，甚至是替换 contracts，让你可以替换缓存实现而不用修改任何用到缓存的代码</p>
+<p>例如 换成 redis 缓存</p>
+<pre><code class="language-php">use Illuminate\Contracts\Redis\Database;
+
+//...略
+
+public function __construct(Database $redis)
+    {
+        $this-&gt;redis = $redis;
+    }
+</code></pre>
+<h3 id="简单性">简单性</h3>
+<p>当所有的 Laravel 服务都使用简洁的接口定义，就能够很容易决定一个服务需要提供的功能。 可以将 contracts 视为说明框架特色的简洁文档。</p>
+<p>除此之外，当依赖的接口足够简洁时，代码的可读性和可维护性大大提高。比起搜索一个大型复杂的类里有哪些可用的方法，你有一个简单，干净的接口可以参考。</p>
+<h3 id="contract-参考">Contract 参考</h3>
+<p>查看表</p>
+<p>Laravel Contracts 的参考，以及相对应的「facade」</p>
+<h3 id="使用">使用</h3>
+<p>在类的构造器使用「类型提示」解析类
+前面的案例代码中有</p>
+<pre><code class="language-php">use Illuminate\Contracts\Cache\Repository as Cache;
+
+public function __construct(Cache $cache){
+}
+</code></pre>
+<h1 id="facades">Facades</h1>
+<p>为应用程序的 服务容器 中可用的类提供了一个「静态」接口。Laravel 自带了很多 Facades ，可以访问绝大部分 Laravel 的功能。Laravel Facades 实际上是服务容器中底层类的「静态代理」，它提供了简洁而富有表现力的语法，甚至比传统的静态方法更具可测试性和扩展性。</p>
+<p>所有的 Laravel Facades 都在 Illuminate\Support\Facades 命名空间中定义。</p>
+<p>例如 Cache</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Cache;
+
+Route::get('/cache', function () {
+    return Cache::get('key');
+});
+</code></pre>
+<p><strong>Facades 有很多好处，它为我们使用 Laravel 的功能提供了简单、易记的语法，而无需记住必须手动注入或配置的长长的类名</strong></p>
+<p>此外，由于它们对 PHP 动态方法的独特用法，使得测试起来非常容易</p>
+<p>使用 Facades 最主要的风险就是会引起类作用范围的膨胀，因为 Facades 使用起来非常简单而且不需要注入，就会使得我们在不经意间在单个类中使用许多 Facades，从而导致类变的越来越大
+在使用 Facades 的时候，要特别注意控制好类的大小，让类的作用范围保持短小。（Sublime Text 编辑器安装 phpfmt 可以开启自动移除未使用的 import）</p>
+<p>而使用依赖注入的时候，使用的类越多，构造方法就会越长，在视觉上就会引起注意，提醒你这个类有点庞大了</p>
+<blockquote>
+<p>在开发与 Laravel 进行交互的第三方扩展包时，建议最好选择注入 Laravel 契约 ，而不是使用 Facades 的方式来使用类。因为扩展包是在 Laravel 本身之外构建，所以你无法使用 Laravel Facades 测试辅助函数</p>
+</blockquote>
+<h2 id="facades-和-依赖注入">Facades 和 依赖注入</h2>
+<p>依赖注入的主要优点之一是切换注入类的实现的能力。这在测试的时候很有用，因为你可以注入一个 mock 或者 stub ，并断言在 stub 上调用的各种方法。</p>
+<p>通常，真正的静态方法是不可能被 mock 或者 stub。但是，因为 Facades 使用动态方法来代理从服务容器解析的对象的方法调用，我们可以像测试注入的类实例一样来测试 Facades。</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Cache;
+
+Route::get('/cache', function () {
+    return Cache::get('key');
+});
+</code></pre>
+<p>用下面的测试代码来验证使用预期的参数来调用 Cache::get 方法：</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Cache;
+
+/**
+ * 一个基础功能的测试用例。
+ *
+ * @return void
+ */
+public function testBasicExample()
+{
+    Cache::shouldReceive('get')
+         -&gt;with('key')
+         -&gt;andReturn('value');
+
+    $this-&gt;visit('/cache')
+         -&gt;see('value');
+}
+</code></pre>
+<h2 id="facedes-与辅助函数">Facedes 与辅助函数</h2>
+<p>很多辅助函数的功能都有与之对应的 Facade，例如下面两行代码的作用是一样的</p>
+<pre><code class="language-php">return View::make('profile');
+
+return view('profile');
+</code></pre>
+<p>在底层，辅助函数 cache 实际是调用 Cache facade 中的 get 方法。因此同样可以用来进行测试</p>
+<pre><code class="language-php">Route::get('/cache', function () {
+    return cache('key');
+});
+</code></pre>
+<p>编写以下测试来验证该方法是否使用我们预期的参数来调用：</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Cache;
+
+/**
+ * 一个基础功能的测试用例。
+ *
+ * @return void
+ */
+public function testBasicExample()
+{
+    Cache::shouldReceive('get')
+         -&gt;with('key')
+         -&gt;andReturn('value');
+
+    $this-&gt;visit('/cache')
+         -&gt;see('value');
+}
+</code></pre>
+<h2 id="工作原理">工作原理</h2>
+<p>在 Laravel 应用中，Facade 就是一个可以从容器访问对象的类。其中核心的部件就是 <code>Facade</code> 类。
+不管是 Laravel 自带的 Facades，还是用户自定义的 Facades ，都继承自 <code>Illuminate\Support\Facades\Facade</code> 类。</p>
+<p>Facade 基类使用了 <code>__callStatic()</code> 魔术方法将你的 Facades 的调用延迟，直到对象从容器中被解析出来</p>
+<p>下面代码中，假定在 Cache 类中调用了静态方法 get：</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Controller;
+
+class UserController extends Controller
+{
+    /**
+     * 显示给定用户的信息。
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function showProfile($id)
+    {
+        $user = Cache::get('user:'.$id);
+
+        return view('profile', ['user' =&gt; $user]);
+    }
+}
+</code></pre>
+<p>我们「导入」Cache Facade 。这个 Facade 作为访问 <code>Illuminate\Contracts\Cache\Factory</code> 接口底层实现的代理。使用 Facade 进行的任何调用都将传递给 Laravel 缓存服务的底层实例</p>
+<p>我们看一下 <code>Illuminate\Support\Facades\Cache</code> 这个类，你会发现类中根本没有 <code>get</code> 这个静态方法</p>
+<pre><code class="language-php">class Cache extends Facade
+{
+    /**
+     * 获取组件的注册名称。
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor() { return 'cache'; }
+}
+</code></pre>
+<p>Cache Facade <strong>继承了 Facade 的类库</strong>，并且定义了 <code>getFacadeAccessor()</code> 方法。这个方法的作用是<strong>返回服务容器绑定的名称</strong>
+当用户调用 Cache Facade 中的任何静态方法时， Laravel 会从 服务容器 中解析 cache 绑定以及该对象运行所请求的方法（在这个例子中就是 get 方法）</p>
+<h2 id="facede-类参考">Facede 类参考</h2>
+<p>完整列表地址：/docs/5.5/facades.html#Facade-类参考</p>
+<p>部分（Facade，类，以及对应的服务容器绑定）</p>
+<p><img src="/media/15490412690537/15084174867351.jpg" alt=""></p>
+<h1 id="自动加载类库文件或者自定义函数文件常量定义然后在控制器方法里使用">自动加载类库文件或者自定义函数文件、常量定义，然后在控制器方法里使用</h1>
+<p>在控制器方法里，通过使用<code>include(app_path() . '/Includes/' . 'TestClass.php');</code>，有时候会因为<code>namespace</code>的问题提示</p>
+<blockquote>
+<p>Class not found</p>
+</blockquote>
+<p>我们可以使用 autoload。</p>
+<p>编辑 <code>composer.json</code>，在 <code>autoload</code> 的 <code>files</code> 列表里添加文件路径（一般习惯放在 <code>app/Libraries</code> 下）
+也可以把整个类有关的文件夹都放进去，例如<code>app/CustomClasses/</code>里面有几个类文件<code>TestClass.php</code>，<code>MyClass.php</code>。</p>
+<pre><code class="language-json">&quot;autoload&quot;: {
+        &quot;files&quot;: [
+			&quot;app/Libraries/helpers.php&quot;,
+			&quot;app/Libraries/facepp_sdk.php&quot;,
+		],
+	&quot;classmap&quot;: [
+		&quot;app/MyClasses&quot;,
+		&quot;app/Includes/&quot;
+	]
+</code></pre>
+<p>修改完成后</p>
+<pre><code class="language-shell">composer dump-auto
+</code></pre>
+<p>然后会自动更新 <code>/vendor/composer/autload_classmap.php</code>文件，为<code>app/CustomClasses/</code>里面的类自动生成别名。注意如果一个文件里面有多个类，要注意类名的使用。</p>
+<p>在控制器里面先<code>use</code>，然后再初始化</p>
+<pre><code class="language-php">use TestClass;
+use MyClass;
+
+public function test(){
+	$testClass = new TestClass();
+}
+</code></pre>
+<h1 id="系统服务">系统服务</h1>
+<p>包括</p>
+<ul>
+<li>用户认证</li>
+<li>用户授权</li>
+<li>Artisan 命令行</li>
+<li>交易</li>
+<li>缓存</li>
+<li>集合</li>
+<li>Elixir</li>
+<li>加密与解密</li>
+<li>错误与日志</li>
+<li>事件</li>
+<li>文件系统与云存储</li>
+<li>哈希</li>
+<li>辅助函数</li>
+<li>本地化</li>
+<li>邮件</li>
+<li>扩展包开发</li>
+<li>分页</li>
+<li>队列</li>
+<li>Redis</li>
+<li>Session</li>
+<li>Envoy</li>
+<li>任务调度</li>
+<li>测试</li>
+<li>表单验证</li>
+</ul>
+<h1 id="集合">集合</h1>
+<h2 id="关于">关于</h2>
+<p>Illuminate\Support\Collection 类封装了一系列的帮助我们更方便地地处理数组。</p>
+<p>其实 PHP 自带的一些数组处理函数已经很强大了，但是 Laravel 的 Collection 类最厉害的是<code>支持链式调用</code>（每一个 Collection 方法会返回一个全新的 Collection 实例）。如下，先从一个数组创建集合实例，然后转换大写，最后移除空元素。</p>
+<pre><code class="language-php">$collection = collect(['taylor', 'abigail', null])-&gt;map(function ($name) {
+    return strtoupper($name);
+})
+-&gt;reject(function ($name) {
+    return empty($name);
+});
+</code></pre>
+<h2 id="速查表">速查表</h2>
+<p>好多方法呀</p>
+<h1 id="常用功能">常用功能</h1>
+<h2 id="上传文件">上传文件</h2>
+<p><strong>更多的API（如获取文件大小）</strong></p>
+<p><a href="http://api.symfony.com/2.7/Symfony/Component/HttpFoundation/File/UploadedFile.html">http://api.symfony.com/2.7/Symfony/Component/HttpFoundation/File/UploadedFile.html</a></p>
+<h1 id="常见问题">常见问题</h1>
+<h2 id="使用-curl-访问-laravel-apache-web-server时提示-moved-permanently">使用 curl 访问 laravel （apache web server）时，提示 moved permanently</h2>
+<p>Laravel 端有个路由 post('/products&rsquo;, )，
+客户端（一个php程序）使用 curl 访问时一切正常。
+但是当添加了一个请求参数 /products?page=2 时，加载不出数据了。通过打印出 curl 返回的数据看到</p>
+<pre><code class="language-html">moved permanently
+</code></pre>
+<p>查了一些资料，有的说需要修改 Laravel 的 public/目录下  .htaccess，把斜杠的处理，从 301改成 307，无果</p>
+<pre><code class="language-shell"> # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=307]
+</code></pre>
+<p>后来才知道需要添加一个 CURL 选项<code>CURLOPT_FOLLOWLOCATION</code>，问题解决</p>
+<pre><code class="language-php">curl_setopt($ch,CURLOPT_FOLLOWLOCATION,true);
+</code></pre>
+<h2 id="调用-download-时提示unable-to-guess-the-mime-type-as-no-guessers-are-available">调用 download() 时提示“Unable to guess the mime type as no guessers are available”</h2>
+<p>调用<code>return response()-&gt;download($filepath, $filename)</code>时，提示</p>
+<blockquote>
+<p>Unable to guess the mime type as no guessers are available(Did you enable the php_fileinfo extension?)</p>
+</blockquote>
+<p>缺少了 fileinfo 扩展。（一键 lnmp 包默认没有安装）</p>
+<p>There is no way to get mime type without php_fileinfo.dll SAFELY, (mime_content_type - deprecated)</p>
+<p>You can get it from file extension (using somthing like <a href="https://github.com/yiisoft/yii/blob/master/framework/utils/mimeTypes.php">https://github.com/yiisoft/yii/blob/master/framework/utils/mimeTypes.php</a>) and create your own validation rule. but its not safe.</p>
+<p>Sad, but really helpfull advice will be to change a hoster.</p>
+<p>一键包安装</p>
+<pre><code class="language-shell">$cd /root/downloads/lnmp1.2-full/src/php-5.6.9/ext/fileinfo/
+$/usr/local/php/bin/phpize
+$./configure --with-php-config=/usr/local/php/bin/php-config
+$make &amp;&amp; make install
+
+$vi /usr/local/php/etc/php.ini
+
+#在末尾增加 
+extension = fileinfo.so
+
+#重启php-fpm
+$/etc/init.d/php-fpm reload
+
+# 查看一下当前的扩展
+$php -m
+</code></pre>
+<h2 id="在-路由组含-prefix内使用-resource-类型路由后的路由名称">在 路由组（含 prefix）内使用 resource 类型路由后的路由名称</h2>
+<p>如下</p>
+<pre><code class="language-php">Route::group(['prefix' =&gt; 'portal', 'middleware' =&gt; ['auth']], function () {
+	Route::resource('users', 'UserController');
+}
+</code></pre>
+<p>如何在 Blade 模板或其他地方通过辅助函数<code>route()</code>获得<code>store</code>方法的路径？（RESTFul 资源控制器）</p>
+<p>首先使用下面的命令查看 Laravel 自动为路由定义文件<code>routes.php</code>生成的完整路由信息</p>
+<pre><code class="language-shell">php artisan route:list
+</code></pre>
+<p>然后可以从上面找到<code>users</code>的系列路由。</p>
+<pre><code class="language-html">&lt;form method=&quot;POST&quot; action=&quot;{{ route('portal.users.store') }}&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<h1 id="artisan-命令">Artisan 命令</h1>
+<p>帮助</p>
+<pre><code class="language-shell">php artisan -h
+</code></pre>
+<p>看看某一个 <strong>子命令</strong> 的详情</p>
+<pre><code class="language-shell">$php artisan make -h
+</code></pre>
+<blockquote>
+<p>[InvalidArgumentException]
+Command &ldquo;make&rdquo; is not defined.
+Did you mean one of these?
+make:controller
+make:middleware
+make:migration
+make:listener
+make:provider
+make:command
+make:console
+make:request
+make:policy
+make:seeder
+make:event
+make:model
+make:test
+make:job</p>
+</blockquote>
+<h1 id="其他">其他</h1>
+<h2 id="如何调用其他-controller-的-method">如何调用其他 Controller 的 method</h2>
+<pre><code class="language-php">//in another Controller
+app('App\Http\Controllers\TestController')-&gt;getData($request);
+</code></pre>
+<h2 id="如何加载一个自己定义的类函数库">如何加载一个自己定义的类、函数库</h2>
+<p>在 <code>app/Includes</code>目录里放文件(当然其他目录也可以，例如App\Libraries)</p>
+<p>TestClass.php
+helper_functions.php</p>
+<p>然后可以<code>include(app_path() . '\functions\prices.php');</code>。</p>
+<p><strong>也可以让 Laravel 自动加载（整个目录或单个文件）</strong></p>
+<p>编辑根目录<code>composer.json</code>,在<code>autoload</code>的<code>classmap</code>数组中添加这个目录，然后在<code>files</code>数组中把文件路径添加进去</p>
+<pre><code class="language-json">&quot;autoload&quot;: {
+        &quot;classmap&quot;: [
+            &quot;database&quot;,
+      	     &quot;app/Includes/phpseclib1.0.11&quot;  //路径
+        ],
+        &quot;psr-4&quot;: {
+            &quot;App\\&quot;: &quot;app/&quot;
+        },
+	    &quot;files&quot;: [
+	      &quot;app/Includes/simple_html_dom.php&quot;,
+	      &quot;app/Includes/helper_functions.php&quot;
+	    ]
+    },
+</code></pre>
+<p>然后运行</p>
+<pre><code class="language-shell">composer dump-autoload
+</code></pre>
+<p>composer dump-autoload won’t download a thing. It just regenerates the list of all classes that need to be included in the project (autoload_classmap.php). Ideal for when you have a new class inside your project.</p>
+<p>如果提示“Class Not Found”, 并且提示中第三方包的路径并不是准确的。 是因为“namespace&quot;的问题。</p>
+<p>你需要把第三方包的 namespace 改成当前 Controller 或类的相同 namespace （如 namespace App\Console\Commands）. 或者删除当前 Controller 或类的 namespace?(不行，会出错)</p>
+<p>统一在第三方包的每个php文件顶部添加</p>
+<pre><code class="language-php">namespace App\Includes\PHPSecLib;
+</code></pre>
+<p><strong>然后记得运行一次 composer dump-autoload</strong></p>
+<p>然后在 Laravel 的类里添加</p>
+<pre><code class="language-php">use App\Includes\PHPSecLib\Net_SFTP;
+use App\Includes\PHPSecLib\Net_SSH2;
+</code></pre>
+<h1 id="优化-laravel-项目的性能">优化 Laravel 项目的性能</h1>
+<p>1.关闭debug</p>
+<p>打开.env文件，把debug设置为false.
+APP_ENV=local
+APP_DEBUG=false
+APP_KEY=base64:6ouIfKdFXfaIGZrH9qBCKAWupg4kVwuRsRGpeQnCRh4=
+2.缓存路由和配置</p>
+<p>php artisan route:cache</p>
+<p>php artisan config:cache
+3.composer优化</p>
+<p>sudo composer dump-autoload &ndash;optimize
+4.Laravel优化命令</p>
+<p>php artisan optimize
+5.使用Laravel缓存</p>
+<p>使用Laravel的Cache方法缓存内容，有文件缓存，数据库缓存，redis缓存。
+$lists = Cache::remember(&lsquo;travel.destination.lists&rsquo;, 20, function () {
+return $this-&gt;destination-&gt;getList();
+});
+6.使用CDN</p>
+<p>如七牛、网易、百度、阿里等CDN，不过收费。
+7.使用PHP7并开启OPcache</p>
+<p>apt-get install php70-php-opcache.x86_64
+然后使用service php70-php-fpm restart命令重启php-fpm。
+注：不同的系统和环境根据自己的情况安装和开启opache</p>
+<p>新建一个php文件，用phpinfo()函数显示php.ini信息，如果可以找到OPcache项，说明成功启用了。
+8.nginx开启gzip压缩</p>
+<p>在服务器Nginx开启gzip压缩是优化网站性能的方法之一，可以有效减少服务器带宽的消耗，缺点是会增大CPU的占用率，但是很多时候CPU往往是空闲最多的。
+在Nginx开启gzip压缩
+打开nginx.conf文件，添加如下：
+gzip on;
+gzip_min_length 1k;
+gzip_buffers 16 64k;
+gzip_http_version 1.1;
+gzip_comp_level 9;
+gzip_types text/plain application/x-javascript application/javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png font/ttf font/otf image/svg+xml;
+gzip_vary on;
+gzip参数的一些介绍
+GZIP ON|OFF</p>
+<p>开启或者关闭gzip模块
+GZIP_MIN_LENGTH 1000</p>
+<p>设置允许压缩的页面最小字节数，页面字节数从header头中的Content-Length中进行获取。默认值是0，不管页面多大都压缩。建议设置成大于1k的字节数，小于1k可能会越压越大。 即: gzip_min_length 1024
+GZIP_PROXIED EXPIRED NO-CACHE NO-STORE PRIVATE AUTH;</p>
+<p>Nginx作为反向代理的时候启用，开启或者关闭后端服务器返回的结果，匹配的前提是后端服务器必须要返回包含”Via”的 header头。
+GZIP_TYPES TEXT/PLAIN APPLICATION/XML;</p>
+<p>匹配MIME类型进行压缩，（无论是否指定）”text/html”类型总是会被压缩的。
+通过浏览器判断是否开启gzip压缩</p>
+<p>如firefox，打开一个网页，打开debug控制栏，如图：
+Content-Encoding字段是gzip，表示该网页是经过gzip压缩的。
+博客文章地址：https://aimpeter.xyz/laravel</p>
+<h1 id="其他-1">其他</h1>
+<h2 id="删除包">删除包</h2>
+<pre><code class="language-shell">composer remove vendor/package
+
+# 存疑 更新的包会导致系统出问题吗？
+composer update
+
+composer dump-autoload
+</code></pre>
+<p>第一步可以手动修改。</p>
+<ol>
+<li>删除 composer.json 里的信息</li>
+<li>删除 config 里的配置</li>
+<li>删除 app 里的 Provider 和 Alias 信息</li>
+<li>删除有关代码</li>
+</ol>
+<h2 id="update-与-install-的区别">update 与 install 的区别</h2>
+<p><a href="https://xia.moe/archives/introduce-to-composer-install-and-update/">https://xia.moe/archives/introduce-to-composer-install-and-update/</a></p>
+<h2 id="composer-安装本地的包">composer 安装本地的包</h2>
+<p>例如某个包，作者还没有适配最新版（或者有 pull request 尚未正式合并），导致<code>composer require</code>安装的时候报错。</p>
+<p>需要先把包从 github 下载，然后修改它的 composer.json 文件或者内部代码，先从本地安装，以后等作者解决完问题后再从网络升级。</p>
+<p>把包放到项目<code>packages</code>里面</p>
+<p>修改项目的 composer.json, 添加</p>
+<pre><code class="language-json">&quot;repositories&quot;: [
+    {
+        &quot;type&quot;: &quot;path&quot;,
+        &quot;url&quot;: &quot;../../packages/my-package&quot;
+    }
+],
+</code></pre>
+<p>然后</p>
+<pre><code class="language-shell">composer install
+</code></pre>
+<h2 id="composer-require-包提示-404-问题">composer require 包提示 404 问题</h2>
+<p>在公司网络出现过，重新运行即可</p>
+<h2 id="composer-命令运行后卡在-updating-dependence-很久不动">composer 命令运行后卡在 updating dependence 很久不动</h2>
+<ol>
+<li>php.ini 禁用 xdebug</li>
+<li>composer clear-cache</li>
+</ol>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/laravel-%E5%85%A5%E9%97%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/laravel-%E5%85%A5%E9%97%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/migration-%E8%BF%81%E7%A7%BB/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/eloquent-orm-%E4%B8%8E%E6%A8%A1%E5%9E%8B/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

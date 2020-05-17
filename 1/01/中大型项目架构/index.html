@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="中大型项目架构 Model :仅仅是一个Eloquent class。 Repository : 辅助 model，处理数据逻辑，然后注入到 service。 Service : 輔助 controll" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="中大型项目架构 Model :仅仅是一个Eloquent class。 Repository : 辅助 model，处理数据逻辑，然后注入到 service。 Service : 輔助 controll" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="中大型项目架构 Model :仅仅是一个Eloquent class。 Repository : 辅助 model，处理数据逻辑，然后注入到 service。 Service : 輔助 controll">
+
+<meta itemprop="wordCount" content="2869">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="中大型项目架构 Model :仅仅是一个Eloquent class。 Repository : 辅助 model，处理数据逻辑，然后注入到 service。 Service : 輔助 controll"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2869字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>中大型项目架构</p>
+<ul>
+<li>Model :仅仅是一个Eloquent class。</li>
+<li>Repository : 辅助 model，处理数据逻辑，然后注入到 service。</li>
+<li>Service : 輔助 controller，處理业务逻辑，然後注入到 controller。</li>
+<li>Controller : 接收 HTTP request，调用其他 service。</li>
+<li>Presenter : 处理显示，然后注入到 view。</li>
+<li>View : 使用 blade 將资料 绑定到 HTML。</li>
+</ul>
+<p>#路由层和中间件层</p>
+<h1 id="repository-模式">Repository 模式</h1>
+<p>若将数据库逻辑都写在 Model 里，会造成 model 代码的臃肿难以维护，基于 SOLID 原则，我们应该使用 <strong>Repository</strong> 模式辅助 Model，<strong>将相关的数据库逻辑封装在不同的 Repository</strong>，方便后期项目的维护</p>
+<h3 id="数据库逻辑">数据库逻辑</h3>
+<p>在 CURD 中，CUR 比较稳定，但 Read 的部分则变化万千，大部分的数据库逻辑都在描述 Read 部分，若将数据库逻辑写在 Controller 或 Model 都不合适，会造成 Controller 或 Model 代码臃肿，如后难以维护。</p>
+<h3 id="model">Model</h3>
+<p>使用 Repository 模式之后，Model 仅仅当成 Eloquent Class 即可，不需要包含数据库逻辑，仅保留如下部分</p>
+<ul>
+<li>Property： 如 <code>$table``$fillable</code> ..</li>
+<li>Mutator： 包括 mutator 与 accessor</li>
+<li>Method： relation 类的方法，比如使用 <code>hasMany()</code> 与 <code>belongsTo()</code></li>
+</ul>
+<p>单一对应关系：</p>
+<ul>
+<li>hasOne</li>
+<li>belongsTo</li>
+<li>morphTo</li>
+<li>morphOne</li>
+</ul>
+<p>多个对应关系指的是使用以下关键词定义的关联模型：</p>
+<ul>
+<li>hasMany</li>
+<li>belongsToMany</li>
+<li>morphMany</li>
+<li>morphToMany</li>
+<li>morphedByMany</li>
+</ul>
+<blockquote>
+<p>因为 Eloquent 会根据数据库字段动态的产生 property 与 method等，若使用 <a href="https://github.com/barryvdh/laravel-ide-helper">Laravel IDE Helper</a> ，会直接在Model加上 <code>@property</code>与 <code>@method</code> 描述model的动态 proerty 与 method。 如下<code>app\User.php</code>中安装完<code>Laravel IDE Helper</code>后执行<code>php artisan ide-helper:models</code>后自动生成的内容：</p>
+</blockquote>
+<pre><code class="language-php">namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+/**
+ * App\User
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereEmail($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User wherePassword($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+
+ class User extends Authenticatable
+{
+    use Notifiable;
+
+    protected $fillable = [
+        'name', 'email', 'password',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+}
+</code></pre>
+<h3 id="repository">Repository</h3>
+<p>在开发时常常会在 Controller 直接调用 Model 写数据库逻辑，如下：获取数据库中用户 <code>age&gt;20</code>的数据。</p>
+<pre><code class="language-php">public function index()
+{
+    return User::where('age','&gt;',20)-&gt;orderBy('age')-&gt;get();
+}
+</code></pre>
+<p>这样写逻辑会有几个问题：</p>
+<ul>
+<li>将数据库逻辑写在 Controller，造成 Controller 代码臃肿难以维护。</li>
+<li>违反了 SOLID 的单一职责原则，数据库逻辑不应该写在 Controller 中。</li>
+<li>Controller 直接操作 Model，使得对 Controller 做单元测试困难。</li>
+</ul>
+<p>比较好的方式是使用 Repository：</p>
+<ul>
+<li>将 Model 依赖注入到 Repository。</li>
+<li>将数据库逻辑写在 Repository。</li>
+<li>将 Repository 依赖注入到 Service。</li>
+</ul>
+<p>创建一个仓库 <code>app/Repositories/UserRepostitory.php</code></p>
+<pre><code class="language-php">namespace App\Repositories;
+
+
+use App\User;
+
+class UserRepository
+{
+    private $user;
+
+    public function __construct(User $user)
+    {
+        $this-&gt;user = $user;
+    }
+
+    public function getAgeLargerThan($age)
+    {
+        return $this-&gt;user
+            -&gt;where('age', '&gt;', $age)
+            -&gt;orderBy('age')
+            -&gt;get();
+    }
+
+}
+</code></pre>
+<p>在控制器<code>app\Controllers\UserController.php</code>中使用依赖注入，将相依的 <code>UserRepository</code> 依賴注入到 <code>UserController</code>，并从原本直接依赖 <code>User</code> Model改成依赖注入的 <code>UserRepository</code></p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    protected $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this-&gt;userRepository = $userRepository;
+    }
+
+    public function index()
+    {
+        return $this-&gt;userRepository-&gt;getAgeLargerThan(20);
+    }
+}
+</code></pre>
+<h4 id="优点">优点</h4>
+<ul>
+<li>将数据库逻辑写在 Repository 里，解决了 Controller 代码臃肿的问题。</li>
+<li>符合 SOLID 的单一职责原则：数据库逻辑写在 Repository 里，没写在 Controller 里。</li>
+<li>符合 SOLID 的依赖反转原则：Controller 并非直接相依与 Repositroy，而是将 Repository 依赖注入进 Controller。</li>
+</ul>
+<blockquote>
+<p>实际上建议 Repository 仅依赖注入进 Service，而不是直接注入在 Controller。</p>
+</blockquote>
+<h4 id="是否该建立-repository-interface">是否该建立 Repository Interface？</h4>
+<p>理论上使用依赖注入时，应该使用 Interface ，不过 Interface 目的在于更换数据库，让代码达到开放封闭的要求，但是实际上要更改 Reposiroty 的机会也不多，除非是从 MySQL 更换到 MongoDB，此时就应该建立 Repository Interface。</p>
+<p>不过由于我们使用了依赖注入，将来要从 Class 改成 Interface 也很方便，只要在 Constructor 的 type hint 改成 Interface 即可，维护成本很低，所以在此大可使用 Repository Class 即可，不一定得用Interface而造成 Over Design，等真正需要修改时，再重构 Interface 即可。</p>
+<h4 id="是否该使用-query-scope">是否该使用 Query Scope?</h4>
+<p>Laravel 4.2 就有 QueryScope，到 Laravel5.1 都还保留着，它让我们可以将逻辑代码写在 Model ，解决了维护与重复使用的问题。</p>
+<p>例如 app/User.php</p>
+<pre><code class="language-php">public function scopeGetAgerLargerThan($query, $age)
+    {
+        return $query-&gt;where('age', '&gt;', $age)
+            -&gt;orderBy('age');
+    }
+</code></pre>
+<p>在 <code>app/Controllers/UserController.php</code> 中使用代码</p>
+<pre><code class="language-php">public function index()
+    {
+        return User::getAgerLargerThan(20)-&gt;get();
+    }
+</code></pre>
+<p>在 Controller 中使用 QueryScope 时，不需要加上 Prefix，由于其本质是 queryBuilder，所以还要加上 <code>get()</code> 才能获得 Conllection 数据。</p>
+<p>由于 QueryScope 是写在 Model，不是写在 Controller，所以基本上解决了 Controller 臃肿违反 SOLID 的单一职责原则的问题， Controller 也可以重复使用 QueryScope ，已经比直接将资料库逻辑写在 Controlelr 中好很多。</p>
+<p>不过若在中大型项目中，仍然有以下问题：</p>
+<ul>
+<li>Model 已经有原来的责任，若再加上 queryScope，造成 Model 过于臃肿难以维护。</li>
+<li>若数据库逻辑很多，可能拆成多个 Repository，可是确很难拆成多个 Model。</li>
+<li>单元测试困难，必须面临 mock Eloquent 的问题。</li>
+</ul>
+<h3 id="最后">最后</h3>
+<p>实际开发时，可以一开始 1 个 Repository 对应 1 个 Model，但是也不必太过执着于 1 个 Repository，一定要对应 1 个 Model，可将 Repository 视为逻辑上的数据库逻辑类别即可，可以横跨多个Model处理，也可以 1 个 Model 拆成多个 Repository，视情况而定。</p>
+<p>Repository 使得数据库逻辑从 Controller 或 Model 中解放，不仅更容易维护、更容易拓展、更容易重复使用，也更容易测试。</p>
+<h1 id="service-模式">Service 模式</h1>
+<p>在中大型的项目中，会有几个问题：</p>
+<ul>
+<li>将牵涉到外部行为的逻辑写在 Controller，造成 Controller 代码臃肿难以维护</li>
+<li>违反 SOLID 的单一职责原则：外部行为不应该写在 Controller</li>
+<li>Controller 直接相依于外部行为，使得我们无法对 Controller 做单元测试</li>
+</ul>
+<p>比较好的方式是使用 <code>Service</code>，<strong>使用 Service 模式辅助 Controller</strong>，<strong>将相关的业务逻辑封装在不同的 Service</strong>，方便项目的后期维护。使用的步骤如下：</p>
+<ul>
+<li>将外部行为注入到 Service</li>
+<li>在 Service 使用外部行为</li>
+<li>将 Service 注入到 Controlelr</li>
+</ul>
+<p>业务逻辑中，常见的如：</p>
+<ul>
+<li>牵涉到外部行为： 如 <code>发送 Email 邮件</code>，<code>使用外部API</code> ..</li>
+<li>使用 PHP 写的逻辑： 如 <code>根据购买的数量，给予不同的折扣</code></li>
+</ul>
+<h2 id="首先来拆分外部行为-发送邮件服务">首先来拆分外部行为-发送邮件服务</h2>
+<p>新增一个 Service <code>app\Services\EmailService.php</code></p>
+<pre><code class="language-php">namespace App\Services;
+use Illuminate\Mail\Message;
+use Mail;
+
+class EmailService
+{
+    protected $mailer;
+
+    public function __construct(Mail $mailer)
+    {
+        $this-&gt;mailer = $mailer;
+    }
+
+    public function send(array $request)
+    {
+        $this-&gt;mailer-&gt;queue('email.index',$request,function(Message $message){
+            $message-&gt;sender(env('MAIL_USERNAME'));
+            $message-&gt;subject(env('MAIL_SUBJECT'));
+            $message-&gt;to(env('MAIL_TO_ADDR'));
+        });
+    }
+}
+</code></pre>
+<p>把控制器 <code>app\Controllers\UserController.php</code> 从原来使用 <code>Mail Facede</code> 来发送邮件</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\Services\EmailService;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+    public function store(Request $request)
+    {
+        \Mail::queue('email.index', $request-&gt;all(), function (Message $message) {
+            $message-&gt;sender(env('MAIL_USERNAME'));
+            $message-&gt;subject(env('MAIL_SUBJECT'));
+            $message-&gt;to(env('MAIL_TO_ADDR'));
+        });
+    }
+}
+</code></pre>
+<p>改成依赖于注入的 <code>EmailService</code>大量简化了代码</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\Services\EmailService;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    protected $emailService;
+
+    public function store(Request $request)
+    {
+        $this-&gt;emailService-&gt;send($request-&gt;all());
+    }
+}
+</code></pre>
+<h2 id="实现比较复杂的业务逻辑-订单服务">实现比较复杂的业务逻辑-订单服务</h2>
+<p>根据用户购买数量，给予同步的折扣</p>
+<p>首先实现 订单服务 <code>app\Services\OrderService.php</code></p>
+<pre><code class="language-php">namespace App\Services;
+class OrderService 
+{    
+    //计算折扣
+    public function getDisCount($number)
+    {
+        switch ($number) {
+            case 1:
+                return 1.0;
+                break;
+            case 2:
+                return 0.9;
+                break;
+            case 3:
+                return 0.8;
+                break;
+            default:
+                return 0.7;
+        }
+    }
+    
+    //计算价格
+    public function getTotal($number, $discount)
+    {
+        return 500 * $number * $discount;
+    }
+}
+</code></pre>
+<p>一开始 app\Controllers\UserController.php 里这么处理订单折扣（一堆 if else）</p>
+<pre><code class="language-php">public function index(Request $request)
+{
+    $number = $request-&gt;input('number');
+    $price = 500;
+    $discount = 1;
+    if ($number == 1) {
+        $discount = 1;
+    } elseif ($number == 2) {
+        $discount = 0.9;
+    } elseif ($number == 3) {
+        $discount = 0.8;
+    } else {
+        $discount = 0.7;
+    }
+    $total = $price * $number * $discount;
+
+    return $total;
+}
+</code></pre>
+<p>改成注入订单服务后, 极大简化了 Controller 里的代码</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\Services\OrderService;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    protected $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this-&gt;orderService = $orderService;
+    }
+    
+    public function index(Request $request)
+    {
+        $number = $request-&gt;input('number');
+        $discount = $this-&gt;orderService-&gt;getDisCount($number);
+        return $this-&gt;orderService-&gt;getTotal($number, $discount);
+    }
+}
+</code></pre>
+<p>优点</p>
+<ul>
+<li>将 PHP 写的业务逻辑写在　Service ，解决了 Controller 代码臃肿的问题</li>
+<li>符合 SOLID 的单一职责原则： 业务逻辑写在 Service，没写在 Controller</li>
+<li>符合 SOLID 的单一职责原则：计算折扣与计算加总分开在不同的 Method，且归属于 <code>OrderService</code>，而非 <code>Controller</code></li>
+<li>符合 SOLID 的依赖反转原则： Controller 并非直接相依于 Service，而是将 Service 依赖注入进 Controller</li>
+<li>其他 Controller 也可以重复使用这段业务逻辑</li>
+</ul>
+<h1 id="单元测试">单元测试</h1>
+<p>由于现在将 model、view、controller 的相依物件都已经拆开，也都使用依赖，因此每个部分都可以单独的做单元测试，如要测试 service，就将 repository 加以 mock，也可以将其他 service 加以 mock。</p>
+<p>Presenter 也可以单独的进行单元测试，将其他 service 加以 mock。</p>
+<h1 id="参考">参考</h1>
+<p><a href="https://www.kancloud.cn/curder/laravel/409625">https://www.kancloud.cn/curder/laravel/409625</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E4%B8%AD%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BC%98%E5%8C%96/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/repository-%E6%A8%A1%E5%BC%8F/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

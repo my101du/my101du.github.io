@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Migration 迁移 数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构 可以很方便地创建新数据表、修改数据表结构和字段，而不" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Migration 迁移 数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构 可以很方便地创建新数据表、修改数据表结构和字段，而不" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/migration-%E8%BF%81%E7%A7%BB/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Migration 迁移 数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构 可以很方便地创建新数据表、修改数据表结构和字段，而不">
+
+<meta itemprop="wordCount" content="7259">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Migration 迁移 数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构 可以很方便地创建新数据表、修改数据表结构和字段，而不"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/migration-%E8%BF%81%E7%A7%BB/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/migration-%E8%BF%81%E7%A7%BB/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7259字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="migration-迁移">Migration 迁移</h1>
+<p>数据库迁移就像是数据库的版本控制，可以让你的团队轻松修改并共享应用程序的数据库结构</p>
+<p>可以很方便地创建新数据表、修改数据表结构和字段，而不需要直接进入 MySQL 的图形/命令行管理界面手动运行 SQL 语句。</p>
+<p>使用 <code>Scheme</code> 这个 Facade 对所有支持的数据库系统提供了支持</p>
+<h2 id="使用-makemigration命令创建迁移">使用 <code>make:migration</code>命令创建迁移</h2>
+<p>例如</p>
+<pre><code class="language-shell">php artisan make:migration create_products_table
+</code></pre>
+<p>会创建一个迁移文件，包含时间戳（以便让 Laravel 确认迁移顺序） <code>database/migrations/2016_12_02_035521_create_products_table.php</code></p>
+<p>另外，通过指定 <code>--table</code> 选项可用来指定数据表的名称，或是 <code>--create</code> 指定该迁移被执行时会创建的新数据表。</p>
+<pre><code class="language-shell">php artisan make:migration create_users_table --create=users
+
+php artisan make:migration add_votes_to_users_table --table=users
+</code></pre>
+<h2 id="迁移结构">迁移结构</h2>
+<p>打开文件<code>2016_12_02_035521_create_products_table.php</code>，一个迁移类会包含<code>up</code>和<code>down</code>方法。</p>
+<p><code>up</code> 对应添加新数据表、字段、索引；<code>down</code>则是<code>up</code>的逆操作</p>
+<p>通过使用 Laravel <strong>数据库结构构造器</strong>提供的可用方法来创建以及修改数据表（/docs/5.5/migrations.html#creating-tables）</p>
+<p>例如</p>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('pre_products', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('partnumber');
+        $table-&gt;text('description');
+        $table-&gt;timestamps();
+    });
+}
+    
+//回滚
+public function down()
+{
+    Schema::drop('pre_products');
+}
+</code></pre>
+<h2 id="运行迁移">运行迁移</h2>
+<p>会自动把没有成功运行过的 migration 运行一次</p>
+<pre><code class="language-shell">$ php artisan migrate
+
+# 如果成功，会返回类似下面的提示信息
+Migration table created successfully.
+Migrated: 2016_12_02_035521_create_products_table
+</code></pre>
+<p>查看数据库，创建了表<code>pre_products</code>。表的结构和迁移文件里定义的一致，并且还自动生成两个字段<code>updated_at</code>和<code>created_at</code>，这是<code>up</code>方法里运行<code>$table-&gt;timestamps();</code>这个方法得到的。</p>
+<p><strong>强制执行迁移</strong></p>
+<p>有的迁移操作可能会导致数据丢失，如果在线上环境运行，系统会在这些命令被运行之前显示确认提示。若要忽略此提示并强制运行命令</p>
+<pre><code class="language-shell">php artisan migrate --force
+</code></pre>
+<h3 id="回滚">回滚</h3>
+<p>此命令是对上一次执行的**「批量」**迁移回滚，其中**可能包括多个迁移文件**</p>
+<p><img src="/media/15490412690336/15096009514711.jpg" alt=""></p>
+<p>在 rollback 命令后加上 step 参数，你可以限制回滚迁移的个数，下例中将会回滚最后的 5 个迁移</p>
+<p>使用<code>reset</code>参数可以回滚应用程序中的所有迁移</p>
+<pre><code class="language-shell">php artisan migrate:rollback
+
+php artisan migrate:rollback --step=5
+
+php artisan migrate:reset
+</code></pre>
+<p><strong>如果需要使用单个执行回滚或迁移</strong></p>
+<p><code>refresh</code>不仅会回滚数据库的所有迁移还会接着运行 migrate 命令。所以此命令可以有效的重新创建整个数据库：</p>
+<pre><code class="language-shell">php artisan migrate:refresh
+
+//回滚并再迁移最后的 5 个迁移
+php artisan migrate:refresh --step=5
+
+// 刷新数据库结构并执行数据填充
+php artisan migrate:refresh --seed
+</code></pre>
+<h2 id="数据表">数据表</h2>
+<h3 id="创建数据表">创建数据表</h3>
+<p>使用 Schema facade 的 create 方法，接收两个参数，第一个是数据表名，d第二个为闭包（接收一个用于定义数据表的 Blueprint 对象）</p>
+<p>可以在创建之前先检查一下是否存在表、字段</p>
+<pre><code class="language-php">Schema::create('users', function (Blueprint $table) {
+    $table-&gt;increments('id');
+});
+
+//未测试
+if (!Schema::hasTable('users')) {
+    Schema::create('users', function (Blueprint $table) {
+        if (!Schema::hasColumn('users', 'email')) {
+            $table-&gt;increments('id');
+        }
+    });
+}
+</code></pre>
+<p>选择非默认的引擎和连接</p>
+<pre><code class="language-php">// choose another connection
+Schema::connection('foo')-&gt;create('users', function (Blueprint $table) {
+    // use another engine
+    $table-&gt;engine = 'InnoDB';
+
+    $table-&gt;increments('id');
+});
+</code></pre>
+<h3 id="重命名删除">重命名&amp;删除</h3>
+<p>在重命名前，你需要<strong>检查外键的约束</strong>,涉及到的数据表名需要在迁移文件中显式的提供，而不是让 Laravel 按照约定来设置一个名称。因为那样会让外键约束关联到旧的数据表上。</p>
+<pre><code class="language-php">Schema::rename($from, $to);
+
+Schema::drop('users');
+
+Schema::dropIfExists('users');
+</code></pre>
+<h2 id="字段">字段</h2>
+<p>使用 Schema facade 的 <code>table</code> 方法可以更新已有的数据表（和 <code>create</code>方法的参数类似）</p>
+<p>创建的时候，还可以使用<code>字段修饰</code>，例如允许空</p>
+<pre><code class="language-php">Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('email');
+    
+    //字段修饰
+    $table-&gt;string('username')-&gt;nullable();
+});
+</code></pre>
+<h3 id="可用的字段类型string-integer">可用的<strong>字段类型</strong>(string, integer&hellip;.)</h3>
+<p>查询 /docs/5.5/migrations.html#可用的字段类型</p>
+<h3 id="可用的字段修饰此列表不包括-索引修饰索引修饰看后面的索引章节">可用的<strong>字段修饰</strong>（此列表不包括 索引修饰，索引修饰看后面的“索引”章节）</h3>
+<ul>
+<li>-&gt;after(&lsquo;column&rsquo;)	将此字段放置在其它字段「之后」（仅限 MySQL）</li>
+<li>-&gt;comment(&lsquo;my comment&rsquo;)	增加注释</li>
+<li>-&gt;default($value)	为此字段指定「默认」值</li>
+<li>-&gt;first()	将此字段放置在数据表的「首位」（仅限 MySQL）</li>
+<li>-&gt;nullable()	此字段允许写入 NULL 值</li>
+<li>-&gt;storedAs($expression)	创建一个存储的生成字段 （仅限 MySQL）</li>
+<li>-&gt;unsigned()	设置 integer 字段为 UNSIGNED</li>
+<li>-&gt;virtualAs($expression)	创建一个虚拟的生成字段 （仅限 MySQL）</li>
+</ul>
+<h2 id="修改字段">修改字段</h2>
+<p>必须要先安装 <code>doctrine/dbal</code>包，Doctrine DBAL 函数库被用于判断当前字段的状态以及创建调整指定字段的 SQL 查询</p>
+<pre><code class="language-shell">composer require doctrine/dbal
+
+//或修改 composer.json 文件，添加依赖，再运行 composer update 命令
+</code></pre>
+<p>然后使用以下的方法来实现字段修改（首先创建一个新的 migration ）</p>
+<p><code>change</code> 方法让你可以修改一些已存在的字段类型，或修改字段属性
+<code>renameColumn</code>用来重命名字段
+<code>dropColumn</code>删除一个或多个字段</p>
+<pre><code class="language-php">Schema::table('users', function (Blueprint $table) {
+    $table-&gt;string('name', 50)-&gt;nullable()-&gt;change();
+    
+    $table-&gt;renameColumn('from', 'to');
+    
+    $table-&gt;dropColumn('votes');
+    $table-&gt;dropColumn(['votes', 'avatar', 'location']);
+});
+</code></pre>
+<p>有一些字段是不能被修改的，因为可能会导致数据丢失</p>
+<blockquote>
+<p>char，double，enum，mediumInteger，timestamp，tinyInteger，ipAddress，json，jsonb，macAddress，mediumIncrements，morphs，nullableMorphs，nullableTimestamps，softDeletes，timeTz，timestampTz，timestamps，timestampsTz，unsignedMediumInteger，unsignedTinyInteger，uuid。</p>
+</blockquote>
+<p>enum 字段暂时不支持修改字段属性</p>
+<p>SQLite 数据库并不支持在单个迁移中移除或修改多个字段。</p>
+<p><strong>补充: 该库的最新版本不再支持 PHP7.1 以下</strong></p>
+<p>shit! 如果你的开发环境是 PHP7.1, 而生产环境低于它（如 7.0.9），线上 composer install 读取 composer.lock, 发现版本不对。。。</p>
+<blockquote>
+<p>PHP 7.1 requirement for Doctrine packages</p>
+</blockquote>
+<p>A few days ago, the Doctrine team released new versions of many packages, dropping support for PHP 5.6 and 7.0, as well as HHVM. The affected packages are:</p>
+<p>参考
+<a href="http://www.doctrine-project.org/2017/07/25/php-7.1-requirement-and-composer.html">http://www.doctrine-project.org/2017/07/25/php-7.1-requirement-and-composer.html</a></p>
+<h2 id="索引">索引</h2>
+<p>数据库结构构造器支持多种类型的索引</p>
+<h3 id="创建索引">创建索引</h3>
+<p>基本的，表字段的值“唯一”</p>
+<pre><code class="language-php">$table-&gt;string('email')-&gt;unique();
+
+// 或者在定义完字段之后创建索引。推荐，把字段定义和索引定义分开写
+$table-&gt;unique('email');
+
+//会自动生成一个合理的索引名称，但你也可以使用第二个参数来自定义索引名称
+$table-&gt;index('email', 'my_index_name');
+</code></pre>
+<p>传递一个字段的数组至索引方法<code>index()</code>来创建<strong>复合索引</strong></p>
+<pre><code class="language-php">$table-&gt;index(['account_id', 'created_at']);
+</code></pre>
+<p>可用索引类型</p>
+<ul>
+<li>$table-&gt;primary(&lsquo;id&rsquo;);	加入主键。</li>
+<li>$table-&gt;primary([&lsquo;first&rsquo;, &lsquo;last&rsquo;]);	加入复合键。</li>
+<li>$table-&gt;unique(&lsquo;email&rsquo;);	加入唯一索引。</li>
+<li>$table-&gt;unique(&lsquo;state&rsquo;, &lsquo;my_index_name&rsquo;);	自定义索引名称。</li>
+<li>$table-&gt;unique([&lsquo;first&rsquo;, &lsquo;last&rsquo;]);	加入复合唯一键。</li>
+<li>$table-&gt;index(&lsquo;state&rsquo;);	加入基本索引。</li>
+</ul>
+<p><strong>索引长度问题</strong> （在 MySQL 的文章里可以看到相关信息）</p>
+<p>在运行迁移命令时，可能会提示</p>
+<blockquote>
+<p>mysql：Specified key was too long; max key leng</p>
+</blockquote>
+<p>Laravel 默认使用 utf8mb4 字符（支持在数据库存储「表情）如果你正在运行的 MySQL release 版本低于5.7.7 或 MariaDB release 版本低于10.2.2 ，为了MySQL为它们创建索引，你可能需要手动配置迁移生成的默认字符串长度，你可以通过调用 AppServiceProvider 中的 <code>Schema::defaultStringLength</code> 方法来配置它</p>
+<p>或者你可以为数据库开启 <code>innodb_large_prefix</code> 选项，有关如何正确开启此选项的说明请查阅数据库文档</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Schema;
+
+/**
+ * 引导任何应用程序服务。
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+</code></pre>
+<h3 id="移除索引">移除索引</h3>
+<p>必须指定索引的名称。Laravel 默认会自动给索引分配合理的名称(数据表名称、索引的字段名称及索引类型简单地连接在了一起)，例如</p>
+<pre><code class="language-php">//从「users」数据表移除主键。
+$table-&gt;dropPrimary('users_id_primary');
+
+//从「users」数据表移除唯一索引。
+$table-&gt;dropUnique('users_email_unique');
+
+//从「geo」数据表移除基本索引
+$table-&gt;dropIndex('geo_state_index');	
+</code></pre>
+<p>如果你对 <code>dropIndex</code> 传参索引数组，默认的约定是索引名称由数据库表名字和键名拼接而成</p>
+<pre><code class="language-php">Schema::table('geo', function (Blueprint $table) {
+    $table-&gt;dropIndex(['state']); // 移除索引 'geo_state_index'
+});
+</code></pre>
+<h3 id="外键约束">外键约束</h3>
+<p>用于在数据库层中的强制引用完整性。（Eloquent ORM 的“关联”使用了此特性？）
+例如定义一个有 user_id 字段的 posts 数据表，user_id 引用了 users 数据表的 id 字段</p>
+<pre><code class="language-php">Schema::table('posts', function (Blueprint $table) {
+    $table-&gt;integer('user_id')-&gt;unsigned();
+
+    $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users');
+});
+</code></pre>
+<p>也可以指定约束的「on delete」及「on update」：</p>
+<pre><code class="language-php">$table-&gt;foreign('user_id')
+      -&gt;references('id')-&gt;on('users')
+      -&gt;onDelete('cascade');
+</code></pre>
+<p><strong>移除外键</strong></p>
+<p>使用 dropForeign 方法。外键约束与索引采用相同的命名方式.将数据表名称和约束字段连接起来，接着在该名称后面加上「_foreign」后缀 (下例字段名use_id)</p>
+<pre><code class="language-php">$table-&gt;dropForeign('posts_user_id_foreign');
+
+//也可以传递一个包含字段的数组，在移除的时候字段会按照惯例被自动转换为对应的外键名称
+$table-&gt;dropForeign(['user_id']);
+</code></pre>
+<p>可以在迁移文件里使用以下方法来开启和关闭外键约束</p>
+<pre><code class="language-php">Schema::enableForeignKeyConstraints();
+
+Schema::disableForeignKeyConstraints();
+</code></pre>
+<h3 id="外键知识">外键知识</h3>
+<p><a href="http://www.cnblogs.com/yzuzhang/p/5174720.html">http://www.cnblogs.com/yzuzhang/p/5174720.html</a>
+<a href="http://www.cppblog.com/wolf/articles/69089.html">http://www.cppblog.com/wolf/articles/69089.html</a> （例子）</p>
+<p>只有 InnoDB 引擎支持外键约束</p>
+<p>外键约束属性： RESTRICT | CASCADE | SET NULL | NO ACTION  外键的使用需要满足下列的条件：</p>
+<ol>
+<li>
+<p>两张表必须都是InnoDB表，并且它们没有临时表。</p>
+</li>
+<li>
+<p>建立外键关系的对应列必须具有相似的InnoDB内部数据类型。</p>
+</li>
+<li>
+<p>建立外键关系的对应列必须建立了索引。</p>
+</li>
+<li>
+<p>假如显式的给出了CONSTRAINT symbol，那symbol在数据库中必须是唯一的。假如没有显式的给出，InnoDB会自动的创建。</p>
+</li>
+</ol>
+<p>如果子表试图创建一个在父表中不存在的外键值，InnoDB会拒绝任何INSERT或UPDATE操作。如果父表试图UPDATE或者DELETE任何子 表中存在或匹配的外键值，最终动作取决于外键约束定义中的ON UPDATE和ON DELETE选项。InnoDB支持5种不同的动作，如果没有指定ON DELETE或者ON UPDATE，默认的动作为RESTRICT:</p>
+<ol>
+<li>
+<p>CASCADE: 从父表中删除或更新对应的行，同时自动的删除或更新自表中匹配的行。ON DELETE CANSCADE和ON UPDATE CANSCADE都被InnoDB所支持。</p>
+</li>
+<li>
+<p>SET NULL: 从父表中删除或更新对应的行，同时将子表中的外键列设为空。注意，这些在外键列没有被设为NOT NULL时才有效。ON DELETE SET NULL和ON UPDATE SET SET NULL都被InnoDB所支持。</p>
+</li>
+<li>
+<p>NO ACTION: InnoDB拒绝删除或者更新父表。</p>
+</li>
+<li>
+<p>RESTRICT: 拒绝删除或者更新父表。指定RESTRICT（或者NO ACTION）和忽略ON DELETE或者ON UPDATE选项的效果是一样的。</p>
+</li>
+<li>
+<p>SET DEFAULT: InnoDB目前不支持。</p>
+</li>
+</ol>
+<p>外键约束使用最多的两种情况无外乎：</p>
+<p>1）父表更新时子表也更新，父表删除时如果子表有匹配的项，删除失败；</p>
+<p>2）父表更新时子表也更新，父表删除时子表匹配的项也删除。</p>
+<p>前一种情况，在外键定义中，我们使用ON UPDATE CASCADE ON DELETE RESTRICT；后一种情况，可以使用ON UPDATE CASCADE ON DELETE CASCADE。</p>
+<p>当执行外键检查之时，InnoDB对它照看着的子或父记录设置共享的行级锁。InnoDB立即检查外键约束，检查不对事务提交延迟。</p>
+<p>要使得对有外键关系的表重新载入转储文件变得更容易，mysqldump自动在转储输出中包括一个语句设置FOREIGN_KEY_CHECKS为0。这避免在转储被重新装载之时，与不得不被以特别顺序重新装载的表相关的问题。也可以手动设置这个变量：</p>
+<pre><code>mysql&gt; SET FOREIGN_KEY_CHECKS = 0;
+mysql&gt; SOURCE dump_file_name;
+mysql&gt; SET FOREIGN_KEY_CHECKS = 1;
+```　　
+
+如果转储文件包含对外键是不正确顺序的表，这就以任何顺序导入该表。这样也加快导入操作。设置FOREIGN_KEY_CHECKS为0，对于在LOAD DATA和ALTER TABLE操作中忽略外键限制也是非常有用的。
+
+InnoDB不允许你删除一个被FOREIGN KEY表约束引用的表，除非你做设置SET FOREIGN_KEY_CHECKS=0。当你移除一个表的时候，在它的创建语句里定义的约束也被移除。
+
+　　如果你重新创建一个被移除的表，它必须有一个遵从于也引用它的外键约束的定义。它必须有正确的列名和类型，并且如前所述，它必须对被引用的键有索引。如果这些不被满足，MySQL返回错误号1005 并在错误信息字符串中指向errno 150。
+
+
+## 可能问题
+
+### 删除了 migration 的 php 文件后，运行时出错
+
+&gt;  [ErrorException]
+&gt;   include(D:\wnmp\www\laravel-5-3-dev\vendor\composer/../../database/migratio
+&gt;   ns/2016_11_27_181313_create_articles_table.php): failed to open stream: No
+&gt;   such file or directory
+
+其实你删了后,它不认为你删了,在`vendor/composer/autoload_classmap.php`会缓存这,所以会报错,因为找不到了,这个时候重新生成autoload_classmap.php,执行这个就ok了
+
+```shell
+composer dump-autoload
+</code></pre>
+<h3 id="删除表后-重新运行-migrate-提示-nothing-to-migrate">删除表后, 重新运行 migrate 提示 nothing to migrate</h3>
+<p>除了删除那几个表，还要删除 <code>migrations</code> 表里面的记录</p>
+<p><img src="/media/15490412690336/15458893379899.jpg" alt="-w436"></p>
+<h3 id="运行迁移命令时提示-base-table-or-view-already-exists">运行迁移命令时提示 Base table or view already exists</h3>
+<p>类似</p>
+<blockquote>
+<p>[Doctrine\DBAL\Driver\PDOException]
+SQLSTATE[42S01]: Base table or view already exists: 1050 Table &lsquo;oauth_auth_codes&rsquo; alrea
+dy exists</p>
+</blockquote>
+<p>这可能是因为经过几次本地修改，又从线上环境上覆盖了本地数据库，导致 MySQL 中 <code>migration</code>表中的数据和本地 <code>/database/migrations</code>里的文件不匹配导致</p>
+<p><img src="/media/15490412690336/15111452715414.jpg" alt=""></p>
+<p><img src="/media/15490412690336/15111454074491.jpg" alt=""></p>
+<p>你可以把数据表里的内容修改成和文件匹配的，也可以删除不需要的.</p>
+<p>如果仍然报错，可能是路径问题。需要指定 migrations 文件的存放路径</p>
+<pre><code class="language-shell">php artisan migrate --path=./database/migrations/
+</code></pre>
+<p>或者使用 refresh 命令, 先回滚，然后重新运行 migrate</p>
+<pre><code class="language-shell">php artisan migrate:fresh
+</code></pre>
+<p><strong>谨慎</strong>  我运行后，因为不是所有的表都有迁移文件，所以导致其他表都丢了，而只有这些冲突的表被重新创建了</p>
+<p><img src="/media/15490412690336/15438926867126.jpg" alt="-w228"></p>
+<h3 id="提示无法创建外键">提示无法创建外键</h3>
+<p>例如提示： 在 <code>model_has_roles</code>表中，无法添加限制： model_has_roles_role_id_foreign</p>
+<p>因为外键 <code>role_id</code> 关联的表<code>auth_roles</code>还没创建</p>
+<blockquote>
+<p>SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint (SQL: alter table <code>model_has_ro les</code> add constraint <code>model_has_roles_role_id_foreign</code> foreign key (<code>role_id</code>) references <code>auth_roles</code>
+(<code>id</code>) on delete CASCADE
+on update RESTRICT)</p>
+</blockquote>
+<p>对应代码</p>
+<p><img src="/media/15490412690336/15439058220907.jpg" alt="-w881"></p>
+<p>多个表之间有外键关系，但是可能在生成 migration 文件的时候，时间戳太接近，或者先后顺序没有处理好。导致建表的时候发现关联的</p>
+<p>按时间排列，看看时间戳，的确需要把<code>create_auth_roles_table</code>往前移动。例如改成 133720 （比 133727 小，先于这些有外键的表创建。）</p>
+<p><img src="/media/15490412690336/15439056357713.jpg" alt="-w463"></p>
+<h2 id="安全删除-migration">安全删除 migration</h2>
+<p>手动删除<code>app/database/migrations/my_migration_file_name.php</code></p>
+<p>Reset the composer autoload files:</p>
+<pre><code class="language-shell">composer dump-autoload
+</code></pre>
+<h2 id="从已有的数据表导出-migration-文件">从已有的数据表导出 Migration 文件</h2>
+<h3 id="使用-图形工具">使用 图形工具</h3>
+<p><a href="https://laravel-news.com/export-from-mysql-workbench-to-a-laravel-migration">https://laravel-news.com/export-from-mysql-workbench-to-a-laravel-migration</a></p>
+<p>可以用 MySQLWorkBench 或 Sequel Pro 来导出</p>
+<p>下载 bundles
+<a href="https://github.com/cviebrock/sequel-pro-laravel-export">https://github.com/cviebrock/sequel-pro-laravel-export</a></p>
+<h3 id="使用-laravel-扩展-migrations-generator">使用 laravel 扩展 migrations-generator</h3>
+<p><a href="https://github.com/Xethron/migrations-generator">https://github.com/Xethron/migrations-generator</a></p>
+<pre><code class="language-shell">composer require --dev &quot;xethron/migrations-generator&quot;
+</code></pre>
+<p>L5.5 已经自动在 Service Provider 里注册了。</p>
+<p>If you want this lib only for <strong>dev</strong>, you can add the following code to your <code>app/Providers/AppServiceProvider.php</code> file, within the register() method:</p>
+<pre><code class="language-php">public function register()
+{
+    if ($this-&gt;app-&gt;environment() !== 'production') {
+        $this-&gt;app-&gt;register(\Way\Generators\GeneratorsServiceProvider::class);
+        $this-&gt;app-&gt;register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);
+    }
+    // ...
+}
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell"># 为所有的表创建 migration
+php artisan migrate:generate
+
+# 指定表
+php artisan migrate:generate table1,table2,table3,table4,table5 
+
+# 忽略表
+php artisan migrate:generate --ignore=&quot;table3,table4,table5
+
+# 指定 connection
+php artisan migrate:generate --connection=&quot;connection_name&quot;
+
+# 帮助
+php artisan help migrate:generate
+</code></pre>
+<p>Laravel migration Generator将首先生成所有表、列和索引，然后设置所有外键约束。因此，<strong>请确保包含外键中列出的所有表，以便在创建外键时显示这些表</strong>。</p>
+<h2 id="指定某个-migration-文件或其他目录">指定某个 migration 文件或其他目录</h2>
+<p>自带的 migrate 命令只能一次处理 <strong>整个</strong> database/migration 目录。</p>
+<p>但有时候在开发阶段，我们只想操作一个特定的迁移文件。</p>
+<h3 id="运行时指定-path">运行时指定 path</h3>
+<pre><code class="language-shell">php artisan help migrate
+
+# 可以看到有 --path 等参数
+
+# 指定文件或目录
+php artisan migrate --path=/database/migrations/sample.php
+php artisan migrate --path=/database/migrations/new_folder
+</code></pre>
+<h3 id="安装这个扩展-httpsgithubcomnilpaharcustom-migration">安装这个扩展 <a href="https://github.com/nilpahar/custom-migration">https://github.com/nilpahar/custom-migration</a></h3>
+<pre><code class="language-shell">composer require sayeed/custom-migrate
+</code></pre>
+<p><strong>issue</strong></p>
+<p>官方说 5.5 以上会自动加载 Provider , 但发现其实没有生成命令<code>migrate:custom</code>, 还是要手动注册下 Provider 才会把 vendor/sayeed/Console/Commands/ 导入进来, 才能找到 <code>migrate:custom</code>命令</p>
+<pre><code class="language-php">'providers' =&gt; [
+    // ...
+    Sayeed\CustomMigrate\CustomMigrateServiceProvider::class,
+];
+</code></pre>
+<p>运行迁移命令</p>
+<pre><code class="language-shell">//`-f` 指定文件名
+php artisan migrate:custom -f 2018_10_14_054732_create_tests_table
+
+// `-d`指定一个子目录
+php artisan migrate:custom -d migrations-subfolder
+
+// `-r` refresh migrations(不管是否运行或迁移，完全删除再重新创建表)
+php artisan migrate:custom -r -f ......
+</code></pre>
+<h1 id="seeder--快速填充模拟数据">Seeder : 快速填充模拟数据</h1>
+<p>除了直接在 MySQL 管理工具、命令行里插入数据外，还可以用的数据填充工具。</p>
+<h2 id="创建一个数据填充类">创建一个数据填充类</h2>
+<p>运行命令</p>
+<pre><code class="language-shell">php artisan make:seeder ProductsTableSeeder
+</code></pre>
+<p>在<code>database/seeds</code>目录里新建一个文件<code>ProductsTableSeeder.php</code>，修改run方法（当运行 db:seed Artisan 命令 时就会调用此方法），可使用 查询语句构造器 或 Eloquent 模型工厂 来手动添加数据。</p>
+<pre><code class="language-php">public function run()
+{
+    DB::table('users')-&gt;insert([
+        'name' =&gt; str_random(10),
+        'email' =&gt; str_random(10).'@gmail.com',
+        'password' =&gt; bcrypt('secret'),
+    ]);
+}
+</code></pre>
+<p>这个类继承了<code>Illuminate\Database\Seeder</code>，其中<code>Carbon</code>类是用来将时间戳快速转换成日期/时间类型数据的。<code>DB::table</code>得到一个数据表类的实例，然后运行<code>insert</code>方法来插入几条数据。</p>
+<h3 id="修改默认的-delete-为-truncate-自动重置自增从1-开始">修改默认的 delete() 为 truncate() 自动重置自增从1 开始</h3>
+<p>默认生成的 seeder 文件，一开始用<code> delete()</code>来清空表里的数据再插入。</p>
+<p>但是这样对于常见的用 increment id 的表，会导致删除数据后，新的记录从 N+1 而不是从 1 开始，改成下面的代码即可：</p>
+<pre><code class="language-php">//
+DB::statement('SET FOREIGN_KEY_CHECKS=0');
+DB::table('products')-&gt;truncate();
+DB::statement('SET FOREIGN_KEY_CHECKS=1');
+
+//DB::table('products')-&gt;delete();
+
+DB::table('users')-&gt;insert([
+//...
+
+</code></pre>
+<p><strong>注意</strong> 要调用<code>DB::statement('SET FOREIGN_KEY_CHECKS=0');</code>语句暂时取消外键检查。</p>
+<h2 id="然后在数据填充入口文件中开启对它的调用">然后在数据填充“入口文件”中开启对它的调用</h2>
+<p>文件 <code>database/seeds/DatabaseSeeder.php</code>好比一个目录，记录了所有要运行的 seeder 文件。</p>
+<p>编辑它，添加</p>
+<pre><code class="language-php">$this-&gt;call('ProductsTableSeeder');
+</code></pre>
+<p>里面的两个方法<code>Model::unguard();</code>和<code>Model::reguard();</code>，应该是先解除表的保护，然后再保护</p>
+<h2 id="运行数据填充的命令">运行数据填充的命令</h2>
+<pre><code class="language-shell"># 首先清理下 autoload 文件
+$ composer dump-autoload
+
+# 然后重新运行 migration
+$ php artisan migrate:refresh
+
+# 最后填充数据
+$ php artisan db:seed
+</code></pre>
+<p>最后就会自动运行<code>database/seeds/ProductsTableSeeder.php</code>的<code>run</code>方法里的 insert，向表中插入数据。</p>
+<h3 id="指定填充一个表">指定填充一个表</h3>
+<p>当 seeder 文件变多的时候，不要一次运行所有 Seeder，需要指定运行某一个 Seeder 类。</p>
+<pre><code class="language-shell">php artisan db:seed --class=UsersTableSeeder
+</code></pre>
+<p>好了，现在得到一批模拟数据了。</p>
+<p><img src="/media/15490412690336/15452836161513.jpg" alt="-w975"></p>
+<h2 id="模型工厂快速添加大量假数据">模型工厂快速添加大量假数据</h2>
+<p>阅读<strong>数据库测试</strong>中的<code>模型工厂(model factory)</code>章节</p>
+<p>前面的插入数据，使用了 <code>DB</code> 的 <code>insert</code> 方法，对于关联模型的插入不够方便。 使用模型工厂就能够实现如下需求： 在插入 User 数据时，同时插入 User 关联的 post 数据</p>
+<pre><code class="language-php">factory(App\User::class, 50)-&gt;create()-&gt;each(function ($u) {
+    $u-&gt;posts()-&gt;save(factory(App\Post::class)-&gt;make());
+});
+</code></pre>
+<h2 id="iseed--从一个已有的数据表生成-seed-文件备份旧数据">iSeed : 从一个已有的数据表生成 seed 文件(备份旧数据)</h2>
+<p>使用 <code>iseed</code> 扩展</p>
+<p><a href="https://github.com/orangehill/iseed">https://github.com/orangehill/iseed</a></p>
+<p>以前有一个表，保存了数据。</p>
+<p>现在使用 migration 得到的表是空的，想把之前那个表里的数据导出成为 seed， 插入到现在的表。</p>
+<pre><code class="language-shell">composer require orangehill/iseed:dev-master
+</code></pre>
+<p>和 Migration Generator 扩展一样，为了仅在开发环境运行，可以修改 <code>app/Providers/AppServiceProvider.php</code>，限制运行环境（参考前面代码）</p>
+<h3 id="在命令行运行从一个或多个表生成-seeds-以及参数">在命令行运行，从一个或多个表生成 seeds 以及参数</h3>
+<pre><code class="language-shell">php artisan iseed my_table
+</code></pre>
+<p><strong>classnameprefix &amp; classnamesuffix</strong></p>
+<p>如果希望创建的 seed 和当前想要导入数据的表不重名（防止数据覆盖），可以指定前后缀</p>
+<pre><code class="language-shell">php artisan iseed my_table --classnameprefix=Customized
+php artisan iseed my_table,another_table --classnameprefix=Customized
+
+php artisan iseed my_table --classnamesuffix=Customizations
+php artisan iseed my_table,another_table --classnamesuffix=Customizations
+</code></pre>
+<p><strong>force 强制覆盖现有重名 Seeder</strong></p>
+<p>例如，覆盖<code>UsersTableSeeder.php</code>文件</p>
+<pre><code class="language-shell">php artisan iseed users --force
+
+</code></pre>
+<p><strong>dumpauto 选项，是否运行 composer dump-autoload</strong></p>
+<pre><code class="language-shell">php artisan iseed users --dumpauto=false
+</code></pre>
+<p><strong>clean</strong></p>
+<p>是否在创建新 Seed Class 之前清空<code>app/database/seeds/DatabaseSeeder.php</code></p>
+<pre><code class="language-shell">app/database/seeds/DatabaseSeeder.php
+</code></pre>
+<p><strong>database 指定数据库连接 DB connection name.（在 config/database.php 中定义）</strong></p>
+<pre><code class="language-shell">php artisan iseed users --database=mysql2
+</code></pre>
+<p><strong>max 限制从表中取回多少个 entries</strong></p>
+<pre><code class="language-shell">artisan iseed users --max=10
+</code></pre>
+<p><strong>exclude 排除某些字段</strong></p>
+<pre><code class="language-shell">artisan iseed users --exclude=id
+artisan iseed users --exclude=id,created_at,updated_at
+</code></pre>
+<p><strong>prerun</strong></p>
+<pre><code class="language-shell">artisan iseed users --prerun=someEvent
+</code></pre>
+<p>&hellip; 其他参数略</p>
+<h3 id="在代码中使用">在代码中使用</h3>
+<p>调用 <code>\Iseed::generateSeed('users', 'connectionName', 'numOfRows');</code></p>
+<p>其中 <code>connectionName</code> and <code>numOfRows</code> 非必需参数.</p>
+<p><strong>问题，用这个方式生成的 seed 文件，只有 delete(),没有插入数据的内容</strong></p>
+<p><img src="/media/15490412690336/15439787682320.jpg" alt="-w402"></p>
+<p>而命令行生成的有内容</p>
+<p><img src="/media/15490412690336/15439788039465.jpg" alt="-w399"></p>
+<p>代码改成直接在 command 里 call command 的方式</p>
+<pre><code class="language-shell">$this-&gt;call('iseed', [
+            'tables' =&gt; implode(&quot;,&quot;, $this-&gt;tables), 
+            '--database' =&gt; $this-&gt;connection
+        ]);
+        
+// 如果重名会提示 yes/no 选择，可以用参数  --force 强制覆盖，添加
+//'--force' =&gt; true,
+</code></pre>
+<p><strong>如果是在 router controller 里面，不用 $this, 要用 Artisan 这个 Facede</strong></p>
+<h3 id="seeder-文件">Seeder 文件</h3>
+<p>类似</p>
+<pre><code class="language-php">// File: /database/seeds/UsersTableSeeder.php
+
+class UsersTableSeeder extends Seeder {
+
+	/**
+	 * Auto generated seed file
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		\DB::table('users')-&gt;truncate();
+		\DB::table('users')-&gt;insert(array (
+			0 =&gt;
+			array (
+				'id' =&gt; '1',
+				'email' =&gt; 'admin@admin.com',
+				'password' =&gt; '$2y$10$tUGCkQf/0NY3w1l9sobGsudt6UngnoVXx/lUoh9ElcSOD0ERRkK9C',
+				'permissions' =&gt; NULL,
+				'activated' =&gt; '1',
+				'activation_code' =&gt; NULL,
+				'activated_at' =&gt; NULL,
+				'last_login' =&gt; NULL,
+				'persist_code' =&gt; NULL,
+				'reset_password_code' =&gt; NULL,
+				'first_name' =&gt; NULL,
+				'last_name' =&gt; NULL,
+				'created_at' =&gt; '2013-06-11 07:47:40',
+				'updated_at' =&gt; '2013-06-11 07:47:40',
+			),
+			1 =&gt;
+			array (
+				'id' =&gt; '2',
+				'email' =&gt; 'user@user.com',
+				'password' =&gt; '$2y$10$ImNvsMzK/BOgNSYgpjs/3OjMKMHeA9BH/hjl43EiuBuLkZGPMuZ2W',
+				'permissions' =&gt; NULL,
+				'activated' =&gt; '1',
+				'activation_code' =&gt; NULL,
+				'activated_at' =&gt; NULL,
+				'last_login' =&gt; '2013-06-11 07:54:57',
+				'persist_code' =&gt; '$2y$10$C0la8WuyqC6AU2TpUwj0I.E3Mrva8A3tuVFWxXN5u7jswRKzsYYHK',
+				'reset_password_code' =&gt; NULL,
+				'first_name' =&gt; NULL,
+				'last_name' =&gt; NULL,
+				'created_at' =&gt; '2013-06-11 07:47:40',
+				'updated_at' =&gt; '2013-06-11 07:54:57',
+			),
+		));
+	}
+
+}
+</code></pre>
+<p>除了生成这个文件，也会修改<code>/database/seeds/DatabaseSeeder.php</code></p>
+<p>修改 iseed 模板在<code>#iseed_start</code>he <code>#iseed_end</code>之间：略</p>
+<p>最后 <code>php artisan db:seed</code>搞定。</p>
+<h2 id="如果提示-reflectionexception-class-xxxxx_seeder-does-not-exist">如果提示 ReflectionException class xxxxx_Seeder does not exist</h2>
+<blockquote>
+<p>ReflectionException  : Class mysql_backupRolesTableSeeder does not exist</p>
+</blockquote>
+<p>这是因为一开始用 <code>\ISeed\xxxxx</code> 方式生成 seed 文件时，修改了 <code>DatabaseSeeder.php</code> 文件里的 call 列表，自动给 Seeder 类文件加了一个前缀（connection 名，例如 mysql_back）</p>
+<p>但是后来改成 command 的方式后，得到的 Seeder 类文件又不会添加这个前缀，导致运行 db:seed 时报错，</p>
+<p>只需要修改 DatabaseSeeder.php 文件内容，删掉前缀即可。</p>
+<p><img src="/media/15490412690336/15439801827445.jpg" alt="-w718"></p>
+<h2 id="提示-integrity-constraint-violation-使用-oauth---passport-时生成的几个表导致">提示 Integrity constraint violation （使用 OAuth - Passport 时生成的几个表导致）</h2>
+<p>和数据生成顺序以及外键的关联。</p>
+<p>例如先要有 permission 和 role 表的数据， 才能插入数据到 roles_has_permission 表（外键）</p>
+<p><img src="/media/15490412690336/15439807237969.jpg" alt="-w940"></p>
+<p>修改 <code>DatabaseSeeder.php</code>文件， 把 call 的顺序修改即可</p>
+<p>如果因为多次批量生成 Seed 出现 Class 重名多次调用。 可以先把里面的 call 删掉，重新运行 iseed 命令后再调整顺序</p>
+<p>反正我是解决了。。。这里有说还要调整约束的
+<a href="https://stackoverflow.com/questions/44997480/laravel-seed-integrity-constraint-violation-1452-cannot-add-or-update-a-child">https://stackoverflow.com/questions/44997480/laravel-seed-integrity-constraint-violation-1452-cannot-add-or-update-a-child</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/migration-%E8%BF%81%E7%A7%BB/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/migration-%E8%BF%81%E7%A7%BB/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/relationship-%E6%A8%A1%E5%9E%8B%E5%85%B3%E8%81%94/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/laravel-%E5%85%A5%E9%97%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

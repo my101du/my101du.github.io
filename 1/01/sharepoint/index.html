@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="SharePoint 学习资源 https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;amp;Name=SharePoint&#43;Development SharePoint 创建站点 进入首页， 例如 https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx 添加应用 SharePoint Page Web 添加 css js 文件到 page 例如 bootstrap 有关的 js 和 css, 以及自己的 css 样式文件 选 Script Editor 然后就可以在源码模式下使用了" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="SharePoint 学习资源 https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;Name=SharePoint&#43;Development SharePoint 创建站点 进入首页， 例如 https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx 添加应用 SharePoint Page Web 添加 css js 文件到 page 例如 bootstrap 有关的 js 和 css, 以及自己的 css 样式文件 选 Script Editor 然后就可以在源码模式下使用了" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/sharepoint/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="SharePoint 学习资源 https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;Name=SharePoint&#43;Development SharePoint 创建站点 进入首页， 例如 https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx 添加应用 SharePoint Page Web 添加 css js 文件到 page 例如 bootstrap 有关的 js 和 css, 以及自己的 css 样式文件 选 Script Editor 然后就可以在源码模式下使用了">
+
+<meta itemprop="wordCount" content="7600">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="SharePoint 学习资源 https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;Name=SharePoint&#43;Development SharePoint 创建站点 进入首页， 例如 https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx 添加应用 SharePoint Page Web 添加 css js 文件到 page 例如 bootstrap 有关的 js 和 css, 以及自己的 css 样式文件 选 Script Editor 然后就可以在源码模式下使用了"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/sharepoint/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/sharepoint/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7600字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 16分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>SharePoint</p>
+<p>学习资源</p>
+<p><a href="https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;Name=SharePoint+Development">https://sharepoint.protiviti.com/blog/Lists/Categories/Category.aspx?CategoryId=5&amp;Name=SharePoint+Development</a></p>
+<h1 id="sharepoint">SharePoint</h1>
+<h2 id="创建站点">创建站点</h2>
+<p>进入首页， 例如</p>
+<p><a href="https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx">https://pulse478.sharepoint.com/_layouts/15/sharepoint.aspx</a></p>
+<p><img src="/media/15520335233454/15524445574830.jpg" alt="-w766"></p>
+<h2 id="添加应用">添加应用</h2>
+<p><img src="/media/15520335233454/15524449679302.jpg" alt="-w942"></p>
+<h2 id="sharepoint-page-web">SharePoint Page Web</h2>
+<h3 id="添加-css-js-文件到-page">添加 css js 文件到 page</h3>
+<p>例如 bootstrap 有关的 js 和 css, 以及自己的 css 样式文件</p>
+<p><img src="/media/15520335233454/15522688227218.jpg" alt="-w855"></p>
+<p>选 <strong>Script Editor</strong></p>
+<p><img src="/media/15520335233454/15522689380623.jpg" alt="-w729"></p>
+<p><img src="/media/15520335233454/15522689624816.jpg" alt="-w540"></p>
+<p>然后就可以在源码模式下使用了</p>
+<pre><code class="language-html">&lt;a class=&quot;btn btn-primary&quot;&gt;Submit&lt;/a&gt;
+</code></pre>
+<h3 id="添加一个-sharepoint-的-listview">添加一个 SharePoint 的 List/View</h3>
+<p><img src="/media/15520335233454/15522821281380.jpg" alt="-w1003"></p>
+<p>拖到最右边</p>
+<p><img src="/media/15520335233454/15522823682731.jpg" alt="-w163"></p>
+<p>修改 View</p>
+<p><img src="/media/15520335233454/15522831113529.jpg" alt="-w263"></p>
+<h2 id="版本记录">版本记录</h2>
+<p><img src="/media/15520335233454/15528963118880.jpg" alt="-w338"></p>
+<h1 id="sharepoint-designer">SharePoint Designer</h1>
+<p>安装  SharePoint Designer 2013</p>
+<p><img src="/media/15520335233454/15522846886677.jpg" alt="-w232"></p>
+<p><img src="/media/15520335233454/15522847494625.jpg" alt="-w457"></p>
+<h1 id="sharepoint-development">SharePoint Development</h1>
+<p><a href="https://docs.microsoft.com/zh-CN/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part">https://docs.microsoft.com/zh-CN/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part</a></p>
+<p><strong>SPFx</strong>: SharePoint Framework</p>
+<h2 id="开发环境">开发环境</h2>
+<pre><code class="language-shell">npm install -g yo gulp
+npm install -g @microsoft/generator-sharepoint
+</code></pre>
+<p>可选工具</p>
+<ul>
+<li>Fiddler</li>
+<li>Postman</li>
+<li>Cmder for Windows</li>
+<li>Oh My Zsh for Mac</li>
+<li>Git 源控件工具</li>
+</ul>
+<h2 id="入门">入门</h2>
+<h3 id="新建项目-第一个-web-part">新建项目, 第一个 web part</h3>
+<p>Node 版本不能太高。。。。本地的 Node 11 在后面运行时报错。 降级为 8.x OK.</p>
+<pre><code class="language-shell">md helloworld-webpart
+cd helloworld-webpart
+
+# 运行 Yeoman SharePoint 生成器创建新的 HelloWorld Web 部件
+yo @microsoft/sharepoint
+</code></pre>
+<p>按下图，填写一些选项（就像 create-react-app 类似，创建一个前端项目），然后就会自动安装依赖和脚手架</p>
+<p><img src="/media/15520335233454/15523589032658.jpg" alt=""></p>
+<p>SharePoint 客户端开发工具使用 gulp 作为任务运行程序，以处理如下生成过程任务：</p>
+<ul>
+<li>捆绑和缩小 JavaScript 与 CSS 文件。</li>
+<li>运行工具，以在每次生成前调用捆绑和缩小任务。</li>
+<li>将 SASS 文件编译为 CSS。</li>
+<li>将 TypeScript 文件编译为 JavaScript。</li>
+</ul>
+<p><strong>学习的时候，不要选 React，发现有些范例代码可能不兼容， 后面“获取上下文”找不到数据</strong></p>
+<p>然后锁定依赖项的版本</p>
+<pre><code class="language-shell">npm shrinkwrap
+</code></pre>
+<h3 id="预览-web-part">预览 web part</h3>
+<p>在本地 Web 服务器上生成并运行它。 默认情况下，客户端工具链使用 <strong>HTTPS</strong> 终结点。 可以在位于 config 文件夹中的 serve.json 文件中配置此设置，但建议使用默认值。</p>
+<p>只能在开发环境中<strong>安装一次开发人员证书</strong>，因此，如果已在环境中执行此操作，则可以跳过该步骤</p>
+<pre><code class="language-shell">gulp trust-dev-cert
+
+# 输入电脑的root账号(或当前用户)的密码，新人这个自签名证书
+</code></pre>
+<p>然后生成并预览 Web 部件</p>
+<pre><code class="language-shell">gulp serve
+</code></pre>
+<p>然后打开 <code>localhost:4321</code></p>
+<h4 id="本地-sharepoint-workbench">本地 SharePoint Workbench</h4>
+<p><code>https://localhost:4321/temp/workbench.html</code></p>
+<p>是开发人员设计图面，可方便用户快速预览和测试 Web 部件，而无需在 SharePoint 中部署它们（本地模拟 sharepoint 环境）</p>
+<p>运行后，添加刚创建的 web part</p>
+<p><img src="/media/15520335233454/15523606561026.jpg" alt="-w754"></p>
+<p>组件出现后，可以编辑它</p>
+<p><img src="/media/15520335233454/15523607092728.jpg" alt=""></p>
+<p>现在，向属性窗格添加其他一些属性：复选框、下拉列表和开关。 首先，从框架中导入各自的属性窗格字段。</p>
+<p>滚动到文件顶部，并向 导入部分添加 <code>@microsoft/sp-webpart-base</code> 中的以下内容：</p>
+<pre><code class="language-js">import {
+  BaseClientSideWebPart,
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField, // 原来的3个
+  PropertyPaneCheckbox,
+  PropertyPaneDropdown,
+  PropertyPaneToggle // 新增加的
+} from '@microsoft/sp-webpart-base';
+</code></pre>
+<p><code>IHelloWorldWebPartProps</code>接口替换为以下代码</p>
+<pre><code class="language-js">export interface IHelloWorldWebPartProps {
+    description: string;
+    test: string;
+    test1: boolean;
+    test2: string;
+    test3: boolean;
+}
+</code></pre>
+<p><code>getPropertyPaneConfiguration</code>,添加下代码，用于添加新属性窗格字段，并将这些字段映射到各自的类型化对象</p>
+<pre><code class="language-js">//...   
+    groupFields: [
+        PropertyPaneTextField('description', {
+          label: strings.DescriptionFieldLabel
+        }),
+        // 新增加的
+        PropertyPaneTextField('test', {
+          label: 'Multi-line Text Field',
+          multiline: true
+        }),
+        PropertyPaneCheckbox('test1', {
+          text: 'Checkbox'
+        }),
+        PropertyPaneDropdown('test2', {
+          label: 'Dropdown',
+          options: [
+            { key: '1', text: 'One' },
+            { key: '2', text: 'Two' },
+            { key: '3', text: 'Three' },
+            { key: '4', text: 'Four' }
+          ]}),
+        PropertyPaneToggle('test3', {
+          label: 'Toggle',
+          onText: 'On',
+          offText: 'Off'
+        })
+</code></pre>
+<p>然后就可以访问这些属性</p>
+<pre><code class="language-js">&lt;p class=&quot;${ styles.description }&quot;&gt;${escape(this.properties.test)}&lt;/p&gt;
+</code></pre>
+<p>设置<strong>属性默认值</strong>，必须更新 Web 部件清单的<code>properties</code> 属性包(<code>HelloWorldWebPart.manifest.json</code>的<code>properties</code>)</p>
+<pre><code class="language-json">&quot;properties&quot;: {
+  &quot;description&quot;: &quot;HelloWorld&quot;,
+  &quot;test&quot;: &quot;Multi-line text field&quot;,
+  &quot;test1&quot;: true,
+  &quot;test2&quot;: &quot;2&quot;,
+  &quot;test3&quot;: true
+}
+</code></pre>
+<p>添加完后再回到 workbench, 点击铅笔，出现了几个组件</p>
+<p><img src="/media/15520335233454/15523673949030.jpg" alt="-w1244"></p>
+<h4 id="在-sharepoint-中预览-web-部件">在 SharePoint 中预览 Web 部件</h4>
+<p>另外，除了本地的这个 workbench ，还有一个 WorkBench 托管在 SharePoint服务器上（或云端），以<strong>预览和测试仍处于开发阶段的本地 Web 部件</strong>. 例如：</p>
+<p><a href="https://your-sharepoint-site.sharepoint.com/_layouts/workbench.aspx">https://your-sharepoint-site.sharepoint.com/_layouts/workbench.aspx</a></p>
+<p>主要优势在于，不仅可以在 SharePoint 上下文中运行，还可以<strong>与 SharePoint 数据进行交互</strong>。</p>
+<p>看到，这个托管在 SharePoint 上的“远端” WorkBench 能加载刚在“本地”创建的 web part!!</p>
+<p><img src="/media/15520335233454/15523622530559.jpg" alt="-w715"></p>
+<h3 id="在-vs-code-中打开项目">在 VS Code 中打开项目</h3>
+<p><img src="/media/15520335233454/15523608555978.jpg" alt="-w747"></p>
+<p>如果用 React 框架，还有如下的“组件”代码</p>
+<p><img src="/media/15520335233454/15523610714864.jpg" alt="-w545"></p>
+<p><img src="/media/15520335233454/15523610495971.jpg" alt="-w906"></p>
+<h3 id="连接到-sharepoint">连接到 SharePoint</h3>
+<h4 id="获取-web-part-的上下文信息">获取 web part 的上下文信息</h4>
+<pre><code class="language-js">&lt;p class=&quot;${ styles.description }&quot;&gt;Loading from ${escape(this.context.pageContext.web.title)}&lt;/p&gt;
+
+
+// 用 react 环境会报错 &quot;web undefined&quot; 得不到任何数据
+{escape(this.context.pageContext &amp;&amp; this.context.pageContext.web &amp;&amp; this.context.pageContext.web.title)}
+</code></pre>
+<p>本地会显示 from local&hellip;.  远端 workbench 会显示 from xxxx公司</p>
+<p><img src="/media/15520335233454/15523790813106.jpg" alt="-w1090"></p>
+<h4 id="使用-sharepoint-列表数据">使用 SharePoint 列表数据</h4>
+<p>需要列表模型才可开始使用 SharePoint 列表数据。检索列表需要两个模型</p>
+<ul>
+<li><code>ISPLists</code>（复数，是 ISPList 数组）</li>
+<li><code>ISPList</code>(单数，包含要连接到的 SharePoint 列表信息)</li>
+</ul>
+<pre><code class="language-js">export interface ISPLists {
+  value: ISPList[];
+}
+
+export interface ISPList {
+  Title: string;
+  Id: string;
+}
+</code></pre>
+<p>从<strong>模拟存储</strong>检索列表（在本地 Workbench 中进行测试，需要有返回模拟数据的模拟存储）</p>
+<p>新建<code>MockHttpClient.ts</code></p>
+<pre><code class="language-js">import { ISPList } from './HelloWorldWebPart';
+
+export default class MockHttpClient  {
+
+    private static _items: ISPList[] = [{ Title: 'Mock List', Id: '1' },
+                                        { Title: 'Mock List 2', Id: '2' },
+                                        { Title: 'Mock List 3', Id: '3' }];
+    
+    public static get(): Promise&lt;ISPList[]&gt; {
+    return new Promise&lt;ISPList[]&gt;((resolve) =&gt; {
+            resolve(MockHttpClient._items);
+        });
+    }
+}
+</code></pre>
+<p>然后导入</p>
+<pre><code class="language-js">import MockHttpClient from './MockHttpClient';
+
+</code></pre>
+<p>在类中添加以下私有方法，以模拟列表检索</p>
+<pre><code class="language-js">private _getMockListData(): Promise&lt;ISPLists&gt; {
+    return MockHttpClient.get()
+      .then((data: ISPList[]) =&gt; {
+        var listData: ISPLists = { value: data };
+        return listData;
+      }) as Promise&lt;ISPLists&gt;;
+  }
+</code></pre>
+<h4 id="使用-sharepoint-rest-api-从-sharepoint-网站检索列表">使用 SharePoint REST API 从 SharePoint 网站检索列表</h4>
+<p>执行 REST API 请求的帮助程序类 <code>spHttpClient</code>， 从这个 api 地址来查找列表</p>
+<p><code>https://yourtenantprefix.sharepoint.com/_api/web/lists</code></p>
+<p>首先要导入模块</p>
+<pre><code class="language-js">import {
+  SPHttpClient,
+  SPHttpClientResponse   
+} from '@microsoft/sp-http';
+</code></pre>
+<p>添加私有方法</p>
+<pre><code class="language-js">private _getListData(): Promise&lt;ISPLists&gt; {
+  return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + `/_api/web/lists?$filter=Hidden eq false`, SPHttpClient.configurations.v1)
+    .then((response: SPHttpClientResponse) =&gt; {
+      return response.json();
+    });
+}
+</code></pre>
+<h4 id="样式-scss-helloworldwebpartmodulescss">样式 （SCSS, HelloWorldWebPart.module.scss）</h4>
+<p>这个样式文件里定义的样式，在组件里使用方法为<code>&lt;div class=&quot;${styles.row}&quot;&gt;</code></p>
+<p>添加下面的代码</p>
+<pre><code class="language-css">.list {
+  color: #333333;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 10;
+  padding: 10;
+  line-height: 50px;
+  list-style-type: none;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+.listItem {
+  color: #333333;
+  vertical-align: center;
+  font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  *zoom: 1;
+  padding: 9px 28px 3px;
+  position: relative;
+}
+</code></pre>
+<h4 id="显示列表">显示列表</h4>
+<p>首先使用<code>EnvironmentType</code>模块来了解 Web 部件的运行环境</p>
+<pre><code class="language-js">import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+</code></pre>
+<p>然后添加私有方法，渲染列表, 其中<code>_renderListAsync</code>中，当本地环境，则获取 mock 数据，否则为 SharePoint 环境则调用<code>_getListData()</code></p>
+<pre><code class="language-js">private _renderListAsync(): void {
+    // Local environment
+    if (Environment.type === EnvironmentType.Local) {
+      this._getMockListData().then((response) =&gt; {
+        this._renderList(response.value);
+      });
+    }
+    else if (Environment.type == EnvironmentType.SharePoint || 
+              Environment.type == EnvironmentType.ClassicSharePoint) {
+      this._getListData()
+        .then((response) =&gt; {
+          this._renderList(response.value);
+        });
+    }
+  }
+
+private _renderList(items: ISPList[]): void {
+    let html: string = '';
+    items.forEach((item: ISPList) =&gt; {
+      html += `
+    &lt;ul class=&quot;${styles.list}&quot;&gt;
+      &lt;li class=&quot;${styles.listItem}&quot;&gt;
+        &lt;span class=&quot;ms-font-l&quot;&gt;${item.Title}&lt;/span&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;`;
+    });
+
+    const listContainer: Element = this.domElement.querySelector('#spListContainer');
+    listContainer.innerHTML = html;
+  }
+</code></pre>
+<p>修改 <code>render()</code>, 显示获取到的 list 数据，增加一个 <code>&lt;div id=&quot;spListContainer&quot; /&gt;</code>, 然后在最后添加<code>_renderListAsync</code></p>
+<pre><code class="language-js">//this.domElement.innerHTML = `
+//...
+
+&lt;div id=&quot;spListContainer&quot; /&gt;
+
+//&lt;/div&gt;
+//&lt;/div&gt;`;
+
+this._renderListAsync();
+</code></pre>
+<p>然后分别在本地和SharePoint 上的 workbench 查看下</p>
+<p>本地 OK 了</p>
+<p><img src="/media/15520335233454/15524408938335.jpg" alt="-w683"></p>
+<p>SharePoint 有个报错, 但也不影响把列表都展示出来了</p>
+<p><img src="/media/15520335233454/15524403838844.jpg" alt="-w1223"></p>
+<p><img src="/media/15520335233454/15524409395610.jpg" alt="-w604"></p>
+<h3 id="部署到-sharepoint">部署到 SharePoint</h3>
+<p>打包命令如下，此命令在“sharepoint/solution”文件夹中创建包<code>helloworld-webpart.sppkg</code>， 可以在 sharepoint/solution/debug 文件夹中查看原始包内容。</p>
+<pre><code class="language-shell">gulp package-solution
+</code></pre>
+<h4 id="部署到应用程序目录">部署到应用程序目录</h4>
+<p>转到站点的应用程序目录</p>
+<p>如果没有应用程序目录，SharePoint Online 管理员可以按照本指南中的说明创建一个应用程序目录：使用应用程序目录使自定义商业版应用可供 SharePoint Online 环境使用。</p>
+<p><a href="https://support.office.com/en-us/article/use-the-app-catalog-to-make-custom-business-apps-available-for-your-sharepoint-online-environment-0b6ab336-8b83-423f-a06b-bcc52861cba0">https://support.office.com/en-us/article/use-the-app-catalog-to-make-custom-business-apps-available-for-your-sharepoint-online-environment-0b6ab336-8b83-423f-a06b-bcc52861cba0</a></p>
+<p>将本地 helloworld-webpart.sppkg <strong>上传</strong>或拖放到应用程序目录中</p>
+<p>如果刚创建完这个 app 目录，马上上传，可能会一会</p>
+<h4 id="在网站上安装客户端解决方案">在网站上安装客户端解决方案</h4>
+<p>转到开发人员网站集或要用于测试的网站集
+选择顶部导航栏右侧的齿轮图标，再选择“添加应用”****，转到“应用”页面。</p>
+<p>先进入 Site Content</p>
+<p>然后</p>
+<p><img src="/media/15520335233454/15524446778754.jpg" alt="-w527"></p>
+<p><a href="https://pulse478.sharepoint.com/WorkFlow/_layouts/15/addanapp.aspx">https://pulse478.sharepoint.com/WorkFlow/_layouts/15/addanapp.aspx</a></p>
+<p>在“搜索”**** 框中，输入“helloworld”****，再按 Enter 筛选应用。</p>
+<h4 id="将-web-部件添加到-sharepoint-页面">将 Web 部件添加到 SharePoint 页面</h4>
+<p>新建一个页面 “Site Page”</p>
+<p><img src="/media/15520335233454/15524566168848.jpg" alt="-w407"></p>
+<p>然后向页面里插入这个刚经过几个步骤的 web part</p>
+<ol>
+<li>创建整个 sharepoint 的“私有 app 仓库目录”</li>
+<li>上传打包的 web part app</li>
+<li>添加到 sharepoint 下某个“站点”</li>
+<li>在站点里新建“页面”</li>
+</ol>
+<p><img src="/media/15520335233454/15524566982770.jpg" alt="-w609"></p>
+<p>搞定！</p>
+<p><img src="/media/15520335233454/15524568099025.jpg" alt="-w574"></p>
+<p>此时 JavaScript 和 CSS 等资源是本地计算机提供的，因此，除非你的 localhost 正在运行，否则 Web 部件的呈现将会失败</p>
+<p>在 dist 里有个文件<code>&lt;your-webpart-guid&gt;.manifest.json</code>，<code>internalModuleBaseUrls</code>属性仍引用你的本地计算机</p>
+<p><img src="/media/15520335233454/15524491677145.jpg" alt="-w530"></p>
+<p>将 Web 部件添加到 SharePoint 服务器端页面之前，先运行本地服务器。
+在包含 helloworld-webpart 项目目录的控制台窗口中，运行 gulp 任务，从 localhost 开始提供服务：</p>
+<pre><code class="language-shell"># --nobrowser 不会自动启动 SharePoint Workbench，因为在这种情况下不需要，我们将直接在 SharePoint 页面中托管 Web 部件。
+gulp serve --nobrowser
+</code></pre>
+<p>现在 编辑页面</p>
+<p>打开 Web 部件选取器，再选择“HelloWorld”**** Web 部件</p>
+<p>将会从本地环境加载 Web 部件资产。 必须启用浏览器以加载不安全脚本，才能加载本地计算机上托管的脚本。 请务必为此会话启用加载不安全脚本</p>
+<h3 id="office-365-cdn-托管客户端-web-部件">Office 365 CDN 托管客户端 Web 部件</h3>
+<p>暂略</p>
+<h4 id="自动打包和托管选项">自动打包和托管选项</h4>
+<p>使用 <code>--ship</code> 选项，JavaScript 文件、CSS 和其他资产一起打包到包内
+（自 SharePoint 框架 v1.4 起，静态资产默认打包到 sppkg 包内）</p>
+<p>如果在应用程序目录中部署包，资产自动通过 Office 365 CDN（若启用）或应用程序目录 URL 进行托管。 可以使用 package-solution.json 文件中的 includeClientSideAssets 设置控制此行为</p>
+<h3 id="使用-jqueryui-组件">使用 jQueryUI 组件</h3>
+<p>安装包</p>
+<pre><code class="language-shell">npm install jquery@2
+npm install jqueryui
+</code></pre>
+<p>安装项目的 Typings（TypeScript用到）</p>
+<pre><code class="language-shell">npm install @types/jquery@2
+npm install @types/jqueryui
+</code></pre>
+<h4 id="从-web-部件捆绑包中拆分出外部依赖项">从 Web 部件捆绑包中拆分出外部依赖项</h4>
+<p>默认添加的任何依赖项均将被捆绑到 Web 部件捆绑包，为了减少体积，需要解绑这些依赖项</p>
+<p>打开<code>config\config.json</code>（包含有关捆绑包和任何外部依赖项的信息）</p>
+<p>类似如下</p>
+<pre><code class="language-js">//....
+&quot;externals&quot;: {
+    &quot;jquery&quot;:&quot;node_modules/jquery/dist/jquery.min.js&quot;,
+    &quot;jqueryui&quot;:&quot;node_modules/jqueryui/jquery-ui.min.js&quot;
+  },
+  &quot;localizedResources&quot;: {
+    &quot;JQueryWebPartStrings&quot;: &quot;lib/webparts/jQuery/loc/{locale}.js&quot;
+  }
+</code></pre>
+<h4 id="构建组件jquery-ui-导入">构建组件（jQuery UI）, 导入</h4>
+<p>添加目录<code>src/webparts/jQuery</code></p>
+<p>创建文件 <code>MyAccordionTemplate.ts</code>, 对应的导出类</p>
+<pre><code class="language-js">export default class MyAccordionTemplate {
+    public static templateHtml: string =  `
+      &lt;div class=&quot;accordion&quot;&gt;
+        &lt;h3&gt;Section 1&lt;/h3&gt;
+        &lt;div&gt;
+            &lt;p&gt;
+            Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+            ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h3&gt;Section 2&lt;/h3&gt;
+        &lt;div&gt;
+            &lt;p&gt;
+            Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+            purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+            velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+            suscipit faucibus urna.
+            &lt;/p&gt;
+        &lt;/div&gt;
+        //3
+        
+        //4
+    &lt;/div&gt;`;
+}
+</code></pre>
+<p>然后在入口页中导入组件、jQuery、jQueryUI</p>
+<pre><code class="language-js">import * as jQuery from 'jquery';
+import 'jqueryui';
+
+import MyAccordionTemplate from './MyAccordionTemplate';
+</code></pre>
+<p>然后使用模<strong>块加载器</strong>加载一些外部 CSS 文件</p>
+<pre><code class="language-js">import { SPComponentLoader } from '@microsoft/sp-loader';
+</code></pre>
+<p>添加构造函数
+调用上下文父构造函数来初始化 Web 部件。
+从 CDN 异步加载手风琴小组件样式。</p>
+<pre><code class="language-js">public constructor() {
+    super();
+
+    SPComponentLoader.loadCss('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css');
+  }
+</code></pre>
+<p>然后修改 <code>render()</code>，显示组件，并修改显示属性，最后初始化组件</p>
+<pre><code class="language-js">this.domElement.innerHTML = MyAccordionTemplate.templateHtml;
+
+const accordionOptions: JQueryUI.AccordionOptions = {
+  animate: true,
+  collapsible: false,
+  icons: {
+    header: 'ui-icon-circle-arrow-e',
+    activeHeader: 'ui-icon-circle-arrow-s'
+  }
+};
+
+jQuery('.accordion', this.domElement).accordion(accordionOptions);
+
+</code></pre>
+<p>当然为了和之前的代码区分，可以单独写一个渲染函数</p>
+<pre><code class="language-js">private _renderMyAccordionTempalte(): void {
+    let html: string =       MyAccordionTemplate.templateHtml
+
+    const accordionContainer: Element = this.domElement.querySelector('#spAccordionContainer');
+    accordionContainer.innerHTML = html;
+
+    const accordionOptions: JQueryUI.AccordionOptions = {
+      animate: true,
+      collapsible: false,
+      icons: {
+        header: 'ui-icon-circle-arrow-e',
+        activeHeader: 'ui-icon-circle-arrow-s'
+      }
+    };
+
+    jQuery('.accordion', this.domElement).accordion(accordionOptions);
+  }
+</code></pre>
+<p>在render()里</p>
+<pre><code class="language-js">          &lt;div id=&quot;spListContainer&quot; /&gt;
+          &lt;div id=&quot;spAccordionContainer&quot; /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;`;
+
+      this._renderListAsync();
+
+      this._renderMyAccordionTempalte();
+</code></pre>
+<p><img src="/media/15520335233454/15524600542565.jpg" alt="-w786"></p>
+<h3 id="office-ui-fabric-react-组件">Office UI Fabric React 组件</h3>
+<p>Office UI Fabric React 是用于生成 Office 和 Office 365 体验的前端框架, 如 DocumentCard 组件</p>
+<p><img src="/media/15520335233454/15524601555453.jpg" alt="-w453"></p>
+<p><strong>注意，它是基于 React 的，因此要在 yo @microsoft/sharepoint 的时候 选择“React”作为框架</strong></p>
+<p><code>components/DocumentCardExample.tsx</code>默认内容如下</p>
+<pre><code class="language-js">export default class DocumentCardExample extends React.Component&lt;IDocumentCardExampleProps, {}&gt; {
+  public render(): React.ReactElement&lt;IDocumentCardExampleProps&gt; {
+    return (
+      &lt;div className={ styles.documentCardExample }&gt;
+        &lt;div className={ styles.container }&gt;
+          &lt;div className={ styles.row }&gt;
+            &lt;div className={ styles.column }&gt;
+              &lt;span className={ styles.title }&gt;Welcome to SharePoint!&lt;/span&gt;
+              &lt;p className={ styles.subTitle }&gt;Customize SharePoint experiences using web parts.&lt;/p&gt;
+              &lt;p className={ styles.description }&gt;{escape(this.props.description)}&lt;/p&gt;
+              &lt;a href=&quot;https://aka.ms/spfx&quot; className={ styles.button }&gt;
+                &lt;span className={ styles.label }&gt;Learn more&lt;/span&gt;
+              &lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p><code>DocumentCardExampleWebPart.ts</code>的<code>render()</code>内容如下</p>
+<pre><code class="language-js">public render(): void {
+    const element: React.ReactElement&lt;IDocumentCardExampleProps &gt; = React.createElement(
+      DocumentCardExample,
+      {
+        description: this.properties.description
+      }
+    );
+</code></pre>
+<p>开始添加 Office UI Fabric 组件.</p>
+<p>新建一个组件<code>components/MyFabricComponent.tsx</code>，修改 render(), 其中<code>previewProps</code> 属性包含 <code>DocumentCardPreview</code> 的一些属性, 在后面使用这个组件的时候传入。</p>
+<pre><code class="language-js">import * as React from 'react';
+import styles from './PulseWorkflow.module.scss';
+import { IPulseWorkflowProps } from './IPulseWorkflowProps';
+import { escape } from '@microsoft/sp-lodash-subset';
+import {
+  DocumentCard,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  DocumentCardActivity,
+  IDocumentCardPreviewProps
+} from 'office-ui-fabric-react/lib/DocumentCard';
+
+export default class MyFabricComponent extends React.Component&lt;IPulseWorkflowProps, {}&gt; {
+  public render(): JSX.Element {
+    const previewProps: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          previewImageSrc: String(require('./document-preview.png')),
+          iconSrc: String(require('./icon-ppt.png')),
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        }
+      ],
+    };
+
+    return (
+      &lt;DocumentCard onClickHref='http://bing.com'&gt;
+        &lt;DocumentCardPreview { ...previewProps } /&gt;
+        &lt;DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx' /&gt;
+        &lt;DocumentCardActivity
+          activity='Created Feb 23, 2016'
+          people={
+            [
+              { name: 'Kat Larrson', profileImageSrc: String(require('./avatar-kat.png')) }
+            ]
+          }
+        /&gt;
+      &lt;/DocumentCard&gt;
+    );
+  }
+}
+</code></pre>
+<p>导入并使用在 render() 里</p>
+<pre><code class="language-js">import MyFabricComponent from './components/MyFabricComponent';
+
+    public render(): void {
+
+        const element: React.ReactElement&lt;IPulseWorkflowProps &gt; = React.createElement(
+            MyFabricComponent,
+</code></pre>
+<p>看到这里引用图片<strong>相对路径</strong>使用的<code>require()</code>，因此需要对<code>gulpfile.js</code>文件进行一些设置，以便 webpack 打包工具能正常处理
+。在<code>build.initialize(gulp);</code>这样的上面添加代码，类似下面</p>
+<pre><code class="language-js">'use strict';
+
+const gulp = require('gulp');
+const build = require('@microsoft/sp-build-web');
+build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
+
+// add code
+build.configureWebpack.mergeConfig({  
+    additionalConfiguration: (generatedConfiguration) =&gt; {
+        if (build.getConfig().production) {
+            var basePath = build.writeManifests.taskConfig.cdnBasePath;
+            if (!basePath.endsWith('/')) {
+                basePath += '/';
+            }
+            generatedConfiguration.output.publicPath = basePath;
+        }
+        else {
+            generatedConfiguration.output.publicPath = &quot;/dist/&quot;;
+        }
+        return generatedConfiguration;
+    }
+});
+
+build.initialize(gulp);
+</code></pre>
+<p>然后复制3张图片到<code>src\webparts\documentCardExample\components</code>目录</p>
+<p>avatar-kat.png
+icon-ppt.png
+document-preview.png</p>
+<p><img src="/media/15520335233454/15524633926155.jpg" alt="-w491"></p>
+<h3 id="webpart-预配-assets">webpart 预配 assets</h3>
+<p>[看不太懂，暂缓]</p>
+<p>创建“sharepoint/assets”**** 文件夹。将 SharePoint 资产预配到网站，需要向“assets”文件夹创建所需的 XML 文件。支持的元素</p>
+<p>字段/网站列
+内容类型
+列表实例
+包含自定义架构的列表实例</p>
+<p>新建“elements.xml”**** 文件</p>
+<h3 id="部署到-azure-cdn">部署到 Azure CDN</h3>
+<h3 id="生成-teams-选项卡">生成 Teams 选项卡</h3>
+<h2 id="基本信息">基本信息</h2>
+<h3 id="指定-web-部件属性值类型">指定 Web 部件属性值类型</h3>
+<p>若要指定 Web 部件属性的配置，需要替代 <code>propertiesMetadata</code> getter.</p>
+<p>propertiesMetadata 方法返回对象，其中属性为指定 Web 部件属性名的字符串，值为指定 SharePoint 应如何处理特定属性的对象</p>
+<pre><code class="language-js">import {
+  BaseClientSideWebPart,
+  IPropertyPaneConfiguration,
+  PropertyPaneTextField,
+  IWebPartPropertiesMetadata
+} from '@microsoft/sp-webpart-base';
+
+// ...
+
+export default class ArticleLinkWebPart extends BaseClientSideWebPart&lt;IArticleLinkWebPartProps&gt; {
+  // ...
+  protected get propertiesMetadata(): IWebPartPropertiesMetadata {
+    return {
+      'title': { isSearchablePlainText: true },
+      'intro': { isHtmlString: true },
+      'image': { isImageSource: true },
+      'url': { isLink: true }
+    };
+  }
+  // ...
+}
+</code></pre>
+<h3 id="使用属性窗格来配置-web-部件的多个属性配置图标全宽列隐藏">使用属性窗格来配置 Web 部件的多个属性，配置图标、全宽列、隐藏</h3>
+<h3 id="预配置-web-part">预配置 web part</h3>
+<h3 id="验证属性">验证属性</h3>
+<h3 id="单部件页面与多部件页面">单部件页面与多部件页面</h3>
+<p>SingleWebPartAppPage / Article 类型</p>
+<h3 id="在-web-part-之间共享数据重用已经加载的数据">在 web part 之间共享数据（重用已经加载的数据）</h3>
+<p>一个负责加载数据的示例服务</p>
+<pre><code class="language-js">import { IDocument } from './IDocument';
+
+export class DocumentsService {
+    public static getRecentDocument(): Promise&lt;IDocument&gt; {
+        return new Promise&lt;IDocument&gt;((resolve: (document: IDocument) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            // [...] reach out to a remote API
+            resolve(recentDocument);
+        });
+    }
+
+    public static getRecentDocuments(startFrom: number = 0): Promise&lt;IDocument[]&gt; {
+        return new Promise&lt;IDocument[]&gt;((resolve: (documents: IDocument[]) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            // [...] reach out to a remote API
+            resolve(recentDocuments);
+        });
+    }
+}
+</code></pre>
+<p>然后 Web 部件通过以下代码使用此服务</p>
+<pre><code class="language-js">import { DocumentsService, IDocument } from '../../services';
+
+export default class RecentDocumentsWebPart extends BaseClientSideWebPart&lt;IRecentDocumentsWebPartProps&gt; {
+
+  public render(): void {
+    this.context.statusRenderer.displayLoadingIndicator(this.domElement, 'documents');
+
+    DocumentsService.getRecentDocuments(this.properties.startFrom)
+      .then((documents: IDocument[]): void =&gt; {
+        const element: React.ReactElement&lt;IRecentDocumentsProps&gt; = React.createElement(
+          RecentDocuments,
+          {
+            documents: documents
+          }
+        );
+
+        this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+        ReactDom.render(element, this.domElement);
+      });
+  }
+
+  // ...
+}
+</code></pre>
+<p>为了缩短页面加载时间并减少网络流量，可以在生成 Web 部件时将部件设为只加载一次数据。这样一来，只要页面上的一个 Web 部件请求获取一组特定数据，就会重用之前加载过的数据（若有）。</p>
+<h4 id="有几种办法全局变量cookiestorage">有几种办法，全局变量/cookie/storage</h4>
+<ol>
+<li>存储到全局变量（不推荐）</li>
+<li>cookies</li>
+<li>session storage 或 local storage</li>
+</ol>
+<p>改造前面的代码，增加一个 <code>ensureRecentDocuments</code>，用<code>(window as any).loadedData</code>的值来判断是直接从已经得到的本地数据中获取，还是从远程获取。</p>
+<p>查看开发人员工具日志，便会发现此时远程 API 仅调用一次</p>
+<pre><code class="language-js">import { IDocument } from './IDocument';
+
+export class DocumentsService {
+    public static getRecentDocument(): Promise&lt;IDocument&gt; {
+        return new Promise&lt;IDocument&gt;((resolve: (document: IDocument) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            this.ensureRecentDocuments()
+                .then((recentDocuments: IDocument[]): void =&gt; {
+                    resolve(recentDocuments[0]);
+                });
+        });
+    }
+
+    public static getRecentDocuments(startFrom: number = 0): Promise&lt;IDocument[]&gt; {
+        return new Promise&lt;IDocument[]&gt;((resolve: (documents: IDocument[]) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            this.ensureRecentDocuments()
+                .then((recentDocuments: IDocument[]): void =&gt; {
+                    resolve(recentDocuments.slice(startFrom, startFrom + 3));
+                });
+        });
+    }
+
+    private static ensureRecentDocuments(): Promise&lt;IDocument[]&gt; {
+        return new Promise&lt;IDocument[]&gt;((resolve: (recentDocuments: IDocument[]) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            if ((window as any).loadedData) {
+                // data already loaded so reuse
+                resolve((window as any).loadedData);
+                return;
+            }
+
+            if ((window as any).loadingData) {
+                // data is being loaded, wait a moment and try again
+                window.setTimeout((): void =&gt; {
+                    DocumentsService.ensureRecentDocuments()
+                        .then((recentDocuments: IDocument[]): void =&gt; {
+                            resolve(recentDocuments);
+                        });
+                }, 100);
+            }
+            else {
+                (window as any).loadingData = true;
+                // data not loaded yet, call the remote API,
+                // store the data for subsequent requests, and resolve the Promise
+                (window as any).loadedData = loadedData;
+                (window as any).loadingData = false;
+                resolve((window as any).loadedData);
+            }
+        });
+    }
+}
+</code></pre>
+<p>cookie 的方法类似，略有改造(可以借助 <code>js-cookie</code> 包来简化 Cookie 的使用)</p>
+<pre><code class="language-js">// 类中添加 cookie 变量名
+private static cookieName: string = 'recentDocuments';
+
+private static ensureRecentDocuments(): Promise&lt;IDocument[]&gt; {
+    return new Promise&lt;IDocument[]&gt;((resolve: (recentDocuments: IDocument[]) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+        //修改数据读取来源从 cookie
+        let loadedData: IDocument[] = Cookies.getJSON(DocumentsService.cookieName);
+        if (loadedData) {
+            // data already loaded so reuse
+            resolve(loadedData);
+            
+        //
+        else {
+            (window as any).loadingData = true;
+            // data not loaded yet, call the remote API,
+            // store the data for subsequent requests, and resolve the Promise
+            Cookies.set(DocumentsService.cookieName, loadedData, {
+                expires: 1,
+                path: '/'
+            });
+</code></pre>
+<p>本地存储的方式也只需要简单修改</p>
+<pre><code class="language-js">private static storageKey: string = 'recentDocuments';
+
+let loadedData: IDocument[] = localStorage ? JSON.parse(localStorage.getItem(DocumentsService.storageKey)) : undefined;
+    if (loadedData) {
+    
+    else {
+        (window as any).loadingData = true;
+        // data not loaded yet, call the remote API,
+        // store the data for subsequent requests, and resolve the Promise
+        if (localStorage) {
+            localStorage.setItem(DocumentsService.storageKey, JSON.stringify(loadedData));
+        }
+</code></pre>
+<h4 id="实现这个-web-part最近几个修改的文档">实现这个 web part（最近几个修改的文档）</h4>
+<p>好了，现在来实现这个 web part. （创建项目略，使用 React）</p>
+<p>从web part 的接口中删掉默认的那个 description
+同时 从 Web 部件的 <code>render</code> 中删除标准 description 属性
+还有<code>getPropertyPaneConfiguration</code>中</p>
+<pre><code class="language-js">export interface IRecentDocumentsWebPartProps {
+
+}
+
+export default class RecentDocumentsWebPart extends BaseClientSideWebPart&lt;IRecentDocumentsWebPartProps&gt; {
+  // ...
+  public render(): void {
+    const element: React.ReactElement&lt;IRecentDocumentsProps &gt; = React.createElement(
+      RecentDocuments,
+      {
+      }
+      
+
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    groups: [
+        {
+          groupName: strings.BasicGroupName,
+          groupFields: []
+</code></pre>
+<p><strong>创建两种数据：document  documentActivity 对应的接口文件(规范)</strong></p>
+<p><code>IDocumentActivity</code> 接口（IDocumentActivity.ts 文件）:显示特定文档的活动信息</p>
+<pre><code class="language-js">export interface IDocumentActivity {
+    title: string;
+    actorName: string;
+    actorImageUrl: string;
+}
+</code></pre>
+<p><code>IDocument</code> 接口(IDocument.ts): 卡片所必需的文档及全部信息。其中 activity 属性就是对应的 IDocumentActivity 接口</p>
+<pre><code class="language-js">import { IDocumentActivity } from './IDocumentActivity';
+
+export interface IDocument {
+    title: string;
+    url: string;
+    imageUrl: string;
+    iconUrl: string;
+    activity: IDocumentActivity;
+}
+</code></pre>
+<p><strong>创建一个 React 组件 RecentDocuments</strong></p>
+<p>在 component 目录新建组件及对应的接口 <code>RecentDocuments.tsx</code> &amp;<code>IRecentDocumentsProps.ts</code></p>
+<p>在接口<code>component\IRecentDocumentsProps.ts</code>中, 定义</p>
+<pre><code class="language-js">import { IDocument } from '../IDocument';
+
+export interface IRecentDocumentsProps {
+  documents: IDocument[];
+}
+</code></pre>
+<p>组件<code>RecentDocuments.tsx</code>是一个 React Component，重要的已经注释</p>
+<pre><code class="language-js">import * as React from 'react';
+import {
+  DocumentCard,
+  DocumentCardType,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  DocumentCardActivity
+} from 'office-ui-fabric-react';
+
+// document 数据需要符合接口 IDocument
+import { IDocument } from '../IDocument';
+
+import styles from './RecentDocuments.module.scss';
+
+// 这个组件要符合 IRecentDocumentsProps 接口规范
+import { IRecentDocumentsProps } from './IRecentDocumentsProps';
+
+export default class RecentDocuments extends React.Component&lt;IRecentDocumentsProps, any&gt; {
+  public render(): React.ReactElement&lt;IRecentDocumentsProps&gt; {
+    
+    // this.props.documents 稍后从父组件传入，这里进行遍历，组成一个“列表卡片”组件： documents 
+    const documents: JSX.Element[] = this.props.documents.map((document: IDocument, index: number, array: IDocument[]): JSX.Element =&gt; {
+      return (
+        &lt;DocumentCard type={DocumentCardType.compact} onClickHref={document.url} accentColor='#ce4b1f' key={index}&gt;
+          &lt;DocumentCardPreview previewImages={[{
+            name: document.title,
+            url: document.url,
+            previewImageSrc: document.imageUrl,
+            iconSrc: document.iconUrl,
+            width: 144
+          }]} /&gt;
+          &lt;div className='ms-DocumentCard-details'&gt;
+            &lt;DocumentCardTitle
+              title={document.title}
+              shouldTruncate={true} /&gt;
+            &lt;DocumentCardActivity
+              activity={document.activity.title}
+              people={
+                [
+                  { name: document.activity.actorName, profileImageSrc: document.activity.actorImageUrl }
+                ]
+              }
+              /&gt;
+          &lt;/div&gt;
+        &lt;/DocumentCard&gt;
+      );
+    });
+    return (
+      &lt;div className={styles.helloWorld}&gt;
+        {documents}
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p><strong>模拟数据 data/documents.ts</strong></p>
+<p>可以用一些模拟数据生成库来得到数据。这里简化下，直接使用一个数组</p>
+<pre><code class="language-js">import {IDocument} from '../components/IDocument'
+
+export let documents: IDocument[] = [
+  {
+      title: 'Proposal for Jacksonville Expansion Ad Campaign',
+      url: 'https://contoso-my.sharepoint.com/personal/miriamg_contoso_onmicrosoft_com/_layouts/15/WopiFrame.aspx?sourcedoc=%7BCBF65183-0378-485B-AB67-791E0FC81D72%7D&amp;file=Jacksonville%20Ad%20Campaign%20(draft).docx&amp;action=view&amp;DefaultItemOpen=1',
+      imageUrl: 'https://contoso-my.sharepoint.com/_layouts/15/getpreview.ashx?guidSite=ca6fa69c-347d-4c07-886c-67105dc5a357&amp;guidWeb=237a3f3f-59a4-46e8-b0a8-6effd78bd327&amp;guidFile=%7BCBF65183-0378-485B-AB67-791E0FC81D72%7D&amp;docId=17592965474834&amp;metadataToken=&amp;clienttype=DelveWebHomeFeed',
+      iconUrl: '',
+      activity: {
+          title: 'Modified, January 25 2017',
+          actorName: 'Miriam Graham',
+          actorImageUrl: 'https://contoso-my.sharepoint.com/_vti_bin/DelveApi.ashx/people/profileimage?userId=miriamg@contoso.onmicrosoft.com&amp;size=L'
+      }
+  },
+  //.....
+</code></pre>
+<p><strong>在 web part 入口文件 RecentDocumentsWebPart.ts 中使用 RecentDocuments 子组件</strong></p>
+<pre><code class="language-js">import { IDocument } from './IDocument';
+import { RecentDocuments } from './component/RecentDocuments'
+
+export default class PulseWorkflowWebPart extends BaseClientSideWebPart&lt;IPulseWorkflowWebPartProps&gt; {
+
+  private static documents: IDocument[] = documents
+
+  public render(): void {
+
+    const element: React.ReactElement&lt;IRecentDocumentsProps &gt; = React.createElement(
+      RecentDocuments,
+      {
+        documents: PulseWorkflowWebPart.documents.slice(0, 3)
+      }
+    );
+
+    ReactDom.render(element, this.domElement);
+  }
+</code></pre>
+<h4 id="重用公共代码第二个组件-最近修改的单个文档">重用公共代码，第二个组件: 最近修改的单个文档</h4>
+<p>向项目添加第二个 Web 部件。</p>
+<p>在<strong>本项目内</strong>，再次运行命令，输入第二个组件的名称 RecentDocument</p>
+<pre><code class="language-shell">yo @microsoft/sharepoint
+</code></pre>
+<p>这个项目下就有两个 web parts 了</p>
+<p><img src="/media/15520335233454/15525529620745.jpg" alt="-w215"></p>
+<p>像前面的组件一样，删掉默认生成的代码</p>
+<p>前面时“多个文档”，这里是“单个文档”，但是它们都使用了相同的数据结构来表示文档</p>
+<p>因此首先可以重用的就是<code>IDocument</code> 和 <code>IDocumentActivity</code> 接口</p>
+<p>从 ./src/webparts/recentDocuments 文件夹将 IDocument.ts 和 IDocumentActivity.ts <strong>向上移动一层</strong>至 ./src/webparts 文件夹。</p>
+<p><img src="/media/15520335233454/15525542502364.jpg" alt="-w229"></p>
+<p>更新文件的引用路径（新版 VSCode 会提示是否自动更新引用，但感觉不太智能，没有自动更新成功，怀念 WebStorm&hellip;.）</p>
+<p><img src="/media/15520335233454/15525543204965.jpg" alt="-w345"></p>
+<p>要手动修改。</p>
+<p>后面的新建组件略，就是名称改为 <code>IRecentDocumentProps</code>  /<code>RecentDocument</code>，代码不需要用 map 来遍历列表</p>
+<pre><code class="language-js">//...
+export default class RecentDocument extends React.Component&lt;IRecentDocumentProps, any&gt; {
+  const document: IDocument = this.props.document;
+
+    return (
+      &lt;div className={styles.helloWorld}&gt;
+        &lt;DocumentCard onClickHref={document.url}&gt;
+</code></pre>
+<h4 id="集中加载数据">集中加载数据</h4>
+<p><strong>创建 services 目录</strong></p>
+<p>当前实现是独立开发的两个 Web 部件的典型示例。 如果将这两个部件置于同一页面上，并且从 SharePoint 加载数据，那么它们将执行两个单独请求来检索相似信息。 如果在某些时候必须更改从哪里加载最近修改的多个文档的相关信息，还必须更新这两个 Web 部件。
+为了提升页面加载性能，并简化 Web 部件代码的维护过程，可以集中处理数据检索逻辑，并让一次检索到的数据可供这两个 Web 部件同时使用。</p>
+<p>创建目录 <code>/src/services/documentsService</code>, 然后再次移动上面两个文件<code>IDocument.ts</code>和<code>IDocumentActivity.ts</code>到里面</p>
+<p><img src="/media/15520335233454/15526110230977.jpg" alt="-w194"></p>
+<p><strong>数据访问服务</strong></p>
+<p>新建文件 <code>DocumentsService.ts</code> （文件服务类）， 把前面 documents 数组，移动到这个 service 类里面. 目前它只是一个静态数据集，后面你需要更改其实现，以从 SharePoint 文档库加载真实的数据</p>
+<p>然后创建两个私有方法，<code>getRecentDocuments</code> 和 <code>getRecentDocument</code></p>
+<pre><code class="language-js">import { IDocument } from './IDocument';
+
+export class DocumentsService {
+    private static documents: IDocument[] = [
+        {
+            title: 'Proposal for Jacksonville Expansion Ad Campaign',
+            url: 'https://contoso-my.sharepoint.com/personal/miriamg_contoso_onmicrosoft_com/_layouts/15/WopiFrame.aspx?sourcedoc=%7BCBF65183-0378-485B-AB67-791E0FC81D72%7D&amp;file=Jacksonville%20Ad%20Campaign%20(draft).docx&amp;action=view&amp;DefaultItemOpen=1',
+            imageUrl: 'https://contoso-my.sharepoint.com/_layouts/15/getpreview.ashx?guidSite=ca6fa69c-347d-4c07-886c-67105dc5a357&amp;guidWeb=237a3f3f-59a4-46e8-b0a8-6effd78bd327&amp;guidFile=%7BCBF65183-0378-485B-AB67-791E0FC81D72%7D&amp;docId=17592965474834&amp;metadataToken=&amp;clienttype=DelveWebHomeFeed',
+            iconUrl: '',
+            activity: {
+            //....
+        
+    public static getRecentDocument(): Promise&lt;IDocument&gt; {
+        return new Promise&lt;IDocument&gt;((resolve: (document: IDocument) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            window.setTimeout((): void =&gt; {
+                resolve(DocumentsService.documents[0]);
+            }, 300);
+        });
+    }
+
+    public static getRecentDocuments(startFrom: number = 0): Promise&lt;IDocument[]&gt; {
+        return new Promise&lt;IDocument[]&gt;((resolve: (documents: IDocument[]) =&gt; void, reject: (error: any) =&gt; void): void =&gt; {
+            window.setTimeout((): void =&gt; {
+                resolve(DocumentsService.documents.slice(startFrom, startFrom + 3));
+            }, 300);
+        });
+    }
+}
+</code></pre>
+<p><strong>注意</strong>目前这个类能为所有 Web 部件提供一个集中点以访问它们的数据，但该类暂时还不存储 以前 加载的数据</p>
+<p><strong>避免频繁修改引用路径</strong></p>
+<p>因为这里同时引用了 IDocument.ts 和 IDocumentActivity.ts ，在移动它们到某个目录（如 service）的时候，还需要去修改大量已经引用了他们的文件中的代码，该成新路径。</p>
+<p>为了避免这个问题，可以使用 <code>barrel</code>（桶？）, 它是一个容器，合并了多个导出对象。 （其实就类似 React 组件集里的那个 index.jsx 把所有组件一次导出）</p>
+<p>新建文件<code>./src/services/documentsService/index.ts</code></p>
+<pre><code class="language-js">export { IDocument } from './IDocument';
+export { IDocumentActivity } from './IDocumentActivity';
+export { DocumentsService } from './DocumentsService';
+</code></pre>
+<p>这样就只需要把前面的代码</p>
+<pre><code class="language-js">import { IDocument } from '../services/documentsService/IDocument.ts';
+</code></pre>
+<p>改成下面的，不需要指定<code>IDocument.ts</code>的具体路径，而是由 barrel 入口文件 <code>index.ts</code>集中管理</p>
+<pre><code class="language-js">import { IDocument } from '../services/documentsService';
+</code></pre>
+<h1 id="visualstudio-code-扩展">VisualStudio Code 扩展</h1>
+<p><a href="https://medium.com/niftit-sharepoint-blog/saying-goodbye-to-sharepoint-designer-ac939a0b79ba">https://medium.com/niftit-sharepoint-blog/saying-goodbye-to-sharepoint-designer-ac939a0b79ba</a></p>
+<p><a href="https://docs.sitego.co/spgo/">https://docs.sitego.co/spgo/</a></p>
+<p>一直不清楚怎么下载 wordspace 的文件，路径问题？</p>
+<p>卡在</p>
+<p><img src="/media/15520335233454/15523570909147.jpg" alt="-w179"></p>
+<h1 id="参考资料">参考资料</h1>
+<h2 id="全部-ms-api-azure-office-等">全部 MS API （azure office 等）</h2>
+<p>CRUD Operation On List Items Using REST API Services In SharePoint 2013</p>
+<p><a href="https://www.c-sharpcorner.com/article/crud-operation-on-list-items-using-rest-api-services-in-shar/">https://www.c-sharpcorner.com/article/crud-operation-on-list-items-using-rest-api-services-in-shar/</a></p>
+<p><a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/5128f3ab-ea2c-49e3-8d3a-706002993cc9/update-item-using-rest-api-sharepoint-2013?forum=sharepointdevelopment">https://social.msdn.microsoft.com/Forums/vstudio/en-US/5128f3ab-ea2c-49e3-8d3a-706002993cc9/update-item-using-rest-api-sharepoint-2013?forum=sharepointdevelopment</a></p>
+<p><a href="http://sharepointcoding.com/2017/10/03/updating-list-item-sharepoint-20162013-using-rest-api/">http://sharepointcoding.com/2017/10/03/updating-list-item-sharepoint-20162013-using-rest-api/</a></p>
+<p><a href="http://sharepoint4us.blogspot.com/2015/03/crud-operations-using-rest-apis-in.html">http://sharepoint4us.blogspot.com/2015/03/crud-operations-using-rest-apis-in.html</a></p>
+<p><strong>more</strong>
+<a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint">https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/complete-basic-operations-using-javascript-library-code-in-sharepoint</a></p>
+<p><a href="https://gitbrent.github.io/SpRestLib/">https://gitbrent.github.io/SpRestLib/</a></p>
+<p><a href="https://collab365.community/javascript-libraries-for-net-sharepoint-developers/">https://collab365.community/javascript-libraries-for-net-sharepoint-developers/</a></p>
+<p><strong>auth</strong></p>
+<p><a href="http://www.whypad.com/posts/authenticate-sharepoint-rest-call-in-a-rest-client/1169/">http://www.whypad.com/posts/authenticate-sharepoint-rest-call-in-a-rest-client/1169/</a></p>
+<h1 id="sprestlib">SpRestLib</h1>
+<p><a href="https://gitbrent.github.io/SpRestLib">https://gitbrent.github.io/SpRestLib</a></p>
+<h2 id="list">list</h2>
+<h3 id="list-info">list info</h3>
+<p><strong>cols()</strong></p>
+<pre><code class="language-js">sprLib.list('Announcements').cols()
+.then(function(arrayResults){ console.table(arrayResults) });
+</code></pre>
+<p>这里有个技巧<code>console.table()</code>直接打印表格</p>
+<h3 id="items">items</h3>
+<h4 id="get">get</h4>
+<p>注意字段是两个单词，中间有空白的 <code>Employee\ Name</code>,要替换成  _x0020(在上面的 输出中，展开 Array 可以看到)</p>
+<p>像下面这种，有人创建的时候，在末尾多打了个空格！</p>
+<p><img src="/media/15520335233454/15526215535239.jpg" alt="-w398"></p>
+<pre><code class="language-js">sprLib.list('PulseTravelBusinessTest').items( ['Id','Title'] )
+.then(arrData =&gt; console.table(arrData))
+.catch(errMsg =&gt; console.error(errMsg));
+</code></pre>
+<p>如果还是不行。改成(文档里还能指定更多 query 条件，如范围，limit 等)</p>
+<p>参数详解 <a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/use-odata-query-operations-in-sharepoint-rest-requests#Anchor_7">https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/use-odata-query-operations-in-sharepoint-rest-requests#Anchor_7</a></p>
+<pre><code class="language-js">sprLib.list('PulseTravelBusinessTest').items({
+    listCols: {
+        id:      { dataName:'ID' },
+        budget:   { dataName:'Budget_x0020_Currency_x0020_' },
+    },
+    queryLimit:   3
+})
+.then(function(arrData){ console.table(arrData) })
+.catch(function(errMsg){ console.error(errMsg) });
+</code></pre>
+<p>发现**“person/group”类型字段**，转码后还是错误，拿不到字段</p>
+<p><img src="/media/15520335233454/15526224056421.jpg" alt="-w1123"></p>
+<p>去掉 items()里的参数</p>
+<pre><code class="language-js">sprLib.list('PulseTravelBusinessTest').items()
+.then(arrData =&gt; console.table(arrData))
+.catch(errMsg =&gt; console.error(errMsg));
+</code></pre>
+<p>发现确实没有这个名称？？？</p>
+<p><img src="/media/15520335233454/15526262865590.jpg" alt="-w392"></p>
+<p>然后用 Employee_NameId 来得到数据 (后面的<code>user()</code>)</p>
+<p><a href="https://www.c-sharpcorner.com/article/fetch-user-details-and-profile-picture-from-person-or-group-field-using-rest-api/">https://www.c-sharpcorner.com/article/fetch-user-details-and-profile-picture-from-person-or-group-field-using-rest-api/</a></p>
+<p>确实要加一个 <code>$expend</code></p>
+<p><a href="https://sharepoint.stackexchange.com/questions/171288/rest-expand-people-column">https://sharepoint.stackexchange.com/questions/171288/rest-expand-people-column</a></p>
+<p>产看源码</p>
+<p><img src="/media/15520335233454/15526272442155.jpg" alt="-w891"></p>
+<p>这里解释了，是因为 user 实际上是一个“资源id&rdquo;,它关联到了 user 表，</p>
+<p><a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/use-odata-query-operations-in-sharepoint-rest-requests#Anchor_7">https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/use-odata-query-operations-in-sharepoint-rest-requests#Anchor_7</a></p>
+<p>还有，”关联“类型的，要用斜杠分开</p>
+<p><a href="https://bob1german.com/2015/09/16/how-to-read-information-in-a-sharepoint-person-field-via-the-rest-api/">https://bob1german.com/2015/09/16/how-to-read-information-in-a-sharepoint-person-field-via-the-rest-api/</a></p>
+<p><img src="/media/15520335233454/15526303794476.jpg" alt="-w599"></p>
+<p>解决</p>
+<p><a href="https://stackoverflow.com/questions/52955516/get-people-and-group-column-in-sharepoint-by-using-of-rest-api">https://stackoverflow.com/questions/52955516/get-people-and-group-column-in-sharepoint-by-using-of-rest-api</a></p>
+<p><a href="https://social.technet.microsoft.com/wiki/contents/articles/31210.sharepoint-2013-get-user-details-from-person-or-group-field-using-rest-api.aspx">https://social.technet.microsoft.com/wiki/contents/articles/31210.sharepoint-2013-get-user-details-from-person-or-group-field-using-rest-api.aspx</a></p>
+<h4 id="create">create</h4>
+<pre><code class="language-js">sprLib.list('Employees')
+.create({
+    Name: 'Marty McFly',
+    Badge_x0020_Number: 12345,
+    Hire_x0020_Date: new Date(),
+    Active: true
+})
+.then(function(objItem){
+    console.log('New Item:');
+    console.table(objItem);
+})
+.catch(function(strErr){ console.error(strErr); });
+</code></pre>
+<h2 id="users">users</h2>
+<p><strong>info()</strong></p>
+<pre><code class="language-js">sprLib.user({ email:'brent@microsoft.com' }).info()
+.then(function(objUser){ console.table([objUser]); });
+</code></pre>
+<p>或者参数是 id (看前面那一节内容)  <code>{id: 1584}</code></p>
+<p><img src="/media/15520335233454/15526284321119.jpg" alt="-w1097"></p>
+<p><strong>groups()</strong></p>
+<pre><code class="language-js">sprLib.user().groups()
+.then(function(arrGroups){ console.table(arrGroups) });
+
+</code></pre>
+<p><strong>profile()</strong></p>
+<pre><code class="language-js">sprLib.user(options).profile(['DirectReports', 'Email'])
+</code></pre>
+<h2 id="promise">Promise</h2>
+<pre><code class="language-js">var item = {
+  EmpName:  'Marty McFly',
+  EmpNumb:  1001,
+  HireDate: new Date()
+};
+
+Promise.resolve()
+.then(function()    { return sprLib.list('Employees').create(item); })
+.then(function(item){ return sprLib.list('Employees').update(item); })
+.then(function(item){ return sprLib.list('Employees').delete(item); })
+.then(function(item){
+  console.log('Success! An item navigated the entire CRUD chain!');
+});
+
+
+// Async Grouping
+Promise.all([
+    sprLib.user().info(),
+    sprLib.user().groups()
+])
+.then(function(arrResults){
+    // 'arrResults' holds the return values of both method calls above - in the order they were provided
+    // Therefore, arrResults[0] holds user info() and arrResults[1] holds user groups()
+    console.log( &quot;Current User Info `Title`: &quot; + arrResults[0].Title  );
+    console.log( &quot;Current User Groups count: &quot; + arrResults[1].length );
+});
+</code></pre>
+<h2 id="file">File</h2>
+<h2 id="folder">Folder</h2>
+<h2 id="web">Web</h2>
+<h2 id="一些系统变量">一些系统变量？</h2>
+<pre><code class="language-js">$filter=Author eq '&quot;+_spPageContextInfo.userId+&quot;'&quot;
+</code></pre>
+<h1 id="日志--审计">日志 &amp; 审计</h1>
+<p><a href="http://sharepoint-works.blogspot.com/2013/07/audit-logging-in-sharepoint-2013.html">http://sharepoint-works.blogspot.com/2013/07/audit-logging-in-sharepoint-2013.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/sharepoint/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/sharepoint/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/powerapps/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

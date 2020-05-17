@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Nginx安装与配置 permalink: nginx-install-config tags: 运维 nginx 安装 CentOS 7 yum 方式安装（不推荐，在安装扩展的时候不太方便） sudo yum install epel-release sudo yum install nginx 编译源码 yum install -y gcc # 支持 rewrite yum install -y pcre-devel # 支" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Nginx安装与配置 permalink: nginx-install-config tags: 运维 nginx 安装 CentOS 7 yum 方式安装（不推荐，在安装扩展的时候不太方便） sudo yum install epel-release sudo yum install nginx 编译源码 yum install -y gcc # 支持 rewrite yum install -y pcre-devel # 支" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Nginx安装与配置 permalink: nginx-install-config tags: 运维 nginx 安装 CentOS 7 yum 方式安装（不推荐，在安装扩展的时候不太方便） sudo yum install epel-release sudo yum install nginx 编译源码 yum install -y gcc # 支持 rewrite yum install -y pcre-devel # 支">
+
+<meta itemprop="wordCount" content="4223">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Nginx安装与配置 permalink: nginx-install-config tags: 运维 nginx 安装 CentOS 7 yum 方式安装（不推荐，在安装扩展的时候不太方便） sudo yum install epel-release sudo yum install nginx 编译源码 yum install -y gcc # 支持 rewrite yum install -y pcre-devel # 支"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4223字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Nginx安装与配置
+permalink: nginx-install-config
+tags:</p>
+<ul>
+<li>运维</li>
+<li>nginx</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="安装">安装</h1>
+<h2 id="centos-7">CentOS 7</h2>
+<h3 id="yum-方式安装不推荐在安装扩展的时候不太方便">yum 方式安装（不推荐，在安装扩展的时候不太方便）</h3>
+<pre><code class="language-shell">sudo yum install epel-release
+sudo yum install nginx
+</code></pre>
+<h3 id="编译源码">编译源码</h3>
+<pre><code class="language-shell">yum install -y gcc
+
+# 支持 rewrite
+yum install -y pcre-devel
+
+# 支持 gzip
+yum install zlib zlib-devel -y
+
+# 支持 ssl
+yum install openssl openssl-devel -y
+
+# 下载源码包并编译  
+wget https://nginx.org/download/nginx-1.12.1.tar.gz
+tar -zxvf nginx-1.12.1.tar.gz
+cd nginx-1.12.1
+
+# --with-http_stub_status_module ： 用来监控 Nginx 的当前状态
+./configure --with-http_stub_status_module --with-http_ssl_module --with-pcre --with-zlib=PATH
+make &amp;&amp; make install
+
+# 默认安装到 /usr/local/nginx 目录
+# 创建一个软链接来直接在命令行输入 nginx
+ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/
+</code></pre>
+<h2 id="ubuntu-下安装">Ubuntu 下安装</h2>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7">https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7</a></p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-7">https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-centos-7</a></p>
+<h1 id="常用命令">常用命令</h1>
+<p>通用的一些命令</p>
+<pre><code class="language-shell"># 测试配置文件
+nginx -t
+
+#重新加载配置文件
+nginx -s reload
+
+# 让 nginx 停止工作
+nginx -s stop
+</code></pre>
+<p>如果是 yum 方式安装的，会自动生成一个 nginx 服务，可以使用 service 命令来管理服务。</p>
+<pre><code class="language-shell">service nginx start[stop|restart]
+</code></pre>
+<p>如果是源码编译的方式，启动/重启的命令：</p>
+<pre><code class="language-shell"># 启动，如果创建了软链接，可以直接输入 nginx
+/usr/local/nginx/sbin/nginx
+
+# 平滑重启，要先找到进程主 id
+ps -ef|grep nginx
+kill -HUP [nginx PID]
+</code></pre>
+<h1 id="防火墙配置">防火墙配置</h1>
+<h2 id="firewalld">firewalld</h2>
+<pre><code class="language-shell">sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+</code></pre>
+<p>启动 &amp; 设置为开机自动启动</p>
+<pre><code class="language-shell">sudo systemctl start nginx
+
+sudo systemctl enable nginx
+</code></pre>
+<p>默认配置文件放在<code>/etc/nginx/nginx.conf</code>，可以把多个虚拟主机的配置文件放到<code>/etc/nginx/conf.d/</code>目录下包含进来</p>
+<h1 id="配置反向代理">配置反向代理</h1>
+<p>有两个域名，要实现访问域名 A （或者 A 的某个二级路径）时，实际上会访问域名 B。</p>
+<pre><code class="language-shell">location /subfolder {
+	proxy_pass http://www.newsite.com/newfolder;
+}
+</code></pre>
+<p><strong>注意</strong></p>
+<p>如果目标站点是 laravel 后面那个 <code>/</code> 不要忘了，否则会 sub/index.php 能正常，/sub/ 就显示404, 如下</p>
+<pre><code class="language-shell"># server 1
+server {
+    location /hub {
+		proxy_pass http://localhost:9999/;
+	}
+}
+
+# sub server
+server {
+	listen 9999;
+	server_name localhost;
+
+	index index.php index.html;
+	root /var/www/html/pulse/pulse_hub/public;
+
+	location / {
+		try_files $uri $uri/ /index.php?$query_string;
+	}
+
+	location ~ .*\.(php|php5)?$ {
+		try_files $uri =404;
+		fastcgi_pass   127.0.0.1:9000;
+		fastcgi_index index.php;
+		fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+		include fastcgi_params;
+	}
+}
+</code></pre>
+<p><a href="https://www.v2ex.com/t/363093#reply12">https://www.v2ex.com/t/363093#reply12</a></p>
+<p>使用 a 站点那个目录的时候直接用 proxy_pass 把请求转发到 b 网站服务器不行吗</p>
+<p>使用正则把 /path 后面所有的路径进行 location，然后 proxy_pass 转发过去，这完全可以。</p>
+<pre><code class="language-shell">location ^~ /test/ { 
+alias /var/www/test/public/; 
+rewrite ^/test/(.*)$ /index.php?$1; 
+include fastcgi_params; 
+fastcgi_param REQUEST_URI $query_string; 
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; 
+fastcgi_pass 127.0.0.1:9001; 
+break; 
+} 
+</code></pre>
+<p><a href="https://stackoverflow.com/questions/8130692/with-nginx-how-to-forward-query-parameters">https://stackoverflow.com/questions/8130692/with-nginx-how-to-forward-query-parameters</a></p>
+<h2 id="访问网站-a-的子目录-aaa-实际上访问网站-b-的-bbb并保持-url-不变">访问网站 A 的子目录 aaa, 实际上访问网站 B 的 bbb，并保持 URL 不变</h2>
+<p>修改网站 A 的 vhost 配置，除了 rewite，再添加代理，这样就保持 URL 不变</p>
+<pre><code class="language-js">location ~ ^/portal/ {
+  rewrite ^/portal/(.*)$ /portal/$1 break;
+  proxy_pass http://www.site_b.com;
+}
+</code></pre>
+<p>访问 <a href="http://www.site_a.com/portal/dashboard">www.site_a.com/portal/dashboard</a></p>
+<p>在网站 B 中，查看传过来的请求数据（以 PHP 的 <code>var_dump[$_SERVER]</code> 为例），</p>
+<p>注意，如果“目标”的参数中子目录没有写(<code>/$1</code>)，实际上只得到了网站 A 中配置的子目录后面的部分。</p>
+<pre><code class="language-php">$_SERVER['REQUEST_URI'] = ''/dashboard/';
+</code></pre>
+<p>补上后(<code>/portal/$1</code>)</p>
+<pre><code class="language-php">$_SERVER['REQUEST_URI'] = ''/portal/dashboard/';
+</code></pre>
+<p>按照网上的其他资料(如下)，是失败的，会产生 URL 跳转。</p>
+<pre><code class="language-shell">location /portal/ {
+  proxy_pass http://productfinder.pulse.com/;
+  proxy_redirect off;
+#  proxy_set_header Host productfinder.pulse.com;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+</code></pre>
+<h2 id="同步注册登录">同步注册登录？</h2>
+<p><a href="https://www.v2ex.com/t/388481">https://www.v2ex.com/t/388481</a></p>
+<p>sub_filter 配置？</p>
+<h3 id="参考资料">参考资料</h3>
+<p>这篇文章有很详细的例子和说明
+<a href="https://www.liaohuqiu.net/posts/nginx-proxy-pass/">https://www.liaohuqiu.net/posts/nginx-proxy-pass/</a></p>
+<h2 id="加速-google-统计代码的访问速度">加速 google 统计代码的访问速度</h2>
+<p>Google 统计代码平时不怎么会更新，而它会从远程服务器请求，但我们也可以让它从本地请求，并加大过期时间。</p>
+<pre><code class="language-shell">location ~ /analytics.js {
+  proxy_pass https://www.google-analytics.com;
+  expires 31536000s;
+  proxy_set_header Pragma &quot;public&quot;;
+  proxy_set_header Cache-Control &quot;max-age=31536000, public&quot;;
+}
+</code></pre>
+<h1 id="绑定多个域名并且在请求特定域名时跳转到指定的地址">绑定多个域名，并且在请求特定域名时，跳转到指定的地址</h1>
+<p>首先绑定</p>
+<pre><code class="language-shell">server_name www.site_a.com www.site_b.com;
+
+if ($host ~ &quot;www\.pulselarsenantennas\.com&quot;) {
+rewrite ^(.*) http://www.pulseelectronics.com/products/antennas$1 permanent;
+}
+</code></pre>
+<h1 id="php-支持">php 支持</h1>
+<p>不同的编译参数和运行方式，里面的可能不一样 （看注释）</p>
+<pre><code class="language-shell">location ~ .*\.(php|php5)?$
+      {
+        try_files $uri =404;
+        fastcgi_pass   127.0.0.1:9000;
+        #fastcgi_pass  unix:/tmp/php-cgi.sock;
+        fastcgi_index index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        #include fcgi.conf;
+      }
+</code></pre>
+<h1 id="设置静态文件缓存时间">设置静态文件缓存时间</h1>
+<pre><code class="language-shell">location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+   expires      30d;
+ }
+
+location ~ .*\.(js|css)?$ {
+   expires      12h;
+ }
+</code></pre>
+<h2 id="取消静态文件缓存">取消静态文件缓存</h2>
+<p>如有时候文件更新频繁, 修改为<code>expires 0;</code>浏览器仍然使用本地缓存不会更新</p>
+<p><code>If-Modified-Since</code></p>
+<p>open_file_cache选项</p>
+<p><a href="http://www.cnblogs.com/sunsweet/p/3338684.html">http://www.cnblogs.com/sunsweet/p/3338684.html</a></p>
+<h1 id="gzip">Gzip</h1>
+<p>开启</p>
+<pre><code class="language-shell">gzip on;
+gzip_min_length 1k;
+gzip_buffers 16 64k;
+gzip_http_version 1.1;
+gzip_comp_level 6;
+gzip_types text/plain application/x-javascript text/css application/xml;
+gzip_vary on;
+</code></pre>
+<p>如果出现下面的信息，就表示 nginx 启用成功了p</p>
+<p><img src="/media/15490412287242/15468442251962.jpg" alt="-w628"></p>
+<h2 id="如果你的服务器还会提供-restful-api-服务需要压缩-json-数据">如果你的服务器还会提供 RESTFul API 服务需要压缩 json 数据</h2>
+<p>如果运行了一个提供 API 服务的 web 应用（返回 json 数据），还需要在 <code>gzip_types</code>里把 <code>application/json</code>添加到列表中，否则无法对返回给客户端的 json 数据进行压缩，可能导致 json 解析时格式出错。</p>
+<pre><code class="language-js">gzip_types text/plain application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png application/json;
+</code></pre>
+<p>不过感觉对几十kb的json返回数据没什么效果（响应时间或者size都差不多）</p>
+<h2 id="是否要对图片启用">是否要对图片启用？</h2>
+<p>如果网站的图片已经是不能再压缩的了，就不要启用（反而占用CPU资源，还可能“增大”）</p>
+<p>如果需要，就添加下面的参数</p>
+<p><code>image/jpeg image/gif image/png</code></p>
+<h2 id="transfer-encoding-chunked-导致中文乱码的问题">transfer-encoding: chunked 导致中文乱码的问题</h2>
+<p>当数据量较大时，分块传输。但可能会导致较大json数据体中文乱码</p>
+<h2 id="静态文件缓存">静态文件缓存</h2>
+<p>启用 nginx 的 <code>open_file_cache</code> 指令可以对打开的文件句柄进行缓存，从而节约昂贵的 open() 系统调用。前面我们已使用 ngx-open-file-cache-missses 工具看到通过扩大这个缓存的容量可以提高线上的实际命中率。但是缓存容量并不是越大越好，比如当达到 20000 个元素的容量时，共享内存的锁就成了瓶颈。 ​​​​</p>
+<h1 id="日志">日志</h1>
+<h2 id="错误日志">错误日志</h2>
+<pre><code class="language-shell"># 默认为crit 级别
+error_log /data/wwwlogs/error_nginx.log crit;
+</code></pre>
+<p>你可以不把错误日志记录到文件中去</p>
+<pre><code class="language-shell">error_log /dev/null crit;
+</code></pre>
+<p>error_log 级别分为 debug, info, notice, warn, error, crit  默认为crit.</p>
+<p>crit 记录的日志最少，而debug记录的日志最多。如果你的nginx遇到一些问题，比如502比较频繁出现，但是看默认的error_log并没有看到有意义的信息，那么就可以调一下错误日志的级别，当你调成error级别时，错误日志记录的内容会更加丰富。</p>
+<h2 id="访问日志并记录-post-参数">访问日志，并记录 POST 参数</h2>
+<p>添加在 <code>http</code> 配置节点中， <code>access</code> 是命名, 系统默认还有几个自带的日志规则如 <code>combined</code>，格式定义如下</p>
+<p>主要是<code>$request_body</code></p>
+<pre><code class="language-shell">log_format www_log_format '$remote_addr - $remote_user [$time_local] &quot;$request&quot; $status $body_bytes_sent $request_body &quot;$http_referer&quot; &quot;$http_user_agent&quot; $http_x_forwarded_for';
+
+server {
+	# server configs
+}
+</code></pre>
+<p>然后在<code>server</code>节点内部添加</p>
+<pre><code class="language-shell">access_log logs/test.access.log www_log_format;
+</code></pre>
+<p>注意修改后，如果你的启用了带密码的 SSL，有时候 nginx -s reload 会有问题</p>
+<blockquote>
+<p>能正常创建日志文件，但无法写入任何内容（日志文件内容一直是空白）</p>
+</blockquote>
+<p>请遵照以下操作：</p>
+<ol>
+<li>运行 ps-ef|grep nginx ，然后查看日志文件的用户。确保 nginx 的 worker 进程的用户（除了 master）是日志文件的所有者，可以修改它</li>
+<li>彻底关闭 nginx 服务，重新启动服务（而不是配置文件的加载）</li>
+<li>有时候运行 /etc/init.d/nginx restart 不报错，以为已经重新启动了，但再次运行，才会报一个“Job for nginx.service failed because the control process exited with error code. See &ldquo;systemctl status nginx.service&rdquo; and &ldquo;journalctl -xe&rdquo; for details.[FAILED]”，似乎上一次重启并未成功。。。</li>
+<li>重启失败后（实际上已经停止了），再次运行 nginx 命令来启动进程</li>
+</ol>
+<p>参考
+<a href="http://www.ttlsa.com/linux/the-nginx-log-configuration/">http://www.ttlsa.com/linux/the-nginx-log-configuration/</a></p>
+<p>如果需要关闭</p>
+<pre><code class="language-shell">access_log off;
+</code></pre>
+<h2 id="定时切割">定时切割</h2>
+<p>随着日志增加，日志文件会越来越庞大，nginx 自带了一个<code>Rotation</code>的功能</p>
+<h3 id="首先来看看手动对旧日志转存是怎样处理的">首先来看看手动对旧日志转存是怎样处理的.</h3>
+<pre><code class="language-shell">mv /path/to/access.log /path/to/access.log.0
+kill -USR1 `cat 
+/var/run/nginx.pid
+`
+sleep 1
+</code></pre>
+<p>实际上<code>kill -USR1 /var/run/nginx.pid&quot;</code>并不会 kill Nginx 进程, 只是发送了一个信号让 Nginx 来 reload log files。这个 pid 文件的路径在<code>/etc/nginx/nginx.conf</code>里配置，可能每台机器都不一样。</p>
+<p>当然你还可以运行 tar 命令来压缩这个“rotate”转储出来的存档日志文件。</p>
+<h3 id="使用-logrotate-工具">使用 logrotate 工具</h3>
+<p>修改这个脚本里面的参数即可</p>
+<pre><code class="language-shell">vi /etc/logrotate.d/nginx
+</code></pre>
+<p>该脚本最后一段内容和我们的手动 rotation 操作很相似是不是？</p>
+<pre><code class="language-shell">postrotate
+	[ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`
+endscript
+</code></pre>
+<h1 id="rewrite">Rewrite</h1>
+<h2 id="整站-301-跳转">整站 301 跳转</h2>
+<pre><code class="language-shell"> location = / {
+       return 301 /categoryList/;
+  }
+</code></pre>
+<h2 id="在目标-url-中得到来源-url-的特定名称参数">在目标 url 中得到来源 url 的特定名称参数</h2>
+<p>如下，如果 image.php?blod_id=123，要想在目标 url 里得到这个特定的参数名和值，使用 <code>$arg_[参数名]</code>即可</p>
+<pre><code class="language-shell">rewrite  ^/image.php  /docs/redirect.php?type=image&amp;blob_id=$arg_blob_id?  permanent;
+</code></pre>
+<h2 id="图片文件不存在时使用默认的图片">图片文件不存在时，使用默认的图片</h2>
+<pre><code class="language-shell">location ~ /files/images/ {
+    try_files $uri /files/images/default.jpg;
+}
+</code></pre>
+<h2 id="laravel-默认-跳转时接受参数">Laravel 默认 (跳转时接受参数)</h2>
+<pre><code class="language-shell">location / {
+#     if (!-e $request_filename){
+          #rewrite ^/(.*)([^/])$ http://$host/$1$2/ permanent;
+        try_files $uri $uri/ /index.php?$query_string;
+#     }
+    }
+</code></pre>
+<h2 id="进入维护模式">进入维护模式</h2>
+<p>当进行网站改版或升级一些系统组件时，希望让用户访问时看到一个类似“系统升级，请稍后访问”的页面。</p>
+<p>修改 nginx 虚拟主机配置，添加</p>
+<pre><code class="language-shell">rewrite ^(.*)$ /maintain.html break;
+</code></pre>
+<p>如果还需要自动显示维护时间段。（测试后发现读取参数无效。。。。）</p>
+<pre><code class="language-shell">rewrite ^(.*)$ /maintain.html?starttime=12:30&amp;endtime=13:00 break;
+</code></pre>
+<p>修改 html 文件</p>
+<pre><code class="language-html">&lt;p&gt;Estimated time: &lt;span id=&quot;starttime&quot;&gt;&lt;/span&gt;-&lt;span id=&quot;endtime&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&amp;');
+    for (var i = 0; i &lt; sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
+var starttime = GetURLParameter('starttime') || '';
+var endtime = GetURLParameter('endtime') || '';
+
+
+document.getElementById(&quot;starttime&quot;).innerHTML = starttime;
+document.getElementById(&quot;endtime&quot;).innerHTML = endtime;
+&lt;/script&gt;
+</code></pre>
+<h2 id="子目录-多站点">子目录-多站点</h2>
+<p>/var/www/html
+|- wwwroot
+|- wp</p>
+<h3 id="一种是直接把子目录的所有文件复制进来或者做成-软连接">一种是<strong>直接把子目录的所有文件复制进来，或者做成 软连接</strong></h3>
+<p>复制文件</p>
+<p>/var/www/html
+|- wwwroot
+|- wp</p>
+<p>或者软连接</p>
+<p>/var/www/html
+|- wwwroot
+|- wp (链接)
+|- wp</p>
+<p>这种办法最常见</p>
+<pre><code class="language-shell">root /var/www/html/wwwroot;
+
+location / {
+
+}
+
+# /var/www/html/wwwroot/wp/ 目录里保存了站点文件
+# 或者 ln -s /var/www/html/wp /var/www/html/wwwroot/wp
+location /wp/ {
+    root /var/www/html/wwwroot/wp;
+    try_files $uri $uri/ /wp/index.php?$args;
+}
+</code></pre>
+<h3 id="和上一个类似但是站点文件-不-放在子目录或者不做软连接">和上一个类似，但是站点文件 不 放在子目录，或者不做软连接</h3>
+<p>那么就要把<code>/wp</code>节点下的 <code>root</code> 改成上一级目录了 (因为 /wp 的 root 是基于上一级 <code>server</code>节点里的 <code>root</code>的)</p>
+<p>这种方法，要把目录名改成和 <code>location</code>匹配的 &ldquo;wp&rdquo; ，两者保持一致, 不能是 &ldquo;my_wp&rdquo; 等等</p>
+<pre><code class="language-shell">root /var/www/html/wwwroot;
+
+# 这里组合起来就是  (1) /var/www/html  + (2) /wp
+location /wp {
+    root /var/www/html;
+    
+    try_files $uri $uri/ /wp/index.php$is_args$args;
+}
+</code></pre>
+<h3 id="用-alias-不需要把项目目录改成和-location一致的名称">用 <code>alias</code> 不需要把项目目录改成和 <code>location</code>一致的名称</h3>
+<p>例如项目保存在 <code>my_project_hub</code>, 如果用前面的方法，必须把项目目录改成 <code>hub</code>，这样以后看起来不太直观。</p>
+<p>有没有办法保持项目目录名，但 <code>location</code>里又是另外一个简称呢？用<code>alias</code>。
+（这个办法，也不需要复制目录进来，或者创建软连接）</p>
+<pre><code class="language-shell">location / {
+    try_files $uri $uri/ /index.php$is_args$args;
+}
+
+# 对于 Laravel 这种，index.php 放在 public 目录的，要注意 alias 里不要忘了 'public'
+location /nested {
+        alias /var/www/nested/public;
+        try_files $uri $uri/ @nested;
+
+        # php 的配置要用这个格式，尤其 SCRIPT_FILENAME， 其他的配置可能会报 500 错。
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_param SCRIPT_FILENAME $request_filename;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        }
+    }
+
+    # 最重要的部分
+    location @nested {
+        rewrite /nested/(.*)$ /nested/index.php?/ last;
+    }
+</code></pre>
+<h3 id="代理到其他的站点端口"><strong>代理</strong>到其他的站点/端口</h3>
+<p>虽然配置信息不会混合在一起， 但是在 被代理站点里的一些静态资源路径可能会错乱</p>
+<pre><code class="language-shell">location /mobile/ {
+    proxy_pass http://127.0.0.1:8082/;
+</code></pre>
+<h3 id="重写跳转到其他站点">**重写（跳转）**到其他站点</h3>
+<pre><code class="language-shell">location ^~ /topic {
+    rewrite ^.+ http://xxxxx/discuz/$1 last;
+    break;
+}
+</code></pre>
+<p>或者</p>
+<pre><code class="language-shell">if ($host != xxxx.com) {
+         rewrite ^/(.*)$ http://www.xxxx.com/$1 permanent;
+}
+</code></pre>
+<h3 id="把主站也改到里面去wordpress-是主域名内部是-laravel">把“主站”也改到里面去（wordpress 是主域名，内部是 laravel）</h3>
+<p>目录结构</p>
+<p>/var/www/html
+- wordpress
+- laravel</p>
+<p>要求实现两个站点同时能被访问到，并且无路径问题</p>
+<p>wordpress.sample.com
+wordpress.sample.com/laravel</p>
+<pre><code class="language-shell">server {
+	listen       80;
+  	server_name wordpress.sample.com
+  	return 301
+}
+
+server {
+    listen 443;
+    server name wordpress.sample.com;
+    
+    ssl_certificate /etc/letsencrypt/live/site1.com.chained.crt;
+    ssl_certificate_key /etc/letsencrypt/live/site1.key;
+    
+    index index.php index.html;
+    
+    # 关键1：两个目录的“父目录”
+    root /var/www/html;
+    
+    # 第一个根目录站点 wordpress.sample.com
+    location / {
+      # 关键2：root 指向子目录 wordpress
+      # 这里不能用 alias, 会一直报 File not found.  500等
+	   root /var/www/html/wordpress;
+	   index index.php index.html;
+	   
+	   try_files $uri $uri/ /index.php?$args;
+	   
+	   # 关键3：这块要写进去
+	   location ~ \.php$ {
+        		include fastcgi_params;
+        		fastcgi_param SCRIPT_FILENAME $request_filename;
+        		fastcgi_pass 127.0.0.1:9000;
+    	}
+    	
+    	# 第二个站点 wordpress.sample.com/laravel
+    	location ^~ /hub {
+    	   # 关键4：因为是 laravel, 这里指向到 public 子目录去
+    	   alias /var/www/html/laravel/public;
+    	   
+    	   # 关键5：try_files 这里有个 `@`以别名的方式来处理rewrite
+    	   try_files $uri $uri/ @laravel;
+    	   
+    	   # 同样不要忘记 php 配置
+    	   location ~ \.php$ {
+        		include fastcgi_params;
+        		fastcgi_param SCRIPT_FILENAME $request_filename;
+        		fastcgi_pass 127.0.0.1:9000;
+    	   }
+    	}
+    	
+    	# 关键6：对应关键 5 的那个别名 @laravel
+    	location @laravel {
+        	rewrite /laravel/(.*)$ /laravel/index.php?/$1 last;
+    	}
+    	
+    	   
+    	# 关键 7: location 外面的配置删除掉，否则会导致第一个站点 wordperss 的所有静态文件一直404。（应该是最后跑了这一行 try_files $uri =404; 的缘故）
+    	# location ~ .*\.(php|php5)?$ {
+    	# 	try_files $uri =404;
+    	# 	fastcgi_pass   127.0.0.1:9000;
+    	# 	fastcgi_index index.php;
+    	# 	fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    	# 	include fastcgi_params;
+    	# }
+}
+</code></pre>
+<p><strong>发现问题</strong></p>
+<p>会导致 itheme 里设置了 “hide backend url&rdquo; 隐藏后台地址，例如 <code>wp-admin/</code> 改成 <code>/db43_sk23/</code>。</p>
+<p>直接打开伪装的登录地址，变成下载一个文件、退出的动作也是，</p>
+<p>把itheme 对应 nginx 文件(一般是 /var/www/html/worpdress/nginx.conf)里这行注释掉</p>
+<pre><code class="language-shell"># rewrite ^(/)?db43_sk23/?$ /wp-login.php?$query_string break;
+rewrite ^(/)?wp-register-php/?$ /db43_sk23?action=register break;
+</code></pre>
+<p>也会导致后面无法退出登录（404）</p>
+<p>所以还是关掉这个特性吧。(itheme 自己代码的问题。  NGINX 配置有效)
+或者用其他的后台路径修改插件（使用 Stealth Login Page 插件）</p>
+<p>其实原理就是 修改 wp-login.php 文件</p>
+<pre><code class="language-php">//隐藏后台位置
+ if($_GET[&quot;web&quot;]!=&quot;abc&quot;){
+        header('Location: https://liuyanzhao.com/');
+ }
+</code></pre>
+<p>不破坏文件，用add action</p>
+<pre><code class="language-php">//保护后台登录
+add_action('login_enqueue_scripts','login_protection');  
+function login_protection(){  
+    if($_GET['word'] != 'press')header('Location: https://www.wpdaxue.com/');  
+}
+</code></pre>
+<h1 id="故障集">故障集</h1>
+<h2 id="nginx--cannot-allocate-memory">nginx  Cannot allocate memory</h2>
+<p>查看错误日志 error_nginx.log, 发现很多类似的<code>Cannot allocate memory</code>信息</p>
+<blockquote>
+<p>2017/11/08 09:05:30 [emerg] 6965#0: *4656037 malloc(1729154171) failed (12: Cannot allocate memory) while reading client request headers, client: 182.137.20.185, server: www.test, request: &ldquo;GET /autodiscover/autodiscover.xml HTTP/1.1&rdquo;</p>
+</blockquote>
+<h1 id="配置参考-amh-面板">配置参考 （AMH 面板）</h1>
+<pre><code class="language-shell">events
+{
+        use epoll;
+        worker_connections 51200;
+}
+
+http
+{
+    include  mime.types;
+    default_type  application/octet-stream;
+    server_names_hash_bucket_size 128;
+    client_header_buffer_size 4k;
+    large_client_header_buffers 4 4k;
+    client_max_body_size 50m;
+    &quot;/usr/local/nginx/conf/nginx.conf&quot; 87L, 2029C
+    large_client_header_buffers 4 4k;
+    client_max_body_size 50m;
+        
+    sendfile on;
+    tcp_nopush on;
+        
+    keepalive_timeout 60 60;
+        
+    fastcgi_connect_timeout 300;
+    fastcgi_send_timeout 300;
+    fastcgi_read_timeout 300;
+    fastcgi_buffer_size 16k;
+    fastcgi_buffers 16 16k;
+    fastcgi_busy_buffers_size 16k;
+    fastcgi_temp_file_write_size 16k;
+    fastcgi_intercept_errors on;
+        
+    tcp_nodelay on;
+    server_tokens off;
+    gzip             on;
+    gzip_min_length  1000;
+    gzip_proxied     expired no-cache no-store private auth;
+    gzip_types       text/plain text/css text/xml text/javascript application/x-javascript application/xml application/rss+xml application/xhtml+xml application/atom_xml;
+    gzip_disable &quot;MSIE [1-6].(?!.*SV1)&quot;;
+    log_format  access  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    '$status $body_bytes_sent &quot;$http_referer&quot; '
+    '&quot;$http_user_agent&quot; $http_x_forwarded_for';
+    
+    include vhost/*.conf;
+    
+    
+    server
+    {
+        listen       8888;
+        server_name 120.77.151.19;
+        index index.html index.htm index.php;
+        root  /home/wwwroot/index/web;
+        fastcgi_buffer_size 4k;
+        fastcgi_buffers 8 4k;
+        fastcgi_busy_buffers_size 4k;
+        gzip off;
+
+        location ~ .*\.php$
+        {
+                fastcgi_pass unix:/tmp/php-cgi.sock;
+                fastcgi_index index.php;
+                include fcgi.conf;
+        }
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+                {
+                        expires      30d;
+                }
+
+                location ~ .*\.(js|css)?$
+                {
+                        expires      12h;
+                }
+
+                access_log  /home/wwwroot/index/log/access.log combined;
+                error_log   /home/wwwroot/index/log/error.log crit;
+        }
+    server
+        {
+                listen 80 default;
+                return 400;
+        }
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/nginx%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/ssh%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%8E%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

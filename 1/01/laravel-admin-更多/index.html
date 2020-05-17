@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="laravel-admin 更多 https://laravel-admin.org/posts https://discuss.laravel-admin.org/ 扩展开发 暂时略 在开发之前，先看看是不是已经有了，不要重复造轮子。 https://laravel-admin.org/extensions 控制台命令 # 显示当前版本和所有命令 php artisan admin # 安装和卸载larave" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="laravel-admin 更多 https://laravel-admin.org/posts https://discuss.laravel-admin.org/ 扩展开发 暂时略 在开发之前，先看看是不是已经有了，不要重复造轮子。 https://laravel-admin.org/extensions 控制台命令 # 显示当前版本和所有命令 php artisan admin # 安装和卸载larave" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="laravel-admin 更多 https://laravel-admin.org/posts https://discuss.laravel-admin.org/ 扩展开发 暂时略 在开发之前，先看看是不是已经有了，不要重复造轮子。 https://laravel-admin.org/extensions 控制台命令 # 显示当前版本和所有命令 php artisan admin # 安装和卸载larave">
+
+<meta itemprop="wordCount" content="5780">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="laravel-admin 更多 https://laravel-admin.org/posts https://discuss.laravel-admin.org/ 扩展开发 暂时略 在开发之前，先看看是不是已经有了，不要重复造轮子。 https://laravel-admin.org/extensions 控制台命令 # 显示当前版本和所有命令 php artisan admin # 安装和卸载larave"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5780字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="laravel-admin-更多">laravel-admin 更多</h1>
+<p><a href="https://laravel-admin.org/posts">https://laravel-admin.org/posts</a>
+<a href="https://discuss.laravel-admin.org/">https://discuss.laravel-admin.org/</a></p>
+<h1 id="扩展开发">扩展开发</h1>
+<p>暂时略</p>
+<p>在开发之前，先看看是不是已经有了，不要重复造轮子。</p>
+<p><a href="https://laravel-admin.org/extensions">https://laravel-admin.org/extensions</a></p>
+<h1 id="控制台命令">控制台命令</h1>
+<pre><code class="language-shell"># 显示当前版本和所有命令
+php artisan admin
+
+# 安装和卸载laravel-admin包
+artisan admin:install &amp; artisan admin:uninstall
+
+# 创建admin控制器，传入一个model，它会根据model对应表的字段，默认构建出所需的grid，form和show三个页面的代码
+artisan admin:make
+
+#创建一个admin用户,选择角色之后，会创建一个可登陆的用户
+artisan admin:create-user
+
+# 给指定用户重置密码
+artisan admin:reset-password
+
+# 安装一个laravel-admin扩展之后，导入相关配置
+artisan admin:import
+
+# 用来以json的格式列出左侧菜单数据
+artisan admin:menu
+</code></pre>
+<h2 id="重写内置视图需要自己修改view但是不方便直接修改laravel-admin">重写内置视图(需要自己修改view，但是不方便直接修改laravel-admin)</h2>
+<p>复制<code>vendor/encore/laravel-admin/views</code>到项目的<code>resources/views/admin</code>，然后在app/Admin/bootstrap.php文件中加入代码</p>
+<pre><code class="language-php">app('view')-&gt;prependNamespace('admin', resource_path('views/admin'));
+</code></pre>
+<p>要注意的问题是，更新laravel-admin的时候，如果遇到视图方面的问题，需要重新复制vendor/encore/laravel-admin/views到项目的resources/views/admin中，注意备份原来已经修改过的视图</p>
+<h2 id="设置语言">设置语言</h2>
+<p>打开config/app.php，将locale设置为zh-CN即可。</p>
+<h2 id="关于扩展自定义组件">关于扩展自定义组件</h2>
+<p>默认引用了大量前端资源，如果有网络问题或者有不需要使用的组件，可以参考form组件管理将其移除。</p>
+<p>关于富文本编辑器，由于静态资源包文件普遍太大，所以laravel-admin默认通过cdn的方式引用ckeditor，建议大家根据自己的需求扩展编辑器，自行配置。</p>
+<h2 id="关于前端资源问题">关于前端资源问题</h2>
+<p>如果需要使用自己的前端文件，可以在app/Admin/bootstrap.php中引入：</p>
+<pre><code class="language-php">Admin::css('path/to/your/css');
+Admin::js('path/to/your/js');
+</code></pre>
+<p><strong>问题 我并不想在每个页面都引入一些较大的 js 文件？</strong></p>
+<p>例如用到了 viz.js  render 比较大 （1M 多）的库，但是又只在某些页面用到这个。如何实现？</p>
+<p>可以在“某些页面插入js”</p>
+<pre><code class="language-php">Admin::script('console.log(&quot;hello world&quot;);');
+</code></pre>
+<p><strong>问题</strong> 通过这里插入的资源文件，是放到 body 最后的，对于一些需要“提前加载”（在 header）的js, 只能修改模板了</p>
+<p>或者用 jquery  document load</p>
+<h2 id="重写登陆页面和登陆逻辑">重写登陆页面和登陆逻辑</h2>
+<p>在路由文件app/Admin/routes.php中，覆盖掉登陆页面和登陆逻辑的路由</p>
+<pre><code class="language-php">Route::group([
+    'prefix'        =&gt; config('admin.prefix'),
+    'namespace'     =&gt; Admin::controllerNamespace(),
+    'middleware'    =&gt; ['web', 'admin'],
+], function (Router $router) {
+
+    $router-&gt;get('auth/login', 'AuthController@getLogin');
+    $router-&gt;post('auth/login', 'AuthController@postLogin');
+
+});
+</code></pre>
+<p>在自定义的路由器AuthController中的getLogin、postLogin方法里分别实现自己的登陆页面和登陆逻辑。</p>
+<p>参考控制器文件AuthController.php，视图文件login.blade.php</p>
+<h2 id="更新静态资源">更新静态资源</h2>
+<p>遇到更新之后,部分组件不能正常使用,那有可能是laravel-admin自带的静态资源有更新了,需要运行命令php artisan vendor:publish &ndash;tag=laravel-admin-assets &ndash;force来重新发布前端资源，发布之后不要忘记清理浏览器缓存.</p>
+<h2 id="皮肤与布局基于-adminlteio">皮肤与布局（基于 adminlte.io）</h2>
+<p>参考https://adminlte.io/docs/2.4/layout设置</p>
+<h1 id="问题记录">问题记录</h1>
+<h2 id="syntax-error-or-access-violation-1103-incorrect-table-name">Syntax error or access violation: 1103 Incorrect table name</h2>
+<p><a href="https://github.com/z-song/laravel-admin/issues/2530">https://github.com/z-song/laravel-admin/issues/2530</a></p>
+<p>运行 php artisan config:cache 后 再  php artisan admin:install</p>
+<h2 id="关联模型插入数据时报错-exception-in-modeltreephp-line-300--parent-select-error">关联模型插入数据时报错 Exception In ModelTree.php line 300  Parent select error</h2>
+<pre><code class="language-php">$term = Terms::create(['name'=&gt;$request-&gt;input('term_name'), 'term_group'=&gt;0]);
+$term-&gt;save();
+$term_id = $term-&gt;term_id;
+
+$taxonomy = TermTaxonomy::create(['taxonomy'=&gt;$request-&gt;input('taxonomy')]);
+$term-&gt;taxonomy()-&gt;save($taxonomy);
+</code></pre>
+<p>找到<code>ModelTree.php line 300</code></p>
+<pre><code class="language-php">if (Request::has($parentColumn) &amp;&amp; Request::input($parentColumn) == $branch-&gt;getKey()) 
+{
+    throw new \Exception(trans('admin.parent_select_error'));
+}
+</code></pre>
+<p>这是因为<code>static::saving</code>(事件)里验证了这几个字段。</p>
+<p><code>parentColumn</code> 意思是如果表单里有 parentColumn （例如默认 parent_id ，或自己改名的 parent 等），并且值等于它的 主键值（表单发过来的 parent_id 的值等于自己）</p>
+<p>解决
+（1）表单的 parent 要有值 （否则 null = null）
+(2) 这个好解决，</p>
+<h2 id="删除数据后同时删除关联模型的数据">删除数据后，同时删除关联模型的数据</h2>
+<p><a href="https://github.com/z-song/laravel-admin/issues/1854">https://github.com/z-song/laravel-admin/issues/1854</a></p>
+<p>在 User 模型里 Register a deleting model event with the dispatcher. （参考模型事件）</p>
+<pre><code class="language-php">protected static function boot()
+{
+    parent::boot();
+
+    // before delete() method call this
+    static::deleting(function($users) {
+         $users-&gt;posts()-&gt;delete();
+    });
+}
+</code></pre>
+<p><strong>问题</strong></p>
+<p>如果模型是一个 Tree, 有层级关系，无法同时删除 被删除记录的 <strong>子节点</strong> 关联模型的数据。</p>
+<p>例如</p>
+<ul>
+<li><code>CategoryName</code> 模型是 <strong>主</strong> 模型</li>
+<li><code>CategoryDetail</code> 模型是 <strong>子</strong> 模型，同时是一个 Tree 层级类型（有 parent_id， 是自己的表中一条记录）</li>
+<li><code>CategoryName</code> <strong>hasOne</strong> <code>CategoryDetail</code>, 两者用 <code>CategoryDetail</code> 的 <code>category_id</code> 关联</li>
+</ul>
+<p>当在 <code>CategoryDetail</code> 的<code>boot</code>里设置了删除记录时，同时删除 CategoryName 记录。</p>
+<p>情况</p>
+<ol>
+<li>当只删除<strong>最末端</strong>子节点时，两个表关联的数据记录都被删除</li>
+<li>当删除了某个父节点时，<code>CategoryDetail</code>里有关的子节点都被同时删除；但是<code>CategoryName</code>只会被删除父节点关联的那条记录，相关的子节点没有变化</li>
+</ol>
+<p>根据 <a href="https://stackoverflow.com/questions/45075845/automatically-deleting-nested-related-rows-in-laravel-5-4-eloquent-orm">https://stackoverflow.com/questions/45075845/automatically-deleting-nested-related-rows-in-laravel-5-4-eloquent-orm</a></p>
+<p>表/模型设计不合理，本来外键可以自动删除的就失效</p>
+<p>比如下面就合理</p>
+<pre><code class="language-php">//chapters
+$table-&gt;foreign('book_id')
+      -&gt;references('id')
+      -&gt;on('books')
+      -&gt;onDelete('cascade');
+
+//subchapters
+$table-&gt;foreign('chapter_id')
+      -&gt;references('id')
+      -&gt;on('chapters')
+      -&gt;onDelete('cascade');
+</code></pre>
+<p><strong>临时解决办法</strong></p>
+<p>强制要求用户先删除子节点，然后才能删除父节点。</p>
+<h2 id="运行在-子目录-中nginx-设置完毕后路由仍然是父目录">运行在 子目录 中，nginx 设置完毕后，路由仍然是父目录</h2>
+<p>nginx</p>
+<pre><code class="language-shell">index index.php index.html;
+# root /var/www/html/pulse/pulse_www;
+root /var/www/html/pulse;
+
+location / {
+	root /var/www/html/pulse/pulse_www;
+	index index.php index.html;
+
+	try_files $uri $uri/ /index.php?$args;
+
+	include /var/www/html/pulse/pulse_www/pulse_www_rewrite.conf;
+	include /var/www/html/pulse/pulse_www/nginx.conf;
+
+	location ~ \.php$ {
+    		include fastcgi_params;
+    		fastcgi_param SCRIPT_FILENAME $request_filename;
+    		fastcgi_pass 127.0.0.1:9000;
+	}
+}
+
+# version 1
+location ^~ /hub {
+# location /hub {
+	alias /var/www/html/pulse/pulse_hub/public;
+
+	try_files $uri $uri/ @hub;
+
+	location ~ \.php$ {
+    		include fastcgi_params;
+    		fastcgi_param SCRIPT_FILENAME $request_filename;
+    		fastcgi_pass 127.0.0.1:9000;
+	}
+}
+
+location @hub {
+	rewrite /hub/(.*)$ /hub/index.php?/$1 last;
+}
+
+# version 2
+# this is with `ln -s /home/tom/public_html/demos/demo1/public &lt;document root&gt;/demo1`
+# location /hub/ {
+#     root /var/www/html/pulse/pulse_hub/public;
+#     # rewrite ^/hub/(.*)$ /$1 break;
+
+#     try_files $uri $uri/ /hub/index.php$is_args$args;
+# }
+</code></pre>
+<p>特别是 laravel-admin 的问题，路由无法正常得到这个 directory （因为是在 nginx 层面做的跳转，而 laravel 里没有这个配置信息可以供其读取)</p>
+<p><a href="https://discuss.laravel-admin.org/d/334-page-not-found-when-laravel-public-folder-is-in-a-sub-directory">https://discuss.laravel-admin.org/d/334-page-not-found-when-laravel-public-folder-is-in-a-sub-directory</a></p>
+<p><a href="https://github.com/z-song/laravel-admin/issues/603">https://github.com/z-song/laravel-admin/issues/603</a></p>
+<p>nginx 已经设置了</p>
+<pre><code class="language-shell">location /sub-directory {
+    //.....
+}
+</code></pre>
+<p>能够正常打开</p>
+<p><a href="http://www.sample.org/sub-directory">www.sample.org/sub-directory</a></p>
+<p>laravel 默认的 route(&lsquo;test&rsquo;) 生成路径也能自带子目录的 <code>/sub-directry</code></p>
+<p>但是 laravel-admin 里面生成的路径仍然是以根目录开始 <a href="http://www.sample.org/admin/xxxx">www.sample.org/admin/xxxx</a> 没有子目录。</p>
+<p>查看这些 views 文件</p>
+<p>定位到 vendor/encore/src&hellip;&hellip;    helpers.php</p>
+<p>将 <code>$prefix='/'</code> 改成 <code>$prefix='/sub-directory/</code></p>
+<pre><code class="language-php">function admin_base_path($path = ''){
+    $prefix = '/sub-directory/'.trim(config('admin.route.prefix'), '/');
+}
+</code></pre>
+<p>但是因为以后更新、换服务器后会覆盖掉。  而php又不能直接重新定义函数</p>
+<p>所以写个 script 到 composer.json 里面去, 当 dump-autoload 后，修改这个 helper.php 文件</p>
+<p><strong>问题</strong></p>
+<p>但这样会导致下次重新登录的时候，跳转路径中多了一个 /sub-directory/ 而无法登录（404）</p>
+<p>所以最终办法：</p>
+<p>（1）不使用 laravel-admin 自带的用户权限系统， 改成自己的，但这样工作量就增加很多了</p>
+<p>（2）继续修改这个 <code>helpers.php</code>文件，根据用户是否登录，动态修改这个返回值</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Auth;
+//...
+
+function admin_base_path($path = ''){
+    //如果没登录，就直接 `/`, 如果登录了就多加一个 /sub-directory/
+    $subDirectory = Auth::guard('admin')-&gt;user() ? '/sub-directory/' : '/';
+    $prefix = $subDirectory . trim(config('admin.route.prefix'), '/');
+}
+</code></pre>
+<p>还有问题， ”编辑“、查看等按钮的链接错误，仍然没有子目录, 要继续解决</p>
+<p><img src="/media/15490412689868/15478012731253.jpg" alt="-w442"></p>
+<p><strong>问题2 静态资源问题</strong></p>
+<p><img src="/media/15490412689868/15474310583492.jpg" alt="-w1280"></p>
+<p>是因为文件  <code>/vendor/encore/laravel-admin/src/Traits/HasAssets.php</code> 中 <code>$baseCss</code>路径</p>
+<p>指向到 <code>public/vendor</code> 去了</p>
+<p>想到之前修改了 nginx vhost 配置，用的 <code>alias</code>。</p>
+<p>在 server 级别的配置信息需要注意几点：</p>
+<ol>
+<li>必须把 server 级别的 <code>root</code>设置为“高一级”。例如 项目在<code>var/www/html/laravel</code>，那么server 上的 root 就是 <code>/var/www/html</code></li>
+</ol>
+<h3 id="官方的issues">官方的issues</h3>
+<p><a href="https://github.com/z-song/laravel-admin/pull/2051/commits/7ebd443be42701bdcc76240602c4ca864799fa1c">https://github.com/z-song/laravel-admin/pull/2051/commits/7ebd443be42701bdcc76240602c4ca864799fa1c</a></p>
+<h1 id="chartjs-插件比-echarts-简单流畅50kb但文档貌似不多增加学习成本">ChartJS 插件(比 echarts 简单流畅，50kb,但文档貌似不多，增加学习成本)</h1>
+<h1 id="自写插件">自写插件</h1>
+<h2 id="encoreadmingriddisplayerseditable-支持-checkbox">Encore\Admin\Grid\Displayers\Editable 支持 checkbox</h2>
+<p>默认 grid 里面的 editable() 只支持 text  select 等几个</p>
+<p>但是有时候（如 role）要能选择多个数据。</p>
+<blockquote>
+<p>ErrorException In Editable.php line 140 :
+call_user_func_array() expects parameter 1 to be a valid callback, class &lsquo;Encore\Admin\Grid\Displayers\Editable&rsquo; does not have a method &lsquo;checkbox&rsquo;</p>
+</blockquote>
+<p>如果能有  multiSelect 或者 CheckBox 就能支持多个选择了</p>
+<h2 id="grid-的-filter-过滤器支持关联">grid 的 filter 过滤器支持“关联“</h2>
+<p>例如在 ResourceController 里搜索</p>
+<p>Resource model 有 <code>terms()</code>关联</p>
+<pre><code class="language-php">public function terms() {
+	return $this-&gt;belongsToMany(Terms::class, 'pulse_term_resource', 'resource_id', 'term_id');
+}
+</code></pre>
+<p>直接用 equal 会报错</p>
+<pre><code class="language-php">$grid-&gt;filter(function($filter){
+    $filter-equal('terms')-&gt;select([...]); 
+});
+</code></pre>
+<p>以下提到无法直接实现，只能用 <code>whereHas</code>来做。</p>
+<p><a href="https://github.com/z-song/laravel-admin/issues/1044">https://github.com/z-song/laravel-admin/issues/1044</a></p>
+<p>参考“关联模型”里的<code>查找关联数据是否存在</code>章节</p>
+<p>第二层的 <code>$query-&gt;where()</code> 就已经是查关联的表了</p>
+<pre><code>$filter-&gt;where(function($query){
+    $query-&gt;whereHas('terms', function($query) {
+        $query-&gt;where('term_id', $this-&gt;input);
+    });
+}, 'terms')-&gt;select($this-&gt;options);
+</code></pre>
+<p>拦截得到的 sql 说这个字段有歧义，</p>
+<pre><code class="language-sql">SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'term_id' in where clause is ambiguous (SQL: select count(*) as aggregate from `pulse_resource` where (exists (select * from `pulse_terms` inner join `pulse_term_resource` on `pulse_terms`.`term_id` = `pulse_term_resource`.`term_id` where `pulse_resource`.`resource_id` = `pulse_term_resource`.`resource_id` and `term_id` = 17)))
+</code></pre>
+<p>那就改成 <code>pulse_terms.term_id</code> 指定关联表名。</p>
+<pre><code class="language-php">$query-&gt;where('pulse_terms.term_id', $this-&gt;input);```
+
+## 在 modal 弹框里显示信息
+
+例如想让“详情”（或者编辑）不在新页面打开，而是在当前页面以 modal 形式展开
+
+根据
+
+https://github.com/z-song/laravel-admin/issues/2149
+
+插件
+
+https://github.com/avifatal/laravel-admin-modal
+
+（需要修改代码）
+
+
+
+干脆：改成获取行的数据，直接显示 modal,而不需要再 ajax 加载和修改 css
+
+
+
+## Grid 的 card view
+
+非列表，而是卡片式。
+
+todo
+
+##  向关联表，依次插入数据（返回上一次插入数据的ID给下一次操作）
+
+Post  里 添加新 tag
+
+
+
+## Tree 模式如何隐藏 action 按钮 以及 row 的按钮
+
+`actions()`只对 Grid 模式生效。 Tree 模式下还是有这些按钮
+
+![-w386](/media/15490412689868/15460735304510.jpg)
+
+
+```php
+$grid-&gt;actions(function ($actions) {
+    $actions-&gt;disableDelete();
+    $actions-&gt;disableEdit();
+    $actions-&gt;disableView();
+});
+</code></pre>
+<p>但是我为了方便对比，把 list tree 和 create 表单放在两个列里面了</p>
+<p><img src="/media/15490412689868/15460735624214.jpg" alt="-w969"></p>
+<p>所以，参考下官方的 Menu 功能是怎么实现的（特别是 Parent 那块，等等）</p>
+<p><img src="/media/15490412689868/15460736922552.jpg" alt="-w1172"></p>
+<h2 id="tree-模式支持显示关联模型的字段">Tree 模式支持显示“关联模型”的字段</h2>
+<h3 id="现象">现象</h3>
+<blockquote>
+<p>现象：默认的 <strong>Tree</strong> 模式下，如果数据来自于“关联模型”，只能得到一个模型里的数据，得不到关联的另一个模型的数据</p>
+</blockquote>
+<p>例如， User 模型和 Profile 模型是 1对1 关联。</p>
+<p><strong>User</strong> (hasOne Profile)模型有  <code>user_id</code>, <code>username</code>
+<strong>Profile</strong> (belongsTo User)模型有  <code>profile_id</code>, <code>user_id</code>, <code>nickname</code>, <code>gender</code> 等</p>
+<p>代码如下：</p>
+<pre><code class="language-php">/**
+ * User model
+ */
+class User extends Model {
+    public function profile():hasOne {
+    	return $this-&gt;hasOne(Profile::class, 'user_id', 'user_id');
+    }
+}
+
+/**
+ * Profile model
+ */
+use Encore\Admin\Traits\ModelTree;
+use Encore\Admin\Traits\AdminBuilder;
+
+use Illuminate\Database\Eloquent\Relations\belongsTo;
+
+class Profile extends Model {
+    use ModelTree, AdminBuilder;
+    
+    public function user() : belongsTo {
+    	return $this-&gt;belongsTo(User::class, 'user_id', 'user_id');
+    }
+}
+
+/**
+ * Profile Controller
+ */
+$column-&gt;append(Profile::tree(function ($tree) {
+    $tree-&gt;branch(function ($branch) {
+        return &quot;{$branch['nickname']}&quot;;
+    });
+}));
+</code></pre>
+<p>在上面的 Controller 代码中，<code>$branch['nickname']</code>能正常得到 <code>Profile</code> 表里的 <code>nickname</code>。</p>
+<p>但是如果想显示 <code>User</code> 表里的 <code>username</code> , 使用代码<code>$branch['user.username']</code> 会提示错误：不存在这个字段。</p>
+<h3 id="分析laraval-admin-代码为什么-tree-不支持显示关联的另外一个模型的字段">分析laraval-admin 代码，为什么 Tree 不支持显示关联的另外一个模型的字段</h3>
+<p>打开 <code>/vendor/encore/laravel-admin/src</code> 目录</p>
+<h4 id="先看-traitsadminbuilderphp">先看 <code>Traits/AdminBuilder.php</code></h4>
+<p>在 Profile Model 模型中 use 了它, 因此 Profile 可以使用它里面的所有方法。</p>
+<p>找到前面 Controller 代码中 <code>Profile::tree</code> 这里的 <code>tree()</code>方法（来自 Trait AdminBuilder）。</p>
+<pre><code class="language-php">public static function tree(\Closure $callback = null)
+{
+    return new Tree(new static(), $callback);
+}
+</code></pre>
+<p>这里返回了一个实例化的 <code>Tree</code> 类，参数1<code>new static()</code>是当前 trait 插入的模型（也就是 User Model），参数2就是我们传入的那个回调函数.</p>
+<pre><code class="language-php">function ($tree) {
+    $tree-&gt;branch(function ($branch) {
+        return &quot;{$branch['nickname']}&quot;;
+    });
+}
+</code></pre>
+<p><strong>关联模型中，调用另一个模型的字段</strong>，用的格式应该是处理<strong>对象</strong>类型的“箭头”</p>
+<pre><code class="language-php">return $branch-&gt;profile-&gt;name;
+</code></pre>
+<p>但是这里<code>$branch</code>明显是一个 <strong>数组</strong></p>
+<blockquote>
+<p><code>$branch</code>是什么时候被转换成为了数组，并且丢失了关联的模型呢？</p>
+</blockquote>
+<h4 id="tree-方法与-tree-类">tree() 方法与 Tree 类</h4>
+<p>在上面那个 AdminBuilder Trait 的 <code>static function tree()</code>方法返回了 Tree 类，它来自</p>
+<pre><code class="language-php">use Encore\Admin\Tree;
+</code></pre>
+<p>对应的文件 <code>src/Tree.php</code></p>
+<p><code>Tree</code> 继承自 <code>Illuminate\Contracts\Support\Renderable</code></p>
+<p>回忆 Controller 里调用 <code>Profile::tree()</code>后，在回调函数里得到了 <code>$tree</code>，然后再调用<code>$tree-&gt;branch()</code>，这个<code>branch()</code>方法的代码如下, 其实就是向 Tree 绑定一个 branchCallback.</p>
+<pre><code class="language-php">public function branch(\Closure $branchCallback)
+{
+    $this-&gt;branchCallback = $branchCallback;
+
+    return $this;
+}
+</code></pre>
+<h4 id="tree-的实例要实现-render-方法">Tree 的实例要实现 <code>render()</code> 方法</h4>
+<pre><code class="language-php">public function render()
+{
+    Admin::script($this-&gt;script());
+
+    view()-&gt;share([
+        'path'           =&gt; $this-&gt;path,
+        'keyName'        =&gt; $this-&gt;model-&gt;getKeyName(),
+        'branchView'     =&gt; $this-&gt;view['branch'],
+        'branchCallback' =&gt; $this-&gt;branchCallback,
+    ]);
+
+    return view($this-&gt;view['tree'], $this-&gt;variables())-&gt;render();
+}
+</code></pre>
+<h4 id="找到this-variables-对应-view-渲染什么数据">找到<strong><code>$this-&gt;variables()</code></strong> 对应 view 渲染什么数据</h4>
+<p>就是表示在视图 view 渲染出来时，调用显示什么数据，代码如下：</p>
+<pre><code class="language-php">public function variables()
+{
+    return [
+        'id'         =&gt; $this-&gt;elementId,
+        'tools'      =&gt; $this-&gt;tools-&gt;render(),
+        'items'      =&gt; $this-&gt;getItems(),
+        'useCreate'  =&gt; $this-&gt;useCreate,
+        'useSave'    =&gt; $this-&gt;useSave,
+        'useRefresh' =&gt; $this-&gt;useRefresh,
+    ];
+}
+</code></pre>
+<h4 id="找到items--this-getitems它已经是数组了">找到<strong><code>$items = $this-&gt;getItems()</code></strong>，它已经是数组了！</h4>
+<p>把它打出来看看，它已经是一个数组（丢失关联模型），而不是集合(有关联模型)了</p>
+<pre><code class="language-php">dd($this-&gt;getItems);
+</code></pre>
+<blockquote>
+<p>发现已经是一个数组了！！</p>
+</blockquote>
+<p>查看这个函数的代码， <code>$this-&gt;model-&gt;withQuery($this-&gt;queryCallback)</code>还算正常，就是说 User 模型上运行了一个查询条件，并按正常的 Eloquent 模型查询后<strong>返回 Collection</strong></p>
+<p><strong>最重要的是接着又调用了 <code>toTree()</code> 这个方法，使得原本得到的 Collection 集合类型数据，被转成了 数组！</strong></p>
+<pre><code class="language-php">public function getItems()
+{
+    return $this-&gt;model-&gt;withQuery($this-&gt;queryCallback)-&gt;toTree();
+}
+</code></pre>
+<h4 id="找到-totree-所在的-trait-modeltree最后能跟踪到把集合转换为数组的地方">找到 <code>toTree()</code> 所在的 <code>Trait ModelTree</code>，最后能跟踪到把集合转换为数组的地方</h4>
+<p>（文件/src/Traits/ModelTree.php）</p>
+<p>一路跟踪下去，依次调用了 <code>buildNestedArray()</code> 以及 <code>allNodes()</code></p>
+<pre><code class="language-php">public function toTree()
+{
+    return $this-&gt;buildNestedArray();
+}
+
+protected function buildNestedArray(array $nodes = [], $parentId = 0)
+{
+    $branch = [];
+
+    if (empty($nodes)) {
+        $nodes = $this-&gt;allNodes();
+    }
+
+    foreach ($nodes as $node) {
+        if ($node[$this-&gt;parentColumn] == $parentId) {
+            $children = $this-&gt;buildNestedArray($nodes, $node[$this-&gt;getKeyName()]);
+
+            if ($children) {
+                $node['children'] = $children;
+            }
+
+            $branch[] = $node;
+        }
+    }
+
+    return $branch;
+}
+
+public function allNodes()
+{
+    $orderColumn = DB::getQueryGrammar()-&gt;wrap($this-&gt;orderColumn);
+    $byOrder = $orderColumn.' = 0,'.$orderColumn;
+
+    $self = new static();
+
+    if ($this-&gt;queryCallback instanceof \Closure) {
+        $self = call_user_func($this-&gt;queryCallback, $self);
+    }
+    return $self-&gt;orderByRaw($byOrder)-&gt;get()-&gt;toArray();
+}
+</code></pre>
+<p>最后发现问题所在了，在<code>allNodes()</code>的返回值中，<strong>调用<code>toArray()</code>将Collection 转换成了 Array！！</strong>，回过头来看，这就导致前面 Tree 的 <code>getItems()</code>得到的总是“数组”，所以 <code>$branch</code> 就得无法得到关联的模型的数据了。</p>
+<h3 id="改造">改造</h3>
+<ul>
+<li>尽量不改动 laravel-admin 核心代码</li>
+<li>尽量保持 laravel-admin 的方法、函数调用方式</li>
+<li>尽量少增加代码</li>
+</ul>
+<p>创建目录 <code>app/Admin/Extend</code> ，放入这些文件</p>
+<pre><code>|-ExtendAdmin.php
+|-ExtendTree.php
+|-/Facades
+    |- ExtendAdminFacade.php
+|-/Traits
+    |- ExtendModelTree.php
+</code></pre>
+<h4 id="traitsextendmodeltreephp-实现新的-tocollection-方法">/Traits/ExtendModelTree.php 实现新的 <code>toCollection()</code> 方法</h4>
+<p>模仿 ModelTree 的 toTree, 使用一个 <code>toCollection()</code> 方法，得到当前插入模型中全部数据的 Collection 格式返回结果。（带父子关系）</p>
+<p>绕过 trait ModelTree 的 <code>toTree()</code> -&gt; <code>buildNestedArray()</code> -&gt; <code>allNodes()</code>里用了 <code>toArray()</code>导致返回查询结果 Collection 被转换成 Array 的这些方法。</p>
+<p>特别要注意，</p>
+<p>(1)因为这里都是处理 Collection, 所以判断为空，要用 <code>nodes-&gt;isEmpty()</code>， 而不能用 <code>empty(nodes)</code>这种数组的，否则会一直返回false得到得不到数据</p>
+<p>(2)由于 render() 支持的嵌套数组中，必须有一个 <code>children</code> 子元素，并且这个子元素也是一个数组，但是我们这使用 <code>$node-&gt;children = chileren</code>，在后面使用 <code>$item-&gt;toArray()</code>的时候，children 还是一个 Collection。导致后面只有第一级数据显示，子元素显示不全</p>
+<p>怎么解决呢，在后面 getItems() 的时候去处理这种 数组内部 某个元素又是 Collection 的情况</p>
+<pre><code class="language-php">namespace App\Admin\Extend\Traits;
+
+use Illuminate\Support\Collection;
+
+trait ExtendModelTree
+{
+	protected function toCollection() {
+		return $this-&gt;buildNestedCollection(collect([]), 0);
+	}
+
+    protected function buildNestedCollection(Collection $nodes, $parentId = 0)
+    {
+    	$self = new static();
+
+        if ($nodes-&gt;isEmpty()) {
+            $nodes = $self::all();
+        }
+
+        $branch = collect([]);
+
+        foreach ($nodes as $node) {
+
+            if ($node-&gt;parent == $parentId) {
+                $children = $this-&gt;buildNestedCollection($nodes, $node-&gt;term_taxonomy_id);
+                if ($children) {
+                    $node-&gt;children = $children;
+                }
+
+                $branch-&gt;push($node);
+            }
+        }
+        
+        return $branch;
+    }
+}
+</code></pre>
+<h4 id="extendtreephp-继承-tree并重写-getitems-使之能够先处理集合里的关联模型再返回数组">ExtendTree.php 继承 Tree，并重写 getItems() ，使之能够先处理集合里的关联模型，再返回数组</h4>
+<p>首先添加了一个成员 <code>$collectionItems</code> 用于临时保存 Collection 类型的 items</p>
+<p>然后添加了一个方法 <code>setCollectionItems($collection)</code>，可以从外部传入一个 Collection 类型数据。</p>
+<p>添加<code>getItems()</code>方法，在循环集合每个成员时， 得到关联模型的数据（<code>$arrItem['username'] = $item-&gt;user-&gt;username</code>），然后返回<strong>包含了关联模型数据的数组</strong>。（而不是之前只有当前一个模型的数组）</p>
+<p>注意返回的 处理</p>
+<p>（1）数组是多层的，即使 children 只有一个元素，也要放入数组
+（2）由于前面那个 children 的问题，把 Collection 转换成数组后，它内部的 Collection 并没有跟着转换，因此要写一个递归函数<code>processNestedCollection</code>，来处理这个 children 的问题</p>
+<p>例如一个无限级分类</p>
+<p>tree-&gt;getItems:</p>
+<pre><code class="language-yaml">array(2)
+    # 即使一个元素也要放入数组，否则 render() 解析失败
+    - array(4)
+        - cat_id
+        - cat_name
+        - desc
+        - satus
+        - children (array(2))
+            - array(4)
+                - cat_id
+                - cat_name
+                - desc
+                - satus
+            - array(4)
+                - cat_id
+                - cat_name
+                - desc
+                - satus
+    - array(4)
+        - cat_id
+        - cat_name
+        - desc
+        - status
+        - children (array(1)) # 一个元素也要放入数组
+            - array(4)
+                - cat_id
+                - cat_name
+                - desc
+                - satus
+</code></pre>
+<pre><code class="language-php">namespace App\Admin\Extend;
+
+use Encore\Admin\Tree;
+
+class ExtendTree extends Tree {
+	
+	protected $collectionItems;
+
+	public function setCollectionItems($collection) {
+		$this-&gt;collectionItems = $collection;
+	}
+
+	// convert the children element to array, if is collection
+	public function processNestedCollection($collectionItems) {
+		$data = [];
+
+		foreach ($collectionItems as $key =&gt; $item) {
+			$arrItem = $item-&gt;toArray();
+			$arrItem['term'] = $item-&gt;term;
+			$arrItem['children'] = $item-&gt;children-&gt;toArray();
+
+			if($item-&gt;children-&gt;count() &gt; 0) {
+				$arrItem['children'] = $this-&gt;processNestedCollection($item-&gt;children);
+			}
+
+			$data[] = $arrItem;
+		}
+
+		return $data;
+	}
+
+	public function getItems() {
+		$arr = $this-&gt;processNestedCollection($this-&gt;collectionItems);
+
+		return $arr;
+	}
+}
+</code></pre>
+<h4 id="重写-trait-adminbuilder-里的-tree方法让它返回-extendtree-类替代-tree-类">重写 Trait AdminBuilder 里的 <code>tree()</code>方法，让它返回 <code>ExtendTree</code> 类替代 <code>Tree</code> 类</h4>
+<p>修改 Profile 模型文件</p>
+<pre><code class="language-php">use App\Entities\Terms;
+use App\Admin\Extend\Traits\ExtendModelTree;
+use App\Admin\Extend\ExtendTree;
+
+class TermTaxonomy extends Model
+{
+	use ModelTree, ExtendModelTree;
+	
+	use AdminBuilder {
+		tree as protected traitTree;
+	}
+
+	public static function tree(\Closure $callback = null)
+    {
+        return new ExtendTree(new static(), $callback);
+    }
+}
+</code></pre>
+<p>详解：</p>
+<p>（1）新引入 ExtendModelTree 和 ExtendTree
+（2）修改<code>use ModelTree, AdminBuilder;</code>为<code>use ModelTree, ExtendModelTree;</code> ，增加了 ExtendModelTree （以便使用 <code>toCollection()</code>）
+（2）重写 trait AdminBuilder 的 <code>tree</code> 方法，返回 <code>ExtendTree</code>  (以便使用 <code>setCollectionItems</code>和改造后的<code>getItems()</code>)</p>
+<h4 id="最后-controller-代码">最后 Controller 代码</h4>
+<pre><code class="language-php">// 现在 `tree`  返回的是 ExtendTree 类（trait AdminBuilder 的 tree 被重写）
+$column-&gt;append(TermTaxonomy::tree(function ($tree) {
+    
+    // 调用 trait ExtendModelTree 里的方法
+    $collectionItems = TermTaxonomy::toCollection();
+    $tree-&gt;setCollectionItems($collectionItems);
+
+    $tree-&gt;branch(function ($branch) {
+        return &quot;{$branch['username']}&quot;;
+    });
+}));
+</code></pre>
+<h1 id="换了服务器部署后admin-账号无法再登录">换了服务器部署后，admin 账号无法再登录</h1>
+<p>在 A 机器上运行 php artisan admin:install 后，A 机器的数据表里 admin_users admin_roles admin_roles_users 就有了账号 admin 的记录。</p>
+<p>此时如果 B 机器上 git clone 后，如果数据表还是之前旧的，所以 /admin 是无法登录的，因为 admin_users 是空的</p>
+<p>如果重新运行 php artisan admin:install, 因为 migration 里已经安装过有关的表了，所以后面往这几个表填充  admin 账号的操作无法进行, 可能会报错误。</p>
+<h2 id="方法1">方法1</h2>
+<p>此时要重新干净运行 migration</p>
+<pre><code class="language-shell">php artisan migrate:refresh
+</code></pre>
+<p>然后再运行即可得到 admin 账号</p>
+<pre><code>php artisan admin:install
+</code></pre>
+<h2 id="方法2">方法2</h2>
+<p>在 A 机器上  admin:export-seed</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/laravel-admin-%E6%9B%B4%E5%A4%9A/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/laravel-admin-%E8%A1%A8%E5%8D%95%E6%A8%A1%E5%9E%8B%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6rbac%E6%9D%83%E9%99%90/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/laravel-admin-%E5%9F%BA%E7%A1%80%E8%A1%A8%E6%A0%BC/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: CDN 配置 permalink: CDN-config tags:
+ 运维  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: CDN 配置
+permalink: CDN-config
+tags:
+
+运维
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/cdn-%E9%85%8D%E7%BD%AE/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: CDN 配置
+permalink: CDN-config
+tags:
+
+运维
+
+">
+
+<meta itemprop="wordCount" content="3012">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: CDN 配置
+permalink: CDN-config
+tags:
+
+运维
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/cdn-%E9%85%8D%E7%BD%AE/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/cdn-%E9%85%8D%E7%BD%AE/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3012字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: CDN 配置
+permalink: CDN-config
+tags:</p>
+<ul>
+<li>运维</li>
+</ul>
+<hr>
+<p>如何正确配置CDN高速缓存，避免越用越慢的尴尬</p>
+<p>越来越多的博客网站开始用到了国内的免费CDN了，比如百度云加速、360网站卫士、加速乐及云盾等等。之前我也写文章分享过国内低配置VPS的优化方案，其中提到了很多站长开启CDN加速后反而更慢的问题。</p>
+<p>文章是这样描述的：</p>
+<p>动态网页会越用越慢</p>
+<p>很纳闷吧？但事实的确是这样！我们先要弄清楚这些CDN加速的原理：当用户请求我们网页时，请求会发到CDN节点上，如果是动态数据，那么CDN节点将回源站拉数据，返回给用户！也就是说数据是经过了多次转发，加上CDN节点和源站的延迟，肯定是效果不明显，而且更慢！</p>
+<p>这就不难解释，总是有人抱怨百度云加速越用越慢，而有人却说很快了。区别就是，快的人开启了云加速的整站缓存，而慢的人只是弄了一个CDN代理转发而已。</p>
+<p>没错，如果只是开启CDN，而不合理的设置缓存，就会越用越慢。</p>
+<p>下面我就分享2种CDN下的配置方案。</p>
+<p>一、动静均缓存</p>
+<p>这也是张戈博客之前用到的方案，网站前台不管是静态还是动态，我统统缓存到CDN。那速度绝对可以飞起来。</p>
+<p>老版百度云加速以及360网站卫士等，都可以非常简单的搞定这个事情，因为只需要直接勾上需要缓存的类型，比如一般都是让你勾选【html】 、【目录】、【首页】这3种类型，全部选上就可以了。</p>
+<p>这里插播2条实用技巧：</p>
+<p>①、缓存黑名单</p>
+<p>全部选上后，整个网站不管前后台都会缓存，连后台都缓存了，那还怎么玩？所以，这些CDN肯定还会支持缓存黑名单，大部分是路径匹配的，比如360网站卫士就可以如下设置不缓存后台：</p>
+<p>一般都是支持通配的，如果连通配都不支持，那也没必要使用了。</p>
+<p>②、目录不缓存？</p>
+<p>不知道有没有朋友遇到勾选了目录缓存之后，你的Wordpress网站的分类和单页面依然不会缓存，这是为什么？</p>
+<p>其实问题在于WordPress的目录和单页面地址默认是不以斜杠/结尾的，不是一个标准的目录形式。而绝大部分CDN定义的目录是以斜杠结尾的！</p>
+<p>有2个方法来解决这个问题：</p>
+<ol>
+<li>如果CDN存在缓存白名单，那么可以设置强制缓存（略麻烦）</li>
+<li>让WordPress的分类目录和单页面以斜杠结尾即可==&gt;详细教程
+那么，问题来了。新版百度云加速已经取消了这种简单的勾选配置！很多朋友解析到云加速后就放一边了，结果速度依然蜗牛，没有感受到飞的快感。</li>
+</ol>
+<p>其实，新版百度云加速需要自己自定义规则来开启缓存！下面简单分享下WordPress在百度云加速下开启高速缓存的自定义规则，如图点击可进入设置：</p>
+<p>同样的，根据前面的黑白名单规则，我们先定个调，一般网站应该是这样的情况：前台都缓存、后台不缓存、个别页面要缓存或不缓存。</p>
+<p>先看下百度云加速自定义规则的说明：</p>
+<p>提示说明: 规则自定义指对“指定URL”进行页面级规则定制(支持通配符*)。可对任意子域名、目录、甚至单个URL进行针对性的加速缓存、安全防护等配置。列表中上下关系决定优先级，靠上规则优先级高。站长可以通过点击“↑”调整优先级。新增规则优先级最低，将于30s内生效。</p>
+<p>URL指定支持通配符*,例如</p>
+<ol>
+<li>
+<p>对img.yoursite.com进行特定设置，需增加URL: img.yoursite.com/*</p>
+</li>
+<li>
+<p>对www.yoursite.com/news/ 进行特定设置，需增加URL: <a href="http://www.yoursite.com/news/">www.yoursite.com/news/</a>*</p>
+</li>
+<li>
+<p>对www.yoursite.com所有html页面进行特定设置，需增加URL: <a href="http://www.yoursite.com/">www.yoursite.com/</a>*.html
+支持通配，这就简单了！不过免费版只支持3条规则，这个就需要我们合理斟酌一下了。</p>
+</li>
+</ol>
+<p>优先级从上往下依次降低，所以我们要保证不缓存的规则写到最上面，才能不会缓存规则覆盖。</p>
+<p>根据我个人经验，一般WordPress网站设置如下3条规则即可：</p>
+<p>①、网站后台：zhangge.net/wp-admin/*   设置为不缓存或细致缓存</p>
+<p>②、评论分页：zhangge.net/<em>/comment-page-</em>    设置为不缓存或细致缓存</p>
+<p>③、网站前台：<em>zhangge.net</em>    设置为前后通配都缓存</p>
+<p>Ps：细致缓存其实就是只缓存静态文件，其中缓存时间或有效期请自行设定即可，无需按图照办。另外由于新版百度云加速现在不能对单个域名设置了，所以最后的缓存规则是前后通配，保证某些网站的二级静态域名也缓存到位。另外，这只是我个人经验推荐的配置，比如评论分页就可以根据自己的需要设置为其他页面，此处分享仅供参考！</p>
+<p>这样设置好了之后，网站前台刷几下就可以看到效果了，当然还可以F12到network里面去看header的缓存命中情况，这就不赘述了。</p>
+<p>二、只缓存静态</p>
+<p>动静都缓存可以解决国内低配VPS的2个尴尬：带宽和负载。带宽问题，国内普遍小水管就不用我多说了吧。负载问题则是WordPress一直以来的诟病，刷新快一点，CPU就满了。</p>
+<p>但是，有一些网站，本地已有缓存或者访问流量并不高，他们不想开启全静态缓存，因为会带来的各种数据不刷新问题。因此，我们如何既解决速度问题，又兼顾实时数据呢？</p>
+<p>当然，开启CDN不进行整站缓存设置的话，大部分CDN会默认缓存静态文件，基本满足以上需求。但是某些CDN有个坑爹的规则：他会和谐某些关键词，访问有这些关键词的页面就提示违规并不显示。</p>
+<p>如何解决这个问题？很简单，通过域名做动静分离即可。</p>
+<p>将静态链接替换为二级域名，并开启CDN缓存。主域名则不走CDN或走CDN但不开启缓存。</p>
+<p>将静态链接替换为二级域名应该不用我多说了吧？不会的看一下张戈博客之前分享的七牛CDN代码版即可==&gt;传送门</p>
+<p>主域名不走CDN也很简单，直接在解析时不开启缓存即可，也就是直接回源：</p>
+<p>如果担心暴露IP，如果是阿里云ECS，你还可以CNAME到阿里云的WAF上（这也是张戈博客目前的做法）：</p>
+<p>走CDN开启缓存和走CDN禁止缓存应该也不用我多说了，上文都有分享规则。</p>
+<p>如上设置后，你的网站的速度也会很快，当然前提是你的动态部分不卡才行。如果网站还是比较卡，但是你有不想开启纯静态导致数据不刷新，那么</p>
+<p>①、如果是独立主机，可以考虑开启redis或opcache等php动态缓存</p>
+<p>②、如果是虚拟主机，可以安装 DB Cache Reloaded Fix这类数据缓存插件</p>
+<p>当然，如果你觉得还是不够快，那么推荐和张戈博客一样，开启Nginx的fastcgi缓存！</p>
+<p>三、总结下区别</p>
+<p>方案一 和 方案二 到底有什么区别呢？</p>
+<p>方案一 是将动态和静态都强制缓存到CDN，这样就算本地不开启任何缓存，用户的访问速度也是杠杠的。如果想要给搜索引擎蜘蛛一样的速度，那么本地最好也开启一下静态缓存。</p>
+<p>方案二 则是只缓存静态数据，动态数据依然请求到源服务器。这样做的好处是既解决了带宽尴尬，又解决了前台数据不能实时刷新的问题。因为，占带宽的主要是静态文件，而非html代码。我们将大体积的静态文件托管到CDN加速，源服务器就只要负担体积很小的html代码流量了，速度自然就快了！</p>
+<p>当然，这样做很容易就出现了前文提到的开启CDN反问变慢的尴尬。。。解决办法也很简单，本地开启一下动态缓存即可。</p>
+<p>张戈在帮不少站长做网站优化时，设置过百度云加速，发现大部分站长都不会设置，然后还对我说为啥你弄过之后就飞起来了，我当初使用云加速就卡出翔？其实就是不会设置而已！所以，今天我分享出来，弱弱的为CDN正名，那些用过之后骂CDN垃圾越用越慢的人，先自己好好反省一下吧！</p>
+<p>好了，本文罗里吧嗦说了一大堆，有需求的自然会豁然开朗，没需求的就会如同嚼蜡了。我敢说，如果你看懂了这些设置技巧，那么使用任何CDN都会信手拈来，轻松应付！</p>
+<p>总之一句话，张戈写文章的期望不高，希望对有需求的人有所帮助就好。</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/cdn-%E9%85%8D%E7%BD%AE/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/cdn-%E9%85%8D%E7%BD%AE/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/aws-step-functions-%E8%BF%98%E6%98%AF-azure-logic-apps/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

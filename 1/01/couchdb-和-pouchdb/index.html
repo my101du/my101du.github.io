@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="CouchDB 和 PouchDB CouchDB 是一个 NoSQL, 有很多的优势，例如跨地区同步，自带 RESTFul API 等。 而 PouchDB 是一个 JavaScript 的实现，可以在本地访问数据库。比 SQLite3 性能要好，而且 JSON 类型的数据便于开发。" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="CouchDB 和 PouchDB CouchDB 是一个 NoSQL, 有很多的优势，例如跨地区同步，自带 RESTFul API 等。 而 PouchDB 是一个 JavaScript 的实现，可以在本地访问数据库。比 SQLite3 性能要好，而且 JSON 类型的数据便于开发。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/couchdb-%E5%92%8C-pouchdb/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="CouchDB 和 PouchDB CouchDB 是一个 NoSQL, 有很多的优势，例如跨地区同步，自带 RESTFul API 等。 而 PouchDB 是一个 JavaScript 的实现，可以在本地访问数据库。比 SQLite3 性能要好，而且 JSON 类型的数据便于开发。">
+
+<meta itemprop="wordCount" content="11190">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="CouchDB 和 PouchDB CouchDB 是一个 NoSQL, 有很多的优势，例如跨地区同步，自带 RESTFul API 等。 而 PouchDB 是一个 JavaScript 的实现，可以在本地访问数据库。比 SQLite3 性能要好，而且 JSON 类型的数据便于开发。"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/couchdb-%E5%92%8C-pouchdb/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/couchdb-%E5%92%8C-pouchdb/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11190字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="couchdb-和-pouchdb">CouchDB 和 PouchDB</h1>
+<p><code>CouchDB</code> 是一个 NoSQL, 有很多的优势，例如跨地区同步，自带 RESTFul API 等。</p>
+<p>而 <code>PouchDB</code> 是一个 JavaScript 的实现，可以在本地访问数据库。比 SQLite3 性能要好，而且 JSON 类型的数据便于开发。</p>
+<p>将来可以很方便地将本地的 PouchDB 数据同步到云端的 CouchDB</p>
+<h1 id="安装-couchdb-或-pouchdb-server">安装 CouchDB （或 PouchDB Server）</h1>
+<pre><code class="language-shell">sudo apt-get install couchdb
+
+# 还有启用 CORS 解决 PouchDB 访问跨域的问题
+npm install -g add-cors-to-couchdb
+add-cors-to-couchdb
+</code></pre>
+<p>如果不方便安装，也能用 pouchdb-server 来替代
+（自带 CORS）</p>
+<pre><code class="language-shell">npm install -g pouchdb-server
+pouchdb-server --port 5984
+</code></pre>
+<p>然后在 http://localhost:5984/_utils/ 里有个图形界面维护数据库</p>
+<p><img src="/media/15510675029666/15510677810808.jpg" alt="-w1177"></p>
+<h1 id="安装引入-pouchdb">安装（引入） PouchDB</h1>
+<p>node</p>
+<pre><code class="language-shell">npm install pouchdb
+var PouchDB = require('pouchdb');
+</code></pre>
+<p>直接引入文件</p>
+<pre><code class="language-html">&lt;script src=&quot;//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;node_modules/pouchdb/dist/pouchdb.min.js&quot;&gt;&lt;/script&gt;
+
+</code></pre>
+<p>注意在不同的平台，使用的底层数据保存方式是不同的。</p>
+<ul>
+<li>IndexedDB in most browsers,</li>
+<li>WebSQL in older browsers,</li>
+<li>and LevelDB in Node.js</li>
+</ul>
+<h1 id="database-数据库">Database 数据库</h1>
+<p>包括<code>本地</code>和<code>远程</code></p>
+<pre><code class="language-js">//本地创建数据库
+var db = new PouchDB('kittens');
+
+//远程创建数据库 http://     localhost:5984     /kittens (数据库名)
+var db = new PouchDB('http://localhost:5984/kittens');
+</code></pre>
+<p>注意，<code>new PouchDB</code> 执行后并不会马上创建数据库，而是直到进行 call api，例如<code>db.info()</code>，这是因为 PouchDB 的<strong>构造器</strong>是完全<strong>同步</strong>的（为了便于错误捕获）</p>
+<p>然后访问 http://localhost:5984/kittens ，就能看到数据库的信息了</p>
+<pre><code class="language-json">{&quot;db_name&quot;:&quot;kittens&quot;,&quot;doc_count&quot;:0,&quot;doc_del_count&quot;:0,&quot;update_seq&quot;:0,&quot;purge_seq&quot;:0,&quot;compact_running&quot;:false,&quot;disk_size&quot;:79,&quot;data_size&quot;:0,&quot;instance_start_time&quot;:&quot;1410722558431975&quot;,&quot;disk_format_version&quot;:6,&quot;committed_update_seq&quot;:0}
+</code></pre>
+<h2 id="获取数据库基本信息">获取数据库基本信息</h2>
+<pre><code class="language-js">db.info().then(function (info) {
+  console.log(info);
+});
+</code></pre>
+<p>doc_count: the number of undeleted documents in the database
+db_name: the name of the database</p>
+<h2 id="debug">Debug</h2>
+<p>在 Chrome 中</p>
+<p>新版的 chrome 好像移动到了 <code>by-sequence</code> 节点下了</p>
+<p><img src="/media/15510675029666/15513230951010.jpg" alt="-w1091"></p>
+<p>这里提到，已经独立成一个 extension 了， pouchdb inspector 但是在商店搜索不到了（因为新版 chrome 移除了一些 api）</p>
+<p><a href="https://github.com/pouchdb/pouchdb-fauxton-chrome-extension/issues/17">https://github.com/pouchdb/pouchdb-fauxton-chrome-extension/issues/17</a></p>
+<p>新的插件 HTML5存储管理器多合一</p>
+<p><a href="https://chrome.google.com/webstore/detail/html5-storage-manager-all/giompennnhheakjcnobejbnjgbbkmdnd">https://chrome.google.com/webstore/detail/html5-storage-manager-all/giompennnhheakjcnobejbnjgbbkmdnd</a></p>
+<p>后者使用 pouch-server 了。 把本地 indexDB 复制到 远程的。然后在这里看</p>
+<pre><code class="language-shell">npm install -g pouchdb-server
+
+pouchdb-server --port 5984
+</code></pre>
+<p>然后打开 http://localhost:5984/_utils/</p>
+<p>（1）使用 chrome/safari 的 IndexedDB/WebSQL inspectors</p>
+<p><img src="/media/15510675029666/15510717950968.jpg" alt="">
+（2）代码中 log 进行 debug</p>
+<p>启用和禁用</p>
+<pre><code class="language-js">PouchDB.debug.enable('*');
+PouchDB.debug.disable();
+</code></pre>
+<h2 id="删除本地数据库">删除本地数据库</h2>
+<p>在 Chrome 浏览器开发者工具中删除， 安装插件 Clear Cache extension</p>
+<p>Safari → Clear History and Website Data</p>
+<h2 id="远程数据库">远程数据库</h2>
+<p>本地数据库是 indexdb(浏览器)、leveldb(node)，如果创建远程数据库，则直接与远程 database 通信，也有多种形式，例如 <strong>CouchDB, Cloudant, Couchbase, etc</strong>.</p>
+<h1 id="documents">Documents</h1>
+<p>作为一个 NoSQL，PouchDB 保存的是非结构化的 document, 类似</p>
+<pre><code class="language-json">{
+  &quot;_id&quot;: &quot;mittens&quot;,
+  &quot;name&quot;: &quot;Mittens&quot;,
+  &quot;occupation&quot;: &quot;kitten&quot;,
+  &quot;age&quot;: 3,
+  &quot;hobbies&quot;: [
+    &quot;playing with balls of yarn&quot;,
+    &quot;chasing laser pointers&quot;,
+    &quot;lookin' hella cute&quot;
+  ]
+}
+</code></pre>
+<p>与关系型数据库的概念对比</p>
+<p><img src="/media/15510675029666/15510723431027.jpg" alt="-w525"></p>
+<h2 id="新增-documentput">新增 document（<code>put</code>）</h2>
+<pre><code class="language-js">var doc = {
+  &quot;_id&quot;: &quot;mittens&quot;,
+  &quot;name&quot;: &quot;Mittens&quot;,
+  &quot;occupation&quot;: &quot;kitten&quot;,
+  &quot;age&quot;: 3,
+  &quot;hobbies&quot;: [
+    &quot;playing with balls of yarn&quot;,
+    &quot;chasing laser pointers&quot;,
+    &quot;lookin' hella cute&quot;
+  ]
+};
+db.put(doc);
+</code></pre>
+<p>必须有一个<code>_id</code>字段，以便使用 <code>get()</code>取回它.  你可以根据情况，使用用户名、邮箱等等。</p>
+<pre><code class="language-js">db.get('mittens').then(function (doc) {
+  console.log(doc);
+});
+</code></pre>
+<p>一般这个 id 如果想要自动生成，可以用时间来得到. 注意 如果是第一种方法，要转换成  string, 否则会报错</p>
+<blockquote>
+<p>_id field must contain a string</p>
+</blockquote>
+<pre><code class="language-js">{
+  // 时间戳，要转换成字符串  Date.now().toString()
+  //_id: (new Date()).getTime() + ''
+
+  // 日期格式，更好识别 2011-10-05T14:48:00.000Z
+  _id: new Date().toISOString(),
+}
+</code></pre>
+<p>注意，返回的数据会多出一个 <code>_rev</code> 字段</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Mittens&quot;,
+  &quot;occupation&quot;: &quot;kitten&quot;,
+  &quot;age&quot;: 3,
+  &quot;hobbies&quot;: [
+    &quot;playing with balls of yarn&quot;,
+    &quot;chasing laser pointers&quot;,
+    &quot;lookin' hella cute&quot;
+  ],
+  &quot;_id&quot;: &quot;mittens&quot;,
+  &quot;_rev&quot;: &quot;1-bea5fa18e06522d12026f4aee6b15ee4&quot;
+}
+</code></pre>
+<h2 id="post-方法自动生成-_id--uuid吗">post 方法自动生成 _id  (uuid吗？)</h2>
+<p>类似 b781309e-0423-4b3e-96ad-238cf50debce</p>
+<p>但是这种方法无法在生成数据后，马上根据指定 _id 得到数据?</p>
+<pre><code class="language-js">doc = {
+    name: 'Peter',
+    age: 23,
+    occupation: 'designer'
+};
+
+db.post(doc).then((res) =&gt; {
+    console.log(&quot;Document inserted OK&quot;);
+}).catch((err) =&gt; {
+    console.error(err);
+});
+</code></pre>
+<h2 id="_rev字段-revisions-marker"><code>_rev</code>字段 （revisions marker）</h2>
+<p>每当文档被 create 或 update 时，就会生成一个新的 ID</p>
+<p>不像 MySQL， 在 PouchDB 里更新一个文档，必须<strong>指定 _rev</strong></p>
+<pre><code class="language-js">// 例如把 age 改成4
+doc.age = 4;
+// 其他数据
+doc._rev = &quot;1-bea5fa18e06522d12026f4aee6b15ee4&quot;;
+
+db.put(doc);
+</code></pre>
+<p>如果没有指定<code>_rev</code>, 会报 409 错误 (conflict)</p>
+<pre><code class="language-json">{
+  &quot;status&quot;: 409,
+  &quot;name&quot;: &quot;conflict&quot;,
+  &quot;message&quot;: &quot;Document update conflict&quot;
+}
+</code></pre>
+<p><strong>那么为什么 PouchDB 要用这个字段呢？作用是什么</strong></p>
+<p>答案是：为了让同步正常工作（就像 Git 的版本一样）， 后面再看如何解决冲突</p>
+<pre><code>rev 3-a  rev 3-b
+      \___/
+        |
+      rev 2
+        |
+      rev 1
+</code></pre>
+<h2 id="正确的更新文档的方式">正确的更新文档的方式</h2>
+<p>首先获取数据，（例子中，返回的 doc 已经包含了 <code>_rev</code>因此无需手动指定），然后更新某个字段的值，最后全部<code>put()</code>回去（包括 <code>_rev</code>）</p>
+<pre><code class="language-js">// fetch mittens
+db.get('mittens').then(function (doc) {
+  // update their age
+  doc.age = 4;
+  // put them back
+  return db.put(doc);
+}).then(function () {
+  // fetch mittens again
+  return db.get('mittens');
+}).then(function (doc) {
+  console.log(doc);
+});
+</code></pre>
+<p>再次<code>get()</code>后，发现 <strong><code>_rev</code>的值变化了</strong>，下次如果再更新 age, 需要把这个新的 <code>_rev</code>值重新 put 回去。</p>
+<h2 id="删除文档-remove并不是真的删除了数据">删除文档： <code>remove()</code>并不是“真的”删除了数据</h2>
+<p>有几种方法</p>
+<pre><code class="language-js">//db.remove(doc)
+db.get('mydoc').then(function (doc) {
+  return db.remove(doc);
+});
+
+//db.remove(doc._id, doc._rev)
+db.get('mydoc').then(function (doc) {
+  return db.remove(doc._id, doc._rev);
+});
+
+//db.put(doc) with _deleted set to true:
+db.get('mydoc').then(function (doc) {
+  doc._deleted = true;
+  return db.put(doc);
+});
+</code></pre>
+<p>调用 <code>remove()</code>后，并不是删除了文档，而是添加了一个字段<code>_deleted</code>值为<code>true</code>,结果</p>
+<pre><code>{_id: 'foo', _rev: '4-z', _deleted: true}
+            |
+{_id: 'foo', _rev: '3-y'}
+            |
+{_id: 'foo', _rev: '2-x'}
+            |
+{_id: 'foo', _rev: '1-w'}
+</code></pre>
+<h2 id="批量处理">批量处理</h2>
+<h3 id="写入多条数据bulkdocs">写入多条数据<code>bulkDocs()</code>。</h3>
+<p>一次操作多条数据性能比逐条处理要好。因为在内部会对动作进行合并。</p>
+<p>（但是注意不支持“事务”，因此一条失败，不代表后续的也会操作失败）</p>
+<pre><code class="language-js">db.bulkDocs([
+  {
+    _id: 'mittens',
+    occupation: 'kitten',
+    cuteness: 9.0
+  },
+  {
+    _id: 'katie',
+    occupation: 'kitten',
+    cuteness: 7.0
+  },
+  {
+    _id: 'felix',
+    occupation: 'kitten',
+    cuteness: 8.0
+  }
+]);
+
+// 等于 put().then(return put()).then(return put())
+db.put({
+    _id: 'mittens',
+    occupation: 'kitten',
+    cuteness: 9.0
+}).then(function () {
+  return db.put({
+    _id: 'katie',
+    occupation: 'kitten',
+    cuteness: 7.0
+  });
+}).then(function () {
+  return db.put({
+    _id: 'felix',
+    occupation: 'kitten',
+    cuteness: 8.0
+  });
+});
+</code></pre>
+<h3 id="读取多条数据alldocs以及对比慢速查询">读取多条数据<code>allDocs()</code>，以及对比慢速查询</h3>
+<p>会按 <code>_id</code>的顺序返回(因此如果使用时间，可以进行排序)，还可以对 <code>_id</code>进行 <code>&gt;</code>  <code>&lt;</code>操作来切分</p>
+<p>尽可能用这个函数来查询和分页， 因为 <code>query()</code>是个慢速查询。</p>
+<p>对于99%的应用程序，您应该能够使用allDocs()实现所需的所有分页/排序/搜索功能。</p>
+<p><a href="http://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html">http://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html</a></p>
+<pre><code class="language-js">db.allDocs({
+    // 这句干啥的？ 
+    include_docs: true
+}).then(function (response) {
+  console.log(response);
+}).catch(function (err) {
+  console.log(err);
+});
+</code></pre>
+<p><img src="/media/15510675029666/15513249285994.jpg" alt="-w732"></p>
+<h1 id="异步代码">异步代码</h1>
+<p>API is provided in both <strong>callback</strong> format and <strong>promise</strong> format</p>
+<p>callback 格式</p>
+<pre><code class="language-js">db.get('mittens', function (error, doc) {
+  if (error) {
+    // oh noes! we got an error
+  } else {
+    // okay, doc contains our document
+  }
+});
+</code></pre>
+<p>对应的 promise 格式 (then(), catch())</p>
+<pre><code class="language-js">db.get('mittens').then(function (doc) {
+  // okay, doc contains our document
+}).catch(function (err) {
+  // oh noes! we got an error
+});
+</code></pre>
+<p>下例，对一个 document 操作了3次，但只需要一个 <code>catch()</code>就能捕获所有错误</p>
+<pre><code class="language-js">db.put({_id: 'charlie', age: 21}).then(function () {
+  return db.get('charlie');
+}).then(function (charlie) {
+  // increment Charlie's age
+  charlie.age++;
+  return db.put(charlie);
+}).then(function () {
+  return db.get('charlie');
+}).then(function (charlie) {
+  // increment Charlie's age again
+  charlie.age++;
+  return db.put(charlie);
+}).then(function () {
+  return db.get('charlie');
+}).then(function (charlie) {
+  console.log(charlie);
+}).catch(function (err) {
+  console.log(err);
+});
+</code></pre>
+<h2 id="高级-promise-特性">高级 Promise 特性</h2>
+<p>在 <code>then()</code>里是一个函数，在这里里面可以</p>
+<p>返回另一个 Promise
+抛出错误 （Throw an error）
+返回一个 non-promise object（或者 undefined）</p>
+<pre><code class="language-js">db.get('charlie').then(function (charlie) {
+  // Within this function, you can do
+  // try/catch/return like you normally would,
+  // and it will be handled asynchronously!
+}).then(function (result) {
+  // If the previous function returned something
+  // (or returned undefined), it will show up here
+  // as &quot;result&quot;.
+}).catch(function (err) {
+  // If the previous function threw an error,
+  // it will show up here as &quot;err&quot;.
+});
+</code></pre>
+<p>虽然大部分浏览器都支持 Promise ,但如果要使用一些第三方 promise 库来使用高级特性也是可以的，查阅它们的文档。</p>
+<p><a href="http://promisesaplus.com/">the Promises A+ spec</a></p>
+<ul>
+<li>bluebird</li>
+<li>lie</li>
+<li>Q</li>
+<li>RSVP</li>
+<li>then/promise</li>
+<li>when</li>
+</ul>
+<h2 id="创建默认-document">创建“默认” document</h2>
+<p>当查找<code>_id</code>为“config”的document 不存在，返回默认的 document</p>
+<pre><code class="language-js">db.get('config').catch(function (err) {
+  if (err.name === 'not_found') {
+    return {
+      _id: 'config',
+      background: 'blue',
+      foreground: 'white',
+      sparkly: 'false'
+    };
+  } else { // hm, some other error
+    throw err;
+  }
+}).then(function (configDoc) {
+  // sweet, here is our configDoc
+}).catch(function (err) {
+  // handle any errors
+});
+</code></pre>
+<h1 id="attachments-附件">Attachments 附件</h1>
+<h2 id="保存附件">保存附件</h2>
+<p>PouchDB 甚至能存储图片 mp3 等。 以 base64-encoded 格式或者 Blob</p>
+<p>一个base64格式存储图片</p>
+<pre><code class="language-js">db.put({
+  _id: 'mydoc',
+  _attachments: {
+    'myattachment.txt': {
+      content_type: 'text/plain',
+      data: 'aGVsbG8gd29ybGQ='
+    }
+  }
+});
+
+// 或者一次存储多个附件(The bulkDocs() and post() APIs also accept attachments in either format.)
+db.put({
+  _id: 'mydoc',
+  _attachments: {
+    'myattachment1.txt': {
+      content_type: 'text/plain',
+      data: myBlob1
+    },
+    'myattachment2.txt': {
+      content_type: 'text/plain',
+      data: myBlob2
+    },
+    'myattachment3.txt': {
+      content_type: 'text/plain',
+      data: myBlob3
+    },
+    // etc.
+  }
+});
+</code></pre>
+<p>创建附件类型的 document, 要指定<code>content_type</code>（MIME type）</p>
+<p>使用下面的函数，在字符串和 base64 格式之间转换和验证</p>
+<pre><code class="language-js">btoa('hello world')      // &quot;aGVsbG8gd29ybGQ=&quot;
+atob('aGVsbG8gd29ybGQ=') // &quot;hello world&quot;
+</code></pre>
+<h2 id="获取文档以及包含的附件-默认返回签名指定返回文件内容">获取文档，以及包含的附件 (默认返回签名，指定返回文件内容)</h2>
+<pre><code class="language-js">db.get('mydoc').then(function (doc) {
+  console.log(doc);
+});
+</code></pre>
+<p>返回</p>
+<pre><code class="language-json">{
+  &quot;_attachments&quot;: {
+    &quot;myattachment.txt&quot;: {
+      &quot;content_type&quot;: &quot;text/plain&quot;,
+      &quot;digest&quot;: &quot;md5-XrY7u+Ae7tCTyyK7j1rNww==&quot;,
+      &quot;stub&quot;: true
+    }
+  },
+  &quot;_id&quot;: &quot;mydoc&quot;,
+  &quot;_rev&quot;: &quot;1-e8a84187bb4e671f27ec11bdf7320aaa&quot;
+}
+</code></pre>
+<p><strong>很奇怪，<code>data</code>去哪里了？</strong></p>
+<blockquote>
+<p>默认地，PouchDB 只会返回 attachment 的<code>stub</code>（包含一个 digest，例如用 <code>md5sum</code>从附件二进制文件本身得到）</p>
+</blockquote>
+<p>如果要得到附件本身，需要在<code>get()</code>或<code>allDocs()</code>的参数中，指定<code>{attachments: true}</code></p>
+<pre><code class="language-js">db.get('mydoc', {attachments: true}).then(function (doc) {
+  console.log(doc);
+});
+</code></pre>
+<p>返回</p>
+<pre><code>json{
+  &quot;_attachments&quot;: {
+    &quot;myattachment.txt&quot;: {
+      &quot;content_type&quot;: &quot;text/plain&quot;,
+      &quot;digest&quot;: &quot;md5-XrY7u+Ae7tCTyyK7j1rNww==&quot;,
+      &quot;data&quot;: &quot;aGVsbG8gd29ybGQ=&quot;
+    }
+  },
+  &quot;_id&quot;: &quot;mydoc&quot;,
+  &quot;_rev&quot;: &quot;1-e8a84187bb4e671f27ec11bdf7320aaa&quot;
+}
+</code></pre>
+<h2 id="图片附件-直接获取附件转码后的数据-dbgetattachment与urlcreateobjecturl">图片附件, 直接获取附件转码后的数据 <code>db.getAttachment()</code>与<code>URL.createObjectURL</code></h2>
+<p>在这个例子中，有</p>
+<p><code>db.getAttachment()</code> 和 <code>URL.createObjectURL(blob)</code>两个函数。</p>
+<p>其中<code>db.getAttachment()</code>是直接获得 Blob, 然后转换成文件
+而 <code>URL.createObjectUrl()</code>则得到 base64-encoded 后的 string，能够直接用在 <code>&lt;img&gt;</code>组件的 <code>src</code>属性上。</p>
+<pre><code class="language-js">db.put({
+  _id: 'meowth',
+  _attachments: {
+    'meowth.png': {
+      content_type: 'image/png',
+      data: 'iVBORw0KGgoAAAANSUhEUgAAACgAAAAkCAIAAAB0Xu9BAAAABGdBTUEAALGPC/xhBQAAAuNJREFUWEetmD1WHDEQhDdxRMYlnBFyBIccgdQhKVcgJeQMpE5JSTd2uqnvIGpVUqmm9TPrffD0eLMzUn+qVnXPwiFd/PP6eLh47v7EaazbmxsOxjhTT88z9hV7GoNF1cUCvN7TTPv/gf/+uQPm862MWTL6fff4HfDx4S79/oVAlAUwqOmYR0rnazuFnhfOy/ErMKkcBFOr1vOjUi2MFn4nuMil6OPh5eGANLhW3y6u3aH7ijEDCxgCvzFmimvc95TekZLyMSeJC68Bkw0kqUy1.........RK5CYII='
+    }
+  }
+}).then(function () {
+  return db.getAttachment('meowth', 'meowth.png');
+}).then(function (blob) {
+  var url = URL.createObjectURL(blob);
+  var img = document.createElement('img');
+  img.src = url;
+  document.body.appendChild(img);
+}).catch(function (err) {
+  console.log(err);
+});
+</code></pre>
+<h2 id="直接存储二进制数据-putattachment">直接存储二进制数据 <code>putAttachment()</code></h2>
+<p>Up to now, 我们是把附件用 base64-encoded 后的字符串形式存储，对于较大的文件，也可以直接保存成二进制文件。</p>
+<p>注意：</p>
+<ol>
+<li>如果文档不存在，则创建一个空文档</li>
+<li>如果文档存在，则修改现有文档，保存附件</li>
+<li>NodeJS 里用 <code>Buffers</code>, 浏览器里用 <code>Blobs</code></li>
+</ol>
+<p>下面例子，使用 canvas 元素从 img 标签读取图像数据，将 Blob 写入 PouchDB.</p>
+<pre><code class="language-js">function convertImgToBlob(img, callback) {
+   var canvas = document.createElement('canvas');
+   var context = canvas.getContext('2d');
+   context.drawImage(img, 0, 0);
+
+    // Warning: toBlob() isn't supported by every browser.
+    // You may want to use blob-util.
+   canvas.toBlob(callback, 'image/png');
+}
+
+var catImage = document.getElementById('cat');
+convertImgToBlob(catImage, function (blob) {
+  db.putAttachment('meowth', 'meowth.png', blob, 'image/png').then(function () {
+    return db.get('meowth', {attachments: true});
+  }).then(function (doc) {
+    console.log(doc);
+  });
+});
+
+</code></pre>
+<p>如果跨浏览器，blob 可能会需要用下面的工具，它有一个可以跨浏览器工作的<code>imgSrcToBlob()</code>方法</p>
+<p><a href="https://github.com/nolanlawson/blob-util">https://github.com/nolanlawson/blob-util</a></p>
+<h2 id="允许用户用-input-typefile-和-html5-的-file-api-保存文件">允许用户用 <code>&lt;input type=&quot;file&quot;&gt;</code> 和 HTML5 的 File API 保存文件</h2>
+<p>因为从<code>&lt;input type=&quot;file&quot;&gt;</code>得到的已经是 Blob 数据了，因此可以保存到 PouchDB</p>
+<pre><code class="language-html">&lt;input type=&quot;file&quot;&gt;
+</code></pre>
+<pre><code class="language-js">var input = document.querySelector('input');
+input.addEventListener('change', function () {
+  var file = input.files[0]; // file is a Blob
+
+  db.put({
+    _id: 'mydoc',
+    _attachments: {
+      filename: {
+        type: file.type,
+        data: file
+      }
+    }
+  }).catch(function (err) {
+    console.log(err);
+  });
+});
+</code></pre>
+<h2 id="blobbuffer-与-base64字符串">Blob/Buffer 与 Base64字符串</h2>
+<h3 id="blob-types">blob types</h3>
+<p>blob 有 <code>type</code>, 同时也能指定<code>content_type</code>.</p>
+<pre><code class="language-js">var myBlob = new Blob(['I am plain text!'], {type: 'text/plain'});
+console.log(myBlob.type); // 'text/plain'
+
+db.put({
+  _id: 'mydoc',
+  _attachments: {
+    'myattachment.txt': {
+      content_type: 'text/plain',
+      data: myBlob
+    }
+  }
+});
+</code></pre>
+<p>这种冗余的原因是1)Node中的Buffer没有type，2)CouchDB附件格式需要它。</p>
+<p>因此，为了获得最好的结果，您应该确保您的blob具有与报告给PouchDB的blob相同的类型。否则，您可能会看到不一致的行为(例如，在IndexedDB中，Blob按原样存储在兼容的浏览器中)。</p>
+<h3 id="灵活接收不同的数据类型">灵活接收不同的数据类型</h3>
+<p>前面的<code>put()</code>方式中，<code>_attachments</code>是默认使用的 basa64 字符串，其实完全可以使用 blob/buffer</p>
+<pre><code class="language-shell">db.put({
+  _id: 'mydoc',
+  _attachments: {
+    'myattachment.txt': {
+      content_type: 'text/plain',
+      data: myBlob
+    }
+  }
+});
+</code></pre>
+<p>同样，<code>putAttachment()</code>也不仅仅是只能用 blob/buffer, base64也是支持的</p>
+<pre><code class="language-js">db.putAttachment('mydoc', 'myattachment.png', myBase64String, 'image/png');
+</code></pre>
+<p><code>bulkDocs()</code>和 <code>post()</code>也是同时支持两种格式</p>
+<p>也就是说，<strong>PouchDB 会自动根据传入的数据类型选择保存方式</strong>。</p>
+<h3 id="获取附件的时候得到-blobbuffer-而不是-base64">获取附件的时候，得到 blob/buffer 而不是 base64</h3>
+<p>对于<strong>获取 attacument</strong>, <code>get(), allDocs(), changes(), and query()</code>,在指定<code>{attachments: true}</code>时候，<strong>默认返回 base64类型</strong>。</p>
+<p>如果需要返回 blob/buffer, 需要指定参数</p>
+<pre><code class="language-json">{binary: true}
+</code></pre>
+<h3 id="性能对比与选择">性能对比与选择</h3>
+<p>Blob/Buffer 插入和检索附件，以及内存占用方面均占优。</p>
+<p>base64 主要方便开发人员开发和调试。</p>
+<h3 id="相关-api">相关 API</h3>
+<ul>
+<li>putAttachment()</li>
+<li>getAttachment()</li>
+<li>removeAttachment()</li>
+</ul>
+<h1 id="replication-复制">Replication 复制</h1>
+<p>CouchDB 的<code>_rev</code>让它非常适合进行数据的同步。  不用关心哪个是<strong>主</strong>，哪个是<strong>从</strong></p>
+<p><img src="/media/15510675029666/15510801513592.jpg" alt=""></p>
+<h2 id="设置sync">设置sync</h2>
+<p>本地与远程 PouchDBs</p>
+<pre><code class="language-shell">var localDB = new PouchDB('mylocaldb')
+
+var remoteDB = new PouchDB('http://localhost:5984/myremotedb')
+</code></pre>
+<h3 id="单向与双向复制">单向与双向复制</h3>
+<p>设置从本地数据库到远程数据库的<strong>单向复制</strong></p>
+<pre><code class="language-js">localDB.replicate.to(remoteDB).on('complete', function () {
+  // yay, we're done!
+}).on('error', function (err) {
+  // boo, something went wrong!
+});
+</code></pre>
+<p>如果要设置<strong>双向复制</strong></p>
+<pre><code class="language-js">localDB.replicate.to(remoteDB);
+localDB.replicate.from(remoteDB);
+
+
+// 简化成一句
+localDB.sync(remoteDB);
+
+// 添加监听事件
+localDB.sync(remoteDB).on('complete', function () {
+  // yay, we're in sync!
+}).on('error', function (err) {
+  // boo, we hit an error!
+});
+</code></pre>
+<h2 id="live-replication-continuous实时复制以及处理离线应用的重试">Live replication （“continuous”）实时复制，以及处理离线应用的重试</h2>
+<p>普通复制只发生一次，而实时复制是“实时”的。</p>
+<p>通过指定<code>{live: true}</code>选项实现</p>
+<pre><code class="language-js">localDB.sync(remoteDB, {
+  live: true
+}).on('change', function (change) {
+  // yo, something changed!
+}).on('error', function (err) {
+  // yo, we got an error! (maybe the user went offline?)
+});
+</code></pre>
+<p>live replication有一个问题:如果用户离线了怎么办?在这些情况下，将抛出错误并停止复制。</p>
+<p>您可以使用<code>retry</code>选项，让PouchDB自动处理这个错误，并重试，直到重新建立连接:</p>
+<pre><code class="language-js">localDB.sync(remoteDB, {
+  live: true,
+  retry: true
+}).on('change', function (change) {
+  // yo, something changed!
+}).on('paused', function (info) {
+  // replication was paused, usually because of a lost connection
+}).on('active', function (info) {
+  // replication was resumed
+}).on('error', function (err) {
+  // totally unhandled error (shouldn't happen)
+});
+</code></pre>
+<h2 id="取消复制">取消复制</h2>
+<p>有时候，当用户退出登录或其他情况手动取消复制，使用<code>cancel()</code>和等待<code>on('complete')</code>完成</p>
+<pre><code class="language-js">var syncHandler = localDB.sync(remoteDB, {
+  live: true,
+  retry: true
+});
+
+syncHandler.on('complete', function (info) {
+  // replication was canceled!
+});
+
+syncHandler.cancel(); // &lt;-- this cancels it
+</code></pre>
+<p>除了<code>sync()</code>返回的 handler, <code>replicate()</code>返回的 handler 也可以调用<code>cancel()</code></p>
+<pre><code class="language-js">var replicationHandler = localDB.replicate.to(remoteDB, {
+  live: true,
+  retry: true
+});
+
+replicationHandler.on('complete', function (info) {
+  // replication was canceled!
+});
+
+replicationHandler.cancel(); // &lt;-- this cancels it
+</code></pre>
+<h2 id="删除已复制的-database">删除已复制的 database</h2>
+<p>关于复制需要注意的一点是，它<strong>跟踪</strong>数据库中的<strong>数据</strong>，而<strong>不是数据库本身</strong>。</p>
+<p>如果您 <code>destroy()</code>正在复制的数据库，那么下一次复制开始时，它将再次传输所有数据，将数据库重新创建到销毁前的状态。</p>
+<p>如果希望删除数据库中的数据，则需要通过<code>remove()</code>或<code>bulkDocs()</code>删除。<strong>pouchdb-erase</strong>插件可以帮助您删除数据库的全部内容</p>
+<h2 id="fancy-replication-更多复制的类型">Fancy Replication (更多复制的类型)</h2>
+<p>可以在多种场景中，在多个数据库之间复制数据</p>
+<ul>
+<li>You have an in-memory PouchDB that replicates with a local PouchDB, acting as a cache. （内存中的 PouchDB 作为缓存，和本地 PouchDB 同步）</li>
+<li>You have many remote CouchDB databases that the user may access, and they are all replicated to the same local PouchDB.（本地 PouchDB 复制到远程的多个数据库）</li>
+<li>You have many local PouchDB databases, which are mirrored to a single remote CouchDB as a backup store.  （本地多个数据库，复制到远程的一个镜像 CouchDB 作为备份。）</li>
+</ul>
+<p>当您在两个远程数据库之间复制时，更改将通过PouchDB进行。如果这不是您想要的，那么您应该直接POST到CouchDB <code>_replication</code>端点，如CouchDB复制指南中所述。（http://guide.couchdb.org/draft/replication.html）</p>
+<h2 id="相关-api-1">相关 API</h2>
+<p>replication()
+sync()</p>
+<h1 id="conflicts-冲突">Conflicts 冲突</h1>
+<p>包括两种</p>
+<ul>
+<li>immediate conflicts</li>
+<li>eventual conflicts.</li>
+</ul>
+<h2 id="immediate-conflict--立即">Immediate Conflict  （立即）</h2>
+<p>每当 API 里有 <code>rev</code>参数，或者在输入带有 <code>_rev</code>的 document 时（put(), post(), remove(), bulkDocs(), and putAttachment()），都可能发生这种情况（409 error）</p>
+<pre><code class="language-js">var myDoc = {
+  _id: 'someid',
+  _rev: '1-somerev'
+};
+db.put(myDoc).then(function () {
+  // success
+}).catch(function (err) {
+  if (err.name === 'conflict') {
+    // conflict!
+  } else {
+    // some other error
+  }
+});
+</code></pre>
+<p>例如，如果您正在进行实时复制，那么文档可能会在用户操作时被其他人修改。如果在用户尝试提交更改之前将远程更改复制到本地数据库，那么他们将收到上述409错误。</p>
+<h3 id="upsert">upsert()</h3>
+<p>在大多数情况下，解决409错误的方法就是重试 <code>put()</code>直到成功，如果用户的意图可以表达为一个<code>delta</code>（例如，一个改变不依赖于当前版本）</p>
+<p>借用传统数据库的短语，称之为<code>upsert (&quot;update or insert&quot;)</code>。</p>
+<p>使用<code>pouchdb-upsert</code>插件来实现(插件地址：https://github.com/pouchdb/pouchdb-upsert#readme)</p>
+<p><code>upsert()</code>函数接收 docId 和 delta 函数，这个 delta 函数是一个接受文档并输出新文档的函数。（如果不存在，则提供一个空文档）</p>
+<p><code>pouchdb-upsert</code>还提供<code>了putIfNotExists()</code>函数，如果文档不存在，该函数将创建文档</p>
+<pre><code class="language-js">function myDeltaFunction(doc) {
+  doc.counter = doc.counter || 0;
+  doc.counter++;
+  return doc;
+}
+
+db.upsert('my_id', myDeltaFunction).then(function () {
+  // success!
+}).catch(function (err) {
+  // error (not a 404 or 409)
+});
+</code></pre>
+<h2 id="eventual-conflicts-最终">Eventual conflicts （最终）</h2>
+<p>场景： 两个 CouchDB 都离线，然后两端的用户同时修改了一个 document,稍后又恢复了在线。</p>
+<p>这时</p>
+<p><strong>提交的版本一样，本地的数据库也不会报 409 错误</strong></p>
+<p>这是经典的冲突（内容不一致）。 CouchDB 会首先用自己的算法来决定一个胜者，这时，恢复在线后，两端的用户会看到相同的“胜者”版本。</p>
+<p>然而，由于 Replication 的历史记录一直保存，用户可以随时返回来解决冲突。</p>
+<p>为了检查document 是否冲突，在<code>get()</code>的时候添加选项<code>{conflicts: true}</code></p>
+<pre><code class="language-js">db.get('docid', {conflicts: true}).then(function (doc) {
+  // do something with the doc
+}).catch(function (err) {
+  // handle any errors
+});
+</code></pre>
+<p>如果有冲突，会返回属性<code>_conflicts</code>，包括了 revision IDs（所有冲突的版本）</p>
+<p>其中 <code>2-x.........</code>版本就是“胜者”,  同时记录了冲突的 <code>2-y.........</code></p>
+<pre><code class="language-json">{
+  &quot;_id&quot;: &quot;docid&quot;,
+  &quot;_rev&quot;: &quot;2-x1592ce7b31cc26e91d2f2029c57e621&quot;,
+  &quot;_conflicts&quot;: [&quot;2-y1592ce7b31cc26e91d2f2029c57e621&quot;]
+}
+</code></pre>
+<p>这个 <code>2-</code>是什么意思呢？ 表示当前版本（例如 3- 4-，从距离“根”修订版总是从 1- 开始计算），因此发生在同一个版本的冲突都用相同的版本号 2- 开始</p>
+<p>要获得某个冲突的数据，在 <code>get()</code>的选项中传入<code>{rev: }</code></p>
+<pre><code class="language-js">db.get('docid', {rev: '2-y'}).then(function (doc) {
+  // do something with the doc
+}).catch(function (err) {
+  // handle any errors
+});
+</code></pre>
+<p>这时，可以将两个版本都展示给用户，让用户自己解决。  或者使用您喜欢的冲突解决策略自动解决冲突:最后一次写入获胜、第一次写入获胜、RCS等等</p>
+<p>如果您想通过创建一个新修订来解决冲突，只需在当前的赢家之上<code>put()</code>一个新文档，并确保删除丢失的修订。</p>
+<blockquote>
+<p>PouchDB在一个小方面偏离了CouchDB的复制算法:修订散列不是确定性的。PouchDB被迫这样做，因为CouchDB以一种特定于erlang的方式计算修订哈希。</p>
+</blockquote>
+<blockquote>
+<p>在实践中，这仅仅意味着对于一些非常不可能的边缘情况，PouchDB的复制算法的效率略低于CouchDB的复制算法。有关详细信息，请参见此评论。</p>
+</blockquote>
+<h2 id="accountants-dont-use-erasers-会计不用橡皮擦-通过设计数据库避免冲突---计算值">Accountants don&rsquo;t use erasers 会计不用橡皮擦. (通过设计数据库避免冲突 - 计算值)</h2>
+<p>从不更改或删除 document, 只增加新的。</p>
+<p>举例来说，一个银行卡流水记录。 所有的 document 都是简单的 “增加”或“减少”账户余额</p>
+<pre><code class="language-js">{_id: new Date().toJSON(), change: 100} // balance increased by $100
+{_id: new Date().toJSON(), change: -50} // balance decreased by $50
+{_id: new Date().toJSON(), change: 200} // balance increased by $200
+</code></pre>
+<p>在这种情况下，两个 document 不会冲突，因为 <code>_id</code> 是时间戳</p>
+<p>可以使用<code>delta-pouch</code>插件来实现。</p>
+<h1 id="changes-feed--changes-api">Changes Feed  （<code>changes()</code> API）</h1>
+<p>CouchDB 的一个特性就是能够知道数据库在过去一段时间的变化。</p>
+<ul>
+<li>数据库在某个时间段发生了哪些变化</li>
+<li>某个 document 发生过哪些变化</li>
+<li>几天之前，这个数据库是什么样子</li>
+</ul>
+<h2 id="基本使用获取从开始到目前为止数据库上所有的-changes">基本使用：获取从开始到目前为止数据库上所有的 changes</h2>
+<p>使用<code>db.changes({since: 0})</code>来获取 changes.</p>
+<p>如果不使用<code>{include_docs: true}</code>选项（默认情况下，文档本身不包括在changes提要中）。
+如果使用，每个未删除的更改都有一个<code>doc</code>属性，其中包含新文档或修改后的文档</p>
+<pre><code class="language-js">db.put({_id: 'firstDoc', version: 1}).then(function () {
+    return db.put({_id: 'secondDoc', version: 1});
+  }).then(function () {
+    return db.get('secondDoc');
+  }).then(function (doc) {
+    doc.version = 2;
+    return db.put(doc);
+  }).then(function () {
+    return db.put({_id: 'thirdDoc', version: 1});
+  }).then(function () {
+    return db.changes({
+      since: 0,
+      include_docs: true
+    });
+  }).then(function (changes) {
+    log('Found the following changes:');
+    changes.results.forEach(function (change) {
+      log(JSON.stringify(change));
+    });
+  }).catch(function (err) {
+    // handle errors
+  })
+</code></pre>
+<p>注意看代码，在 <code>put()</code>完 “secondDoc”后 （version=1），修改了 secondDoc 的 <code>vsersion</code> 值 (version = 2)</p>
+<p>但是返回的结果中，<code>secondDoc</code> 能看到 <code>_rev</code>以 2 开头（说明 <code>put()</code>生成了一个新版本）
+但是 <code>seq</code> 是 &ldquo;3&rdquo;， &ldquo;2&rdquo;（第二步的记录：创建 secondDoc）去哪里了？</p>
+<pre><code class="language-json">{&quot;id&quot;:&quot;firstDoc&quot;,&quot;changes&quot;:[{&quot;rev&quot;:&quot;1-4018ace4ba5b745c4394c4ec79aaaad6&quot;}],&quot;doc&quot;:{&quot;version&quot;:1,&quot;_id&quot;:&quot;firstDoc&quot;,&quot;_rev&quot;:&quot;1-4018ace4ba5b745c4394c4ec79aaaad6&quot;},&quot;seq&quot;:1}
+{&quot;id&quot;:&quot;secondDoc&quot;,&quot;changes&quot;:[{&quot;rev&quot;:&quot;2-11b6336b8c1665ba003a6a84ce004c79&quot;}],&quot;doc&quot;:{&quot;version&quot;:2,&quot;_id&quot;:&quot;secondDoc&quot;,&quot;_rev&quot;:&quot;2-11b6336b8c1665ba003a6a84ce004c79&quot;},&quot;seq&quot;:3}
+{&quot;id&quot;:&quot;thirdDoc&quot;,&quot;changes&quot;:[{&quot;rev&quot;:&quot;1-e62898419ba1078514b11edebbfe98c9&quot;}],&quot;doc&quot;:{&quot;version&quot;:1,&quot;_id&quot;:&quot;thirdDoc&quot;,&quot;_rev&quot;:&quot;1-e62898419ba1078514b11edebbfe98c9&quot;},&quot;seq&quot;:4}
+</code></pre>
+<p><strong>changes feeds里，会省略“非叶子”修订，例如上面从 seq: 1 直接到 seq:3</strong></p>
+<p>这是经过设计的。changes feed 只告诉我们关于 leaf 的 revisions 的信息。但是，这些 revisions 的顺序是由它们在数据库中放置的顺序决定的。所以你可能会注意到 firstDoc 仍然出现在 secondDoc 之前，secondDoc 也出现在 thirdDoc 之前。</p>
+<h2 id="对-changes-进行分页">对 Changes 进行分页</h2>
+<p>由于 changes 会数量巨大，因此用 <code>limit</code>选项来分页</p>
+<pre><code class="language-js">var pageSize = 10;
+var lastSeq = 0;
+
+function fetchNextPage() {
+  return db.changes({
+    since: lastSeq,
+    limit: pageSize
+  }).then(function (changes) {
+    if (changes.results.length &lt; pageSize) {
+      // done!
+    } else {
+      lastSeq = changes.last_seq;
+      return fetchNextPage();
+    }
+  });
+}
+
+fetchNextPage().catch(function (err) {
+  // handle errors
+});
+</code></pre>
+<h2 id="seq-对比-_rev"><code>seq</code> 对比 <code>_rev</code></h2>
+<p>changes feed 列出了每个 change 以及相关的<code>seq</code>(整数，总是从 0开始)</p>
+<p><code>seq</code>可以看成“数据库的版本”：对数据库中 所有 文档进行了多少次更改</p>
+<p><code>_rev</code>则是标记 单个 文档所做的更改</p>
+<p>但是，不能保证两个数据库之间的seq保持同步。<strong>CouchDB和PouchDB增加seq值的方式略有不同，因此seq实际上只在单个数据库中有意义</strong>。</p>
+<h2 id="监听实时-changes-feed">监听实时 changes feed</h2>
+<p>&lsquo;now&rsquo; 是一个魔术选项。表示从当前时间开始监听，这在需要实时根据数据库变化而改变UI的场景很有用。
+例如一个聊天app，到了一条消息到数据库，自动触发动作。</p>
+<pre><code class="language-js">db.changes({
+  since: 'now'
+}).on('change', function (change) {
+  // received a change
+}).on('error', function (err) {
+  // handle errors
+});
+
+</code></pre>
+<h2 id="理解-changes">理解 changes</h2>
+<p>有两种类别的 changes</p>
+<ul>
+<li>Added or modified documents</li>
+<li>Deleted documents</li>
+</ul>
+<p>下面的代码中， 先使用<code>{live: true}</code>选项，然后在监听函数中判断 <code>change.deleted</code>是 true / false</p>
+<pre><code class="language-js">db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', function (change) {
+  // change.id contains the doc id, change.doc contains the doc
+  if (change.deleted) {
+    // document was deleted
+  } else {
+    // document was added/modified
+  }
+}).on('error', function (err) {
+  // handle errors
+});
+</code></pre>
+<p><code>change.doc</code>包含了 document, 除非已经被删除（因为使用了<code>include_docs: true</code>选项）</p>
+<p>那么如何区分 添加的文档 和 修改的文档?</p>
+<p>检查修订是否以“1-”开头是一个很好的技巧。但是，这不适用于作为复制目标的数据库，因为复制只发送文档的最新版本。这意味着“1-”修订可能被完全跳过，本地数据库将只接收第2、3或4(等等)个修订。冲突的修订也会出现在changes提要中。</p>
+<p>简单地说，你不能。如果您试图在 non-pouch 结构(例如DOM元素列表)中镜像更改，那么最好的解决方案是搜索所有DOM元素以查看文档是否已经存在，或者对每个更改重新运行<code>allDocs()</code>。</p>
+<h1 id="mango-queriespouchdb-find-or-the-find-api">Mango queries(<code>pouchdb-find</code> or the <code>find()</code> API)</h1>
+<p>用于在内置的 <code>allDocs()</code> and <code>changes()</code> indexes 外创建 secondary indexes.能做这些</p>
+<ul>
+<li>find all documents where the type is &lsquo;user&rsquo;</li>
+<li>find all users whose age is greater than 21</li>
+<li>find all Pokémon whose name starts with &lsquo;pika&rsquo;</li>
+<li>etc.</li>
+</ul>
+<h2 id="安装-pouchdb-find">安装 pouchdb-find</h2>
+<pre><code class="language-shell">npm install --save pouchdb-find
+</code></pre>
+<p>然后</p>
+<pre><code class="language-js">var PouchDB = require('pouchdb');
+PouchDB.plugin(require('pouchdb-find'));
+</code></pre>
+<p>或者使用 CDN 引入文件</p>
+<pre><code class="language-html">&lt;script src=&quot;pouchdb.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;pouchdb.find.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="query-language-是一个受-mongodb-启发的-dsl">Query Language 是一个受 MongoDB 启发的 DSL</h2>
+<p><a href="https://github.com/cloudant/mango">https://github.com/cloudant/mango</a></p>
+<p>The Mango query language is a DSL inspired by MongoDB, which allows you to define an index that is then used for querying.</p>
+<p><a href="https://nolanlawson.github.io/pouchdb-find/">live demo</a></p>
+<p>要运行query, 包括两步</p>
+<ul>
+<li><code>createIndex()</code> 定义哪些字段加入 index</li>
+<li><code>find()</code> 查询 index</li>
+</ul>
+<p><strong>createIndex() 是一个很耗时的操作</strong>（因为要循环所有 document 并创建 B-tree）. 如果没有合适的 index, 不要随便用 <code>find()</code>, 而用 <code>allDocs</code>来遍历</p>
+<pre><code class="language-js">// 创建 index, 返回一个 Promise
+db.createIndex({
+  index: {fields: ['name']}
+});
+
+// 查询， 也返回一个 Promise, 包含一个符合条件的 document 数组
+db.find({
+  selector: {
+    name: 'mario'  // 等于 name: {$eq: 'mario'}
+  }
+});
+</code></pre>
+<p>排序 （sort）,以及 处理“值不为空”（<code>$gte: null</code>, 在 <a href="http://docs.couchdb.org/en/2.1.1/ddocs/views/collation.html">CouchDB collation order</a>，null 表示最小值）</p>
+<pre><code class="language-js">db.find({
+  selector: {
+    name: {$gte: null}
+  },
+  sort: ['name']
+});
+</code></pre>
+<p>上面的查询类似传统数据库的 <code>SELECT name FROM db WHERE name IS NOT null order by name</code></p>
+<h2 id="分页">分页</h2>
+<p><a href="http://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html">efficient pagination</a></p>
+<p><code>gte</code>相当于 <code>&gt;=</code></p>
+<pre><code class="language-js">db.find({
+  selector: {
+    name: {$gte: null}
+  },
+  sort: ['name'],
+  limit: 10
+});
+</code></pre>
+<p>返回</p>
+<pre><code class="language-json">[
+  'abby', 'bertrand', 'clarice', 'don', 'emily',
+  'fumiko', 'gunther', 'horatio', 'ike', 'joy'
+]
+</code></pre>
+<p>如果要查询下一页，这里需要把 <code>name</code> 的条件改成 <code>$gt: 'joy'</code>(而不是之前的 <code>$gte: null</code>)“大于最后一个值”. (有点奇怪，大于一个字符串“joy&rdquo;. documents 里有值相同的怎么办？)</p>
+<p>通过这种方式，我们可以使用最后一个值作为下一个起点来继续分页。在任何给定的时间点，内存中一次只存储10个文档，这对于性能非常好。</p>
+<pre><code class="language-js">db.find({
+  selector: {
+    name: {$gt: 'joy'}
+  },
+  sort: ['name'],
+  limit: 10
+});
+</code></pre>
+<h2 id="为多个字段创建索引">为多个字段创建索引</h2>
+<p>下面的代码，为 <code>name</code>和 <code>age</code>创建 index, 然后<code>selector</code>里同时查询两个字段。</p>
+<pre><code class="language-js">db.createIndex({
+  index: {
+    fields: ['name', 'age']
+  }
+}).then(function () {
+  return db.find({
+    selector: {
+      name: 'mario',
+      age: {$gt: 21}
+    }
+  });
+});
+</code></pre>
+<h3 id="查询条件不同对索引有关的字段的顺序也有要求">查询条件不同，对索引有关的字段的顺序也有要求</h3>
+<p><strong>注意</strong> 创建索引时，字段的顺序很重要。（在创建使用索引的查询之前，仔细设计索引非常重要）。否则，查询规划器可能会退回到内存查询，这可能非常昂贵。</p>
+<p>上面如果创建索引时，字段的顺序交换为<code>fields: ['age', 'name']</code>，那么后面查询不会工作。</p>
+<p>详细说明下</p>
+<p>首先，如果按照 <code>fields: ['name', 'age']</code> 的顺序来创建索引，那么这个索引在 PouchDB 里会有这样的排序方式：首先按<code>name</code>分组，然后将 <code>age</code>按从小到大排列。</p>
+<p>那么 <code>name='mario' and age&gt;21</code>就会先找出 <code>name='Mario'</code>这个“组”，然后筛选 age 即可。</p>
+<p><img src="/media/15510675029666/15511586128191.jpg" alt="-w541"></p>
+<p>而如果使用顺序<code>['age', 'name']</code>来建立index, 数据则会是下图这样的排序。</p>
+<p><img src="/media/15510675029666/15511587710198.jpg" alt="-w453"></p>
+<p>可以看到， 如果将 <code>find()</code>看成“数据的片段”，没有对应于“所有年龄大于21岁的Marios”的片段</p>
+<p>下面先将年龄按从小到大排，然后将 name 按 A-Z 排序</p>
+<p>因此这个索引，更适合回答 “查找所有17岁姓名以字母N-Z开头的人”之类的问题。</p>
+<h2 id="性能">性能</h2>
+<p>mango 查询语言很宽松，因此可能你 <code>createIndex()</code>创建索引后，<code>find()</code>并不会使用它。通常 mango query 自己会尝试使用合适的 index, 但如果没有合适的则会退回到性能差的内存查询。</p>
+<p>举例来说</p>
+<ul>
+<li>如果使用<code>_id</code>字段进行查询，planner 会自动映射到 <code>allDocs()</code>查询</li>
+<li>如果查询一个还没有索引的字段，它会简单地使用 <code>allDocs()</code>读出所有document,然后在内存中进行过滤——性能很差</li>
+</ul>
+<p>使用<code>explain</code>来查看 query planner 是如何解析查询的</p>
+<pre><code class="language-js">db.explain({
+  selector: {
+    name: 'mario',
+    age: {$gt: 21}
+  }
+})
+.then(function (explained) {
+  // detailed explained info can be viewed
+});
+</code></pre>
+<p>或者启用 debugging</p>
+<pre><code class="language-js">PouchDB.debug.enable('pouchdb:find');
+</code></pre>
+<p>在控制台中，查询规划器将详细说明它如何解释查询、是否使用索引以及是否需要在内存中执行查询的任何部分。
+需要注意结果集中包含的“warning”值，这表明没有匹配给定查询的索引。例如，警告可能是这样的:</p>
+<pre><code class="language-json">{
+  &quot;docs&quot;: [ /* ... */ ],
+  &quot;warning&quot;: &quot;no matching index found, create an index to optimize query time&quot;
+}
+</code></pre>
+<h2 id="设置使用哪个-index-use_index">设置使用哪个 index (<code>use_index</code>)</h2>
+<p>当创建 query 的时候，可以使用<code>use_index</code>来通知 pouchdb-find 使用哪个 index</p>
+<p>首先要在<code>createIndex()</code>传入参数 <code>ddoc</code>(&ldquo;my-index-design-doc&rdquo;)</p>
+<pre><code class="language-js">db.createIndex({
+  index: {
+    fields: ['age', 'name'],
+    ddoc: &quot;my-index-design-doc&quot;
+  }
+}).then(function () {
+  return db.find({
+    selector: {
+      name: 'mario',
+      age: {$gt: 21},
+    },
+    use_index: 'my-index-design-doc'
+  });
+});
+</code></pre>
+<h2 id="更多">更多</h2>
+<p>并不是所有选项都可以利用索引。例如，<code>$regex</code>、<code>$ne</code>和<code>$not</code>不能使用磁盘上的索引，必须使用内存中过滤。</p>
+<p>除了<code>$gt</code>, <code>$gte</code>等，完整的选择符在 <code>find</code>文档中</p>
+<p><a href="http://docs.couchdb.org/en/2.0.0/api/database/find.html">CouchDB _find documentation</a></p>
+<p>还有 <a href="https://docs.cloudant.com/cloudant_query.html">Cloudant Query Language</a>  除了文本和其他特定于云的特性之外，它几乎与Mango相同</p>
+<p>应该注意的是，通过HTTP，这个API目前可以与CouchDB 2.0+、Cloudant和PouchDB Server一起工作。CouchDB 2.0是参考实现，因此API应该是相同的。CouchDB 1.6.1及以下版本不受支持。</p>
+<p>相关 API</p>
+<ul>
+<li>createIndex()</li>
+<li>find()</li>
+<li>getIndexes()</li>
+<li>deleteIndex()</li>
+</ul>
+<h1 id="mapreduce-queries-queryapi">Map/Reduce queries (<code>query()</code>API)</h1>
+<p>大部分清下你都不需要使用 map/reduce queris,  使用前面的  <code>allDocs()</code>, 通过 <code>_id</code>查询，进行时间排序， <code>find()</code>（mango query）和 索引，都能实现。</p>
+<h2 id="mappin-和-reducin">mappin 和 reducin</h2>
+<p>PouchDB <code>query()</code> API (CouchDB 叫<code>_view</code>)有两种模式</p>
+<ul>
+<li>temporary queries</li>
+<li>persistent queries</li>
+</ul>
+<h3 id="temporary-queries">Temporary queries</h3>
+<p>它很慢，建议只有在开发阶段使用它。</p>
+<p>如下面，</p>
+<p><code>emit</code>模式是标准CouchDB map/reduce API的一部分。函数的基本意思是:“对于每个文档，将doc.name作为键发出。”</p>
+<p><code>query()</code> 有第二个参数 <code>{key: 'foo'}</code>。</p>
+<p><code>result</code>对象包含 documents 的存根(stubs)，其中name属性等于“foo”, 如果要在 result 的每行里包含 document, 要使用选项<code>include_docs</code></p>
+<pre><code class="language-js">db.query(function (doc, emit) {
+  emit(doc.name);
+}, {key: 'foo'}).then(function (result) {
+  // found docs with name === 'foo'
+}).catch(function (err) {
+  // handle any errors
+});
+</code></pre>
+<h3 id="persistent-queries">Persistent queries</h3>
+<p>它更快，在生产环境使用更适合。</p>
+<p>首先创建一个 design document，描述了一个 map 函数</p>
+<p><code>toString()</code>是将对象转换成 JSON 必需的
+当<code>map</code>函数运行时，<code>emit</code>函数将在作用域内可用，因此不要将其作为参数传入。</p>
+<pre><code class="language-js">// document that tells PouchDB/CouchDB
+// to build up an index on doc.name
+var ddoc = {
+  _id: '_design/my_index',
+  views: {
+    by_name: {
+      map: function (doc) { emit(doc.name); }.toString()
+    }
+  }
+};
+// save it
+pouch.put(ddoc).then(function () {
+  // success!
+}).catch(function (err) {
+  // some error (maybe a 409, because it already exists?)
+});
+</code></pre>
+<p>实际运行, 传入 design document 的 name</p>
+<pre><code class="language-js">db.query('my_index/by_name').then(function (res) {
+  // got the query results
+}).catch(function (err) {
+  // some error
+});
+</code></pre>
+<p>注意，第一次查询时，它会非常慢，因为只有在查询时才会构建索引。为了解决这个问题，您可以执行一个空查询来启动一个新构建:</p>
+<pre><code class="language-js">db.query('my_index/by_name', {
+  limit: 0 // don't return any results
+}).then(function (res) {
+  // index was built!
+}).catch(function (err) {
+  // some error
+});
+</code></pre>
+<p>CouchDB 为应用提高性能</p>
+<p><a href="https://pouchdb.com/api.html#query_database">&ldquo;stale&rdquo; option</a></p>
+<h2 id="更多关于-mapreduce">更多关于 map/reduce</h2>
+<p>默认情况下，文档被假定为具有一个主键(Mongo和Couch中都称为<code>_id</code>)的无模式blob，<strong>其他任何键都需要单独指定</strong></p>
+<p>在CouchDB中，quries 被称为map/reduce函数。这是因为，与大多数NoSQL数据库一样，CouchDB被设计成能够很好地跨多台计算机伸缩，并并行执行高效的查询操作。基本上，其思想是将查询分为map函数和reduce函数，每个函数都可以在多节点集群中并行执行。</p>
+<h3 id="map-functions">map functions</h3>
+<p>一个基本的map函数</p>
+<pre><code class="language-js">function myMapFunction(doc) {
+  emit(doc.name);
+}
+</code></pre>
+<p>这在功能上等价于上面给出的SQL索引。它的基本含义是:“对于数据库中的每个文档，将其名称作为键发出。”</p>
+<p>还可以对 doc 进行判断</p>
+<pre><code class="language-js">function myMapFunction(doc) {
+  if (doc.type === 'pokemon') {
+    if (doc.name === 'Pikachu') {
+      emit('Pika pi!');
+    } else {
+      emit(doc.name);
+    }
+  }
+}
+</code></pre>
+<p>然后查询(<code>query()</code>传入 myMapFunction 函数)</p>
+<pre><code class="language-js">// find pokemon with name === 'Pika pi!'
+pouch.query(myMapFunction, {
+  key          : 'Pika pi!',
+  include_docs : true
+}).then(function (result) {
+  // handle result
+}).catch(function (err) {
+  // handle errors
+});
+
+// find the first 5 pokemon whose name starts with 'P'
+pouch.query(myMapFunction, {
+  startkey     : 'P',
+  endkey       : 'P\ufff0',
+  limit        : 5,
+  include_docs : true
+}).then(function (result) {
+  // handle result
+}).catch(function (err) {
+  // handle errors
+});
+</code></pre>
+<p><code>query()</code>的分页关键词，如<code>startkey/endkey/key/keys/skip/limit/descending</code>，和<code>allDocs()</code>是一样的</p>
+<p>参考 <a href="http://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html">http://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html</a></p>
+<h3 id="reduce-functions">Reduce functions</h3>
+<p>有一些方便的内置函数可以执行聚合操作(&lsquo;<code>_sum</code>&rsquo;、&lsquo;<code>_count</code>'和'<code>_stats</code>&rsquo;)，</p>
+<pre><code class="language-js">// emit the first letter of each pokemon's name
+var myMapReduceFun = {
+  map: function (doc) {
+    emit(doc.name.charAt(0));
+  },
+  reduce: '_count'
+};
+// count the pokemon whose names start with 'P'
+pouch.query(myMapReduceFun, {
+  key: 'P', reduce: true, group: true
+}).then(function (result) {
+  // handle result
+}).catch(function (err) {
+  // handle errors
+});
+</code></pre>
+<p>更多reduce function 资料 <a href="https://pouchdb.com/api.html#query_database">https://pouchdb.com/api.html#query_database</a></p>
+<h2 id="避免-mapreduce">避免 map/reduce</h2>
+<p>map/reduce API非常复杂，而且在计算上非常昂贵，因为它需要构建一个全新的索引。因此，当您不需要map/reduce API时，最好知道一些避免使用它的技巧:</p>
+<ul>
+<li>如果您可以使用<code>allDocs()</code>或<code>changes()</code>而不是<code>query()</code> API，那么就这样做!</li>
+<li>如果您的查询足够简单，可以使用<code>find()</code>，那么就使用它。</li>
+<li>阅读 <a href="https://pouchdb.com/2014/06/17/12-pro-tips-for-better-code-with-pouchdb.html">https://pouchdb.com/2014/06/17/12-pro-tips-for-better-code-with-pouchdb.html</a> 来获得更好的PouchDB代码，特别是“使用和滥用doc <code>_ids</code>”。</li>
+<li>如果您的数据是高度相关的，那么可以尝试 <code>relational-pouch</code> 插件，它遵循这个建议，并且只在底层使用 <code>_id</code> 和<code>allDocs()</code>。</li>
+</ul>
+<h2 id="相关api">相关api</h2>
+<p>query()
+viewCleanup()</p>
+<h1 id="压缩--删除">压缩 &amp; 删除</h1>
+<p>通常 PouchDB 被设计成保存文档的所有版本。</p>
+<h2 id="压缩数据库">压缩数据库</h2>
+<p>压缩完成后，所有 non-leaf (非叶子) 的revisions(修订版)将被删除。</p>
+<p><strong>如果要保留文档的所有历史记录，则不要使用它</strong></p>
+<pre><code class="language-js">return db.compact().then(function (info) {
+  // compaction complete
+}).catch(function (err) {
+  // handle errors
+});
+</code></pre>
+<p>测试下，revision 1 因为不是叶子修订版，被删掉了</p>
+<pre><code class="language-js">db.put({_id: 'foo', version: 1}).then(function () {
+  return db.get('foo');
+}).then(function (doc) {
+  doc.version = 2;
+  return db.put(doc);
+}).then(function () { )
+  return db.compact();
+}).then(function () {
+  // DANGER!
+  // From now on, revision 1 is no longer available.
+}).catch(function (err) {
+  // handle errors
+});
+</code></pre>
+<h3 id="启用自动压缩">启用自动压缩</h3>
+<p><strong><code>auto_compaction</code>选项只在本地数据库生效，远程的不生效</strong></p>
+<pre><code class="language-js">var db = new PouchDB('mydb', {auto_compaction: true});
+</code></pre>
+<h2 id="删除数据库">删除数据库</h2>
+<pre><code class="language-js">new PouchDB('mydb').destroy().then(function () {
+  // database destroyed
+}).catch(function (err) {
+  // error occurred
+})
+</code></pre>
+<p>请注意，销毁数据库并不意味着也将销毁复制的数据库。销毁与文档上的正常put()/remove()操作无关，因此对复制没有影响。</p>
+<p>还要注意，在Web SQL中，数据库不会真正被销毁——它只会删除表。这是因为Web SQL不支持真正的数据库删除。</p>
+<h1 id="local-documents-本地文档">Local Documents 本地文档</h1>
+<p>一些数据库的元数据被称为 &ldquo;local&rdquo; document, 它们和普通的 document 不会出现在一起</p>
+<ul>
+<li>They don&rsquo;t replicate.</li>
+<li>They can&rsquo;t contain attachments.</li>
+<li>They don&rsquo;t appear in allDocs(), changes(), or query().</li>
+<li>However, you can modify them with put()/remove()/bulkDocs(), and you can fetch them with get().</li>
+</ul>
+<p>要创建，只需要添加给<code>_id</code>前缀 <code>'_local/' </code></p>
+<pre><code class="language-js">db.put({
+  _id: '_local/foobar',
+  someText: 'yo, this is my local doc!'
+}).then(function () {
+  return db.get('_local/foobar');
+});
+</code></pre>
+<p>本地文档对于少量配置或元数据非常有用，这些配置或元数据不一定要复制，但无论如何都要保存在数据库中。许多PouchDB插件和核心组件都使用本地文档。例如，复制算法使用它们来存储检查点，map/reduce使用它们来跟踪发出的内容。</p>
+<p>与普通文档相比，本地文档也有一些良好的性能特征。它们没有版本历史记录，因此只有最近的修订版本存储在数据库中。这意味着本地文档的put()s和get()s比常规文档更快，并且本地文档占用的磁盘空间更少。从某种意义上说，它们是自动压缩的，尽管它们在磁盘上比压缩数据库中的文档占用更少的空间。</p>
+<p>无论如何，在更新本地文档时，需要提供当前的_rev，就像使用常规文档一样。</p>
+<h1 id="pouchdb-插件">PouchDB 插件</h1>
+<p><a href="https://pouchdb.com/external.html">https://pouchdb.com/external.html</a></p>
+<p>例如</p>
+<p>加密 Crypto Pouch
+PouchDB Migrate
+PouchDB Quick Search
+Relational Pouch 表关联</p>
+<p>与其他模块集成如
+pouch-redux</p>
+<p>等等</p>
+<p>类似 ORM / 统计查询的。。</p>
+<h1 id="api">API</h1>
+<p><a href="https://pouchdb.com/api.html">https://pouchdb.com/api.html</a></p>
+<h1 id="学习参考资料">学习参考资料</h1>
+<p><a href="https://github.com/rafi16jan/rapyd-framework">https://github.com/rafi16jan/rapyd-framework</a></p>
+<p>多用户
+<a href="https://www.joshmorony.com/creating-a-multiple-user-app-with-pouchdb-couchdb/">https://www.joshmorony.com/creating-a-multiple-user-app-with-pouchdb-couchdb/</a></p>
+<h1 id="其他">其他</h1>
+<p>Hoodie: 离线优先，无需代码</p>
+<p><a href="https://github.com/hoodiehq/hoodie">https://github.com/hoodiehq/hoodie</a></p>
+<p><a href="http://hood.ie/intro/#get-started">http://hood.ie/intro/#get-started</a></p>
+<h1 id="问题">问题</h1>
+<p><a href="https://my.oschina.net/jsk/blog/491096">https://my.oschina.net/jsk/blog/491096</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/couchdb-%E5%92%8C-pouchdb/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/couchdb-%E5%92%8C-pouchdb/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/indexeddb/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

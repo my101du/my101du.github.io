@@ -1,0 +1,4062 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="前端开发相关 &amp;amp; Vue 单页应用案例 permalink: laravel-frontend-develop tags: laravel 包括 5.5 及 5.1 的 Elixir 前端指南 Mix 对于 5.1 版本 Elixir 自动化开发流程 Elixir 创建于 Gulp 之上。 使用 Elixir 在 Laravel 应用程序中定义基本的 Gulp 任务，" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="前端开发相关 &amp; Vue 单页应用案例 permalink: laravel-frontend-develop tags: laravel 包括 5.5 及 5.1 的 Elixir 前端指南 Mix 对于 5.1 版本 Elixir 自动化开发流程 Elixir 创建于 Gulp 之上。 使用 Elixir 在 Laravel 应用程序中定义基本的 Gulp 任务，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3-vue-%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="前端开发相关 &amp; Vue 单页应用案例 permalink: laravel-frontend-develop tags: laravel 包括 5.5 及 5.1 的 Elixir 前端指南 Mix 对于 5.1 版本 Elixir 自动化开发流程 Elixir 创建于 Gulp 之上。 使用 Elixir 在 Laravel 应用程序中定义基本的 Gulp 任务，">
+
+<meta itemprop="wordCount" content="22223">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="前端开发相关 &amp; Vue 单页应用案例 permalink: laravel-frontend-develop tags: laravel 包括 5.5 及 5.1 的 Elixir 前端指南 Mix 对于 5.1 版本 Elixir 自动化开发流程 Elixir 创建于 Gulp 之上。 使用 Elixir 在 Laravel 应用程序中定义基本的 Gulp 任务，"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3-vue-%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3-vue-%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 22223字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 45分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>前端开发相关 &amp; Vue 单页应用案例
+permalink: laravel-frontend-develop
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<p>包括 5.5 及 5.1 的 Elixir</p>
+<h1 id="前端指南">前端指南</h1>
+<h1 id="mix">Mix</h1>
+<h1 id="对于-51-版本-elixir-自动化开发流程">对于 5.1 版本 Elixir 自动化开发流程</h1>
+<p>Elixir 创建于 Gulp 之上。</p>
+<p>使用 Elixir 在 Laravel 应用程序中定义基本的 Gulp 任务，对 CSS/Javascript 进行预处理/测试，能够支持链式调用。</p>
+<pre><code class="language-php">elixir(function(mix) {
+    mix.sass('app.scss')
+       .coffee('app.coffee');
+});
+</code></pre>
+<h2 id="安装">安装</h2>
+<p>node
+gulp (global)
+在项目根目录下根据<code>package.json</code>安装<code>npm install</code></p>
+<h2 id="运行">运行</h2>
+<p>要运行你的 Elixir 任务，只需要在命令行运行 gulp 命令
+增加 &ndash;production 标示会告知 Elixir 压缩你的 CSS 及 JavaScript 文件</p>
+<pre><code class="language-shell">// 运行所有任务...
+gulp
+
+// 运行所有任务并压缩所有 CSS 及 JavaScript...
+gulp --production
+</code></pre>
+<p>在命令行运行并监控资源文件的任何修改。当发生修改时，新文件将会自动被编译</p>
+<pre><code class="language-shell">gulp watch
+</code></pre>
+<h2 id="样式文件">样式文件</h2>
+<p>项目根目录的 gulpfile.js 包含你所有的 Elixir 任务。Elixir 任务可以被链式调用起来，以定义你的资源文件该如何进行编译。</p>
+<p><strong>LESS</strong></p>
+<p>resources/assets/less 文件夹中。默认情况下，此例子的任务会将编译后的 CSS 放置于 public/css/app.css：</p>
+<pre><code class="language-js">//编译 LESS 为 CSS
+elixir(function(mix) {
+    mix.less('app.less');
+});
+
+//合并文件
+elixir(function(mix) {
+    mix.less([
+        'app.less',
+        'controllers.less'
+    ]);
+});
+
+//指定输出位置或文件名
+elixir(function(mix) {
+    mix.less('app.less', 'public/stylesheets');
+});
+elixir(function(mix) {
+    mix.less('app.less', 'public/stylesheets/style.css');
+});
+</code></pre>
+<p><strong>SASS</strong></p>
+<p>略 ，和 LESS 类似</p>
+<p><strong>纯CSS</strong></p>
+<p>不需要编译，使用<code>mix.styles</code>方法</p>
+<pre><code class="language-js">mix.styles()...
+</code></pre>
+<p><strong>Source Maps</strong></p>
+<p>用处：能够让你在浏览器调试时，可以追踪编译后的样式选择器至原始的 Sass 或 Less 位置。</p>
+<p>默认开启，每个被编译的文件，都会附带一个<code>*.css.map</code>文件，关闭</p>
+<pre><code class="language-js">elixir.config.sourcemaps = false;
+</code></pre>
+<h2 id="脚本">脚本</h2>
+<p>例如编译 ECMAScript 6、编译 CoffeeScript、Browserify、压缩、及简单的串联纯 JavaScript 文件</p>
+<p><strong>coffee 方法可以用于编译 CoffeeScript 至纯 JavaScript</strong>
+coffee 函数接收一个相对于 resources/assets/coffee 目录的 CoffeeScript 文件名字符串或数组，接着在 public/js 目录生成单个的 app.js 文件：</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.coffee(['app.coffee', 'controllers.coffee']);
+});
+</code></pre>
+<p><strong>browserify 方法，给予你在浏览器引入模块及 ECMAScript 6 的有用的特性</strong></p>
+<p>resources/assets/js，并会将生成的文件放置于 public/js/main.js</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.browserify('main.js');
+});
+</code></pre>
+<p>虽然 Browserify 附带了 Partialify 及 Babelify 转换器，但是只要你愿意，你可以随意安装并增加更多的转换器：</p>
+<pre><code class="language-shell">npm install aliasify --save-dev
+</code></pre>
+<pre><code class="language-js">elixir.config.js.browserify.transformers.push({
+    name: 'aliasify',
+    options: {}
+});
+
+elixir(function(mix) {
+    mix.browserify('main.js');
+});
+</code></pre>
+<p><strong>babel 方法可被用于编译 ECMAScript 6 与 7 至纯 JavaScript</strong></p>
+<p>resources/assets/js 目录的文件数组，接着在 public/js 目录生成单个的 all.js 文件：</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.babel([
+        'order.js',
+        'product.js'
+    ]);
+});
+</code></pre>
+<p><strong>想将多个 JavaScript 文件合并至单个文件，你可以使用 scripts 方法</strong></p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.scripts([
+        'jquery.js',
+        'app.js'
+    ]);
+});
+</code></pre>
+<p>如果你想多个脚本的集合合并成不同文件，你可以使用调用多个 scripts 方法。给予该方法的第二个参数会为每个串联决定生成的文件名称：</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.scripts(['app.js', 'controllers.js'], 'public/js/app.js')
+       .scripts(['forum.js', 'threads.js'], 'public/js/forum.js');
+});
+</code></pre>
+<p>想合并指定目录中的所有脚本，你可以使用 scriptsIn</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.scriptsIn('public/js/some/directory');
+});
+</code></pre>
+<h2 id="复制文件与目录">复制文件与目录</h2>
+<p><code>copy</code>方法。所有操作路径都相对于项目的根目录：</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.copy('vendor/foo/bar.css', 'public/css/bar.css');
+});
+
+elixir(function(mix) {
+    mix.copy('vendor/package/views', 'resources/views');
+});
+</code></pre>
+<h2 id="版本与缓存清除">版本与缓存清除</h2>
+<p>通常为了强制浏览器加载全新的资源文件，避免使用旧的代码，会在文件名后加上时间戳或是唯一的 token。例如</p>
+<pre><code class="language-html">&lt;script src=&quot;/js/all.js?timestamp=1323423423&quot;&gt;&lt;/script&gt;
+&lt;link  rel=&quot;stylesheet&quot; href=&quot;/css/all.css?version=[unique_token]&quot;&gt;&lt;/link&gt;
+</code></pre>
+<p>version 方法接收一个相对于 public 目录的文件名称，接着为你的文件名称加上唯一的哈希值，以防止文件被缓存。</p>
+<p>举例来说，生成出来的文件名称可能像这样：</p>
+<p>文件在 <code>/public/build/</code>下，类似<code>all-16d570a7.css</code></p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.version('css/all.css');
+});
+
+//一次处理多个文件
+elixir(function(mix) {
+    mix.version(['css/all.css', 'js/app.js']);
+});
+</code></pre>
+<p>然后在视图中用 <code>elixir</code>辅助函数来自动获得这个被哈希的文件名称。</p>
+<pre><code class="language-html">&lt;!--原来的 assert()--&gt;
+&lt;!--link rel=&quot;stylesheet&quot; href=&quot;{{ asset('css/portal.css') }}&quot;--&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ elixir('css/all.css') }}&quot;&gt;
+&lt;script src=&quot;{{ elixir('js/app.js') }}&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>等 gulp 运行完后，查看页面的源文件，可以看到</p>
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/build/css/all-08e50cb0ad.css&quot;&gt;
+</code></pre>
+<h2 id="自动刷新">自动刷新</h2>
+<p>当运行 <code>gulp watch</code>时启动 BrowserSync 服务器。</p>
+<p>当你对前端资源进行修改后，BrowserSync 会自动刷新你的网页浏览器</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.browserSync();
+});
+</code></pre>
+<p>使用连接端口 3000 启用浏览器同步并访问你的网页应用程序：http://homestead.app:3000。如果你在本机开发所使用的域名不是 homestead.app，那么你可以传递一个 选项 的数组作为 browserSync 方法的第一个参数：</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.browserSync({
+        proxy: 'project.app'
+    });
+});
+</code></pre>
+<h2 id="调用既有的-gulp-任务">调用既有的 Gulp 任务</h2>
+<p>使用 task 方法</p>
+<p>例如任务</p>
+<pre><code class="language-js">gulp.task('speak', function() {
+    var message = 'Tea...Earl Grey...Hot';
+
+    gulp.src('').pipe(shell('say ' + message));
+});
+</code></pre>
+<p>在 Elixir 中调用这个任务，传递该任务的名称作为该方法唯一的参数</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.task('speak');
+});
+</code></pre>
+<h3 id="自定义监控器">自定义监控器</h3>
+<p>如果你想注册一个监控器让你的自定义任务能在每次文件改变时就运行，只需传递一个正则表达式作为 task 方法的第二个参数：</p>
+<p>表示当 app 下的 *.php 文件被改变，就运行 “speak”任务</p>
+<pre><code class="language-js">elixir(function(mix) {
+    mix.task('speak', 'app/**/*.php');
+});
+</code></pre>
+<h2 id="编写-elixir-扩展功能">编写 Elixir 扩展功能</h2>
+<p>Elixir 扩展功能允许你传递参数至你的自定义任务，实现比 task 更灵活的方案</p>
+<pre><code class="language-js">// 文件：elixir-extensions.js
+
+var gulp = require('gulp');
+var shell = require('gulp-shell');
+var Elixir = require('laravel-elixir');
+
+var Task = Elixir.Task;
+
+Elixir.extend('speak', function(message) {
+
+    new Task('speak', function() {
+        return gulp.src('').pipe(shell('say ' + message));
+    });
+
+});
+
+// mix.speak('Hello World');
+</code></pre>
+<p>Gulp 具体的逻辑必须被放置在 Task 第二个参数传递的构造器函数里面</p>
+<p>然后Gulpfile 中像这样引入该文件(<code>elixir-extensions.js</code>)</p>
+<pre><code class="language-js">// 文件：Gulpfile.js
+
+var elixir = require('laravel-elixir');
+
+require('./elixir-extensions')
+
+elixir(function(mix) {
+    mix.speak('Tea, Earl Grey, Hot');
+});
+</code></pre>
+<h3 id="自定义任务的监控器">自定义任务的监控器</h3>
+<p>在运行 gulp watch 时能够触发你的自定义任务</p>
+<pre><code class="language-js">new Task('speak', function() {
+    return gulp.src('').pipe(shell('say ' + message));
+})
+.watch('./app/**');
+</code></pre>
+<h1 id="使用-reactvue-的-history-路由">使用 React/Vue 的 History 路由</h1>
+<p>Hash 类型的不需要特别说明（因为用的是 /#/xxx 这样的），直接用 <code>&lt;HashRouter&gt;</code> 即可，这里主要处理 History 类型的 Router</p>
+<p>以 React Router 为例，使用 react 应用自己的路由，而不是使用 Laravel 的路由</p>
+<p>让所有路由请求都指向到一个控制器的方法</p>
+<pre><code class="language-php">Route::get('/{path?}', [
+    'uses' =&gt; 'ReactController@show',
+    'as' =&gt; 'react',
+    'where' =&gt; ['path' =&gt; '.*']
+]);
+</code></pre>
+<p>然后在这个控制器里，仅仅加载 react 项目的页面</p>
+<pre><code class="language-php">class ReactController extends Controller {
+    public function show () {
+        return view('react');
+    }
+}
+</code></pre>
+<p>如果是 Laravel 5.5+，且控制器只负责展示界面，还可以简化路由配置</p>
+<pre><code class="language-php">Route::view('/{path?}', 'app')
+     -&gt;where('path', '.*')
+     -&gt;name('react');
+</code></pre>
+<p>假设 react 项目 build 出来的文件（js/css html等）都放在 <code>/public/app</code> 中</p>
+<pre><code>├── asset-manifest.json
+├── favicon.ico
+├── index.html
+├── manifest.json
+├── service-worker.js
+└── static
+</code></pre>
+<p>只需要修改 Laravel 的 <code>/resources/views/app.blade.php</code>文件,在里面引入文件即可</p>
+<pre><code class="language-php">&lt;?php include public_path() . '/app/index.html'; ?&gt;
+</code></pre>
+<h1 id="前后端分离项目">前后端分离项目</h1>
+<p>完整的 api 驱动应用（vue例，这里省去部分前端代码，重点讲认证、数据对接等）</p>
+<p>参考：https://laravelacademy.org/api-driven-development-laravel-vue</p>
+<h2 id="vue-略">vue 略</h2>
+<p>vue router 等</p>
+<h2 id="react-支持">React 支持</h2>
+<p>默认的前端框架是 vue ，但是我习惯用 react 了，需要修改。</p>
+<p>其实手动的方式也能实现，简单来说就是把一个模板文件（如 welcome.blade.php） 作为入口，在里面引入 react dom 等库。</p>
+<p>5.5 以后，可以用一个命令来实现</p>
+<pre><code class="language-shell">php artisan preset react
+
+# 测试下
+npm install &amp;&amp; npm run dev
+</code></pre>
+<p>使用了 Laravel Mix 来进行打包什么的。（其实就是 webpack 的一个封装）</p>
+<p>打开根目录的<code>webpack.mix.js</code>,可以看到一些内容，表示编译文件到哪些目录</p>
+<p><img src="/media/15490412691617/15552969758733.jpg" alt="-w376"></p>
+<p>打开 <code>package.json</code>可以看到，已经引入了不少库，并预先定了一些 npm 命令</p>
+<p><img src="/media/15490412691617/15552978586799.jpg" alt="-w490"></p>
+<h3 id="文件结构说明">文件结构说明</h3>
+<p>在 resources/js 目录下，看到下面几个文件/文件夹</p>
+<blockquote>
+<p>├── app.js
+├── bootstrap.js
+└── components
+└── Example.js</p>
+</blockquote>
+<p>打开总入口文件 <code>resources/js/app.js</code>,</p>
+<p><img src="/media/15490412691617/15552970682408.jpg" alt="-w533"></p>
+<p>再看看 bootstrap.js 引入了基础的 jQuery 框架，以及 Bootstrap 组件库</p>
+<p>最后在 Example.js 里使用 React(可以想成 creat-react-app 的 app.js 入口页面)</p>
+<p><img src="/media/15490412691617/15552973121827.jpg" alt="-w470"></p>
+<h3 id="在项目入口文件blade-模板调用-react-组件">在项目入口文件（blade 模板）调用 React 组件</h3>
+<p>然后修改项目的模板文件<code> resources/views/welcome.blade.php</code></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;{{ app()-&gt;getLocale() }}&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+        &lt;title&gt;Laravel React application&lt;/title&gt;
+        &lt;link href=&quot;{{mix('css/app.css')}}&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;h2 style=&quot;text-align: center&quot;&gt; Laravel and React application &lt;/h2&gt;
+        &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+        &lt;script src=&quot;{{mix('js/app.js')}}&quot; &gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p>还有关键的一段来处理 CSRF</p>
+<pre><code class="language-html">&lt;script type='text/javascript'&gt;
+     window.Laravel = &lt;?php echo json_encode([
+        'csrfToken' =&gt; csrf_token(),
+    ]); ?&gt;
+&lt;/script&gt;
+</code></pre>
+<h3 id="react-通过-api-调用后端数据">React 通过 api 调用后端数据</h3>
+<p>参考及更多：
+<a href="https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-backend-part-2-react--cms-29443">https://code.tutsplus.com/tutorials/build-a-react-app-with-laravel-backend-part-2-react--cms-29443</a></p>
+<p>首先在 laravel 里创建 route, controller, model 等等，得到 <code>api/products</code>等这些路由及处理逻辑。</p>
+<p>然后修改 react 组件, 在里面用 fetch 调用</p>
+<pre><code class="language-js">import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+ 
+/* Main Component */
+class Main extends Component {
+ 
+  constructor() {
+   
+    super();
+    //Initialize the state in the constructor
+    this.state = {
+        products: [],
+    }
+  }
+  /*componentDidMount() is a lifecycle method
+   * that gets called after the component is rendered
+   */
+  componentDidMount() {
+    /* fetch API in action */
+    fetch('/api/products')
+        .then(response =&gt; {
+            return response.json();
+        })
+        .then(products =&gt; {
+            //Fetched product is stored in the state
+            this.setState({ products });
+        });
+  }
+ 
+ renderProducts() {
+    return this.state.products.map(product =&gt; {
+        return (
+            /* When using list you need to specify a key
+             * attribute that is unique for each list item
+            */
+            &lt;li key={product.id} &gt;
+                { product.title } 
+            &lt;/li&gt;      
+        );
+    })
+  }
+   
+  render() {
+   /* Some css code has been removed for brevity */
+    return (
+        &lt;div&gt;
+              &lt;ul&gt;
+                { this.renderProducts() }
+              &lt;/ul&gt; 
+            &lt;/div&gt; 
+       
+    );
+  }
+}
+</code></pre>
+<h3 id="运行-1">运行</h3>
+<pre><code class="language-shell">npm run dev
+
+
+# 如果需要在文件变化时，自动检测并编译
+npm run watch
+</code></pre>
+<h2 id="视图与模板-与-crsf-token-阻止恶意请求">视图与模板 （与 crsf-token 阻止恶意请求）</h2>
+<p>app.blade.php</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        &lt;meta name=&quot;csrf-token&quot; content=&quot;{{ csrf_token() }}&quot;&gt;
+
+        &lt;link href=&quot;{{ asset('css/app.css') }}&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;
+
+        &lt;link rel=&quot;icon&quot; type=&quot;image/x-icon&quot; href=&quot;/favicon.ico&quot;&gt;
+
+        &lt;title&gt;Roast&lt;/title&gt;
+
+        &lt;script type='text/javascript'&gt;
+             window.Laravel = &lt;?php echo json_encode([
+                'csrfToken' =&gt; csrf_token(),
+            ]); ?&gt;
+        &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;router-view&gt;&lt;/router-view&gt;
+        &lt;/div&gt;
+
+        &lt;script type=&quot;text/javascript&quot; src=&quot;{{ asset('js/app.js') }}&quot;&gt;&lt;/script&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>在两个地方存放了 <code>CSRF Token</code> 值，一个是名为 csrf-token 的 meta 标签，一个是全局 JavaScript 变量 window.Laravel，我们会将其添加到 Axios 请求头，以便在每个请求中传递来阻止恶意请求。此外，我们还需要在所有 API 路由和 Web 路由的 CreateFreshApiToken 中使用 auth:api 中间件（下一篇教程中详细讲述），以便可以安全消费应用自己提供的 API。</p>
+<p>登录界面 <code>login.blade.php</code></p>
+<pre><code class="language-html">&lt;a href=&quot;/auth/github&quot;&gt;
+    Log In With Github
+&lt;/a&gt;
+</code></pre>
+<h2 id="前端">前端</h2>
+<h3 id="前端路由">前端路由</h3>
+<p>Vue 和 React 不一样。这里 vue router 为例创建几个路由</p>
+<pre><code>/ - 首页
+/cafes - 咖啡店列表
+/cafes/new - 新增咖啡店
+/cafes/:id - 显示单个咖啡店
+</code></pre>
+<pre><code class="language-js">Vue.use( VueRouter )
+
+/**
+ * Makes a new VueRouter that we will use to run all of the routes for the app.
+ */
+export default new VueRouter({
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: Vue.component( 'Home', require( './pages/Home.vue' ) )
+        },
+        {
+            path: '/cafes',
+            name: 'cafes',
+            component: Vue.component( 'Cafes', require( './pages/Cafes.vue' ) )
+        },
+        {
+            path: '/cafes/new',
+            name: 'newcafe',
+            component: Vue.component( 'NewCafe', require( './pages/NewCafe.vue' ) )
+        },
+        {
+            path: '/cafes/:id',
+            name: 'cafe',
+            component: Vue.component( 'Cafe', require( './pages/Cafe.vue' ) )
+        }
+    ]
+});
+</code></pre>
+<h3 id="页面组件">页面组件</h3>
+<pre><code>resources/assets/js/pages/Cafe.vue
+resources/assets/js/pages/Cafes.vue
+resources/assets/js/pages/Home.vue
+resources/assets/js/pages/NewCafe.vue
+</code></pre>
+<h3 id="axios-发起异步网络请求在后端-api-创建完成后">Axios 发起异步网络请求（在后端 API 创建完成后）</h3>
+<p>和 <code>.env</code> 类似，<code>config.js</code> 对<strong>多环境</strong>前端开发来说非常重要, 希望在构建应用时，根据不同的环境调用正确的 API URL</p>
+<pre><code class="language-js">var api_url = '';
+
+switch( process.env.NODE_ENV ){
+    case 'development':
+        api_url = 'http://roast.test/api/v1';
+        break;
+    case 'production':
+        api_url = 'http://roast.demo.laravelacademy.org/api/v1';
+        break;
+}
+
+export const ROAST_CONFIG = {
+    API_URL: api_url,
+}
+</code></pre>
+<p>通过资源对 API 路由进行分组。为此首先需要在 resources/assets/js/api 目录下新增 <code>cafe.js</code> 文件。然后需要在该文件中引入上一步导出的 ROAST_CONFIG，以便获取 API_URL 来发起请求：</p>
+<p>将会在后面通过 Vuex 来调用这些请求</p>
+<pre><code class="language-js">import { ROAST_CONFIG } from '../config.js';
+
+export default {
+    /**
+     * GET /api/v1/cafes
+     */
+    getCafes: function(){
+        return axios.get( ROAST_CONFIG.API_URL + '/cafes' );
+    },
+    
+    /**
+     * GET /api/v1/cafes/{cafeID}
+     */
+    getCafe: function( cafeID ){
+        return axios.get( ROAST_CONFIG.API_URL + '/cafes/' + cafeID );
+    }
+    
+    /**
+     * POST /api/v1/cafes
+     */
+    postAddNewCafe: function( name, address, city, state, zip ){
+        return axios.post( ROAST_CONFIG.API_URL + '/cafes',
+            {
+                name: name,
+                address: address,
+                city: city,
+                state: state,
+                zip: zip
+            }
+        );
+    }
+}
+</code></pre>
+<h3 id="表单提交">表单提交</h3>
+<p>访问 <a href="http://roast.test/#/cafes/new">http://roast.test/#/cafes/new</a> 访问新增咖啡店页面 （这个路由对应了一个 component）</p>
+<p>一部分代码</p>
+<pre><code class="language-html">&lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+          &lt;label&gt;地址
+              &lt;input type=&quot;text&quot; placeholder=&quot;地址&quot; v-model=&quot;address&quot;&gt;
+          &lt;/label&gt;
+          &lt;span class=&quot;validation&quot; v-show=&quot;!validations.address.is_valid&quot;&gt;{{ validations.address.text }}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+          &lt;label&gt;城市
+              &lt;input type=&quot;text&quot; placeholder=&quot;城市&quot; v-model=&quot;city&quot;&gt;
+          &lt;/label&gt;
+          &lt;span class=&quot;validation&quot; v-show=&quot;!validations.city.is_valid&quot;&gt;{{ validations.city.text }}&lt;/span&gt;
+      &lt;/div&gt;
+</code></pre>
+<p>添加一个提交按钮的动作<code>submitNewCafe</code>。(React 也类似，使用 mobx Redux 什么的)</p>
+<pre><code class="language-js">submitNewCafe: function () {
+    this.$store.dispatch('addCafe', {
+        name: this.name,
+        address: this.address,
+        city: this.city,
+        state: this.state,
+        zip: this.zip
+    });
+}
+</code></pre>
+<p>在 <code>api/cafe.js</code>的 <code>addCafe</code>方法里添加调用 API 的代码</p>
+<pre><code class="language-js">addCafe( { commit, state, dispatch }, data ){
+    // 状态1表示开始添加
+    commit( 'setCafeAddStatus', 1 );
+
+    CafeAPI.postAddNewCafe( data.name, data.address, data.city, data.state, data.zip )
+            .then( function( response ){
+                // 状态2表示添加成功
+                commit( 'setCafeAddStatus', 2 );
+                dispatch( 'loadCafes' );
+            })
+            .catch( function(){
+                // 状态3表示添加失败
+                commit( 'setCafeAddStatus', 3 );
+            });
+}
+</code></pre>
+<p>在 <code>mutations</code> 中新增 <code>setCafeAddStatus</code> 方法：</p>
+<pre><code class="language-js">setCafeAddStatus(state, status) {
+    state.cafeAddStatus = status;
+}
+</code></pre>
+<p>在 <code>getters</code> 中新增 <code>getCafeAddStatus</code> 方法：</p>
+<pre><code class="language-js">getCafeAddStatus( state) {
+    return state.cafeAddStatus;
+}
+</code></pre>
+<h4 id="前端验证提交数据前后端都要验证">前端验证提交数据（前后端都要验证）</h4>
+<p>打开<code>NewCafe.vue</code>在数据模型中新增一个 validations 对象</p>
+<pre><code class="language-js">data() {
+    return {
+        name: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        validations: {
+            name: {
+                is_valid: true,
+                text: ''
+            },
+            address: {
+                is_valid: true,
+</code></pre>
+<p>验证失败通知</p>
+<pre><code class="language-html">&lt;span class=&quot;validation&quot; v-show=&quot;!validations.name.is_valid&quot;&gt;{{ validations.name.text }}&lt;/span&gt;
+</code></pre>
+<p>写一个验证函数</p>
+<pre><code class="language-js">validateNewCafe: function () {
+    let validNewCafeForm = true;
+
+    // 确保 name 字段不为空
+    if( this.name.trim() === '' ){
+        validNewCafeForm = false;
+        this.validations.name.is_valid = false;
+        this.validations.name.text = '请输入咖啡店的名字';
+    }else{
+        this.validations.name.is_valid = true;
+        this.validations.name.text = '';
+    }
+
+</code></pre>
+<p>在提交时先验证</p>
+<pre><code class="language-js">submitNewCafe: function () {
+    if (this.validateNewCafe()) {
+        this.$store.dispatch('addCafe', {
+        
+    //...
+    return validNewCafeForm;
+</code></pre>
+<h2 id="后端">后端</h2>
+<h3 id="路由控制器-auth-认证中间件">路由、控制器、 auth 认证中间件</h3>
+<p>创建 app/Http/Controllers/API 目录来存放 API 控制器
+创建 app/Http/Controllers/Web 目录来存放 Web 控制器</p>
+<p><code>Web/AppController.php</code> 显示前端app运行的页面</p>
+<pre><code class="language-php">public function getApp()
+{
+    return view('app');
+}
+</code></pre>
+<h3 id="通过-web-路由认证处理github-为例">通过 Web 路由认证处理（Github 为例）</h3>
+<p>处理 <code>/</code>请求，只允许认证用户才能访问，所以我们在入口路由<code>/</code>上使用了 <code>auth</code> 中间件。</p>
+<p>而在 <code>login</code> 路由上使用了 <code>guest</code> 中间件，该中间件的用途是已经登录用户访问该路由会跳转到指定认证后页面，而未登录用户访问才会显示登录页面。</p>
+<p>另外就是登录认证路由（<code>/auto/{social}</code>和<code>/auth/{social}/callback</code>）</p>
+<pre><code class="language-php">Route::get('/', 'Web\AppController@getApp')
+-&gt;middleware('auth');
+
+Route::get('/login', 'Web\AppController@getLogin' )
+    -&gt;name('login')
+    -&gt;middleware('guest');
+    
+Route::get( '/auth/{social}', 'Web\AuthenticationController@getSocialRedirect' )
+      -&gt;middleware('guest');
+
+Route::get( '/auth/{social}/callback', 'Web\AuthenticationController@getSocialCallback' )
+      -&gt;middleware('guest');
+</code></pre>
+<p>由于我们没有注册 <code>/home</code> 路由， 所以需要修改 <code>app\Http\Middleware\RedirectIfAuthenticated.php</code>（如果登录，就跳转的中间件） 中的跳转路由，将 <code>redirect('/home')</code> 修改为 <code>redirect('/')</code>。</p>
+<p>当后面使用了前端路由，以及默认页面组件的时候，要把这里修改为</p>
+<pre><code class="language-php">return redirect('/#/home');
+</code></pre>
+<p>移除 app/Http/Controllers/Auth 目录，我们将通过 Socialite 重构用户认证功能（仅用 Github 账号来登录系统）</p>
+<p>在 <code>Web\AppController.php</code> 控制器中定义 <code>getLogin()</code> 方法</p>
+<pre><code class="language-php">public function getLogin()
+{
+    return view('login');
+}
+</code></pre>
+<p>安装 socialite （在 Laravel 5.6 中该扩展包会自动发现，所以无需对服务提供者进行注册。）</p>
+<pre><code class="language-shell">composer require laravel/socialite
+</code></pre>
+<p>配置 Github 认证(其它第三方 OAuth 登录操作步骤也是与此类似)</p>
+<p><a href="https://github.com/settings/developers">https://github.com/settings/developers</a>，点击「New OAuth App」注册一个新 OAuth App：</p>
+<p>callback url 填  <code>[laravel 应用地址]/auth/github/callback</code></p>
+<p>得到 Client ID 及 Client Secret，将新增应用的 Client ID、Client Secret 及授权回调 URL 信息添加到应用根目录下 .env 配置文件中：</p>
+<pre><code>GIT_CLIENT_ID=你的 Github 应用 Client ID
+GIT_CLIENT_SECRET=你的 Github 应用 Client Secret
+GIT_REDIRECT=你的 Github 应用授权回调URL
+</code></pre>
+<p>然后在 <code>config/services.php</code> 配置文件中新增如下配置：</p>
+<pre><code class="language-php">'github' =&gt; [
+    'client_id' =&gt; env('GIT_CLIENT_ID'),
+    'client_secret' =&gt; env('GIT_CLIENT_SECRET'),
+    'redirect' =&gt; env('GIT_REDIRECT')
+]
+</code></pre>
+<p>编写基于 Github 的认证逻辑实现代码</p>
+<p>控制器 <code>/app/Http/Controllers/Web/AuthenticationController.php</code>新增 <code>getSocialRedirect</code> 方法（对应前面路由）：</p>
+<p>其中 <code>$account</code> 就是路由中传进来的 <code>{social}</code> 参数</p>
+<pre><code class="language-php">public function getSocialRedirect($account)
+{
+    try {
+        return Socialite::with($account)-&gt;redirect();
+    } catch (\InvalidArgumentException $e) {
+        return redirect('/login');
+    }
+}
+</code></pre>
+<p>创建数据表保存用户信息，为此，我们需要修改并运行数据库迁移文件，这些数据库迁移文件位于 <code>databases/migration</code> 目录下，在 <code>CreateUsersTable</code> 类的 <code>up()</code> 方法中新增以下三个字段：</p>
+<pre><code class="language-php">$table-&gt;string('provider');
+$table-&gt;string('provider_id');
+$table-&gt;text('avatar');
+</code></pre>
+<p>provider 字段用于存放 OAuth 服务提供方，在这里就是 github 了， provider_id 用于存放从第三方 OAuth 那里获取的用户唯一ID，而 avatar 字段用于存放从第三方 OAuth 获取的用户头像。</p>
+<p>删除 <code>CreatePasswordResetsTable</code> 类，在本应用中用不到它</p>
+<p>运行迁移</p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<p>再新增<code>getSocialCallback</code>方法。用于从第三方 OAuth 回调（这里是 Github）中获取用户信息，如果该用户在 Roast 中不存在的话将其保存到 users 表，然后手动对该用户进行登录认证操作，如果已存在的话直接进行登录操作：</p>
+<pre><code class="language-php">public function getSocialCallback($account)
+{
+    // 从第三方 OAuth 回调中获取用户信息
+    $socialUser = Socialite::with($account)-&gt;user();
+    // 在本地 users 表中查询该用户来判断是否已存在
+    $user = User::where( 'provider_id', '=', $socialUser-&gt;id )
+        -&gt;where( 'provider', '=', $account )
+        -&gt;first();
+    if ($user == null) {
+        // 如果该用户不存在则将其保存到 users 表
+        $newUser = new User();
+
+        $newUser-&gt;name        = $socialUser-&gt;getName();
+        $newUser-&gt;email       = $socialUser-&gt;getEmail() == '' ? '' : $socialUser-&gt;getEmail();
+        $newUser-&gt;avatar      = $socialUser-&gt;getAvatar();
+        $newUser-&gt;password    = '';
+        $newUser-&gt;provider    = $account;
+        $newUser-&gt;provider_id = $socialUser-&gt;getId();
+
+        $newUser-&gt;save();
+        $user = $newUser;
+    }
+
+    // 手动登录该用户
+    Auth::login( $user );
+
+    // 登录成功后将用户重定向到首页
+    return redirect('/');
+}
+</code></pre>
+<p>测试登录</p>
+<p><img src="/media/15490412691617/15553963687436.jpg" alt=""></p>
+<h4 id="socialite-还能集成-微信-等社交网站的登录">socialite 还能集成 微信 等社交网站的登录</h4>
+<p><a href="https://learnku.com/laravel/t/2511/using-laravel-socialite-integrated-wechat-login">https://learnku.com/laravel/t/2511/using-laravel-socialite-integrated-wechat-login</a></p>
+<h3 id="通过-passport-用-api-路由登录">通过 Passport 用 API 路由登录</h3>
+<p>安装扩展包</p>
+<pre><code class="language-shell">composer require laravel/passport
+</code></pre>
+<p>运行迁移</p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<p>会自动创建 OAuth 客户端及令牌相关数据表：</p>
+<p><img src="/media/15490412691617/15553964734965.jpg" alt=""></p>
+<p>最后安装 passport</p>
+<pre><code class="language-shell">php artisan passport:install
+</code></pre>
+<p><img src="/media/15490412691617/15553965498292.jpg" alt=""></p>
+<p>会创建生成安全访问令牌（token）所需的加密键，此外，该命令还会创建「personal access」和「password grant」客户端用于生成访问令牌：</p>
+<p>用户模型类中使用 <code>HasApiTokens</code> <strong>Trait</strong>,以便用户可以创建自己的 API 令牌</p>
+<pre><code class="language-php">use Illumate\....
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use Notifiable, HasApiTokens;
+</code></pre>
+<p>然后在 <code>AuthServiceProvider</code> 中自动注册 <code>Passport</code> 系列路由，以便用户可以颁发/撤回访问令牌：</p>
+<pre><code class="language-php">use Illu...\Gate;
+use Laravel\Passport\Passport;
+
+class AuthServiceProvider extends ServiceProvider
+{
+    public function boot(){
+        $this-&gt;registerPolicies();
+        
+        Passport::routes();
+    }
+</code></pre>
+<p>运行 <code>php artisan route list</code>看看生效没有</p>
+<p>将 API 认证驱动设置为 <code>Laravel Passport</code>，既能在用户通过 Session 登录访问 API 时派上用场，也能检查移动端请求头中的访问令牌.</p>
+<p>打开 <code>config/auth.php</code> 配置文件，修改如下。这样，我们就可以在所有 Laravel API 认证请求中使用 passport 驱动了。</p>
+<pre><code class="language-php">'api' =&gt; [
+       'driver' =&gt; 'passport', // from &quot;token&quot;
+       'provider' =&gt; 'users',
+],
+</code></pre>
+<p>从 Web 浏览器访问认证 API 之前，在 <code>Http\Kernel.php</code> 的 <code>$middlewareGroups</code> 属性中新增中间件 <code>CreateFreshApiToken</code>：</p>
+<p>该中间件为认证用户创建一个新的访问令牌，当认证用户发起请求时，会在请求中附加一个 JWT 令牌并允许用户访问你的 API，关于这部分的演示我们把它放到后面 Vue 部分进行。</p>
+<pre><code class="language-php">protected $middlewareGroups = [
+    'web' =&gt; [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        // \Illuminate\Session\Middleware\AuthenticateSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class, // new add
+    ],
+
+    'api' =&gt; [
+        'throttle:60,1',
+        'bindings',
+    ],
+];
+</code></pre>
+<p>清理 routes/api.php 文件(存放所有 API 路由), 修改内容</p>
+<pre><code class="language-php">Route::group(['prefix' =&gt; 'v1', 'middleware' =&gt; 'auth:api'], function(){
+    Route::get('/user', function( Request $request ){
+        return $request-&gt;user();
+    });
+});
+</code></pre>
+<p>为群组路由设置了中间件 <code>auth:api</code>，意味着该群组中的所有路由都需要用户认证后才能访问</p>
+<h3 id="为前端路由编写后端-api-接口">为前端路由编写后端 API 接口</h3>
+<p>在前端(Vue)创建了路由后，Laravel 后端也要创建对应的 API 接口处理请求</p>
+<h4 id="添加路由到-routesapiphp">添加路由到 <code>routes/api.php</code></h4>
+<pre><code class="language-php">// 稍后创建 CafesController
+Route::get('/cafes', 'API\CafesController@getCafes');
+Route::post('/cafes', 'API\CafesController@postNewCafe');
+Route::get('/cafes/{id}', 'API\CafesController@getCafe');
+</code></pre>
+<h4 id="模型类-cafephp">模型类 Cafe.php</h4>
+<pre><code class="language-shell">php artisan make:model Models/Cafe -m 
+</code></pre>
+<p>迁移文件<code>databases/migrations/{timestamp}_create_cafes_table</code>编辑 up() 方法</p>
+<pre><code class="language-php"> Schema::create('cafes', function( Blueprint $table ){
+        $table-&gt;increments('id');
+        $table-&gt;string('name');
+        $table-&gt;text('address');
+        $table-&gt;string('city');
+        $table-&gt;string('state');
+        $table-&gt;string('zip');
+        $table-&gt;decimal('latitude', 11, 8);
+        $table-&gt;decimal('longitude', 11, 8);
+        $table-&gt;timestamps();
+    });
+</code></pre>
+<p>运行迁移</p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<h4 id="控制器-apicafescontroller">控制器 <code>API/CafesController</code></h4>
+<p>填充动作</p>
+<pre><code class="language-php">use App\Models\Cafe;
+
+class .... {
+    public function getCafes(){
+        $cafes = Cafe::all();
+        return response()-&gt;json($cafes);
+    }
+    public function getCafe($id){
+        $cafe = Cafe::where('id', '=', $id)-&gt;first();
+        return response()-&gt;json($cafe);
+    }
+    public function postNewCafe(){
+        $cafe = new Cafe();
+
+        $cafe-&gt;name     = Request::get('name');
+        $cafe-&gt;address  = Request::get('address');
+        $cafe-&gt;city     = Request::get('city');
+        $cafe-&gt;state    = Request::get('state');
+        $cafe-&gt;zip      = Request::get('zip');
+    
+        $cafe-&gt;save();
+    
+        // 遵循 RESTful 原则返回 201 状态码，表示实体已创建
+        return response()-&gt;json($cafe, 201);
+    }
+}
+</code></pre>
+<h3 id="请求验证类对表单数据进行验证">请求验证类,对表单数据进行验证</h3>
+<p>构建 Laravel 请求验证类</p>
+<pre><code class="language-shell">php artisan make:request StoreCafeRequest
+</code></pre>
+<p>这个请求验证类默认包含两个方法：一个是 <code>authorize()</code> 方法，用于判断请求者是否有权限访问这个请求，由于我们已经在路由定义的时候定义过通过相应中间件 <code>auth:api</code> 进行权限过滤，所以这里将返回值设置为 <code>true</code> 即可；另一个是 <code>rules()</code> 方法，用于设置各个请求字段的验证规则，我们主要关注这个方法（Laravel 支持的完整验证规则可参考官方文档</p>
+<p>定义 messages() 方法(验证失败消息子集)</p>
+<pre><code class="language-php">public function authorize()
+{
+    return true;
+}
+
+public function rules()
+{
+    return [
+        'name'    =&gt; 'required',
+        'address' =&gt; 'required',
+        'city'    =&gt; 'required',
+        'state'   =&gt; 'required',
+        'zip'     =&gt; 'required|regex:/\b\d{6}\b/'
+    ];
+}
+
+public function messages()
+{
+    return [
+        'name.required'     =&gt; '咖啡店名字不能为空',
+        'address.required'  =&gt; '咖啡店地址不能为空',
+        'city.required'     =&gt; '咖啡店所在城市不能为空',
+        'state.required'    =&gt; '咖啡店所在省份不能为空',
+        'zip.required'      =&gt; '咖啡店邮编不能为空',
+        'zip.regex'         =&gt; '无效的邮政编码'
+    ];
+}
+</code></pre>
+<p>（ Ajax 请求返回状态码为 422），并返回验证失败信息，我们可以在客户端通过捕获响应状态码及失败消息进行处理即可</p>
+<p>将这个请求验证类<strong>添加到控制器路由</strong>中才能生效。这样，在这个方法运行之前会自动自行请求验证类 StoreCafeRequest，如果验证失败会直接返回，验证成功才会继续方法内代码执行。</p>
+<pre><code class="language-php">//在控制器顶部引入这个类：
+use App\Http\Requests\StoreCafeRequest;
+
+class Controller....{
+
+    //将 StoreCafeRequest 注入到 postNewCafe() 方法
+    public function postNewCafe(StoreCafeRequest $request)
+    {
+        $cafe = new Cafe();
+    
+        $cafe-&gt;name     = $request-&gt;input('name');
+        $cafe-&gt;address  = $request-&gt;input('address');
+        $cafe-&gt;city     = $request-&gt;input('city');
+        $cafe-&gt;state    = $request-&gt;input('state');
+        $cafe-&gt;zip      = $request-&gt;input('zip');
+    
+        $cafe-&gt;save();
+    
+        return response()-&gt;json($cafe, 201);
+</code></pre>
+<h3 id="冲泡方法与咖啡店关联多对多">冲泡方法与咖啡店关联（多对多）</h3>
+<p><strong>多对多关联</strong>来构建<code>咖啡店</code>和对应<code>冲泡方法</code>之间的关联关系：一个咖啡店可能会提供多种冲泡方法，单个冲泡方法本身也不隶属于任何咖啡店</p>
+<h4 id="创建冲泡方法数据表">创建冲泡方法数据表</h4>
+<pre><code class="language-shell">php artisan make:migration create_brew_methods_table
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('brew_methods', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('method');
+        $table-&gt;timestamps();
+    });
+}
+</code></pre>
+<pre><code class="language-shell">php artisan migrate
+
+</code></pre>
+<p>填充数据</p>
+<pre><code class="language-shell">php artisan make:seeder BrewMethodsSeeder
+
+</code></pre>
+<pre><code class="language-php">public function run()
+{
+    DB::table('brew_methods')-&gt;insert([
+        [
+            'method' =&gt; 'Hario V60 Dripper',
+            'created_at' =&gt; \Carbon\Carbon::now(),
+            'updated_at' =&gt; \Carbon\Carbon::now()
+        ],
+        [
+            'method' =&gt; 'Chemex',
+            'created_at' =&gt; \Carbon\Carbon::now(),
+            'updated_at' =&gt; \Carbon\Carbon::now()
+        ],
+        //..
+</code></pre>
+<p>开始填充</p>
+<pre><code class="language-shell">php artisan db:seed --class=BrewMethodsSeeder
+
+</code></pre>
+<h4 id="创建关联关系中间表">创建关联关系中间表</h4>
+<pre><code class="language-shell">php artisan make:migration create_cafes_brew_methods_table
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('cafes_brew_methods', function ($table) {
+        $table-&gt;integer('cafe_id')-&gt;unsigned();
+        $table-&gt;integer('brew_method_id')-&gt;unsigned();
+    });
+}
+</code></pre>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<h4 id="冲泡方法模型类-定义-brewmethod-模型类与-cafe-模型类间的多对多关联">冲泡方法模型类, 定义 BrewMethod 模型类与 Cafe 模型类间的多对多关联：</h4>
+<pre><code class="language-shell">php artisan make:model Models/BrewMethod
+</code></pre>
+<pre><code class="language-php">namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class BrewMethod extends Model
+{
+    // 定义与 Cafe 模型间的多对多关联
+    public function cafes()
+    {
+        return $this-&gt;belongsToMany(Cafe::class, 'cafes_brew_methods', 'brew_method_id', 'cafe_id');
+    }
+}
+</code></pre>
+<h4 id="定义咖啡店-cafe-与冲泡方法-brewmethod-间的关联关系多对多关联">定义咖啡店 Cafe 与冲泡方法 BrewMethod 间的关联关系（多对多关联）</h4>
+<pre><code class="language-php">public function brewMethods()
+{
+    return $this-&gt;belongsToMany(BrewMethod::class, 'cafes_brew_methods', 'cafe_id', 'brew_method_id');
+}
+</code></pre>
+<h4 id="多对多关联查询">多对多关联查询</h4>
+<p>使用 <code>with</code> 方法，将模型类中的关联关系方法名作为参数传入，这样对应的关联数据会以属性的方式出现在查询结果中，属性名就是 with 方法传入的字符串参数</p>
+<p>改写控制器 <code>app/Http/Controllers/API/CafesController.php</code> 中咖啡店的获取逻辑为关联查询，编辑 <code>getCafes() </code>与 <code>getCafe()</code>方法</p>
+<pre><code class="language-php">public function getCafes()
+{
+    $cafes = Cafe::with('brewMethods')-&gt;get();
+    return response()-&gt;json( $cafes );
+}
+</code></pre>
+<h4 id="实现冲泡方法查询-api">实现冲泡方法查询 API</h4>
+<pre><code class="language-shell">php artisan make:controller API/BrewMethodsController
+</code></pre>
+<pre><code class="language-php">/**
+     * 获取所有冲泡方法以及拥有该冲泡方法的咖啡店数目
+     *
+     * 请求API: /api/v1/brew-methods
+     * 请求方法: GET
+     */
+    public function getBrewMethods()
+    {
+        // 获取所有包含咖啡店数目的冲泡方法
+        $brewMethods = BrewMethod::withCount('cafes')-&gt;get();
+        // 以 JSON 格式返回数据
+        return response()-&gt;json($brewMethods);
+    }
+</code></pre>
+<p>新增下面这个查询路由<code>routes/api.php</code></p>
+<pre><code class="language-php">Route::get('/brew-methods', 'API\BrewMethodsController@getBrewMethods');
+
+</code></pre>
+<p>编写<strong>前端</strong>查询</p>
+<p>在 resources/assets/js/api 目录下创建 brewMethod.js，编写</p>
+<pre><code class="language-js">import {ROAST_CONFIG} from '../config.js';
+
+export default {
+    /*
+     GET   /api/v1/brew-methods
+     */
+    getBrewMethods: function () {
+        return axios.get(ROAST_CONFIG.API_URL + '/brew-methods');
+    }
+}
+</code></pre>
+<p>然后创建 resources/assets/js/modules/brewMethods.js(模型)，编写代码如下</p>
+<p>略。（代码太复杂）</p>
+<h3 id="动态表单一次提交多个咖啡店位置分店父子关联">动态表单，一次提交多个咖啡店位置（分店，父子关联）</h3>
+<p>分店都有一个共同的父节点，共享同一个咖啡店名称、网址、简介等信息</p>
+<p>每个咖啡店，不管是总店还是分店，都会支持多个冲泡方法</p>
+<p>将总店和分店信息分别存储到 cafes 表的不同记录中，并且以某种方式进行关联</p>
+<p>总店和分店区别主要体现在：</p>
+<ul>
+<li>具体地址</li>
+<li>位置名称（唯一标识位置）</li>
+<li>冲泡方法</li>
+</ul>
+<p><code>NewCafe.vue</code> 组件</p>
+<p><code>locations</code> 数组用于存放所有新增的位置字段数据，<code>validations</code> 中的 <code>locations</code> 数组也会包含每个位置字段的验证规则，这样就能确保添加的每个位置字段数据都是有效的。<code>oneLocation</code> 验证规则用于确保咖啡店至少包含一个位置信息。而 website 和 description 都是新增的字段，用于表示咖啡店的网址和简介信息</p>
+<pre><code class="language-js">data() {
+   return {
+       name: '',
+       locations: [],
+       website: '',
+       description: '',
+       roaster: false,
+       validations: {
+           name: {
+               is_valid: true,
+               text: ''
+           },
+           locations: [],
+           oneLocation: {
+               is_valid: true,
+               text: ''
+           },
+           website: {
+               is_valid: true,
+               text: ''
+</code></pre>
+<p>添加 <code>addLocation()</code> 方法到 methods 方法列表中，该方法用于新增一个位置区块到表单中，并在组件创建后进行调用</p>
+<p>将一个位置对象推送到 locations 字段，其中包含名称、地址、城市、省份和邮编以及有效的冲泡方法数组，然后将位置对象中的某些字段验证规则推送到 validations.locations 字段，我们在验证规则中去掉了 name 和 methodsAvailable 属性，这是因为对 name 字段而言，如果空的话，我们将使用咖啡店已经存在的名称字段，并且这个字段也不是必需的；而对 methodsAvailable 字段而言，当添加咖啡店时，你可能还不知道所有的冲泡方法</p>
+<pre><code class="language-js">addLocation() {
+    this.locations.push({name: '', address: '', city: '', state: '', zip: '', methodsAvailable: []});
+    this.validations.locations.push({
+        address: {
+            is_valid: true,
+            text: ''
+        },
+        city: {
+            is_valid: true,
+            text: ''
+        },
+        state: {
+            is_valid: true,
+            text: ''
+        },
+        zip: {
+            is_valid: true,
+            text: ''
+        }
+    });
+},
+</code></pre>
+<p>在组件创建时调用上述方法来添加位置区块,初始化我们的第一个位置（提交表单时至少有一个咖啡店位置，可以将这个位置作为总店位置，其他新增的位置作为分店位置）</p>
+<pre><code class="language-js">created(){
+    this.addLocation();
+},
+</code></pre>
+<p>将模板中原来的那个只能设置<strong>单个位置信息的表单</strong>替换成一个<strong>可以动态新增/移除位置字段的表单</strong>。</p>
+<p>部分代码</p>
+<pre><code class="language-js">&lt;form&gt;
+        &lt;div class=&quot;grid-container&quot;&gt;
+            &lt;div class=&quot;grid-x grid-padding-x&quot;&gt;
+                &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                    &lt;label&gt;名称
+                        &lt;input type=&quot;text&quot; placeholder=&quot;咖啡店名&quot; v-model=&quot;name&quot;&gt;
+                    &lt;/label&gt;
+                    &lt;span class=&quot;validation&quot; v-show=&quot;!validations.name.is_valid&quot;&gt;{{ validations.name.text }}&lt;/span&gt;
+                    //....省份、地址、简介什么的
+                    
+                    &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                    &lt;label&gt;支持的冲泡方法&lt;/label&gt;
+                    &lt;span class=&quot;brew-method&quot; v-for=&quot;brewMethod in brewMethods&quot;&gt;
+                        &lt;input v-bind:id=&quot;'brew-method-'+brewMethod.id+'-'+key&quot; type=&quot;checkbox&quot;
+                               v-bind:value=&quot;brewMethod.id&quot;
+                               v-model=&quot;locations[key].methodsAvailable&quot;&gt;
+                        &lt;label v-bind:for=&quot;'brew-method-'+brewMethod.id+'-'+key&quot;&gt;{{ brewMethod.method }}&lt;/label&gt;
+                    &lt;/span&gt;
+                &lt;/div&gt;
+                // 注意这里
+                &lt;div class=&quot;grid-x grid-padding-x&quot; v-for=&quot;(location, key) in locations&quot;&gt;
+                    &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                        &lt;h3&gt;位置&lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;large-6 medium-6 small-12 cell&quot;&gt;
+                    &lt;label&gt;位置名称
+                        &lt;input type=&quot;text&quot; placeholder=&quot;位置名称&quot; v-model=&quot;locations[key].name&quot;&gt;
+                    &lt;/label&gt;
+                    //...
+                    &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                        &lt;a class=&quot;button&quot; v-on:click=&quot;removeLocation(key)&quot;&gt;移除位置&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;div class=&quot;grid-x grid-padding-x&quot;&gt;
+                &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                    &lt;a class=&quot;button&quot; v-on:click=&quot;addLocation()&quot;&gt;新增位置&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+                    &lt;a class=&quot;button&quot; v-on:click=&quot;submitNewCafe()&quot;&gt;提交表单&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+</code></pre>
+<p>注意 <code>&lt;div class=&quot;grid-x grid-padding-x&quot; v-for=&quot;(location, key) in locations&quot;&gt;</code>，遍历 locations 数组中的所有位置信息并解析 location 和 key 字段，分别表示位置数据和位置索引。我们会使用 key 来实现每个表单输入字段于数据模型的双向绑定</p>
+<p><code>addLocation</code> 方法在表单中插入位置区块</p>
+<p>还渲染了支持的冲泡方法选择列表<code>v-for=&quot;brewMethod in brewMethods&quot;</code></p>
+<p>里面的方法，要添加到 <code>methods</code>对象</p>
+<pre><code class="language-js">removeLocation(key) {
+    this.locations.splice(key, 1);
+    this.validations.locations.splice(key, 1);
+},
+</code></pre>
+<p>引入冲泡方法数据</p>
+<pre><code class="language-js">computed: {
+    brewMethods() {
+        return this.$store.getters.getBrewMethods;
+    }
+},
+</code></pre>
+<h4 id="验证动态表单">验证动态表单</h4>
+<p>重写 <code>validateNewCafe</code> 方法中的位置字段验证代码,遍历所有的位置数据并验证每个字段,验证逻辑和之前一致,为 website 字段添加了 URL 验证规则</p>
+<pre><code class="language-js">for (var index in this.locations) {
+    if (this.locations.hasOwnProperty(index)) {
+        // 确保地址字段不为空
+</code></pre>
+<h4 id="更新-addcafe-分发动作">更新 addCafe 分发动作</h4>
+<p>添加额外的字段并重新组织地址字段信息，<strong>冲泡方法则和每个位置信息一起放到了 locations 数组</strong>中</p>
+<pre><code class="language-js">submitNewCafe: function () {
+    if (this.validateNewCafe()) {
+        this.$store.dispatch('addCafe', {
+            name: this.name,
+            locations: this.locations,
+            website: this.website,
+            description: this.description,
+            roaster: this.roaster
+        });
+    }
+}, 
+</code></pre>
+<h4 id="更新-cafejs-api">更新 cafe.js API</h4>
+<p>调整 resources/assets/js/modules/cafes.js Vuex 模块中相应的调用后端 API 方法：</p>
+<pre><code class="language-js">addCafe({commit, state, dispatch}, data) {
+    commit('setCafeAddStatus', 1);
+
+    CafeAPI.postAddNewCafe(data.name, data.locations, data.website, data.description, data.roaster)
+</code></pre>
+<p>打开 resources/assets/js/api/cafe.js，更新 postAddNewCafe API 请求</p>
+<pre><code class="language-js">postAddNewCafe: function (name, locations, website, description, roaster) {
+    return axios.post(ROAST_CONFIG.API_URL + '/cafes',
+       {
+           name: name,
+           locations: locations,
+</code></pre>
+<h4 id="服务器端处理验证数据">服务器端处理验证数据</h4>
+<p>打开 app/Http/Requests/StoreCafeRequest.php 文件，更新请求参数验证规则如下，我们使用了 <code>*</code> 来<strong>验证数组数据</strong>：</p>
+<pre><code class="language-php">public function rules()
+{
+    return [
+        'name'         =&gt; 'required',
+        'location.*.address'      =&gt; 'required',
+        'location.*.city'         =&gt; 'required',
+        'location.*.state'        =&gt; 'required',
+        'location.*.zip'          =&gt; 'required|regex:/\b\d{6}\b/',
+        'location.*.brew_methods' =&gt; 'sometimes|array',
+        'website'      =&gt; 'sometimes|url'
+    ];
+}
+
+//调整验证失败消息自定义规则如下 略
+</code></pre>
+<p>保存新的表单请求数据</p>
+<p>打开 app/Http/Controllers/API/CafesController.php 文件，修改 postNewCafe 方法如</p>
+<p>将 locations 中的第一个位置信息作为总店位置，其他位置信息作为分店位置（如果 locations 数组长度为 1，则表示没有分店），分店与总店通过 parent 字段进行关联，并且与总店共享 name、website、description、roaster、added_by 信息，但是位置信息、地理编码、冲泡方法等字段各自独立，冲泡方法通过 sync 方法以关联关系方式存储，映射关系存放在 cafes_brew_methods 中间表。最后，我们会将所有添加的咖啡店记录推送到 $addedCafes 数组并返回</p>
+<pre><code class="language-php">public function postNewCafe(StoreCafeRequest $request)
+{
+    // 已添加的咖啡店
+    $addedCafes = [];
+    // 所有位置信息
+    $locations = $request-&gt;input('locations');
+
+    // 父节点（可理解为总店）
+    $parentCafe = new Cafe();
+
+    // 咖啡店名称
+    $parentCafe-&gt;name = $request-&gt;input('name');
+    // 分店位置名称
+    $parentCafe-&gt;location_name = $locations[0]['name'] ?: '';
+    // 分店地址
+    $parentCafe-&gt;address = $locations[0]['address'];
+    // 所在城市
+    $parentCafe-&gt;city = $locations[0]['city'];
+    // 所在省份
+    $parentCafe-&gt;state = $locations[0]['state'];
+    // 邮政编码
+    $parentCafe-&gt;zip = $locations[0]['zip'];
+    $coordinates = GaodeMaps::geocodeAddress($parentCafe-&gt;address, $parentCafe-&gt;city, $parentCafe-&gt;state);
+    // 纬度
+    $parentCafe-&gt;latitude = $coordinates['lat'];
+    // 经度
+    $parentCafe-&gt;longitude = $coordinates['lng'];
+    // 咖啡烘焙师
+    $parentCafe-&gt;roaster = $request-&gt;input('roaster') ? 1 : 0;
+    // 咖啡店网址
+    $parentCafe-&gt;website = $request-&gt;input('website');
+    // 描述信息
+    $parentCafe-&gt;description = $request-&gt;input('description') ?: '';
+    // 添加者
+    $parentCafe-&gt;added_by = $request-&gt;user()-&gt;id;
+    $parentCafe-&gt;save();
+
+    // 冲泡方法
+    $brewMethods = $locations[0]['methodsAvailable'];
+    // 保存与此咖啡店关联的所有冲泡方法（保存关联关系）
+    $parentCafe-&gt;brewMethods()-&gt;sync($brewMethods);
+
+    // 将当前咖啡店数据推送到已添加咖啡店数组
+    array_push($addedCafes, $parentCafe-&gt;toArray());
+
+    // 第一个索引的位置信息已经使用，从第 2 个位置开始
+    if (count($locations) &gt; 1) {
+        // 从索引值 1 开始，以为第一个位置已经使用了
+        for ($i = 1; $i &lt; count($locations); $i++) {
+            // 其它分店信息的获取和保存，与总店共用名称、网址、描述、烘焙师等信息，其他逻辑与总店一致
+            $cafe = new Cafe();
+
+            $cafe-&gt;parent = $parentCafe-&gt;id;
+            $cafe-&gt;name = $request-&gt;input('name');
+            $cafe-&gt;location_name = $locations[$i]['name'] ?: '';
+            $cafe-&gt;address = $locations[$i]['address'];
+            $cafe-&gt;city = $locations[$i]['city'];
+            $cafe-&gt;state = $locations[$i]['state'];
+            $cafe-&gt;zip = $locations[$i]['zip'];
+            $coordinates = GaodeMaps::geocodeAddress($cafe-&gt;address, $cafe-&gt;city, $cafe-&gt;state);
+            $cafe-&gt;latitude = $coordinates['lat'];
+            $cafe-&gt;longitude = $coordinates['lng'];
+            $cafe-&gt;roaster = $request-&gt;input('roaster') != '' ? 1 : 0;
+            $cafe-&gt;website = $request-&gt;input('website');
+            $cafe-&gt;description = $request-&gt;input('description') ?: '';
+            $cafe-&gt;added_by = $request-&gt;user()-&gt;id;
+            $cafe-&gt;save();
+
+            $cafe-&gt;brewMethods()-&gt;sync($locations[$i]['methodsAvailable']);
+
+            array_push($addedCafes, $cafe-&gt;toArray());
+        }
+    }
+
+    return response()-&gt;json($addedCafes, 201);
+}
+</code></pre>
+<h4 id="父子关联分店与总店之间用-parent区分">父子关联，分店与总店之间用 <code>parent</code>区分</h4>
+<p>创建一个数据库迁移文件，用来增加几个字段：  parent, description 等</p>
+<pre><code class="language-shell">php artisan make:migration added_cafe_parent_child_relationship
+
+</code></pre>
+<pre><code class="language-php"> public function up()
+{
+    Schema::table('cafes', function( Blueprint $table ){
+        $table-&gt;integer('parent')-&gt;unsigned()-&gt;nullable()-&gt;after('id');
+        $table-&gt;string('location_name')-&gt;after('name');
+        $table-&gt;integer('roaster')-&gt;after('longitude');
+        $table-&gt;text('website')-&gt;after('roaster');
+        $table-&gt;text('description')-&gt;after('website');
+        $table-&gt;integer('added_by')-&gt;after('description')-&gt;unsigned()-&gt;nullable();
+        
+public function down()
+    {
+        Schema::table('cafes', function( Blueprint $table ){
+            $table-&gt;dropColumn('parent');
+            $table-&gt;dropColumn('location_name');
+            $table-&gt;dropColumn('roaster');
+            $table-&gt;dropColumn('website');
+            $table-&gt;dropColumn('description');
+            $table-&gt;dropColumn('added_by');
+        });
+</code></pre>
+<p>运行迁移</p>
+<pre><code class="language-shell">php artisan migrate
+
+</code></pre>
+<p>在模型类 Cafe 中定义父子关联关系（自身模型的一对多关联）</p>
+<pre><code class="language-php">// 关联分店
+public function children()
+{
+    return $this-&gt;hasMany(Cafe::class, 'parent', 'id');
+}
+
+// 归属总店
+public function parent()
+{
+    return $this-&gt;hasOne(Cafe::class, 'id', 'parent');
+}
+
+</code></pre>
+<h3 id="给动态表单创建增加一点渐隐特效提升ux用户体验">给动态表单创建增加一点渐隐特效，提升UX（用户体验）</h3>
+<pre><code class="language-js">computed: {
+    brewMethods() {
+        return this.$store.getters.getBrewMethods;
+    },
+    addCafeStatus() {
+        return this.$store.getters.getCafeAddStatus;
+    }
+},
+
+watch: {
+    'addCafeStatus': function () {
+        if (this.addCafeStatus === 2) {
+            // 添加成功
+            this.clearForm();
+            $(&quot;#cafe-added-successfully&quot;).show().delay(5000).fadeOut();
+        }
+
+        if (this.addCafeStatus === 3) {
+            // 添加失败
+            $(&quot;#cafe-added-unsuccessfully&quot;).show().delay(5000).fadeOut();
+        }
+    }
+},
+</code></pre>
+<p>以及在 <code>methods</code>中的<code>clearForm</code></p>
+<pre><code class="language-js">clearForm() {
+     this.name = '';
+     this.locations = [];
+     this.website = '';
+     this.description = '';
+     this.roaster = false;
+     this.validations = {
+         name: {
+             is_valid: true,
+             text: ''
+         },
+         locations: [],
+         oneLocation: {
+             is_valid: true,
+             text: ''
+         },
+         website: {
+             is_valid: true,
+             text: ''
+         }
+     };
+
+     this.addLocation();
+}
+</code></pre>
+<h3 id="喜欢取消喜欢咖啡店">喜欢/取消喜欢咖啡店</h3>
+<h4 id="用户喜欢关联表">用户喜欢关联表</h4>
+<p>咖啡店和用户表都已经存在了，要构建两者之间的多对多关联，还需要创建一张中间表来映射两者之间的关联,创建用户喜欢表</p>
+<pre><code class="language-shell">php artisan make:migration added_users_cafes_likes --create=users_cafes_likes
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('users_cafes_likes', function (Blueprint $table) {
+        $table-&gt;integer('user_id')-&gt;unsigned();
+        $table-&gt;integer('cafe_id')-&gt;unsigned();
+        $table-&gt;primary(['user_id', 'cafe_id']);
+        $table-&gt;timestamps();
+</code></pre>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<h4 id="模型间关联关系">模型间关联关系</h4>
+<pre><code class="language-php">//app/Models/Cafe.php ,  与 User 间的多对对关联
+public function likes()
+{
+    return $this-&gt;belongsToMany(User::class, 'users_cafes_likes', 'cafe_id', 'user_id');
+}
+
+//app/Models/User.php , 与 Cafe 间的多对多关联
+public function likes()
+{
+    return $this-&gt;belongsToMany(Cafe::class, 'users_cafes_likes', 'user_id', 'cafe_id');
+}
+</code></pre>
+<p>然后再增加一个关联，用于处理“<strong>当前咖啡馆</strong>，是否被<strong>当前登录用户</strong>喜欢”，如果是，在前端页面里，默认要修改状态。(所以这里是 <code>where</code>条件)</p>
+<pre><code class="language-php">public function userLike()
+{
+    return $this-&gt;belongsToMany(User::class, 'users_cafes_likes', 'cafe_id', 'user_id')-&gt;where('user_id', auth()-&gt;id());
+}
+</code></pre>
+<p>同时在 CafesController.php 里也要修改<code>getCafe($id)</code>方法来加载 <code>userLike</code> 关联关系：</p>
+<pre><code class="language-php">public function getCafe($id)
+{
+    $cafe = Cafe::where('id', '=', $id)
+        -&gt;with('brewMethods')
+        -&gt;with('userLike')
+        //...
+</code></pre>
+<h4 id="路由">路由</h4>
+<pre><code class="language-php">// 喜欢咖啡店
+Route::post('/cafes/{id}/like', 'API\CafesController@postLikeCafe');
+// 取消喜欢咖啡店
+Route::delete('/cafes/{id}/like', 'API\CafesController@deleteLikeCafe');
+</code></pre>
+<h4 id="后端代码">后端代码</h4>
+<p>用 <code>attach()</code> 方法来实现<strong>映射关系的绑定</strong>,使用 <code>detach()</code> 方法来<strong>解除之前绑定的关联关系</strong></p>
+<pre><code class="language-php">public function postLikeCafe($cafeID)
+{
+    $cafe = Cafe::where('id', '=', $cafeID)-&gt;first();
+    $cafe-&gt;likes()-&gt;attach(Auth::user()-&gt;id, [
+        'created_at' =&gt; Carbon::now(),
+        'updated_at' =&gt; Carbon::now()
+    ]);
+    return response()-&gt;json(['cafe_liked' =&gt; true], 201);
+}
+
+public function deleteLikeCafe($cafeID)
+{
+    $cafe = Cafe::where('id', '=', $cafeID)-&gt;first();
+
+    $cafe-&gt;likes()-&gt;detach(Auth::user()-&gt;id);
+
+    return response(null, 204);
+}
+</code></pre>
+<h4 id="前端路由-1">前端路由</h4>
+<p>resources/assets/js/api/cafe.js</p>
+<pre><code class="language-js">/**
+ * POST  /api/v1/cafes/{cafeID}/like
+ */
+postLikeCafe: function (cafeID) {
+    return axios.post(ROAST_CONFIG.API_URL + '/cafes/' + cafeID + '/like');
+},
+
+/**
+ * DELETE /api/v1/cafes/{cafeID}/like
+ */
+deleteLikeCafe: function (cafeID) {
+    return axios.delete(ROAST_CONFIG.API_URL + '/cafes/' + cafeID + '/like');
+}
+</code></pre>
+<h4 id="cafe-模块处理喜欢">Cafe 模块处理“喜欢”</h4>
+<p>resources/assets/js/modules/cafes.js 监听喜欢、取消喜欢动作的加载状态以及用户是否已经喜欢过这个咖啡店</p>
+<pre><code class="language-js">state: {
+    ...
+
+    cafeLikeActionStatus: 0,
+    cafeUnlikeActionStatus: 0,
+
+    cafeLiked: false
+},
+</code></pre>
+<p>在 actions 中新增两个动作用于请求上面定义的前端路由</p>
+<pre><code class="language-js">likeCafe({commit, state}, data) {
+   commit('setCafeLikeActionStatus', 1);
+
+   CafeAPI.postLikeCafe(data.id)
+       .then(function (response) {
+           commit('setCafeLikedStatus', true);
+           commit('setCafeLikeActionStatus', 2);
+       })
+       .catch(function () {
+           commit('setCafeLikeActionStatus', 3);
+       });
+},
+
+unlikeCafe({commit, state}, data) {
+   commit('setCafeUnlikeActionStatus', 1);
+
+   CafeAPI.deleteLikeCafe(data.id)
+       .then(function (response) {
+           commit('setCafeLikedStatus', false);
+           commit('setCafeUnlikeActionStatus', 2);
+       })
+       .catch(function () {
+           commit('setCafeUnlikeActionStatus', 3);
+       });
+}
+</code></pre>
+<p>在 mutations 中定义三个方法设置 state 中新增的三个状态：</p>
+<pre><code class="language-js">setCafeLikedStatus(state, status) {
+    state.cafeLiked = status;
+},
+
+setCafeLikeActionStatus(state, status) {
+    state.cafeLikeActionStatus = status;
+},
+
+setCafeUnlikeActionStatus(state, status) {
+    state.cafeUnlikeActionStatus = status;
+}
+</code></pre>
+<p>在 getters 中定义三个方法获取 state 中新增的三个状态值：</p>
+<pre><code class="language-js">getCafeLikedStatus( state ){
+    return state.cafeLiked;
+},
+
+getCafeLikeActionStatus( state ){
+    return state.cafeLikeActionStatus;
+},
+
+getCafeUnlikeActionStatus( state ){
+    return state.cafeUnlikeActionStatus;
+}
+
+</code></pre>
+<p>修改 resources/assets/js/modules/cafes.js 模块并找到 loadCafe() 方法，在这个方法中，我们会从后端 API 获取咖啡店记录并设置相应数据，此外，我们还会设置咖啡店是否被用户喜欢，以便在 ToggleLike.vue 中读取并处理：</p>
+<pre><code class="language-js">loadCafe({commit}, data) {
+   commit('setCafeLikedStatus', false);
+   commit('setCafeLoadStatus', 1);
+
+   CafeAPI.getCafe(data.id)
+       .then(function (response) {
+           commit('setCafe', response.data);
+           if (response.data.user_like.length &gt; 0) {
+               commit('setCafeLikedStatus', true);
+           }
+           commit('setCafeLoadStatus', 2);
+       })
+       .catch(function () {
+           commit('setCafe', {});
+           commit('setCafeLoadStatus', 3);
+       });
+},
+</code></pre>
+<h4 id="创建一个新的组件-resourcesassetsjscomponentscafesindividualcafemapvue-用于在咖啡店详情页将咖啡店标记到地图上">创建一个新的组件 resources/assets/js/components/cafes/IndividualCafeMap.vue 用于在咖啡店详情页将咖啡店标记到地图上</h4>
+<pre><code class="language-js">&lt;style lang=&quot;scss&quot;&gt;
+    @import '~@/abstracts/_variables.scss';
+
+    div#individual-cafe-map {
+        width: 700px;
+        height: 500px;
+        margin: auto;
+        margin-bottom: 200px;
+    }
+&lt;/style&gt;
+
+&lt;template&gt;
+    &lt;div id=&quot;individual-cafe-map&quot;&gt;
+
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import {ROAST_CONFIG} from '../../config.js';
+
+    export default {
+        computed: {
+            cafeLoadStatus() {
+                return this.$store.getters.getCafeLoadStatus;
+            },
+
+            cafe() {
+                return this.$store.getters.getCafe;
+            }
+        },
+
+        watch: {
+            cafeLoadStatus() {
+                if (this.cafeLoadStatus === 2) {
+                    this.displayIndividualCafeMap();
+                }
+            }
+        },
+
+        methods: {
+
+            displayIndividualCafeMap() {
+
+                this.map = new AMap.Map('individual-cafe-map', {
+                    center: [parseFloat(this.cafe.latitude), parseFloat(this.cafe.longitude)],
+                    zoom: 13
+                });
+
+                var image = ROAST_CONFIG.APP_URL + '/storage/img/coffee-marker.png';
+                var icon = new AMap.Icon({
+                    image: image,  // Icon的图像
+                    imageSize: new AMap.Size(19, 33)
+                });
+
+                var marker = new AMap.Marker({
+                    position: new AMap.LngLat(parseFloat(this.cafe.latitude), parseFloat(this.cafe.longitude)),
+                    icon: icon
+                });
+
+                this.map.add(marker);
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="喜欢取消喜欢咖啡店组件">喜欢/取消喜欢咖啡店组件</h4>
+<p>用户喜欢/不喜欢咖啡店状态值来切换显示喜欢/取消喜欢按钮</p>
+<p>插入了一个加载器组件<code>&lt;Loader&gt;</code>用来显示服务器端对喜欢/取消喜欢操作的响应进度</p>
+<p>在加载器组件中定义了一个 display 属性用来标识组件是块级组件还是内联组件，默认是 block</p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;path ...&gt;
+        &lt;animateTransform attributeType=&quot;xml&quot;
+                                  attributeName=&quot;transform&quot;
+                                  type=&quot;rotate&quot;
+                                  from=&quot;0 25 25&quot;
+                                  to=&quot;360 25 25&quot;
+                                  dur=&quot;0.6s&quot;
+                                  repeatCount=&quot;indefinite&quot;/&gt;
+&lt;script&gt;
+    export default {
+        props: {
+            'width': Number,
+            'height': Number,
+            'display': {
+                default: 'block'
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p>接着创建切换喜欢组件 <code>ToggleLike.vue</code></p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;span class=&quot;toggle-like&quot;&gt;
+        &lt;span class=&quot;like&quot; v-on:click=&quot;likeCafe( cafe.id )&quot;
+              v-if=&quot;!liked &amp;&amp; cafeLoadStatus === 2 &amp;&amp; cafeLikeActionStatus !== 1 &amp;&amp; cafeUnlikeActionStatus !== 1&quot;&gt;
+            喜欢
+        &lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class=&quot;un-like&quot; v-on:click=&quot;unlikeCafe( cafe.id )&quot;
+              v-if=&quot;liked &amp;&amp; cafeLoadStatus === 2 &amp;&amp; cafeLikeActionStatus !== 1 &amp;&amp; cafeUnlikeActionStatus !== 1&quot;&gt;
+            取消喜欢
+        &lt;/span&gt;
+        // 显示加载状态
+        &lt;loader v-show=&quot;cafeLikeActionStatus === 1 || cafeUnlikeActionStatus === 1&quot;
+                :width=&quot;30&quot;
+                :height=&quot;30&quot;
+                :display=&quot;'inline-block'&quot;&gt;
+        &lt;/loader&gt;
+&lt;/template&gt;
+
+//实现喜欢功能的一应状态值，如咖啡店加载状态、咖啡店数据、是否已经标记为喜欢、喜欢请求状态、取消喜欢请求状态等，
+computed: {
+   cafeLoadStatus() {
+       return this.$store.getters.getCafeLoadStatus;
+   },
+
+   cafe() {
+       return this.$store.getters.getCafe;
+   },
+
+   liked() {
+       return this.$store.getters.getCafeLikedStatus;
+   },
+
+   cafeLikeActionStatus() {
+       return this.$store.getters.getCafeLikeActionStatus;
+   },
+
+   cafeUnlikeActionStatus() {
+       return this.$store.getters.getCafeUnlikeActionStatus;
+   }
+},
+
+//喜欢咖啡店功能(分发 Vuex 中的 likeCafe 动作，并传递对应咖啡店 ID 即可)
+methods: {
+   likeCafe(cafeID) {
+       this.$store.dispatch('likeCafe', {
+           id: this.cafe.id
+       });
+   },
+   unlikeCafe(cafeID) {
+                this.$store.dispatch('unlikeCafe', {
+                    id: this.cafe.id
+                });
+            }
+}
+</code></pre>
+<h4 id="更新-cafevue-详情页页面前面那个是模块">更新 Cafe.vue 详情页<strong>页面</strong>（前面那个是模块）</h4>
+<p>目前为止咖啡店详情页 Cafe.vue 还是空的</p>
+<p>在组件中通过 <code>this.$route.params.id</code> 即可获取参数 ID</p>
+<pre><code class="language-js">// 页面创建时通过路由中的参数ID加载咖啡店数据
+created() {
+    this.$store.dispatch('loadCafe', {
+        id: this.$route.params.id
+    });
+</code></pre>
+<p>然后在 resources/assets/js/pages/Cafe.vue 页面中引入<code>IndividualCafeMap.vue</code>这个组件</p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;div id=&quot;cafe&quot; class=&quot;page&quot;&gt;
+    
+    &lt;div class=&quot;large-12 medium-12 small-12 cell&quot;&gt;
+        &lt;loader v-show=&quot;cafeLoadStatus === 1&quot; :width=&quot;100&quot; :height=&quot;100&quot;&gt;
+        &lt;/loader&gt;
+         &lt;div class=&quot;cafe-page&quot; v-show=&quot;cafeLoadStatus === 2&quot;&gt;
+         
+         &lt;a class=&quot;website&quot; v-bind:href=&quot;cafe.website&quot; target=&quot;_blank&quot;&gt;{{ cafe.website }}&lt;/a&gt;
+         
+         &lt;div class=&quot;large-3 medium-4 small-12 cell&quot; v-for=&quot;brewMethod in cafe.brew_methods&quot;&gt;
+            {{ brewMethod.method }}
+        &lt;/div&gt;
+                    
+        &lt;individual-cafe-map&gt;&lt;/individual-cafe-map&gt;
+&lt;script&gt;
+
+    import Loader from '../components/global/Loader.vue';
+    import IndividualCafeMap from '../components/cafes/IndividualCafeMap.vue';
+    import ToggleLike from  '../components/cafes/ToggleLike.vue';
+    
+    export default {
+        // 定义页面使用的组件
+        components: {
+            Loader,
+            IndividualCafeMap,
+            ToggleLike
+        },
+    //......
+
+</code></pre>
+<h3 id="标签功能">标签功能</h3>
+<h4 id="创建两张表一张用于存储标签一张用于存储标签咖啡店用户三者关联关系">创建两张表，一张用于存储标签，一张用于存储标签、咖啡店、用户三者关联关系</h4>
+<p><strong>name 字段上定义了唯一索引，意味着标签值在标签表中是唯一的</strong></p>
+<pre><code class="language-shell">// 标签表
+php artisan make:migration create_tags_table --create=tags
+
+//中间表
+php artisan make:migration create_cafes_users_tags_table --create=cafes_users_tags
+
+</code></pre>
+<p>分别对应</p>
+<pre><code class="language-php">//create_tags_table
+public function up()
+{
+    Schema::create('tags', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('name')-&gt;unique();
+        $table-&gt;timestamps();
+
+// create_cafes_users_tags_table
+public function up()
+{
+    Schema::create('cafes_users_tags', function (Blueprint $table) {
+        $table-&gt;integer('cafe_id')-&gt;unsigned();
+        $table-&gt;integer('user_id')-&gt;unsigned();
+        $table-&gt;integer('tag_id')-&gt;unsigned();
+        $table-&gt;primary(['cafe_id', 'user_id', 'tag_id'], 'cafes_users_tags_primary');
+        $table-&gt;timestamps();
+</code></pre>
+<p>一个用户只能不能重复给一个咖啡店打相同的标签，如果不需要知道谁打的标签，可以去掉 user_id 字段，但这样就无法为每个咖啡店统计同一个标签的数量了</p>
+<h4 id="标签模型类">标签模型类</h4>
+<pre><code class="language-shell">php artisan make:model Models/Tag
+</code></pre>
+<pre><code class="language-php">class Tag extends Model
+{
+    protected $fillable = [
+        'name'
+    ];
+
+    public function cafes()
+    {
+        return $this-&gt;belongsToMany(Cafe::class, 'cafes_users_tags', 'tag_id', 'user_id');
+    }
+</code></pre>
+<h4 id="在咖啡店模型类-appmodelscafephp-中定义与标签的关联关系-这样可以在查询咖啡店时获取咖啡店的标签">在咖啡店模型类 app/Models/Cafe.php 中定义与标签的关联关系, 这样可以在查询咖啡店时获取咖啡店的标签</h4>
+<pre><code class="language-php">public function tags()
+{
+    return $this-&gt;belongsToMany(Tag::class, 'cafes_users_tags', 'cafe_id', 'tag_id');
+}
+</code></pre>
+<h4 id="定义咖啡店标签路由">定义咖啡店标签路由</h4>
+<pre><code class="language-php">Route::post('/cafes/{id}/tags', 'API\CafesController@postAddTags');
+Route::delete('/cafes/{id}/tags/{tagID}', 'API\CafesController@deleteCafeTag');
+
+</code></pre>
+<h4 id="控制器方法">控制器方法</h4>
+<pre><code class="language-php">public function postAddTags(Request $request, $cafeID)
+{
+
+}
+public function deleteCafeTag($cafeID, $tagID)
+{
+
+}
+</code></pre>
+<p>为了避免在控制器里面写太多的逻辑代码，像地理编码一样，我们创建一个 <code>app/Utilities/Tagger.php</code> 类用于处理新增标签逻辑，编写 Tagger 类代码如下</p>
+<pre><code class="language-php">namespace App\Utilities;
+
+use App\Models\Tag;
+
+class Tagger
+{
+    // 一个静态方法 tagCafe 方法用于实现标签的插入以及与咖啡店的关联
+    public static function tagCafe($cafe, $tags, $userId)
+    {
+        // 遍历标签数据，分别存储每个标签，并建立其余咖啡店的关联
+        foreach ($tags as $tag) {
+            $name = trim($tag);
+            // 如果标签已经存在则直接获取其实例
+            $newCafeTag = Tag::firstOrNew(array('name' =&gt; $name));
+            $newCafeTag-&gt;name = $name;
+            $newCafeTag-&gt;save();
+            // 将标签和咖啡店关联起来
+            $cafe-&gt;tags()-&gt;syncWithoutDetaching([$newCafeTag-&gt;id =&gt; ['user_id' =&gt; $userId]]);
+        }
+    }
+}
+</code></pre>
+<p>回到控制器，编写 <code>postAddTags</code> 方法</p>
+<pre><code class="language-php">public function postAddTags(Request $request, $cafeID)
+{
+    // 从请求中获取标签信息
+    $tags = $request-&gt;input('tags');
+    $cafe = Cafe::find($cafeID);
+
+    // 处理新增标签并建立标签与咖啡店之间的关联
+    Tagger::tagCafe($cafe, $tags, Auth::user()-&gt;id);
+
+    // 返回标签
+    $cafe = Cafe::where('id', '=', $cafeID)
+        -&gt;with('brewMethods')
+        -&gt;with('userLike')
+        -&gt;with('tags')
+        -&gt;first();
+
+    return response()-&gt;json($cafe, 201);
+}
+</code></pre>
+<p><code>deleteCafeTag</code> 方法，我们直接删除中间表中的关联记录即可</p>
+<pre><code class="language-php">public function deleteCafeTag($cafeID, $tagID)
+{
+    DB::table('cafes_users_tags')-&gt;where('cafe_id', $cafeID)-&gt;where('tag_id', $tagID)-&gt;where('user_id', Auth::user()-&gt;id)-&gt;delete();
+    return response(null, 204);
+}
+</code></pre>
+<p>面两个控制器方法都涉及到用户ID，所以这两个方法都需要<code>登录后才能访问</code>，不过由于路由定义在了应用 auth:api 中间件的路由群组中，所以后面实现环节可以忽略这一点。</p>
+<h4 id="自动提示功能">自动提示功能</h4>
+<p><img src="/media/15490412691617/15555679651486.jpg" alt=""></p>
+<p>路由</p>
+<pre><code class="language-php">Route::get('/tags', 'API\TagsController@getTags');
+</code></pre>
+<p>创建一个新的控制器 TagsController</p>
+<pre><code class="language-php">public function getTags()
+    {
+        $query = Request::get('search');
+
+        if ($query == null || $query == '') {
+            $tags = Tag::all();
+        } else {
+            $tags = Tag::where('name', 'LIKE', $query . '%')-&gt;get();
+        }
+
+        return response()-&gt;json($tags);
+</code></pre>
+<p>更新新增咖啡店处理方法(因为增加了“标签”数据)</p>
+<p>API/CafesController.php 中的新增咖啡店方法 postNewCafe</p>
+<pre><code class="language-php">// 冲泡方法
+$brewMethods = $locations[0]['methodsAvailable'];
+
+//分店的处理
+$cafe-&gt;brewMethods()-&gt;sync($locations[$i]['methodsAvailable']);
+Tagger::tagCafe($cafe, $locations[$i]['tags'], $request-&gt;user()-&gt;id);
+
+// 标签信息
+$tags = $locations[0]['tags'];
+// 保存与此咖啡店关联的所有冲泡方法（保存关联关系）
+$parentCafe-&gt;brewMethods()-&gt;sync($brewMethods);
+// 绑定咖啡店与标签
+Tagger::tagCafe($parentCafe, $tags, $request-&gt;user()-&gt;id);
+</code></pre>
+<h4 id="前端标签输入组件">前端，标签输入组件</h4>
+<p>略。 用 antd 等自己有的吧</p>
+<h4 id="详情页显示标签">详情页显示标签</h4>
+<p>修改后端控制器 app/Http/Controllers/API/CafesController.php 的 getCafe 方法，让其在返回数据中包含标签数据：</p>
+<pre><code class="language-php">$cafe = Cafe::where('id', '=', $id)
+        -&gt;with('brewMethods')
+        -&gt;with('userLike')
+        -&gt;with('tags')
+        -&gt;first();
+</code></pre>
+<h2 id="数据过滤">数据过滤</h2>
+<p>略</p>
+<h2 id="用户登录与路由保护">用户登录与路由保护</h2>
+<h3 id="后端将路由分组公有私有">后端将路由分组:公有、私有</h3>
+<p>对应用不同功能的访问权限重新进行组织，一般首页、列表页、详情页都应该是可以公开访问的（公有路由），只有新增、编辑、喜欢、取消喜欢等与用户相关的功能需要登录后才能访问（私有路由）</p>
+<pre><code class="language-php">// 公有路由，无需登录即可访问 
+Route::group(['prefix' =&gt; 'v1'], function(){
+    
+});
+</code></pre>
+<p>把它们移动进来</p>
+<p>GET /api/v1/cafes
+GET /api/v1/cafes/{id}
+GET /api/v1/brew-methods
+GET /api/v1/tags
+GET /api/v1/user</p>
+<p>私有路由（有<code>'middleware'=&gt;'auth:api'</code>）剩下</p>
+<p>POST /api/v1/cafes
+GET /api/v1/cafes/{id}/edit（待实现）
+PUT /api/v1/cafes/{id}（待实现）
+POST /api/v1/cafes/{id}/like
+DELETE /api/v1/cafes/{id}/like
+POST /api/v1/cafes/{id}/tags
+DELETE /api/v1/cafes/{id}/tags/{tagID}</p>
+<p>其中里面有个 /users 路由</p>
+<pre><code class="language-php">Route::get('/user', 'API\UsersController@getUser');
+</code></pre>
+<p>需要新建控制器</p>
+<pre><code class="language-shell">php artisan make:controller API/UsersController
+</code></pre>
+<p>在 API 中访问，所以需要通过 <code>Auth::guard('api')</code> 指定</p>
+<pre><code class="language-php">public function getUser(){
+    return Auth::guard('api')-&gt;user();
+}    
+</code></pre>
+<h3 id="移除老的登录页面">移除老的登录页面</h3>
+<p>为了把之前未登录时跳转到登录页面这个逻辑，从后端移动到 Vue 前端</p>
+<p>删除路由，以及对应的 Controller 里的<code>getLogin</code>方法，还有 <code>resources/views/login.blade.php</code>视图文件</p>
+<pre><code class="language-php">Route::get('/login', 'Web\AppController@getLogin' )
+    -&gt;name('login')
+    -&gt;middleware('guest');
+</code></pre>
+<p>最后将 <code>Web/AppController.php</code> 中的 <code>getLogout()</code> 方法以及 <code>Web/AppController.php</code> 中的 <code>getSocialRedirect()</code> 方法里面的重定向链接修改为 <code>/</code>。</p>
+<p>移除 / 路由上的认证中间件, 这样用户不用登录就可以直接访问应用首页了：</p>
+<pre><code class="language-php">Route::get('/', 'Web\AppController@getApp');
+</code></pre>
+<h3 id="通过-vue-组件实现页面无跳转登录">通过 Vue 组件实现页面无跳转登录</h3>
+<p>将前端路由 / 重定向到首页页面 home，这样，layout 将不再单独会出现在视图中</p>
+<pre><code class="language-js">routes: [
+    {
+        path: '/',
+        redirect: {name: 'home'},
+        name: 'layout',
+        component: Vue.component('Home', require('./pages/Layout.vue')),
+</code></pre>
+<p>为用户登录创建模态框组件<code>components/global/LoginModal.vue</code></p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;div id=&quot;login-modal&quot; v-show=&quot;show&quot; v-on:click=&quot;show = false&quot;&gt;
+        &lt;div class=&quot;login-box&quot;&gt;
+            &lt;a href=&quot;/auth/github&quot; v-on:click.stop=&quot;&quot;&gt;
+                &lt;img src=&quot;/storage/img/github-login.jpg&quot;/&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import { EventBus } from '../../event-bus.js';
+
+  export default {
+    data() {
+        return {
+            show: false
+        }
+    },
+
+    mounted() {
+        EventBus.$on('prompt-login', function () {
+            this.show = true;
+        }.bind(this));
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>然后在 Layout.vue 里引入</p>
+<pre><code class="language-js">import LoginModal from '../components/global/LoginModal.vue';
+components: {
+    Navigation,
+    LoginModal
+},
+
+
+&lt;template&gt;
+    &lt;div id=&quot;app-layout&quot;&gt;
+        &lt;navigation&gt;&lt;/navigation&gt;
+        &lt;router-view&gt;&lt;/router-view&gt;
+        &lt;login-modal&gt;&lt;/login-modal&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<p>还要在<code>Navigation.vue</code>组件中显示登录/退出链接及用户头像</p>
+<pre><code class="language-js"> &lt;img class=&quot;avatar&quot; v-if=&quot;user != '' &amp;&amp; userLoadStatus === 2&quot; :src=&quot;user.avatar&quot; v-show=&quot;userLoadStatus === 2&quot;/&gt;
+    &lt;span class=&quot;logout&quot; v-if=&quot;user != '' &amp;&amp; userLoadStatus === 2&quot; v-on:click=&quot;logout()&quot;&gt;退出&lt;/span&gt;
+    &lt;span class=&quot;login&quot; v-if=&quot;user == ''&quot; v-on:click=&quot;login()&quot;&gt;登录&lt;/span&gt;
+</code></pre>
+<p>如果用户未登录则显示登录链接，否则显示用户头像和退出链接。当然，我们需要在脚本代码中引入事件总线：</p>
+<pre><code class="language-js">import {EventBus} from '../../event-bus.js';
+
+//methods
+login() {
+    EventBus.$emit('prompt-login');
+},
+
+logout() {
+    this.$store.dispatch('logoutUser');
+    window.location = '/logout';
+}
+</code></pre>
+<p>调整需要登录后显示的视图组件</p>
+<p>首页 Home.vue，在页面顶部有一个新增咖啡店按钮，需要将其调整为登录后显示(类似的又Cafe.vue里喜欢按钮)</p>
+<pre><code class="language-js">div class=&quot;large-12 medium-12 small-12 columns&quot;&gt;
+    &lt;router-link :to=&quot;{ name: 'newcafe' }&quot; v-if=&quot;user !== '' &amp;&amp; userLoadStatus === 2&quot; class=&quot;add-cafe-button&quot;&gt;
+        + 新增咖啡店
+    &lt;/router-link&gt;
+    &lt;a class=&quot;add-cafe-text&quot; v-if=&quot;user === '' &amp;&amp; userLoadStatus === 2&quot; v-on:click=&quot;login()&quot;&gt;登录后添加咖啡店&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在 methods 中编写 login() 方法，和 Navigation.vue 组件中的实现思路一致：</p>
+<p>确保在计算属性 computed 中包含 user 和 userLoadStatus 的获取方法，否则编译后访问页面会报错</p>
+<pre><code class="language-js">// 从 Vuex 中获取用户加载状态
+userLoadStatus() {
+    return this.$store.getters.getUserLoadStatus;
+},
+
+// 从 Vuex 中获取用户信息
+user() {
+    return this.$store.getters.getUser;
+},
+</code></pre>
+<h3 id="前端认证路由保护">前端认证路由保护</h3>
+<p>现在有个问题，就是用户在没有登录的情况下也可以访问需要认证的页面，比如新增咖啡店页面。
+虽然在提交表单数据到后台 API 时不会成功，但是这会给用户造成困扰，因此需要对这种需要认证页面的访问请求进行拦截</p>
+<p>以前在开发非单页面应用时，会在访问这种页面时从后端进行判断，比如经过 auth 中间件进行过滤，如果需要认证则将用户重定向到登录页面，现在我们可以在前端通过 Vue Router 提供的导航守卫帮助我们快速实现类似 Laravel 中间件的功能</p>
+<p><a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html">https://router.vuejs.org/zh/guide/advanced/navigation-guards.html</a></p>
+<p>对于需要认证页面的访问，已登录用户可以直接访问，未登录用户会重定向到首页</p>
+<h4 id="构建-requireauth-方法">构建 requireAuth() 方法</h4>
+<p>通过路由独享守卫的方式来实现 Vue Router 的导航守卫，并通过 Vuex 来获取用户状态数据，为此需要在 resources/assets/js/routes.js 中引入 Vuex</p>
+<pre><code class="language-js">import store from './store.js';
+</code></pre>
+<p>然后在 Vue.use(VueRouter); 这一行代码后面定义 requireAuth() 方法来处理需要登录才能访问页面的访问控制，这将是导航守卫所要引用的方法：（定义了一个 proceed() 方法用于处理路由跳转逻辑，这个方法和 Laravel auth 中间件的 process() 方法实现逻辑非常相似）</p>
+<pre><code class="language-js">function requireAuth(to, from, next) {
+    function proceed() {
+        // 如果用户信息已经加载并且不为空则说明该用户已登录，可以继续访问路由，否则跳转到首页
+        // 这个功能类似 Laravel 中的 auth 中间件
+        if (store.getters.getUserLoadStatus() === 2) {
+            if (store.getters.getUser != '') {
+                next();
+            } else {
+                next('/home');
+            }
+        }
+    }
+
+    if (store.getters.getUserLoadStatus() !== 2) {
+        // 如果用户信息未加载完毕则先加载
+        store.dispatch('loadUser');
+
+        // 监听用户信息加载状态，加载完成后调用 proceed 方法继续后续操作
+        store.watch(store.getters.getUserLoadStatus, function () {
+            if (store.getters.getUserLoadStatus() === 2) {
+                proceed();
+            }
+        });
+    } else {
+        // 如果用户信息加载完毕直接调用 proceed 方法
+        proceed()
+    }
+}
+
+</code></pre>
+<h4 id="修改-vuex-中的-getuserloadstatus-方法">修改 Vuex 中的 getUserLoadStatus() 方法。</h4>
+<p>在上面的代码中都是通过 store.getters.getUserLoadStatus() 从 Vuex 中获取用户加载状态，这是因为 store.watch 第一个参数只接受函数作为参数，所以需要将 getUserLoadStatus 返回值修改为函数</p>
+<p>编辑 resources/assets/js/modules/users.js ，修改 getters 中的 getUserLoadStatus 方法</p>
+<pre><code class="language-js">getUserLoadStatus( state ){
+    return function(){
+        return state.userLoadStatus;
+    }
+},
+</code></pre>
+<p>调整其他组件中调用该方法的所有计算属性，包括 resources/assets/js/components/global/Navigation.vue、resources/assets/js/pages/Cafe.vue 以及 resources/assets/js/pages/Home.vue，将它们的计算属性 userLoadStatus() 做如下调整（以前是属性方法名，现在由于属性方法返回值还是函数，所以需要加上()对其进行调用才能获取到状态值）</p>
+<pre><code class="language-js">userLoadStatus() {
+    return this.$store.getters.getUserLoadStatus();
+},
+</code></pre>
+<h4 id="在指定路由中使用-requireauth-方法">在指定路由中使用 requireAuth() 方法</h4>
+<p>在 resources/assets/js/routes.js 的新增咖啡店路由 newcafe 中使用导航守卫，新增一个 beforeEnter 属性，并将其值设置为上面定义的 requireAuth 方法名</p>
+<pre><code class="language-js">{
+    path: 'cafes/new',
+    name: 'newcafe',
+    component: Vue.component('NewCafe', require('./pages/NewCafe.vue')),
+    beforeEnter: requireAuth
+},
+</code></pre>
+<h2 id="编辑用户信息">编辑用户信息</h2>
+<p>完善用户信息表,增加几个字段：喜欢咖啡类型、口味记录、是否公开信息、位置信息</p>
+<pre><code class="language-shell">php artisan make:migration alter_users_add_profile_fields --table=users
+
+</code></pre>
+<pre><code class="language-php">public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table-&gt;text('favorite_coffee')-&gt;after('avatar')-&gt;comment('最喜欢的咖啡');
+            $table-&gt;text('flavor_notes')-&gt;after('favorite_coffee')-&gt;comment('口味记录');
+            $table-&gt;boolean('profile_visibility')-&gt;default('1')-&gt;after('flavor_notes')-&gt;comment('是否公开个人信息');
+            $table-&gt;string('city')-&gt;after('profile_visibility')-&gt;comment('所在城市');
+            $table-&gt;string('state')-&gt;after('city')-&gt;comment('所在省份');    
+</code></pre>
+<p>更新用户资料的路由</p>
+<pre><code class="language-php">Route::put('/user', 'API\UsersController@putUpdateUser');
+
+</code></pre>
+<p>更新用户信息请求验证</p>
+<pre><code class="language-shell">php artisan make:request EditUserRequest
+
+</code></pre>
+<pre><code class="language-php">public function authorize()
+    {
+        return true;
+
+public function rules()
+    {
+        return [
+            'profile_visibility' =&gt; 'sometimes|boolean'
+        ];
+public function messages()
+    {
+        return [
+            'profile_visibility.boolean' =&gt; 'The profile visibility flag needs to be a boolean'
+</code></pre>
+<p>控制器 API/UsersController.php 中的 putUpdateUser 方法(传入了上面定义的表单验证类 EditUserRequest)</p>
+<pre><code class="language-php">public function putUpdateUser(EditUserRequest $request)
+{
+    $user = Auth::user();
+
+    $favoriteCoffee = $request-&gt;input('favorite_coffee');
+    $flavorNotes = $request-&gt;input('flavor_notes');
+    $profileVisibility = $request-&gt;input('profile_visibility');
+    $city = $request-&gt;input('city');
+    $state = $request-&gt;input('state');
+
+    if ($favoriteCoffee) {
+        $user-&gt;favorite_coffee = $favoriteCoffee;
+    }
+
+    if ($flavorNotes) {
+        $user-&gt;flavor_notes = $flavorNotes;
+    }
+
+    if ($profileVisibility) {
+        $user-&gt;profile_visibility = $profileVisibility;
+    }
+
+    if ($city) {
+        $user-&gt;city = $city;
+    }
+
+    if ($state) {
+        $user-&gt;state = $state;
+    }
+
+    $user-&gt;save();
+
+    return response()-&gt;json(['user_updated' =&gt; true], 201);
+}
+</code></pre>
+<p>前端表单提交功能实现</p>
+<p>（部分代码略，就是加 action， 加 api请求，加 Mutation， compute, 路由。。。验证。怎么这么繁琐！）</p>
+<p>js/modules/users.js 中新增一个状态：<code>userUpdateStatus: 0</code></p>
+<p><code>resources/assets/js/pages/Profile.vue</code> 页面组件</p>
+<h2 id="图片上传">图片上传</h2>
+<p>图片存放目录<code>storage/app/public/photos</code></p>
+<p>文件存储表</p>
+<pre><code class="language-shell">php artisan make:migration create_cafes_photos_table
+
+</code></pre>
+<pre><code class="language-php">Schema::create('cafes_photos', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;integer('cafe_id')-&gt;unsigned();
+        $table-&gt;integer('uploaded_by')-&gt;unsigned();
+        $table-&gt;text('file_url');
+        $table-&gt;timestamps();
+</code></pre>
+<p>关联模型</p>
+<pre><code class="language-shell">php artisan make:model Models/CafePhoto
+
+</code></pre>
+<pre><code class="language-php">class CafePhoto extends Model
+{
+    protected $table = 'cafes_photos';
+
+    public function cafe()
+    {
+        return $this-&gt;belongsTo(Cafe::class, 'cafe_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class, 'uploaded_by', 'id');
+    }
+</code></pre>
+<p>然后模型类 app/Models/Cafe.php 中定义咖啡店与图片的关联关系，和 模型类 app/User.php 中定义用户与咖啡店图片之间的关系</p>
+<pre><code class="language-php">// 咖啡店图片
+public function photos()
+{
+    return $this-&gt;hasMany(CafePhoto::class, 'id', 'cafe_id');
+}
+</code></pre>
+<pre><code class="language-php">// 上传的咖啡店图片
+public function cafePhotos()
+{
+    return $this-&gt;hasMany(CafePhoto::class, 'id', 'cafe_id');
+}
+</code></pre>
+<p>前端调用api,<code>resources/assets/js/api/cafe.js</code> 中修改 <code>postAddNewCafe</code> 方法，新增 <code>picture</code> 参数，并且为 axios.post 添加第三个参数用于标识请求头，这样就可以上传文件了</p>
+<pre><code class="language-js">postAddNewCafe: function (name, locations, website, description, roaster, picture) {
+    return axios.post(ROAST_CONFIG.API_URL + '/cafes',
+        {
+            name: name,
+            locations: locations,
+            website: website,
+            description: description,
+            roaster: roaster,
+            picture: picture
+        },
+        {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+</code></pre>
+<p>更新 Vuex Action 传递图片参数，模块 resources/assets/js/modules/cafes.js 中修改 addCafe Action 传递 data.picture 参数到上一步修改的 postAddNewCafe 方法：</p>
+<pre><code class="language-js">addCafe({commit, state, dispatch}, data) {
+   commit('setCafeAddStatus', 1);
+
+   CafeAPI.postAddNewCafe(data.name, data.locations, data.website, data.description, data.roaster, data.picture)
+       .then(function (response) {
+</code></pre>
+<p>新增咖啡店表单允许上传图片</p>
+<pre><code class="language-js">&lt;input type=&quot;file&quot; id=&quot;cafe-photo&quot; ref=&quot;photo&quot; v-on:change=&quot;handleFileUpload()&quot;/&gt;
+
+handleFileUpload() {
+    this.picture = this.$refs.photo.files[0];
+}
+
+submitNewCafe: function () {
+    if (this.validateNewCafe()) {
+        this.$store.dispatch('addCafe', {
+            name: this.name,
+            //..
+            picture:this.picture
+
+//以及 clearForm 方法在清空表单时清除上传图片
+</code></pre>
+<p>后端 API 处理图片上传</p>
+<pre><code class="language-php">$photo = $request-&gt;file('picture');
+if ($photo &amp;&amp; $photo-&gt;isValid()) {
+    $destinationPath = storage_path('app/public/photos/' . $parentCafe-&gt;id);
+
+    // 如果目标目录不存在，则创建之
+    if (!file_exists($destinationPath)) {
+        mkdir($destinationPath);
+    }
+
+    // 文件名
+    $filename = time() . '-' . $photo-&gt;getClientOriginalName();
+    // 保存文件到目标目录
+    $photo-&gt;move($destinationPath, $filename);
+
+    // 在数据库中创建新纪录保存刚刚上传的文件
+    $cafePhoto = new CafePhoto();
+
+    $cafePhoto-&gt;cafe_id = $parentCafe-&gt;id;
+    $cafePhoto-&gt;uploaded_by = Auth::user()-&gt;id;
+    $cafePhoto-&gt;file_url = $destinationPath . DIRECTORY_SEPARATOR . $filename;
+
+    $cafePhoto-&gt;save();
+}
+</code></pre>
+<h2 id="重构">重构</h2>
+<p>CSS 样式有关的略</p>
+<h3 id="咖啡店所属公司以及修改分店的层次修改">咖啡店所属公司，以及修改分店的层次修改</h3>
+<p>将之前一次添加几个店，改成先添加一个店，然后后续添加可以设置“属于”来变成分店</p>
+<pre><code class="language-shell">php artisan make:migration create_companies_table
+
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('companies', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('name');
+        $table-&gt;integer('roaster');
+        $table-&gt;text('website');
+        $table-&gt;text('logo');
+        $table-&gt;text('description');
+        $table-&gt;integer('added_by')-&gt;unsigned()-&gt;nullable();
+        $table-&gt;softDeletes();
+        $table-&gt;timestamps();
+</code></pre>
+<p>从 cafes 表中抽走了咖啡店的公共属性，所以需要对 cafes 表进行调整：</p>
+<pre><code class="language-shell">php artisan make:migration alter_cafes_drop_company_columns --table=cafes
+
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::table('cafes', function (Blueprint $table) {
+        $table-&gt;dropColumn('name');
+        $table-&gt;dropColumn('roaster');
+        $table-&gt;dropColumn('website');
+        $table-&gt;dropColumn('description');
+        $table-&gt;dropColumn('added_by');
+        $table-&gt;dropColumn('parent');
+        $table-&gt;integer('company_id')-&gt;unsigned()-&gt;default(0);
+        $table-&gt;softDeletes();
+    });
+</code></pre>
+<p>cafes 表与 companies 表通过 company_id 进行关联，此外关于用户与公司之间的关系，我们创建一张 company_owners 表进行存储：</p>
+<pre><code class="language-shell">php artisan make:migration create_company_owners_table
+
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('company_owners', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;integer('user_id')-&gt;unsigned();
+        $table-&gt;integer('company_id')-&gt;unsigned();
+        $table-&gt;timestamps();
+</code></pre>
+<p>为 cafes 表和 cities 表建立关联</p>
+<pre><code class="language-shell">php artisan make:migration alter_cafes_add_city_id --table=cafes
+
+</code></pre>
+<pre><code class="language-php">Schema::table('cafes', function (Blueprint $table) {
+    $table-&gt;integer('city_id')-&gt;after('location_name')-&gt;unsigned()-&gt;nullable();
+</code></pre>
+<p>为 companies 添加一个 subscription 字段，标识该咖啡店是否支持订购，为 brew_methods 表添加 add_brew_methods_icon 字段，标识该冲泡方法的 icon 图标：</p>
+<pre><code class="language-shell">php artisan make:migration alter_companies_add_subscription --table=companies
+php artisan make:migration add_brew_methods_icon --table=brew_methods
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::table('companies', function (Blueprint $table) {
+        $table-&gt;tinyInteger('subscription')-&gt;defualt(0)-&gt;after('roaster');
+    });
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::table('brew_methods', function (Blueprint $table) {
+        $table-&gt;string('icon')-&gt;after('method');
+    });
+</code></pre>
+<h3 id="城市级联">城市级联</h3>
+<pre><code class="language-shell">php artisan make:migration create_cities_table
+
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('cities', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('name');
+        $table-&gt;string('state');
+        $table-&gt;string('country');
+        $table-&gt;string('slug');
+        $table-&gt;decimal('latitude', 11, 8)-&gt;nullable();
+        $table-&gt;decimal('longitude', 11, 8)-&gt;nullable();
+        $table-&gt;decimal('radius', 4, 2)-&gt;nullable();
+        $table-&gt;timestamps();
+</code></pre>
+<h3 id="模型类调整">模型类调整</h3>
+<p>模型类 Company 和 City：</p>
+<pre><code class="language-shell">php artisan make:model Models/Company
+php artisan make:model Models/City
+</code></pre>
+<pre><code class="language-php">class Company extends Model
+{
+    // 所属用户
+    public function ownedBy()
+    {
+        return $this-&gt;belongsToMany(User::class, 'company_owners', 'company_id', 'user_id');
+    }
+
+    // 所有关联咖啡店
+    public function cafes()
+    {
+        return $this-&gt;hasMany(Cafe::class, 'company_id', 'id');
+    }
+}
+</code></pre>
+<p>在 Cafe 模型类中定义其与 Company 的关联关系</p>
+<pre><code class="language-php">// 归属公司
+public function company()
+{
+    return $this-&gt;belongsTo(Company::class, 'company_id', 'id');
+}
+</code></pre>
+<p>最后在 User 模型类中定义其与 Company 的关联关系：</p>
+<pre><code class="language-php">// 归属此用户的公司
+public function companiesOwned()
+{
+    return $this-&gt;belongsToMany(Company::class, 'company_owners', 'user_id', 'company_id');
+}
+</code></pre>
+<h3 id="后端路由及控制器">后端路由及控制器</h3>
+<pre><code class="language-php">Route::get('/cities', 'API\CitiesController@getCities');
+Route::get('/cities/{slug}', 'API\CitiesController@getCity');
+
+</code></pre>
+<pre><code class="language-shell">php artisan make:controller API/CitiesController
+
+</code></pre>
+<pre><code class="language-php">class CitiesController extends Controller
+{
+    public function getCities()
+    {
+        $cities = City::all();
+        return response()-&gt;json($cities);
+    }
+
+    public function getCity($slug)
+    {
+        $city = City::where('slug', '=', $slug)
+            -&gt;with(['cafes' =&gt; function ($query) {
+                $query-&gt;with('company');
+            }])
+            -&gt;first();
+        if ($city != null) {
+            return response()-&gt;json($city);
+        } else {
+            return response()-&gt;json(null, 404);
+        }
+    }
+}
+</code></pre>
+<p>由于调整了咖啡店的数据结构，修改 CafesController 的 getCafes 和 getCafe 方法, 增加<code>with('company')</code></p>
+<pre><code class="language-php">public function getCafes()
+{
+    $cafes = Cafe::with('brewMethods')
+        -&gt;with(['tags' =&gt; function ($query) {
+            $query-&gt;select('tag');
+        }])
+        -&gt;with('company')
+        -&gt;withCount('userLike')
+        -&gt;withCount('likes')
+        -&gt;get();
+
+    return response()-&gt;json($cafes);
+}
+
+public function getCafe($id)
+{
+    $cafe = Cafe::where('id', '=', $id)
+        -&gt;with('brewMethods')
+        -&gt;withCount('userLike')
+        -&gt;with('tags')
+        -&gt;with(['company' =&gt; function ($query) {
+            $query-&gt;withCount('cafes');
+        }])
+        -&gt;withCount('likes')
+        -&gt;first();
+
+    return response()-&gt;json($cafe);
+}
+</code></pre>
+<h3 id="对应前端代码">对应前端代码</h3>
+<p>。。。api 啥的略</p>
+<p>增加 vuex 模块，和筛选有关</p>
+<p>js/modules/cities.js：
+js/modules/display.js （latitude, zoom level 等）
+js/modules/filters.js (updateCityFilter, updateOnlyLiked, updateHasMatcha等各种筛选条件)</p>
+<p>调整 resources/assets/js/modules/cafes.js</p>
+<pre><code class="language-js">//state
+cafesView: 'map'
+
+//actions
+changeCafesView({commit, state, dispatch}, view) {
+            commit('setCafesView', view);
+        },
+
+        orderCafes({commit, state, dispatch}, data) {
+            let localCafes = state.cafes;
+
+            switch (data.order) {
+
+//mutations
+setCafesView(state, view) {
+            state.cafesView = view
+        }
+
+//getters
+getCafesView(state) {
+            return state.cafesView;
+        }
+</code></pre>
+<p>然后在 resources/assets/js/store.js 中引入新增的几个文件：</p>
+<p>调整 Vue Router</p>
+<p>重构 layout, 主要是 错误提示组件、划出菜单等等。</p>
+<p>其他组件</p>
+<p>ToggleCafesView.vue 用于在地图和列表布局之间进行切换</p>
+<h3 id="新增咖啡店功能重构">新增咖啡店功能重构</h3>
+<p>新增咖啡店实现逻辑移到 <code>app/Services/CafeService.php</code> 中，精简 Controller</p>
+<pre><code class="language-php">public function addCafe($data, $addedBy)
+{
+    $companyID = isset($data['company_id']) ? $data['company_id'] : '';
+    // 如果对应公司不存在，先添加之
+    if ($companyID != '') {
+        $company = Company::where('id', '=', $companyID)-&gt;first();
+    } else {
+        $company = new Company();
+        $company-&gt;name = $data['company_name'];
+        //...
+        // 保存咖啡店支持的冲泡方法
+        $cafe-&gt;brewMethods()-&gt;sync(json_decode($brewMethods));
+
+</code></pre>
+<p>这样 <code>app/Http/Controllers/API/CafesController.php</code> 的 postNewCafe 方法</p>
+<pre><code class="language-php">public function postNewCafe(StoreCafeRequest $request)
+{
+    $cafeService = new CafeService();
+    $cafe = $cafeService-&gt;addCafe($request-&gt;all(), Auth::user()-&gt;id);
+
+    $company = Company::where('id', '=', $cafe-&gt;company_id)
+        -&gt;with('cafes')
+        -&gt;first();
+
+    return response()-&gt;json($company, 201);
+</code></pre>
+<p>另外</p>
+<p>重写了新增咖啡店页面，在这个新页面中，公司相关字段默认只暴露「公司名称」，如果用户输入公司名称会去后台调用搜索 API 并通过下来列表自动提示，如果用户选择下拉列表中已存在的公司，则会将这个新咖啡店与该公司关联，否则会显示出所有公司相关字段，这样提交数据的时候，会插入一个新公司，然后在后台将新咖啡店与新公司关联</p>
+<h4 id="gaodemaps-工具类提供的-findclosestcity-方法获取新增咖啡店对应的-city_id">GaodeMaps 工具类提供的 findClosestCity 方法获取新增咖啡店对应的 city_id</h4>
+<pre><code class="language-php">/**
+ * 通过经纬度反查距离最近的城市
+ * @param $name
+ * @param $latitude
+ * @param $longitude
+ * @return int|null
+ */
+public static function findClosestCity($name, $latitude, $longitude)
+{
+    $cities = City::where('name', 'LIKE', $name . '%')-&gt;get();
+
+    // 检查距离信息
+    if ($cities &amp;&amp; count($cities) == 1) {
+        return $cities[0]-&gt;id;
+    } else {
+        // 我们可以对地址进行地理编码获取经纬度
+        // 反过来通过对经纬度进行逆地理编码也可以获取地址信息
+        $apiKey = config('services.gaode.ws_api_key'); // WebService API Key
+        $location = $latitude . ',' . $longitude;
+        $url = 'https://restapi.amap.com/v3/geocode/regeo?location=' . $location . '&amp;key=' . $apiKey;
+        // 创建 Guzzle HTTP 客户端发起请求
+        $client = new Client();
+
+        // 发送请求并获取响应数据
+        $regeocodeResponse = $client-&gt;get($url)-&gt;getBody();
+        $regeocodeData = json_decode($regeocodeResponse);
+        if (empty($regeocodeData) || $regeocodeData-&gt;status == 0) {
+            return null;
+        }
+
+        if ($cities) {
+            foreach ($cities as $city) {
+                if ($city-&gt;name == $regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;city) {
+                    return $city-&gt;id;
+                }
+            }
+        }
+
+        $city = new City();
+        // 直辖市city字段为空数组
+        if (!$regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;city) {
+            $city-&gt;name = $regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;province;
+        } else {
+            $city-&gt;name = $regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;city;
+        }
+        $city-&gt;slug = $city-&gt;name;
+        $city-&gt;state = $regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;province;
+        $city-&gt;country = $regeocodeData-&gt;regeocode-&gt;addressComponent-&gt;country;
+        $city-&gt;save();
+
+        return $city-&gt;id;
+    }
+}
+</code></pre>
+<h3 id="编辑删除店">编辑/删除店</h3>
+<p>实现的是软删除，之前已经在数据表迁移类中通过 $table-&gt;softDeletes(); 为 cafes 表添加了 deleted_at 字段，所以接下来还要在 app/Models/Cafe.php 模型类中通过如下方式使其支持软删除：</p>
+<pre><code class="language-php">
+class Cafe extends Model
+{
+    use SoftDeletes;
+</code></pre>
+<p>路由</p>
+<pre><code class="language-php">Route::get('/cafes/{id}/edit', 'API\CafesController@getCafeEditData');
+Route::put('/cafes/{id}', 'API\CafesController@putEditCafe');
+Route::delete('/cafes/{id}', 'API\CafesController@deleteCafe');
+
+</code></pre>
+<p>控制器方法 略</p>
+<p>后端还有把编辑的字段验证添加好， 然后把编辑的逻辑从 controller 挪出来到 service</p>
+<p>前端路由，略
+为编辑等动作分别增加路由、API、 module 里  的actions等(真麻烦啊，就没有前后端一次性搞定。)</p>
+<h2 id="后台">后台</h2>
+<h3 id="rbac-增删改查权限管理">RBAC 增删改查权限管理</h3>
+<p>注: 可直接使用 spatie/laravel-permission 等扩展包来实现。 这里仅是简单的一个例子</p>
+<h4 id="设置用户角色类型为-users-表新增-permission-字段用来设置对应用户角色">设置用户角色类型,为 users 表新增 permission 字段用来设置对应用户角色</h4>
+<pre><code class="language-shell">php artisan make:migration alter_users_add_permission --table=users
+</code></pre>
+<pre><code class="language-php">Schema::table('users', function (Blueprint $table) {
+    $table-&gt;tinyInteger('permission')-&gt;after('id')-&gt;default(0);
+</code></pre>
+<p>3 – 超级管理员，具备所有权限
+2 – 管理员，具备后台管理权限和咖啡店增删改权限
+1 – 商家，具备对自有咖啡店和对应公司的更新权限
+0 – 普通用户，具备更新个人信息、喜欢及咖啡店浏览权限</p>
+<p>为了简化应用流程，<code>permission</code> 既承担了用户角色功能，又承担了对应的权限功能</p>
+<p>在 User 模型类中定义常量属性(一旦后续属性值有修改，只需要维护这一个地方)</p>
+<pre><code class="language-php">const ROLE_GENERAL_USER = 0;  // 普通用户
+const ROLE_SHOP_OWNER = 1;    // 商家用户
+const ROLE_ADMIN = 2;         // 管理员
+const ROLE_SUPER_ADMIN = 3;   // 超级管理员  
+</code></pre>
+<p>在 Action 模型类中定义（这个模型后面会创建）</p>
+<pre><code class="language-php">const STATUS_PENDING = 0;   // 待审核
+const STATUS_APPROVED = 1;  // 已通过
+const STATUS_DENIED = 2;    // 已拒绝
+</code></pre>
+<h3 id="咖啡店策略类">咖啡店策略类</h3>
+<p>基于 Laravel 自带<strong>授权功能</strong>中的<strong>策略类</strong>结合用户实例上的 permission 字段实现简单的 RBAC 权限管理</p>
+<pre><code class="language-shell">php artisan make:policy CafePolicy
+
+</code></pre>
+<pre><code class="language-php">/**
+ * 如果用户是管理员或超级管理员则可以新增咖啡店
+ *
+ * @param User $user
+ * @param Company $company
+ * @return boolean
+ */
+public function create(User $user, Company $company)
+{
+    if ($user-&gt;permission ==  || $user-&gt;permission == 3) {
+        return true;
+    } else if ($company != null &amp;&amp; $user-&gt;companiesOwned-&gt;contains($company-&gt;id)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * 如果用户是管理员、超级管理员或者拥有该咖啡店所属公司则可以更新该咖啡店
+ *
+ * @param User $user
+ * @param Cafe $cafe
+ * @return boolean
+ */
+public function update(User $user, Cafe $cafe)
+{
+    if ($user-&gt;permission == 2 || $user-&gt;permission == 3) {
+        return true;
+    } else if ($user-&gt;companiesOwned-&gt;contains($cafe-&gt;company_id)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * 如果用户是管理员、超级管理员或拥有该咖啡店所属公司则可以删除该咖啡店
+ *
+ * @param User $user
+ * @param Cafe $cafe
+ * @return boolean
+ */
+public function delete(User $user, Cafe $cafe)
+{
+    if ($user-&gt;permission == 2 || $user-&gt;permission == 3) {
+        return true;
+    } else if ($user-&gt;companiesOwned-&gt;contains($cafe-&gt;company_id)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+</code></pre>
+<p>在 app/Providers/AuthServiceProvider.php 中注册这个策略类</p>
+<pre><code class="language-php">protected $policies = [
+    Cafe::class =&gt; CafePolicy::class,
+];
+</code></pre>
+<h3 id="增删改查授权功能">增删改查授权功能</h3>
+<p>新建一张 actions 表，用于存储待审核/已处理动作记录</p>
+<pre><code class="language-shell">php artisan make:migration create_actions_table
+
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('actions', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;integer('user_id')-&gt;unsigned();
+        $table-&gt;integer('company_id')-&gt;unsigned()-&gt;nullable();
+        $table-&gt;integer('cafe_id')-&gt;unsigned()-&gt;nullable();
+        $table-&gt;integer('status');
+        $table-&gt;integer('processed_by')-&gt;unsigned()-&gt;nullable();
+        $table-&gt;timestamp('processed_on')-&gt;nullable();
+        $table-&gt;string('type');
+        $table-&gt;text('content');
+        $table-&gt;timestamps();
+</code></pre>
+<p>然后新建 Action 模型类，并定义关联</p>
+<pre><code class="language-php">// 该更新动作所属咖啡店
+public function cafe()
+{
+    return $this-&gt;belongsTo(Cafe::class, 'cafe_id', 'id');
+}
+
+// 对应前台操作用户
+public function by()
+{
+    return $this-&gt;belongsTo(User::class, 'user_id', 'id');
+}
+
+// 对应后台处理管理员
+public function processedBy()
+{
+    return $this-&gt;belongsTo(User::class, 'processed_by', 'id');
+}
+</code></pre>
+<p>在 app/User.php 模型类中与之相对的关联关系</p>
+<pre><code class="language-php">// 该用户名下所有动作
+public function actions()
+{
+    return $this-&gt;hasMany(Action::class, 'id', 'user_id');
+}
+
+// 该用户名下所有处理的后台审核动作
+public function actionsProcessed()
+{
+    return $this-&gt;hasMany(Action::class, 'id', 'processed_by');
+} 
+</code></pre>
+<h3 id="在控制器service-的新增编辑删除咖啡店方法中编写基于策略类的权限判断代码">在控制器/service 的新增、编辑、删除咖啡店方法中编写基于策略类的权限判断代码</h3>
+<p>创建一个服务类 app/Services/ActionService.php 用于在 actions 表中存储待审核动作和审核通过动作</p>
+<p>处理逻辑是，</p>
+<ol>
+<li>对于一个拥有对应操作权限的用户来说，调用控制器的新增、编辑或删除方法会在执行对应处理后在 actions 表中插入一条已处理记录，然后返回响应给用户，</li>
+<li>而对于一个没有对应操作权限的用户而言，调用对应控制器方法则不会执行新增、编辑或删除操作，而是在 actions 表中插入一条待后台管理员审核记录</li>
+</ol>
+<pre><code class="language-php">class ActionService
+{
+    // 创建一条待审核记录
+    public function createPendingAction($cafeID, $companyID, $type, $content, $userId)
+    {
+        $action = new Action();
+
+        $action-&gt;cafe_id = $cafeID;
+        $action-&gt;company_id = $companyID;
+        $action-&gt;user_id = $userId;
+        $action-&gt;status = Action::STATUS_PENDING;
+        $action-&gt;type = $type;
+        $action-&gt;content = json_encode($content);
+
+        $action-&gt;save();
+    }
+
+    // 创建一条已处理操作
+    public function createApprovedAction($cafeID, $companyID, $type, $content, $userId)
+    {
+        $action = new Action();
+
+        $action-&gt;cafe_id = $cafeID;
+        $action-&gt;company_id = $companyID;
+        $action-&gt;user_id = $userId;
+        $action-&gt;status = Action::STATUS_APPROVED;
+        $action-&gt;type = $type;
+        $action-&gt;content = json_encode($content);
+        $action-&gt;processed_by = $userId;
+        $action-&gt;processed_on = Carbon::now();
+
+        $action-&gt;save();
+    }
+}
+</code></pre>
+<p>控制器 app/Http/Controllers/API/CafesController.php ,在里面用<code>can</code>来判断权限（前面 policy 创建）</p>
+<pre><code class="language-php">public function postNewCafe(StoreCafeRequest $request) {
+    $actionService = new ActionService();
+    
+    //具备权限自动审核通过
+    if (Auth::user()-&gt;can('create', [Cafe::class, $company])) {
+        $cafeService = new CafeService();
+        $cafe = $cafeService-&gt;addCafe($request-&gt;all(), Auth::user()-&gt;id);
+        
+         //创建 action
+         $actionService-&gt;createApprovedAction(null, $cafe-&gt;company_id, 'cafe-added', $request-&gt;all(), Auth::user()-&gt;id);
+     } else {
+     //不具备权限需要等待后台审核通过才能更新数据
+        $actionService-&gt;createPendingAction(null, $request-&gt;get('company_id'), 'cafe-added', $request-&gt;all(), Auth::user()-&gt;id);
+        return response()-&gt;json(['cafe_add_pending' =&gt; $request-&gt;get('company_name')], 202);
+        
+// 更新咖啡店数据略
+public function putEditCafe($id, EditCafeRequest $request)
+
+// 删除咖啡店
+public function deleteCafe($id)
+</code></pre>
+<p>如果没有对应权限，则分别返回 cafe_add_pending、cafe_updates_pending、cafe_delete_pending 字段交由前端判断并提示用户</p>
+<h3 id="前端-1">前端</h3>
+<p>module/cafes.js  根据返回的内容（<code>cafe_add_pending</code>存在，提示是否要等待审核）</p>
+<pre><code class="language-js">.then(function (response) {
+           if (typeof response.data.cafe_add_pending !== 'undefined') {
+               // 没有新增权限提示文本
+               commit('setCafeAddedText', response.data.cafe_add_pending + ' 审核通过后才能添加!');
+           } else {
+               commit('setCafeAddedText', response.data.name + ' 已经添加!');
+//edit 等等。。
+</code></pre>
+<p>在 NewCafe  EditCafe 的页面里处理通知</p>
+<pre><code class="language-js">addCafeText(){
+  return this.$store.getters.getCafeAddText;
+}
+
+...
+
+EventBus.$emit('show-success', {
+  notification: this.addCafeText
+});
+</code></pre>
+<h3 id="后端动作审核接口">后端动作审核接口</h3>
+<p>新增拦截非后台管理员的中间件</p>
+<pre><code class="language-shell">php artisan make:middleware Owner
+
+</code></pre>
+<p>app/Http/Middleware/Owner.php 代码</p>
+<pre><code class="language-php">class Owner
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     * @param  string|null $guard
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $guard = null)
+    {
+        if (Auth::user()-&gt;permission &lt; User::ROLE_SHOP_OWNER) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return $next($request);
+</code></pre>
+<p>然后在 <code>app/Http/Kernel.php</code> 的 <code>$routeMiddleware</code> 属性 注册中间件</p>
+<pre><code class="language-php">protected $routeMiddleware = [
+    ... // 其他中间件
+    'owner' =&gt; \App\Http\Middleware\Owner::class,
+];
+</code></pre>
+<p>如果请求用户的角色是普通用户或商家用户的话，则会返回 403 响应，提示用户没有权限</p>
+<h4 id="管理后台路由">管理后台路由</h4>
+<p>在这个分组中不仅应用了 auth:api 中间件，还应用了新创建的 owner 中间件，以表明访问这个分组中的路由，不仅需要登录，还需要管理员及以上权限</p>
+<pre><code class="language-php">Route::group(['prefix' =&gt; 'v1/admin', 'middleware' =&gt; ['auth:api', 'owner']], function () {
+    Route::get('/actions', 'API\Admin\ActionsController@getActions');
+    Route::put('/actions/{action}/approve', 'API\Admin\ActionsController@putApproveAction');
+    Route::put('/actions/{action}/deny', 'API\Admin\ActionsController@putDenyAction');
+});
+</code></pre>
+<h4 id="控制器">控制器</h4>
+<pre><code class="language-shell">php artisan make:controller API/Admin/ActionsController
+
+</code></pre>
+<p>API/Admin/ActionsController.php 代码</p>
+<pre><code class="language-php">class ActionsController extends Controller
+{
+    /**
+     * 获取所有待审核动作
+     */
+    public function getActions()
+    {
+        // 如果是后台管理员则返回所有未处理操作
+        if (Auth::user()-&gt;permission &gt;= User::ROLE_ADMIN) {
+            $actions = Action::with('cafe')
+                -&gt;with('company')
+                -&gt;where('status', '=', Action::STATUS_PENDING)
+                -&gt;with('by')
+                -&gt;get();
+        } else {
+            // 否则返回归属于该用户的待处理操作
+            $actions = Action::with('cafe')
+                -&gt;with('company')
+                -&gt;whereIn('company_id', Auth::user()-&gt;companiesOwned()-&gt;pluck('id')-&gt;toArray())
+                -&gt;where('status', '=', Action::STATUS_PENDING)
+                -&gt;with('by')
+                -&gt;get();
+        }
+    
+        return response()-&gt;json($actions);
+
+    // 通过审核并执行相应动作
+    public function putApproveAction(Action $action)
+    {
+
+    }
+
+    // 审核不通过
+    public function putDenyAction(Action $action)
+    {
+
+    }
+</code></pre>
+<h4 id="创建-action-policy">创建 Action Policy</h4>
+<p>在实现通过/拒绝审核动作方法前，需要先创建用于动作审核授权的 Action 策略类，以判断用户是否有操作权限（前面是 Cafe 的）</p>
+<pre><code class="language-shell">php artisan make:policy ActionPolicy
+
+</code></pre>
+<pre><code class="language-php">class ActionPolicy
+
+    /**
+     * 如果用户是管理员或超级管理员的话则具备该权限
+     * 否则只有审核归属于自己公司名下的咖啡店动作的权限
+     *
+     * @param \App\User $user
+     * @param \App\Models\Action $action
+     * @return bool
+     */
+    public function approve(User $user, Action $action)
+    {
+        if ($user-&gt;permission == User::ROLE_ADMIN || $user-&gt;permission == User::ROLE_SUPER_ADMIN) {
+            return true;
+        } else if ($user-&gt;companiesOwned-&gt;contains($action-&gt;company_id)) {
+            return true;
+        } else {
+            return false;
+    /**
+     * 如果用户是管理员或超级管理员的话则具备该权限
+     * 否则只有审核归属于自己公司名下的咖啡店动作的权限
+     *
+     * @param \App\User $user
+     * @param \App\Models\Action $action
+     * @return bool
+     */
+    public function deny(User $user, Action $action)
+    {
+        if ($user-&gt;permission == User::ROLE_ADMIN || $user-&gt;permission == User::ROLE_SUPER_ADMIN) {
+            return true;
+        } else if ($user-&gt;companiesOwned-&gt;contains($action-&gt;company_id)) {
+            return true;
+        } else {
+            return false;
+</code></pre>
+<p>在 app/Providers/AuthServiceProvider.php 中注册这个策略类</p>
+<pre><code class="language-php">protected $policies = [
+    Cafe::class =&gt; CafePolicy::class,
+    Action::class =&gt; ActionPolicy::class
+];
+</code></pre>
+<p>然后 在控制器中通过该策略类来判断操作用户是否具备审核动作的权限。编写控制器 ActionsController 的 putApproveAction 方法</p>
+<pre><code class="language-php">/**
+ * 执行待处理动作并通过这条动作审核
+ * @param Action $action
+ * @return \Illuminate\Http\JsonResponse
+ */
+public function putApproveAction(Action $action)
+{
+    if (Auth::user()-&gt;cant('approve', $action)) {
+        abort(403, '该用户没有通过审核权限');
+    }
+
+    $cafeService = new CafeService();
+    $actionService = new ActionService();
+    // 根据操作类型分类处理
+    switch ($action-&gt;type) {
+        case 'cafe-added':
+            // 反序列化咖啡店数据
+            $newActionData = json_decode($action-&gt;content, true);
+            // 执行变更
+            $cafeService-&gt;addCafe($newActionData, $action-&gt;user_id);
+
+            // 操作完成后通过这条审核
+            $actionService-&gt;approveAction($action, Auth::user()-&gt;id);
+            break;
+        case 'cafe-updated':
+        //...
+</code></pre>
+<p>在具备实现代码中，我们会先判断操作用户是否具备通过审核权限，如果没有则直接返回 403 响应，如果有的才继续往下执行，我们会根据动作类型，比如新增、修改还是删除来执行不同的动作，执行完成后会将条 actions 动作记录标记为通过，具体的实现代码封装到了 ActionService 中</p>
+<pre><code class="language-php">public function approveAction($action, $processedBy)
+{
+    $action-&gt;status = Action::STATUS_APPROVED;
+    $action-&gt;processed_by = $processedBy;
+    $action-&gt;processed_on = Carbon::now();
+    $action-&gt;save();
+}
+</code></pre>
+<p>拒绝动作</p>
+<pre><code class="language-php">public function putDenyAction(Action $action)
+{
+    if (Auth::user()-&gt;cant('deny', $action)) {
+        abort(403, '该用户没有拒绝审核权限');
+    }
+
+    // 拒绝这条变更请求
+    $actionService = new ActionService();
+    $actionService-&gt;denyAction($action, Auth::user()-&gt;id);
+
+    // 返回响应
+    return response()-&gt;json('', 204);
+}
+</code></pre>
+<p>标记请求记录为不通过的实现代码封装到了 ActionService 中</p>
+<pre><code class="language-php">public function denyAction($action, $processedBy)
+{
+    $action-&gt;status = Action::STATUS_DENIED;
+    $action-&gt;processed_by = $processedBy;
+    $action-&gt;processed_on = Carbon::now();
+    $action-&gt;save();
+}
+</code></pre>
+<h3 id="通过-vue-router-提供的路由元信息功能实现前端路由权限判断">通过 Vue Router 提供的路由元信息功能实现前端路由权限判断</h3>
+<p>构建 Roast 应用管理后台前端 UI</p>
+<p>为管理后台初始化创建以下子目录
+/resources/assets/js/api/admin
+/resources/assets/js/components/admin
+/resources/assets/js/modules/admin
+/resources/assets/js/pages/admin</p>
+<p>创建管理后台布局文件 /js/layouts/Admin.vue。</p>
+<p>子页面组件还是通过内置的 router-view 引入</p>
+<pre><code class="language-js">&lt;style lang=&quot;scss&quot;&gt;
+    @import '~@/abstracts/_variables.scss';
+&lt;/style&gt;
+
+&lt;template&gt;
+    &lt;div id=&quot;admin-layout&quot;&gt;
+        &lt;success-notification&gt;&lt;/success-notification&gt;
+        &lt;error-notification&gt;&lt;/error-notification&gt;
+
+
+        &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    import SuccessNotification from '../components/global/SuccessNotification.vue';
+    import ErrorNotification from '../components/global/ErrorNotification.vue';
+
+    export default {
+        components: {
+            SuccessNotification,
+            ErrorNotification
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<p>为管理后台定义前端路由, <code>resources/assets/js/routes.js</code>，与 <code>/</code> 路由并列定义一个新的 <code>admin</code> 路由（会导航到管理后台首页，并且使用了导航守卫，表明需要登录后才能访问，还在路由上应用了 <code>owner</code> 中间件以确保管理员才能访问管理后台）</p>
+<pre><code class="language-js">{
+    path: '/admin',
+    name: 'admin',
+    component: Vue.component('Admin', require('./layouts/Admin.vue')),
+    beforeEnter: requireAuth,
+}
+</code></pre>
+<p>在一个前后端分离应用中，我们能否在 Vue Router 中实现类似的<strong>权限判断</strong>功能呢？
+借助 Vue Router 提供的<strong>路由元信息</strong>功能， 下面在所有需要权限判断的前端路由中加入路由元信息</p>
+<pre><code class="language-js">{
+     path: 'new',
+     name: 'newcafe',
+     component: Vue.component( 'NewCafe', require( './pages/NewCafe.vue' ) ),
+     beforeEnter: requireAuth,
+     meta: {
+         permission: 'user'
+     }
+},
+
+{
+     path: 'cafes/:id/edit',
+     name: 'editcafe',
+     component: Vue.component('EditCafe', require('./pages/EditCafe.vue')),
+     beforeEnter: requireAuth,
+     meta: {
+         permission: 'user'
+     }
+ },
+
+ {
+     path: 'profile',
+     name: 'profile',
+     component: Vue.component('Profile', require('./pages/Profile.vue')),
+     beforeEnter: requireAuth,
+     meta: {
+         permission: 'user'
+     }
+ },
+
+{
+      path: '/admin',
+      name: 'admin',
+      component: Vue.component('Admin', require('./layouts/Admin.vue')),
+      beforeEnter: requireAuth,
+      meta: {
+          permission: 'owner'
+      },
+      children: [
+          {
+              path: '_=_', 
+              redirect: '/'
+          }
+      ]
+}
+</code></pre>
+<p>在路由元信息中设置了一个 <code>permission</code> 字段用于标识该路由所需要的权限级别，具体的权限判断逻辑定义在 <code>requireAuth()</code> 方法的内部函数 <code>proceed()</code> 中</p>
+<pre><code class="language-js">function proceed() {
+    // 如果用户信息已经加载并且不为空则说明该用户已登录，可以继续访问路由，否则跳转到首页
+    // 这个功能类似 Laravel 中的 auth 中间件
+    if (store.getters.getUserLoadStatus() === 2) {
+        if (store.getters.getUser !== '') {
+            // 下面根据路由元信息中提供的权限级别判断登录用户是否具备相应权限
+            switch (to.meta.permission) {
+                // 如果权限级别是普通用户则继续
+                case 'user':
+                    next();
+                    break;
+
+                // 如果权限级别是商家则需要判断用户角色是否满足
+                case 'owner':
+                    if (store.getters.getUser.permission &gt;= 1) {
+                        next();
+                    } else {
+                        next('/cafes');
+                    }
+                    break;
+
+                // 如果权限级别是管理员则需要判断用户角色是否满足
+                case 'admin':
+                    if (store.getters.getUser.permission &gt;= 2) {
+                        next();
+                    } else {
+                        next('/cafes');
+                    }
+                    break;
+
+                // 如果权限级别是超级管理员则需要判断用户角色是否满足
+                case 'super-admin':
+                    if (store.getters.getUser.permission === 3) {
+                        next();
+                    } else {
+                        next('/cafes');
+                    }
+                    break;
+            }
+        } else {
+            next('/');
+        }
+    }
+}
+</code></pre>
+<h3 id="实现后台管理页面">实现后台管理页面</h3>
+<p>components/admin/AdminHeader.vue (略大部分代码)</p>
+<pre><code class="language-js">&lt;template&gt;
+ &lt;router-link :to=&quot;{ name: 'cafes'}&quot;&gt;
+&lt;img src=&quot;/storage/img/logo.svg&quot; class=&quot;logo&quot;/&gt;
+&lt;img class=&quot;avatar&quot; v-if=&quot;user !== '' &amp;&amp; userLoadStatus === 2&quot; :src=&quot;user.avatar&quot;
+                     v-show=&quot;userLoadStatus === 2&quot;/&gt;
+                &lt;span class=&quot;login&quot; v-if=&quot;user === ''&quot; v-on:click=&quot;login()&quot;&gt;登录&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+&lt;/template&gt;
+&lt;script&gt;
+    export default {
+        computed: {
+            userLoadStatus() {
+                return this.$store.getters.getUserLoadStatus();
+            },
+
+            user() {
+                return this.$store.getters.getUser;
+            }
+        },
+
+        methods: {
+            setShowPopOut() {
+                this.$store.dispatch('toggleShowPopOut', {showPopOut: true});
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+<h4 id="为动作审核子页面定义前端路由api-调用和-vuex-模块">为动作审核子页面定义前端路由、API 调用和 Vuex 模块</h4>
+<p>前端路由文件 resources/assets/js/routes.js 中定义动作审核子页面路由</p>
+<pre><code class="language-js">{
+   path: '/admin',
+   name: 'admin',
+   component: Vue.component('Admin', require('./layouts/Admin.vue')),
+   beforeEnter: requireAuth,
+   meta: {
+       permission: 'owner'
+   },
+   children: [
+       {
+           path: 'actions',
+           name: 'admin-actions',
+           component: Vue.component('AdminActions', require('./pages/admin/Actions.vue')),
+           meta: {
+               permission: 'owner'
+           }
+       },
+       {
+           path: '_=_',
+           redirect: '/'
+       }
+   ]
+</code></pre>
+<p>创建一个新的 API 调用文件 resources/assets/js/api/admin/actions.js</p>
+<pre><code class="language-js">import {ROAST_CONFIG} from '../../config.js';
+
+export default {
+    /*
+      GET   /api/v1/admin/actions
+    */
+    getActions: function () {
+        return axios.get(ROAST_CONFIG.API_URL + '/admin/actions');
+    },
+
+    /*
+      PUT   /admin/v1/admin/actions/{action}/approve
+    */
+    putApproveAction: function (id) {
+        return axios.put(ROAST_CONFIG.API_URL + '/admin/actions/' + id + '/approve');
+    },
+
+    /*
+      PUT   /admin/v1/admin/actions/{action}/deny
+    */
+    putDenyAction: function (id) {
+        return axios.put(ROAST_CONFIG.API_URL + '/admin/actions/' + id + '/deny');
+    }
+}
+</code></pre>
+<p>为审核动作创建一个新的 Vuex 模块 resources/assets/js/modules/admin/actions.js</p>
+<pre><code class="language-js">import ActionsAPI from '../../api/admin/actions.js';
+
+export const actions = {
+    /*
+      Defines the state being monitored for the module.
+    */
+    state: {
+        actions: [],
+        actionsLoadStatus: 0,
+
+        actionApproveStatus: 0,
+        actionDeniedStatus: 0
+    },
+
+    actions: {
+        loadAdminActions({commit}) {
+            commit('setActionsLoadStatus', 1);
+
+            ActionsAPI.getActions()
+                .then(function (response) {
+                    commit('setActions', response.data);
+                    commit('setActionsLoadStatus', 2);
+                })
+                .catch(function () {
+                    commit('setActions', []);
+                    commit('setActionsLoadStatus', 3);
+                });
+        },
+
+        approveAction({commit, state, dispatch}, data) {
+            commit('setActionApproveStatus', 1);
+
+            ActionsAPI.putApproveAction(data.id)
+                .then(function (response) {
+                    commit('setActionApproveStatus', 2);
+                    dispatch('loadAdminActions');
+                })
+                .catch(function () {
+                    commit('setActionApproveStatus', 3);
+                });
+
+        },
+
+        denyAction({commit, state, dispatch}, data) {
+            commit('setActionDeniedStatus', 1);
+
+            ActionsAPI.putDenyAction(data.id)
+                .then(function (response) {
+                    commit('setActionDeniedStatus', 2);
+                    dispatch('loadAdminActions');
+                })
+                .catch(function () {
+                    commit('setActionDeniedStatus', 3);
+                });
+
+        }
+    },
+
+    mutations: {
+        setActionsLoadStatus(state, status) {
+            state.actionsLoadStatus = status;
+        },
+
+        setActions(state, actions) {
+            state.actions = actions;
+        },
+
+        setActionApproveStatus(state, status) {
+            state.actionApproveStatus = status;
+        },
+
+        setActionDeniedStatus(state, status) {
+            state.actionDeniedStatus = status;
+        }
+    },
+
+    getters: {
+        getActions(state) {
+            return state.actions;
+        },
+
+        getActionsLoadStatus(state) {
+            return state.actionsLoadStatus;
+        },
+
+        getActionApproveStatus(state) {
+            return state.actionApproveStatus;
+        },
+
+        getActionDeniedStatus(state) {
+            return state.actionDeniedStatus;
+        }
+    }
+};
+</code></pre>
+<p>实现动作审核列表子页面组件 resources/assets/js/pages/admin/Actions.vue （省略大部分代码）</p>
+<pre><code class="language-js">&lt;template&gt;
+    &lt;action v-for=&quot;action in actions&quot;
+                    :key=&quot;action.id&quot;
+                    :action=&quot;action&quot;&gt;
+            &lt;/action&gt;
+&lt;/template&gt;
+            
+&lt;script&gt;
+    import Action from '../../components/admin/actions/Action.vue';
+
+    export default {
+        components: {
+            Action
+        },
+</code></pre>
+<p>创建一个新的 resources/assets/js/components/admin/actions/Action.vue <strong>组件</strong>来渲染</p>
+<pre><code class="language-js"> &lt;div class=&quot;large-3 medium-3 cell&quot;&gt;
+                {{ action.company != null ? action.company.name : '' }}
+            &lt;/div&gt;
+            &lt;div class=&quot;large-3 medium-3 cell&quot;&gt;
+                {{ action.cafe != null ? action.cafe.location_name : '' }}
+            &lt;/div&gt;
+            
+        &lt;span class=&quot;approve-action&quot; v-on:click=&quot;approveAction()&quot;&gt;通过&lt;/span&gt;
+                &lt;span class=&quot;deny-action&quot; v-on:click=&quot;denyAction()&quot;&gt;拒绝&lt;/span&gt;
+                
+        &lt;div class=&quot;large-12 medium-12 cell&quot;&gt;
+                &lt;action-cafe-added v-if=&quot;action.type == 'cafe-added'&quot; :action=&quot;action&quot;&gt;&lt;/action-cafe-added&gt;
+                &lt;action-cafe-edited v-if=&quot;action.type == 'cafe-updated'&quot; :action=&quot;action&quot;&gt;&lt;/action-cafe-edited&gt;
+                
+                
+                
+&lt;script&gt;
+    import ActionCafeAdded from './ActionCafeAdded.vue';
+    import ActionCafeEdited from './ActionCafeEdited.vue';
+    import ActionCafeDeleted from './ActionCafeDeleted.vue';
+
+    import {EventBus} from '../../../event-bus.js';
+
+     computed: {
+            type() {
+                switch (this.action.type) {
+                    case 'cafe-added':
+                        return '添加咖啡店';
+            actionApproveStatus() {
+                return this.$store.getters.getActionApproveStatus;
+            },
+
+            actionDeniedStatus() {
+                return this.$store.getters.getActionDeniedStatus;
+            }
+        },
+    
+    watch: {
+            'actionApprovedStatus': function () {
+                if (this.actionApproveStatus == 2) {
+                    EventBus.$emit('show-suc
+    methods: {
+            approveAction() {
+                this.$store.dispatch('approveAction', {
+                    id: this.action.id
+                });
+            },
+
+            denyAction() {
+                this.$store.dispatch('denyAction', {
+                    id: this.action.id
+                });
+            }
+</code></pre>
+<p>新增数据显示组件 resources/assets/js/components/admin/actions/ActionCafeAdded.vue</p>
+<h3 id="公司管理-用户管理其他数据的管理">公司管理 用户管理、其他数据的管理</h3>
+<p>遵循前面教程的学习方法，沿着后端路由-&gt;中间件/授权类/请求类-&gt;控制器-&gt;模型类/Service-&gt;前端路由(Vue Router)-&gt;前端页面/组件-&gt;Vuex模块的思路</p>
+<h3 id="路由懒加载按组件分割">路由懒加载，按组件分割</h3>
+<h2 id="高德地图集成">高德地图集成</h2>
+<p>高德地图 Web 服务 API 文档：https://lbs.amap.com/api/webservice/summary/，我们将基于该文档中提供的地理/逆地理编码功能来实现地理编码</p>
+<h3 id="api-key">API KEY</h3>
+<p>获取到 API Key 之后，添加到配置文件<code>.env</code></p>
+<pre><code class="language-php">GAODE_MAPS_WS_API_KEY={YOUR_API_KEY}
+</code></pre>
+<p>在 <code>config/services.php</code> 中引用,这样，我们就可以在编写代码时通过 <code>config('services.gaode.ws_api_key')</code> 获取 API Key 了</p>
+<pre><code class="language-php">'gaode' =&gt; [
+    'ws_api_key' =&gt; env('GAODE_MAPS_WS_API_KEY'),
+]
+</code></pre>
+<h3 id="构建高德地图工具类">构建高德地图工具类</h3>
+<p>创建一个 <code>app\Utilities</code> 目录，然后在该目录下创建 <code>GaodeMaps</code> 类文件</p>
+<p>安装 guzzle 扩展</p>
+<pre><code class="language-shell">composer require guzzlehttp/guzzle
+</code></pre>
+<p><strong>处理地理位置编码的方法<code>geocodeAddress()</code></strong>（使用了 Guzzle HTTP Client 向高德地图地理编码 API 发送请求并获取响应，该 API 默认返回数据格式是 JSON）</p>
+<p>为了方便开发测试，可以在 routes/web.php 定义一个简单的路由来测试这段代码</p>
+<pre><code class="language-php">Route::get('geocode', function () {
+    return \App\Utilities\GaodeMaps::geocodeAddress('天城路1号', '杭州', '浙江');
+});
+</code></pre>
+<pre><code class="language-php">namespace App\Utilities;
+
+class GaodeMaps
+{
+    /**
+     * 通过真实地址获取对应的经纬度
+     * @param $address
+     * @param $city
+     * @param $state
+     * @param $zip
+     * @return mixed
+     */
+    public static function geocodeAddress($address, $city, $state)
+    {
+        // 省、市、区、详细地址 
+        $address = urlencode($state . $city . $address); 
+        // Web 服务 API Key
+        $apiKey = config('services.gaode.ws_api_key'); 
+        // 构建地理编码 API 请求 URL，默认返回 JSON 格式响应
+        $url = 'https://restapi.amap.com/v3/geocode/geo?address=' . $address . '&amp;key=' . $apiKey;
+    
+        // 创建 Guzzle HTTP 客户端发起请求
+        $client = new Client();
+    
+        // 发送请求并获取响应数据
+        $geocodeResponse = $client-&gt;get($url)-&gt;getBody();
+        $geocodeData = json_decode($geocodeResponse);
+    
+        // 初始化地理编码位置
+        $coordinates['lat'] = null;
+        $coordinates['lng'] = null;
+    
+        // 如果响应数据不为空则解析出经纬度
+        if (!empty($geocodeData)
+            &amp;&amp; $geocodeData-&gt;status  // 0 表示失败，1 表示成功
+            &amp;&amp; isset($geocodeData-&gt;geocodes)
+            &amp;&amp; isset($geocodeData-&gt;geocodes[0])) {
+            list($latitude, $longitude) = explode(',', $geocodeData-&gt;geocodes[0]-&gt;location);
+            $coordinates['lat'] = $latitude;  // 经度
+            $coordinates['lng'] = $longitude; // 纬度
+        }
+    
+        // 返回地理编码位置数据
+        return $coordinates;
+    }
+}
+</code></pre>
+<p>然后修改之前保存数据的代码,在新增咖啡店时保存经纬度数据(<code>CafesController</code>的<code>postNewCafe</code>方法)</p>
+<pre><code class="language-php">
+$cafe-&gt;zip      = $request-&gt;input('zip');
+
+// 经纬度转换
+$coordinates = GaodeMaps::geocodeAddress($cafe-&gt;address, $cafe-&gt;city, $cafe-&gt;state);
+$cafe-&gt;latitude = $coordinates['lat'];
+$cafe-&gt;longitude = $coordinates['lng'];
+
+$cafe-&gt;save();
+</code></pre>
+<h3 id="地图上显示已经标记了经纬度的数据">地图上显示已经标记了经纬度的数据</h3>
+<p>因为是前端页面中，需要 高德地图 JS API Key</p>
+<p>和前面申请 API_KEY 选的 Web 服务有点不一样，这里是</p>
+<p><img src="/media/15490412691617/15555555001874.jpg" alt="-w698"></p>
+<p>将 API Key添加到 config.js</p>
+<pre><code class="language-js">var gaode_maps_js_api_key = '{YOUR API KEY HERE}';
+
+//...switch...
+
+export const ROAST_CONFIG = {
+    API_URL: api_url,
+    GAODE_MAPS_JS_API_KEY: gaode_maps_js_api_key
+};
+</code></pre>
+<p>添加高德地图脚本到 <code>app.blade.php</code> (不编译到 前端应用 app.js 里面去)</p>
+<p>这里还可以根据需要改成异步方式引入</p>
+<pre><code class="language-js">&lt;script src=&quot;https://webapi.amap.com/maps?v=1.4.8&amp;key=您申请的key值&quot;&gt;&lt;/script&gt;
+
+</code></pre>
+<p>新增 <code>CafeMap</code> 组件（<code>/js/components</code> 目录下创建一个 <code>cafes</code> 子目录，然后在该子目录下创建 <code>CafeMap.vue</code> 组件）</p>
+<pre><code class="language-js">&lt;style lang=&quot;scss&quot;&gt;
+    div#cafe-map {
+        width: 100%;
+        height: 400px;
+    }
+&lt;/style&gt;
+
+&lt;template&gt;
+  &lt;div id=&quot;cafe-map&quot;&gt;
+
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  export default {
+  
+    //以 props 方式从父组件中传递属性数据,方便在不同页面传入不同的属性值，从而提高组件的灵活性
+    props: {
+      'latitude': {  // 经度
+          type: Number,
+          default: function () {
+              return 120.21
+          }
+      },
+      'longitude': {  // 纬度
+          type: Number,
+          default: function () {
+              return 30.29
+          }
+      },
+      'zoom': {   // 缩放级别
+          type: Number,
+          default: function () {
+              return 4
+          }
+      }
+    },
+    //在模型数据中初始化点标记数组
+    data() {
+      return {
+       markers: []
+        }
+    },
+    
+       
+    //通过计算属性方式从 Vuex 中返回全局咖啡店列表数据：
+    computed: {
+       cafes(){
+           return this.$store.getters.getCafes;
+       }
+    },
+    
+     //还要定义一个 clearMarkers() 方法用来在重绘地图时清除地图上的所有点标记(在 mounted() 中调用这两个方法)
+    clearMarkers() {
+        // 遍历所有点标记并将其设置为 null 从而从地图上将其清除
+        for (var i = 0; i &lt; this.markers.length; i++) {
+            this.markers[i].setMap(null);
+        }
+    }
+
+    
+    // 初始化绘制脚本,每次页面载入时都会重新绘制地图
+    mounted() {
+       this.map = new AMap.Map('cafe-map', {
+           center: [this.latitude, this.longitude],
+           zoom: this.zoom
+       });
+       
+       // 清除并重构点标记
+        this.clearMarkers();
+        this.buildMarkers();
+    }
+    
+    //监听 cafes 数据的变化，一旦有更新，立即清除地图上的所有点标记并重新绘制
+    watch: {
+        cafes () {
+            this.clearMarkers();
+            this.buildMarkers();
+        }
+    }
+    
+    //最后在 methods 中通过 buildMarkers() 方法创建点标记：
+    methods: {
+       // 为所有咖啡店创建点标记
+       buildMarkers() {
+           // 清空点标记数组
+           this.markers = [];
+    
+           // 遍历所有咖啡店并为每个咖啡店创建点标记
+           for (var i = 0; i &lt; this.cafes.length; i++) {
+    
+               // 通过高德地图 API 为每个咖啡店创建点标记并设置经纬度
+               var marker = new AMap.Marker({
+                   position: AMap.LngLat(parseFloat(this.cafes[i].latitude), parseFloat(this.cafes[i].longitude)),
+                   title: this.cafes[i].name
+               });
+    
+               // 将每个点标记放到点标记数组中
+               this.markers.push(marker);
+           }
+    
+           // 将所有点标记显示到地图上
+           this.map.add(this.markers);
+       }
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+<p>最后，把 CafeMap 组件添加到 Cafes 页面</p>
+<pre><code class="language-js">import CafeMap from '../components/cafes/CafeMap.vue';
+export default {
+    components: {
+        CafeMap
+    }
+}
+
+&lt;template&gt;
+    &lt;div id=&quot;cafes&quot;&gt;
+        &lt;div class=&quot;grid-x&quot;&gt;
+            &lt;div class=&quot;large-9 medium-9 small-12 cell&quot;&gt;
+                &lt;cafe-map&gt;&lt;/cafe-map&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;large-3 medium-3 small-12 cell&quot;&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="自定义咖啡店点标记图标并显示信息窗体">自定义咖啡店点标记图标并显示信息窗体</h3>
+<p>略过</p>
+<h2 id="问题-还是用纯的-create-react-app-更好不用-mix">问题： 还是用纯的 create-react-app 更好，不用 Mix</h2>
+<p>使用 mix 后，发现 hot load 什么的，还要费劲去找问题（不会自动刷新。）</p>
+<p>不如直接用纯的 react 项目</p>
+<h3 id="结合-create-react-app-的-publicindexhtml-和模板文件">结合 create-react-app 的 public/index.html 和模板文件？</h3>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3-vue-%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3-vue-%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/adminlte/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/pusher/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

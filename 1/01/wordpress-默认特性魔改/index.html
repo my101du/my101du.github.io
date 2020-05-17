@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Wordpress 默认特性魔改 permalink: wordpress-change-default-features tags: wordpress “最近发布”大变样 最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件 https://wordpress.org/plugins/recent-posts-widget-extended/#reviews 发现除了可以设置类别范围外" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Wordpress 默认特性魔改 permalink: wordpress-change-default-features tags: wordpress “最近发布”大变样 最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件 https://wordpress.org/plugins/recent-posts-widget-extended/#reviews 发现除了可以设置类别范围外" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Wordpress 默认特性魔改 permalink: wordpress-change-default-features tags: wordpress “最近发布”大变样 最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件 https://wordpress.org/plugins/recent-posts-widget-extended/#reviews 发现除了可以设置类别范围外">
+
+<meta itemprop="wordCount" content="2213">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Wordpress 默认特性魔改 permalink: wordpress-change-default-features tags: wordpress “最近发布”大变样 最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件 https://wordpress.org/plugins/recent-posts-widget-extended/#reviews 发现除了可以设置类别范围外"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2213字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Wordpress 默认特性魔改
+permalink: wordpress-change-default-features
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="最近发布大变样">“最近发布”大变样</h1>
+<p>最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件</p>
+<p><a href="https://wordpress.org/plugins/recent-posts-widget-extended/#reviews">https://wordpress.org/plugins/recent-posts-widget-extended/#reviews</a></p>
+<p><img src="/media/15490412571531/14991323279440.jpg" alt=""></p>
+<p>发现除了可以设置类别范围外，还可以自定样式、使用缩略图等等</p>
+<h1 id="在-recent-posts-区域中让标题使用-meta-data">在 Recent Posts 区域中让标题使用 meta data</h1>
+<pre><code class="language-php">add_filter( 'widget_posts_args', [$this, 'ml_widget_posts_args']);
+
+public function ml_widget_posts_args($args) {
+            if ( is_category() ) { //adds the category parameter in the query if we display a category
+                $cat = get_queried_object();
+                return array(
+                    'posts_per_page' =&gt; 10,//set the number you want here 
+                    'no_found_rows' =&gt; true, 
+                    'post_status' =&gt; 'publish', 
+                    'ignore_sticky_posts' =&gt; true,
+                    'cat' =&gt; $cat -&gt; term_id//the current category id
+                     );
+            }
+            else {//keeps the normal behaviour if we are not in category context
+                return $args;
+            }
+        }
+</code></pre>
+<p>上面只能修改获取的 post 等数据，但还是无法使用 filter 来修改 title</p>
+<p><a href="https://alex.blog/2010/02/02/wordpress-using-filters-with-get_posts/">https://alex.blog/2010/02/02/wordpress-using-filters-with-get_posts/</a>
+<a href="https://codex.wordpress.org/Template_Tags/get_posts">https://codex.wordpress.org/Template_Tags/get_posts</a></p>
+<p><code>get_posts()</code>有个可选参数<code>suppress_filters</code>默认是true，就是不允许使用 filter。</p>
+<p>最终办法，扩展默认的 Widget， 然后在循环里，修改title。把下面代码放到主题文件夹的 <code>functions.php</code>里面</p>
+<pre><code class="language-php">/**
+ * Extend Recent Posts Widget 
+ *
+ * Adds different formatting to the default WordPress Recent Posts Widget
+ */
+
+Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
+
+    function widget($args, $instance) {
+    
+        extract( $args );
+        
+        $title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Posts') : $instance['title'], $instance, $this-&gt;id_base);
+                
+        if( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
+            $number = 10;
+                    
+        $r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' =&gt; $number, 'no_found_rows' =&gt; true, 'post_status' =&gt; 'publish', 'ignore_sticky_posts' =&gt; true ) ) );
+        if( $r-&gt;have_posts() ) :
+            
+            echo $before_widget;
+            if( $title ) echo $before_title . $title . $after_title; ?&gt;
+            &lt;ul&gt;
+                &lt;?php while( $r-&gt;have_posts() ) : $r-&gt;the_post(); ?&gt;    
+                &lt;?php 
+                    $currentLang = $_COOKIE[&quot;country_code&quot;];
+                    $titles = get_post_meta(get_the_ID(), '_ml_meta_titles', true);
+                    $the_title =  isset($titles[$currentLang]) ? $titles[$currentLang] : get_the_title();
+                ?&gt;            
+                &lt;li&gt;&lt;?php //the_time( 'F d'); ?&gt;&lt;a href=&quot;&lt;?php the_permalink(); ?&gt;&quot; title=&quot;&lt;?php the_title(); ?&gt;&quot;&gt;
+                &lt;?php 
+                //the_title(); 
+                echo $the_title;
+                ?&gt;
+                &lt;/a&gt;&lt;/li&gt;
+                &lt;?php endwhile; ?&gt;
+            &lt;/ul&gt;
+             
+            &lt;?php
+            echo $after_widget;
+        
+        wp_reset_postdata();
+        
+        endif;
+    }
+}
+function my_recent_widget_registration() {
+  unregister_widget('WP_Widget_Recent_Posts');
+  register_widget('My_Recent_Posts_Widget');
+}
+add_action('widgets_init', 'my_recent_widget_registration');
+</code></pre>
+<h2 id="同时支持-http-和-https-访问">同时支持 HTTP 和 HTTPS 访问</h2>
+<p>修改 wp-config.php 文件</p>
+<pre><code class="language-php">$leonax_site_url = ($_SERVER[&quot;HTTPS&quot;]?&quot;https://&quot;:&quot;http://&quot;).&quot;leonax.net&quot;;
+define('WP_SITE_URI', $leonax_site_url);
+define('WP_SITEURI', $leonax_site_url);
+define(&quot;WP_CONTENT_URL&quot;, $leonax_site_url . &quot;/wp-content&quot;);
+</code></pre>
+<h1 id="关闭更新提示">关闭更新提示</h1>
+<p>有时候交付给客户的 WP 网站，可能使用了一些定制过的插件，或者有些客户的服务器环境比较旧，不支持一些插件的新版，需要手动关闭升级提示（包括 WP 版本、插件、主题等）</p>
+<p>使用 Easy Updates Manager</p>
+<p><a href="https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/">https://wordpress.org/plugins/stops-core-theme-and-plugin-updates/</a></p>
+<p><img src="/media/15490412571531/15199604046654.jpg" alt=""></p>
+<p><img src="/media/15490412571531/15199601918043.jpg" alt=""></p>
+<h2 id="分别设置">分别设置</h2>
+<h2 id="手动关闭所有更新">手动关闭所有更新</h2>
+<p>添加到主题的 functions.php</p>
+<pre><code class="language-php">/**
+ * 隐藏核心更新提示 WP 3.0+
+ * 来自 http://wordpress.org/plugins/disable-wordpress-core-update/
+ */
+add_filter( 'pre_site_transient_update_core', create_function( '$a', &quot;return null;&quot; ) );
+ 
+/**
+ * 隐藏插件更新提示 WP 3.0+
+ * 来自 http://wordpress.org/plugins/disable-wordpress-plugin-updates/
+ */
+remove_action( 'load-update-core.php', 'wp_update_plugins' );
+add_filter( 'pre_site_transient_update_plugins', create_function( '$b', &quot;return null;&quot; ) );
+ 
+/**
+ * 隐藏主题更新提示 WP 3.0+
+ * 来自 http://wordpress.org/plugins/disable-wordpress-theme-updates/
+ */
+remove_action( 'load-update-core.php', 'wp_update_themes' );
+add_filter( 'pre_site_transient_update_themes', create_function( '$c', &quot;return null;&quot; ) );
+</code></pre>
+<h1 id="不显示标题">不显示标题</h1>
+<p>安装 Title Remover，在编辑文章的时候选中“不显示标题”</p>
+<p>或者使用 The-7 主题的时候，就有不显示标题的选项。</p>
+<h1 id="自定义登录注册页面">自定义登录/注册页面</h1>
+<h2 id="shortcode-根据是否登录显示-登录退出按钮">shortcode 根据是否登录显示 登录/退出按钮</h2>
+<pre><code class="language-php">&lt;?php if (is_user_logged_in()) : ?&gt;
+    &lt;a href=&quot;&lt;?php echo wp_logout_url(get_permalink()); ?&gt;&quot;&gt;Logout&lt;/a&gt;
+&lt;?php else : ?&gt;
+    &lt;a href=&quot;&lt;?php echo wp_login_url(get_permalink()); ?&gt;&quot;&gt;Login&lt;/a&gt;
+&lt;?php endif;?&gt;
+</code></pre>
+<h1 id="弹出式登录注册">弹出式登录、注册</h1>
+<h2 id="ajax-login-and-registration-modal-popup-比较漂亮">AJAX Login and Registration modal popup (比较漂亮)</h2>
+<p>Add necessary class (<code>.lrm-login</code> or <code>.lrm-register</code>) to <!-- raw HTML omitted -->, <!-- raw HTML omitted --> or menu item.</p>
+<p>If you wish to hide Login/Registration link when user is logged in - add class <code>.lrm-hide-if-logged-in</code>.
+If you wish to display any link, like &ldquo;My Cabinet&rdquo; only when user is logged in - add class <code>.lrm-show-if-logged-in</code>.</p>
+<h2 id="zm-ajax-login-register-的-shortcode--页面">zm-ajax-login-register 的 shortcode + 页面</h2>
+<p><a href="https://cn.wordpress.org/plugins/zm-ajax-login-register/">https://cn.wordpress.org/plugins/zm-ajax-login-register/</a></p>
+<p>shortcodes
+[ajax_login], [ajax_register].</p>
+<p><img src="/media/15490412571531/15213444055351.jpg" alt=""></p>
+<p><img src="/media/15490412571531/15213444243646.jpg" alt=""></p>
+<h2 id="插件-simplemodal-login">插件 SimpleModal Login.</h2>
+<p><strong>(很老了，这个好像经常出问题。。。和 jquery 冲突)</strong></p>
+<p>修改设置： “设置”-&gt; SimpleModal Login</p>
+<p><img src="/media/15490412571531/15198840885886.jpg" alt=""></p>
+<p>新的主题可以在这里添加：</p>
+<p>create a new theme you&rsquo;ll need to add two files under the simplemodal-login plugin directory: css/THEME.css and js/THEME.js</p>
+<p>默认会替换掉“管理” widget 的登录、注册。如果要在自定义的位置显示，使用下面的 html 代码</p>
+<p><strong>注意</strong> 该链接上不能有其他 class name, <code>simplemodal-login</code>必须是唯一出现的。</p>
+<pre><code class="language-html">&lt;!--注册--&gt;
+&lt;a class=&quot;simplemodal-register&quot; href=&quot;/wp-login.php?action=register&quot;&gt;注册&lt;/a&gt;
+
+&lt;!--登录--&gt;
+&lt;a class=&quot;simplemodal-login&quot; href=&quot;/wp-login.php&quot;&gt;登录&lt;/a&gt;
+</code></pre>
+<h2 id="woocommerce-login-popup-and-shortcodes">WooCommerce Login Popup and Shortcodes</h2>
+<p>只能显示基本的注册、登录</p>
+<p>with <code>woo-login-popup-sc-open</code> class has been clicked</p>
+<p>Use [woo-login-popup] to automatically display the login and registration box anywhere.</p>
+<p>Did you know that you know that you can target specific type when you are opening the popup using menu link? Simple add any of the following as URL or <strong>HREF</strong> value :</p>
+<pre><code class="language-css">#woo-login-popup-sc-login 
+#woo-login-popup-sc-register 
+#woo-login-popup-sc-password
+</code></pre>
+<pre><code class="language-html">&lt;a class=&quot;woo-login-popup-sc-open&quot; href=&quot;&quot;&gt;login&lt;/a&gt;
+</code></pre>
+<h2 id="使用-popup-maker-插件">使用 popup maker 插件</h2>
+<p><a href="https://www.youtube.com/watch?v=8ZNEZyWdrEU">https://www.youtube.com/watch?v=8ZNEZyWdrEU</a></p>
+<p>自带的 extends 都要钱。。。</p>
+<p>或者用这个 target(先装插件?)  貌似只有 conditions
+<img src="/media/15490412571531/15212084126395.jpg" alt=""></p>
+<p>自己做个页面吧。</p>
+<p><a href="http://justintadlock.com/archives/2011/08/30/adding-a-login-form-to-a-page">http://justintadlock.com/archives/2011/08/30/adding-a-login-form-to-a-page</a>
+<a href="https://codex.wordpress.org/Function_Reference/wp_login_form">https://codex.wordpress.org/Function_Reference/wp_login_form</a></p>
+<p><a href="https://codex.wordpress.org/Customizing_the_Registration_Form">https://codex.wordpress.org/Customizing_the_Registration_Form</a></p>
+<h3 id="或者结合-theme-my-login">或者结合 Theme My Login</h3>
+<h3 id="或者结合wpform-收费">或者结合WPForm （收费）</h3>
+<h2 id="使用-simple-popup-plugin-把普通页面变成-popup-ro-popup-builder--responsive-wordpress-pop-up">使用 Simple Popup Plugin 把普通页面变成 popup (ro Popup Builder – Responsive WordPress Pop up)</h2>
+<p><img src="/media/15490412571531/15213463159846.jpg" alt=""></p>
+<pre><code class="language-html">[popup url=&quot;http://www.popup-url.com&quot;]LINK TEXT[/popup]
+
+[popup url=&quot;http://www.popup-url.com&quot; width=&quot;&quot;]LINK TEXT[/popup]
+</code></pre>
+<p><img src="/media/15490412571531/15213463221718.jpg" alt=""></p>
+<h2 id="其他-modal-windows-插件系列">其他 modal windows 插件系列</h2>
+<p><a href="https://wordpress.org/plugins/tags/modal-window/">https://wordpress.org/plugins/tags/modal-window/</a></p>
+<p><a href="https://www.maketecheasier.com/plugins-add-modal-window-wordpress/">https://www.maketecheasier.com/plugins-add-modal-window-wordpress/</a></p>
+<p>Easy Modal &ndash;&gt; 变成了 popup maker</p>
+<h2 id="没有什么特殊需求直接用系统默认的界面稍微修改样式吧">没有什么特殊需求，直接用系统默认的界面，稍微修改样式吧。</h2>
+<h1 id="自动调用第一张图片作为特色图片">自动调用第一张图片作为“特色图片”</h1>
+<p>有一些插件，但好像已经失效了</p>
+<p>下面的代码可自动将文章中的第一张图片设置为特色图像。如果当前文章中没有图片，但又想显示一张默认的缩略图，可以调用媒体库中某个图片作为默认的缩略图：其中的数字414，是媒体库中某个图片附件的ID号。</p>
+<p>将下面的代码添加到当前主题的functions.php中：</p>
+<pre><code class="language-php">function wpforce_featured() {
+    global $post;
+    $already_has_thumb = has_post_thumbnail($post-&gt;ID);
+    if (!$already_has_thumb)  {
+        $attached_image = get_children( &quot;post_parent=$post-&gt;ID&amp;post_type=attachment&amp;post_mime_type=image&amp;numberposts=1&quot; );
+        if ($attached_image) {
+            foreach ($attached_image as $attachment_id =&gt; $attachment) {
+                set_post_thumbnail($post-&gt;ID, $attachment_id);
+            }
+        } else {
+            set_post_thumbnail($post-&gt;ID, '161');
+        }
+    }
+}  //end function
+add_action('the_post', 'wpforce_featured');
+add_action('save_post', 'wpforce_featured');
+add_action('draft_to_publish', 'wpforce_featured');
+add_action('new_to_publish', 'wpforce_featured');
+add_action('pending_to_publish', 'wpforce_featured');
+add_action('future_to_publish', 'wpforce_featured');
+</code></pre>
+<p>注意，“文章中的第一张图片”是指已经手动添加到媒体库中的，如果是一个外部的链接地址，是不会被调用的（这句<code>$attached_image = get_children( &quot;post_parent=$post-&gt;ID&amp;post_type=attachment&amp;post_mime_type=image&amp;numberposts=1&quot; );</code>）</p>
+<p>并且会把“默认图片”自动添加为 feature image，因此再改动一下，能读取文章 html 内部的 img 标签</p>
+<p>插件实现 Set All First Images As Featured （https://wordpress.org/plugins/set-all-first-images-as-featured/#reviews）</p>
+<p>插件市场搜索找不到了（太老了）直接下载上传。  (经测试 也没用。。。)</p>
+<p><img src="/media/15490412571531/15230673791310.jpg" alt=""></p>
+<p><img src="/media/15490412571531/15230673634060.jpg" alt=""></p>
+<p>或者试试用这个？ Featured Image From URL</p>
+<p>如果你的文章里第一张图片是个外链（或者没有在媒体库里），要批量生成一下。</p>
+<p>（经测试 没反应？）
+插件 Easy Add Thumbnail （https://wordpress.org/plugins/easy-add-thumbnail/）</p>
+<p>这个插件说，如果用户访问一个没有 feature image 的旧文章，会自动生成，但测试刷新后没有反应</p>
+<p>以上都不行，手动生成 <a href="http://ken.ph/first-image-of-wordpress-post-as-thumbnail/">http://ken.ph/first-image-of-wordpress-post-as-thumbnail/</a>  结合 <a href="https://codex.wordpress.org/Function_Reference/wp_insert_attachment">https://codex.wordpress.org/Function_Reference/wp_insert_attachment</a></p>
+<p>继续改造上面的，先把图片复制到 /uploads 目录去，然后读取文章内容，找到第一张图的路径，并插入数据</p>
+<pre><code class="language-php">// $filename should be the path to a file in the upload directory.
+// $filename = '/path/to/uploads/2013/03/filename.jpg';
+$output = preg_match_all('/&lt;img.+src=[\'&quot;]([^\'&quot;]+)[\'&quot;].*&gt;/i', $post-&gt;post_content, $matches);
+$first_img = $matches [1] [0];
+$filename = str_replace('upfile', 'wp-content/uploads', $first_img);
+
+// The ID of the post this attachment is for.
+$parent_post_id = $post-&gt;ID;
+
+// Check the type of file. We'll use this as the 'post_mime_type'.
+$filetype = wp_check_filetype( basename( $filename ), null );
+
+// Get the path to the upload directory.
+$wp_upload_dir = wp_upload_dir();
+
+// Prepare an array of post data for the attachment.
+$attachment = array(
+	'guid'           =&gt; $wp_upload_dir['url'] . '/' . basename( $filename ), 
+	'post_mime_type' =&gt; $filetype['type'],
+	'post_title'     =&gt; preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+	'post_content'   =&gt; '',
+	'post_status'    =&gt; 'inherit'
+);
+
+// Insert the attachment.
+$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+
+// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+// Generate the metadata for the attachment, and update the database record.
+$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+wp_update_attachment_metadata( $attach_id, $attach_data );
+
+set_post_thumbnail( $parent_post_id, $attach_id );
+
+// set_post_thumbnail($post-&gt;ID, '161');
+</code></pre>
+<h2 id="视频取截图">视频取截图</h2>
+<p>Automatic Featured Images from Videos</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/wordpress%E5%AE%89%E5%85%A8/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/wordpress-%E7%9A%84-the7-%E4%B8%BB%E9%A2%98%E6%95%99%E7%A8%8B/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

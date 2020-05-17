@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: HTML页面DOM解析器-PHP Simple HTML DOM Parser permalink: php-simplehtmldom tags:
+ simplehtmldom php   [2018-11-30 放弃 simplehtmldom] 某天突然发现有问题， 例如一个字符串，只能得到第一个字母。 明明昨天还能得到的 child 内容，突然提示为 null(使用最新的包也不行)
+jQuery是一个主要用于网页前端的 javascript 库，能够很方便地让开发者通过选择器方法来查找 HTML 页面元素，例如$(&amp;quot;#container p.test-element&amp;quot;)。
+但有时候我们不得不使用 后端脚本语言 PHP来解析 HTML 页面结构并做进一步的处理（例如将解析出的文本保存到数据库），自己来写的话，代码是非常复杂的，有很多字符串匹配、正则表达式要考虑。
+有没有办法让 PHP 也能用类似 jQuery 的选择器语法呢？
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: HTML页面DOM解析器-PHP Simple HTML DOM Parser
+permalink: php-simplehtmldom
+tags:
+
+simplehtmldom
+php
+
+
+[2018-11-30 放弃 simplehtmldom]
+某天突然发现有问题， 例如一个字符串，只能得到第一个字母。  明明昨天还能得到的 child 内容，突然提示为 null(使用最新的包也不行)
+jQuery是一个主要用于网页前端的 javascript 库，能够很方便地让开发者通过选择器方法来查找 HTML 页面元素，例如$(&quot;#container p.test-element&quot;)。
+但有时候我们不得不使用 后端脚本语言 PHP来解析 HTML 页面结构并做进一步的处理（例如将解析出的文本保存到数据库），自己来写的话，代码是非常复杂的，有很多字符串匹配、正则表达式要考虑。
+有没有办法让 PHP 也能用类似 jQuery 的选择器语法呢？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/html%E9%A1%B5%E9%9D%A2dom%E8%A7%A3%E6%9E%90%E5%99%A8-php-simple-html-dom-parser/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: HTML页面DOM解析器-PHP Simple HTML DOM Parser
+permalink: php-simplehtmldom
+tags:
+
+simplehtmldom
+php
+
+
+[2018-11-30 放弃 simplehtmldom]
+某天突然发现有问题， 例如一个字符串，只能得到第一个字母。  明明昨天还能得到的 child 内容，突然提示为 null(使用最新的包也不行)
+jQuery是一个主要用于网页前端的 javascript 库，能够很方便地让开发者通过选择器方法来查找 HTML 页面元素，例如$(&quot;#container p.test-element&quot;)。
+但有时候我们不得不使用 后端脚本语言 PHP来解析 HTML 页面结构并做进一步的处理（例如将解析出的文本保存到数据库），自己来写的话，代码是非常复杂的，有很多字符串匹配、正则表达式要考虑。
+有没有办法让 PHP 也能用类似 jQuery 的选择器语法呢？">
+
+<meta itemprop="wordCount" content="1812">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: HTML页面DOM解析器-PHP Simple HTML DOM Parser
+permalink: php-simplehtmldom
+tags:
+
+simplehtmldom
+php
+
+
+[2018-11-30 放弃 simplehtmldom]
+某天突然发现有问题， 例如一个字符串，只能得到第一个字母。  明明昨天还能得到的 child 内容，突然提示为 null(使用最新的包也不行)
+jQuery是一个主要用于网页前端的 javascript 库，能够很方便地让开发者通过选择器方法来查找 HTML 页面元素，例如$(&quot;#container p.test-element&quot;)。
+但有时候我们不得不使用 后端脚本语言 PHP来解析 HTML 页面结构并做进一步的处理（例如将解析出的文本保存到数据库），自己来写的话，代码是非常复杂的，有很多字符串匹配、正则表达式要考虑。
+有没有办法让 PHP 也能用类似 jQuery 的选择器语法呢？"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/html%E9%A1%B5%E9%9D%A2dom%E8%A7%A3%E6%9E%90%E5%99%A8-php-simple-html-dom-parser/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/html%E9%A1%B5%E9%9D%A2dom%E8%A7%A3%E6%9E%90%E5%99%A8-php-simple-html-dom-parser/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1812字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: HTML页面DOM解析器-PHP Simple HTML DOM Parser
+permalink: php-simplehtmldom
+tags:</p>
+<ul>
+<li>simplehtmldom</li>
+<li>php</li>
+</ul>
+<hr>
+<p><strong>[2018-11-30 放弃 simplehtmldom]</strong>
+某天突然发现有问题， 例如一个字符串，只能得到第一个字母。  明明昨天还能得到的 child 内容，突然提示为 null(使用最新的包也不行)</p>
+<p><strong>jQuery</strong>是一个主要用于网页<strong>前端</strong>的 javascript 库，能够很方便地让开发者通过选择器方法来查找 HTML 页面元素，例如<code>$(&quot;#container p.test-element&quot;)</code>。</p>
+<p>但有时候我们不得不使用 <strong>后端脚本语言 PHP</strong>来解析 HTML 页面结构并做进一步的处理（例如将解析出的文本保存到数据库），自己来写的话，代码是非常复杂的，有很多字符串匹配、正则表达式要考虑。</p>
+<p>有没有办法让 PHP 也能用类似 jQuery 的选择器语法呢？</p>
+<h1 id="goutte">Goutte</h1>
+<p><a href="https://github.com/FriendsOfPHP/Goutte">https://github.com/FriendsOfPHP/Goutte</a></p>
+<h1 id="httpsxcrawleryanshujucomdocsdemohtml"><a href="https://xcrawler.yanshuju.com/docs/demo.html">https://xcrawler.yanshuju.com/docs/demo.html</a></h1>
+<h1 id="phpquery">phpQuery</h1>
+<h1 id="simplehtmldom">simplehtmldom</h1>
+<p>比较老了</p>
+<h2 id="引入库">引入库</h2>
+<p>从下面的地址下载，只需要 <code>simple_html_dom.php</code> 这个文件就可以了</p>
+<p><a href="https://sourceforge.net/projects/simplehtmldom/files/">https://sourceforge.net/projects/simplehtmldom/files/</a></p>
+<p>创建 <code>test.php</code> 文件，在代码开头把这个文件 include 进来。</p>
+<pre><code class="language-php">include_once('./simple_html_dom.php');
+</code></pre>
+<h1 id="一个最简单的例子获取所有a的href属性值">一个最简单的例子，获取所有<code>a</code>的<code>href</code>属性值</h1>
+<p>引入了 PHP Simple HTML DOM Parser 库后，就可以使用<code>file_get_html</code>或者<code>str_get_html</code>函数，把一个 HTML 页面读取进来创建成一个 DOM 对象（可以是<strong>本地文件</strong>，或者<strong>远程 URL</strong>，或者干脆就是<strong>一段 HTML 代码</strong>）。</p>
+<pre><code class="language-php">// from a URL
+$html = file_get_html(&quot;http://www.baidu.com/&quot;);
+
+// from a local file
+$html_local = file_get_html(&quot;./test.html&quot;);
+
+// from a HTML string
+$html_from_string = str_get_html('&lt;div id=&quot;hello&quot;&gt;Hello&lt;/div&gt;&lt;div class=&quot;world&quot;&gt;World&lt;/div&gt;');
+
+// get all the &quot;a&quot; elements
+foreach($html-&gt;find(&quot;a&quot;) as $element){
+	echo $element-&gt;href . '&lt;br /&gt;';
+}
+</code></pre>
+<p>这个函数看起来有点像<code>file_get_contents()</code>吧？只不过比它要强大多了，返回的是一个可以查找、修改节点的对象。</p>
+<p>得到这个对象后，使用<code>find()</code>函数来得到一个包含了所有<code>a</code>元素对象的数组，然后在循环中，取得每一个<code>a</code>元素对象的<code>href</code>属性。</p>
+<p>除了使用了<code>-&gt;</code>这种 PHP 的成员访问符号外，其他的<code>find</code>，<code>href</code>等关键词，都和 jQuery 非常相似。</p>
+<h1 id="在选择器里带条件以及通过指定数字序号来获取一个单独的元素">在选择器里带“条件”，以及通过指定数字序号来获取一个单独的元素</h1>
+<p>就像 jQuey 可以在选择器里使用条件过滤器一样，也可以在 Simple HTML DOM Parser 里使用。</p>
+<p>由于默认使用<code>find</code>返回的是一个数组（即使满足条件的元素只有一个），如果只需要得到其中的一个元素，可以在<code>find()</code>函数的参数列表中，指定一个数字序号。</p>
+<p>注意，这个数字序号从 0 开始计算，例如：</p>
+<pre><code class="language-php">// only get the id=&quot;hello&quot; div
+$html_from_string = str_get_html('&lt;div id=&quot;hello&quot;&gt;Hello&lt;/div&gt;&lt;div class=&quot;world&quot;&gt;World&lt;/div&gt;');
+
+$foo = $html_from_string-&gt;find(&quot;div[id=hello]&quot;, 0);
+echo $foo-&gt;innertext;
+
+//如果用负数， 表示最后一个元素
+$ret = $html-&gt;find('a', -1); 
+</code></pre>
+<p><strong>注意</strong>这里见到一个新的成员名<code>innertext</code>，注意和 jQuery 的<code>.text()</code>或者原生 js 的 <code>innerText</code> 不一样，更像 jQuery 的<code>html()</code> 方法，得到的是内部的 HTML 字符串。并不是过滤 HTML 标签。</p>
+<h2 id="更多例子可以和-jquery-里面一样使用-classid-的选择器">更多例子：可以和 jQuery 里面一样，使用 Class，ID 的选择器</h2>
+<pre><code class="language-php">// Find all element which id=foo
+$ret = $html-&gt;find('#foo');
+
+// Find all element which class=foo
+$ret = $html-&gt;find('.foo');
+
+// Find all element has attribute id
+$ret = $html-&gt;find('*[id]'); 
+
+// Find all anchors and images 
+$ret = $html-&gt;find('a, img'); 
+
+// Find all anchors and images with the &quot;title&quot; attribute
+$ret = $html-&gt;find('a[title], img[title]');
+
+// Find all &lt;td&gt; in &lt;table&gt; which class=hello 
+$es = $html-&gt;find('table.hello td');
+$es = $html-&gt;find(''table td[align=center]');
+</code></pre>
+<p>支持的选择过滤器</p>
+<ul>
+<li>[attribute]	Matches elements that have the specified attribute.</li>
+<li>[!attribute]	Matches elements that don&rsquo;t have the specified attribute.</li>
+<li>[attribute=value]	Matches elements that have the specified attribute with a certain value.</li>
+<li>[attribute!=value]	Matches elements that don&rsquo;t have the specified attribute with a certain value.</li>
+<li>[attribute^=value]	Matches elements that have the specified attribute and it starts with a certain value.</li>
+<li>[attribute$=value]	Matches elements that have the specified attribute and it ends with a certain value.</li>
+<li>[attribute*=value]	Matches elements that have the specified attribute and it contains a certain value.</li>
+</ul>
+<h1 id="修改-dom-中某个元素的属性值">修改 DOM 中某个元素的属性值</h1>
+<p>除了上面从 HTML 文件“获取”DOM，以及得到内部元素的属性值外，还可以“修改”DOM，例如：</p>
+<pre><code class="language-php">$html_from_string-&gt;find('div', 1)-&gt;class = 'new-class';
+
+echo $html_from_string;
+</code></pre>
+<p>实际上就是给属性重新赋值。</p>
+<p>这时候查看源代码，发现第二个 div 的 class 已经被修改了</p>
+<pre><code class="language-html">&lt;div class=&quot;new-class&quot;&gt;World&lt;/div&gt;
+</code></pre>
+<h1 id="返回不同的字符串处理结果">返回不同的字符串处理结果</h1>
+<p>如果我们想得到 HTML 的<strong>纯字符串</strong>形式（过滤掉所有 HTML 标签，就像 PHP 的函数<code>strip_tags()</code>做的一样），可以使用<code>plaintext</code>属性。</p>
+<p>另外，前面我们已经知道<code>innerhtml</code>是得到 DOM 的内部 HTML（不包含）</p>
+<p>可以在使用<code>file_get_html</code>得到 DOM 对象后，再获取对象的 <code>outertext</code>属性。</p>
+<pre><code class="language-php">echo file_get_html('http://www.baidu.com/')-&gt;outertext;
+</code></pre>
+<p>注意<code>outertext()</code>和<code>innertext()</code>的<strong>区别</strong>主要在于，前者会把 HTML 标签也带上，而后者会去掉首尾的 HTML 标签，只保留中间的内容。</p>
+<p>利用这几个属性，我们可以实现类似 jQuery 的<code>wrap()</code>, <code>unwrap()</code>, <code>append()</code>,  <code>prepend()</code>等:</p>
+<pre><code class="language-php">// Insert a element
+$e-&gt;outertext = '&lt;div&gt;foo&lt;div&gt;' . $e-&gt;outertext;
+</code></pre>
+<h1 id="处理某个元素的内部子元素">处理某个元素的内部<strong>子元素</strong></h1>
+<pre><code class="language-php">// Create DOM from URL
+$html = file_get_html('http://slashdot.org/');
+
+// Find all article blocks
+foreach($html-&gt;find('div.article') as $article) {
+    $item['title']     = $article-&gt;find('div.title', 0)-&gt;plaintext;
+    $item['intro']    = $article-&gt;find('div.intro', 0)-&gt;plaintext;
+    $item['details'] = $article-&gt;find('div.details', 0)-&gt;plaintext;
+    $articles[] = $item;
+}
+
+print_r($articles);
+</code></pre>
+<h1 id="在同级元素之间多层元素之间穿梭">在同级元素之间、多层元素之间穿梭</h1>
+<p>就像 jQuery 的<code>child()</code>，<code>parent()</code>, <code>prev()</code>等。</p>
+<pre><code class="language-php">// Example
+echo $html-&gt;find(&quot;#div1&quot;, 0)-&gt;children(1)-&gt;children(1)-&gt;children(2)-&gt;id;
+// or 
+echo $html-&gt;getElementById(&quot;div1&quot;)-&gt;childNodes(1)-&gt;childNodes(1)-&gt;childNodes(2)-&gt;getAttribute('id');
+</code></pre>
+<p>以及</p>
+<ul>
+<li>mixed$e-&gt;children ( [int $index] )	Returns the Nth child object if index is set, otherwise return an array of children.</li>
+<li>element$e-&gt;parent ()	Returns the parent of element.</li>
+<li>element$e-&gt;first_child ()	Returns the first child of element, or null if not found.</li>
+<li>element$e-&gt;last_child ()	Returns the last child of element, or null if not found.</li>
+<li>element$e-&gt;next_sibling ()	Returns the next sibling of element, or null if not found.</li>
+<li>element$e-&gt;prev_sibling ()	Returns the previous sibling of element, or null if not found.</li>
+</ul>
+<h1 id="把-dom-对象重新变回字符串">把 DOM 对象重新变回字符串</h1>
+<pre><code class="language-php">$str = $html;
+
+// 或者可以用 file_put_contents() 写入本地文件
+echo $html; 
+</code></pre>
+<h1 id="问题">问题</h1>
+<h2 id="file_get_html-读取远程url时提示-stream-does-not-support-seeking">file_get_html 读取远程URL时提示 stream does not support seeking</h2>
+<blockquote>
+<p>Warning: file_get_contents(): stream does not support seeking in &hellip;. simple_html_dom.php on line 76</p>
+</blockquote>
+<p><a href="https://stackoverflow.com/questions/42685814/file-get-contents-stream-does-not-support-seeking-when-was-php-behavior-abo">https://stackoverflow.com/questions/42685814/file-get-contents-stream-does-not-support-seeking-when-was-php-behavior-abo</a></p>
+<p>file_get_conetents 默认不支持远程文件读取。</p>
+<p>可以用别的库（guzzlehttp）下载html到本地再读取</p>
+<p>或者修改 simple_dom_html 的代码，去掉函数最后的那个 offset 参数</p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/html%E9%A1%B5%E9%9D%A2dom%E8%A7%A3%E6%9E%90%E5%99%A8-php-simple-html-dom-parser/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/html%E9%A1%B5%E9%9D%A2dom%E8%A7%A3%E6%9E%90%E5%99%A8-php-simple-html-dom-parser/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/laravel-%E4%BB%A3%E7%A0%81%E7%BB%93%E6%9E%84/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/guzzle%E5%A5%BD%E7%94%A8%E7%9A%84php-http-client/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

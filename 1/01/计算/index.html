@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="计算 经济利润 利润/成本 注意区分题目里问的是“利润”还是“利润率” 前者是一个数字，就是销售价-成本，不需要除以成本。 有损耗的情况，算“赚了多少" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="计算 经济利润 利润/成本 注意区分题目里问的是“利润”还是“利润率” 前者是一个数字，就是销售价-成本，不需要除以成本。 有损耗的情况，算“赚了多少" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E8%AE%A1%E7%AE%97/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="计算 经济利润 利润/成本 注意区分题目里问的是“利润”还是“利润率” 前者是一个数字，就是销售价-成本，不需要除以成本。 有损耗的情况，算“赚了多少">
+
+<meta itemprop="wordCount" content="2152">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="计算 经济利润 利润/成本 注意区分题目里问的是“利润”还是“利润率” 前者是一个数字，就是销售价-成本，不需要除以成本。 有损耗的情况，算“赚了多少"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E8%AE%A1%E7%AE%97/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E8%AE%A1%E7%AE%97/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2152字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>计算</p>
+<h1 id="经济利润">经济利润</h1>
+<h2 id="利润成本">利润/成本</h2>
+<p><strong>注意区分题目里问的是“利润”还是“利润率”</strong> 前者是一个数字，就是销售价-成本，不需要除以成本。</p>
+<p><strong>有损耗的情况，算“赚了多少钱”，要减去损耗的钱</strong></p>
+<blockquote>
+<p>面包成本 4.5 ，售价 10.5 元，前 6 天，每天卖出 200 个， 后4天每天剩下了25个扔掉不再销售，那么这10天赚了多少？</p>
+</blockquote>
+<p>方法1：利润 10.5-4.5=6元, 前6天 200<em>6</em>6， 后4天 175<em>6</em>4，不计损耗的利润 7200+4200=11400， 去掉损耗 25<em>4.5</em>4 = 450元    最后赚了  11400-450 w</p>
+<h1 id="观察哪个数不变相等来设未知数">观察“哪个数不变/相等”，来设未知数</h1>
+<p>某班对人员进行分组。如果每组党员5人，积极分子3人，最后还剩下4个党员；如果每组党员3人，积极分子2人，那么还剩下2个党员&hellip;这样的题</p>
+<ol>
+<li>党员总数 与 积极分子总数 不管怎么分组，都是不变的；</li>
+<li>注意“剩下了几个党员”</li>
+</ol>
+<p>假设第一种分组方式中，分了 x 组， 第二种分了 y 组。
+那么（1）第一种分组方法中党员总数 等于 第二种分组方法中党员总数 （2）第一种分组方法中积极分子总数 也等于 第二种分组方法中积极分子总数</p>
+<p>5x + 3 = 3y + 2 （党员）
+3x =  2y (积极分子)</p>
+<h1 id="有增有减总数问题">有增有减，总数问题</h1>
+<p>鸡蛋有2000个，好的卖1元，损坏扣4元，总共卖了1860元，坏多少个？</p>
+<p>这里如果用 2000 元 - 1860 元，再除以4 就错了， 因为鸡蛋有损坏，不能用一开始 2000 这个总数去 x 1元</p>
+<p>（2000-X）x 1 - 4x = 1860</p>
+<h1 id="分别报名人数求同时报名的">分别报名人数，求同时报名的</h1>
+<p>某班100人(all)，报A 80人  B 70人 C 60 人， 同时报的</p>
+<p>(A + B + C) - 2 x all</p>
+<h1 id="不同专业男女人数已知一个比例求另一个比例比例浓度等等">不同专业男女人数，已知一个比例求另一个比例（比例、浓度等等。。）</h1>
+<p>学校男生 30%， 音乐系男：女 1：3  美术系男：女 2：3  求音乐系：美术系 总人数比例（或下一步问题，男比女多人数）</p>
+<p>典型的十字交叉
+音乐系中，男 25%   美术系中男  40%  (在总数中)全校男占 30%    可以得到 音乐系：美术系   (40-30):(25-30) = 2:1</p>
+<p>方程：（和前面那个分组的一样，只不过这里 1.设变量用了 4x这种变化  2.式子是比例，而不是加减）
+音乐系  4x  美术系 5y   <br>
+（x+2y）/(4x+5y) = 3/10     x:y = 5:2   那么 4x:5y = 20(4x5):10(2x5) = 2:1</p>
+<h1 id="分别以不同的方案去做效率花费等不同求最多能">分别以不同的“方案”去做，效率/花费等不同，求“最”多能。。。。</h1>
+<p><strong>如果条件不足，试试能否从其他给出数据中推出</strong></p>
+<p>有一批植物，包括 2070 朵红花，1800 朵蓝花，要种到 30 个绿化带里去。 每个绿化带都可能采用两种种植方案中的某一种： “甲”是种 80 朵红花 40 朵蓝花；“乙”方案是种 50 朵红花 90朵蓝花。这些绿化带甲方案选择多少个和乙方案选择多少个，才能最大利用这批植物不浪费？</p>
+<p>分析得知：</p>
+<ol>
+<li>选择甲方案的数量和乙方案的数量都不知道，但总和为 30，那么假设甲方分配了 x 个绿化带，乙方案分配 y 个绿化带。 x + y = 30</li>
+<li>不管方案怎么分配，红花蓝花总数已知 2070 和 1800, 但是它们不一定种完了。所以式子里是 &lt;= ,不是 =</li>
+<li>其实和前面“组员问题”差不多，都是把分布在不同方案里的某个元素加起来</li>
+</ol>
+<p>(x ✖️ 80) + (y ✖️ 50) &lt;= 2070
+(x ✖️ 40) + (y ✖️ 90) &lt;= 1800
+x + y = 30</p>
+<p>这时，可以开始计算方程，也可以直接代入结果去验证，看是否有“超过”，如果没有，则对比最后剩下植物的最少的选项</p>
+<h1 id="合作-a和b-工作不一样可能还有其他条件">合作 （A和B 工作不一样，可能还有其他条件）</h1>
+<p>总量 / 每天做多少（效率） =  时间</p>
+<blockquote>
+<p>有一项工程，A队要 300 天完工，收费 1.5万/天；B 队 200 天完工，收费 3 万/天。 为了节省成本，A开工 50 天后，B 一起加入。那么这个工程总共花了多少钱。</p>
+</blockquote>
+<p>这里有很多变量都未知： 1 总的工作量是多少？比如1000包货物（这样才能算出A和B实际分别要多少天） 2. A B 每天能做多少工作<strong>效率</strong>？（比如100包/天， 200包/每天） 3. B加入后，又工作了多多少完成？（）</p>
+<p>因为 1 2 都不知道。 所以 A B 的效率是多少具体数据不重要，只要能体现速度的对比就可以了。
+求的是工程花了多少钱，所以和“天数”更紧密，A B效率-每天的量多少反正是不变的，只要<strong>有一个给定的假设总量就行了</strong></p>
+<p>观察到 3:2 最小公倍数 6，假设工作总量为 600包， A 的效率为 2包/天， B 为 3包/天  (也就是对应 A 要 300天完工，B 要200天)</p>
+<p>A 工作 50天 后，完成了 50 ✖️ 2 = 100包，还剩下 500包。接下来A和B一起工作，用了时间 500/(2+3) = 100 天。</p>
+<p>所以 A 总共工作了 150 天，B 100天. 再算工程共价就可以了。</p>
+<p>可能有很多变化，抓出“效率”，“时间”“工作量”是关键</p>
+<blockquote>
+<p>有个零件加工分三道工序，工作量之比分别是 3:2:4  甲在1小时内做完了一个零件，还做完第二个零件的前两个工序。  已知甲和乙的工作效率比例是 7:9, 那么乙做一个零件要多久？</p>
+</blockquote>
+<p>甲工作效率是  ((3+2+4)+ (3+2))/1小时 = 14/小时,  那么乙就是 18/小时 (7:9 = 14:18)
+由于一个零件的工作量只有 3+2+4 = 9 ， 乙半个小时就做完了</p>
+<h1 id="浓度混合">浓度混合</h1>
+<p>多次混合后的浓度  (溶质1 + 溶质2 + 溶质3)/（溶液1+溶液2+溶液3）</p>
+<p>溶液质量 M1,M2，浓度 c1，c2, 混合后浓度为 c. 则 <code>(M1 * c1) + (M2 * c2) =  (M1 + M2) * c</code></p>
+<p>还适用于“比例”的十字交叉，知道混合前的两个浓度和混合后的浓度。可以得到混合前溶液的比例
+M1 c1   c-c2 <br>
+c            c-c2/c1-c = M1/M2<br>
+M2 c2   c1-c</p>
+<p>混合等量，通常设1</p>
+<h1 id="变量一个在增一个在减">变量一个在增，一个在减</h1>
+<p>牛吃草，水管放水进水。。。</p>
+<p><code>Y= (N-X) * T</code>   N 和 X 分别表示减速、增速，T 表示时间，Y就是当前量。 有两种情况就根据 Y 相同列出两个式子求方程</p>
+<h1 id="两集合-三集合-的个数">两集合 三集合 的个数</h1>
+<p>根据下列公式结合方程：</p>
+<p>（满足条件1 + 满足条件2）- 都满足 = （总数 - 都不满足的）</p>
+<p>（满足条件1 + 满足条件2 + 满足条件3） = 只满足一个条件 + （2 * 满足两个条件） + （3 * 满足三个条件）
+至少满足一个条件 = 只满足一个条件 + 恰好满足两个条件 + 恰好满足三个条件</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E8%AE%A1%E7%AE%97/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E8%AE%A1%E7%AE%97/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E9%80%BB%E8%BE%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

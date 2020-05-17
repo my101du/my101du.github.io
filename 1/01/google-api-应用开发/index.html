@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Google API 应用开发 permalink: google-api-applications-develop tags: other 可用的 API 包括调用 Google 的各种服务 https://console.developers.google.com/apis/library 注册 Application OAuth 认证得到 access_token 创建完应用后，与 Google API 的链接和通信都需要通过 OAuth 认证。 申请 OAuth Client ID 基本概念（" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Google API 应用开发 permalink: google-api-applications-develop tags: other 可用的 API 包括调用 Google 的各种服务 https://console.developers.google.com/apis/library 注册 Application OAuth 认证得到 access_token 创建完应用后，与 Google API 的链接和通信都需要通过 OAuth 认证。 申请 OAuth Client ID 基本概念（" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/google-api-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Google API 应用开发 permalink: google-api-applications-develop tags: other 可用的 API 包括调用 Google 的各种服务 https://console.developers.google.com/apis/library 注册 Application OAuth 认证得到 access_token 创建完应用后，与 Google API 的链接和通信都需要通过 OAuth 认证。 申请 OAuth Client ID 基本概念（">
+
+<meta itemprop="wordCount" content="1364">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Google API 应用开发 permalink: google-api-applications-develop tags: other 可用的 API 包括调用 Google 的各种服务 https://console.developers.google.com/apis/library 注册 Application OAuth 认证得到 access_token 创建完应用后，与 Google API 的链接和通信都需要通过 OAuth 认证。 申请 OAuth Client ID 基本概念（"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/google-api-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/google-api-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1364字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Google API 应用开发
+permalink: google-api-applications-develop
+tags:</p>
+<ul>
+<li>other</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="可用的-api">可用的 API</h1>
+<p>包括调用 Google 的各种服务</p>
+<p><a href="https://console.developers.google.com/apis/library">https://console.developers.google.com/apis/library</a></p>
+<h1 id="注册-application">注册 Application</h1>
+<h1 id="oauth-认证得到-access_token">OAuth 认证得到 access_token</h1>
+<p>创建完应用后，与 Google API 的链接和通信都需要通过 OAuth 认证。</p>
+<h2 id="申请-oauth-client-id">申请 OAuth Client ID</h2>
+<p><img src="/media/15490412833081/15160810877331.jpg" alt=""></p>
+<p><img src="/media/15490412833081/15160811740638.jpg" alt=""></p>
+<p><img src="/media/15490412833081/15160811983798.jpg" alt=""></p>
+<p><img src="/media/15490412833081/15160812361836.jpg" alt=""></p>
+<h2 id="基本概念webjavascriptapp等">基本概念（web/javascript/app等）</h2>
+<p><a href="https://developers.google.com/identity/protocols/OAuth2">https://developers.google.com/identity/protocols/OAuth2</a></p>
+<p>有几种类型的“客户端”</p>
+<ol>
+<li>webserver （web 应用，一般是带后端服务器的）</li>
+<li>Installed applications（应用程序）</li>
+<li>client-side application (一般指 javascript 程序，在浏览器端运行的)</li>
+<li>limited-input devices（游戏机等输入设备）</li>
+</ol>
+<p>对应
+<a href="https://developers.google.com/identity/protocols/OAuth2WebServer">https://developers.google.com/identity/protocols/OAuth2WebServer</a>
+<a href="https://developers.google.com/identity/protocols/OAuth2InstalledApp">https://developers.google.com/identity/protocols/OAuth2InstalledApp</a>
+<a href="https://developers.google.com/identity/protocols/OAuth2InstalledApp">https://developers.google.com/identity/protocols/OAuth2InstalledApp</a></p>
+<h2 id="scopes">Scopes</h2>
+<p>对 API “访问范围”进行划分，例如 Driver 的，Firebase 的，Cloud 服务, Google Plus 相关。。。</p>
+<p><a href="https://developers.google.com/identity/protocols/googlescopes">https://developers.google.com/identity/protocols/googlescopes</a></p>
+<h2 id="php-client-library-例子">PHP client library 例子</h2>
+<p>在该页面底部有 Java/php/python/javascript/mac/iOS 等的 Client libraries</p>
+<p><a href="https://developers.google.com/identity/protocols/OAuth2">https://developers.google.com/identity/protocols/OAuth2</a></p>
+<p><a href="https://developers.google.com/api-client-library/php/">https://developers.google.com/api-client-library/php/</a></p>
+<p><a href="https://developers.google.com/api-client-library/php/auth/web-app">https://developers.google.com/api-client-library/php/auth/web-app</a></p>
+<p>下载引入 <a href="https://github.com/google/google-api-php-client">https://github.com/google/google-api-php-client</a></p>
+<pre><code class="language-php">&quot;require&quot;: {
+  &quot;google/apiclient&quot;: &quot;^2.0&quot;
+}
+</code></pre>
+<p>如果是用 Oauth2 验证方式，google返回类似下面的信息（json）</p>
+<pre><code>{
+  &quot;access_token&quot;:&quot;1/fFAGRNJru1FTz70BzhT3Zg&quot;,
+  &quot;expires_in&quot;:3920,
+  &quot;token_type&quot;:&quot;Bearer&quot;,
+  &quot;refresh_token&quot;:&quot;1/xEoDL4iW3cxlI7yDbSRFYNG01kVKM2C-259HOF2aQbI&quot;
+}
+</code></pre>
+<p>使用</p>
+<p>Build the client object</p>
+<pre><code class="language-php">$client = new Google_Client();
+$client-&gt;setApplicationName(&quot;My Application&quot;);
+$client-&gt;setDeveloperKey(&quot;MY_SIMPLE_API_KEY&quot;);
+</code></pre>
+<p>Build the service object</p>
+<pre><code class="language-php">$service = new Google_Service_Books($client);
+</code></pre>
+<p>Calling an API</p>
+<pre><code class="language-php">//使用链式访问
+$service-&gt;resource-&gt;method(args)
+
+//例如
+$optParams = array('filter' =&gt; 'free-ebooks');
+$results = $service-&gt;volumes-&gt;listVolumes('Henry David Thoreau', $optParams);
+</code></pre>
+<p>Handling the result</p>
+<pre><code class="language-php">foreach ($results as $item) {
+  echo $item['volumeInfo']['title'], &quot;&lt;br /&gt; \n&quot;;
+}
+</code></pre>
+<h2 id="javascript-以-httprest-方式-不需要安装-library">Javascript 以 HTTP/REST 方式 (不需要安装 library)</h2>
+<p>Google&rsquo;s OAuth 2.0 endpoint is at <code>https://accounts.google.com/o/oauth2/v2/auth</code></p>
+<p>需要提交 <code>client_id</code>, <code>redirect_uri</code>，<code>scope</code>, <code>access_type</code>等参数</p>
+<p>请求组成如下，将用户重定向过去</p>
+<pre><code class="language-http">https://accounts.google.com/o/oauth2/v2/auth?
+ scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.metadata.readonly&amp;
+ access_type=offline&amp;
+ include_granted_scopes=true&amp;
+ state=state_parameter_passthrough_value&amp;
+ redirect_uri=http%3A%2F%2Foauth2.example.com%2Fcallback&amp;
+ response_type=code&amp;
+ client_id=client_id
+</code></pre>
+<p>sample code</p>
+<pre><code class="language-js">/*
+ * Create form to request access token from Google's OAuth 2.0 server.
+ */
+function oauthSignIn() {
+  // Google's OAuth 2.0 endpoint for requesting an access token
+  var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+  // Create &lt;form&gt; element to submit parameters to OAuth 2.0 endpoint.
+  var form = document.createElement('form');
+  form.setAttribute('method', 'GET'); // Send as a GET request.
+  form.setAttribute('action', oauth2Endpoint);
+
+  // Parameters to pass to OAuth 2.0 endpoint.
+  var params = {'client_id': 'YOUR_CLIENT_ID',
+                'redirect_uri': 'YOUR_REDIRECT_URI',
+                'response_type': 'token',
+                'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                'include_granted_scopes': 'true',
+                'state': 'pass-through value'});
+
+  // Add form parameters as hidden input values.
+  for (var p in params) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', p);
+    input.setAttribute('value', params[p]);
+    form.appendChild(input);
+  }
+
+  // Add form to page and submit it to open the OAuth 2.0 endpoint.
+  document.body.appendChild(form);
+  form.submit();
+}
+</code></pre>
+<p>会弹出向用户访问权限请求的窗口</p>
+<p>用户点击允许/拒绝，OAuth2 服务器重定向到你的<code>redirect_uri</code>。附带的参数可能是 error 或 access_token</p>
+<pre><code class="language-html"># allow
+https://oauth2.example.com/callback#access_token=4/P7q7W91&amp;token_type=Bearer&amp;expires_in=3600
+
+# refuse
+https://oauth2.example.com/callback#error=access_denied
+</code></pre>
+<p>验证下 <a href="https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=">https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=</a>&lt;access_token&gt;</p>
+<p>返回类似</p>
+<pre><code class="language-json">{
+  &quot;aud&quot;:&quot;8819981768.apps.googleusercontent.com&quot;,
+  &quot;user_id&quot;:&quot;123456789&quot;,
+  &quot;scope&quot;:&quot;https://www.googleapis.com/auth/drive.metadata.readonly&quot;,
+  &quot;expires_in&quot;:436
+}
+</code></pre>
+<p>或</p>
+<pre><code class="language-json">{&quot;error&quot;:&quot;invalid_token&quot;}
+
+</code></pre>
+<p>解析并检查，查看本地 access_token 是否无效；有效的话保存到 localStorage</p>
+<p>（特别是使用<code>location.hash.substring</code>处理 # 后面的参数）</p>
+<pre><code class="language-js">var queryString = location.hash.substring(1);
+
+// Parse the query string to extract access token and other parameters.
+// This code is useful if you set a value for the 'state' parameter when
+// redirecting the user to the OAuth 2.0 server, but otherwise isn't needed.
+var params = {};
+var regex = /([^&amp;=]+)=([^&amp;]*)/g, m;
+while (m = regex.exec(queryString)) {
+  params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+  // Try to exchange the param values for an access token.
+  exchangeOAuth2Token(params);
+}
+
+/* Validate the access token received on the query string. */
+function exchangeOAuth2Token(params) {
+  var oauth2Endpoint = 'https://www.googleapis.com/oauth2/v3/tokeninfo';
+  if (params['access_token']) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', oauth2Endpoint + '?access_token=' + params['access_token']);
+    xhr.onreadystatechange = function (e) {
+      var response = JSON.parse(xhr.response);
+      // Verify that the 'aud' property in the response matches YOUR_CLIENT_ID.
+      if (xhr.readyState == 4 &amp;&amp;
+          xhr.status == 200 &amp;&amp;
+          response['aud'] &amp;&amp;
+          response['aud'] == YOUR_CLIENT_ID) {
+        localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
+      } else if (xhr.readyState == 4) {
+        console.log('There was an error processing the token, another ' +
+                    'response was returned, or the token was invalid.')
+      }
+    };
+    xhr.send(null);
+  }
+}
+</code></pre>
+<p>开始调用 API</p>
+<p>GET <a href="https://www.googleapis.com/drive/v2/files?access_token=">https://www.googleapis.com/drive/v2/files?access_token=</a>&lt;access_token&gt;</p>
+<p>范例</p>
+<pre><code class="language-js">var xhr = new XMLHttpRequest();
+xhr.open('GET',
+    'https://www.googleapis.com/drive/v3/about?fields=user&amp;' +
+    'access_token=' + params['access_token']);
+xhr.onreadystatechange = function (e) {
+  console.log(xhr.response);
+};
+xhr.send(null);
+</code></pre>
+<h3 id="完整案例">完整案例</h3>
+<pre><code class="language-js">var YOUR_CLIENT_ID = 'REPLACE_THIS_VALUE';
+  var YOUR_REDIRECT_URI = 'REPLACE_THIS_VALUE';
+  var queryString = location.hash.substring(1);
+
+  // Parse query string to see if page request is coming from OAuth 2.0 server.
+  var params = {};
+  var regex = /([^&amp;=]+)=([^&amp;]*)/g, m;
+  while (m = regex.exec(queryString)) {
+    params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    // Try to exchange the param values for an access token.
+    exchangeOAuth2Token(params);
+  }
+
+  // If there's an access token, try an API request.
+  // Otherwise, start OAuth 2.0 flow.
+  function trySampleRequest() {
+    var params = JSON.parse(localStorage.getItem('oauth2-test-params'));
+    if (params &amp;&amp; params['access_token']) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET',
+          'https://www.googleapis.com/drive/v3/about?fields=user&amp;' +
+          'access_token=' + params['access_token']);
+      xhr.onreadystatechange = function (e) {
+        console.log(xhr.response);
+      };
+      xhr.send(null);
+    } else {
+      oauth2SignIn();
+    }
+  }
+
+  /*
+   * Create form to request access token from Google's OAuth 2.0 server.
+   */
+  function oauth2SignIn() {
+    // Google's OAuth 2.0 endpoint for requesting an access token
+    var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+
+    // Create element to open OAuth 2.0 endpoint in new window.
+    var form = document.createElement('form');
+    form.setAttribute('method', 'GET'); // Send as a GET request.
+    form.setAttribute('action', oauth2Endpoint);
+
+    // Parameters to pass to OAuth 2.0 endpoint.
+    var params = {'client_id': YOUR_CLIENT_ID,
+                  'redirect_uri': YOUR_REDIRECT_URI,
+                  'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                  'state': 'try_sample_request',
+                  'include_granted_scopes': 'true',
+                  'response_type': 'token'};
+
+    // Add form parameters as hidden input values.
+    for (var p in params) {
+      var input = document.createElement('input');
+      input.setAttribute('type', 'hidden');
+      input.setAttribute('name', p);
+      input.setAttribute('value', params[p]);
+      form.appendChild(input);
+    }
+
+    // Add form to page and submit it to open the OAuth 2.0 endpoint.
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  /* Verify the access token received on the query string. */
+  function exchangeOAuth2Token(params) {
+    var oauth2Endpoint = 'https://www.googleapis.com/oauth2/v3/tokeninfo';
+    if (params['access_token']) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', oauth2Endpoint + '?access_token=' + params['access_token']);
+      xhr.onreadystatechange = function (e) {
+        var response = JSON.parse(xhr.response);
+        // When request is finished, verify that the 'aud' property in the
+        // response matches YOUR_CLIENT_ID.
+        if (xhr.readyState == 4 &amp;&amp;
+            xhr.status == 200 &amp;&amp;
+            response['aud'] &amp;&amp;
+            response['aud'] == YOUR_CLIENT_ID) {
+          // Store granted scopes in local storage to facilitate
+          // incremental authorization.
+          params['scope'] = response['scope'];
+          localStorage.setItem('oauth2-test-params', JSON.stringify(params) );
+          if (params['state'] == 'try_sample_request') {
+            trySampleRequest();
+          }
+        } else if (xhr.readyState == 4) {
+          console.log('There was an error processing the token, another ' +
+                      'response was returned, or the token was invalid.')
+        }
+      };
+      xhr.send(null);
+    }
+  }
+</code></pre>
+<h3 id="incremental-authorization">Incremental authorization</h3>
+<h3 id="revoke-token">Revoke Token</h3>
+<h1 id="更新-access_token">更新 access_token</h1>
+<h1 id="使用-access_token-调用-apis">使用 access_token 调用 apis</h1>
+<p>类似下面的请求</p>
+<pre><code class="language-http">GET /drive/v2/files HTTP/1.1
+Authorization: Bearer &lt;access_token&gt;
+Host: www.googleapis.com/
+</code></pre>
+<p>或者 query string 的方式<code>GET https://www.googleapis.com/drive/v2/files?access_token=&lt;access_token&gt;</code></p>
+<h1 id="playground-工具在线测试-api">playground 工具（在线测试 API）</h1>
+<p><a href="https://developers.google.com/oauthplayground/">https://developers.google.com/oauthplayground/</a></p>
+<p>找到 picasa web album v2</p>
+<h1 id="picasa-web-albums-data-api-案例">Picasa Web Albums Data API 案例</h1>
+<p><a href="https://developers.google.com/picasa-web/docs/3.0/developers_guide_protocol">https://developers.google.com/picasa-web/docs/3.0/developers_guide_protocol</a></p>
+<p>scope 是这个（在前面的 <a href="https://developers.google.com/identity/protocols/googlescopes">https://developers.google.com/identity/protocols/googlescopes</a> 查不到了，估计要下线了？）</p>
+<p><a href="https://picasaweb.google.com/data/">https://picasaweb.google.com/data/</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/google-api-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/google-api-%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/sl/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/go/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

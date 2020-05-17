@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: typescript permalink: typescript tags: frontend js 是一种“弱语言”（脚本），对变量的类型检查不严格。 class Student{ fullName: string; constructor(public firstName,public middleInitial, public lastName){ this.fullName = firstName &#43; &amp;quot; &amp;quot; &#43; middleInitial &#43; &amp;quot; &amp;quot; &#43; lastName; } } interface Person { firstName: string; lastName: string; } function greeter(person: Person){ return &amp;quot;Hello&amp;quot; &#43;" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: typescript permalink: typescript tags: frontend js 是一种“弱语言”（脚本），对变量的类型检查不严格。 class Student{ fullName: string; constructor(public firstName,public middleInitial, public lastName){ this.fullName = firstName &#43; &quot; &quot; &#43; middleInitial &#43; &quot; &quot; &#43; lastName; } } interface Person { firstName: string; lastName: string; } function greeter(person: Person){ return &quot;Hello&quot; &#43;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/typescript/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: typescript permalink: typescript tags: frontend js 是一种“弱语言”（脚本），对变量的类型检查不严格。 class Student{ fullName: string; constructor(public firstName,public middleInitial, public lastName){ this.fullName = firstName &#43; &quot; &quot; &#43; middleInitial &#43; &quot; &quot; &#43; lastName; } } interface Person { firstName: string; lastName: string; } function greeter(person: Person){ return &quot;Hello&quot; &#43;">
+
+<meta itemprop="wordCount" content="1093">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: typescript permalink: typescript tags: frontend js 是一种“弱语言”（脚本），对变量的类型检查不严格。 class Student{ fullName: string; constructor(public firstName,public middleInitial, public lastName){ this.fullName = firstName &#43; &quot; &quot; &#43; middleInitial &#43; &quot; &quot; &#43; lastName; } } interface Person { firstName: string; lastName: string; } function greeter(person: Person){ return &quot;Hello&quot; &#43;"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/typescript/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/typescript/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1093字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: typescript
+permalink: typescript
+tags:</p>
+<ul>
+<li>frontend</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>js 是一种“弱语言”（脚本），对变量的类型检查不严格。</p>
+<pre><code class="language-ts">class Student{
+	fullName: string;
+	
+	constructor(public firstName,public middleInitial, public lastName){
+	  this.fullName = firstName + &quot; &quot; + middleInitial + &quot; &quot; + lastName;
+	}
+}
+
+interface Person {
+  firstName: string;
+  lastName: string;
+ }
+
+ function greeter(person: Person){
+  return &quot;Hello&quot; + person.firstName +  &quot; &quot; + person.lastName;
+  }
+
+  var user = {firstName: &quot;jane&quot;, lastName: &quot;User&quot;};
+  document.body.innerHTML = greeter(user);
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">tsc greeter.ts
+</code></pre>
+<p>得到<code>greeter.js</code>文件，可以看到 <code>class Student</code>语法被编译成<code>js</code>的<code>function</code>形式。</p>
+<pre><code class="language-js">var Student = (function () {
+    function Student(firstName, middleInitial, lastName) {
+        this.firstName = firstName;
+        this.middleInitial = middleInitial;
+        this.lastName = lastName;
+        this.fullName = firstName + &quot; &quot; + middleInitial + &quot; &quot; + lastName;
+    }
+    return Student;
+}());
+function greeter(person) {
+    return &quot;Hello&quot; + person.firstName + &quot; &quot; + person.lastName;
+}
+var user = { firstName: &quot;jane&quot;, lastName: &quot;User&quot; };
+document.body.innerHTML = greeter(user);
+</code></pre>
+<h1 id="对比-flow">对比 Flow</h1>
+<h1 id="在-react-项目中启用-typescript">在 React 项目中启用 TypeScript</h1>
+<p>webpack 帮助代码打包（可选将所有依赖都放入到一个 js 文件）</p>
+<p>declaration files： @types/react @types/react-dom ，通常我们 import 如 react,会自动在 react 包里面找，但是不是所有包都包含了 declaration files, 所以 TypeScript 还会在 @types/react 里面查找（以后不需要考虑这个）</p>
+<p>安装 typescript 到“开发时”依赖（&ndash;save-dev）
+<code>awesome-typescript-loader</code> 读取 TypeScript 标准配置文件 tsconfig.json ，让 webpack 编译 TypeScript 代码；（或者使用 <code>ts-loader</code> <a href="https://github.com/s-panferov/awesome-typescript-loader#differences-between-ts-loader">https://github.com/s-panferov/awesome-typescript-loader#differences-between-ts-loader</a>）
+<code>source-map-loader</code>待查（与 sourcemap 和 debug 有关）</p>
+<p>这里把 typescript 安装为 dev 依赖，也可以使用<code>npm link typescript</code>来链接到全局的 typescript</p>
+<pre><code class="language-shell"># Global install the webpack
+npm install -g webpack
+
+# Go to the project path
+cd ~/projects/test
+
+# Install the react library
+npm install --save react react-dom @types/react @types/react-dom
+
+# Install the typescript
+npm install --save-dev typescript awesome-typescript-loader source-map-loader
+
+</code></pre>
+<h2 id="配置文件">配置文件</h2>
+<p><code>tsconfig.json</code>文件包括了所有输入文件和配置参数</p>
+<pre><code class="language-json">{
+    &quot;compilerOptions&quot;: {
+        &quot;outDir&quot;: &quot;./dist/&quot;,
+        &quot;sourceMap&quot;: true,
+        &quot;noImplicitAny&quot;: true,
+        &quot;module&quot;: &quot;commonjs&quot;,
+        &quot;target&quot;: &quot;es5&quot;,
+        &quot;jsx&quot;: &quot;react&quot;
+    },
+    &quot;include&quot;: [
+        &quot;./src/**/*&quot;
+    ]
+}
+</code></pre>
+<p>更多内容：https://www.typescriptlang.org/docs/tsconfig-json.html</p>
+<h2 id="创建-react-组件">创建 React 组件</h2>
+<p>新建文件 <code>src/componets/Hello.tsx</code> (注意，<strong>tsx</strong> 不是 js 或 jsx)</p>
+<p>这是一个<strong>无状态“函数式”组件</strong></p>
+<pre><code class="language-javascript">import * as React from &quot;react&quot;;
+
+export interface HelloProps { compiler: string; framework: string; }
+
+export const Hello = (props: HelloProps) =&gt; &lt;h1&gt;Hello from {props.compiler} and {props.framework}!&lt;/h1&gt;;
+</code></pre>
+<p>当然可以换成“类”的样子</p>
+<pre><code class="language-javascript">import * as React from &quot;react&quot;;
+
+export interface HelloProps { compiler: string; framework: string; }
+
+// 'HelloProps' describes the shape of props.
+// State is never set so we use the '{}' type.
+export class Hello extends React.Component&lt;HelloProps, {}&gt; {
+    render() {
+        return &lt;h1&gt;Hello from {this.props.compiler} and {this.props.framework}!&lt;/h1&gt;;
+    }
+}
+</code></pre>
+<p>好了 现在在一个页面 index.tsx 里来使用 Hello.tsx 组件。 注意传入的 props (compiler 和 framework)</p>
+<pre><code class="language-js">import * as React from &quot;react&quot;;
+import * as ReactDOM from &quot;react-dom&quot;;
+
+import { Hello } from &quot;./components/Hello&quot;;
+
+ReactDOM.render(
+    &lt;Hello compiler=&quot;TypeScript&quot; framework=&quot;React&quot; /&gt;,
+    document.getElementById(&quot;example&quot;)
+);
+</code></pre>
+<h2 id="创建一个-webpack-配置文件-webpackconfigjs">创建一个 webpack 配置文件 webpack.config.js</h2>
+<pre><code class="language-json">module.exports = {
+    entry: &quot;./src/index.tsx&quot;,
+    output: {
+        filename: &quot;bundle.js&quot;,
+        path: __dirname + &quot;/dist&quot;
+    },
+
+    // Enable sourcemaps for debugging webpack's output.
+    devtool: &quot;source-map&quot;,
+
+    resolve: {
+        // Add '.ts' and '.tsx' as resolvable extensions.
+        extensions: [&quot;.ts&quot;, &quot;.tsx&quot;, &quot;.js&quot;, &quot;.json&quot;]
+    },
+
+    module: {
+        rules: [
+            // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+            { test: /\.tsx?$/, loader: &quot;awesome-typescript-loader&quot; },
+
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            { enforce: &quot;pre&quot;, test: /\.js$/, loader: &quot;source-map-loader&quot; }
+        ]
+    },
+
+    // When importing a module whose path matches one of the following, just
+    // assume a corresponding global variable exists and use that instead.
+    // This is important because it allows us to avoid bundling all of our
+    // dependencies, which allows browsers to cache those libraries between builds.
+    externals: {
+        &quot;react&quot;: &quot;React&quot;,
+        &quot;react-dom&quot;: &quot;ReactDOM&quot;
+    }
+};
+</code></pre>
+<p>注意看 <code>externals</code> ，不需要把这两个依赖打包到 bundle 文件，这会增加编译时间，并且浏览器也不会缓存这两个文件（因为它们是不会经常变化的）</p>
+<p>新建一个 index.html 把文件引入</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        &lt;title&gt;Hello React!&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
+
+        &lt;!-- Dependencies --&gt;
+        &lt;script src=&quot;./node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;
+
+        &lt;!-- Main --&gt;
+        &lt;script src=&quot;./dist/bundle.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>开始</p>
+<pre><code class="language-shell">webpack
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://www.typescriptlang.org/docs/handbook/react-&amp;-webpack.html">https://www.typescriptlang.org/docs/handbook/react-&amp;-webpack.html</a></p>
+<p><a href="https://blog.csdn.net/hsany330/article/details/53097038">https://blog.csdn.net/hsany330/article/details/53097038</a></p>
+<p><a href="https://juejin.im/post/5b07caf16fb9a07aa83f2977">https://juejin.im/post/5b07caf16fb9a07aa83f2977</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/typescript/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/typescript/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/jquery-basic/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/javascript%E9%9A%BE%E7%82%B9%E8%AE%B0%E5%BD%95/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

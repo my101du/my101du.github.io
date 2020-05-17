@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: web服务器性能优化 permalink: web-server-performance-optimize tags:
+ web server  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: web服务器性能优化
+permalink: web-server-performance-optimize
+tags:
+
+web server
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: web服务器性能优化
+permalink: web-server-performance-optimize
+tags:
+
+web server
+
+">
+
+<meta itemprop="wordCount" content="2713">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: web服务器性能优化
+permalink: web-server-performance-optimize
+tags:
+
+web server
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2713字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: web服务器性能优化
+permalink: web-server-performance-optimize
+tags:</p>
+<ul>
+<li>web server</li>
+</ul>
+<hr>
+<h1 id="nginx-的优化">Nginx 的优化</h1>
+<h2 id="配置nginx阻止cc攻击的ip">配置nginx阻止cc攻击的ip</h2>
+<p>通过分析nginx的access日志看到，该攻击的访问没有 user-agent ，通过配置nginx</p>
+<pre><code class="language-shell">if ($http_x_forwarded_for ~ 223.4.121.225)  
+{  
+      return 403;  
+}  
+if ( $http_user_agent = &quot;&quot; )  
+{  
+    return 403;  
+} 
+</code></pre>
+<p>将ip为223.4.121.225 这个攻击源的和user-agent  为空的，全部干掉，重启nginx，拦截成功。</p>
+<h2 id="nginx使用-limit_reqlimit_conn限制并发">Nginx使用 limit_req,limit_conn限制并发</h2>
+<pre><code class="language-shell">geo $whiteiplist  {
+    default 1;
+    127.0.0.1 0; #白名单: 127.0.0.1
+    172.16.0.0/16 0; #白名单 172.16.0.0 ~ 172.16.255.255
+    192.168.0.0/24 0; #白名单 192.168.0.0 ~ 192.168.0.255
+    include limit/whiteip.conf;#以上ip也可以写在include的文件中
+}
+map $whiteiplist  $limit {
+    1 $binary_remote_addr;
+    0 &quot;&quot;;
+}
+limit_req_zone $limit zone=perreq:10m rate=8r/s; #除了白名单外的IP每秒最多处理 8 个请求
+limit_conn_zone $limit zone=perip:10m;
+在location ~ .*\.(php|php5)?$ { ... }段中加入:
+
+limit_conn perip 8; # 限制除了白名单外的IP,每个IP最大并发为8
+limit_req zone=perreq nodelay;
+</code></pre>
+<p>要注意的是这个方法会影响搜索引擎爬虫正常工作,所以要将搜索引擎的IP加入白名单中（搜索）</p>
+<p><strong>limit_req,limit_conn详解</strong></p>
+<pre><code class="language-shell">http{
+    ...
+    #定义一个名为allips的limit_req_zone用来存储session，大小是10M内存，
+    #以$binary_remote_addr 为key,限制平均每秒的请求为20个，
+    #1M能存储16000个状态，rete的值必须为整数，
+    #如果限制两秒钟一个请求，可以设置成30r/m,即为每分钟30个请求的意思
+    limit_req_zone $binary_remote_addr zone=allips:10m rate=20r/s;
+    ...
+    server{
+        ...
+        location {
+            ...
+            #限制每ip每秒不超过20个请求，漏桶数burst为5
+            #brust的意思就是，如果第1秒、2,3,4秒请求为19个，
+            #第5秒的请求为25个是被允许的。
+            #但是如果你第1秒就25个请求，第2秒超过20的请求返回503错误。
+            #nodelay，如果不设置该选项，严格使用平均速率限制请求数，
+            #第1秒25个请求时，5个请求放到第2秒执行，
+            #设置nodelay，25个请求将在第1秒执行。
+            limit_req zone=allips burst=5 nodelay;
+            ...
+        }
+        ...
+    }
+...}
+http{
+ ...
+ #定义一个名为one的limit_zone,大小10M内存来存储session，
+ #以$binary_remote_addr 为key
+ #nginx 1.18以后用limit_conn_zone替换了limit_conn
+ #且只能放在http作用域
+ limit_conn_zone one $binary_remote_addr 10m; 
+ ...
+ server{
+ ...
+ location {
+ ...
+ limit_conn one 20; #连接数限制
+ #带宽限制,对单个连接限数，如果一个ip两个连接，就是500x2k
+ limit_rate 500k; 
+ ...
+ }
+ ...
+ }
+ ...
+}
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://gist.github.com/denji/8359866">https://gist.github.com/denji/8359866</a></p>
+<h1 id="php-相关配置与优化">PHP 相关配置与优化</h1>
+<h2 id="解决-php-无法写入-session-的问题">解决 php 无法写入 session 的问题</h2>
+<p>php安装完成之后，需要设置一下php session的目录，并注意修改目录权限为你的web目录用户权限</p>
+<pre><code class="language-shell">sudo mkdir /var/lib/php/session/
+sudo chown -R apache:apache /var/lib/php/session/
+</code></pre>
+<h2 id="配置-phpini">配置 php.ini</h2>
+<pre><code class="language-shell">#设置默认时区
+date.timezone = PRC
+
+#禁用函数列表，如果需要再删除
+disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space
+
+#设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，或者直接写上程序/data/www.111cn.net/:/tmp/
+open_basedir = .:/tmp/ 
+
+#关闭错误报告在前台页面显示
+display_errors = OFF
+
+# 设置 cgi.fix_pathinfo
+cgi.fix_pathinfo=0
+</code></pre>
+<h2 id="优化-php-fpm-参数">优化 php-fpm 参数</h2>
+<h2 id="使用内存缓存">使用内存缓存</h2>
+<h2 id="扩展">扩展</h2>
+<h3 id="swoole-以及相关库">Swoole （以及相关库）</h3>
+<p><a href="https://juejin.im/entry/5a41fb006fb9a0450e765e5c">https://juejin.im/entry/5a41fb006fb9a0450e765e5c</a></p>
+<h3 id="ppm--reactphp">PPM / ReactPHP</h3>
+<p><a href="https://github.com/php-pm/php-pm">https://github.com/php-pm/php-pm</a></p>
+<h3 id="记一次-memcached-和-redis-都无法-telnet-端口的问题">记一次 Memcached 和 Redis 都无法 telnet 端口的问题</h3>
+<p>memcached 默认使用 11211 端口， redis 默认使用 6379 端口。</p>
+<p>有次在测试服务器环境（CentOS7）中，一切正常，能够正常</p>
+<pre><code class="language-shell">telnet 127.0.0.1 11211
+</code></pre>
+<p>但是在同样 OS 的生产环境死活 telnet 连不上，导致无法使用 memcached 或 redis。</p>
+<p>后来通过<code>netstat -ntlp</code>看看所有正在监听的端口，尝试去 telnet 连接 80、3306，一切正常。但是看到它们的<code>Local Address</code>都是这样的格式</p>
+<pre><code class="language-shell">:::3306
+</code></pre>
+<p>而 memcached 和 redis 是这样的格式</p>
+<pre><code class="language-shell">127.0.0.1:6379
+</code></pre>
+<p>以为是 IP 的配置问题，然后改防火墙、修改 /etc/hosts 都没有用处。</p>
+<p>无意中发现一个 node 服务的 3000 端口也正常，格式也是<code>127.0.0.1:3000</code>，说明和这个 Local Address 格式关联也不大。</p>
+<p><strong>猜测是不是高于某个限制的端口不允许？</strong></p>
+<p>修改 memcached 的启动命令，修改端口，一切正常！！</p>
+<pre><code class="language-shell">memcached -u root -p 2000
+
+# 再次 telnet ，正常！
+telnet localhost 2000
+</code></pre>
+<h1 id="mysqlmariadb的配置和优化">MySQL(MariaDB)的配置和优化</h1>
+<p><strong>拷贝一个默认配置文件</strong></p>
+<pre><code class="language-shell"># 根据机器的性能，将/usr/share/mysql/目录下的某个配置文件复制到 /etc 下，例如 my-huge.cnf
+cp /usr/share/mysql/my-huge.cnf /etc/my.cnf 
+</code></pre>
+<p>注意：如果/etc目录下面默认有一个 <code>my.cnf</code>，直接覆盖即可</p>
+<h2 id="禁用innodb引擎">禁用innoDB引擎</h2>
+<blockquote>
+<p>MySQL默认采用的是MyISAM。
+MyISAM不支持事务，而InnoDB支持。InnoDB的AUTOCOMMIT默认是打开的，即每条SQL语句会默认被封装成一个事务，自动提交，这样会影响速度，所以最好是把多条SQL语句显示放在begin和commit之间，组成一个事务去提交。
+InnoDB支持数据行锁定，MyISAM不支持行锁定，只支持锁定整个表。即MyISAM同一个表上的读锁和写锁是互斥的，MyISAM并发读写时如果等待队列中既有读请求又有写请求，默认写请求的优先级高，即使读请求先到，所以MyISAM不适合于有大量查询和修改并存的情况，那样查询进程会长时间阻塞。因为MyISAM是锁表，所以某项读操作比较耗时会使其他写进程饿死。
+InnoDB支持外键，MyISAM不支持。
+InnoDB的主键范围更大，最大是MyISAM的2倍。
+InnoDB不支持全文索引，而MyISAM支持。全文索引是指对char、varchar和text中的每个词（停用词除外）建立倒排序索引。MyISAM的全文索引其实没啥用，因为它不支持中文分词，必须由使用者分词后加入空格再写到数据表里，而且少于4个汉字的词会和停用词一样被忽略掉。
+MyISAM支持GIS数据，InnoDB不支持。即MyISAM支持以下空间数据对象：Point,Line,Polygon,Surface等。
+没有where的count(<em>)使用MyISAM要比InnoDB快得多。因为MyISAM内置了一个计数器，count(</em>)时它直接从计数器中读，而InnoDB必须扫描全表。所以在InnoDB上执行count(<em>)时一般要伴随where，且where中要包含主键以外的索引列。为什么这里特别强调“主键以外”？因为InnoDB中primary index是和raw data存放在一起的，而secondary index则是单独存放，然后有个指针指向primary key。所以只是count(</em>)的话使用secondary index扫描更快，而primary key则主要在扫描索引同时要返回raw data时的作用较大。</p>
+</blockquote>
+<p><code>innoDB</code>引擎会占用较多的系统资源，如果不是确有所需，一般情况下小型的站点使用 <code>MyISAM</code>引擎就足够了，修改 <code>/etc/my.cnf</code>文件，在<code>[mysqld]</code> 后面添加两行</p>
+<pre><code class="language-shell">[mysqld]
+skip-innodb
+default-storage-engine=MyISAM
+</code></pre>
+<h2 id="添加查询缓存等优化参数">添加查询缓存等优化参数</h2>
+<p>最后重启mysql服务</p>
+<pre><code class="language-shell">sudo systemctl restart mariadb
+</code></pre>
+<h2 id="mysql-慢查询分析">MySQL 慢查询分析</h2>
+<p>编辑 <code>/etc/my.cnf</code>文件，添加一段把查询时间超过 5秒的 SQL记录到日志的配置</p>
+<h1 id="网站性能测试">网站性能测试</h1>
+<h2 id="ab工具">AB工具</h2>
+<h2 id="httpsgithubcomwgwrk-lua"><a href="https://github.com/wg/wrk">https://github.com/wg/wrk</a> (Lua?)</h2>
+<h2 id="hey-go">hey (go)</h2>
+<h1 id="应对-cc-等攻击">应对 CC 等攻击</h1>
+<p><a href="https://www.v2ex.com/t/375095">https://www.v2ex.com/t/375095</a></p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/vnc%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

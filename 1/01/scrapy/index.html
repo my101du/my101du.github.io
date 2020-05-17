@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="scrapy install &amp;amp; Start pip3 install scrapy create a new .py file, named &amp;ldquo;myspider.py&amp;rdquo;, content is import scrapy class BlogSpider(scrapy.Spider): name = blogspider&#39; start_urls = [&#39;https://blog.scrapinghub.com&#39;] def parse(self, response): for title in response.css(&#39;.post-header&amp;gt;h2&#39;): yield {&#39;title&#39;: title.css(&#39;a ::text&#39;).extract_first()} for next_page in response.css(&#39;div.prev-post &amp;gt; a&#39;): yield response.follow(next_page, self.parse) pass this py file to scrapy command scrapy runspider myspider.py 运行成功，抓到了想要的数据 如" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="scrapy install &amp; Start pip3 install scrapy create a new .py file, named &ldquo;myspider.py&rdquo;, content is import scrapy class BlogSpider(scrapy.Spider): name = blogspider&#39; start_urls = [&#39;https://blog.scrapinghub.com&#39;] def parse(self, response): for title in response.css(&#39;.post-header&gt;h2&#39;): yield {&#39;title&#39;: title.css(&#39;a ::text&#39;).extract_first()} for next_page in response.css(&#39;div.prev-post &gt; a&#39;): yield response.follow(next_page, self.parse) pass this py file to scrapy command scrapy runspider myspider.py 运行成功，抓到了想要的数据 如" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/scrapy/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="scrapy install &amp; Start pip3 install scrapy create a new .py file, named &ldquo;myspider.py&rdquo;, content is import scrapy class BlogSpider(scrapy.Spider): name = blogspider&#39; start_urls = [&#39;https://blog.scrapinghub.com&#39;] def parse(self, response): for title in response.css(&#39;.post-header&gt;h2&#39;): yield {&#39;title&#39;: title.css(&#39;a ::text&#39;).extract_first()} for next_page in response.css(&#39;div.prev-post &gt; a&#39;): yield response.follow(next_page, self.parse) pass this py file to scrapy command scrapy runspider myspider.py 运行成功，抓到了想要的数据 如">
+
+<meta itemprop="wordCount" content="2264">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="scrapy install &amp; Start pip3 install scrapy create a new .py file, named &ldquo;myspider.py&rdquo;, content is import scrapy class BlogSpider(scrapy.Spider): name = blogspider&#39; start_urls = [&#39;https://blog.scrapinghub.com&#39;] def parse(self, response): for title in response.css(&#39;.post-header&gt;h2&#39;): yield {&#39;title&#39;: title.css(&#39;a ::text&#39;).extract_first()} for next_page in response.css(&#39;div.prev-post &gt; a&#39;): yield response.follow(next_page, self.parse) pass this py file to scrapy command scrapy runspider myspider.py 运行成功，抓到了想要的数据 如"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/scrapy/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/scrapy/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2264字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>scrapy</p>
+<hr>
+<h1 id="install--start">install &amp; Start</h1>
+<pre><code class="language-shell">pip3 install scrapy
+</code></pre>
+<p>create a new .py file, named &ldquo;myspider.py&rdquo;, content is</p>
+<pre><code class="language-py">import scrapy
+
+class BlogSpider(scrapy.Spider):
+    name = blogspider'
+    start_urls = ['https://blog.scrapinghub.com']
+    
+    def parse(self, response):
+        for title in response.css('.post-header&gt;h2'):
+            yield {'title': title.css('a ::text').extract_first()}
+            
+        for next_page in response.css('div.prev-post &gt; a'):
+            yield response.follow(next_page, self.parse)
+</code></pre>
+<p>pass this py file to scrapy command</p>
+<pre><code class="language-shell">scrapy runspider myspider.py
+</code></pre>
+<p>运行成功，抓到了想要的数据</p>
+<p><img src="/media/15490413192665/15435604471796.jpg" alt="-w713"></p>
+<p>如果修改运行命令参数，可以把结果保存到一个文件中</p>
+<pre><code class="language-shell">scrapy runspider quotes_spider.py -o quotes.json
+</code></pre>
+<h2 id="things-that-to-know">things that to know</h2>
+<p>Scrapy is written in pure Python and depends on a few key Python packages (among others):</p>
+<ul>
+<li>lxml, an efficient XML and HTML parser</li>
+<li>parsel, an HTML/XML data extraction library written on top of lxml,</li>
+<li>w3lib, a multi-purpose helper for dealing with URLs and web page encodings</li>
+<li>twisted, an asynchronous networking framework</li>
+<li>cryptography and pyOpenSSL, to deal with various network-level security needs</li>
+</ul>
+<p>minimal versions which Scrapy is tested against are</p>
+<h1 id="tutorial">Tutorial</h1>
+<h2 id="creating-scrapy-project">Creating scrapy project</h2>
+<pre><code class="language-shell">scrapy startproject tutorial
+</code></pre>
+<blockquote>
+<p>tutorial/
+scrapy.cfg            # deploy configuration file</p>
+</blockquote>
+<blockquote>
+<pre><code>tutorial/             # project's Python module, you'll import your code from here
+    __init__.py
+</code></pre>
+</blockquote>
+<blockquote>
+<pre><code>    items.py          # project items definition file
+</code></pre>
+</blockquote>
+<blockquote>
+<pre><code>    middlewares.py    # project middlewares file
+</code></pre>
+</blockquote>
+<blockquote>
+<pre><code>    pipelines.py      # project pipelines file
+</code></pre>
+</blockquote>
+<blockquote>
+<pre><code>    settings.py       # project settings file
+</code></pre>
+</blockquote>
+<blockquote>
+<pre><code>    spiders/          # a directory where you'll later put your spiders
+        __init__.py
+</code></pre>
+</blockquote>
+<h2 id="first-spider">first spider</h2>
+<p>create a file <code>quotes_spider.py</code> in the <code>spiders</code> folder</p>
+<pre><code class="language-py">import scrapy
+
+
+class QuotesSpider(scrapy.Spider):
+    name = &quot;quotes&quot;
+
+    def start_requests(self):
+        urls = [
+            'http://quotes.toscrape.com/page/1/',
+            'http://quotes.toscrape.com/page/2/',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+
+    def parse(self, response):
+        page = response.url.split(&quot;/&quot;)[-2]
+        filename = 'quotes-%s.html' % page
+        with open(filename, 'wb') as f:
+            f.write(response.body)
+        self.log('Saved file %s' % filename)
+</code></pre>
+<p>name: Spider 名称
+start_requests(): 必须返回一组可遍历的 Requests （一个列表，或者是 generator function），让 Spider 知道从哪里开始抓取
+parse: 处理 response 返回的内容，参数是一个 TextResponse 的实例，拥有返回页面的内容和其他很多方法</p>
+<p>运行 (和前面 scrapy runspider filename.py 不同，这里是指定了quotes_spider.py 文件里 QuotesSpider类的 <code>name</code>)</p>
+<pre><code class="language-shell">scrapy crawl quotes
+</code></pre>
+<p>发生了什么？</p>
+<p>Scrapy 调用了<code>start_requests</code>方法返回的 scrapy.Request 对象，一旦收到 response,就实例化 Response objects，然后调用 callback 函数（self.parse），把 response 作为参数传进去</p>
+<p>联想下 nodejs 的 request 差不多的。</p>
+<p>为了简化下面<code>start_requests</code>的代码</p>
+<pre><code class="language-py">def start_requests(self):
+        urls = [
+            'http://quotes.toscrape.com/page/1/',
+            'http://quotes.toscrape.com/page/2/',
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+</code></pre>
+<p>可以写成下面的形式，直接定义 <code>start_urls</code>类成员即可。 会被 start_requests() 的默认实现用来创建初始 requests</p>
+<pre><code class="language-py">start_urls = [
+        'http://quotes.toscrape.com/page/1/',
+        'http://quotes.toscrape.com/page/2/',
+    ]
+</code></pre>
+<h2 id="使用-scrapy-shell-交互式取出数据">使用 Scrapy shell 交互式取出数据</h2>
+<pre><code class="language-shell">scrapy shell 'http://quotes.toscrape.com/page/1/'
+
+# 除了若干行http信息，还有一个提示符
+&gt;&gt;&gt;
+</code></pre>
+<p>可以直接在这里筛选 response 对象返回的数据</p>
+<pre><code class="language-shell"># 返回一个 SelectorList 对象
+&gt;&gt;&gt;response.css('title')
+[&lt;Selector xpath='descendant-or-self::title' data='&lt;title&gt;Quotes to Scrape&lt;/title&gt;'&gt;]
+
+# 取出文本
+&gt;&gt;&gt; response.css('title::text').extract()
+['Quotes to Scrape']
+
+#注意到 `::text`，它的意思是，只选择某个元素里的 text，如果不使用这个筛选，将返回含有 html 标签的完整 title 元素
+&gt;&gt;&gt; response.css('title').extract()
+['&lt;title&gt;Quotes to Scrape&lt;/title&gt;']
+
+# 默认返回的是一个SelectorList 实例（多个元素），所以前面的文本用 [] 包裹。如果你明确只需要一个元素，则使用下面两种方法
+#  .extract_first() 可以避免在没有找到匹配元素时爆出 IndexError 或 returns None 错误
+&gt;&gt;&gt; response.css('title::text').extract_first()
+&gt;&gt;&gt; response.css('title::text')[0].extract()
+'Quotes to Scrape'
+</code></pre>
+<p>如果想对取出的数据进行正则处理, 用 <code>re()</code>方法</p>
+<pre><code class="language-shell">&gt;&gt;&gt; response.css('title::text').re(r'Quotes.*')
+['Quotes to Scrape']
+
+&gt;&gt;&gt; response.css('title::text').re(r'Q\w+')
+['Quotes']
+
+&gt;&gt;&gt; response.css('title::text').re(r'(\w+) to (\w+)')
+['Quotes', 'Scrape']
+</code></pre>
+<h2 id="xpath-方式查找元素">XPath 方式查找元素</h2>
+<p>除了 CSS ，还有 XPath 方式来查找元素 略</p>
+<h2 id="在-shellspider-里取出数据">在 Shell/Spider 里取出数据</h2>
+<p>在shell 里取数据</p>
+<pre><code class="language-py">&gt;&gt;&gt; for quote in response.css(&quot;div.quote&quot;):
+...     text = quote.css(&quot;span.text::text&quot;).extract_first()
+...     author = quote.css(&quot;small.author::text&quot;).extract_first()
+...     tags = quote.css(&quot;div.tags a.tag::text&quot;).extract()
+...     print(dict(text=text, author=author, tags=tags))
+{'tags': ['change', 'deep-thoughts', 'thinking', 'world'], 'author': 'Albert Einstein', 'text': '“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”'}
+{'tags': ['abilities', 'choices'], 'author': 'J.K. Rowling', 'text': '“It is our choices, Harry, that show what we truly are, far more than our abilities.”'}
+    ... a few more of these, omitted for brevity
+&gt;&gt;&gt;
+</code></pre>
+<p>除了拿到 response 后在 shell 里取数据，在代码里也可以使用（其实原理一样的）</p>
+<pre><code class="language-py">import scrapy
+
+class QuotesSpider(scrapy.Spider):
+    name = &quot;quotes&quot;
+    start_urls = [
+        'http://quotes.toscrape.com/page/1/',
+        'http://quotes.toscrape.com/page/2/',
+    ]
+
+    def parse(self, response):
+        for quote in response.css('div.quote'):
+            yield {
+                'text': quote.css('span.text::text').extract_first(),
+                'author': quote.css('small.author::text').extract_first(),
+                'tags': quote.css('div.tags a.tag::text').extract(),
+            }
+</code></pre>
+<h2 id="自动处理一系列超链接">自动处理一系列超链接</h2>
+<p>除了在 start_urls 里指定几个页面，还希望能把<strong>整个网站</strong>都抓下来！ 这就需要处理在页面里找到的 <code>&lt;a&gt;</code></p>
+<p>把某个链接提取出来看看</p>
+<pre><code class="language-shell">&gt;&gt;&gt; response.css('li.next a').extract_first()
+'&lt;a href=&quot;/page/2/&quot;&gt;Next &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;&lt;/a&gt;'
+
+# 只看链接，提取 href 属性
+&gt;&gt;&gt; response.css('li.next a::attr(href)').extract_first()
+'/page/2/'
+</code></pre>
+<h1 id="问题记录">问题记录</h1>
+<h2 id="向-spider-传入参数">向 Spider 传入参数</h2>
+<p>这在使用 REST API 作为前端，根据参数调用 Spider 爬指定页面时很有用。</p>
+<p>首先要修改 Spider 类的 <code>__init__</code>，接收参数（例如 <code>model</code>和<code>parameter</code>）, 会自动插入为类的属性，在其他方法中调用它</p>
+<pre><code class="language-py">class MySpider(scrapy.Spider):
+    def __init__(self, model='', parameters={}, *args, **kwargs):
+        super(YahooAuctionsSpider, self).__init__(*args, **kwargs)
+
+        # 赋值
+        self.model = model
+        self.parameters = parameters
+    
+    def start_requests(self):
+        url = ''
+
+        # self.model 来自参数
+        if self.model == 'ProductList':
+            pass
+</code></pre>
+<h3 id="命令行中可以使用--a-来传入参数">命令行中可以使用 <code>-a</code> 来传入参数</h3>
+<pre><code class="language-shell">scrapy crawl MySpider -a category=Test
+</code></pre>
+<h3 id="代码中例如子进程调用-或者使用-klein-里的调用">代码中（例如子进程调用， 或者使用 Klein 里的调用）</h3>
+<p><a href="https://stackoverflow.com/questions/36689190/how-to-pass-parameters-to-scrapy-spiders-in-program">https://stackoverflow.com/questions/36689190/how-to-pass-parameters-to-scrapy-spiders-in-program</a></p>
+<pre><code class="language-py">from scrapy.crawler import CrawlerRunner
+from spiders.my_spider import MySpider
+
+class MyCrawlerRunner(CrawlerRunner):
+    def crawl(self, crawler_or_spidercls, *args, **kwargs):
+        ...
+
+@route(&quot;/productList&quot;)
+def product_list(request):
+    runner = MyCrawlerRunner()
+
+    spider = MySpider()
+
+     # put parameters in the .crawl() method, follow the &quot;spider&quot; instance c
+    deferred = runner.crawl(spider, 'ProductList', {
+                            'category': 2084039561, 'page': 1, 'pageNum': 50})
+    deferred.addCallback(return_spider_output)
+    return deferred
+</code></pre>
+<h1 id="scrapy-与-web-应用集成">scrapy 与 web 应用集成</h1>
+<p>Scrapy 跑在一个 python 进程中， 但是我们除了在后台跑爬虫，还希望能给访问用户提供一组 API</p>
+<p>例如前端请求 <code>/api/v1/spider/comic/1</code></p>
+<p>来到服务器上，再调用 scrapy 的某个对应脚本，然后返回数据给前端。</p>
+<p>根据这里：
+<a href="https://stackoverflow.com/questions/36384286/how-to-integrate-flask-scrapy">https://stackoverflow.com/questions/36384286/how-to-integrate-flask-scrapy</a></p>
+<p>有几种方法：</p>
+<ol>
+<li>使用 Flask/Django 做 web 服务，然后用<strong>调用子进程</strong>的方式 <a href="https://github.com/notoriousno/scrapy-flask">https://github.com/notoriousno/scrapy-flask</a>  会创建很多子进程？</li>
+<li>使用 ScrapyRT 来传递参数调用 scrapy。 这个方法前台的路由非常奇怪。 是一个 json?xx=xx&amp;xx=spider 形式，可能还要套一个路由处理才行。 <a href="https://medium.com/@mottet.dev/scrapy-and-scrapyrt-how-to-create-your-own-api-from-almost-any-website-ecfb0058ad64">https://medium.com/@mottet.dev/scrapy-and-scrapyrt-how-to-create-your-own-api-from-almost-any-website-ecfb0058ad64</a></li>
+<li>Twisted-Klein + Scrapy  关键一句: spiders 与 web server <strong>in same process</strong> 与web服务器相同的进程中异步运行 spider  (会不会有问题？？？例如发送完请求，接着去爬，然后跑其他任务，最后等着爬虫结果。)</li>
+</ol>
+<p><a href="https://klein.readthedocs.io/en/latest/introduction/2-twistdtap.html">https://klein.readthedocs.io/en/latest/introduction/2-twistdtap.html</a></p>
+<h1 id="安装与快速开始">安装与快速开始</h1>
+<pre><code class="language-shell">pip3 install klein
+</code></pre>
+<p>和 Flask 是非常类似的</p>
+<pre><code class="language-py">from klein import Klein
+app = Klein()
+
+@app.route('/')
+def home(request):
+        return 'Hello Klein'
+
+app.run(&quot;localhost&quot;, 5000)
+
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">python index.py
+</code></pre>
+<p>localhost:5000 显示了页面</p>
+<h1 id="集成-scrapy">集成 scrapy</h1>
+<p>根据：</p>
+<p><a href="https://stackoverflow.com/questions/37607390/python-scrapy-what-is-the-difference-between-runspider-and-crawl-commands">https://stackoverflow.com/questions/37607390/python-scrapy-what-is-the-difference-between-runspider-and-crawl-commands</a></p>
+<p>其中 <code>index.py</code> 代码：</p>
+<pre><code class="language-py">import json
+
+from klein import route, run
+from scrapy import signals
+from scrapy.crawler import CrawlerRunner
+
+from yahooservice.spiders.yahoo_auctions_spider import YahooAuctionsSpider
+
+
+class MyCrawlerRunner(CrawlerRunner):
+    &quot;&quot;&quot;
+    Crawler object that collects items and returns output after finishing crawl.
+    &quot;&quot;&quot;
+    def crawl(self, crawler_or_spidercls, *args, **kwargs):
+        # keep all items scraped
+        self.items = []
+
+        # create crawler (Same as in base CrawlerProcess)
+        crawler = self.create_crawler(crawler_or_spidercls)
+
+        # handle each item scraped
+        crawler.signals.connect(self.item_scraped, signals.item_scraped)
+
+        # create Twisted.Deferred launching crawl
+        dfd = self._crawl(crawler, *args, **kwargs)
+
+        # add callback - when crawl is done cal return_items
+        dfd.addCallback(self.return_items)
+        return dfd
+
+    def item_scraped(self, item, response, spider):
+        self.items.append(item)
+
+    def return_items(self, result):
+        return self.items
+
+
+def return_spider_output(output):
+    &quot;&quot;&quot;
+    :param output: items scraped by CrawlerRunner
+    :return: json with list of items
+    &quot;&quot;&quot;
+    # this just turns items into dictionaries
+    # you may want to use Scrapy JSON serializer here
+    return json.dumps([dict(item) for item in output])
+
+
+@route(&quot;/&quot;)
+def schedule(request):
+    runner = MyCrawlerRunner()
+    spider = YahooAuctionsSpider()
+    deferred = runner.crawl(spider)
+    deferred.addCallback(return_spider_output)
+    return deferred
+
+
+run(&quot;localhost&quot;, 8080)
+</code></pre>
+<p>对应的 Spider 代码（yahooservice.spiders.yahoo_auctions_spider.py）</p>
+<p><strong>注意返回的 item 必须是一个 字典、None，Request, BaseItem, 不能是 [&lsquo;aa&rsquo;, &lsquo;bb&rsquo;, &lsquo;cc&rsquo;]这样的字符串列表</strong></p>
+<pre><code class="language-py">import scrapy
+
+
+class YahooAuctionsSpider(scrapy.Spider):
+    name = &quot;yahoo&quot;
+
+    def start_requests(self):
+        urls = [
+            'https://auctions.yahoo.co.jp/category/list/周辺機器-コンピュータ/2084039561/?fr=auc-prop&amp;tab_ex=commerce&amp;p=周辺機器'
+        ]
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+
+    def parse(self, response):
+        category_name = response.css(
+            &quot;#S_Category .child li .elActive::text&quot;).extract_first()
+        self.log('category name is %s' % category_name)
+
+        items = []
+
+        # no .extract() to return object
+        child_categories = response.css(&quot;#S_Category ul.child li ul.child li&quot;)
+        for child_category in child_categories:
+            sub_cat_name = child_category.css(&quot;a::text&quot;).extract_first()
+            # self.log('child category name is %s' % sub_cat_name)
+            items.append({'name': sub_cat_name})
+
+        self.log('child category name is %s' % items)
+
+        return items
+
+</code></pre>
+<p>以 python 方式运行</p>
+<pre><code class="language-shell">python index.py
+</code></pre>
+<p>刷新 Localhost:8080 返回json数据</p>
+<p><img src="/media/15490413192730/15440661780982.jpg" alt="-w345"></p>
+<p>scrapy 方式运行会崩溃。。。</p>
+<pre><code>scrapy runspider index.py
+</code></pre>
+<p>程序崩溃</p>
+<p><img src="/media/15490413192730/15440662485768.jpg" alt="-w746"></p>
+<p><img src="/media/15490413192730/15440656818110.jpg" alt="-w682"></p>
+<h1 id="使用-twistd-启动应用">使用 twistd 启动应用</h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/scrapy/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/scrapy/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/python%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

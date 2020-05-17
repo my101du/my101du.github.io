@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="优势 开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些 主题 亮色主题：https://vsco" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="优势 开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些 主题 亮色主题：https://vsco" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/vscode/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="优势 开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些 主题 亮色主题：https://vsco">
+
+<meta itemprop="wordCount" content="5888">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="优势 开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些 主题 亮色主题：https://vsco"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/vscode/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/vscode/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5888字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="优势">优势</h1>
+<p>开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些</p>
+<h1 id="主题">主题</h1>
+<p>亮色主题：https://vscodethemes.com/light</p>
+<ul>
+<li>quite light + theme 不错 有粗体区分 颜色 (太亮了一点)</li>
+<li>GitHub 3 (代码段左侧的块 竖线太明显了)</li>
+<li>NetBeans Light Theme （PHP 函数/变量颜色不分）</li>
+<li>Laravel Theme （文本 变量区分不够）</li>
+<li>macos modern (太红, 关键字和变量全是红色)</li>
+<li>Massimo (class function 有加粗)</li>
+<li>github plus (问题 中括号和内部的变量没区分)</li>
+<li>IDEA like light Theme 稳重的风格！但是注释的字会变斜体，还有粗体太多了</li>
+<li>brackets Light Pro bold (颜色漂亮，仅方法调用加粗)</li>
+<li>github 2019!!!: 关键词加粗，而且是熟悉的 github 高亮风格</li>
+<li>github light: html 与 php 混写的时候，太多黑色函数名。分不清</li>
+<li>NotepadPlusPlus Remixed Theme (高亮对比程度很好 但是太亮 容易疲劳)</li>
+</ul>
+<p>系统自带 light+</p>
+<p>安装 Best Light Theme 后， netbeans light 是最好的！ 函数名黑色加粗 没有 notepadplus 那么花花绿绿</p>
+<p>better solarized 也不错。</p>
+<p>选择困难症最终：  base16 themes -&gt;  google</p>
+<h1 id="视觉强化">视觉强化</h1>
+<h2 id="windows-下比较清晰的字体">windows 下比较清晰的字体</h2>
+<p>如果可以安装 font 选 fira code 如果没有权限安装。。。。
+&ldquo;editor.fontFamily&rdquo;: &ldquo;Verdana&rdquo;, // Ebrima
+&ldquo;editor.lineHeight&rdquo;: 18,
+&ldquo;editor.fontSize&rdquo;: 12</p>
+<p>推荐： Lucida, 比 consolas 锯齿少一点，汉字也更漂亮</p>
+<h2 id="indent-不同层级不同色彩">indent 不同层级不同色彩</h2>
+<p>indent-rainbow</p>
+<h2 id="括号彩色">括号彩色</h2>
+<p>bracket pair colorizer</p>
+<h2 id="css-颜色代码高亮">CSS 颜色代码高亮</h2>
+<p>如 #CC0000 外框显示红色 直观</p>
+<p>color highlight</p>
+<h1 id="常用快捷键扩展">常用快捷键扩展</h1>
+<p>把 ctrl+shift+w 关闭 window 删掉。</p>
+<p>改成 ctrl+k ctrl+b 打开左侧窗口（因为有时候全局搜索，显示结果左边区域不够大）</p>
+<p>在多个 tab 之间 “previous/next” 直到定位到需要的 tab 不需要鼠标选 (原来是 ctrl + pagedown)</p>
+<p>next editor: alt + ]
+previous editor alt + [</p>
+<h1 id="设置">设置</h1>
+<h2 id="tab-宽度更小默认撑满导致打开多个文件后不如-sublime-能显示更多信息">tab 宽度更小（默认撑满，导致打开多个文件后，不如 sublime 能显示更多信息）</h2>
+<p>Workbench › Editor: Tab Sizing
+Controls the sizing of editor tabs.</p>
+<p>改成 <code>shrink</code></p>
+<h2 id="大量自定义颜色例如-teminal--tab-等">大量自定义颜色（例如 teminal ， tab 等）</h2>
+<p><a href="https://vscode.readthedocs.io/en/latest/getstarted/theme-color-reference/">https://vscode.readthedocs.io/en/latest/getstarted/theme-color-reference/</a></p>
+<h2 id="output-区域自动滚动">output 区域自动滚动</h2>
+<p>特别是用 coderunner 插件，每次运行，都要手动滚动到底部才能看到最新输出。</p>
+<p>这个可以点击上面的小锁。取消锁定</p>
+<h2 id="表单元素-属性-一行多个-改成-每行一个-更清晰">表单元素 属性 一行多个 改成 每行一个 更清晰</h2>
+<p>替换，正则：</p>
+<p>最前面有个空格 <code>(fieldname|model|mask|code_field|relid|relcode)=</code>
+替换为 <code>\n$1=</code></p>
+<p>有问题： 替换后，再运行 vscode 的 format document 又变成一行了</p>
+<p>Using VSCode 1.9.0 with the following setting works fine:</p>
+<p>&ldquo;html.format.wrapAttributes&rdquo;: &ldquo;force&rdquo; cool 非常完美 （下面那个 force-expend-multiple 有点过头，一般第一个属性不需要新行）</p>
+<p>问题： div 也会这样。。 我只需要 input 啊</p>
+<h2 id="禁用-hardware-acceleration-gpu">禁用 hardware acceleration (gpu)</h2>
+<p>Open the Command Palette (⇧⌘P).
+Run the Preferences: Configure Runtime Arguments command.
+This command will open a argv.json file to configure runtime arguments. You might see some default arguments there already.
+Add &ldquo;disable-hardware-acceleration&rdquo;: true.
+Restart VS Code.</p>
+<h2 id="关闭-followsymlinks-在配置里面">关闭 followSymlinks 在配置里面</h2>
+<h2 id="配置文件插件在不同的设备之间同步">配置文件/插件在不同的设备之间同步</h2>
+<p>Settings Sync</p>
+<h1 id="snippets">snippets</h1>
+<h2 id="v-常用语言的-snippets">v 常用语言的 snippets</h2>
+<p>搜索插件关键词 snippet 如 javascript pack 等</p>
+<h2 id="新增一个-snippets-配置文件可以是全局也可以是某个项目">新增一个 snippets 配置文件(可以是全局，也可以是某个项目)</h2>
+<pre><code class="language-js">// in file 'Code/User/snippets/javascript.json'
+{
+  &quot;For Loop&quot;: {
+    &quot;prefix&quot;: [&quot;for&quot;, &quot;for-const&quot;],
+    &quot;body&quot;: [&quot;for (const ${2:element} of ${1:array}) {&quot;, &quot;\t$0&quot;, &quot;}&quot;],
+    &quot;description&quot;: &quot;A for loop.&quot;
+  }
+}
+</code></pre>
+<p><code>${2:element}</code>是一个占位符，稍后可以按 tab 来定位</p>
+<p>一些复杂的代码段，如果有 tab 键缩进， 用 <code>\t</code>
+<code>$</code> 是转义符。 例如 php 变量要使用 <code>$$filter</code></p>
+<h2 id="从现有代码新建">从现有代码新建</h2>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=nikitaKunevich.snippet-creator">https://marketplace.visualstudio.com/items?itemName=nikitaKunevich.snippet-creator</a></p>
+<p>或者</p>
+<p>Snippet Store 与这个 app 集成</p>
+<h2 id="html-代码里-emmet-的-tab-与-snippet-冲突导致无法完成-snippet">html 代码里 emmet 的 tab 与 snippet 冲突，导致无法完成 snippet</h2>
+<p>&ldquo;emmet.showSuggestionsAsSnippets&rdquo;: true</p>
+<p>没有用。。 在 html /php /js 混写代码里，一直无法识别，只能用 emmet 的 html 特性</p>
+<h2 id="推荐-httpsappcacherio-以及和编辑器插件集成-可以-from-web-收费的-免费的只有-15-个">推荐 <a href="https://app.cacher.io/">https://app.cacher.io/</a> 以及和编辑器插件集成, 可以 from web (收费的。。。 免费的只有 15 个)</h2>
+<h2 id="与-gist-连接的插件">与 gist 连接的插件</h2>
+<p>默认 gist 那个不太好用。。</p>
+<p>新增一个 token(仅 gist 权限)
+<a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a></p>
+<p>591bc8dbdfde2e467f12ed91c97d026d34830c55</p>
+<p>GitHub Gist Explorer （不刷新 垃圾。。。）</p>
+<h2 id="免费版-主要是有-web-版-绿色版在-faq-里公司不让装-lepton-等">免费版 （主要是有 web 版, 绿色版（在 faq 里），公司不让装 lepton 等）</h2>
+<p><a href="https://web.gistoapp.com/">https://web.gistoapp.com/</a></p>
+<h1 id="自带-terminal">自带 terminal</h1>
+<p>设置快捷键 例如 ctrl + shift + i 打开 terminal, 再按就聚焦到 editro</p>
+<p>ctrl + shift + o focus 到 terminal, (不方便,好像没有一个同时打开, &ldquo;聚焦到编辑界面&quot;的)</p>
+<p>名字叫 “Toggle Integrated Terminal” 改成 这个键就好。 （默认 ctrl+`）</p>
+<p>// Toggle between terminal and editor focus
+{ &ldquo;key&rdquo;: &ldquo;ctrl+<code>&quot;, &quot;command&quot;: &quot;workbench.action.terminal.focus&quot;}, { &quot;key&quot;: &quot;ctrl+</code>&rdquo;, &ldquo;command&rdquo;: &ldquo;workbench.action.focusActiveEditorGroup&rdquo;, &ldquo;when&rdquo;: &ldquo;terminalFocus&rdquo;}</p>
+<h2 id="zsh-下某些主题字体有问题">zsh 下某些主题字体有问题</h2>
+<p>2.1 字体
+在字体册查找是否已经安装 Meslo LG M for Powerline 字体，如果未安装就安装一下。
+2.2 VSCode 中配置
+使用 ⌘,打开 settings 界面,搜索 terminal,在 Font Family 中添加字体 Meslo LG M for Powerline</p>
+<h1 id="插件">插件</h1>
+<h2 id="es7reactreduxgraphql-snippets-对于-react-开发者自动完成大量样板代码">ES7/React/Redux/GraphQL snippets 对于 React 开发者自动完成大量样板代码</h2>
+<h2 id="eslint">ESLint</h2>
+<h2 id="gitlens-可以把变化历史精确到行">GitLens 可以把变化历史精确到行</h2>
+<h2 id="import-cost-查看导入文件体积是否影响性能">import cost 查看导入文件体积，是否影响性能</h2>
+<h2 id="indent-rainbow-和-bracket-pari-colorizer-高亮缩进括号">indent-rainbow 和 bracket pari colorizer 高亮缩进、括号</h2>
+<h2 id="better-comments-对不同的注释显示不同颜色-如-todo-xxxx---更好的-todo-tree">better comments 对不同的注释显示不同颜色 如 TODO: xxxx -&gt; 更好的 Todo Tree</h2>
+<h2 id="prettier-自动格式化代码">prettier 自动格式化代码</h2>
+<h2 id="image-paste">image paste.</h2>
+<p>ctrl+alt+v 把剪贴板里的图片复制到项目某个目录里</p>
+<p>配置倒数几行的 “path” 把自动粘贴的路径设置为 docPath/image</p>
+<h2 id="markdown">markdown</h2>
+<p>markdown theme kit
+<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit">https://marketplace.visualstudio.com/items?itemName=ms-vscode.Theme-MarkdownKit</a></p>
+<h2 id="run-code">run code</h2>
+<p>替代 macOS 下单独的那个 code runner</p>
+<ol>
+<li>每次修改都要保存 (所以开启自动保存吧!)</li>
+<li>每次运行都会留在 output 里, 可以在设置里选中自动清理上次运行结果 (没有自动滚动的&hellip; 右上角那个小锁, 解锁后, 切到编辑区域去一下,又自动锁定了&hellip;)</li>
+</ol>
+<h2 id="tab-groups">tab groups</h2>
+<p>不好用</p>
+<h2 id="devdocs-panel-在-vscode-里打开-devdocs-网站而无需切换到浏览器app">devdocs-panel 在 vscode 里打开 devdocs 网站而无需切换到浏览器/app</h2>
+<h2 id="postgres">postgres</h2>
+<p>不如 dbeaver 好用</p>
+<h1 id="需要卸载的一些占用资源的插件">需要卸载的一些占用资源的插件</h1>
+<p>Auto-close tag &amp; auto rename tag ： vs 已包含</p>
+<p>Color highlight 现在 vs 自带（在旁边）</p>
+<h1 id="编辑-react-的-js-文件报错">编辑 React 的 js 文件报错</h1>
+<blockquote>
+<p>Experimental support for decorators is a feature that is subject to change in a future release</p>
+</blockquote>
+<p>修改配置</p>
+<p><a href="https://github.com/Microsoft/vscode/issues/45071">https://github.com/Microsoft/vscode/issues/45071</a></p>
+<h1 id="技巧">技巧</h1>
+<h2 id="在两个窗口里打开同一个目录项目">在两个窗口里打开同一个目录（项目）</h2>
+<p>先保存文件夹到一个 workspace</p>
+<p>然后打开命令面板 duplicate workspace to new window</p>
+<h2 id="直接打开文件编辑模式而不是预览后打开文件覆盖前面文件的问题">直接打开文件编辑模式，而不是预览（后打开文件覆盖前面文件的问题）</h2>
+<p>ctrl + p 打开一个文件，tab 上字体是斜体，说明处于“预览”，此时再 ctrl+p 打开一个文件会覆盖它，非常不方便。。。</p>
+<p>搜 enablePreview 有两个开关</p>
+<ol>
+<li>
+<p>双击左侧树 &ldquo;workbench.editor.enablePreview&rdquo;: false,</p>
+</li>
+<li>
+<p>快速打开模式 Enable Preview From Quick Open</p>
+</li>
+</ol>
+<h2 id="快速替换删除文本">快速替换、删除文本</h2>
+<p><a href="https://blog.csdn.net/woshidamimi0/article/details/84560982">https://blog.csdn.net/woshidamimi0/article/details/84560982</a></p>
+<p>ctrl+F 打开搜索， 然后选中文本， ctrl+shift+L</p>
+<h2 id="替换文本添加新行-n无效">替换文本，添加“新行” <code>\n</code>无效</h2>
+<p>在 sublime 里，<code>\n</code>可以自动变成新行，但是 VSCode 里是直接显示字符串<code>\n</code></p>
+<p>因此需要在“replace” 里需要插入新行的时候， Shift + Enter 插入一个换行符</p>
+<p>但是如果是“搜索”换行符，就应该用 <code>.*</code>正则 + <code>\n</code> 换行符号</p>
+<h2 id="格式化-html-让属性像-react-组件一样每个属性一行">格式化 html ，让属性像 react 组件一样，每个属性一行</h2>
+<p>安装 beautify  修改配置，这项改为 force</p>
+<pre><code class="language-json">&quot;html.format.wrapAttributes&quot;: &quot;force&quot;
+</code></pre>
+<p>运行命令 beautify file， 选 html</p>
+<h2 id="如何让-搜索-结果能不固定在边栏而是在整个窗口就像-sublime">如何让 搜索 结果能不固定在边栏，而是在整个窗口(就像 sublime)</h2>
+<p>全局搜索默认在边栏，但是边栏太窄了，  搜出来根本看不清楚文件路径</p>
+<p>点一下上面那个小图标 &ldquo;open new search editor&rdquo; 就会打开一个新 tab ，</p>
+<h1 id="后缀名识别成另一种高亮方案">后缀名识别成另一种高亮方案</h1>
+<p>codeigniter 里 xxxx_view.php 视图文件是以 php 结尾的，如何让他识别成 html 呢？（默认的检测里，只能把 <code>*.php</code> 都全部一次性改变）</p>
+<p>配置里搜 <code>files.associations</code>, 添加 <code>*_view</code> 这样的特征</p>
+<pre><code class="language-json">&quot;files.associations&quot;: {
+    &quot;*_view.php&quot;: &quot;html&quot;
+}
+</code></pre>
+<p>通过这种方式，一些 react 项目，如果是 .js 而非 .jsx 我们也可以把文件统一用 <code>xxxx_react.js</code> 然后加一个规则即可</p>
+<h1 id="语言开发配置-php">语言开发配置-PHP</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/41522003(">https://zhuanlan.zhihu.com/p/41522003(</a>以及 vue,html 辅助等。)</p>
+<p><a href="https://code.visualstudio.com/docs/languages/php">https://code.visualstudio.com/docs/languages/php</a></p>
+<p><a href="https://blog.theodo.com/2019/07/vscode-php-development/">https://blog.theodo.com/2019/07/vscode-php-development/</a></p>
+<p>php intelephense. 好像反应速度会快一点.   但是会在 laravel 项目里的 Route 等提示不存在。
+inteleSense 没有这个问题，但是 CPU 占用 太太太 高了。。。</p>
+<p>php inteleSense 自动提示的函数, 没有显示参数列表信息, 只有函数名</p>
+<p>但是. 两个都有问题: 当 class B 继承于 class A, 时, class B 的实例自动提示只能出现自己的方法,无法列出 class A 的. 估计要上 webstorm ? (是因为非 composer 类型项目, 用 require 方式引入进来的类文件无法识别吗?)</p>
+<p>关闭 vscode 自己的提示(有时候输入输入一个函数名,第一个没什么作用-看不到参数列表和引用等)
+uncheck PHP &gt; Suggest: Basic, which sets php.suggest.basic to false in your settings.json file.</p>
+<h2 id="phpfmt---php-formatter">phpfmt - PHP formatter</h2>
+<p>添加配置文件</p>
+<pre><code class="language-json">{
+  &quot;phpfmt.passes&quot;: [
+    &quot;PSR2KeywordsLowerCase&quot;,
+    &quot;PSR2LnAfterNamespace&quot;,
+    &quot;PSR2CurlyOpenNextLine&quot;,
+    &quot;PSR2ModifierVisibilityStaticOrder&quot;,
+    &quot;PSR2SingleEmptyLineAndStripClosingTag&quot;,
+    &quot;ReindentSwitchBlocks&quot;
+  ],
+  &quot;phpfmt.exclude&quot;: [&quot;ReindentComments&quot;, &quot;StripNewlineWithinClassBody&quot;],
+  &quot;phpfmt.psr2&quot;: false
+}
+</code></pre>
+<p>输入 phpfmt: list trans&hellip; 列出全部选项</p>
+<p><a href="https://github.com/kokororin/vscode-phpfmt#supported-transformations">https://github.com/kokororin/vscode-phpfmt#supported-transformations</a></p>
+<h2 id="format-html-in-php-处理混合的">format html in php (处理混合的)</h2>
+<h2 id="intelephense-or-intellisense-选择">intelephense or intellisense 选择</h2>
+<p>intelephense 更轻量，  但是如果 Laravel 项目里， 很多地方例如 web.php 会提示 Route undefined type</p>
+<p>intellisense 的分析能力更强 基于 php lsp.  但是会在进程里跑一个 php 占用几百兆的内存。。。</p>
+<p>解决 phense 的那个问题：</p>
+<p>You don&rsquo;t need to downgrade you can:</p>
+<p>方法1：
+Either disable undefined symbol diagnostics in the settings &ndash; &ldquo;intelephense.diagnostics.undefinedSymbols&rdquo;: false .</p>
+<p>可能会导致一些本来需要判断的出问题。</p>
+<p>方法2： （推荐）
+Or use an ide helper that adds stubs for laravel facades. See <a href="https://github.com/barryvdh/laravel-ide-helper">https://github.com/barryvdh/laravel-ide-helper</a> . Also see <a href="https://laracasts.com/series/how-to-be-awesome-in-phpstorm/episodes/15">https://laracasts.com/series/how-to-be-awesome-in-phpstorm/episodes/15</a> , it discusses phpstorm but is somewhat applicable.</p>
+<pre><code class="language-shell">php artisan ide-helper:generate
+</code></pre>
+<p>但是呢。。 thinkphp 3.2 的一些老项目，  因为没有 ide-helper 所以也大量报错。</p>
+<p>还是换回 intellisense ，内存占用也管不了了</p>
+<p>方法3：
+如果不想安装 laravel-ide-helper，  在 web.php 里手动 use  (不知道是否对性能有没有影响。。。)</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+</code></pre>
+<h2 id="php-intellisense-for-codeigniter">PHP intellisense for codeigniter</h2>
+<p>更多自己找</p>
+<h2 id="intelephense-的一些配置">intelephense 的一些配置</h2>
+<p>不需要提示 <code>$_GLOBAL</code>等这些“basic” suggestion</p>
+<pre><code class="language-json">&quot;php.suggest.basic&quot;: false
+</code></pre>
+<p>在注释等处提示</p>
+<pre><code class="language-json">&quot;editor.quickSuggestions&quot;: { &quot;comments&quot;: true }
+</code></pre>
+<p>在 Test 文件里也能提示 注意最后行</p>
+<pre><code class="language-json">&quot;intelephense.files.exclude&quot;: [
+  &quot;**/.git/**&quot;,
+  &quot;**/.svn/**&quot;,
+  &quot;**/.hg/**&quot;,
+  &quot;**/CVS/**&quot;,
+  &quot;**/.DS_Store/**&quot;,
+  &quot;**/node_modules/**&quot;,
+  &quot;**/bower_components/**&quot;,
+  &quot;**/vendor/**/{Test,test,Tests,tests}/**/*Test.php&quot;
+]
+</code></pre>
+<h2 id="更多-debug">更多。 debug</h2>
+<p><a href="https://blog.theodo.com/2019/07/vscode-php-development/">https://blog.theodo.com/2019/07/vscode-php-development/</a></p>
+<h2 id="css-保存时被自动格式化即使禁用了-format-on-save-也无效">css 保存时被自动格式化（即使禁用了 format on save 也无效）</h2>
+<p><a href="https://blog.csdn.net/zxw136511485/article/details/76973994">https://blog.csdn.net/zxw136511485/article/details/76973994</a></p>
+<p>禁用或删掉 HTML-CSS-JS formatter 插件</p>
+<h2 id="php-snippets-from-phpstorm-插件">PHP Snippets from PHPStorm 插件</h2>
+<h1 id="解决-vscode-导致电脑很卡">解决 vscode 导致电脑很卡</h1>
+<p>0.375
+2019.03.17 14:39:33
+字数 57
+阅读 3698
+vscode-文件-首选项-设置 -搜索</p>
+<p>1.修复 vs code 造成 rg.exe 内存占用过大的问题
+search.followSymlinks:false</p>
+<p>2.修复 vs code 造成 git.exe 内存占用过大的问题
+git.enabled:falsegit.autorefresh:false</p>
+<p><a href="https://www.v2ex.com/t/530494">https://www.v2ex.com/t/530494</a></p>
+<p>解决自动保存格式化问题
+找到设置，搜索关键字：“格式化”或者“保存”，然后配置了两个参数， “editor.formatOnType”: false,和&quot;editor.formatOnSave&rdquo;: false 重启，发现不管用，依然会自动格式化。
+<strong>解决方法：</strong> 找到 VScode 扩展，可以按 ctrl+shift+X 调出扩展，然后把 <code>JS-CS-HTML Formatter</code> 这个插件禁用即可。</p>
+<h1 id="插件开发">插件开发</h1>
+<pre><code class="language-shell"># 安装 yomen 和代码生成器
+npm install -g yo generator-code
+
+# 使用代码生成器创建项目， 在提示里选择语言（js/ts）、项目介绍、 npm 安装包等
+yo code
+
+# 运行
+code ./helloworld
+</code></pre>
+<h1 id="remote-develper-via-ssh-为例-还有-wsl-container">remote develper (via SSH 为例， 还有 WSL, Container)</h1>
+<h2 id="在-本地-创建-public-key--sshid_rsapub">在 <strong>本地</strong> 创建 public key ( <code>~/.ssh/id_rsa.pub</code>)</h2>
+<pre><code class="language-shell">ssh-keygen -t rsa -b 4096
+</code></pre>
+<p>复制 id_rsa.pub 内容到 <strong>远程</strong>服务器的 <code>~/.ssh/authorized_keys</code> 文件里面去</p>
+<pre><code class="language-shell"># 本地是 mac/linux
+ssh-copy-id your-user-name-on-host@host-fqdn-or-ip-goes-here
+
+# 本地 windows, 使用 PowerShell
+$REMOTEHOST=&quot;your-user-name-on-host@host-fqdn-or-ip-goes-here&quot;
+
+scp &quot;$env:USERPROFILE\.ssh\id_rsa.pub&quot; &quot;${REMOTEHOST}:~/tmp.pub&quot;
+ssh &quot;$REMOTEHOST&quot; &quot;mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh &amp;&amp; cat ~/tmp.pub &gt;&gt; ~/.ssh/authorized_keys &amp;&amp; chmod 600 ~/.ssh/authorized_keys &amp;&amp; rm -f ~/tmp.pub&quot;
+</code></pre>
+<h2 id="提高安全性不要在所有-ssh-机器上使用同一个-public-key因此需要在本地生成-key-时指定生成的文件">提高安全性，不要在所有 SSH 机器上使用同一个 public key，因此需要在本地生成 key 时指定生成的文件</h2>
+<pre><code class="language-shell"># mac/linux
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa-remote-ssh
+
+# windows
+ssh-keygen -t rsa -b 4096 -f &quot;$env:USERPROFILE\.ssh\id_rsa-remote-ssh&quot;
+</code></pre>
+<h2 id="运行">运行</h2>
+<p>Remote-SSH: Open Configuration File&hellip; 添加内容</p>
+<pre><code class="language-shell">Host name-of-ssh-host-here
+    User your-user-name-on-host
+    HostName host-fqdn-or-ip-goes-here
+    IdentityFile ~/.ssh/id_rsa-remote-ssh
+</code></pre>
+<p>例如</p>
+<pre><code class="language-shell">Host server-1
+  HostName 192.168.3.17
+  User zzy
+  LocalForward 127.0.0.1:3000 127.0.0.1:3000
+Host server-2
+  HostName 192.168.3.18
+  Port 22
+  User amy
+  LocalForward 127.0.0.1:90 127.0.0.1:90
+</code></pre>
+<h2 id="连接与创建打开工作区">连接与创建/打开工作区</h2>
+<p>Remote-SSH: Connect to Host&hellip; (后者点左下角的小按钮 SSH:vm)</p>
+<p>首次连接会在服务器端安装 vscode-server 等必备工具。</p>
+<p>**此时输入 top 命令 shift+m 按内存排序，可以看到一些 node 进程。 内存占用从干净系统的 150M -&gt; 450M **</p>
+<p>File &gt; Open&hellip; or File &gt; Open Workspace&hellip;</p>
+<h2 id="安装扩展">安装扩展</h2>
+<p>快速把本地的插件安装到远程环境。</p>
+<p>打开扩展面板，在 Local-installed 右边的云朵小图标点下。选择要安装的。</p>
+<p>这样可以安装到远程服务器了。（UI 扩展在本地）</p>
+<h2 id="关闭">关闭</h2>
+<p>File &gt; Close Remote Connection</p>
+<h2 id="解决连接一个远程-virtualbox-里的-linux-虚拟机-ssh方式很慢不稳定的问题">解决连接一个远程 Virtualbox 里的 Linux 虚拟机 （SSH方式）很慢，不稳定的问题</h2>
+<p>macbook 通过 wifi 连接局域网内一台windows笔记本上的 CentOS 虚拟机， 使用 SSH 远程目录，在搜索的时候极慢， 而且经常断开， 还有就是文件内 go to symbol 都不行</p>
+<p>修改  /etc/ssh/sshd.config</p>
+<p>修改 UseDNS = no</p>
+<p>重启/restart ssh 服务</p>
+<h2 id="资料">资料</h2>
+<p><a href="https://blog.csdn.net/weixin_33756418/article/details/94490302">https://blog.csdn.net/weixin_33756418/article/details/94490302</a></p>
+<p><a href="https://code.visualstudio.com/docs/remote/ssh">https://code.visualstudio.com/docs/remote/ssh</a></p>
+<p>一些常见问题：
+<a href="https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc">https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc</a></p>
+<h2 id="重装-linux-后再打开-vscode-ssh-remote-提示-usrbinzsh-找不到">重装 linux 后，再打开 vscode ssh remote, 提示 /usr/bin/zsh 找不到。</h2>
+<p>之前切换过默认 shell 为 zsh, 后来又重装了系统</p>
+<p>打开设置：搜 terminal, 找到 integrated shell, (Linux) Edit .json 配置，最后一行， 改回 /usr/bin/bash</p>
+<p>重新安装 zsh, 再修改 defualt shell 即可</p>
+<h1 id="本地开发自动-sftp-代码同步到服务器上去测试编译">本地开发，自动 sftp 代码同步到服务器上去测试、编译</h1>
+<p>例如高性能服务器进行 DL 训练，使用 ssh 的方式进行远端的登陆，上传代码、编译</p>
+<p>例如只有服务器才有数据库连接，不允许本地的代码连接到数据，需要本地编辑，在服务器上检查网站的刷新效果</p>
+<p>但是两端的代码同步是一个比较大的问题。两个 git?</p>
+<p>所以在本地修改文件、保存，自动同步到服务器。</p>
+<p>搜索 “sftp” 插件(liximomo 作者第一个)</p>
+<p>打开命令输入窗口,键入 sftp: config 打开 sftp 插件的配置文件. (会自动在当前项目下新建一个 .vscode 目录，并新增文件 <code>sftp.json</code>)</p>
+<p>注意要删除里面的注释，这里仅仅是作为参考帮助（因为 json 不支持！！！）</p>
+<pre><code class="language-json">{
+  &quot;protocol&quot;: &quot;sftp&quot;, // 使用 sftp 协议
+  &quot;host&quot;: &quot;10.8.118.139&quot;, // 服务器 ip
+  &quot;port&quot;: 22, // 访问端口号
+  &quot;username&quot;: &quot;user_name&quot;, // 用来登录服务器的用户名
+  &quot;remotePath&quot;: &quot;abs path of remote file&quot;, // 被同步文件在服务器上的绝对路径
+  &quot;uploadOnSave&quot;: true, // 在本地执行保存操作后，自动同步到服务器
+  &quot;syncMode&quot;: &quot;update&quot;,
+  &quot;passive&quot;: false,
+  &quot;debug&quot;: false,
+  &quot;privateKeyPath&quot;: &quot;/Users/username/.ssh/id_rsa&quot;, // 本地保存的可以用来登录服务器的 ssh key
+  //&quot;passphrase&quot;: null,
+
+  //&quot;interactiveAuth&quot;: true,
+
+  &quot;watcher&quot;: {
+    &quot;files&quot;: &quot;**/*&quot;,
+    &quot;autoUpload&quot;: false,
+    &quot;autoDelete&quot;: false
+  },
+  &quot;ignore&quot;: [
+    // 设置不被同步的文件和路径
+    &quot;\\.vscode&quot;, // .vscode 路径
+    &quot;\\.idea&quot;,
+    &quot;*.pyc&quot;, // 拓展名为 .pyc 的文件
+    &quot;\\output&quot;,
+    &quot;\\.git&quot;
+  ]
+}
+</code></pre>
+<p>注意，如果你的 mac 上 .ssh/id_rsa 是比较新的非 PEM 格式。要把它转换成 PEM 格式。</p>
+<pre><code class="language-shell">cd ~/.ssh
+
+# 备份下先
+cp id_rsa id_rsa.bak
+
+# 转换成 PEM 格式
+ssh-keygen -p -m PEM -f ~/.ssh/id_rsa
+</code></pre>
+<p>此时修改一个本地文件，保存
+会注意到编辑器底部有个动态的变化，点开可以看到进程. 来到服务器发现已经内容变化了</p>
+<h1 id="真正的-online-vscode-部署到云-server-然后浏览器运行">真正的 &ldquo;online&rdquo;, vscode 部署到云 server, 然后浏览器运行</h1>
+<p><a href="https://visualstudio.microsoft.com/zh-hans/services/visual-studio-online">https://visualstudio.microsoft.com/zh-hans/services/visual-studio-online</a></p>
+<p>打开 VSCode 安装 &ldquo;vscode online&rdquo; 插件, 打开后会提示登录 MS 账号</p>
+<p>目前好像必须要买 Azure , 不能像 cloud9 一样部署到自己的服务器(self-host)</p>
+<p>你可以部署后, 使用 VSCode 来打开这个服务器(需要安装软件, 通过 SSH 等协议连接), 或者在浏览器运行 Cloud-IDE.(不需要安装任何软件,可在 iPad 等设备运行!)</p>
+<p>如果在 Azure 里添加了环境后， VSCode 左下角会出现 VS Online&hellip;. 的绿色背景文本，点击就能打开 Azure 上的环境了</p>
+<p>打开命令面板， create environment.</p>
+<h2 id="self-hosted-httpsdocsmicrosoftcomzh-cnvisualstudioonlinehow-tovscodeself-hosted">Self-Hosted: <a href="https://docs.microsoft.com/zh-cn/visualstudio/online/how-to/vscode#self-hosted">https://docs.microsoft.com/zh-cn/visualstudio/online/how-to/vscode#self-hosted</a></h2>
+<p>VS Online: Register Local Environment (好像还是必须使用 Azure 的服务器。搞了半天没发现注册自己的 server)
+Select Folder (每次连接到 remote 都会打开这个文件，你可以连上后关掉，)
+如果没有创建 plan, 会提示，这个 self-host 不需要付费的</p>
+<p>“open in browser&rdquo; 在浏览器打开环境, 记住地址和端口。</p>
+<p>稍后可以用 frp 等方式在外部访问。</p>
+<p><a href="https://portal.azure.com/#home">https://portal.azure.com/#home</a> 注册自己的服务器？</p>
+<p>步骤有点疑惑，大概总结（待实验）</p>
+<ol>
+<li>安装 VSCode 和 扩展 VS Online</li>
+<li>运行命令，登录 VS Online 账号。</li>
+<li>可以注册一个 Azure 的云环境。。。（收费）</li>
+<li>注册一个 Local Environment, 选择一个本地文件夹。</li>
+<li>好像此时就已经被记录到你的这个 Online 账号下面了？ 以后在别的地方可以打开？？？</li>
+</ol>
+<p>目前任意 chrome 浏览器都可以在线登录通过 vsonline 远程连接到任意有安装 vscode 桌面版的机器进行远程开发。</p>
+<p>意思是，
+有一台带 GUI 的机器，安装 VSCode, 运行
+注册 local environment
+保持打开
+在别的机器再开一个 vscode&hellip;连接？</p>
+<h2 id="基于-vscode-14-自己编译">基于 VSCode 1.4 自己编译</h2>
+<p><a href="https://www.v2ex.com/t/617438">https://www.v2ex.com/t/617438</a></p>
+<p><a href="https://www.v2ex.com/t/616296">https://www.v2ex.com/t/616296</a>（讨论了如何 self-host 好像有一些限制，例如 <strong>必须要有 GUI，命令行 linux 不行等 现在不支持无 GUI 的机器</strong> ）
+目前任意 chrome 浏览器都可以在线登录通过 vsonline 远程连接到任意有安装 vscode 桌面版的机器进行远程开发。</p>
+<p><a href="https://github.com/microsoft/vscode/wiki/How-to-Contribute">https://github.com/microsoft/vscode/wiki/How-to-Contribute</a>（按这个说明，是自己编译跑一个vscode 客户端。 参考需要安装的必需工具和环境 里面有指引的。）</p>
+<p><a href="https://github.com/microsoft/vscode.git">https://github.com/microsoft/vscode.git</a></p>
+<p>环境：</p>
+<ul>
+<li>
+<p>Git</p>
+</li>
+<li>
+<p>Node.JS, x64, version &gt;= 10.x, &lt;= 12.x</p>
+</li>
+<li>
+<p>Yarn, follow the installation guide</p>
+</li>
+<li>
+<p>Python, at least version 2.7 (version 3 is not supported 这句是啥意思， 是不是说如果用 alias 把 python 改成 python3 会出错？)</p>
+</li>
+<li>
+<p>Note: Python 2.7 will be automatically installed for Windows users through installing windows-build-tools npm module (see below)</p>
+</li>
+<li>
+<p>A C/C++ compiler tool chain for your platform:</p>
+<h1 id="这里就需根据情况来安装不同的依赖了">这里就需根据情况来安装不同的依赖了</h1>
+</li>
+</ul>
+<pre><code class="language-shell">sudo yum -y install libX11-devel.x86_64 libxkbfile-devel.x86_64
+sudo yum -y install libsecret-devel
+</code></pre>
+<ol>
+<li>安装 Python 2.7</li>
+<li>安装 VisualStudio，一定要把 <code>MSBuild</code>，<code>MSVC v140 - VS 2015 C++ 生成工具</code> 选上</li>
+<li><code>git clone https://github.com/microsoft/vscode.git</code></li>
+<li>酸酸乳开全局模式 (yarn 要下载很多包)</li>
+<li>进入 <code>vscode</code> 文件夹</li>
+<li><code>sudo yarn</code>（有些依赖必须通过酸酸乳）</li>
+<li><code>npm run compile</code> # 别忘了这步，否则后面会 404</li>
+<li>还有 <code>./script/code.sh</code> 要运行</li>
+<li><code>yarn web</code> （关键就是这里， 不是前面的 yarn watch 表示支持浏览器运行）</li>
+<li>浏览器打开 <code>http://localhost:8080</code></li>
+</ol>
+<p>yarn 的时候报错。 try deleting the contents of ~/.node-gyp first and then run <code>yarn cache clean</code> and then try again.</p>
+<blockquote>
+<p>Error: ENOENT: no such file or directory, stat &lsquo;/home/zzy/vscode/out/vs/code/browser/workbench/workbench.js&rsquo;</p>
+</blockquote>
+<p><a href="https://github.com/microsoft/vscode/issues/84198">https://github.com/microsoft/vscode/issues/84198</a></p>
+<p>通过 <code>ls out/vs/code/browser/workbench/</code> 下面果然是没有 workbench.js 这个文件（只有 .html）</p>
+<ol>
+<li>You need to run <code>scripts/code.sh</code> before yarn web.</li>
+</ol>
+<p>I have the same issue here.</p>
+<p>The root cause is the web is trying to get &ldquo;static-extension/vscode-api-tests/out/extension.js&rdquo; file from &ldquo;localhost&rdquo;, but I&rsquo;m using the web UI in remote browser.</p>
+<p>I can workaround the issue by modifying the &ldquo;scripts/code-web.js&rdquo; like this:</p>
+<pre><code>diff --git a/scripts/code-web.js b/scripts/code-web.js
+index 27d538dc1c..b8fcc77dc0 100755
+--- a/scripts/code-web.js
++++ b/scripts/code-web.js
+@@ -125,7 +125,7 @@ async function handleRoot(req, res) {
+        mapExtensionFolderToExtensionPackageJSON.forEach((packageJSON, extensionFolder) =&gt; {
+                staticExtensions.push({
+                        packageJSON,
+-                       extensionLocation: { scheme: 'http', authority: `localhost:${PORT}`, path: `/static-extension/${extensionFolder}` }
++                       extensionLocation: { scheme: 'http', authority: `&lt;real ip&gt;:${PORT}`, path: `/static-extension/${extensionFolder}` }
+                });
+        });
+;
+</code></pre>
+<p>或指定 ip</p>
+<p>I added the following command line arguments to control this:</p>
+<p>&ndash;host 0.0.0.0
+&ndash;port
+&ndash;scheme http/https</p>
+<p>Please let me know how that goes, e.g. <code>yarn web --host 192.168.0.1</code></p>
+<p>自建 Web 版 VS CodeVS Code 1.40</p>
+<p>前不久，微软正式发布了 Visual Studio Online，包含微软托管的 Web 版 VS Code。如今，开发者已经可以直接从 VS Code 的源代码编译出 Web 版 VS Code。</p>
+<p>如果你已经下载了 VS Code 在 GitHub 上的源代码，只需运行 yarn web，就能在 http://localhost:8080/ 访问啦！</p>
+<p>更多关于构建 VS Code 的信息，可以查看这篇贡献指南。</p>
+<p><a href="https://github.com/microsoft/vscode/wiki/How-to-Contribute">https://github.com/microsoft/vscode/wiki/How-to-Contribute</a></p>
+<p>需要注意的是，当前 Web 版本的 VS Code 还是主要用于测试目的。</p>
+<h3 id="buildelectroncode-oss-error-while-loading-shared-libraries-libgtk-3so0-cannot-open-shared-object-file-no-such-file-or-directory">.build/electron/code-oss: error while loading shared libraries: libgtk-3.so.0: cannot open shared object file: No such file or directory</h3>
+<p>./script/code.sh 报上面的错误</p>
+<pre><code class="language-shell">yum -y install gtk3
+</code></pre>
+<p>又缺 Xss</p>
+<pre><code class="language-shell">yum -y install libXScrnSaver &amp;&amp; yum -y install epel-release &amp;&amp; yum -y install libappindicator-gtk3
+</code></pre>
+<h3 id="如果上面都走了还是-workbenchjs-404-很可能是-npm-run-compile-这一步爆内存了">如果上面都走了，还是 workbench.js 404 很可能是 <code>npm run compile</code> 这一步爆内存了。。。。</h3>
+<p>难怪一直卡这里很久不动，ctrl+c 几次才退出来
+[10:44:39] Finished compile-extensions after 0 ms</p>
+<p>开另一个终端发现内存满了</p>
+<p>top 发现 gulp compire 占了很多（其实这时候还在跑， 慢慢等吧。。。）</p>
+<p>最后蹦出一个 [1] 26959 killed sudo npm run compile 被杀死了。。</p>
+<p>1G 远远不够。 。。。 暂时转投 cloud9 吧，简单编辑一下足够了</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/vscode/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/vscode/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E8%A7%86%E9%A2%91%E5%BD%95%E5%88%B6%E4%B8%8E%E7%BC%96%E8%BE%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

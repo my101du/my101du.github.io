@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 普通程序员的创业踩坑记(一)——没有鲜花也没有光环 permalink: startup-1 date: 2015/03/05 10:10:10 tags: 随笔 这是我和罗老师——两个普通程序员的创业记录。先说好，我们还没有成功，你看" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 普通程序员的创业踩坑记(一)——没有鲜花也没有光环 permalink: startup-1 date: 2015/03/05 10:10:10 tags: 随笔 这是我和罗老师——两个普通程序员的创业记录。先说好，我们还没有成功，你看" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%B8%80%E6%B2%A1%E6%9C%89%E9%B2%9C%E8%8A%B1%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%85%89%E7%8E%AF/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 普通程序员的创业踩坑记(一)——没有鲜花也没有光环 permalink: startup-1 date: 2015/03/05 10:10:10 tags: 随笔 这是我和罗老师——两个普通程序员的创业记录。先说好，我们还没有成功，你看">
+
+<meta itemprop="wordCount" content="7038">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 普通程序员的创业踩坑记(一)——没有鲜花也没有光环 permalink: startup-1 date: 2015/03/05 10:10:10 tags: 随笔 这是我和罗老师——两个普通程序员的创业记录。先说好，我们还没有成功，你看"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%B8%80%E6%B2%A1%E6%9C%89%E9%B2%9C%E8%8A%B1%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%85%89%E7%8E%AF/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%B8%80%E6%B2%A1%E6%9C%89%E9%B2%9C%E8%8A%B1%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%85%89%E7%8E%AF/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7038字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 普通程序员的创业踩坑记(一)——没有鲜花也没有光环
+permalink: startup-1
+date: 2015/03/05 10:10:10
+tags:</p>
+<ul>
+<li>随笔</li>
+</ul>
+<hr>
+<p><img src="/article_images/write/%E6%88%90%E5%8A%9F%E4%B8%8E%E5%A4%B1%E8%B4%A5.jpg" alt=""></p>
+<p>这是我和罗老师——两个普通程序员的创业记录。先说好，我们还没有成功，你看不到激动人心的喜悦，它是一段无趣、沉闷甚至残酷的经历。你会看到各种不成熟的想法、稚嫩的决定、错误的判断。不过我们一点也不羞于和你分享，因为即使参照很多创业指导书，避开了所有的坑，也不一定能成功。在这个过程中犯错是必然和必需的，或多或少而已，就像垫脚石一样。</p>
+<p>不知不觉已经过去了4个月，我们现在的状况离当初预期的“三个月后，开始品尝成功的喜悦”相去甚远——客观地说，可以认为没有任何成绩。</p>
+<!-- raw HTML omitted -->
+<p>我不知道此刻坐在书桌旁的老罗心里在想什么，但我现在冷静得很，冷静得就像这几个月什么都没发生过。这种状态很不对劲，是时候停下来回顾一下这段时间做的事情、想的东西，然后把犯的错都血淋淋地拎出来摔到脸上，让血腥味儿刺激一下这种对现状的麻木和对失误的粉饰。在回忆和记录的过程中，我要直面内心中阴暗软弱的地方，然后打败它们。</p>
+<h1 id="辞职离开深圳">辞职，离开深圳</h1>
+<p>2016年4月初的一天，深圳的春天早已结束，开始逐渐变得炎热。</p>
+<p>那天等到同事都下班后，我在办公室坐到很晚，只有走廊附近电梯传来的叮叮声。再次修改了一遍草稿，然后把准备了很久的离职申请邮件发送给上级主管和老总。点下确认按钮的同时，我浑身打了个冷战，然后虚脱般靠在椅子上。关掉空调，锁门，走在科技园那条不管多晚都灯火阑珊的路上，心情仿佛一个准备结束自己生命却又被别人救回来的人一样，抽空了，又塞进去一些东西。</p>
+<p>这次辞职并不是想换一份工作，而是想过一种全新的生活——不是现在这种像钟摆般打卡上班的生活，而是能够自己调整时间的、更有希望的生活：</p>
+<ul>
+<li>因为经济能力和精力不够，我的两个小孩一直放在老家由爷爷奶奶带着，老人家虽然身体尚健，但是总有力不从心的时候。况且长期和孩子们见不着面，我觉得以后他们叫爸爸妈妈的时候，内心可能并没有感情，更像是呼唤一个客人。没有日夜相伴和悉心照料，那信任和教育从何谈起呢？</li>
+<li>中国人太多了，如果和大部人一样同时上班和下班，会浪费很多时间在路上；而休假的时候又扎堆出行，购物、旅游只能看人海。我觉得这简直难以忍受。</li>
+<li>在公司里上班，除非持有股份和公司上市，基本上是不可能实现财务自由的。</li>
+<li>我在 25-30 岁这段最适合积累的黄金时间中，由于各种原因在原来的公司里成了一个懂各种技术但没有一门精通的人；再加上性格内向，没有形成一个稳定的人脉圈子和打造个人影响力。如果不挑战一下自己，这辈子就完了。</li>
+<li>寒门子弟，没有背景和资源，只有互联网还算是个公平竞争的地方，中国类似这样的地方并不多，以后可能就连站脚的地方都没有了。</li>
+<li>整理了手头几个自己觉得挺不错的项目，梦想总是要有的，万一实现了呢？</li>
+<li>钱。必须要有钱，才能让家人过上体面舒适的生活，自己才能有更多的时间陪伴他们，以及去做一些想做的事情（是的，我很喜欢玩游戏）。</li>
+</ul>
+<p>就这样，我离开了工作7年的老东家，准备先调整一段时间，然后开始创业。</p>
+<p>因为老婆去年底在东莞的一个家具公司找了份设计工作，为了降低生活开销，我马上打包搬家，直奔东莞。</p>
+<h1 id="余生无多请问你有遗憾吗">余生无多，请问你有遗憾吗</h1>
+<p>“余生”这个项目的念头，我不记得是在怎样的一个场景下诞生的了，反正当时只是草草写到了笔记中，便留在脑袋里某个角落发霉。</p>
+<p>有一次中午吃饭的时候，和同事一起聊到年华易老、父辈艰辛、人生遗憾这种比较悲伤的话题，我便提起了它，“如果有一个产品，能以一种很直观的方式提醒你生命的宝贵，会不会挺有意思呢？比方说，寿命倒计时，以及计算你还可以陪伴亲人一起度过多少年。”</p>
+<p>可能是我没有描述清楚，最后好像只有罗老师明白了几个关键词，然后他接着说“这个可以在用户之间进行PK，看看同龄人谁活得更长，还有可以在家庭成员之间共享数据，让大家彼此更珍惜”。</p>
+<p>咦，看来罗老师也想过这些天马行空不切实际的问题啊。那时候和他刚共事不久，因为此人浑身上下就是一股科班出身技术人员的样子，所以我经常笑他是教物理的（不过罗老师这个外号不是我取的）。接着又深入聊了一些对生命的想法，发现我们两个在很多观点上简直一拍即合，原来我们都是披着程序员外衣的文艺青年啊！</p>
+<p>后来公司的工作渐渐忙了起来，就把这个事情淡忘了，但是我和罗老师在合作了一段时间后，在更多的沟通中互相有了更多的了解。因为我那时候已经产生了离职的念头，所以特别想把“余生”这个项目落实并做下去，不过由于时间紧张，只有晚上有空的时候会用 Axure 勾画一下 APP 的原型，然后找一些 Swift 的国外资料学习。</p>
+<h1 id="老湿不要再讨论了就这么开始做吧">老湿，不要再讨论了，就这么开始做吧</h1>
+<p>到了4月初的时候，有一次下班的路上我告诉罗老师我要准备辞职了，想去全心全意做余生项目。结果他说他也准备走了，干脆一起做这个吧……</p>
+<p>于是一路上他推着自行车，我步行，边走边聊，讨论关于“余生”应该如何去做。结构渐渐勾画得清晰起来，但是在数据的采集方式上和产品气质上我们的分歧较大，我是那种快糙猛的风格，他想走小清新路线。不过这并不是什么大问题，我那天非常兴奋，终于有人和我一起做有趣的东西了，而且这个产品目前看起来应该可以吸引到很多用户，前景不错。</p>
+<p>虽然那天交流的信息量很大，但是我们还是在讨论一些框架层面的东西。我隐约觉得或许两个人都同时具有产品感和技术能力并不好，这样会犯下太早决定“这个可以做，那个也可以做”的错误——因为我们自己知道什么能实现，什么不能实现，思维就局限在“能做”的范围了。</p>
+<p>第二天下班后，我们在麦当劳交流前一天整理的想法，不知不觉话题就走偏了。
+主要是因为那时候“余生”还只是个比较虚的概念和一些强加的外部话题，就是那种“给你灌几句鸡汤，要好好珍惜生命哦”的感觉。但是一时半会又不知道怎么样让它更“坚固”，于是我们对它能否吸引到用户产生了怀疑。</p>
+<p>沉默了一下，我们开始讨论假如不做这个项目的话，做什么好?</p>
+<p>罗老师说要不做IT在线教育吧，就是视频课程一类的。这个东西看得见摸得着，而且有不少成功的案例可以借鉴。当时我也正在看“宁皓网”的一些教程，觉得这么基础的知识也有很多用户付费订阅，太不可思议了。于是很赞同这个提议，“要不先不做余生了，做视频教程吧”。</p>
+<p>但是后来我们聊着聊着又发现两个问题，一是现在成功的个人在线教育网站，都是经过了几年的积累才有影响力的，我们估计等不了那么就就穷死了；二是现在盗版太猖獗，你刚做出来别人就拿出去复制卖钱了。</p>
+<p>后来我们又讨论了各自脑袋里收藏的几个项目，但是实施起来都有很大的难度。好像未来突然关闭了那扇门，这么下去都不知道该干什么了。气氛从热火朝天变得一落千丈，我猛然觉得我们似乎在给自己设置障碍，东西都没做，就开始幻想困难把自己打败了。</p>
+<p>“我们不要在这里讨论和猜测了，先做吧，先把余生做出来，东西都还没成形呢就下定论，谁知道做出来会怎样？也许就火了呢？”
+罗老师嗯了一声，就准备回家开始细化产品原型。</p>
+<p>我问罗老师，你可以承受几个月没有收入？他说6个月。我想了想说“我只能过3个月”。</p>
+<h1 id="四光年太远了吧">四光年太远了吧</h1>
+<p>我在做微信公众号的时候，发现要申请认证的话必须是企业或机构。于是注册一个公司就提上了日程。</p>
+<p>我们开始讨论公司名叫什么，这个过程比较奇葩，我们构思了很多脑洞大开的名称。最后去掉和别人重名的、被保护了的等等（例如常见的带“科”字的基本没有了，带“完美”的被一个公司保护了），定名叫“四光年信息技术有限公司”。其实还有“科技有限公司”等等后缀可以选择，但为了向前东家致敬，也叫了“信息技术有限公司”。</p>
+<p>“四光年”一般人可能不明白什么意思，但看过《三体》的应该知道，这是与太阳最近的恒星之间的距离。一方面是想表达现阶段这是个梦想（以现在的飞行技术要一万多年），然后又是个经过努力可以提前实现的目标(各国在成立地球联合体后科技飞快进步，曲率飞船能够很快到达)。</p>
+<p>由于5月份老罗还在交接，我就去查资料、跑银行。现在成立一家公司的门槛低了，手续也简便了很多，但还是要接触到税务、银行、工商等等，该跑的还是要跑，只不过因为通讯网络进步，可以预约时间，不会白跑一趟而已。</p>
+<p>成立公司后，我们进行了微信公众号的认证，然后用企业身份开通了一些以前个人无法申请的网络服务。这个社会对企业和普通公民的态度还是有很大区别的，比如我以前老是接到类似“恭喜你中了1000块大奖”，“你要买保险吗”这种电话，现在都是“张总，请问现在方便吗？”然后再客客气气地谈事。</p>
+<h1 id="形式主义与缺乏监督">形式主义与缺乏监督</h1>
+<p>老罗5月底离开公司后，6月份我们正式开始工作，分工是我做微信端的公众号开发和运营，他做手机APP。</p>
+<p>由于我在东莞，他在深圳，只能通过网络联系，于是我们使用 Tower 来进行日程管理，列出了一堆的工作计划和清单。我们还使用了墨刀、 processon 来进行在线沟通，还制定了一个每周固定沟通一次的制度。</p>
+<p>后来发现，这些都形同虚设。因为大部分人一旦没有监督，很难做到自觉。一开始我还认真去完成 Tower 里的任务，也记录下问题找罗老师沟通，后来就懒了，QQ上打一句“有事没有？”，如果没事就算了。</p>
+<p>因为那时候我还在学习微信开发，没写代码，也确实没什么好说的，后来慢慢地连 Tower 都懒得去更新了。因为没有固定的进度表，每天学东西也是懒懒散散这里看一下那里看一下。</p>
+<p>整个6月，我的学习路线非常飘忽，本来是想快速把微信公众号文档看完就开始做一个寿命测试的，后来发现有一个优雅的 Laravel 框架下的第三方包就去学 Laravel，然后又觉得性能不佳去用 Lumen 做 API，发现 session 是个坑后又转回纯 PHP，然而又觉得页面跳转过程太不友好，要不干脆做个 SPA 形式的页面吧，就去学 Redux，还在 WeUI 和 light7 之间切换了几次。</p>
+<p>终于做出来一个简陋的寿命测试，但是自己很不满意，因为看上去太简单了啊！产生了一种厌恶自己，快要放弃的心情。也许我并不适合创业，要不还是去找份工作吧？后来还是安慰自己，才开始两个月，很正常，再说这两个月也学到了过去几年都没有接触过的新东西啊！</p>
+<p>这是我第一次心生惧意，我曾经以为简简单单可以做个东西，其实完全不是那么回事。如果没有清晰的目标和deadline，不知不觉就松懈或者走歪了。</p>
+<p>我和罗老师后来打过电话，他学 React Native 好像快完成了，似乎比我这边情况要好。</p>
+<h1 id="这是个支零破碎的7月">这是个支零破碎的7月</h1>
+<p>7月初的时候，罗老师的个人生活有些问题要处理；而我这边父母会带小孩来过暑假。因为每年只有过年和国庆的短短的几天陪伴他们，我其实很想这个月完全不想工作，就陪着他们玩耍，弥补一下作为一个父亲长期角色的缺位。</p>
+<p>但是又觉得如果我早一天完成项目，就能早一天赚钱，可以给他们买好的玩具和衣服。又安慰自己，也许他们长大了并不会记得小时候的事情吧！明年创业走上正轨了，就有时间陪了。</p>
+<p>我规定自己每天白天认真工作7个小时，晚上不工作陪小孩子玩。并且前一天晚上规划好第二天的工作任务，避免像上个月一样浪费时间去学一些暂时用不到的知识。可是实际情况经常是刚坐下来不久，女儿来敲门或者儿子探头来瞧，看到他们的笑脸我总是不忍心不理他们，总要去和他们玩一会，慢慢地他们从一开始对我有些陌生到只喜欢缠着我玩了……</p>
+<p>后来干脆把门关上，这样才能安静地工作，终于按时把整个微信端的寿命预测和财富预测、清单界面做完，可以用 EChats 图表来展示了。</p>
+<p>但是老婆看后说“做得好丑，我是一点用的兴趣都没有”。我才觉得自己忽视了一个很重要的原则“手机上的工具应该尽可能简单”，而我现在这个预测，要填差不多10几个选项，最后填完会给出5个花哨到令人畏惧的图表。</p>
+<p>当时我是想纠正6月份做的东西太少，结果变成了做得太多！</p>
+<p>月底的时候，爸妈带着孩子们回老家去了，他们走的时候，两个孩子没有一点点留恋的意思，仿佛就像出远门做客，那两个叫爸妈的人是别人家的人，他们玩一段时间就要回自己家。我送他们进去后，站在高铁站的一楼仰头看他们上电梯，他们和爷爷奶奶有说有笑，似乎这个月都没有和父母一起生活过。</p>
+<p>也许这个月的工作就和我那时候的心情一样破碎吧。</p>
+<h1 id="前辈的告诫">前辈的告诫</h1>
+<p>7月底的时候，我去了一趟深圳，和老罗一起去见一位前辈，请她给我们现在做的这个产品提意见。</p>
+<p>一开始其实我还是有一些自信的，因为虽然现在界面看上去做得很复杂和缺少美感，但有不少地方的功能是设计得比较巧妙和有趣的。路上还认真地整理了一下该如何介绍余生产品的特点和结构。</p>
+<p>在说完后，她说这个产品本身还是挺不错的，但是给我们指出了两个问题：</p>
+<ol>
+<li>我们这个项目只是有可能盈利，而投资人需要看到的是盈利可能性很大或已经盈利</li>
+<li>我们这个团队组成有问题，没有强大的营销能力，所以根本无法快速成长</li>
+</ol>
+<p>然后给我们详细分析了具体是怎么回事，以及如何去改进。</p>
+<p>这是我们的产品第一次对外示人，首先能够得到正面的评价已经让我们很高兴了。但是这两个问题确实是我们现在无法解决的。我和罗老师说，要不，就把它当成种子，慢慢发芽吧。</p>
+<p>我感觉到罗老师也和我一样有些疲惫和迷茫，于是我们暂时把余生项目暂停了，休息了几天。</p>
+<h1 id="转向">转向</h1>
+<p>8月初，我想罗老师应该可以从他的个人问题中恢复过来了，为了提高沟通的效率，我叫他尽快过来东莞一起工作。既然余生现在做起来挺没劲的，那就搞视频课程吧，换换脑子。</p>
+<p>在等他的几天里，我开始做四光年的官网第一版，放了几个课程目录，把它接入微信支付。</p>
+<p>然后花了两天的时间录制和剪辑开场白视频，看着里面那个面无表情的家伙，好像少了点当初的精气神啊。不行，得给自己鼓劲，毕竟视频课程做得好，一年的订阅费还是很可观的！比余生项目虚无缥缈的目标还是更靠谱一些。</p>
+<p>罗老师到达后，马上进入工作状态，改版了四光年的官网，做了新的logo和首页。确实两个人坐在一个房间里工作效率提高了很多，有时候我看到他，会觉得很惭愧，比我小了7、8岁的人都这么认真，我不努力会被社会淘汰的。</p>
+<p>于是我们开始各自写视频课程的提纲，我写后端和运维的，他写前端的。工作成效虽然不如预期那么乐观，但还是确确实实做出来了东西。我花了大概一个星期的时间完成了一份微信公众号开发教程的提纲，然后开始一边写代码一边录视频。</p>
+<p>恩，很踏实。一个个短期可以完成的小任务，比一个长期的大项目更容易让人有成就感。
+我每天都会点开几次同类的知名视频课程网站，然后看看他们进步没有，如果没有进步就放心了，因为给我们留了时间去追赶。</p>
+<h1 id="没有压力东西永远出不来">没有压力，东西永远出不来</h1>
+<p>8月底的时候，王健林的那句“一个亿的小目标”突然就火遍了互联网。</p>
+<p>那天晚饭的时候我和罗老师商量，要不我们把余生项目再拿出来，先赶紧把“财富预测”功能完善一下，趁这个事件推一推我们的公众号？</p>
+<p>说干就干，我们给自己定了两天两夜的时间期限，我写软文，他写代码。</p>
+<p>一宿无话，当天熬到凌晨三点，第二天继续如此。我的软文写完了，罗老师的代码还有些问题。到第三天，比预期计划晚了一天完成。我其实想殴打他的，因为最后测试的时候，我发现他花了不少时间去做一些很炫但是又没有用处的动画效果。</p>
+<p>不过总算完成了。</p>
+<p>然而到第四天早上，我们分享到朋友圈宣传的时候，发现 node 服务的崩溃现象很严重，还有安卓客户端下还会导致微信失去响应。于是只好做个守护进程，检测到崩溃就重启，同时开始排查安卓的问题。</p>
+<p>我没有觉得是罗老师的代码写得不好，因为三天要解决代码、算法、接口、设计、服务器的所有问题，这个难度太大。我只是突然想到，是不是应该多搞几次这样的“突然袭击”呢？如果按以前的进度做这样的任务也许要做一个星期才能完成，但是这次因为有个“要赶在事件热度降低之前推出来”的弦在绷着，时间很紧张却很快就做出来了。</p>
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;todo list&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+<h1 id="在活下去的压力面前高尚的理想一文不值">在活下去的压力面前，高尚的理想一文不值</h1>
+<p>我这个人有个致命的毛病：安于现状</p>
+<p>有时候父母会刺激我说“某某某比你混得好多了”；小孩长大后经常钱不够花；买不起房；等等。面对这种种外界的压力，如果换做另外一个人，估计早就起早贪黑赚钱去了。但是我实在是脸皮太厚了，只要生活还过得不错，没有到山穷水尽的程度，绝不会使出全部的潜力去让家人过上比现在更好的生活。</p>
+<p>辞职后，突然没有了经济来源，而各项生活开支都要照常消耗。生活的压力陡然增大，我开始逐渐缩减浪费时间的行为，例如刷新闻，看电影，把时间全部用到工作上来。但时间久了，当时刚开始创业时的斗志也消耗了不少，“如果不成功就活不下去”的信念还不够坚定，有时候又开始犯懒。也许我要想个办法，比如说规定今天计划的任务如果没有完成就没有饭吃，不能睡觉？</p>
+<p>还有个不致命但很严重的毛病：脱离实际</p>
+<p>比如工</p>
+<h1 id="坚持耗死别人">坚持，耗死别人</h1>
+<p>另外一个就是缺乏坚持的毅力</p>
+<p>过去我在业余时间做过不少项目，有APP、网站等等，有的甚至是在行业刚火起来就比别人提前进入了，但是大部分做个一两个月我就会放弃，都是因为遇到困难没有坚持下去，等到其他人也做了类似的产品并成功后，才后悔莫及。</p>
+<p><strong>总结</strong></p>
+<p>经过这段时间的经历，现在我的想法有些不一样了。如果你还年轻，我更建议你不要因为对现状不满就辞职去创业。好好工作，认真积累，一定要在某个方向有深度，然后多和行业内的人接触。还有就是不能让自己太舒服，要选择让你觉得压力很大，并且有很多比你厉害的人的公司。至于创业，可能那些像我一样没有太多选择和退路、自律并且喜欢时间自由的人更加适合。</p>
+<p>每个人都会有很多好的想法，但是不去做出来，就会烂在脑子里变成垃圾了。还有，如果做个东西发现一点困难都没有，那这个方向估计是错的。</p>
+<p>如果你有信得过的朋友开了公司，创业初期尽可能自己不要开，可以借用别人的证件去做。虽然现在不需要核查注册资本什么的，但是还要放一万多块钱在银行里面，并且第二年就要开始收取一千多的年费了。数目虽然不大，但有时候就是觉得这笔钱不能动心里不太爽。</p>
+<p>如果一定要开公司，为了节省时间，直接请那些待办公司注册的人帮你操作，他们非常熟悉整个流程，你只要按指示去去哪里哪里露个面盖个章就可以了。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%B8%80%E6%B2%A1%E6%9C%89%E9%B2%9C%E8%8A%B1%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%85%89%E7%8E%AF/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%B8%80%E6%B2%A1%E6%9C%89%E9%B2%9C%E8%8A%B1%E4%B9%9F%E6%B2%A1%E6%9C%89%E5%85%89%E7%8E%AF/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%99%AE%E9%80%9A%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E5%88%9B%E4%B8%9A%E8%B8%A9%E5%9D%91%E8%AE%B0%E4%BA%8C%E4%BB%8E%E8%88%92%E9%80%82%E5%8C%BA%E5%87%BA%E6%9D%A5%E5%BE%88%E8%89%B0%E9%9A%BE%E4%BD%86%E4%B8%8D%E5%87%BA%E6%9D%A5%E5%8F%AF%E8%83%BD%E4%BC%9A%E6%AD%BB/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%97%A5%E6%8B%B1%E4%B8%80%E5%8D%92/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

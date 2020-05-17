@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="聚集函数 从多个输入行中计算出一个结果. 例如 count（计数）、sum（和）、avg（均值）、max（最大值）和min（最小值） SELECT max(temp_lo) FROM weather; 注意 不" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="聚集函数 从多个输入行中计算出一个结果. 例如 count（计数）、sum（和）、avg（均值）、max（最大值）和min（最小值） SELECT max(temp_lo) FROM weather; 注意 不" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="聚集函数 从多个输入行中计算出一个结果. 例如 count（计数）、sum（和）、avg（均值）、max（最大值）和min（最小值） SELECT max(temp_lo) FROM weather; 注意 不">
+
+<meta itemprop="wordCount" content="7941">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="聚集函数 从多个输入行中计算出一个结果. 例如 count（计数）、sum（和）、avg（均值）、max（最大值）和min（最小值） SELECT max(temp_lo) FROM weather; 注意 不"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7941字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 16分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="聚集函数">聚集函数</h1>
+<p>从多个输入行中计算出一个结果.
+例如 count（计数）、sum（和）、avg（均值）、max（最大值）和min（最小值）</p>
+<pre><code class="language-sql">SELECT max(temp_lo) FROM weather;
+</code></pre>
+<h3 id="注意-不能用在-where-中">注意 <strong>不能用在 WHERE 中</strong></h3>
+<p>因为WHERE子句决定哪些行可以被聚集计算, 显然它必需在聚集函数之前被计算</p>
+<pre><code class="language-sql">#错误 不能在 WHERE 中直接使用
+SELECT city FROM weather WHERE temp_lo = max(temp_lo);    
+
+# 而应该使用“子查询”，用 SELECT 将聚集函数的计算结果返回给 WHERE 子句
+# 因为子查询是一次独立的计算，它独立于外层的查询计算出自己的聚集
+SELECT city FROM weather
+    WHERE temp_lo = (SELECT max(temp_lo) FROM weather);
+</code></pre>
+<h3 id="聚集同样也常用于和group-by子句组合---having-过滤被分组的行--where-从指定的范围内查找数据">聚集同样也常用于和GROUP BY子句组合 +  HAVING 过滤被分组的行 + WHERE 从指定的范围内查找数据</h3>
+<p>获取每个城市观测到的最低温度的最高值.</p>
+<p>每个城市一个输出。每个聚集结果都是在匹配该城市的表行上面计算的</p>
+<pre><code class="language-sql">SELECT city, max(temp_lo)
+    FROM weather
+    GROUP BY city;
+</code></pre>
+<p>然后用HAVING 过滤这些被分组的行</p>
+<pre><code class="language-sql">SELECT city, max(temp_lo)
+    FROM weather
+    GROUP BY city
+    HAVING max(temp_lo) &lt; 40;
+</code></pre>
+<p>如果只关心某些城市</p>
+<pre><code class="language-sql">SELECT city, max(temp_lo)
+    FROM weather
+    WHERE city LIKE 'S%'            -- (1)
+    GROUP BY city
+    HAVING max(temp_lo) &lt; 40;
+</code></pre>
+<h3 id="where-和-having-区别">WHERE 和 HAVING 区别</h3>
+<p>WHERE和HAVING的基本区别如下：</p>
+<ul>
+<li>WHERE在分组和聚集计算<strong>之前</strong>选取输入行（因此，它控制哪些行进入聚集计算），</li>
+<li>而HAVING在分组和聚集<strong>之后</strong>选取分组行。</li>
+</ul>
+<p>根据实际情况来处理使用 where 还是 having.  (例子里，我们可以在WHERE里应用城市名称限制，因为它不需要聚集。这样比放在HAVING里更加高效，因为可以避免那些未通过 WHERE检查的行参与到分组和聚集计算中。)</p>
+<h2 id="日期与时间函数">日期与时间函数</h2>
+<h3 id="timestamptz-的-date-格式和-int-格式互相转换">timestamp(tz) 的 date 格式和 int 格式互相转换</h3>
+<p>timestamp 类型的字段默认显示为日期格式 &lsquo;',  与 timestamp 整数数字 1233234324 这样的无法直接比较，需要用 extract 来处理下</p>
+<pre><code class="language-sql">select *, extract(epoch from dt_update) as dt FROM public.&quot;COLLECT_BRAKE_LIFE&quot; WHERE extract(epoch from dt_update)  &gt;= 1582593533 limit 10;
+
+-- or round() to remove the 1323423423.23423432
+select trunc(extract(epoch from now()::timestamp )), now()
+
+2020-02-25 13:30:53
+
+1582637502
+2020-02-25 13:32:57
+
+-- 把整数类型的时间戳转成 pg 时间戳 2020-02-10 12:00:00 ()
+select to_timestamp(1582637577) 
+</code></pre>
+<h3 id="秒数-12345-与-interval">秒数 12345 与 interval</h3>
+<pre><code class="language-sql">-- int 类型的数字转成 00:10:00 类型
+select concat(6966960/10,' seconds')::interval;
+SELECT make_interval(secs =&gt; 696696);
+
+-- interval 类型转成 int ，并进行比较
+select sum(ds_completed_time) into v_ds_completed_time;
+-- 直接用  v_ds_completed_time &gt; 20 报错。
+EXTRACT(epoch FROM v_ds_completed_time) &gt; 20
+</code></pre>
+<h3 id="当前时间戳">当前时间戳</h3>
+<pre><code class="language-sql">select now() as nowdate;
+</code></pre>
+<h2 id="限制时间范围早于多少天之前用字符串来写早于多少天">限制时间范围早于多少天之前，用字符串来写&quot;早于多少天&rdquo;</h2>
+<pre><code class="language-sql">select count(1) from tr.&quot;TR_TEST_REQUEST&quot; where ds_tr_number ilike '2019%' and dt_update&gt;=(now()-interval '6 months');
+
+</code></pre>
+<h3 id="age-减去参数">AGE() 减去参数</h3>
+<pre><code class="language-sql">-- 65 years 5 mons 11 days
+SELECT AGE(timestamp '2017-01-26', timestamp '1951-08-15');
+
+SELECT AGE(timestamp '1990-08-15');
+</code></pre>
+<h3 id="当前-datetime-它指定当前日期和时间">当前 DATE/TIME() 它指定当前日期和时间。</h3>
+<ul>
+<li>CURRENT_DATE 提供当前日期</li>
+<li>CURRENT_TIME 提供带时区的值</li>
+<li>CURRENT_TIMESTAMP 提供带时区的值</li>
+<li>CURRENT_TIME(precision) 可以选择使用precision参数，这将使结果在四分之一秒的范围内四舍五入到数位数。</li>
+<li>CURRENT_TIMESTAMP(precision) 可以选择使用精度参数，这将使结果在四分之一秒的范围内四舍五入到数位数。</li>
+<li>LOCALTIME 提供没有时区的值。</li>
+<li>LOCALTIMESTAMP 提供没有时区的值。</li>
+<li>LOCALTIME(precision) 可以选择使用精度参数，这将使结果在四分之一秒的范围内四舍五入到数位数。</li>
+<li>LOCALTIMESTAMP(precision) 可以选择使用精度参数，这将使结果在四分之一秒的范围内四舍五入到数位数。</li>
+</ul>
+<pre><code class="language-sql">-- 2019-04-23
+SELECT CURRENT_DATE;
+</code></pre>
+<h3 id="date_part-获取子字段相当于提取">DATE_PART() 获取子字段(相当于提取)</h3>
+<h3 id="extract-获得子字段">EXTRACT() 获得子字段</h3>
+<h3 id="isfinite-测试有限的日期时间和间隔非-无穷大">ISFINITE() 测试有限的日期，时间和间隔(非+/-无穷大)</h3>
+<h3 id="justify-调整间隔">JUSTIFY 调整间隔</h3>
+<h2 id="窗口函数">窗口函数</h2>
+<p>暂略 <a href="http://www.postgres.cn/docs/10/tutorial-window.html">http://www.postgres.cn/docs/10/tutorial-window.html</a></p>
+<h2 id="表继承">表继承</h2>
+<p>表cities(城市)和表capitals(首都也是城市)</p>
+<p>如果我们需要查询城市时也包括首都数据，可以用<code>视图</code></p>
+<pre><code class="language-sql">CREATE VIEW cities AS
+  SELECT name, population, altitude FROM capitals
+    UNION
+  SELECT name, population, altitude FROM non_capitals;
+</code></pre>
+<p>但如果希望<strong>更新数据</strong>时也能生效？</p>
+<p>capitals 的行从它的父亲 cities 继承了所有列。州首都有一个附加列 state 用于显示它们的州</p>
+<pre><code class="language-sql">CREATE TABLE cities (
+  name       text,
+  population real,
+  altitude   int     -- (in ft)
+);
+
+CREATE TABLE capitals (
+  state      char(2)
+) INHERITS (cities);
+</code></pre>
+<p>然后寻找所有海拔500尺以上的城市名称，默认结果<strong>包括州首都</strong></p>
+<pre><code class="language-sql">SELECT name, altitude
+  FROM cities
+  WHERE altitude &gt; 500;
+</code></pre>
+<p>如果要 <strong>排除首都（capitals 继承了 cities 表）,用 <code>ONLY</code> 关键字指明不到被继承的表里查找数据</strong></p>
+<p>ONLY用于指示查询只在cities表上进行而不会涉及到继承层次中位于cities之下的其他表。很多我们已经讨论过的命令 — SELECT、UPDATE 和DELETE — 都支持这个ONLY记号。</p>
+<p><strong>注意</strong> 它还未与唯一约束或外键集成，这也限制了它的可用性</p>
+<pre><code class="language-sql">SELECT name, altitude
+    FROM ONLY cities
+    WHERE altitude &gt; 500;
+</code></pre>
+<h1 id="统计">统计</h1>
+<h2 id="按日周-计算总数">按日/周 计算总数</h2>
+<p>这里是 MySQL 的例子</p>
+<pre><code class="language-sql">-- 按天统计：
+
+select DATE_FORMAT(start_time,'%Y%m%d') days,count(product_no) count from test group by days; 
+
+-- 按周统计：
+
+select DATE_FORMAT(start_time,'%Y%u') weeks,count(product_no) count from test group by weeks; 
+
+-- 按月统计:
+
+select DATE_FORMAT(start_time,'%Y%m') months,count(product_no) count from test group bymonths; 
+
+
+-- 当然用 sum() 也是OK的
+</code></pre>
+<p>postgres 是 <code>to_char</code></p>
+<pre><code class="language-sql">-- mysql
+Select DATE_FORMAT(date_time, '%b %e, %Y, %T') from table_name
+
+-- postgresql
+select to_char(dt_time_sheet,'dd.mm.YYYY') days,sum(nr_worked_hours) count from tr.&quot;TIME_SHEET&quot; group by days; 
+select to_char(dt_time_sheet,'mm.YYYY') months,sum(nr_worked_hours) count from tr.&quot;TIME_SHEET&quot; group by months; 
+select to_char(dt_time_sheet,'WW.YYYY') weeks,sum(nr_worked_hours) count from tr.&quot;TIME_SHEET&quot; group by weeks; 
+</code></pre>
+<p>具体格式化参考：https://www.postgresql.org/docs/9.1/functions-formatting.html</p>
+<p>好像还有</p>
+<pre><code class="language-sql">-- date_part
+SELECT date_part('year', author_date::date) as year,
+       date_part('week', author_date::date) AS weekly,
+       COUNT(author_email)           
+FROM commits
+GROUP BY weekly
+ORDER BY year, weekly;
+
+-- date_trunc
+SELECT date_trunc('week', author_date::date) AS weekly,
+       COUNT(author_email)           
+FROM commits
+GROUP BY weekly
+ORDER BY weekly;
+</code></pre>
+<h2 id="时间范围">时间范围</h2>
+<p><a href="https://popsql.com/learn-sql/postgresql/how-to-query-date-and-time-in-postgresql/">https://popsql.com/learn-sql/postgresql/how-to-query-date-and-time-in-postgresql/</a></p>
+<pre><code class="language-sql">--Get the date and time time right now:
+--
+select now(); -- date and time
+select current_date; -- date
+select current_time; -- time
+
+-- Find rows between two absolute timestamps:
+-- 
+select count(1)
+from events
+where time between '2018-01-01' and '2018-01-31'
+
+-- Find rows created within the last week:
+--
+select count(1)
+from events
+where time &gt; now() - interval '1 week'; -- or '1 week'::interval, as you like
+
+-- Find rows created between one and two weeks ago:
+--
+select count(1)
+from events
+where time between (now() - '1 week'::interval) and (now() - '2 weeks'::interval);
+
+-- Extracting part of a timestamp:
+--
+select date_part('minute', now()); -- or hour, day, month
+
+-- Get the day of the week from a timestamp:
+--
+-- returns 0-6 (integer), where 0 is Sunday and 6 is Saturday
+select date_part('dow', now());
+
+-- returns a string like monday, tuesday, etc
+select to_char(now(), 'day');
+
+--Converting a timestamp to a unix timestamp (integer seconds):
+--
+select date_part('epoch', now());
+
+-- Calculate the difference between two timesetamps:
+--
+-- Difference in seconds
+select date_part('epoch', delivered_at) - date_part('epoch', shipped_at); -- or minute, hour, week, day, etc
+
+-- Alternatively, you can do this with `extract`
+select extract(epoch from delivered_at) - extract(epoch from shipped_at);
+</code></pre>
+<p>注意一个问题：  &lt; now()::date 表示比今天  00:00 会导致今天 现在的数据不显示,改成</p>
+<pre><code class="language-php">$sqlAdd = &quot; WHERE dt_time_sheet &gt; (now()-interval '1 month')::date AND dt_time_sheet&lt;(DATE 'tomorrow')::date &quot;;
+</code></pre>
+<h2 id="限制时间范围早于多少天之前用字符串来写早于多少天-1">限制时间范围早于多少天之前，用字符串来写&quot;早于多少天&rdquo;</h2>
+<pre><code class="language-sql">select count(1) from tr.&quot;TR_TEST_REQUEST&quot; where ds_tr_number ilike '2019%' and dt_update&gt;=(now()-interval '6 months');
+
+</code></pre>
+<h1 id="索引-index">索引 Index</h1>
+<p>索引使用 SELECT 查询和 WHERE 子句加速数据输出。但会减慢  INSERT &amp; UPDATE</p>
+<p>唯一索引可以防止列 或列的组合上有索引重复项</p>
+<p><strong>避免使用索引</strong></p>
+<ul>
+<li>应该避免在小表上使用索引。</li>
+<li>不要为具有频繁，大批量更新或插入操作的表创建索引。</li>
+<li>索引不应用于包含大量NULL值的列。</li>
+<li>不要在经常操作(修改)的列上创建索引。</li>
+</ul>
+<h2 id="单列索引">单列索引</h2>
+<p>仅在一个表列上</p>
+<pre><code class="language-sql">CREATE INDEX employees_index  
+ON EMPLOYEES (name);
+</code></pre>
+<h2 id="多列索引">多列索引</h2>
+<p>使用表的多个列创建索引</p>
+<pre><code class="language-sql">CREATE INDEX multicolumn_index  
+ON EMPLOYEES (name, salary);
+</code></pre>
+<h2 id="唯一索引">唯一索引</h2>
+<p>获取数据的完整性并提高性能, 不允许向表中插入重复的值，或者在原来表中有相同记录的列上也不能创建索引。</p>
+<pre><code class="language-sql">CREATE UNIQUE INDEX unique_on_name  
+on employees (name);
+</code></pre>
+<h2 id="删除索引">删除索引</h2>
+<pre><code class="language-sql">DROP INDEX multicolumn_index;
+</code></pre>
+<h2 id="一些字符类型的字段如果加索引用-btree-在用-ilike-例如-dropdownlist-的输入自动提示是没有效果的">一些“字符”类型的字段，如果加索引用 btree 在用 ilike (例如 dropdownlist 的输入自动提示)，是没有效果的。</h2>
+<p>可以用 gin 类型</p>
+<pre><code class="language-sql">CREATE INDEX &quot;TR_TEST_REQUEST_idx_ds_tr_number&quot; ON tr.&quot;TR_TEST_REQUEST&quot; USING gin (ds_tr_number gin_trgm_ops);
+</code></pre>
+<h2 id="索引的填充因子-fillfactor">索引的填充因子 fillfactor</h2>
+<p>下面有一句的索引中，fillfactor = &lsquo;100&rsquo;</p>
+<pre><code class="language-sql">CREATE INDEX &quot;IDX_AUDIT_PART&quot; ON redcert.&quot;AUDIT_PART&quot; USING btree (cd_audit_part) WITH (fillfactor='100');
+</code></pre>
+<p>FILLFACTOR 一个索引的填充因子(fillfactor)是一个百分比，它表示创建索引时每个索引页的数据填充率。</p>
+<p>对于 B-trees 来说，意味着在创建索引时叶子页将按照此百分比填充数据，在右侧(最大的键值)扩展索引时同样也按照此百分比填充数据。如果后来某个页被完全填满，那么该页将被分割，从而导致索引性能退化。B-trees 默认的填充因子是 90 ，但是有效的取值范围是 10 到 100 。对于静态的不会发生改变的表，最佳值 100 可以让索引的物理体积最小，但是对于不断增长的表，较小的填充因子更合适，因为这将尽可能减少对页的分割。其它索引方法对填充因子的理解与此类似，但是其默认值各不相同。(译者注：如果有条件周期性的重建索引，那么建议使用较大的填充因子以减少索引的物理体积)</p>
+<h1 id="视图-view">视图 View</h1>
+<p>并不是一个物理存在的表，而是一个“伪表”但是可以像普通表一样进行查询。</p>
+<p>可以灵活地挑选来自多个表，或者只选取表的一部分数据，组合成一个“视图”</p>
+<p>好处：</p>
+<ul>
+<li>它以自然和直观的方式构建数据，并使其易于查找。</li>
+<li>它限制对数据的访问，使得用户只能看到有限的数据而不是完整的数据。</li>
+<li>它归总来自各种表中的数据以生成报告。</li>
+</ul>
+<p>例如，从一个表里挑选两个字段，来生成一个视图 <code>current_employees</code></p>
+<pre><code class="language-sql">CREATE VIEW current_employees AS  
+SELECT NAME, ID, SALARY 
+FROM EMPLOYEES;
+</code></pre>
+<p>就像查询一个普通的表一样</p>
+<pre><code class="language-sql">SELECT * FROM current_employees;
+</code></pre>
+<p>如果要删除</p>
+<pre><code class="language-sql">DROP VIEW view_name;
+</code></pre>
+<p>再举个例子</p>
+<p>假设天气记录和城市为止的组合列表对我们的应用有用，但我们又不想每次需要使用它时都敲入整个查询,于是就给它一个名字，像使用一个普通表一样来使用它。</p>
+<p>创建视图</p>
+<pre><code class="language-sql">CREATE VIEW myview AS
+    SELECT city, temp_lo, temp_hi, prcp, date, location
+        FROM weather, cities
+        WHERE city = name;
+</code></pre>
+<p>查询</p>
+<pre><code class="language-sql">SELECT * FROM myview;
+</code></pre>
+<p>对视图的使用是成就一个好的SQL数据库设计的关键方面。</p>
+<p>视图允许用户通过始终如一的接口<strong>封装表的结构细节</strong>，这样可以<strong>避免表结构随着应用的进化而改变</strong>。</p>
+<p>视图几乎可以用在任何可以使用表的地方。还可以<strong>在其他视图基础上创建视图</strong></p>
+<h2 id="特殊的持久化保存的视图-materialized-view">特殊的:持久化保存的视图 Materialized View</h2>
+<h1 id="函数存储过程-store-procedure">函数/存储过程 Store Procedure</h1>
+<p>存储在数据库服务器上的<strong>一组SQL和过程语句</strong>(声明，分配，循环，控制流程等)。 有助于执行单个函数中进行多次查询和往返操作。</p>
+<p>定义存储过程</p>
+<pre><code class="language-sql">CREATE [OR REPLACE] FUNCTION function_name (arguments)   
+RETURNS return_datatype AS $variable_name$  
+  DECLARE  
+    declaration;  
+    [...]  
+  BEGIN  
+    &lt; function_body &gt;  
+    [...]  
+    RETURN { variable_name | value }  
+  END; LANGUAGE plpgsql;
+
+</code></pre>
+<ul>
+<li><code>function_name</code>：指定函数的名称。</li>
+<li><code>[OR REPLACE]</code>：是可选的，它允许您修改/替换现有函数。</li>
+<li><code>RETURN</code>：它指定要从函数返回的数据类型。它可以是基础，复合或域类型，或者也可以引用表列的类型。</li>
+<li><code>function_body</code>：<code>function_body</code>包含可执行部分。</li>
+<li><code>plpgsql</code>：它指定实现该函数的语言的名称。</li>
+</ul>
+<p>例如下面代码创建一个 <code>totalrecords</code> 的存储过程</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION totalRecords ()  
+RETURNS integer AS $total$  
+declare  
+    total integer;  
+BEGIN  
+   SELECT count(*) into total FROM EMPLOYEES;  
+   RETURN total;  
+END;  
+$total$ LANGUAGE plpgsql;
+</code></pre>
+<p>执行它</p>
+<pre><code class="language-sql">select totalRecords();
+</code></pre>
+<h2 id="删除函数">删除函数</h2>
+<pre><code class="language-sql">DROP FUNCTION import_sample_raw(text,bigint);
+</code></pre>
+<h2 id="一个函数模板">一个函数模板</h2>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION tr.if_item_movement_form_before()
+  RETURNS trigger AS
+$BODY$
+DECLARE
+    v_error_text text;
+    v_error_code int;
+    v_max_code text;
+    v_form_code_pre text;
+    v_now_date timestamp :=now();
+
+BEGIN
+    -- start without error!
+    v_error_code = 0;
+   --updates
+    IF (TG_OP = 'UPDATE') THEN
+      NEW.dt_update=v_now_date;
+
+      -- 直接从数据库获取当前用户
+      NEW.cd_user_update=get_var('cd_human_resource');
+    --delete
+    ELSIF (TG_OP = 'DELETE') THEN
+
+    --insert
+    ELSIF (TG_OP = 'INSERT') THEN
+      v_form_code_pre = 'DR'||to_char(v_now_date, 'yy')||to_char(v_now_date, 'mm')||to_char(v_now_date, 'dd');
+      SELECT ds_form_code into v_max_code from tr.&quot;ITEM_MOVEMENT_FORM&quot; order by cd_item_movement_form desc limit 1;
+      if v_max_code is not null and substr(v_max_code,1,8)=v_form_code_pre then
+        NEW.ds_form_code=v_form_code_pre||lpad((substr(v_max_code,9)::int+1)::text,3,'0');
+      else
+        NEW.ds_form_code=v_form_code_pre||'001';
+      end if;
+    ELSE
+        RAISE EXCEPTION 'Trigger if_course_before added as trigger for unhandled case: %, %',TG_OP, TG_LEVEL;
+        RETURN NULL;
+    END IF;
+
+    -- controle de erro!!!!
+    IF v_error_code &gt; 0 THEN
+        SELECT getTriggerError (v_error_code, null) INTO v_error_text;
+        RAISE EXCEPTION '% (%)', v_error_text, v_error_code;
+    END IF;
+
+  -- Retorna OK
+  IF TG_OP = 'DELETE' THEN 
+    RETURN OLD;
+  ELSE
+    RETURN NEW;
+  END IF;
+
+END;
+$BODY$
+  LANGUAGE plpgsql VOLATILE SECURITY DEFINER COST 100;
+ALTER FUNCTION tr.if_item_movement_form_before() SET search_path=pg_catalog, public, spec, tr;
+</code></pre>
+<h2 id="if-then--elseif--else-endif">IF THEN  ELSEIF  ELSE ENDIF;</h2>
+<h2 id="case-when-thenwhen-then-else-end">CASE&hellip; WHEN&hellip; THEN&hellip;[WHEN&hellip; THEN&hellip;] ELSE&hellip; END</h2>
+<h2 id="执行一个具有返回值的测试函数-并显示出来">执行一个具有返回值的测试函数, 并显示出来</h2>
+<p>先定义好函数。 关键是 return</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(p_cd_test_request bigint)
+ RETURNS text
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    v_result                     text;
+    v_backlog                    int;
+    v_onhold                     int;
+
+BEGIN
+
+    v_tr_smp_code_for_backlog = getSysParameter('TR_SMP_CODE_FOR_BACKLOG')::int;
+    v_tr_smp_code_for_onhold = getSysParameter('TR_SMP_CODE_FOR_ONHOLD')::int;
+
+    FOR q IN
+        SELECT w.cd_test_request_work_order,
+               SUM(CASE WHEN s.cd_test_request_work_order_status = v_tr_smp_code_for_backlog THEN 1 ELSE 0 END)   as backlog,
+              --
+               count(1)                                                                                           as totalcount
+        FROM tr.&quot;TEST_REQUEST_WORK_ORDER&quot; w,
+             tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; s
+        WHERE w.cd_test_request = p_cd_test_request
+          AND s.cd_test_request_work_order = w.cd_test_request_work_order
+        GROUP BY w.cd_test_request_work_order
+        LOOP
+            SELECT CASE
+                       WHEN q.totalcount = q.cancelled THEN v_tr_smp_code_for_canceled -- Cancelled
+                       WHEN q.ontest &gt; 0 THEN v_tr_smp_code_for_ontest -- ontest
+                       WHEN q.totalcount = q.completed + q.cancelled THEN v_tr_smp_code_for_completed -- Completed
+                       WHEN q.backlog &gt; 0  THEN v_tr_smp_code_for_backlog -- Backlog
+                       WHEN q.onhold &gt; 0 THEN v_tr_smp_code_for_onhold -- On Hold
+                       ELSE NULL
+                       END
+            into v_cd_test_request_status;
+
+        END LOOP;
+
+
+        return json_agg(v_cd_test_request_status);
+
+END;
+$function$
+;
+</code></pre>
+<p>然后在 query 里执行</p>
+<pre><code class="language-sql">select usetest.testfunc(6) as res;
+</code></pre>
+<h3 id="返回-dataset-select-执行结果-或者-table">返回 dataset (select 执行结果) 或者 table</h3>
+<p><a href="https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-SET">https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-SET</a>
+<a href="https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-TABLE">https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-TABLE</a></p>
+<pre><code class="language-sql">CREATE FUNCTION getfoo(int) RETURNS SETOF foo AS $$
+    SELECT * FROM foo WHERE fooid = $1;
+$$ LANGUAGE SQL;
+
+SELECT * FROM getfoo(1) AS t1;
+</code></pre>
+<p>但是我按上面的案例写一个</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(
+    p_cd_test_request bigint
+    -- 需要 OUT (后面说)
+)
+ RETURNS SETOF record
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    v_result                     text;
+    v_backlog                    int;
+BEGIN
+    v_tr_smp_code_for_backlog = getSysParameter('TR_SMP_CODE_FOR_BACKLOG')::int;
+    v_tr_smp_code_for_onhold = getSysParameter('TR_SMP_CODE_FOR_ONHOLD')::int;
+
+    -- 需要 return query (后面说)
+    SELECT w.cd_test_request_work_order,
+        count(1)                                                                                           as totalcount 
+    FROM tr.&quot;TEST_REQUEST_WORK_ORDER&quot; w,
+         tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; s
+    WHERE w.cd_test_request = $1
+      AND s.cd_test_request_work_order = w.cd_test_request_work_order
+    GROUP BY w.cd_test_request_work_order;
+END; 
+$function$
+;
+</code></pre>
+<p>然后运行</p>
+<pre><code class="language-sql">select * from usetest.testfunc(6);
+</code></pre>
+<p>报错</p>
+<blockquote>
+<p>ERROR: a column definition list is required for functions returning &ldquo;record&rdquo;</p>
+</blockquote>
+<p>需要显式把返回的参数用 OUT 列出来</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(
+    p_cd_test_request bigint, 
+    OUT cd_test_request_work_order bigint, 
+    OUT backlog bigint
+)
+</code></pre>
+<p>再执行，又报错</p>
+<blockquote>
+<p>ERROR: query has no destination for result data
+HINT: If you want to discard the results of a SELECT, use PERFORM instead.
+CONTEXT: PL/pgSQL function country(text) line 5 at SQL statement</p>
+</blockquote>
+<p>然后按照 <a href="https://stackoverflow.com/questions/41274337/postgresql-query-has-no-destination-for-result-data">https://stackoverflow.com/questions/41274337/postgresql-query-has-no-destination-for-result-data</a></p>
+<p>加上 <code>return query</code> 就可以了！！！</p>
+<pre><code class="language-sql">    return query
+      SELECT w.cd_test_request_work_order,
+      -- 略
+</code></pre>
+<h2 id="如果返回的是查询表又不一样">如果返回的是查询表，又不一样</h2>
+<pre><code class="language-sql">RETURNS TABLE(email text, user_id integer) AS $$
+
+
+SELECT email, user_id
+FROM app.lookup_email(4,730035455897450,6,'u')
+</code></pre>
+<h2 id="用-do-来执行一个临时函数而不需要定义">用 DO 来执行一个“临时函数”，而不需要定义</h2>
+<p><a href="https://www.postgresql.org/docs/current/sql-do.html">https://www.postgresql.org/docs/current/sql-do.html</a></p>
+<pre><code class="language-sql">DO $$DECLARE r record;
+BEGIN
+    FOR r IN SELECT table_schema, table_name FROM information_schema.tables
+             WHERE table_type = 'VIEW' AND table_schema = 'public'
+    LOOP
+        EXECUTE 'GRANT ALL ON ' || quote_ident(r.table_schema) || '.' || quote_ident(r.table_name) || ' TO webuser';
+    END LOOP;
+END$$;
+</code></pre>
+<p>直接用 IF 等关键词不支持 报错 SQL Error [42601]: ERROR: syntax error at or near &ldquo;if&rdquo;</p>
+<pre><code class="language-sql">IF xxx THEN
+END IF
+</code></pre>
+<p>加上下面的 &ldquo;DO&rdquo; 就可以了。 里面内容和 function 一样了。</p>
+<pre><code class="language-sql">DO LANGUAGE plpgsql $$
+    DECLARE
+        v_error_text text;
+    BEGIN
+        IF (SELECT COUNT(*) FROM pg_language WHERE lanname = 'plpgsql') &gt; 0 THEN 
+            RAISE NOTICE 'GOOD';
+        ELSE
+            RAISE NOTICE 'BAD';
+        END IF;
+    END;
+$$;
+</code></pre>
+<p>注意：</p>
+<p>调用别的函数，用 <code>PERFORM()</code></p>
+<p>必须要有返回值： 如果里面只有 SELECT * FROM table  会报错.  <a href="https://stackoverflow.com/questions/46008181/returning-a-query-from-a-do-block">https://stackoverflow.com/questions/46008181/returning-a-query-from-a-do-block</a></p>
+<p>因此，要实现 IF ，而且是“匿名函数”（测试下一些功能）必须改成</p>
+<pre><code class="language-sql">WITH data AS (
+    SELECT          tbl.id, tbl.&quot;someLongURI&quot;
+    FROM            mytable tbl
+    WHERE           tbl.&quot;userId&quot; = 123;
+), changed AS (
+    UPDATE          mytable tbl
+    SET             tbl.status = 'IN_WORK',
+                    tbl.&quot;userId&quot; = 123
+    WHERE           tbl.&quot;someLongURI&quot; IN (
+        SELECT      &quot;someLongURI&quot;
+        FROM        tbl.mytable
+        WHERE       tbl.status = 'UNUSED'
+            AND     pg_try_advisory_xact_lock(id)
+        ORDER BY    id ASC 
+        LIMIT       1
+        FOR UPDATE 
+    )
+    AND NOT EXISTS (SELECT * FROM data)
+    RETURNING   tbl.id, tbl.&quot;someLongURI&quot;
+)
+SELECT *
+FROM changed
+UNION ALL
+SELECT *
+FROM data
+WHERE NOT EXISTS (SELECT * FROM changed);
+</code></pre>
+<h1 id="触发器-trigger">触发器 Trigger</h1>
+<p>是一组动作或数据库回调函数, 在指定的表上执行指定的数据库事件时自动运行 (INSERT  UPDATE 等).</p>
+<p>PostgreSQL触发器可用于以下目的：</p>
+<ul>
+<li>验证输入数据。</li>
+<li>执行业务规则。</li>
+<li>为不同文件中新插入的行生成唯一值。</li>
+<li>写入其他文件以进行审计跟踪。</li>
+<li>从其他文件查询交叉引用目的。</li>
+<li>访问系统函数。</li>
+<li>将数据复制到不同的文件以实现数据一致性。</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>它提高了应用程序的开发速度。 因为数据库存储触发器，所以您不必将触发器操作编码到每个数据库应用程序中。</li>
+<li>全局执法业务规则。定义触发器一次，然后将其重用于使用数据库的任何应用程序。</li>
+<li>更容易维护 如果业务策略发生变化，则只需更改相应的触发程序，而不是每个应用程序。</li>
+<li>提高客户/服务器环境的性能。 所有规则在结果返回之前在服务器中运行。</li>
+</ul>
+<p>在以下情况下执行/调用触发器</p>
+<ul>
+<li>尝试操作之前</li>
+<li>操作完成后</li>
+<li>或者不是操作(在视图中INSERT，UPDATE或DELETE的情况下)</li>
+</ul>
+<p><strong>对于行的触发器与对于给定操作的触发器 区别</strong></p>
+<ul>
+<li>对于操作修改的每一行，都会调用一个标记为<code>FOR EACH ROWS</code>的触发器</li>
+<li>另一方面，标记为<code>FOR EACH STATEMENT</code>的触发器只对任何给定的操作执行一次，而不管它修改多少行</li>
+</ul>
+<p><strong>同一事件可定义多个触发器，执行顺序</strong></p>
+<p>可以为同一事件定义同一类型的多个触发器，但条件是按名称按字母顺序触发</p>
+<p><strong>关联的表被删除，触发器也被删除</strong></p>
+<p>与它们相关联的表被删除时，触发器被自动删除</p>
+<p>一个数据表一般可以定义两个 trigger 函数, 分别在数据插入之前和之后进行一些“关联”处理</p>
+<ul>
+<li>if_table_name_before()</li>
+<li>if_table_name_after()</li>
+</ul>
+<p>或者单独定义一个函数来完成一些任务</p>
+<ul>
+<li>rfqduplicate()</li>
+</ul>
+<p>如果要执行一个函数，而这个函数需要改动很多表，一般不会全部都写在一起，而是属于某个表的，就放到 trigger 里去。 达到“低耦合”的目标。</p>
+<p>例如“复制 rfq”动作的函数 rfqduplicate (单独的一个函数)</p>
+<ol>
+<li>先复制 rfq 表，然后复制 rfq_item</li>
+<li>复制完 rfq_item 后，不需要再写代码</li>
+<li>自动跳到 RFQ_ITEM 上的 if_table_name_after() 函数上，执行一些动作</li>
+</ol>
+<h2 id="创建">创建</h2>
+<pre><code class="language-sql">CREATE  TRIGGER trigger_name [BEFORE|AFTER|INSTEAD OF] event_name  
+ON table_name  
+[  
+ -- Trigger logic goes here....  
+];
+</code></pre>
+<p><code>event_name</code>可以是 INSERT，UPDATE，DELETE和TRUNCATE数据库操作上提到的表table_name。 您可以选择在表名后指定FOR EACH ROW</p>
+<p>例如, 下面的触发器<code>trigger_name</code>表示 插入数据到 <code>table_name</code> 表的 <code>colume_name</code> 列 <strong>操作后</strong>被调用</p>
+<pre><code class="language-sql">CREATE  TRIGGER trigger_name AFTER INSERT ON column_name  
+ON table_name  
+[  
+ -- Trigger logic goes here....  
+];
+</code></pre>
+<h2 id="例对每个记录插入到表时进行审计-audit结合存储过程">例：对每个记录插入到表时进行审计 （audit），结合存储过程</h2>
+<p><code>COMPANY</code>表结构</p>
+<pre><code class="language-sql">CREATE TABLE COMPANY(  
+   ID INT PRIMARY KEY     NOT NULL,  
+   NAME           TEXT    NOT NULL,  
+   AGE            INT     NOT NULL,  
+   ADDRESS        CHAR(50),  
+   SALARY         REAL  
+);
+</code></pre>
+<p>为了保存审计/审核，我们将创建一个名为<code>AUDIT</code>的新表，只要在COMPANY表中有一个新记录的条目，就会插入日志消息。</p>
+<pre><code class="language-sql">CREATE TABLE AUDIT(  
+    EMP_ID INT NOT NULL,  
+    ENTRY_DATE TEXT NOT NULL  
+);
+</code></pre>
+<p>在COMPANY表上创建触发器之前，首先创建一个名为<code>auditlogfunc()</code>的函数/过程。</p>
+<p>问题
+它返回了 TRIGGER 数据类型?
+<code>new.id</code> 是什么？  RETURN NEW; 呢</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION auditlogfunc() RETURNS TRIGGER AS $example_table$  
+    BEGIN  
+        INSERT INTO AUDIT(EMP_ID, ENTRY_DATE) VALUES (new.ID, current_timestamp);  
+        RETURN NEW;   
+    END;  
+$example_table$ LANGUAGE plpgsql;
+</code></pre>
+<p>在<code>COMPANY</code>表上创建一个触发器，当插入完数据后，调用存储过程 <code>auditlogfunc()</code> 并指定 <code>FOR EACH ROW</code>表示每行都是如此</p>
+<pre><code class="language-sql">CREATE TRIGGER example_trigger AFTER INSERT ON COMPANY  
+FOR EACH ROW EXECUTE PROCEDURE auditlogfunc();
+</code></pre>
+<p>验证插入数据是否写入审计信息</p>
+<pre><code class="language-sql">INSERT INTO COMPANY VALUES(1, '小米科技', 8, '北京市朝阳区', 9999);
+INSERT INTO COMPANY VALUES(2, '京东中科', 6, '广州市天河区', 8999);
+</code></pre>
+<p><code>AUDIT</code>表已经自动插入审计信息了</p>
+<h2 id="before-与-after-中的-old-与-new-变量">before 与 after 中的 old 与 new 变量</h2>
+<p>INSERT  UPDATE  DELETE 几个动作。</p>
+<ul>
+<li>INSERT 只有  NEW, 没有 OLD</li>
+<li>UPDATE 有 NEW    也有  OLD</li>
+<li>DELETE 只有 OLD</li>
+</ul>
+<p>因此在 after 里如果执行下面的， 更新 B 表，自动更新 A 表的某行记录</p>
+<pre><code class="language-sql">UPDATE tr.&quot;A&quot;
+set cds_human_resource = (
+  select array_agg(cd_human_resource) 
+  FROM tr.&quot;B&quot; 
+  WHERE cd_location_test_request_approval_steps = NEW.cd_location_test_request_approval_steps  
+  and dt_deactivated IS NULL
+)
+WHERE cd_location_test_request_approval_steps = NEW.cd_location_test_request_approval_steps;
+</code></pre>
+<p>当 insert/update 到 B 表时一切正常。  但 delete B 表记录，A 表无变化。 因为 delete 操作并没有 NEW.</p>
+<p>改成：</p>
+<pre><code class="language-sql">IF (TG_OP = 'UPDATE' OR TG_OP = 'INSERT') THEN
+-- 略
+END IF;
+
+
+IF (TG_OP = 'DELETE') THEN
+--  改成  OLD.cd_location_test_request_approval_steps
+END IF;
+</code></pre>
+<h1 id="事务-transaction">事务 transaction</h1>
+<p>将多个步骤捆绑成了一个单一的、要么全完成要么全不完成的操作.
+一个事务被称为是原子的(这些更新要么全部发生，或者全部不发生)</p>
+<p>另外： 当多个事务并发运行时，每一个都不能看到其他事务未完成的修改(例如，如果一个事务正忙着总计所有支行的余额，它不会只包括Alice的支行的扣款而不包括Bob的支行的存款，或者反之。一个事务所做的更新在它完成之前对于其他事务是不可见的，而之后所有的更新将同时变得可见)</p>
+<p>例如 银行转账.希望记录一笔从Alice的账户到Bob的账户的额度为100.00美元的转账.</p>
+<pre><code class="language-sql">BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+-- etc etc
+COMMIT;
+</code></pre>
+<p>如果，在事务执行中我们并不想提交（或许是我们注意到Alice的余额不足），我们可以发出ROLLBACK命令而不是COMMIT命令，这样所有目前的更新将会被取消。</p>
+<h2 id="利用-保存点-来以更细的粒度来控制一个事务中的语句">利用 保存点 来以更细的粒度来控制一个事务中的语句</h2>
+<p>保存点允许我们有选择性地放弃事务的一部分而提交剩下的部分. 在使用<code>SAVEPOINT</code>定义一个保存点后，我们可以在必要时利用<code>ROLLBACK TO</code>回滚到该保存点. 该事务中位于保存点和回滚点之间的数据库修改都会被放弃，但是早于该保存点的修改则会被保存</p>
+<p>回滚到保存点之后，它的定义依然存在，因此我们可以多次回滚到它</p>
+<p>如果确定不再需要回滚到特定的保存点，它可以被释放</p>
+<p>释放保存点,以及回滚到保存点，都<strong>会释放定义在该保存点之后的所有</strong>其他保存点</p>
+<p>例子：假设我们从Alice的账户扣款100美元，然后存款到Bob的账户，结果直到最后才发现我们应该存到Wally的账户。我们可以通过使用保存点来做这件事(这是个简化的例子，实际上在一个事务块中使用保存点存在很多种控制可能性)</p>
+<p>ROLLBACK TO是唯一的途径来重新控制一个由于错误被系统置为中断状态的事务块，而不是完全回滚它并重新启动</p>
+<pre><code class="language-sql">BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+SAVEPOINT my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Bob';
+-- oops ... forget that and use Wally's account
+ROLLBACK TO my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Wally';
+COMMIT;
+</code></pre>
+<h1 id="外键">外键</h1>
+<p>维持数据的<strong>引用完整性</strong></p>
+<p>例如希望确保在cities表中有相应项之前任何人都不能在weather表中插入行（必须先插入至少一条记录到 cites 表）</p>
+<p>通常在代码中，我们可以 1. 先检查是不是有记录 2. 再插入</p>
+<p>而通过外键, 可以更好地对数据进行约束. 正确使用外键无疑会<strong>提高数据库应用的质量</strong></p>
+<p>在下面的例子中， weather 表的 city 字段，外键为 cities 表的 city 字段</p>
+<pre><code class="language-sql">CREATE TABLE cities (
+        city     varchar(80) primary key,
+        location point
+);
+
+CREATE TABLE weather (
+        city      varchar(80) references cities(city),
+        temp_lo   int,
+        temp_hi   int,
+        prcp      real,
+        date      date
+);
+</code></pre>
+<p>当 cities 表还没有记录时，如果插入数据</p>
+<pre><code class="language-sql">INSERT INTO weather VALUES ('Berkeley', 45, 53, 0.0, '1994-11-28');
+</code></pre>
+<p>会报一个错误</p>
+<blockquote>
+<p>ERROR:  insert or update on table &ldquo;weather&rdquo; violates foreign key constraint &ldquo;weather_city_fkey&rdquo;
+DETAIL:  Key (city)=(Berkeley) is not present in table &ldquo;cities&rdquo;.</p>
+</blockquote>
+<h1 id="约束">约束</h1>
+<p>约束用于规定表中的数据规则，如果存在违反约束的数据行为，行为会被约束终止。</p>
+<p>当用户插入不符合约束要求的数据时，数据库会报错。 但是，把约束放在数据库层还是业务代码层，有一些争议</p>
+<p>数据库提供了多种约束（Constraints）来提升数据完整性(Data Integrity)， 但现在很多应用系统并不是通过数据库层面的约束来确保数据完整性的，大部分的数据完整性维护放在应用层的代码里。这样做的好处：</p>
+<p>整洁
+如果数据库有完整性约束，应用层面又有业务逻辑校验，维护起来会比较繁琐；</p>
+<p>灵活性
+数据库层面完整性校验，不管是种类，还是所能达到的效果都是比较有限的，而应用层面上所能提供的校验确实非常丰富的。</p>
+<p>跨平台
+现在很多应用系统都是跨数据库平台的，而针对一个数据库设置的约束，有可能在另外一个数据库不适用，需要另起炉灶来维护，这样维护成本高，所以不如都放在应用层面来做数据完整性约束。</p>
+<p>开发便利
+数据库返回的错误代码往往不太容易读懂，对于开发中排查错误和返回错误消息都不是特别方便。</p>
+<p>一般来说，如果是小型的项目，表不多而且不太考虑将来迁移数据库，可以直接使用数据库自带的约束。</p>
+<p>常用的约束</p>
+<ul>
+<li>NOT NULL：指示某列不能存储 NULL 值。</li>
+<li>UNIQUE：确保某列的值都是唯一的。</li>
+<li>PRIMARY Key：NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录</li>
+<li>FOREIGN Key： 保证一个表中的数据匹配另一个表中的值的参照完整性。</li>
+<li>CHECK： 保证列中的值符合指定的条件。</li>
+<li>EXCLUSION ：排他约束，保证如果将任何两行的指定列或表达式使用指定操作符进行比较，至少其中一个操作符比较将会返回 false * 或空值。</li>
+</ul>
+<p>前面几种比较常见</p>
+<h2 id="check-约束">CHECK 约束</h2>
+<p>例如要求 SALARY 不能小于等于 0. 就添加约束 <code>CHECK(SALARY &gt; 0)</code></p>
+<pre><code class="language-sql">CREATE TABLE COMPANY5(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL    CHECK(SALARY &gt; 0)
+);
+</code></pre>
+<h2 id="exclusion-约束">EXCLUSION 约束</h2>
+<p>确保如果使用指定的运算符在指定列或表达式上比较任意两行，至少其中一个运算符比较将返回 false 或 null</p>
+<pre><code class="language-sql">CREATE TABLE COMPANY7(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT,
+   AGE            INT  ,
+   ADDRESS        CHAR(50),
+   SALARY         REAL,
+   EXCLUDE USING gist
+   (NAME WITH =,  -- 如果满足 NAME 相同，AGE 不相同则允许插入，否则不允许插入
+   AGE WITH &lt;&gt;)   -- 其比较的结果是如果整个表边式返回 true，则不允许插入，否则允许
+);
+</code></pre>
+<p><strong>USING gist 是用于构建和执行的索引一种类型。需要为每个数据库执行一次 CREATE EXTENSION btree_gist 命令，这将安装 btree_gist 扩展，它定义了对纯标量数据类型的 EXCLUDE 约束。</strong></p>
+<p>已经强制执行了年龄必须相同</p>
+<pre><code class="language-sql">INSERT INTO COMPANY7 VALUES(1, 'Paul', 32, 'California', 20000.00 );
+INSERT INTO COMPANY7 VALUES(2, 'Paul', 32, 'Texas', 20000.00 );  
+-- 此条数据的 NAME 与第一条相同，且 AGE 与第一条也相同，故满足插入条件
+INSERT INTO COMPANY7 VALUES(3, 'Allen', 42, 'California', 20000.00 );
+-- 此数据与上面数据的 NAME 相同，但 AGE 不相同，故不允许插入  ERROR:  duplicate key value violates unique constraint &quot;company7_pkey&quot; DETAIL:  Key (id)=(3) already exists.
+</code></pre>
+<h2 id="删除约束">删除约束</h2>
+<pre><code class="language-sql">ALTER TABLE table_name DROP CONSTRAINT some_name;
+</code></pre>
+<h2 id="修改外键约束例如从-retrist---cascade">修改外键约束（例如从 retrist -&gt; cascade）</h2>
+<pre><code class="language-sql">-- 先删除
+ALTER TABLE tr.&quot;TEST_REQUEST_WORK_ORDER_COMMENTS&quot; DROP CONSTRAINT &quot;FK_TEST_REQUEST_WORK_ORDER_COMMENTS02&quot;
+
+-- 再添加
+ALTER TABLE tr.&quot;TEST_REQUEST_WORK_ORDER_COMMENTS&quot; ADD CONSTRAINT &quot;FK_TEST_REQUEST_WORK_ORDER_COMMENTS02&quot; FOREIGN KEY (cd_test_request_work_order) REFERENCES &quot;TEST_REQUEST_WORK_ORDER&quot;(cd_test_request_work_order) ON UPDATE RESTRICT ON DELETE RESTRICT
+</code></pre>
+<h1 id="锁">锁</h1>
+<p>阻止用户修改<strong>行</strong>或<strong>整个表</strong>. 在UPDATE和DELETE修改的行在事务的持续时间内被自动独占锁定。 这将阻止其他用户更改行，直到事务被提交或回退.</p>
+<p>其他用户当他们都尝试修改同一行, 用户必须等待.  如果他们修改不同的行，不需要等待(SELECT查询不必等待)</p>
+<p>数据库自动执行锁定。 然而，在某些情况下，必须手动控制锁定。 手动锁定可以通过使用LOCK命令完成。 它允许指定事务的锁类型和范围</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://www.yiibai.com/postgresql/postgresql-functions.html">https://www.yiibai.com/postgresql/postgresql-functions.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

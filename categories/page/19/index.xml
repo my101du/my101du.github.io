@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on my101du Blog</title>
+    <link>http://blog.zhishibee.com/categories/</link>
+    <description>Recent content in Categories on my101du Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+        <atom:link href="http://blog.zhishibee.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/textmate%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/textmate%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>title: textmate编辑器的使用 permalink: textmate-editor tags: 工具 关掉自动完成引号 这个特性有时候特别方便，可以减少你输入一个引号的操作，但是在写 markdown 的时候就很烦了，因为</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/vim%E7%BC%96%E8%BE%91%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</guid>
+      <description>&lt;p&gt;title: Vim编辑器的使用教程
+permalink: vim-editor-use
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vim&lt;/li&gt;
+&lt;li&gt;技能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.zhishibee.com/article_images/tools/vim.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;编辑器之神与神的编辑器，Vim 是一个跨平台、高效率的编辑器&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h1 id=&#34;使用-vim-替换-vi&#34;&gt;使用 Vim 替换 vi&lt;/h1&gt;
+&lt;p&gt;centos 下&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;yum inistall vim-common
+
+vi ~/.bashrc
+
+#添加别名
+alias vi=&amp;quot;vim&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;mac-下用-macvim-代替系统自带的-vim&#34;&gt;Mac 下用 MacVim 代替系统自带的 vim&lt;/h1&gt;
+&lt;p&gt;因为 YouCompleteMe 插件需要 7.3.598 以上的版本，而 Mac 自带的版本较低。
+但是我们又不想替换或删除系统自带的 vim（因为可能会带来一些风险），所以只要用“别名”的方式，让 vim 默认调用 MacVim 了。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;# 编辑 ~/.profile
+alias vim=&#39;/Applications/MacVim.app/Contents/MacOS/Vim&#39;
+
+source .profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;键盘基本操作&#34;&gt;键盘基本操作&lt;/h1&gt;
+&lt;p&gt;ESC	在不同模式之间切换&lt;/p&gt;
+&lt;p&gt;Ctrl+F	往下翻页（forward 向前）
+Ctrl+B	往上翻页（back 返回）
+方向	H J K L	（左 下 上 右）&lt;/p&gt;
+&lt;p&gt;shift+v，再按方向键	选中多行&lt;/p&gt;
+&lt;p&gt;dd	剪切选中的多行/或当前行
+yy	复制当前行
+y	复制选中的多行
+p	粘贴
+i/I	在当前光标前面/在当前行最前面 进入编辑状态
+a/A	在当前光标后面/在当前行最末尾 进入编辑状态
+r[字符]	把当前的字符用另外的字符替换掉
+x	删除当前的字符
+u	撤销上一步操作，可一直重复&lt;/p&gt;
+&lt;p&gt;[数字]G	跳到行号所在的行
+gg	跳到文档顶部
+G	跳到文档末尾&lt;/p&gt;
+&lt;p&gt;/[字符串]	搜索字符串，按n在多个搜索结果中前进
+:%s/[原字符串]/[替换字符串]	替换字符串&lt;/p&gt;
+&lt;p&gt;:wq 保存,退出，加&amp;rdquo;!&amp;ldquo;表示强制&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/vscode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/vscode/</guid>
+      <description>优势 开发 php 的时候，如果变量未使用过，则颜色比较浅。如果变量未定义也会明显提示； 变量和类的提示更智能一些 主题 亮色主题：https://vsco</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/%E8%A7%86%E9%A2%91%E5%BD%95%E5%88%B6%E4%B8%8E%E7%BC%96%E8%BE%91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/%E8%A7%86%E9%A2%91%E5%BD%95%E5%88%B6%E4%B8%8E%E7%BC%96%E8%BE%91/</guid>
+      <description>&lt;p&gt;title: 视频录制与编辑
+permalink: video-recorder-editor
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/%E8%AE%A9-ipad-%E4%BA%A7%E7%94%9F%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/%E8%AE%A9-ipad-%E4%BA%A7%E7%94%9F%E6%9C%80%E5%A4%A7%E4%BB%B7%E5%80%BC/</guid>
+      <description>title: 让 iPad 产生最大价值 permalink: ipad-use date: 2015/12/20 10:10:10 tags: 工具 iPad 是苹果公司的平板电脑产品。不仅仅是“大号的 iPhone” GoodReader 如果突破 wifi 传输方式下一次只能上传一个文件的限制</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/%E8%B6%8A%E8%BF%87%E9%95%BF%E5%9F%8E%E8%B5%B0%E5%90%91%E4%B8%96%E7%95%8C%E7%BF%BB%E5%A2%99%E7%9C%8B%E4%B8%96%E7%95%8C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/%E8%B6%8A%E8%BF%87%E9%95%BF%E5%9F%8E%E8%B5%B0%E5%90%91%E4%B8%96%E7%95%8C%E7%BF%BB%E5%A2%99%E7%9C%8B%E4%B8%96%E7%95%8C/</guid>
+      <description>&lt;p&gt;title: 越过长城走向世界——翻墙看世界
+permalink: cross-over-the-gfw
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;技能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;http://blog.zhishibee.com/article_images/tools/cross-over-the-gfw/cover.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;如图，这是咱们国家的第一封电子邮件，于1987年发往德国。20多年后，我想再次怀旧一把，重新感受一下这历史时刻。于是找来了一台从二手市场淘来的14寸球面显示器，擦掉尘封多年的“双飞燕”机械键盘上的灰土，脱掉鞋子，穿上无尘袜，登陆路由器把网速限制在56kbps，安装了一台win95的虚拟机（好吧，1987年还没有这个），安装了一个非常老版本的firefox，然后提前准备了一个德国大学的Email地址。
+然后尝试登陆 Gmail，这时候浏览器告诉我“您访问的页面无法显示”。
+What？不是说越过长城走向世界吗？&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/atlassian%E4%BA%A7%E5%93%81%E7%B3%BB-jira%E7%AD%89/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/atlassian%E4%BA%A7%E5%93%81%E7%B3%BB-jira%E7%AD%89/</guid>
+      <description>https://cn.atlassian.com/try 产品列表 规划、追踪和支持 Jira Software: 软件开发工具, 敏捷团队规划、追踪和发布 Jira Service Desk: 客户寻求帮助+客服人员解决事件 Jira Core: 管理业务, 包括营销活动、人力资源</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/bi%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/bi%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</guid>
+      <description>数据可视化技能进阶路线 SQL+BI+Echarts 记录自 数据可视化技能的进阶路线：SQL+BI+Echarts 开始 数据可视化，并不就等于各种图表 它是“使用技术手段表达</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/%E4%BA%91%E7%AB%AF%E5%B7%A5%E4%BD%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/%E4%BA%91%E7%AB%AF%E5%B7%A5%E4%BD%9C/</guid>
+      <description>Cloud Studio
+https://studio.dev.tencent.com/</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/ajax-%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/ajax-%E8%AF%B7%E6%B1%82/</guid>
+      <description>AJAX 请求 permalink: wordpress-ajax tags: wordpress add_action( &#39;wp_ajax_add_foobar&#39;, &#39;prefix_ajax_add_foobar&#39; ); function prefix_ajax_add_foobar() { // Handle request then generate response using WP_Ajax_Response // Don&#39;t forget to stop execution afterward. wp_die(); } 对应的 jQuery.post( ajaxurl, { &#39;action&#39;: &#39;add_foobar&#39;, &#39;data&#39;: &#39;foobarid&#39; }, function(response){ alert(&#39;The server responded: &#39; + response); } ); 与小程序的差异 查看 WP 的 ajax 网络请求如下 General</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/cdn-%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/cdn-%E9%80%9F%E5%BA%A6%E4%BC%98%E5%8C%96/</guid>
+      <description>CDN 速度优化 https://aliyun.gaomeluo.com/450.html https://aliyun.gaomeluo.com/414.html https://wazhanfou.com/%E5%8F%88%E6%8B%8D%E4%BA%91%E6%AF%8F%E6%9C%88%E5%85%8D%E8%B4%B9cdn%E7%A9%BA%E9%97%B4%E5%92%8C%E6%B5%81%E9%87%8F%E5%92%8C%E5%88%A9%E7%94%A8%E5%8F%88%E6%8B%8D%E4%BA%91%E6%9E%84%E5%BB%BAwordpress/ 动静分离： 仅仅是把图片放到 CDN 上，域名的 IP 还是暴露的 全站加速： CNAME 等方式把真实 IP 隐藏起来 又拍 案例 https://www.jianshu.com/p/cf9994bc63a3?utm_campaign=maleskine&amp;amp;utm_content=note&amp;amp;utm_medium=seo_notes&amp;amp;utm_source=recommendation CNAME 来加速域名（取消原来 A 记录）</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/gdpr%E6%AC%A7%E7%9B%9F%E7%94%A8%E6%88%B7%E9%9A%90%E7%A7%81%E6%B3%95%E8%A7%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/gdpr%E6%AC%A7%E7%9B%9F%E7%94%A8%E6%88%B7%E9%9A%90%E7%A7%81%E6%B3%95%E8%A7%84/</guid>
+      <description>GDPR(欧盟用户隐私法规) permalink: wordpress-and-gdpr tags: wordpress 告诉用户你的数据会被收集，用户可以拒绝或接受 告诉用户会收集哪些数据，存在哪里 用户可以删除自己的数据 通常来</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/rest-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/rest-api/</guid>
+      <description>REST API permalink: wordpress-rest-api tags: wordpress 简介 https://developer.wordpress.org/rest-api/ 访问下以下地址，返回 json 数据内容，确保 REST API 服务是打开的（有的插件可以把它关闭） www.sample.org/wp-json/wp/v2/posts 以及带参数的 www.sample.org/wp-json/wp/v2/posts?per_page=8&amp;amp;page=1&amp;amp;orderby=date&amp;amp;order=desc 自定义返回的字段 有时候获取 blog 列</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/visual-composer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/visual-composer/</guid>
+      <description>Visual Composer permalink: wordpress-plugin-visual-composer tags: wordpress 自定义 CSS 与 JS 模板 导入导出自定义模板 VC Templates Import &amp;amp; Export 免费的 非专业版一次导出一个。。。 Template Manager for W&amp;hellip; 收费</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/woocommerce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/woocommerce/</guid>
+      <description>WooCommerce permalink: wordpress-woocommerce tags: wordpress 首先安装商城插件 Woocommerce 略 “可变商品”实现一个产品多个“套餐组合” 使用产品的“属性”和“变量” 添加“属性” 首先在 “产品” 菜单的“属性”下</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/</guid>
+      <description>title: WordPress Content and Media File Management permalink: wordpress-content-page-post-media tags:
+ wordpress   &amp;lt;! - more -&amp;gt;
+WordPress (hereinafter referred to as &amp;ldquo;WP&amp;rdquo;) content management, as well as some specific plug-in related operations.
+Login login address Suppose you want to log in the WP site is www.sample.org, then the background is usually default login address is
+www.sample.org/wp-admin
+However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/wordpress-ip-%E5%9C%B0%E5%9D%80%E5%88%A4%E6%96%AD/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/wordpress-ip-%E5%9C%B0%E5%9D%80%E5%88%A4%E6%96%AD/</guid>
+      <description>title: Wordpress IP 地址判断 permalink: wordpress-ip-address tags: wordpress 使用服务 https://www.quora.com/What-is-the-best-API-for-geolocating-an-IP-address http://ipinfo.io/ 免费版限制每天调用 1000 次。可使用 jQuery 等 http://ipinfo.io/developers $curl ipinfo.io http://ip-api.com/ 每分钟150 次。。。 http://ip-api.com/docs/ db-ip.com //api.db-ip.com/addrinfo?api_key=&amp;amp;addr=Returns: { &amp;quot;address&amp;quot;: &amp;quot;116.12.250.1&amp;quot;, &amp;quot;country&amp;quot;: &amp;quot;SG&amp;quot;, &amp;quot;stateprov&amp;quot;: &amp;quot;Central Singapore&amp;quot;, &amp;quot;city&amp;quot;: &amp;quot;Singapore&amp;quot; } Limitations: 2,500 requests per hour Doesn&amp;rsquo;t support JSONP</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/wordpress-%E5%9F%BA%E7%A1%80-%E5%86%85%E5%AE%B9%E4%B8%8E%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/wordpress-%E5%9F%BA%E7%A1%80-%E5%86%85%E5%AE%B9%E4%B8%8E%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/</guid>
+      <description>&lt;p&gt;title: Wordpress 基础-内容与媒体文件管理
+permalink: wordpress-content-page-post-media
+tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;wordpress&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/wordpress-%E7%9A%84-the7-%E4%B8%BB%E9%A2%98%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/wordpress-%E7%9A%84-the7-%E4%B8%BB%E9%A2%98%E6%95%99%E7%A8%8B/</guid>
+      <description>title: wordpress 的 The7 主题教程 permalink: wordpress-the7-theme tags: wordpress 修改默认的博客存档列表 https://guide.the7.io/user-guide/custom-post-types/blog/displaying-blog/ 默认是这样横着的方块 我们想要传统列表一样。需要新建一个页面，模板选“博客-列表” 后面可以通过</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.zhishibee.com/1/01/wordpress-%E9%BB%98%E8%AE%A4%E7%89%B9%E6%80%A7%E9%AD%94%E6%94%B9/</guid>
+      <description>title: Wordpress 默认特性魔改 permalink: wordpress-change-default-features tags: wordpress “最近发布”大变样 最近有个需求，要求在“最近发布”列表里剔除某些文章类别，找到了这个插件 https://wordpress.org/plugins/recent-posts-widget-extended/#reviews 发现除了可以设置类别范围外</description>
+    </item>
+    
+  </channel>
+</rss>

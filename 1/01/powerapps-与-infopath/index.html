@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="PowerApps 与 InfoPath 开始 是一个快速开发环境，能够使用 app, 服务，数据平台等, 并调用各种数据源，为商业需求创建应用。 powerapps 提供了很多的商业逻辑，以及与 flow 结合来提供流" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="PowerApps 与 InfoPath 开始 是一个快速开发环境，能够使用 app, 服务，数据平台等, 并调用各种数据源，为商业需求创建应用。 powerapps 提供了很多的商业逻辑，以及与 flow 结合来提供流" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/powerapps-%E4%B8%8E-infopath/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="PowerApps 与 InfoPath 开始 是一个快速开发环境，能够使用 app, 服务，数据平台等, 并调用各种数据源，为商业需求创建应用。 powerapps 提供了很多的商业逻辑，以及与 flow 结合来提供流">
+
+<meta itemprop="wordCount" content="5203">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="PowerApps 与 InfoPath 开始 是一个快速开发环境，能够使用 app, 服务，数据平台等, 并调用各种数据源，为商业需求创建应用。 powerapps 提供了很多的商业逻辑，以及与 flow 结合来提供流"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/powerapps-%E4%B8%8E-infopath/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/powerapps-%E4%B8%8E-infopath/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5203字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>PowerApps 与 InfoPath</p>
+<h1 id="开始">开始</h1>
+<p>是一个快速开发环境，能够使用 app, 服务，数据平台等, 并调用各种数据源，为商业需求创建应用。  powerapps 提供了很多的商业逻辑，以及与 flow 结合来提供流程自动化。</p>
+<p>其中</p>
+<ul>
+<li>底层数据平台 Common Data Service</li>
+<li>联机和本地数据源（SharePoint、Excel、Office 365、Dynamics 365、SQL Server 等）</li>
+</ul>
+<p>面向<strong>应用应用创建者与开发者</strong></p>
+<p>有两种类型的应用：</p>
+<ul>
+<li>“画布”（PowerApps Studio 生成画布应用的应用设计器） 通过数据生成应用</li>
+<li>“模型驱动”（“应用设计器”定义网站地图 模型驱动 的应用）</li>
+</ul>
+<p>开发者可以编写代码以扩展业务应用的创建和自定义，使用代码创建数据和元数据，使用 Azure Functions、插件和工作流扩展应用服务器端逻辑，使用 JavaScript 应用客户端逻辑，使用虚拟实体和 webhook 与外部数据集成，构建自定义连接器，并将应用嵌入到网站体验中以创建集成解决方案。</p>
+<p>开发人员：https://docs.microsoft.com/zh-cn/powerapps/#pivot=home&amp;panel=developer</p>
+<p>面向<strong>用户</strong>， 可以在 PC 上或者手机上(安装 powerapps app)来运行共享给你的应用</p>
+<p>面向<strong>管理员</strong>：</p>
+<ul>
+<li>“PowerApps 管理中心” admin.powerapps.com 创建和管理环境、用户、角色和数据丢失防护策略</li>
+<li>“Power 平台管理中心” admin.powerplatform.microsoft.com 管理与APP的分析</li>
+</ul>
+<p><strong>Dynamic365</strong></p>
+<p>Dynamics 365 应用程序（如 Dynamics 365 for Sales、Dynamics 365 for Service、Dynamics 365 for Marketing）还使用 PowerApps 用于存储和保护数据的基础数据平台（面向应用程序的 CDS）。 这使你可针对 Dynamics 365 中已使用的核心商业数据直接使用 PowerApps 和 Common Data Service for Apps 构建应用，而无需集成</p>
+<p><a href="https://docs.microsoft.com/zh-cn/powerapps/maker/common-data-service/data-platform-intro#dynamics-365-and-the-common-data-service-for-apps">https://docs.microsoft.com/zh-cn/powerapps/maker/common-data-service/data-platform-intro#dynamics-365-and-the-common-data-service-for-apps</a></p>
+<h1 id="查找及运行应用">查找及运行应用</h1>
+<h2 id="浏览器在-dynamic-里搜或者放到首页">浏览器：在 Dynamic 里搜，或者放到首页</h2>
+<p><a href="https://home.dynamics.com">https://home.dynamics.com</a></p>
+<p><img src="/media/15490412929099/15514234394436.jpg" alt="-w923"></p>
+<h2 id="powerapps-移动应用canvas">PowerApps 移动应用（canvas）</h2>
+<p>从应用市场下载、查找、固定到首页等等
+略</p>
+<h2 id="打开-model-driven-app">打开 model-driven app</h2>
+<p>它们不能在 PowerApps 这个手机应用上运行，只能在 Dynamic365 或者移动浏览器上运行</p>
+<p>在手机上下载安装 Dynamics365</p>
+<p><a href="https://docs.microsoft.com/en-us/powerapps/user/run-app-client-model-driven">https://docs.microsoft.com/en-us/powerapps/user/run-app-client-model-driven</a></p>
+<p>（第一个界面是输入一个地址，但不知道是啥啊。。。）</p>
+<h2 id="使用-model-drive-app">使用 model drive app</h2>
+<p>是一种集合了 dashboards, forms, views, charts, and business processes 等组件的 app.</p>
+<h3 id="unified-interface">Unified Interface</h3>
+<p>提供了一个跨设备的展示方法。</p>
+<h3 id="操作界面导入数据等略--这个自己研究下好">操作、界面、导入数据等。。略  这个自己研究下好</h3>
+<p>appointment,  task, timeline，business process 等等</p>
+<p>重点看后面怎么创建这类型的 app</p>
+<h1 id="创建应用">创建应用</h1>
+<p>打开 <a href="https://web.powerapps.com">https://web.powerapps.com</a></p>
+<p>有三种应用</p>
+<ul>
+<li><code>Canvas 画布</code> ：设计一个高度定制的界面，并将其与您选择的200个数据源连接起来</li>
+<li><code>Model Drive 模型驱动</code>：有个<strong>标准UI</strong>,从公共数据服务中的核心业务数据和流程的形状构建模型，到dashbaord、表单、视图和其他组件。模型驱动的应用程序自动生成<strong>跨设备</strong>响应的优秀UI</li>
+<li><code>Common Data Service 数据</code>：自带的数据平台，允许存储和建模业务数据。它是Dynamics 365应用构建的平台</li>
+</ul>
+<p><img src="/media/15490412929099/15516861897164.jpg" alt="-w852"></p>
+<p>大纲：
+<a href="https://docs.microsoft.com/en-us/powerapps/maker/">https://docs.microsoft.com/en-us/powerapps/maker/</a></p>
+<h1 id="基于-canvas">基于 Canvas</h1>
+<p>You can start to build your app from Microsoft tools where your data lives, such as:</p>
+<ul>
+<li>From a SharePoint list</li>
+<li>From a Power BI dashboard</li>
+</ul>
+<p>Creating a canvas app is easy; with PowerApps, you can find or create your app in several ways:</p>
+<ul>
+<li>From data</li>
+<li>From a sample</li>
+<li>From a Common Data Service source</li>
+<li>From a blank canvas</li>
+<li>Via AppSource</li>
+</ul>
+<h2 id="sample-apps">Sample apps</h2>
+<p>基于模板创建后，可以进行调整，例如要展示的数据类别、排序、筛选。</p>
+<p>添加自定的<code>screens</code>, <code>galleries</code>,<code>forms</code>和其他控件</p>
+<p><img src="/media/15490412929099/15516873230966.jpg" alt=""></p>
+<p>主要讲几个 sample apps</p>
+<ul>
+<li>Expense</li>
+<li>HelpDesk</li>
+<li>Metting Capture</li>
+</ul>
+<p>例如，创建 Expense 对应的 Custom List 类型 App (在 SharePoint 里)，这里有两个 List</p>
+<p><code>Expenses</code> List 的字段：</p>
+<ul>
+<li>Cost Center: choice
+Food &amp; Beverage （Default value）
+Transportation
+Business needs</li>
+<li>Comments</li>
+<li>Status   Open Pending Approved</li>
+<li>ApproverName  Person or Group</li>
+<li>DateSubmitted</li>
+<li>StartDate</li>
+<li>EndDate</li>
+</ul>
+<p><code>LineItems</code> List 的字段</p>
+<ul>
+<li>Category   Food &amp; Beverage/Transportation/Business needs</li>
+<li>Cost: Number (1, 10, 100)</li>
+<li>Date: Date and Time</li>
+<li>Description: Multiple lines of text</li>
+<li><strong>ReportID</strong>: 选 More-&gt; Lookup (information already on this site). Get information from 选前面的 Expense   In this column 选 ID <strong>与Expense List进行关联</strong></li>
+<li>Title</li>
+</ul>
+<h3 id="创建-connections">创建 connections</h3>
+<p>选择左侧 Connection, 添加</p>
+<p>Approvals
+Office 365 Outlook connection
+SharePoint connection</p>
+<h3 id="可以下载-app-应用然后-webpowerappscom-的-应用里导入">可以下载 app 应用然后 web.powerapps.com 的 “应用”里导入</h3>
+<p>例如下载 <a href="http://pappsfeprodwestuscontent.blob.core.windows.net/sampleapps/myexpenses/docs/MyExpenses(SP_List).zip">http://pappsfeprodwestuscontent.blob.core.windows.net/sampleapps/myexpenses/docs/MyExpenses(SP_List).zip</a></p>
+<p><img src="/media/15490412929099/15517659258353.jpg" alt="-w290"></p>
+<p><img src="/media/15490412929099/15517678112188.jpg" alt="-w510"></p>
+<p><img src="/media/15490412929099/15517659729757.jpg" alt=""></p>
+<p>配置 sharepoint，Approvels,Office365 outlook&hellip;.</p>
+<p><img src="/media/15490412929099/15517660188096.jpg" alt=""></p>
+<p>全部ok</p>
+<p><img src="/media/15490412929099/15517660622052.jpg" alt="">
+然后点击 import</p>
+<p><img src="/media/15490412929099/15517660801799.jpg" alt=""></p>
+<h3 id="配置-powerapps-以便使用-sharepoint-list">配置 powerapps 以便使用 SharePoint list</h3>
+<p>删除 connections</p>
+<p>在 View 的 Data source，<strong>删除</strong> Expense 和 LineItems 两个</p>
+<p>然后<strong>重新添加</strong>前面自己创建的对应 Expense 和 LineItems.</p>
+<p>然后<strong>发布</strong>一下这个 app</p>
+<h3 id="配置-使用-flow">配置 使用 Flow</h3>
+<p>打开左边菜单的 “flows&rdquo;</p>
+<p>编辑 ApproveExpense， 在 GetItems 步骤里输入对应的 Expense List</p>
+<p>然后 Change item status to Approved</p>
+<h3 id="sample-app--help-desk">Sample App- Help Desk</h3>
+<p>前面步骤都一样</p>
+<p><strong>PowerApps</strong></p>
+<p>更新 admin list</p>
+<p>选择  App  (官方文档有误，选了 LoginScreen)  ，  OnStart</p>
+<p>找到 <code>AdminList</code>集合, 修改为自己需要的管理员</p>
+<p><img src="/media/15490412929099/15517672712785.jpg" alt="-w590"></p>
+<p><strong>Flow</strong></p>
+<p>通过导入后，会看到一个 Flow</p>
+<p><img src="/media/15490412929099/15517680415512.jpg" alt="-w303"></p>
+<p><img src="/media/15490412929099/15517680972347.jpg" alt="-w285"></p>
+<p>展开 Switch(增强版的 Condition Yes/No), 展开 NOT STARTED 情况和 Case not started 动作，将 send email to 改成 admin 的邮箱</p>
+<p><img src="/media/15490412929099/15517681129686.jpg" alt="-w266"></p>
+<p>注意看 body 里有很多条件判断, 且支持 html 代码</p>
+<p><img src="/media/15490412929099/15517681736758.jpg" alt="-w259"></p>
+<p>以及编辑函数</p>
+<p><img src="/media/15490412929099/15517682162400.jpg" alt="-w192"></p>
+<h3 id="meeting-capture-app-更复杂连接了更多的模块">Meeting Capture app 更复杂，连接了更多的模块。</h3>
+<h2 id="开始创建">开始创建</h2>
+<h3 id="从-common-data-service">从 Common Data Service</h3>
+<p><img src="/media/15517684179876/15517686422577.jpg" alt="-w104"></p>
+<p><img src="/media/15517684179876/15517686703902.jpg" alt="-w496"></p>
+<p>选择表</p>
+<p><img src="/media/15517684179876/15517686947425.jpg" alt="-w505"></p>
+<p>例如选择 ”Teams&rdquo;, 完成了</p>
+<p><img src="/media/15517684179876/15517687413866.jpg" alt="-w184"></p>
+<p>这就是数据源</p>
+<p><img src="/media/15517684179876/15517687644190.jpg" alt="-w177"></p>
+<h3 id="from-sharepoint">From SharePoint</h3>
+<p>可以在创建app的时候，从数据开始，选这个。 后面略</p>
+<p><img src="/media/15517684179876/15517688962018.jpg" alt="-w108"></p>
+<p>也可以在 SharePoint 的 List 里从那里创建 App</p>
+<p><img src="/media/15517684179876/15517689265893.jpg" alt=""></p>
+<h3 id="from-excel-略">From Excel 略</h3>
+<p><img src="/media/15517684179876/15517689486872.jpg" alt=""></p>
+<p><img src="/media/15517684179876/15517689553969.jpg" alt=""></p>
+<h3 id="galleries">Galleries</h3>
+<h4 id="修改布局">修改布局</h4>
+<p><img src="/media/15517684179876/15517691420265.jpg" alt="-w155"></p>
+<p><img src="/media/15517684179876/15517691606398.jpg" alt="-w202"></p>
+<h5 id="排序搜索字段">排序、搜索字段</h5>
+<p><img src="/media/15517684179876/15517692389706.jpg" alt="-w633"></p>
+<p>详细的公示说明在这里</p>
+<p><a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/formula-reference">formula reference</a></p>
+<h4 id="修改-title">修改 title</h4>
+<p>点击选中，然后修改 Text 为 “xxxx” 字符串 ，或者函数运算 <code>User().FullName</code></p>
+<h3 id="form-自定义-略">Form 自定义 略</h3>
+<h3 id="cards">cards</h3>
+<p><img src="/media/15517684179876/15517706739294.jpg" alt="-w403"></p>
+<p>点击 字段-&gt;编辑</p>
+<p>自定义这个组件</p>
+<p><img src="/media/15517684179876/15517708099389.jpg" alt="-w322"></p>
+<p>例如改成这个布局</p>
+<p><img src="/media/15517684179876/15517708416564.jpg" alt="-w109"></p>
+<h4 id="解锁后使用函数等高级自定义">解锁后使用“函数”等高级自定义</h4>
+<p>解锁某个控件后，</p>
+<p><strong>给控件命名</strong></p>
+<p>delete the <code>Toggle</code> control, add a <code>Check box</code> control, and name the new control &ldquo;chkMktg&rdquo;.</p>
+<p><strong>修改命名控件的值</strong></p>
+<p>然后选择这个控件，切换到 Advanced，点击 more options</p>
+<p>修改 card 的 <code>Update</code> 属性，改成表达式</p>
+<pre><code>chkMktg.Value
+</code></pre>
+<p><img src="/media/15517684179876/15517713203203.jpg" alt="-w382"></p>
+<p>以及 ErrorMessage 的 Y 值</p>
+<p><img src="/media/15517684179876/15517713916631.jpg" alt=""></p>
+<p>修改 chkMktg 的 Text 属性为 “Yes”</p>
+<p><img src="/media/15517684179876/15517714374517.jpg" alt=""></p>
+<h3 id="自己创建-screen-等">自己创建 Screen 等</h3>
+<p>添加 List Screen</p>
+<p><img src="/media/15517684179876/15517729797634.jpg" alt=""></p>
+<p>然后修改 items 来源、排序等</p>
+<pre><code class="language-sql">SortByColumns(Search(Accounts, TextSearchBox1.Text, &quot;name&quot;), &quot;name&quot;, If(SortDescending1, SortOrder.Descending, SortOrder.Ascending))
+</code></pre>
+<p>添加 Form Screen</p>
+<p>修改 Data Source 和 <code>Item</code> 属性</p>
+<p><img src="/media/15517684179876/15517733420291.jpg" alt=""></p>
+<p>然后添加字段</p>
+<p><img src="/media/15517684179876/15517738094001.jpg" alt=""></p>
+<p><strong>对按钮绑定动作</strong></p>
+<p>刷新按钮，在 <code>OnSelect</code>上绑定动作</p>
+<pre><code class="language-shell">Refresh(Accounts)
+</code></pre>
+<p>添加按钮</p>
+<pre><code class="language-shell">NewForm(EditForm1); Navigate(FormScreen, ScreenTransition.None)
+</code></pre>
+<p>编辑</p>
+<pre><code class="language-shell">EditForm(EditForm1); Navigate(FormScreen, ScreenTransition.None)
+</code></pre>
+<p>关闭编辑窗口</p>
+<pre><code class="language-shell">ResetForm(EditForm1);Navigate(BrowseScreen, ScreenTransition.None)
+</code></pre>
+<p>提交编辑</p>
+<pre><code class="language-shell">SubmitForm(EditForm1); Navigate(BrowseScreen, ScreenTransition.None)
+</code></pre>
+<p>删除</p>
+<pre><code class="language-shell">Remove(Accounts, BrowseGallery.Selected); Navigate(BrowseScreen, ScreenTransition.None)
+</code></pre>
+<h3 id="来自-excel">来自 Excel</h3>
+<p>和 sharepoint 类似</p>
+<h2 id="从模板">从模板</h2>
+<p><img src="/media/15517684179876/15518328404702.jpg" alt="-w426"></p>
+<h2 id="连接到数据">连接到数据</h2>
+<p><code>connector</code> 可能提供表格、action，或两者都有</p>
+<h3 id="table-表格">Table 表格</h3>
+<p>例如前面从 Common Data Service 或者 SharePoint List 里创建的 app, 就能修改 Gallery 的数据源</p>
+<p><img src="/media/15517684179876/15518490468382.jpg" alt=""></p>
+<h3 id="action-动作">Action 动作</h3>
+<p>通过指定一个 action 来取回数据，例如</p>
+<p><img src="/media/15517684179876/15518492357607.jpg" alt=""></p>
+<p>定制公式  都在 formula reference 里</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-patch">Patch</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-clear-collect-clearcollect">Collect</a></li>
+<li><a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/functions/function-update-updateif">Update</a></li>
+</ul>
+<p>不支持动态模式 （dynamic scheme） 指“相同的操作返回不同的表/列” ？？？ 不理解</p>
+<p>flow 支持</p>
+<h3 id="连接器包括-standard-and-custom-connector">连接器：包括 standard and custom connector</h3>
+<p><a href="https://docs.microsoft.com/zh-cn/connectors/">所有连接器</a></p>
+<p>如果不连接标准connector, 则需要注册自定义连接器</p>
+<p><a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/register-custom-api">https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/register-custom-api</a></p>
+<h3 id="添加管理-connection">添加、管理 connection</h3>
+<p>在菜单的 connection 里添加一个<strong>连接</strong> （实际上可以认为是PowerApps 能调用的服务）</p>
+<p>（例如，一个叫“buffer&quot;的连接）能够让 PowerApps 和社交媒体集成
+<img src="/media/15517684179876/15518511445188.jpg" alt="-w427"></p>
+<p>然后向应用添加具体的<strong>数据源</strong>（data source，可能来自于某一个类型的连接）</p>
+<p>然后再将数据源绑定到某个组件（Gallery, Edit Form, Display From ）</p>
+<p>修改 connection 的信息</p>
+<p><img src="/media/15517684179876/15518511715510.jpg" alt=""></p>
+<h2 id="delegation-委托将数据处理委托给数据源而不是在应用本地来处理">delegation 委托：将数据处理<strong>委托给数据源</strong>，而不是在应用本地来处理</h2>
+<p>PowerApps 提供了大量的函数来进行 Filter、Sort、Add Column 等，来操作后端的数据库</p>
+<p>我们要尽可能地让设备上的 app 和数据库之间的数据包越少越好，以便节约带宽、内存，提高 app 的性能</p>
+<p>Delegation 会将数据处理<strong>委托给数据源</strong>，而不是在应用本地来处理</p>
+<p>因为<strong>并不是所有可以在PowerApps公式中表达的内容都可以委托给每个数据源</strong>。PowerApps语言模仿了<strong>Excel的公式语言</strong>，设计了完整的、即时访问内存中的完整工作簿的功能，以及各种数字和文本操作函数。因此，PowerApps语言比大多数数据源所能支持的要丰富得多，包括强大的数据库引擎(如SQL Server)。</p>
+<p>处理大型数据集需要使用可以委托的数据源和公式。</p>
+<p>这是保持你的应用程序运行良好并确保用户能够访问他们需要的所有信息的唯一方法。注意委托警告，它指出不可能进行委托的地方。如果您使用的是小数据集(少于500条记录)，您可以使用任何数据源和公式，因为如果公式不能委托，应用程序可以在本地处理数据。</p>
+<p><strong>关于委托警告</strong></p>
+<p>如果数据源中的数据超过500条记录，且无法委托某个函数，PowerApps可能无法检索所有数据，应用程序可能会得到错误的结果。委托警告帮助您管理应用程序，使其具有正确的结果。</p>
+<p>PowerApps在创建包含不能委托的内容的公式时提供警告(黄色三角形)。</p>
+<p>委托警告只出现在对可委托数据源进行操作的公式上。如果您没有看到警告，并且您认为您的公式没有被正确地委托，请对照本主题前面的可委托数据源列表检查数据源的类型。</p>
+<h3 id="可委托的数据源">可委托的数据源</h3>
+<p>如果数据源支持委托，则其连接器文档将概述该支持， 例如</p>
+<p>Common Data Service (CDS) for Apps
+SharePoint
+SQL Server</p>
+<p>另外，导入的 excel 数据表，集合，以及保存在上下文变量中的表不需要委托，它们在内存中进行。</p>
+<h3 id="可委托的函数">可委托的函数</h3>
+<p>由于每个数据源都是不同的，并不是所有数据源都支持所有这些元素。检查特定公式中的委托警告</p>
+<p><strong>Filter functions</strong></p>
+<p>Filter, Search, and LookUp can be delegated</p>
+<ul>
+<li>And (including &amp;&amp;), Or (including ||), Not (including !)</li>
+<li>In</li>
+<li>=, &lt;&gt;, &gt;=, &lt;=, &gt;, &lt;</li>
+<li>+, -</li>
+<li>TrimEnds</li>
+<li>IsBlank</li>
+<li>StartsWith</li>
+<li>Constant values that are the same across all records, such as control properties and global and context variables. (暂时不明白)</li>
+</ul>
+<p>您还可以使用公式中对所有记录求值为常量的部分。例如，<code>Left(Language()， 2)</code>不依赖于记录的任何列，因此，对所有记录返回相同的值。它实际上是一个常数。上下文变量、集合和信号的使用可能不是常量，因此将阻止 Filter 和 Loopup 被委托</p>
+<p>还有其他</p>
+<ul>
+<li>If</li>
+<li>*, /, Mod</li>
+<li>Concatenate (including &amp;)</li>
+<li>ExactIn</li>
+<li>String manipulation functions: Lower, Upper, Left, Mid, Len, &hellip;</li>
+<li>Signals: Location, Acceleration, Compass, &hellip;</li>
+<li>Volatiles: Now, Today, Rand, &hellip;</li>
+<li>Collections</li>
+</ul>
+<p><strong>Sorting functions</strong></p>
+<p>Sort and SortByColumns can be delegated.</p>
+<p>Sort 公式不能包含其他操作和函数，只能是列</p>
+<p><strong>Aggregate 汇总函数</strong></p>
+<p>Sum, Average, Min, and Max  等  (查看 <a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/delegation-list">https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/delegation-list</a>)</p>
+<p>但是这些计算函数不能被委托</p>
+<p>例如 CountRows, CountA, and Count
+以及其他统计函数  StdevP and VarP  不能被委托</p>
+<p><strong>不支持委托的函数</strong></p>
+<ul>
+<li>Table shaping: AddColumns, DropColumns, ShowColumns, &hellip;</li>
+<li>First, FirstN, Last, LastN</li>
+<li>Choices</li>
+<li>Concat</li>
+<li>Collect, ClearCollect</li>
+<li>CountIf, RemoveIf, UpdateIf</li>
+<li>GroupBy, Ungroup</li>
+</ul>
+<p>一种常见的模式是使用AddColumns和LookUp将信息从一个表合并到另一个表中，这在数据库术语中通常称为<strong>连接</strong></p>
+<pre><code class="language-vba">AddColumns( Products, &quot;Supplier Name&quot;, LookUp( Suppliers, Suppliers.ID = Product.SupplierID ).Name )
+</code></pre>
+<p>即使 Products 和 Suppliers 都是可委托数据源，Lookup 也是可委托函数，但是 AddColumns 是不可委托的。整个公式的结果将局限在 Product 数据源的第一部分</p>
+<p>因为查找函数及其数据源是可委托的，所以可以在数据源中的任何位置找到与供应商的匹配，即使它很大。一个潜在的缺点是，对于产品中的第一个记录，查找将对数据源进行单独的调用，从而在网络上引起大量的讨论。如果供应商足够小并且不经常更改，那么您可以在应用程序启动时(使用打开屏幕上的OnVisible)通过对方付费电话将数据源缓存到应用程序中，然后对其进行查找。</p>
+<h3 id="on-delegable-limits-限制">on-delegable limits 限制</h3>
+<p>非委托公式都运行在本地。所有的数据必须首先被带到设备上，这可能需要通过网络检索大量的数据。这可能需要时间，给人的印象是你的应用程序很慢，或者可能会崩溃。</p>
+<p>为了避免这种情况，PowerApps<strong>对本地可处理的数据量</strong>进行了限制:<strong>默认情况下为500条记录</strong>。</p>
+<p>考虑一种情况，需要过滤一批数据，它的“选择公式”不能在100万记录的数据源上进行委托，因为过滤是在本地完成的，只会扫描前500行数据。因此筛选器无法找到后面的数据。</p>
+<p>还有<strong>聚合函数</strong>也会引起混淆。取同一百万记录数据源的一列的平均值。Average<strong>还不能被委托</strong>，所以<strong>只有前500条记录被平均</strong>。如果你不小心，部分答案可能会被你的应用程序的用户误解为完整的答案。</p>
+<p><strong>修改限制</strong>
+修改 App settings ， Experimental features， Data row limit for non-delegable queries 如果改成 2000（相应地性能会有所下降）</p>
+<p>为了确保您的应用程序可以扩展到大数据集，请将该设置设置为1。任何不能委托的内容都会返回一条记录，这在测试应用程序时应该很容易检测到。这有助于避免在将概念验证应用程序投入生产时出现意外</p>
+<h3 id="案例">案例</h3>
+<p>在一个连接了 dbo.fruit SQLServer 数据源的应用中。一开始用</p>
+<pre><code class="language-vba">Filter('[dbo].[Fruit]', TextSearchBox1.Text in Name)
+</code></pre>
+<p>如果用 “apple&rdquo; 做关键词，会找到</p>
+<p>apples
+Pineapple
+Crab apples</p>
+<p>等。速度还挺快，即使原来的数据表里有几百万条记录</p>
+<p>然后修改，让搜索结果，必须与搜索关键词 apple 完全相同（不能在中间）</p>
+<pre><code class="language-vba">Filter('[dbo].[Fruit]', Left(FruitName, Len(TextSearchBox1.Text in Name)) = TextSearchBox1.Text)
+</code></pre>
+<p>这时界面上出现一个三角形黄色警告，以及公式输入框里波浪线标记了问题。</p>
+<p>数据源是可委托的，Filter 也是委托函数，<strong>但是 Len()不能委托给任何数据源</strong></p>
+<p>如果表的数据小于500条，则正常，会将所有记录导入设备，在本地用 Filter.
+否则大于500条，公式的结果可能不准确（拿不到500条后面的记录）</p>
+<h2 id="gateway-暂时略">gateway (暂时略)</h2>
+<p>如果要链接的数据源不是”云“的（如 SharePoint），而是一个“本地”的数据库，例如</p>
+<ul>
+<li>SharePoint</li>
+<li>SQL Server</li>
+<li>Oracle</li>
+<li>Informix</li>
+<li>Filesystem</li>
+<li>DB2</li>
+</ul>
+<p>安装 GateWay</p>
+<p><img src="/media/15517684179876/15518615457407.jpg" alt=""></p>
+<h2 id="屏幕-screens">屏幕 Screens</h2>
+<p>一般一个应用有3个最常用的屏幕，以及对应使用的组件</p>
+<ol>
+<li>列表   使用 Gallery</li>
+<li>编辑   使用 窗体-编辑</li>
+<li>详情   使用 窗体-显示</li>
+</ol>
+<h3 id="跳转到其他屏幕">跳转到其他屏幕</h3>
+<p>添加屏幕后。</p>
+<p>插入一个“图标”（箭头），调整到左上角。</p>
+<p>修改<code>OnSelect</code>动作，<code>Navigate(Source, ScreenTransition.Fade)</code></p>
+<p>例如“添加”新数据表单的就是</p>
+<pre><code class="language-vba">NewForm(EditForm1);Navigate(EditScreen1, ScreenTransition.None)
+</code></pre>
+<h3 id="日历屏幕">日历屏幕</h3>
+<p><img src="/media/15517684179876/15519257217704.jpg" alt="-w158"></p>
+<p>详细的事件和函数   <a href="https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/screen-templates/calendar-screen-reference">https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/screen-templates/calendar-screen-reference</a></p>
+<p>修改日历控件的各种属性。 例如 text、控件的 hide/visiable 等</p>
+<p>以及与app集成，例如</p>
+<ul>
+<li>查看事件详情</li>
+<li>显示事件的参与者</li>
+</ul>
+<h3 id="email-屏幕">Email 屏幕</h3>
+<h3 id="会议-屏幕">会议 屏幕</h3>
+<h3 id="联系人-屏幕">联系人 屏幕</h3>
+<h2 id="创建滚动屏幕">创建滚动屏幕</h2>
+<p>添加一个空 screen, layout 为 “无限滚动画布“</p>
+<p><img src="/media/15517684179876/15519310876851.jpg" alt="-w114"></p>
+<p>然后添加 section, 以及在 section 内添加各种 controls</p>
+<p><img src="/media/15517684179876/15519311309896.jpg" alt="-w176"></p>
+<h2 id="列表项">列表项</h2>
+<p>插入 库</p>
+<p><img src="/media/15517684179876/15519362314289.jpg" alt="-w284"></p>
+<p>然后再修改布局、数据</p>
+<p><img src="/media/15517684179876/15519363554183.jpg" alt="-w163"></p>
+<p><img src="/media/15517684179876/15519364382137.jpg" alt="-w401"></p>
+<h3 id="添加新的字段显示">添加新的字段显示</h3>
+<p>向这个默认的列表项添加一个 label，拖动到界面里,</p>
+<p><img src="/media/15517684179876/15519365160707.jpg" alt=""></p>
+<p>然后选择绑定显示的数据字段</p>
+<p><img src="/media/15517684179876/15519366341328.jpg" alt="-w222"></p>
+<h3 id="添加筛选控件">添加筛选控件</h3>
+<p>插入一个 输入框，然后命名，最后修改 Gallery 控件的 <code>Items</code> 属性，设置为公示 (前面讲过了)</p>
+<pre><code class="language-vba">Sort(If(IsBlank(TextSearchBox1.Text), FlooringEstimates, Filter(FlooringEstimates, TextSearchBox1.Text in Text(Name))), Name, If(SortDescending1, SortOrder.Descending, SortOrder.Ascending))
+</code></pre>
+<h3 id="排序控件">排序控件</h3>
+<p>一个图标，<code>OnSelect</code>为</p>
+<pre><code class="language-vba">UpdateContext({SortDescending1: !SortDescending1})
+</code></pre>
+<h3 id="突出显示选定项">突出显示选定项</h3>
+<p><code>TemplateFill</code>属性设置为</p>
+<pre><code class="language-vba">If(ThisItem.IsSelected, LightCyan, White)
+</code></pre>
+<h3 id="更改默认选择">更改默认选择</h3>
+<p>库的<code>Default</code>属性 例如指定“FlooringEstimates”数据源中“Hardwood”类别的第一项：</p>
+<pre><code class="language-vba">First(Filter(FlooringEstimates, Category = &quot;Hardwood&quot;))
+</code></pre>
+<h3 id="高度自适应">高度自适应</h3>
+<p>把 label 的 <code>AutoHeight</code> 属性设置为 <code>true</code></p>
+<h2 id="表单">表单</h2>
+<p>前面讲过如何添加控件到表单里， 这里使用一个 按钮 组件来绑定事件</p>
+<pre><code class="language-vba">SubmitForm(EditForm)
+</code></pre>
+<p>前面都讲过了 创建新记录 的事件。</p>
+<p>这里有一个新的&quot;删除记录，并返回&rdquo;</p>
+<pre><code class="language-vba">Remove( 'Ice Cream', Gallery1.Selected ); Back()
+</code></pre>
+<h1 id="创建-model-drive-类型-app">创建 model-drive 类型 app</h1>
+<ul>
+<li>Create an app</li>
+<li>Create and design forms</li>
+<li>Create or edit views</li>
+<li>Create or edit a system chart</li>
+<li>Create or edit dashboards</li>
+<li>Add security</li>
+<li>Add business logic</li>
+</ul>
+<h1 id="common-data-service-for-apps">Common Data Service for Apps</h1>
+<ul>
+<li>Create a custom entity</li>
+<li>Manage fields</li>
+<li>Create custom option sets</li>
+<li>Create a business rule</li>
+</ul>
+<h1 id="其他操作">其他操作</h1>
+<h2 id="找到-powerapp-的-web-链接">找到 powerapp 的 web 链接</h2>
+<p><a href="https://web.powerapps.com">https://web.powerapps.com</a></p>
+<p><img src="/media/15490412929099/15516852475779.jpg" alt="-w653"></p>
+<p><img src="/media/15490412929099/15516852764183.jpg" alt="-w479"></p>
+<h2 id="共享给团队">共享给团队</h2>
+<h2 id="设置">设置</h2>
+<p>修改图标等</p>
+<p><img src="/media/15490412929099/15516851739012.jpg" alt="-w739"></p>
+<h1 id="其他">其他</h1>
+<p>如要链接其他非微软的数据</p>
+<p><img src="/media/15490412929099/15514261377077.jpg" alt="-w308"></p>
+<p><img src="/media/15490412929099/15514261628858.jpg" alt="-w347"></p>
+<p>共享 PowerApps 应用</p>
+<p><img src="/media/15490412929099/15514275043711.jpg" alt="-w903"></p>
+<h1 id="infopath">InfoPath</h1>
+<h1 id="修改设计">修改设计</h1>
+<p><a href="https://social.msdn.microsoft.com/forums/en-us/1839f126-c366-4b3d-8a14-d61982fe96ff/modify-displayifsaspx-in-infopath-designer">https://social.msdn.microsoft.com/forums/en-us/1839f126-c366-4b3d-8a14-d61982fe96ff/modify-displayifsaspx-in-infopath-designer</a></p>
+<p><a href="https://support.office.com/en-us/article/edit-list-forms-using-infopath-2010-in-sharepoint-designer-f86cf514-9a11-4613-a479-12a1a0132d22?ocmsassetID=HA101631624&amp;CorrelationId=7f47476c-4bdd-476a-9465-ac44ac8e50d4&amp;ui=en-US&amp;rs=en-US&amp;ad=US">https://support.office.com/en-us/article/edit-list-forms-using-infopath-2010-in-sharepoint-designer-f86cf514-9a11-4613-a479-12a1a0132d22?ocmsassetID=HA101631624&amp;CorrelationId=7f47476c-4bdd-476a-9465-ac44ac8e50d4&amp;ui=en-US&amp;rs=en-US&amp;ad=US</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/powerapps-%E4%B8%8E-infopath/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/powerapps-%E4%B8%8E-infopath/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/powerapps/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/ltworkflow/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

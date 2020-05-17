@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="mobx permalink: mobx-and-react tags: foreground 安装 安装 npm install -save mobx mobx-react 样板工程 https://github.com/mobxjs/mobx-react-boilerplate 入门 装饰器？ https://aotu.io/notes/2016/10/24/decorator/index.html 概念与原则 State(状态) 状态 是驱动应用的数据。 通常有像待办事项列表这样的领域特定状态" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="mobx permalink: mobx-and-react tags: foreground 安装 安装 npm install -save mobx mobx-react 样板工程 https://github.com/mobxjs/mobx-react-boilerplate 入门 装饰器？ https://aotu.io/notes/2016/10/24/decorator/index.html 概念与原则 State(状态) 状态 是驱动应用的数据。 通常有像待办事项列表这样的领域特定状态" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/mobx/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="mobx permalink: mobx-and-react tags: foreground 安装 安装 npm install -save mobx mobx-react 样板工程 https://github.com/mobxjs/mobx-react-boilerplate 入门 装饰器？ https://aotu.io/notes/2016/10/24/decorator/index.html 概念与原则 State(状态) 状态 是驱动应用的数据。 通常有像待办事项列表这样的领域特定状态">
+
+<meta itemprop="wordCount" content="6090">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="mobx permalink: mobx-and-react tags: foreground 安装 安装 npm install -save mobx mobx-react 样板工程 https://github.com/mobxjs/mobx-react-boilerplate 入门 装饰器？ https://aotu.io/notes/2016/10/24/decorator/index.html 概念与原则 State(状态) 状态 是驱动应用的数据。 通常有像待办事项列表这样的领域特定状态"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/mobx/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/mobx/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6090字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>mobx</p>
+<p>permalink: mobx-and-react
+tags:</p>
+<ul>
+<li>foreground</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="安装">安装</h1>
+<h2 id="安装-1">安装</h2>
+<pre><code class="language-shell">npm install -save mobx mobx-react
+</code></pre>
+<h2 id="样板工程">样板工程</h2>
+<p><a href="https://github.com/mobxjs/mobx-react-boilerplate">https://github.com/mobxjs/mobx-react-boilerplate</a></p>
+<h1 id="入门">入门</h1>
+<h2 id="装饰器">装饰器？</h2>
+<p><a href="https://aotu.io/notes/2016/10/24/decorator/index.html">https://aotu.io/notes/2016/10/24/decorator/index.html</a></p>
+<h2 id="概念与原则">概念与原则</h2>
+<p><strong>State(状态)</strong></p>
+<p>状态 是驱动应用的数据。 通常有像待办事项列表这样的领域特定状态，还有像当前已选元素的视图状态。 记住，状态就像是有数据的excel表格</p>
+<p><strong>Derivations(衍生)</strong></p>
+<p>任何 源自状态并且不会再有任何进一步的相互作用的东西就是衍生。 衍生以多种形式存在:</p>
+<p>用户界面
+衍生数据，比如剩下的待办事项的数量。
+后端集成，比如把变化发送到服务器端。</p>
+<p>MobX 区分了两种类型的衍生:</p>
+<p>Computed values(计算值) - 它们是永远可以使用纯函数(pure function)从当前可观察状态中衍生出的值。
+Reactions(反应) - Reactions 是当状态改变时需要自动发生的副作用。需要有一个桥梁来连接命令式编程(imperative programming)和响应式编程(reactive programming)。或者说得更明确一些，它们最终都需要实现I / O 操作。</p>
+<p>如果你想创建一个基于当前状态的值时，请使用 computed
+回到excel表格这个比喻中来，公式是计算值的衍生。但对于用户来说，能看到屏幕给出的<code>反应</code>则需要部分重绘GUI。</p>
+<p><strong>Actions(动作)</strong></p>
+<p>动作 是任一一段可以改变状态的代码。用户事件、后端数据推送、预定事件、等等。 动作类似于用户在excel单元格中输入一个新的值。</p>
+<p>在 MobX 中可以显式地定义动作，它可以帮你把代码组织的更清晰。 如果是在严格模式下使用 MobX的话，MobX 会强制只有在动作之中才可以修改状态。</p>
+<h2 id="原则">原则</h2>
+<p>MobX 支持<strong>单向数据流</strong>，也就是<strong>动作改变状态</strong>，而状态的<strong>改变会更新所有受影响的视图</strong>。</p>
+<p>当状态改变时，所有衍生都会进行原子级的自动更新。因此永远不可能观察到中间值。</p>
+<p>所有衍生默认都是同步更新。这意味着例如动作可以在改变状态之后直接可以安全地检查计算值。</p>
+<p>计算值 是延迟更新的。任何不在使用状态的计算值将不会更新，直到需要它进行副作用（I / O）操作时。 如果视图不再使用，那么它会自动被垃圾回收。</p>
+<p>所有的计算值都应该是纯净的。它们不应该用来改变状态。</p>
+<p>用实例说明</p>
+<pre><code class="language-js">import {observable, autorun} from 'mobx';
+
+var todoStore = observable({
+    /* 一些观察的状态 */
+    todos: [],
+
+    /* 推导值 */
+    get completedCount() {
+        return this.todos.filter(todo =&gt; todo.completed).length;
+    }
+});
+
+/* 观察状态改变的函数 */
+autorun(function() {
+    console.log(&quot;Completed %d of %d items&quot;,
+        todoStore.completedCount,
+        todoStore.todos.length
+    );
+});
+
+/* ..以及一些改变状态的动作 */
+todoStore.todos[0] = {
+    title: &quot;Take a walk&quot;,
+    completed: false
+};
+// -&gt; 同步打印 'Completed 0 of 1 items'
+
+todoStore.todos[0].completed = true;
+// -&gt; 同步打印 'Completed 1 of 1 items'
+</code></pre>
+<h2 id="observable-state-可观察的状态">Observable State 可观察的状态</h2>
+<p>使用 <code>@observable</code> <strong>装饰器</strong>(ES.Next)来给你的类属性添加注解，MobX 为现有的数据结构(如对象，数组和类实例)添加了可观察的功能</p>
+<pre><code class="language-js">import { observable } from &quot;mobx&quot;;
+
+class Todo {
+    id = Math.random();
+    @observable title = &quot;&quot;;
+    @observable finished = false;
+}
+</code></pre>
+<p>如果环境不支持装饰器语法(ES6 stage 2)，按<a href="https://cn.mobx.js.org/best/decorators.html">这里</a>设置，或者通过 <code>decorate</code> 工具在不支持装饰器语法的情况加使用（例如 下面的这段代码是 ES5 版本， 显然不如直接使用装饰器语法简洁）</p>
+<pre><code class="language-js">import { decorate, observable } from &quot;mobx&quot;;
+
+class Todo {
+    id = Math.random();
+    title = &quot;&quot;;
+    finished = false;
+}
+decorate(Todo, {
+    title: observable,
+    finished: observable
+});
+</code></pre>
+<h2 id="通过-create-react-app-生成的应用不支持-decorators语法报错-unexpected-token">通过 create-react-app 生成的应用，不支持 decorators(@)语法，报错 Unexpected token</h2>
+<p>create-react-app does not support decorators (@). You could either <strong>eject create-react-app</strong> to add it yourself, set up your own environment from scratch, or use something like mobx-react-boilerplate as your starting point.</p>
+<pre><code class="language-shell">#Install the CLI and this preset
+npm install --save-dev babel-cli babel-preset-es2016
+
+# We will also need to install a babel plugin so we can use ES7 decorators:
+npm i babel-plugin-transform-decorators-legacy --save-dev
+
+#Make a .babelrc config file with the preset
+{ 
+    &quot;presets&quot;: [&quot;es2016&quot;],
+    &quot;plugins&quot;: [&quot;transform-decorators-legacy&quot;]
+}
+
+# 如果无效，修改 package.json
+&quot;babel&quot;: {
+    &quot;presets&quot;: [
+      &quot;react-app&quot;
+    ],
+    &quot;plugins&quot;: [
+      &quot;transform-decorators-legacy&quot;
+    ]
+  },
+</code></pre>
+<blockquote>
+<p>The &lsquo;decorators&rsquo; plugin requires a &lsquo;decoratorsBeforeExport&rsquo; option, whose value must be a boolean. If you are migrating from Babylon/Babel 6 or want to use the old decorators proposal, you should use the &lsquo;decorators-legacy&rsquo; plugin instead of &lsquo;decorators&rsquo;</p>
+</blockquote>
+<p>不行， 改成</p>
+<pre><code class="language-shell">yarn add @babel/plugin-proposal-decorators @babel/preset-env @babel/preset-react @babel/cli
+
+
+{ 
+    &quot;presets&quot;: [&quot;react-app&quot;, &quot;@babel/preset-env&quot;],
+    &quot;plugins&quot;: [[&quot;@babel/plugin-proposal-decorators&quot;, { &quot;decoratorsBeforeExport&quot;: true }]]
+}
+</code></pre>
+<h2 id="computed-values-计算值">Computed Values 计算值</h2>
+<p>通过 <code>@computed</code> 装饰器或者利用 <code>(extend)Observable</code> 时调用 的 <code>getter / setter</code> 函数，可以定义在相关数据发生变化时自动更新的值</p>
+<p>下例 当添加了一个新的todo或者某个todo的 finished 属性发生变化时，MobX 会确保 unfinishedTodoCount <strong>自动更新</strong> （类似于 MS Excel 这样电子表格程序中的公式。每当只有在需要它们的时候，它们才会自动更新）</p>
+<pre><code class="language-js">class TodoList {
+    @observable todos = [];
+    @computed get unfinishedTodoCount() {
+        return this.todos.filter(todo =&gt; !todo.finished).length;
+    }
+}
+</code></pre>
+<h2 id="reactions-反应">Reactions 反应</h2>
+<p>和计算值很像，但它不是产生一个新的值，而是会产生一些副作用，比如打印到控制台、网络请求、递增地更新 React 组件树以修补DOM、等等。简而言之，reactions 在 <code>响应式编程</code>和<code>命令式编程</code>之间建立沟通的桥梁。</p>
+<p>响应式编程：https://en.wikipedia.org/wiki/Reactive_programming
+命令式编程：https://en.wikipedia.org/wiki/Imperative_programming</p>
+<h3 id="把你的无状态函数-react-组件变成响应式组件">把你的(无状态函数) React 组件变成响应式组件</h3>
+<p>方法是在组件上添加 observer 函数/ 装饰器. observer由 <code>mobx-react</code> 包提供的(注意不是 mobx 包)</p>
+<pre><code class="language-jsx">...
+import {observer} from 'mobx-react';
+
+@observer
+class TodoListView extends Component {
+    &lt;ul&gt;
+        {this.props.todoList.todos.map(todo =&gt;
+            &lt;TodoView todo={todo} key={todo.id} /&gt;
+        )}
+    &lt;/ul&gt;
+    Tasks left: {this.props.todoList.unfinishedTodoCount}
+}
+
+const TodoView = observer(({todo}) =&gt;
+    &lt;li&gt;
+        &lt;input
+            type=&quot;checkbox&quot;
+            checked={todo.finished}
+            onClick={() =&gt; todo.finished = !todo.finished}
+        /&gt;{todo.title}
+    &lt;/li&gt;
+);
+const store = new TodoList();
+ReactDOM.render(&lt;TodoListView todoList={store} /&gt;, document.getElementById('mount'));
+</code></pre>
+<p>仔细读下面这段</p>
+<p>observer 会将 React (函数)组件转换为它们需要渲染的数据的衍生。 使用 MobX 时没有所谓的智能和无脑组件。 所有的组件都会以巧妙的方式进行渲染，而只需要一种简单无脑的方式来定义它们。MobX 会确保组件总是在需要的时重新渲染，但仅此而已。所以上面例子中的 onClick 处理方法会强制对应的 <code>TodoView</code> 进行渲染，如果未完成任务的数量(unfinishedTodoCount)已经改变，它将导致 <code>TodoListView</code>（不是单个的 <code>TodoView</code>） 进行渲染。 可是，如果移除 Tasks left 这行代码(或者将它放到另一个组件中)，当点击 checkbox 的时候 TodoListView 就不再重新渲染。你可以在 <a href="https://jsfiddle.net/mweststrate/wv3yopo0/">JSFiddle</a> 中自己动手来验证这点。</p>
+<h3 id="自定义-reactions">自定义 reactions</h3>
+<p>使用<code>autorun</code>、<code>reaction</code> 和 <code>when</code> 函数即可简单的创建自定义 <strong>reactions</strong>，以满足你的具体场景</p>
+<p>例如，每当 <code>unfinishedTodoCount</code> 的数量发生变化时，下面的 autorun 会打印日志消息:</p>
+<pre><code class="language-js">autorun(() =&gt; {
+    console.log(&quot;Tasks left: &quot; + todos.unfinishedTodoCount)
+});
+</code></pre>
+<p>为什么每次 unfinishedTodoCount 变化时都会打印一条新消息？</p>
+<blockquote>
+<p>MobX 会对在执行跟踪函数期间读取的任何现有的可观察属性做出反应。</p>
+</blockquote>
+<p>MobX 是如何知道需要对哪个可观察属性进行响应？ 详情在这里阅读 <a href="http://cn.mobx.js.org/best/react.html">http://cn.mobx.js.org/best/react.html</a></p>
+<h3 id="reaction-方法">Reaction 方法</h3>
+<p><a href="https://cn.mobx.js.org/refguide/reaction.html">https://cn.mobx.js.org/refguide/reaction.html</a></p>
+<p>用法: <code>reaction(() =&gt; data, (data, reaction) =&gt; { sideEffect }, options?)</code></p>
+<p>它接收两个函数参数，第一个(数据 函数)是用来追踪并返回数据作为第二个函数(效果 函数)的输入。 不同于 autorun 的是当创建时效果 函数不会直接运行，只有在数据表达式首次返回一个新值后才会运行。 在执行 效果 函数时访问的任何 observable 都不会被追踪。</p>
+<p>粗略地讲，reaction 是 computed(expression).observe(action(sideEffect)) 或 autorun(() =&gt; action(sideEffect)(expression) 的语法糖。</p>
+<h2 id="actions-动作">Actions 动作</h2>
+<p>MobX 对于如何处理用户事件是完全开明  ——&gt; 不管方式如何（类似 Flux, RxJS，onClick 等最简单直观的方式），状态应该以某种方式来更新</p>
+<p>状态更新后，MobX 会以一种高效且无障碍的方式处理好剩下的事情（例如更新用户界面）。从技术上层面来讲，并不需要触发事件、调用分派程序或者类似的工作。归根究底 <strong>React 组件只是状态的展示</strong>，而<strong>状态的衍生由 MobX 来管理</strong>。</p>
+<pre><code class="language-js">store.todos.push(
+    new Todo(&quot;Get Coffee&quot;),
+    new Todo(&quot;Write simpler code&quot;)
+);
+store.todos[0].finished = true;
+</code></pre>
+<p><strong>尽管如此，MobX 还是提供了 actions 这个可选的内置概念</strong></p>
+<p>使用 actions 是有优势的: 它们可以帮助你把代码组织的更好，还能在状态何时何地应该被修改这个问题上帮助你做出明智的决定</p>
+<p>阅读 Action 章节：http://cn.mobx.js.org/refguide/action.html</p>
+<h2 id="mobx-简单且可扩展">MobX: 简单且可扩展</h2>
+<p>吹一下：</p>
+<ul>
+<li>状态管理库中侵入性最小，可扩展性也非常好</li>
+<li>使用类和真正的引用：不需要使数据标准化。这使得库十分适合那些异常复杂的领域模型（领域模型，领域类是？）</li>
+<li>保证参照完整性：自动跟踪状态和衍生之间的关系，获得参照完整性。一旦其中一个引用发生了变化，就会重新渲染</li>
+<li>更简单的 actions 更便于维护：只需简单的写出你的目的。MobX 会替你处理好剩下的事情</li>
+<li>细粒度的可观测性是高效的：构建应用中所有衍生的图形，以找到保持最新状态所需的重新计算的最少次数（构建虚拟衍生图以保持衍生与状态同步所需的重计算的数量最小化） -&gt; <a href="https://medium.com/@mweststrate/becoming-fully-reactive-an-in-depth-explanation-of-mobservable-55995262a254">深入剖析 MobX</a></li>
+<li>易操作性:可以和绝大部分 javascript 库共同使用，而不需要特定的 MobX 风格库,你可以继续使用你的路由，数据获取和工具库;可以在服务器端和客户端使用它，也可以在 react-native 这样的同构应用中使用</li>
+</ul>
+<p>MobX 的灵感来自excel表格中的反应式编程原理。同样也受到像 MeteorJS、knockout和Vue.js这样的 MVVM 框架的启发。但是 MobX 把透明的函数响应式编程(Transparent Functional Reactive Programming)提升到了一个更好的水平并且提供了独立的实现。它以一种无障碍、同步、可预见和高效的方式实现了 TFRP。</p>
+<p>实践应用于：https://github.com/mendix</p>
+<h1 id="要点">要点</h1>
+<p>使用 MobX 将一个应用变成响应式的可归纳为以下三个步骤</p>
+<ol>
+<li>定义状态并使其可观察。用任何你喜欢的数据结构来存储状态，如对象、数组、类。 循环数据结构、引用，都没有关系。 只要确保所有会随时间流逝而改变的属性打上 mobx 的标记使它们变得可观察即可。</li>
+</ol>
+<pre><code class="language-js">import {observable} from 'mobx';
+
+var appState = observable({
+    timer: 0
+});
+</code></pre>
+<ol start="2">
+<li>创建视图以响应状态的变化</li>
+</ol>
+<p>我们的 <code>appState</code> 还没有观察到任何的东西.创建视图，当 appState 中相关数据发生改变时视图会自动更新</p>
+<pre><code class="language-jsx">import {observer} from 'mobx-react';
+
+@observer
+class TimerView extends React.Component {
+    render() {
+        return (&lt;button onClick={this.onReset.bind(this)}&gt;
+                Seconds passed: {this.props.appState.timer}
+            &lt;/button&gt;);
+    }
+
+    onReset () {
+        this.props.appState.resetTimer();
+    }
+};
+
+// 传入 appState
+ReactDOM.render(&lt;TimerView appState={appState} /&gt;, document.body);
+</code></pre>
+<p>this.props.appState.resetTimer 见下面的”更改状态“</p>
+<ol start="3">
+<li>更改状态</li>
+</ol>
+<pre><code class="language-js">appState.resetTimer = action(function reset() {
+    appState.timer = 0;
+});
+
+setInterval(action(function tick() {
+    appState.timer += 1;
+}), 1000);
+</code></pre>
+<p>咦，<code>action</code>是什么？</p>
+<p>只有在<strong>严格模式</strong>(默认是不启用)下使用 MobX 时才需要 action 包装。<strong>建议使用 action</strong>，因为它将帮助你更好地组织应用，并表达出一个函数修改状态的意图。 同时,它还自动应用事务以获得最佳性能</p>
+<h1 id="api">API</h1>
+<p>略（开始看 Mobx-React 的文档了，这些细节回来再查询）</p>
+<h1 id="在-react-中使用-mobxmobx-react">在 React 中使用 MobX(mobx-react)</h1>
+<h2 id="定义一个-store在里面写-action-定义-observable-变量">定义一个 store，在里面写 action ，定义 observable 变量</h2>
+<p>例如创建文件<code>/src/stores/commonStore</code>如下</p>
+<pre><code class="language-js">import { observable, action, reaction } from 'mobx';
+import agent from '../agent';
+
+class CommonStore {
+
+  // 被观察者，你可以理解成Vuex中的State，也就是说，声明一些想要观察的状态，变量。
+  // 被观察者可以是：JS基本数据类型、引用类型、普通对象、类实例、数组和映射
+  @observable public num: number = 0;
+
+  @observable appName = 'Conduit';
+  @observable token = window.localStorage.getItem('jwt');
+  @observable appLoaded = false;
+
+  @observable tags = [];
+  @observable isLoadingTags = false;
+
+  @computed
+  public get addNum() {
+      // ...
+  }
+  
+  constructor() {
+    reaction(
+      () =&gt; this.token,
+      token =&gt; {
+        if (token) {
+          window.localStorage.setItem('jwt', token);
+        } else {
+          window.localStorage.removeItem('jwt');
+        }
+      }
+    );
+  }
+  
+  
+  // 使用@action 更改被观察者
+  @action.bound
+  public add() {
+      // ...
+  }
+
+  @action loadTags() {
+    this.isLoadingTags = true;
+    return agent.Tags.getAll()
+      .then(action(({ tags }) =&gt; { this.tags = tags.map(t =&gt; t.toLowerCase()); }))
+      .finally(action(() =&gt; { this.isLoadingTags = false; }))
+  }
+  
+  @action setToken(token) {
+    this.token = token;
+  }
+  
+  @action setAppLoaded() {
+    this.appLoaded = true;
+  }
+}
+
+export default new CommonStore();
+</code></pre>
+<ol>
+<li><code>@observable</code> 创建可观察变量</li>
+<li><code>@action</code> 创建行为</li>
+<li><code>reaction()</code> reaction(debugname?, () =&gt; data, data =&gt; { sideEffect }, fireImmediately = false, delay = 0). autorun 的一个变种，给予了更多的可控制性。需要传递两个函数，第一个函数追踪状态变化，并返回第二个函数（副作用函数）所使用的数据。 与 autorun 不同，副作用函数不会立刻执行，并且在执行过程中，任何被改变的可观察变量都不会被追踪和响应。  例子中表示跟踪 this.token 的变化，并做相应的处理</li>
+</ol>
+<h2 id="使用-provider-组件用来包裹最外层组件节点">使用 <code>Provider</code> 组件用来包裹最外层组件节点</h2>
+<p>首先导入 store，传入 store,通过 context 传递给后代组件：</p>
+<pre><code class="language-jsx">import { Provider } from &quot;mobx-react&quot;;
+
+import authStore from &quot;./stores/authStore&quot;;
+
+const stores = {
+  authStore
+  //...
+};
+
+
+//wrap the root component
+ReactDOM.render((
+  &lt;Provider {...stores}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;)
+</code></pre>
+<h2 id="使用-inject-给组件注入其需要的-store利用-react-context-机制">使用 <code>@inject</code> 给组件注入其需要的 <code>store</code>（利用 React context 机制）</h2>
+<p>通过 <code>@observer</code> 将 React 组件转化成<strong>响应式组件</strong>，它用 <code>mobx.autorun</code> 包装了组件的 <code>render</code> 函数以确保任何组件渲染中使用的数据变化时都可以强制刷新组件.</p>
+<p>同时，用装饰器 <code>@inject</code>注入组件使用的 store, 在组件内就可以用 <code>this.props.[store]</code>来访问数据了</p>
+<pre><code class="language-jsx">import { inject, observer } from 'mobx-react';
+
+@inject('userStore', 'commonStore')
+@observer
+export default class App extends React.Component {
+
+  componentWillMount() {
+    if (this.props.commonStore.token) {
+      this.props.userStore.pullUser()
+        .finally(() =&gt; this.props.commonStore.setAppLoaded());
+    } else {
+    
+
+  render() {
+    if (this.props.commonStore.appLoaded) {
+      return (
+        &lt;div&gt;
+          ...
+          {this.props.children}
+</code></pre>
+<h2 id="使用严格模式">使用严格模式</h2>
+<pre><code class="language-js">import { useStrict } from 'mobx';
+
+useStrict(true);
+</code></pre>
+<p>那么将会限制开发者只能通过 <code>@action</code> 来修改 state，这将会更有利于组织代码以及使数据流更清晰。</p>
+<h1 id="其他">其他</h1>
+<p>npm test 运行基本测试套件
+npm run coverage 用来测试套件的覆盖率
+npm run perf 用来测试性能</p>
+<h2 id="flow-支持">Flow 支持</h2>
+<p>MobX 自带 Flow typings。导入 mobx 模块时 Flow 会自动包含对应的 typings 。尽管你完全不需要手动导入类型，但你依旧可以这样做: import type { &hellip; } from &lsquo;mobx&rsquo; 。</p>
+<p>要想使用 MobX 自带的 flow typings，需要:</p>
+<p>在 .flowconfig 中不能忽略 node_modules 。
+在 .flowconfig 中不能在 [libs] 部分中不能显式地导入。
+不需要安装定义类型库 flow-typed 。</p>
+<p><a href="https://github.com/mobxjs/mobx/blob/master/flow-typed/mobx.js">Flow Typing</a></p>
+<h1 id="私有路由处理必须在登录状态才能访问未登录跳转到-login登录后自动跳回上一页">“私有“路由处理，必须在登录状态才能访问，未登录跳转到 Login，登录后自动跳回上一页</h1>
+<h2 id="检查是否登录未登录跳转">检查是否登录，未登录跳转</h2>
+<h2 id="本地保存-token">本地保存 token</h2>
+<h2 id="登录后跳转回上一页">登录后跳转回上一页</h2>
+<h2 id="直接访问-login-且已登录的话跳到某个页面">直接访问 Login 且已登录的话，跳到某个页面</h2>
+<h1 id="tips--tricks">Tips &amp; Tricks</h1>
+<h2 id="defining-data-stores">Defining data stores</h2>
+<p>Best Practices for building large scale maintainable projects</p>
+<p>这里的用法比较保守，在一些现有代码或传统的 MVC 模式都能很好工作。  如果你需要一些更多特性去组织 stores, 可以使用 <a href="https://github.com/mobxjs/mobx-state-tree">https://github.com/mobxjs/mobx-state-tree</a> （像 structurally shared snapshots, action middlewares, JSON patch support）</p>
+<h3 id="store">Store</h3>
+<p>store 的职责：把 logic 和 state 从组件中挪出来移动到一个单独的单元里，这个单元是可测试的，并且能同时用在前端和后端 javascript 中</p>
+<p>所有：</p>
+<ul>
+<li>Instantiate domain objects. Make sure domain objects know the store they belong to.</li>
+<li>Make sure there is only one instance of each of your domain objects. The same user, order or todo should not be stored twice in memory. This way you can safely use references and also be sure you are looking at the latest instance, without ever having to resolve a reference. This is fast, straightforward and convenient when debugging.</li>
+<li>Provide backend integration. Store data when needed.  后端存储</li>
+<li>Update existing instances if updates are received from the backend.</li>
+<li>Provide a stand-alone, universal, testable component of your application.</li>
+<li>To make sure your store is testable and can be run server-side, you probably will move doing actual websocket / http requests to a separate object so that you can abstract over your communication layer.</li>
+<li>There should be only one instance of a store.</li>
+</ul>
+<p><strong>Stores for the user interface state</strong></p>
+<p>Most applications benefit from having at least two states: One for the  <em>UI state</em> and one or more for the <em>domain state</em></p>
+<p>Things you will typically find in UI stores</p>
+<ul>
+<li>Session information</li>
+<li>Information about how far your application has loaded</li>
+<li>Information that will not be stored in the backend</li>
+<li>Information that affects the UI globally
+<ul>
+<li>Window dimensions</li>
+<li>Accessibility information</li>
+<li>Current language</li>
+<li>Currently active theme</li>
+</ul>
+</li>
+<li>User interface state as soon as it affects multiple, further unrelated components:
+<ul>
+<li>Current selection</li>
+<li>Visibility of toolbars, etc.</li>
+<li>State of a wizard</li>
+<li>State of a global overlay</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">import {observable, computed, asStructure} from 'mobx';
+import jquery from 'jquery';
+
+export class UiState {
+    @observable language = &quot;en_US&quot;;
+    @observable pendingRequestCount = 0;
+
+    // .struct makes sure observer won't be signaled unless the
+    // dimensions object changed in a deepEqual manner
+    @observable.struct windowDimensions = {
+        width: jquery(window).width(),
+        height: jquery(window).height()
+    };
+
+    constructor() {
+        jquery.resize(() =&gt; {
+            this.windowDimensions = getWindowDimensions();
+        });
+    }
+
+    @computed get appIsInSync() {
+        return this.pendingRequestCount === 0
+    }
+}
+</code></pre>
+<p><strong>multiple domain stores</strong></p>
+<p>store the data your application is all about. Todo items, users, books, movies, orders&hellip;.</p>
+<p>通常一个 domain store 只保存一个“概念”。但是往往一个“概念”里有多个子类型并且以树形结构呈现。
+例如： products 是一个 store,  而 orders-orderlines 是一个。
+一般把有“包含”关系的条目放在同一个 store 里  a store just manages domain objects</p>
+<p><strong>Domain Objects</strong></p>
+<p>每一个 domain object 应该使用自己的 class(or constructor function)，建议把要保存的数据<strong>规范化</strong>。</p>
+<p>class 比 plain object 有更多好处</p>
+<ul>
+<li>They can have methods. This makes your domain concepts easier to use stand-alone and reduces the amount of contextual awareness that is needed in your application. Just pass objects around. You don&rsquo;t have to pass stores around, or have to figure out which actions can be applied to an object if they are just available as instance methods. Especially in large applications this is important.</li>
+<li>They offer fine grained control over the visibility of attributes and methods.</li>
+<li>Objects created using a constructor function can freely mix observable properties and functions, and non-observable properties and methods.</li>
+<li>They are easily recognizable and can strictly be type-checked.</li>
+</ul>
+<p>例如一个 TodoStore （以及 Todo Class）</p>
+<pre><code class="language-js">import {observable, autorun} from 'mobx';
+import uuid from 'node-uuid';
+
+export class TodoStore {
+    authorStore;
+    transportLayer;
+    @observable todos = [];
+    @observable isLoading = true;
+
+    constructor(transportLayer, authorStore) {
+        this.authorStore = authorStore; // Store that can resolve authors for us
+        this.transportLayer = transportLayer; // Thing that can make server requests for us
+        this.transportLayer.onReceiveTodoUpdate(updatedTodo =&gt; this.updateTodoFromServer(updatedTodo));
+        this.loadTodos();
+    }
+
+    /**
+     * Fetches all todo's from the server
+     */
+    loadTodos() {
+        this.isLoading = true;
+        this.transportLayer.fetchTodos().then(fetchedTodos =&gt; {
+            fetchedTodos.forEach(json =&gt; this.updateTodoFromServer(json));
+            this.isLoading = false;
+        });
+    }
+
+    /**
+     * Update a todo with information from the server. Guarantees a todo
+     * only exists once. Might either construct a new todo, update an existing one,
+     * or remove an todo if it has been deleted on the server.
+     */
+    updateTodoFromServer(json) {
+        var todo = this.todos.find(todo =&gt; todo.id === json.id);
+        if (!todo) {
+            todo = new Todo(this, json.id);
+            this.todos.push(todo);
+        }
+        if (json.isDeleted) {
+            this.removeTodo(todo);
+        } else {
+            todo.updateFromJson(json);
+        }
+    }
+
+    /**
+     * Creates a fresh todo on the client and server
+     */
+    createTodo() {
+        var todo = new Todo(this);
+        this.todos.push(todo);
+        return todo;
+    }
+
+    /**
+     * A todo was somehow deleted, clean it from the client memory
+     */
+    removeTodo(todo) {
+        this.todos.splice(this.todos.indexOf(todo), 1);
+        todo.dispose();
+    }
+}
+
+export class Todo {
+
+    /**
+     * unique id of this todo, immutable.
+     */
+    id = null;
+
+    @observable completed = false;
+    @observable task = &quot;&quot;;
+
+    /**
+     * reference to an Author object (from the authorStore)
+     */
+    @observable author = null;
+
+    store = null;
+
+    /**
+     * Indicates whether changes in this object
+     * should be submitted to the server
+     */
+    autoSave = true;
+
+    /**
+     * Disposer for the side effect that automatically
+     * stores this Todo, see @dispose.
+     */
+    saveHandler = null;
+
+    constructor(store, id=uuid.v4()) {
+        this.store = store;
+        this.id = id;
+
+        this.saveHandler = reaction(
+            // observe everything that is used in the JSON:
+            () =&gt; this.asJson,
+            // if autoSave is on, send json to server
+            (json) =&gt; {
+                if (this.autoSave) {
+                    this.store.transportLayer.saveTodo(json);
+                }
+            }
+        );
+    }
+
+    /**
+     * Remove this todo from the client and server
+     */
+    delete() {
+        this.store.transportLayer.deleteTodo(this.id);
+        this.store.removeTodo(this);
+    }
+
+    @computed get asJson() {
+        return {
+            id: this.id,
+            completed: this.completed,
+            task: this.task,
+            authorId: this.author ? this.author.id : null
+        };
+    }
+
+    /**
+     * Update this todo with information from the server
+     */
+    updateFromJson(json) {
+        // make sure our changes aren't send back to the server
+        this.autoSave = false;
+        this.completed = json.completed;
+        this.task = json.task;
+        this.author = this.store.authorStore.resolveAuthor(json.authorId);
+        this.autoSave = true;
+    }
+
+    dispose() {
+        // clean up the observer
+        this.saveHandler();
+    }
+}
+</code></pre>
+<p><strong>Combining multiple stores</strong></p>
+<p>把多个 store 合并成一个 RootStore 的好处</p>
+<ul>
+<li>Simple to set up.</li>
+<li>Supports strong typing well.</li>
+<li>Makes complex unit tests easy as you just have to instantiate a root store.</li>
+</ul>
+<pre><code class="language-js">class RootStore {
+  constructor() {
+    this.userStore = new UserStore(this)
+    this.todoStore = new TodoStore(this)
+  }
+}
+
+class UserStore {
+  constructor(rootStore) {
+    this.rootStore = rootStore
+  }
+
+  getTodos(user) {
+    // access todoStore through the root store
+    return this.rootStore.todoStore.todos.filter(todo =&gt; todo.author === user)
+  }
+}
+
+class TodoStore {
+  @observable todos = []
+
+  constructor(rootStore) {
+    this.rootStore = rootStore
+  }
+}
+</code></pre>
+<p>然后在 React Component 中</p>
+<pre><code class="language-js">&lt;Provider rootStore={new RootStore()}&gt;&lt;App /&gt;&lt;/Provider&gt;
+</code></pre>
+<h1 id="参考">参考</h1>
+<p><a href="https://github.com/mobxjs/awesome-mobx">https://github.com/mobxjs/awesome-mobx</a></p>
+<p><a href="https://foio.github.io/mobx-react/">https://foio.github.io/mobx-react/</a></p>
+<p>参考代码</p>
+<p><a href="https://github.com/trazyn/ieaseMusic/blob/master/src/js/pages/Login/index.js">https://github.com/trazyn/ieaseMusic/blob/master/src/js/pages/Login/index.js</a>
+<a href="https://github.com/gothinkster/react-mobx-realworld-example-app/blob/master/src/index.js">https://github.com/gothinkster/react-mobx-realworld-example-app/blob/master/src/index.js</a></p>
+<h1 id="其他-1">其他</h1>
+<h2 id="操作大的数据">操作大的数据？</h2>
+<p><a href="https://github.com/mobxjs/mobx/issues/1228">https://github.com/mobxjs/mobx/issues/1228</a></p>
+<p>建议不要在应用里，而应该在服务器端处理，在前端只展示部分（分页等手段）；  其他优化（例如用显示/隐藏 而不是不断销毁重建）</p>
+<h1 id="最小化例子">最小化例子</h1>
+<h2 id="引入-provider-组件包裹应用">引入 Provider 组件，包裹应用</h2>
+<p>在 <code>App.js</code> 入口文件里</p>
+<pre><code class="language-js">// import Provider (mobx-react, 不是 mobx)
+import { Provider } from &quot;mobx-react&quot;;
+
+import { BrowserRouter as Router } from &quot;react-router-dom&quot;;
+
+
+// stores
+import authStore from &quot;./stores/commonStore&quot;;
+import authStore from &quot;./stores/authStore&quot;;
+
+const stores = {
+    commonStore,
+    authStore
+}
+
+class App extends Component {
+    render() {
+        // 用 Provider 包裹 Router 
+        return (
+          &lt;Provider {...stores}&gt;
+            &lt;Router ref=&quot;navigator&quot; basename={'/hub'}&gt;
+                // other components
+</code></pre>
+<h2 id="定义-store">定义 store</h2>
+<p>在 <code>commonStore.js</code> 文件里</p>
+<pre><code class="language-js">// import mobx 的装饰器  (不是前面 App.js 里的 mobx-react) 
+import { observable, action, reaction } from &quot;mobx&quot;;
+
+class CommonStore {
+
+    // 变量用 @observable 装饰
+    @observable appName = 'This is Mobx Application';
+    @observable appLoaded = false;
+    @observable isLoadingTags = false;
+
+    // 动作用 @action 装饰
+    @action
+    loadTags() {
+        this.isLoadingTags = true;
+     }
+
+    @action
+    setAppLoaded() {
+        this.appLoaded = true;
+    }
+}
+
+export default new CommonStore();
+
+</code></pre>
+<h2 id="向组件注入-store以及获取-state-值">向组件注入 store，以及获取 state 值</h2>
+<p>例如 <code>Home.js</code></p>
+<pre><code class="language-js">// inject observer 来自 mobx-react
+import { inject, observer } from 'mobx-react'
+import { withRouter } from 'react-router-dom'
+
+@inject('commonStore', 'authStore')
+@withRouter
+@observer
+class MainLayout extends Component {
+    render() {
+        return (
+            // 获取 store 里的数据
+            &lt;div&gt;{this.props.commonStore.appName}&lt;/div&gt;
+        )
+    }
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/mobx/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/mobx/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/react-hooks/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/dva/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

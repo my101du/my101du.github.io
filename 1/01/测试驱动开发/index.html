@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="测试驱动开发 这个案例开发一个TDD的应用（含验证,以及RESTAPI的CRUD，不需要打开postman） 安装新 laravel 应用并启用 auth composer create-project --prefer-dist laravel/laravel tdd-journey php artisan" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="测试驱动开发 这个案例开发一个TDD的应用（含验证,以及RESTAPI的CRUD，不需要打开postman） 安装新 laravel 应用并启用 auth composer create-project --prefer-dist laravel/laravel tdd-journey php artisan" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="测试驱动开发 这个案例开发一个TDD的应用（含验证,以及RESTAPI的CRUD，不需要打开postman） 安装新 laravel 应用并启用 auth composer create-project --prefer-dist laravel/laravel tdd-journey php artisan">
+
+<meta itemprop="wordCount" content="1337">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="测试驱动开发 这个案例开发一个TDD的应用（含验证,以及RESTAPI的CRUD，不需要打开postman） 安装新 laravel 应用并启用 auth composer create-project --prefer-dist laravel/laravel tdd-journey php artisan"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1337字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>测试驱动开发</p>
+<p><img src="/media/15490412689547/15482050532090.jpg" alt=""></p>
+<p>这个案例开发一个TDD的应用（含验证,以及RESTAPI的CRUD，不需要打开postman）</p>
+<p>安装新 laravel 应用并启用 auth</p>
+<pre><code class="language-shell">composer create-project --prefer-dist laravel/laravel tdd-journey
+php artisan make:auth
+php artisan migrate
+</code></pre>
+<h1 id="jwt-auth">jwt-auth</h1>
+<h2 id="安装-配置">安装 配置</h2>
+<p><a href="https://github.com/tymondesigns/jwt-auth">https://github.com/tymondesigns/jwt-auth</a></p>
+<pre><code class="language-shell">composer require tymon/jwt-auth
+</code></pre>
+<p>打开 <code>config/app.php</code></p>
+<p>provider</p>
+<pre><code class="language-php">'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+</code></pre>
+<p>alias / facade</p>
+<pre><code class="language-php">//JWTAuth
+'JWTAuth' =&gt; 'Tymon\JWTAuth\Facades\JWTAuth'
+
+//PayloadFactory (control over the payloads )
+'JWTFactory' =&gt; 'Tymon\JWTAuth\Facades\JWTFactory'
+</code></pre>
+<p>publish</p>
+<pre><code class="language-shell">php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\JWTAuthServiceProvider&quot;
+</code></pre>
+<p><strong>不要忘记set a secret key</strong></p>
+<pre><code class="language-shell">php artisan jwt:generate
+</code></pre>
+<h2 id="修改配置-authphp-使用-jwt-驱动">修改配置 auth.php ，使用 JWT 驱动</h2>
+<pre><code class="language-php">'defaults' =&gt; [
+    'guard' =&gt; 'api',
+    'passwords' =&gt; 'users',
+],
+'guards' =&gt; [
+    ...
+    'api' =&gt; [
+        'driver' =&gt; 'jwt',
+        'provider' =&gt; 'users',
+    ],
+],
+</code></pre>
+<h2 id="修改路由-添加-middleware">修改路由, 添加 middleware</h2>
+<pre><code class="language-php">Route::group(['middleware' =&gt; 'api', 'prefix' =&gt; 'auth'], function () {
+    Route::post('authenticate', 'AuthController@authenticate')-&gt;name('api.authenticate');
+    Route::post('register', 'AuthController@register')-&gt;name('api.register');
+});
+</code></pre>
+<h2 id="修改-user-model-实现-jwtsubject-以及添加要完成的方法">修改 User Model, 实现 JWTSubject 以及添加要完成的方法</h2>
+<pre><code class="language-php">class User extends Authenticatable implements JWTSubject
+{
+    ...
+     //Get the identifier that will be stored in the subject claim of the JWT.
+    public function getJWTIdentifier()
+    {
+        return $this-&gt;getKey();
+    }
+    // Return a key value array, containing any custom claims to be           added to the JWT.
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+}
+view raw
+</code></pre>
+<h1 id="用户验证类以及对应的测试">用户验证类，以及对应的测试</h1>
+<p>创建 <code>AuthController</code></p>
+<pre><code class="language-shell">php artisan make:controller AuthController
+</code></pre>
+<p>包括<code>authenticate</code>和<code>register</code></p>
+<pre><code class="language-php">class AuthController extends Controller
+{
+    
+    public function authenticate(Request $request){
+        //Validate fields
+        $this-&gt;validate($request,['email' =&gt; 'required|email','password'=&gt; 'required']);
+        //Attempt validation
+        $credentials = $request-&gt;only(['email','password']);
+        if (! $token = auth()-&gt;attempt($credentials)) {
+            return response()-&gt;json(['error' =&gt; 'Incorrect credentials'], 401);
+        }
+        return response()-&gt;json(compact('token'));
+    }
+    
+    public function register(Request $request){
+        //Validate fields
+        $this-&gt;validate($request,[
+            'email' =&gt; 'required|email|max:255|unique:users',
+            'name' =&gt; 'required|max:255',
+            'password' =&gt; 'required|min:8|confirmed',
+        ]);
+        //Create user, generate token and return
+        $user =  User::create([
+            'name' =&gt; $request-&gt;input('name'),
+            'email' =&gt; $request-&gt;input('email'),
+            'password' =&gt; Hash::make($request-&gt;input('password')),
+        ]);
+        $token = JWTAuth::fromUser($user);
+        return response()-&gt;json(compact('token'));
+    }
+}
+</code></pre>
+<p>创建一个测试类</p>
+<pre><code class="language-shell">php artisan make:test AuthTest
+</code></pre>
+<p>修改 <code>tests/Feature/AuthTest</code></p>
+<pre><code class="language-php">public function testRegister(){
+    //User's data
+    $data = [
+        'email' =&gt; 'test@gmail.com',
+        'name' =&gt; 'Test',
+        'password' =&gt; 'secret1234',
+        'password_confirmation' =&gt; 'secret1234',
+    ];
+    //Send post request
+    $response = $this-&gt;json('POST',route('api.register'),$data);
+    //Assert it was successful
+    $response-&gt;assertStatus(200);
+    //Assert we received a token
+    $this-&gt;assertArrayHasKey('token',$response-&gt;json());
+    //Delete data
+    User::where('email','test@gmail.com')-&gt;delete();
+}
+/**
+ * @test
+ * Test login
+ */
+public function testLogin()
+{
+    //Create user
+    User::create([
+        'name' =&gt; 'test',
+        'email'=&gt;'test@gmail.com',
+        'password' =&gt; bcrypt('secret1234')
+    ]);
+    //attempt login
+    $response = $this-&gt;json('POST',route('api.authenticate'),[
+        'email' =&gt; 'test@gmail.com',
+        'password' =&gt; 'secret1234',
+    ]);
+    //Assert it was successful and a token was received
+    $response-&gt;assertStatus(200);
+    $this-&gt;assertArrayHasKey('token',$response-&gt;json());
+    //Delete the user
+    User::where('email','test@gmail.com')-&gt;delete();
+}
+</code></pre>
+<p>现在可以运行测试命令 <code>phpunit</code> 来解决出现的错误。</p>
+<h1 id="crud">CRUD</h1>
+<h2 id="首先创建食谱migration-和-model以及和-user-的关联">首先创建“食谱”migration 和 Model，以及和 User 的关联</h2>
+<pre><code class="language-shell">php artisan make:migration create_recipes_table
+</code></pre>
+<pre><code class="language-php">public function up()
+{
+    Schema::create('recipes', function (Blueprint $table) {
+        $table-&gt;increments('id');
+        $table-&gt;string('title');
+        $table-&gt;text('procedure')-&gt;nullable();
+        $table-&gt;tinyInteger('publisher_id')-&gt;nullable();
+        $table-&gt;timestamps();
+    });
+}
+public function down()
+{
+    Schema::dropIfExists('recipes');
+}
+</code></pre>
+<p>然后是 Model</p>
+<pre><code class="language-shell">php artisan make:model Recipe
+</code></pre>
+<p>这里有一个 belongsTo User 的关联</p>
+<pre><code class="language-php">protected $fillable = ['title','procedure'];
+
+/**
+ * The owner of this delicious recipe
+ * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+ */
+public function publisher(){
+    return $this-&gt;belongsTo(User::class);
+}
+</code></pre>
+<p>因此还需在 User Model 上创建对应的关联方法</p>
+<pre><code class="language-php">public function recipes(){
+    return $this-&gt;hasMany(Recipe::class);
+}
+</code></pre>
+<p>注意，因为关联的是 User Model, 那么外键会默认用 <code>user_id</code>. 但是我们的 migration 文件里使用的 <code>publisher_id</code>，会导致关联错误，因此要手动指定外键名</p>
+<pre><code class="language-php">//Recipe file
+public function publisher(){
+    return $this-&gt;belongsTo(User::class,'publisher_id');
+}
+
+//User file
+public function recipes(){
+    return $this-&gt;hasMany(Recipe::class,'publisher_id');
+}
+</code></pre>
+<h2 id="创建-controller-和-endpointrouter">创建 Controller 和 endpoint(router)</h2>
+<p>路由 <code>routes/api.php</code></p>
+<pre><code class="language-php">Route::group(['middleware' =&gt; ['api','auth'],'prefix' =&gt; 'recipe'],function (){
+    Route::post('create','RecipeController@create')-&gt;name('recipe.create');
+    Route::get('all','RecipeController@all')-&gt;name('recipe.all');
+    Route::post('update/{recipe}','RecipeController@update')-&gt;name('recipe.update');
+    Route::get('show/{recipe}','RecipeController@show')-&gt;name('recipe.show');
+    Route::post('delete/{recipe}','RecipeController@delete')-&gt;name('recipe.delete');
+});
+</code></pre>
+<p>控制器</p>
+<pre><code class="language-shell">php artisan make:controller RecipeController
+</code></pre>
+<pre><code class="language-php">public function create(Request $request){
+    //Validate
+    $this-&gt;validate($request,['title' =&gt; 'required','procedure' =&gt; 'required|min:8']);
+    //Create recipe and attach to user
+    $user = Auth::user();
+    $recipe = Recipe::create($request-&gt;only(['title','procedure']));
+    $user-&gt;recipes()-&gt;save($recipe);
+    //Return json of recipe
+    return $recipe-&gt;toJson();
+}
+
+//Get all recipes
+public function all(){
+    return Auth::user()-&gt;recipes;
+}
+
+//Update a recipe
+public function update(Request $request, Recipe $recipe){
+    //Check is user is the owner of the recipe
+    if($recipe-&gt;publisher_id != Auth::id()){
+        abort(404);
+        return;
+    }
+    //Update and return
+    $recipe-&gt;update($request-&gt;only('title','procedure'));
+    return $recipe-&gt;toJson();
+}
+
+//Show a single recipe's details
+public function show(Recipe $recipe){
+    if($recipe-&gt;publisher_id != Auth::id()){
+        abort(404);
+        return;
+    }
+    return $recipe-&gt;toJson();
+}
+
+//Delete a recipe
+public function delete(Recipe $recipe){
+    if($recipe-&gt;publisher_id != Auth::id()){
+        abort(404);
+        return;
+    }
+    $recipe-&gt;delete();
+}
+</code></pre>
+<h2 id="测试类-recipetest">测试类 RecipeTest</h2>
+<pre><code class="language-shell">php artisan make:test RecipeTest
+</code></pre>
+<p>第一个 <code>testCreate</code> 用于测试创建 recipe</p>
+<p>注意 <code>use RefreshDatabase;</code>这行使用的trait</p>
+<pre><code class="language-php">class RecipeTest extends TestCase
+{
+    use RefreshDatabase;
+    ...
+    //Create user and authenticate the user
+    protected function authenticate(){
+        $user = User::create([
+            'name' =&gt; 'test',
+            'email' =&gt; 'test@gmail.com',
+            'password' =&gt; Hash::make('secret1234'),
+        ]);
+        $token = JWTAuth::fromUser($user);
+        return $token;
+    }
+  
+    public function testCreate()
+    {
+        //Get token
+        $token = $this-&gt;authenticate();
+        
+        $response = $this-&gt;withHeaders([
+            'Authorization' =&gt; 'Bearer '. $token,
+        ])-&gt;json('POST',route('recipe.create'),[
+            'title' =&gt; 'Jollof Rice',
+            'procedure' =&gt; 'Parboil rice, get pepper and mix, and some spice and serve!'
+        ]);
+        $response-&gt;assertStatus(200);
+        
+        //Get count and assert
+        $count = User::where('email','test@gmail.com')-&gt;first()-&gt;recipes()-&gt;count();
+        $this-&gt;assertEquals(1,$count);
+    }
+}
+</code></pre>
+<p>在测试方法<code>testCreate</code>中，首先创建一个 recipe, 然后检查用户拥有的 repipes 数量</p>
+<p>其他所有的测试方法.</p>
+<p><strong>注意</strong> 为了方便获取关联，修改<code>authenticate</code>方法，设置了一个类成员<code>$this-&gt;user</code>，可以在其他方法中直接使用</p>
+<pre><code class="language-php">// 添加的成员，便于在所有测试方法中 $this-&gt;user-&gt;recipes()-&gt;save()
+protected $user;
+
+public function authenticate() {
+    //.....
+    $this-&gt;user = $user;
+}
+
+//Test the display all routes
+public function testAll(){
+    //Authenticate and attach recipe to user
+    $token = $this-&gt;authenticate();
+    $recipe = Recipe::create([
+        'title' =&gt; 'Jollof Rice',
+        'procedure' =&gt; 'Parboil rice, get pepper and mix, and some spice and serve!'
+    ]);
+    $this-&gt;user-&gt;recipes()-&gt;save($recipe);
+    //call route and assert response
+    $response = $this-&gt;withHeaders([
+        'Authorization' =&gt; 'Bearer '. $token,
+    ])-&gt;json('GET',route('recipe.all'));
+    $response-&gt;assertStatus(200);
+    //Assert the count is 1 and the title of the first item correlates
+    $this-&gt;assertEquals(1,count($response-&gt;json()));
+    $this-&gt;assertEquals('Jollof Rice',$response-&gt;json()[0]['title']);
+}
+
+//Test the update route
+public function testUpdate(){
+    $token = $this-&gt;authenticate();
+    $recipe = Recipe::create([
+        'title' =&gt; 'Jollof Rice',
+        'procedure' =&gt; 'Parboil rice, get pepper and mix, and some spice and serve!'
+    ]);
+    $this-&gt;user-&gt;recipes()-&gt;save($recipe);
+    //call route and assert response
+    $response = $this-&gt;withHeaders([
+        'Authorization' =&gt; 'Bearer '. $token,
+    ])-&gt;json('POST',route('recipe.update',['recipe' =&gt; $recipe-&gt;id]),[
+        'title' =&gt; 'Rice',
+    ]);
+    $response-&gt;assertStatus(200);
+    //Assert title is the new title
+    $this-&gt;assertEquals('Rice',$this-&gt;user-&gt;recipes()-&gt;first()-&gt;title);
+}
+//Test the single show route
+public function testShow(){
+    $token = $this-&gt;authenticate();
+    $recipe = Recipe::create([
+        'title' =&gt; 'Jollof Rice',
+        'procedure' =&gt; 'Parboil rice, get pepper and mix, and some spice and serve!'
+    ]);
+    $this-&gt;user-&gt;recipes()-&gt;save($recipe);
+    $response = $this-&gt;withHeaders([
+        'Authorization' =&gt; 'Bearer '. $token,
+    ])-&gt;json('GET',route('recipe.show',['recipe' =&gt; $recipe-&gt;id]));
+    $response-&gt;assertStatus(200);
+    //Assert title is correct
+    $this-&gt;assertEquals('Jollof Rice',$response-&gt;json()['title']);
+}
+//Test the delete route
+public function testDelete(){
+    $token = $this-&gt;authenticate();
+    $recipe = Recipe::create([
+        'title' =&gt; 'Jollof Rice',
+        'procedure' =&gt; 'Parboil rice, get pepper and mix, and some spice and serve!'
+    ]);
+    $this-&gt;user-&gt;recipes()-&gt;save($recipe);
+    $response = $this-&gt;withHeaders([
+        'Authorization' =&gt; 'Bearer '. $token,
+    ])-&gt;json('POST',route('recipe.delete',['recipe' =&gt; $recipe-&gt;id]));
+    $response-&gt;assertStatus(200);
+    //Assert there are no recipes
+    $this-&gt;assertEquals(0,$this-&gt;user-&gt;recipes()-&gt;count());
+}
+</code></pre>
+<h1 id="参考">参考</h1>
+<p><a href="https://medium.freecodecamp.org/how-to-build-a-laravel-rest-api-with-test-driven-development-c4bb6417db3c">https://medium.freecodecamp.org/how-to-build-a-laravel-rest-api-with-test-driven-development-c4bb6417db3c</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8F%90%E9%AB%98-laravel-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

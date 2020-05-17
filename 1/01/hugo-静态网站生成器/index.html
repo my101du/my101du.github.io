@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: hugo 静态网站生成器 permalink: hugo-static-site-generator tags: skills https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/ 生成速度、兼容问题，迁移到 hugo 因为 Hexo 在处理 {{}}有问题，导致很多内容无法解析，而且想换个东西折腾。。。 Hugo 是 go 开发" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: hugo 静态网站生成器 permalink: hugo-static-site-generator tags: skills https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/ 生成速度、兼容问题，迁移到 hugo 因为 Hexo 在处理 {{}}有问题，导致很多内容无法解析，而且想换个东西折腾。。。 Hugo 是 go 开发" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: hugo 静态网站生成器 permalink: hugo-static-site-generator tags: skills https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/ 生成速度、兼容问题，迁移到 hugo 因为 Hexo 在处理 {{}}有问题，导致很多内容无法解析，而且想换个东西折腾。。。 Hugo 是 go 开发">
+
+<meta itemprop="wordCount" content="1200">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: hugo 静态网站生成器 permalink: hugo-static-site-generator tags: skills https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/ 生成速度、兼容问题，迁移到 hugo 因为 Hexo 在处理 {{}}有问题，导致很多内容无法解析，而且想换个东西折腾。。。 Hugo 是 go 开发"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1200字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: hugo 静态网站生成器
+permalink: hugo-static-site-generator
+tags:</p>
+<ul>
+<li>skills</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p><a href="https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/">https://emacsist.github.io/2018/04/26/%E4%BB%8Ehexo%E5%88%B0hugo/</a></p>
+<p>生成速度、兼容问题，迁移到 hugo</p>
+<p>因为 Hexo 在处理 <code>{{}}</code>有问题，导致很多内容无法解析，而且想换个东西折腾。。。</p>
+<p>Hugo 是 go 开发的</p>
+<h1 id="安装与初始化站点">安装与初始化站点</h1>
+<pre><code class="language-shell"># 安装
+brew install hugo
+
+# 创建站点
+hugo new site /path/to/site
+</code></pre>
+<p>生成的目录结构</p>
+<pre><code>archetypes/
+content/
+layouts/
+static/
+data/
+themes/
+config.toml
+</code></pre>
+<h1 id="站点配置文件">站点配置文件</h1>
+<p>根目录下 <code>config.toml</code>, 配置站点的标题、主题等.</p>
+<pre><code class="language-toml">baseURL = &quot;https://blog.4guangnian.com&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;this is a sample site&quot;
+theme = &quot;ananke&quot;
+</code></pre>
+<p>完整的配置参数 <a href="https://gohugo.io/getting-started/configuration/">https://gohugo.io/getting-started/configuration/</a></p>
+<p>不得不说，实在是太多了</p>
+<h1 id="创建内容">创建内容</h1>
+<h2 id="创建页面">创建页面</h2>
+<p>下面的命令会在目录<code>/content/</code>里自动生成文件<code>about.md</code></p>
+<pre><code class="language-shell">hugo new about.md
+</code></pre>
+<p>文件格式如下。内容是 Markdown 格式的，+++ 之间的内容是 TOML 格式的，根据你的喜好，你可以换成 YAML 格式（使用 &mdash; 标记）或者 JSON 格式。</p>
+<pre><code class="language-markdown">---
+title: &quot;About&quot;
+date: 2018-08-07T16:11:36+08:00
+draft: true
+---
+
+正文内容
+</code></pre>
+<h2 id="创建文章">创建文章</h2>
+<p>和创建页面类似，但这里放到 <code>/content/post</code> 子目录里面，方便之后生成聚合页面。</p>
+<pre><code class="language-shell">hugo new post/first.md
+</code></pre>
+<p>可以这样组织内容，注意，目录结构和 url 的层级结构相关 <code>/post/happy/ness</code></p>
+<pre><code>.
+└── content
+    └── about
+    |   └── _index.md  // &lt;- https://example.com/about/
+    ├── post
+    |   ├── firstpost.md   // &lt;- https://example.com/post/firstpost/
+    |   ├── happy
+    |   |   └── ness.md  // &lt;- https://example.com/post/happy/ness/
+    |   └── secondpost.md  // &lt;- https://example.com/post/secondpost/
+    └── quote
+        ├── first.md       // &lt;- https://example.com/quote/first/
+        └── second.md      // &lt;- https://example.com/quote/second/
+</code></pre>
+<h1 id="front-matter-formats-内容元数据格式">Front Matter Formats 内容元数据格式</h1>
+<p>TOML
+identified by opening and closing <code>+++</code>.</p>
+<p>YAML
+identified by opening and closing <code>---</code>.</p>
+<p>支持变量 (标题、布局、别名等等)</p>
+<p><a href="https://gohugo.io/content-management/front-matter/">https://gohugo.io/content-management/front-matter/</a></p>
+<p>例子（和 hexo 的不同， <code>permalink</code>改成<code>slug</code>）</p>
+<pre><code class="language-yaml">---
+categories:
+- Development
+- VIM
+date: &quot;2012-04-06&quot;
+description: spf13-vim is a cross platform distribution of vim plugins and resources
+  for Vim.
+slug: spf13-vim-3-0-release-and-new-website
+tags:
+- .vimrc
+- plugins
+- spf13-vim
+- vim
+title: spf13-vim 3.0 release and new website
+---
+</code></pre>
+<h1 id="theme">theme</h1>
+<h2 id="下载主题">下载主题</h2>
+<p>在主题中心 <a href="https://themes.gohugo.io/">https://themes.gohugo.io/</a> 找到一个合适的</p>
+<pre><code class="language-shell">$ cd themes
+$ git clone https://github.com/spf13/hyde.git
+</code></pre>
+<p>例如 universal 适合企业/产品主页。</p>
+<p>按提示 clone 到站点的 themes 目录下，然后修改 <code>config.toml</code> 文件， 设置 <code>theme</code></p>
+<pre><code class="language-yml">theme=&quot;universal&quot;
+</code></pre>
+<h2 id="主题的个性化配置">主题的个性化配置</h2>
+<p>每个主题都有很多的个性化配置，例如边栏、布局、统计代码等。这些在主题的说明页面里有。</p>
+<p>以 universal 为例</p>
+<p>略，参看文档</p>
+<h2 id="推荐">推荐</h2>
+<p>loveIt  很强大  搜索、多语言等  但是布局有点问题，经常错乱</p>
+<p>tony</p>
+<p>evan</p>
+<p>compose  自带搜索（auto suggestion keyword）  非常漂亮, 参数：https://github.com/onweru/compose-userguide/blob/master/config.toml    问题： 无法自动得到目录下的文件列表。。</p>
+<p><a href="https://github.com/xiaoheiAh/hugo-theme-pure.git,">https://github.com/xiaoheiAh/hugo-theme-pure.git,</a> 基本完美，复制themes/pure/exampleSite/config.yml 到根目录，修改即可</p>
+<h1 id="运行与部署">运行与部署</h1>
+<p><strong>运行</strong></p>
+<p>使用 &ndash;watch 参数可以在修改文章内容时让浏览器自动刷新。</p>
+<p><code>theme</code>和 后面的<code>baseUrl</code>等参数，可以直接在 <code>config.toml</code> 文件里指定，这样运行命令时就不需要手动指定了</p>
+<p><code>--watch</code>是默认的，可以不指定？</p>
+<pre><code class="language-shell">hugo server --theme=hyde --buildDrafts --watch
+
+hugo server -D
+</code></pre>
+<p>浏览器里打开： http://localhost:1313</p>
+<p>居然还有自动监听修改！！！！</p>
+<p><strong>Draft, Future, and Expired Content</strong></p>
+<p>Hugo will not publish:</p>
+<p>Content with a future publishdate value
+Content with draft: true status
+Content with a past expirydate value</p>
+<p><strong>部署</strong></p>
+<p>假设你需要部署在 GitHub Pages 上，首先在GitHub上创建一个Repository，命名为：coderzh.github.io （coderzh替换为你的github用户名）。</p>
+<p>在站点<strong>根目录</strong>执行</p>
+<pre><code class="language-shell">hugo -D&quot;
+</code></pre>
+<p>如果一切顺利，所有静态页面都会生成到 public 目录</p>
+<p>然后将pubilc目录里所有文件 push 到刚创建的Repository的 master 分支。</p>
+<pre><code class="language-shell">$ cd public
+$ git init
+$ git remote add origin https://github.com/coderzh/coderzh.github.io.git
+$ git add -A
+$ git commit -m &quot;first commit&quot;
+$ git push -u origin master
+</code></pre>
+<h1 id="搜索功能">搜索功能</h1>
+<h1 id="模板">模板</h1>
+<h1 id="问题">问题：</h1>
+<h2 id="eof-looking-for-end-toml-front-matter-delimiter">EOF looking for end TOML front matter delimiter</h2>
+<p>把 <code>+++ title = &quot;Compose&quot; +++</code> 改成</p>
+<pre><code class="language-toml">+++ 
+title = &quot;Compose&quot; 
++++
+</code></pre>
+<h1 id="参考">参考</h1>
+<p><a href="https://segmentfault.com/a/1190000004327492">https://segmentfault.com/a/1190000004327492</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/kindle/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/google-analytics%E7%BD%91%E7%AB%99%E4%B8%8E%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

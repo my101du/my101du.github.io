@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: Docker 容器化入门与实践 permalink: docker-build-app-to-container tags: server docker 请先仔细阅读下面这个链接中 Docker解决了什么问题、原理，以及相关资料，至少明白 容器，镜像这两个概念。 来自百" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: Docker 容器化入门与实践 permalink: docker-build-app-to-container tags: server docker 请先仔细阅读下面这个链接中 Docker解决了什么问题、原理，以及相关资料，至少明白 容器，镜像这两个概念。 来自百" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: Docker 容器化入门与实践 permalink: docker-build-app-to-container tags: server docker 请先仔细阅读下面这个链接中 Docker解决了什么问题、原理，以及相关资料，至少明白 容器，镜像这两个概念。 来自百">
+
+<meta itemprop="wordCount" content="6342">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: Docker 容器化入门与实践 permalink: docker-build-app-to-container tags: server docker 请先仔细阅读下面这个链接中 Docker解决了什么问题、原理，以及相关资料，至少明白 容器，镜像这两个概念。 来自百"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6342字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: Docker 容器化入门与实践
+permalink: docker-build-app-to-container
+tags:</p>
+<ul>
+<li>server</li>
+<li>docker</li>
+</ul>
+<hr>
+<p><img src="/media/15490412290086/15027670606787.jpg" alt=""></p>
+<p>请先仔细阅读下面这个链接中 <code>Docker</code>解决了什么问题、原理，以及相关资料，至少明白 <code>容器</code>，<code>镜像</code>这两个概念。</p>
+<blockquote>
+<p><a href="http://baike.baidu.com/link?url=oEVsKIfdkqNr0sI6_Y9-syb5DfJYp7iTOYGiuU1YQ2-QAAtlU_X7R9mRO27XcP4x05pte9sl4iBD01TkwaAoZ_">来自百度百科的说明</a>：Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+</blockquote>
+<p>如果需要深入学习 Docker 技术，可以购买这本书<a href="http://item.jd.com/11598400.html">《Docker从入门到实践》</a></p>
+<!-- raw HTML omitted -->
+<h1 id="安装-docker-并启动服务">安装 Docker 并启动服务</h1>
+<p>Docker 可以安装在 Linux, Mac, Windows 上，现在已经分为 EE 和 CE（社区版本），请卸载之前的旧版本。</p>
+<p><a href="http://m.w2bc.com/article/243468">http://m.w2bc.com/article/243468</a></p>
+<h2 id="以下可略过用最简单的办法--curl--ssl-httpsgetdockercom--sh">以下可略过，用最简单的办法  <code>curl -sSL https://get.docker.com/ | sh</code></h2>
+<h2 id="ubuntu">Ubuntu</h2>
+<p>卸载掉旧版的。<code>/var/lib/docker/</code>里面的 images 等都保留了。</p>
+<pre><code class="language-shell">$ sudo apt-get remove docker docker-engine docker.io
+</code></pre>
+<p>如果是 14.04，要安装一些额外的包 <code>overlay2</code> 存储驱动 (16.04 以上已经自带了)</p>
+<pre><code class="language-shell">$ sudo apt-get update
+
+$ sudo apt-get install \
+    linux-image-extra-$(uname -r) \
+    linux-image-extra-virtual
+</code></pre>
+<p>安装</p>
+<pre><code class="language-shell">$ sudo apt-get update
+
+# 必须的依赖包
+$ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+# 添加 docker 的官方 GPG key
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# 上面得到一组数字，复制最后8位
+$ sudo apt-key fingerprint 0EBFCD88
+
+# 把稳定版的 repository 添加进来
+$ sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+
+
+# 如果明明  unset 了 代理服务器，还是跑到代理
+vi /etc/apt/apt.conf
+#注释掉
+#Acquire::https::Proxy &quot;https://user:password@10.64.16.110:8080&quot;;
+
+# 正式安装 docker-CE
+$ sudo apt-get update
+$ sudo apt-get install docker-ce
+
+# 查看、安装可用最新版本
+$ apt-cache madison docker-ce
+$ sudo apt-get install docker-ce=&lt;VERSION&gt;
+</code></pre>
+<p>更新，先例行 update 然后安装指定 docker-ce 版本</p>
+<pre><code class="language-shell">sudo apt-get update
+</code></pre>
+<p>卸载</p>
+<pre><code class="language-shell">sudo apt-get purge docker-ce
+sudo rm -rf /var/lib/docker
+</code></pre>
+<h2 id="centos-安装-docker-ce">CentOS 安装 Docker CE</h2>
+<p><strong>必须要 64bit 的 CentOS7 版本以上</strong></p>
+<p>下载 CE 版本
+<a href="https://docs.docker.com/engine/installation/linux/docker-ce/centos/">https://docs.docker.com/engine/installation/linux/docker-ce/centos/</a></p>
+<p>先删除旧版本</p>
+<pre><code class="language-shell">$ sudo yum remove docker \
+                  docker-common \
+                  docker-selinux \
+                  docker-engine
+</code></pre>
+<p>推荐使用添加 docker 的 repository 然后安装。（其他通过 rpm、安装脚本 等方式不推荐）</p>
+<pre><code class="language-shell"># 添加必须的依赖包
+$ sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+  
+# 添加源(下载最新版本 docker-ce)
+$ sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+
+# 现在可以安装 Docker-CE 最新版了（生产服务器建议指定一个版本）
+$ sudo yum install docker-ce
+
+# 升级 docker
+sudo yum makecache fast
+# 再安装指定版本
+</code></pre>
+<p>启动服务，并加入开机启动。
+<strong>注</strong> 这里出现过启动服务时，因为添加了新的 IP 绑定，导致整个机器无法从外部访问，例如 ssh 等。。（公司用 VMware 管理了大量虚拟机）,请看后面的解决方案。</p>
+<pre><code class="language-shell">sudo systemctl start docker
+
+# 允许/禁止开机启动
+sudo systemctl enable docker
+sudo systemctl disable docker
+</code></pre>
+<p>卸载，以及删除 images，volumes，container 等。配置文件等要自行删除</p>
+<pre><code class="language-shell">sudo yum remove docker-ce
+sudo rm -rf /var/lib/docker
+</code></pre>
+<h3 id="centos7-下-docker-服务无法启动">CentOS7 下 Docker 服务无法启动</h3>
+<p>出现提示类似，无法启动 docker 服务</p>
+<blockquote>
+<p>Unit docker.service entered failed state.
+docker.service failed.
+docker.service holdoff time over, scheduling restart.
+start request repeated too quickly for docker.service
+Failed to start Docker Application Container Engine.
+Unit docker.service entered failed state.</p>
+</blockquote>
+<p>按网上说的 ，删除 /var/lib/docker  删除 /var/run/docker.sock 都不行</p>
+<p>首先关闭 selinux</p>
+<pre><code class="language-shell">setenfoce 0
+</code></pre>
+<p>发现是 daemon.json 问题。。。</p>
+<p>ifconfig 查看网桥</p>
+<p>编辑 <code>/etc/docker/daemon.json</code>，删除多余的内容，注意避免一行末尾有逗号。。。
+我只留个（bip 配置会导致错误）</p>
+<pre><code class="language-json">{
+        &quot;bridge&quot;: &quot;virbr0&quot;
+}
+</code></pre>
+<h2 id="使用阿里云的-docker-ce-源解决下载-dockercom-上源文件慢的问题">使用阿里云的 Docker-CE 源（解决下载 docker.com 上源文件慢的问题）</h2>
+<p>因为在阿里云服务器上从 download.docker.com 下载 docker 源文件非常慢，换成别的源</p>
+<h3 id="ubuntudebian">Ubuntu/Debian</h3>
+<p>如果之前添加过 docker 官方源，先编辑 <code>/etc/apt/source.list</code> 文件，把 docker.com 的条目删掉。 然后安装 docker-ce 就不会去docker.com 下载文件了</p>
+<pre><code class="language-shell"># 更新
+sudo apt-get update
+
+# step 1: 安装必要的一些系统工具
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common gnupg2
+
+# step 2: 安装GPG证书(阿里云)
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+
+# Step 3: 写入软件源信息
+sudo add-apt-repository &quot;deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot;
+
+# Step 4: 更新源，并安装 Docker-CE
+sudo apt-get -y update
+sudo apt-get -y install docker-ce
+
+# 安装指定版本的Docker-CE:
+# Step 1: 查找Docker-CE的版本:
+# apt-cache madison docker-ce
+#   docker-ce | 17.03.1~ce-0~ubuntu-xenial | http://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial/stable amd64 Packages
+#   docker-ce | 17.03.0~ce-0~ubuntu-xenial | http://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial/stable amd64 Packages
+# Step 2: 安装指定版本的Docker-CE: (VERSION 例如上面的 17.03.1~ce-0~ubuntu-xenial)
+# sudo apt-get -y install docker-ce=[VERSION]
+</code></pre>
+<h3 id="centos">CentOS</h3>
+<pre><code class="language-shell"># step 1: 安装必要的一些系统工具
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+# Step 2: 添加软件源信息
+sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+# Step 3: 更新并安装 Docker-CE
+sudo yum makecache fast
+sudo yum -y install docker-ce
+# Step 4: 开启Docker服务
+sudo service docker start
+
+# 注意：
+# 官方软件源默认启用了最新的软件，您可以通过编辑软件源的方式获取各个版本的软件包。例如官方并没有将测试版本的软件源置为可用，你可以通过以下方式开启。同理可以开启各种测试版本等。
+# vim /etc/yum.repos.d/docker-ce.repo
+#   将 [docker-ce-test] 下方的 enabled=0 修改为 enabled=1
+#
+# 安装指定版本的Docker-CE:
+# Step 1: 查找Docker-CE的版本:
+# yum list docker-ce.x86_64 --showduplicates | sort -r
+#   Loading mirror speeds from cached hostfile
+#   Loaded plugins: branch, fastestmirror, langpacks
+#   docker-ce.x86_64            17.03.1.ce-1.el7.centos            docker-ce-stable
+#   docker-ce.x86_64            17.03.1.ce-1.el7.centos            @docker-ce-stable
+#   docker-ce.x86_64            17.03.0.ce-1.el7.centos            docker-ce-stable
+#   Available Packages
+# Step2 : 安装指定版本的Docker-CE: (VERSION 例如上面的 17.03.0.ce.1-1.el7.centos)
+# sudo yum -y install docker-ce-[VERSION]
+</code></pre>
+<h2 id="mac-上安装-docker">Mac 上安装 Docker</h2>
+<p>MacOS 以前运行 Docker 需要借助于 VirtualBox，实际上是先打开虚拟机，然后在虚拟机环境中运行 Docker。</p>
+<p>现在已经可以使用 HyperKit, 直接在系统底层上支持了。</p>
+<p>下载安装包后，启动程序，就可以在菜单栏中看到，点击那个按钮 start 服务即可</p>
+<p><img src="/media/15490412290086/15057863758663.jpg" alt=""></p>
+<h2 id="关于容器container镜像imagedocker-hub镜像仓库image-repository">关于容器(container)、镜像(image)、Docker Hub、镜像仓库(image repository)</h2>
+<p><strong>镜像必须加载到容器里面去才能运行</strong></p>
+<ul>
+<li>镜像<code>image</code>是一个文件系统，它是“无状态”的，加载到容器里面后，运行一段时间后，再从容器中移除，<code>并不会被改变任何内容</code>，就像一张光盘可以复制N张，或者在光驱里播放很多次后，都会保持内容不变（不可写）。</li>
+<li>容器<code>container</code>是一个镜像的运行中的实例，就像一个本来没有生命的躯壳，只有加载了 <code>image</code>后运行时才能提供服务。</li>
+<li><code>Docker Hub</code> 就像一个集市，很多开发者把自己做好的镜像打包后发布在上面供其他人下载和使用，你可以找到整合了 PHP 运行环境的镜像、整合了 Python 运行环境的镜像，等等</li>
+<li><code>镜像仓库</code>，把你的镜像保存在一起</li>
+<li>每一个镜像都提供某些服务，独立性非常强。例如：你的操作系统并不需要安装 MySQL，直接在容器中运行一个 MySQL 镜像，就能提供数据库服务。删掉容器和镜像后，服务停止，操作系统干干净净没有任何残留。</li>
+</ul>
+<h2 id="使用国内的镜像源-解决下载镜像失败的问题">使用国内的镜像源 解决下载镜像失败的问题</h2>
+<p>默认情况下，是从 hub.docker.com（美国服务器）下载镜像的，在天朝的网络环境下，很可能报错如下</p>
+<blockquote>
+<p>Unable to find image &lsquo;hello-world:latest&rsquo; locally
+docker: Error response from daemon: Get <a href="https://registry-1.docker.io/v2/library/hello-world/manifests/latest:">https://registry-1.docker.io/v2/library/hello-world/manifests/latest:</a> Get <a href="https://auth.docker.io/token?scope=repository%3Alibrary%2Fhello-world%3Apull&amp;service=registry.docker.io:">https://auth.docker.io/token?scope=repository%3Alibrary%2Fhello-world%3Apull&amp;service=registry.docker.io:</a> read tcp 172.20.30.205:50310-&gt;50.17.62.194:443: read: connection reset by peer</p>
+</blockquote>
+<h3 id="daocloud">Daocloud</h3>
+<ol>
+<li>首先在 <a href="https://www.daocloud.io">https://www.daocloud.io</a>（一个<strong>国内的</strong> Docker 镜像服务提供者）注册账号，申请使用Docker 加速器。</li>
+</ol>
+<p><a href="https://www.daocloud.io/mirror">https://www.daocloud.io/mirror</a></p>
+<ol start="2">
+<li>登录后，有 Linux Mac Windows 多个平台可选，注意里面的地址列表.复制下来</li>
+</ol>
+<p><a href="https://www.daocloud.io/mirror#accelerator-doc">https://www.daocloud.io/mirror#accelerator-doc</a></p>
+<p><img src="/media/15490412290086/15057869906770.jpg" alt=""></p>
+<h3 id="docker-中国-网易镜像不需要注册一个用户-daocloud-和-aliyun-要注册为用户">docker 中国 、网易镜像（不需要注册一个用户 daocloud 和 aliyun 要注册为用户）</h3>
+<p>特大新闻，docker有官方的中国区加速器了！</p>
+<pre><code class="language-shell">--registry-mirror=https://registry.docker-cn.com
+</code></pre>
+<p>网易163 docker镜像</p>
+<pre><code class="language-shell">$ sudo echo &quot;DOCKER_OPTS=\&quot;--registry-mirror=http://hub-mirror.c.163.com\&quot;&quot; &gt;&gt; /etc/default/docker
+$ service docker restart
+</code></pre>
+<p>如果上面修改都无效，直接指定  repository_url/author/name</p>
+<pre><code class="language-shell">sudo docker pull hub-mirror.c.163.com/codercom/code-server:v2 
+</code></pre>
+<p><strong>发现</strong> 还可以在里面修改 proxy</p>
+<p>网易的猪肉比市场上的猪肉好吃。但从我的体验来看，有时会pull失败的情况出现，并且重试不好使。</p>
+<h3 id="清华">清华</h3>
+<p>在一些 Dockerfile 里，对 alpine 进行修改时发现 aliyun 的很慢，经常卡不动，于是修改成清华的下载 alpine</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/">https://mirrors.tuna.tsinghua.edu.cn/alpine/edge/</a></p>
+<p><img src="/media/15490412290086/15252502221814.jpg" alt=""></p>
+<p>最近发现有时候打不开，用这个吧。。。</p>
+<p><a href="http://mirrors.ustc.edu.cn/">http://mirrors.ustc.edu.cn/</a></p>
+<h3 id="添加源">添加源</h3>
+<p><strong>在 Linux(Ubuntu/CentOS)</strong></p>
+<p>修改 /etc/docker/daemon.json 文件（没有就手动建立）例如网易 ：http://hub-mirror.c.163.com</p>
+<pre><code class="language-json">{
+  &quot;registry-mirrors&quot; : [
+    &quot;http://ovfftd6p.mirror.aliyuncs.com&quot;,
+    &quot;http://registry.docker-cn.com&quot;,
+    &quot;http://docker.mirrors.ustc.edu.cn&quot;,
+    &quot;http://hub-mirror.c.163.com&quot;
+  ],
+  &quot;insecure-registries&quot; : [
+    &quot;registry.docker-cn.com&quot;,
+    &quot;docker.mirrors.ustc.edu.cn&quot;
+  ],
+  &quot;debug&quot; : true,
+  &quot;experimental&quot; : true
+}
+</code></pre>
+<pre><code class="language-shell"># 重启 Docker 服务
+sudo service docker restart
+
+# 重新加载 daemon 配置
+sudo systemctl daemon-reload
+</code></pre>
+<p><strong>如果是 Mac</strong></p>
+<p>点击 menu 上的图标，在 Preferences 的 Daemon -&gt; Registory Mirrors 里添加上面得到的源地址，然后  Apply &amp; Restart</p>
+<p><img src="/media/15490412290086/15058721872832.jpg" alt=""></p>
+<h2 id="安装最新版-docker-compose">安装最新版 Docker Compose</h2>
+<p>CentOS 等 Linux 版本中，默认没有 docker-compose 命令，需要手动安装</p>
+<p>Ubunt 通过 <code>apt-get install docker-compose</code>安w装的版本很老，在后面使用 docker-compose 的一些新特性时会运行报错。</p>
+<p>教程：
+<a href="https://docs.docker.com/compose/install/#install-compose">https://docs.docker.com/compose/install/#install-compose</a></p>
+<p>在下面的地址找到<strong>最新版本号</strong>，例如 1.19.0：</p>
+<p><a href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
+<pre><code class="language-shell">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+
+
+chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+</code></pre>
+<p><strong>注意</strong></p>
+<p>当在 Ubuntu 里使用 <code>apt-get dokcer-compose</code>安装，会安装旧版本 1.8.0（<code>docker-compose --version</code>可以看到），导致运行 version 3 的<code>docker-compose.yaml</code>时报错</p>
+<blockquote>
+<p>Version in “./docker-compose.yml” is unsupported. You might be seeing this error because you&rsquo;re using the wrong Compose file version</p>
+</blockquote>
+<p>需要先<code>rm /usr/bin/docker-compose</code>, 然后用上面的办法手动安装最新版本</p>
+<p>如果报错</p>
+<blockquote>
+<p>WARNING: Dependency conflict: an older version of the &lsquo;docker-py&rsquo; package may be polluting the namespace. If you&rsquo;re experiencing crashes, run the following command to remedy the issue:
+pip uninstall docker-py; pip uninstall docker; pip install docker</p>
+</blockquote>
+<p>按提示运行</p>
+<pre><code class="language-shell">pip uninstall docker-py; pip uninstall docker; pip install docker
+</code></pre>
+<h2 id="合并成一个命令">合并成一个命令</h2>
+<p>以上几步，在 CentOS 里可以合并成</p>
+<p><code>echo '' &gt; daemon.json</code>这段，是解决 vm 下网段设置冲突导致启动服务时服务器网络丢失的，如果是其他机器，需要删除它</p>
+<pre><code class="language-shell">sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2 &amp;&amp; sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo \
+    &amp;&amp; sudo yum -y install docker-ce \
+    &amp;&amp; curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose &amp;&amp; chmod +x /usr/local/bin/docker-compose \
+    &amp;&amp; docker-compose --version \
+    &amp;&amp; mkdir /etc/docker \
+    &amp;&amp; echo '{&quot;bridge&quot;: &quot;virbr0&quot;}' &gt; /etc/docker/daemon.json \
+    &amp;&amp; systemctl start docker &amp;&amp; systemctl enable docker \
+    &amp;&amp; mkdir -p /docker/volumes &amp;&amp; mkdir /docker/configs &amp;&amp; mkdir /docker/applications &amp;&amp; mkdir /docker/docker-images \
+    &amp;&amp; echo 'alias dk=&quot;docker&quot;' &gt;&gt; ~/.bashrc &amp;&amp; echo 'alias dkc=&quot;docker-compose&quot;' &gt;&gt; ~/.bashrc \
+    &amp;&amp; source ~/.bashrc
+</code></pre>
+<p>可以继续接着从一个远端把 docker-compose 文件下载、安装 kunbers? 等容器管理工具</p>
+<h1 id="第一个容器">第一个容器</h1>
+<h2 id="从远端镜像仓库拉下镜像文件">从远端镜像仓库拉下镜像文件</h2>
+<p>会自动检查本地是否有 nginx 镜像文件，如果没有，就从镜像源(hub.docker.com)去 pull 下来放到本地的镜像仓库。</p>
+<pre><code class="language-shell">docker pull nginx
+</code></pre>
+<p>可以在镜像名称后面跟一个冒号来指定“tag”，这个 tag 可以是版本号（如 nginx:1.12.1），也可以是一个“代号”(nginx:latest)，不指定的话默认就是 latest 下载最新版。</p>
+<pre><code class="language-shell">docker pull nginx:1.12.1
+</code></pre>
+<h2 id="把一个最基本的-nginx-容器运行起来">把一个最基本的 Nginx 容器运行起来</h2>
+<p>run 命令。基于某个镜像启动一个容器，如果没有 pull，会自动先 pull 一份。</p>
+<pre><code class="language-shell">$ sudo docker run nginx
+</code></pre>
+<p><img src="/media/15490412290086/15057875591043.jpg" alt=""></p>
+<h2 id="查看本地镜像的列表">查看本地<strong>镜像</strong>的列表</h2>
+<pre><code class="language-shell">$ sudo docker images
+</code></pre>
+<p>看到镜像已经被拉取下来存到本地镜像仓库</p>
+<p><img src="/media/15490412290086/15057875848179.jpg" alt=""></p>
+<h2 id="查看当前已经生成的容器列表">查看当前已经生成的<strong>容器</strong>列表</h2>
+<pre><code class="language-shell">$ sudo docker ps -a
+</code></pre>
+<p>发现容器也已经运行起来了（结果列表略）</p>
+<p><strong>带参数 -a</strong>表示列出 <strong>所有</strong> 正在运行 和 停止运行的容器</p>
+<p><img src="/media/15490412290086/15057876187371.jpg" alt=""></p>
+<h2 id="重新生成容器绑定端口和目录容器名称">重新生成容器，绑定端口和目录、容器名称</h2>
+<p>在上面创建的这个 Nginx 容器，由于运行时没有指定任何参数（没有对外暴露端口，也没有绑定站点的根目录)，所以啥都干不了，所以现在要给它指定端口和 web 目录文件。</p>
+<p>首先把这个容器<strong>关闭</strong>，然后<strong>删除</strong>，需要两条命令</p>
+<pre><code class="language-shell"># 查看容器列表，记下 id
+docker ps -a
+
+docker stop 56e20f2b0d6f
+docker rm 56e20f2b0d6f
+</code></pre>
+<p>先创建一个目录<code>/wwwroot/docker-html</code>，里面放一个最简单的 <code>index.html</code> 文件（写几个字母“hello world”就好）</p>
+<p>再次启动容器，这次带有 <code>--name</code> , <code>-v</code>, 和 <code>-p</code> 三个参数</p>
+<pre><code class="language-shell">docker run --name nginx-proxy -p 80:80 -v /wwwroot/docker-html:/usr/share/nginx/html nginx
+</code></pre>
+<h2 id="持久化存储容器生成的数据">持久化存储容器生成的数据</h2>
+<ul>
+<li>&ndash;name 表示为当前容器命名（毕竟那一堆字母+数字是很难记住的）</li>
+<li>-v 表示在 主机 和 容器(轻量linux环境)之间进行<strong>目录映射</strong>，两个目录之间用<code>:</code>分隔</li>
+<li>-p 表示在 主机 和 容器之间进行<strong>端口映射</strong>，这个例子就是把所有访问主机 80 端口的请求都转发到容器的 80 端口（冒号<strong>前面</strong>是<strong>宿主机</strong>，<strong>后面</strong>是<strong>容器内部</strong>）</li>
+</ul>
+<p>最后的 “nginx” 就是之前下载的镜像名，基于它来创建容器</p>
+<p>打开浏览器输入<code>localhost</code>，已经可以访问到这个 Nginx 容器提供的 web 服务了~，并且准确地读取到指定目录的 index.html 文件。</p>
+<p><img src="/media/15490412290086/15057888298571.jpg" alt="">
+同时你还会注意到在终端上会显示这次请求的日志信息。</p>
+<p><img src="/media/15490412290086/15057890212731.jpg" alt=""></p>
+<p>仔细分析下 -v ，在容器和宿主机之间进行目录映射。</p>
+<p>因为容器实际上就像“运行起来的”的镜像，就像个封闭的空间，内部的文件、数据都来自镜像，运行过程中生成的新文件和数据，在你重启容器后，都会自动清空，恢复到镜像的初始状态。</p>
+<p>因此重要的数据、文件必须要“持久化存储”，最简单的办法就是在宿主机上创建几个目录，分别与容器内的这些目录进行映射，让容器生成的数据直接写到宿主机。下次重启容器后，继续加载这几个目录里的数据就可以了。</p>
+<h2 id="关于暴露出去的端口被宿主机外部的机器访问的问题">关于暴露出去的端口，被宿主机外部的机器访问的问题</h2>
+<p>经过测试，假设 MySQL 容器把 3306 端口暴露出去给宿主机，那么只要防火墙允许，其实是在宿主机外部的机器默认也可以访问的！</p>
+<p>所以说如果必须把容器暴露出去给宿主机，那么设置容器的 root 密码，也必须要复杂。</p>
+<h2 id="让容器在后台运行">让容器在后台运行</h2>
+<p>如果在命令行中按 Ctrl + C，会把当前这个运行中的容器中断掉，想让它能够一直在后台运行。</p>
+<h3 id="首先删除之前的容器">首先删除之前的容器</h3>
+<p>注意，使用 docker run 运行的容器，关闭、修改任意启动参数（端口/卷/运行方式）等，都要先删除后重新创建</p>
+<pre><code class="language-shell"># 找到容器的 name 或 id
+docker ps -a
+
+# 删除
+docker rm nginx-test
+docker rm 9499232ef19d
+
+# 已经找不到了
+docker ps -a
+</code></pre>
+<h3 id="试试使用--d-参数运行容器">试试使用 -d 参数运行容器</h3>
+<p>添加 -d</p>
+<pre><code class="language-shell">docker run --name nginx-proxy -p 80:80 -v /wwwroot/docker-html:/usr/share/nginx/html -d nginx
+
+# 显示成功
+4cb03f1feb9d4d80deeba69349f5edf9cd8d545110384ee735a5936bd00ec372
+</code></pre>
+<p>下次修改参数重新启动的时候，要先停止它</p>
+<pre><code class="language-shell">docker stop nginx-proxy
+docker rm nginx-proxy
+</code></pre>
+<p>看起来很不错 不是吗？但其实是有问题的，看下面内容。</p>
+<h3 id="真正的-后台运行"><strong>真正的</strong> 后台运行</h3>
+<p>过一段时间后会发现一个诡异的事情，就是使用<code>-d</code>启动容器后，过一段时间运行<code>docker ps -a</code>去看，Status 已经变成了 <strong>Exited (0)</strong>，容器的服务已经无法访问了！</p>
+<p>为什么？</p>
+<p><a href="http://dockone.io/question/1148">http://dockone.io/question/1148</a>
+<a href="http://gentle.blog.51cto.com/10722720/1826820">http://gentle.blog.51cto.com/10722720/1826820</a></p>
+<blockquote>
+<p>容器运行的命令如果不是那些一直挂起的命令（比如运行top，tail），就是会自动退出，这个是docker的机制问题</p>
+</blockquote>
+<p>因此有下面的办法</p>
+<p><strong>（1）在运行容器时，增加一个保持在前台的命令</strong></p>
+<p>例如</p>
+<pre><code class="language-shell">docker run -d hello-world /bin/bash
+</code></pre>
+<p><strong>（2）或者使用 <code>-dit</code> 参数来替代 -d</strong></p>
+<pre><code class="language-shell">docker run -dit hello-world        
+</code></pre>
+<p>参数说明</p>
+<p>-d 后台运行容器，并返回容器ID；
+-i 以交互模式运行容器，通常与 -t 同时使用；
+-t 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</p>
+<h3 id="退出自动删除容器">退出自动删除容器</h3>
+<p>docker run 启动容器后，即使结束进程，容器依然会存在，只是出于 Exit(0) 状态。 如果重新运行 run，会提示容器名冲突</p>
+<p>但有时候为了测试需要频繁修改启动配置参数，因此老是 stop &amp;&amp; rm 很麻烦。为了“自动删除容器”，可以添加 <code>--rm</code>参数</p>
+<pre><code class="language-shell">docker run -ti --rm centos /bin/bash
+[root@259a6f93bf3d /]# exit  #退出容器
+exit 
+</code></pre>
+<h2 id="基于同一个镜像生成多个容器">基于同一个镜像生成多个容器</h2>
+<p>Docker 的特点就是基于同一个镜像可以生成多个容器。</p>
+<p>因此我们再启动一个 Nginx 容器，不过这次不占用主机的 80 端口了，使用另外一个端口 8080，实现他们可以访问同一个 web 目录。</p>
+<p>如下，指定 <code>--name</code> 为 “another-nginx”,指定 <code>-p</code> 为 “8080:80”<code>-v</code> 目录映射和前面的一样</p>
+<pre><code class="language-shell">docker run --name another-nginx -d -p 8080:80 -v /wwwroot/docker-html:/usr/share/nginx/html nginx
+</code></pre>
+<p>然后看看当前的容器列表，可以看到都是来自<strong>同一个镜像</strong> （IMAGE） ，但<strong>容器名</strong>（NAMES）不同</p>
+<pre><code class="language-shell">docker ps -a
+CONTAINER ID        IMAGE                COMMAND                  CREATED             STATUS              PORTS                           NAMES
+9abec534bcf2        nginx   &quot;nginx -g 'daemon off&quot;   2 minutes ago       Up 2 minutes        443/tcp, 0.0.0.0:8080-&gt;80/tcp   another-nginx
+320d2725451e        nginx   &quot;nginx -g 'daemon off&quot;   13 hours ago        Up 13 hours         0.0.0.0:80-&gt;80/tcp, 443/tcp     nginx-proxy
+</code></pre>
+<p>现在通过浏览器访问两个端口</p>
+<ul>
+<li><code>http://[ip]</code></li>
+<li><code>http://[ip]:8080</code></li>
+</ul>
+<p>都可以看到同样的内容即 <code>index.html</code>页面</p>
+<h1 id="结合多个镜像创建容器提供更多服务">结合多个镜像创建容器，提供更多服务</h1>
+<p>上面创建的 Nginx 容器仅仅能支持<strong>静态文件</strong>，无法支持 <strong>php</strong>动态文件的解析。因此我们需要借助 php-fpm + nginx 来提供 php 文件的支持。</p>
+<h2 id="首先运行一个-php-fpm-容器">首先运行一个 PHP-FPM 容器</h2>
+<p>这个容器的镜像来自于 <code>php:7.1.9-fpm</code>（你可以到 hub.docker.com 上寻找到更多的版本）</p>
+<p>设置 <code>--name</code> 为“php-fpm-container”, <code>-v</code> 将 宿主机的 /wwwroot/docker-html 目录映射到容器内部的 /app 目录（里面存放一些 php 文件）</p>
+<pre><code class="language-shell">docker run --name php-fpm-container -dit -v /wwwroot/docker-html:/app php:7.1.9-fpm
+</code></pre>
+<p>运行<code>docker ps</code>看到这个容器<strong>内部</strong>默认使用 9000 端口运行了 php-fpm 服务。</p>
+<p><img src="/media/15490412290086/15057923123696.jpg" alt=""></p>
+<p>但要注意：我们启动容器的时候<strong>没有使用 -v 参数</strong>，因此<strong>宿主机并没有和它之间进行端口转发</strong>（因为我们的主机并没有什么需要去和这个 php 容器连接/通信），需要的是让 <strong>Nginx 容器和 php 容器通信</strong>。</p>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>这个容器也映射了主机的<code>/wwwroot/docker-html:</code>目录作为内部的 <code>/app</code>目录。</p>
+</blockquote>
+<p>这点特别容易遗忘，会以为只要在 Nginx 容器里映射就可以了，其实是不够的，因为我们要让 php-fpm 能找到里面的 php 文件</p>
+<h2 id="让-nginx-容器连接到-php-fpm-容器">让 Nginx 容器连接到 php-fpm 容器</h2>
+<h3 id="修改-nginx-配置文件让它支持-php-文件解析">修改 nginx 配置文件，让它支持 php 文件解析</h3>
+<p>因为 <strong>nginx容器默认的配置文件</strong> 是<strong>没有声明</strong>如何连接 php-fpm 服务的，这里用一个配置文件来“覆盖”它。</p>
+<p>在宿主机创建一个目录 <code>/conf.d</code> ，增加一个主机的配置文件<code>test.conf</code>，内容如下，重点注意<code> location ~ \.php$ {</code> 那段：</p>
+<pre><code class="language-shell">server{
+    listen         80;
+    server_name localhost;
+    root         /app;
+    index         index.php index.html index.htm;
+
+    location / {
+        index       index.php index.html;
+        try_files     $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass     phpfpm:9000;
+        fastcgi_index     index.php;
+        fastcgi_param     SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include         fastcgi_params;
+    }
+}
+</code></pre>
+<h3 id="nginx-容器使用-php-fpm-容器共享的-volumes">Nginx 容器使用 php-fpm 容器共享的 Volumes</h3>
+<p>先看一下这个<strong>新的</strong>启动 Nginx 容器的命令</p>
+<pre><code class="language-shell">docker run --name nginx-server -d -p 80:80 --link php-fpm-container:phpfpm -v /wwwroot/docker-html/conf.d:/etc/nginx/conf.d --volumes-from php-fpm-container nginx
+</code></pre>
+<p>关键两点：</p>
+<ol>
+<li>&ndash;link php-fpm-container:phpfpm  <code>--link</code>参数，后面跟的是 <strong>要连接的容器名称:别名</strong>  (别名不是必须的) 可以想象成两台电脑组成局域网，通过“主机名”互相访问</li>
+<li>&ndash;volumes-from php-fpm-container  <code>--volumns-from</code>参数，表示 Nginx 容器共享被连接容器(php-fpm-container)的映射目录，自己不用再定义一次 <code>-v</code>了</li>
+</ol>
+<p>另外命令里面的<code> -v /wwwroot/docker-html/conf.d:/etc/nginx/conf.d</code>表示让 Nginx 容器里的 nginx 服务读取宿主机 /conf.d 里的配置文件（以便运行 php）</p>
+<h3 id="--link-到底对-nginx-容器干了什么让它能看到另一个容器"><code>--link</code> 到底对 Nginx 容器干了什么，让它能“看到”另一个容器？</h3>
+<p>特别注意 <code>fastcgi_pass     phpfpm:9000;</code> 这一行。
+<code>phpfpm</code>是什么意思？</p>
+<p>它是启动 Nginx 容器的时候，用<code>--link</code>参数指定的 <code>php-fpm-container</code>容器的<strong>别名</strong>（直接用 php-fpm-container 也是一样的）。
+表示连接到 php-fpm-container 这个容器的 9000 端口（运行的 php-fpm 服务来支持 php 文件解析）。</p>
+<p>进入容器的命令行，打开 /etc/hosts，发现它其实是增加了一个 IP 和主机名（容器名）的绑定条目。</p>
+<pre><code class="language-shell">docker exec -ti nginx-server vi /etc/hosts
+</code></pre>
+<p><img src="/media/15490412290086/15058014977095.jpg" alt=""></p>
+<h3 id="--volumes-from-的作用让一个容器共享另一个容器的目录">&ndash;volumes-from 的作用：让一个容器共享另一个容器的目录</h3>
+<p>然后再看上面的<code>root         /app;</code> 这行。很奇怪，没有对 nginx 容器进行 <code>-v</code>映射目录，为什么也可以找到这个 <code>/app</code> ？</p>
+<p>这就是 <code>--volumes-from</code> 的作用了，php-fpm 容器映射了这个目录，然后 nginx 容器再与它连接，并共享了这个被映射的目录。</p>
+<h3 id="测试-php-运行">测试 php 运行</h3>
+<p>在 /wwwroot/docker-html 目录里放一个 index.php 文件，使用<code>phpinfo()</code>测试，成功</p>
+<p><img src="/media/15490412290086/15058012971006.jpg" alt=""></p>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://kyleferg.com/laravel-development-with-docker/">https://kyleferg.com/laravel-development-with-docker/</a></p>
+<h2 id="进入容器命令行">进入容器命令行</h2>
+<p>如果是 ubuntu 底包</p>
+<pre><code class="language-shell">docker exec -ti container_name /bin/bash
+</code></pre>
+<p>而 alpine 没有 bash，使用 <code>/bin/sh</code> 进入命令行</p>
+<p>按 Ctrl+P  Ctrl+Q 离开容器（但不会终止服务）</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/docker-%E5%AE%B9%E5%99%A8%E5%8C%96%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/docker-%E6%8A%80%E5%B7%A7%E4%B8%8E%E9%97%AE%E9%A2%98/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/docker-compose-%E7%BC%96%E6%8E%92%E5%AE%B9%E5%99%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

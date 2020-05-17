@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 几种常用虚拟机软件的教程与技巧 permalink: virtual-machine-skills tags:
+ 运维   虚拟机软件可以让你在一台物理机上同时运行多个操作系统。
+Parallels CentOS 安装 “tools” 在菜单上选择“操作”-“安装Parallels Tools” 进入centos后，输入命令行
+$ mkdimedia/cdrom $ mount /dev/cdromedia/cdrom # or $mount -o exec /dev/cdromedia/cdrom media/cdrom/install  按提示安装即可完成
+" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 几种常用虚拟机软件的教程与技巧
+permalink: virtual-machine-skills
+tags:
+
+运维
+
+
+虚拟机软件可以让你在一台物理机上同时运行多个操作系统。
+
+Parallels
+CentOS
+安装 “tools”
+在菜单上选择“操作”-“安装Parallels Tools”
+进入centos后，输入命令行
+$ mkdimedia/cdrom
+$ mount /dev/cdromedia/cdrom
+
+# or
+$mount -o exec /dev/cdromedia/cdrom
+media/cdrom/install
+
+按提示安装即可完成" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 几种常用虚拟机软件的教程与技巧
+permalink: virtual-machine-skills
+tags:
+
+运维
+
+
+虚拟机软件可以让你在一台物理机上同时运行多个操作系统。
+
+Parallels
+CentOS
+安装 “tools”
+在菜单上选择“操作”-“安装Parallels Tools”
+进入centos后，输入命令行
+$ mkdimedia/cdrom
+$ mount /dev/cdromedia/cdrom
+
+# or
+$mount -o exec /dev/cdromedia/cdrom
+media/cdrom/install
+
+按提示安装即可完成">
+
+<meta itemprop="wordCount" content="10035">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 几种常用虚拟机软件的教程与技巧
+permalink: virtual-machine-skills
+tags:
+
+运维
+
+
+虚拟机软件可以让你在一台物理机上同时运行多个操作系统。
+
+Parallels
+CentOS
+安装 “tools”
+在菜单上选择“操作”-“安装Parallels Tools”
+进入centos后，输入命令行
+$ mkdimedia/cdrom
+$ mount /dev/cdromedia/cdrom
+
+# or
+$mount -o exec /dev/cdromedia/cdrom
+media/cdrom/install
+
+按提示安装即可完成"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 10035字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 几种常用虚拟机软件的教程与技巧
+permalink: virtual-machine-skills
+tags:</p>
+<ul>
+<li>运维</li>
+</ul>
+<hr>
+<p>虚拟机软件可以让你在一台物理机上同时运行多个操作系统。</p>
+<!-- raw HTML omitted -->
+<h1 id="parallels">Parallels</h1>
+<h2 id="centos">CentOS</h2>
+<p><strong>安装 “tools”</strong>
+在菜单上选择“操作”-“安装Parallels Tools”
+进入centos后，输入命令行</p>
+<pre><code>$ mkdimedia/cdrom
+$ mount /dev/cdromedia/cdrom
+
+# or
+$mount -o exec /dev/cdromedia/cdrom
+media/cdrom/install
+</code></pre>
+<p>按提示安装即可完成</p>
+<p><strong>共享文件夹</strong>
+首先要安装 parallels tools，关闭虚拟机</p>
+<p>然后在虚拟机配置的“共享”中，选择你要共享的文件夹，我习惯选“所有磁盘”</p>
+<p>启动虚拟机后，运行下面的命令，即可在共享目media/psf 下找到 Mac OS 共享的文件夹</p>
+<p>$ ls -amedia/psf/</p>
+<p>有时候这个里面是空的，怎么都无法显示内容，那么还需要手动运行一次命令</p>
+<p>$ /usr/lib/parallels-tools/install</p>
+<h1 id="virtualbox">VirtualBox</h1>
+<h2 id="安装-centosubuntu-等-linux-系统">安装 CentOS/Ubuntu 等 Linux 系统</h2>
+<h2 id="安装-windows">安装 Windows</h2>
+<h2 id="centos-和宿主机通信">CentOS 和宿主机通信</h2>
+<p>如果我们运行 <code>ifconfig</code> 命令，会发现目前 CentOS 有两块网卡，一块是 <code>10.0.2.15</code>，另外一块是 <code>127.0.0.1</code>。</p>
+<p>然后在 <strong>宿主机</strong> 里运行 <code>ping 10.0.2.15</code>是无法得到虚拟机 CentOS 的响应的，这是为什么呢？
+因为默认创建的虚拟机只有一块 <strong>NAT 模式</strong> 的网卡，所以宿主机找不到它。</p>
+<p>首先运行 <code>shutdown -h now</code> 关闭 CentOS，然后打开 Virtualbox 中这个虚拟机的配置，在“网络”里启用另外一块网卡，选择“host-only adapter”模式。</p>
+<p>然后启动虚拟机，再次运行 <code>ifconfig</code> 命令，可以看到新添加的一块网卡了，IP 地址是 <code>192.168.56.101</code></p>
+<p>为了让 host 能通过 IP 地址访问到 guest，需要给 guest 添加一块 Host-Only 的网卡。但是添加完毕后，仍然无法通信。必须进行如下的步骤：</p>
+<ol>
+<li>运行 <code>ifconfig</code>查看新网卡的名称。</li>
+<li>复制 <code>/etc/sysconfig/network-script/</code>里网卡1的配置文件为一个新文件。</li>
+<li>将新文件里的 <code>NAME</code> 和 <code>DEVICE</code>改名为新网卡的名称，注释 <code>UUID</code></li>
+<li>运行 <code>service network restart</code></li>
+<li>关闭虚拟机</li>
+<li>在虚拟机的设置里，启用一个 Host-Only Adapter</li>
+<li>进入 <strong>Virtualbox 的偏好设置</strong>（不是虚拟机的设置）里，点击“网络”，切换到“Host-only Networkds”，选中“vboxnet0”，点一下右边的小扳手图标，编辑设置参数</li>
+<li><strong>重要</strong> ，“Adapter”里的 IPV4 Address 和“DHCP Sever”里的“Server Address”一定要在一个网段里。（在虚拟机里运行 <code>ifconfig</code> 是 <code>192.168.56.101</code>，而这里 IPV4 Address 默认是 <code>192.168.33.1</code>，一个<code>56</code>，一个<code>33</code>）</li>
+<li>重新启动虚拟机</li>
+<li>现在从 host 再使用 ssh 或 ping guest，已经正常了</li>
+</ol>
+<p>title: 使用vagrant配置可移动的开发环境.md
+permalink: vagrant-portable-develop-env
+date: 2016/03/05 10:10:10
+categories:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<p><img src="/article_images/vagrant.jpg" alt=""></p>
+<p><a href="http://baike.baidu.com/link?url=bUfzXf2J4bJfBtJeljs0_JcsUMIKyw01PW3OIpUn1AOx72A5s7eiGjEOlwsUb-C3Fhveq0aEGrvvBy4YHElY2K">来自百度百科的解释</a>：
+<code>Vagrant</code> 是一个基于 Ruby 的工具，用于创建和部署虚拟化开发环境。它使用 Oracle 的开源 <code>VirtualBox</code> 虚拟化系统，使用 Chef创建自动化虚拟环境。</p>
+<p>上面的太难懂了，简单来说，<code>Virtualbox</code> 是 <code>Vagrant</code> 的基础（免费、开源、跨平台的虚拟机软件），<code>Vagrant</code> 可以调用 <code>Virtualbox</code> 来新建一个虚拟机，接着在虚拟机上安装好操作系统，然后配置各种运行环境和软件，最后把这个 虚拟机 + 配置好的环境 一起打包成一个 <code>box</code> 文件。这个 <code>box</code> 文件可以在任何机器上用 <code>Vagrant</code> 还原出一模一样的开发环境，所有使用了这个 <code>box</code> 的人都可以在相同的开发环境下工作。</p>
+<!-- raw HTML omitted -->
+<p>Vagrant 应用在这几个常见的场景：</p>
+<ol>
+<li>由于团队中每个人的工作环境不一样（操作系统有 windows &amp; Linux &amp; Mac，跑的 PHP 版本有 5.3 &amp; 5.5 &amp; 7.0，等等），导致同样的代码“在我电脑上运行正常，拷贝到你那里跑不起来了”，尤其是给客户演示的时候容易出问题……</li>
+<li>一旦电脑故障，或操作系统崩溃，所有的运行环境要重新搭建一次（例如 Linux 下要从头到尾手动编译 LAMP/LEMP），浪费很多时间。</li>
+<li>在公司代码没有写完，想回家后在自己的笔记本电脑上继续工作，希望能和公司的开发环境保持一致。</li>
+</ol>
+<p>题外话：现在有了 <code>Docker</code>，对应用的测试和部署更加方便了。但是在小型团队中，还是建议使用 Vagrant 就足够了，毕竟 Docker 的学习成本还是比较高的，它们面向的需求也有一些不一样（一个偏重于“开发环境”的统一，一个偏重于持续交付，持续部署）。</p>
+<p>如果你有兴趣可以学习我们的 Docker 教程。现在还是回到 Vagrant 吧。</p>
+<h2 id="virtual-guest-linux-安装附加工具实现目录共享的前提">virtual guest Linux 安装附加工具（实现目录共享的前提）</h2>
+<p>Create Ubuntu server instance under VirtualBox (obviously).
+Start VM, go to Devices -&gt; Insert Guest Additions CD image to mount the ISO image.
+From the terminal, run the following commands:</p>
+<pre><code class="language-shell">sudo -i  
+apt install gcc make kernel-devel kernel-headers patch 
+
+# 必须要先重启一次，才能生效
+reboot
+
+mkdir -media/cdrom  
+mount /dev/cdrom media/cdrom  
+/media/cdrom/VBoxLinuxAdditions.run 
+
+
+# 如果还报 headers  not...found 什么的。
+yum update
+yum -y install gcc make kernel-devel kernel-headers 
+yum install -y linux-headers-$(uname -r)
+</code></pre>
+<p>reboot,After reboot: 把当前用户添加到 vboxsf 组，才能使用 share 的目录。</p>
+<pre><code class="language-shell">sudo usermod --append --groups vboxsf &lt;USERNAME&gt;
+</code></pre>
+<p>Host shares should now be mounted in Ubuntu guest under /media via the installed VBoxService service, set to start on system boot-up.</p>
+<p>在media/sf_[共享目录名]`</p>
+<h2 id="nat--端口转发">NAT + 端口转发</h2>
+<p>两个网卡， 一个是 NAT,  一个是 HOST ONLY （192.168.56.101）</p>
+<p>在网络设置里，打开 NAT 网卡下面的 “network forwarding&rdquo;  界面</p>
+<p>HOST   宿主机 IP + 端口   如 192.168.3.1      2222</p>
+<p>GUEST  虚拟机 IP + 端口   如 192.168.56.101   22</p>
+<p>如果你的电脑换了路由器，IP 地址会变化。导致无法访问到虚拟机。</p>
+<p>这个 ”宿主机IP&rdquo; 干脆留空，  就表示自动会匹配当前宿主机IP 了</p>
+<h1 id="安装-vagrant-以及-virtualbox">安装 Vagrant 以及 Virtualbox</h1>
+<p><strong>安装 Vagrant</strong></p>
+<p><a href="https://www.vagrantup.com/downloads.html">Vagrant 下载地址</a>
+根据提示一步步安装，安装完毕后，在命令行运行一下 <code>vagrant -v</code>命令，看看是否安装完成。</p>
+<pre><code class="language-shell">vagrant -v
+Vagrant 1.8.1
+</code></pre>
+<p><strong>安装 Virtualbox</strong></p>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox 下载地址</a>
+也是按照提示安装即可。</p>
+<p><strong>注意</strong></p>
+<p>最新的 <code>Vagrant</code> 已经不需要单独下载 <code>Virtualbox</code> 了， 在使用 Vagrant 命令创建虚拟机的时候，如果发现你没有安装 Virtualbox，会提示你并自动下载和安装最匹配的 Virtualbox 版本。
+<strong>Vagrant 并不需要最新版的 Virtualbox，从 Oracle 官方下载的最新版本有时候反而会出问题</strong>，Vagrant 自己也说：</p>
+<blockquote>
+<p>This may not be the latest version of VirtualBox, but it is a version that is known to work well</p>
+</blockquote>
+<h1 id="下载镜像文件">下载镜像文件</h1>
+<p>Vagrant <code>镜像</code> 可以认为是将操作系统和开发环境打包在一起的<code>box</code>文件，一般是在各种 Linux 发行版上添加了一些功能。</p>
+<p>在这个地址可以找到很多镜像，下载即可，我这里选择 <code>ubuntu-14.04-amd64.box</code>，下载后放到 <code>~/Download/</code> 目录下。</p>
+<h1 id="把-box-文件解压到-vagrant-的镜像库">把 box 文件解压到 Vagrant 的镜像库</h1>
+<p><strong>镜像，虚拟机</strong></p>
+<ul>
+<li>镜像就是我们从前面的地址里下载到的“干净”的操作系统 box ，或者是从同事那里拿到的改造过的 box</li>
+<li>虚拟机就是 Vagrant 调用 Virtualbox 创建的一个虚拟机，会自动把 box 里的数据复制和安装到虚拟机的磁盘里去。</li>
+</ul>
+<pre><code class="language-shell"># 从网络上下载的 box 文件，先要添加到本机的“镜像库”里面去，便于以后重复使用
+# add 后面的 vagrant-ubuntu 是我们给这个即将被存储到“镜像库”中的 box 取的名字
+$ vagrant box add vagrant-ubuntu ~/Download/ubuntu-14.04-amd64.box
+</code></pre>
+<p>出现下面的提示，就表示成功添加（注意提示文字中<code>Unpacking necessary files</code> 意思是 Vagrant 把 box 文件解包后释放出一些文件，这个我们在后面可以看到到底是哪些文件）</p>
+<blockquote>
+<p>==&gt; box: Box file was not detected as metadata. Adding it directly&hellip;
+==&gt; box: Adding box &lsquo;vagrant-ubuntu&rsquo; (v0) for provider:
+box: Unpacking necessary files from: file:///Users/zzy/Downloads/ubuntu-14.04-amd64.box
+==&gt; box: Successfully added box &lsquo;vagrant-ubuntu&rsquo; (v0) for &lsquo;virtualbox&rsquo;!</p>
+</blockquote>
+<pre><code class="language-shell"># 添加到镜像列表中的 box，可以在 ~/.vagrant.d/boxes/路径里找到，名称正是 `vagrant-ubuntu`
+$ ls -al ~/.vagrant.d/boxes/
+total 0
+drwxr-xr-x  3 zzy  staff   102B Jul 30 10:21 vagrant-ubuntu
+
+# 然后我们看看这个 box 解包到底出来了哪些东西，里面有一个 vmdk，这就是 Virtualbox 的虚拟磁盘文件了，现在大概明白 Vagrant 、box 和 Virtualbox 的关系了吧
+$ ls -al ~/.vagrant.d/boxes/vagrant-ubuntu/0/virtualbox
+total 804144
+-rw-r--r--  1 zzy  staff   505B Jul 30 10:21 Vagrantfile
+-rw-------  1 zzy  staff   393M Jul 30 10:21 box-disk2.vmdk
+-rw-------  1 zzy  staff    12K Jul 30 10:21 box.ovf
+-rw-r--r--  1 zzy  staff    25B Jul 30 10:21 metadata.json
+
+# 添加到 Vagrant 的“镜像库”后（实际上解压后应该叫“虚拟机库”了），可以删掉原来的那个 box 文件了
+$ sudo rm ~/Download/ubuntu-14.04-amd64.box
+</code></pre>
+<h1 id="选取一个开发目录并启动虚拟机">选取一个开发目录并启动虚拟机</h1>
+<ul>
+<li>Vagrant 配置文件是一个名为 <code>Vagrantfile</code> 的独立文件，以文本形式存储这个虚拟机的配置参数（例如 IP 地址、内存大小等等）。</li>
+<li>开发目录是在 Vagrant 配置文件中定义的，默认就是 <code>Vagrantfile</code> 文件所在的目录。</li>
+</ul>
+<p>暂时不明白没关系，后面有讲解。</p>
+<h2 id="vagrant-里的开发目录是什么">Vagrant 里的“开发目录”是什么</h2>
+<p>它是指真实物理机器中平时工作时保存代码的目录。例如我通常把笔记本电脑中的 <code>/Users/zzy/mywork/www</code> 作为开发目录。</p>
+<p>而 <code>Vagrant</code> 在创建虚拟机的时候，会默认创建一个 <code>/vagrant</code> 目录。</p>
+<p>你可以把你真实物理机器上的开发目录<code>/Users/zzy/mywork/www</code> 和这个虚拟机中的<code>/vagrant</code> 目录对应起来。这样就可以直接在物理机器（笔记本电脑）上编辑代码，而不用登陆到虚拟机去编辑代码了。这样便于“代码”和“环境”的分离——因为你并不希望自己还没写完的代码就被打包成 box 发给别人了吧？</p>
+<p>其实原理和 <code>VirtualBox</code> 的“自动挂载目录”（有的叫目录映射）差不多，具体可以查看我们课程系列里关于虚拟机的内容。</p>
+<table>
+<thead>
+<tr>
+<th>物理机</th>
+<th>虚拟机</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/Users/zzy/mywork/www</td>
+<td>/vagrant</td>
+<td>假设物理机是Mac或Linux</td>
+</tr>
+<tr>
+<td>D:\work\web</td>
+<td>/vagrant</td>
+<td>假设物理机是windows</td>
+</tr>
+</tbody>
+</table>
+<h2 id="从一个开发目录初始化虚拟机">从一个开发目录初始化虚拟机</h2>
+<p>好了，明白这个对应关系后，我们选择一个开发目录进入。</p>
+<pre><code class="language-shell"># 切换到你的开发目录
+$ cd /Users/zzy/mywork/www
+
+# 用之前导入的 vagrant-ubuntu 来初始化一个虚拟机
+$ vagrant init vagrant-ubuntu
+
+# 会出现一个新的文件 `Vagrantfile`，这就是前面提到的 Vagrant 虚拟机的配置文件，可以先打开看一下里面的配置参数（内存、IP与网络等等），后面我们还会修改它的
+$ ls -al
+-rw-r--r--   1 zzy   staff       3016 May 19 11:01 Vagrantfile
+$ vi Vagrantfile
+
+# 启动虚拟机，如果你的是 Ubuntu ,可能还会自动运行 apt-get update 命令更新系统软件，所以这个过程会比较慢
+$ vagrant up  
+
+# balabala 漫长的等待……
+
+# 启动成功后会提示挂载的路径映射，已经和你本地的开发目录对应好了！
+==&gt; default: Mounting shared folders...
+    default: /vagrant =&gt; /Users/zzy/mywork/www
+</code></pre>
+<h2 id="添加-vboxfs-支持">添加 vboxfs 支持</h2>
+<p>如果提示缺少 vbox 支持，或者在进入系统后发现这个同步的目录并没有能够自动检测到文件更新。是因为缺少了 vboxfs</p>
+<blockquote>
+<p>Vagrant was unable to mount VirtualBox shared folders. This is usually
+because the filesystem &ldquo;vboxsf&rdquo; is not available. This filesystem is
+made available via the VirtualBox Guest Additions and kernel module.
+Please verify that these guest additions are properly installed in the
+guest. This is not a bug in Vagrant and is usually caused by a faulty
+Vagrant box. For context, the command attempted was:</p>
+</blockquote>
+<blockquote>
+<p>mount -t vboxsf -o uid=1000,gid=1000 vagrant /vagrant</p>
+</blockquote>
+<blockquote>
+<p>The error output from the command was:</p>
+</blockquote>
+<blockquote>
+<p>mount: unknown filesystem type &lsquo;vboxsf&rsquo;</p>
+</blockquote>
+<p>安装插件</p>
+<pre><code class="language-shell">$ vagrant plugin install vagrant-vbguest
+</code></pre>
+<p>但是最近的版本安装好像一直卡在 installing 不动，因此可以<code>vagrant up</code>进入机器后，打开 virtualbox 主界面，来手动安装 addtion-tools (注意同样有可能被局域网屏蔽了某些端口，导致这个插件安装命令一直卡住的问题)</p>
+<h1 id="网络">网络</h1>
+<p>默认是 NAT</p>
+<h2 id="添加-host-only-让虚拟机访问宿主机">添加 Host-Only 让虚拟机访问宿主机</h2>
+<p>除了勾选第二块网卡， 还要在这里添加可用的网络</p>
+<p><code>vagrant up</code>后，这个网卡在 virtualbox 里的信息可能被覆盖。需要手动修改 Vagrantfile ，把下面这行的注释取消，然后重新启动vagrant</p>
+<p><code>config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;</code></p>
+<p>看看有没有新网卡信息，正常的话出现一个新的<code>enp0s8</code></p>
+<pre><code class="language-shell">ip link
+</code></pre>
+<p>编辑 ubuntu 16 的网卡文件 <code>/etc/network/interface.d/</code> 复制上一个网卡，添加如下</p>
+<pre><code>auto enp0s8
+iface enp0s8 inet dhcp
+</code></pre>
+<pre><code class="language-shell">/etc/init.d/networking restart
+</code></pre>
+<h1 id="登录虚拟机">登录虚拟机</h1>
+<p>Vagrant 实际上就是一个简化的 Virtualbox 虚拟机创建过程，由于我们新建了一个 Ubuntu 虚拟机，那肯定是可以 ssh 登录的，这和我们平时登录 linux 服务器用的 <code>ssh user@ip</code>不一样，有个简化的命令 <code>vagrant ssh</code>，在内部会自动识别虚拟机的 IP 地址。</p>
+<pre><code class="language-shell"># 这个是在你的物理机器上的操作，不是虚拟机哦
+$ vagrant ssh
+
+# 现在已经登录到你的虚拟机了
+
+# 切换到 root 账号，默认密码 vagrant
+$ su root
+
+# 切换到开发目录，也就是对应宿主机上的 `/Users/zzy/mywork/zzy`
+$ cd /vagrant  
+
+# 看下是否列出来正确的文件列表
+$ ls -al 
+</code></pre>
+<h1 id="通过-vagrantfile-来修改虚拟机的配置参数">通过 Vagrantfile 来修改虚拟机的配置参数</h1>
+<h2 id="为虚拟机分配-ip-地址来-ssh-登录和访问端口服务">为虚拟机分配 IP 地址来 ssh 登录和访问端口服务</h2>
+<p>前面我们使用 <code>vagrant ssh</code> 这个已经封装好了的命令来远程登录虚拟机，然而并不知道是登录的 IP 地址是什么，用了什么密码和用户名，也不知道这个虚拟机对外开放的端口是哪些。</p>
+<p>如果默认的参数并不能满足需求，这就要修改虚拟机的配置文件了。</p>
+<p>下面就仔细看看之前说到的<code>Vagrantfile</code>文件吧（在物理机<strong>开发目录</strong>里通过 <code>vagrant init</code> 命令自动生成）</p>
+<p>Vagrant 默认是使用<code>端口映射</code>方式将虚拟机的端口映射本地从而实现类似 <code>http://localhost:80</code> 这种访问方式，这种方式比较麻烦，新开和修改端口的时候都得编辑 Vagrantfile。</p>
+<pre><code class="language-shell"># 修改端口映射
+$ vi Vagrantfile
+config.vm.network :forwarded_port, guest: 3000, host: 3000
+</code></pre>
+<p>相比较而言，<code>host-only</code> 模式方便多了，我们可以<strong>直接使用 IP 地址来访问虚拟机的所有对外端口，而不再需要端口映射</strong>。</p>
+<pre><code class="language-shell"># 回到物理机（不是虚拟机）
+$ cd /Users/zzy/mywork/www
+
+# 先把虚拟机关闭
+$ vagrant halt
+
+# 编辑 Vagrantfile 文件，找到config.vm.network这行，去掉注释
+$ vi Vagrantfile
+config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;
+</code></pre>
+<p>重启虚拟机，这样我们就能用 IP 地址<code>192.168.33.10</code> 访问这台机器了，而不再使用封装过的 <code>vagrant ssh</code>命令。</p>
+<pre><code class="language-shell">$ vagrant up
+
+# 用 vagrant 这个用户登录，密码是 vagrant
+$ ssh vagrant@192.168.33.10
+</code></pre>
+<p>同样，如果在虚拟机里搭建了 Web 服务器，并提供 80 端口等，就可以在浏览器里通过 <code>http://192.168.33.10:80</code>来直接访问虚拟机里的 web 服务了。</p>
+<p><strong>一般我们会把 MySQL 的数据库目录、Nginx 的日志、Nginx 的站点文件目录都放在宿主机的“工作目录”里</strong>。</p>
+<h2 id="修改共享目录">修改共享目录</h2>
+<p>前面提到，vagrant 虚拟机默认会把 Vagrantfile 文件所在的宿主机目录映射到虚拟机的 <code>/vagrant</code>，如果你不想使用默认的目录，可以修改参数</p>
+<pre><code class="language-shell">  # 例如，使用当前目录下的 coding  子目录，指向虚拟机的 /home/vagrant/coding 目录
+  config.vm.synced_folder &quot;./coding&quot;, &quot;/home/vagrant/coding&quot;
+</code></pre>
+<p>更多的设置参数可以查看官方文档</p>
+<h1 id="vagrant-常用命令">vagrant 常用命令</h1>
+<pre><code class="language-shell"># 镜像管理
+$vagrant box --help
+add
+list
+outdated
+remove
+repackage
+update
+
+# 操作一个虚拟机
+$ vagrant init  # 初始化
+$ vagrant up  # 启动虚拟机
+$ vagrant halt  # 关闭虚拟机
+$ vagrant reload  # 重启虚拟机
+$ vagrant ssh  # SSH 至虚拟机
+$ vagrant status  # 查看虚拟机运行状态
+$ vagrant destroy  # 销毁当前虚拟机
+</code></pre>
+<h1 id="镜像打包与分发">镜像打包与分发</h1>
+<p>当你配置好开发环境后，需要把整个虚拟机+环境打包成一个 box 文件，这样才便于分发给其他同事。</p>
+<pre><code class="language-shell"># 首先要退出并关闭虚拟机
+$ vagrant halt
+
+# 打包
+$ vagrant package
+</code></pre>
+<p>打包完成后会在<strong>当前目录</strong>生成一个名叫 <code>package.box</code> 的文件，将这个文件改名，然后发给其他用户即可。</p>
+<p>更多内容请查阅官方文档 <a href="http://docs.vagrantup.com/v2/cli/index.html">http://docs.vagrantup.com/v2/cli/index.html</a></p>
+<h1 id="常见问题">常见问题</h1>
+<h2 id="使用-apachenginx-时会出现诸如图片修改后但页面刷新仍然是旧文件的情况">使用 Apache/Nginx 时会出现诸如图片修改后但页面刷新仍然是旧文件的情况</h2>
+<p>这是由于静态文件缓存造成的。需要对虚拟机里的 Apache/Nginx 配置文件进行修改：</p>
+<pre><code class="language-shell"># Apache 配置添加:
+EnableSendfile off
+
+# Nginx 配置添加:
+sendfile off;
+</code></pre>
+<h2 id="高版本-virtualbox-的问题">高版本 virtualbox 的问题</h2>
+<p>测试中发现virtualbox 4.3.14会在vagrant up的时候一直无法启动虚拟机，安装低版本 4.3.12 即可</p>
+<h2 id="重新-add-自己做的box后ssh连不上但能ping通">重新 add 自己做的box后，ssh连不上，但能ping通</h2>
+<p>这个在虚拟机为 CentOS 系统出现，属于常见的 CentOS 更换网卡后无法自动配置网络一样的原因。</p>
+<p>解决方法：直接打开 VirtualBox 软件，并打开这个正在运行中的虚拟机，这时候鼠标会失去焦点，进入到虚拟机的命令行界面。</p>
+<p>运行</p>
+<pre><code class="language-shell">$ service network restart` 
+</code></pre>
+<p>提示</p>
+<blockquote>
+<p>eth1 Device does not seem to be present`</p>
+</blockquote>
+<pre><code class="language-shell"># 删除一个文件，然后重启即可
+$ rm -rf /etc/udev/rules.d/70-persistent-net.rules
+$ reboot
+</code></pre>
+<h2 id="connection-timetout问题">Connection timetout问题</h2>
+<p>有一次没有使用 <code>vagrant halt</code>，直接关闭了宿主电脑的电源后，再次启动 <code>vagrant up</code>会一直停留在 <code>Connection timetout</code>， 但可以通过ssh连接进去。</p>
+<p>查了网上的资料，有说这个只需要编辑该虚拟机的配置文件，打开 <code>64 位虚拟化</code>这个参数即可。
+也有的资料提到对公钥的操作，没看懂，后来直接 <code>vagrant destroy</code> 重新 <code>vagrant add box</code>就好了。</p>
+<h2 id="访问共享文件夹非常慢的问题">访问共享文件夹非常慢的问题</h2>
+<p>宿主机 windows, 虚拟机 centos。 windows 共享  D:/project 给 CentOS 作为 nginx 的 web 目录。</p>
+<p>发现虚拟机里跑的一个 Laravel 超级慢（空白的 welcome 要 1.5 秒），虽然 laravel 慢，但这个速度完全不正常。 同样的项目，在 macOS 和 windows + apache 上直接运行非常快</p>
+<p>因为公司电脑不允许装“extension pack” 没法对比，但网上有说“共享文件夹” 这个对速度影响很大。</p>
+<ul>
+<li>
+<p>当host是linux时，使用 NFS 协议可以加快访问速度
+<a href="https://docs.vagrantup.com/v2/synced-folders/nfs.html">https://docs.vagrantup.com/v2/synced-folders/nfs.html</a></p>
+</li>
+<li>
+<p>当host是windows，使用 samba，让 guest 机器访问。
+<a href="https://docs.vagrantup.com/v2/synced-folders/smb.html">https://docs.vagrantup.com/v2/synced-folders/smb.html</a></p>
+</li>
+</ul>
+<p>把 windows 作为 samba 主机后添加共享文件夹，然后在 guest 的 linux 里运行</p>
+<pre><code class="language-shell">$ mkdir /mnt/sharefolder
+$ sudo mount -t cifs -o username=&quot;administrator&quot;,password=&quot;123456&quot; //192.168.33.1/sharefolder /mnt/sharefolder 
+
+# 最后修改 /etc/rc.d/rc.local 放入开机启动
+</code></pre>
+<ul>
+<li>最后一种方案，把guest的linux作为samba主机，从host宿主机去访问（这样会导致虚拟机体积膨胀。。。。）
+<a href="http://www.kieronhoward.co.uk/vagrant-windows-improve-slow-performance-using-smb-instead-nfs/">http://www.kieronhoward.co.uk/vagrant-windows-improve-slow-performance-using-smb-instead-nfs/</a></li>
+</ul>
+<p>关键是 IO 问题，这里提到</p>
+<p><a href="https://learnku.com/articles/9009/solve-the-slow-response-problem-of-windows-system-using-homestead-to-run-laravel-local-project">https://learnku.com/articles/9009/solve-the-slow-response-problem-of-windows-system-using-homestead-to-run-laravel-local-project</a>
+<a href="https://learnku.com/docs/laravel-development-environment/5.5/development-environment-windows/938">https://learnku.com/docs/laravel-development-environment/5.5/development-environment-windows/938</a></p>
+<pre><code class="language-shell">vagrant plugin install vagrant-winnfsd
+</code></pre>
+<p>安装成功后修改配置文件 homestead/scripts/homestead.rb</p>
+<h2 id="virtualbox高性能读写win10主机共享目录">Virtualbox高性能读写Win10主机共享目录</h2>
+<p>原创powerfulzyh 最后发布于2017-08-05 21:15:13 阅读数 1108  收藏
+展开
+本文介绍几种vbox读写win10主机文件的方法，并简单比较了几者之间的性能。</p>
+<p>环境
+win10 pro，为host
+virtualbox 5.1.26
+ubuntu 17.04，为client
+期望在ubuntu中可以挂载win10中的某个目录（如d:\data），且ubuntu拥有读写权限，系统启动时自动挂载。一是为了共享文件，二是将数据（如程序代码）保存备份。</p>
+<p>使用vbox自带共享文件夹功能-vboxsf
+vbox设置共享文件夹，拥有完全控制权限，如设置别名为shared
+client中的ubuntu安装VBoxLinuxAddtions（增强功能）
+sudo vi /etc/fstab，增加如下一行：
+shared /data vboxsf rw,gid=username,uid=groupname,auto 0 0
+1
+其中shared是vbox中设置的共享目录别名，/data是ubuntu中的挂载点，提前建好目录并chown给username，vboxsf是文件系统类型，参数rw是读写权限，后面用户及组名。重启ubuntu，即可使用/data来读写共享目录中的文件，修改同时同步到win10。</p>
+<p>使用win10自带共享文件夹功能-cifs  （samba）
+在win10开启文件夹共享，如设置别名为shared
+ubuntu中sudo vi /etc/fstab
+//192.168.56.1/shared /data cifs _netdev,username=xxxxxx,password=xxxxxx,uid=username,gid=groupname,auto 0 0
+1
+其中ip地址和访问共享文件夹的win10用户名密码根据实际更换。</p>
+<p>使用nfs方式
+若是win10 enterprise 或ultimate版本，可以直接开启nfs服务，注意不是nfs客户端，是服务端，win+r，运行service.msc可以找一找是否有server nfs服务（[参考文章])
+若不能开启win10自己的nfs服务，则使用第三方的，推荐使用haneWIN NFS。[下载地址]
+下载后安装（试用30天，需要买license），即作为windows服务自动启动
+执行安装的NFS server（小娜处搜索）要以管理员身份运行，可以修改设置，否则只是查看，最主要的设置是export，用于配置共享目录，其它可保持默认
+在选项卡export中可以设置共享的目录（ [参考haneWIN NFS帮助] )，如增加以下一行，就是文本编辑，然后保存，重启server生效：
+d:\data -name:shared
+1
+ubuntu中sudo vi /etc/fstab，增加如下一行：
+192.168.56.1:/shared /data nfs defaults 0 0
+1
+mout.nfs还有其它许多参数可以指定（如超时，udp/tcp），一般使用defaults就可以了。</p>
+<p>其它第三方nfs-server比较流行的有winNFSd
+性能比较
+通过实测性能（ubuntu中eclipse 编译8个工程约10万行代码，代码放在共享目录中），性能是：nfs&gt;vboxsf&gt;cifs。nfs性能是vboxsf的1.5倍，cifs差很多。</p>
+<p>其它
+2年多前，有人比较过vboxsf/nfs/vmare share fs的性能，可以参考一下。但这段时间内vboxsf已经有很多版本升级，应该性能也有提升。本文发表时，在某些场景上还是nfs优于vboxs。
+————————————————
+版权声明：本文为CSDN博主「powerfulzyh」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/zhyhang/article/details/75871406</p>
+<h2 id="解决mount-samba来的文件共享非root无写权限">解决mount samba来的文件共享非root无写权限</h2>
+<pre><code class="language-shell"># root chmod失败
+$ ll /mnt/major_prj_from_win/file_on_win.txt 
+-rwxr-xr-x 1 root root 4 2011-10-13 23:50 /mnt/major_prj_from_win/file_on_win.txt
+$ sudo chmod 777 /mnt/major_prj_from_win/file_on_win.txt 
+$ ll /mnt/major_prj_from_win/file_on_win.txt 
+-rwxr-xr-x 1 root root 4 2011-10-13 23:50 /mnt/major_prj_from_win/file_on_win.txt
+ 
+# 解决方法参考 https://wiki.ubuntu.com/MountWindowsSharesPermanently，在挂载的时候增加 file_mode 参数,0777不可为777
+$ sudo mount -t cifs -o file_mode=0777,dir_mode=0777,iocharset=utf8,username=yourname,password=yourpwd   //192.168.10.1/major_prj /mnt/major_prj_from_win
+ 
+#安全的方法:
+$ vi /home/pre/.smbcredentials文件
+username=&lt;REMOTEUSERNAME&gt;
+password=&lt;REMOTEPASSWORD&gt;
+# 然后修改该文件的权限
+sudo chmod 600 /home/&lt;LOCALUSERNAME&gt;/.smbcredentials
+
+#最后修改/etc/fstab
+//192.168.10.1/major_prj /mnt/major_prj_from_win cifs credentials=/home/pre/.smbcredentials,ioch
+arset=utf8,file_mode=0777,dir_mode=0777 0 0
+</code></pre>
+<h2 id="guest-和-host-的共享目录-vagrant-不同步变化">Guest 和 Host 的共享目录 vagrant 不同步变化</h2>
+<p>可能是因为默认用的 nfs 协议，在有的网络环境下（例如公司局域网），导致无法同步。 可以改成用 vboxfs 的协议</p>
+<p>这个网络环境的问题，有时候也会导致 Guest 机器无法上网（NAT）。。。。还以为是虚拟机损坏了。</p>
+<p>经过测试，nfs 性能比较高，可以修改 Vagrantfile，手动设置同步目录，然后添加
+<code>type: &quot;nfs&quot;</code>（需要先创建一个 host-only 的网卡）</p>
+<h2 id="vagarnt-的共享开发目录里-meteor-项目无法运行-mongodb-的问题">vagarnt 的共享开发目录里 meteor 项目无法运行 mongodb 的问题</h2>
+<p>如果 vagrant 虚拟机上的 /vagrant 目录中有个 meteor 项目（映射宿主机的某个目录），在里面运行 <code>meteor</code> 命令启动项目的时候会报错</p>
+<blockquote>
+<p>mongodb 45 exit (或 code=100)`</p>
+</blockquote>
+<p>这是因为 mongodb 无法运行在 NFS 上，而当前的 /vagrant 正好是使用 NFS 协议访问的宿主机某个目录。这在sof等帖子有说明，例如https://groups.google.com/forum/#!topic/mongodb-user/Kd85b2HHVn8。</p>
+<p>解决的办法是，在虚拟机的当前用户目录下创建一个可写目录，然后把 mongodb 的 <code>db</code> 目录链接到你共享的开发目录里，如下（挺麻烦的……）</p>
+<pre><code class="language-shell">$ mkdir ~/meteor-share/
+$ mkdir ~/meteor-share/your-meteor-project-name
+$ mkdir ~/meteor-share/your-meteor-project-name/db
+$ cd /vagrant/your-metor-project-name/.meteor/local/
+$ ln -s ~/meteor-share/your-meteor-project-name/db/
+
+# 再运行 meteor 命令，可以启动 mongodb了
+$ meteor
+</code></pre>
+<p><strong>运行meteor mongo命令提示 LC_ALL未指定的问题</strong></p>
+<pre><code class="language-shell">$ export LC_ALL=C
+$ meteor mongo
+</code></pre>
+<h2 id="vagrant-up-后卡在-default-rsyncing-folderctrl-c-中断后提示">vagrant up 后卡在 default: Rsyncing folder:，ctrl C 中断后提示</h2>
+<blockquote>
+<p>There was an error when attempting to rsync a synced folder.
+Please inspect the error message below for more info.
+Command: &ldquo;rsync&rdquo; &ldquo;&ndash;verbose&rdquo;
+&hellip;
+Error: symlink has no referent:</p>
+</blockquote>
+<p><a href="https://stackoverflow.com/questions/48086373/vagrant-error-symlink-has-no-referent">https://stackoverflow.com/questions/48086373/vagrant-error-symlink-has-no-referent</a></p>
+<p>这是因为有一些目录无法定位的问题。修改 Vagrant 文件，手动指定当前目录映射到虚拟机 /vagrant 目录（<code>disabled: true</code>不知干啥的）</p>
+<pre><code>config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, disabled: true
+</code></pre>
+<p><strong>问题</strong> 修改后，好像变成了 rsync 模式，从 Host 机器<strong>复制</strong>文件到 Guest，而不是“共享”(有一次发现在 Host 里复制文件到 vagrant 所在目录，结果 guest 里没变化， 观察到 vmdk 磁盘很大！)。</p>
+<p>还是直接用 Virtualbox 吧，手动指定 shared folder。。。。</p>
+<p><strong>virtualbox 的问题</strong>  lnmp 都装不上。。。</p>
+<h2 id="nfs-方式">NFS 方式</h2>
+<p>还有 vagrant 默认用的 rsync 模式共享目录。。。导致会复制文件。</p>
+<p>改成如下，就是 nfs 方式，不会复制了</p>
+<ol>
+<li>添加 host-only 网络</li>
+<li>修改为  config.vm.synced_folder &ldquo;.&quot;， &ldquo;/vagrant&rdquo;, type: &ldquo;nfs&rdquo;</li>
+</ol>
+<pre><code>vagrant reload
+</code></pre>
+<p><strong>windows 主机不支持 nfs 类型</strong>
+<a href="https://www.iamle.com/archives/2011.html">https://www.iamle.com/archives/2011.html</a>  这里讲了如何在windows host 下用 nfs/samba 同步</p>
+<p><a href="https://blog.csdn.net/zhyhang/article/details/75871406">https://blog.csdn.net/zhyhang/article/details/75871406</a>  还有这里 windows 10 企业版下可以用自带的，或第三方的nfs协议</p>
+<h2 id="修改了-ssh-配置或用户的-ssh文件后提示error-authentication-failure-retrying">修改了 SSH 配置或用户的 <code>.ssh</code>文件后，提示&quot;Error: Authentication failure. Retrying&rdquo;</h2>
+<p><a href="http://stackoverflow.com/questions/22922891/vagrant-ssh-authentication-failure">http://stackoverflow.com/questions/22922891/vagrant-ssh-authentication-failure</a></p>
+<p>场景：
+运行 <code>vagrant up</code> 后一直出现这个提示，按<code>Ctrl+C</code>中断后，使用 <code>vagrant ssh</code>提示要输入密码（默认情况下是不需要输入密码的）。</p>
+<p>这是因为丢失了 private key 信息，一般发生在 Guest 中使用了 root 账号，或者修改了 <code>~/.ssh</code> 目录内的文件时。
+有时候修改了网卡的配置也会发生……</p>
+<p>如果修改了 Guset  机器的 sshd_config, 打开了允许密码登录，好像也有这个问题。。。比较乱</p>
+<pre><code class="language-shell"># 首先查看一 下 Host 机器 private_key 文件的位置，记下来
+$vagrant up # 要先启动
+$vagrant ssh-config
+</code></pre>
+<p>内容大致如下，例如下面的<code>/Users/zzy/Vagrants/.vagrant/machines/default/virtualbox/private_key</code></p>
+<blockquote>
+<p>Host default
+HostName 127.0.0.1
+User vagrant
+Port 2222
+UserKnownHostsFile /dev/null
+StrictHostKeyChecking no
+PasswordAuthentication no
+IdentityFile /Users/zzy/Vagrants/.vagrant/machines/default/virtualbox/private_key
+IdentitiesOnly yes
+LogLevel FATAL</p>
+</blockquote>
+<p>然后登陆到 Guest 机器操作（输入密码）</p>
+<pre><code class="language-shell">$vagrant ssh
+
+# =====以下是在 Guest 机器里操作=======
+
+# 生成一个文件，会放在 .ssh/id_rsa.pub
+$ssh-keygen -t rsa -b 4096 -C &quot;vagrant&quot;
+
+# 把它放到 .ssh/authorized_keys 里面
+$cp .ssh/id_rsa.pub .ssh/authorized_keys
+
+# 重启一下 sshd 服务
+$service ssh reload
+
+# 然后把私钥文件里的内容复制出来，对比一下，它的内容比 id_ras.pub 要长很多
+$vi .ssh/id_rsa
+</code></pre>
+<p>回到刚刚在 <strong>Host</strong> 里通过 <code>vagrant ssh-config</code> 找到的那个<code>private_key</code>文件（如<code>/Users/zzy/Vagrants/.vagrant/machines/default/virtualbox/private_key</code>），删除里面的内容，并用刚从 Guest 里复制的内容来替换。</p>
+<p>最后退出 Guest</p>
+<pre><code class="language-shell">$logout
+</code></pre>
+<p>这时候重新用 <code>vagrant ssh</code>登录，就不用手动输入密码了。</p>
+<h3 id="或者直接在-vagrantfile-里关闭这个自动生成的特性最便捷">或者直接在 Vagrantfile 里关闭这个自动生成的特性（最便捷）</h3>
+<p>config.ssh.insert_key = false</p>
+<h2 id="默认使用-root-登录">默认使用 root 登录</h2>
+<p>vagrant 默认的 <code>vagrant ssh</code> 默认是用 <code>vagrant</code>这个用户登录系统，但由于开发环境，我们希望能默认用<code>root</code>来登录，可修改 Vagrantfile 文件，添加</p>
+<pre><code class="language-shell">config.ssh.username = 'root'
+config.ssh.password = 'vagrant'
+config.ssh.insert_key = false
+</code></pre>
+<h2 id="centos-的guest启用-private-network-后复制到别的机器无法启动网卡">CentOS 的Guest启用 Private Network 后，复制到别的机器无法启动网卡</h2>
+<p>Stderr from the command:</p>
+<p>Job for network.service failed because the control process exited with error code. See &ldquo;systemctl status network.service&rdquo; and &ldquo;journalctl -xe&rdquo; for details.</p>
+<p>进入 guest 后，删除 ifcfg-eth1 等。</p>
+<p>在Vagarntfile里禁用这块网卡。</p>
+<p>然后在 Host 机器里查到网段，修改 Vagrantfile 里的 IP （从 Mac 拷贝过来，应该是 192.168.33.10  -&gt; 192.168.56.10）</p>
+<p>重新启动 Guest <code>vagrant reload</code></p>
+<h2 id="解决在-host-和-guest-共享一个-mysql-datadir-的问题">解决在 Host 和 Guest 共享一个 MySQL datadir 的问题。</h2>
+<p>默认共享的文件夹 <code>/vagrant</code>，在 Guest 机器里用户和组是 <code>vagrant</code>，并且是无法修改权限、属主的。</p>
+<p>但是我们在 Guest 里运行的 MySQL，如果修改了 <code>my.cnf</code>，把<code>datadir</code>指向到 <code>/vagrant</code>后，启动时会提示找不到 pid 或者 err 文件。</p>
+<p>有两种方法：</p>
+<ol>
+<li>修改Guest里MySQL的运行用户为 <code>vagrant</code>，不推荐</li>
+<li>修改 Vagrantfile 里的用户（发现没效果。。）</li>
+</ol>
+<pre><code class="language-ruby">config.vm.synced_folder &quot;/Volumes/Daten/mysql&quot;, &quot;/var/lib/mysql/vagrant&quot;, id: &quot;mysql&quot;,
+    owner: &quot;mysql&quot;, group: &quot;mysql&quot;,
+    mount_options: [&quot;dmode=775,fmode=664&quot;]
+</code></pre>
+<p>指定 <code>pid-file=xxxxx</code></p>
+<p><strong>最后还是不行</strong></p>
+<p>只能在 Host 安装 MySQL， 然后在 Guest 通过 IP 的方式连接 Host 的 MySQL 服务器了。（注意 OSX 上 brew 安装的 MySQL，可能会有无法通过 IP 连接的问题，即使 grant 了 &lsquo;root&rsquo;@'%&rsquo; 也不行。使用从官方下载的 DMG 文件来安装，然后运行 /usr/local/mysql/bin/mysql_secure_install，打开允许 root 从远程登录即可）</p>
+<h3 id="办法-把-mysql-用户加入-vboxsf-组启动时才能在-share-的目录里创建-xxxpid">办法。 把 mysql 用户加入 vboxsf 组，启动时，才能在 share 的目录里创建 xxx.pid</h3>
+<pre><code class="language-shell">sudo usermod -aG vboxsf mysql
+
+
+# 网上看到这个命令？
+sudo gpasswd -a mysql vboxsf
+</code></pre>
+<h2 id="压缩-vdi-或-vmdk">压缩 VDI 或 VMDK</h2>
+<ol>
+<li>碎片整理</li>
+</ol>
+<p>第一步要做的是碎片整理，打开虚拟机，执行下面的命令：</p>
+<p>Linux系统：</p>
+<p>sudo dd if=/dev/zero of=/EMPTY bs=1M
+sudo rm -f /EMPTY
+Windows系统需要下载Sysinternals Suite并执行：</p>
+<p>sdelete –z
+2. 压缩磁盘</p>
+<p>关闭虚拟机，现在可以开始压缩虚拟硬盘了</p>
+<p>如果你的虚拟硬盘是VirtualBox自己的VDI格式，找到你的虚拟硬盘文件，执行命令：</p>
+<pre><code class="language-shell">VBoxManage modifyhd mydisk.vdi --compact
+</code></pre>
+<p>如果你的虚拟硬盘是Vmware的VMDK格式，那就要麻烦点，因为VirtualBox不支持直接压缩VMDK格式，但是可以变通下：先转换成VDI并压缩，再转回VMDK。执行命令：</p>
+<p>VBoxManage clonehd &ldquo;source.vmdk&rdquo; &ldquo;cloned.vdi&rdquo; &ndash;format vdi
+VBoxManage modifyhd cloned.vdi &ndash;compact
+VBoxManage clonehd &ldquo;cloned.vdi&rdquo; &ldquo;compressed.vmdk&rdquo; &ndash;format vmdk</p>
+<p>事实上，执行命令的过程中可以发现：在从VMDK转换到VDI的过程中似乎已经做了压缩，文件大小已经减少了很多，第二条命令反而没见到文件大小有什么变化，所以这里第二条命令应该可以省略了。</p>
+<h1 id="相关资料">相关资料</h1>
+<ul>
+<li>几种常见虚拟机软件的对比和使用</li>
+</ul>
+<h1 id="问题">问题</h1>
+<h2 id="u盘无法在虚拟机里识别或者识别了在客户机里还是灰色无法分配">U盘无法在虚拟机里识别，或者识别了，在客户机里还是灰色无法分配</h2>
+<p>除了在 port - usb 里添加 filter, 启动系统后一定要在 host 宿主机里把 U 盘弹出，才能在 device- usb 里分配给客户机。</p>
+<h2 id="ubuntu-下-加载共享目录后-cd-mediasf_sharefolder-提示没有权限">Ubuntu 下， 加载共享目录后， cd /media/sf_sharefolder 提示没有权限</h2>
+<p>首先 <code>ls /media</code> 看到这个目录的权限是  root:vboxsf  只有 vboxsf 组或者 root 账号才能访问</p>
+<p>但是ubuntu 默认没有启用 root. 因此需要把你当前的用户添加进去</p>
+<pre><code class="language-shell">sudo usermod -aG vboxsf your-name
+</code></pre>
+<p>或者编辑 /etc/group 文件，把你的账号添加到组 vboxsf 清单后面</p>
+<p>重启电脑。这时就能 cd /media/sf_sharefolder 了</p>
+<h1 id="技巧">技巧</h1>
+<h2 id="使用-winpe-安装系统">使用 WinPE 安装系统</h2>
+<ol>
+<li>首先用 微winpe.exe 生成一个 .iso</li>
+<li>在虚拟机设置里设置这个 iso 为启动盘</li>
+<li>启动系统</li>
+<li>记得弹出主机的u盘，然后分批到client客户机</li>
+<li>winpe 里分区工具，把磁盘初始化</li>
+<li>winpe 的 ghost 拷贝文件  或者 ESD 等文件安装</li>
+<li>弹出 winpe iso</li>
+<li>重启虚拟机</li>
+</ol>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%8F%88%E6%8B%8D%E4%BA%91/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

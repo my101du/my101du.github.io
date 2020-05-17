@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="实用的包 JQuery Datatables https://yajrabox.com/docs/laravel-datatables/master 升级到 Laravel 5.5 时，提示插件无法兼容 这些还没有更新到支持 5.5 删掉这几行。。。 &amp;quot;spatie/laravel-analytics&amp;quot;: &amp;quot;~2.4&amp;quot;, &amp;quot;spatie/laravel-backup&amp;quot;: &amp;quot;~3.10&amp;quot;, &amp;quot;caffeinated/menus&amp;quot;: &amp;quot;~3.0&amp;quot;, &amp;quot;barryvdh/laravel-snappy&amp;quot;: &amp;quot;~0.3.3&amp;quot;, &amp;quot;laravelcollective/html&amp;quot;: &amp;quot;5.4.*&amp;quot;, &amp;quot;yajra/laravel-datatables-buttons&amp;quot;: &amp;quot;~1.1&amp;quot; 与数据表无关的模型 有时候我们会需要" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="实用的包 JQuery Datatables https://yajrabox.com/docs/laravel-datatables/master 升级到 Laravel 5.5 时，提示插件无法兼容 这些还没有更新到支持 5.5 删掉这几行。。。 &quot;spatie/laravel-analytics&quot;: &quot;~2.4&quot;, &quot;spatie/laravel-backup&quot;: &quot;~3.10&quot;, &quot;caffeinated/menus&quot;: &quot;~3.0&quot;, &quot;barryvdh/laravel-snappy&quot;: &quot;~0.3.3&quot;, &quot;laravelcollective/html&quot;: &quot;5.4.*&quot;, &quot;yajra/laravel-datatables-buttons&quot;: &quot;~1.1&quot; 与数据表无关的模型 有时候我们会需要" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="实用的包 JQuery Datatables https://yajrabox.com/docs/laravel-datatables/master 升级到 Laravel 5.5 时，提示插件无法兼容 这些还没有更新到支持 5.5 删掉这几行。。。 &quot;spatie/laravel-analytics&quot;: &quot;~2.4&quot;, &quot;spatie/laravel-backup&quot;: &quot;~3.10&quot;, &quot;caffeinated/menus&quot;: &quot;~3.0&quot;, &quot;barryvdh/laravel-snappy&quot;: &quot;~0.3.3&quot;, &quot;laravelcollective/html&quot;: &quot;5.4.*&quot;, &quot;yajra/laravel-datatables-buttons&quot;: &quot;~1.1&quot; 与数据表无关的模型 有时候我们会需要">
+
+<meta itemprop="wordCount" content="467">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="实用的包 JQuery Datatables https://yajrabox.com/docs/laravel-datatables/master 升级到 Laravel 5.5 时，提示插件无法兼容 这些还没有更新到支持 5.5 删掉这几行。。。 &quot;spatie/laravel-analytics&quot;: &quot;~2.4&quot;, &quot;spatie/laravel-backup&quot;: &quot;~3.10&quot;, &quot;caffeinated/menus&quot;: &quot;~3.0&quot;, &quot;barryvdh/laravel-snappy&quot;: &quot;~0.3.3&quot;, &quot;laravelcollective/html&quot;: &quot;5.4.*&quot;, &quot;yajra/laravel-datatables-buttons&quot;: &quot;~1.1&quot; 与数据表无关的模型 有时候我们会需要"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 467字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>实用的包</p>
+<p>JQuery Datatables</p>
+<p><a href="https://yajrabox.com/docs/laravel-datatables/master">https://yajrabox.com/docs/laravel-datatables/master</a></p>
+<h1 id="升级到-laravel-55-时提示插件无法兼容">升级到 Laravel 5.5 时，提示插件无法兼容</h1>
+<p>这些还没有更新到支持 5.5</p>
+<p>删掉这几行。。。</p>
+<pre><code class="language-json">&quot;spatie/laravel-analytics&quot;: &quot;~2.4&quot;,
+&quot;spatie/laravel-backup&quot;: &quot;~3.10&quot;,
+&quot;caffeinated/menus&quot;: &quot;~3.0&quot;,
+&quot;barryvdh/laravel-snappy&quot;: &quot;~0.3.3&quot;,
+&quot;laravelcollective/html&quot;: &quot;5.4.*&quot;,
+&quot;yajra/laravel-datatables-buttons&quot;: &quot;~1.1&quot;
+</code></pre>
+<h1 id="与数据表无关的模型">与数据表无关的模型</h1>
+<p>有时候我们会需要一个模型，它能使用和 Laravel 的 Eloquent Model 相似的方法、属性。但是不会和某个数据表(或关系)绑定。</p>
+<p>例如，请求的是一个外部的数据源，修改后把结果发送回去。</p>
+<p>使用 <a href="https://github.com/jenssegers/model">https://github.com/jenssegers/model</a> 可以实现。</p>
+<pre><code class="language-shell">composer require jenssegers/model
+</code></pre>
+<p>例子</p>
+<pre><code class="language-php">use Jenssegers\Model\Model as EloquentLikeModel;
+
+class User extends EloquentLikeModel {
+
+    protected $hidden = ['password'];
+
+    protected $guarded = ['password'];
+
+    protected $casts = ['age' =&gt; 'integer'];
+
+    public function save()
+    {
+        return API::post('/items', $this-&gt;attributes);
+    }
+
+    public function setBirthdayAttribute($value)
+    {
+        $this-&gt;attributes['birthday'] = strtotime($value);
+    }
+
+    public function getBirthdayAttribute($value)
+    {
+        return new DateTime(&quot;@$value&quot;);
+    }
+
+    public function getAgeAttribute($value)
+    {
+        return $this-&gt;birthday-&gt;diff(new DateTime('now'))-&gt;y;
+    }
+}
+
+$item = new User(array('name' =&gt; 'john'));
+$item-&gt;password = 'bar';
+
+echo $item; // {&quot;name&quot;:&quot;john&quot;}
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://joakimhedlund.com/blog/treating-elasticsearch-documents-like-eloquent-models">https://joakimhedlund.com/blog/treating-elasticsearch-documents-like-eloquent-models</a></p>
+<p><a href="https://laracasts.com/discuss/channels/eloquent/problems-with-jenssegers-laravel-mongodb-eloquent">https://laracasts.com/discuss/channels/eloquent/problems-with-jenssegers-laravel-mongodb-eloquent</a></p>
+<h1 id="无限树状层级模型">无限树状层级模型</h1>
+<p>两种对比</p>
+<p><a href="https://laracasts.com/discuss/channels/laravel/laravel-nestset-vs-baum">https://laracasts.com/discuss/channels/laravel/laravel-nestset-vs-baum</a></p>
+<p><a href="https://laravel-china.org/topics/2124/using-baum-nested-set-model-to-achieve-unlimited-classification-laravel-model">https://laravel-china.org/topics/2124/using-baum-nested-set-model-to-achieve-unlimited-classification-laravel-model</a></p>
+<h1 id="让模型支持标签">让模型支持标签</h1>
+<h1 id="模型字段分词">模型字段分词</h1>
+<p><a href="https://github.com/cviebrock/eloquent-sluggable">https://github.com/cviebrock/eloquent-sluggable</a></p>
+<p>例如</p>
+<pre><code class="language-php">/post/1
+
+/post/this-is-test-article
+</code></pre>
+<h2 id="multi-tenant">multi-tenant</h2>
+<p>运行多个 laravel 站点的方案</p>
+<p><a href="https://github.com/hyn/multi-tenant">https://github.com/hyn/multi-tenant</a></p>
+<h1 id="env-编辑">env 编辑</h1>
+<p><a href="https://github.com/Brotzka/laravel-dotenv-editor">https://github.com/Brotzka/laravel-dotenv-editor</a></p>
+<h1 id="菜单">菜单</h1>
+<p><a href="https://github.com/caffeinated/menus">https://github.com/caffeinated/menus</a></p>
+<h1 id="如果路由在当前则当前菜单项设为-active">如果路由在当前，则当前菜单项设为 active</h1>
+<p><a href="https://github.com/laravelista/Ekko">https://github.com/laravelista/Ekko</a></p>
+<h1 id="邮箱转头像-例如-ericzhangtestcom---显示一个--ez-圆形头像">邮箱转头像 例如 <a href="mailto:ericzhang@test.com">ericzhang@test.com</a>   显示一个  EZ 圆形头像</h1>
+<p><a href="https://github.com/laravolt/avatar">https://github.com/laravolt/avatar</a></p>
+<p>不过如果网络正常，可以用 gravatar 等服务，节省本地资源</p>
+<pre><code class="language-shell">composer require laravolt/avatar
+
+php artisan vendor:publish --provider=&quot;Laravolt\Avatar\ServiceProvider&quot;
+</code></pre>
+<p>使用</p>
+<p>base64</p>
+<pre><code class="language-php">//this will output data-uri (base64 image data)
+//something like data:image/png;base64,iVBORw0KGg....
+Avatar::create('Joko Widodo')-&gt;toBase64();
+
+//use in view
+//this will display initials JW as an image
+&lt;img src=&quot;{{ Avatar::create('Joko Widodo')-&gt;toBase64() }}&quot; /&gt;
+</code></pre>
+<p>效果</p>
+<p><img src="/media/15490412692745/15585993992763.jpg" alt="-w144"></p>
+<p>如果缩小，边缘有锯齿。。。配置里 circle 改成  square （得到的base64好像透明的背景，是不是 SVG 格式会好些？需要引入font）</p>
+<p>保存文件</p>
+<pre><code class="language-php">Avatar::create('Susilo Bambang Yudhoyono')-&gt;save('sample.png');
+Avatar::create('Susilo Bambang Yudhoyono')-&gt;save('sample.jpg', 100); // quality = 100
+</code></pre>
+<p>gravatar</p>
+<pre><code class="language-php">Avatar::create('uyab@example.net')-&gt;toGravatar();
+// Output: http://gravatar.com/avatar/0dcae7d6d76f9a3b14588e9671c45879
+
+Avatar::create('uyab@example.net')-&gt;toGravatar(['d' =&gt; 'identicon', 'r' =&gt; 'pg', 's' =&gt; 100]);
+// Output: http://gravatar.com/avatar/0dcae7d6d76f9a3b14588e9671c45879?d=identicon&amp;r=pg&amp;s=100
+</code></pre>
+<p>其他 略</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8C%85/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/artisan-%E5%91%BD%E4%BB%A4/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

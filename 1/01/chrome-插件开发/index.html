@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="chrome 插件开发 起步 创建 extension 目录和 manifest.js HTML/CSS/JavaScript &#43; Chrome 提供的 api = Chrome Extension 新建一个目录例如 test-chrome-ext 添加文件manifest.json作为 Manifest { &amp;quot;name&amp;quot;: &amp;quot;Getting Started Example&amp;quot;, &amp;quot;version&amp;quot;: &amp;quot;1.0&amp;quot;, &amp;quot;description&amp;quot;: &amp;quot;Build an Extension!&amp;quot;, &amp;quot;manifest_version&amp;quot;: 2 } 一个没" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="chrome 插件开发 起步 创建 extension 目录和 manifest.js HTML/CSS/JavaScript &#43; Chrome 提供的 api = Chrome Extension 新建一个目录例如 test-chrome-ext 添加文件manifest.json作为 Manifest { &quot;name&quot;: &quot;Getting Started Example&quot;, &quot;version&quot;: &quot;1.0&quot;, &quot;description&quot;: &quot;Build an Extension!&quot;, &quot;manifest_version&quot;: 2 } 一个没" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="chrome 插件开发 起步 创建 extension 目录和 manifest.js HTML/CSS/JavaScript &#43; Chrome 提供的 api = Chrome Extension 新建一个目录例如 test-chrome-ext 添加文件manifest.json作为 Manifest { &quot;name&quot;: &quot;Getting Started Example&quot;, &quot;version&quot;: &quot;1.0&quot;, &quot;description&quot;: &quot;Build an Extension!&quot;, &quot;manifest_version&quot;: 2 } 一个没">
+
+<meta itemprop="wordCount" content="5981">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="chrome 插件开发 起步 创建 extension 目录和 manifest.js HTML/CSS/JavaScript &#43; Chrome 提供的 api = Chrome Extension 新建一个目录例如 test-chrome-ext 添加文件manifest.json作为 Manifest { &quot;name&quot;: &quot;Getting Started Example&quot;, &quot;version&quot;: &quot;1.0&quot;, &quot;description&quot;: &quot;Build an Extension!&quot;, &quot;manifest_version&quot;: 2 } 一个没"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5981字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="chrome-插件开发">chrome 插件开发</h1>
+<h1 id="起步">起步</h1>
+<h2 id="创建-extension-目录和-manifestjs">创建 extension 目录和 manifest.js</h2>
+<p>HTML/CSS/JavaScript + Chrome 提供的 api = Chrome Extension</p>
+<p>新建一个目录例如 <code>test-chrome-ext</code></p>
+<p>添加文件<code>manifest.json</code>作为 Manifest</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;Getting Started Example&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;description&quot;: &quot;Build an Extension!&quot;,
+  &quot;manifest_version&quot;: 2
+}
+</code></pre>
+<p>一个没有任何功能的扩展就完成了，进入 Chrome 的扩展中心，chrome://extensions，打开<strong>开发者模式</strong>，加载它看看</p>
+<h2 id="manifest-的-instruction-指令定义-background-script-等">manifest 的 instruction （指令）：定义 background script 等</h2>
+<p>添加一个文件<code>background.js</code>到 background script. 主要作用是在 storage 里保存一个数据</p>
+<pre><code class="language-js">chrome.runtime.onInstalled.addListener(function() {
+    chrome.storage.sync.set({color: '#3aa757'}, function() {
+      console.log(&quot;The color is green.&quot;);
+    });
+  });
+</code></pre>
+<p>必须在 manifest.js 文件中注册这个文件，extension 才知道如何去使用它们。 现在这个扩展知道它包含了一个<code>pesistent</code>为<strong>false</strong>的background script 了，可以在里面监听事件，运行动作。</p>
+<p>另外由于这个extention 需要访问 <code>storage</code> API, 还要注册到权限 <code>permissions</code></p>
+<pre><code class="language-json">//....
+&quot;description&quot;: &quot;Build an Extension!&quot;,
+&quot;permissions&quot;: [&quot;storage&quot;],
+&quot;background&quot;: {
+  &quot;scripts&quot;: [&quot;background.js&quot;],
+  &quot;persistent&quot;: false
+},
+//..
+</code></pre>
+<p>回到扩展管理界面刷新，出现一个<code>Inspect views: background page</code>  点击这个链接后 console 会显示 log 信息</p>
+<h2 id="user-interface-用户界面与图标">User Interface 用户界面与图标</h2>
+<p>新建 <code>popup.html</code>,里面有个按钮，绑定一个id <code>changeColor</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;style&gt;
+        button {
+          height: 30px;
+          width: 30px;
+          outline: none;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;button id=&quot;changeColor&quot;&gt;&lt;/button&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+<p>然后在 manifest.js 里<strong>注册这个页面</strong>，并定义 <code>default_popup</code> 的值为这个 html 文件</p>
+<p>顺便把这个 extension 的<strong>在工具条上显示的</strong>图标定义好<code>default_icon</code></p>
+<p>最后，<code>icons</code> 定义了 extension management page, the permissions warning, and favicon</p>
+<pre><code class="language-json">//...
+&quot;page_action&quot;: {
+  &quot;default_popup&quot;: &quot;popup.html&quot;,
+  &quot;default_icon&quot;: {
+    &quot;16&quot;: &quot;images/get_started16.png&quot;,
+    &quot;32&quot;: &quot;images/get_started32.png&quot;,
+    &quot;48&quot;: &quot;images/get_started48.png&quot;,
+    &quot;128&quot;: &quot;images/get_started128.png&quot;
+  }
+},
+
+&quot;icons&quot;: {
+  &quot;16&quot;: &quot;images/get_started16.png&quot;,
+  &quot;32&quot;: &quot;images/get_started32.png&quot;,
+  &quot;48&quot;: &quot;images/get_started48.png&quot;,
+  &quot;128&quot;: &quot;images/get_started128.png&quot;
+},
+</code></pre>
+<p>目前，这个 extension 还没有任何动作。还需要告诉浏览器用户如何与 popup.html 交互。</p>
+<h2 id="在-background-script-中设置-declared-rules-规则">在 background script 中设置 declared rules （规则）</h2>
+<p>向 background 脚本添加 <strong>declared rules</strong>,  这里定义 <code>pageUrl</code> 表示当访问到这个 URL 地址的时候，插件才生效</p>
+<pre><code class="language-js">chrome.runtime.onInstalled.addListener(function() {
+    //chrome.storage.sync.set({color: '#3aa757'}, function() {
+
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+      chrome.declarativeContent.onPageChanged.addRules([{
+        conditions: [new chrome.declarativeContent.PageStateMatcher({
+          pageUrl: {hostEquals: 'developer.chrome.com'},
+        })
+        ],
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+      }]);
+    });
+});
+</code></pre>
+<p>然后回到 manifest 的在 <code>permission</code> 里注册 <code>declarativeContent</code> 让 extension 有权限访问 declarativeContent API</p>
+<pre><code class="language-jsoon">//...
+&quot;permissions&quot;: [&quot;declarativeContent&quot;, &quot;storage&quot;],
+</code></pre>
+<p>现在打开网站 developer.chrome.com，插件的图标激活可以使用了，点击弹出 popup.html</p>
+<h2 id="然后给-popuphtml-里的按钮动作写事件代码">然后给 popup.html 里的按钮动作写事件代码</h2>
+<p>添加 <code>popup.js</code> 文件</p>
+<pre><code class="language-js">let changeColor = document.getElementById('changeColor');
+
+chrome.storage.sync.get('color', function(data) {
+    changeColor.style.backgroundColor = data.color;
+    changeColor.setAttribute('value', data.color);
+});
+</code></pre>
+<p>然后在 popup.html 里 include 这个文件</p>
+<pre><code class="language-html">&lt;body&gt;
+    &lt;button id=&quot;changeColor&quot;&gt;&lt;/button&gt;
+    &lt;script src=&quot;popup.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>测试一下，当访问 URL 刷新页面 developer.chrome.com 时，从 storage 里获取 color 的值，然后应用这个颜色到 button 的背景色</p>
+<p>当然我们可以改成不要“自动”，而是点击才触发事件，并且改变的不是按钮自己的背景色，而是<strong>chrome浏览器当前激活tab背景色</strong></p>
+<pre><code class="language-js">changeColor.onclick = function(element) {
+    let color = element.target.value;
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.executeScript(
+          tabs[0].id,
+          {code: 'document.body.style.backgroundColor = &quot;' + color + '&quot;;'});
+    });
+  };
+</code></pre>
+<p>由于我们访问了 tabs API, 也要在 manifest 里定义下 permission</p>
+<pre><code class="language-json">&quot;permissions&quot;: [&quot;activeTab&quot;, &quot;declarativeContent&quot;, &quot;storage&quot;],
+</code></pre>
+<h2 id="提供选项">提供选项</h2>
+<p>不是所有人都喜欢绿色. 再新建一组文件 <code>options.html</code> 和 <code>options.js</code></p>
+<p>首先在 manifest 里注册</p>
+<pre><code class="language-json">&quot;options_page&quot;: &quot;options.html&quot;,
+</code></pre>
+<p>options.html</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;style&gt;
+        button {
+          height: 30px;
+          width: 30px;
+          outline: none;
+          margin: 10px;
+        }
+      &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;div id=&quot;buttonDiv&quot;&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;p&gt;Choose a different background color!&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+    &lt;script src=&quot;options.js&quot;&gt;&lt;/script&gt;
+  &lt;/html&gt;
+</code></pre>
+<p>options.js, 插入几个颜色按钮</p>
+<pre><code class="language-js">let page = document.getElementById('buttonDiv');
+
+const kButtonColors = ['#3aa757', '#e8453c', '#f9bb2d', '#4688f1'];
+
+function constructOptions(kButtonColors) {
+    for (let item of kButtonColors) {
+      let button = document.createElement('button');
+      button.style.backgroundColor = item;
+      button.addEventListener('click', function() {
+        chrome.storage.sync.set({color: item}, function() {
+          console.log('color is ' + item);
+        })
+      });
+      page.appendChild(button);
+    }
+}
+constructOptions(kButtonColors);
+</code></pre>
+<p>然后刷新插件管理器界面，点击“detail&quot;按钮，点击<code>Extension options</code>来查看 options page.</p>
+<h1 id="overview">Overview</h1>
+<h2 id="architecture">Architecture</h2>
+<p>一般包含</p>
+<p><strong>Manifest</strong></p>
+<p><strong>Background Script</strong>
+event handler, listeners for browser events,only loaded when it is needed and unloaded when it goes idle</p>
+<p><strong>UI Elements</strong>
+page action: 可以使用 declarative content API 来设置一些规则，只在某些情况下可用
+browser action
+contain ordinary HTML pages with JavaScript logic</p>
+<p><strong>Content Script</strong>
+executes in the contexts of a page that has been loaded into the browser. read and modify the DOM of web pages the browser visits. can communicate with their parent extension by exchanging messages and storing values using the storage API.</p>
+<p><strong>Options Page</strong>
+enables customization of the extension. Options can be used to enable features and allow users to choose what functionality is relevant to their needs.</p>
+<p><img src="/media/15490413365245/15380496955803.png" alt=""></p>
+<h2 id="debug">Debug</h2>
+<p><a href="https://developer.chrome.com/tut_debugging">https://developer.chrome.com/tut_debugging</a></p>
+<h2 id="api">API</h2>
+<p><a href="https://developer.chrome.com/api_index">https://developer.chrome.com/api_index</a></p>
+<p>大部分 Chrome API 是异步的，因此要尽量使用回调的方法(就像前面的 <code>chrome.tabs.query({}, function(tabs){})</code>)，如果有的地方用同步的写法会报错.</p>
+<p>执行顺序（行号） 1-&gt;4-&gt;2</p>
+<pre><code class="language-js">chrome.tabs.query({'active': true}, function(tabs) {
+    chrome.tabs.update(tabs[0].id, {url: newUrl});
+});
+someOtherFunction();
+</code></pre>
+<h2 id="在页面和组件之间交流">在页面和组件之间交流</h2>
+<p>all components of the extension can access values stored using the <strong>storage API</strong> and communicate through <strong>message passing</strong></p>
+<h2 id="数据保存和隐身模式">数据保存和隐身模式</h2>
+<p>可以把数据使用 storage API 保存到本地，或者 post 到服务器</p>
+<p>默认情况下，extension 不能在隐身模式运行，所以传递数据前先检查下<code>if (tab.incognito)</code></p>
+<pre><code class="language-js">function saveTabData(tab) {
+  if (tab.incognito) {
+    return;
+  } else {
+    chrome.storage.local.set({data: tab.url});
+  }
+}
+</code></pre>
+<h2 id="manifest">Manifest</h2>
+<p><a href="https://developer.chrome.com/extensions/manifest">https://developer.chrome.com/extensions/manifest</a></p>
+<h2 id="manage-events-with-background-scripts">Manage Events with background scripts</h2>
+<p>Extensions monitor these events in their background script, then react with specified instructions</p>
+<ul>
+<li>The extension is first installed or updated to a new version.</li>
+<li>The background page was listening for an event, and the event is dispatched.</li>
+<li>A content script or other extension sends a message.</li>
+<li>Another view in the extension, such as a popup, calls runtime.getBackgroundPage.</li>
+</ul>
+<p>Once it has been loaded, a background page will stay running as long as it is performing an action, such as calling a Chrome API or issuing a network request</p>
+<p>可以在background scripts里载入一个或多个 js 文件（模块化）</p>
+<blockquote>
+<p>The only occasion to keep a background script persistently active is if the extension uses chrome.webRequest API to block or modify network requests</p>
+</blockquote>
+<p>这段 <code>persistent</code> 持久化 只有在需要使用 webRequest API 的时候设置为 true(用来阻塞和修改网络请求)</p>
+<p>如果当前使用持久化模式，要转成非持久化模式，看  <a href="https://developer.chrome.com/background_migration">https://developer.chrome.com/background_migration</a></p>
+<h3 id="initial-extension">Initial Extension</h3>
+<p>监听<code>runtime.onInstalled</code>事件，设置”一次性“的初始化操作，例如上下文菜单</p>
+<h3 id="set-up-listeners">Set Up Listeners</h3>
+<p>Listeners must be registered synchronously(同步地) from the start of the page</p>
+<pre><code class="language-js">chrome.runtime.onInstalled.addListener(function() {
+
+});
+
+// This will run when a bookmark is created.
+chrome.bookmarks.onCreated.addListener(function() {
+// do something
+});
+</code></pre>
+<p>错误，它被放入一个异步的回调函数里，导致无法被触发</p>
+<pre><code class="language-js">chrome.runtime.onInstalled.addListener(function() {
+    // ERROR! Events must be registered synchronously from the start of
+    // the page.
+    chrome.bookmarks.onCreated.addListener(function() {
+      // do something
+    });
+  });
+</code></pre>
+<p>移除listener <code>chrome.runtime.onMessage.removeListener</code>。 当所有监听器被移除，chrome 就不会再使用 background script 来处理事件</p>
+<pre><code class="language-js">chrome.runtime.onMessage.addListener(function(message, sender, reply) {
+      chrome.runtime.onMessage.removeListener(event);
+  });
+</code></pre>
+<h3 id="filter-events">Filter Events</h3>
+<p>限制监听器只有在满足特定条件下才执行</p>
+<p>注意一个：tabs API 不支持 filters, 改成 webNavigation.onCompleted 事件</p>
+<pre><code class="language-js">chrome.webNavigation.onCompleted.addListener(function() {
+      alert(&quot;This is my favorite website!&quot;);
+  }, {url: [{urlMatches : 'https://www.google.com/'}]});
+</code></pre>
+<h3 id="react-to-listeners-响应事件">React to Listeners 响应事件</h3>
+<p>在侦听器事件内部构造所需的反应</p>
+<pre><code class="language-js"> chrome.runtime.onMessage.addListener(function(message, callback) {
+    if (message.data == “setAlarm”) {
+      chrome.alarms.create({delayInMinutes: 5})
+    } else if (message.data == “runLogic”) {
+      chrome.tabs.executeScript({file: 'logic.js'});
+    } else if (message.data == “changeColor”) {
+      chrome.tabs.executeScript(
+          {code: 'document.body.style.backgroundColor=&quot;orange&quot;'});
+    };
+  });
+</code></pre>
+<h3 id="unload-background-scripts">Unload Background Scripts</h3>
+<p>数据应该定时保存，以避免发生未收到 onSuspend 信号就崩溃导致数据丢失的问题</p>
+<pre><code class="language-js">chrome.storage.local.set({variable: variableInformation});
+</code></pre>
+<p>如果使用 Message Passing (<a href="https://developer.chrome.com/extensions/messaging),">https://developer.chrome.com/extensions/messaging),</a>要确保所有端口（ports）都关闭了。The background script will not unload until all message ports have shut</p>
+<p>Listening to the <code>runtime.Port.onDisconnect</code> event will give insight to when open ports are closing. Manually close them with <code>runtime.Port.disconnect</code>.</p>
+<pre><code class="language-js">chrome.runtime.onMessage.addListener(function(message, callback) {
+    if (message == 'hello') {
+      sendResponse({greeting: 'welcome!'})
+    } else if (message == 'goodbye') {
+      chrome.runtime.Port.disconnect();
+    }
+  });
+</code></pre>
+<p>background script 的生命周期可以在 chrome task manager 里看到.</p>
+<p>如果超过一定的时间没有激活，会自动 unload, 如果需要最后做一点清理等动作，listen to the <code>runtime.onSuspend</code> event （不过，数据持久化保存优先于 onSuspend），因为 onSuspend 崩溃时并不会提供太多帮助和允许太多清理动作</p>
+<pre><code class="language-js">chrome.runtime.onSuspend.addListener(function() {
+    console.log(&quot;Unloading.&quot;);
+    chrome.browserAction.setBadgeText({text: &quot;&quot;});
+  });
+</code></pre>
+<h2 id="design-user-interface">Design User Interface</h2>
+<h3 id="activate-the-extension-on-all-pages">Activate the extension on <strong>all</strong> pages</h3>
+<p>注册<code>&quot;browser_action&quot;: {</code>，表示 extension 在”全局“生效</p>
+<p><strong>Add a badge</strong></p>
+<pre><code class="language-js">chrome.browserAction.setBadgeText({text: 'ON'});
+  chrome.browserAction.setBadgeBackgroundColor({color: '#4688F1'});
+</code></pre>
+<h3 id="activate-the-extension-on-select-pages">Activate the extension on <strong>select pages</strong></h3>
+<p>extension 只在某些条件下生效(在失效的页面中，显示灰色图标)，注册<code>&quot;page_action&quot;: {</code></p>
+<p><strong>定义rules</strong></p>
+<pre><code class="language-js">// That fires when a page's URL contains a 'g' ...
+  conditions: [
+    new chrome.declarativeContent.PageStateMatcher({
+      pageUrl: { urlContains: 'g' },
+    })
+  ],
+  // And shows the extension's page action.
+  actions: [ new chrome.declarativeContent.ShowPageAction() ]
+</code></pre>
+<p><strong>(dynamically)Enable or disable the extension</strong></p>
+<p><code>pageAction.show</code> and <code>pageAction.hide</code></p>
+<p>例如有个extension,作用是扫描任意页面，只要发现里面有“地址”类型的数据，就提示可以显示地图。因为我们不知道哪个页面有“地址”数据，所以无法定义 rules 来固定url匹配格式, 只能在发现满足条件的时候让插件可用。</p>
+<pre><code class="language-js">chrome.runtime.onMessage.addListener(function(req, sender) {
+    chrome.storage.local.set({'address': req.address})
+    chrome.pageAction.show(sender.tab.id);
+    chrome.pageAction.setTitle({tabId: sender.tab.id, title: req.address});
+  });
+</code></pre>
+<h3 id="icons">icons</h3>
+<p>toolbar icons &amp;&amp;  additional icons</p>
+<h3 id="additional-ui-features">Additional UI Features</h3>
+<p><strong>popup</strong></p>
+<p><strong>Tooltip</strong></p>
+<pre><code class="language-js">&quot;browser_action&quot;: {
+      &quot;default_title&quot;: &quot;Press Ctrl(Win)/Command(Mac)+Shift+Right/Left to flip tabs&quot;
+    }
+</code></pre>
+<p>更新 by calling <code>browserAction.setTitle</code> and <code>pageAction.setTitle</code></p>
+<pre><code class="language-js">chrome.browserAction.onClicked.addListener(function(tab) {
+    chrome.browserAction.setTitle({tabId: tab.id, title: &quot;You are on tab:&quot; + tab.id});
+  });
+</code></pre>
+<p><strong>Internationalization</strong></p>
+<p>创建文件夹<code>_locales</code></p>
+<p>_locales/en/message.json
+_locales/cn/message.json</p>
+<p>内容</p>
+<pre><code class="language-json"> {
+    &quot;__MSG_tooltip__&quot;: {
+        &quot;message&quot;: &quot;Hello!&quot;,
+        &quot;description&quot;: &quot;Tooltip Greeting.&quot;
+    }
+  }
+</code></pre>
+<p>使用的时候</p>
+<pre><code class="language-js">&quot;browser_action&quot;: {
+      &quot;default_title&quot;: &quot;__MSG_tooltip__&quot;
+    }
+</code></pre>
+<p><strong>Omnibox</strong></p>
+<p>通过给 extension 定义一个关键词，当用户在 url 输入后，出现一个搜索tab（就像输入 baidu 一样）</p>
+<pre><code class="language-json">&quot;omnibox&quot;: { &quot;keyword&quot; : &quot;nt&quot; },
+    &quot;default_icon&quot;: {
+      &quot;16&quot;: &quot;newtab_search16.png&quot;,
+      &quot;32&quot;: &quot;newtab_search32.png&quot;
+    }
+</code></pre>
+<p>background script</p>
+<pre><code class="language-js">chrome.omnibox.onInputEntered.addListener(function(text) {
+  // Encode user input for special characters , / ? : @ &amp; = + $ #
+  var newURL = 'https://www.google.com/search?q=' + encodeURIComponent(text);
+  chrome.tabs.create({ url: newURL });
+});
+</code></pre>
+<p><strong>Context Menu</strong></p>
+<p>创建一个在页面里右键点击展开菜单里的</p>
+<pre><code class="language-js">const kLocales = {
+    'com.au': 'Australia',
+    'com.br': 'Brazil',
+    'ca': 'Canada',
+    'cn': 'China',
+    'fr': 'France',
+    'it': 'Italy',
+    
+//
+
+chrome.runtime.onInstalled.addListener(function() {
+    for (let key of Object.keys(kLocales)) {
+      chrome.contextMenus.create({
+        id: key,
+        title: kLocales[key],
+        type: 'normal',
+        contexts: ['selection'],
+      });
+</code></pre>
+<p><img src="/media/15490413365245/15381004477530.png" alt="-w494"></p>
+<p><strong>Commands (键盘输入)</strong></p>
+<p>bind them to a key combination.</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;Tab Flipper&quot;,
+    ...
+    &quot;commands&quot;: {
+      &quot;flip-tabs-forward&quot;: {
+        &quot;suggested_key&quot;: {
+          &quot;default&quot;: &quot;Ctrl+Shift+Right&quot;,
+          &quot;mac&quot;: &quot;Command+Shift+Right&quot;
+        },
+        &quot;description&quot;: &quot;Flip tabs forward&quot;
+      },
+      &quot;flip-tabs-backwards&quot;: {
+        &quot;suggested_key&quot;: {
+          &quot;default&quot;: &quot;Ctrl+Shift+Left&quot;,
+          &quot;mac&quot;: &quot;Command+Shift+Left&quot;
+        },
+        &quot;description&quot;: &quot;Flip tabs backwards&quot;
+      }
+</code></pre>
+<p>然后写对应的 command 事件监听器</p>
+<pre><code class="language-js"> chrome.commands.onCommand.addListener(function(command) {
+    chrome.tabs.query({currentWindow: true}, function(tabs) {
+      // Sort tabs according to their index in the window.
+      tabs.sort((a, b) =&gt; { return a.index &lt; b.index; });
+      let activeIndex = tabs.findIndex((tab) =&gt; { return tab.active; });
+      let lastTab = tabs.length - 1;
+      let newIndex = -1;
+      if (command === 'flip-tabs-forward')
+        newIndex = activeIndex === 0 ? lastTab : activeIndex - 1;
+      else  // 'flip-tabs-backwards'
+        newIndex = activeIndex === lastTab ? 0 : activeIndex + 1;
+      chrome.tabs.update(tabs[newIndex].id, {active: true, highlighted: true});
+    });
+  });
+</code></pre>
+<p>command 还能操作 extension 自己，例如打开 popup ()还可以用 <code>execute_page_action</code></p>
+<pre><code class="language-json">&quot;browser_action&quot;: {
+  &quot;default_popup&quot;: &quot;hello.html&quot;,
+  &quot;default_icon&quot;: &quot;hello_extensions.png&quot;
+},
+ &quot;commands&quot;: {
+  &quot;_execute_browser_action&quot;: {
+    &quot;suggested_key&quot;: {
+      &quot;default&quot;: &quot;Ctrl+Shift+F&quot;,
+      &quot;mac&quot;: &quot;MacCtrl+Shift+F&quot;
+    },
+    &quot;description&quot;: &quot;Opens hello.html&quot;
+  }
+</code></pre>
+<p><strong>Override Pages</strong></p>
+<p>An extension can override and replace the History, New Tab, or Bookmarks web page with a custom HTML file. Like a popup, it can include specialized logic and style, but <strong>does not allow inline JavaScript</strong>（但可以include）. A single extension is limited to overriding only one of the <strong>three</strong> possible pages.</p>
+<p>例如用一个自定义页面替换新标签页(或 bookmarks， history)</p>
+<pre><code class="language-js"> &quot;chrome_url_overrides&quot; : {
+      &quot;newtab&quot;: &quot;override_page.html&quot;  
+    },
+</code></pre>
+<pre><code class="language-html">&lt;html&gt;
+   &lt;head&gt;
+    &lt;title&gt;New Tab&lt;/title&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+      &lt;h1&gt;Hello World&lt;/h1&gt;
+    &lt;script src=&quot;logic.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="content-scripts">Content Scripts</h2>
+<p>运行于网页的上下文环境中的脚本文件，使用标准 DOM，能够获取、修改页面内容元素，并传递信息给上级extension</p>
+<p>用 messages 来与 Chrome API 交互
+发起  cross-site XMLHttpRequests 来访问站点
+访问扩展的文件：chrome.runtime.getURL()</p>
+<p>可直接访问下面的api，其他的无法直接访问</p>
+<ul>
+<li>i18n</li>
+<li>storage</li>
+<li>runtime:</li>
+<li>connect
+<ul>
+<li>getManifest</li>
+<li>getURL</li>
+<li>id</li>
+<li>onConnect</li>
+<li>onMessage</li>
+<li>sendMessage</li>
+</ul>
+</li>
+</ul>
+<p><strong>content script 不会污染别的页面</strong></p>
+<h3 id="inject-scripts">Inject Scripts</h3>
+<p>可以用“编程方式”（programmatically）或“声明式”(declaratively)来注入</p>
+<p><strong>programmatically</strong></p>
+<p>在某个特定场合运行。</p>
+<p>首先提供<code>activeTab</code>权限，让 content script 可以在当前激活的 tab 运行，而不需要指定 cross-origin permissions.</p>
+<pre><code class="language-json"> &quot;permissions&quot;: [
+      &quot;activeTab&quot;
+    ],
+</code></pre>
+<p>然后写注入的一段代码<code>chrome.tabs.executeScript({code: })</code></p>
+<pre><code class="language-js">chrome.runtime.onMessage.addListener(
+    function(message, callback) {
+      if (message == “changeColor”){
+        chrome.tabs.executeScript({
+          code: 'document.body.style.backgroundColor=&quot;orange&quot;'
+        });
+      }
+   });
+</code></pre>
+<p>或者整个文件 <code>chrome.tabs.executeScript({file: })</code></p>
+<pre><code class="language-js"> chrome.runtime.onMessage.addListener(
+    function(message, callback) {
+      if (message == “runContentScript”){
+        chrome.tabs.executeScript({
+          file: 'contentScript.js'
+        });
+      }
+   });
+</code></pre>
+<p><strong>declaratively</strong></p>
+<p>为 content scripts 使用声明式注入，将会自动在特定的页面里运行</p>
+<p>在 manifest 里注册 injected scripts(css, js)，并且指定 <a href="https://developer.chrome.com/extensions/match_patterns">match patterns</a></p>
+<pre><code class="language-json">&quot;content_scripts&quot;: [
+   {
+     &quot;matches&quot;: [&quot;http://*.nytimes.com/*&quot;],
+     &quot;css&quot;: [&quot;myStyles.css&quot;],
+     &quot;js&quot;: [&quot;contentScript.js&quot;]
+   }
+ ],
+</code></pre>
+<p>除了<code>matches</code>还有其他可选规则可以指定</p>
+<ul>
+<li>exclude_matches  如 <code>&quot;exclude_matches&quot;: [&quot;*://*/*business*&quot;],</code> 表示 <a href="http://www.nytimes.com/business">http://www.nytimes.com/business</a> 不匹配</li>
+<li>include_globs 如<code>&quot;include_globs&quot;: [&quot;*nytimes.com/???s/*&quot;],</code>表示 <a href="http://www.nytimes.com/">http://www.nytimes.com/</a> sports /index.html 不匹配(三个问号，字符数字对不上)</li>
+<li>exclude_globs 如<code>&quot;exclude_globs&quot;: [&quot;*science*&quot;],</code>表示 http:// science .nytimes.com or <a href="http://www.nytimes.com/">http://www.nytimes.com/</a> science 两个都无法匹配</li>
+</ul>
+<p><strong>Run Time</strong></p>
+<p><code>&quot;run_at&quot;: &quot;document_idle&quot;,</code></p>
+<p>还有 &ldquo;document_start&rdquo; or &ldquo;document_end&rdquo;</p>
+<p><strong>Specify Frames</strong></p>
+<p>处理 frames 的地址匹配</p>
+<pre><code class="language-json">&quot;all_frames&quot;: true,
+</code></pre>
+<h3 id="communication-with-the-embedding-page">Communication with the embedding page</h3>
+<p>虽然 content script 的执行环境和承载他们的 pages 是隔离的，但是它们共享对页面 DOM 的访问。
+因此<strong>如果页面想要与 content scripts 通信，或者通过 content scripts与 extension，必须经过 shared DOM</strong></p>
+<p>如下，使用<code> window.postMessage</code></p>
+<pre><code class="language-js">//contentScript.js
+
+var port = chrome.runtime.connect();
+
+window.addEventListener(&quot;message&quot;, function(event) {
+  // We only accept messages from ourselves
+  if (event.source != window)
+    return;
+
+  if (event.data.type &amp;&amp; (event.data.type == &quot;FROM_PAGE&quot;)) {
+    console.log(&quot;Content script received: &quot; + event.data.text);
+    port.postMessage(event.data.text);
+  }
+}, false);
+</code></pre>
+<p>然后在 example.html 里发送消息<code>window.postMessage({ type:'',text: ''}, *)</code>，posts messages to itself，消息被 content script 拦截和检查，然后发送给 extension process.
+用这种方式就实现了 page 和 extension process 通信，反之也是类似的。</p>
+<pre><code class="language-js">document.getElementById(&quot;theButton&quot;).addEventListener(&quot;click&quot;,
+    function() {
+  window.postMessage({ type: &quot;FROM_PAGE&quot;, text: &quot;Hello from the webpage!&quot; }, &quot;*&quot;);
+}, false);
+</code></pre>
+<h3 id="secure">Secure</h3>
+<p>虽然“隔离环境”提供了一层保护，但是在 content script 里还是可能会给 page 和 extension 带来漏洞风险</p>
+<p>例如一个content script通过 XMLHttpRequest 从一个URL里获取内容，一定要注意在 inject 之前处理跨站脚本攻击</p>
+<p>同样，使用 HTTPS 来避免 man-in-the-middle 攻击 （http://en.wikipedia.org/wiki/Man-in-the-middle_attack）</p>
+<p>另外，对于web page也要注意检查恶意脚本，像下面这些</p>
+<pre><code class="language-js">var data = document.getElementById(&quot;json-data&quot;)
+// WARNING! Might be evaluating an evil script!
+var parsed = eval(&quot;(&quot; + data + &quot;)&quot;)
+
+
+var elmt_id = ...
+// WARNING! elmt_id might be &quot;); ... evil script ... //&quot;!
+window.setTimeout(&quot;animate(&quot; + elmt_id + &quot;)&quot;, 200);
+</code></pre>
+<p>作为替代，使用安全一些的API而不是直接运行脚本</p>
+<pre><code class="language-js">var data = document.getElementById(&quot;json-data&quot;)
+// JSON.parse does not evaluate the attacker's scripts.
+var parsed = JSON.parse(data);
+
+var elmt_id = ...
+// The closure form of setTimeout does not evaluate scripts.
+window.setTimeout(function() {
+  animate(elmt_id);
+}, 200);
+</code></pre>
+<h2 id="声明权限和警告用户-declare-permissions-and-warn-users">声明权限和警告用户 Declare Permissions and Warn Users</h2>
+<h3 id="组织-permissions">组织 permissions</h3>
+<p>分必须和可选权限列表</p>
+<pre><code class="language-json">// required permissions
+    &quot;permissions&quot;: [
+      &quot;activeTab&quot;,
+      &quot;contextMenus&quot;,
+      &quot;storage&quot;
+    ],
+    // optional permissions
+    &quot;optional_permissions&quot;: [
+      &quot;topSites&quot;,
+      &quot;http://www.developer.chrome.com/*&quot;
+    ],
+        ...
+</code></pre>
+<p>在安装插件的时候，会列出<strong>必需权限</strong>清单。</p>
+<p>而<strong>可选权限</strong>，可以用 event 来触发</p>
+<h3 id="替代-activetab-权限">替代 activeTab 权限</h3>
+<p>如果<code>activeTab</code>权限被启用，那么插件可以</p>
+<ul>
+<li>Call tabs.executeScript or tabs.insertCSS on that tab.</li>
+<li>Get the URL, title, and favicon for that tab via an API that returns a tabs.Tab object.</li>
+<li>Intercept network requests in the tab to the tab&rsquo;s main frame origin using the webRequest API. The extension temporarily gets host permissions for the tab&rsquo;s main frame origin.</li>
+</ul>
+<p>还有这些用户动作也需要 activeTab</p>
+<ul>
+<li>Executing a browser action</li>
+<li>Executing a page action</li>
+<li>Executing a context menu item</li>
+<li>Executing a keyboard shortcut from the commands API</li>
+<li>Accepting a suggestion from the omnibox API</li>
+</ul>
+<h3 id="允许访问-allowing-access">允许访问 Allowing Access</h3>
+<p>如果需要访问 <code>file://</code> URLs或操作隐身模式，用户需要打开插件详情，chrome://extensions 去启用两个权限</p>
+<p>可以检测： extension.isAllowedIncognitoAccess() or able run on file:// URLs with extension.isAllowedFileSchemeAccess()</p>
+<h3 id="viewing-warnings-查看警告">Viewing Warnings 查看警告</h3>
+<p>如果插件已经被安装(unpack)，是看不到警告信息的</p>
+<p>如果想要看到这些信息，可以通过重新 pack 的方式</p>
+<p><img src="/media/15490413365245/15388919567638.png" alt=""></p>
+<p>指定一个地址，第一次忽略 Private key，会生成  .crx file and a .pem file （插件的 private key，一定要保存好）</p>
+<p>把生成的 crx 拖动到浏览器窗口中，会显示警告信息</p>
+<p><strong>Permissions with Warnings</strong></p>
+<p>完整列表 <a href="https://developer.chrome.com/extensions/permission_warnings">https://developer.chrome.com/extensions/permission_warnings</a></p>
+<p>tabs, tts, downloads 等等访问api的权限</p>
+<h3 id="update-permissions-更新权限">Update Permissions 更新权限</h3>
+<p>更新完插件的权限后，用户要重新启用它才能生效（会有警告提示）</p>
+<h2 id="give-users-options">Give Users Options</h2>
+<p>写 Options Page, options.html</p>
+<pre><code class="language-html">&lt;!--html5 header--&gt;
+
+&lt;div id=&quot;status&quot;&gt;&lt;/div&gt;
+&lt;button id=&quot;save&quot;&gt;Save&lt;/button&gt;
+
+&lt;script src=&quot;options.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>在 options.js 文件添加事件监听器</p>
+<pre><code class="language-js">document.addEventListener('DOMContentLoaded', restore_options);
+document.getElementById('save').addEventListener('click',
+    save_options);
+</code></pre>
+<p>使用<code>storage.sync</code>来跨设备保存用户数据</p>
+<pre><code class="language-js">// Saves options to chrome.storage
+function save_options() {
+  var color = document.getElementById('color').value;
+  var likesColor = document.getElementById('like').checked;
+  chrome.storage.sync.set({
+    favoriteColor: color,
+    likesColor: likesColor
+  }, function() {
+    // Update status to let user know options were saved.
+    var status = document.getElementById('status');
+    status.textContent = 'Options saved.';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 750);
+  });
+}
+
+// Restores select box and checkbox state using the preferences
+// stored in chrome.storage.
+function restore_options() {
+  // Use default value color = 'red' and likesColor = true.
+  chrome.storage.sync.get({
+    favoriteColor: 'red',
+    likesColor: true
+  }, function(items) {
+    document.getElementById('color').value = items.favoriteColor;
+    document.getElementById('like').checked = items.likesColor;
+  });
+}
+
+</code></pre>
+<h3 id="声明-option-page-behavior">声明 Option Page Behavior</h3>
+<p>有 <code>full page</code> 和 <code>embedded</code> 两种 option page 类型，在 manifest 里声明</p>
+<pre><code class="language-json"> &quot;options_page&quot;: &quot;options.html&quot;,
+</code></pre>
+<p>或</p>
+<pre><code class="language-json">&quot;options_ui&quot;: {
+    &quot;page&quot;: &quot;options.html&quot;,
+    &quot;open_in_tab&quot;: false
+  },
+</code></pre>
+<h3 id="不同之处">不同之处</h3>
+<p><strong>跳转到选项页面</strong></p>
+<p>嵌入在chrome中的选项页面://扩展有一些细微的行为差异，与不在它们自己的选项卡中托管有关。可以给一个按钮绑定跳转到选项页面的动作</p>
+<p>popup.js</p>
+<pre><code class="language-js">document.querySelector('#go-to-options').addEventListener(function() {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
+});
+</code></pre>
+<p><strong>Tabs API</strong></p>
+<p>由于 embedded options page 并不在一个 tab 里，因此影响了 tab api 的使用</p>
+<ul>
+<li>tabs.query will never find a tab within an extension&rsquo;s options page URL.</li>
+<li>tabs.onCreated will not fire when the options page is opened.</li>
+<li>tabs.onUpdated will not fire when the options page load state changes.</li>
+<li>tabs.connect or tabs.sendMessage cannot be used to communicate with the options page.</li>
+</ul>
+<p>因此，如果选项页确实要操作tab，使用 <code>runtime.connect</code> 和 <code>runtime.sendMessage</code>绕过这个限制</p>
+<p><strong>Messaging APIs</strong></p>
+<p>接上，options page 使用两个方法来发送 a message， Sender&rsquo;s tab 则不会被设置， Sender&rsquo;s URL 则是 option page 的 URL</p>
+<p><strong>Sizing</strong></p>
+<p>embedded options 自动根据包含的页面内容检查size（但常常做得不太好）。因此可能需要多次调整，以提供一个”最小“的合适尺寸给option page.</p>
+<h1 id="developers-guide-资料">Developer&rsquo;s Guide 资料</h1>
+<h2 id="重要-大量的api使用方法在这里查询">[重要] 大量的api使用方法在这里查询</h2>
+<p><a href="https://developer.chrome.com/extensions/devguide">https://developer.chrome.com/extensions/devguide</a></p>
+<h2 id="performance">performance</h2>
+<h1 id="用-reactparcel也可以根据自己需要用-webpack">用 React+Parcel(也可以根据自己需要用 webpack)</h1>
+<p><a href="https://medium.freecodecamp.org/building-chrome-extensions-in-react-parcel-79d0240dd58f">https://medium.freecodecamp.org/building-chrome-extensions-in-react-parcel-79d0240dd58f</a></p>
+<p>结构</p>
+<blockquote>
+<p>├── icon.png
+├── manifest.json
+├── node_modules
+├── .babelrc
+├── package.json
+└── src
+├── build
+│   └── main.js [We will use that build file as content script]
+├── js [Where our development file is stored]
+│   ├── components [We are storing components in this folder]
+│   │   └── Header.js
+│   ├── main.js [Our main file, that renders our app]
+│   └── popup.js [Our javascript file for popup]
+└── popup.html [Our html file for rendering popup after clicking the icon in the bar]</p>
+</blockquote>
+<p>创建 manifest.json, content_script 里 js 指向了这个 Parel 项目编译打包出的最终文件 /src/build/main.js</p>
+<pre><code class="language-json">{
+  &quot;manifest_version&quot;: 2,
+
+  &quot;name&quot;: &quot;Name of your chrome extension&quot;,
+  &quot;description&quot;: &quot;Description of your chrome extension.&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+
+  &quot;background&quot;: {
+    &quot;scripts&quot;: [
+      &quot;background.js&quot;
+    ],
+    &quot;persistent&quot;: false
+  },
+
+  &quot;browser_action&quot;: {
+    &quot;default_icon&quot;: &quot;icon.png&quot;,
+    &quot;default_popup&quot;: &quot;src/popup.html&quot;
+  },
+
+  &quot;permissions&quot;: [
+    &quot;activeTab&quot;,
+    &quot;tabs&quot;
+  ],
+
+  &quot;content_scripts&quot;: [
+    {
+      &quot;matches&quot;: [&quot;http://*/*&quot;, &quot;https://*/*&quot;],
+      &quot;js&quot;: [&quot;src/build/main.js&quot;]
+    }
+  ]
+}
+</code></pre>
+<p>创建 package.json ，<code>scripts</code>里有两个命令，使用 Parcel 来监视文件变化（watch）和编译（build）</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;extension-name&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;description&quot;: &quot;Description&quot;,
+  &quot;main&quot;: &quot;src/js/main.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;parcel build src/js/main.js -d src/build/ -o main.js&quot;,
+    &quot;watch&quot;: &quot;parcel watch src/js/main.js -d src/build/ -o main.js&quot;
+  },
+  &quot;author&quot;: &quot;Atakan Goktepe&quot;,
+  &quot;dependencies&quot;: {
+    &quot;babel-preset-env&quot;: &quot;^1.6.1&quot;,
+    &quot;babel-preset-react&quot;: &quot;^6.24.1&quot;,
+    &quot;parcel-bundler&quot;: &quot;^1.6.2&quot;,
+    &quot;react&quot;: &quot;^16.2.0&quot;,
+    &quot;react-dom&quot;: &quot;^16.2.0&quot;
+  }
+}
+</code></pre>
+<p>popup.html</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+  &lt;script src=&quot;js/popup.js&quot;&gt;&lt;/script&gt;
+  &lt;!----&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;container&quot;&gt;
+     &lt;!--
+      Render react app in the visited website when the .start button is clicked.
+     --&gt;
+      &lt;button class=&quot;start&quot;&gt;
+        Render App
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+
+</code></pre>
+<p>popup.js，当用户点击按钮，发送一个消息 message 到 main.js</p>
+<pre><code class="language-js">window.onload = () =&gt; {
+  const $startButton = document.querySelector('.start');
+
+  $startButton.onclick = () =&gt; {
+    // Get active tab
+    chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    }, (tabs) =&gt; {
+      // Send message to script file
+      chrome.tabs.sendMessage(
+        tabs[0].id,
+        { injectApp: true },
+        response =&gt; window.close()
+      );
+    });
+  };
+}
+</code></pre>
+<p><code>main.js</code> 监听来自 popup.js 的消息, 关键是 <code>injectApp</code>函数创建了一个 div 并注入到 <code>body</code>，然后渲染 <!-- raw HTML omitted --> 组件。</p>
+<pre><code class="language-js">import React from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends React.Component {
+  render() {
+    return (
+      &lt;div&gt; Your App injected to DOM correctly! &lt;/div&gt;
+    )
+  }
+}
+
+// Message Listener function
+chrome.runtime.onMessage.addListener((request, sender, response) =&gt; {
+  // If message is injectApp
+  if(request.injectApp) {
+    // Inject our app to DOM and send response
+    injectApp();
+    response({
+      startedExtension: true,
+    });
+  }
+});
+
+function injectApp() {
+  const newDiv = document.createElement(&quot;div&quot;);
+  newDiv.setAttribute(&quot;id&quot;, &quot;chromeExtensionReactApp&quot;);
+  document.body.appendChild(newDiv);
+  ReactDOM.render(&lt;App /&gt;, newDiv);
+}
+</code></pre>
+<p>开始在 chrome 里测试。</p>
+<p>打开一个网页例如 <a href="http://www.baidu.com">www.baidu.com</a>  刷新一下确保插件已经加载生效。  然后点一下 插件图标，弹出popup.html 点按钮</p>
+<p>再查看当前网页的代码，已经被插入了这个 React 组件的代码了。</p>
+<p><img src="/media/15490413365245/15396695755446.jpg" alt="-w419"></p>
+<h1 id="发布到-web-store">发布到 Web Store</h1>
+<h1 id="参考">参考</h1>
+<p><a href="https://www.jianshu.com/p/5f02ae34c337">https://www.jianshu.com/p/5f02ae34c337</a></p>
+<p>vue 开发 chrome 插件：https://cloud.tencent.com/developer/article/1004978</p>
+<p>用 WEBPACK 和 REACT 搭建一个适用于 CHROME EXTENSION 的脚手架 <a href="https://www.kilerd.me/archives/56">https://www.kilerd.me/archives/56</a></p>
+<p>使用React.js开发Chrome插件 <a href="http://unclechen.github.io/2017/06/16/%E4%BD%BF%E7%94%A8ReactJS%E5%BC%80%E5%8F%91Chrome%E6%8F%92%E4%BB%B6/">http://unclechen.github.io/2017/06/16/%E4%BD%BF%E7%94%A8ReactJS%E5%BC%80%E5%8F%91Chrome%E6%8F%92%E4%BB%B6/</a></p>
+<p><a href="https://github.com/jhen0409/react-chrome-extension-boilerplate(">https://github.com/jhen0409/react-chrome-extension-boilerplate(</a>两年没更新了)</p>
+<p><a href="https://github.com/yeoman/generator-chrome-extension">https://github.com/yeoman/generator-chrome-extension</a></p>
+<p><a href="https://segmentfault.com/a/1190000015212565">https://segmentfault.com/a/1190000015212565</a>  （下方也有很多 chrome 开发资料）</p>
+<p>google 搜索 ”chrome extension 脚手架“</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/excel/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/api-%E6%96%87%E6%A1%A3%E4%B8%8E%E5%B7%A5%E5%85%B7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

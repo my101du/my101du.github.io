@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="用类 jQuery 的语法来解析 html 文档，查找节点。 在抓取网页的时候很强大。 simplehtmldom 小巧的 http://simplehtmldom.sourceforge.net/ （以及封装过的 https://github.com/sunra/php" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="用类 jQuery 的语法来解析 html 文档，查找节点。 在抓取网页的时候很强大。 simplehtmldom 小巧的 http://simplehtmldom.sourceforge.net/ （以及封装过的 https://github.com/sunra/php" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E7%94%A8%E7%B1%BB-jquery-%E7%9A%84%E8%AF%AD%E6%B3%95%E6%9D%A5%E8%A7%A3%E6%9E%90-html-%E6%96%87%E6%A1%A3%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9-%E5%9C%A8%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E7%9A%84%E6%97%B6%E5%80%99%E5%BE%88%E5%BC%BA%E5%A4%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="用类 jQuery 的语法来解析 html 文档，查找节点。 在抓取网页的时候很强大。 simplehtmldom 小巧的 http://simplehtmldom.sourceforge.net/ （以及封装过的 https://github.com/sunra/php">
+
+<meta itemprop="wordCount" content="971">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="用类 jQuery 的语法来解析 html 文档，查找节点。 在抓取网页的时候很强大。 simplehtmldom 小巧的 http://simplehtmldom.sourceforge.net/ （以及封装过的 https://github.com/sunra/php"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E7%94%A8%E7%B1%BB-jquery-%E7%9A%84%E8%AF%AD%E6%B3%95%E6%9D%A5%E8%A7%A3%E6%9E%90-html-%E6%96%87%E6%A1%A3%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9-%E5%9C%A8%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E7%9A%84%E6%97%B6%E5%80%99%E5%BE%88%E5%BC%BA%E5%A4%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E7%94%A8%E7%B1%BB-jquery-%E7%9A%84%E8%AF%AD%E6%B3%95%E6%9D%A5%E8%A7%A3%E6%9E%90-html-%E6%96%87%E6%A1%A3%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9-%E5%9C%A8%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E7%9A%84%E6%97%B6%E5%80%99%E5%BE%88%E5%BC%BA%E5%A4%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 971字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>用类 jQuery 的语法来解析 html 文档，查找节点。 在抓取网页的时候很强大。</p>
+<h1 id="simplehtmldom">simplehtmldom</h1>
+<p>小巧的 <a href="http://simplehtmldom.sourceforge.net/">http://simplehtmldom.sourceforge.net/</a> （以及封装过的 <a href="https://github.com/sunra/php-simple-html-dom-parser">https://github.com/sunra/php-simple-html-dom-parser</a>） ，很久没有继续维护了。</p>
+<pre><code class="language-php">require_once(base_path('packages/simple_html_dom.php'));
+$html = file_get_html(public_path('uploads/Pulse America Repos.htm'));
+echo $html-&gt;plaintext;
+
+foreach($html-&gt;find('td') as $element) 
+    echo $element-&gt;plaintext . '&lt;br&gt;';
+</code></pre>
+<p>发现在 PHP7 环境下，无法解析 html（打开 php 错误报告）.</p>
+<h1 id="symfony-包-dom-crawler">Symfony 包 dom-crawler</h1>
+<p><a href="https://github.com/symfony/dom-crawler">https://github.com/symfony/dom-crawler</a></p>
+<pre><code class="language-shell">composer require symfony/dom-crawler
+</code></pre>
+<p>XPath 方式我不喜欢用。这里是 CSS Selector 模式</p>
+<pre><code class="language-php">use Symfony\Component\DomCrawler\Crawler;
+
+// load html from
+$html = &lt;&lt;&lt;'HTML'
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;p class=&quot;message&quot;&gt;Hello World!&lt;/p&gt;
+        &lt;p&gt;Hello Crawler!&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+HTML;
+
+//initial the instance
+$crawler = new Crawler($html);
+
+// all nodes
+foreach ($crawler as $domElement) {
+    var_dump($domElement-&gt;nodeName);
+}
+
+
+//filter by css
+$crawler = $crawler-&gt;filter('body &gt; p');
+
+
+//filter with more complex criteria
+$crawler = $crawler
+    -&gt;filter('body &gt; p')
+    -&gt;reduce(function (Crawler $node, $i) {
+        // filters every other node
+        return ($i % 2) == 0;
+    });
+    
+// Node Traversing
+$crawler-&gt;filter('body &gt; p')-&gt;eq(0);
+$crawler-&gt;filter('body &gt; p')-&gt;first();
+$crawler-&gt;filter('body &gt; p')-&gt;last();
+$crawler-&gt;filter('body &gt; p')-&gt;siblings();
+$crawler-&gt;filter('body &gt; p')-&gt;nextAll();
+$crawler-&gt;filter('body &gt; p')-&gt;previousAll();
+$crawler-&gt;filter('body')-&gt;children();
+$crawler-&gt;filter('body &gt; p')-&gt;parents();
+$crawler-&gt;filter('body')-&gt;children('p.lorem');
+
+//Accessing Node Values
+$tag = $crawler-&gt;filterXPath('//body/*')-&gt;nodeName();
+$message = $crawler-&gt;filterXPath('//body/p')-&gt;text();
+$class = $crawler-&gt;filterXPath('//body/p')-&gt;attr('class');
+
+$attributes = $crawler
+    -&gt;filterXpath('//body/p')
+    -&gt;extract(array('_text', 'class'))
+;
+
+$nodeValues = $crawler-&gt;filter('p')-&gt;each(function (Crawler $node, $i) {
+    return $node-&gt;text();
+});
+
+//Adding the Content
+</code></pre>
+<h1 id="php-html-parser">PHP-HTML-Parser</h1>
+<p>当前这个 PHP-HTML-Parser 比较流行。</p>
+<p><a href="https://github.com/paquettg/php-html-parser">https://github.com/paquettg/php-html-parser</a></p>
+<p><strong>[弃用]最大的问题是，不能像 jQuery 那样支持层级选择器，例如 find('.class_name h2&rsquo;), 而必须先 find('.class_name&rsquo;), 然后在内部去找 h2</strong></p>
+<h2 id="安装与使用-load">安装与使用, load()</h2>
+<pre><code class="language-shell">composer require paquettg/php-html-parser
+</code></pre>
+<p>基本使用（可以在 github 源的 <code>tests</code>目录里看到更多的案例）</p>
+<p><code>load()</code>可以自动根据参数来调用是否 URL 、 File、String 类型</p>
+<pre><code class="language-php">use PHPHtmlParser\Dom;
+
+$dom = new Dom;
+
+// (1)load from html string
+$dom-&gt;load('&lt;div class=&quot;all&quot;&gt;&lt;p&gt;Hey bro, &lt;a href=&quot;google.com&quot;&gt;click here&lt;/a&gt;&lt;br /&gt; :)&lt;/p&gt;&lt;/div&gt;');
+
+// (2)load from files
+//$dom-&gt;loadFromFile('tests/big.html');
+
+// (3)load from URL
+$dom-&gt;loadFromUrl('http://google.com');
+$html = $dom-&gt;outerHtml;
+
+$a = $dom-&gt;find('a')[0];
+echo $a-&gt;text; // &quot;click here&quot;
+
+// more than 1 elements
+$contents = $dom-&gt;find('.content-border');
+echo count($contents); // 10
+
+foreach ($contents as $content)
+{
+	// get the class attr
+	$class = $content-&gt;getAttribute('class');
+	
+	// do something with the html
+	$html = $content-&gt;innerHtml;
+
+	// or refine the find some more
+	$child   = $content-&gt;firstChild();
+	$sibling = $child-&gt;nextSibling();
+}
+</code></pre>
+<p><strong>loadStr()</strong></p>
+<p>如果使用 <code>loadStr</code> 加载 String, 则不会进行自动检查。这是由于在某些情况下，如果使用 <code>load</code>方法，因为它会去判断是否字符串、是否 url、文件名，因此当参数值是一个非常大的字符串时，可能会报错。</p>
+<p>而直接使用 <code>loadStr</code>则会直接告诉系统，用处理字符串的方式来处理。跳过自动判断过程。</p>
+<pre><code class="language-php">$dom-&gt;loadStr('&lt;html&gt;String&lt;/html&gt;', []);
+$html = $dom-&gt;outerHtml;
+</code></pre>
+<h2 id="options">Options</h2>
+<p>可以为 <code>$dom</code>设置全局选项</p>
+<pre><code class="language-php">$dom = new Dom;
+$dom-&gt;setOptions([
+	'strict' =&gt; true, // Set a global option to enable strict html parsing.
+]);
+</code></pre>
+<p>也可以在 <code>load()</code>方法调用时，传入参数</p>
+<pre><code class="language-php">$dom-&gt;load('http://google.com', [
+	'whitespaceTextNode' =&gt; false, // Only applies to this load.
+]);
+
+$dom-&gt;load('http://gmail.com'); // will not have whitespaceTextNode set to false.
+</code></pre>
+<p>目前有7个选项</p>
+<ul>
+<li>Strict    默认false 严格模式，html 标签必须闭合，属性必须有值</li>
+<li>whitespaceTextNode    默认true， false表示如果某个节点是空白字符串，parse 时会删除</li>
+<li>EnforceEncoding    默认 null, 会自动在传入的 html 代码里寻找</li>
+<li>CleanupInput    默认 false, 如果为 true 则跳过解析器的整个清理阶段（后面三个也被忽略）</li>
+<li>removeScripts 默认 true</li>
+<li>RemoveStyles 默认 true</li>
+<li>preserveLineBreaks 默认 false, 如果设置为 true 则会保留换行符</li>
+</ul>
+<h2 id="facede">Facede</h2>
+<p>使用 facede 来写</p>
+<pre><code class="language-php">PHPHtmlParser\StaticDom::mount();
+
+Dom::load('tests/big.hmtl');
+$objects = Dom::find('.content-border');
+</code></pre>
+<h2 id="modify-the-dom">Modify the Dom</h2>
+<p>使用 <code>setAttribute</code> 修改节点的属性</p>
+<pre><code class="language-php">$dom = new Dom;
+$dom-&gt;load('&lt;div class=&quot;all&quot;&gt;&lt;p&gt;Hey bro, &lt;a href=&quot;google.com&quot;&gt;click here&lt;/a&gt;&lt;br /&gt; :)&lt;/p&gt;&lt;/div&gt;');
+$a = $dom-&gt;find('a')[0];
+$a-&gt;setAttribute('class', 'foo');
+echo $a-&gt;getAttribute('class'); // &quot;foo&quot;
+
+//或者先 getTag 获得 tag 成员，然后调用 tag 的 setAttribute 方法
+$tag = $a-&gt;getTag();
+$tag-&gt;setAttribute('class', 'foo');
+echo $a-&gt;getAttribute('class'); // &quot;foo&quot;
+</code></pre>
+<p>删除元素</p>
+<pre><code class="language-php">$a-&gt;delete();
+unset($a);
+echo $dom; // '&lt;div class=&quot;all&quot;&gt;&lt;p&gt;Hey bro, &lt;br /&gt; :)&lt;/p&gt;&lt;/div&gt;');
+</code></pre>
+<h2 id="更多方法">更多方法</h2>
+<h1 id="一个爬虫-httpsgithubcomspatiecrawler">一个爬虫。 <a href="https://github.com/spatie/crawler">https://github.com/spatie/crawler</a></h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E7%94%A8%E7%B1%BB-jquery-%E7%9A%84%E8%AF%AD%E6%B3%95%E6%9D%A5%E8%A7%A3%E6%9E%90-html-%E6%96%87%E6%A1%A3%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9-%E5%9C%A8%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E7%9A%84%E6%97%B6%E5%80%99%E5%BE%88%E5%BC%BA%E5%A4%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E7%94%A8%E7%B1%BB-jquery-%E7%9A%84%E8%AF%AD%E6%B3%95%E6%9D%A5%E8%A7%A3%E6%9E%90-html-%E6%96%87%E6%A1%A3%E6%9F%A5%E6%89%BE%E8%8A%82%E7%82%B9-%E5%9C%A8%E6%8A%93%E5%8F%96%E7%BD%91%E9%A1%B5%E7%9A%84%E6%97%B6%E5%80%99%E5%BE%88%E5%BC%BA%E5%A4%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/flask/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%89%E8%A3%85%E4%BB%80%E4%B9%88%E7%9A%84%E7%9C%8Bwordpress-wp-cli-%E9%82%A3%E9%87%8C/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

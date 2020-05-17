@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: WordPress Content and Media File Management permalink: wordpress-content-page-post-media tags:
+ wordpress   &amp;lt;! - more -&amp;gt;
+WordPress (hereinafter referred to as &amp;ldquo;WP&amp;rdquo;) content management, as well as some specific plug-in related operations.
+Login login address Suppose you want to log in the WP site is www.sample.org, then the background is usually default login address is
+www.sample.org/wp-admin
+However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: WordPress Content and Media File Management permalink: wordpress-content-page-post-media tags:
+ wordpress   &lt;! - more -&gt;
+WordPress (hereinafter referred to as &ldquo;WP&rdquo;) content management, as well as some specific plug-in related operations.
+Login login address Suppose you want to log in the WP site is www.sample.org, then the background is usually default login address is
+www.sample.org/wp-admin
+However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: WordPress Content and Media File Management permalink: wordpress-content-page-post-media tags:
+ wordpress   &lt;! - more -&gt;
+WordPress (hereinafter referred to as &ldquo;WP&rdquo;) content management, as well as some specific plug-in related operations.
+Login login address Suppose you want to log in the WP site is www.sample.org, then the background is usually default login address is
+www.sample.org/wp-admin
+However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example">
+
+<meta itemprop="wordCount" content="993">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: WordPress Content and Media File Management permalink: wordpress-content-page-post-media tags:
+ wordpress   &lt;! - more -&gt;
+WordPress (hereinafter referred to as &ldquo;WP&rdquo;) content management, as well as some specific plug-in related operations.
+Login login address Suppose you want to log in the WP site is www.sample.org, then the background is usually default login address is
+www.sample.org/wp-admin
+However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wordpress-content-and-media-file-management/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wordpress-content-and-media-file-management/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 993字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: WordPress Content and Media File Management
+permalink: wordpress-content-page-post-media
+tags:</p>
+<ul>
+<li>wordpress</li>
+</ul>
+<hr>
+<p>&lt;! - more -&gt;</p>
+<p>WordPress (hereinafter referred to as &ldquo;WP&rdquo;) content management, as well as some specific plug-in related operations.</p>
+<h1 id="login">Login</h1>
+<h2 id="login-address">login address</h2>
+<p>Suppose you want to log in the WP site is <a href="http://www.sample.org">www.sample.org</a>, then the background is usually <strong>default</strong> login address is</p>
+<p><code>www.sample.org/</code><strong>wp-admin</strong></p>
+<p>However, in order to improve the security of the system and prevent network hackers from using the scanner to burst passwords, the background address is usually changed to something else, for example</p>
+<p><code>www.sample.org/</code><strong>S3v9_KkR2</strong></p>
+<h2 id="login-interface">login interface</h2>
+<p><img src="/media/15490412571331/15171966989479.jpg" alt=""></p>
+<h1 id="understand-content-management">Understand content management</h1>
+<p>WP has the two most common &ldquo;content&rdquo;:</p>
+<ul>
+<li>Page</li>
+<li>Article</li>
+</ul>
+<p><code>Page</code> can usually be considered as <strong>fixed URLs</strong>, generally not much. For example,</p>
+<ul>
+<li>About business / about</li>
+<li>Contact / contact</li>
+<li>&hellip;</li>
+</ul>
+<p><code>Article</code> usually can be considered as website constantly updated, <strong>increased content</strong>, generally with the development of the website, the number will be more and more, and the link format has certain <strong>rules</strong>. E.g:</p>
+<ul>
+<li>News / 1, news / 2, news / 3 &hellip;.</li>
+<li>Company Monthly Report / 201701, report / 201702, report / 201703 &hellip;</li>
+</ul>
+<h1 id="page">Page</h1>
+<h2 id="page-list-and-available-operations">page list and available operations</h2>
+<p>Click the menu on the left to expand the list of all &ldquo;Pages&rdquo;. In the image below, you can click different buttons</p>
+<ul>
+<li>Added</li>
+<li>Edit</li>
+<li>Delete</li>
+<li>search for</li>
+</ul>
+<p><img src="/media/15490412571331/15172128715216.jpg" alt=""></p>
+<h2 id="create-new-page">create new page</h2>
+<h3 id="title-permalink-content">Title, Permalink, Content</h3>
+<p><img src="/media/15490412571331/15172140848997.jpg" alt=""></p>
+<p>As shown above:</p>
+<ul>
+<li>Title</li>
+<li>Permalink: Custom URL for the article (valid only if WP&rsquo;s custom linked switches are turned on and rewrite is enabled)</li>
+<li>Content Area: You can copy &amp; paste any web content into the edit box. (If you want to upload your own <strong>local</strong> pictures, videos, etc., see the later chapters <code>media files</code>)</li>
+</ul>
+<h3 id="set-status-privacy-release-time">Set status, privacy, release time</h3>
+<p><img src="/media/15490412571331/15172928730888.jpg" alt=""></p>
+<p>As shown above, several parameters of the page can be modified to achieve a &ldquo;delayed&rdquo; or &ldquo;internal&rdquo; publish page.</p>
+<ol>
+<li>&ldquo;State&rdquo;, if it is a <code>draft</code>, the article will not be released</li>
+<li>&ldquo;Privacy&rdquo;: pages can be public; public (but need a password); privately owned three</li>
+<li>&ldquo;release time&rdquo;: can be set to a future time, temporarily hidden, by the time, the page is automatically released.</li>
+</ol>
+<h3 id="release-and-check">release and check</h3>
+<p><img src="/media/15490412571331/15172937089330.jpg" alt=""></p>
+<p>After the release is complete, open the &ldquo;permanent link&rdquo; address check if there is any omission</p>
+<p><img src="/media/15490412571331/15172942536467.jpg" alt=""></p>
+<h2 id="edit-page">Edit page</h2>
+<p>Including &ldquo;edit&rdquo; and &ldquo;quick edit&rdquo;</p>
+<h3 id="edit">Edit</h3>
+<p>Into the user interface, and the &ldquo;new page&rdquo; operation is similar.</p>
+<p><img src="/media/15490412571331/15172966032881.jpg" alt=""></p>
+<h3 id="quick-edit">Quick edit</h3>
+<p>You can quickly modify some of the parameters of the page.</p>
+<p><img src="/media/15490412571331/15172966649564.jpg" alt=""></p>
+<h1 id="article">Article</h1>
+<p>In general, the operation of the article and the page is basically the same. Just different entrances</p>
+<p><img src="/media/15490412571331/15172950652640.jpg" alt=""></p>
+<h2 id="modify-the-permanent-link-for-future-review-of-the-content">Modify the permanent link for future review of the content</h2>
+<p>If you do not summarize the article&rsquo;s permanent link in some way, the content may increase. (Imagine having a meeting, held once a year, is not clear at all if they are titled <code>/ company-annual-meeting</code>)</p>
+<p><img src="/media/15490412571331/15172960780625.jpg" alt=""></p>
+<p>As shown in the figure, in front of automatically generated permanent link <code>news/2018/01</code> this prefix, respectively, news categories, year, month. This basically avoids the problem of duplicate names</p>
+<h2 id="select-the-appropriate-article-category">Select the appropriate article category</h2>
+<p>To show the headlines of the latest news in the right area on the front page and to better categorize articles, select the appropriate category for the article.</p>
+<p>general</p>
+<ul>
+<li>The company&rsquo;s major news (acquisitions, annual reports), etc., into <strong>Corporate News</strong></li>
+<li>New product launches, some Press Release from other BUs, to <strong>Product News</strong></li>
+<li>If it is the show, routine notification, etc., into <strong>Events</strong></li>
+</ul>
+<p><img src="/media/15490412571331/15172960350703.jpg" alt=""></p>
+<h1 id="caching-and-compression">Caching and compression</h1>
+<p><img src="/media/15490412571331/15172932954392.jpg" alt=""></p>
+<p>When publishing pages / articles, the WP Rocket plugin allows users to customize the cache and compression parameters for a <strong>particular piece of content</strong>.</p>
+<h2 id="sometimes-you-must-turn-off-the-cache">Sometimes, you must turn off the cache</h2>
+<p>If there are some pages that have some programs / content that need <strong>live update</strong>, or some add-ons <strong>will dynamically process the contents</strong>, there must be checked &ldquo;Do not cache the page&rdquo;</p>
+<p>E.g:</p>
+<ol>
+<li>Home page (after adding a new news, let it&rsquo;s title appear immediately)</li>
+<li>News listings page (same as above)</li>
+<li>Enable <strong>multi-language version of the article</strong>, the page (because the internal need to dynamically read the parameters, select the appropriate text content data)</li>
+</ol>
+<h2 id="manually-clear-the-cache">manually clear the cache</h2>
+<p>If a page / article does not require immediate access to the latest content, but also want users to immediately see the results just modified. Need to manually update the cache:</p>
+<p>Can be in the list</p>
+<p><img src="/media/15490412571331/15172936740631.jpg" alt=""></p>
+<p>You can also edit it</p>
+<p><img src="/media/15490412571331/15172937089330.jpg" alt=""></p>
+<h1 id="multi-language">multi-language</h1>
+<h2 id="add-multi-language-versions-of-the-content">Add multi-language versions of the content</h2>
+<p>When publishing a page / article, if this article has multiple language versions. Need to add its various versions of content</p>
+<p><img src="/media/15490412571331/15172939867688.jpg" alt=""></p>
+<h2 id="note-communicate-do-not-cache-this-page"><strong>Note</strong> Communicate &ldquo;Do not cache&rdquo; this page</h2>
+<p><img src="/media/15490412571331/15172943856385.jpg" alt=""></p>
+<h2 id="test">test</h2>
+<p>Log out, respectively, to switch languages ​​to see the effect</p>
+<p><img src="/media/15490412571331/15172945324672.jpg" alt=""></p>
+<h1 id="post-to-social-networking-sites">Post to social networking sites</h1>
+<p>After the article / page is published, this post needs to be pushed out to generate a dynamic &ldquo;feed&rdquo; on the social networking site.</p>
+<p>(The parameters of each platform to apply for themselves, and in the management center in advance configured)</p>
+<h2 id="open-the-target-social-networking-site-selection-window">Open the target social networking site selection window</h2>
+<p><img src="/media/15490412571331/15172947163196.jpg" alt=""></p>
+<h2 id="followed-by-the-activation-of-the-target-site">followed by the activation of the target site</h2>
+<p>Click on the Twitter and LinkedIn, click, make sure the gray icon turns color, and check the account below, is active.</p>
+<p>Click on &ldquo;Publish&rdquo; and it will be pushed automatically in the near future.</p>
+<p><img src="/media/15490412571331/15172947865476.jpg" alt=""></p>
+<h2 id="test-1">Test</h2>
+<p>Open the following URL to see if the push was successful</p>
+<p><a href="https://twitter.com/pulse_worldwide">https://twitter.com/pulse_worldwide</a>
+<a href="https://www.linkedin.com/company-beta/1507941/">https://www.linkedin.com/company-beta/1507941/</a></p>
+<h1 id="media-files-pictures-videos-etc">Media files (pictures, videos, etc.)</h1>
+<p>In addition to copy the HTML from outside, it will automatically copy the link in the picture come in, and sometimes we need to upload a local picture.</p>
+<h2 id="there-are-two-entries-to-manage-media-files">There are two entries to manage media files</h2>
+<p><strong>In the edit page, the article time</strong></p>
+<p><img src="/media/15490412571331/15172972561124.jpg" alt=""></p>
+<p><strong>Click the menu</strong></p>
+<p><img src="/media/15490412571331/15172972836621.jpg" alt=""></p>
+<h2 id="upload-new-picture">Upload new picture</h2>
+<p>Switch to &ldquo;Upload Files&rdquo;</p>
+<p><img src="/media/15490412571331/15172973125065.jpg" alt=""></p>
+<p>Click Select Files</p>
+<p><img src="/media/15490412571331/15172973339482.jpg" alt="">
+After the upload is completed, you can delete the re-edit, or insert into the content</p>
+<p><img src="/media/15490412571331/15172974068528.jpg" alt=""></p>
+<h1 id="slide">Slide</h1>
+<p>Modify the display here</p>
+<p><img src="/media/15490412571331/15172981637584.jpg" alt=""></p>
+<h2 id="select-the-slide-area-to-edit">Select the slide area to edit</h2>
+<p><img src="/media/15490412571331/15172981244183.jpg" alt=""></p>
+<p>The system can add multiple slides, respectively, into different locations, here to &ldquo;Home&rdquo; in this area as an example</p>
+<p><img src="/media/15490412571331/15172982035399.jpg" alt=""></p>
+<h2 id="modify-a-picture-in-the-sequence">Modify a picture in the sequence</h2>
+<p>The sequence of all the pictures is shown here. Put the mouse on a picture, you can edit it shows pictures, animation effects</p>
+<p><img src="/media/15490412571331/15172982541570.jpg" alt=""></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/wordpress-content-and-media-file-management/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/wordpress-ip-%E5%9C%B0%E5%9D%80%E5%88%A4%E6%96%AD/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/woocommerce/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

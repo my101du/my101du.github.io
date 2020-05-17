@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="React Native 支持（Expo） 基于 Expo，因此 不支持 需要自定义原生组件 的第三方库 Expo 包含 Expo SDK (一个 native-and-JS 库), 不需要使用 Xcode 或 Android Studio，也不需要编写任" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="React Native 支持（Expo） 基于 Expo，因此 不支持 需要自定义原生组件 的第三方库 Expo 包含 Expo SDK (一个 native-and-JS 库), 不需要使用 Xcode 或 Android Studio，也不需要编写任" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/react-native-%E6%94%AF%E6%8C%81/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="React Native 支持（Expo） 基于 Expo，因此 不支持 需要自定义原生组件 的第三方库 Expo 包含 Expo SDK (一个 native-and-JS 库), 不需要使用 Xcode 或 Android Studio，也不需要编写任">
+
+<meta itemprop="wordCount" content="4470">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="React Native 支持（Expo） 基于 Expo，因此 不支持 需要自定义原生组件 的第三方库 Expo 包含 Expo SDK (一个 native-and-JS 库), 不需要使用 Xcode 或 Android Studio，也不需要编写任"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-native-%E6%94%AF%E6%8C%81/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-native-%E6%94%AF%E6%8C%81/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4470字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>React Native 支持（Expo）</p>
+<p>基于 <strong>Expo</strong>，因此 <strong>不支持</strong> 需要自定义原生组件 的第三方库</p>
+<h1 id="expo">Expo</h1>
+<p>包含 Expo SDK (一个 native-and-JS 库), 不需要使用 Xcode 或 Android Studio，也不需要编写任何本机代码, 可以访问设备的系统功能（如相机，联系人，本地存储和其他硬件）</p>
+<p>它可以在任何包含 Expo SDK 的本机环境中运行，方便开发及调试</p>
+<p>本质上，Expo 的移动客户端相当于一个壳，你只需关注 js 层面的开发即可。这点类似于 electron 或者小程序。</p>
+<p>官方文档 <a href="https://docs.expo.io/versions/latest/">https://docs.expo.io/versions/latest/</a></p>
+<h2 id="安装-cli">安装 CLI</h2>
+<p>Expo CLI 是开发和构建 Expo 应用程序的工具</p>
+<pre><code class="language-shell">npm install -g expo-cli
+</code></pre>
+<h2 id="新建-expo-项目">新建 expo 项目</h2>
+<pre><code class="language-shell">expo init my-new-project
+cd my-new-project
+expo start
+</code></pre>
+<h2 id="在-ios-模拟器上安装-expo-客户端">在 iOS 模拟器上安装 Expo 客户端</h2>
+<p><strong>XCode + 下载、新建模拟器</strong></p>
+<p>装完 Xcode 直接可以在 Developer 里打开最新版本 iOS 模拟器 12.1, 如果没有必要，不需要再安装旧版本
+<img src="/media/15490412159105/15445246810799.jpg" alt="-w777"></p>
+<p><strong>打开模拟器，</strong></p>
+<p>下载 latest simulator build： <a href="http://expo.io/--/api/v2/versions/download-ios-simulator-build">http://expo.io/--/api/v2/versions/download-ios-simulator-build</a></p>
+<p>解压到目录，假设为 Exponent-2.9.0  （这就是一个expo 目录）<strong>改后缀名为 .app</strong></p>
+<p>运行命令, 安装到模拟器</p>
+<pre><code class="language-shell">xcrun simctl install booted ./Exponent-2.9.0.app
+</code></pre>
+<p>如果报错</p>
+<blockquote>
+<p>xcrun: error: unable to find utility &ldquo;simctl&rdquo;, not a developer tool or in PATH</p>
+</blockquote>
+<p>打开 XCode, 找到 Xcode &gt; Preferences &gt; Locations ，And assigning the Command Line Tools</p>
+<p><img src="/media/15490412159105/15445249608534.jpg" alt="-w368"></p>
+<p>再次运行命令，自动安装到模拟器</p>
+<p><img src="/media/15490412159105/15445250050709.jpg" alt="-w315"></p>
+<h2 id="android-avd">android AVD</h2>
+<p>命令行的方式太麻烦，不好管理。以前那个图形界面的找不到了。</p>
+<pre><code class="language-bas"># 下载 images
+$ cd $ANDROID_HOME/tools/bin
+$ ./sdkmanager &quot;system-images;android-25;google_apis;x86&quot;
+$ ./sdkmanager --licenses
+
+# 基于images创建avd  cpu 可以输入 x86
+android list target
+android create avd -n test -k &quot;system-images;android-25;google_apis;x86&quot;
+</code></pre>
+<p>现在强推安装 Android  Studio，在里面启动  SDK  AVD 管理器
+。。。</p>
+<p><strong>问题：CPU资源消耗很大，内存占用还ok（x86, 模拟比较老的 720p 设备）</strong></p>
+<h2 id="使用-genymotion-或其他第三方的">使用 Genymotion 或其他第三方的</h2>
+<p>默认可以 Android  Studmio 安装 SDK 和 AVD Manager</p>
+<p>性能较好的模拟器 <a href="https://www.genymotion.com/fun-zone/">https://www.genymotion.com/fun-zone/</a></p>
+<p><strong>问题</strong>本地桌面版本， 仅供个人使用。公司用必须要买收费版； 占用内存很大。。。。设置 1G 就直接分配1G.</p>
+<p>用国产的 <strong>夜神</strong>  （在资源管理器里展开，其实内部也是套了 Vbox ，和 genymotion 一样）
+<a href="https://blog.csdn.net/lee_0621/article/details/70210817">https://blog.csdn.net/lee_0621/article/details/70210817</a></p>
+<p>将模拟器打开开发者模式  打开USB调试</p>
+<p>打开命令行窗口，打开到夜神安装目录 \nox\bin(其实就是用 adb 命令)</p>
+<p>nox_adb.exe connect 127.0.0.1:62001，连接模拟器（或者用<code>adb</code>一样， mac下也是 <code>adb</code>）</p>
+<p>在Android Studio窗口Android Monitor上显示已经连接的设备</p>
+<p>发现问题： 内核太老 4.4 的，安装 expo 直接报错。。。</p>
+<p>adb如何连接<strong>mumu模拟器</strong></p>
+<p>【win版】
+adb connect 127.0.0.1:7555
+adb shell</p>
+<p>【mac版】</p>
+<p>adb kill-server &amp;&amp; adb server &amp;&amp; adb shell</p>
+<p>最后，自己下载 android 镜像，用 virtualbox 手动安装</p>
+<p><a href="https://linux.cn/article-10024-1.html">https://linux.cn/article-10024-1.html</a></p>
+<p><a href="http://www.android-x86.org/">http://www.android-x86.org/</a> （x86镜像, 类似 PC 的横版）
+选linux</p>
+<h2 id="云端模拟器">云端模拟器</h2>
+<p><a href="https://www.zhihu.com/question/300151155">https://www.zhihu.com/question/300151155</a></p>
+<p><a href="https://www.genymotion.com/pricing-cloud/">https://www.genymotion.com/pricing-cloud/</a> 云平台运行模拟器（收费）</p>
+<h2 id="把模拟器安装到远程服务器然后本地连接上去调试节省本地内存">把模拟器安装到远程服务器，然后本地连接上去调试（节省本地内存）</h2>
+<p><a href="https://docs.microsoft.com/en-us/xamarin/android/troubleshooting/questions/connect-android-emulator-mac-windows">https://docs.microsoft.com/en-us/xamarin/android/troubleshooting/questions/connect-android-emulator-mac-windows</a> （拉下来看 Alternate technique using ssh 部分）</p>
+<p><a href="http://delphi.org/2013/09/debugging-against-a-remote-android-emulator/">http://delphi.org/2013/09/debugging-against-a-remote-android-emulator/</a></p>
+<h2 id="真机设备上安装客户端">真机设备上安装客户端</h2>
+<p>从 apple store 或者 google play 安装即可</p>
+<h1 id="安装看守者watchman">安装看守者(Watchman)</h1>
+<p>Watchman 在更改时观察文件和记录，然后触发相应的操作，并由 React Native 在内部使用</p>
+<p><a href="https://facebook.github.io/watchman/docs/install.html">https://facebook.github.io/watchman/docs/install.html</a></p>
+<p>mac</p>
+<pre><code class="language-shell">$ brew update
+$ brew install watchman
+
+</code></pre>
+<h1 id="taro-以-rn-方式开发">Taro 以 RN 方式开发</h1>
+<p>Taro 将会开始编译文件, 生成的应用文件在根目录的 <code>.rn_temp</code> 目录下</p>
+<pre><code class="language-shell">npm run dev:rn
+</code></pre>
+<p>然后出现一个二维码，和一些选项(在模拟器运行等等。)</p>
+<p><strong>开发者菜单</strong></p>
+<p>一旦 app 在 expo 中成功打开，你可以通过摇一摇设备来唤起开发者菜单， 如果你是用模拟器，你可以按 ⌘+d （iOS） 或 ctrl+m （Android）。</p>
+<p>image</p>
+<p>更多资料可以查看Expo 文档——up-and-running。</p>
+<h1 id="技巧">技巧</h1>
+<h2 id="可滚动区域">可滚动区域</h2>
+<p>用 <code>ScrollView</code>包裹，设置一个 Y 高度（小于屏幕，可以用 flex:1 自动填充空间）</p>
+<p>关键 <code>style={{ 'height': 300 }}</code></p>
+<pre><code class="language-html">&lt;ScrollView
+  className='scrollview'
+  scrollY
+  scrollWithAnimation
+  scrollTop='0'
+  style={{ 'height': 300 }}
+  lowerThreshold='20'
+  upperThreshold='20'
+  onScrolltoupper={this.onScrolltoupper}
+  onScroll={this.onScroll}
+&gt;
+    {this.props.children}
+&lt;/ScrollView&gt;
+</code></pre>
+<p>在模拟器里，三指滑动（或按住触摸板滑动，注意方向和鼠标滚动是反的），就可以看到了</p>
+<p><img src="/media/15490412159105/15450493623995.jpg" alt="-w318"></p>
+<h1 id="调试">调试</h1>
+<p><a href="http://xwartz.xyz/blog/2017/02/debugging-react-native/">http://xwartz.xyz/blog/2017/02/debugging-react-native/</a></p>
+<h2 id="打开-模拟器的调试-hot-reload-">打开 模拟器的调试 （hot reload ）</h2>
+<p>ios 模拟器按 cmd+D   android 的 ctrl+M</p>
+<p><img src="/media/15490412159105/15451815575719.jpg" alt="-w838"></p>
+<h2 id="react-native-debugger">React Native Debugger</h2>
+<p>React-Native-Debugger 是在官方 Remote Debugger 调试工具的基础上，集成了 React Inspector 以及 Redux DevTools 的调试工具。
+可以用来代替之前一直使用的 Chrome 远程调试，比较方便地查看元素布局，和Redux管理的状态</p>
+<p><a href="https://github.com/jhen0409/react-native-debugger">https://github.com/jhen0409/react-native-debugger</a></p>
+<p>资料： <a href="https://medium.com/@jimgbest/react-native-debugger-expo-awesome-d7a00da51460">https://medium.com/@jimgbest/react-native-debugger-expo-awesome-d7a00da51460</a></p>
+<p>基于 React Native 官方调试方式、包含 <code>React Inspector / Redux DevTools</code> 独立应用</p>
+<ul>
+<li>基于官方的 Remote Debugger 且提供了更为丰富的功能</li>
+<li>包含 react-devtools-core 的 React Inspector</li>
+<li>包含 Redux DevTools, 且与 redux-devtools-extension 保持 API 一致</li>
+</ul>
+<pre><code class="language-shell">$ brew update &amp;&amp; brew cask install react-native-debugger
+</code></pre>
+<p><strong>使用 Redux DevTools Extension API</strong></p>
+<p>chrome 插件，进行数据调试。。</p>
+<p><strong>更多资料</strong></p>
+<p>快速开始
+Debugger 整合
+React DevTools 整合
+Redux DevTools 整合
+Shortcut references
+Network inspect of Chrome Developer Tools
+Enable open in editor in console
+Troubleshooting
+Contributing</p>
+<p>打开 iOS 模拟器后， 调试非常麻烦(错误信息在命令行里，滚动看不到以前的， 而 iOS 模拟器里也看不到完整信息)</p>
+<p><img src="/media/15490412159105/15450256348877.jpg" alt="-w265"></p>
+<p>默认是 8081 端口，要改成 expo 默认的 19001 端口</p>
+<pre><code class="language-shell">open &quot;rndebugger://set-debugger-loc?host=localhost&amp;port=19001&quot;
+</code></pre>
+<p>这个东西特别难搞出来。。。一开始没法和模拟器里的应用连接起来， 运行上面的命令没反应</p>
+<p>yarn dev:rn 后，经过一大堆运行，直接报错，然后怎么按 ctrl + cmd + Z 都不会出现上面那个界面</p>
+<p>一定要在模拟器里把这个应用从后台退出来， 进入 expo 主页，点这个 project ，然后尽快按 cmd+r, 直到能把这个界面打开， 点下“debug remote js”</p>
+<p>默认会在浏览器里打开 debugger,  导致 React native debugger 提示已经开一个了。</p>
+<p>关掉浏览器那个。 重新运行 <code>open .... </code>就可以连上了</p>
+<p>终于可以看到 inpsector 和 完整的错误信息了。。。</p>
+<p><img src="/media/15490412159105/15450263402100.jpg" alt="-w1273"></p>
+<p>啰嗦一大堆，这里是你的app的组件/页面</p>
+<p><img src="/media/15490412159105/15450264455200.jpg" alt="-w515"></p>
+<pre><code class="language-js">['a', 'b', 'c'].map(item=&gt;{
+    return (&lt;View&gt;{item}&lt;/View&gt;)
+})
+
+
+//改成
+['a', 'b', 'c'].map((item, key)=&gt;{
+    return (&lt;View key={key}&gt;{item}&lt;/View&gt;)
+})
+</code></pre>
+<h2 id="让-ios-模拟器里的网络请求走本地">让 iOS 模拟器里的网络请求走本地</h2>
+<p>开发机器上用host绑定了和公网一样的域名 <code>127.0.0.1 www.sample.org</code>，本地其他web应用已经正常走 localhost 了</p>
+<p>但是发现 iOS 模拟器里的还是走的公网。</p>
+<p>发现是我把 <strong>这个测试域名放到了 shadowsocks 的 pac 列表里</strong>。。。暂时取消就好</p>
+<p>配置代理</p>
+<p><a href="https://juejin.im/post/5bd99ca7e51d4568383e80ea">https://juejin.im/post/5bd99ca7e51d4568383e80ea</a></p>
+<p>把模拟器的网络请求代理到我们的 <code>dev-server</code>。这里大力推荐使用强大的Whistle配合Proxifier来实现。</p>
+<p>还有</p>
+<p>ATS 是一个iOS 9增加的安全策略，默认只允许HTTPS请求.于是React Native应用的HTTP请求会被阻止。</p>
+<p>你需要移除Info.plist里的NSAllowsArbitraryLoads属性。需要了解更多有关如何配置ATS，请移步ATS配置.</p>
+<h1 id="构建独立应用程序">构建独立应用程序</h1>
+<p>使用 Expo 的<strong>线上服务</strong>来帮助你构建独立应用程序，使用这种方式可以避免在本机上配置应用构建环境。</p>
+<p>当然，你也可以使用自己的电脑构建应用，创建 Expo 应用程序的独立二进制文件，并将其提交到 Apple App Store 和 Google Play Store。安卓的签名、gradle ，iOS 发布的麻烦，expo 都可轻松解决。</p>
+<p>注意</p>
+<ul>
+<li>构建iOS独立应用程序需要Apple Developer帐户</li>
+<li>构建Android独立应用程序<strong>不</strong>需要Google Play Developer帐户</li>
+</ul>
+<p>在打包发布步骤之前，我们先对开发者的源代码进行预处理，<strong>将 Taro 代码转成 React Native 代码</strong>：</p>
+<p>如果您之前没有创建过 Expo 帐户，则会在运行 build 命令时要求您创建一个</p>
+<pre><code class="language-shell">taro build --type rn
+</code></pre>
+<p><code>.rn_temp </code>目录 （如果你没有修改）下会生成转换后的 React Native 代码。</p>
+<p><strong>配置app.json</strong></p>
+<p>完整的在这里看 <a href="https://docs.expo.io/versions/latest/workflow/configuration.html">https://docs.expo.io/versions/latest/workflow/configuration.html</a> （包括一些高级选项）</p>
+<p>在 config 目录配置</p>
+<pre><code class="language-json">rn: {
+    appJson: {
+       &quot;expo&quot;: {
+        &quot;name&quot;: &quot;Your App Name&quot;,
+        &quot;icon&quot;: &quot;./path/to/your/app-icon.png&quot;,
+        &quot;version&quot;: &quot;1.0.0&quot;,
+        &quot;slug&quot;: &quot;your-app-slug&quot;,
+        &quot;sdkVersion&quot;: &quot;XX.0.0&quot;,
+        &quot;ios&quot;: {
+          &quot;bundleIdentifier&quot;: &quot;com.yourcompany.yourappname&quot;
+        },
+        &quot;android&quot;: {
+          &quot;package&quot;: &quot;com.yourcompany.yourappname&quot;
+        }
+       }
+     }
+  }
+</code></pre>
+<p>注意这个数字是expo 下载的那个bundle 的版本。 （例如 29）</p>
+<p><img src="/media/15490412159105/15445309303111.jpg" alt="-w446"></p>
+<p>如果写错了，会提示</p>
+<blockquote>
+<p>the experience you requested uses expo sdk v(null)  &hellip;..  version 25&hellip;.</p>
+</blockquote>
+<p><code>npm run dev:rn</code> 或 build, 如果正确，会  build javascript bundle</p>
+<p><img src="/media/15490412159105/15445312294006.jpg" alt="-w725"></p>
+<p>如果停在 99% 不动，注意看[鲜红的]报错。。。</p>
+<p><img src="/media/15490412159105/15445314512988.jpg" alt="-w335"></p>
+<p>React Native 的样式有比较高的要求，如果写错了。。。 慢慢改吧。。。</p>
+<p><img src="/media/15490412159105/15445316004376.jpg" alt="-w615"></p>
+<p><img src="/media/15490412159105/15445316752185.jpg" alt="-w616"></p>
+<h1 id="开始构建-ios-或-android-应用">开始构建 iOS 或 Android 应用</h1>
+<pre><code class="language-shell">expo build:android
+
+expo build:ios
+</code></pre>
+<p>如果你还没有为此项目运行的打包程序，exp 则会为你启动一个打包程序。</p>
+<p><strong>android</strong>:
+第一次构建项目时，系统会询问您是否要上传密钥库。如果你不知道密钥库是什么，你可以让 expo 生成一个，或者你也可以上传自己的。(如果您选择让 Expo 为您生成密钥库，我们强烈建议您稍后运行 expo fetch:android:keystore 并将密钥库备份到安全位置。将应用程序提交到 Google Play 商店后，该应用的所有未来更新都必须使用相同的密钥库进行签名才能被 Google 接受。如果您出于任何原因，将来删除项目或清除凭据，如果您尚未备份密钥库，则无法向应用程序提交任何更新。)</p>
+<p><strong>iOS</strong>
+创建必要的凭据.
+expo 会问你是否希望其处理你的分发证书或使用你自己的分发证书.这个与 Android 密钥库类似，如果你不知道分发证书是什么，那就让 expo 为你处理。如果你确实需要上传自己的证书，我们建议您遵循这篇 关于制作p12文件的优秀指南。(<a href="https://calvium.com/how-to-make-a-p12-file/">https://calvium.com/how-to-make-a-p12-file/</a>)
+注意：本指南建议将 p12 的密码留空，但需要使用 p12 密码将自己的证书上传到 Expo 的服务中。请在出现提示时输入密码。</p>
+<p><strong>expo 开始构建您的应用程序</strong>
+您可以查看您在 Turtle 状态站点上等待的时间。expo 将打印您可以访问的网址（例如expo.io/builds/some-unique-id）以查看你的构建日志。
+或者，你可以通过运行 <code>expo build:status</code> 来检查它。完成后，您将看到 <code>.apk（Android）</code>或<code>.ipa（iOS）</code>文件的网址。这是就是你的应用，你可以将链接复制并粘贴到浏览器中下载文件</p>
+<p><strong>详细打包教程</strong></p>
+<p><a href="https://docs.expo.io/versions/latest/distribution/building-standalone-apps">https://docs.expo.io/versions/latest/distribution/building-standalone-apps</a></p>
+<p><strong>在您的设备或模拟器上进行测试</strong></p>
+<pre><code class="language-shell"> android
+adb install app-filename.apk 
+
+ iOS 运行使用模拟器标志构建您的 expo 项目
+expo build:ios -t simulator
+
+ 然后在运行时下载完成时给出的链接的
+tarball expo build:status
+
+ 解压缩
+tar -xvzf your-app.tar.gz
+
+#通过启动 iPhone 模拟器实例，然后运行
+xcrun simctl install booted &lt;app path&gt; 
+xcrun simctl launch booted &lt;app identifier&gt;
+</code></pre>
+<h2 id="发布">发布</h2>
+<p><strong>发布到 expo</strong></p>
+<p>（发布到 expo 不需要先经过打包，通过 expo 客户端打开发布后的应用 CDN 链接来访问）</p>
+<p>发布后的应用有个专属的地址，比如应用 Expo APIs，通过 expo 客户端扫描页面中的二维码进行访问（二维码是个持久化地址 persistent URL）。</p>
+<p>详细：
+<a href="https://docs.expo.io/versions/latest/guides/publishing.html">https://docs.expo.io/versions/latest/guides/publishing.html</a></p>
+<p><img src="/media/15490412159105/15445320920419.png" alt=""></p>
+<p><strong>发布到应用商店</strong></p>
+<p>把打包所得的 ipa 和 apk 发布到 Apple Store 和应用市场，详细参阅 Distributing Your App，后续的更新可以通过发布到 expo 更新 CDN 的资源来实现。</p>
+<p><a href="https://docs.expo.io/versions/latest/distribution/index.html">https://docs.expo.io/versions/latest/distribution/index.html</a></p>
+<h2 id="更新">更新</h2>
+<p><strong>自动更新</strong></p>
+<p>默认情况下，Expo会在您的应用启动时自动检查更新，并尝试获取最新发布的版本。如果有新的捆绑包，Expo将在启动体验之前尝试下载它。如果没有可用的网络连接，或者在30秒内没有完成下载，Expo将回退到加载应用程序的缓存版本，并继续尝试在后台获取更新（此时它将保存到下一个应用程序加载的缓存）。</p>
+<p>在大多数情况下，当您想要更新应用程序时，只需从 Expo CLI 再次发布。您的用户将在下次打开应用程序时下载新的 JS。为确保您的用户能够无缝下载 JS 更新，您可能希望启用 后台 JS 下载。但是，有几个原因可能导致您需要重建并重新提交本机二进制文件：</p>
+<p>如果要更改应用程序名称或图标等本机元数据
+如果您升级到较新 sdkVersion 的应用程序（需要新的本机代码）
+要跟踪这一点，您还可以更新二进制文件的 versionCode 和 buildNumber。浏览 app.json 文档 以了解您可以更改的所有属性是一个好主意，例如图标，深层链接 URL 方案，手机/平板电脑支持等等。</p>
+<p><strong>禁用更新</strong></p>
+<p>通过在app.json中设置，updates.enabled可以false在独立应用程序中完全禁用OTA JavaScript更新。这将忽略从Expo服务器获取应用程序包的所有代码路径。在这种情况下，您的应用的所有更新都需要通过iOS App Store和/或Google Play商店进行路由。</p>
+<h1 id="常见错误">常见错误</h1>
+<blockquote>
+<p>No bundle url present</p>
+</blockquote>
+<p>导致这个报错的原因很多，最常见的是电脑开了代理。具体可以参考 #12754</p>
+<blockquote>
+<p>UnableToResolveError: Unable to resolve module AccessibilityInfo</p>
+</blockquote>
+<p>原因很多，我这边是重启电脑就好了😂。 具体可以查看 #14209</p>
+<blockquote>
+<p>Metro Bundler error: Expected path […] to be relative to one of the project roots</p>
+</blockquote>
+<p>不支持 npm link，可以使用nicojs/node-install-local 替代。</p>
+<blockquote>
+<p>Image component does not resolve images with filenames that include &lsquo;@&rsquo; symbol</p>
+</blockquote>
+<p>React Native 不支持路径中带 @ 符号，具体可以查看 #14980。</p>
+<blockquote>
+<p>The development server returned response error code 500</p>
+</blockquote>
+<p>多半是依赖的问题，进入 .rn_temp/目录，然后删除 npm 依赖，在重新安装就可以了。 也可以试一下以下命令：</p>
+<pre><code class="language-shell">watchman watch-del-all 
+rm -rf node_modules &amp;&amp; npm install 
+rm -fr $TMPDIR/react-*
+
+</code></pre>
+<p>具体可以参考 #1282</p>
+<blockquote>
+<p>Expo client app 加载阻塞： &ldquo;Building JavaScript bundle&hellip; 100%&rdquo;</p>
+</blockquote>
+<p>可能的原因很多，可以参考这个issue：react-community/create-react-native-app#392</p>
+<p>JSON value &lsquo;60&rsquo; of type NSString cannot be converted to ABI27_0_0YGValue, Did you forget the % or pt suffix</p>
+<p><img src="/media/15490412159105/15451798574942.jpg" alt="-w301"></p>
+<p>全局搜索 60 这个关键词，发现不能用双引号。。。。（taro 文档里也是单引号）</p>
+<p><img src="/media/15490412159105/15451802487068.jpg" alt="-w571"></p>
+<p>后来只能删除 size='60&rsquo;</p>
+<p><img src="/media/15490412159105/15451831371749.jpg" alt="-w759"></p>
+<p>改成只能用 <strong>数字</strong></p>
+<p><img src="/media/15490412159105/15451831907670.jpg" alt="-w747"></p>
+<p>颜色不要作用在一个 View</p>
+<p><img src="/media/15490412159105/15451855599583.jpg" alt="-w846"></p>
+<h2 id="如果以上方法都不行-重新启动-runrn-重启模拟器重启大法好">如果以上方法都不行， 重新启动 run:rn, 重启模拟器。。重启大法好！</h2>
+<h2 id="nativebase-ui-库与-expo-一起开发遇到问题">nativebase UI 库与 expo 一起开发遇到问题</h2>
+<p><a href="https://github.com/GeekyAnts/NativeBase/issues/1466">https://github.com/GeekyAnts/NativeBase/issues/1466</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/react-native-%E6%94%AF%E6%8C%81/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/react-native-%E6%94%AF%E6%8C%81/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/ionic%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

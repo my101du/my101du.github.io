@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="迅虎 social login 替换默认登录界面，自带微信、微博等登录入口 https://github.com/xunhuweb ”页面设置“替换自带的登录界面 会得到两个“页面”：登录 和 注册，内容里面是短代码 微信/微博" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="迅虎 social login 替换默认登录界面，自带微信、微博等登录入口 https://github.com/xunhuweb ”页面设置“替换自带的登录界面 会得到两个“页面”：登录 和 注册，内容里面是短代码 微信/微博" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E8%BF%85%E8%99%8E-social-login-%E6%9B%BF%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%87%AA%E5%B8%A6%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E7%AD%89%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="迅虎 social login 替换默认登录界面，自带微信、微博等登录入口 https://github.com/xunhuweb ”页面设置“替换自带的登录界面 会得到两个“页面”：登录 和 注册，内容里面是短代码 微信/微博">
+
+<meta itemprop="wordCount" content="2447">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="迅虎 social login 替换默认登录界面，自带微信、微博等登录入口 https://github.com/xunhuweb ”页面设置“替换自带的登录界面 会得到两个“页面”：登录 和 注册，内容里面是短代码 微信/微博"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E8%BF%85%E8%99%8E-social-login-%E6%9B%BF%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%87%AA%E5%B8%A6%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E7%AD%89%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E8%BF%85%E8%99%8E-social-login-%E6%9B%BF%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%87%AA%E5%B8%A6%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E7%AD%89%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2447字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="迅虎-social-login-替换默认登录界面自带微信微博等登录入口">迅虎 social login 替换默认登录界面，自带微信、微博等登录入口</h1>
+<p><a href="https://github.com/xunhuweb">https://github.com/xunhuweb</a></p>
+<h2 id="页面设置替换自带的登录界面">”页面设置“替换自带的登录界面</h2>
+<p>会得到两个“页面”：登录 和 注册，内容里面是短代码</p>
+<h2 id="微信微博等登录首先要启用扩展">微信/微博等登录，首先要启用扩展</h2>
+<p><img src="/media/15490412570155/15475211829286.jpg" alt="-w169"></p>
+<h2 id="微信登录设置">微信登录设置</h2>
+<p><strong>微信端</strong>：</p>
+<p>关联设置：微信<code>公众平台</code>
+登录位置/方式：在“微信内置浏览器”自动登录</p>
+<p><strong>移动端/PC端</strong></p>
+<p>关联：微信<code>开放平台</code>（第三方app等）
+注意：要关联公众号
+登录位置/方式：扫码登录</p>
+<p><strong>高级：PC/移动端 扫码登录</strong></p>
+<p>使用<code>公众平台</code>。 细节暂略</p>
+<h1 id="手机号注册登录">手机号注册/登录</h1>
+<h2 id="迅虎手机注册登录收费-249">迅虎手机注册/登录，收费 249</h2>
+<p><a href="https://www.wpweixin.net/product/1090.html">https://www.wpweixin.net/product/1090.html</a></p>
+<h2 id="免费的-ludou-phone-register">免费的 ludou-phone-register</h2>
+<p>首先把 迅虎 的社交登录插件里的“替换登录”禁用， 恢复wp原版的登录注册页面。(如果不禁用，输入 /wp-login.php?action=login 会自动跳转到 迅虎 生成的页面 /login 或 /register )</p>
+<h2 id="自己结合改造">自己结合改造</h2>
+<p>参考</p>
+<p><strong>关键</strong>：add_action(&lsquo;register_form&rsquo;) 后如果在 shortcode 里显示，丢失了 username 、提交按钮的处理</p>
+<p>官方（包括样式修改） 这里只有 Login
+<a href="https://codex.wordpress.org/Customizing_the_Login_Form#Make_a_Custom_Login_Page">https://codex.wordpress.org/Customizing_the_Login_Form#Make_a_Custom_Login_Page</a></p>
+<p><strong>所有(最完整的代码)</strong>
+<a href="https://digwp.com/2010/12/login-register-password-code/">https://digwp.com/2010/12/login-register-password-code/</a></p>
+<p>添加自定义 field
+<a href="https://www.cssigniter.com/how-to-add-custom-fields-to-the-wordpress-registration-form/">https://www.cssigniter.com/how-to-add-custom-fields-to-the-wordpress-registration-form/</a></p>
+<p>wp-form 的方式
+<a href="https://wpforms.com/how-to-display-wordpress-login-and-register-forms-on-any-page/">https://wpforms.com/how-to-display-wordpress-login-and-register-forms-on-any-page/</a></p>
+<p>代码例子
+<a href="https://code.tutsplus.com/tutorials/creating-a-custom-wordpress-registration-form-plugin--cms-20968">https://code.tutsplus.com/tutorials/creating-a-custom-wordpress-registration-form-plugin--cms-20968</a></p>
+<h2 id="从免费的手机注册生成表单短代码">从免费的手机注册生成表单短代码</h2>
+<p>默认的注册界面不方便修改样式，要实现</p>
+<blockquote>
+<p>可以在生成短代码，方便用 pop maker 添加浮动，或者直接插入到一个“页面”（像迅虎的一样短代码）</p>
+</blockquote>
+<pre><code class="language-php">add_shortcode('mobile_register_form', 'add_mobile_register_form_shortcode');
+}
+
+function add_mobile_register_form_shortcode($atts = [], $content = null)
+{
+    ob_start();
+
+	//login 
+	//'&lt;form name=&quot;loginform&quot; id=&quot;login_form&quot; class=&quot;login_form&quot; action=&quot;' . esc_url(wp_login_url()) . '&quot; method=&quot;post&quot;&gt;
+	//register
+	//'&lt;form method=&quot;post&quot; id=&quot;register_form&quot; class=&quot;wp-user-form&quot; action=&quot;'.site_url('wp-login.php?action=register', 'login_post').'&quot;&gt;'
+
+
+	echo '&lt;form method=&quot;post&quot; id=&quot;register_form&quot; class=&quot;wp-user-form&quot; action=&quot;' . site_url('wp-login.php?action=register', 'login_post') . '&quot;&gt;';
+	echo '&lt;label for=&quot;&quot;&gt;用户名&lt;br/&gt;&lt;input type=&quot;text&quot; name=&quot;user_login&quot; value=&quot;' . (isset($_POST['user_login']) ? $username : null) . '&quot;&gt;&lt;/label&gt;';
+	echo '&lt;label for=&quot;&quot;&gt;Email&lt;br/&gt;&lt;input type=&quot;text&quot; name=&quot;user_email&quot; value=&quot;' . (isset($_POST['user_email']) ? $username : null) . '&quot;&gt;&lt;/label&gt;';
+	do_action('register_form');
+	echo '&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Register&quot;/&gt;';
+	echo '&lt;/form&gt;';
+
+	return ob_get_clean();
+}
+</code></pre>
+<p>在 pop maker 添加一个弹窗，内容是短代码</p>
+<p><img src="/media/15490412570155/15476099157700.jpg" alt="-w695"></p>
+<p>然后配置触发点击弹窗的元素</p>
+<p><img src="/media/15490412570155/15476099719657.jpg" alt="-w788"></p>
+<p>在模板里</p>
+<pre><code class="language-html">&lt;a class=&quot;popup-register&quot; href=&quot;#&quot;&gt;register&lt;/a&gt;
+</code></pre>
+<p>手机号登录</p>
+<h4 id="改成-ajax-提交表单以及成功后重定向">改成 ajax 提交表单，以及成功后重定向</h4>
+<p>因为当前是弹窗， 如果使用默认的submit, 成功/失败 都会跳到那个系统默认的页面 /wp-login.php?action=register 去。 所以这里要改成 ajax 的方式提交表单</p>
+<p>参考</p>
+<p><a href="https://www.bobz.co/custom-ajax-wordpress-user-registration-form/">https://www.bobz.co/custom-ajax-wordpress-user-registration-form/</a></p>
+<p>以及
+<a href="https://fellowtuts.com/wordpress/wordpress-ajax-login-and-register-without-a-plugin/">https://fellowtuts.com/wordpress/wordpress-ajax-login-and-register-without-a-plugin/</a> (重点是如何像 wp 一样处理用户名/密码)</p>
+<p>表单代码</p>
+<pre><code class="language-php">function vb_registration_form() { ?&gt;
+ 
+&lt;div class=&quot;vb-registration-form&quot;&gt;
+  &lt;form class=&quot;form-horizontal registraion-form&quot; role=&quot;form&quot;&gt;
+ 
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;vb_name&quot; class=&quot;sr-only&quot;&gt;Your Name&lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;vb_name&quot; id=&quot;vb_name&quot; value=&quot;&quot; placeholder=&quot;Your Name&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;vb_email&quot; class=&quot;sr-only&quot;&gt;Your Email&lt;/label&gt;
+      &lt;input type=&quot;email&quot; name=&quot;vb_email&quot; id=&quot;vb_email&quot; value=&quot;&quot; placeholder=&quot;Your Email&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;vb_nick&quot; class=&quot;sr-only&quot;&gt;Your Nickname&lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;vb_nick&quot; id=&quot;vb_nick&quot; value=&quot;&quot; placeholder=&quot;Your Nickname&quot; class=&quot;form-control&quot; /&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;vb_username&quot; class=&quot;sr-only&quot;&gt;Choose Username&lt;/label&gt;
+      &lt;input type=&quot;text&quot; name=&quot;vb_username&quot; id=&quot;vb_username&quot; value=&quot;&quot; placeholder=&quot;Choose Username&quot; class=&quot;form-control&quot; /&gt;
+      &lt;span class=&quot;help-block&quot;&gt;Please use only a-z,A-Z,0-9,dash and underscores, minimum 5 characters&lt;/span&gt;
+    &lt;/div&gt;
+ 
+    &lt;div class=&quot;form-group&quot;&gt;
+      &lt;label for=&quot;vb_pass&quot; class=&quot;sr-only&quot;&gt;Choose Password&lt;/label&gt;
+      &lt;input type=&quot;password&quot; name=&quot;vb_pass&quot; id=&quot;vb_pass&quot; value=&quot;&quot; placeholder=&quot;Choose Password&quot; class=&quot;form-control&quot; /&gt;
+      &lt;span class=&quot;help-block&quot;&gt;Minimum 8 characters&lt;/span&gt;
+    &lt;/div&gt;
+ 
+    &lt;?php wp_nonce_field('vb_new_user','vb_new_user_nonce', true, true ); ?&gt;
+ 
+    &lt;input type=&quot;submit&quot; class=&quot;btn btn-primary&quot; id=&quot;btn-new-user&quot; value=&quot;Register&quot; /&gt;
+  &lt;/form&gt;
+ 
+    &lt;div class=&quot;indicator&quot;&gt;Please wait...&lt;/div&gt;
+    &lt;div class=&quot;alert result-message&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+ 
+&lt;?php
+}
+</code></pre>
+<p>添加这个用于安全检查的字段</p>
+<pre><code class="language-php">&lt;?php wp_nonce_field('vb_new_user','vb_new_user_nonce', true, true ); ?&gt;
+</code></pre>
+<p>（一般在普通页面中的 form, 就添加这个<code>&lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;&lt;?php echo wp_create_nonce(plugin_basename(__FILE__)); ?&gt;&quot;&gt;</code>）</p>
+<p>创建一个ajax 请求的 url 的 js 变量，<code>wp_localize_script</code></p>
+<pre><code class="language-js">function vb_register_user_scripts() {
+  // Enqueue script
+  wp_register_script('vb_reg_script', get_template_directory_uri() . '/js-folder/ajax-registration.js', array('jquery'), null, false);
+  
+  wp_enqueue_script('vb_reg_script');
+ 
+  wp_localize_script( 'vb_reg_script', 'vb_reg_vars', array(
+        'vb_ajax_url' =&gt; admin_url( 'admin-ajax.php' ),
+      )
+  );
+}
+add_action('wp_enqueue_scripts', 'vb_register_user_scripts', 100);
+</code></pre>
+<p>好了，现在写表单提交 js 代码<code>ajax-registration.js</code>，这里请求的 url <code>var ajax_url = vb_reg_vars.vb_ajax_url;</code>，就是上面<code>wp_localize_script</code>里定义的。</p>
+<pre><code class="language-js">jQuery(document).ready(function($) {
+ 
+  /**
+   * When user clicks on button...
+   *
+   */
+  $('#btn-new-user').click( function(event) {
+ 
+    /**
+     * Prevent default action, so when user clicks button he doesn't navigate away from page
+     *
+     */
+    if (event.preventDefault) {
+        event.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
+ 
+    // Show 'Please wait' loader to user, so she/he knows something is going on
+    $('.indicator').show();
+ 
+    // If for some reason result field is visible hide it
+    $('.result-message').hide();
+ 
+    // Collect data from inputs
+    var reg_nonce = $('#vb_new_user_nonce').val();
+    var reg_user  = $('#vb_username').val();
+    var reg_pass  = $('#vb_pass').val();
+    var reg_mail  = $('#vb_email').val();
+    var reg_name  = $('#vb_name').val();
+    var reg_nick  = $('#vb_nick').val();
+ 
+    /**
+     * AJAX URL where to send data
+     * (from localize_script)
+     */
+    var ajax_url = vb_reg_vars.vb_ajax_url;
+ 
+    // Data to send
+    data = {
+      action: 'register_user',
+      nonce: reg_nonce,
+      user: reg_user,
+      pass: reg_pass,
+      mail: reg_mail,
+      name: reg_name,
+      nick: reg_nick,
+    };
+ 
+    // Do AJAX request
+    $.post( ajax_url, data, function(response) {
+ 
+      // If we have response
+      if( response ) {
+ 
+        // Hide 'Please wait' indicator
+        $('.indicator').hide();
+ 
+        if( response === '1' ) {
+          // If user is created
+          $('.result-message').html('Your submission is complete.'); // Add success message to results div
+          $('.result-message').addClass('alert-success'); // Add class success to results div
+          $('.result-message').show(); // Show results div
+        } else {
+          $('.result-message').html( response ); // If there was an error, display it in results div
+          $('.result-message').addClass('alert-danger'); // Add class failed to results div
+          $('.result-message').show(); // Show results div
+        }
+      }
+    });
+ 
+  });
+});
+</code></pre>
+<p>在后端 php 插件，添加两个对应前端 ajax 请求的处理函数（参考ludou 的发短信请求）</p>
+<p>例如 <code>wp_ajax_register_user</code>中<code>wp_ajax</code>后面那一部分“register_user” 就正好对应了<code>data</code>的<code>action</code> “register_user”</p>
+<pre><code class="language-php">add_action('wp_ajax_register_user', 'vb_reg_new_user');
+add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');
+
+
+function vb_reg_new_user() {
+ 
+  // Verify nonce
+  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
+    die( 'Ooops, something went wrong, please try again later.' );
+ 
+  // Post values
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
+    $email    = $_POST['mail'];
+    $name     = $_POST['name']; 
+    $nick     = $_POST['nick'];
+ 
+    /**
+     * IMPORTANT: You should make server side validation here!
+     *
+     */
+ 
+    $userdata = array(
+        'user_login' =&gt; $username,
+        'user_pass'  =&gt; $password,
+        'user_email' =&gt; $email,
+        'first_name' =&gt; $name,
+        'nickname'   =&gt; $nick,
+    );
+ 
+    $user_id = wp_insert_user( $userdata ) ;
+ 
+    // Return
+    if( !is_wp_error($user_id) ) {
+        echo '1';
+    } else {
+        echo $user_id-&gt;get_error_message();
+    }
+  die();
+ 
+}
+</code></pre>
+<p>或者用第二个资料里的表单数据判断（有更多的报错信息，例如用户名/email 已经存在）</p>
+<pre><code class="language-php">$user_register = wp_insert_user( $info );
+if ( is_wp_error($user_register) ){	
+	$error  = $user_register-&gt;get_error_codes()	;
+	
+	if(in_array('empty_user_login', $error))
+		echo json_encode(array('loggedin'=&gt;false, 'message'=&gt;__($user_register-&gt;get_error_message('empty_user_login'))));
+	elseif(in_array('existing_user_login',$error))
+		echo json_encode(array('loggedin'=&gt;false, 'message'=&gt;__('This username is already registered.')));
+	elseif(in_array('existing_user_email',$error))
+    echo json_encode(array('loggedin'=&gt;false, 'message'=&gt;__('This email address is already registered.')));
+} else {
+  auth_user_login($info['nickname'], $info['user_pass'], 'Registration');       
+}
+
+
+function auth_user_login($user_login, $password, $login)
+{
+	$info = array();
+    $info['user_login'] = $user_login;
+    $info['user_password'] = $password;
+    $info['remember'] = true;
+	
+	$user_signon = wp_signon( $info, '' ); // From false to '' since v4.9
+    if ( is_wp_error($user_signon) ){
+		echo json_encode(array('loggedin'=&gt;false, 'message'=&gt;__('Wrong username or password.')));
+    } else {
+		wp_set_current_user($user_signon-&gt;ID); 
+        echo json_encode(array('loggedin'=&gt;true, 'message'=&gt;__($login.' successful, redirecting...')));
+    }
+	
+	die();
+}
+</code></pre>
+<h3 id="自写-迅虎-add-on-代码太复杂-暂时放弃">自写 迅虎 add on (代码太复杂， 暂时放弃)</h3>
+<p>这里是 xh 社交登录的“注册”界面字段生成代码</p>
+<p><img src="/media/15490412570155/15475219441427.jpg" alt="-w1141"></p>
+<p>对应<code>init.php</code>中代码</p>
+<p><img src="/media/15490412570155/15475223117834.jpg" alt="-w599"></p>
+<h1 id="弹窗--短代码">弹窗 + 短代码</h1>
+<p>pop maker</p>
+<h2 id="短代码以及-两个同名表单-id-重复的问题">短代码，以及 两个同名表单 id 重复的问题</h2>
+<p><img src="/media/15490412570155/15477953750205.jpg" alt="-w533"></p>
+<p>开始还以为是短代码被调用两次。 多次测试发现不是</p>
+<p>仔细看html代码，发现两个弹窗id  181  182</p>
+<p>再看后台</p>
+<p><img src="/media/15490412570155/15477954456021.jpg" alt="-w689"></p>
+<p>原来它是直接生成 html 代码，然后隐藏，最后通过某个事件触发的。 所以如果两个表单有相同的表单元素 例如</p>
+<pre><code class="language-html">&lt;input name=&quot;user_login&quot; id=&quot;user_login&quot; /&gt;
+</code></pre>
+<p>就会报这个错。</p>
+<p>办法是修改属性值，或者注意表单元素获取值时，指定 form 名</p>
+<pre><code class="language-js">var username = $(&quot;#register-form #username&quot;).val();
+
+$.ajax(
+    // submit
+)
+</code></pre>
+<h1 id="迅虎-社会化登录插件-分析">迅虎 社会化登录插件 分析</h1>
+<h2 id="入口文件-initphp-定义-class-xh_social-和实例化">入口文件 <code>init.php</code> 定义 class <code>XH_Social</code> 和实例化</h2>
+<pre><code class="language-php">final class XH_Socia 
+{
+    $version = '';
+    $min_wp_version = '';
+    
+    //...
+    
+    //单例
+    // Social
+    private static $_instance = null;
+    public static function instance(){
+        //...
+    }
+    
+    
+    // 包含插件列表 (激活的 和 未激活的) （is_active）
+    // Abstract_XH_Social_Add_Ons
+    public $plugins=array();
+    
+    public $plugins_dir =array();
+    
+    //缓存到自定义数据库
+    // XH_Session_Handler
+    public $session;
+    
+    //登录接口
+    //XH_Social_Channel_Api
+    public $channel;
+    
+    //wordpress接口
+    //XH_Social_WP_Api
+    public $WP;
+    
+    //没明白
+    public function __clone()
+    public function __wakeup() 
+    
+    //构造函数
+    private function __construct(){
+        $this-&gt;define_constants();
+            
+        $this-&gt;includes();  
+        $this-&gt;init_hooks();
+        
+        XH_Social_Install::instance();
+        
+        do_action( 'xh_social_loaded' );
+    } 
+    
+    private function define_constants() {
+        // 加载 includes/class-xh-helper.php
+    
+        // 定义常量 XH_SOCIAL, XH_SOCIAL_FILE, XH_SOCIAL_DIR, XH_SOCIAL_URL
+        
+        // 定义成员的值 $this plugins_dir
+        // add-ons/
+    }
+    
+    private function includes() {
+        // require_once 加载大量 includes 下文件（见后面图片），稍后逐个分析
+        
+    }
+    
+    private function init_hooks() {
+        //加载语言文件
+        load_plugin_textdomain( XH_SOCIAL, false,dirname( plugin_basename( __FILE__ ) ) . '/lang/'  );
+        
+        // 加载扩展
+        $this-&gt;include_plugins();
+        
+        // 挂载 actions 等，这里会关联很多文件和类（见后面图片），后面逐个分析
+        //调用自己的 init 方法，还有其他相关类里面的 init 
+    }
+    
+    private function include_plugins(){
+        $installed = get_option('xh_social_plugins_installed',array())
+        foreach ($installed as $file){
+            //..
+            if(isset($this-&gt;plugins[$file])){
+                $add_on=$this-&gt;plugins[$file];
+            else 
+             $add_on = require_once $file;
+             
+             if($add_on&amp;&amp;$add_on instanceof Abstract_XH_Social_Add_Ons){
+                $this-&gt;plugins[$file]=$add_on;
+             
+            $add_on-&gt;is_active=true;
+            
+            //初始化插件
+            $add_on-&gt;on_load();
+            
+            //监听init
+            add_action('init', array($add_on,'on_init'),10);
+            
+        // 这个变量用于：如果数据表里有某个插件的记录，然而文件又不在了，则更新数据表
+        $dirty
+    }
+    
+    //获取已经安装的addon(根据id)
+    public function get_installed_addon($add_on_id)
+    //获取已激活的addon
+    public function get_available_addon($add_on_id)
+    
+    // init_hooks 里面
+    public function after_setup_theme()
+    
+    public function after_init(){
+        // 这个 action 找不到。。。
+        do_action('wsocial_after_init');
+    }
+    
+    public function on_update($version){
+        // 也没找到
+        do_action('xh_social_on_update',$version);
+        
+        XH_Social_Hooks::check_add_ons_update();
+}
+
+XH_Social::instance();
+</code></pre>
+<p>在<code>includes()</code>方法里加载的文件</p>
+<p><img src="/media/15490412570155/15475410002305.jpg" alt="-w617"></p>
+<p><code>init_hooks()</code>中的 <code>include_plugins</code>后面</p>
+<p><img src="/media/15490412570155/15475416844328.jpg" alt="-w871"></p>
+<h1 id="其他">其他</h1>
+<p>自定义 profile 字段 （pro 收费）
+<a href="https://wordpress.org/plugins/wp-register-profile-with-shortcode/">https://wordpress.org/plugins/wp-register-profile-with-shortcode/</a></p>
+<p>一些提问
+<a href="https://premium.wpmudev.org/forums/topic/plugins-needed-login-and-register-form-with-shortcode">https://premium.wpmudev.org/forums/topic/plugins-needed-login-and-register-form-with-shortcode</a></p>
+<p>短代码支持参数
+<a href="https://www.wpdownloadmanager.com/doc/short-codes/wpdm_reg_form-user-registration-form-short-code/">https://www.wpdownloadmanager.com/doc/short-codes/wpdm_reg_form-user-registration-form-short-code/</a></p>
+<p>wp-forms 插件
+图形界面创建表单（包括注册表单）</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E8%BF%85%E8%99%8E-social-login-%E6%9B%BF%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%87%AA%E5%B8%A6%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E7%AD%89%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E8%BF%85%E8%99%8E-social-login-%E6%9B%BF%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%87%AA%E5%B8%A6%E5%BE%AE%E4%BF%A1%E5%BE%AE%E5%8D%9A%E7%AD%89%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E9%80%9A%E8%BF%87%E9%82%AE%E4%BB%B6%E5%90%91wordpress%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%A1%A8%E5%8D%95%E6%8F%92%E4%BB%B6/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

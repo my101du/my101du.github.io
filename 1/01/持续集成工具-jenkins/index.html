@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: 持续集成工具 Jenkins permalink: CI-jenkins tags: server Jenkins 安装 docker 方式安装 version: &#39;3.5&#39; services: jenkins: image: jenkins:alpine container_name: &amp;quot;jenkins&amp;quot; volumes: - &amp;quot;/docker/volumes/jenkins_home:/var/jenkins_home&amp;quot; ports: - &amp;quot;8080:8080&amp;quot; - &amp;quot;50000:50000&amp;quot; 直接安装到机器 首先下载 war 文件，然后运行命令（需要先安装 java 环境并正常运" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: 持续集成工具 Jenkins permalink: CI-jenkins tags: server Jenkins 安装 docker 方式安装 version: &#39;3.5&#39; services: jenkins: image: jenkins:alpine container_name: &quot;jenkins&quot; volumes: - &quot;/docker/volumes/jenkins_home:/var/jenkins_home&quot; ports: - &quot;8080:8080&quot; - &quot;50000:50000&quot; 直接安装到机器 首先下载 war 文件，然后运行命令（需要先安装 java 环境并正常运" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: 持续集成工具 Jenkins permalink: CI-jenkins tags: server Jenkins 安装 docker 方式安装 version: &#39;3.5&#39; services: jenkins: image: jenkins:alpine container_name: &quot;jenkins&quot; volumes: - &quot;/docker/volumes/jenkins_home:/var/jenkins_home&quot; ports: - &quot;8080:8080&quot; - &quot;50000:50000&quot; 直接安装到机器 首先下载 war 文件，然后运行命令（需要先安装 java 环境并正常运">
+
+<meta itemprop="wordCount" content="7436">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: 持续集成工具 Jenkins permalink: CI-jenkins tags: server Jenkins 安装 docker 方式安装 version: &#39;3.5&#39; services: jenkins: image: jenkins:alpine container_name: &quot;jenkins&quot; volumes: - &quot;/docker/volumes/jenkins_home:/var/jenkins_home&quot; ports: - &quot;8080:8080&quot; - &quot;50000:50000&quot; 直接安装到机器 首先下载 war 文件，然后运行命令（需要先安装 java 环境并正常运"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7436字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: 持续集成工具 Jenkins
+permalink: CI-jenkins
+tags:</p>
+<ul>
+<li>server</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="jenkins">Jenkins</h1>
+<h2 id="安装">安装</h2>
+<h3 id="docker-方式安装">docker 方式安装</h3>
+<pre><code class="language-yaml">version: '3.5'
+
+services:
+        jenkins:
+            image: jenkins:alpine
+            container_name: &quot;jenkins&quot;
+            volumes:
+                - &quot;/docker/volumes/jenkins_home:/var/jenkins_home&quot;
+            ports:
+                - &quot;8080:8080&quot;
+                - &quot;50000:50000&quot;
+</code></pre>
+<h3 id="直接安装到机器">直接安装到机器</h3>
+<p>首先下载 war 文件，然后运行命令（需要先安装 java 环境并正常运行 java 命令）</p>
+<pre><code class="language-shell">sudo java -jar jenkins.war --httpPort=8080
+</code></pre>
+<h3 id="初始-admin-密码">初始 admin 密码</h3>
+<p>在安装的时候，会显示一个 admin 密码，复制下来，待会安装完成登录的时候要用到</p>
+<p>如果忘记复制了，也没关系，可以到下面的地址找到它</p>
+<ul>
+<li>/var/jenkins_home/secrets/initialAdminPassword（Docker 镜像安装）</li>
+<li>/var/root/.jenkins/secrets/initialAdminPasssword（直接安装）</li>
+</ul>
+<p><img src="/media/15490412287565/15027008752079.jpg" alt=""></p>
+<h3 id="进入--解锁-jenkis">进入 &amp; 解锁 Jenkis</h3>
+<p>localhost:8080，输入 admin 密码</p>
+<p><img src="/media/15490412287565/15027010055249.jpg" alt=""></p>
+<h3 id="插件安装">插件安装</h3>
+<p>建议选择 Select plugins to install，节省系统资源，实际上有很多插件可能根本用不到
+（当然以后可以手动删除）</p>
+<p><img src="/media/15490412287565/15027010637135.jpg" alt=""></p>
+<p>依赖网速，漫长的过程……☕️</p>
+<p><img src="/media/15490412287565/15027010906049.jpg" alt=""></p>
+<h3 id="插件安装完毕设置一个初始管理员">插件安装完毕，设置一个初始管理员</h3>
+<p><img src="/media/15490412287565/15027013442493.jpg" alt=""></p>
+<h2 id="创建第一个任务">创建第一个任务</h2>
+<p>现在先熟悉下，创建一个最简单的构建任务：运行另外一台测试服务器上的某个命令</p>
+<h3 id="免密码登录测试服务器">免密码登录测试服务器</h3>
+<p><strong>在 目标测试服务器 上不要使用 root</strong>，而应该新增一个 jenkins 账号</p>
+<pre><code class="language-shell"># 目标机器
+useradd jenkins
+passwd jenkins 
+
+# 如果目标服务器上用 docker 容器来运行应用，就添加到 docker 组，否则添加到 root 组等
+usermod -a -G docker jenkins 
+su jenkins
+</code></pre>
+<p><strong>注意：容器中运行 jenkins 要单独创建公钥，然后把公钥发送到 目标测试服务器</strong></p>
+<p>（1）容器内是一个隔离的 linux，所以也要把它的公钥发到目标服务器 authorized_keys 文件中
+（2）jenkins 镜像默认用的是 “jenkins” 用户名，要在目标服务器上创建对应的用户和主目录</p>
+<p>需要先进入容器，然后同样运行 ssh-kengen 生成密钥对，保存到 /var/jenkins_home 中（在宿主机做了目录映射）</p>
+<pre><code class="language-shell">docker exec -it my_genkins /bin/bash
+
+ssh-keygen -t rsa
+
+# 把公钥发送到测试服务器，用户是 jenkins
+ssh-copy-id jenkins@target_test_server_ip
+</code></pre>
+<p>成功</p>
+<p><img src="/media/15490412287565/15441636639635.jpg" alt="-w715"></p>
+<p>如果在 jenkins 上自动<strong>发送公钥失败</strong>的话, 就要<strong>手动添加</strong>公钥（下面的步骤<strong>可能</strong>需要在目标服务器上操作）</p>
+<pre><code class="language-shell"># 复制 id_ras.pub 的内容
+vi .ssh/authorized_keys
+
+# 修改权限
+chmod 644 .ssh/authorized_keys
+chmod 700 .ssh
+</code></pre>
+<p>在测试服务器上的 <code>~/.ssh/authorized_keys</code> 看到已经把 jenkins 服务器上的公钥保存下来了</p>
+<p><img src="/media/15490412287565/15208391955439.jpg" alt=""></p>
+<p><strong>在 jenkins 服务器上测试一下免密码登录</strong></p>
+<p>回到 jenkins 容器内，能够免密码登录了</p>
+<pre><code class="language-shell">ssh jenkins@test_server_ip
+</code></pre>
+<h3 id="把jenkins用户添加到目标机器的-docker-组">把jenkins用户添加到目标机器的 docker 组</h3>
+<p>如果目标机器上，docker 服务是用 root 用户启动的。</p>
+<p>需要在 jenkins 容器上远程运行命令 docker 或 docker-composer，可能会提示：</p>
+<blockquote>
+<p>Couldn’t connect to Docker daemon at http+docker://localunixsocket — is it running?</p>
+</blockquote>
+<p>根据</p>
+<p><a href="https://medium.com/@ibrahimgunduz34/if-you-faced-an-issue-like-couldnt-connect-to-docker-daemon-at-http-docker-localunixsocket-is-27b35f17d09d">https://medium.com/@ibrahimgunduz34/if-you-faced-an-issue-like-couldnt-connect-to-docker-daemon-at-http-docker-localunixsocket-is-27b35f17d09d</a></p>
+<p>首先看看服务是否已经启动</p>
+<pre><code class="language-shell">sudo service docker status
+</code></pre>
+<p>如果已经启动，说明 jenkins 用户没有在 docker 组里，无权限读写 <code>/var/run/docker.sock</code> ,要添加进来</p>
+<pre><code class="language-shell">sudo ls -la /var/run/docker.sock
+srw-rw---- 1 root docker 0 Dec 21 19:16 /var/run/docker.sock
+
+# 把当前用户添加到 docker 组
+sudo usermod -aG docker ${USER}
+</code></pre>
+<h3 id="配置任务">配置任务</h3>
+<p><img src="/media/15490412287565/15027015737955.jpg" alt="">
+类别</p>
+<p><img src="/media/15490412287565/15027019638716.jpg" alt=""></p>
+<p>直接拖动到页面下方，在<code>构建</code>，<code>增加构建步骤</code>这里选择“Execute shell”(执行 shell 命令)</p>
+<p>（你应该注意到这个任务设置界面中，有很多 Git、触发器等有关的关键词，这个后面再说）</p>
+<p><img src="/media/15490412287565/15208388960663.jpg" alt=""></p>
+<p>输入 shell 命令的内容，保存</p>
+<pre><code class="language-shell">ssh jenkins@test_server_ip &quot;uname -a&quot;
+</code></pre>
+<h3 id="手动构建">手动构建</h3>
+<p>点“立即构建”</p>
+<p><img src="/media/15490412287565/15208464990869.jpg" alt=""></p>
+<p>完成后进去看看</p>
+<p><img src="/media/15490412287565/15208465122970.jpg" alt=""></p>
+<p>在远程服务器上的命令运行成功！</p>
+<p><img src="/media/15490412287565/15208465647700.jpg" alt=""></p>
+<h2 id="结合-gitea-和-webhook-实现推送代码自动构建-gitlab-也类似">结合 Gitea 和 webhook 实现推送代码自动构建 (GitLab 也类似)</h2>
+<p><a href="https://www.youtube.com/watch?v=shxiz_bos3I">https://www.youtube.com/watch?v=shxiz_bos3I</a></p>
+<p>按照前面最简单的那个任务中，我们只能将代码推到 Git 服务器，然后在 Jenkins 里远程运行 shell 命令。但这样不够“自动化”，因此在 jenkins 中安装 Git 有关的插件（如 github gitlab 等），通过 Webhook 做钩子，一旦 Git 服务器检测到代码变动，就触发一个 jenkins 系统的构建任务。</p>
+<h3 id="首先到-git-服务器上添加-ssh-key-是否必要">首先到 Git 服务器上添加 SSH KEY （是否必要？）</h3>
+<p>就是 jenkins 服务器（容器）的 id_rsa.pub 文件内的内容，以便让 git 服务器有权限可以调用 jenkins 上的 webhook.  例如下图是 Gitea 的</p>
+<p><img src="/media/15490412287565/15208475415682.jpg" alt=""></p>
+<h3 id="在-jenkins-上安装-git-插件">在 Jenkins 上安装 Git 插件</h3>
+<p>可能是 GitHub, GitLab, Gitea 等等，后者是 gogs-hook 等</p>
+<p><img src="/media/15490412287565/15208476463398.jpg" alt=""></p>
+<p><strong>注意</strong></p>
+<p>Gitea 没有单独的 hook 插件（安装了一个，也找不到在哪里生成了设置选项。。。）由于它是从 Gogo Fork 出来的。</p>
+<p>因此安装 Gogo 插件，来实现 webhook 集成</p>
+<h3 id="在-gitea-上添加一个-web-hook">在 Gitea 上添加一个 web hook</h3>
+<p>选 Gitea 类型</p>
+<p><img src="/media/15490412287565/15209107177120.jpg" alt=""></p>
+<p>填写 payload URL，对应到 jenkins 服务器和 gitea-webhook</p>
+<p><a href="http://jenins.sample.org">http://jenins.sample.org</a>:8080/gitea-webhook/?job=giteademo</p>
+<p>可以设置一个 secret 作为通信密码（对应在 jenkins 任务设置里，等下填写）</p>
+<p><img src="/media/15490412287565/15209114376326.jpg" alt=""></p>
+<h3 id="创建一个构建任务">创建一个构建任务</h3>
+<p>新建一个任务，假设名称为 giteademo</p>
+<p>然后勾上 “Gogs webhook” 里的 Use Gogs Secret, 天上前面在 Gitea 里设置的 webhook 的 Secret</p>
+<p><img src="/media/15490412287565/15209113693286.jpg" alt=""></p>
+<p><strong>构建触发器</strong>这里勾上 Gogs 有关选项</p>
+<p><img src="/media/15490412287565/15209123251198.jpg" alt=""></p>
+<p>保存，先不做其他处理（不设置源代码管理等），先修改一点代码，测试一下 commit 是否正常连接 hook</p>
+<p>咦，jenkins 里没反应</p>
+<p><img src="/media/15490412287565/15209127530945.jpg" alt=""></p>
+<p>看到 gitea 里webhook 有报错</p>
+<p><img src="/media/15490412287565/15209127963796.jpg" alt="">
+点进去看看 Recent Deliveries.</p>
+<p><img src="/media/15490412287565/15209132161131.jpg" alt=""></p>
+<p>这里最有可能出问题的就是 payload URL，必须保证</p>
+<ol>
+<li>jenkins 服务地址正确: 包括协议 http/https, url, 端口（如果是容器内运行 jenkins/gitea, 无法解析外网 dns，主机名用容器名）</li>
+<li>使用的 webhook 叫  “/gogs-webhook/” （未尝试 /gitea-webhook/ 是否也能用）</li>
+<li><code>?job=</code> job 的名称必须和 jenkins 里任务名称一样</li>
+</ol>
+<p>一切完成后，点击“Test Delivery” 看到成功了</p>
+<p><img src="/media/15490412287565/15209182325202.jpg" alt=""></p>
+<p>在 jenkins 里，webhook 被触发，并执行了一个构建任务~</p>
+<p><img src="/media/15490412287565/15209183269733.jpg" alt=""></p>
+<h2 id="多个-webhook-导致每次推送都会触发多个分支编译的问题">多个 webhook 导致每次推送都会触发多个分支编译的问题</h2>
+<p>这里有讨论</p>
+<p><a href="https://github.com/gogits/gogs/issues/4105">https://github.com/gogits/gogs/issues/4105</a></p>
+<p>当在 gitea 里的某个项目指定两个 webhook, 分别对应 jenkins 两个构建任务，用于 develop 分支和 master 分支的推送时触发编译</p>
+<p>会导致任何一个分支的推送，都会触发两个 jenkins 任务进行。。。</p>
+<p><img src="/media/15490412287565/15271323239633.jpg" alt="">
+下图：不管在哪个分支推送代码，都会把 project_develop 和 project_master 任务触发运行</p>
+<p><img src="/media/15490412287565/15271323403143.jpg" alt=""></p>
+<p>注意这里的设置并不是“分支变化筛选”，意思是“不管什么分支变化，都把 master 分支编译一次”</p>
+<p><img src="/media/15490412287565/15271328526137.jpg" alt=""></p>
+<p>这个问题的解决，查看“参数化构建”，让 jenkins 来处理“这个分支的代码有没有变化？”</p>
+<h2 id="credential-认证">Credential 认证</h2>
+<p><img src="/media/15490412287565/15216833354201.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15216833941775.jpg" alt=""></p>
+<p>或者在创建任务的时候添加</p>
+<p><img src="/media/15490412287565/15216835792811.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15216836032353.jpg" alt=""></p>
+<h2 id="源码管理gitlab">源码管理（Gitlab）</h2>
+<p>如果没有用 Gogs(Gitea) ，用了 GitLab ,可以使用 <strong>源码管理</strong> 设置区域手动设置 Git 版本库和分支信息</p>
+<p><img src="/media/15490412287565/15209190449167.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15209190770819.jpg" alt=""></p>
+<p>把这里自动生成的 webhook 地址复制，填写到 GitLab 的项目设置“集成”里面去</p>
+<h2 id="构建">构建</h2>
+<p>基本设置</p>
+<p><img src="/media/15490412287565/15211723020738.jpg" alt=""></p>
+<h3 id="配置代码库-git为例">配置代码库 （git为例）</h3>
+<p>效果就是把git上面的代码放到了jenkins的工作空间，如果git上面的代码修改了，再次构建，工作空间里面的代码又是最新的。
+jenkins的使用其实也就是把git上面的最新代码拉下来</p>
+<p>例如，某次构建任务中，可以看到把代码取回来保存到工作区中的项目名目录下。</p>
+<p><img src="/media/15490412287565/15211781586842.jpg" alt=""></p>
+<h3 id="构建触发器">构建触发器</h3>
+<p>gogs 有变动</p>
+<h3 id="构建环境">构建环境</h3>
+<h3 id="构建-1">构建</h3>
+<p>注意备份：</p>
+<p>关闭应用
+备份应用到lastDepoly目录</p>
+<p>在这里可以添加各种构建任务的步骤。例如执行脚本、运行单元测试等</p>
+<p>（举个例子，“构建”一般干什么呢？例如 node 程序的 npm install, npm build 生成文件等， 容器的镜像打包等）</p>
+<p><img src="/media/15490412287565/15209191585593.jpg" alt=""></p>
+<p>例如，我们要把前面通过 git 拉下来的代码，发到远程服务器上</p>
+<p>执行scp命令，将要拷贝的项目先远程拷贝到远程机器上。例如：在Execute shell中的内容如下：</p>
+<pre><code class="language-shell">scp -r /root/.jenkins/workspace/youxuan_api_pre/qt360-web/target/youxuan_api root@192.168.BB.BBB:/usr/local/jenkinsTempFolder/
+export BUILD_ID=DONTKILLME
+</code></pre>
+<h3 id="构建后操作">构建后操作</h3>
+<p>构建完成后，可以执行一系列操作，例如<strong>部署代码</strong>到目标服务器，发送邮件<strong>提示任务状态</strong>。</p>
+<h2 id="部署">部署</h2>
+<p>the second job does the deploy : so this job only runs the shell script. (I suggest one deploy job for each target environment : testing, production, &hellip;)</p>
+<p>(setup maintenance page, backup the current app, deploy the new app, &hellip;).</p>
+<p>推荐为每一个目标环境设置一个部署任务</p>
+<p>做好“维护页面”，备份旧应用、部署新应用</p>
+<h3 id="配置publish-over-ssh">配置Publish over SSH</h3>
+<h4 id="安装插件">安装插件</h4>
+<p><img src="/media/15490412287565/15210982443638.jpg" alt=""></p>
+<h4 id="填写-jenkins-所在服务器的-ssh-key-信息一般填写下面两个就够了">填写 Jenkins 所在服务器的 SSH Key 信息，一般填写下面两个就够了</h4>
+<ul>
+<li>Passphrase: (密钥的密码，一般是空的)</li>
+<li>Path to key: 私钥文件的路径，可以是绝对路径，也可以是相对$JENKINS_HOME的相对路径 (<strong>私钥</strong>文件的路径，<strong>注意不是 id_rsa.pub 公钥文件</strong>)：例如我安装的是 docker 版本的 jenkins，那就是：<code>/var/jenkins_home/.ssh/id_rsa</code></li>
+<li>Key：私钥
+私钥导出后的文本内容</li>
+</ul>
+<p><img src="/media/15490412287565/15211010684825.jpg" alt=""></p>
+<h4 id="添加ssh-server">添加SSH server</h4>
+<p>在 SSH Server 点击增加，并且选择高级设置，设置相应的ip,用户名和密码等。（其他选项可不用管）</p>
+<p><img src="/media/15490412287565/15211640437491.jpg" alt=""></p>
+<p>测试连接成功</p>
+<p><img src="/media/15490412287565/15211640878677.jpg" alt=""></p>
+<p>如果这里提示验证失败，请依次检查以下：</p>
+<ul>
+<li>目标服务器上的 <code>/etc/ssh/sshd_config</code>里是否打开了<code>RSAAuthentication yes</code>和<code>PubkeyAuthentication yes</code>（并重启了 sshd 服务）</li>
+<li>目标服务器上是否已经创建了新的用户名 jenkins</li>
+<li>是否在目标服务器上切换到新的用户下 <code>su jenkins</code>，并创建目录 <code>.ssh</code></li>
+<li>是否在 docker 容器内的 jenkins 内运行了  <code>ssh-copy-id jenkins@目标服务器</code></li>
+<li>检查在目标服务器上的 .ssh 是否生成 authorized_keys 文件，最后一行是否有 jenkins 服务器的 id_rsa.pub 内容</li>
+<li>是否在目标服务器上修改 .ssh 目录权限为 700；内部的 authorized_keys 为 600</li>
+</ul>
+<h3 id="在构建环境中通过-ssh-发送文件运行命令">在“构建环境”中通过 SSH 发送文件/运行命令</h3>
+<p><img src="/media/15490412287565/15211691286586.jpg" alt=""></p>
+<h3 id="在构建完成后通过-ssh-发送产品部署文件应该是简化了-scp-命令行操作后续执行">在构建完成后，通过 SSH 发送产品（部署文件，应该是简化了 scp 命令行操作+后续执行）</h3>
+<p><img src="/media/15490412287565/15211641815050.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15211642259091.jpg" alt=""></p>
+<p>注意，</p>
+<ol>
+<li>因为 source files 是相对当前工作区的。所以用<code>**/*</code>表示把所有文件都发送过去</li>
+<li>remote directy 是相对系统设置的目录组合，不需要填完整</li>
+<li>Exec command 中，注意切换到需要运行命令的项目目录，默认是 SSH 中设置的的用户主目录（~ ,或 /home/jenkins/）</li>
+<li>点击下面的 environment variables 可以查看到系统的变量</li>
+</ol>
+<p><img src="/media/15490412287565/15211829640206.jpg" alt=""></p>
+<ul>
+<li>Source files：需要上传的文件（注意：<strong>相对于 jenkins 工作区</strong>的路径。看后面的配置可以填写多个，默认用,分隔）</li>
+<li>Remove prefix：移除目录（只能指定Transfer Set -&gt; Source files中的目录，这里移除了target目录表示只将FinServer.war传到目标服务器，否则会在目标服务器创建target目录）</li>
+<li>Remote directory：远程目录（根据你的需求填写，这里没有填写默认会<strong>继承系统配置</strong>，即在前面 SSH 设置里的 Remote Directy: 例如 /mnt）</li>
+<li>Exec command：把你要执行的命令写在里面(这里的命令是在<strong>目标服务器上</strong>执行的)，在代码文件发送完毕后，将它们复制到合适的位置、进行修改权限、重启服务等</li>
+</ul>
+<p>可以直接写 shell 内容。
+当然为了维护大量构建、部署任务的方便，也可以把这一系列命令写成 sh 文件，一起发过去然后执行</p>
+<p>如需要传输多个生成的文件/目录，可点击“<strong>Add Transfer Set</strong>”，<strong>增加一个传输模块</strong></p>
+<p>如需要上传到多个“SSH Server”，可点击“Add Server”，<strong>增加一个服务器模块</strong>(系统设置中有多个“SSH Servers”)</p>
+<h3 id="关于在目标服务器上执行部署操作">关于在目标服务器上执行部署操作</h3>
+<p>经过测试，发现 Publish via SSH，将文件发送到目标，是“替换/增加”的方式，也就是说如果目标服务器中有个历史遗留文件，会一直保留在那里。</p>
+<p>因此，我们这里需要先把从 jenkins 发过来的文件先放到一个“临时目录”，关闭服务，清理/备份服务运行目录后后，再拷贝进来，例如laravel</p>
+<pre><code class="language-shell"># 进入维护模式，避免用户继续写数据
+docker exec -it php-fpm-server sh -c &quot;cd web_app &amp;&amp; php artisan down --message=&quot;Upgrading Database&quot; --retry=60&quot;
+
+# 备份文件 &amp; 数据（如有必要）
+cp -r /wwwroot/web_app /wwwroot/web_app ch
+
+# 重启容器
+
+# 退出维护模式
+docker exec -it php-fpm-server sh -c &quot;cd web_app &amp;&amp; php artisan up&quot;
+</code></pre>
+<h3 id="先压缩再通过-ssh-发送">先压缩再通过 ssh 发送</h3>
+<p>tar</p>
+<h3 id="改用-rsync-替代-publish-over-ssh">改用 rsync 替代 publish over ssh</h3>
+<p>因为 ssh 传输文件会把<strong>整个目录</strong>全部复制/覆盖，所以如果项目目录较大(特别是海量小文件)且两台服务器之间网络不佳，这个过程会很久。</p>
+<p>因此改用 rsync 来实现只传输变化的文件</p>
+<p>参考</p>
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/42112955/jenkins-ssh-plugin-transfer-only-changed-files">https://stackoverflow.com/questions/42112955/jenkins-ssh-plugin-transfer-only-changed-files</a></p>
+</li>
+<li>
+<p><a href="https://segmentfault.com/a/1190000012509128">https://segmentfault.com/a/1190000012509128</a></p>
+</li>
+</ul>
+<pre><code class="language-shell">rsync -avz -e 'ssh -p &lt;post_no&gt;' &lt;path/to/project/workspace/&gt; &lt;username&gt;@&lt;server_ip&gt;:&lt;target/path/to/transfer&gt;
+</code></pre>
+<p>但是这样没法图形化来选择服务器。。输入 IP 地址容易出错</p>
+<h3 id="或者考虑打包成-docker-镜像打包生成镜像并提交到私有-docker-仓库然后在目标服务器上-pull-镜像待对比测试速度">或者考虑打包成 docker 镜像，打包、生成镜像并提交到私有 docker 仓库，然后在目标服务器上 pull 镜像（待对比测试速度）</h3>
+<h2 id="超时处理">超时处理</h2>
+<p>当使用 publish via ssh，在远端服务器运行一些命令（例如 build 库，拉取大文件等），会报错导致部署失败，console里显示超时。</p>
+<blockquote>
+<p>Exec timed out or was interrupted after 120,000 ms</p>
+</blockquote>
+<p>根据这里以及补充</p>
+<p><a href="https://blog.csdn.net/u013066244/article/details/52788407">https://blog.csdn.net/u013066244/article/details/52788407</a></p>
+<p>首先把一些在中国外的源都改成国内的镜像以提高速度</p>
+<p>然后修改 jenkins 设置</p>
+<p>展开 Advance, 勾上 Exec in pty</p>
+<p><img src="/media/15490412287565/15264425126313.jpg" alt=""></p>
+<p>可能问题就是项目无法启动。可能的原因是因为，在执行命令时，刚启动，pty（伪终端）就断开连接，
+解决的办法就是，让脚步在后台运行，也就即使伪终端断开了，项目依然可以启动完成。</p>
+<p>改成 nohup 模式运行(有个弊端，就是在终端看不到具体的步骤输出了)</p>
+<p>（参考 <a href="https://my.oschina.net/garlic/blog/308364">https://my.oschina.net/garlic/blog/308364</a>）</p>
+<pre><code class="language-shell"># 清理 nohup.out 防止文件过大，然后写入
+cp /dev/null nohup.out
+nohup sh ggf10service.sh
+
+# 或者直接丢弃
+nohup sh ggf10service.sh &gt;/dev/null 2&gt;&amp;1 &amp;
+
+# 或仅仅保留错误信息
+nohup ./program &gt;/dev/null 2&gt;log &amp;
+</code></pre>
+<p><strong>最后</strong></p>
+<p>干脆把 Exec timeout (ms) 改大就好了，（加个0），因为我的应用场景中，首次 build 完镜像后以后如果 Dockerfile 没变化速度就很快了</p>
+<h2 id="参数化构建部署">参数化构建&amp;部署</h2>
+<p>默认情况下，jenkins 的构建任务中，使用 Git 只能支持填写一个分支。为了在 push 代码到不同分支的时候，执行对应的操作，需要“参数化”</p>
+<p>安装“Git Parameter”插件</p>
+<p><a href="https://plugins.jenkins.io/git-parameter">https://plugins.jenkins.io/git-parameter</a></p>
+<p><img src="/media/15490412287565/15216002984643.jpg" alt=""></p>
+<p>启用后，发现在任务编辑中多了“参数化构建”。</p>
+<p>另外一个插件 Extended Choice Parameter Plug-In</p>
+<p><a href="https://blog.csdn.net/xiaoxiaonvwu/article/details/71195107">https://blog.csdn.net/xiaoxiaonvwu/article/details/71195107</a></p>
+<h3 id="使用-git-parameter-预制模板">使用 Git Parameter 预制模板</h3>
+<p>在“添加参数”里选择“Git Parameter”,</p>
+<p><img src="/media/15490412287565/15215986429118.jpg" alt=""></p>
+<p>变量名假设为 <strong>mbranch</strong> ,类型<code> Parameter Type</code> 选择 <code>branch or tag</code>。（点击 Add Parameter 可以添加更多参数）</p>
+<p><img src="/media/15490412287565/15215988167637.jpg" alt=""></p>
+<p>回到任务界面，原来的“build” 链接变成了“按参数构建”，点击后可以选择分支</p>
+<p><img src="/media/15490412287565/15215990138142.jpg" alt=""></p>
+<p><strong>使用自定义的参数格式来细化参数</strong></p>
+<p>上面的 Git Parameters 预制参数模板会让 $mbranch 成为  origin/develop , 使用它有时候会有一些问题。</p>
+<p><img src="/media/15490412287565/15216004092800.jpg" alt=""></p>
+<p>你可以选择 Choice (选项) 和 String (字符串)类型的参数来实现更细化的控制</p>
+<p>例如</p>
+<p><img src="/media/15490412287565/15216006973656.jpg" alt="">
+调用时</p>
+<p><img src="/media/15490412287565/15216007084734.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15216007405213.jpg" alt=""></p>
+<h3 id="场景1-自动获取推送的分支名来构建">场景1： 自动获取推送的分支名来构建</h3>
+<p>在源码管理中，在 Branch Specifier 中填入刚才的变量名，注意要加$ （原来可能是 */develop ）</p>
+<p><img src="/media/15490412287565/15215988531103.jpg" alt=""></p>
+<h3 id="场景2在执行的命令中使用参数">场景2：在执行的命令中使用参数</h3>
+<p><img src="/media/15490412287565/15215989770115.jpg" alt=""></p>
+<h3 id="待研究的">待研究的：</h3>
+<p>在前面遇到个问题，gitea 里某个仓库有两个 webhook, 分别对应jenkins里两个任务 develop 分支和 master 分支的 build。</p>
+<p>无效？</p>
+<p>为了让 master 构建任务只处理 master 的代码变化，可以这么设置.</p>
+<p>展开高级选项</p>
+<p><img src="/media/15490412287565/15271339255903.jpg" alt=""></p>
+<p>然后设置过滤选项</p>
+<p><img src="/media/15490412287565/15271339682535.jpg" alt=""></p>
+<p><a href="https://stackoverflow.com/questions/43183495/how-to-dynamically-pick-a-git-branch-to-use-in-jenkins-build/43518421">https://stackoverflow.com/questions/43183495/how-to-dynamically-pick-a-git-branch-to-use-in-jenkins-build/43518421</a></p>
+<h3 id="场景3-手动选择部署的目标服务器">场景3 手动选择部署的目标服务器</h3>
+<p><strong>(经测试，label 无法生效。试过 Choice 类型，还是只会运行第一个 Server?)</strong></p>
+<p>首先添加一个参数，假设命名 DEPLOYMENT</p>
+<p><img src="/media/15490412287565/15216026279607.jpg" alt=""></p>
+<p>然后为 <strong>build 任务</strong>添加多个 SSH Server（提前在系统配置里把这些服务器创建好），并分别添加 label 的值，</p>
+<p><img src="/media/15490412287565/15216030025377.jpg" alt=""></p>
+<p>server 2</p>
+<p><img src="/media/15490412287565/15216032441514.jpg" alt=""></p>
+<p>然后在 build 的时候就会提示输入服务器了。（对应 Build 任务中 SSH Servers 里的 Label）</p>
+<p>给多个服务器添加 Label 后，展开“Advance&rdquo;,选中Parameterized publishing， 填写变量名例如 DEPLOYMENT</p>
+<p><img src="/media/15490412287565/15271447674502.jpg" alt=""></p>
+<p>为了避免输入出错，可以把这些 labels 放入 “Choice” 类型的 Parameter</p>
+<p><img src="/media/15490412287565/15216033638849.jpg" alt=""></p>
+<p>除了完全匹配，可以使用正则来一次性推送到目标服务器，例如使用 <code>.*-app$</code> 会同时发送文件到 test-app 服务器和 prod-app 服务器（想想看 <code>.*-prod.*-.*</code>会做什么？）</p>
+<h3 id="run-condition--flexible-publish">run condition + Flexible Publish</h3>
+<p>上面设置 server 的 label 后，只能手动点击然后选择服务器。</p>
+<p>可以用这个，https://wiki.jenkins.io/display/JENKINS/Run+Condition+Plugin</p>
+<p><img src="/media/15490412287565/15271451307733.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15271455376538.jpg" alt=""></p>
+<p>其实他会自动安装 run condition</p>
+<p><img src="/media/15490412287565/15271455759978.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15271456245044.jpg" alt=""></p>
+<p>条件设置有很多，例如文件存在，时间等等。这里例子是当 git push 动作中分支变量</p>
+<p>Expression: <code>${ENV,var=&quot;mbranch&quot;}</code>  (花括号)
+Lable: <code>origin/master</code></p>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>var</code> 是 mbranch (自己建立的参数)，不要用 jenkins 自带的 $_GIT_BRANCH (一直是 develop 值)</li>
+<li>分支 label 应该是 origin/master 完整的带 origin</li>
+</ul>
+<p><img src="/media/15490412287565/15271462095750.jpg" alt=""></p>
+<p>添加 action，例如发邮件、文件发送到目标服务器等</p>
+<p><img src="/media/15490412287565/15271479707973.jpg" alt=""></p>
+<h3 id="出现问题手动build可识别参数push-webhook-无法触发">出现问题，手动build可识别参数，push webhook 无法触发</h3>
+<p>手动 Parameter Build (然后在选择列表里选某个分支)成功，但 push 代码无法触发</p>
+<p>报错如下，提示参数化构建里创建的分支变量 $mbranch 无法获取</p>
+<p><img src="/media/15490412287565/15272256137556.jpg" alt=""></p>
+<p>是因为 Gogs(Gitea) webhook 无法发送 branch 信息过来 jenkins</p>
+<p><a href="https://github.com/jenkinsci/gogs-webhook-plugin/issues/8">https://github.com/jenkinsci/gogs-webhook-plugin/issues/8</a></p>
+<p>导致添加的 Param 类型 Branch or Tag 名称 mbranch 在作为条件使用的时候，或者输出</p>
+<pre><code class="language-shell">echo $mbranch
+</code></pre>
+<p>为空。</p>
+<p>很奇怪，明明从 webhook 记录里看到推过去的数据，但jenkins的 git param 就是获取不到 branch/tag</p>
+<p><img src="/media/15490412287565/15272287010606.jpg" alt=""></p>
+<p>我们要修改两处</p>
+<p>根据 Jenkins 支持的环境变量 <a href="http://devqaweb.pulseeng.com">http://devqaweb.pulseeng.com</a>:8080/env-vars.html/</p>
+<p>（1)这里还是保留，用户手动 Build Parameter 的时候在列表里选择</p>
+<p><img src="/media/15490412287565/15272281181695.jpg" alt=""></p>
+<p>（2）这里不能再用 $mbranch （webhook 不带信息，识别失败），留空。表示“所有推送的分支都支持”</p>
+<p><img src="/media/15490412287565/15272281664843.jpg" alt=""></p>
+<p>（3）关键就是这个变量 <code>GIT_BRANCH</code> 可以添加一个命令还看看</p>
+<p><img src="/media/15490412287565/15272282094350.jpg" alt=""></p>
+<p>(4) 最后把条件改成 GIT_BRANCH, 而不是 mbranch</p>
+<p><img src="/media/15490412287565/15272284236569.jpg" alt=""></p>
+<p>回到 ConsoleOutput</p>
+<p>打印出来变量</p>
+<p><img src="/media/15490412287565/15272286041249.jpg" alt=""></p>
+<p>两个条件，第一个不满足分支名，略过。第二个满足条件，跑里面的命令</p>
+<p><img src="/media/15490412287565/15272288398133.jpg" alt=""></p>
+<p><strong>出现问题</strong></p>
+<p>从 git 推送代码自动触发 webhook 正常了。</p>
+<p>但是“手动”参数化构建有有问题，不管在列表里选择 develop 还是 master，都只会指定 develop 的分支处理。。。。。  难啊</p>
+<p>如果全部用 <code>$mbranch</code>  那自动推送触发 webhook 又不执行了。</p>
+<p>因为 <code>$GIT_BRANCH</code> 能正常读到 origin/develop, <code>$mbranch</code>得不到任何值(这个所谓的参数化，好像只是手动 build 那个命令输入的参数。。。。)</p>
+<p>只好在条件里处理两种情况了，一个是 mbranch (对应手动参数化选择)，一个是 GIT_BRANCH (对应 git 的 webhook)</p>
+<p><img src="/media/15490412287565/15291337130928.jpg" alt=""></p>
+<h3 id="使用-pipeline-自动根据-branch-来发布到到不同的服务器">使用 pipeline 自动根据 branch 来发布到到不同的服务器</h3>
+<p>根据这篇文章，通过写 pipeline, 读取变量，然后匹配服务器发布脚本可以实现。</p>
+<p><a href="http://www.cima.dk/2017/09/16/branch-specific-deployments-from-jenkins/">http://www.cima.dk/2017/09/16/branch-specific-deployments-from-jenkins/</a></p>
+<p><a href="https://jenkins.io/blog/2015/12/03/pipeline-as-code-with-multibranch-workflows-in-jenkins/">https://jenkins.io/blog/2015/12/03/pipeline-as-code-with-multibranch-workflows-in-jenkins/</a></p>
+<p>同时你还可以把前面创建的几个构建任务合并成一个，在 pipeline 里处理分支筛选和部署</p>
+<pre><code class="language-pipeline">node ('nodejs') {
+  currentBuild.result = 'SUCCESS'
+
+  stage ('Checkout') {
+    // Clean workspace before checkout
+    step ([$class: 'WsCleanup'])
+    checkout scm
+  }
+
+  stage ('Build') {
+    env.PATH = &quot;/opt/jenkins/bin:${env.PATH}&quot;
+    catchError {
+      // Install dependencies
+      sh 'npm install'
+      // Build assets with eg. webpack 
+      sh 'npm run build'
+    }
+  }
+
+  stage ('Test') {
+    catchError {
+      sh 'npm test'
+      // Publish our test and coverage reports
+      step([$class: 'JUnitResultArchiver', testResults: 'tests/test-report.xml'])
+      step([
+        $class: 'CloverPublisher',
+        cloverReportDir: 'tests',
+        cloverReportFileName: 'coverage-report.xml',
+        healthyTarget: [methodCoverage: 67, conditionalCoverage: 75, statementCoverage: 67],
+        unhealthyTarget: [methodCoverage: 10, conditionalCoverage: 15, statementCoverage: 10],
+        failingTarget: [methodCoverage: 5, conditionalCoverage: 10, statementCoverage: 5]
+      ])
+    }
+  }
+
+  stage ('Deploy') {
+    echo &quot;We are currently working on branch: ${env.BRANCH_NAME}&quot;
+
+    switch (env.BRANCH_NAME) {
+      case 'master': 
+        env.DEPLOYMENT_ENVIRONMENT = 'prod';
+        env.PROPERTY_FILE = 'env.prod.properties';
+        break;
+      case 'develop':
+        env.DEPLOYMENT_ENVIRONMENT = 'test';
+        env.PROPERTY_FILE = 'env.test.properties';
+        break;
+      default: env.DEPLOYMENT_ENVIRONMENT = 'no_deploy';
+    }
+
+    if (env.DEPLOYMENT_ENVIRONMENT != 'no_deploy') {
+      catchError { sh './deploy.sh' }
+    }
+  }
+}
+</code></pre>
+<h3 id="参考">参考</h3>
+<p><a href="http://www.tothenew.com/blog/jenkins-parameterized-publishing/">http://www.tothenew.com/blog/jenkins-parameterized-publishing/</a>
+<a href="https://stackoverflow.com/questions/13411489/how-to-control-parametrized-publishing-in-jenkins-using-publish-over-ssh-plugin">https://stackoverflow.com/questions/13411489/how-to-control-parametrized-publishing-in-jenkins-using-publish-over-ssh-plugin</a></p>
+<p>增强的 Choice Parameter
+<a href="https://medium.com/@rijoalvi/jenkins-dynamic-parameters-using-extended-choice-parameter-plugin-and-groovy-1a6ffc41063f(">https://medium.com/@rijoalvi/jenkins-dynamic-parameters-using-extended-choice-parameter-plugin-and-groovy-1a6ffc41063f(</a>提到是 Extended Choice Parameter Plug-in 而不是 Extensible。。。)</p>
+<h2 id="回滚">回滚</h2>
+<p>有时部署失败的时候我们需要回滚到指定版本的构建</p>
+<p>如果要实现回滚，一定要在构建后将构建完成的文件进行存档，方便以后回滚的时候使用</p>
+<p><img src="/media/15490412287565/15211884751763.jpg" alt=""></p>
+<p>选择“参数化的构建过程”进行传递不同的参数来选择是进行新的构建还是回滚</p>
+<p><img src="/media/15490412287565/15211884602980.jpg" alt=""></p>
+<p>构建选择“Execute Shell”的方式，自己根据变量，自定义构建的脚本，此时如果是发布安装maven的构建过程进行新的构建，如果是回滚，知道历史构建后的文件，复制到当前构建结果目录。</p>
+<p><img src="/media/15490412287565/15211885669008.jpg" alt=""></p>
+<p>点击构建，根据不同的参数选择发布还是回滚，回滚的时候填写要回滚到的历史版本号</p>
+<p><img src="/media/15490412287565/15211885810680.jpg" alt=""></p>
+<h3 id="简化一点用-rsync-推送代码到目标服务器">简化一点，用 rsync 推送代码到目标服务器</h3>
+<h3 id="docker-部署">Docker 部署</h3>
+<p>(1) 利用jenkins来构建应用的docker镜像并push到私有仓库，然后再基于应用的docker镜像来发布项目</p>
+<p>(2) 只在部署服务器本地 build 到本地镜像库（不走 docker hub 或私有库）</p>
+<h4 id="案例-1---jenkins--docker--nodejs">案例 1   jenkins + docker + node.js</h4>
+<p><a href="https://www.jianshu.com/p/052a2401595a">https://www.jianshu.com/p/052a2401595a</a></p>
+<p>在构建环境的时候，选“send files or execute command”，填写下面的内容，表示登录到远程服务器，运行下面的一系列容器重启、构建镜像命令。</p>
+<p><img src="/media/15490412287565/15211011834347.jpg" alt="">
+<a href="https://upload-images.jianshu.io/upload_images/1300665-c7713a4258634078.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">https://upload-images.jianshu.io/upload_images/1300665-c7713a4258634078.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700</a></p>
+<h4 id="案例2-php">案例2 php</h4>
+<p><a href="https://laravel-china.org/topics/1416/docker-jenkins-fast-build-php-continuous-integration-server">https://laravel-china.org/topics/1416/docker-jenkins-fast-build-php-continuous-integration-server</a></p>
+<h3 id="email-extension-plugin">Email Extension Plugin</h3>
+<p>这里是基本的配置邮件通知，可通过勾选发送邮件测试是否配置成功</p>
+<p><img src="/media/15490412287565/15211627471653.jpg" alt="">
+Test Configurition</p>
+<p><img src="/media/15490412287565/15211627695614.jpg" alt=""></p>
+<p>如果安装插件 Extend E-mail Notifiacttion, 可以实现更强大通知</p>
+<p><img src="/media/15490412287565/15211632459697.jpg" alt=""></p>
+<h3 id="解决-jenkins-用户权限问题">解决 jenkins 用户权限问题</h3>
+<p><a href="https://segmentfault.com/a/1190000004322188">https://segmentfault.com/a/1190000004322188</a></p>
+<h3 id="资料">资料</h3>
+<p><a href="https://medium.com/@weblab_tech/how-to-publish-artifacts-in-jenkins-f021b17fde71">https://medium.com/@weblab_tech/how-to-publish-artifacts-in-jenkins-f021b17fde71</a></p>
+<p><a href="https://open.coding.net/ci/jenkins/">https://open.coding.net/ci/jenkins/</a></p>
+<p><a href="http://www.g.com.cn/tech/24045221/">http://www.g.com.cn/tech/24045221/</a></p>
+<p><a href="https://testerhome.com/topics/5527">https://testerhome.com/topics/5527</a></p>
+<p><a href="https://juejin.im/entry/5a446d6ff265da43163d5de4">https://juejin.im/entry/5a446d6ff265da43163d5de4</a></p>
+<p><a href="https://www.jianshu.com/p/ba09cdc53343">https://www.jianshu.com/p/ba09cdc53343</a></p>
+<h2 id="pipeline">Pipeline</h2>
+<p>以一种清单命令的方式来定义构建任务。</p>
+<p>创建一个 pipeline 风格的任务</p>
+<p><a href="https://medium.com/@weblab_tech/how-to-publish-artifacts-in-jenkins-f021b17fde71">https://medium.com/@weblab_tech/how-to-publish-artifacts-in-jenkins-f021b17fde71</a></p>
+<p>例如</p>
+<pre><code class="language-pipeline">node {
+    stage (‘Prepare environment’) {
+        git branch: ‘development’, url: ‘git@bitbucket.org:example/myapp.git’
+        sh ‘npm install’
+    }
+    stage (‘Code analyse’) {
+        sh ‘echo “Run some lints”’
+    }
+    stage (‘Unit test’) {
+        sh ‘echo “Tests will back”’
+    }
+    stage (‘Build’) {
+        sh ‘npm run clean’
+        sh ‘npm run build’
+    }
+    stage (‘Deploy’) {
+        sh ‘ssh user@server rm -rf /var/www/temp_deploy/dist/’
+        sh ‘ssh user@server mkdir -p /var/www/temp_deploy’
+        sh ‘scp -r dist user@server:/var/www/temp_deploy/dist/’
+        sh ‘ssh user@server “rm -rf /var/www/example.com/dist/ &amp;&amp; mv /var/www/temp_deploy/dist/ /var/www/example.com/”’
+    }
+}
+</code></pre>
+<p>能够看到</p>
+<p><img src="/media/15490412287565/15210980429887.jpg" alt=""></p>
+<p>有很多好处，例如按条件处理，例如提前运行一些库安装、打包等任务（减少把文件发到目标机器再安装依赖的风险）</p>
+<h2 id="jenkins-的一些技巧">Jenkins 的一些技巧</h2>
+<h2 id="output-有问题">output (有问题)</h2>
+<p>Console Output 高亮</p>
+<p>插件  Log Parser</p>
+<p><img src="/media/15490412287565/15272175822860.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15272179324194.jpg" alt=""></p>
+<p><img src="/media/15490412287565/15272179637838.jpg" alt=""></p>
+<h3 id="主题">主题</h3>
+<p>(不要装， 特别卡，文件无法加载)
+<a href="https://github.com/afonsof/jenkins-material-theme">https://github.com/afonsof/jenkins-material-theme</a></p>
+<p>先装 Jenkins Simple Theme Plugin</p>
+<h3 id="如何修改构建任务显示的时区">如何修改构建任务显示的时区？</h3>
+<p>默认情况下，我用 docker 安装 jenkins，使用的是 UTC 时间。而不是北京时间。</p>
+<p>打开<code>Manage Jenkins</code> -&gt; <code>Script Console</code></p>
+<p>输入</p>
+<pre><code class="language-java">System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai')
+</code></pre>
+<p>然后再回来就可以看到已经用到北京时区了</p>
+<p><img src="/media/15490412287565/15263667707391.jpg" alt=""></p>
+<h2 id="实现项目访问权限">实现项目访问权限</h2>
+<p>首先在全局安全设置里打开</p>
+<p><img src="/media/15490412287565/15375131691691.jpg" alt="-w958"></p>
+<p>保存后，管理员有全局权限</p>
+<p><img src="/media/15490412287565/15375132028325.jpg" alt="-w311">
+回到某个项目</p>
+<p><img src="/media/15490412287565/15375132476893.jpg" alt="-w902"></p>
+<p><img src="/media/15490412287565/15375133058805.jpg" alt="-w843"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E5%B7%A5%E5%85%B7-jenkins/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/mongodb-%E5%AD%A6%E4%B9%A0/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E4%B8%8E%E4%BA%A4%E4%BB%98/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

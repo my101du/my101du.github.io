@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Taro-UI 官方组件库 https://taro-ui.aotu.io/#/docs/introduction 之前的“组件库”，一般是和 微信小程序 组件对应的一些“基础组件”，需要自己从0开始添加样式 而这里的 Taro-UI ，有点类似 Antd，已经是一" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Taro-UI 官方组件库 https://taro-ui.aotu.io/#/docs/introduction 之前的“组件库”，一般是和 微信小程序 组件对应的一些“基础组件”，需要自己从0开始添加样式 而这里的 Taro-UI ，有点类似 Antd，已经是一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Taro-UI 官方组件库 https://taro-ui.aotu.io/#/docs/introduction 之前的“组件库”，一般是和 微信小程序 组件对应的一些“基础组件”，需要自己从0开始添加样式 而这里的 Taro-UI ，有点类似 Antd，已经是一">
+
+<meta itemprop="wordCount" content="4040">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Taro-UI 官方组件库 https://taro-ui.aotu.io/#/docs/introduction 之前的“组件库”，一般是和 微信小程序 组件对应的一些“基础组件”，需要自己从0开始添加样式 而这里的 Taro-UI ，有点类似 Antd，已经是一"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4040字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="taro-ui-官方组件库">Taro-UI 官方组件库</h1>
+<p><a href="https://taro-ui.aotu.io/#/docs/introduction">https://taro-ui.aotu.io/#/docs/introduction</a></p>
+<p><img src="/media/15490412159664/15448782491354.jpg" alt="-w577"></p>
+<p>之前的“组件库”，一般是和 微信小程序 组件对应的一些“基础组件”，需要自己从0开始添加样式</p>
+<p>而这里的 Taro-UI ，有点类似 Antd，已经是一套成熟的多端 UI 组件库，自带样式，可以直接使用。Web、ReactNative、微信小程序等各种端大行其道，当业务要求同时在不同的端都要求有所表现的时候，针对不同的端去编写多套代码的成本显然非常高，这时候只编写一套代码就能够适配到多端的能力就显得极为需要。</p>
+<p>如果 Taro-UI 里没有合适的直接可用的组件，可以用 Taro 组件库里的“原始组件”来添加 CSS 实现</p>
+<pre><code class="language-shell">npm install taro-ui
+</code></pre>
+<pre><code class="language-js">import {AtButton} from 'taro-ui'
+
+render...
+  &lt;AtButton type='primary'&gt;Add&lt;/AtButton&gt;
+</code></pre>
+<p>注意很多组件的属性，只支持微信小程序平台，H5、rn 并不支持</p>
+<p>官方demo(一些事件的处理范例)，例如 TabBar 的 onClick 切换具体事件</p>
+<p><a href="https://github.com/NervJS/taro-ui-demo">https://github.com/NervJS/taro-ui-demo</a></p>
+<h2 id="自定义主题">自定义主题</h2>
+<p>目前自定义主题的功能还在开发中，如果您有修改组件样式的需求，可以通过以下方式进行修改：</p>
+<p>globalClass 全局样式类
+配置 customStyle 属性（仅有部分组件支持，请查看组件文档）</p>
+<p>在组件构造器中的 options.addGlobalClass 字段设置为 true（Taro UI 的组件均开启了此特性）</p>
+<pre><code class="language-js">/* CustomComp.js */
+export default CustomComp extends Component {
+  static options = {
+    addGlobalClass: true
+  }
+  
+  render () {
+    return &lt;View className=&quot;red-text&quot;&gt;这段文本的颜色由组件外的 class 决定&lt;/View&gt;
+  }
+}
+
+</code></pre>
+<pre><code class="language-css">/* 组件外的样式定义 */
+.red-text {
+  color: red;
+}
+</code></pre>
+<p>issue 覆盖无效
+<a href="https://github.com/NervJS/taro-ui/issues/66">https://github.com/NervJS/taro-ui/issues/66</a></p>
+<p>小程序的 addGlobalClass 只能使 page 页面上的样式可以影响 组件 所以目前的解决办法只有把 样式写在 page 上面 或者用 customStyle</p>
+<h2 id="基础组件">基础组件</h2>
+<h3 id="图标">图标</h3>
+<pre><code class="language-js">import { AtIcon } from 'taro-ui'
+
+&lt;AtIcon value='clock' size='30' color='#F00'&gt;&lt;/AtIcon&gt;
+</code></pre>
+<p>使用第三方字体图标库</p>
+<p>可自行下载 Ionicons 或 Font Awesome 等拓展字体图标库,然后</p>
+<p>(1) 配置 postcss 小程序端样式引用本地资源内联  config/dev[prod].js</p>
+<pre><code class="language-json">//....
+    postcss: {
+        // 小程序端样式引用本地资源内联
+        url: {
+          enable: true,
+          limit: 102400000000
+        }
+</code></pre>
+<p>(2) 编写字体图标库 css</p>
+<pre><code class="language-css">/* icon.scss */
+@font-face {
+  font-family: 'FontAwesome';
+  /* 自行安装第三方字体图标库 */
+  src: url('./assets/fonts/fontawesome-webfont.eot?v=4.7.0');
+  src: url('./assets/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('./assets/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('./assets/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 根据第三方字体图标库编写 */
+/* 举例：fa 就是 prefixClass 的值，下面的的图标 css class 命名都要用 fa- 开头  */
+.fa {
+  display: inline-block;
+  /* 以下的 font 与上面 @font-face 的 font-family 要一致*/
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-clock:before {
+  content: &quot;\f00c&quot;;
+}
+</code></pre>
+<p>(3) 在 app.js 全局引入 icon.scss</p>
+<pre><code class="language-css">/* app.js */
+import './icon.scss'
+</code></pre>
+<p>(4) 在 设置-项目设置-调试基础库 设置版本 2.2.3 以上</p>
+<p>(5) 使用 AtIcon  <code>className</code> 前缀，用于第三方字体图标库，比如想使用&rsquo;fa fa-clock&rsquo; 的图标，则 传入</p>
+<pre><code class="language-js">&lt;AtIcon prefixClass='fa' value='clock' size='30' color='#F00'&gt;&lt;/AtIcon&gt;
+</code></pre>
+<h3 id="button">Button</h3>
+<h2 id="视图组件">视图组件</h2>
+<h3 id="avatar">Avatar</h3>
+<pre><code class="language-js">&lt;AtAvatar circle image='https://jdc.jd.com/img/200'&gt;&lt;/AtAvatar&gt;
+&lt;AtAvatar circle text='凹凸实验室'&gt;&lt;/AtAvatar&gt;
+</code></pre>
+<h3 id="article-文章样式">Article 文章样式</h3>
+<p>在 app.js 文件中引入样式。 由于 app.js 添加的样式文件 在小程序上只能影响 page 样式,不能影响 component 的样式，所以在 component 的时候你可能需要再次引入</p>
+<pre><code class="language-js">if (process.env.TARO_ENV === 'weapp') {
+  require('taro-ui/dist/weapp/css/index.css')
+} else if (process.env.TARO_ENV === 'h5') {
+  require('taro-ui/dist/h5/css/index.css')
+}
+</code></pre>
+<p>.at-article /* 根类名 */
+.at-article__h1 /* 一级标题 */
+.at-article__h2 /* 二级标题 */
+.at-article__h3 /* 三级标题 */
+.at-article__info /* 作者信息 */
+.at-article__p /* 段落 */
+.at-article__img /* 图片 */</p>
+<pre><code class="language-html">&lt;View className='at-article'&gt;
+  &lt;View className='at-article__h1'&gt;
+    这是一级标题这是一级标题
+  &lt;/View&gt;
+  &lt;View className='at-article__info'&gt;
+    2017-05-07&amp;nbsp;&amp;nbsp;&amp;nbsp;这是作者
+  &lt;/View&gt;
+  &lt;View className='at-article__content'&gt;
+    &lt;View className='at-article__section'&gt;
+      &lt;View className='at-article__h2'&gt;这是二级标题&lt;/View&gt;
+      ....
+</code></pre>
+<h3 id="badge">Badge</h3>
+<p>有红点、数字、省略号等</p>
+<pre><code class="language-js">&lt;AtBadge value='10' maxValue='99'&gt;
+    &lt;AtButton size='small'&gt;按钮&lt;/AtButton&gt;
+&lt;/AtBadge&gt;
+</code></pre>
+<h3 id="noticebar-通告栏">Noticebar 通告栏</h3>
+<p>有关闭、单行等行为/属性</p>
+<pre><code class="language-js">&lt;AtNoticebar icon='volume-plus'&gt;
+  这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏
+&lt;/AtNoticebar&gt;
+</code></pre>
+<h3 id="tag-标签">Tag 标签</h3>
+<pre><code class="language-js">&lt;!-- 点击返回当前标签名字和是否选中 返回标签名字和状态 name, active --&gt;
+&lt;AtTag 
+  name='tag-1' 
+  type='primary' 
+  circle 
+  onClick={this.onClick.bind(this)}
+&gt;
+  tag-1
+&lt;/AtTag&gt;
+</code></pre>
+<h3 id="timeline-时间轴">timeline 时间轴</h3>
+<p>颜色、未完成最后一个幽灵点、图标、副标题与更多内容</p>
+<h2 id="操作反馈">操作反馈</h2>
+<h3 id="actionsheet-动作面板">ActionSheet 动作面板</h3>
+<pre><code class="language-js">&lt;AtActionSheet isOpened cancelText='取消' title=‘头部标题可以用通过转义字符换行’ onCancel={ this.handleCancel } onClose={ this.handleClose }&gt;
+  &lt;AtActionSheetItem onClick={ this.handleClick }&gt;
+    按钮一
+  &lt;/AtActionSheetItem&gt;
+  &lt;AtActionSheetItem&gt;
+    按钮二
+  &lt;/AtActionSheetItem&gt;
+&lt;/AtActionSheet&gt;
+</code></pre>
+<h3 id="activityindicator-活动指示器-loading">ActivityIndicator 活动指示器 (Loading)</h3>
+<p>颜色、大小、居中、文本</p>
+<h3 id="modal-模态框">Modal 模态框</h3>
+<pre><code class="language-js">import { AtModal, AtModalHeader, AtModalContent, AtModalAction } from 'taro-ui'
+
+&lt;AtModal isOpened&gt;
+  &lt;AtModalHeader&gt;标题&lt;/AtModalHeader&gt;
+  &lt;AtModalContent&gt;
+      这里是正文内容，欢迎加入京东凹凸实验室
+      这里是正文内容，欢迎加入京东凹凸实验室
+      这里是正文内容，欢迎加入京东凹凸实验室
+  &lt;/AtModalContent&gt;
+  &lt;AtModalAction&gt;
+    &lt;Button&gt;取消&lt;/Button&gt;
+    &lt;Button&gt;确定&lt;/Button&gt;
+  &lt;/AtModalAction&gt;
+&lt;/AtModal&gt;
+</code></pre>
+<h3 id="progress-进度条">Progress 进度条</h3>
+<pre><code class="language-js">&lt;AtProgress percent='75' status='error' /&gt;
+&lt;AtProgress percent='50' status='progress' /&gt;
+&lt;AtProgress percent='100' status='success' /&gt;
+</code></pre>
+<h3 id="toast-轻提示">Toast 轻提示</h3>
+<pre><code class="language-js">&lt;AtToast
+  isOpened
+  text={text}
+  iconSize={iconSize}
+  iconType={iconType}
+  iconColor={iconColor}
+  isHiddenIcon={isHiddenIcon}&gt;&lt;/AtToast&gt;
+
+</code></pre>
+<h2 id="表单">表单</h2>
+<pre><code class="language-js">&lt;AtForm
+  onSubmit={this.onSubmit.bind(this)}
+  onReset={this.onReset.bind(this)}
+&gt;
+  &lt;AtInput
+    name='value1'
+    title='文本'
+    type='text'
+    placeholder='单行文本'
+    value={this.state.value1}
+    onChange={this.handleChange.bind(this)}
+  /&gt;
+&lt;/AtForm&gt;
+</code></pre>
+<h3 id="input-输入框">Input 输入框</h3>
+<p>有多种类型，</p>
+<pre><code class="language-js">&lt;AtInput
+  clear
+  title='验证码'
+  type='text'
+  maxlength='4'
+  placeholder='验证码'
+  value={this.state.value}
+  onChange={this.handleChange}
+&gt;
+  &lt;Image src='https://aotu.io/img.png' /&gt;
+&lt;/AtInput&gt;
+</code></pre>
+<h3 id="inputnumber-输入框带加减按钮">InputNumber 输入框（带加减按钮）</h3>
+<h3 id="radio-单选--checkbox-多选">Radio 单选 &amp; Checkbox 多选</h3>
+<h3 id="rate-评分">Rate 评分</h3>
+<h3 id="switch-开关">Switch 开关</h3>
+<h3 id="textarea">TextArea</h3>
+<h2 id="布局组件">布局组件</h2>
+<h3 id="flex-弹性布局">Flex 弹性布局</h3>
+<p>由于小程序的限制 Flex 组件只能通过样式来完成，需要在 app.js 上添加以下这段代码</p>
+<pre><code class="language-js">if (process.env.TARO_ENV === &quot;weapp&quot;) {
+  require(&quot;taro-ui/dist/weapp/css/index.css&quot;)
+} else if (process.env.TARO_ENV === &quot;h5&quot;) {
+  require(&quot;taro-ui/dist/h5/css/index.css&quot;)
+}
+</code></pre>
+<pre><code class="language-js">一般用法
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col'&gt;A&lt;/View&gt;
+  &lt;View className='at-col'&gt;B&lt;/View&gt;
+  &lt;View className='at-col'&gt;C&lt;/View&gt;
+&lt;/View&gt;
+
+
+使用栅格化（长度）
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col at-col-3'&gt;A&lt;/View&gt;
+  &lt;View className='at-col at-col-6'&gt;B&lt;/View&gt;
+  &lt;View className='at-col at-col-2'&gt;C&lt;/View&gt;
+  &lt;View className='at-col at-col-1'&gt;D&lt;/View&gt;
+&lt;/View&gt;
+
+使用栅格化（偏移）
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col at-col__offset-2'&gt;A&lt;/View&gt;
+  &lt;View className='at-col at-col__offset-3'&gt;B&lt;/View&gt;
+  &lt;View className='at-col'&gt;C&lt;/View&gt;
+&lt;/View&gt;
+
+超出换行
+&lt;View className='at-row at-row--wrap'&gt;
+  &lt;View className='at-col at-col-4'&gt;A&lt;/View&gt;
+  &lt;View className='at-col at-col-4'&gt;B&lt;/View&gt;
+  &lt;View className='at-col at-col-4'&gt;C&lt;/View&gt;
+  &lt;View className='at-col at-col-4'&gt;D&lt;/View&gt;
+  &lt;View className='at-col at-col-4'&gt;E&lt;/View&gt;
+&lt;/View&gt;
+
+宽度根据内容撑开
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col at-col-1 at-col--auto'&gt;被内容撑开&lt;/View&gt;
+  &lt;View className='at-col'&gt;B&lt;/View&gt;
+&lt;/View&gt;
+
+内容自动换行
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col at-col-1 at-col--wrap'&gt;
+    内容自动换行
+  &lt;/View&gt;
+  &lt;View className='at-col'&gt;B&lt;/View&gt;
+&lt;/View&gt;
+
+侧轴方向的对齐方式
+&lt;View className='at-row'&gt;
+  &lt;View style='height:100px' className='at-col'&gt;A&lt;/View&gt;
+  &lt;View className='at-col'&gt;默认对齐方式 -- stretch&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__align--start'&gt;
+  &lt;View style='height:100px' className='at-col'&gt;B&lt;/View&gt;
+  &lt;View className='at-col'&gt;顶部对齐 -- start&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__align--center'&gt;
+  &lt;View style='height:100px' className='at-col'&gt;C&lt;/View&gt;
+  &lt;View className='at-col'&gt;居中对齐 -- center&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__align--end'&gt;
+  &lt;View style='height:100px' className='at-col'&gt;D&lt;/View&gt;
+  &lt;View className='at-col'&gt;底部对齐 -- end&lt;/View&gt;
+&lt;/View&gt;
+
+主轴方向的排列方式
+&lt;View className='at-row'&gt;
+  &lt;View className='at-col at-col-5'&gt;默认&lt;/View&gt;
+  &lt;View className='at-col at-col-5'&gt;Start&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__justify--end'&gt;
+  &lt;View className='at-col at-col-5'&gt;底部排列&lt;/View&gt;
+  &lt;View className='at-col at-col-5'&gt;End&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__justify--center'&gt;
+  &lt;View className='at-col at-col-5'&gt;居中排列&lt;/View&gt;
+  &lt;View className='at-col at-col-5'&gt;Center&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__justify--between'&gt;
+  &lt;View className='at-col at-col-5'&gt;左右排列&lt;/View&gt;
+  &lt;View className='at-col at-col-5'&gt;Between&lt;/View&gt;
+&lt;/View&gt;
+&lt;View className='at-row at-row__justify--around'&gt;
+  &lt;View className='at-col at-col-5'&gt;平均排列&lt;/View&gt;
+  &lt;View className='at-col at-col-5'&gt;Around&lt;/View&gt;
+&lt;/View&gt;
+</code></pre>
+<h3 id="grid-栅格布局">Grid 栅格布局</h3>
+<p>提供在移动端常见的 宫格 布局，帮助快速实现宫格效果</p>
+<pre><code class="language-js">//一般用法  mode='rect' 矩形  hasBorder={false} 边框
+&lt;AtGrid data={
+  [
+    {
+      image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
+      value: '领取中心'
+    },
+    {
+      image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
+      value: '找折扣'
+    },....
+</code></pre>
+<h3 id="list-列表">List 列表</h3>
+<pre><code class="language-js">//  hasBorder={false} 边框
+&lt;AtList&gt;
+  &lt;AtListItem
+    title='标题文字'
+    arrow='right'
+    onClick={this.handleClick}
+  /&gt;
+    //isSwitch 带 Switch  +  onSwitchChange={this.handleChange}
+  &lt;AtListItem
+    title='标题文字'
+    note='描述信息'
+    extraText='详细信息'
+    arrow='right'
+    thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
+  /&gt;
+&lt;/AtList&gt;
+</code></pre>
+<h3 id="card-卡片">Card 卡片</h3>
+<pre><code class="language-js">&lt;AtCard
+  note='小Tips'
+  extra='额外信息'
+  title='这是个标题'
+  thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
+&gt;
+  这也是内容区 可以随意定义功能
+&lt;/AtCard&gt;
+</code></pre>
+<h3 id="floatlayout-浮动弹层">FloatLayout 浮动弹层</h3>
+<p>浮动布局 的功能，在页面上的层级为 810</p>
+<pre><code class="language-js">&lt;AtFloatLayout
+  isOpened
+  title='这是个标题'
+  onClose={ this.handleClose } &gt;
+  这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
+  随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
+  随你怎么写
+&lt;/AtFloatLayout&gt;
+</code></pre>
+<h2 id="导航组件">导航组件</h2>
+<h3 id="navbar-导航栏主要用于头部导航">NavBar 导航栏（主要用于头部导航）</h3>
+<pre><code class="language-js">&lt;AtNavBar
+  onClickRgIconSt={this.handleClick}
+  onClickRgIconNd={this.handleClick}
+  onClickLeftIcon={this.handleClick}
+  color='#000'
+  title='NavBar 导航栏示例'
+  leftText='返回'
+  rightFirstIconType='bullet-list'
+  rightSecondIconType='user'
+/&gt;
+
+</code></pre>
+<h3 id="tabbar-标签栏主要用于底部导航">TabBar 标签栏(主要用于底部导航)</h3>
+<pre><code class="language-js">&lt;AtTabBar
+    backgroundColor='#ececec'
+  color='#ea6bb8'
+  tabList={[
+    { title: '待办事项', iconType: 'bullet-list', text: 'new' },
+    { title: '拍照', iconType: 'camera' },
+    { title: '文件夹', iconType: 'folder', text: '100', max: '99' }
+  ]}
+  onClick={this.handleClick}
+  current={this.state.current}
+/&gt;
+</code></pre>
+<p>fixed 固定底部</p>
+<p>tabList 中自定义图标 <code>iconPrefixClass:'fa', iconType: 'clock'</code></p>
+<h3 id="tabs-标签页让用户在不同的视图中进行切换">Tabs 标签页（让用户在不同的视图中进行切换）</h3>
+<p>标签数不建议超过4个，超过4个建议使用滚动标签栏，增加 <code>scroll</code> 参数  （由于小程序的限制，无法遍历 this.props.children, AtTabsPane 需要用户自行传入 current 和 index 参数）</p>
+<pre><code class="language-js">&lt;AtTabs
+  current={this.state.current}
+  tabList={[
+    { title: '标签页1' },
+    { title: '标签页2' },
+    { title: '标签页3' }
+  ]}
+  onClick={this.handleClick}&gt;
+  &lt;AtTabsPane current={this.state.current} index={0}&gt;
+    &lt;View style='font-size:18px;text-align:center;height:100px;'&gt;标签页一的内容&lt;/View&gt;
+  &lt;/AtTabsPane&gt;
+  &lt;AtTabsPane current={this.state.current} index={1}&gt;
+    &lt;View style='font-size:18px;text-align:center;height:100px;'&gt;标签页二的内容&lt;/View&gt;
+  &lt;/AtTabsPane&gt;
+  &lt;AtTabsPane current={this.state.current} index={2}&gt;
+    &lt;View style='font-size:18px;text-align:center;height:100px;'&gt;标签页三的内容&lt;/View&gt;
+  &lt;/AtTabsPane&gt;
+&lt;/AtTabs&gt;
+</code></pre>
+<p>禁止内容切换动画(实际上是改成按条件渲染组件，默认不显示全部)  注意是在 <code>&lt;/AtTabs&gt;</code> 的<strong>外面</strong>而不是被包括在内</p>
+<p>啊！官方文档这个 问号 用了全角，找了半天报错原因</p>
+<pre><code class="language-js">
+&lt;AtTabs&gt;
+&lt;/AtTabs&gt;
+
+{current === 0
+  ? &lt;AtTabsPane&gt;
+    &lt;View style='font-size:18px;text-align:center;height:100px;'&gt;标签页一的内容&lt;/View&gt;
+  &lt;/AtTabsPane&gt;
+  : null
+}
+{current === 1
+  ? &lt;AtTabsPane&gt;
+    &lt;View style='font-size:18px;text-align:center;height:100px;'&gt;标签页二的内容&lt;/View&gt;
+  &lt;/AtTabsPane&gt;
+  : null
+}
+</code></pre>
+<h3 id="segmentedcontrol-分段器">SegmentedControl 分段器</h3>
+<pre><code class="language-js">&lt;AtSegmentedControl
+  onClick={this.handleClick}
+  selectedColor='#FF4949'
+  fontSize='30'
+  current={current}
+  values={['标签页1', '标签页2', '标签页3']}
+/&gt;
+
+{this.state.current === 0 ? &lt;View className='tab-content'&gt;标签1的内容&lt;/View&gt; : null}
+{this.state.current === 1 ? &lt;View className='tab-content'&gt;标签2的内容&lt;/View&gt; : null}
+{this.state.current === 2 ? &lt;View className='tab-content'&gt;标签3的内容&lt;/View&gt; : null}
+</code></pre>
+<h3 id="pagination-分页器">Pagination 分页器</h3>
+<pre><code class="language-js">&lt;AtPagination 
+  icon 
+  total='50' 
+  pageSize='10' 
+  current='1'
+&gt;
+&lt;/AtPagination&gt;
+</code></pre>
+<h3 id="drawer-抽屉">Drawer 抽屉</h3>
+<p>right 右侧弹出</p>
+<pre><code class="language-js">&lt;AtDrawer 
+  show={this.state.show} 
+  mask 
+  onClose={this.onClose.bind(this)} 
+  items={['菜单1', '菜单2']}
+&gt;&lt;/AtDrawer&gt;
+</code></pre>
+<h1 id="踩坑">踩坑</h1>
+<h2 id="在-appjs里设置的-tabbar-h5-模式不显示">在 app.js里设置的 tabBar, h5 模式不显示</h2>
+<p><img src="/media/15490412159664/15506300436438.jpg" alt="-w396"></p>
+<p>这里有人提到，h5 下默认会隐藏掉 <code>display:none</code></p>
+<p><a href="https://github.com/NervJS/taro/issues/2047">https://github.com/NervJS/taro/issues/2047</a></p>
+<p>chrome 里删掉就可以显示了。。。</p>
+<p><img src="/media/15490412159664/15506300536196.jpg" alt="-w390"></p>
+<p>解决办法：h5 模式下，用 <code>AtTabBar</code> 组件</p>
+<p>而且觉得在小程序模式也用这个会更好，因为可以自定义 TabBar 和 提供 H5 的TabBar功能</p>
+<p><a href="https://github.com/NervJS/taro-ui/issues/59">https://github.com/NervJS/taro-ui/issues/59</a></p>
+<pre><code class="language-js">{
+  (Taro.getEnv() === &quot;WEB&quot;) 
+  ?
+  &lt;AtTabBar
+    fixed
+    tabList={constants.tabs}
+    onClick={this.onTabBarClick.bind(this)}
+    current={this.state.currentTabIndex}
+  /&gt;
+  :
+  ''
+}
+</code></pre>
+<h1 id="其他">其他</h1>
+<h2 id="跨域与代理">跨域与代理</h2>
+<p>package.json 末尾里添加一段, 无效</p>
+<pre><code class="language-json">&quot;proxy&quot;: &quot;https://www.sample.org&quot;
+</code></pre>
+<p>查看“配置详情”章节，可以为 h5 添加 webpack 的一些自定义配置，打开 <code>/config/dev.js</code></p>
+<pre><code class="language-json">devServer: {
+    //historyApiFallback: true,
+    //hot: true,
+    //inline: true,
+    //host: '10.0.0.9',
+    //contentBase: path.join(__dirname, &quot;dist&quot;),
+    //compress: true,
+    //port: 9000,
+    proxy: {
+        '/api': {
+            target: 'http://www.qq.com:3000',
+            secure: false,
+            changeOrigin: true
+        }
+    }
+}
+</code></pre>
+<p>如果是跨域，记得加上选项  <code>changeOrigin: true</code></p>
+<p>这样，请求</p>
+<p><code>/api</code>  就会自动转发到 <code>http://www.qq.com:3000</code>去，解决了无法在 h5 模式下请求其他域名的跨域问题</p>
+<p>但是，这个配置一般是本地开发阶段或者基于 html5 的前端项目时用到，当编译成 ReactNative 等应用后，反而不需要代理，否则会导致/api 的请求就失效了（因为 webpack devServer 没有了）</p>
+<p>所以对于生成环境的配置， 为了复用这个请求 <code>/api</code> 的代码，又请求真实的远程地址</p>
+<p><a href="https://zhuanlan.zhihu.com/p/29161762">https://zhuanlan.zhihu.com/p/29161762</a></p>
+<p>因此定义一个常量，例如 API_HOST</p>
+<p>在 config/dev.js 本地开发环境，需要用代理时， 它的值为   <code>/api</code></p>
+<p>而 config/prod.js 生产环境，不需要代理，它的值设置为 <code>http://www.sample.org/api</code></p>
+<p>taro 里叫 <code>defineConstants</code> ， 没有说明 dev prod default 的优先级？</p>
+<p>参考</p>
+<p><a href="https://www.jianshu.com/p/3bdff821f859">https://www.jianshu.com/p/3bdff821f859</a>
+<a href="https://zhuanlan.zhihu.com/p/29161762">https://zhuanlan.zhihu.com/p/29161762</a></p>
+<h2 id="vant-weapp-原zanui-weapp">vant-weapp (原zanui-weapp)</h2>
+<h2 id="微信第三方组件">微信第三方组件</h2>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/taro-ui-%E5%AE%98%E6%96%B9%E7%BB%84%E4%BB%B6%E5%BA%93/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/taro%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/taro-%E9%AB%98%E7%BA%A7/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

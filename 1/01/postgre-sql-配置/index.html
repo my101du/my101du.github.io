@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="中文网：http://www.postgres.cn 文档： http://www.postgres.cn/docs/10/ 安装与配置 Ubuntu &amp;amp; Debian sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade sudo reboot # 默认安装 10 sudo apt install postgresql # 我们需要 11 # 先导入 GPG key" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="中文网：http://www.postgres.cn 文档： http://www.postgres.cn/docs/10/ 安装与配置 Ubuntu &amp; Debian sudo apt update &amp;&amp; sudo apt -y upgrade sudo reboot # 默认安装 10 sudo apt install postgresql # 我们需要 11 # 先导入 GPG key" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="中文网：http://www.postgres.cn 文档： http://www.postgres.cn/docs/10/ 安装与配置 Ubuntu &amp; Debian sudo apt update &amp;&amp; sudo apt -y upgrade sudo reboot # 默认安装 10 sudo apt install postgresql # 我们需要 11 # 先导入 GPG key">
+
+<meta itemprop="wordCount" content="6605">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="中文网：http://www.postgres.cn 文档： http://www.postgres.cn/docs/10/ 安装与配置 Ubuntu &amp; Debian sudo apt update &amp;&amp; sudo apt -y upgrade sudo reboot # 默认安装 10 sudo apt install postgresql # 我们需要 11 # 先导入 GPG key"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6605字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 14分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>中文网：http://www.postgres.cn</p>
+<p>文档： <a href="http://www.postgres.cn/docs/10/">http://www.postgres.cn/docs/10/</a></p>
+<h1 id="安装与配置">安装与配置</h1>
+<h2 id="ubuntu--debian">Ubuntu &amp; Debian</h2>
+<pre><code class="language-shell">sudo apt update &amp;&amp; sudo apt -y upgrade
+sudo reboot
+
+# 默认安装 10
+sudo apt install postgresql
+
+# 我们需要 11
+# 先导入 GPG key
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+# 然后把源的信息写入到 /etc/apt/source.list.d/pgdg.list文件
+RELEASE=$(lsb_release -cs)
+echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ ${RELEASE}&quot;-pgdg main | sudo tee  /etc/apt/sources.list.d/pgdg.list
+
+# 检查
+cat /etc/apt/sources.list.d/pgdg.list
+# 有下面的信息了
+#deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+
+sudo apt update
+sudo apt -y install postgresql-11
+</code></pre>
+<p>允许远程访问</p>
+<pre><code class="language-shell">sudo vim /etc/postgresql/11/main/postgresql.conf
+
+# 增加
+listen_addresses = '*'
+
+#重启服务
+sudo systemctl restart postgresql
+
+# 防火墙
+sudo ufw allow 5432/tcp
+
+# 设置 Postgre admin 用户密码  可能没用，用下面的方法
+$ sudo su - postgres
+psql -c &quot;alter user postgres with password 'StrongPassword'&quot;
+ALTER ROLE
+
+# 增加用户、
+createuser dbuser1
+
+# 增加数据库
+createdb testdb -O dbuser1
+
+# 测试
+psql -l  | grep testdb
+testdb    | dbuser1  | LATIN1   | en_US   | en_US |
+
+# 修改用户密码
+psql
+psql (11.2 (Ubuntu 11.2-1.pgdg18.04+1))
+Type &quot;help&quot; for help.
+postgres=# alter user dbuser1 with password 'DBPassword';
+ALTER ROLE
+
+# 增加表、数据
+testdb=# create table test_table ( id int,first_name text, last_name text );
+CREATE TABLE
+testdb=# insert into test_table (id,first_name,last_name) values (1,'John','Doe');
+INSERT 0 1
+
+# 查询
+testdb=#  select * from test_table;
+
+# 删除表
+testdb=# DROP TABLE test_table;
+
+# 删除库 （先退出）
+testdb=# \q
+dropdb testdb;
+</code></pre>
+<h2 id="centos-安装">CentOS 安装</h2>
+<p>官方 <a href="https://www.postgresql.org/download/linux/redhat/">https://www.postgresql.org/download/linux/redhat/</a></p>
+<pre><code class="language-shell">sudo yum update
+
+# 下载对应 CentOS 7 系统版本的 repo
+yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+
+# 从仓库安装, 要指定版本. 分别是 client 和 server. 选择一个稳定的版本 例如 11
+#sudo yum install postgresql-server postgresql-contrib
+yum install postgresql11
+yum install postgresql11-server
+
+# 初始化, 在 /var/lib/pgsql/11 目录下创建数据库
+/usr/pgsql-11/bin/postgresql-11-setup initdb
+
+# 启动 
+sudo systemctl start postgresql-11
+
+# 设为开机启动
+sudo systemctl enable postgresql-11
+</code></pre>
+<h2 id="macos-brew-安装">macOS brew 安装</h2>
+<pre><code class="language-shell">brew install postgresql
+</code></pre>
+<p>运行 <code>ps -ef|grep postgre</code> , 第一行可以看到  <code>-D</code> 后面是数据目录</p>
+<blockquote>
+<p>/usr/local/opt/postgresql/bin/postgres -D /usr/local/var/postgres</p>
+</blockquote>
+<p>发现问题， mac 下一直无法运行。显示 service is successfully&hellip;  进程看不到</p>
+<p>用下面的方法指定安装 11 版本, 报一个什么 perl 错误</p>
+<pre><code class="language-shell">brew tap petere/postgresql
+
+brew search postgresql
+
+brew install petere/postgresql/postgresql@11
+</code></pre>
+<p>安装 postgres.app 搞定。。。</p>
+<p><a href="https://postgresapp.com/">https://postgresapp.com/</a></p>
+<h2 id="查看服务器信息">查看服务器信息</h2>
+<pre><code class="language-shell">postgres -V
+
+postgres (PostgreSQL) 11.3
+</code></pre>
+<h2 id="访问">访问</h2>
+<pre><code class="language-shell">psql
+
+# 指定数据库
+psql mydb
+
+# 指定某台机器的 host 等
+psql -h localhost -p 30500
+
+# 欢迎信息
+psql (10.1)
+Type &quot;help&quot; for help.
+
+# 如果显示 mydb=#  则表明是超级用户
+mydb=&gt;
+
+# 试试常用的 SELECT 
+SELECT version();
+SELECT current_date;
+SELECT 2 + 2;
+</code></pre>
+<p>psql程序有一些不属于SQL命令的内部命令。它们以反斜线开头，“\”</p>
+<pre><code class="language-shell"># 帮助
+mydb=&gt; \h
+
+# 退出
+mydb=&gt; \q
+
+\h：查看SQL命令的解释，比如\h select。
+\?：查看psql命令列表。
+\l：列出所有数据库。
+\c [database_name]：连接其他数据库。
+\d：列出当前数据库的所有表格。
+\d [table_name]：列出某一张表格的结构。
+\du：列出所有用户。
+\e：打开文本编辑器。
+\conninfo：列出当前数据库和连接的信息
+</code></pre>
+<h2 id="配置">配置</h2>
+<h3 id="添加密码-修改密码以及创建新用户">添加密码, 修改密码，以及创建新用户</h3>
+<p>默认安装完后会创建一个 <strong>Linux 系统账号</strong> <code>postgres</code>（默认密码是空的） ，用来后续访问数据库服务（注意：这个并不是 Postgre SQL 里面的账号。）</p>
+<p>还需要为 <code>postgres</code> 这个Linux系统账号在 PostgreSQL 数据库里再添加密码、修改密码</p>
+<p>首先初始化 &ldquo;Linux 系统账号&rdquo; postgres 的密码，例如 &ldquo;postgres&rdquo;（注意不是 PostgreSQL 里的密码），当然你留空也可以</p>
+<pre><code class="language-shell"># 一开始密码是空的
+sudo su - postgres
+exit
+
+# 为Linux 账号添加密码
+sudo passwd postgres
+
+# 切换用户，以 postgres 身份登录 Linux 这时需要密码了
+# 特别注意这里不是 sudo, 否则会自动跳过密码输入步骤，后面的无效
+su - postgres
+</code></pre>
+<p>这时可以使用help查看命令帮助，其中\h是通用的sql语法，?是psql的命令语法。
+<code>\password</code>创建密码，<code>\l</code>列出所有数据库，<code>\du</code>列出所有用户，<code>\d</code>当前数据库的表，视图等，<code>\q</code>退出</p>
+<p>创建 <strong>真正的 Postgre 系统内 postgres 账号的</strong> 密码 （前面只是 linux 系统的账号 postgres 密码）</p>
+<pre><code class="language-shell"># 登陆到数据库，初始时无密码
+psql
+
+# 为了安全先给postgres添加密码
+\password
+</code></pre>
+<p>其他命令</p>
+<pre><code class="language-shell"># 初始时只有template0，template1，postgres三个库
+\l
+
+# 初始只有postgres一个用户，它是超级用户，并且比其他超级用户多两项权限
+\du
+
+</code></pre>
+<p><img src="/media/postgresql/postgres-first-login-db.jpg" alt="Alt text" title="Optional title"></p>
+<p>如果需要修改旧密码</p>
+<pre><code class="language-shell">psql -d template1 -c &quot;ALTER USER postgres WITH PASSWORD 'newpassword';&quot;
+</code></pre>
+<p>创建一个新的用户</p>
+<pre><code class="language-shell"># 切换到/usr/pgsql-10/bin目录
+cd /usr/pgsql-10/bin
+
+# 使用createuser创建用户，-s参数为超级用户
+createuser root -s
+
+# 然后给root添加密码，先连接数据库，然后添加密码，但要添加添加用户名，否则默认修改postgres的密码
+psql
+\password root
+
+# 由于psql默认登陆同用户名数据库，所以我们再创建一个root数据库
+create database root owner root;
+
+# 退出psql并切换回root
+\q
+exit
+</code></pre>
+<h3 id="允许外部远程连接">允许外部远程连接</h3>
+<p>默认pg只允许本机通过密码认证登录，修改为上面内容后即可以对任意IP访问进行密码验证</p>
+<p>在 /var/lib/pgsql/10 目录下是 PgSQL 的数据库</p>
+<pre><code class="language-shell"># 进入配置文件目录
+cd /var/lib/pgsql/10/data
+
+# 修改 postgresql.conf,  sudo vi ... 添加
+listen_addresses = '*'
+
+# 修改 pg_hba.conf(访问控制的配置文件),配置服务端允许的认证方式
+# 认证方法可选择trust，password，md5，scram-sha-256等，scram-sha-256的认证方式外部客户端可能连接失败。
+# TYPE  DATABASE  USER  CIDR-ADDRESS  METHOD
+# 注释掉原来那行 IPv4 的相同配置
+host  all  all 0.0.0.0/0 md5   # 原来 127.0.0.1/32 md5
+
+# 修改完成后重载配置，建议使用pg_ctl来控制数据库，当使用systemctl控制postgresql重启时可能会出问题
+# 提示要 postgre 账号登录
+/usr/pgsql-10/bin/pg_ctl reload -D /var/lib/pgsql/10/data/
+
+# 重启服务
+service postgresql restart
+
+# 防火墙打开端口，以CentOS7为例
+sudo firewall-cmd --permanent --zone=public --add-port=5432/tcp
+sudo firewall-cmd --reload
+</code></pre>
+<p>问题：</p>
+<blockquote>
+<p>Connection Refused</p>
+</blockquote>
+<p>已经按照如下步骤</p>
+<ol>
+<li>设置 postgres 这个 linux 账号的密码为 &ldquo;postgres&rdquo;</li>
+<li>su - postgres 登录, 变成 <code>-bash-4.2$</code>终端提示</li>
+<li>psql 登录 PgSQL 服务器，变成 <code>postgres=#</code>终端提示</li>
+<li>运行 <code>\password</code> 为 postgres 创建 PgSQL 账号密码 &ldquo;123456&rdquo;</li>
+<li><code>\q</code> 退出 PgSQL</li>
+<li>修改 postgresql.conf，改成 <code>*</code></li>
+<li>修改 pg_hba.conf 改成 <code>host  all  all 0.0.0.0/0 md5</code></li>
+<li>重载配置 <code>/usr/pgsql-10/bin/pg_ctl reload -D /var/lib/pgsql/10/data/</code></li>
+</ol>
+<p>在 DBeaver 里 Test Connection，报错</p>
+<blockquote>
+<p>Connection Refused</p>
+</blockquote>
+<p>多次修改密码，确认配置文件已经改动，无效</p>
+<p>运行命令 <code>netstat -nlt</code>, 发现还是 127.0.0.1 没有变成 0.0.0.0</p>
+<p><img src="/media/postgresql/postgres-netstat-host-port.jpg" alt="Alt text" title="Optional title"></p>
+<p><strong>回到 postgres 用户登录 linux下，运行 <code>service postgresql restart</code>, 可以连接了</strong></p>
+<h3 id="roles-角色">roles 角色</h3>
+<p>列出所有</p>
+<pre><code class="language-shell">\du
+</code></pre>
+<p>创建新 role</p>
+<pre><code class="language-shell">createuser examplerole --pwprompt
+psql mytestdb
+
+GRANT ALL ON employees TO examplerole;
+</code></pre>
+<p>默认设置</p>
+<pre><code class="language-shell">host: localhost
+port: 5432
+
+User: your system user name
+Database: same as user
+Password: none
+
+Connection URL: postgresql://localhost
+</code></pre>
+<p><img src="/media/15591015068495/15591069767970.jpg" alt="-w589"></p>
+<p>server setting</p>
+<p><img src="/media/15591015068495/15591070107404.jpg" alt="-w470"></p>
+<h2 id="端口转发在本地通过-ssh-管理远程只开放-localhost5432-的-database-server">端口转发，在本地通过 ssh 管理远程只开放 localhost:5432 的 database server</h2>
+<h3 id="命令行">命令行</h3>
+<p>远程主机(10.64.1.129)需求：</p>
+<ol>
+<li>假设远程主机打开了ssh端口</li>
+<li>启动了PostgreSQL，且监听端口为默认的5432</li>
+<li>远程主机的postgreSQL DB只允许localhost访问
+远程机上lsof显示</li>
+</ol>
+<p>本地主机(10.64.71.6)需求：</p>
+<ol>
+<li>安装了pgcli</li>
+<li>启动命令ssh -qtN -L 10.64.71.6:5432:localhost:5432 10.64.1.129
+在本地主机(10.64.71.6)上执行pgcli访问远程主机(10.64.1.129)的pg DB命令：</li>
+</ol>
+<p>pgcli postgres://dtasuser:123123@10.64.71.6:5432/dtasdb</p>
+<h3 id="gui">GUI</h3>
+<p>pgAdmin III有这个功能。简单地创建一个新的服务器 Tunnel SSH</p>
+<p>DBeaver 也支持 SSH： 填写 ssh 账号和密码，而不是数据库的账号密码
+此时注意，把第一个 tab 的链接，从远程数据库的ip改成 localhost, 账号密码填 postgre 的账号密码</p>
+<h2 id="迁移数据目录">迁移数据目录</h2>
+<pre><code class="language-shell"># 首先停掉服务
+service postgresql-10 stop
+
+# 拷贝原来的数据路径到新的路径下（后续还要使用 config 文件的路径不变，只是 datadir 以后变了）
+cp -rf /var/lib/pgsql/10/data/ /data/postgresql/
+
+# 设置用户和权限
+chown -R postgres:postgres /data/postgresql/
+chmod 700 /data/postgresql/
+</code></pre>
+<h3 id="用-ln-链接实现好像无法启动服务报错">用 ln 链接实现(好像无法启动服务，报错)</h3>
+<pre><code class="language-shell">mv /var/lib/pgsql/10/data /var/lib/pgsql/10/data.bak
+
+ln -s /data/postgresql /var/lib/pgsql/10/data
+</code></pre>
+<h3 id="直接使用其他目录">直接使用其他目录</h3>
+<pre><code class="language-shell"># 将配置文件的数据存储路径改成新的
+vi /var/lib/pgsql/10/data/postgresql.conf
+data_directory='/data/postgresql'
+</code></pre>
+<h3 id="检查">检查</h3>
+<pre><code class="language-shell"># 启动服务
+service postgresql start
+
+# 修改完毕后，可以用psql命令“show data_directory”查看当前数据目录
+postgres=# show data_directory;
+data_directory
+------------------------
+/var/lib/pgsql/10/data
+(1 row)
+</code></pre>
+<h3 id="修改-ps--ef-的显示路径">修改 ps -ef 的显示路径</h3>
+<p>通过上面的修改的方法，使用<code>ps -ef</code>输出的进程还是会显示原来的旧目录，这个相当于做了URL跳转的操作，但对于运维人员不是那么的友好，那么可以通过修改源头来进行修改。修改方法如下：</p>
+<p>先停止服务</p>
+<p>命令行方式启动时指定目录</p>
+<pre><code class="language-shell">pg_ctl stop -D /data/pgsql/data2
+pg_ctl start -D /data/pgsql/data2
+</code></pre>
+<p>以init脚本启动的，修改脚本（10+）</p>
+<pre><code class="language-shell">vi /etc/init.d/postgresql-10
+# 修改为如下内容
+PGDATA=/data/pgsql/data2
+</code></pre>
+<p>以systemd启动的，修改脚本（10+）：</p>
+<pre><code class="language-shell">vi /usr/lib/systemd/system/postgresql-10.service
+# 修改为如下内容
+Environment=PGDATA=/data/pgsql/data2
+</code></pre>
+<h2 id="查看外部表-forign-table">查看外部表 FORIGN TABLE</h2>
+<p>select * from information_schema.foreign_tables</p>
+<p>server 信息</p>
+<p>select
+srvname as name,
+srvowner::regrole as owner,
+&ndash;    fdwname as wrapper,
+srvoptions as options
+from pg_foreign_server</p>
+<p>找到服务器连接信息</p>
+<h2 id="gui-管理工具">GUI 管理工具</h2>
+<p><strong>跨平台</strong>：
+DBeaver  全功能
+adminer 单文件， 不强大
+pgAdmin  卡 慢
+DataGrip  JetBrain 家的</p>
+<p><strong>windows</strong>:
+Heidi SQL  好用  (<a href="https://www.heidisql.com/forum.php?t=35122">https://www.heidisql.com/forum.php?t=35122</a>  但是 4k 不支持 hidpi 模糊得要死。。。)</p>
+<p><strong>macOS</strong>:
+Postico (商业收费， mac 原生)
+Navicat &hellip;</p>
+<p>或者更多</p>
+<p><a href="https://postgresapp.com/documentation/gui-tools.html">https://postgresapp.com/documentation/gui-tools.html</a></p>
+<p><a href="http://www.psequel.com/">http://www.psequel.com/</a> （和 sequal pro 类似）</p>
+<p>对比数据库差异（例如测试环境、生产环境的表/函数）</p>
+<p><a href="https://dbcomparer.com">DB Compare</a></p>
+<p>OmniDB  跨平台</p>
+<p>个人开发者？
+Kangaroo  GTK  的</p>
+<h2 id="备份">备份</h2>
+<p>用 dbeaver 备份的时候，选择 Insert instead of &hellip;. 导出 （这种方式在还原的时候很慢，查看资料说是类似 MySQL 的导出 SQL 格式，每一行数据记录都单独生成一条命令（内部可能是 INSERT 啥的。。），比默认的 COPY 方式慢很多&mdash;MySQL 也有 Copy 模式的备份手段）</p>
+<p>报错大量 <code>ftell mismatch with expected position</code> 导出的文件也体积有问题（和之前一个小些的库体积一样）  但是数据库体积小则没问题，后面能正常导入</p>
+<p>可以改成 plain 格式，而不用 custom 。 (无效)</p>
+<p>查到有说是因为 windows 下，dbeaver 调用 pg_dump 命令时，有些兼容问题，或者是在这个过程中有数据变化</p>
+<p>于是查看备份的输出，发现完整命令调用是 C:.&hellip;.clients\win\pg_dump.exe  <code>-t</code>参数 有视图 也有表</p>
+<p>用反斜杠+双引号是因为默认如果不加，会大小写不敏感。。 加上后就必须要满足大写表名才能匹配到</p>
+<pre><code class="language-shell">C:\Users\Michael\.dbeaver-drivers\clients\postgresql\win\pg_dump.exe --format=c -t &quot;public.v_nr_price_cheapeast&quot; -t &quot;public.\&quot;JOBS\&quot;&quot; -t &quot;public.\&quot;PERMISSION\&quot;&quot; -t &quot;public.\&quot;USERS\&quot;&quot; --verbose --host=192.168.0.2 --port=5432 --username=pg_username DATABASE_NAME
+</code></pre>
+<p>于是到 Linux 里用原生的 pd_dump 来导出, 增加</p>
+<p>-f ./DB_NAME.sql    // 导出文件名
+-N schema              // 排除某个 schema
+-T table               // 排除表</p>
+<p>由于导出文件里默认 schema pulbic 是不会创建的 要手动创建下（空的）</p>
+<p>恢复的时候提示 <code>pg_restore: [archiver (db)] could not execute query: ERROR:  schema &quot;public&quot; does not exist</code>
+导出的时候要使用 <code>--inserts</code>参数, 这样会生成 CREATE SCHEMA 命令</p>
+<p><a href="https://dba.stackexchange.com/questions/100599/pg-dump-does-not-honor-n">https://dba.stackexchange.com/questions/100599/pg-dump-does-not-honor-n</a></p>
+<p>参考完整的 pg_dump 参数</p>
+<p><a href="https://www.postgresql.org/docs/9.6/app-pgdump.html">https://www.postgresql.org/docs/9.6/app-pgdump.html</a></p>
+<p>案例</p>
+<pre><code class="language-shell"># 导出 sql 格式
+# ---------------------------
+pg_dump mydb &gt; db.sql
+
+# 如果只需要导出 roles/users
+pg_dumpall -h localhost -p 5432 -U postgres -v --roles-only -f &quot;/path/to/useraccts.sql&quot;
+#如果是全部 ( globals which includes tables spaces)
+pg_dumpall -h localhost -p 5432 -U postgres -v --globals-only -f &quot;/path/to/globals.sql&quot;
+
+
+# 导入 .sql 文件用 psql 命令(类似&quot;运行 sql&quot;, 和 pg_restore 不同的.)
+
+# 先进入账号
+su - postgres
+
+psql -d newdb -U postgres -f db_bak.sql
+
+# 指定服务器 端口
+psql -d newdb -h localhost -p 30500 -f db_bak.sql
+
+# 如果提示 pemission denied, 需要把备份文件放到某个目录下,有读权限(某些目录太深, 文件所在的目录无可读权限就报错)
+mv db_bak.sql /www/backup/
+chown postgres /www/backup/db_bak.sql
+
+# 导入报错
+# Peer authentication failed for user &quot;postgres
+# 需要修改 pg_hba 文件，把 “local&quot; (不是 host local) 那里，也要从 peer 改成 md5 或直接 trust
+
+# 导出 custom-format archive 格式
+# ---------------------------
+pg_dump -Fc mydb &gt; db.backup
+# 比较复杂的匹配 大小写 敏感！！ 如果是  'Mixed' 在系统会认为是 'mixed' 直接不管这表格表
+pg_dump -n '(east|west)*gsm' -N '*test*' -t &quot;\&quot;MixedCaseName\&quot;&quot; -T 'ts_*'  mydb &gt; db.sql
+</code></pre>
+<p>一个案例 例如先备份： <code>pg_dump -Fc -h 192.168.0.1 -U postgre_user -p 5432 -N &quot;audit&quot;  MY_DB &gt; ./MY_DB_bak.backup</code></p>
+<h3 id="如果报错-pg_dump-aborting-because-of-server-version-mismatch">如果报错： pg_dump: aborting because of server version mismatch</h3>
+<p>是因为系统自带的 pg_dump 并不是后来安装的新版 pg_dump，需要找到</p>
+<pre><code class="language-shell">find / -name pg_dump
+
+# 指定路径
+/usr/pgsql-11/bin/pg_dump -Fc  ....
+
+# 或建立链接
+sudo ln -sfn /usr/pgsql-11/bin/pg_dump /usr/bin/pg_dump
+</code></pre>
+<h2 id="恢复通过-pg_dump-出来的备份文件-必须用-pg_restore">恢复通过 pg_dump 出来的备份文件. 必须用 pg_restore.</h2>
+<pre><code class="language-shell">su - postgres # 先切换到 postgres 账号下
+
+# 还原到指定数据库  如果非标准 5432 端口，要指定 --port  如果出现 duplicate 错误（之前有数据），使用 -c 或 --clean 来先清理
+pg_restore --port=54321 -c -v -d newdb /var/backup/db.backup
+
+# 等等等。。。。。要有耐心
+# 可能会卡在什么 pg_restore: creating MATERIALIZED VIEW DATA 很久  此时发现 postgres 进程一直在跑，cpu 消耗高
+</code></pre>
+<p>关于 Material View   它也会占用空间。。。</p>
+<p><a href="https://en.wikipedia.org/wiki/Materialized_view">https://en.wikipedia.org/wiki/Materialized_view</a></p>
+<pre><code class="language-sql">SELECT relname   AS objectname
+     , relkind   AS objecttype
+     , reltuples AS entries
+     , pg_size_pretty(pg_table_size(oid)) AS size  -- depending - see below
+FROM   pg_class
+WHERE  relkind IN ('r', 'i', 'm')
+ORDER  BY pg_table_size(oid) DESC;
+
+凡可用的类型有：
+
+r=普通表，
+i=索引，
+S=序列，
+v=视图，
+m=物化视图，
+c=复合类型，
+t= TOAST表，
+f=外部表
+</code></pre>
+<h3 id="sequence-丢失的问题-pg_restore-archiver-db-could-not-execute-query-error--relation-publichuman_resource_cd_human_resource_seq-does-not-exist">sequence 丢失的问题 pg_restore: [archiver (db)] could not execute query: ERROR:  relation &ldquo;public.HUMAN_RESOURCE_cd_human_resource_seq&rdquo; does not exist</h3>
+<p>要在 pgadmin 里备份， dbeaver 选项太少(<code>Extra-command-args</code>不知怎么填。摊手。。)，导致 pg_restore 还原的时候 sequence 丢失 <code>relation &quot;public.xxxxxxx_seq&quot; does not exist</code></p>
+<p><a href="https://stackoverflow.com/questions/46692884/pg-dump-dump-options-pre-data-what-are-the-data-definition-items-included">https://stackoverflow.com/questions/46692884/pg-dump-dump-options-pre-data-what-are-the-data-definition-items-included</a></p>
+<p>选中“pre-data”包括了表定义、sequence等
+而 “post-data”则包括了约束</p>
+<p>导致后面表创建也失败，并且大量和 sequence 有关的表都创建失败</p>
+<p>pg_restore: creating TABLE &ldquo;public.HUMAN_RESOURCE&rdquo;
+pg_restore: [archiver (db)] Error while PROCESSING TOC:
+pg_restore: [archiver (db)] Error from TOC entry 285; 1259 4232539 TABLE HUMAN_RESOURCE qasystems
+pg_restore: [archiver (db)] could not execute query: ERROR:  relation &ldquo;public.HUMAN_RESOURCE_cd_human_resource_seq&rdquo; does not exist
+Command was: CREATE TABLE public.&ldquo;HUMAN_RESOURCE&rdquo; (
+cd_human_resource integer DEFAULT nextval(&lsquo;public.&ldquo;HUMAN_RESOURCE_cd_human_resource_seq&rdquo;'::regclass) NOT NULL,
+ds_human_resource_full character varying(128) NOT NULL,</p>
+<p>查资料，好像是 CREATE TABLE  和 Sequence 是分开的操作，这是两个不同的 owner 做的，所以导出表并不会把“看上去关联”的 sequence 也导出来。。。（PgAdmin 可以选中。。）</p>
+<p>这里也有提到</p>
+<p><a href="https://dbeaver.io/forum/viewtopic.php?f=2&amp;t=1589">https://dbeaver.io/forum/viewtopic.php?f=2&amp;t=1589</a></p>
+<p>改善：</p>
+<ol>
+<li>命令行导出： -T &ldquo;public.&quot;TABLE_NAME&quot;&rdquo; &hellip;  （果然 restore 可以了！！！ 一切正常）</li>
+<li>用 adminer 来选择表导出（PgAdmin 多好，导出pre-data 可以包含！ 可是它导出不能选择表。。。）</li>
+</ol>
+<h3 id="报错-error-type-hstore-does-not-exist">报错 error: type &lsquo;hstore&rsquo; does not exist</h3>
+<p><code>psql application_db -c 'create extension hstore;'</code></p>
+<p>或者在GUI 里右键 add extension</p>
+<h3 id="报错-sql-error-42704-error-operator-class-gist_trgm_ops-does-not-exist-for-access-method-gist">报错 SQL Error [42704]: ERROR: operator class &ldquo;gist_trgm_ops&rdquo; does not exist for access method &ldquo;gist&rdquo;</h3>
+<p><code>psql application_db -c 'CREATE EXTENSION pg_trgm;'</code></p>
+<p>或者在GUI 里右键 add extension</p>
+<h3 id="如果一部分ok了还有部分-schema-如-public报错则需要指定-schema-为-public">如果一部分ok了，还有部分 schema (如 public)报错，则需要指定 schema 为 public</h3>
+<pre><code class="language-shell">psql QASystemsDVLP -c 'CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;'
+psql QASystemsDVLP -c 'CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;'
+</code></pre>
+<h3 id="qasystemdvlp-备份还原顺序">QASystemDVLP 备份还原顺序：</h3>
+<ol>
+<li>pg_dump 导出 QASystemsDVLP 和 mboard_defaults 两个库</li>
+<li>在 dbeaver 里创建两个同名新库（默认会新增 public schema）</li>
+<li>在 QASystemsDVLP 里，右键 install extension, 在 public schema 上添加 hstore 和 pg_trgm 这两个扩展，下一步用到</li>
+<li>将 schema_audit.sql 的内容复制到 dbeaver 的 SQL 界面，点第三个 ”execute sql script&rdquo;(不是第一个 sql statement), 创建好 audit 下的多个表</li>
+<li>执行 pg_restore 命令，还原 QASystemsDVLP 和 mboard_defaults</li>
+</ol>
+<h2 id="一台服务器-多个-postgres-实例如多端口数据库重名问题">一台服务器, 多个 Postgres 实例(如多端口,数据库重名问题)</h2>
+<p>假设原来数据库目录是 /var/lib/pgsql/11/data  端口默认  5432</p>
+<p>再新加一个实例, 端口 30500   两个实例里数据库可以重名&hellip;</p>
+<pre><code class="language-shell">su - postgres
+
+mkdir -p /var/lib/pgsql/11/data-30500
+
+/usr/pgsql-11/bin/initdb -D /var/lib/pgsql/11/data-30500
+
+# 启动 日志 -l /path/to/logdb1 
+/usr/pgsql-11/bin/pg_ctl -D /var/lib/pgsql/11/data-30500 -o &quot;-p 30500&quot; start
+
+
+# 修改完配置文件后
+/usr/pgsql-11/bin/pg_ctl reload -D /var/lib/pgsql/10/data-30500
+</code></pre>
+<p>连不上 提示 什么 postmaster (而第一个服务器是正常的&hellip;第二个 pg_ctr start 命令,  <code>ps -ef|grep postgres</code> 启动的是 postgres 进程)</p>
+<p>要改成</p>
+<pre><code class="language-shell">#  &gt;logfile 2&gt;&amp;1 &lt;/dev/null
+nohup /usr/pgsql-11/bin/postmaster -D /var/lib/pgsql/11/data-30500 -p 30500 &gt;logfile 2&gt;&amp;1 &lt;/dev/null &amp;
+</code></pre>
+<h1 id="一些系统命令">一些系统命令</h1>
+<h2 id="查看全部的-functions">查看全部的 functions</h2>
+<pre><code class="language-sql">select n.nspname as function_schema,
+       p.proname as function_name,
+       l.lanname as function_language,
+       case when l.lanname = 'internal' then p.prosrc
+            else pg_get_functiondef(p.oid)
+            end as definition,
+       pg_get_function_arguments(p.oid) as function_arguments,
+       t.typname as return_type
+from pg_proc p
+left join pg_namespace n on p.pronamespace = n.oid
+left join pg_language l on p.prolang = l.oid
+left join pg_type t on t.oid = p.prorettype 
+where n.nspname not in ('pg_catalog', 'information_schema')
+and l.lanname ='plpgsql'  -- 还有部分 &quot;c&quot; 的不需要查看
+order by function_schema,
+         function_name;
+</code></pre>
+<p>能不能列出 最后更新时间?</p>
+<p><a href="https://stackoverflow.com/questions/32648126/last-run-modified-procedure-timestamp-date-in-postgresql">https://stackoverflow.com/questions/32648126/last-run-modified-procedure-timestamp-date-in-postgresql</a></p>
+<p>答案：不可以
+This is information is not stored in Postgres, so you can&rsquo;t show it. – a_horse_with_no_name Sep 18 &lsquo;15 at 9:12
+It works in Oracle and SQL Server with the LAST_DDL_TIME then why it cannot be done in postgresql ? – user1538020 Sep 18 &lsquo;15 at 9:38
+1
+Because Postgres is neither Oracle nor SQL Server   这。。。。。</p>
+<h2 id="获取表结构索引trigger">获取表结构/索引/trigger</h2>
+<p>like MySQL&rsquo;s <code>describe table_name</code>(命令行)  或  <code>SHOW CREATE TABLE</code>（SQL 语句）， Oracle 也有</p>
+<p>诡异的是 Pg 没有这个特性。
+<a href="https://stackoverflow.com/questions/109325/postgresql-describe-table">https://stackoverflow.com/questions/109325/postgresql-describe-table</a></p>
+<pre><code class="language-sql"># 仅仅列出全部表
+SELECT
+    table_schema || '.' || table_name as show_tables
+FROM
+    information_schema.tables
+WHERE
+    table_type = 'BASE TABLE'
+AND
+    table_schema NOT IN ('pg_catalog', 'information_schema');
+</code></pre>
+<p>必须登录 pg 后，在命令行才能看到</p>
+<pre><code class="language-shell">\d table_name
+</code></pre>
+<p>不登录 pg, 直接在命令行运行， 可以拿到 ddl</p>
+<pre><code class="language-shell"># 相当于 --schema-only
+pg_dump -t 'aschema.atable' --schema-only database-name
+</code></pre>
+<p>这里有个思路，就是利用 Pg 支持多种语言写扩展的特性， 在 Pg function 里反过来调用 Linux 系统进程 . 把 pg_dump 的输出结果作为查询结果显示出来。</p>
+<pre><code class="language-sql">-- superuser postgres 执行
+CREATE LANGUAGE plpythonu;
+</code></pre>
+<p>下面代码里的关键词 plpythonu，   subprocess</p>
+<p><a href="https://proboscid.wordpress.com/2013/09/06/extracting-create-table-ddl-from-postgresql/">https://proboscid.wordpress.com/2013/09/06/extracting-create-table-ddl-from-postgresql/</a></p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION get_table_ddl (p_schema VARCHAR,
+p_database_name VARCHAR,
+p_table_name VARCHAR)
+RETURNS VARCHAR
+AS $$
+import subprocess
+import re
+pg_dump_output = subprocess.check_output([&quot;pg_dump&quot;,
+&quot;–schema-only&quot;,
+&quot;–schema=&quot; + p_schema,
+&quot;–table=&quot; + p_table_name, 
+p_database_name])
+regex_pat = r'(^CREATE TABLE.+?\);$)'
+matches = re.findall(regex_pat, pg_dump_output, re.DOTALL|re.MULTILINE) 
+ddl = matches[0]
+return ddl
+$$ LANGUAGE plpythonu SECURITY DEFINER;
+</code></pre>
+<p>当然，上面的代码不完善，需要添加错误处理等</p>
+<p>&mdash;&gt; 是否 DBeaver / DataGrip 等，也是用 java 这么实现的？</p>
+<p>似乎也无法获取到表的最后更新时间。。。</p>
+<p><a href="https://it.toolbox.com/question/how-to-get-last-modified-time-of-the-table-in-postgres-080608">https://it.toolbox.com/question/how-to-get-last-modified-time-of-the-table-in-postgres-080608</a></p>
+<pre><code class="language-sql">select * from pg_stat_user_tables limit 10;
+</code></pre>
+<p>几个 dt_字段，只有 last_analyze 等， 没有 last_update</p>
+<h2 id="数据库表-体积">数据库/表 体积</h2>
+<pre><code class="language-sql">-- 数据库总体积
+select pg_size_pretty(pg_database_size('table_name'))
+
+-- 查看指定schema 里所有的表大小，按从大到小的顺序排列
+select relname, pg_size_pretty(pg_relation_size(relid)) from pg_stat_user_tables where schemaname='public' order by pg_relation_size(relid) desc;
+
+-- 这里有个问题， 如果表非常多， 某些 schema 下一些很大的表根本就不列出来，还以为体积不大
+-- 最好是用上面的语句， 一个个 schema 检查，确保一些不需要的大表不被备份
+select
+    schemaname,
+    relname,
+    pg_size_pretty(pg_relation_size(relid))
+from
+    pg_stat_user_tables
+where
+    schemaname in (
+    'assets',
+    )
+order by
+    pg_relation_size(relid) desc;
+</code></pre>
+<p>大表   （只要结构）</p>
+<ul>
+<li>public.ONEKEY_RAW_DATA 有 5GB  Test request overview 里用到了这些数据的。</li>
+<li>public.ONEKEY_DATA_SUMMARY_BY_MINUTE_SUPPLIER_PC  400M</li>
+<li>public.ULBS  200M</li>
+<li>整个 audit schema 有500M   不需要 都是操作日志</li>
+</ul>
+<h2 id="备份命令">备份命令</h2>
+<pre><code class="language-shell">/usr/pgsql-11/bin/pg_dump -Fc -h 192.168.3.1 -U db_user -p 5432 -N &quot;skip_schema_1&quot; -N &quot;skip_schema_2&quot; -T &quot;public.\&quot;TABLE_1\&quot;&quot; -T &quot;public.\&quot;TABLE_2\&quot;&quot; -v DATABASE_NAME &gt; /path/to/backup/db_bak.backup
+
+# 根据提示手动输入密码
+
+# 如果要写脚本，直接传入密码
+PGPASSWORD=&quot;mypass&quot; pg_dump mydb &gt; mydb.dump
+
+</code></pre>
+<h2 id="还原">还原</h2>
+<p>还原的时候 usetest 和 usetest2 两个 schema 有问题。 也需要在上面排除掉：引用了 MSSQL?</p>
+<pre><code>pg_restore: [archiver (db)] Error from TOC entry 12555; 0 0 ACL TABLE &quot;WI_Step&quot; qasystems
+pg_restore: [archiver (db)] could not execute query: ERROR:  relation &quot;usetest2.WI_Step&quot; does not exist
+    Command was: GRANT ALL ON TABLE usetest2.&quot;WI_Step&quot; TO postgres;
+GRANT ALL ON TABLE usetest2.&quot;WI_Step&quot; TO devshoesdemorole;
+GRANT SELECT ON TABLE usetest2.&quot;WI_Step&quot; TO &quot;mbReport&quot;;
+</code></pre>
+<h2 id="foreign-server-的处理例如-qasystemdvlp-和另外一个数据库都用到了-mboard_defaults">Foreign Server 的处理(例如, QASystemDVLP 和另外一个数据库,都用到了 mboard_defaults)</h2>
+<p>方法1: 再启动一个数据库实例, 不同的端口等&hellip; (建议)</p>
+<p>方法2: 改名 Foreign Server  不可行..</p>
+<pre><code class="language-sql">--首先把外部database改名
+ALTER DATABASE foreign_db RENAME TO foreign_db_2;
+
+--然后修改 foreign server 名
+ALTER SERVER foreign_db_server OPTIONS (host 'localhost', dbname 'foreign_db_2');
+
+
+-- 后面的不用测试了... 没用.
+
+-- 删除(无效)
+DROP SERVER mbdefserver;
+
+-- 这里用新名字
+CREATE SERVER mbdefserver
+    FOREIGN DATA WRAPPER postgres_fdw
+    OPTIONS (dbname 'mboard_defaults_ebi', host 'localhost', port '5432')
+
+-- 以及用户映射
+
+DROP USER MAPPING FOR devshoesdemo SERVER mbdefserver;
+
+CREATE USER MAPPING
+    FOR devshoesdemo
+    SERVER mbdefserver
+    OPTIONS (password 'password', user 'devshoesdemo');
+</code></pre>
+<h2 id="复制大量数据">复制大量数据</h2>
+<p>COPY 从文本文件中装载大量数据。这种方式通常更快，因为COPY命令就是为这类应用优化的， 只是比 INSERT少一些灵活性</p>
+<pre><code class="language-shell">COPY weather FROM '/home/user/weather.txt';
+
+</code></pre>
+<h1 id="扩展">扩展</h1>
+<p>例如 hstore  pg_tr.. 扩展</p>
+<h2 id="plv8">plv8</h2>
+<pre><code class="language-shell">$ wget https://github.com/plv8/plv8/archive/v2.3.8.tar.gz
+$ tar -xvzf v2.3.8.tar.gz
+$ cd plv8-2.3.8
+$ make
+
+# 如果报错 You need to install postgresql-server-dev-NN for building a server-side extension or libpq-dev for building a client-side application.
+sudo apt-get install libpq-dev
+
+# 如果报错， 就要找到 pg_config*.h 所在文件夹， 例如 11 的， 但是报权限错。。。
+make PG_CONFIG=/usr/include/postgresql
+
+$ make install
+
+
+
+$psql
+=# CREATE EXTENSION plv8;
+=# SELECT plv8_version();
+</code></pre>
+<h2 id="关于-extension">关于 extension</h2>
+<p>例如缺少 dblink ,  如果还原一个数据库，它依赖另外一个”外部数据库“，就会失败。</p>
+<p>上面已经提到，可以在 schema 上创建，但是太麻烦了</p>
+<p>运行</p>
+<pre><code class="language-shell">CREATE EXTENSION hstore;
+</code></pre>
+<p>报错：</p>
+<blockquote>
+<p>SQL Error [58P01]: ERROR: could not open extension control file &ldquo;/usr/pgsql-11/share/extension/hstore.control&rdquo;: No such file or directory</p>
+</blockquote>
+<p>列表：
+<a href="https://www.postgresql.org/docs/9.6/static/contrib.html">https://www.postgresql.org/docs/9.6/static/contrib.html</a></p>
+<p>运行 <code>yum -y install postgresql11-contrib</code> 可以安装不少。。。</p>
+<p>下面是一些：</p>
+<p>plpgsql
+dblink
+hstore  <br>
+pg_stat_statements
+pg_trgm
+pgstattuple
+postgres_fdw</p>
+<h1 id="数据库与模式">数据库与模式</h1>
+<h2 id="数据库">数据库</h2>
+<pre><code class="language-shell"># 连接数据库服务器
+psql postgres
+
+# 创建数据库
+createdb mytestdb
+
+#列出数据库
+\list
+
+#然后链接到这个数据库
+psql mytestdb
+psql mytestdb -U examplerole
+
+# 查看链接信息
+\conninfo
+
+# 删除库
+dropdb mytestdb
+
+# 查看表
+\dt
+</code></pre>
+<h2 id="模式也叫架构-schema-用于将多个表视图等分组管理">模式(也叫架构) Schema, 用于将多个表、视图等<strong>分组管理</strong></h2>
+<p>一个数据库可以有多个模式 Schema</p>
+<p>Schema 是指定的表<strong>集合</strong>, 还可以包含视图，索引，序列，数据类型，运算符和函数</p>
+<ul>
+<li>模式有助于多用户使用一个数据库，而不会互相干扰。</li>
+<li>它将数据库对象组织成逻辑组，使其更易于管理。</li>
+<li>可以将第三方模式放入单独的模式中，以避免与其他对象的名称相冲突。</li>
+</ul>
+<p><code>CREATE SCHEMA</code>语句用于创建模式。 (模式不能嵌套)</p>
+<pre><code class="language-sql">CREATE SCHEMA schema_name;
+</code></pre>
+<p>然后 在Schema中再创建表, 可以在 pgAdmin GUI 里创建，也可以 sql 方式创建</p>
+<h1 id="服务器管理">服务器管理</h1>
+<h2 id="从源代码安装">从源代码安装</h2>
+<h2 id="在windows上从源代码安装">在Windows上从源代码安装</h2>
+<h2 id="服务器设置和操作">服务器设置和操作</h2>
+<h2 id="服务器配置">服务器配置</h2>
+<h2 id="客户端认证">客户端认证</h2>
+<h2 id="数据库角色">数据库角色</h2>
+<h2 id="管理数据库">管理数据库</h2>
+<h2 id="本地化">本地化</h2>
+<h2 id="日常数据库维护工作">日常数据库维护工作</h2>
+<h2 id="备份和恢复">备份和恢复</h2>
+<h2 id="高可用负载均衡和复制">高可用、负载均衡和复制</h2>
+<h2 id="恢复配置">恢复配置</h2>
+<h2 id="监控数据库活动">监控数据库活动</h2>
+<p>数据库日志分析</p>
+<p>pgBadger:</p>
+<p>另外一个：
+<a href="https://pmmdemo.percona.com/graph/d/node-instance-summary/node-summary?orgId=1&amp;from=now-12h&amp;to=now&amp;var-host=pg11&amp;refresh=1m">https://pmmdemo.percona.com/graph/d/node-instance-summary/node-summary?orgId=1&amp;from=now-12h&amp;to=now&amp;var-host=pg11&amp;refresh=1m</a></p>
+<h2 id="监控磁盘使用">监控磁盘使用</h2>
+<h2 id="可靠性和预写式日志">可靠性和预写式日志</h2>
+<h2 id="逻辑复制">逻辑复制</h2>
+<h2 id="回归测试">回归测试</h2>
+<h1 id="客户端接口">客户端接口</h1>
+<h1 id="服务器编程">服务器编程</h1>
+<h1 id="参考">参考</h1>
+<h1 id="内部">内部</h1>
+<p>。。。</p>
+<h1 id="附录">附录</h1>
+<p>。。。。</p>
+<h1 id="其他">其他</h1>
+<h2 id="性能分析监控">性能分析监控</h2>
+<h3 id="badger">badger</h3>
+<h3 id="httpspmmdemoperconacomgraphdpmm-homehome-dashboardorgid1"><a href="https://pmmdemo.percona.com/graph/d/pmm-home/home-dashboard?orgId=1">https://pmmdemo.percona.com/graph/d/pmm-home/home-dashboard?orgId=1</a></h3>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/redis-%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

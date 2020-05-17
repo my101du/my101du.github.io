@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="案例：ticket 系统（CRUD） #参考 https://www.zhihu.com/question/20340360 SharePoint 的 ticket https://github.com/thekordy/ticketit 界面是 bootstrap 的，比较简单 https://github.com/BadChoice/handesk 一直在更新 https://www.faveohelpdesk.com/helpdesk/ 集成， api , mobile 教程 自己开发 https://www.youtube.com/watch?v=-Btui1On0s8 参考1 基于BPMN2.0的工单" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="案例：ticket 系统（CRUD） #参考 https://www.zhihu.com/question/20340360 SharePoint 的 ticket https://github.com/thekordy/ticketit 界面是 bootstrap 的，比较简单 https://github.com/BadChoice/handesk 一直在更新 https://www.faveohelpdesk.com/helpdesk/ 集成， api , mobile 教程 自己开发 https://www.youtube.com/watch?v=-Btui1On0s8 参考1 基于BPMN2.0的工单" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="案例：ticket 系统（CRUD） #参考 https://www.zhihu.com/question/20340360 SharePoint 的 ticket https://github.com/thekordy/ticketit 界面是 bootstrap 的，比较简单 https://github.com/BadChoice/handesk 一直在更新 https://www.faveohelpdesk.com/helpdesk/ 集成， api , mobile 教程 自己开发 https://www.youtube.com/watch?v=-Btui1On0s8 参考1 基于BPMN2.0的工单">
+
+<meta itemprop="wordCount" content="3573">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="案例：ticket 系统（CRUD） #参考 https://www.zhihu.com/question/20340360 SharePoint 的 ticket https://github.com/thekordy/ticketit 界面是 bootstrap 的，比较简单 https://github.com/BadChoice/handesk 一直在更新 https://www.faveohelpdesk.com/helpdesk/ 集成， api , mobile 教程 自己开发 https://www.youtube.com/watch?v=-Btui1On0s8 参考1 基于BPMN2.0的工单"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3573字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>案例：ticket 系统（CRUD）</p>
+<p>#参考</p>
+<h2 id="httpswwwzhihucomquestion20340360"><a href="https://www.zhihu.com/question/20340360">https://www.zhihu.com/question/20340360</a></h2>
+<p>SharePoint 的 ticket</p>
+<h2 id="httpsgithubcomthekordyticketit"><a href="https://github.com/thekordy/ticketit">https://github.com/thekordy/ticketit</a></h2>
+<p>界面是 bootstrap 的，比较简单</p>
+<h2 id="httpsgithubcombadchoicehandesk"><a href="https://github.com/BadChoice/handesk">https://github.com/BadChoice/handesk</a></h2>
+<p>一直在更新</p>
+<h2 id="httpswwwfaveohelpdeskcomhelpdesk"><a href="https://www.faveohelpdesk.com/helpdesk/">https://www.faveohelpdesk.com/helpdesk/</a></h2>
+<p>集成， api , mobile</p>
+<h2 id="教程">教程</h2>
+<p>自己开发</p>
+<p><a href="https://www.youtube.com/watch?v=-Btui1On0s8">https://www.youtube.com/watch?v=-Btui1On0s8</a></p>
+<h2 id="参考1-基于bpmn20的工单系统架构设计-workflow">参考1 基于BPMN2.0的工单系统架构设计（+ WorkFlow）</h2>
+<p><a href="https://juejin.im/post/5b08b9816fb9a07aa7681aea">https://juejin.im/post/5b08b9816fb9a07aa7681aea</a></p>
+<h2 id="httpsgithubcomlazyphppescms-ticket"><a href="https://github.com/lazyphp/PESCMS-Ticket">https://github.com/lazyphp/PESCMS-Ticket</a></h2>
+<h2 id="laravel-团队任务管理系统持续开发优化-暂时未开源">Laravel 团队任务管理系统（持续开发、优化） 暂时未开源</h2>
+<p><a href="https://learnku.com/articles/28578">https://learnku.com/articles/28578</a></p>
+<p>采用 repository 和 module 开发</p>
+<p>参考截图的功能</p>
+<h1 id="案例学习-httpsgithubcomhuanghua581ticket-简单的工单系统">案例学习 <a href="https://github.com/huanghua581/ticket">https://github.com/huanghua581/ticket</a> 简单的工单系统</h1>
+<p>Laravel 工单系统， 可参考代码</p>
+<h2 id="routes">routes</h2>
+<pre><code class="language-php">//普通用户
+// /account 个人资料修改 需要 auth middleware
+// /tickets 操作 ticket
+// /ticket/comment 提交评论到 ticket
+
+// admin 管理后台
+// /users  /roles /permissions /tickets 等
+</code></pre>
+<h2 id="数据表">数据表</h2>
+<h3 id="user-表">user 表</h3>
+<pre><code class="language-php">// ？？
+$table-&gt;string('provider')-&gt;nullable();
+$table-&gt;string('provider_id')-&gt;unique()-&gt;nullable();
+
+// 应该是 socialite 登录的
+$table-&gt;string('oauth_token')-&gt;nullable();
+$table-&gt;string('oauth_token_secret')-&gt;nullable();
+
+// 其他 avatar 等
+</code></pre>
+<h3 id="entrust-权限管理插件增加了几个表-roles--role_user-permissions-permission_role">Entrust 权限管理插件增加了几个表 roles  role_user permissions permission_role</h3>
+<p>如果不想用 Entrust, 可以直接用自带的 Gate 和 Policy</p>
+<p>表有“外键”, 定义了一些约束</p>
+<pre><code class="language-php">Schema::create('role_user', function (Blueprint $table) {
+     $table-&gt;integer('user_id')-&gt;unsigned();
+     $table-&gt;integer('role_id')-&gt;unsigned();
+     $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users')
+        -&gt;onUpdate('cascade')-&gt;onDelete('cascade');
+     $table-&gt;foreign('role_id')-&gt;references('id')-&gt;on('roles')
+        -&gt;onUpdate('cascade')-&gt;onDelete('cascade');
+</code></pre>
+<p>vendor 内部代码还有其他的关联，这里略，会用就好</p>
+<h3 id="settings-表">settings 表</h3>
+<pre><code class="language-php">Schema::create('settings', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;string('site_name')-&gt;nullable();
+    $table-&gt;string('site_url')-&gt;nullable();
+    $table-&gt;string('email_from')-&gt;nullable();
+    $table-&gt;string('email_to')-&gt;nullable();
+</code></pre>
+<h3 id="tickets-表">tickets 表</h3>
+<p>user_id 外键
+category_id 类别
+ticket_id  ？？
+priority_id 优先级 关联
+status_id  状态 关联</p>
+<pre><code class="language-php">Schema::create('tickets', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;integer('user_id')-&gt;unsigned();
+    $table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users')-&gt;onDelete('cascade');
+    $table-&gt;integer('category_id')-&gt;unsigned();
+    $table-&gt;string('ticket_id')-&gt;unique();
+    $table-&gt;string('title');
+    $table-&gt;integer('priority_id')-&gt;unsigned();
+    $table-&gt;text('message');
+    $table-&gt;integer('status_id')-&gt;unsigned();
+</code></pre>
+<h3 id="categories-表-类别">categories 表 （类别）</h3>
+<pre><code class="language-php">Schema::create('categories', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;string('name');
+</code></pre>
+<h3 id="priorities-表-优先级">priorities 表 （优先级）</h3>
+<pre><code class="language-php">Schema::create('priorities', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;string('name');
+</code></pre>
+<h3 id="statuses-表-状态">statuses 表 （状态）</h3>
+<pre><code class="language-php">Schema::create('statuses', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;string('name');
+</code></pre>
+<h3 id="comments-表评论">comments 表（评论）</h3>
+<p>ticket_id 关联到 ticket 外键
+user_id 与 user 关联</p>
+<pre><code class="language-php">Schema::create('comments', function (Blueprint $table) {
+    $table-&gt;increments('id');
+    $table-&gt;integer('ticket_id')-&gt;unsigned();
+    $table-&gt;foreign('ticket_id')-&gt;references('id')-&gt;on('tickets')-&gt;onDelete('cascade');
+    $table-&gt;integer('user_id')-&gt;unsigned();
+    $table-&gt;text('comment');
+</code></pre>
+<h2 id="seed-初始数据">Seed 初始数据</h2>
+<h3 id="tickets-相关">tickets 相关</h3>
+<p>我觉得 priority 和 status 可以简化，直接放到 ticket 表
+例如 priority 的值就是 1 2 3 4 这样，依次降低
+status 就 4种固定的。</p>
+<p><strong>Category</strong></p>
+<p>技术  Bug  销售</p>
+<p><strong>Priority</strong></p>
+<p>紧急  普通  一般</p>
+<p><strong>status</strong></p>
+<p>打开  处理中  关闭   已回复</p>
+<h3 id="entrust-权限相关">entrust 权限相关</h3>
+<p><strong>permission</strong></p>
+<p>manage-roles
+manage-tickets
+manage-users
+view-backend
+manage-permissions
+manage-settings</p>
+<p><strong>role</strong></p>
+<p>管理员  Admin
+客服  Moderator
+普通用户  Agent</p>
+<p><strong>role-permission</strong></p>
+<p>role_id  permission_id
+1    1
+1    2
+1    3
+1    4
+1    6
+2    2
+2    3
+2    4
+3    2
+3    4</p>
+<p><strong>user</strong></p>
+<p>1  admin
+2  zhu
+3  nao</p>
+<p><strong>user-role</strong></p>
+<p>role    user
+1    1
+2    2
+3    3</p>
+<h3 id="settings">settings</h3>
+<pre><code class="language-php">\DB::table('settings')-&gt;insert([
+    0 =&gt; [
+        'id'         =&gt; 1,
+        'site_name'  =&gt; 'Ticket',
+        'site_url'   =&gt; 'http://example.com',
+        'email_to'   =&gt; 'admin@example.com',
+        'email_from' =&gt; 'admin@example.com',
+        'created_at' =&gt; '2017-11-17 13:42:19',
+        'updated_at' =&gt; '2011-11-17 13:42:19',
+    ],
+]);
+</code></pre>
+<p>需要改造成更适合扩展的结构, 能保存任意的内容</p>
+<p>key   value</p>
+<h2 id="模型">模型</h2>
+<h3 id="user">User</h3>
+<pre><code class="language-php">//$fillable  
+//$hidden
+
+public function getAvatarUrl()
+{
+    if (is_null($this-&gt;avatar)) {
+        return 'http://www.gravatar.com/avatar/'.md5(strtolower(trim($this-&gt;email))).'?d=mm&amp;s=40';
+    }
+    return $this-&gt;avatar;
+}
+public function getAccessToken()
+{
+    return $this-&gt;oauth_token;
+}
+public function getAccessTokenSecret()
+{
+    return $this-&gt;oauth_token_secret;
+}
+</code></pre>
+<h3 id="ticket">Ticket</h3>
+<p>多个关联，（与 status, priority, comments 等）</p>
+<pre><code class="language-php">//use Category;
+
+public function category()
+{
+    return $this-&gt;belongsTo(Category::class);
+}
+public function priority()
+{
+    return $this-&gt;belongsTo(Priority::class);
+}
+public function status()
+{
+    return $this-&gt;belongsTo(Status::class);
+}
+public function comments()
+{
+    return $this-&gt;hasMany(Comment::class);
+}
+public function user()
+{
+    return $this-&gt;belongsTo(User::class);
+}
+</code></pre>
+<h3 id="category-status-priority-这几个-model-比较相似">Category Status Priority 这几个 Model 比较相似</h3>
+<p>和 Ticket 模型都有 <code>hasMany</code> 关联</p>
+<pre><code class="language-php">public function tickets()
+{
+    return $this-&gt;hasMany(Ticket::class);
+}
+</code></pre>
+<h3 id="comment">Comment</h3>
+<p>和 Ticket 和 User 关联</p>
+<pre><code class="language-php">public function ticket()
+{
+    return $this-&gt;belongsTo(Ticket::class);
+}
+public function user()
+{
+    return $this-&gt;belongsTo(User::class);
+}
+</code></pre>
+<h3 id="如果用了-entrust-包还要设置权限相关的模型和关联">如果用了 Entrust 包，还要设置权限相关的模型和关联</h3>
+<pre><code class="language-php">class RoleUser extends Model
+{
+    protected $table = 'role_user';
+    public function users()
+    {
+        return $this-&gt;belongsTo('User');
+    }
+}
+
+class PermissionRole extends Model
+{
+    protected $table = 'permission_role';
+    protected $fillable = [
+        'permission_id',
+        'role_id',
+    ];
+}
+</code></pre>
+<h2 id="contollers-与-view">Contollers 与 View</h2>
+<h3 id="usercontoller">UserContoller</h3>
+<h4 id="index">index</h4>
+<pre><code class="language-php">public function index(){
+    //分页， 排序
+    $data = User::orderBy('id', 'DESC')-&gt;paginate(5);
+    
+    // with('i') 这个是什么  模板里 &lt;td&gt;{{ ++$i }}&lt;/td&gt; 应该是 data 的索引
+    return view('admin.users.index', compact('data'))-&gt;with('i');
+}
+</code></pre>
+<p>模板</p>
+<pre><code class="language-html">@include('admin.layouts.partials.alerts')
+
+@foreach ($data as $key =&gt; $user)
+
+    &lt;!--头像等 略--&gt;
+    &lt;td&gt;&lt;a href=&quot;{{ route('users.show',$user-&gt;id) }}&quot;&gt;{{ $user-&gt;fullname }}&lt;/a&gt;&lt;/td&gt;
+    
+    @foreach($user-&gt;roles as $v)
+        &lt;label class=&quot;label label-success&quot;&gt;{{ $v-&gt;display_name }}&lt;/label&gt;
+    @endforeach
+    
+@endforeach
+
+&lt;script&gt;
+    //使用 DataTable jQuery 插件
+    $(function () {
+        $(&quot;#usertable&quot;).DataTable();
+    });
+&lt;/script&gt;
+</code></pre>
+<h4 id="create-与-store">create 与 store</h4>
+<pre><code class="language-php">public function create() {
+    $roles = Role::lists('display_name', 'id');
+}
+
+// 密码 Hash::make 处理
+// roles 用 attachRole()
+public function store(Request $request)
+{
+    $this-&gt;validate($request, [
+        'fullname' =&gt; 'required',
+        'email'    =&gt; 'required|email|unique:users,email',
+        'password' =&gt; 'required|same:confirm-password',
+        'roles'    =&gt; 'required',
+    ]);
+    $input             = $request-&gt;all();
+    $input['password'] = Hash::make($input['password']);
+    $user = User::create($input);
+    foreach ($request-&gt;input('roles') as $key =&gt; $value) {
+        $user-&gt;attachRole($value);
+    }
+    return redirect()-&gt;route('users.index')
+        -&gt;with('success', 'User created successfully');
+}
+</code></pre>
+<p>模板</p>
+<pre><code class="language-html">{!! Form::open(array('route' =&gt; 'users.store','method'=&gt;'POST')) !!}
+
+&lt;!--fullname  email 等略--&gt;
+
+{!! Form::select('roles[]', $roles,[], array('class' =&gt; 'form-control','multiple')) !!}
+
+{!! Form::close() !!}
+</code></pre>
+<h4 id="edit-与-update">edit 与 update</h4>
+<pre><code class="language-php">public function edit($id) {
+    $user     = User::find($id);
+    $roles    = Role::lists('display_name', 'id');
+    $userRole = $user-&gt;roles-&gt;lists('id', 'id')-&gt;toArray();
+    return view('admin.users.edit', compact('user', 'roles', 'userRole'));
+        
+
+// 和store 差不多，多一个判断是否填写了 password        
+public function update(Request $request, $id)
+{
+    // validate ....
+    
+    if (!empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            $input = array_except($input, ['password']);
+        }
+    
+    //重新绑定 role
+    $user = User::find($id);
+        $user-&gt;update($input);
+        DB::table('role_user')-&gt;where('user_id', $id)-&gt;delete();
+        foreach ($request-&gt;input('roles') as $key =&gt; $value) {
+            $user-&gt;attachRole($value);
+        }
+</code></pre>
+<p>和 create 差不多</p>
+<pre><code class="language-html">{!! Form::model($user, ['method' =&gt; 'PATCH','route' =&gt; ['users.update', $user-&gt;id]]) !!}
+</code></pre>
+<h4 id="删除">删除</h4>
+<pre><code class="language-php">public function destroy($id)
+    {
+        User::find($id)-&gt;delete();
+
+</code></pre>
+<h3 id="accountcontroller">AccountController</h3>
+<p>在构造函数里增加一个 middleware， 用来在获取到任何请求时赋值当前登录用户的数据</p>
+<pre><code class="language-php">protected $user;
+protected $id;
+
+public function __construct()
+{
+    $this-&gt;middleware(function ($request, $next) {
+        $this-&gt;user = Auth::user();
+        $this-&gt;id   = $this-&gt;user-&gt;id;
+        return $next($request);
+    });
+}
+</code></pre>
+<h4 id="用户个人首页">用户个人首页</h4>
+<p>withAccount() ？？？</p>
+<pre><code class="language-php">public function getAccountPage()
+{
+    return view('account.dashboard')-&gt;withAccount($this-&gt;user);
+}
+
+public function updateProfile(Request $request)
+{
+     $this-&gt;validate($request, [
+            'email'    =&gt; 'required|email|min:3|unique:users,email,'.$this-&gt;id,
+            'fullname' =&gt; 'required|min:3',
+        ]);
+        $values = $request-&gt;all();
+        $this-&gt;user-&gt;fill($values)-&gt;save();
+
+public function updateAvatar(Request $request)
+    {
+        $this-&gt;validate($request, [
+            'file_name' =&gt; 'required|mimes:jpeg,bmp,png|between:1,7000',
+        ]);
+        $filename = $request-&gt;file('file_name')-&gt;getRealPath();
+
+public function changePassword(Request $request)
+    {
+        $this-&gt;validate($request, [
+            'password' =&gt; 'required|min:6|confirmed',
+        ]);
+        $this-&gt;user-&gt;password = Hash::make($request-&gt;password);
+        $this-&gt;user-&gt;save();
+        
+
+//后面几个是处理删除自己， 可不需要
+public function redirectToConfirmDeletePage()
+    {
+        return view('account.confirm');
+    }
+    public function dontDeleteAccount()
+    {
+        return redirect('/account');
+    }
+    public function deleteAccount(Request $request)
+    {
+        $this-&gt;user-&gt;delete();
+        $request-&gt;session()-&gt;flush();
+        return redirect('/');
+    }
+</code></pre>
+<p>模板</p>
+<p><code>Auth::user()-&gt;getAvatarUrl()</code>当前用户的资料</p>
+<p><code>withAccount()</code> 效果应该是类似 <code>with('account', $this-&gt;user)</code></p>
+<p>多个 tab, 分别是几个表单：基本、头像、密码</p>
+<pre><code class="language-html"> &lt;img class=&quot;profile-user-img img-responsive img-circle&quot; src=&quot;{{ Auth::user()-&gt;getAvatarUrl() }}&quot; alt=&quot;User profile picture&quot;&gt;
+ 
+{{ $account-&gt;fullname }}
+&lt;!--其他资料--&gt;
+
+
+&lt;form role=&quot;form&quot; method=&quot;POST&quot; action=&quot;{{ route('account.profile') }}&quot;
+
+&lt;input type=&quot;text&quot; name=&quot;email&quot; id=&quot;email&quot; value=&quot;{{ $account-&gt;email ?: old('email') }}&quot; autofocus=&quot;&quot; class=&quot;form-control&quot;&gt;
+    &lt;!--显示提交后可能返回的错误--&gt;
+    @if ($errors-&gt;has('email'))
+        &lt;span class=&quot;help-block&quot;&gt;{{ $errors-&gt;first('email') }}&lt;/span&gt;
+    @endif
+    
+&lt;!--还能删除自己--&gt;
+&lt;a href=&quot;{{ route('account.confirm.delete') }}&quot;&gt;
+</code></pre>
+<h3 id="admincontroller-admin-dashboard">AdminController (admin dashboard)</h3>
+<p>一些数据的汇总（考虑使用计划任务来处理，不需要每次都更新？）</p>
+<pre><code class="language-php">public function index()
+{
+    $count_users             = User::all()-&gt;count();
+    $count_roles             = Role::all()-&gt;count();
+    $count_permissions       = Permission::all()-&gt;count();
+    $count_open_ticket       = Ticket::where('status_id', 1)-&gt;count();
+    $count_inprogress_ticket = Ticket::where('status_id', 2)-&gt;count();
+    $count_closed_ticket     = Ticket::where('status_id', 3)-&gt;count();
+    $count_reopened_ticket   = Ticket::where('status_id', 4)-&gt;count();
+    return view('admin.dashboard',
+        compact('count_reopened_ticket', 'count_closed_ticket', 'count_inprogress_ticket', 'count_users',
+            'count_roles', 'count_permissions', 'count_open_ticket'));
+</code></pre>
+<p>模板</p>
+<pre><code class="language-html">@permission('manage-tickets')
+    未处理{{ $count_open_ticket }} 已关闭。。。。。
+@endpermission
+    
+@permission('manage-permissions')
+    {{ $count_permissions }} 种权限
+    &lt;a href=&quot;{{ route('permissions.index')&quot; }}&gt;more
+@endpermission
+
+&lt;!--{{ $count_users }}    route('users.index')--&gt;
+&lt;!--{{ $count_roles }}    route('roles.index')--&gt;
+</code></pre>
+<h3 id="admincommentcontroller">AdminCommentController</h3>
+<p>这里有个处理： 只有提交评论所属的 ticket 发布者不是自己，才发送邮件（不需要通知自己）</p>
+<pre><code class="language-php">public function postComment(Request $request, AppMailer $mailer)
+    {
+        $this-&gt;validate($request, [
+            'comment' =&gt; 'required',
+        ]);
+        $comment = Comment::create([
+            'ticket_id' =&gt; $request-&gt;input('ticket_id'),
+            'user_id'   =&gt; Auth::user()-&gt;id,
+            'comment'   =&gt; $request-&gt;input('comment'),
+        ]);
+        if ($comment-&gt;ticket-&gt;user-&gt;id !== Auth::user()-&gt;id) {
+            // $mailer-&gt;sendTicketComments($comment-&gt;ticket-&gt;user, Auth::user(), $comment-&gt;ticket, $comment);
+        }
+
+</code></pre>
+<h3 id="adminticketcontroller-管理员-ticket-管理">AdminTicketController （管理员-ticket 管理）</h3>
+<h4 id="dashboard">dashboard</h4>
+<pre><code class="language-php">//统计下不同状态的tickets 数量
+private function menucount()
+{
+    return [
+        'all'        =&gt; \App\Ticket::all()-&gt;count(),
+        'open'       =&gt; \App\Ticket::where('status_id', 1)-&gt;count(),
+        'inprogress' =&gt; \App\Ticket::where('status_id', 2)-&gt;count(),
+        'closed'     =&gt; \App\Ticket::where('status_id', 3)-&gt;count(),
+        'reopened'   =&gt; \App\Ticket::where('status_id', 4)-&gt;count(),
+    ];
+}
+
+public function index()
+{
+    $menucount = $this-&gt;menucount();
+    $tickets    = Ticket::orderBy('created_at', 'desc')-&gt;paginate(5);
+    $categories = Category::all();
+    $prioritys  = Priority::all();
+    $statuses   = Status::all();
+    return view('admin.tickets.index', compact('menucount', 'tickets', 'categories', 'statuses', 'prioritys'));
+
+//opentickets()  inprogresstickets() closedtickets() reopenedtickets 略，实际上就是筛选不同的 status，如
+$tickets    = Ticket::where('status_id', 1)-&gt;orderBy('created_at', 'desc')-&gt;paginate(5);
+
+//略，普通的 resource controllers 方法
+</code></pre>
+<p>模板  <code>{{ $ticket-&gt;created_at-&gt;diffForHumans() }}</code> 人性化时间显示</p>
+<pre><code class="language-html">@include('admin.layouts.partials.alerts')
+@include('admin.tickets.buttons')
+
+@if ($tickets-&gt;isEmpty())
+    &lt;p&gt;暂无&lt;/p&gt;
+@else
+    &lt;table&gt;
+    @foreach ($tickets as $ticket)
+        &lt;!--fullname id  categories循环 statuses循环 prioritys循环——如果有匹配就显示label --&gt;
+        
+        {{ $ticket-&gt;created_at-&gt;diffForHumans() }}
+
+@push('scripts')
+        &lt;script&gt;
+            $(function () {
+                $(&quot;#tickettable&quot;).DataTable({
+                    &quot;order&quot;: [[0, &quot;asc&quot;]]
+                });
+            });
+        &lt;/script&gt;
+    @endpush
+
+</code></pre>
+<h4 id="edit">edit</h4>
+<p><code>pluck()</code>简化查询结果，用于模板中 select 控件 option 选项</p>
+<p>在这里对 ticket 的 status 修改操作，可以<strong>关闭 ticket</strong></p>
+<pre><code class="language-php">public function edit($ticket_id)
+{
+    $tickets    = Ticket::where('ticket_id', $ticket_id)-&gt;firstOrFail();
+    $categories = Category::pluck('name', 'id');
+    $prioritys  = Priority::pluck('name', 'id');
+    $statuses   = Status::pluck('name', 'id');
+
+
+//发邮件了， 更新 ticket 的 category 等（这里不可以直接用 关联的那个 attach 还是？？）
+public function update(Request $request, $ticket_id, AppMailer $mailer)
+{
+    $this-&gt;validate($request, [
+        'category' =&gt; 'required',
+        'priority' =&gt; 'required',
+        'status'   =&gt; 'required',
+    ]);
+    $ticket              = Ticket::where('ticket_id', $ticket_id)-&gt;firstOrFail();
+    $ticket-&gt;category_id = $request-&gt;input('category');
+    $ticket-&gt;priority_id = $request-&gt;input('priority');
+    $ticket-&gt;status_id   = $request-&gt;input('status');
+    $ticket-&gt;save();
+    
+    $ticketOwner = $ticket-&gt;user;
+    // $mailer-&gt;sendTicketStatusNotification($ticketOwner, $ticket);
+</code></pre>
+<p>模板</p>
+<pre><code class="language-html">{!! Form::model($tickets, ['method' =&gt; 'PATCH','route' =&gt; ['managetickets.update', $tickets-&gt;ticket_id]]) !!}
+                        {!! csrf_field() !!}
+
+&lt;strong&gt;Category:&lt;/strong&gt;
+                                        {{ Form::select('category',$categories,$tickets-&gt;category_id,['class'=&gt;'form-control'])}}
+                                        
+&lt;!--Priority--&gt;
+&lt;!--Status--&gt;
+</code></pre>
+<h4 id="show">show</h4>
+<pre><code class="language-php">public function show($ticket_id)
+    {
+        $ticket     = Ticket::where('ticket_id', $ticket_id)-&gt;firstOrFail();
+        $categories = Category::pluck('name', 'id');
+        $comments   = $ticket-&gt;comments;
+        $statuses   = Status::pluck('name', 'id');
+        $prioritys  = Priority::pluck('name', 'id');
+</code></pre>
+<p>模板  显示全部 comments， 显示当前coment 作者是否就是ticket 的发布者</p>
+<p><strong>以及：如果已经关闭 重新打开 ticket</strong></p>
+<p>如果是未关闭，则可以评论</p>
+<pre><code class="language-html">@foreach ($comments as $comment)
+
+&lt;img src=&quot;{{ $comment-&gt;user-&gt;getAvatarUrl() }}&quot; alt=&quot;user image&quot;
+     class=&quot;@if($ticket-&gt;user-&gt;id === $comment-&gt;user_id){{&quot;online&quot;}}@else{{&quot;offline&quot;}}@endif&quot;&gt;
+    
+&lt;div class=&quot;message&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;name&quot;&gt;
+        &lt;small class=&quot;text-muted pull-right&quot;&gt;&lt;i
+                    class=&quot;fa fa-clock-o&quot;&gt;&lt;/i&gt; {{ $comment-&gt;created_at-&gt;diffForHumans() }}
+        &lt;/small&gt;
+        {{ $comment-&gt;user-&gt;fullname }}
+    &lt;/a&gt;
+    {!! $comment-&gt;comment !!}
+&lt;/div&gt;
+    
+@endforeach
+
+
+
+@if ($ticket-&gt;status_id === 3)
+    &lt;form action=&quot;{{ url('reopen/' . $ticket-&gt;ticket_id) }}&quot; method=&quot;POST&quot; class=&quot;form&quot;&gt;
+        {!! csrf_field() !!}
+        &lt;button type=&quot;submit&quot; class=&quot;btn bg-purple&quot;&gt;Reopen&lt;/button&gt;
+    &lt;/form&gt;
+@else
+    &lt;form action=&quot;{{ url('admin/tickets/comment') }}&quot; method=&quot;POST&quot; class=&quot;form&quot;&gt;
+    {!! csrf_field() !!}
+
+    &lt;input type=&quot;hidden&quot; name=&quot;ticket_id&quot; value=&quot;{{ $ticket-&gt;id }}&quot;&gt;
+
+    &lt;div class=&quot;form-group{{ $errors-&gt;has('comment') ? ' has-error' : '' }}&quot;&gt;
+        &lt;textarea rows=&quot;10&quot; id=&quot;summernote&quot; class=&quot;form-control&quot;
+                  name=&quot;comment&quot;&gt;&lt;/textarea&gt;
+        @if ($errors-&gt;has('comment'))
+            &lt;span class=&quot;help-block&quot;&gt;
+                    &lt;strong&gt;{{ $errors-&gt;first('comment') }}&lt;/strong&gt;
+                &lt;/span&gt;
+        @endif
+</code></pre>
+<h4 id="delete">delete</h4>
+<pre><code class="language-php">public function destroy($ticket_id)
+    {
+        DB::table('tickets')-&gt;where('ticket_id', $ticket_id)-&gt;delete();
+        return redirect()-&gt;route('managetickets.index')-&gt;with('info', 'Ticket deleted successfully');
+    }
+</code></pre>
+<h3 id="commentcontroller-只有一个-post-方法">CommentController (只有一个 post 方法)</h3>
+<pre><code class="language-php">public function postComment(Request $request, AppMailer $mailer)
+{
+    $this-&gt;validate($request, [
+        'comment' =&gt; 'required',
+    ]);
+    $comment = Comment::create([
+        'ticket_id' =&gt; $request-&gt;input('ticket_id'),
+        'user_id'   =&gt; Auth::user()-&gt;id,
+        'comment'   =&gt; $request-&gt;input('comment'),
+    ]);
+    if ($comment-&gt;ticket-&gt;user-&gt;id !== Auth::user()-&gt;id) {
+        // $mailer-&gt;sendTicketComments($comment-&gt;ticket-&gt;user, Auth::user(), $comment-&gt;ticket, $comment);
+    }
+</code></pre>
+<h3 id="contactcontoller-联系我们-的发邮件表单">ContactContoller （联系我们 的发邮件表单）</h3>
+<pre><code class="language-php">public function sendMessage(Request $request)
+    {
+        $this-&gt;validate($request, [
+            'name'    =&gt; 'required|min:3',
+            'email'   =&gt; 'required|email|max:255',
+            'message' =&gt; 'required',
+        ]);
+        $name      = $request-&gt;input('name');
+        $emailFrom = $request-&gt;input('email');
+        $body      = $request-&gt;input('message');
+        Mail::send('emails.contact', ['body' =&gt; $body], function ($message) use ($name, $emailFrom) {
+            // $message-&gt;from($emailFrom, &quot;From: {$name}&quot;);
+            // $message-&gt;to(email_to())-&gt;subject('Message from Contact Form');
+        });
+
+</code></pre>
+<p>模板略</p>
+<h3 id="oauthcontroller-facebookcontrollergithubcontrollertwittercontroler-略">OAuthController FacebookController/GithubController/TwitterControler 略</h3>
+<p>获取社交网站资料</p>
+<h3 id="permissioncontroller">PermissionController</h3>
+<p>略 resource controller</p>
+<h3 id="rolecontroller">RoleController</h3>
+<h4 id="index-1">index</h4>
+<pre><code class="language-php">public function index(Request $request)
+    {
+        $roles = Role::orderBy('id', 'DESC')-&gt;paginate(5);
+</code></pre>
+<p>模板</p>
+<pre><code class="language-html">@foreach ($roles as $key =&gt; $role)
+    &lt;tr&gt;
+        &lt;td&gt;{{ ++$i }}&lt;/td&gt;
+        &lt;td&gt;&lt;a href=&quot;{{ route('roles.show',$role-&gt;id) }}&quot;&gt;{{ $role-&gt;name }}&lt;/a&gt;&lt;/td&gt;
+        &lt;td&gt;{{ $role-&gt;display_name }}&lt;/td&gt;
+        &lt;td&gt;{{ $role-&gt;description }}&lt;/td&gt;
+    &lt;/tr&gt;
+@endforeach
+</code></pre>
+<h4 id="create">create</h4>
+<p><code>$role-&gt;attachPermission</code>将 permission 绑定到 role 上</p>
+<pre><code class="language-php">public function create()
+{
+    //拿到所有 permissions 用来绑定到新增的 role
+    $permission = Permission::get();
+    return view('admin.roles.create', compact('permission'));
+}
+
+public function store(){
+    $this-&gt;validate($request, [
+        // 字段值不能重名
+        'name'         =&gt; 'required|unique:roles,name',
+        'display_name' =&gt; 'required',
+        'description'  =&gt; 'required',
+        'permission'   =&gt; 'required',
+    ]);
+    $role               = new Role();
+    $role-&gt;name         = $request-&gt;input('name');
+    $role-&gt;display_name = $request-&gt;input('display_name');
+    $role-&gt;description  = $request-&gt;input('description');
+    $role-&gt;save();
+
+    foreach ($request-&gt;input('permission') as $key =&gt; $value
+    {
+        $role-&gt;attachPermission($value);
+    }
+}
+</code></pre>
+<p>view</p>
+<pre><code class="language-html">{!! Form::open(array('route' =&gt; 'roles.store','method'=&gt;'POST')) !!}
+
+{!! Form::text('name', null, array('placeholder' =&gt; 'Name','class' =&gt; 'form-control')) !!}
+
+&lt;!--display name...description--&gt;
+
+@foreach($permission as $value)
+	&lt;label&gt;{{ Form::checkbox('permission[]', $value-&gt;id, false, array('class' =&gt; 'name')) }}
+	{{ $value-&gt;display_name }}&lt;/label&gt;
+	&lt;br/&gt;
+@endforeach
+</code></pre>
+<h4 id="edit-1">edit</h4>
+<pre><code class="language-php">public function edit($id)
+{
+    $role            = Role::find($id);
+    $permission      = Permission::get();
+    $rolePermissions = DB::table('permission_role')-&gt;where('permission_role.role_id', $id)
+        -&gt;pluck('permission_role.permission_id', 'permission_role.permission_id')-&gt;toArray();
+    return view('admin.roles.edit', compact('role', 'permission', 'rolePermissions'));
+}
+
+public function update(Request $request, $id)
+{
+    $this-&gt;validate($request, [
+        'name'         =&gt; 'required',
+        'display_name' =&gt; 'required',
+        'description'  =&gt; 'required',
+        'permission'   =&gt; 'required',
+    ]);
+    $role               = Role::find($id);
+    $role-&gt;name         = $request-&gt;input('name');
+    $role-&gt;display_name = $request-&gt;input('display_name');
+    $role-&gt;description  = $request-&gt;input('description');
+    $role-&gt;save();
+    DB::table('permission_role')-&gt;where('permission_role.role_id', $id)
+        -&gt;delete();
+    foreach ($request-&gt;input('permission') as $key =&gt; $value) {
+        $role-&gt;attachPermission($value);
+    }
+    return redirect()-&gt;route('roles.index')
+        -&gt;with('success', 'Role updated successfully');
+}
+</code></pre>
+<p>模板和 create 类似，仅 permission 里处理了check 状态的 true/false</p>
+<pre><code class="language-html">{{ Form::checkbox('permission[]', $value-&gt;id, in_array($value-&gt;id, $rolePermissions) ? true : false, array('class' =&gt; 'name')) }}
+</code></pre>
+<h4 id="show-1">show</h4>
+<p><code>Permission::join</code>来获取 role-permission 关联（通过中间表 permission_role），找出所有指定 id 的 role 的关联 permission(如 admin 这个 role 有 manage setting/manage permission 等等)</p>
+<pre><code class="language-php">public function show($id)
+{
+    $role            = Role::find($id);
+    $rolePermissions = Permission::join('permission_role', 'permission_role.permission_id', '=', 'permissions.id')
+        -&gt;where('permission_role.role_id', $id)
+        -&gt;get();
+    return view('admin.roles.show', compact('role', 'rolePermissions'));
+}
+
+</code></pre>
+<p>view</p>
+<p>删除</p>
+<pre><code class="language-html">@foreach($rolePermissions as $v)
+	&lt;label class=&quot;label label-success&quot;&gt;{{ $v-&gt;display_name }}&lt;/label&gt;
+@endforeach
+
+
+{!! Form::open(['method' =&gt; 'DELETE','route' =&gt; ['roles.destroy', $role-&gt;id],'style'=&gt;'display:inline','class'=&gt;'delete']) !!}
+    {{ Form::button('&lt;i class=&quot;fa fa-remove&quot;&gt; 删除&lt;/i&gt;', array('class'=&gt;'btn btn-danger', 'type'=&gt;'submit')) }}
+{!! Form::close() !!}
+</code></pre>
+<h4 id="delete-1">delete</h4>
+<pre><code class="language-php">public function destroy($id)
+{
+    DB::table('roles')-&gt;where('id', $id)-&gt;delete();
+    return redirect()-&gt;route('roles.index')
+        -&gt;with('success', 'Role deleted successfully');
+</code></pre>
+<h3 id="settingcontroller-略-比较简单">SettingController 略 比较简单</h3>
+<h3 id="ticketcontroller非-adminticketcontroller">TicketController(非 AdminTicketController)</h3>
+<p>注意 AdminTicket 里其实没有 <code>create</code> 创建 ticket 的功能的，因为管理员不需要，真正创建 ticket 在这个 Controller 里面</p>
+<h4 id="usertickets-方法我的-tickets">userTickets() 方法：我的 tickets</h4>
+<p>因为 Ticket 数据库里保存 status 等都是 id 的形式。为了和具体的数据关联，还把几个有关的模型（Status，Category 等）全部数据都取回了</p>
+<pre><code class="language-php">public function userTickets()
+{
+    $tickets    = Ticket::orderBy('created_at', 'desc')-&gt;where('user_id', Auth::user()-&gt;id)-&gt;paginate(10);
+    $categories = Category::all();
+    $prioritys  = Priority::all();
+    $statuses   = Status::all();
+    return view('tickets.index', compact('tickets', 'categories', 'statuses', 'prioritys'));
+}
+</code></pre>
+<p>这里可以</p>
+<ol>
+<li>增加路由 /tickets/my 来对应这个方法</li>
+<li>还可以用 Repository 模式里的 <code>Criteria</code> 来实现查询的时候自动传入默认参数</li>
+</ol>
+<h4 id="create-方法创建-ticket">create() 方法：创建 ticket</h4>
+<p>几个默认值：
+<code>'ticket_id'   =&gt; strtoupper(str_random(10))</code>,  一个随机字符串作为 ticket_id ，这里可以用 category 的缩写与时间戳来开头 ，如  BUG123445</p>
+<pre><code class="language-php">public function create()
+{
+    $categories = Category::all();
+    $prioritys  = Priority::all();
+    $statuses   = Status::all();
+    return view('tickets.create', compact('categories', 'statuses', 'prioritys'));
+}
+
+
+public function store(Request $request, AppMailer $mailer)
+{
+    $this-&gt;validate($request, [
+        'title'    =&gt; 'required',
+        'category' =&gt; 'required',
+        'priority' =&gt; 'required',
+        'message'  =&gt; 'required',
+    ]);
+    $ticket = new Ticket([
+        'title'       =&gt; $request-&gt;input('title'),
+        'user_id'     =&gt; Auth::user()-&gt;id,
+        'ticket_id'   =&gt; strtoupper(str_random(10)),
+        'category_id' =&gt; $request-&gt;input('category'),
+        'priority_id' =&gt; $request-&gt;input('priority'),
+        'message'     =&gt; $request-&gt;input('message'),
+    ]);
+    
+    //默认“状态”为“Open”：`$ticket-&gt;status_id = '1'` ：
+    $ticket-&gt;status_id = '1';
+    
+    // $mailer-&gt;sendTicketInformation(Auth::user(), $ticket);
+    $ticket-&gt;save();
+</code></pre>
+<h4 id="show---reopen">show  &amp; reopen</h4>
+<p>就是<code>$ticket-&gt;status_id = '4';</code></p>
+<pre><code class="language-php">public function reopen($ticket_id, AppMailer $mailer)
+{
+    $ticket            = Ticket::where('ticket_id', $ticket_id)-&gt;firstOrFail();
+    $ticket-&gt;status_id = '4';
+    $ticket-&gt;save();
+    $ticketOwner = $ticket-&gt;user;
+    // $mailer-&gt;sendTicketStatusNotification($ticketOwner, $ticket);
+    return redirect()-&gt;back()-&gt;with('info', &quot;Your ticket with ID: #$ticket-&gt;ticket_id has been reopened.&quot;);
+}
+
+</code></pre>
+<p>view（show.blade.php）</p>
+<pre><code class="language-html">&lt;!--ticket detail--&gt;
+
+ @if ($ticket-&gt;status_id === 3)
+    &lt;form action=&quot;{{ url('reopen/' . $ticket-&gt;ticket_id) }}&quot; method=&quot;POST&quot; class=&quot;form&quot;&gt;
+        {!! csrf_field() !!}
+        &lt;button type=&quot;submit&quot; class=&quot;btn bg-purple&quot;&gt;重新打开&lt;/button&gt;
+    &lt;/form&gt;
+@else
+
+&lt;!--comments--&gt;
+</code></pre>
+<h2 id="发邮件-mailersappmailer">发邮件 Mailers/AppMailer</h2>
+<p>当 ticket 创建、被评论、状态变化时发送邮件</p>
+<pre><code class="language-php">public function sendTicketInformation($user, Ticket $ticket)
+{
+    $statuses = Status::all();
+    $this-&gt;to = $user-&gt;email;
+    $this-&gt;subject = &quot;[Ticket ID: $ticket-&gt;ticket_id] $ticket-&gt;title&quot;;
+    $this-&gt;view = 'emails.ticket_info';
+    $this-&gt;data = compact('user', 'ticket', 'statuses');
+    return $this-&gt;deliver();
+}
+
+public function sendTicketComments($ticketOwner, $user, Ticket $ticket, $comment)
+{
+    $this-&gt;to = $ticketOwner-&gt;email;
+    $this-&gt;subject = &quot;RE:[Ticket ID: $ticket-&gt;ticket_id] $ticket-&gt;title&quot;;
+    $this-&gt;view = 'emails.ticket_comments';
+    $this-&gt;data = compact('ticketOwner', 'user', 'ticket', 'comment');
+    return $this-&gt;deliver();
+}
+
+public function sendTicketStatusNotification($ticketOwner, Ticket $ticket)
+{
+    $this-&gt;to = $ticketOwner-&gt;email;
+    $this-&gt;subject = &quot;RE:[Ticket ID: $ticket-&gt;ticket_id] $ticket-&gt;title&quot;;
+    $this-&gt;view = 'emails.ticket_status';
+    $this-&gt;data = compact('ticketOwner', 'ticket');
+    return $this-&gt;deliver();
+}
+
+public function deliver()
+{
+    $this-&gt;mailer-&gt;send($this-&gt;view, $this-&gt;data, function ($message) {
+        $message-&gt;from(email_from(), site_name())
+                -&gt;to($this-&gt;to)-&gt;subject($this-&gt;subject);
+    });
+}
+</code></pre>
+<h2 id="需要增加功能">需要增加功能</h2>
+<h3 id="指派给谁-自动手动">指派给谁 （自动、手动），</h3>
+<h3 id="谁有权限统一管理某个类别下的-ticket-并分派任务经理催单">谁有权限统一管理某个类别下的 ticket ，并分派任务（经理催单）</h3>
+<h3 id="过期时间">过期时间</h3>
+<h3 id="统计报表更多维度">统计报表更多维度</h3>
+<h3 id="关联-issue">“关联 issue”</h3>
+<p>自己与自己的关联（单表，类似 parent.）</p>
+<h3 id="子任务-和关联issue不一样这里有层级关系一个-ticket-包含多个任务">“子任务” （和“关联issue”不一样，这里有层级关系，一个 ticket 包含多个任务）</h3>
+<p>也能用一个表的内部关联实现？</p>
+<h3 id="attachment-附件">attachment 附件</h3>
+<h3 id="tags-标签系统类别之外的组织方式">tags 标签系统（类别之外的组织方式）</h3>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bticket-%E7%B3%BB%E7%BB%9Fcrud/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bworkflow/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E6%A1%88%E4%BE%8Bapi-%E9%A9%B1%E5%8A%A8%E7%9A%84-spa-%E5%BA%94%E7%94%A8/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

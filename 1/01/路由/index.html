@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="路由 permalink: laravel-router tags: laravel 路由 （5.1） 基本路由 在 app/Http/routes.php 文件里定义各种路由（get, post, put, 或者“多重动作”——match 和 any ），然后在 Controller 里写逻辑处理代码 路由参数" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="路由 permalink: laravel-router tags: laravel 路由 （5.1） 基本路由 在 app/Http/routes.php 文件里定义各种路由（get, post, put, 或者“多重动作”——match 和 any ），然后在 Controller 里写逻辑处理代码 路由参数" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E8%B7%AF%E7%94%B1/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="路由 permalink: laravel-router tags: laravel 路由 （5.1） 基本路由 在 app/Http/routes.php 文件里定义各种路由（get, post, put, 或者“多重动作”——match 和 any ），然后在 Controller 里写逻辑处理代码 路由参数">
+
+<meta itemprop="wordCount" content="4346">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="路由 permalink: laravel-router tags: laravel 路由 （5.1） 基本路由 在 app/Http/routes.php 文件里定义各种路由（get, post, put, 或者“多重动作”——match 和 any ），然后在 Controller 里写逻辑处理代码 路由参数"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E8%B7%AF%E7%94%B1/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E8%B7%AF%E7%94%B1/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4346字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>路由</p>
+<p>permalink: laravel-router
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="路由-51">路由 （5.1）</h1>
+<h2 id="基本路由">基本路由</h2>
+<p>在 <code>app/Http/routes.php</code> 文件里定义各种路由（<code>get</code>, <code>post</code>, <code>put</code>, 或者“多重动作”——<code>match</code> 和 <code>any</code> ），然后在 <code>Controller</code> 里写逻辑处理代码</p>
+<h2 id="路由参数">路由参数</h2>
+<p>参数通过闭包来传递，并且不要有 <code>-</code> 符号</p>
+<pre><code class="language-php"># 基础参数
+Route::get('posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    //
+});
+
+# 参数是可选的，也可以直接指定
+Route::get('user/{name?}', function ($name = 'John') {
+    return $name;
+});
+
+# 用正则表达式限制参数
+Route::get('user/{id}/{name}', function ($id, $name) {
+    //
+})
+-&gt;where(['id' =&gt; '[0-9]+', 'name' =&gt; '[a-z]+']);
+</code></pre>
+<h2 id="重定向">重定向</h2>
+<p>在控制器中，或者路由中</p>
+<pre><code class="language-php">return redirect('/');
+</code></pre>
+<h1 id="路由-55">路由 （5.5）</h1>
+<h2 id="路由相关文件">路由相关文件</h2>
+<p>路由文件统一放到根目录 /routes 下。并分为 web api 等</p>
+<p>web.php 定义 web 界面的路由，会分配给 web 中间件组（提供会话状态和 CSRF 保护）</p>
+<p>api.php 中的路由都是无状态的，分配了 api 中间件组。并且里面定义的路由通过 RouteServiceProvider 被嵌套到一个路由组里面，自动添加前缀 /api 到里面的每一个路由，不需要手动添加。</p>
+<h2 id="重定向路由快速重定向不再需要定义完整路由或者控制器">重定向路由（快速重定向），不再需要定义完整路由或者控制器</h2>
+<pre><code class="language-php">Route::redirect('/here', '/there', 301);
+</code></pre>
+<h2 id="视图路由">视图路由</h2>
+<p>如果该路由只需要返回一个视图，不需要定义完整的路由和控制器，直接使用 <code>Route::view</code> 方法。参数：URL，视图名称，传给视图的数据（可选，数组）</p>
+<pre><code class="language-php">Route::view('/welcome', 'welcome', ['name' =&gt; 'Taylor']);
+</code></pre>
+<h2 id="命名路由">命名路由</h2>
+<pre><code class="language-php">Route::get('user/profile', function () {
+    //
+})-&gt;name('profile');
+
+Route::get('user/profile', 'UserController@showProfile')-&gt;name('profile');
+</code></pre>
+<p>然后就可使用 <code>route</code>这个全局辅助函数来生成链接或者重定向到这个路由</p>
+<pre><code class="language-php">$url = route('profile');
+return redirect()-&gt;route('profile');
+</code></pre>
+<p>有参数的路由</p>
+<pre><code class="language-php">Route::get('user/{id}/profile', function ($id) {
+    //
+})-&gt;name('profile');
+
+$url = route('profile', ['id' =&gt; 1]);
+</code></pre>
+<p>检查当前路由</p>
+<p><code>named</code>方法判断当前请求是否指向了某个路由（例如在<strong>路由中间件</strong>中，检查当前路由是哪条）</p>
+<pre><code class="language-php">public function handle($request, Closure $next)
+{
+    if ($request-&gt;route()-&gt;named('profile')) {
+        //
+    }
+
+    return $next($request);
+}
+</code></pre>
+<h2 id="路由组">路由组</h2>
+<p>在大量路由之间共享路由属性，例如中间件或命名空间</p>
+<h3 id="分配中间件">分配中间件</h3>
+<pre><code class="language-php">Route::middleware(['first', 'second'])-&gt;group(function () {
+    Route::get('/', function () {
+        // 使用 first 和 second 中间件
+    });
+
+    Route::get('user/profile', function () {
+        // 使用 first 和 second 中间件
+    });
+});
+</code></pre>
+<h3 id="命名空间">命名空间</h3>
+<p>将相同的 PHP 命名空间分配给路由组的中所有的控制</p>
+<p>默认情况下，RouteServiceProvider 会在命名空间组中引入你的路由文件，让你不用指定完整的 App\Http\Controllers 命名空间前缀就能注册控制器路由。因此，你只需要指定命名空间 App\Http\Controllers 之后的部分。</p>
+<pre><code class="language-php">Route::namespace('Admin')-&gt;group(function () {
+    // 在 &quot;App\Http\Controllers\Admin&quot; 命名空间下的控制器
+});
+</code></pre>
+<h3 id="路由前缀">路由前缀</h3>
+<pre><code class="language-php">Route::prefix('admin')-&gt;group(function () {
+    Route::get('users', function () {
+        // 匹配包含 &quot;/admin/users&quot; 的 URL
+    });
+});
+</code></pre>
+<h3 id="子域名路由">子域名路由</h3>
+<p>子域名可以像路由 URI 一样被分配路由参数，允许你获取一部分子域名作为参数给路由或控制器使用。可以在 group 之前调用 domain 方法来指定子域名：</p>
+<pre><code class="language-php">Route::domain('{account}.myapp.com')-&gt;group(function () {
+    Route::get('user/{id}', function ($account, $id) {
+        //
+    });
+});
+</code></pre>
+<h2 id="模型绑定">模型绑定</h2>
+<p>Laravel 为路由模型绑定提供了一个直接自动将模型实例注入到路由中的方法
+可以注入与给定 ID 匹配的整个 User 模型实例，而不是注入用户的 ID</p>
+<h3 id="隐式绑定">隐式绑定</h3>
+<p>Laravel 会自动解析定义在路由或控制器行为中与类型提示的变量名匹配的路由段名称的 Eloquent 模型</p>
+<pre><code class="language-php">Route::get('api/users/{user}', function (App\User $user) {
+    return $user-&gt;email;
+});
+</code></pre>
+<p>$user 变量被类型提示为 Eloquent 模型 App\User, 变量名称又与 URI 中的 {user} 匹配，因此，Laravel 会自动注入与请求 URI 中传入的 ID 匹配的用户模型实例
+(对比普通路由参数，如果不指定类型的话，默认可能是个数字或字符串)</p>
+<p>如果在数据库中找不到对应的模型实例，将会自动生成 404 异常</p>
+<p><strong>自定义键名</strong></p>
+<p>如果你想要模型绑定在检索给定的模型类时使用除 id （默认）之外的数据库字段，你可以在 Eloquent 模型上重写 getRouteKeyName 方法</p>
+<pre><code class="language-php">/**
+ * 为路由模型获取键名。
+ *
+ * @return string
+ */
+public function getRouteKeyName()
+{
+    return 'slug';
+}
+</code></pre>
+<h3 id="显式绑定">显式绑定</h3>
+<p>在 RouteServiceProvider 类中的 boot 方法内定义这些显式模型绑定， 使用路由器的 model 方法来为给定参数指定类</p>
+<pre><code class="language-php">public function boot()
+{
+    parent::boot();
+
+    Route::model('user', App\User::class);
+}
+</code></pre>
+<p>然后定义包含 {user} 参数的路由</p>
+<pre><code class="language-php">Route::get('profile/{user}', function (App\User $user) {
+    //
+});
+</code></pre>
+<p>因为我们已经将所有 {user} 参数绑定至 App\User 模型，所以 User 实例将被注入该路由。例如，profile/1 的请求会注入数据库中 ID 为 1 的 User 实例。</p>
+<p>如果在数据库不存在对应 ID 的数据，就会自动抛出一个 404 异常</p>
+<h3 id="自定义解析逻辑">自定义解析逻辑</h3>
+<p>使用 Route::bind 方法。传递到 bind 方法的闭包会接受 URI 中大括号对应的值，并且返回你想要在该路由中注入的类的实例：</p>
+<pre><code class="language-php">public function boot()
+{
+    parent::boot();
+
+    Route::bind('user', function ($value) {
+        return App\User::where('name', $value)-&gt;first();
+    });
+}
+</code></pre>
+<h2 id="访问当前路由">访问当前路由</h2>
+<pre><code class="language-php">$route = Route::current();
+$name = Route::currentRouteName();
+$action = Route::currentRouteAction();
+</code></pre>
+<p>想知道所有可访问的方法，查看 API 文档，了解 Route facade 和 Route 实例 的基础类。</p>
+<h2 id="补充">补充：</h2>
+<h3 id="让部分路由只在指定-env-下运行">让部分路由只在指定 env 下运行</h3>
+<p>例如本地开发环境设置 app_env 为 local，生产环境是 production.</p>
+<p>让一些“测试路由”仅在 local 下运行。</p>
+<p>根据这篇
+<a href="https://hackernoon.com/hiding-feature-from-production-laravel-8815bcb64359">https://hackernoon.com/hiding-feature-from-production-laravel-8815bcb64359</a></p>
+<p>首先在 RouteServiceProvider 的 map 里注册一个新的路由类型（并且限制它不在 production 环境中）</p>
+<pre><code class="language-php">if (!$this-&gt;app-&gt;environment('production'))
+   $this-&gt;mapDevelopmentRoutes();
+</code></pre>
+<p>然后定义路由类型的详细规则，例如前缀，控制器namespace,路由文件等</p>
+<p><code> . '\Development'</code>和 <code>as('development.')</code>是不一定需要的</p>
+<pre><code class="language-php">protected function mapDevelopmentRoutes() {
+   Route::middleware(['web', 'auth'])
+      -&gt;namespace($this-&gt;namespace . '\Development')
+      -&gt;as('development.')
+      -&gt;prefix('development')
+      -&gt;group(base_path('routes/development.php'));
+}
+</code></pre>
+<p>然后编辑路由文件<code>development.php</code>里具体的的路由规则</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Route;
+
+Route::get('/redactor', 'RedactorController@index')-&gt;name('redactor.index');
+</code></pre>
+<p>接着可以在视图里处理“是否可见“</p>
+<p>3- [Optional] The ViewComposer
+I have a menu.blade.php file that builds the menu items for the user. I decided to leverage Laravel View Composers to tell this component whether to show the dev-only features.</p>
+<pre><code class="language-php">@if(isset($development) &amp;&amp; $development)
+    &lt;li&gt;
+        &lt;a href=&quot;{{route('development.redactor.index')}}&quot;&gt;
+            &lt;i class=&quot;fa fa-eraser fa-fw&quot;&gt;&lt;/i&gt;
+            {{ __('Redactor') }}
+            &lt;span class=&quot;pull-right text-muted&quot; title=&quot;{{ __('Available for Dev only') }}&quot;&gt;&lt;i class=&quot;fa fa-warning fa-fw&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+@endif
+</code></pre>
+<p>The DevelopmentComposer file just sets development to true</p>
+<pre><code class="language-php">namespace App\Http\ViewComposers;
+
+use Illuminate\View\View;
+
+class DevelopmentComposer extends TenantComposer {
+
+   public function compose(View $view) {
+      parent::compose($view);
+
+      $view-&gt;with(['development' =&gt; true]);
+   }
+}
+</code></pre>
+<p>And the ComposerServiceProvider will only registser the DevelopmentComposer if the environment is not production as well</p>
+<pre><code class="language-php">if (!$this-&gt;app-&gt;environment('production'))
+   View::composer('layouts.development.menu', 'App\Http\ViewComposers\DevelopmentComposer');
+</code></pre>
+<p>And yes, this could be set inside RouteServiceProvider together with the mapping of the routes, but I only realized this now (while writing this article) =)</p>
+<h3 id="在-web-管理路由">在 web 管理路由</h3>
+<p><a href="https://github.com/listbees/vrm">https://github.com/listbees/vrm</a></p>
+<h1 id="middleware">Middleware</h1>
+<p>Laravel 中间件提供了一种方便的机制来过滤进入应用的 HTTP 请求。例如，Laravel 内置了一个中间件来验证用户的身份认证。如果用户没有通过身份认证，中间件会将用户重定向到登录界面。但是，如果用户被认证，中间件将允许该请求进一步进入该应用。</p>
+<p>当然，除了身份认证以外，还可以编写另外的中间件来执行各种任务。例如：CORS 中间件可以负责为所有离开应用的响应添加合适的头部信息；日志中间件可以记录所有传入应用的请求。</p>
+<p>Laravel 自带了一些中间件，包括身份验证、CSRF 保护等。所有这些中间件都位于 app/Http/Middleware 目录。</p>
+<h2 id="定义">定义</h2>
+<pre><code class="language-shell">php artisan make:middleware CheckAge
+</code></pre>
+<p>处理请求</p>
+<p>在这个中间件里，我们仅允许提供的参数 age 大于 200 的请求访问该路由。否则，我们会将用户重定向到 home 。</p>
+<pre><code class="language-php">public function handle($request, Closure $next)
+    {
+        if ($request-&gt;age &lt;= 200) {
+            return redirect('home');
+        }
+
+        return $next($request);
+    }
+</code></pre>
+<p>最好将中间件想象为一系列 HTTP 请求必须经过才能触发你应用的「层」。每一层都会检查请求（是否符合某些条件），（如果不符合）甚至可以（在请求访问你的应用之前）完全拒绝掉。</p>
+<h3 id="前置与后置中间件在路由上实现-before-和-after-操作"><code>前置</code>与<code>后置</code>中间件，在路由上实现 &ldquo;before&rdquo; 和 &ldquo;after&rdquo; 操作</h3>
+<p>中间件是在请求之前或之后运行取决于中间件本身。</p>
+<p>先创建两个中间件</p>
+<pre><code class="language-shell">php artisan make:middleware BeforeApiCallMiddleware
+php artisan make:middleware AfterApiCallMiddleware
+</code></pre>
+<p>然后分别在两个中间件的<code>handle</code>方法中写上业务逻辑，注意代码分别在 <code>return</code> 的前面和后面</p>
+<pre><code class="language-php">//before
+public function handle($request, Closure $next)
+{
+    // Perform action
+
+    return $next($request);
+}
+
+
+public function handle($request, Closure $next)
+{
+    $response = $next($request);
+    // Perform action
+    return $response;
+}
+</code></pre>
+<p>然后在需要处理的路由中绑定中间件</p>
+<pre><code class="language-php">Route::get('especies/{id}',[
+    'middleware' =&gt; [
+        'beforeCache',
+        'afterCache'
+    ],
+    'uses' =&gt; 'MyController@myMethod'
+]);
+</code></pre>
+<h2 id="注册中间件">注册中间件</h2>
+<h3 id="全局中间件">全局中间件</h3>
+<p>让中间件在你应用的每个 HTTP 请求期间运行</p>
+<p>在 app/Http/Kernel.php 类中的 $middleware 属性里列出这个中间件类</p>
+<h3 id="为路由分配">为路由分配</h3>
+<p>默认情况下，Kernel 类的 $routeMiddleware 属性包含 Laravel 内置的中间件条目。要加入自定义的，只需把它附加到列表后并为其分配一个自定义 键 即可</p>
+<pre><code class="language-php">protected $routeMiddleware = [
+    'auth' =&gt; \Illuminate\Auth\Middleware\Authenticate::class,
+    'auth.basic' =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'bindings' =&gt; \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    'can' =&gt; \Illuminate\Auth\Middleware\Authorize::class,
+    'guest' =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'throttle' =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,
+];
+</code></pre>
+<p>分配给路由</p>
+<pre><code class="language-php">Route::get('admin/profile', function () {
+    //
+})-&gt;middleware('auth');
+
+//多个
+Route::get('/', function () {
+    //
+})-&gt;middleware('first', 'second');
+
+//还可以传递完整的类名
+Route::get('admin/profile', function () {
+    //
+})-&gt;middleware(CheckAge::class);
+</code></pre>
+<h3 id="中间件组">中间件组</h3>
+<p>用单一的 键 为几个中间件分组，使其更容易分配到路由。使用 Kernel 类的 $middlewareGroups 属性来实现。</p>
+<p>Laravel 自带的 web 和 api 中间件组包含了你可能会应用到 Web UI 和 API 路由的常见的中间件</p>
+<pre><code class="language-php">protected $middlewareGroups = [
+    'web' =&gt; [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+        \Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ],
+
+    'api' =&gt; [
+        'throttle:60,1',
+        'auth:api',
+    ],
+];
+</code></pre>
+<p>把中间件组分配给路由</p>
+<pre><code class="language-php">Route::get('/', function () {
+    //
+})-&gt;middleware('web');
+
+Route::group(['middleware' =&gt; ['web']], function () {
+    //
+});
+</code></pre>
+<blockquote>
+<p>无需任何操作，RouteServiceProvider 会自动将 web 中间件组应用于你的的 routes/web.php 文件。(同样也会分配 api 中间件组 给 api.php 文件)</p>
+</blockquote>
+<h2 id="参数">参数</h2>
+<p>例如，如果应用需要在运行特定操作前验证经过身份认证的用户是否具备给定的「角色」，你可以新建一个 CheckRole 中间件，由它来接收「角色」名称作为附加参数。</p>
+<p>中间件参数应该在 $next 参数之后被传递：</p>
+<pre><code class="language-php">public function handle($request, Closure $next, $role)
+    {
+        if (! $request-&gt;user()-&gt;hasRole($role)) {
+            // 重定向...
+        }
+
+        return $next($request);
+    }
+</code></pre>
+<p>定义路由时通过一个 : 来隔开中间件名称和参数来指定中间件参数。多个参数就使用逗号分隔：（如下面代码中的 role:editor）</p>
+<p>在使用 Spatie 的 laravel-permission 这个扩展的时候会使用到这个特性</p>
+<pre><code class="language-php">Route::put('post/{id}', function ($id) {
+    //
+})-&gt;middleware('role:editor');
+</code></pre>
+<h2 id="terminable-中间件">Terminable 中间件</h2>
+<p>有时中间件可能需要在 HTTP 响应发送到浏览器之后处理一些工作。</p>
+<p>比如，Laravel 内置的「session」中间件会在响应发送到浏览器之后将会话数据写入存储器中</p>
+<p>在中间件中定义一个 terminate 方法，则会在响应发送到浏览器后自动调用。应该同时接收和响应（<code>$request, $response</code>）。一旦定义了这个中间件，你应该将它添加到路由列表或 app/Http/Kernel.php 文件的全局中间件中</p>
+<p>在你的中间件上调用 terminate 调用时，Laravel 会从 服务容器 中解析出一个<strong>新的中间件实例</strong>。如果要在调用 handle 和 terminate 方法时使用同一个中间件实例，就使用容器的 singleton 方法向容器注册中间件。</p>
+<pre><code class="language-php">class StartSession
+{
+    public function handle($request, Closure $next)
+    {
+        return $next($request);
+    }
+
+    public function terminate($request, $response)
+    {
+        // Store the session data...
+    }
+}
+</code></pre>
+<h1 id="控制器-controller">控制器 Controller</h1>
+<p>如果你的应用结构非常简单（不需要对请求进行复杂的处理），可以直接在路由文件里以闭包的形式来定义所有的请求处理逻辑。</p>
+<p>否则就应该使用 控制器 来组织这些请求操作。</p>
+<p><code>Controller</code>将相关的<strong>请求处理逻辑</strong>组成一个单独的类，存放目录<code>app/Http/Controllers</code></p>
+<h2 id="基础控制器">基础控制器</h2>
+<h2 id="控制器路由">控制器路由</h2>
+<p>你可以在控制器路由中应用 middleware，这会作用于整个控制器内的所有方法。</p>
+<pre><code class="language-php">Route::get('profile', 'UserController@show')-&gt;middleware('auth');
+</code></pre>
+<p>因此如果想进行更细致的控制（针对 actions），可以在控制器的 constructor 里来进行分配 middleware</p>
+<pre><code class="language-php">class UserController extends Controller
+{
+    $this-&gt;middleware('auth');
+    
+    // 只针对
+    $this-&gt;middleware('log')-&gt;only('index');
+    
+    // 除了它
+    $this-&gt;middleware('subscribed')-&gt;except('store');
+</code></pre>
+<p>不过随着控制器类越来越庞大复杂，尽量将它拆分成多个小的控制器来避免对 action 分配 middlewaer 可能的混乱。</p>
+<p>你还可以在控制器的内部注册一个中间件（而不需要定义一个完整的 middleware 类），它只对单个 Controller 起作用</p>
+<pre><code class="language-php">$this-&gt;middleware(function ($request, $next) {
+    // ...
+
+    return $next($request);
+});
+</code></pre>
+<h2 id="资源控制器">资源控制器</h2>
+<p>Laravel 资源路由可以将典型的「CRUD」路由指定到一个控制器上，仅需一行代码即可实现。比如，你可能希望创建一个控制器来处理所有应用保存的「相片」的 HTTP 请求</p>
+<p>可以使用 artisan 命令来创建一个控制器</p>
+<pre><code class="language-shell">php artisan make:controller UserController
+</code></pre>
+<p>在 Laravel 5.2 及以上中，默认是生成干净的 Controller，只有手动指定<code>--resource</code>参数才会自动生成一些 resource 路由有关的方法。</p>
+<pre><code class="language-shell">php artisan make:controller PhotoController --resource
+</code></pre>
+<p>注册资源路由，这个路由声明会创建多个路由来处理各种各样的资源操作。前面生成的控制器已经包含了这些操作的方法，同时还包括了 HTTP 动作和操作 URI 的注释。</p>
+<pre><code class="language-php">Route::resource('photos', 'PhotoController');
+</code></pre>
+<h3 id="避免用户查看或修改其他人的资源">避免用户查看或修改其他人的资源</h3>
+<p>（1）手动判断资源是否属于当前用户</p>
+<p><a href="https://laracasts.com/discuss/channels/laravel/how-to-prevent-users-from-editingviewing-other-users-resources">https://laracasts.com/discuss/channels/laravel/how-to-prevent-users-from-editingviewing-other-users-resources</a></p>
+<pre><code class="language-php">public function authorize()
+{
+    if($this-&gt;blog)
+    {
+        if($this-&gt;user()-&gt;isAdmin()) return true;
+
+        return Post::where('id', $this-&gt;blog)
+                   -&gt;where('user_id', $this-&gt;user()-&gt;id)-&gt;exists();
+    }
+
+    return true;
+</code></pre>
+<p>（2）使用 Policy（https://laravel.com/docs/5.5/authorization）</p>
+<p><a href="https://www.laracasts.com/discuss/channels/laravel/how-to-protect-resources-from-access-by-other-users?page=1">https://www.laracasts.com/discuss/channels/laravel/how-to-protect-resources-from-access-by-other-users?page=1</a></p>
+<h2 id="在控制器之间调用一些需要共享的方法">在控制器之间调用一些需要共享的方法</h2>
+<p>假设在控制器 <code>FirstController</code> 内部，有某个方法 <code>firstAction</code> 需要被其他控制器(或其他地方的代码)调用。</p>
+<p>最快速的，可以使用一个“兼容”的办法来实现调用另一个控制器的方法。</p>
+<pre><code class="language-php">app(App\Http\Controller\FirstController::class)-&gt;firstAction()
+</code></pre>
+<p>但是使用这个办法是<strong>很不合理的</strong>。</p>
+<p>首先就是无法传递参数；
+然后 控制器 的<strong>主要作用</strong>是用于处理 HTTP 请求，它的方法（methods）仅仅表示一个动作“action”：处理请求 -&gt; 返回响应，仅此而已（往往有些 action 还和视图绑定在一起）。</p>
+<p><strong>尽量不要直接在一个 Controller 里调用别的 Controller 的 action，以保证业务代码的清晰</strong></p>
+<p>如果确实有一些代码需要被共享，有几种办法可以更好地实现。</p>
+<h3 id="可以把它们写到自己的函数库中去然后在-composerjson-的autoload部分的files节点中包含">可以把它们写到自己的函数库中去（然后在 <code>composer.json</code> 的<code>autoload</code>部分的<code>files</code>节点中包含）</h3>
+<h3 id="或者写成独立的-service">或者写成独立的 “Service”</h3>
+<p>其实就是一个类</p>
+<pre><code class="language-php">class ReportingService
+{
+  public function getPrintReport()
+  {
+    // your implementation here.
+  }
+}
+</code></pre>
+<p>然后实例化这个 Service 然后调用方法；或者直接利用 Laravel 的特性：在控制器的 构造函数 或 action 中注入这个服务的实例</p>
+<pre><code class="language-php">use Some\Namespace\Services\SomeService;
+
+class SomeConttroller extends Controller
+{
+    private $some_service;
+
+    // Laravel know it has to inject an instance of SomeService when resolving the controller
+    public function __construct(ReportingService $some_service)
+    {
+        $this-&gt;some_service = $some_service;
+    }
+    
+    // 在构造函数里赋值后，调用 Service 实例的方法
+    public function call(){
+    	$this-&gt;reportingService-&gt;getPrintReport();
+    }
+    
+    // 普通方式
+    public function normalCall(){
+    	$someService = $this-&gt;some_service = new ReportingService();
+    	$someService-&gt;getPrintReport();
+    }
+}
+</code></pre>
+<h3 id="或者使用-trait">或者使用 Trait</h3>
+<pre><code class="language-php">namespace App\Traits;
+
+trait PrintReport {
+
+    public function getPrintReport() {
+        // .....
+    }
+}
+
+class PrintReportController extends Controller {
+     use PrintReport;
+     
+     public function test(){
+     		$this-&gt;getPrintReport()
+     }
+}
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://stackoverflow.com/questions/30365169/access-controller-method-from-another-controller-in-laravel-5">https://stackoverflow.com/questions/30365169/access-controller-method-from-another-controller-in-laravel-5</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E8%B7%AF%E7%94%B1/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E8%B7%AF%E7%94%B1/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="permalink: mysql-study-and-skill 在 CentOS 7 下安装 安装服务 &amp;amp; 启动 # MariaDB sudo yum install mariadb-server mariadb sudo systemctl start mariadb # MySQL wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm yum update sudo yum install mysql-server # 查看默认生成的root密码，后面用到 sudo grep &#39;temporary password&#39; /var/log/mysqld.log 后面就一样的" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="permalink: mysql-study-and-skill 在 CentOS 7 下安装 安装服务 &amp; 启动 # MariaDB sudo yum install mariadb-server mariadb sudo systemctl start mariadb # MySQL wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm yum update sudo yum install mysql-server # 查看默认生成的root密码，后面用到 sudo grep &#39;temporary password&#39; /var/log/mysqld.log 后面就一样的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="permalink: mysql-study-and-skill 在 CentOS 7 下安装 安装服务 &amp; 启动 # MariaDB sudo yum install mariadb-server mariadb sudo systemctl start mariadb # MySQL wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm yum update sudo yum install mysql-server # 查看默认生成的root密码，后面用到 sudo grep &#39;temporary password&#39; /var/log/mysqld.log 后面就一样的">
+
+<meta itemprop="wordCount" content="4551">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="permalink: mysql-study-and-skill 在 CentOS 7 下安装 安装服务 &amp; 启动 # MariaDB sudo yum install mariadb-server mariadb sudo systemctl start mariadb # MySQL wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm yum update sudo yum install mysql-server # 查看默认生成的root密码，后面用到 sudo grep &#39;temporary password&#39; /var/log/mysqld.log 后面就一样的"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4551字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>permalink: mysql-study-and-skill</p>
+<h1 id="在-centos-7-下安装">在 CentOS 7 下安装</h1>
+<p>安装服务 &amp; 启动</p>
+<pre><code class="language-shell"># MariaDB
+sudo yum install mariadb-server mariadb
+sudo systemctl start mariadb
+
+# MySQL
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+yum update
+
+sudo yum install mysql-server
+
+# 查看默认生成的root密码，后面用到
+sudo grep 'temporary password' /var/log/mysqld.log
+</code></pre>
+<p>后面就一样的了。</p>
+<p>初始化数据库</p>
+<pre><code class="language-shell">sudo mysql_secure_installation
+</code></pre>
+<p>一开始默认 root 密码是空的，直接回车，然后输入新密码</p>
+<p>开机启动</p>
+<pre><code class="language-shell">sudo systemctl enable mariadb
+</code></pre>
+<h1 id="命令">命令</h1>
+<h2 id="使用-mysql-client-工具连接到服务器">使用 mysql client 工具连接到服务器</h2>
+<pre><code class="language-shell"># 本地默认 localhost  3306 端口
+mysql -uroot -p
+
+# 假设本机 ip 是 192.168.0.7
+# 远程机器别的端口（在其他机器上要开放 developer@192.168.0.7）
+# -h 指定主机名或 ip， --port= 指定端口
+mysql -udeveloper -p -h 192.168.0.8 --port=3307
+</code></pre>
+<h2 id="用户">用户</h2>
+<pre><code class="language-shell"># 创建用户
+CREATE USER 'username'@'host' IDENTIFIED BY 'password';
+
+# 查看用户拥有的 权限
+show grants for test_user@'localhost';
+</code></pre>
+<h2 id="权限">权限</h2>
+<pre><code class="language-shell">GRANT ALL PRIVILEGES ON *.* TO ''@'localhost' IDENTIFIED BY 'PASSWORD' WITH GRANT OPTION;
+
+</code></pre>
+<h2 id="进入-mysql-命令行后执行-sql-文件">进入 MySQL 命令行后执行 sql 文件</h2>
+<h3 id="如果-sql-文件不大">如果 sql 文件不大</h3>
+<p>可以打开文件，在第一行添加</p>
+<pre><code class="language-sql">use database_name;
+</code></pre>
+<h3 id="如果正运行mysql或sql文件编辑不方便可以使用source或命令执行sql脚本文件">如果正运行mysql，或sql文件编辑不方便，可以使用source或.命令执行SQL脚本文件：</h3>
+<pre><code class="language-shell"># 先准备好 sql 文件，注意使用 use 来标记当前数据库
+$ vi filename.sql
+
+# 然后进入MySQL
+$ mysql -uroot -p
+
+# 执行
+mysql&gt; source filename.sql
+
+# 或者
+mysql&gt; \. filename
+</code></pre>
+<h2 id="导入导出">导入导出</h2>
+<p>注意以下导入导出命令中，箭头的方向。</p>
+<p>从某个备份文件（.sql）导入</p>
+<pre><code class="language-shell"># 使用 mysql 命令
+$mysql -uroot -p datbase_name &lt; /backup/restore_xxxxx_xx_xx.sql
+</code></pre>
+<p>导出</p>
+<pre><code class="language-shell"># 使用 mysqldump 命令
+
+# 导出整个库
+$mysqldump -uroot -p database_name &gt; /backup/restore_xxxx_xx_xx.sql
+
+#导出库里面的某个表
+$mysqldump -uroot -p database_name table_name &gt; /backup/restore_table_xxxx_xx_xx.sql
+</code></pre>
+<p>将 SQL 语句的查询结果导出成 csv 文件</p>
+<pre><code class="language-sql">SELECT order_id,product_name,qty
+FROM orders
+WHERE foo = 'bar'
+INTO OUTFILE '/var/lib/mysql-files/orders.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '&quot;'
+LINES TERMINATED BY '\n';
+</code></pre>
+<p>可能会因为 MySQL 设置的问题导致报错</p>
+<blockquote>
+<p>The MySQL server is running with the &ndash;secure-file-priv option so it cannot execute this statement</p>
+</blockquote>
+<p>修改 my.ini 配置</p>
+<pre><code class="language-shell">[mysqld]
+secure-file-priv = &quot;&quot;
+</code></pre>
+<p>或查看这个文件指向的路径，修改</p>
+<pre><code class="language-shell">SHOW VARIABLES LIKE &quot;secure_file_priv&quot;;
+</code></pre>
+<h2 id="复制表结构索引数据">复制表（结构、索引、数据）</h2>
+<p>To copy with <strong>indexes</strong> and <strong>triggers</strong> do these 2 queries:</p>
+<pre><code class="language-sql">CREATE TABLE newtable LIKE oldtable; 
+</code></pre>
+<p>数据 data</p>
+<pre><code class="language-sql">INSERT newtable SELECT * FROM oldtable;
+</code></pre>
+<p>To copy just <strong>structure</strong> and <strong>data</strong> use this one: （没有索引）</p>
+<pre><code class="language-sql">CREATE TABLE tbl_new AS SELECT * FROM tbl_old;
+</code></pre>
+<h2 id="文本处理">文本处理</h2>
+<p><strong>替换某个字符串</strong></p>
+<pre><code class="language-sql">UPDATE website_content_pages SET content = REPLACE(content, 'b&gt;', 'strong&gt;');
+</code></pre>
+<h2 id="创建表--删除表">创建表 &amp; 删除表</h2>
+<pre><code class="language-sql">CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `email` char(50) NOT NULL DEFAULT '',
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+</code></pre>
+<pre><code class="language-shell">DROP TABLE `users`
+</code></pre>
+<p>如果表存在，先删除</p>
+<pre><code class="language-sql">DROP TABLE IF EXISTS portal_sf_sales;
+CREATE TABLE `portal_sf_sales` (
+  `Company Name` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `Account No` varchar(255) DEFAULT NULL,
+  `Account ID` varchar(255) DEFAULT NULL,
+  `First Name` varchar(255) DEFAULT NULL,
+  `Last Name` varchar(255) DEFAULT NULL,
+  `Contact ID` varchar(255) DEFAULT NULL,
+  `Title` varchar(255) DEFAULT NULL,
+  `Username` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+</code></pre>
+<h2 id="修改表的字段">修改表的字段</h2>
+<p>增加字段</p>
+<pre><code class="language-shell">ALTER TABLE contacts ADD email VARCHAR(60);
+ALTER TABLE contacts ADD email VARCHAR(60) AFTER name;
+ALTER TABLE contacts ADD email VARCHAR(60) FIRST;
+</code></pre>
+<p>删除字段</p>
+<pre><code class="language-shell">alter table `user_movement_log` drop column Gatewayid  
+</code></pre>
+<p>改名</p>
+<pre><code class="language-shell">ALTER TABLE `table_name` CHANGE `before_column` `after_column` VARCHAR(255);
+</code></pre>
+<p>修改已有字段的属性(假设 column_name 原来是 VAR(255))</p>
+<pre><code class="language-shell">ALTER TABLE `table_name` MODIFY COLUMN `column_name` TEXT;
+</code></pre>
+<h2 id="增加主键">增加主键</h2>
+<pre><code class="language-sql"># 如果还没有字段 (&quot;FIRST&quot;表示添加到第一个字段）
+ALTER TABLE `goods` ADD COLUMN `id` INT(10) unsigned PRIMARY KEY AUTO_INCREMENT NOT NULL FIRST;
+
+# 如果已有字段，设置为主键
+ALTER TABLE `goods` ADD PRIMARY KEY(id)
+</code></pre>
+<p>增加自增的主键</p>
+<pre><code class="language-sql">ALTER TABLE wp_ps_disty ADD id INT PRIMARY KEY AUTO_INCREMENT FIRST;
+</code></pre>
+<h1 id="统计">统计</h1>
+<h2 id="按时间段来分组">按时间段来分组</h2>
+<p>例如一组数据，是分布于各个时间范围内的值。统计需求是：计算每隔一个小时，产生了多少条记录总数。(并分别统计 success 和 fail)</p>
+<pre><code>1	2018-03-28 00:00:00	succes
+2	2018-03-28 00:00:00	succes
+3	2018-03-28 00:00:00	succes
+4	2018-03-28 00:00:00	succes
+5	2018-03-28 00:00:00	succes
+6	2018-03-28 01:00:00	succes
+7	2018-03-28 01:00:00	succes
+8	2018-03-28 01:00:00	succes
+9	2018-03-28 01:00:00	succes
+10	2018-03-28 00:00:00	succes
+11	2018-03-28 02:00:00	succes
+12	2018-03-28 02:00:00	succes
+13	2018-03-28 02:00:00	succes
+14	2018-03-28 00:00:00	succes
+15	2018-03-28 06:00:00	succes
+16	2018-03-28 06:00:00	fail
+17	2018-03-28 06:00:00	succes
+18	2018-03-28 06:00:00	succes
+19	2018-03-28 06:00:00	succes
+20	2018-03-28 06:00:00	succes
+21	2018-03-28 06:00:00	succes
+22	2018-03-28 06:00:00	succes
+23	2018-03-28 06:00:00	succes
+24	2018-03-28 06:00:00	succes
+25	2018-03-28 07:00:01	fail
+26	2018-03-28 07:00:02	succes
+27	2018-03-28 07:00:00	succes
+28	2018-03-28 07:00:00	succes
+</code></pre>
+<p>可以用下面的 <code>DIV</code> 来实现自动切割（先转换到时间戳）</p>
+<pre><code class="language-sql">SELECT
+    `update_date`,
+    `status`,
+    count(STATUS)
+FROM `group_by_range` b 
+WHERE `status`&lt;&gt;''
+GROUP BY 
+UNIX_TIMESTAMP(`update_date`) DIV 3600, `status`;
+</code></pre>
+<p>结果如下</p>
+<pre><code>2018-03-28 00:00:00	succes	7
+2018-03-28 01:00:00	succes	4
+2018-03-28 02:00:00	succes	3
+2018-03-28 06:00:00	fail	1
+2018-03-28 06:00:00	succes	9
+2018-03-28 07:00:01	fail	1
+2018-03-28 07:00:02	succes	3
+</code></pre>
+<h1 id="一些常见问题">一些常见问题</h1>
+<h2 id="远程连接-mysql-提示连不上的问题">远程连接 mysql 提示连不上的问题</h2>
+<p>已经设置了 user_name@% 允许远程连接，已经 grant 了权限，还是连不上远程的服务器</p>
+<p>检查远程服务器的 my.cnf，把 bind_address=127.0.0.1 注释掉。</p>
+<p>坑爹的是，有时候这个文件可能会分布在不同的目录，还会“叠加”几个配置文件为一个完整的。</p>
+<p>所以如果其中某个里面有这行，很容易被忽略</p>
+<p>查看 mysql 调用了哪个（哪些）配置文件，在 MySQL 5.7 里可以用下面的命令看到</p>
+<pre><code class="language-shell">mysqladmin --help | grep -A1 'Default options'
+</code></pre>
+<h2 id="mysql的字段是不区分大小写的">MySQL的字段是不区分大小写的！</h2>
+<p>因此不管是搜索，还是批量处理数据，都要小心这点。
+字符串查询是否？</p>
+<h2 id="修改-root-密码56为例">修改 root 密码（5.6为例）</h2>
+<p><strong>Linux</strong></p>
+<pre><code class="language-shell"># 先用当前root密码登录 MySQL，在 MySQL&gt; 提示符下操作
+
+use mysql;
+update user set password=password('yourpass') where user='root';
+flush privileges;
+</code></pre>
+<p><strong>Windows</strong></p>
+<p>打开一个DOS窗口，输入：net stop mysql56，以停止MySQL服务；
+切换到MySQL的bin目录，如： cd C:\Program Files\MySQL\MySQL Server 5.6\bin
+在DOS窗口中输入：mysqld &ndash;skip-grant-tables，回车
+再打开一个DOS窗口，将切换到MySQL的bin目录（参考上面）；
+输入：mysql -u root，回车以登录
+登录成功后，使用update语句更改密码：update mysql.user set password=password(&lsquo;yourpass&rsquo;) where user='root&rsquo; and host='localhost&rsquo;;
+然后重新装载权限：flush privileges;
+输入exit;以退出到DOS窗口；
+在资源管理器中杀掉mysqld进程，然后在DOS窗口中输入：net start mysql56，以重新启动mysql服务。
+关闭已经开启的两个DOS窗口；打开一个MySQL 5.6 Command Line Client窗口，即可使用新密码登录。</p>
+<h2 id="reset-the-mysql-root-password">Reset the MySQL Root Password</h2>
+<p>If you forget your root MySQL password, it can be reset.</p>
+<p>Stop the current MySQL server instance, then restart it with an option to not ask for a password.</p>
+<p>1
+2
+sudo systemctl stop mysqld
+sudo mysqld_safe &ndash;skip-grant-tables &amp;
+Reconnect to the MySQL server with the MySQL root account.</p>
+<p>1
+mysql -u root
+Use the following commands to reset root’s password. Replace password with a strong password.</p>
+<p>1
+2
+3
+4
+use mysql;
+update user SET PASSWORD=PASSWORD(&ldquo;password&rdquo;) WHERE USER='root&rsquo;;
+flush privileges;
+exit
+Then restart MySQL.</p>
+<p>1
+sudo systemctl start mysqld</p>
+<h2 id="恢复数据库的时候提示gone-away的问题">恢复数据库的时候，提示&quot;Gone Away&quot;的问题</h2>
+<p>在还原一个从服务器上下载的 sql 文件到本地开发环境的时候，提示如下错误。</p>
+<pre><code class="language-shell">mysql -uroot -p database_name &lt; ~/backup/database_bak.sql
+#ERROR 2006 (HY000) at line 1211: MySQL server has gone away
+</code></pre>
+<p>通过修改 <code>my.cnf</code>文件，调整下面这两个参数</p>
+<pre><code class="language-shell">vi /etc/my.cnf
+
+#修改参数
+[mysqld]
+wait_timeout=600
+max_allowed_packet=100M
+</code></pre>
+<p>注意要检查 my.cnf 文件里的参数，如果它里面定义了 max_allowed_package, 在命令行中指定参数，其优先级不如这个配置文件里定义的。</p>
+<p>如果服务器只启用了 <code>MyISAM</code>引擎的话，应该重新还原就正常了。如果启用了 <code>InnoDB</code> 引擎，可能还会有如下错误</p>
+<blockquote>
+<p>ERROR 1118 (42000) at line 1211: The size of BLOB/TEXT data inserted in one transaction is greater than 10% of redo log size. Increase the redo log size using innodb_log_file_size.</p>
+</blockquote>
+<p>修改<code>my.cnf</code>的参数即可。</p>
+<pre><code>innodb_log_file_size=15M
+</code></pre>
+<h2 id="php-报错">PHP 报错</h2>
+<blockquote>
+<p>Warning: mysql_connect(): No such file or directory</p>
+</blockquote>
+<p>在 Wordpress 里可能会报错</p>
+<blockquote>
+<p>Error establishing a database connection</p>
+</blockquote>
+<pre><code class="language-php">mysql_connect('localhost','root','123456') or die(mysql_error());
+mysql_select_db('pulse_productfinder_products');
+
+$query = mysql_query(&quot;SELECT * FROM sap_product_main&quot;);
+
+while($row = mysql_fetch_array($query)){
+	echo $row['part_number'];
+}
+</code></pre>
+<ol>
+<li>确保 <code>/tmp/mysql.sock</code> 和 <code>/var/mysql/mysql.sock</code>都存在，一个不存在，就创建链接</li>
+<li>使用<code>127.0.0.1</code>代替<code>localhost</code></li>
+</ol>
+<p>如果不愿意修改 localhost  为 127.0.0.1</p>
+<p>则查看到 MySQL 正在用的 Socket 文件位置。例如 /tmp/mysql.sock。
+然后修改 php.ini, 找到以下配置，然后修改即可</p>
+<pre><code class="language-shell">mysql.default_socket =/tmp/mysql.sock
+</code></pre>
+<h2 id="mysql-57-的sql_mode导致-insert-select-group-by-失败">MySQL 5.7 的<code>sql_mode</code>导致 INSERT SELECT GROUP BY 失败</h2>
+<p>以前有个计划任务在运行sql语句，一直运行正常，升级到 5.7 后，突然发现表空了。检查代码没问题。然后直接在 MySQL 里执行语句，才发现报错：</p>
+<blockquote>
+<p>Getting this SQL Error: GROUP BY incompatible with sql_mode=only_full_group_by</p>
+</blockquote>
+<p>解决方法是修改 my.cnf, 修改下面的内容</p>
+<pre><code class="language-shell">#sql_mode=xxxxx
+sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+</code></pre>
+<h2 id="mysql-57-高版本备份出来的-sql-在低版本-mysql-里还原提示编码错误">MySQL 5.7 高版本备份出来的 sql 在低版本 MySQL 里还原提示编码错误</h2>
+<p>提示</p>
+<blockquote>
+<p>1273 – Unknown collation: ‘utf8mb4_unicode_520_ci’</p>
+</blockquote>
+<p><a href="https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci">https://stackoverflow.com/questions/42385099/1273-unknown-collation-utf8mb4-unicode-520-ci</a></p>
+<p>将全部编码改成 5.5 支持的就好</p>
+<pre><code class="language-shell">sed -i 's/utf8mb4_unicode_520_ci/utf8mb4_unicode_ci/g' file.sql
+</code></pre>
+<h2 id="mysql-字段长度限制-1000-字节的问题">MySQL 字段长度限制 1000 字节的问题</h2>
+<p>在一次使用 Laravel 安装一个包运行 migration 时，数据库报错：</p>
+<blockquote>
+<p>mysql：Specified key was too long; max key leng</p>
+</blockquote>
+<p>因为 MyISAM 引擎对索引长度最大只支持 1000 bytes.</p>
+<p>如果出现几个 varchar(255)，并且由于 utf8mb4 编码，一个字符占 3 个字节</p>
+<p>255x3 + 255x3</p>
+<p>就超过 1000 了。。。。</p>
+<p>因此要把数据表转成 innoDB 引擎 （或者更改字符集、修改字段长度，不过这两个往往受限于应用系统要求没那么容易处理）</p>
+<p>但还是</p>
+<blockquote>
+<p>[PDOException]
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes</p>
+</blockquote>
+<p>得出的结论是：对于创建innodb的组合索引，如果各个列中的长度不超过767，则不再计算所有列的总长度，如果有超过767的，则给出报警，索引最后创建成功，但是对于超过767字节的列取前缀索引；对于innodb的单列索引，超过767的，给出warning，最终索引创建成功，取前缀索引（取前255字节）。</p>
+<p><a href="http://www.cnblogs.com/littleatp/p/4612896.html">http://www.cnblogs.com/littleatp/p/4612896.html</a></p>
+<p>解决</p>
+<p>1  使用innodb引擎；
+2  启用innodb_large_prefix选项，将约束项扩展至3072byte；
+3  重新创建数据库；</p>
+<p>my.cnf配置：</p>
+<pre><code class="language-shell">default-storage-engine=INNODB
+innodb_large_prefix=on
+</code></pre>
+<p>如果不需要使用 特殊汉字 emoj，还可以把 utf8mb4 改成 utf8</p>
+<p>一般情况下不建议使用这么长的索引，对性能有一定影响；</p>
+<p>参考文档：
+<a href="https://dev.mysql.com/doc/refman/5.5/en/innodb-restrictions.html">https://dev.mysql.com/doc/refman/5.5/en/innodb-restrictions.html</a></p>
+<p>若不想修改 mysql 配置，就可以修改 laravel 应用的 <code>app\Providers\AppServiceProvider.php</code> 文件</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+</code></pre>
+<p>或者根据需要，把 sql 文件里的 varchar(255) 改小，如 varchar(100)</p>
+<p>使用utf8mb4字符集,长度超过255的varchar字段加索引会导致此问题
+– 方案1(推荐)
+情况允许,设置varchar字段长度为&lt;=191的值
+– 方案2
+设置mysql参数：
+[mysqld]
+innodb_file_format = Barracuda
+#innodb_file_per_table = 1
+innodb_large_prefix</p>
+<p>在建表语句指定ROW_FORMAT：
+ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;</p>
+<h2 id="57-加载太多插件开机就400m内存问题">5.7 加载太多插件，开机就400M内存问题</h2>
+<pre><code class="language-shell">performance_schema=off
+table_definition_cache=400
+table_open_cache=256
+</code></pre>
+<h1 id="密码强度审计">密码强度审计</h1>
+<p>如果使用弱密码，在安全性方面，会存在非常严重的安全隐患。</p>
+<p>在 5.6 及以上版本中 ，提供了一个插件<code>Password Validation Plugin</code>用于要求用户使用强密码.</p>
+<p>插件对应的库对象文件需在配置选项plugin_dir指定的目录中。可使用&ndash;plugin-load=validate_password.so，在Server启动时载入插件，或者将plugin-load=validate_password.so写入配置文件。也可以通过如下语句在Server运行时载入插件(会注册进mysql.plugins表)</p>
+<p>运行时载入插件</p>
+<pre><code class="language-shell">mysql&gt; INSTALL PLUGIN validate_password SONAME 'validate_password.so';
+</code></pre>
+<p>在配置文件中添加</p>
+<pre><code class="language-shell">[mysqld]
+
+plugin-load=validate_password.so
+validate_password_policy=2
+validate-password=FORCE_PLUS_PERMANENT
+</code></pre>
+<p>插件关闭</p>
+<p>关闭插件很简单，在MySQL配置文件(Centos系统下是/etc/my.conf)里面[mysqld]选项下面添加下面一条语句即可。</p>
+<pre><code class="language-shell">[mysqld]
+
+validate_password=off
+</code></pre>
+<p>记得配置后要重启MySQL,在Shell下面运行下面两条语句</p>
+<pre><code class="language-shell">$ service mysqld stop
+$ service mysqld start
+</code></pre>
+<p>验证插件</p>
+<p>通过命令<code>SHOW PLUGINS</code>进行观察，应该观察到插件已启用。</p>
+<p>测试插件</p>
+<p>设置简单的密码，则MySQL数据库会报类似如下的错误</p>
+<pre><code class="language-shell">mysql&gt; SET PASSWORD = PASSWORD('abc');
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+</code></pre>
+<p>设置复杂密码，则可以成功修改。</p>
+<pre><code class="language-shell">mysql&gt; SET PASSWORD = '*0D3CED9BEC10A777AEC23CCC353A8C08A633045E';
+Query OK, 0 rows affected (0.01 sec)
+</code></pre>
+<p>插件相关说明</p>
+<p>相关选项</p>
+<blockquote>
+<p>validate-password=ON/OFF/FORCE/FORCE_PLUS_PERMANENT: 决定是否使用该插件(及强制/永久强制使用)。
+validate_password_dictionary_file：插件用于验证密码强度的字典文件路径。
+validate_password_length：密码最小长度。
+validate_password_mixed_case_count：密码至少要包含的小写字母个数和大写字母个数。
+validate_password_number_count：密码至少要包含的数字个数。
+validate_password_policy：密码强度检查等级，0/LOW、1/MEDIUM、2/STRONG。
+validate_password_special_char_count：密码至少要包含的特殊字符数。
+关于validate_password_policy密码强度检查等级</p>
+</blockquote>
+<blockquote>
+<p>0/LOW：只检查长度。
+1/MEDIUM：检查长度、数字、大小写、特殊字符。
+2/STRONG：检查长度、数字、大小写、特殊字符字典文件。</p>
+</blockquote>
+<h1 id="客户端工具">客户端工具</h1>
+<h2 id="sequel-pro">Sequel Pro</h2>
+<p>格式化 query （Bundles-&gt;Input field-&gt;Format-&gt;Format SQL） 无法运行</p>
+<p>提示</p>
+<blockquote>
+<p>Please refresh this page to load the latest version 4.0&rdquo;</p>
+</blockquote>
+<p>其实是调用了 <a href="http://www.dpriver.com/pp/sqlformat.htm">http://www.dpriver.com/pp/sqlformat.htm</a> 的服务</p>
+<p><strong>解决方案</strong></p>
+<p><a href="https://github.com/sequelpro/sequelpro/issues/1988">https://github.com/sequelpro/sequelpro/issues/1988</a></p>
+<p>*) open Sequel Pro application
+*) go to Bundles -&gt; Bundle Editor
+*) Use left pane, Select &ldquo;Input field&rdquo; (Show), choose Format SQL
+*) find the following row in the &ldquo;Command&rdquo; textarea:</p>
+<p>*) replace the value of the input to &ldquo;dpriver-9094-8133-2031&rdquo;, so the new line is:</p>
+<p>*) Click &ldquo;Save&rdquo;</p>
+<p><img src="/media/15490412287324/15178088063678.jpg" alt=""></p>
+<p><img src="/media/15490412287324/15178088538667.jpg" alt=""></p>
+<p><img src="/media/15490412287324/15178088852033.jpg" alt=""></p>
+<h1 id="innodb">InnoDB</h1>
+<p>外键必须要使用这个引擎。</p>
+<h2 id="转-myisam-为-innodb">转 MyISAM 为 InnoDB</h2>
+<p>除了使用 Alter Table 转换，还要调整一些配置参数</p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/converting-tables-to-innodb.html#innodb-convert-memory-usage">https://dev.mysql.com/doc/refman/8.0/en/converting-tables-to-innodb.html#innodb-convert-memory-usage</a></p>
+<h1 id="从高版本-mysql-56-导出文件到低版本mysql-55">从高版本 (MySQL 5.6) 导出文件到低版本（MySQL 5.5）</h1>
+<p>生产服务器上本来是 MySQL 5.6 ，并安装了 wordpress 服务。</p>
+<p>但是突然发现内存不够， 导致经常数据库停止运行。 于是降级到 5.5</p>
+<p>但是在5.6上导出的备份，导入 5.5 的时候，不少表都丢失了（用的宝塔面板）</p>
+<p>查询发现是低版本可能有些不兼容高版本导出文件的编码。</p>
+<p>经研究。 可以用 <strong>navicat</strong> 这个软件的“数据传输”来手动设置导出文件的版本</p>
+<p><img src="/media/15490412287324/15515092055755.jpg" alt="-w703"></p>
+<h1 id="更换默认的-data-目录">更换默认的 data 目录</h1>
+<p>下面是直接更换， 还可以做一个软连接。</p>
+<pre><code class="language-shell"># 检查mysql数据库存放目录
+mysql -u root -p
+
+# 查看sql存储路径
+show variables like '%dir%';  
+
+# 停止mysql服务
+service mysqld stop
+
+# 创建新的数据库存放目录
+mkdir /data/mysql
+
+# 移动/复制之前存放数据库目录文件，到新的数据库存放目录位置
+cp -R /usr/local/mysql/data/* /data/mysql/    #或mv /usr/local/mysql/data/* /data/mysql
+
+#修改mysql数据库目录权限以及配置文件
+chown mysql:mysql -R /data/mysql/
+
+vim /etc/my.cnf
+#datadir=/data/mysql （制定为新的数据存放目录）
+
+vim /etc/init.d/mysqld
+#datadir=/data/mysql
+
+#启动数据库服务
+service mysqld start
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/mysql%E6%95%99%E7%A8%8B%E4%B8%8E%E6%8A%80%E5%B7%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/mongodb-%E5%AD%A6%E4%B9%A0/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

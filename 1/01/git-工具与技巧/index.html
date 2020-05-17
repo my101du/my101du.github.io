@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="客户端 https://git-scm.com/downloads/guis 以下按推荐顺序排雷 SourceTree（首推） 是大名鼎鼎 Atlanssion 公司的（就是做 Jira Trello Bitbucket 等等的那个） 问题： 卡顿， 历史记录刷新慢 MacOS 下多个 repositorys 在同一" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="客户端 https://git-scm.com/downloads/guis 以下按推荐顺序排雷 SourceTree（首推） 是大名鼎鼎 Atlanssion 公司的（就是做 Jira Trello Bitbucket 等等的那个） 问题： 卡顿， 历史记录刷新慢 MacOS 下多个 repositorys 在同一" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="客户端 https://git-scm.com/downloads/guis 以下按推荐顺序排雷 SourceTree（首推） 是大名鼎鼎 Atlanssion 公司的（就是做 Jira Trello Bitbucket 等等的那个） 问题： 卡顿， 历史记录刷新慢 MacOS 下多个 repositorys 在同一">
+
+<meta itemprop="wordCount" content="6408">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="客户端 https://git-scm.com/downloads/guis 以下按推荐顺序排雷 SourceTree（首推） 是大名鼎鼎 Atlanssion 公司的（就是做 Jira Trello Bitbucket 等等的那个） 问题： 卡顿， 历史记录刷新慢 MacOS 下多个 repositorys 在同一"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6408字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="客户端">客户端</h1>
+<p><a href="https://git-scm.com/downloads/guis">https://git-scm.com/downloads/guis</a></p>
+<p>以下按推荐顺序排雷</p>
+<h2 id="sourcetree首推">SourceTree（首推）</h2>
+<p>是大名鼎鼎 Atlanssion 公司的（就是做 Jira  Trello Bitbucket 等等的那个）</p>
+<p>问题： 卡顿， 历史记录刷新慢</p>
+<h3 id="macos-下多个-repositorys-在同一个窗口的-tabs-里显示">MacOS 下多个 repositorys 在同一个窗口的 tabs 里显示</h3>
+<p>macOS 默认是分开成 N 个窗口的， 很不方便。 windows 下默认是以 tab 的方式显示的</p>
+<p>先打开多个 Repository 窗口，然后点菜单 Windows -&gt; Merge all &hellip; 就ok了</p>
+<h2 id="vscode-的-git-插件">vscode 的 git 插件</h2>
+<h2 id="httpsgitextensionsgithubio"><a href="https://gitextensions.github.io/">https://gitextensions.github.io/</a></h2>
+<p>只有windows  /linux?</p>
+<h2 id="github-官方客户端">github 官方客户端</h2>
+<p>electron 开发？ 操作速度挺快的</p>
+<p>但是，没有 history graph? 图形化显示合并的历史记录线？</p>
+<p>添加 GitHub 账号，自动获取所有仓库列表</p>
+<p>默认是添加的 Bitbucket 账号, 要添加 Github 账号，并且在 &ldquo;Remote&rdquo; tab 里自动列出全部的项目</p>
+<p>在 &ldquo;设置&rdquo;-&gt; &ldquo;账号&quot;里</p>
+<p><img src="/media/git/sourcetree-add-github.jpg" alt=""></p>
+<h2 id="fork-2020-年改为收费了-否则是首选">fork (2020 年改为收费了&hellip; 否则是首选)</h2>
+<p><a href="https://git-fork.com/">https://git-fork.com/</a></p>
+<p>changes 可按文件夹树来展示（而不是列表）</p>
+<p>不同的作者用不同颜色区分，可以马上看到自己的修改。  速度非常快</p>
+<p>居然还可以预览 word 文档内的文本！！！</p>
+<h2 id="gitahead-开源-跨平台-qt5-开发的">gitahead （开源 跨平台 QT5 开发的）</h2>
+<p><a href="https://gitahead.github.io/gitahead.com/">https://gitahead.github.io/gitahead.com/</a></p>
+<p>占内存不大</p>
+<p>问题：切换提交记录，渲染特别卡顿，几秒才出来</p>
+<h2 id="sublime-merge-和-sublime-text-一家-收费">sublime merge (和 sublime text 一家, 收费)</h2>
+<h2 id="smartgit-收费">smartgit （收费。。）</h2>
+<h1 id="技巧">技巧</h1>
+<h2 id="排除某些文件和目录不-push-到远端仓库">排除某些文件和目录，不 push 到远端仓库</h2>
+<p>在根目录下创建一个文件 <code>.gitignore</code>,然后在里面添加排除规则，一行一个，例如</p>
+<pre><code class="language-shell">#注释
+.DS_Store
+*.dll
+/folder1/
+fullfolder/
+</code></pre>
+<p><strong>注意对目录及下级子目录的处理</strong></p>
+<p><code>*/folder/*</code> 无法排除子目录里的文件，必须使用 <code>folder/</code>格式 。</p>
+<h2 id="查看某一个文件的-log-历史">查看某一个文件的 log 历史</h2>
+<pre><code class="language-shell">cd /wwwroot/myprojects/subfolder/
+
+git log --pretty=oneline test.php 
+git log --pretty test.php
+</code></pre>
+<h2 id="强制-pull-并覆盖本地修改的文件">强制 pull 并覆盖本地修改的文件</h2>
+<pre><code class="language-shell"># git fetch 只是下载远程的库的内容,不做任何的合并
+$git fetch --all
+
+# git reset 把HEAD指向刚刚下载的最新的版本
+$git reset --hard origin/master
+
+# 最后拉取文件到本地并合并
+$git pull origin master
+</code></pre>
+<h2 id="一次性pull-全部分支">一次性pull 全部分支</h2>
+<pre><code class="language-shell">git fetch --all
+git pull --all
+</code></pre>
+<h2 id="快速恢复到某个历史版本">快速恢复到某个历史版本</h2>
+<p>生产环境用了自动部署，做了个post-receive 的 hook，发现上面的方法没有对 web 目录生效。
+无奈只好直接进入到生产环境的 web 目录，用 <code>git revert</code> 来回退。</p>
+<pre><code class="language-shell"># 查看历史记录
+$git log
+
+# 逐步回退...
+$git revert a95eb8523058674c9b773e8f2ec1495ed3607ec3
+$git revert f1724f6ebc0bcc1266801b3b2c768d2c33df4d9f
+</code></pre>
+<h2 id="github-上的项目只下载部分文件夹">Github 上的项目只下载部分文件夹</h2>
+<p>使用 svn
+比如我想导出https://github.com/studychen/DatePicker/这儿的 Demo 文件夹</p>
+<p>Demo 文件夹的路径是https://github.com/studychen/DatePicker/tree/master/Demo
+把tree/master换成trunk</p>
+<p>执行下面命令
+svn checkout <a href="https://github.com/studychen/DatePicker/trunk/Demo">https://github.com/studychen/DatePicker/trunk/Demo</a>
+遇到这个的时候(R)eject, accept (t)emporarily or accept (p)ermanently?输 p</p>
+<h2 id="内部包含其他的仓库">内部包含其他的仓库</h2>
+<p>如果一个项目里有其他的git 项目，在 add 的时候会报错。并且<strong>不会</strong>把这个目录里的内容包括到自己的版本记录里（就是一个空目录）</p>
+<blockquote>
+<p>warning: adding embedded git repository: 1min
+hint: You&rsquo;ve added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:     git submodule add <!-- raw HTML omitted --> 1min
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:     git rm &ndash;cached 1min
+hint:
+hint: See &ldquo;git help submodule&rdquo; for more information.</p>
+</blockquote>
+<p><a href="https://www.jianshu.com/p/f8a55b972972">https://www.jianshu.com/p/f8a55b972972</a></p>
+<p><code>git submodule</code>允许一个git仓库，作为另一个git仓库的子目录，并且保持父项目和子项目相互独立。</p>
+<p>添加子仓库之后，主仓库的对应目录下（这里为lib），并不是sub仓库的文件，而是对应的commit id
+克隆一个包含子仓库的仓库目录，并不会clone下子仓库的文件，只是会克隆下.gitmodule描述文件，需要进一步克隆子仓库文件。</p>
+<h2 id="多个项目使用一个库">多个项目使用一个库</h2>
+<p>通常只能一个项目一个仓库</p>
+<p><a href="https://codeday.me/bug/20170728/46316.html">https://codeday.me/bug/20170728/46316.html</a></p>
+<p>办法1：checkout 不同的“互不影响”的分支</p>
+<p>办法2: push 到不同的分支  push origin master:proj1   push origin master:proj2</p>
+<h2 id="乱码问题">乱码问题</h2>
+<p>在git的安装目录下，有个etc文件夹。</p>
+<p>只需修改这个文件夹里的几个文件即可正常显示中文。</p>
+<p>/etc/gitconfig：
+在最下面添加一下代码:</p>
+<pre><code class="language-shell">[gui]
+encoding = utf-8 
+[i18n]
+commitencoding = GB2312 #log编码，window下默认gb2312,声明后发到服务器才不会乱码
+[svn]
+pathnameencoding = GB2312 #支持中文路径
+</code></pre>
+<p>/etc/git-completion.bash:
+在最下面添加一下代码:</p>
+<pre><code class="language-shell">alias ls='ls --show-control-chars --color=auto' #ls能够正常显示中文
+/etc/inputrc:
+</code></pre>
+<p>修改一下代码:</p>
+<pre><code class="language-shell">set output-meta on #bash中可以正常输入中文
+set convert-meta off
+</code></pre>
+<p>在查看修改历史时，对于中文文件名，git log和gitk都会出现类似的乱码：
+sepg\344\274\232\350\256\256\346\200\273\347\273\223.doc</p>
+<pre><code class="language-shell"># 对当前项目有效
+$ git config core.quotepath false
+
+# 对所有git仓库有效
+$ git config --global core.quotepath false
+</code></pre>
+<h2 id="合并多个-commit-保持项目历史干净">合并多个 commit ，保持项目历史干净</h2>
+<p><a href="https://juejin.im/entry/5ae9706d51882567327809d0">https://juejin.im/entry/5ae9706d51882567327809d0</a></p>
+<h2 id="mac-下如果用-oh-my-zsh-乱码中文乱码">mac 下如果用 oh-my-zsh 乱码，中文乱码</h2>
+<pre><code class="language-shell">git config --global core.quotepath false
+
+# 然后编辑 ~/.zsh 添加两行
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+source ~/.zsh
+</code></pre>
+<h2 id="清理历史成为干净库">清理历史成为干净库</h2>
+<p>删除.git文件夹可能会导致git存储库中的问题。如果要删除所有提交历史记录，但将代码保持在当前状态，可以按照以下方式安全地执行此操作：</p>
+<p>尝试 运行 git checkout &ndash;orphan latest_branch
+添加所有文件git add -A
+提交更改git commit -am &ldquo;commit message&rdquo;
+删除分支git branch -D master
+将当前分支重命名git branch -m master
+最后，强制更新存储库。git push -f origin master</p>
+<h1 id="git-hook-提交自动部署-仓库目录和-web-服务目录都在一台机器">Git Hook 提交自动部署 (仓库目录和 web 服务目录都在一台机器)</h1>
+<p>参考 <a href="https://segmentfault.com/a/1190000003836345">https://segmentfault.com/a/1190000003836345</a></p>
+<p>假设服务器是 1.2.3.4，用户root（当然这只是示范，尽可能为git新建一个账号）</p>
+<h2 id="必知">必知</h2>
+<p>这里在服务器上涉及到两个文件夹:</p>
+<ul>
+<li>一个作为<strong>远端仓库</strong>，作为</li>
+<li>一个作为<strong>项目部署目录</strong></li>
+</ul>
+<p><strong>本地开发目录</strong> 和 <strong>服务器项目目录</strong> 的 <code>remote</code> 都要指向 <strong>服务器的远端仓库</strong>（而不是直接 push 到项目目录）。</p>
+<h2 id="在服务器上创建远端仓库用于代码中转不是最终的项目文件目录">在服务器上创建“远端仓库”（用于代码中转，不是最终的项目文件目录）</h2>
+<p>创建远端仓库的目录</p>
+<pre><code class="language-shell">$ mkdir -p ~/repos/blog.git
+$ cd ~/repos/blog.git
+</code></pre>
+<p>初始化一个“干净”的 git 目录，注意这个 <code>--bare</code> 参数。
+和 <code>git init</code> 不一样的是，<code>git init --bare</code> 并不存储实际代码文件。</p>
+<pre><code class="language-shell">$ git init --bare 
+
+Initialized empty Git repository in ~/repos/blog.git/
+</code></pre>
+<p>在生成的仓库文件夹中，，其中 <strong>hooks 文件夹</strong> 很重要，里面存放用户进行 git 命令操作后需要执行的各种“钩子”脚本。</p>
+<pre><code class="language-shell">$ tree ./
+
+git_test_repo git:(master) tree ./
+./
+├── HEAD
+├── branches
+├── config
+├── description
+├── hooks
+│   ├── applypatch-msg.sample
+│   ├── commit-msg.sample
+│   ├── post-receive
+│   ├── post-update.sample
+│   ├── pre-applypatch.sample
+│   ├── pre-commit.sample
+│   ├── pre-push.sample
+│   ├── pre-rebase.sample
+│   ├── pre-receive.sample
+│   ├── prepare-commit-msg.sample
+│   └── update.sample
+├── info
+│   └── exclude
+├── objects
+│   ├── info
+│   └── pack
+└── refs
+    ├── heads
+    └── tags
+</code></pre>
+<h2 id="利用-hooks-实现代码提交的时候触发部署动作">利用 hooks 实现代码提交的时候触发部署动作</h2>
+<p>编辑 <code>post-receive</code> 文件（如果不存在，就创建一个新的文件）</p>
+<pre><code class="language-shell">$ vi repo/project_name/hooks/post-receive
+</code></pre>
+<h3 id="方法-1-从当前目录覆盖目标文件夹不推荐仅作参考">方法 1 从当前目录覆盖目标文件夹（不推荐，仅作参考）</h3>
+<pre><code class="language-shell">#!/bin/sh
+#
+DIR_ONE=/home/wwwroot/yourproject
+#
+git --work-tree=${DIR_ONE} clean -fd
+git --work-tree=${DIR_ONE} checkout --force
+</code></pre>
+<p>你可以添加更多的动作到这个 “hook”（比如一些 node 项目，需要部署后需重启 pm2）</p>
+<blockquote>
+<p>上面这种方式，是以当前这个“git目录”为准，来向 deply 目录写内容，但是这种方式有个弊端——会覆盖掉目标目录，如果目标目录里有一些用户上传、更新的静态文件（图片等），在 push 后会清空这些目录。</p>
+</blockquote>
+<h3 id="方法2-进入目标-deploy-目录后-pull">方法2 进入目标 deploy 目录后 pull</h3>
+<p>然后编辑 <code>post-receive</code>文件内容如下</p>
+<pre><code class="language-shell">#!/bin/sh
+unset GIT_DIR
+NowPath=`pwd`
+echo &quot;now path is :&quot;$NowPath
+DeployPath=&quot;/tmp/deploy&quot;
+echo &quot;deploy path is :&quot;$DeployPath
+cd $DeployPath
+echo &quot;cd deploy path&quot;
+git add . -A &amp;&amp; git stash # remove local changes 
+git pull origin master # pull data from master
+# the follow line is also ok:
+# git add . &amp;&amp; git fetch origin &amp;&amp; git reset --hard origin/master
+echo &quot;deploy done&quot;
+cd $NowPath
+echo &quot;fine&quot;
+# --- Finished
+exit 0
+</code></pre>
+<p><strong>简化的版本</strong></p>
+<pre><code class="language-shell">#!/bin/sh
+
+unset GIT_DIR
+
+NowPath=`pwd`
+DeployPath=&quot;../../www&quot;
+
+cd $DeployPath
+
+# ignore local changes
+git reset --hard
+git pull origin master
+
+# 可能还需要手动修改目录权限、优化项目等（例如 laravel）
+composer dump-autoload
+chmod -R 777 storage
+#chown -R www:www $DeployPath
+
+cd $NowPath
+exit 0
+</code></pre>
+<p>另外最好还是使用绝对路径。</p>
+<p>脚本里还可以加入任何想执行的脚本，比如打包编译。</p>
+<h3 id="别忘了给它添加执行权限">别忘了给它添加执行权限</h3>
+<pre><code class="language-shell">$ chmod +x post-receive
+</code></pre>
+<h3 id="你可以为-master-和-develop-等分支创建不同的-hook同时观察对比项目">你可以为 master 和 develop 等分支创建不同的 hook，同时观察对比项目</h3>
+<p>(1)在 web 目录中创建两个子目录：project_master 和 project_develop
+(2)在 repos 目录中分别创建两个 post-receive, master 和 develop 分支收到更新，推送到上面两个目录中 (甚至可以考虑自动创建 web 目录、虚拟主机配置文件，自动重启 nginx 等)
+(3)在 Nginx 里绑定不用域名（或端口）</p>
+<p>不管哪个分支有推送，同时部署</p>
+<pre><code>DeployPathMaster=&quot;/wwwroot/project_master&quot;
+DeployPathDevelop=&quot;/wwwroot/project_develop&quot;
+
+cd $DeployPathMaster
+git reset --hard
+git pull origin master
+
+cd $DeployPathDevelop
+git reset --hard
+git pull origin develop
+</code></pre>
+<p>判断分支（自动）</p>
+<pre><code>#!/bin/bash
+
+DeployPathPrefix=&quot;/wwwroot/project_name&quot;
+
+while read oldrev newrev ref
+do
+    branch=`echo $ref | cut -d/ -f3-`
+    GIT_WORK_TREE=/path/to/local/checkout git checkout -f $branch
+done
+
+Path=&quot;${DeployPathPrefix}_$branch&quot;
+
+cd $Path
+git pull origin $branch
+</code></pre>
+<p>或（指定分支名称）</p>
+<pre><code>branch=$(git rev-parse --symbolic --abbrev-ref $refname)
+if [ &quot;master&quot; == &quot;$branch&quot; ]; then
+    # Do something
+fi
+</code></pre>
+<h2 id="在实际存储代码的目录首次-checkout-仓库代码">在实际存储代码的目录首次 checkout 仓库代码</h2>
+<p>先 remoete add 或者 git clone 一下之前的那个仓库</p>
+<pre><code class="language-shell">cd /your-project-folder
+git init
+git remote add origin ~/repos/BRIDGE_REPO.git
+git fetch
+git checkout master
+</code></pre>
+<h2 id="创建通信的公钥并确保能在下次ssh时不用输入密码直接登录">创建通信的公钥，并确保能在下次ssh时，不用输入密码直接登录</h2>
+<p>略，在本地生成，然后添加到服务器的 authorized_keys</p>
+<h2 id="在本地增加文件夹并添加远端仓库名称为-origin以后你可以添加更多的远程仓库-取名为-origin-other">在本地增加文件夹，并添加远端仓库，名称为 origin(以后你可以添加更多的远程仓库 取名为 origin-other)</h2>
+<pre><code class="language-shell">mkdir mywork &amp;&amp; cd mywork
+
+git init
+git remote add origin root@1.2.3.4:/root/blog.git
+</code></pre>
+<h3 id="本地修改同时提交到两个-git-服务器">本地修改同时提交到两个 Git 服务器</h3>
+<p>例如要同时提交到服务器的git和你的github仓库。再添加一个</p>
+<pre><code class="language-shell">$ git remote add origin-another https://git.coding.net/yourname/yourprojects.git
+
+$ git remote -v
+# 可以看到多个远程仓库
+</code></pre>
+<p>以后 <code>commit</code>完毕后，需要<code>push</code>两次（可以创建一个脚本，把这两个动作放到一起）</p>
+<pre><code class="language-shell">$ git add .
+$ git commit -m &quot;commit for two remote repos&quot;
+
+$ git push origin master master
+$git push origin-another master
+</code></pre>
+<h2 id="现在把本地开发完的代码-push-到远端仓库">现在把本地开发完的代码 push 到远端仓库</h2>
+<p>添加一个 .gitignore 忽略列表文件，把一些不需要提交到仓库的文件添加进去</p>
+<pre><code class="language-shell">vi .gitignore
+
+git add .
+git commit -m &quot;initial commit&quot;
+git push origin master
+</code></pre>
+<h2 id="常见的用户权限问题">常见的用户权限问题</h2>
+<p>因为 Linux 上对用户权限要求很严格。如果你通过 git 命令提交时用的 root/git 账号，而 web 目录是别的账号，很可能 push 后，在 hook 阶段因为权限问题导致无法更新 web 目录。这时候需要你修改 git 账号的组，或者 web 目录的权限。</p>
+<pre><code class="language-shell">$ chown -Rh git:git /your/git/dirs
+</code></pre>
+<p>修改git用户权限(执行命令权限、用户目录、组、改密码)：</p>
+<pre><code class="language-shell"># usermod git -s /bin/bash -d /home/git -g apache
+# passwd git
+</code></pre>
+<p>如果安装完git后没有git用户，把以上一句 usermod 改成 useradd 就行了</p>
+<p>最后最后，完成所有操作，才把git的命令权限改回去(用root身份)：</p>
+<pre><code class="language-shell"># usermod -s /bin/git-shell
+</code></pre>
+<p>git用户专门管理git的所有事务，而不能用于登录系统。至于公钥密钥的配置，请自行参考其他资料。</p>
+<p>如果要防止.git被访问，httpd.conf加入以下限制：</p>
+<pre><code class="language-xml">&lt;Files ~ &quot;\.git&quot;&gt;
+    Require all denied
+&lt;/Files&gt;
+</code></pre>
+<h1 id="gitea-的-webhook-实现将代码自动部署到远程服务器的-web-目录">Gitea 的 webhook 实现将代码自动部署到远程服务器的 web 目录</h1>
+<p>上面的自动部署有几个限制</p>
+<ol>
+<li>仓库和web目录在同一机器</li>
+<li>Git 是命令行的，管理不方便</li>
+</ol>
+<p>平时我们用 Gitea / Gitlab / Github 来管理仓库，它们都提供了 web hook 来实现：当仓库发生某个事件（如推送代码），自动触发<strong>远端的一个URL(webhook)</strong>，然后在远端的这个接口得到信息后，产生后续动作（一般是拉取代码到 web 目录）</p>
+<h2 id="nodeexpress-版">Node(Express) 版</h2>
+<h2 id="php-版">PHP 版</h2>
+<p>这里用我熟悉的 PHP 语言版本来实现 <a href="https://github.com/vicenteguerra/git-deploy">https://github.com/vicenteguerra/git-deploy</a></p>
+<p>在 web 服务器上把文件上传</p>
+<pre><code>/www/wwwroot/git-deploy/
+    - project1/deploy.php
+    - project2/deploy.php
+    - ....更多项目
+</code></pre>
+<p>配置文件</p>
+<p>这里如果 Gitea 运行在 Docker 里，最好填写 HTTP 格式的仓库地址： <a href="http://.....project.git">http://.....project.git</a>， 因为 ssh 的地址，可能会丢失端口，而错误地去找docker 所在主机的22端口（但主机并没有 git 服务）</p>
+<pre><code class="language-php">define(&quot;TOKEN&quot;, &quot;secret-token&quot;);                                       // The secret token to add as a GitHub or GitLab secret, or otherwise as https://www.example.com/?token=secret-token
+define(&quot;REMOTE_REPOSITORY&quot;, &quot;git@github.com:username/repository.git&quot;); // The SSH URL to your repository
+define(&quot;DIR&quot;, &quot;/var/www/vhosts/repository/&quot;);                          // The path to your repostiroy; this must begin with a forward slash (/)
+define(&quot;BRANCH&quot;, &quot;refs/heads/master&quot;);                                 // The branch route
+define(&quot;LOGFILE&quot;, &quot;deploy.log&quot;);                                       // The name of the file you want to log to.
+define(&quot;GIT&quot;, &quot;/usr/bin/git&quot;);                                         // The path to the git executable
+define(&quot;MAX_EXECUTION_TIME&quot;, 180);                                     // Override for PHP's max_execution_time (may need set in php.ini)
+define(&quot;BEFORE_PULL&quot;, &quot;&quot;);                                             // A command to execute before pulling
+define(&quot;AFTER_PULL&quot;, &quot;&quot;);                                              // A command to execute after successfully pulling
+
+require_once(&quot;deployer.php&quot;);
+
+</code></pre>
+<p><strong>还有AFTER_PULL可以在拉到文件后运行命令，例如 node 项目的 npm install，以及 php 项目的 composer install</strong></p>
+<p>例如，强行 pull, 避免 web 机器上的某些文件被异常更新导致无法merge</p>
+<pre><code class="language-php">define(&quot;BEFORE_PULL&quot;, &quot;git reset --hard&quot;); 
+</code></pre>
+<p>然后进入web目录，初始化web 目录，拉取文件</p>
+<pre><code class="language-php">git init
+
+git remote add origin ......[如果是 docker 运行 gitea, 用 http 的 xxx.git 地址]
+</code></pre>
+<p>还要打开php.ini里的 <code>exec()</code>函数允许</p>
+<p>注意，gitea 的“密钥文本”，在它“测试hook”的时候，根据代码 deploy.php 里的获取，是没有“token”的值的，会失败</p>
+<p>这里要手动写到 webhook  URL 的 get 参数列表里去</p>
+<p><img src="/media/15490412409597/15585803887276.jpg" alt="-w470"></p>
+<p><img src="/media/15490412409597/15585805014031.jpg" alt="-w340"></p>
+<p>如果测试错误，返回 N/A， 需要 postman 的帮助看看详细错误</p>
+<p><img src="/media/15490412409597/15585810720336.jpg" alt="-w430"></p>
+<h2 id="当然如果要实现更安全复杂的部署过程应该安装-jenkins">当然，如果要实现更安全、复杂的部署过程，应该安装 jenkins。</h2>
+<h1 id="github-与国内的-codingnet">GitHub 与国内的 Coding.net</h1>
+<h1 id="自己搭建-gitserver">自己搭建 GitServer</h1>
+<h2 id="git-server">git server</h2>
+<h3 id="自己创建版本库">自己创建版本库</h3>
+<h3 id="docker-镜像">Docker 镜像</h3>
+<p><a href="https://github.com/jkarlosb/git-server-docker">https://github.com/jkarlosb/git-server-docker</a></p>
+<h2 id="git-lab">git lab</h2>
+<p>非常消耗资源，官方推荐 2G 以上内存。</p>
+<p>如果没有独立服务器，购买官方服务即可</p>
+<h2 id="gogs">gogs</h2>
+<p>数据库问题</p>
+<h2 id="gitea">gitea</h2>
+<p>是一个轻量级的代码托管解决方案，后端采用Go 编写（Gitea 是一个开源社区驱动的 Gogs 克隆），采用MIT 许可证. 尝试Gitea. 易安装. 直接从二进制安装。 或者使用Docker， Vagrant， 和安装包. 跨平台. Gitea 可以运行在任何Go 能够编译的平台</p>
+<p>显示英文</p>
+<p><a href="https://github.com/go-gitea/gitea/issues/3183">https://github.com/go-gitea/gitea/issues/3183</a></p>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="gitignore无效不能过滤某些文件">.gitignore无效，不能过滤某些文件</h2>
+<p>利用.gitignore过滤文件，如编译过程中的中间文件，等等，这些文件不需要被追踪管理。
+现象：
+在.gitignore添加file1文件，以过滤该文件，但是通过Git status查看仍显示file1文件的状态。
+原因：
+在git库中已存在了这个文件，之前push提交过该文件。
+.gitignore文件只对还没有加入版本管理的文件起作用，如果之前已经用git把这些文件纳入了版本库，就不起作用了
+解决：
+需要在git库中删除该文件的缓存，并更新。
+然后再次git status查看状态，file1文件不再显示状态。</p>
+<pre><code class="language-shell">git rm -r --cached .
+git add .
+git commit -m 'We really don not want Git to track this anymore!'
+</code></pre>
+<p>如果缓存中有重要的数据更改，那么你需要单独删除不要的缓存：</p>
+<pre><code class="language-shell">git rm --cached logs/xx.log
+</code></pre>
+<p>此为注释 – 将被 Git 忽略
+.a # 忽略所有 .a 结尾的文件
+!lib.a # 但 lib.a 除外
+/TODO # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+build/ # 忽略 build/ 目录下的所有文件
+doc/.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</p>
+<h2 id="在被忽略的目录中添加特定子目录不被忽略">在被忽略的目录中，添加特定子目录不被忽略</h2>
+<p>目录结构</p>
+<pre><code>wwwroot
+    - wp-contents
+        - plugins
+            - plugin_1
+            - pugin_2
+            - another-plugin 
+        - themes
+</code></pre>
+<p>需求：要求忽略 wp-content/plugins/ 下所有其他插件，但是要保留 another-plugin 这个插件</p>
+<pre><code class="language-config">wp-content/*
+!wp-content/mu-plugins/
+!wp-content/themes/
+
+# only push this subfolder
+!wp-content/plugins/another-plugin/
+</code></pre>
+<p>运行 git status 发现最后一行<code>!wp-content/plugins/another-plugin/</code> 无效，并不会被提交到 git 仓库上去。原因是第一行 wp-content/* 会让所有目录被忽略。</p>
+<p>改成下面的，首先 <code>!wp-content/plugins/</code>，让这个 目录 进入“不忽略”列表（注意后面的斜杠），然后<code>wp-content/plugins/*</code>表示忽略该目录下的所有文件和文件夹，最后<code>!wp-content/plugins/another-plugin/</code>定义 让<code>another-plugin</code>能够被提交</p>
+<pre><code class="language-config">
+# only push this subfolder
+!wp-content/plugins/
+wp-content/plugins/*
+!wp-content/plugins/another-plugin/
+
+</code></pre>
+<h2 id="当本地比远端旧pull-时提示fatal-refusing-to-merge-unrelated-histories">当本地比远端旧，pull 时提示fatal: refusing to merge unrelated histories</h2>
+<p>首先在远端创建一个仓库，初始了一个文件<code>.gitignore</code></p>
+<p>然后本地用<code>remote add</code>添加远端仓库。 push 的时候提示要先 pull</p>
+<p>但是 pull 时提示这个错误，是因为本地的版本比较旧，用下面的命令强制 pull</p>
+<pre><code class="language-shell">git pull origin branchname --allow-unrelated-histories
+</code></pre>
+<h1 id="使用-github-进行团队合作">使用 GitHub 进行团队合作</h1>
+<p><a href="http://xiaocong.github.io/blog/2013/03/20/team-collaboration-with-github/">http://xiaocong.github.io/blog/2013/03/20/team-collaboration-with-github/</a></p>
+<h2 id="pull-request">Pull Request</h2>
+<h2 id="错误跟踪">错误跟踪</h2>
+<p>Issues 不仅仅是“问题”，也可以是“功能”，“待完成清单”</p>
+<p>标签：具有不同颜色的类别，用来帮助过滤问题
+里程碑: 附加在每一个问题上的日期分类，可用于确定哪些问题需要在下一个版本解决 每当一个问题解决，它会自动更新进度条
+搜索: 自动列出匹配的问题列表和里程碑
+分配: 每个问题都能分配一个人负责进行解决，同时这也能让我们知道目前我们需要工作在什么上面
+自动关闭: 包含Fixes/Fixed/Close/Closes/Closed #问题编号的提交记录，将自动关闭该问题 (将任务清单与代码提交紧密地耦合在一起)
+提及或者引用: 任何人在评论的时候在消息文本中包含#[问题编号]，将自动生成该问题的链接</p>
+<h2 id="分析">分析</h2>
+<h2 id="项目管理">项目管理</h2>
+<p>连接Github与其他流行的项目管理工具</p>
+<h3 id="和-trello">和 Trello</h3>
+<p>利用GitHub的钩子(Hooks)服务，自动在Trello里生成一个任务卡</p>
+<p>访问GitHub repository &gt; Settings &gt; Service Hooks &gt; Trello</p>
+<p>获得认证用的令牌(Token)。</p>
+<p>获得json格式的任务列表(list) id （BOARDID）</p>
+<p>回到GitHub的钩子服务，输入我们得到的list id和token，激活这个hook  。通过Test Hook按钮来测试每次收到新的Pull请求时，是否自动更新看版内容</p>
+<p>当下次收到新的Pull请求时，Trello看版就会自动生成一个Pull请求任务卡</p>
+<p><img src="/media/15490412410406/15372526965121.jpg" alt="-w1068"></p>
+<p>因为我用了 Gitea, 它没有</p>
+<h3 id="和pivotal-tracker">和Pivotal Tracker</h3>
+<h1 id="其他">其他</h1>
+<h2 id="jira">Jira</h2>
+<p>jira 在创建任务后，会生成  <code>XXX-43</code>  类似的任务 ID</p>
+<p>通过配置， 在 bitbucket 推送代码写 commit message 时，可以加入任务的关键词</p>
+<blockquote>
+<p>[XXX-43] modify the username prot&hellip;</p>
+</blockquote>
+<p>然后在jira 里就能看到改任务关联的代码变更记录了</p>
+<h2 id="vsts">VSTS</h2>
+<p><a href="https://blogs.msdn.microsoft.com/devops/2016/03/02/linking-work-items-to-git-branches-commits-and-pull-requests/">https://blogs.msdn.microsoft.com/devops/2016/03/02/linking-work-items-to-git-branches-commits-and-pull-requests/</a></p>
+<h2 id="gitlab">Gitlab</h2>
+<p>Pull Request 关联 Issue</p>
+<p><a href="https://git.mydoc.io/?t=135440">https://git.mydoc.io/?t=135440</a></p>
+<h2 id="gitea-1">Gitea</h2>
+<p>对应前面的</p>
+<p><img src="/media/15490412410406/15372507291482.jpg" alt="-w1210"></p>
+<p><img src="/media/15490412410406/15372507776910.jpg" alt="-w1205"></p>
+<p>milestone 可认为是一个版本吧, label 可以用 / 分开不同类别</p>
+<p><img src="/media/15490412410406/15372524748484.jpg" alt="-w254"></p>
+<p><img src="/media/15490412410406/15372509609598.jpg" alt="-w1125"></p>
+<p><img src="/media/15490412410406/15372510727832.jpg" alt="-w815">
+Gitea 的 webhook 没有 Trello</p>
+<p>开始解决问题</p>
+<p><img src="/media/15490412410406/15372542021112.jpg" alt="-w259"></p>
+<p>停止，取消</p>
+<p><img src="/media/15490412410406/15372542325821.jpg" alt="-w277"></p>
+<p><img src="/media/15490412410406/15372542762330.jpg" alt="-w226"></p>
+<p><img src="/media/15490412410406/15372542189707.jpg" alt="-w500"></p>
+<p>如果完成，就点 Close</p>
+<p><img src="/media/15490412410406/15372543276741.jpg" alt="-w126"></p>
+<p>Commit 动作与 Issue 关联, 在 message 里写上<code>#issue_id</code>就可以了</p>
+<pre><code class="language-shell">git commit -m &quot;[issue #1] try to fix the google analytics code not work&quot;
+</code></pre>
+<p>然后 push 后，查看这个 Issue 的动作历史, 就能看到关联的 commit 动作（在 commit 里引用 issue）。</p>
+<p><img src="/media/15490412410406/15372553824705.jpg" alt="-w790"></p>
+<h2 id="pull-request-1">Pull Request</h2>
+<p>和 Merge 后 push 的区别？</p>
+<p><img src="/media/15490412410406/15372556704210.jpg" alt="-w1192"></p>
+<h1 id="技巧-1">技巧</h1>
+<h2 id="让-git-status-等命令能显示彩色的输出">让 git status 等命令能显示彩色的输出</h2>
+<pre><code class="language-shell">git config --global color.status auto  
+git config --global color.diff auto  
+git config --global color.branch auto  
+git config --global color.interactive auto  
+</code></pre>
+<h2 id="替换-master-分支为别的分支">替换 master 分支为别的分支</h2>
+<p>git上打dag，备份master分支</p>
+<p>git的setting页面，把默认分支暂时替换为其他分支，如dev.</p>
+<p>git的setting-&gt;Protected Branches 把master分支设置为“Unprotect“</p>
+<p>删除本地及远程的master分支.
+git branch -D master //删除本地master分支
+git push origin :master //删除远程master分支</p>
+<p>切换到saas_1.0.0分支，然后再新建本地master分支
+git checkout saas_1.0.0
+git checkout -b master</p>
+<p>把本地master分支推送到远程
+git push origin master:master</p>
+<p>重新把master分支设为default分支和保护分支，参考步骤2、3</p>
+<p>此时在git上master已是saas_1.0.0分支的代码，而且能看到saas_1.0.0分支的提交记录。</p>
+<h1 id="延展">延展</h1>
+<p>Gitlab 的 Merge Request 工作模式
+<a href="https://zhuanlan.zhihu.com/p/41188034">https://zhuanlan.zhihu.com/p/41188034</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/git-%E5%B7%A5%E5%85%B7%E4%B8%8E%E6%8A%80%E5%B7%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/gitflow%E4%B8%8E%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/git-%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: React Native跨平台应用开发教程 permalink: react-native-cross-platform-app tags:
+ ReactNative  " />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: React Native跨平台应用开发教程
+permalink: react-native-cross-platform-app
+tags:
+
+ReactNative
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: React Native跨平台应用开发教程
+permalink: react-native-cross-platform-app
+tags:
+
+ReactNative
+
+">
+
+<meta itemprop="wordCount" content="4948">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: React Native跨平台应用开发教程
+permalink: react-native-cross-platform-app
+tags:
+
+ReactNative
+
+"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4948字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: React Native跨平台应用开发教程
+permalink: react-native-cross-platform-app
+tags:</p>
+<ul>
+<li>ReactNative</li>
+</ul>
+<hr>
+<h1 id="basics">Basics</h1>
+<h2 id="快速熟悉代码">快速熟悉代码</h2>
+<pre><code class="language-js">import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+
+export default class HelloWorldApp extends Component {
+  render() {
+    return (
+      &lt;View&gt;
+        &lt;Text&gt;Hello world!&lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+}
+
+</code></pre>
+<h2 id="创建项目">创建项目</h2>
+<p>有两种方式：</p>
+<ol>
+<li>react-native-cli</li>
+<li>Expo (推荐)</li>
+</ol>
+<pre><code class="language-shell"># react-native-cli
+$npm -i -g create-react-native-app
+$create-react-native-app my-app
+$cd my-app
+$yarn start
+
+# expo-cli
+expo init AwesomeProject  
+
+# 第二步可选择模板 tabs  可以使用 reactnative-navigator，如果是很简单的应用就可以用 blank 模板了 （一些 UI库 例如 kitchen 没 tabbar 组件。。。）
+
+cd AwesomeProject
+npm start # you can also use: expo start
+yarn start 
+</code></pre>
+<h2 id="expo-与-create-react-native-app-区别">expo 与 Create React Native App 区别：</h2>
+<p>CRNA(Create React Native App)</p>
+<p>CRNA was also designed to give you several paths forward as your app grows. The three paths are:</p>
+<p>Use Expo: You actually can open a CRNA project with the Expo XDE app if you want all the features of Expo including push notifications and IPA / APK files for the App Store / Play Store.</p>
+<p>Eject to ExpoKit: ExpoKit is a native library that includes React Native and the Expo APIs. This path creates Xcode and Android Studio projects with ExpoKit so that most Expo APIs keep working if you were using them before. You then build IPA / APK files the way you would as any other native app.</p>
+<p>Eject to bare React Native: This path gives you a plain React Native project with separate Xcode and Android Studio projects. All modules that come with React Native will work but Expo APIs won&rsquo;t work (use ExpoKit above for that) because this is bare React Native.</p>
+<p>Note that when you eject, CRNA won&rsquo;t manage upgrades for you so you&rsquo;re responsible for upgrading React Native.</p>
+<p>简单来说： expo 是带有一些 sdk\api(地图什么的)的 ReactNative..</p>
+<p><img src="/media/15490412159020/15451895593574.jpg" alt="-w401"></p>
+<h1 id="expo-工具">Expo 工具</h1>
+<p>Expo 是一个围绕 React Native 构建的免费开源工具链，可帮助您使用 JavaScript 和 React 构建本地 iOS 和 Android 项目</p>
+<h2 id="相关工具">相关工具</h2>
+<p><a href="https://expo.io/">https://expo.io/</a></p>
+<p><a href="https://expo.io/tools">https://expo.io/tools</a></p>
+<p><strong>Snack</strong>(React Native in the browser)</p>
+<p>不安装任何东西马上开始(在线编辑器 &amp; 预览 app)</p>
+<p><strong>command line tool</strong></p>
+<p>打包、驱动、发布项目</p>
+<pre><code class="language-shell">npm install exp --global
+</code></pre>
+<p><strong>expo client</strong></p>
+<p>手机应用，查询、安装其他的 app</p>
+<p><strong>docs</strong></p>
+<p>文档 <a href="https://docs.expo.io/versions/latest/">https://docs.expo.io/versions/latest/</a></p>
+<p><strong>Expo SDK</strong></p>
+<p>Access native cross-platform device APIs in your Expo project.</p>
+<p><strong>XDE</strong></p>
+<p>Expo 构建桌面客户端</p>
+<h2 id="开始">开始</h2>
+<p>创建项目（要先注册账号），预览</p>
+<pre><code class="language-shell">expo init my-new-project
+cd my-new-project
+npm start
+</code></pre>
+<p>打开设备上的 Expo Client，扫码安装</p>
+<h1 id="ui-库">UI 库</h1>
+<p>React Native Elements  风格类似 sementic（tabbar 都没。。）</p>
+<p>[v]nativebase: 文档比较友好，有图示。而且详细（风格有点像 ionic-原生）</p>
+<p>[v]如果是企业内部的工具，antd mobile for rn 对熟悉 antd 的更好。 但是感觉不是很精致</p>
+<p><a href="https://akveo.github.io/react-native-ui-kitten/#/home">https://akveo.github.io/react-native-ui-kitten/#/home</a> （很漂亮， 大号字体 图块，开发个性化应用, 问题  没有 tabbar, 可以用 expo 模板自带的来实现）
+<a href="https://github.com/akveo/kittenTricks">https://github.com/akveo/kittenTricks</a> (官方 demo)</p>
+<p><a href="https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/">https://z448401921.github.io/react-native-ui-lib/uilib-docs/public/</a>（文档实在太简陋）</p>
+<p><a href="https://github.com/react-native-community/lottie-react-native">https://github.com/react-native-community/lottie-react-native</a> (只是一个动画库，特点就是有很多动画酷炫效果，http://airbnb.io/lottie/#/ 文档)</p>
+<p>以及美团的beeshell，以下是对比 (但有人说是一次性 kpi 产物。。。连文档都没，放在 github 的)</p>
+<p><img src="/media/15490412159020/15573878378722.jpg" alt="-w875"></p>
+<p><a href="https://www.quora.com/What-is-the-best-UI-Kit-for-react-native">https://www.quora.com/What-is-the-best-UI-Kit-for-react-native</a></p>
+<p><a href="https://github.com/react-native-material-design/react-native-material-design">material</a>  很久没更新了
+<a href="https://github.com/xinthink/react-native-material-kit">https://github.com/xinthink/react-native-material-kit</a> 也是 material</p>
+<p><a href="https://nativebase.io/">https://nativebase.io/</a>  （iOS 原生风格，Android Material 风格 自动）</p>
+<p><a href="https://github.com/wix/react-native-ui-lib">https://github.com/wix/react-native-ui-lib</a>（清爽细）</p>
+<p><a href="https://github.com/react-native-training/react-native-elements">https://github.com/react-native-training/react-native-elements</a>  推荐 圆角清新  组件不多</p>
+<h1 id="在-react-和-react-native-共用代码">在 React 和 React Native 共用代码</h1>
+<p><a href="https://medium.com/@yannickdot/write-once-run-anywhere-with-create-react-native-app-and-react-native-web-ad40db63eed0">https://medium.com/@yannickdot/write-once-run-anywhere-with-create-react-native-app-and-react-native-web-ad40db63eed0</a></p>
+<p><a href="https://medium.com/react-native-training/sharing-code-between-react-web-and-react-native-applications-7f451af26378">https://medium.com/react-native-training/sharing-code-between-react-web-and-react-native-applications-7f451af26378</a></p>
+<h2 id="记录第二篇文章">记录(第二篇文章)</h2>
+<h3 id="创建目录">创建目录</h3>
+<p>使用<code>Render Props</code><strong>模式</strong>使平台特定的基本组件(如<!-- raw HTML omitted -->和<!-- raw HTML omitted -->)远离组件业务逻辑，从而实现跨平台的重要代码共享</p>
+<p>已经有多种方法可以实现：</p>
+<ul>
+<li>一种方法是将业务逻辑分离到由各个组件导入的NPM包中。</li>
+<li>使用 SDK <a href="https://hackernoon.com/share-code-between-react-and-react-native-using-sdk-85c2dab552f8">https://hackernoon.com/share-code-between-react-and-react-native-using-sdk-85c2dab552f8</a></li>
+</ul>
+<p>现在这里提到的另一种技术是创建一个扩展了response的JavaScript类。这个父类将包含所有的组件;与UI无关的代码。然后父节点可以由包含特定于平台的呈现方法的子节点进行扩展，并继承父节点的所有功能</p>
+<p><strong>RenderProps模式（待研究）</strong></p>
+<p>类技术可以使用RenderProps模式进行某种程度的模拟</p>
+<ul>
+<li>它不需要维护额外的NPM包</li>
+<li>RPs可以访问React life cycle方法，我可以跨平台共享这些方法</li>
+</ul>
+<p>RPs之所以对我有用，是因为它通过将组件的UI部分作为属性传递给“包装”组件，实现了组件的所有表示方面与其业务逻辑的分离。在本文余下的部分中，我将把这个包装组件称为呈现支柱组件或RPC。</p>
+<p>构建rpc来完成所有组件的业务逻辑，然后将其传递给移动或web UI组件进行呈现。这两个UI组件将拥有相同的“钩子”来与RPC所包含的逻辑交互。</p>
+<p>除了rpc之外，共享文件夹还将包含我的应用程序Redux store。由于跨平台的商店基本上是相同的，所以保留它是有意义的。</p>
+<p>最后，我还将其他共享实用程序函数保留在shared中。</p>
+<p><strong>将业务逻辑放在要被组件导入和使用的独立函数中</strong></p>
+<p>例如，所有API调用都可以存在一个名为APIUtilities.js的文件中。然后组件可以导入并使用该文件中包含的方法。</p>
+<p>假设目录结构</p>
+<pre><code class="language-shell">app
+    - rn (React Native)
+    - react  (React)
+    - shared  (共享代码)
+</code></pre>
+<p>这里 React 使用 GatsbyJS 来创建。</p>
+<p>ReactNative 用 expo</p>
+<pre><code class="language-shell">expo init rn
+
+cd rn
+yarn start
+</code></pre>
+<p>打开模拟器</p>
+<p><img src="/media/15490412159020/15451893574865.jpg" alt="-w1087"></p>
+<h3 id="配置">配置</h3>
+<p>web 和 rn 要访问共享的文件，必须都能识别到 shared 目录路径</p>
+<p>假设 GatsbyJS 里配置如下（<code>gatsby-node.js</code>）</p>
+<pre><code class="language-js">alias: {
+        shared: path.resolve(config._config.context, '../shared'),
+      },
+</code></pre>
+<p>同时 expo 项目里的配置(创建一个 <code>rn-cli.config.js</code>)</p>
+<pre><code class="language-js">const path = require('path');
+
+module.exports = {
+  
+  // For React Native version 0.57
+   projectRoot: path.resolve(__dirname),
+  // tell the builder to also look in the shared directory for imports
+  watchFolders: [
+    path.resolve(__dirname, &quot;../shared&quot;)
+  ]
+  
+  // Prior to React Native verision 0.57
+  getProjectRoots() {
+    return [
+      __dirname,
+      path.join(__dirname, 'node_modules'),
+      // tell the builder to also look in the shared directory for imports
+      path.join(__dirname, '../shared'),
+      )
+    ];
+  }
+};
+</code></pre>
+<p>在 app.json 文件的 <code>packagerOpts</code>里添加下面内容，确保这个项目使用上面的<code>rn-cli.config.js file</code></p>
+<pre><code class="language-js">&quot;packagerOpts&quot;: {
+  &quot;projectRoots&quot;: &quot;&quot;,
+  &quot;config&quot;: &quot;rn-cli.config.js&quot;,
+},
+</code></pre>
+<h3 id="构建组件">构建组件</h3>
+<p>根据需求，这里组件有几种不同的元素</p>
+<ul>
+<li>Platform specific <strong>wrapping component</strong></li>
+<li>Platform specific <strong>code</strong></li>
+<li><strong>Common RPC</strong></li>
+<li>Platform specific <strong>render functions</strong></li>
+</ul>
+<p><img src="/media/15490412159020/15451906144589.jpg" alt="-w616"></p>
+<p><strong>The Wrapping Component</strong></p>
+<ol>
+<li>完成的组件将所有内容包装在适合作为组件使用的包中。它就是我们所认为的一个React组件，从它的文件中导出，然后根据需要由其他组件导入。</li>
+</ol>
+<p><strong>Platform Specific Code</strong></p>
+<ol start="2">
+<li>wrapping component contains any web specific code。</li>
+</ol>
+<p>例如它包含一个获取用户地理位置的函数（而不同的平台有不同的 api 实现）。</p>
+<p>这段代码是特定于平台的，所以它仍然可以与RPC中的公共代码进行交互。这个级别的方法可以接收renderProps作为参数，然后让它们访问RPC方法</p>
+<p>另一个选择是用 this.renderProps 将 renderProps 提升到前面1提到的的 wrapping component  级别</p>
+<p>同样它也可以包含平台相关的 lifecycle 代码。</p>
+<p><strong>Common Render Prop</strong></p>
+<p>The render prop is common across all platforms</p>
+<ol start="3">
+<li>公共RPC(Render Prop Component)包含了 common code， 以前面的“获取用户地理位置”举例。 我们不关心它是怎么获得的，只需要做同样的事情。</li>
+</ol>
+<p>此外，RPC可以跨平台提供对生命周期事件的响应的常见响应</p>
+<p><strong>Platform Specific Render Functions</strong></p>
+<p>Each platform has a different render function to build and present the UI</p>
+<p>每个平台有不同的 render 函数，以便构建和展示（不同的）UI. 例如 react 的<code>&lt;div&gt;</code>和 React Native 的 <code>&lt;View&gt;</code>, 或者在不同平台的 UI 库（React 有 reactstrap, RN 有 NativeBase）</p>
+<p>它还可以与它从RPC接收到的renderProp交互，以对RPC中的代码进行操作。此外，它还可以与任何特定于平台的代码交互。</p>
+<h3 id="adding-redux">Adding Redux</h3>
+<p>在两边安装<code>react-redux</code>， store 在 shared 里维护。Redux reducer和操作放在共享文件夹中。平台特定的代码可以根据需要导入它们。</p>
+<p>这样在两个平台只需要维护一个 store 的版本。</p>
+<h3 id="working-with-redux-and-the-renderprop-components">Working with Redux and the Renderprop Components</h3>
+<p>保持分离的 views（视图） 和 logic（逻辑） 意味着 RenderProps 应该能编辑 stores. 这样的好处是：写一次<code>this.props.dispatch</code>来代替为每个平台做一次（共两次）</p>
+<p>虽然 stores 保存在共享目录中，然而它由每个平台分别导入（并使用 react-redudx 的<code>&lt;Provider&gt;</code>组件提供给每个平台的根组件，平台有 Redux 的 dispatch 和 connect 功能），总之，平台UI组件必须连接到Redux存储，而不是RP组件</p>
+<p>这样解决: (将 <code>this.props.dispatch</code> 和 <code>actions</code> 传递给 RP)</p>
+<p><code>sharedRenderProps.js</code>, Enabling communication between Redux, the RPC, and platform specific code.</p>
+<pre><code class="language-js">&lt;CreateNewLocationMediaItemRP
+  // pass redux dispatch and actions to the RP to receive as props
+  dispatch={this.props.dispatch}
+  actions={actions}
+
+  // Use callbacks so that platform specific methods can call a function
+  // in the RP.
+  // The callback is a function passed from the RP to this component.
+  // This enables the platform specific function this.takeNewPictureOrVideo can 
+  // call a function in the RP.
+  onTakeNewPicture={(callback) =&gt; {
+    this.takeNewPictureOrVideo('Images', callback);
+  }}
+  
+  // Hoist the renderProps to the top level of the function so that methods
+  // can access it.
+  // Use a conditional to ensure it's only done once and when the component
+  // is mounted.
+  render={(renderProps) =&gt; {
+    if (!this.renderProps &amp;&amp; this.state.isMounted) {
+      this.renderProps = renderProps;
+    }
+</code></pre>
+<p>这个 shared RP 能 dispatch actions 并且操作 stores, 就像其他组件一样</p>
+<h3 id="npm-packages">NPM Packages</h3>
+<p>除了这些公共的逻辑代码、redux stores/reducers, 一些在运行时需要的包也可以用类似的方法处理。</p>
+<p>例如AWS 的 Amplify 服务要在应用启动时初始化，而它在 web 和 mobile 都被使用，所以通过 RPs 来工作是很不错的</p>
+<p>不过 RPs 不能自动访问初始化的、特定于应用程序的 Amplify 实例，这个问题可以通过将相关的Amplify特定函数传递给RP来解决。（传递函数使RP能够对这两个平台进行API调用）</p>
+<p>将包安装到每个平台的目录，并根据需要安装共享目录（例如，React特有的测试库只会安装到 mobile 平台上。Gatsby 只安装到了 web 平台上）</p>
+<p><strong>共享RPs或共享实用程序所需的包按需要安装到 shared 文件夹中</strong></p>
+<h3 id="结束">结束</h3>
+<p>到目前为止，RP模式已经证明是一种跨平台共享代码和功能的有效方法。虽然回顾项目组织确实需要额外的工作，但我已经大大减少了必须编写的代码量，并为最复杂的代码创建了一个共享测试目标。</p>
+<h2 id="记录第一篇文章">记录（第一篇文章）</h2>
+<p>首先使用<code>create-react-app</code>创建一个 react 应用</p>
+<pre><code class="language-shell">cd app
+create-react-app react
+</code></pre>
+<p>安装 react-native, react-native-web(不强制需要，这个是在 web 上使用 rn) 和 expo 有关的包</p>
+<pre><code class="language-shell">npm install --save expo@^25.0.0 react-native@0.52.0 react-native-web
+</code></pre>
+<p>然后添加 build React Native 应用有关的文件</p>
+<p><strong>.babelrc</strong></p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [&quot;babel-preset-expo&quot;],
+  &quot;env&quot;: {
+    &quot;development&quot;: {
+      &quot;plugins&quot;: [&quot;transform-object-rest-spread&quot;, &quot;transform-react-jsx-source&quot;]
+    }
+  }
+}
+</code></pre>
+<p><strong>.watchmanconfig</strong></p>
+<pre><code class="language-json">{}
+</code></pre>
+<p><strong>.flowconfig</strong>(和 Flow 的设置有关)</p>
+<p>看这里 <a href="https://github.com/react-community/create-react-native-app/blob/56df72a4b862e42bcc0f172ad10c7f5639045006/react-native-scripts/template/.flowconfig">https://github.com/react-community/create-react-native-app/blob/56df72a4b862e42bcc0f172ad10c7f5639045006/react-native-scripts/template/.flowconfig</a></p>
+<p><strong>app.json</strong></p>
+<pre><code class="language-json">{
+  &quot;expo&quot;: {
+    &quot;sdkVersion&quot;: &quot;25.0.0&quot;
+  }
+}
+</code></pre>
+<p><strong>App.test.js</strong> (测试React Native应用的入口文件)</p>
+<pre><code class="language-javascript">import React from 'react';
+import App from './App';
+import renderer from 'react-test-renderer';
+it('renders without crashing', () =&gt; {
+  const rendered = renderer.create(&lt;App /&gt;).toJSON();
+  expect(rendered).toBeTruthy();
+});
+</code></pre>
+<p><strong>App.js</strong> (React Native 的入口文件)</p>
+<pre><code class="language-javascript">import React from 'react'
+import HybridApp from './src/App'
+export default class NativeApp extends React.Component {
+  render() {
+    return &lt;HybridApp /&gt;
+  }
+}
+</code></pre>
+<p>最后可以看到 React 和 React Native 的混合项目结构（核心源码部分）</p>
+<pre><code>├── README.md
+├── .babelrc
+// other files
+├── App.js &lt;-- entry point for CRNA (don't move/rename it!)
+│              
+└── src
+│   ├── index.js &lt;- entry point for CRA (don't move/rename it)
+│   └── ... more source files 
+│
+</code></pre>
+<p>编辑<strong>package.json</strong>,添加一些脚本命令</p>
+<pre><code class="language-json">// These scripts are merely copied from the create-react-native-app package.json file
+...
+&quot;main&quot;: &quot;./node_modules/react-native-scripts/build/bin/crna-entry.js&quot;,
+&quot;scripts&quot;: {
+  &quot;start-web&quot;: &quot;react-scripts start&quot;,
+  &quot;build-web&quot;: &quot;react-scripts build&quot;,
+  &quot;test-web&quot;: &quot;react-scripts test --env=jsdom&quot;,
+  &quot;eject-web&quot;: &quot;react-scripts eject&quot;,
+  &quot;start-native&quot;: &quot;react-native-scripts start&quot;,
+  &quot;eject-native&quot;: &quot;react-native-scripts eject&quot;,
+  &quot;android&quot;: &quot;react-native-scripts android&quot;,
+  &quot;ios&quot;: &quot;react-native-scripts ios&quot;,
+  &quot;test-native&quot;: &quot;node node_modules/jest/bin/jest.js --watch&quot;,
+  &quot;test&quot;: &quot;npm run test-web &amp;&amp; npm run test-native&quot;
+},
+&quot;jest&quot;: {
+  &quot;preset&quot;: &quot;jest-expo&quot;
+}
+...
+</code></pre>
+<p>试试同时打开 web 和 native 的应用</p>
+<pre><code class="language-shell">npm run start-web
+npm run ios
+</code></pre>
+<h2 id="使用-react-native-web-编写-webiosandroid-的共用组件">使用 react-native-web 编写 web/iOS/Android 的“共用”组件</h2>
+<p>(由于跨平台，有些特性支持不完整)</p>
+<p>实际上就是综合 Create React App, Create React Native App, react-native-web and Expo.</p>
+<p><a href="https://github.com/necolas/react-native-web">https://github.com/necolas/react-native-web</a></p>
+<p><a href="https://github.com/joefazz/react-native-web-starter">https://github.com/joefazz/react-native-web-starter</a></p>
+<p>打开 <code>./src/App.js</code>添加一些平台无关代码，完全像之前那样用 react-native 来写</p>
+<p><strong>关键</strong></p>
+<p>编辑 webpack 配置文件（例如 <code>webpack.config.dev.js</code>）, 注意 <code>alias</code> 的那个别名</p>
+<pre><code class="language-json">// Support React Native Web
+// https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
+'react-native': 'react-native-web',
+</code></pre>
+<p>运行 web 和 mobile 应用，发现样式有点不对（高度）。需要适配下</p>
+<p><img src="/media/15490412159020/15337071213504.jpg" alt=""></p>
+<p>编辑 <code>src/index.css</code></p>
+<pre><code class="language-css">#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: 100vh; 
+}
+</code></pre>
+<p>高度一致了</p>
+<p><img src="/media/15490412159020/15337071633021.jpg" alt=""></p>
+<h3 id="路由">路由</h3>
+<p><a href="https://medium.com/@yannickdot/hi-jared-2650fbb2eda1">https://medium.com/@yannickdot/hi-jared-2650fbb2eda1</a></p>
+<p>建立两个路由, 注意扩展名 web.js(for Create React App)  native.js(for Create React Native App)</p>
+<p><code>Routing.native.js</code></p>
+<pre><code class="language-javascript">export {
+  NativeRouter as Router, // Rename 
+  Switch,
+  Route,
+  Link
+} from 'react-router-native'
+</code></pre>
+<p>和<code>Routing.web.js</code></p>
+<pre><code class="language-javascript">export {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+</code></pre>
+<p>然后就可以在应用的入口文件里导入了，注意，<code>./Routing</code> 没有后缀的</p>
+<p>React:</p>
+<pre><code class="language-javascript">import { Router, Switch, Route, Link } from './Routing'
+
+const App = () =&gt; (
+  &lt;Router&gt;
+    &lt;Switch&gt;
+      &lt;Route exact path=&quot;/&quot; component={HomeComponent} /&gt;
+      &lt;Route path=&quot;/one&quot; component={OtherComponent} /&gt;
+    &lt;/Switch&gt;
+  &lt;/Router&gt;
+)
+</code></pre>
+<p>React Native</p>
+<pre><code class="language-javascript">import React from 'react'
+import { View } from 'react-native'
+import { Router, Switch, Route, Link } from './Routing'
+const HomeComponent = () =&gt; (
+  &lt;View&gt;
+    &lt;Text&gt;Home page&lt;/Text&gt;
+    &lt;Link to=&quot;/other&quot;&gt;
+      &lt;Text&gt;Click to go to another page&lt;/Text&gt;
+    &lt;/Link&gt;
+  &lt;/View&gt;
+)
+const OtherComponent = () =&gt; (
+  &lt;View&gt;
+    &lt;Text&gt;Another page!&lt;/Text&gt;
+    &lt;Link to=&quot;/&quot;&gt;
+      &lt;Text&gt;Take me back to the home page&lt;/Text&gt;
+    &lt;/Link&gt;
+  &lt;/View&gt;
+)
+const App = () =&gt; (
+  &lt;Router&gt;
+    &lt;Switch&gt;
+      &lt;Route exact path=&quot;/&quot; component={HomeComponent} /&gt;
+      &lt;Route path=&quot;/one&quot; component={OtherComponent} /&gt;
+    &lt;/Switch&gt;
+  &lt;/Router&gt;
+)
+</code></pre>
+<h3 id="共享的字体">共享的字体</h3>
+<p><a href="https://medium.com/@yannickdot/hi-marty-cortez-8a235486dca">https://medium.com/@yannickdot/hi-marty-cortez-8a235486dca</a></p>
+<pre><code class="language-css">@font-face {
+  font-family: 'MYFONT'; // the id used in Expo font loader
+  src: url(./assets/fonts/my-custom-font.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+</code></pre>
+<h1 id="dva-与-react-navigation">dva 与 react-navigation</h1>
+<p>参考</p>
+<p><a href="https://github.com/pheromone/rn_dva">https://github.com/pheromone/rn_dva</a></p>
+<h2 id="安装依赖">安装依赖</h2>
+<p>为什么这么多 mobx&hellip;.  dva 不是和 react-redux 关联么。。。</p>
+<pre><code class="language-shell">npm install mobx dva-core --save #引入dva
+npm install mobx react-navigation-redux-helpers --save #引入react-navigation-redux-helpers
+npm install mobx react-redux --save #引入react-redux
+npm install babel-plugin-transform-decorators-legacy babel-preset-react-native-stage-0 --save-dev #能够使用@标签
+npm install react-navigation --save #引入导航库
+</code></pre>
+<h2 id="babelrc-配置">.babelrc 配置</h2>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [&quot;react-native&quot;],
+  &quot;plugins&quot;: [&quot;transform-decorators-legacy&quot;]
+}
+</code></pre>
+<h2 id="modelsappjs">models/app.js</h2>
+<pre><code class="language-js">import { createAction, NavigationActions } from '../Utils'
+
+//其他的 reducers  effects  subscription 等都一样。
+export default {
+    namespace: 'app',
+    state: {
+        num: 0,
+        mineType: '红',
+    },
+    reducers: {
+        updateState(state, { payload }) {
+            return { ...state, ...payload }
+        },
+    },
+    effects: {
+        *add({ payload }, { call, put }) {
+            yield put(createAction('updateState')({ num:payload ,mineType:'红'}))
+        },
+        *sub({ payload }, { call, put }) {
+            yield put(createAction('updateState')({ num:payload ,mineType:'蓝' }))
+        }
+    },
+    subscriptions: {
+
+    },
+}
+</code></pre>
+<h2 id="utilsindexjs-包含-createaction-navigationactions-stackactions-等">Utils/index.js （包含 createAction, NavigationActions, StackActions 等）</h2>
+<pre><code class="language-js">export { NavigationActions, StackActions } from 'react-navigation'
+
+export const createAction = type =&gt; payload =&gt; ({ type, payload })
+</code></pre>
+<h2 id="utilsdvajs创建和-provider-关联的根组件以及返回-dva-实例">Utils/dva.js：创建和 Provider 关联的根组件，以及返回 dva 实例</h2>
+<p>和 web 的一样，只是写法稍微有点变化而已。</p>
+<pre><code class="language-js">import React from 'react'
+import { create } from 'dva-core'
+import { Provider, connect } from 'react-redux'
+
+export { connect }
+
+export default function(options) {
+    const app = create(options)
+    // HMR workaround
+    if (!global.registered) options.models.forEach(model =&gt; app.model(model))
+    global.registered = true
+
+    app.start()
+    // eslint-disable-next-line no-underscore-dangle
+    const store = app._store
+
+    app.start = container =&gt; () =&gt; &lt;Provider store={store}&gt;{container}&lt;/Provider&gt;
+    app.getStore = () =&gt; store
+
+    return app
+}
+</code></pre>
+<h2 id="路由-1">路由</h2>
+<p>在 <code>/Router.js</code> 文件中</p>
+<pre><code class="language-js">import React, { PureComponent } from 'react'
+import { BackHandler, Animated, Easing, Image } from 'react-native'
+import {
+    createStackNavigator,
+    createBottomTabNavigator,
+    NavigationActions,
+} from 'react-navigation'
+import {
+    reduxifyNavigator,
+    createReactNavigationReduxMiddleware,
+    createNavigationReducer,
+} from 'react-navigation-redux-helpers'
+import { connect } from 'react-redux'
+
+import One from './src/One/One'
+import Two from './src/Two/Two'
+
+const HomeNavigator = createBottomTabNavigator({
+    One: {
+        screen: One
+    },
+    Two: {
+        screen: Two
+    },
+})
+
+HomeNavigator.navigationOptions = ({ navigation }) =&gt; {
+    const { routeName } = navigation.state.routes[navigation.state.index]
+
+    return {
+        headerTitle: routeName,
+    }
+}
+
+const MainNavigator = createStackNavigator(
+    {
+        HomeNavigator: { screen: HomeNavigator },
+    }
+)
+
+const AppNavigator = createStackNavigator(
+    {
+        Main: { screen: MainNavigator },
+    },
+    {
+        headerMode: 'none',
+        mode: 'modal',
+        navigationOptions: {
+            gesturesEnabled: false,
+        },
+    }
+)
+
+export const routerReducer = createNavigationReducer(AppNavigator)
+
+export const routerMiddleware = createReactNavigationReduxMiddleware(
+    'root',
+    state =&gt; state.router
+)
+
+const App = reduxifyNavigator(AppNavigator, 'root')
+
+@connect(({ app, router }) =&gt; ({ app, router }))
+class Router extends PureComponent {
+
+    render() {
+        const { app, dispatch, router } = this.props
+        return &lt;App dispatch={dispatch} state={router} /&gt;
+    }
+}
+
+export default Router
+</code></pre>
+<h2 id="可以在-appjs-里初始化-dva-app-并绑定路由-routerjs-了">可以在 App.js 里初始化 dva app, 并绑定路由 Router.js 了</h2>
+<p>注意这里和 Router.js 的代码关系比较紧密，仔细阅读。</p>
+<p>还有 <code>app.start()</code>传入的参数是 <code>&lt;Router /&gt;</code> 组件</p>
+<pre><code class="language-js">import React from 'react'
+import { AppRegistry } from 'react-native'
+
+import dva from './src/Utils/dva'
+import Router, { routerMiddleware, routerReducer } from './router'
+import appModel from './src/models/app'
+
+const app = dva({
+    initialState: {},
+    models: [appModel],
+    extraReducers: { router: routerReducer },
+    onAction: [routerMiddleware],
+    onError(e) {
+        console.log('onError', e)
+    },
+})
+
+const App = app.start(&lt;Router /&gt;)
+
+AppRegistry.registerComponent('rn_dva', () =&gt; App)
+</code></pre>
+<h2 id="ui-组件">UI 组件</h2>
+<p>例如 /One/index.js</p>
+<pre><code class="language-js">import React, { Component } from 'react';
+import {
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+    Image
+} from 'react-native';
+import { connect } from 'react-redux'
+import { createAction, NavigationActions } from '../Utils'
+import  {Images} from &quot;../Image&quot;;
+
+const instructions = Platform.select({
+    ios: 'Press Cmd+R to reload,\n' +
+    'Cmd+D or shake for dev menu',
+    android: 'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
+});
+
+type Props = {};
+@connect(({ app }) =&gt; ({ ...app }))
+export default class One extends Component&lt;Props&gt; {
+
+    static navigationOptions = {
+        tabBarLabel: '苹果',
+        tabBarIcon: ({ focused, tintColor }) =&gt; (
+            &lt;Image
+                source={focused ?  Images.Tab.OneActive : Images.Tab.One}
+                style={{ width: 25, height: 25 }}
+            /&gt;
+        ),
+    }
+
+    render() {
+        return (
+            &lt;View style={styles.container}&gt;
+                    &lt;Text onPress={()=&gt;this.add()}&gt;
+                        + 红
+                    &lt;/Text&gt;
+                    &lt;Text&gt;
+                        One {this.props.num}
+                    &lt;/Text&gt;
+                    &lt;Text onPress={()=&gt;this.sub()}&gt;
+                        - 蓝
+                    &lt;/Text&gt;
+            &lt;/View&gt;
+        );
+    }
+
+    add =() =&gt;{
+        this.props.dispatch(createAction('app/add')(this.props.num + 1))
+    }
+
+    sub =() =&gt;{
+        this.props.dispatch(createAction('app/sub')(this.props.num - 1))
+    }
+
+    componentDidMount() {
+        console.log(this.props)
+    }
+
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    },
+    instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+    },
+});
+</code></pre>
+<h2 id="忽略一些错误报告">忽略一些错误报告</h2>
+<p>在入口文件 index.js 中</p>
+<pre><code class="language-js">import './App';
+
+console.ignoredYellowBox = [
+    'Warning: componentWillMount is deprecated',
+    'Warning: componentWillReceiveProps is deprecated',
+    'Warning: componentWillUpdate is deprecated',
+    'Warning: isMounted(...) is deprecated',
+]
+</code></pre>
+<h2 id="其他">其他</h2>
+<p><strong>redux 和 react-navigation</strong></p>
+<p><a href="https://pheromone.github.io/2018/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%A6%E4%B9%A0/redux%E5%92%8Creact-navigation%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/">https://pheromone.github.io/2018/03/18/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%A6%E4%B9%A0/redux%E5%92%8Creact-navigation%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8/</a></p>
+<p><strong>mobx 和 react-navigitaion</strong></p>
+<p><a href="https://pheromone.github.io/2018/05/27/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%A6%E4%B9%A0/Mobx-react-navigation%E7%9A%84%E4%BD%BF%E7%94%A8/">https://pheromone.github.io/2018/05/27/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%A6%E4%B9%A0/Mobx-react-navigation%E7%9A%84%E4%BD%BF%E7%94%A8/</a></p>
+<p><strong>react-dva-starter 脚手架</strong></p>
+<p><a href="https://github.com/nihgwu/react-native-dva-starter">https://github.com/nihgwu/react-native-dva-starter</a></p>
+<h1 id="教程与参考">教程与参考</h1>
+<p><a href="https://markuraine.com/creating-mobile-app-wp-api-react-native/">Creating a mobile app with WordPress REST API and React Native</a></p>
+<p><a href="https://www.v2ex.com/t/418865">https://www.v2ex.com/t/418865</a></p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/react-native%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/swift%E7%B1%BB%E5%9E%8B%E5%B7%A5%E7%A8%8B%E4%BD%BF%E7%94%A8%E6%9C%80%E6%96%B0%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BEsdk.md/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/react-native-%E6%94%AF%E6%8C%81/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

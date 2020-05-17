@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="关于 Hook React 16.7.0-alpha 版本推出的新特性 React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。 状态共享可能描述的不恰当" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="关于 Hook React 16.7.0-alpha 版本推出的新特性 React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。 状态共享可能描述的不恰当" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/react-hooks/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="关于 Hook React 16.7.0-alpha 版本推出的新特性 React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。 状态共享可能描述的不恰当">
+
+<meta itemprop="wordCount" content="3641">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="关于 Hook React 16.7.0-alpha 版本推出的新特性 React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。 状态共享可能描述的不恰当"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-hooks/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-hooks/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3641字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="关于-hook">关于 Hook</h1>
+<p>React 16.7.0-alpha 版本推出的新特性</p>
+<p>React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。</p>
+<p>状态共享可能描述的不恰当，称为状态逻辑复用会更恰当，因为只共享数据处理逻辑，不会共享数据本身。</p>
+<p>Hooks are a new addition in React 16.8. They let you <strong>use state and other React features without writing a class</strong>.</p>
+<p>A Hook is a special <strong>function</strong> that lets you “hook into” React features.  (如 setState,is a Hook that lets you add React state to function components.)</p>
+<p>为何要用 hook?</p>
+<p>因为之前写了很多 function component,(也成为 stateless component)   如果需要添加 state, 只能把他们转换成 class。
+现在有了 Hook, 就不需要了~ 可直接在 function component 内部使用 Hook 管理 state</p>
+<h1 id="之前状态管理的一些方案-redux-mobx-等">之前状态管理的一些方案 redux mobx 等</h1>
+<p>就是要解决相邻组件通信问题.</p>
+<p>如果用“状态提升”</p>
+<ol>
+<li>子组件的更新，会触发负责下发状态的父组件的整体更新(Context 也有这个问题),产生很多 PureComponent  shouldComponentUpdate 等</li>
+<li>逻辑较多</li>
+</ol>
+<p>所以&quot;状态管理&quot;会更好。</p>
+<p>使用mobx而不再使用setState原因有如下几个（个人理解）</p>
+<p>1 setSate 不是同步操作，当我们通过setstate修改state数据后，后面的逻辑立即取值是旧值，state的新值在下一次render时获取到。
+2 如果将所有的数据都保存在state中，那么例如定时器，异步请求返回等于UI渲染实际无关的数据也同样会导致组件执行不必要的重新渲染。
+3 setState 不适合管理全局的状态。</p>
+<p>为什么要用状态管理？
+把「与服务器交互」和「操作数据」的逻辑，从组件中提取出去，组件只用接收处理好的数据即可。这就相当于分离了个 Service 层出去，很好的开发模式。</p>
+<p>什么样的状态管理</p>
+<p>模块：推荐按照路由入口还划分。
+每个状态管理的模块 - model. 与路由入口组件绑定起来，每个入口组件及其子组件，整体对应一个 model。</p>
+<pre><code>---A
+    index.jsx
+    model.js
+---B
+    index.jsx
+    model.js
+---C
+    index.jsx
+    model.js
+</code></pre>
+<p>Redux  非常难用  redux-thunk  redux-saga 什么的
+Mobx   监听的方式实现
+dva    Redux 的封装</p>
+<h2 id="mobx-对比-hooks">mobx 对比 Hooks</h2>
+<h2 id="mobx-react-lite">mobx-react-lite</h2>
+<h1 id="state-hook">state hook</h1>
+<p>下面是一个使用了 useState 的组件</p>
+<pre><code class="language-html">// import {useState}
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call &quot;count&quot;
+  // 用到了 js 的 数组解构？
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+        &lt;!-- 直接用 {count}  相当于class 里的 {this.state.count} --&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+
+      &lt;!-- 相当于class 里的 {() =&gt; this.setState({ count: this.state.count + 1 })} --&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+</code></pre>
+<p>对比 class 类型的组件，相当于代码</p>
+<pre><code class="language-html">class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;p&gt;You clicked {this.state.count} times&lt;/p&gt;
+        &lt;button onClick={() =&gt; this.setState({ count: this.state.count + 1 })}&gt;
+          Click me
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>hooks 只能在 function component 内使用， 无法用在 class 内</p>
+<pre><code class="language-js">const Demo = (props)=&gt; {
+    // 可以
+    const [count, setCount] = setState(0);
+    return &lt;div /&gt;;
+};
+
+
+function Demo(props) {
+    //可以
+    const [count, setCount] = setState(0);
+    return &lt;div /&gt;
+}
+
+class Demo extends React.Component {
+    // 不可以,因为是 class
+    const [count, setCount] = setState(0);
+
+    render() {
+        return &lt;div /&gt;
+    }
+}
+</code></pre>
+<h1 id="effect-hook">effect hook</h1>
+<p>正如 state hook 类似 class 类型组件的 this.state 和 this.setState().</p>
+<p>similar to lifecycle methods in classes, useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined.</p>
+<p>当 Dom 变化等“副作用”发生后，会触发后面这些动作（document.title = &hellip;）</p>
+<p>放在 function component 中可以直接访问 state 或者 props</p>
+<pre><code class="language-html">import React, { useState, useEffect } from 'react';
+
+import axios from 'axios';
+function App() {
+  const [data, setData] = useState({ hits: [] });
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() =&gt; {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+
+  return (
+    &lt;ul&gt;
+      {data.hits.map(item =&gt; (
+        &lt;li key={item.objectID}&gt;
+          &lt;a href={item.url}&gt;{item.title}&lt;/a&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+export default App;
+</code></pre>
+<p>类似 class 的</p>
+<pre><code class="language-js">.
+.
+.
+constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  componentDidMount() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+  componentDidUpdate() {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+.
+.
+.;
+</code></pre>
+<h2 id="with-clearup">with clearup</h2>
+<p>大部分时候不需要清理，但是部分情况需要。 例如订阅外部数据源，使用 effect 可能会引起内存泄露</p>
+<p>在一个 class 的组件中 componentDidMount 中订阅，  componentWillUnmount 中清理掉</p>
+<pre><code class="language-js">class FriendStatus extends React.Component {
+  constructor(props) {
+    super(props);
+
+    // 好友是否上线
+    this.state = { isOnline: null };
+
+    // 处理变化
+    this.handleStatusChange = this.handleStatusChange.bind(this);
+  }
+
+
+//组件加载完，调用ChatAPI.subscribeToFriendStatus， 应该会把持续请求得到的好友在线状态数据，不停地返回给 this.handleStatusChange 来设置 state
+  componentDidMount() {
+    // 这里调用一次 document.title
+    document.title = `You clicked ${this.state.count} times`;
+
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+
+  componentDidUpdate() {
+    // 这里也调用了， 因为是 update
+    document.title = `You clicked ${this.state.count} times`;
+  }
+
+// 组件 umount 的时候，把这个持续的订阅给取消掉。
+  componentWillUnmount() {
+    ChatAPI.unsubscribeFromFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+  }
+
+//从订阅拿到的数据，(好友状态)，放到这个函数来处理  
+  handleStatusChange(status) {
+    this.setState({
+      isOnline: status.isOnline
+    });
+  }
+
+  render() {
+    if (this.state.isOnline === null) {
+      return 'Loading...';
+    }
+    return this.state.isOnline ? 'Online' : 'Offline';
+  }
+}
+</code></pre>
+<p>来看看 effect hook 的版本，简单多了 (出现了两次 useEffect())</p>
+<pre><code class="language-js">import React, { useState, useEffect } from 'react';
+
+function FriendStatus(props) {
+
+    // 因为 count 这个 state 不需要clear up, 所以没有 return . (也就是说 document.title  = xxx 代码不出现在 componentWillUnmount 生命周期)
+    const [count, setCount] = useState(0);
+  useEffect(() =&gt; {
+    document.title = `You clicked ${count} times`;
+  });
+
+
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() =&gt; {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    
+    // Specify how to clean up after this effect: 就是在 umount 里的代码
+    return function cleanup() {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return 'Loading...';
+  }
+  return isOnline ? 'Online' : 'Offline';
+}
+</code></pre>
+<p>由于 effect 每次render 都会运行， 所以 React会在下次运行 effect 之前清除之前渲染的 effect。</p>
+<h2 id="详解前面提到的-每次清理-和-内存泄露问题-以及为什么每次-update-都会运行-effect">详解前面提到的 每次清理 和 内存泄露问题, 以及为什么每次 update 都会运行 effect</h2>
+<p>首先上面的例子里 componentDidMount（运行一次）  componentWillUnmount（运行一次） 中分别订阅/取消订阅, 传入参数 props.friend.id</p>
+<p>代码略</p>
+<p>如果  props.friend.id 发生变化, 会发生什么事情？</p>
+<p>例如一开始是  100， 然后变成了 200</p>
+<ul>
+<li>首先组件会一直显示 100 这个用户的数据</li>
+<li>然后 componentWillUnmount 会把 200 传进去取消订阅，导致之前的 100 这个用户的数据一直无法注销，产生内存泄露</li>
+</ul>
+<p>为了解决这个问题，在 class 类型 component 的  componentDidUpdate 里，要手动先取消订阅旧的 friend.id 然后重新订阅新的 friend.id</p>
+<p><strong>这就是我们经常会在 React 应用中，因为忘记 componentDidUpdate 更新数据而产生的常见 bug</strong></p>
+<pre><code class="language-js">componentDidUpdate(prevProps) {
+    // Unsubscribe from the previous friend.id
+    ChatAPI.unsubscribeFromFriendStatus(
+      prevProps.friend.id,
+      this.handleStatusChange
+    );
+    // Subscribe to the next friend.id
+    ChatAPI.subscribeToFriendStatus(
+      this.props.friend.id,
+      this.handleStatusChange
+    );
+}
+</code></pre>
+<p>而使用 effect hook,  这个操作是自动的。useEffect 会在应用 next effect 之前，自动清理之前的 effect,</p>
+<pre><code class="language-js">// Mount with { friend: { id: 100 } } props
+ChatAPI.subscribeToFriendStatus(100, handleStatusChange);     // Run first effect
+
+// Update with { friend: { id: 200 } } props
+ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(200, handleStatusChange);     // Run next effect
+
+// Update with { friend: { id: 300 } } props
+ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange); // Clean up previous effect
+ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // Run next effect
+
+// Unmount
+ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last effect
+</code></pre>
+<p>在默认情况下确保了一致性，并防止了由于缺少更新逻辑而在类组件中常见的bug</p>
+<h2 id="因为-effect-会自动-clear-产生了性能问题如何优化">因为 effect 会自动 clear, 产生了性能问题，如何优化？</h2>
+<p>例如，上面的计数器的例子， 如果每次得到的新的 state.count 的值都和之前一致，就没有必要重新 render 组件！</p>
+<pre><code class="language-js">componentDidUpdate(prevProps, prevState) {
+  if (prevState.count !== this.state.count) {
+    document.title = `You clicked ${this.state.count} times`;
+  }
+}
+</code></pre>
+<p>effect hook 版本就是给 useEffect 传入第二个参数，表示只有当 count 被 change 的时候才会 re-run 这个 effect.</p>
+<pre><code class="language-js">useEffect(() =&gt; {
+  document.title = `You clicked ${count} times`;
+}, [count]); // Only re-run the effect if count changes
+</code></pre>
+<p>当然，对于需要 clear up 的场景同样有效</p>
+<pre><code class="language-js">useEffect(() =&gt; {
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
+  ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+  return () =&gt; {
+    ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+  };
+}, [props.friend.id]); // Only re-subscribe if props.friend.id changes
+</code></pre>
+<h1 id="rules">rules</h1>
+<p>仅仅在 top level 调用 hook, Don’t call Hooks inside loops, conditions, or nested functions.</p>
+<p>只在 function component/custom hooks 上调用 hooks（这个前面提到了）</p>
+<p>举个例子，解释为何不能在 if  loop 等里面使用 hook</p>
+<pre><code class="language-js">function Form() {
+  // 1. Use the name state variable
+  const [name, setName] = useState('Mary');
+
+  // 2. Use an effect for persisting the form
+  useEffect(function persistForm() {
+    localStorage.setItem('formData', name);
+  });
+
+  // 3. Use the surname state variable
+  const [surname, setSurname] = useState('Poppins');
+
+  // 4. Use an effect for updating the title
+  useEffect(function updateTitle() {
+    document.title = name + ' ' + surname;
+  });
+
+  // ...
+}
+</code></pre>
+<p>发现了两个 useState() ，表示调用两次 hook , 那 React 怎么知道哪个 state 对应哪个 useState() ?<br>
+答案就是根据 调用的顺序</p>
+<pre><code class="language-jsx">// ------------
+// First render
+// ------------
+useState('Mary')           // 1. Initialize the **name** state variable with 'Mary'
+useEffect(persistForm)     // 2. Add an effect for persisting the form
+useState('Poppins')        // 3. Initialize the **surname** state variable with 'Poppins'
+useEffect(updateTitle)     // 4. Add an effect for updating the title
+
+// -------------
+// Second render
+// -------------
+useState('Mary')           // 1. **Read** the name state variable (argument is ignored)
+useEffect(persistForm)     // 2. Replace the effect for persisting the form (每次都会 replace, 因为没有传入第二个参数)
+useState('Poppins')        // 3. Read the surname state variable (argument is ignored)
+useEffect(updateTitle)     // 4. Replace the effect for updating the title
+
+// ...
+</code></pre>
+<p>只要钩子调用的顺序在多次渲染之间是相同的，React就可以将一些本地状态与它们每个关联起来。</p>
+<p>但是，如果我们将一个钩子调用(例如，persistForm效果)放在一个条件中，会发生什么呢?</p>
+<pre><code class="language-js">// 🔴 We're breaking the first rule by using a Hook in a condition
+  if (name !== '') {
+    useEffect(function persistForm() {
+      localStorage.setItem('formData', name);
+    });
+  }
+</code></pre>
+<p>当第一次 render 的时候， <code>useEffect(persistForm)</code> 这个 hook 会被运行。(name !=== '&rsquo;  等于 true)</p>
+<p>但是第二次 render 的时候，如果用户清空了 form !  导致 name 变成空值。  这次渲染就会跳过这个 hook, 顺序就变了</p>
+<pre><code class="language-html">useState('Mary')           // 1. Read the name state variable (argument is ignored)
+// useEffect(persistForm)  // 🔴 This Hook was skipped!
+useState('Poppins')        // 🔴 2 (but was 3). Fail to read the surname state variable
+useEffect(updateTitle)     // 🔴 3 (but was 4). Fail to replace the effect
+</code></pre>
+<p>如果一定要有条件地运行 effect, 必须放到 hook 里面.  保证定义和运行hook 的顺序一致</p>
+<pre><code class="language-js">useEffect(function persistForm() {
+    // 👍 We're not breaking the first rule anymore
+    if (name !== '') {
+      localStorage.setItem('formData', name);
+    }
+  });
+</code></pre>
+<h2 id="eslint-plugin">eslint plugin</h2>
+<pre><code class="language-shell">npm install eslint-plugin-react-hooks --save-dev
+
+</code></pre>
+<pre><code class="language-js">// Your ESLint configuration
+{
+  &quot;plugins&quot;: [
+    // ...
+    &quot;react-hooks&quot;
+  ],
+  &quot;rules&quot;: {
+    // ...
+    &quot;react-hooks/rules-of-hooks&quot;: &quot;error&quot;, // Checks rules of Hooks
+    &quot;react-hooks/exhaustive-deps&quot;: &quot;warn&quot; // Checks effect dependencies
+  }
+}
+</code></pre>
+<h1 id="结合-axios">结合 axios</h1>
+<p><a href="https://www.robinwieruch.de/react-hooks-fetch-data">https://www.robinwieruch.de/react-hooks-fetch-data</a></p>
+<p>未看完</p>
+<p>先定义 effect hook</p>
+<pre><code class="language-js">useEffect(()=&gt;{
+
+    // 不可以直接 useEffect(async () =&gt; { }, 因为会返回一个 promise 对象 而 effect hook 应该什么也不返回，或者返回一个 clear up 函数
+
+    // 而应该定义一个异步函数
+    const fetchData = async () =&gt; {
+      const result = await axios(
+        'https://hn.algolia.com/api/v1/search?query=redux',
+      );
+      setData(result.data);
+    };
+
+    // 然后调用
+    fetchData();
+}, []);
+</code></pre>
+<p>如何触发/调用</p>
+<h1 id="hooks-全局状态管理">hooks 全局状态管理</h1>
+<p>使用 use-global-hook 包</p>
+<p><a href="https://juejin.im/post/5d783fca6fb9a06af50ff577">https://juejin.im/post/5d783fca6fb9a06af50ff577</a></p>
+<h2 id="最小案例">最小案例</h2>
+<pre><code class="language-js">import React from 'react';
+
+//1 导入
+import globalHook from 'use-global-hook';
+
+//2 初始化 state
+const initialState = {
+  counter: 0,
+};
+
+// 3 actions. 注意 store.state 就是“全局”的 state
+const actions = {
+  // 方法传入 store 和 真正的参数
+  addToCounter: (store, amount) =&gt; {
+    const newCounterValue = store.state.counter + amount;
+    // 修改后重新保存回来
+    store.setState({ counter: newCounterValue });
+  },
+};
+
+// 4 定义 useGlobal，调用 globalHook, 传入 initialState 和 actions
+const useGlobal = globalHook(React, initialState, actions);
+
+const App = () =&gt; {
+
+  // 调用 useGlobal() 得到 globalState 和 globalActions
+  const [globalState, globalActions] = useGlobal();
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;
+        counter:
+        // globalState 读取 state
+        {globalState.counter}
+      &lt;/p&gt;
+
+      // globalActions 调用 action
+      &lt;button type=&quot;button&quot; onClick={() =&gt; globalActions.addToCounter(1)}&gt;
+        +1 to global
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default App;
+</code></pre>
+<h2 id="使用全局状态之前映射它的一个子集只有更新了子集组件才会重新呈现">使用全局状态之前映射它的一个子集。只有更新了子集，组件才会重新呈现。</h2>
+<p>在 components/CounterA.js 中，只读取/设置全局 state 的一部分。  点 button ，给 A +1
+复制1000个 CounterB 后，任意一个 B 上点按钮， 全部 B 都 +1（他们都用的全局state里的 counterB ）</p>
+<p>index.js</p>
+<pre><code class="language-jsx">import React, { useState } from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+
+import &quot;./styles.css&quot;;
+import { renderTime } from &quot;./utils&quot;;
+import CounterA from &quot;./components/CounterA&quot;;
+import CounterB from &quot;./components/CounterB&quot;;
+
+function App() {
+
+  const [children, setChilds] = useState([]);
+
+  const addCounterA = () =&gt; {
+    const counter = &lt;CounterA /&gt;;
+    const newChildren = [...children, counter];
+    setChilds(newChildren);
+  };
+
+  const addCounterB = () =&gt; {
+    const counter = &lt;CounterB /&gt;;
+    const newChildren = [...children, counter];
+    setChilds(newChildren);
+  };
+
+  const addManyCounterB = count =&gt; {
+    const newChildren = [...children];
+    for (let index = 0; index &lt; count; index++) {
+      newChildren.push(&lt;CounterB /&gt;);
+    }
+    setChilds(newChildren);
+  };
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;h1&gt;I am the parent component&lt;/h1&gt;
+      &lt;h3&gt;{renderTime()}&lt;/h3&gt;
+      &lt;button onClick={addCounterA}&gt;Add CounterA component&lt;/button&gt;
+      &lt;button onClick={addCounterB}&gt;Add CounterB component&lt;/button&gt;
+      &lt;button onClick={() =&gt; addManyCounterB(10000)}&gt;
+        Add 10 000 CounterB components
+      &lt;/button&gt;
+      &lt;div className=&quot;container&quot;&gt;{children}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+const rootElement = document.getElementById(&quot;root&quot;);
+ReactDOM.render(&lt;App /&gt;, rootElement);
+</code></pre>
+<p>拆分 store/actions, 在</p>
+<p>store/index.js  内容</p>
+<pre><code class="language-js">import React from 'react';
+import globalHook from 'use-global-hook';
+//来自 actions
+import * as actions from &quot;../actions&quot;;
+
+
+// global initial state &amp; acitons
+const initialState = {
+  counter: 0,
+  tree: []
+};
+
+
+
+const useGlobal = globalHook(React, initialState, actions);
+
+
+export default useGlobal;
+</code></pre>
+<p>actions/index.js</p>
+<pre><code class="language-js">export const addToCounterA = (store, amount) =&gt; {
+  const counterA = store.state.counterA + amount;
+  store.setState({ counterA });
+};
+
+export const addToCounterB = (store, amount) =&gt; {
+  const counterB = store.state.counterB + amount;
+  store.setState({ counterB });
+};
+
+
+//const actions = {
+//  addToCounter: (store, amount) =&gt; {
+//    const newCounterValue = store.state.counter + amount;
+//    store.setState({ counter: newCounterValue });
+//  },
+//  initTreeData: (store, data) =&gt; {
+//    store.setState({ tree: data });
+//  }
+//};
+</code></pre>
+<p>components/CounterA.js</p>
+<pre><code class="language-jsx">import React from &quot;react&quot;;
+
+import useGlobal from &quot;../store&quot;;
+import { renderTime } from &quot;../utils&quot;;
+
+const CounterA = () =&gt; {
+  //useGlobal() 只读取需要的 state 而不是全部
+  const [counterA, addToCounterA] = useGlobal(
+    state =&gt; state.counterA,
+    actions =&gt; actions.addToCounterA
+  );
+  return (
+    &lt;div className=&quot;Counter&quot;&gt;
+      &lt;h3&gt;Counter A&lt;/h3&gt;
+      &lt;p&gt;
+        Value:
+        {counterA}
+      &lt;/p&gt;
+      &lt;button type=&quot;button&quot; onClick={() =&gt; addToCounterA(1)}&gt;
+        +1 to global
+      &lt;/button&gt;
+      &lt;p&gt;{renderTime()}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default CounterA;
+</code></pre>
+<h2 id="使用-hoc-连接到-class">使用 HOC 连接到 class</h2>
+<pre><code class="language-javascript">import React, { useState } from &quot;react&quot;;
+import ReactDOM from &quot;react-dom&quot;;
+
+import &quot;./styles.css&quot;;
+import { renderTime } from &quot;./utils&quot;;
+import Counter from &quot;./components/Counter&quot;;
+
+function App() {
+  const [children, setChilds] = useState([]);
+  const addCounter = () =&gt; {
+    const counter = &lt;Counter /&gt;;
+    const newChildren = [...children, counter];
+    setChilds(newChildren);
+  };
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;h1&gt;I am the parent component&lt;/h1&gt;
+      &lt;h3&gt;{renderTime()}&lt;/h3&gt;
+      &lt;button onClick={addCounter}&gt;Add Counter component&lt;/button&gt;
+      &lt;div className=&quot;container&quot;&gt;{children}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+const rootElement = document.getElementById(&quot;root&quot;);
+ReactDOM.render(&lt;App /&gt;, rootElement);
+
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/react-hooks/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/react-hooks/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/react-router4/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/mobx/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

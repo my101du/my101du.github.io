@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: AngularJS permalink: angular tags: angular https://angular.io 准备知识 Javascript Node TypeScript 快速开始 安装环境与创建一个项目 npm install -g @angular/cli ng new my-app 默认文件结构 运行项目 cd my-app ng serve --open 打开 locahost:4200 (默认端口 4200) 编译项目，从源码文件" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: AngularJS permalink: angular tags: angular https://angular.io 准备知识 Javascript Node TypeScript 快速开始 安装环境与创建一个项目 npm install -g @angular/cli ng new my-app 默认文件结构 运行项目 cd my-app ng serve --open 打开 locahost:4200 (默认端口 4200) 编译项目，从源码文件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/angularjs/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: AngularJS permalink: angular tags: angular https://angular.io 准备知识 Javascript Node TypeScript 快速开始 安装环境与创建一个项目 npm install -g @angular/cli ng new my-app 默认文件结构 运行项目 cd my-app ng serve --open 打开 locahost:4200 (默认端口 4200) 编译项目，从源码文件">
+
+<meta itemprop="wordCount" content="2101">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: AngularJS permalink: angular tags: angular https://angular.io 准备知识 Javascript Node TypeScript 快速开始 安装环境与创建一个项目 npm install -g @angular/cli ng new my-app 默认文件结构 运行项目 cd my-app ng serve --open 打开 locahost:4200 (默认端口 4200) 编译项目，从源码文件"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/angularjs/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/angularjs/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2101字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: AngularJS
+permalink: angular
+tags:</p>
+<ul>
+<li>angular</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p><a href="https://angular.io">https://angular.io</a></p>
+<p>准备知识</p>
+<ul>
+<li>Javascript</li>
+<li>Node</li>
+<li>TypeScript</li>
+</ul>
+<h1 id="快速开始">快速开始</h1>
+<h2 id="安装环境与创建一个项目">安装环境与创建一个项目</h2>
+<pre><code class="language-shell">npm install -g @angular/cli
+ng new my-app
+</code></pre>
+<h2 id="默认文件结构">默认文件结构</h2>
+<p><img src="/media/15490412033504/15043242376534.jpg" alt=""></p>
+<h2 id="运行项目">运行项目</h2>
+<pre><code class="language-shell">cd my-app
+ng serve --open
+</code></pre>
+<p>打开 <code>locahost:4200</code> (默认端口 4200)
+<img src="/media/15490412033504/15043210663461.jpg" alt=""></p>
+<h2 id="编译项目从源码文件生成最终的应用程序文件">编译项目，从源码文件生成最终的应用程序文件</h2>
+<p>运行下面的命令</p>
+<pre><code class="language-shell">ng build
+</code></pre>
+<p>几秒后可以看到这个结果</p>
+<p><img src="/media/15490412033504/15043246238507.jpg" alt=""></p>
+<p>注意，现在文件夹中得到一个新的子目录<code>dist</code>，稍后解释。</p>
+<h1 id="编辑第一个组件">编辑第一个组件</h1>
+<p>Angular 自动创建了第一个组件，被称做 <code>root compnent</code> 的 name 为“app-root”的组件，代码在<code>./src/app/app.component.ts</code></p>
+<p>打开<code>./src/app/app.component.ts</code>， 修改里面的代码 <code>title</code>部分</p>
+<pre><code class="language-ts">export class AppComponent {
+  title = 'My test app';   //app
+}
+</code></pre>
+<p>然后打开关联的<code>app.component.html</code>文件，删掉多余的图片、链接，注意里面读取了<code>title</code>变量</p>
+<pre><code class="language-html">&lt;div style=&quot;text-align:center&quot;&gt;
+  &lt;h1&gt;
+    Welcome to {{title}}!
+  &lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
+<p>编辑<code>app.component.css</code>，修改样式</p>
+<pre><code class="language-css">h1 {
+    color: #C00;
+}
+</code></pre>
+<p>浏览器会自动刷新，html 中之前的 “app”已经被替换成了新的 <code>title</code>变量值，颜色也变啦。</p>
+<p><img src="/media/15490412033504/15043313032791.jpg" alt=""></p>
+<p>注意到 src 文件夹中还有一个 <code>app.component.spec.ts</code>文件（和组件定义文件同名，但中间多了个<code>spec</code>），是单元测试用的，继续学习吧。</p>
+<h1 id="应用运行中加载的文件">应用运行中加载的文件</h1>
+<h2 id="angular-项目运行时的配置文件">angular 项目运行时的配置文件</h2>
+<p>运行 <code>ng serve --open</code> 命令的时候发生了什么？ 为什么会显示这个页面呢？这个页面来自哪个地方？页面上的文本/数据在哪里修改？</p>
+<p>运行<code>ng build</code>时，“编译”什么？编译后又生成了什么？</p>
+<p>首先明白：<code>ng</code>是一个<strong>命令行工具</strong>（cli）。</p>
+<p>有过前端开发经验的人就知道，在一些使用了 <code>webpack</code> 的项目中，启动一个命令后，会读取一个<strong>配置文件</strong>，根据里面的参数来自动执行一些任务（例如文件压缩、合并、监听文件变动等）</p>
+<p>同样，<code>ng</code> 命令运行后，读取的配置文件是项目<strong>根目录</strong>下的<code>.angular-cli.json</code>。</p>
+<p>在编辑器里打开它，熟悉这个文件有助于理解 Angular 项目的文件加载流程。</p>
+<p>我们现在只关注一部分和“项目结构”有关的配置信息，请看注释</p>
+<pre><code class="language-JSON">// 与“项目”有关
+&quot;project&quot;: {
+    &quot;name&quot;: &quot;angular-app&quot;  // 项目名称
+  },
+  //项目下的 application 应用程序，目前只有一个
+  &quot;apps&quot;: [
+    {
+    	// 源文件目录，我们对项目进行开发就是在这里
+      &quot;root&quot;: &quot;src&quot;, 
+      // 源文件编译后的最终执行文件目录 （就是前面运行 ng build 生成的文件）
+      &quot;outDir&quot;: &quot;dist&quot;,  
+      //资源，包含多个文件/文件夹
+      &quot;assets&quot;: [
+        &quot;assets&quot;,
+        &quot;favicon.ico&quot;
+      ],
+      // 首页（一个 html 页面）
+      &quot;index&quot;: &quot;index.html&quot;,
+      // 默认加载的的主程序文件（一般在这里面 import module）
+      &quot;main&quot;: &quot;main.ts&quot;,
+      &quot;polyfills&quot;: &quot;polyfills.ts&quot;,
+      &quot;test&quot;: &quot;test.ts&quot;,
+      &quot;tsconfig&quot;: &quot;tsconfig.app.json&quot;,
+      &quot;testTsconfig&quot;: &quot;tsconfig.spec.json&quot;,
+      &quot;prefix&quot;: &quot;app&quot;,
+      &quot;styles&quot;: [
+        &quot;styles.css&quot;
+      ],
+      &quot;scripts&quot;: [],
+      &quot;environmentSource&quot;: &quot;environments/environment.ts&quot;,
+      &quot;environments&quot;: {
+        &quot;dev&quot;: &quot;environments/environment.ts&quot;,
+        &quot;prod&quot;: &quot;environments/environment.prod.ts&quot;
+      }
+    }
+  ],
+</code></pre>
+<h2 id="入口文件-indexhtml">入口文件 index.html</h2>
+<p>其中 <code>index.html</code> 是整个项目的“入口”。注意里面的<code>&lt;app-root&gt;&lt;/app-root&gt;</code>，稍后会讲到，这是一个“组件”(component)，也是项目的<code>**root** componet</code>。</p>
+<p>这个根组件中，随着功能的增加，会逐渐增加很多的子组件。</p>
+<p>运行 ng build 命令，cli 会自动把 js 和 css 文件添加到 html 代码中作为外部引入文件。</p>
+<pre><code class="language-php">&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+&lt;/body&gt;
+</code></pre>
+<h2 id="src-目录主要的源代码文件">src 目录，主要的源代码文件</h2>
+<p>查看自动生成的项目结构，其中的<code>src</code>目录就是我们项目的源码文件保存目录。</p>
+<p><img src="/media/15490412033504/15043225358969.jpg" alt=""></p>
+<h2 id="dist-源码编译后生成的最终应用程序文件">dist 源码编译后生成的最终应用程序文件</h2>
+<p>现在，源码文件夹<code>src</code>里面的很多 <code>.ts</code>文件（TypeScript）已经被编译成 浏览器/node 能识别的<code>.js</code>文件(Javascript)。</p>
+<p><img src="/media/15490412033504/15043248560656.jpg" alt=""></p>
+<p>来看看最终生成的 index.html 和 src 里的 index.html 有啥不同</p>
+<p>是的，这里面通过 <code>ng build</code> 命令后，引入了所有应用程序相关的 js 文件！！</p>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;inline.bundle.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;polyfills.bundle.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;styles.bundle.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;vendor.bundle.js&quot;&gt;&lt;/script&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;main.bundle.js&quot;&gt;&lt;/script&gt;&lt;/body&gt;
+</code></pre>
+<h2 id="默认加载的主程序文件-maints">默认加载的主程序文件 main.ts</h2>
+<p>The main entry point for your app
+Compiles the application with the JIT compiler and bootstraps the application&rsquo;s root module (AppModule) to run in the browser</p>
+<p>这一句，引入了<code>app/app.module.ts</code>文件</p>
+<pre><code class="language-js">import { AppModule } from './app/app.module';
+</code></pre>
+<p>以及当前的运行环境是开发还是生产环境。</p>
+<h2 id="接上appmodule">接上，AppModule</h2>
+<p>Defines AppModule, the root module that tells Angular how to assemble the application. Right now it declares only the AppComponent. Soon there will be more components to declare.</p>
+<p>这里面又引入<code>app.component.ts</code>文件</p>
+<pre><code class="language-js">import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+</code></pre>
+<h2 id="终于知道我们的-root-component-是如何与-indexhtml-里的-app-root-产生关联的了">终于，知道我们的 root component 是如何与 index.html 里的 <!-- raw HTML omitted --> 产生关联的了！</h2>
+<p><code>app.component.ts</code>文件中，定义了这个 root component，以及绑定的 html 和 css 文件，分别打开它们看看。</p>
+<p><code>组件</code>，后面学习</p>
+<pre><code class="language-js">@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app';
+}
+</code></pre>
+<h2 id="assets-目录">assets 目录</h2>
+<p>这里可以放图片等静态资源文件，在 build 的时候会批量复制到应用程序目录中去</p>
+<h2 id="environments-目录">environments 目录</h2>
+<p>通过定义不同的目标运行环境参数，可以让程序在运行中，通过判断运行环境来执行不同的操作。</p>
+<p>例如，在生产环境，可能需要加载 google 分析代码； 而在开发环境，需要显示一个“local”的提示</p>
+<h2 id="polyfilllts">polyfilll.ts</h2>
+<p>Different browsers have different levels of support of the web standards. Polyfills help normalize those differences. You should be pretty safe with core-js and zone.js, but be sure to check out the Browser Support guide for more information.</p>
+<h2 id="stylecss">style.css</h2>
+<p>Your global styles go here. Most of the time you&rsquo;ll want to have local styles in your components for easier maintenance, but styles that affect all of your app need to be in a central place.</p>
+<p>全局样式文件</p>
+<h2 id="testts">test.ts</h2>
+<p>This is the main entry point for your unit tests. It has some custom configuration that might be unfamiliar, but it&rsquo;s not something you&rsquo;ll need to edit.</p>
+<p>单元测试入口文件</p>
+<h2 id="tsconfigappspecjson">tsconfig.{app|spec}.json</h2>
+<p>TypeScript compiler configuration for the Angular app (tsconfig.app.json) and for the unit tests (tsconfig.spec.json).</p>
+<h2 id="其他文件">其他文件</h2>
+<p>e2e/
+Inside e2e/ live the end-to-end tests. They shouldn&rsquo;t be inside src/ because e2e tests are really a separate app that just so happens to test your main app. That&rsquo;s also why they have their own tsconfig.e2e.json.</p>
+<p>node_modules/
+Node.js creates this folder and puts all third party modules listed in package.json inside of it.</p>
+<p>.angular-cli.json
+Configuration for Angular CLI. In this file you can set several defaults and also configure what files are included when your project is built. Check out the official documentation if you want to know more.</p>
+<p>.editorconfig
+Simple configuration for your editor to make sure everyone that uses your project has the same basic configuration. Most editors support an .editorconfig file. See <a href="http://editorconfig.org">http://editorconfig.org</a> for more information.</p>
+<p>.gitignore
+Git configuration to make sure autogenerated files are not commited to source control.</p>
+<p>karma.conf.js
+Unit test configuration for the Karma test runner, used when running ng test.</p>
+<p>package.json
+npm configuration listing the third party packages your project uses. You can also add your own custom scripts here.</p>
+<p>protractor.conf.js
+End-to-end test configuration for Protractor, used when running ng e2e.</p>
+<p>README.md
+Basic documentation for your project, pre-filled with CLI command information. Make sure to enhance it with project documentation so that anyone checking out the repo can build your app!</p>
+<p>tsconfig.json
+TypeScript compiler configuration for your IDE to pick up and give you helpful tooling.</p>
+<p>tslint.json
+Linting configuration for TSLint together with Codelyzer, used when running ng lint. Linting helps keep your code style consistent.</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/angularjs/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/angularjs/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/angularjs%E6%95%99%E7%A8%8B-1.x-%E6%97%A7%E7%89%88%E6%9C%AC/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/puppeteer-phantomjs-chromelesschrome-headless%E6%A8%A1%E5%BC%8F/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

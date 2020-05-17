@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="URL 略，如伪静态，结构等 可以添加后缀 html 等 URI 路由 一般情况下，一个 URL 字符串和它对应的控制器中类和方法是一一对应的关系. 有时候，你可能想改变这种映射" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="URL 略，如伪静态，结构等 可以添加后缀 html 等 URI 路由 一般情况下，一个 URL 字符串和它对应的控制器中类和方法是一一对应的关系. 有时候，你可能想改变这种映射" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/codeigniter-%E4%B8%BB%E9%A2%98/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="URL 略，如伪静态，结构等 可以添加后缀 html 等 URI 路由 一般情况下，一个 URL 字符串和它对应的控制器中类和方法是一一对应的关系. 有时候，你可能想改变这种映射">
+
+<meta itemprop="wordCount" content="10347">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="URL 略，如伪静态，结构等 可以添加后缀 html 等 URI 路由 一般情况下，一个 URL 字符串和它对应的控制器中类和方法是一一对应的关系. 有时候，你可能想改变这种映射"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/codeigniter-%E4%B8%BB%E9%A2%98/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/codeigniter-%E4%B8%BB%E9%A2%98/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 10347字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="url">URL</h1>
+<p>略，如伪静态，结构等</p>
+<p>可以添加后缀 html 等</p>
+<h1 id="uri-路由">URI 路由</h1>
+<p>一般情况下，一个 URL 字符串和它对应的控制器中类和方法是一一对应的关系. 有时候，你可能想改变这种映射关系，调用一个不同的类和方法，而不是 URL 中对应的那样</p>
+<p>例如：并没有 控制器/方法名/参数  第二段变成了一个 product id.</p>
+<p>example.com/product/1/
+example.com/product/2/</p>
+<h2 id="设置你自己的路由规则">设置你自己的路由规则</h2>
+<p>修改 application/config/routes.php 文件</p>
+<h3 id="通配符">通配符</h3>
+<pre><code class="language-php">$route['product/:num'] = 'catalog/product_lookup';
+</code></pre>
+<p>上面的例子中，如果 URL 的第一段是字符串 &ldquo;product&rdquo; ，第二段是个数字，那么， 将调用 &ldquo;catalog&rdquo; 类的 &ldquo;product_lookup&rdquo; 方法</p>
+<p>可以使用纯字符串匹配，或者使用下面两种通配符:</p>
+<p><code>(:num)</code> 匹配只含有<strong>数字</strong>的一段。
+<code>(:any)</code> 匹配含有任意<strong>字符</strong>的一段</p>
+<ol>
+<li>通配符实际上是正则表达式的别名，<code>:any</code> 会被转换为 <code>[^/]+</code> ， <code>:num</code> 会被转换为 <code>[0-9]+</code></li>
+<li>前面的规则优先级高于后面的规则</li>
+<li>路由规则并不是过滤器！设置一个这样的路由：&lsquo;foo/bar/(:num)&rsquo; ， Foo 控制器的 bar 方法还是有可能会通过一个非数字的参数被调用 （如果这个路由也是合法的话）。</li>
+<li><strong>不要</strong> 在前面或后面加反斜线（'/'）。</li>
+</ol>
+<h3 id="例子">例子</h3>
+<pre><code class="language-php">//URL 的第一段是单词 &quot;journals&quot; 时，将重定向到 &quot;blogs&quot; 类。
+$route['journals'] = 'blogs';
+
+//URL 包含 blog/joe 的话，将重定向到 &quot;blogs&quot; 类和 &quot;users&quot; 方法。ID 参数设为 &quot;34&quot; 。
+$route['blog/joe'] = 'blogs/users/34';
+
+//URL 的第一段是 &quot;product&quot; ，第二段是任意字符时，将重定向到 &quot;catalog&quot; 类的 &quot;product_lookup&quot; 方法。
+$route['product/(:any)'] = 'catalog/product_lookup';
+
+//URL 的第一段是 &quot;product&quot; ，第二段是数字时，将重定向到 &quot;catalog&quot; 类的 &quot;product_lookup_by_id&quot; 方法，并将第二段的数字作为参数传递给它。
+$route['product/(:num)'] = 'catalog/product_lookup_by_id/$1';
+</code></pre>
+<h3 id="正则表达式">正则表达式</h3>
+<p>一个典型的使用正则表达式的路由规则看起来像下面这样</p>
+<pre><code class="language-php">//一个类似于 products/shirts/123 这样的 URL 将会重定向到 &quot;shirts&quot; 控制器的 &quot;id_123&quot; 方法。
+$route['products/([a-z]+)/(\d+)'] = '$1/id_$2';
+
+//当一个用户访问你的 Web 应用中的某个受密码保护的页面时，如果他没有 登陆，会先跳转到登陆页面，你希望在他们在成功登陆后重定向回刚才那个页面， 那么这个例子会很有用
+$route['login/(.+)'] = 'auth/login/$1';
+</code></pre>
+<p>如果你使用逆向引用，你需要使用美元符号代替双斜线语法。</p>
+<h3 id="回调函数">回调函数</h3>
+<pre><code class="language-php">$route['products/([a-zA-Z]+)/edit/(\d+)'] = function ($product_type, $id)
+{
+    return 'catalog/product_edit/' . strtolower($product_type) . '/' . $id;
+};
+</code></pre>
+<h3 id="创建-restful-应用时在路由中使用-http-动词请求方法">创建 RESTful 应用时,在路由中使用 HTTP 动词(请求方法)</h3>
+<p>GET、PUT、POST、DELETE、PATCH</p>
+<pre><code class="language-php">$route['products']['put'] = 'product/insert';
+$route['products/(:num)']['DELETE'] = 'product/delete/$1';
+
+</code></pre>
+<h3 id="保留路由">保留路由</h3>
+<p>三个保留路由</p>
+<pre><code class="language-php">$route['default_controller'] = 'welcome';
+$route['404_override'] = '';
+
+//其实并不是一个路由，这个选项可以自动的将 URL 中的控制器和方法中的连字符（'-'）转换为下划线（'_'），当你需要这样时， 它可以让你少写很多路由规则.由于连字符不是一个有效的类名或方法名， 如果你不使用它的话，将会引起一个严重错误。
+$route['translate_uri_dashes'] = FALSE;
+</code></pre>
+<h1 id="控制器">控制器</h1>
+<p>一般后面是两段，第一段是控制器名，第二段是方法名，后面的是参数</p>
+<blockquote>
+<p>example.com/index.php/blog/comments/</p>
+</blockquote>
+<p><strong>如果方法的参数多于一个？</strong> 例如：</p>
+<blockquote>
+<p>example.com/index.php/products/shoes/sandals/123</p>
+</blockquote>
+<p>多余的段将作为参数传递到你的方法, 方法将会收到第三段和第四段两个参数（&ldquo;sandals&rdquo; 和 &ldquo;123&rdquo;）:</p>
+<pre><code class="language-php">class Products extends CI_Controller {
+
+    public function shoes($sandals, $id)
+    {
+        echo $sandals;
+        echo $id;
+	}
+}
+</code></pre>
+<h1 id="保留名称ci-内置的函数方法类变量名不能被开发者自己使用">保留名称（CI 内置的函数、方法、类、变量名）不能被开发者自己使用</h1>
+<h2 id="控制器-1">控制器</h2>
+<p>CI_Controller
+Default
+index</p>
+<h2 id="函数">函数</h2>
+<p>is_php()
+is_really_writable()
+load_class()
+is_loaded()
+get_config()
+config_item()
+show_error()
+show_404()
+log_message()
+set_status_header()
+get_mimes()
+html_escape()
+remove_invisible_characters()
+is_https()
+function_usable()
+get_instance()
+_error_handler()
+_exception_handler()
+_stringify_attributes()</p>
+<h2 id="变量">变量</h2>
+<p>$config
+$db
+$lang</p>
+<h2 id="常量">常量</h2>
+<p>ENVIRONMENT
+FCPATH
+SELF
+BASEPATH
+APPPATH
+VIEWPATH
+CI_VERSION
+MB_ENABLED
+ICONV_ENABLED
+UTF8_ENABLED
+FILE_READ_MODE
+FILE_WRITE_MODE
+DIR_READ_MODE
+DIR_WRITE_MODE
+FOPEN_READ
+FOPEN_READ_WRITE
+FOPEN_WRITE_CREATE_DESTRUCTIVE
+FOPEN_READ_WRITE_CREATE_DESTRUCTIVE
+FOPEN_WRITE_CREATE
+FOPEN_READ_WRITE_CREATE
+FOPEN_WRITE_CREATE_STRICT
+FOPEN_READ_WRITE_CREATE_STRICT
+SHOW_DEBUG_BACKTRACE
+EXIT_SUCCESS
+EXIT_ERROR
+EXIT_CONFIG
+EXIT_UNKNOWN_FILE
+EXIT_UNKNOWN_CLASS
+EXIT_UNKNOWN_METHOD
+EXIT_USER_INPUT
+EXIT_DATABASE
+EXIT__AUTO_MIN
+EXIT__AUTO_MAX</p>
+<h1 id="视图">视图</h1>
+<p>基本用途略</p>
+<p>将视图作为数据返回, 可选的第三个参数可以让你修改它的默认行为，它让视图作为字符串返回 而不是显示到浏览器中.想对视图数据做某些处理时很有用</p>
+<pre><code class="language-php">$string = $this-&gt;load-&gt;view('myfile', '', TRUE);
+
+</code></pre>
+<h1 id="模型">模型</h1>
+<p>在CI 里可以这么理解: 和数据库打交道的类</p>
+<h2 id="定义">定义</h2>
+<pre><code class="language-php">class Blog_model extends CI_Model {
+
+    public $title;
+    public $content;
+    public $date;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // Your own constructor code
+    }
+
+    public function get_last_ten_entries()
+    {
+        $query = $this-&gt;db-&gt;get('entries', 10);
+        return $query-&gt;result();
+    }
+
+    public function insert_entry()
+    {
+    	
+        $this-&gt;title    = $_POST['title']; // please read the below note
+        $this-&gt;content  = $_POST['content'];
+        $this-&gt;date = time();
+
+        $this-&gt;db-&gt;insert('entries', $this);
+    }
+
+    public function update_entry()
+    {
+        $this-&gt;title    = $_POST['title'];
+        $this-&gt;content  = $_POST['content'];
+        $this-&gt;date = time();
+
+        $this-&gt;db-&gt;update('entries', $this, array('id' =&gt; $_POST['id']));
+    }
+
+}
+</code></pre>
+<p>使用了 查询构造器 数据库方法(db-&gt;get()  db-&gt;insert() 等)</p>
+<p>这里直接使用了 $_POST 数据，这其实是个不好的实践， 一个更通用的做法是使用 输入库 的 $this-&gt;input-&gt;post(&lsquo;title&rsquo;)</p>
+<h2 id="加载">加载</h2>
+<pre><code class="language-php">$this-&gt;load-&gt;model('model_name');
+
+//如果你想将你的模型对象赋值给一个不同名字的对象，你可以使用 $this-&gt;load-&gt;model() 方法的第二个参数
+$this-&gt;load-&gt;model('model_name', 'foobar');
+</code></pre>
+<p>加载之后，你就可以通过一个和你的类同名的对象访问模型中的方法</p>
+<pre><code class="language-php">//格式 $this-&gt;model_name-&gt;method();
+$data['query'] = $this-&gt;blog-&gt;get_last_ten_entries();
+
+// 如果赋值给不同的名字
+$this-&gt;foobar-&gt;method();
+
+</code></pre>
+<h3 id="模型的自动加载需要在整个应用程序中使用">模型的自动加载(需要在整个应用程序中使用)</h3>
+<p>打开 <code>application/config/autoload.php</code> 文件， 并将该模型添加到 <code>autoload</code> 数组中</p>
+<h3 id="连接数据库模型加载之后它-并不会-自动去连接你的数据库">连接数据库(模型加载之后，它 并不会 自动去连接你的数据库)</h3>
+<p>参考 “数据库”章节中“连接数据库”</p>
+<p>有几个选项：</p>
+<ul>
+<li>在控制器或模型中使用 标准的数据库方法 连接数据库</li>
+</ul>
+<pre><code class="language-php">$this-&gt;load-&gt;database();
+</code></pre>
+<ul>
+<li>设置第三个参数为 <code>TRUE</code> 让模型在加载时自动连接数据库</li>
+</ul>
+<pre><code class="language-php">$this-&gt;load-&gt;model('model_name', '', TRUE);
+</code></pre>
+<ul>
+<li>可以通过第三个参数传一个数据库连接配置(一般用于临时切换数据库连接)</li>
+</ul>
+<pre><code class="language-php">$config['hostname'] = 'localhost';
+$config['username'] = 'myusername';
+$config['password'] = 'mypassword';
+$config['database'] = 'mydatabase';
+$config['dbdriver'] = 'mysqli';
+$config['dbprefix'] = '';
+$config['pconnect'] = FALSE;
+$config['db_debug'] = TRUE;
+
+$this-&gt;load-&gt;model('model_name', '', $config);
+</code></pre>
+<h1 id="辅助函数">辅助函数</h1>
+<p>辅助函数文件都是某一类 函数的<strong>集合</strong></p>
+<p>URL 辅助函数 帮助我们创建链接，表单辅助函数帮助 我们创建表单元素，本文辅助函数 帮助我们处理文本的格式化，Cookie 辅助函数 帮助我们读取或设置 Cookie ，文件辅助函数 帮助我们处理文件，等等等等</p>
+<h2 id="加载-1">加载</h2>
+<p>CodeIgniter 默认不会自己加载辅助函数，所以使用辅助函数的第一步就是加载它。 一旦加载了，它就可以在你的 控制器 和 视图 中全局访问了。</p>
+<p>CodeIgniter 首先会查找 application/helpers 目录，如果该目录不存在， 或者你加载的辅助函数没有在该目录下找到，CodeIgniter 就会去 system/helpers/ 目录查找。</p>
+<pre><code class="language-php">$this-&gt;load-&gt;helper('[name]'); // 例如 url  form
+
+// 需要加载多个辅助函数，你可以使用一个数组
+$this-&gt;load-&gt;helper(
+    array('helper1', 'helper2', 'helper3')
+);
+</code></pre>
+<h2 id="自动加载辅助函数">自动加载辅助函数</h2>
+<p>application/config/autoload.php 文件然后将你想加载的辅助函数添加到 autoload 数组中</p>
+<h2 id="使用">使用</h2>
+<p>一旦你想要使用的辅助函数被加载，你就可以像使用标准的 PHP 函数一样使用它们</p>
+<pre><code class="language-php">&lt;?php echo anchor('blog/comments', 'Click Here');?&gt;
+</code></pre>
+<h2 id="向辅助函数中添加替代函数以及对比-扩展类">向辅助函数中添加/替代函数（以及对比 扩展类）</h2>
+<p>在 application/helpers/ 目录下新建一个文件， 文件名和已存在的辅助函数<strong>文件名一样</strong>，但是要加上 <code>MY_</code> 前缀(application/config/config.php 文件中修改 <code>$config['subclass_prefix'] = 'MY_';</code>可以改成其他前缀)</p>
+<p>例如 扩展原始的 数组辅助函数 ，首先你要创建一个文件 application/helpers/MY_array_helper.php ， 然后像下面这样添加或重写函数:</p>
+<pre><code class="language-php">// any_in_array() is not in the Array Helper, so it defines a new function
+function any_in_array($needle, $haystack)
+{
+    $needle = is_array($needle) ? $needle : array($needle);
+
+    foreach ($needle as $item)
+    {
+        if (in_array($item, $haystack))
+        {
+            return TRUE;
+        }
+        }
+
+    return FALSE;
+}
+
+// random_element() is included in Array Helper, so it overrides the native function
+function random_element($array)
+{
+    shuffle($array);
+    return array_pop($array);
+}
+</code></pre>
+<p>开发中多查阅辅助函数的参考，看看有没有现成的可以使用，可以节省很多自己的时间。</p>
+<p>如果你只是想往现有类中添加一些功能，例如增加一两个方法，或者修改辅助函数中的 某个函数，这时替换整个类感觉就有点杀鸡用牛刀了。在这种情况下，最好的方法是 扩展类</p>
+<h1 id="类库-ci-系统类库">类库 (CI 系统类库)</h1>
+<p>所有的系统类库都位于 system/libraries/ 目录下，大多数情况下，在使用之前， 你要先在 控制器 中初始化它，使用下面的方法:</p>
+<pre><code class="language-php">// 格式 $this-&gt;load-&gt;library('class_name'); 例如，要加载 表单验证类库，你可以这样做
+$this-&gt;load-&gt;library('form_validation');
+
+//多个类库
+$this-&gt;load-&gt;library(array('email', 'table'));
+
+</code></pre>
+<h2 id="创建你自己的类库">创建你自己的类库</h2>
+<p>通常我们指的是位于 <code>libraries</code> 这个目录下的那些类.</p>
+<p>一般在<code>application/libraries</code>目录下创建你自己的类库，和全局的框架类库独立开来。(CodeIgniter 允许你扩展原生的类, 甚至可以放置一个和原生的类库同名的文件 完全替代它——不过除了数据库类)</p>
+<p><strong>命名约定</strong></p>
+<p>文件名首字母必须大写，例如：Myclass.php
+类名定义首字母必须大写，例如：class Myclass
+类名和文件名必须一致</p>
+<p><strong>类应该定义成如下原型</strong></p>
+<pre><code class="language-php">defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Someclass {
+
+	// 可选,如果在初始化类时接受参数传入
+	public function __construct($params)
+	{
+
+	}
+
+    public function some_method()
+    {
+    }
+}
+</code></pre>
+<h3 id="替代原生的类库">替代原生的类库</h3>
+<pre><code class="language-php">class CI_Email {
+
+}
+</code></pre>
+<h3 id="扩展原生类库">扩展原生类库</h3>
+<p>如果你只是想往现有的类库中添加一些功能，例如增加一两个方法， 这时替换整个类感觉就有点杀鸡用牛刀了。在这种情况下，最好的方法是 扩展类库。扩展一个类和替换一个类差不多，除了以下几点：</p>
+<p>类在定义时必须继承自父类。
+你的新类名和文件名必须以 MY_ 为前缀（这个可配置，见下文）</p>
+<p>例如 application/libraries/MY_Email.php</p>
+<p>如果 类中使用构造函数，确保你调用了父类的构造函数</p>
+<pre><code class="language-php">class MY_Email extends CI_Email {
+    public function __construct($config = array())
+    {
+        parent::__construct($config);
+    }
+}
+
+</code></pre>
+<h3 id="使用类库">使用类库</h3>
+<p>不管是扩展、还是替换，都和之前原生的类库使用方法一样的</p>
+<pre><code class="language-php">// 先加载
+$this-&gt;load-&gt;library('someclass');
+
+//初始化类时传入参数(该数组将被传到 你的类的构造函数中:)
+$params = array('type' =&gt; 'large', 'color' =&gt; 'red');
+$this-&gt;load-&gt;library('someclass', $params);
+
+// 然后就可以访问了
+$this-&gt;someclass-&gt;some_method();
+</code></pre>
+<h2 id="在类库中调用-codeigniter-原生资源">在类库中调用 CodeIgniter 原生资源</h2>
+<p>类库中使用 <code>get_instance()</code> 函数来访问 CodeIgniter 的原生资源，这个函数返回 CodeIgniter 超级对象</p>
+<p>通常情况下，在你的控制器方法中你会使用 <code>$this</code> 来调用所有可用的 CodeIgniter 方法(如<code>$this-&gt;load-&gt;helper('url');</code>)</p>
+<p>但是 <code>$this</code> <strong>只能在你的控制器、模型或视图中</strong>直接使用，如果你想<strong>在你自己的类中</strong>使用 CodeIgniter 类, 就需要获取到 CodeIgniter 超级对象</p>
+<p>并且一般为了符合 OOP 原则，将其赋值给类的一个属性</p>
+<pre><code class="language-php">// OOP 的方式，赋值给类的一个属性
+class Example_library {
+
+    protected $CI;
+
+    // We'll use a constructor, as you can't directly call a function
+    // from a property definition.
+    public function __construct()
+    {
+        // Assign the CodeIgniter super-object
+        $this-&gt;CI =&amp; get_instance();
+    }
+    public function foo()
+    {
+        $this-&gt;CI-&gt;load-&gt;helper('url');
+        redirect();
+    }
+
+    public function bar()
+    {
+        echo $this-&gt;CI-&gt;config-&gt;item('base_url');
+    }
+
+}
+
+// 如果是面向过程风格的代码，则直接赋值给变量
+
+// 通过引用来传递,使用原始的 CodeIgniter 对象，而不是创建一个副本
+$CI =&amp; get_instance();
+
+//使用这个变量来 代替 $this
+$CI =&amp; get_instance();
+
+$CI-&gt;load-&gt;helper('url');
+$CI-&gt;load-&gt;library('session');
+$CI-&gt;config-&gt;item('base_url');
+</code></pre>
+<h1 id="驱动器driver">驱动器（driver）</h1>
+<h2 id="什么是驱动器一些资料">什么是驱动器,一些资料</h2>
+<p><a href="http://sysmagazine.com/posts/132494/">Usage of drivers in CodeIgniter</a>
+<a href="http://tominator.comper.sk/2011/01/guide-to-codeigniter-drivers/">Guide to CodeIgniter Drivers</a>
+<a href="http://www.kevinphillips.co.nz/news/codeigniter-drivers-tutorial/">Codeigniter Drivers Tutorial</a></p>
+<h2 id="初始化与使用">初始化与使用</h2>
+<p>驱动器是一种特殊类型的类库，它<strong>有一个父类和任意多个子类</strong>。子类可以访问父类， 但不能访问兄弟类。在你的 控制器 中，驱动器为你的类库提供了 一种优雅的语法，从而不用将它们拆成很多离散的类。</p>
+<p>在控制器中使用下面的方法来进行初始化</p>
+<pre><code class="language-php">$this-&gt;load-&gt;driver('class_name');
+
+// 方法
+$this-&gt;some_parent-&gt;some_method();
+
+//而对于那些子类，我们不用初始化，可以直接通过父类调用了:
+$this-&gt;some_parent-&gt;child_one-&gt;some_method();
+$this-&gt;some_parent-&gt;child_two-&gt;another_method();
+</code></pre>
+<h2 id="创建驱动器">创建驱动器</h2>
+<p>目录结构。为了在大小写敏感的文件系统下保证兼容性，<code>Driver_name</code> 目录必须以 <code>ucfirst()</code>(首字母大写) 函数返回的结果格式进行命名</p>
+<p>由于驱动器的架构是子驱动器并不继承主驱动器，因此在子驱动器里 无法访问主驱动器中的属性或方法。</p>
+<pre><code>/application/libraries/Driver_name
+    Driver_name.php
+    drivers
+        Driver_name_subclass_1.php
+        Driver_name_subclass_2.php
+        Driver_name_subclass_3.php
+</code></pre>
+<h1 id="创建系统核心类-applicaitoncore-一般没有这个需求">创建系统核心类 applicaiton/core/ (一般没有这个需求)</h1>
+<p>对于那些想较大幅度的改变 CodeIgniter 的人来说，我们依然提供了替换和扩展核心类的选择。只需简单的将你自己的文件放入目录 application/core 下</p>
+<p>任何和父类同名的方法将会取代父类中的方法（这又被称作“方法覆盖”），这让你可以充分的利用并修改 CodeIgniter 的核心。</p>
+<pre><code class="language-php">// 替换
+class CI_Input {
+
+}
+
+// 扩展
+class MY_Input extends CI_Input {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+}
+
+//记得在你的应用程序控制器里继承你扩展的新类
+class Welcome extends MY_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        // Your own constructor code
+    }
+
+    public function index()
+    {
+        $this-&gt;load-&gt;view('welcome_message');
+    }
+}
+</code></pre>
+<p>以下是系统核心文件的清单，它们在每次 CodeIgniter 启动时被调用：</p>
+<p>Benchmark
+Config
+Controller
+Exceptions
+Hooks
+Input
+Language
+Loader
+Log
+Output
+Router
+Security
+URI
+Utf8</p>
+<h1 id="创建附属类并使用-ci-的资源">创建附属类并使用 CI 的资源</h1>
+<p>任何在你的控制器方法中初始化的类都可以简单的通过 <code>get_instance()</code> 函数来访问 CodeIgniter 资源。这个函数返回一个 CodeIgniter 对象</p>
+<p>在例子中， foo() 和 bar() 方法在初始化 Example 类之后都可以正常工作，而不需要在每个方法里都调用 get_instance() 函数。</p>
+<pre><code class="language-php">class Example {
+
+    protected $CI;
+
+    // We'll use a constructor, as you can't directly call a function
+    // from a property definition.
+    public function __construct()
+    {
+        // Assign the CodeIgniter super-object
+        $this-&gt;CI =&amp; get_instance();
+    }
+
+    public function foo()
+    {
+        $this-&gt;CI-&gt;load-&gt;helper('url');
+        redirect();
+    }
+
+    public function bar()
+    {
+        $this-&gt;CI-&gt;config-&gt;item('base_url');
+    }
+}
+</code></pre>
+<h1 id="钩子---扩展框架核心">钩子 - 扩展框架核心</h1>
+<p>钩子特性提供了一种方法来修改框架的内部运作流程，而无需修改 核心文件</p>
+<p>根据应用程序流程图 <img src="/media/codeigniter/appflowchart.jpg" alt="Alt text" title="Optional title"></p>
+<p>在 执行流程中的某些阶段添加一些动作，例如在控制器加载之前或之后执行一段脚本， 或者在其他的某些位置触发你的脚本(例如自动进行日志记录？ 触发？)</p>
+<p>钩子特性可以在 application/config/config.php 文件中全局的启用或禁用</p>
+<pre><code class="language-php">$config['enable_hooks'] = TRUE;
+
+</code></pre>
+<h2 id="挂钩点">挂钩点</h2>
+<p>所有可用挂钩点的一份列表：</p>
+<ul>
+<li>pre_system 在系统执行的早期调用，这个时候只有 基准测试类 和 钩子类 被加载了， 还没有执行到路由或其他的流程。</li>
+<li>pre_controller 在你的控制器调用之前执行，所有的基础类都已加载，路由和安全检查也已经完成。</li>
+<li>post_controller_constructor 在你的控制器实例化之后立即执行，控制器的任何方法都还尚未调用。</li>
+<li>post_controller 在你的控制器完全运行结束时执行。</li>
+<li>display_override 覆盖 _display() 方法，该方法用于在系统执行结束时向浏览器发送最终的页面结果。 这可以让你有自己的显示页面的方法。注意你可能需要使用 $this-&gt;CI =&amp; get_instance() 方法来获取 CI 超级对象，以及使用 $this-&gt;CI-&gt;output-&gt;get_output() 方法来 获取最终的显示数据。</li>
+<li>cache_override 使用你自己的方法来替代 输出类 中的 _display_cache() 方法，这让你有自己的缓存显示机制。</li>
+<li>post_system 在最终的页面发送到浏览器之后、在系统的最后期被调用。</li>
+</ul>
+<h2 id="在挂钩点上定义钩子">在挂钩点上定义钩子</h2>
+<p>在 application/config/hooks.php 文件中</p>
+<pre><code class="language-php">// 钩子数组是一个关联数组
+$hook['pre_controller'] = array(
+    'class'    =&gt; 'MyClass',
+    'function' =&gt; 'Myfunction',
+    'filename' =&gt; 'Myclass.php',
+    'filepath' =&gt; 'hooks',
+    'params'   =&gt; array('beer', 'wine', 'snacks')
+);
+
+
+// 也可以使用 lambda 表达式/匿名函数(或闭包)作为钩子，这样写起来更简单:
+$hook['post_controller'] = function()
+{
+    /* do something here */
+};
+</code></pre>
+<p>数组的索引为你想使用的挂钩点名称，例如上例中挂钩点为 pre_controller ， 下面会列出所有可用的挂钩点。钩子数组是一个关联数组，数组的键值可以是 下面这些：</p>
+<ul>
+<li>class 你希望调用的类名，如果你更喜欢使用过程式的函数的话，这一项可以留空。</li>
+<li>function 你希望调用的方法或函数的名称。</li>
+<li>filename 包含你的类或函数的文件名。</li>
+<li>filepath 包含你的脚本文件的目录名。 注意： 你的脚本必须放在 application/ 目录里面，所以 filepath 是相对 application/ 目录的路径，举例来说，如果你的脚本位于 application/hooks/ ，那么 filepath 可以简单的设置为 &lsquo;hooks&rsquo; ，如果你的脚本位于 application/hooks/utilities/ ， 那么 filepath 可以设置为 &lsquo;hooks/utilities&rsquo; ，路径后面不用加斜线。</li>
+<li>params 你希望传递给你脚本的任何参数，可选。
+你也可以使用 lambda 表达式/匿名函数(或闭包)作为钩子，这样写起来更简单:</li>
+</ul>
+<h2 id="多次调用同一个挂钩点">多次调用同一个挂钩点</h2>
+<p>在同一个挂钩点处添加多个脚本，只需要将钩子数组变成二维数组即可(索引后面多了个中括号)</p>
+<pre><code class="language-php">$hook['pre_controller'][] = array(
+    'class'    =&gt; 'MyClass',
+    'function' =&gt; 'MyMethod',
+    'filename' =&gt; 'Myclass.php',
+    'filepath' =&gt; 'hooks',
+    'params'   =&gt; array('beer', 'wine', 'snacks')
+);
+
+$hook['pre_controller'][] = array(
+    'class'    =&gt; 'MyOtherClass',
+    'function' =&gt; 'MyOtherMethod',
+    'filename' =&gt; 'Myotherclass.php',
+    'filepath' =&gt; 'hooks',
+    'params'   =&gt; array('red', 'yellow', 'blue')
+);
+
+</code></pre>
+<h1 id="自动加载资源">自动加载资源</h1>
+<p>可以允许系统每次运行时自动初始化类库、辅助函数和模型。 如果你需要在整个应用程序中全局使用某些资源，为方便起见可以考虑自动加载它们。</p>
+<h2 id="支持自动加载">支持自动加载</h2>
+<ul>
+<li>libraries/ 目录下的核心类</li>
+<li>helpers/ 目录下的辅助函数</li>
+<li>config/ 目录下的用户自定义配置文件</li>
+<li>system/language/ 目录下的语言文件</li>
+<li>models/ 目录下的模型类</li>
+</ul>
+<p>要实现自动加载资源，你可以打开 application/config/autoload.php 文件，然后将 你需要自动加载的项添加到 autoload 数组中。你可以在该文件中的每种类型的 autoload 数组的注释中找到相应的提示。</p>
+<h2 id="使用-composer-自动加载">使用 Composer 自动加载</h2>
+<p>如果你想让 CodeIgniter 使用 Composer 的自动加载， 只需将 application/config/config.php 配置文件中的 $config[&lsquo;composer_autoload&rsquo;] 设置为 TRUE 或者设置为你自定义的路径。</p>
+<h1 id="公共函数不是辅助函数">公共函数（不是辅助函数）</h1>
+<p>一些全局的函数，你可以在<strong>任何地方</strong>使用它们，并且<strong>不需要加载任何 类库或辅助函数</strong></p>
+<pre><code class="language-php">//判断当前运行的 PHP 版本是否高于或等于你提供的版本号
+is_php($version)
+
+//这个函数首先尝试写入该文件，以此来判断该文件是不是真的可写
+is_really_writable($file)
+
+// 除了用“配置类”，也可以直接访问
+config_item($key)
+
+//用于手动设置服务器的 HTTP 状态码 如 401
+set_status_header($code[, $text = ''])
+
+// 防止在 ASCII 字符串中插入空字符
+remove_invisible_characters($str[, $url_encoded = TRUE])
+
+// 类似于 PHP 原生的 htmlspecialchars() 函数，只是它除了可以接受字符串参数外，还可以接受数组参数。它在防止 XSS 攻击时很有用
+html_escape($var)
+
+//返回 application/config/mimes.php 文件中定义的 MIME 数组的 引用
+get_mimes()
+
+// 在使用 HTTPS 安全连接时返回 TRUE
+is_https()
+
+
+//在命令行下运行时返回 TRUE(检查 PHP_SAPI 的值是否是 'cli' ，或者是否定义了 STDIN 常量)
+is_cli()
+
+//检查一个函数是否可用，可用返回 TRUE(直接调用 function_exists() 函数，并检查当前是否加载了 Suhosin 扩展)
+function_usable($function_name)
+
+</code></pre>
+<h1 id="兼容性函数只有在高版本的-php-中才有或者需要依赖其他的扩展">兼容性函数(只有在高版本的 PHP 中才有,或者需要依赖其他的扩展)</h1>
+<p>由于是自己实现的，这些函数本身也可能有它自己的依赖性，但如果你的 PHP 中不提供这些函数时， 这些函数还是有用的</p>
+<p>和 公共函数 一样，兼容性函数也一直可以访问，只要满足了他们的依赖条件。</p>
+<h2 id="密码哈希">密码哈希</h2>
+<p>移植了 PHP 标准的 密码哈希扩展 的实现. 在PHP 5.5 以后的版本</p>
+<p><strong>依赖性</strong>
+PHP 5.3.7
+crypt() 函数需支持 CRYPT_BLOWFISH</p>
+<p><strong>常量</strong>
+PASSWORD_BCRYPT
+PASSWORD_DEFAULT</p>
+<p><strong>函数参考</strong>
+password_get_info($hash)
+password_hash($password, $algo[, $options = array()])
+password_needs_rehash()
+password_verify($password, $hash)</p>
+<h2 id="哈希信息摘要">哈希（信息摘要）</h2>
+<p>移植了 hash_equals() 和 hash_pbkdf2() 的实现， 这两函数分别在 PHP 5.6 和 PHP 5.5 以后的版本中才有</p>
+<p><strong>依赖性</strong></p>
+<p><strong>函数参考</strong>
+hash_equals($known_string, $user_string)
+hash_pbkdf2($algo, $password, $salt, $iterations[, $length = 0[, $raw_output = FALSE]])</p>
+<h2 id="多字节字符串">多字节字符串</h2>
+<p>对 PHP 的 多字节字符串扩展 的有限支持，</p>
+<p><strong>依赖性</strong>
+iconv 扩展,如果 iconv 扩展不可用，它们会降级到非多字节字符串的函数版本。</p>
+<p><strong>函数参考</strong>
+mb_strlen($str[, $encoding = NULL])
+mb_strpos($haystack, $needle[, $offset = 0[, $encoding = NULL]])
+mb_substr($str, $start[, $length = NULL[, $encoding = NULL]])</p>
+<h2 id="标准函数">标准函数</h2>
+<p>提供了一些高版本的 PHP 中才有的标准函数。</p>
+<p><strong>依赖性</strong></p>
+<p><strong>函数参考</strong></p>
+<p>array_column(array $array, $column_key[, $index_key = NULL])
+hex2bin($data)</p>
+<h1 id="错误处理">错误处理</h1>
+<p>在你的应用程序中生成错误报告, 还有一个错误日志类用来将错误或调试信息保存到文本文件中。</p>
+<p><strong>CI 默认显示所有错误</strong></p>
+<p>在你的 index.php 文件的顶部有一个 error_reporting() 函数，通过它可以修改错误设置。当发生错误时，禁用错误报告 并不会阻止向日志文件写入错误信息</p>
+<p>CI 的错误函数是一个可以在<strong>整个应用程序中 使用</strong>的简单接口，这让你在使用该函数时不用担心类或方法的作用域的问题。</p>
+<p>任何一处核心代码调用 <code>exit()</code> 时，CodeIgniter 会返回一个状态码。 这个状态码和 HTTP 状态码不同，是用来通知其他程序 PHP 脚本是否成功运行的， 如果运行不成功，又是什么原因导致了脚本退出。状态码的值被定义在 application/config/constants.php 文件中。状态码在 CLI 形式下非常有用， 可以帮助你的服务器跟踪并监控你的脚本</p>
+<h2 id="生成错误信息的函数">生成错误信息的函数</h2>
+<h3 id="show_errormessage-status_code-heading--an-error-was-encountered"><code>show_error($message, $status_code, $heading = 'An Error Was Encountered')</code></h3>
+<p>使用错误模板 application/views/errors/html/error_general.php(或者 CLI 模式 application/views/errors/cli/error_general.php
+) 来显示错误信息:</p>
+<p>可选参数 $status_code 将决定发送什么 HTTP 状态码。 如果 $status_code 小于 100，HTTP 状态码将被置为 500 ， 退出状态码将被置为 <code>$status_code + EXIT__AUTO_MIN</code> 。 如果它的值大于 <code>EXIT__AUTO_MAX</code> 或者如果 <code>$status_code</code> 大于等于 100 ，退出状态码将被置为 <code>EXIT_ERROR</code> 。 详情可查看 application/config/constants.php 文件</p>
+<h3 id="show_404page---log_error--true"><code>show_404($page = '', $log_error = TRUE)</code></h3>
+<p>使用 application/views/errors/html/error_404.php 或者 application/views/errors/cli/error_404.php模板</p>
+<p>默认 CodeIgniter 会自动将 show_404() 函数调用<strong>记录到错误日志</strong>中。 将第二个参数设置为 FALSE 将跳过记录日志</p>
+<h3 id="log_messagelevel-message"><code>log_message($level, $message)</code></h3>
+<p><code>logs/</code> 目录必须设置为可写的。 此外，你必须要设置 application/config/config.php 文件中的 &ldquo;threshold&rdquo; 参数(例如你只想记录错误信息，而不想 记录另外两种类型的信息，可以通过这个参数来控制。如果你将 该参数设置为 0 ，日志就相当于被禁用了)</p>
+<p>向你的日志文件中写入信息，第一个参数你必须提供 三个信息级别中的一个，用于指定记录的是什么类型的信息（调试， 错误和一般信息），第二个参数为信息本身. 例如</p>
+<pre><code class="language-php">if ($some_var == '')
+{
+    log_message('error', 'Some variable did not contain a value.');
+}
+else
+{
+    log_message('debug', 'Some variable was correctly set');
+}
+
+log_message('info', 'The purpose of some variable is to provide some value.');
+</code></pre>
+<h1 id="网页缓存">网页缓存</h1>
+<p>将下面的代码放到任何一个控制器的方法内，你就可以开启缓存了:
+在写入缓存文件之前，你需要把 <code>application/cache/</code> 目录的权限 设置为可写。</p>
+<p>只有通过 <code>view</code> 输出的页面才能缓存</p>
+<pre><code class="language-php">//$n 是缓存更新的时间（单位分钟）
+$this-&gt;output-&gt;cache($n);
+</code></pre>
+<p>删除掉该页面上的缓存代码， 这样它在过期之后就不会刷新了
+<strong>注意</strong> 删除缓存代码之后并<strong>不是立即生效，必须等到缓存过期才会生效</strong>。</p>
+<p>如果需要手工删除缓存，你可以使用 delete_cache() 方法</p>
+<pre><code class="language-php">// Deletes cache for the currently requested URI
+$this-&gt;output-&gt;delete_cache();
+
+// Deletes cache for /foo/bar
+$this-&gt;output-&gt;delete_cache('/foo/bar');
+
+</code></pre>
+<h1 id="程序分析-有助于开发过程中的调试和优化">程序分析 (有助于开发过程中的调试和优化)</h1>
+<p>在页面下方显示基准测试结果，运行过的 SQL 语句， 以及 $_POST 数据。这些信息。</p>
+<h2 id="启用">启用</h2>
+<p>无须初始化，如果已按照下面的方式启用， 他将被 输出类 自动加载</p>
+<pre><code class="language-php">//在你的 控制器 方法的任何位置添加
+$this-&gt;output-&gt;enable_profiler(TRUE);
+
+//使用下面的方法禁用分析器:
+$this-&gt;output-&gt;enable_profiler(FALSE);
+
+</code></pre>
+<h2 id="设置基准测试点">设置基准测试点</h2>
+<p>让分析器编译并显示你的基准测试数据(查阅基准测试类：/libraries/benchmark.html)</p>
+<h2 id="启用和禁用分析器中的字段">启用和禁用分析器中的字段</h2>
+<p>在 application/config/profiler.php 文件里设置全局的默认值</p>
+<pre><code class="language-php">$config['config']          = FALSE;
+$config['queries']         = FALSE;
+</code></pre>
+<p>或者 控制器里通过调用 输出类 的 set_profiler_sections() 函数来覆盖全局设置和默认设置</p>
+<pre><code class="language-php">$sections = array(
+    'config'  =&gt; TRUE,
+    'queries' =&gt; TRUE
+);
+
+$this-&gt;output-&gt;set_profiler_sections($sections);
+</code></pre>
+<p>可用的分析器字段和用来访问这些字段的 key</p>
+<p>Key Description Default
+benchmarks  在各个计时点花费的时间以及总时间 TRUE <br>
+config  CodeIgniter 配置变量 TRUE <br>
+controller_info 被请求的控制器类和调用的方法 TRUE<br>
+get 请求中的所有 GET 数据 TRUE<br>
+http_headers    本次请求的 HTTP 头部 TRUE<br>
+memory_usage    本次请求消耗的内存（单位字节） TRUE  <br>
+post    请求中的所有 POST 数据 TRUE<br>
+queries 列出所有执行的数据库查询，以及执行时间 TRUE  <br>
+uri_string  本次请求的 URI TRUE<br>
+session_data    当前会话中存储的数据 TRUE<br>
+query_toggle_count  指定显示多少个数据库查询，剩下的则默认折叠起来 25</p>
+<p><strong>在数据库配置中禁用查询相关分析器</strong></p>
+<p>在你的数据库配置文件中禁用 save_queries 参数 也可以禁用数据库查询相关的分析器,上面说的 &lsquo;queries&rsquo; 字段就没用了。 你可以通过 $this-&gt;db-&gt;save_queries = TRUE; 来覆写该设置。 另外，禁用这个设置也会导致你无法查看查询语句以及 last_query &lt;database/helpers&gt; 。</p>
+<h1 id="cli-命令行界面方式">CLI （命令行界面）方式</h1>
+<p>以下场景</p>
+<p>使用 cron 定时运行任务，而不需要使用 wget 或 curl
+通过函数 is_cli() 的返回值来让你的 cron 页面不能通过 URL 访问到
+制作交互式的任务，例如：设置权限，清除缓存，备份等等
+与其他语言进行集成，例如可以通过 C++ 调用一条指令来运行你模型中的代码</p>
+<p>例，创建一个控制器 application/controllers/Tools.php</p>
+<pre><code class="language-php">class Tools extends CI_Controller {
+
+    public function message($to = 'World')
+    {
+        echo &quot;Hello {$to}!&quot;.PHP_EOL;
+    }
+}
+</code></pre>
+<p>通常在浏览器访问它 example.com/index.php/tools/message/to</p>
+<p>如果 通过 CLI 来访问</p>
+<pre><code class="language-shell">$ cd /path/to/project;
+$ php index.php tools message &quot;John Smith&quot;
+</code></pre>
+<h1 id="管理多个应用程序共享-codeigniter">管理多个应用程序共享 CodeIgniter</h1>
+<p>默认只有一个应用程序，被放置在 application/ 目录, 可以多个应用共享。
+甚至也可以对你的应用程序目录 改名，或将其移到其他的位置。</p>
+<h2 id="重命名移动-application-目录">重命名、移动 application 目录</h2>
+<p>需要index.php 修改</p>
+<pre><code class="language-php">$application_folder = 'application';
+
+</code></pre>
+<h2 id="运行多个应用程序">运行多个应用程序</h2>
+<p>只需简单的 将 application 目录下的所有文件放置到每个应用程序独立的子目录下即可。</p>
+<pre><code>applications/foo/
+    applications/foo/config/
+    applications/foo/controllers/
+    applications/foo/libraries/
+    applications/foo/models/
+    applications/foo/views/
+
+applications/bar/
+    applications/bar/config/
+    applications/bar/controllers/
+    applications/bar/libraries/
+    applications/bar/models/
+    applications/bar/views/
+</code></pre>
+<p>要选择使用某个应用程序时，你需要打开 index.php 文件然后设置 <code>$application_folder</code> 变量。例如，选择使用 &ldquo;foo&rdquo; 这个应用，</p>
+<pre><code class="language-php">$application_folder = 'applications/foo';
+
+</code></pre>
+<p>你的每一个应用程序都需要一个它自己的 index.php 文件来调用它， 你可以随便对 index.php 文件进行命名。例如</p>
+<pre><code class="language-shell">foo.php
+applications/foo/
+
+bar.php
+applications/bar/
+</code></pre>
+<h1 id="多环境">多环境</h1>
+<p>希望当系统运行在开发环境或生产环境中时能有不同的行为， 例如，在开发环境如果程序能输出详细的错误信息将非常有用，但是在 生产环境这将造成一些安全问题。</p>
+<h2 id="environment-常量">ENVIRONMENT 常量</h2>
+<p>CodeIgniter 默认使用 <code>$_SERVER['CI_ENV']</code> 的值作为 ENVIRONMENT 常量， 如果 $_SERVER[&lsquo;CI_ENV&rsquo;] 的值没有设置，则设置为 &lsquo;development&rsquo;。在 index.php 文件的顶部，你可以看到:</p>
+<pre><code class="language-php">define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+</code></pre>
+<p>值可以在 .htaccess 文件或 Apache 的配置文件中 使用 SetEnv 命令进行设置</p>
+<h2 id="对默认框架行为的影响">对默认框架行为的影响</h2>
+<p><strong>错误报告</strong></p>
+<p>如果将 ENVIRONMENT 常量设置为 &lsquo;development&rsquo; ，当发生 PHP 错误时错误信息会显示到浏览器上。与之相对的，如果将常量设置为 &lsquo;production&rsquo; 错误输出则会被禁用。在生产环境禁用错误输出是个 不错的安全实践。</p>
+<p><strong>配置文件</strong></p>
+<p>CodeIgniter 还可以根据不同的环境加载不同的配置文件， 这在处理例如不同环境下有着不同的 API Key 的情况时相当有用。 这在 <code>配置类</code> 文档中的“环境”一节有着更详细的介绍</p>
+<h1 id="安全">安全</h1>
+<h2 id="uri-安全">URI 安全</h2>
+<p>CodeIgniter 严格限制 URI 中允许出现的字符，以此来减少恶意数据传到你的应用程序的可能性。 URI 中只允许包含一些字符</p>
+<p>字母和数字
+波浪符：~
+百分号：%
+句号：.
+分号：:
+下划线：_
+连字号：-
+空格</p>
+<h2 id="register_globals">Register_globals</h2>
+<p>在系统初始化期间，如果发现任何 <code>$_GET</code>、<code>$_POST</code>、<code>$_REQUEST</code> 和 <code>$_COOKIE</code> 数组中的键值变成了全局变量，则删除该变量。</p>
+<p>这个过程和设置 register_globals = off 效果是一样的。</p>
+<h2 id="display_errors">display_errors</h2>
+<h2 id="magic_quotes_runtime">magic_quotes_runtime</h2>
+<p>指令会被禁用. 这样当你在从数据库中获取数据时就不用再去除反斜线了</p>
+<h2 id="最佳实践">最佳实践</h2>
+<p>在你的应用程序处理任何数据之前，无论这些数据是来自于提交的表单 POST ，还是来自 COOKIE、URI、XML-RPC ，或者甚至是来自于 SERVER 数组，你都应该使用下面这三步 来处理：</p>
+<p>验证数据类型是否正确，以及长度、大小等等
+过滤不良数据
+在提交到数据库或者显示到浏览器之前对数据进行转义</p>
+<h2 id="xss-过滤">XSS 过滤</h2>
+<p>自带有一个 XSS 过滤器，这个过滤器可以查找一些 XSS 的常用技术， 例如向你的数据中嵌入恶意的 JavaScript 脚本，劫持 cookie 信息或其他一些技术。 XSS 过滤器在 <code>安全</code>类库里 有更详细的描述。</p>
+<blockquote>
+<p>XSS 过滤 只应该在输出数据时使用 。 对输入的数据进行过滤可能会 在无意中对数据造成修改，例如过滤密码中的特殊字符，这样会降低安全性， 而不是提高安全性。</p>
+</blockquote>
+<h2 id="csrf-cross-site-request-forgery跨站请求伪造保护">CSRF （Cross-Site Request Forgery，跨站请求伪造）保护</h2>
+<p>是攻击者骗取受害者 在不知情的情况下提交请求的攻击方式</p>
+<p>在每个非 GET HTTP 请求时自动触发， 当然前提是你要使用某种方式来创建表单，这在 安全类 文档中有进一步的解释。</p>
+<h2 id="密码处理">密码处理</h2>
+<ul>
+<li>绝不要以明文存储密码。(用 哈希算法 来处理密码)</li>
+<li>绝不要使用 Base64 或其他编码方式来存储密码(使用 哈希 ，而不要使用 编码   编码就存在解码，加密就存在解密)</li>
+<li>不要使用弱哈希或已被破解的哈希算法，像 MD5 或 SHA1 。不要自己发明算法. 使用强密码哈希算法，例如 BCrypt (升级 PHP 版本，或者用 CI 有 hash_pbkdf()  兼容函数)</li>
+<li>不要以明文形式显示或发送密码, 对密码的所有者也应该这样。如果你需要 &ldquo;忘记密码&rdquo; 的功能，可以随机生成一个新的 一次性的（这点很重要）密码，然后把这个密码发送给用户。</li>
+<li>不要对用户的密码做一些没必要的限制. 如果使用除 BCrypt（它有最多 72 字符的限制）之外的其他哈希算法，你应该设置一个相对长一点的密码长度（例如 1024 字符），这样可以缓解 DoS 攻击</li>
+</ul>
+<h2 id="验证输入数据">验证输入数据</h2>
+<p>CI 的 表单验证类 用于帮助你验证、 过滤以及预处理你的数据</p>
+<p>如果不使用， 也应该确保对输入数据进行验证过滤。 例如，你希望接受一个数字型的参数，你可以使用 <code>is_numeric()</code> 或 <code>ctype_digit()</code> 函数来检查一下。永远将数据限制在你运行的范围内</p>
+<p>记住，不仅要验证 <code>$_POST</code> 和 <code>$_GET</code> 变量，而且也不要放过 <code>cookie</code> 、<code>user-agent</code> 以及 其他<strong>所有的不是直接由你的代码生成的数据</strong> 。</p>
+<h2 id="插入数据库之前对数据进行转义">插入数据库之前对数据进行转义</h2>
+<p>?? 不是和前面矛盾了吗，说只在显示的时候才转义。。。 阅读 <code>数据库查询</code> 章节</p>
+<h2 id="隐藏你的文件">隐藏你的文件</h2>
+<p>在你的 webroot 目录（通常目录名为 &ldquo;htdocs/&quot;）下只保留 index.php 文件和 &ldquo;assets&rdquo; 目录（用于存放 js、css、图片等静态资源）。 只需要这些文件能从 Web 上访问就可以. （或者 可以使用 .htaccess 文件来限制对这些资源的访问。）</p>
+<p>你的访问者访问其他位置可能潜在的导致他们访问一些敏感数据或者执行脚本</p>
+<p>CI 在每个目录下放置了一个 index.html 文件，试图隐藏这些敏感数据，但是要记住的是，这对于防止一个真正的攻击者来说并不够。</p>
+<h1 id="api">API</h1>
+<p>需要返回 http 状态码</p>
+<pre><code class="language-php">//header(&quot;HTTP/1.1 200 OK&quot;);
+http_response_code(500);
+$this-&gt;jsonResponse('success', json_encode(['a','b']));
+</code></pre>
+<h1 id="扩展-services-层把业务逻辑抽象出来共享给其他类">扩展 Services 层，把业务逻辑抽象出来共享给其他类</h1>
+<p>在application/core下新建扩展MY_Service.php，作为所有service类的父类，代码如下</p>
+<pre><code class="language-php">class MY_Service
+{
+    public function __construct()
+    {
+        log_message('info', &quot;Service Class Initialized&quot;);
+    }
+ 
+    function __get($key)
+    {
+        $CI = &amp; get_instance();
+        return $CI-&gt;$key;
+    }
+}
+</code></pre>
+<p>在application/core下新建扩展MY_Loader.php，扩展默认的Loader类，在其中添加加载service的方法，
+这样就可以通过loader加载对应service类</p>
+<pre><code class="language-php">if (! defined ( 'BASEPATH' )) exit ( 'No direct access allowed.' );
+
+class MY_Loader extends CI_Loader {
+    
+    // service path
+    protected $_ci_services_paths = array();
+    
+    // loaded service class
+    protected $_ci_services = array();
+    
+    
+    
+    public function __construct() {
+        parent::__construct ();
+
+        $this-&gt;_ci_service_paths = array(APPPATH);
+    }
+    
+    /**
+    * Service Loader
+    *
+    * This function lets users load and instantiate classes.
+    * It is designed to be called from a user's app controllers.
+    *
+    * @param    string  the name of the class
+    * @param    mixed   the optional parameters
+    * @param    string  an optional object name
+    * @return   object
+    */
+    public function service($service = '', $params = NULL, $object_name = NULL)
+    {
+        if (empty($service))
+        {
+            return $this;
+        }
+        else if(is_array($service))
+        {
+            //Is the service is an array?If so,load every key
+            foreach ($service as $key =&gt; $value)
+            {
+                is_int($key) ? $this-&gt;service($value, '', $object_name) : $this-&gt;service($key, $value, $object_name);
+            }
+            
+            return $this;
+        }
+        
+        $path = '';
+        
+        // Is the service in a sub-folder? If so, parse out the filename and path.
+        if (($last_slash = strrpos($service, '/')) !== FALSE)
+        {
+            // The path is in front of the last slash
+            $path = substr($service, 0, ++$last_slash);
+            
+            // And the service name behind it
+            $service = substr($service, $last_slash);
+        }
+        
+        if (empty($object_name))
+        {
+            $object_name = $service;
+        }
+
+        $object_name = strtolower($object_name);
+        if (in_array($object_name, $this-&gt;_ci_services, TRUE))
+        {
+            return $this;
+        }
+        
+        $CI =&amp; get_instance();
+        if (isset($CI-&gt;$object_name))
+        {
+            throw new RuntimeException('The service name you are loading is the name of a resource that is already being used: '.$object_name);
+        }
+        
+        //load MY_Service
+        $class = config_item('subclass_prefix').'Service';
+        $app_path = APPPATH.'core'.DIRECTORY_SEPARATOR;
+        
+        if(!class_exists($class, FALSE))
+        {
+            if (file_exists($app_path.$class.'.php'))
+            {
+                require_once($app_path.$class.'.php');
+                if (!class_exists($class, FALSE))
+                {
+                    throw new RuntimeException($app_path.$class.&quot;.php exists, but doesn't declare class &quot;.$class);
+                }
+            }
+        }
+        
+        $service = ucfirst($service);
+        if (!class_exists($service, FALSE))
+        {   
+            //load service files
+            foreach ($this-&gt;_ci_services_paths as $service_path)
+            {
+                if ( ! file_exists($service_path.'services/'.$path.$service.'.php'))
+                {
+                    continue;
+                }
+                //default path application/services/
+                include_once($service_path.'services/'.$path.$service.'.php');
+                
+                $CI = &amp;get_instance();
+                
+                if($params !== NULL)
+                {
+                    $CI-&gt;$object_name = new $service($params);
+                }
+                else
+                {
+                    $CI-&gt;$object_name = new $service();
+                }
+                
+                $this-&gt;_ci_services[] = $object_name;
+                
+                if (!class_exists($service, FALSE))
+                {
+                    throw new RuntimeException($service_path.&quot;services/&quot;.$path.$service.&quot;.php exists, but doesn't declare class &quot;.$service);
+                }
+                
+                break;
+            }
+        
+        }
+    
+        return $this;
+    }
+}
+</code></pre>
+<p>在application/services目录下 创建一个示例文件 DemoService.php</p>
+<pre><code class="language-php">class DemoService extends MY_Service{
+    
+    public function __construct()
+    {
+        parent::__construct();
+
+        // services 中可以调用model
+        $this-&gt;load-&gt;model('user_model');
+    }
+
+    public function Hello()
+    {
+        return &quot;Hello World&quot;;
+
+    }
+
+    public function login() {
+        $user = $this-&gt;user_model-&gt;get_user_by_where($name, $password);
+    }
+}
+</code></pre>
+<p>在Controller中调用DemoService</p>
+<pre><code class="language-php">defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Home extends MY_Controller {
+    
+    public function Index()
+    {
+        //调用对应的服务
+        $this-&gt;load-&gt;service('DemoService');
+        
+        //执行服务方法
+        echo $this-&gt;index-&gt;Hello();
+    }
+}
+</code></pre>
+<p>model 中尽量只和数据库打交道。</p>
+<p>网上还有一个版本的 MY_Loader 供参考</p>
+<pre><code class="language-php">class MY_Loader extends CI_Loader
+{
+    /**
+     * List of loaded sercices
+     *
+     * @var array
+     * @access protected
+     */
+    protected $_ci_services = array();
+    /**
+     * List of paths to load sercices from
+     *
+     * @var array
+     * @access protected
+     */
+    protected $_ci_service_paths        = array();
+ 
+    /**
+     * Constructor
+     *
+     * Set the path to the Service files
+     */
+    public function __construct()
+    {
+ 
+        parent::__construct();
+        load_class('Services','core');
+        $this-&gt;_ci_service_paths = array(APPPATH);
+    }
+ 
+    /**
+     * Service Loader
+     *
+     * This function lets users load and instantiate classes.
+     * It is designed to be called from a user's app controllers.
+     *
+     * @param   string  the name of the class
+     * @param   mixed   the optional parameters
+     * @param   string  an optional object name
+     * @return  void
+     */
+    public function service($service = '', $params = NULL, $object_name = NULL)
+    {
+        if(is_array($service))
+        {
+            foreach($service as $class)
+            {
+                $this-&gt;service($class, $params);
+            }
+ 
+            return;
+        }
+ 
+        if($service == '' or isset($this-&gt;_ci_services[$service])) {
+            return FALSE;
+        }
+ 
+        if(! is_null($params) &amp;&amp; ! is_array($params)) {
+            $params = NULL;
+        }
+ 
+        $subdir = '';
+ 
+        // Is the service in a sub-folder? If so, parse out the filename and path.
+        if (($last_slash = strrpos($service, '/')) !== FALSE)
+        {
+            // The path is in front of the last slash
+            $subdir = substr($service, 0, $last_slash + 1);
+ 
+            // And the service name behind it
+            $service = substr($service, $last_slash + 1);
+        }
+ 
+        foreach($this-&gt;_ci_service_paths as $path)
+        {
+ 
+            $filepath = $path .'service/'.$subdir.$service.'.php';
+ 
+            if ( ! file_exists($filepath))
+            {
+                continue;
+            }
+ 
+            include_once($filepath);
+ 
+            $service = strtolower($service);
+ 
+            if (empty($object_name))
+            {
+                $object_name = $service;
+            }
+ 
+            $service = ucfirst($service);
+            $CI = &amp;get_instance();
+            if($params !== NULL)
+            {
+                $CI-&gt;$object_name = new $service($params);
+            }
+            else
+            {
+                $CI-&gt;$object_name = new $service();
+            }
+ 
+            $this-&gt;_ci_services[] = $object_name;
+ 
+            return;
+        }
+    }
+}
+</code></pre>
+<h1 id="集成-orm">集成 ORM</h1>
+<p>Doctrine   注意版本。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/codeigniter-%E4%B8%BB%E9%A2%98/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/codeigniter-%E4%B8%BB%E9%A2%98/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/codeigniter-%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/500-%E9%94%99%E8%AF%AF/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

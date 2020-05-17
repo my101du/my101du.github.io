@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="OAuth2 &amp;amp; jwt Laravel 的 guards &amp;amp; providers 以及 OAuth2 &amp;amp; Jwt guards &amp;amp; providers Laravel 的“身份验证”包括 guards和providers两部分，相关的配置信息在config/auth.php文" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="OAuth2 &amp; jwt Laravel 的 guards &amp; providers 以及 OAuth2 &amp; Jwt guards &amp; providers Laravel 的“身份验证”包括 guards和providers两部分，相关的配置信息在config/auth.php文" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/oauth2-jwt/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="OAuth2 &amp; jwt Laravel 的 guards &amp; providers 以及 OAuth2 &amp; Jwt guards &amp; providers Laravel 的“身份验证”包括 guards和providers两部分，相关的配置信息在config/auth.php文">
+
+<meta itemprop="wordCount" content="15660">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="OAuth2 &amp; jwt Laravel 的 guards &amp; providers 以及 OAuth2 &amp; Jwt guards &amp; providers Laravel 的“身份验证”包括 guards和providers两部分，相关的配置信息在config/auth.php文"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/oauth2-jwt/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/oauth2-jwt/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 15660字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 32分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>OAuth2 &amp; jwt</p>
+<!-- raw HTML omitted -->
+<h1 id="laravel-的-guards--providers-以及-oauth2--jwt">Laravel 的 guards &amp; providers 以及 OAuth2 &amp; Jwt</h1>
+<h2 id="guards--providers">guards &amp; providers</h2>
+<p>Laravel 的“身份验证”包括 <code>guards</code>和<code>providers</code>两部分，相关的配置信息在<code>config/auth.php</code>文件里</p>
+<p><code>guards</code> 定义与每个 request 有关的用户是如何验证的，例如 session 方式就是通过保存在服务器的 session 和 客户端的 cookie 进行的。</p>
+<p>对于客户端和服务端在相同域名下（传统的 mvc ，由php 渲染模板文件），这种方式很合适</p>
+<p>但是对于 API 驱动类型的应用，一个服务器端，一个或者多个 client 端运行在不同的域名/其他地方，可能产生 CORS 问题，就需要用 JWT 的 guards 来实现用户身份验证</p>
+<h2 id="oauth2--jwt">OAuth2 &amp; jwt</h2>
+<p>OAuth2是一种授权框架，用户或应用可以通过公开的或私有的设置，授权<strong>第三方应用</strong>访问特定资源</p>
+<p>OAuth2 我的理解例子：</p>
+<ol>
+<li>大家都信任腾讯的安全做得很不错，能够保障用户的账号/密码绝对不会泄露出去；并且大部分人都会有个腾讯的账号。</li>
+<li>我自己也开发了一个应用。一来懒得自己单独搞个数据表存储账号密码，二来也希望用户可以无需繁琐的注册，直接用他的腾讯账号就能登录我的应用。</li>
+<li>那么关键就是：（1）在腾讯那里登记下我的应用，告知腾讯以后可能会有人从我的应用里跳过去，请求获取他的腾讯账号基本信息（2）如果用户已经登录了腾讯，就可以说“好的, 我允许你这个应用拿我的腾讯账号基本信息，给你吧”</li>
+<li>在我的应用里，拿到用户允许给的腾讯账号信息后，说明这个人有腾讯账号，是个合法的用户（因为我信任腾讯啊！），就让它登录我的应用，做为我应用里的一个新用户，并进行后续的操作。</li>
+<li>但是我怀疑用户可能会退出腾讯，于是设置了一个时间，如果在这个期间到了，就要求用户重新去一次腾讯，如果他在腾讯还是个正常用户，那就重新告诉我的应用“好的，允许你拿我腾讯最新的信息”</li>
+</ol>
+<p>简单来说：我是大楼里的一个小公司，我相信大楼的安保措施，不会放闲杂人等进来，如果你是大楼的人，那你拿着大楼的工作证，就能进我公司，访问我开放给你的区域。   因为可能会有变数，明天你得再去大楼换新工作证。</p>
+<p>而 jwt JWT是一种<strong>认证协议</strong>，基本思路就是用户提供用户名和密码给认证服务器，服务器验证用户提交信息信息的合法性；如果验证成功，会产生并返回一个Token（令牌），用户可以使用这个token访问服务器上受保护的资源。</p>
+<p>JWT的主要优势在于使用无状态、可扩展的方式处理应用中的用户会话。服务端可以通过内嵌的声明信息，很容易地获取用户的会话信息，而不需要去访问用户或会话的数据库</p>
+<p>区别：</p>
+<p><a href="https://www.v2ex.com/amp/t/439613">https://www.v2ex.com/amp/t/439613</a>
+<a href="https://www.jianshu.com/p/1f2d6e5126cb">https://www.jianshu.com/p/1f2d6e5126cb</a>
+<a href="https://blog.csdn.net/f641385712/article/details/83930699">https://blog.csdn.net/f641385712/article/details/83930699</a></p>
+<p>两种方案都需要SSL安全保护，也就是对要传输的数据进行加密编码</p>
+<p>OAuth2是一个安全框架，要完全理解需要花费大量时间。相反，JWT是一个相对轻量级的概念。如果系统中需要使用黑名单实现长期有效的token刷新机制，这种无状态的优势就不明显了</p>
+<h1 id="oauth2">OAuth2</h1>
+<p>允许用户让第三方应用访问该用户在某一网站上存储的私密的资源（如照片，视频，联系人列表），而无需将用户名和密码提供给第三方应用。</p>
+<p>第三方应用–比如一个绘图的小软件”paint”
+用户–比如”我的qq空间账号ws”
+私密信息–比如我qq空间中的照片
+资源服务方-qq空间
+认证服务器-qq空间</p>
+<p>OAuth2.0是怎么解决的呢?
+给第三方应用paint一个临时密码,过期作废,而且这个密码的访问权限可由我随时取消.这样就足够安全了.
+这个临时密码就是access_token.
+当然发放access_token的方法就多种多样了,这些方法叫做授权模式</p>
+<p><a href="http://www.cnblogs.com/hilow/p/3826425.html">http://www.cnblogs.com/hilow/p/3826425.html</a></p>
+<h1 id="laravel-52-及以下版本的-oauth2-实现">Laravel 5.2 及以下版本的 OAuth2 实现</h1>
+<p>使用 lucadegasperi/oauth2-server-laravel 实现 OAuth2</p>
+<p>这里只有简单的使用方法，更多资料需要查看文档 （docs 目录）
+<a href="https://github.com/lucadegasperi/oauth2-server-laravel/blob/master/docs/getting-started/introduction.md">https://github.com/lucadegasperi/oauth2-server-laravel/blob/master/docs/getting-started/introduction.md</a></p>
+<h2 id="安装">安装</h2>
+<p>修改<code>composer.json</code>，在“require”中添加</p>
+<pre><code class="language-json">&quot;lucadegasperi/oauth2-server-laravel&quot;: &quot;5.1.*&quot;
+</code></pre>
+<p>在安装的时候会提示这个包已经不再维护了，在新版的 Laravel 里用的 Passport 来替代</p>
+<blockquote>
+<p>Package lucadegasperi/oauth2-server-laravel is abandoned, you should avoid using it. Use laravel/passport instead.</p>
+</blockquote>
+<h2 id="注册-provider-和-facede">注册 Provider 和 Facede</h2>
+<p>修改<code>config/app.php</code>，分别在 providers 里和 aliases 里添加内容</p>
+<pre><code class="language-php">// in providers
+LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+
+// in aliases
+'Authorizer' =&gt; LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+</code></pre>
+<h2 id="添加-middleware">添加 middleware</h2>
+<p>修改<code>app/Http/Kernel.php</code>文件，增加内容</p>
+<pre><code class="language-php">protected $middleware = [
+        //Add bottom lines to your $middleware array.
+        \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
+    ];
+    //
+    protected $routeMiddleware = [
+        //Add bottom lines to your $routeMiddleware array.
+        'oauth' =&gt; \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
+        'oauth-user' =&gt; \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware::class,
+        'oauth-client' =&gt; \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware::class,
+        'check-authorization-params' =&gt; \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
+    ];
+</code></pre>
+<p><strong>以下存疑</strong></p>
+<p>在 <code>middlewares</code>中删除</p>
+<p><code>App\Http\Middleware\VerifyCsrfToken </code></p>
+<p>在 <code>routeMiddlewares</code>添加</p>
+<p><code>'csrf' =&gt; 'App\Http\Middleware\VerifyCsrfToken'</code></p>
+<h2 id="生成包关联的文件和数据表">生成包关联的文件和数据表</h2>
+<p>运行</p>
+<pre><code class="language-shell">$ php artisan vendor:publish &amp; php artisan migrate
+</code></pre>
+<p>提示如下，生成了一个配置文件 oauth2.php 和一些 migrations（从 vendor 目录复制过来）</p>
+<blockquote>
+<p>Copied File [/vendor/lucadegasperi/oauth2-server-laravel/config/oauth2.php] To [/config/oauth2.php]
+Copied Directory [/vendor/lucadegasperi/oauth2-server-laravel/database/migrations] To [/database/migrations]</p>
+</blockquote>
+<p>运行 <code>php artisan migrate</code> 后提示执行了这些 migrations</p>
+<blockquote>
+<p>Migrated: 2014_04_24_110151_create_oauth_scopes_table
+Migrated: 2014_04_24_110304_create_oauth_grants_table
+Migrated: 2014_04_24_110403_create_oauth_grant_scopes_table
+Migrated: 2014_04_24_110459_create_oauth_clients_table
+Migrated: 2014_04_24_110557_create_oauth_client_endpoints_table
+Migrated: 2014_04_24_110705_create_oauth_client_scopes_table
+Migrated: 2014_04_24_110817_create_oauth_client_grants_table
+Migrated: 2014_04_24_111002_create_oauth_sessions_table
+Migrated: 2014_04_24_111109_create_oauth_session_scopes_table
+Migrated: 2014_04_24_111254_create_oauth_auth_codes_table
+Migrated: 2014_04_24_111403_create_oauth_auth_code_scopes_table
+Migrated: 2014_04_24_111518_create_oauth_access_tokens_table
+Migrated: 2014_04_24_111657_create_oauth_access_token_scopes_table
+Migrated: 2014_04_24_111810_create_oauth_refresh_tokens_table</p>
+</blockquote>
+<p>同时在数据库中生成了相关的 tables</p>
+<p><img src="/media/15490412690798/15028546616699.jpg" alt=""></p>
+<h2 id="修改配置参数">修改配置参数</h2>
+<p>打开刚生成的 <code>/conf/oauth2.php</code> 文件(注意不是<code> auth.php</code>)，修改<code>grant_types</code></p>
+<pre><code class="language-php">'grant_types' =&gt; [
+       'password' =&gt; [
+        'class' =&gt; 'League\OAuth2\Server\Grant\PasswordGrant',
+        'access_token_ttl' =&gt; 604800,
+
+        // the code to run in order to verify the user's identity
+        'callback' =&gt; 'App\Http\Controllers\VerifyController@verify',
+        ],
+   ],
+</code></pre>
+<h2 id="创建-callback-对应的控制器和方法">创建 callback 对应的控制器和方法</h2>
+<p>在上面的 <code>oauth2.php</code> 文件中，“grant_types”数组变量内有一个<code>callback</code>元素，指定了在用户获取到 access_token 后，执行什么动作，因此这里需要我们手动创建对应的控制器<code>VerifyController</code>和方法<code>verify</code></p>
+<pre><code class="language-shell">php artisan make:controller VerifyController
+</code></pre>
+<pre><code class="language-php">class VerifyController extends Controller
+{
+    public function verify(){
+        public function verify() {
+        $credentials = [
+            'email' =&gt; $username,
+            'password' =&gt; $password,
+           ];
+    
+        if (Auth::once($credentials)) {
+            return Auth::user()-&gt;id;
+        } else {
+            return false;
+        }
+    }
+    }
+}
+</code></pre>
+<h2 id="在-routesphp-添加获取-access_token-的路由">在 routes.php 添加获取 access_token 的路由</h2>
+<pre><code class="language-php">//Get access_token
+Route::post('oauth/access_token', function() {
+ return Response::json(Authorizer::issueAccessToken());
+});
+</code></pre>
+<h2 id="添加-client">添加 client</h2>
+<p>在 <code>oauth_client</code> 表中增加一个 <code>client</code> 数据, 什么是 client 呢?</p>
+<p>例如我们都知道 GitHub 提供了它的 API 服务 , 有很多开发者都会基于这个 API 服务开发自己的产品. (例如集成 Github 账号登录, 获取最近流行的开源产品列表等).</p>
+<p>Github API 这个&quot;server&quot;为了识别和区分这些连接到 GitHub API 服务的产品, 把他们称为&rdquo;<strong>client</strong>&rdquo; . 一个 client 一般最少有两个值来和其他 client 区分</p>
+<p>name: 应用的名称, 例如 github_pop_app
+id   : client 的 id (不同于 name, 一般是 api 的 server 端生成的一个标记应用的 hash 值, 因为可能有多个开发者使用了相同的 name)
+secret:   类似于密码?
+有的 API 服务还可能会分配一个叫 secret_token 的, 用于加密通讯中的数据</p>
+<p>比如你开发了一个产品叫&rdquo; Github popular repos&rdquo;, 那么在申请使用 Github API 的时候, 就会给你分配 client 身份.</p>
+<p>我们可以开发一个方法, 让用户的产品在申请使用 API 服务的时候, 自动生成并分配给 id 和 secret.</p>
+<p>这里测试阶段就直接插入数据库一条记录吧</p>
+<pre><code class="language-sql">INSERT INTO `oauth_clients` (`id`, `secret`, `name`, `created_at`, `updated_at`) VALUES ('f3d259ddd3ed8ff3843839b', '4c7f6f8fa93d59c45502c0ae8c4a95b', 'Main website', '2017-08-12 21:00:00', '2017-08-12 21:00:00')
+</code></pre>
+<h2 id="测试这个-client-是否能正常获取-access_token">测试这个 client 是否能正常获取 access_token</h2>
+<p>可以使用命令行的  curl , 也可以用图形界面 postman</p>
+<p>这里要提交的数据包括:</p>
+<p>client_id
+client_secret
+grant_type
+username
+password</p>
+<p>这里的<code>username</code>和<code>password</code>是 Laravel 用户表中某个用户.</p>
+<p>Oauth 验证完 id 和 secret 后, 在 callback 里会调用 VerifyController 的 verify() 方法, 再对这一组 username/password 进行验证.</p>
+<p>有时候一个用户可能会创建多个应用来与 API 服务连接(就是多个 client 了).</p>
+<p>你可以直接在 <code>verify()</code> 方法里返回  true 跳过用户验证.</p>
+<p><img src="/media/15490412690798/15039119335076.jpg" alt=""></p>
+<p>好了在 Laravel 中提供 OAuth2 验证已经完成了.</p>
+<p>下面你可以写一些代码来让用户可以自己申请 id, key , 管理员进行审核然后允许获取 access_token.</p>
+<h1 id="laravel-54-及以上使用官方-passport-包实现-oauth2-认证">Laravel 5.4 及以上使用官方 Passport 包实现 OAuth2 认证</h1>
+<p>参考</p>
+<p><a href="https://zhuanlan.zhihu.com/p/64902443">https://zhuanlan.zhihu.com/p/64902443</a> （本文估计使用的简化授权令牌方式，因为只看到输入账号密码,直接用<code>createToken()</code>拿到了token，没见到用 code 换 token ）</p>
+<p>Passport 基于 League OAuth2 server 实现</p>
+<p>docs/5.5/passport.html  结合了 Vue 的前端代码使用。</p>
+<p>令牌 路由保护等</p>
+<p>可以让你搭建一个 OAuth2 服务端，然后所有的第三方接入应用（客户端）都能够直接登录你的用户系统，并以 token 的方式实现通信。</p>
+<p><a href="http://esbenp.github.io/2017/03/19/modern-rest-api-laravel-part-4/">http://esbenp.github.io/2017/03/19/modern-rest-api-laravel-part-4/</a></p>
+<h2 id="安装及配置">安装及配置</h2>
+<h3 id="安装库">安装库</h3>
+<pre><code class="language-shell">composer require laravel/passport
+
+#注：如果是 5.5.* 需要指定低版本 passport, 不然会报错
+composer require laravel/passport &quot;4.0.3&quot;
+</code></pre>
+<h3 id="注册-passport-服务提供者低于54">注册 Passport 服务提供者(低于5.4)</h3>
+<p>将 Passport 的服务提供者注册到配置文件 <code>config/app.php</code> 的 <code>providers</code> 数组中</p>
+<pre><code class="language-php">Laravel\Passport\PassportServiceProvider::class,
+</code></pre>
+<h3 id="运行迁移">运行迁移</h3>
+<p>创建客户端数据表和令牌数据表（使用服务提供者注册内部的数据库迁移脚本目录）,如果之前 <code>/database/migration/</code>里面有一些历史文件，根据需要删除，否则运行下面命令的时候会提示表已经存在。</p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<p><img src="/media/15490412690798/15074520910535.jpg" alt=""></p>
+<h3 id="创建加密密钥和客户端">创建加密密钥和客户端</h3>
+<p>运行命令</p>
+<pre><code class="language-shell">php artisan passport:install
+</code></pre>
+<p>除了创建生成安全访问令牌时用到的加密密钥(放在你定义的<code>storage_path()</code> 目录下，默认是 /storage)</p>
+<p><img src="/media/15490412690798/15075147952140.jpg" alt=""></p>
+<p>同时也会创建「私人访问」客户端和「密码授权」客户端</p>
+<p><img src="/media/15490412690798/15074523491337.jpg" alt=""></p>
+<p><code>私人访问令牌</code>和<code>密码授权令牌</code>后面有章节讲解。</p>
+<h3 id="添加-trait">添加 Trait</h3>
+<p>将 <code>Laravel\Passport\HasApiTokens Trait</code> 添加到 <code>App\User</code> 模型中，这个 Trait 会给你的模型提供一些辅助函数，用于检查已认证用户的令牌和使用作用域</p>
+<pre><code class="language-php">//...
+use Laravel\Passport\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, Notifiable;
+</code></pre>
+<h3 id="调整-authphp-配置文件中-api-部分的授权保护项-driver">调整 auth.php 配置文件中 api 部分的授权保护项 driver</h3>
+<p>修改 <code>/config/auth.php</code> 中<code>guards</code> 的 <code>api</code> 部分，把 <code>driver</code> 从原来的“token”改成“passport”</p>
+<p>这样应用程序在接收到 API 的授权请求时使用 <code>Passport</code> 的 <code>TokenGuard</code> 来处理</p>
+<pre><code class="language-php">'guards' =&gt; [
+        'web' =&gt; [
+            'driver' =&gt; 'session',
+            'provider' =&gt; 'users',
+        ],
+
+        'api' =&gt; [
+            'driver' =&gt; 'passport', // from &quot;token&quot;
+            'provider' =&gt; 'users',
+        ],
+    ],
+</code></pre>
+<h3 id="注册相关的必要路由">注册相关的必要路由</h3>
+<p>在 <code>AuthServiceProvider</code> 的 <code>boot</code> 方法中调用 <code>Passport::routes</code> 函数。这个函数会注册一些在访问令牌、客户端、私人访问令牌的发放和吊销过程中会用到的必要路由, 例如</p>
+<ul>
+<li><code>/oauth/authorize</code></li>
+</ul>
+<pre><code class="language-php">//....
+use Laravel\Passport\Passport;
+
+//..
+
+public function boot()
+{
+    $this-&gt;registerPolicies();
+    
+    // register the passport routes
+    Passport::routes();
+}
+</code></pre>
+<p>运行 <code>php artisan route:list</code>可以看到这些新增的路由</p>
+<p><img src="/media/15490412690798/15566039616568.jpg" alt="-w640"></p>
+<h3 id="部署-passport-到其他服务器-在服务器上生成一个加密密钥">部署 Passport 到其他服务器 ，在服务器上生成一个加密密钥</h3>
+<p>第一次部署 Passport 到生产服务器时，可能会需要运行 <code>passport:keys</code> 命令。</p>
+<p>该命令生成 Passport 所需要的加密密钥，来产生访问令牌。这些生成的密钥往往不保存在源码控制中（保存在 /storage 目录中，而这个目录一般在 .gitignore 里面排除了（可以看到里面有一行 /storage/*.key），不会被提交到服务器上面去）</p>
+<p><img src="/media/15490412690798/15566048327661.jpg" alt="-w252"></p>
+<p><strong>请参看前面“创建加密密钥和客户端”章节</strong></p>
+<pre><code class="language-shell">php artisan passport:keys
+</code></pre>
+<p>如果没有文件，可能会报错如下：</p>
+<blockquote>
+<p>LogicException: Key path &quot;file:///wwwroot/laravel_project/storage/oauth-private.key&quot; does not exist or is not readable in file //wwwroot/laravel_project/vendor/league/oauth2-server/src/CryptKey.php on line 45
+Stack trace:</p>
+<ol>
+<li>LogicException-&gt;() /wwwroot/laravel_project/vendor/league/oauth2-server/src/CryptKey.php:45</li>
+</ol>
+</blockquote>
+<h3 id="配置令牌有效期">配置令牌有效期</h3>
+<p>默认情况下 Passport 发放的令牌永久有效，不需要刷新。</p>
+<p>如果需要修改，通过在<code>AuthServiceProvider</code>的<code>boot</code>方法中调用<code>tokensExpireIn</code>和<code>refreshTokensExpireIn</code>方法来设置一个短的有效期</p>
+<pre><code class="language-php">use Carbon\Carbon;
+
+public function boot()
+{
+    $this-&gt;registerPolicies();
+    Passport::routes();
+    
+    Passport::tokensExpireIn(Carbon::now()-&gt;addDays(15));
+    Passport::refreshTokensExpireIn(Carbon::now()-&gt;addDays(30));
+}
+</code></pre>
+<h2 id="前端实现">前端实现</h2>
+<h3 id="blade-模板">blade 模板</h3>
+<p>运行下面的命令，得到视图文件</p>
+<pre><code class="language-shell">php artisan vendor:publish --tag=passport-views
+</code></pre>
+<p><img src="/media/15490412690798/15566121729450.jpg" alt="-w604"></p>
+<h3 id="使用-passport-自带的-vue-组件">使用 Passport 自带的 Vue 组件**</h3>
+<p>使用</p>
+<pre><code class="language-shell">php artisan vendor:publish --tag=passport-components
+</code></pre>
+<p>会自动从 vendor 目录中复制到 <code>resources/js/components</code></p>
+<p><img src="/media/15490412690798/15566049600687.jpg" alt="-w114"></p>
+<p>可以在 resources/js/app.js 文件中注册这些已发布的组件</p>
+<pre><code class="language-js">Vue.component(
+    'passport-clients',
+    require('./components/passport/Clients.vue')
+);
+
+Vue.component(
+    'passport-authorized-clients',
+    require('./components/passport/AuthorizedClients.vue')
+);
+
+Vue.component(
+    'passport-personal-access-tokens',
+    require('./components/passport/PersonalAccessTokens.vue')
+);
+</code></pre>
+<p>注册完毕后，运行<code>npm run dev</code>命令重新编译你的代码，然后放入应用程序模板，用于创建客户端和私人访问令牌</p>
+<pre><code class="language-html">&lt;passport-clients&gt;&lt;/passport-clients&gt;
+&lt;passport-authorized-clients&gt;&lt;/passport-authorized-clients&gt;
+&lt;passport-personal-access-tokens&gt;&lt;/passport-personal-access-tokens&gt;
+</code></pre>
+<h3 id="根据-api-自己实现前端代码">根据 API 自己实现前端代码</h3>
+<p>Passport 配备了一些可以让你的用户自行创建客户端和私人访问令牌的 JSON API，现在可以自己开始写前端代码来使用它们了。</p>
+<p><strong>参考前面 Vue 组件中的代码</strong> 对于如何发送请求，axios 等都有示例。</p>
+<h2 id="接入应用-申请-与管理">接入应用 申请 与管理</h2>
+<ul>
+<li>一个第三方应用，叫“coding.net”,想要它的用户登录过程中直接使用github的用户系统，这个叫<strong>客户端</strong></li>
+<li>github 服务器就是<strong>服务端</strong></li>
+<li>访问“coding.net”的叫<strong>用户</strong></li>
+</ul>
+<p>OAuth2 中必不可少的部分就是<strong>授权码</strong>，用户必须要获取它</p>
+<p>在获取授权码时，<strong>接入应用（客户端 client）<strong>会重定向一个</strong>用户</strong>到你的<strong>服务端</strong>，<strong>用户</strong>可以选择允许或拒绝服务端向这个<strong>客户端</strong>发放<strong>访问令牌</strong></p>
+<p>下图是我在 coding.net 上选择使用 GitHub 账号登录时的一张截图。<strong>Coding.net 作为“client”（客户端）</strong>，<strong>GitHub 作为“服务端”</strong>。
+我（my101du）已经登录 GitHub，并授权 Coding.net 访问我在 Github 的个人数据(email)。</p>
+<p><img src="/media/15490412690798/15075160740898.jpg" alt=""></p>
+<p><strong>需要为所有“接入应用”创建对应的“客户端”</strong></p>
+<p>在我们自己的测试场景里，Laravel 应用可以自己同时充当服务端和服务端。</p>
+<p>“<strong>接入应用”<strong>如果想要与你的 “Laravel 应用程序的 API” 进行交互，必须先</strong>注册一个「客户端」</strong></p>
+<p>开发者申请一个接入应用，一般需要提交给服务端信息：</p>
+<ul>
+<li>接入应用名称</li>
+<li>用户授权后的跳转链接</li>
+<li>开发者的 user 信息（id）</li>
+</ul>
+<h3 id="使用-artisan-命令-passportclient-快速创建一个客户端用于测试-oauth2-的功能">使用 Artisan 命令 passport:client 快速创建一个客户端用于测试 OAuth2 的功能</h3>
+<p>输入命令，然后根据提示输入客户端的信息。</p>
+<pre><code class="language-shell">php artisan passport:client
+</code></pre>
+<p><img src="/media/15490412690798/15075175163576.jpg" alt=""></p>
+<p><strong>注意</strong></p>
+<p>第一步，是需要将这个客户端<strong>分配给一个指定的已存在用户</strong>，需要你从数据库的 <code>users</code>表里去找这个 id。</p>
+<p><img src="/media/15490412690798/15075178605357.jpg" alt=""></p>
+<p>然后输入一个客户端的名称、回调地址（完整的 http://，一般是 /auth/callback ）</p>
+<p>相当于接入应用的所有用户，共享这个 client_id。</p>
+<h3 id="使用-json-api-的方式来自动创建客户端">使用 JSON API 的方式来自动创建客户端</h3>
+<p>当然了，如果开发者想要申请应用，接入 Laravel 服务端，肯定是不能像前面这样每次要要服务器管理员去服务器上运行这个 artisan 命令的。他们要“自助操作”，也就是通过请求相关的 JSON API</p>
+<p><strong>举个例子</strong></p>
+<p>如下图，假设我开发了一个“应用程序”（网站/APP等），想申请使用 GitHub 的 OAuth2 服务（服务端），来让我的用户们能使用 GitHub 账号登录。</p>
+<p>下面就是 github 提供的自助操作界面。</p>
+<p><img src="/media/15490412690798/15075181256538.jpg" alt=""></p>
+<p>当输入完请求的<code>Application Name</code>（也就是对应 client name）和 <code>callback url</code>后，点击“提交”按钮，应该也是调用 GitHub 的“JSON API”。</p>
+<p>GitHub 会生成客户端 ID 和密钥，并返回给我。</p>
+<p><img src="/media/15490412690798/15075184040908.jpg" alt=""></p>
+<p>现在<strong>回到你的 Laravel 应用程序</strong></p>
+<p>为了能处理用户提交应用名、callback url 动作，需要写很多代码来实现客户端创建、更新、删除。</p>
+<p>但使用 Passport 的 JSON API，可以简化这些操作。</p>
+<p><strong>注意</strong>，发起这些请求之前，用户必须是<strong>已经登录状态</strong>（<strong>已认证</strong>，实际上就是自动识别给 client 分配<code>users</code>表里的用户 id）</p>
+<p>你可以按你的应用情况来发起请求（例如 jQuery 的 ajax，安卓、iOS 的网络请求函数），这里以 axios 库来举例。</p>
+<h4 id="get-oauthclients-获取当前登录用户申请的客户端">GET /oauth/clients 获取当前登录用户申请的客户端</h4>
+<p>返回属于“当前**已认证(登录成功)**用户”的所有客户端（一个用户可以有多个接入应用来申请客户端）</p>
+<pre><code class="language-js">axios.get('/oauth/clients')
+    .then(response =&gt; {
+        console.log(response.data);
+    });
+</code></pre>
+<h4 id="post-oauthclients-创建新的客户端">POST /oauth/clients 创建新的客户端</h4>
+<p>参数包括<code>name</code>和<code>redirect</code>。
+用户不管点击允许还是拒绝，都会重定向到这个 redirect 链接</p>
+<p>当客户端创建完成后，会生成此客户端的 ID 和密钥。然后客户端使用这两个值从你的应用程序请求访问令牌</p>
+<pre><code class="language-js">const data = {
+    name: 'Client Name',
+    redirect: 'http://example.com/callback'
+};
+
+axios.post('/oauth/clients', data)
+    .then(response =&gt; {
+        console.log(response.data);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });
+</code></pre>
+<h4 id="put-oauthclientsclient-id-更新客户端信息">PUT /oauth/clients/{client-id} 更新客户端信息</h4>
+<pre><code class="language-js">const data = {
+    name: 'New Client Name',
+    redirect: 'http://example.com/callback'
+};
+
+axios.put('/oauth/clients/' + clientId, data)
+    .then(response =&gt; {
+        console.log(response.data);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });
+</code></pre>
+<h4 id="delete-oauthclientsclient-id">DELETE /oauth/clients/{client-id}</h4>
+<p>删除客户端</p>
+<pre><code class="language-js">axios.delete('/oauth/clients/' + clientId)
+    .then(response =&gt; {
+        //
+    });
+</code></pre>
+<h2 id="方式1---接入应用先拿到-授权码再换-令牌">方式1 - 接入应用先拿到 授权码，再换 令牌</h2>
+<p>在 接入应用 中，有个 redirect url 来作为 callback 处理 OAuth2 服务端发来的的授权码，以及再次使用这个授权码换取访问令牌</p>
+<h3 id="1-请求服务端-oauthauthorize-路由请求服务端允许接入应用访问用户数据">1. 请求服务端 /oauth/authorize 路由，请求服务端允许接入应用访问用户数据</h3>
+<p>创建完客户端后，开发者可以<strong>使用此客户端的 ID 和密钥</strong>向你的laravel应用程序（服务端）<strong>请求</strong>一个<strong>授权码</strong>。</p>
+<p><strong>接入应用</strong>会将<strong>用户****重定向</strong>到你 Laravel 应用程序（服务端）的 <code>/oauth/authorize</code> 路由上。(路由 /oauth/authorize 已经在 <code>Passport::routes()</code> 方法中定义)</p>
+<p>注意：</p>
+<ol>
+<li>下面的代码是写在<strong>接入应用</strong>中的，将请求参数发送给你的 Laravel 应用程序
+（看 example.com 和 your-app.com 就明白了）</li>
+<li><code>client_id</code>是 <code>oauth_clients</code>中的自增主键 id，而不是“name”</li>
+<li>一定要注意<code>redirect_uri</code>和表中的<code>redirect</code>字段<strong>一模一样</strong>，如果不一致，后面访问这个地址时，会弹出一个 basic auth 的窗口</li>
+</ol>
+<p><img src="/media/15490412690798/15075313991999.jpg" alt=""></p>
+<p>代码如下。</p>
+<ol>
+<li>当用户在 接入应用 的登录页面中，点击“登录”按钮的时候（假设是 <code>/request_code</code> 路由）</li>
+<li>就请求 服务端 的 <code>/oauth/authorize</code>，并把 client_id 等参数带过去</li>
+</ol>
+<pre><code class="language-php">// 某个接入应用中，附带 client_id 发起授权码请求
+Route::get('/request_code', function () {
+    $query = http_build_query([
+        'client_id' =&gt; 'client-id',
+        'redirect_uri' =&gt; 'http://example.com/callback',
+        'response_type' =&gt; 'code',
+        'scope' =&gt; '',
+    ]);
+
+	// 重定向到 OAuth2 服务端的验证页面
+    return redirect('http://your-app.com/oauth/authorize?'.$query);
+});
+</code></pre>
+<h3 id="2-确认授权请求重定向回到接入应用程序并发送授权码">2. 确认授权请求，重定向回到接入应用程序并发送<strong>授权码</strong></h3>
+<p>实际上 Laravel 应用程序的<code>/oauth/authorize</code>路由对应之前使用</p>
+<pre><code class="language-shell">php artisan vendor:publish --tag=passport-views
+</code></pre>
+<p>得到的视图文件<code>resources/views/vendor/passport/authorize.blade.php</code></p>
+<p>你可以自定义它的样式。</p>
+<p>Laravel 应用程序会检查通过表单传过来的 <strong>redirect_uri 必须和客户端创建时保存在数据表 oauth_client 里这个 client 填写的 redirect 完全一致</strong>。（否则会提示弹出一个认证窗口）</p>
+<p><img src="/media/15490412690798/15082182316889.jpg" alt=""></p>
+<p>假设一致，就会显示<code>/oauth/authorize</code>路由对应的视图。(如下)</p>
+<p><img src="/media/15490412690798/15075315173795.jpg" alt=""></p>
+<p>用户点击“Authorize”，允许 接入应用 访问 服务端 存储的用户数据后，会被 服务端<strong>再次重定向返回到接入应用程序</strong>请求中指定的 <code>redirect_uri</code> 链接。</p>
+<p><strong>并在 redirect_url 后面附带上 授权码（非常重要），发送给 接入应用 去处理</strong></p>
+<h3 id="3-接入应用的-callback-捕获-服务端-返回来的-授权码再次申请-访问令牌这次路由变成了-post--oauthtoken">3. 接入应用的 /callback, 捕获 服务端 返回来的 授权码，再次申请 访问令牌，这次路由变成了 POST  /oauth/token</h3>
+<p>在<strong>接入应用</strong>中，再编码 <code>redirect_url</code>对应部分，<strong>接收、处理服务端返回的 授权码</strong>，然后<strong>使用授权码再次申请访问令牌</strong>。</p>
+<p>这是一个 <strong>Post 请求</strong>，除了携带<code>code</code>(授权码)，还发送了<code>secret</code>(客户端的密钥) ，<code>grant_type</code>(授权方式)等参数</p>
+<p>这次服务端对应路由是<code>/oauth/token</code></p>
+<pre><code class="language-php">// 本段代码在“接入应用”中，捕获到服务端推过来的 授权码 后，再次申请令牌
+
+Route::get('/callback', function (Request $request) {
+    $http = new GuzzleHttp\Client;
+
+    $response = $http-&gt;post('http://your-app.com/oauth/token', [
+        'form_params' =&gt; [
+            'grant_type' =&gt; 'authorization_code',
+            'client_id' =&gt; 'client-id',
+            'client_secret' =&gt; 'client-secret',
+            'redirect_uri' =&gt; 'http://example.com/callback',
+            'code' =&gt; $request-&gt;code,
+        ],
+    ]);
+
+    return json_decode((string) $response-&gt;getBody(), true);
+});
+</code></pre>
+<p>解析第二次 post 请求的结果，是一个json字符串，拿到最终的</p>
+<ul>
+<li>令牌： <code>access_token</code></li>
+<li>刷新令牌: <code>refresh_token</code></li>
+<li>过期时间: <code>expires_in</code></li>
+<li>令牌类型： <code>token_type</code></li>
+</ul>
+<p><img src="/media/15490412690798/15075320078424.jpg" alt=""></p>
+<p>expires_in 的值即当前访问令牌的有效期（单位：秒，一般是 31536000，除以 86400 正好是一年&hellip;.所以其实也不是永久有效&hellip;）。</p>
+<h3 id="4-拿着令牌获取其他资源">4. 拿着令牌，获取其他资源</h3>
+<p>用户以后就可以拿着 <code>access_token</code> 来从服务器请求资源了。（在服务器上，应该会把它和本地的密钥进行处理，核对，再返回结果）</p>
+<h3 id="5-刷新得到新的访问令牌">5. 刷新得到新的访问令牌</h3>
+<p>前面返回 JSON 中有个<code>refresh_token</code>数据（刷新令牌）的用途。</p>
+<p>如果设置了 Passport 发放<strong>短期访问令牌</strong>，当用户的访问令牌到期之前，需要刷新得到新的访问令牌的时候，在发送请求时要把这个<code>刷新令牌</code>也一并带上。</p>
+<pre><code class="language-php">$http = new GuzzleHttp\Client;
+
+$response = $http-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'refresh_token',
+        'refresh_token' =&gt; 'the-refresh-token',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'scope' =&gt; '',
+    ],
+]);
+
+return json_decode((string) $response-&gt;getBody(), true);
+</code></pre>
+<h3 id="数据表的变化">数据表的变化</h3>
+<p>请打开这几个表，可以看到里面已经有几条新的记录来存储当前已经发放的授权码（oauth_auth_codes）、访问令牌（oauth_access_tokens）,以及client_id 和 user_id 的对应关系</p>
+<p>注意：这里的 user_id ，是<strong>服务端</strong>的用户 id，因为客户端实际上是完全不需要用户和密码的，它们的令牌数据捆绑了 client_id</p>
+<p><img src="/media/15490412690798/15075321956205.jpg" alt=""></p>
+<p><img src="/media/15490412690798/15075323714839.jpg" alt=""></p>
+<h3 id="另一个用户请求令牌">另一个用户请求令牌</h3>
+<p>当另一个登录用户走同样的流程得到 token 后，数据表里记录了一条新的记录。</p>
+<p>注意 user_id, 它的值是**“服务端”（也就是我们的 Laravel OAuth2 Passport 端）的 users 表中的用户 id**。</p>
+<p><img src="/media/15490412690798/15082186226294.jpg" alt=""></p>
+<h2 id="方式2---密码授权机制发放令牌">方式2 - 密码授权机制发放令牌</h2>
+<p>在前面的<strong>基于授权码获取访问令牌</strong>的方式中，进行了几次<strong>重定向</strong>(你的接入程序，和服务端各一次)。</p>
+<p>有没有办法可以简化一些？</p>
+<p>OAuth2 <strong>密码授权机制</strong>可以让自有应用<strong>基于邮箱地址（用户名）和密码直接获取访问令牌</strong>，没有 redirect_uri 处理授权码-令牌。</p>
+<p>其实估计就是把上面的方式1中，在服务端输入账号密码登录的步骤，给拿到接入应用这边来了</p>
+<p>—— 直接在 接入应用端 输入 <strong>服务端</strong> 的账号密码，一次性在服务端的后台处理完授权码、令牌</p>
+<h3 id="创建一个密码授权客户端">创建一个密码授权客户端</h3>
+<p>最关键的就是创建一个<strong>密码授权客户端</strong></p>
+<p>如果运行过 <code>passport:install</code> 命令，那无需再单独运行此命令</p>
+<pre><code class="language-shell">php artisan passport:client --password
+</code></pre>
+<p><img src="/media/15490412690798/15082190451288.jpg" alt=""></p>
+<h3 id="请求密码授权令牌">请求密码授权令牌</h3>
+<p>然后直接向服务端的<code>/oauth/token</code>发起如下的 POST 请求，会直接返回 token 信息，而不是一个授权码让接入程序再次申请令牌</p>
+<p><strong>注意关键</strong></p>
+<ol>
+<li><code>grant_type</code>从“authorization_code”变成“password”，</li>
+<li>把 <code>client_id</code> 和 <code>client_secret</code> 一起带上，</li>
+<li>并提交了 <code>username</code>和<code>password</code>信息</li>
+</ol>
+<p>我猜测是把获取授权码、换令牌这步 callback 操作自动合并完成并对用户隐藏了。</p>
+<p><strong>密码、用户</strong> 是<strong>服务端</strong>的用户密码（例如就是在 coding.net 里输入 github 的账号密码）</p>
+<p>貌似真实环境里没有出现过这样的方式，基本上是方式1.  毕竟让用户在你自己的应用里输入他的私人社交网站账号密码，让人心里很不安。</p>
+<pre><code class="language-php">$http = new GuzzleHttp\Client;
+
+$response = $http-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'password',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'username' =&gt; 'taylor@laravel.com',
+        'password' =&gt; 'my-password',
+        'scope' =&gt; '',
+    ],
+]);
+	
+return json_decode((string) $response-&gt;getBody(), true);
+</code></pre>
+<p><strong>请求所有作用域</strong></p>
+<p>使用密码授权机制时，你可以通过请求作用域 * 让你的令牌获取应用程序中定义的所有作用域。<strong>在处理使用此令牌发起的请求时，can 函数会始终返回 true</strong>，这种作用域的授权最好只应用在使用 password 授权时发放的令牌中：</p>
+<pre><code class="language-php">//....
+'password' =&gt; 'my-password',
+'scope' =&gt; '*',
+</code></pre>
+<p><strong>坑</strong></p>
+<p>这个密码验证，必须确保提交的 client_id、secret 是在 <code>oauth_client</code>表里面<code>password_client</code>字段为1的 client，如果使用了别的（非1），会返回</p>
+<blockquote>
+<p>Client error: <code>POST http://locahost/oauth/token</code> resulted in a <code>401 Unauthorized</code> response:
+{&ldquo;error&rdquo;:&ldquo;invalid_client&rdquo;,&ldquo;message&rdquo;:&ldquo;Client authentication failed&rdquo;}</p>
+</blockquote>
+<p><img src="/media/15490412690798/15087382424077.jpg" alt=""></p>
+<p>因为没有设为 1， 表示它不支持密码验证啊！（错误的想法是：任何一个 client 类型都能用密码验证）</p>
+<p>另外如果你的系统改成了默认使用<strong>用户名</strong>而不是 email登录(或者使用了自定义的用户表而不是系统的users表)，要修改对应的 User 模型，添加</p>
+<pre><code class="language-php">public function findForPassport($username)
+    {
+        return self::where('name', $username)-&gt;first(); // change column name whatever you use in credentials
+    }
+</code></pre>
+<h3 id="退出登录删除令牌">退出登录，删除令牌</h3>
+<h2 id="简化授权令牌">简化授权令牌</h2>
+<p>有的时候，开发一些纯前端 application (JavaScript) 和 移动应用 时， Laravel 提供了**“简化授权”方式**。</p>
+<p>和“授权码授权”类似，但是它不需要通过授权码获取令牌，也不需要像密码授权一样提交用户、密码、client_secret。</p>
+<p>只需要提交 <code>client_id</code>，并且服务端<strong>把令牌直接返回客户端</strong></p>
+<p>首先要在 <code>AuthServiceProvider</code>的<code>boot</code>中调用<code>enableImplicitGrant</code> (implicit 隐式的)</p>
+<pre><code class="language-php">public function boot() 
+{
+    $this-&gt;registerPolicies();
+
+    Passport::routes();
+
+    Passport::enableImplicitGrant();
+}
+</code></pre>
+<p>然后修改前面请求“授权码”的代码，把<code>response_type</code>从“code”改成“token”</p>
+<pre><code class="language-php">$query = http_build_query([
+    'client_id' =&gt; 'client-id',
+    'redirect_uri' =&gt; 'http://example.com/callback',
+    'response_type' =&gt; 'token', // not &quot;code&quot;
+    'scope' =&gt; '',
+]);
+
+return redirect('http://your-app.com/oauth/authorize?'.$query);
+</code></pre>
+<p>不过要注意的是，因为这个“简化授权”方式主要是适用于 Javascript 开发的 App，因此它的 redirect_uri 有点特殊。</p>
+<p>提交后你会发现，服务端重定向的是一个 类似“锚”的 hash fragment。 （<strong>也就是说实际上不通过网络，不需要大家服务器处理 redirect_url</strong>）
+而不是之前那种 querystring 方式 <code>/callback?code=</code></p>
+<pre><code class="language-html">//同样也有 access_token, token_type, expire_in 三个值
+http://client.test.com/callback#access_token=eyJ....略....yIn0&amp;token_type=bearer&amp;expires_in=31536000
+</code></pre>
+<p>先把 client 的 <code>redirect_url</code> 可以修改成 http://localhost/oauth_callback.html （如果是本地 javascript 程序）</p>
+<p>在一些移动应用的程序内部实现时,即使redirect_url是一个错误的地址,也能解析到access_token.
+因为应用内部会收到302跳转的数据,只要从中解析到token后,不执行跳转动作即可</p>
+<p>如何获取 #token 的内容呢？</p>
+<p>这里
+<a href="https://www.thepolyglotdeveloper.com/2015/03/using-oauth-2-0-in-your-web-browser-with-angularjs/">https://www.thepolyglotdeveloper.com/2015/03/using-oauth-2-0-in-your-web-browser-with-angularjs/</a></p>
+<p>核心代码</p>
+<pre><code class="language-js">var callbackResponse = (document.URL).split(&quot;#&quot;)[1];
+var responseParameters = (callbackResponse).split(&quot;&amp;&quot;);
+var parameterMap = [];
+for(var i = 0; i &lt; responseParameters.length; i++) {
+    parameterMap[responseParameters[i].split(&quot;=&quot;)[0]] = responseParameters[i].split(&quot;=&quot;)[1];
+}
+if(parameterMap.access_token !== undefined &amp;&amp; parameterMap.access_token !== null) {
+    var imgur = {
+        oauth: {
+            access_token: parameterMap.access_token,
+            expires_in: parameterMap.expires_in,
+            account_username: parameterMap.account_username
+        }
+    };
+    window.localStorage.setItem(&quot;imgur&quot;, JSON.stringify(imgur));
+    window.location.href = &quot;http://localhost/index.html#/secure&quot;;
+} else {
+    alert(&quot;Problem authenticating&quot;);
+}
+</code></pre>
+<p>参考</p>
+<p><a href="http://www.tenpay.tech/questions/396599/oauth2-0-implicit-grant-flow-why-use-url-hash-fragments">http://www.tenpay.tech/questions/396599/oauth2-0-implicit-grant-flow-why-use-url-hash-fragments</a>
+<a href="http://www.jianshu.com/p/679cff4d9029">http://www.jianshu.com/p/679cff4d9029</a></p>
+<p>单页面应用程序（或基于浏览器的应用程序）在从网页加载源代码后完全在浏览器运行。因为整个源代码都可以在浏览器中使用，他们不能保持客户密钥的机密性。所以这个密钥是不被使用的。该流正好与上面的授权码流完全相同。但在最后一步，在不使用客户端密钥的情况下，将授权代码交换访问令牌。</p>
+<h2 id="客户端证书授权令牌">客户端证书授权令牌</h2>
+<p>一般用在“机器对机器的认证”，例如要通过 API 来定时自动执行一些脚本任务。</p>
+<p>首先在 <code>app/Http/Kernel.php</code> 的 <code>$routeMiddleware</code> 变量中添加新的中间件</p>
+<pre><code class="language-php">//...
+use Laravel\Passport\Http\Middleware\CheckClientCredentials;
+
+protected $routeMiddleware = [
+    'client' =&gt; CheckClientCredentials::class,
+];
+</code></pre>
+<p>使用的时候，首先附加中间件到路由</p>
+<pre><code class="language-php">Route::get('/user', function(Request $request) {
+    ...
+})-&gt;middleware('client');
+</code></pre>
+<p>获取令牌时，发送 post 请求到 <code>/oauth/token</code>，<code>grant_type</code>为“client_credentials”，附带<code>client_secret</code>。</p>
+<pre><code class="language-php">$guzzle = new GuzzleHttp\Client;
+
+$response = $guzzle-&gt;post('http://your-app.com/oauth/token', [
+    'form_params' =&gt; [
+        'grant_type' =&gt; 'client_credentials',
+        'client_id' =&gt; 'client-id',
+        'client_secret' =&gt; 'client-secret',
+        'scope' =&gt; 'your-scope',
+    ],
+]);
+
+echo json_decode((string) $response-&gt;getBody(), true);
+</code></pre>
+<h2 id="私人访问令牌在开发测试阶段">私人访问令牌（在开发测试阶段）</h2>
+<p>在试验 API 接口或者在简单的授权演示中，不想经历通常的授权跳转流程。可以让用户在你的应用程序中<strong>自行发放访问令牌</strong>。</p>
+<blockquote>
+<p>私人访问令牌总是永久有效的，tokensExpireIn 和 refreshTokensExpireIn 方法不会影响它的有效期.</p>
+</blockquote>
+<h3 id="创建私人访问客户端">创建私人访问客户端</h3>
+<p>和“密码授权”客户端类似，运行下面的命令。（同样如果已经运行过<code>passport:install</code>则不需要）</p>
+<pre><code class="language-shell">php artisan passport:client --personal
+</code></pre>
+<h3 id="管理私人访问令牌">管理私人访问令牌</h3>
+<h4 id="发放令牌">发放令牌</h4>
+<p>使用 User 模型实例上的 <code>createToken</code> 方法，参数是“令牌名称”和“作用域”。
+例如执行下面的代码</p>
+<pre><code class="language-php">$user = App\User::find(1);
+
+// Creating a token without scopes...
+$token = $user-&gt;createToken('Token Name')-&gt;accessToken;
+
+// Creating a token with scopes...
+$token = $user-&gt;createToken('My Token', ['place-orders'])-&gt;accessToken;
+</code></pre>
+<p>得到一条新记录</p>
+<p><img src="/media/15490412690798/15075379188243.jpg" alt=""></p>
+<h4 id="使用-json-api">使用 JSON API</h4>
+<p><strong>GET /oauth/scopes</strong></p>
+<p>返回应用程序中定义的所有 作用域，然后可以在后面使用</p>
+<pre><code class="language-js">axios.get('/oauth/scopes')
+    .then(response =&gt; {
+        console.log(response.data);
+    });
+</code></pre>
+<p><strong>GET /oauth/personal-access-tokens</strong></p>
+<p>返回当前授权用户创建的所有私人访问令牌，方便修改/删除</p>
+<p>代码略</p>
+<p><strong>POST /oauth/personal-access-tokens</strong></p>
+<p>创建</p>
+<pre><code class="language-js">const data = {
+    name: 'Token Name',
+    scopes: []
+};
+
+axios.post('/oauth/personal-access-tokens', data)
+    .then(response =&gt; {
+        console.log(response.data.accessToken);
+    })
+    .catch (response =&gt; {
+        // List errors on response...
+    });
+</code></pre>
+<p><strong>DELETE /oauth/personal-access-tokens/{token-id}</strong></p>
+<p>删除私人访问令牌</p>
+<pre><code class="language-js">axios.delete('/oauth/personal-access-tokens/' + tokenId);
+</code></pre>
+<h2 id="参考">参考</h2>
+<p><a href="https://laravel-china.org/articles/6404/laravel-passport-learning-finishing">https://laravel-china.org/articles/6404/laravel-passport-learning-finishing</a>
+<img src="/media/15490412690798/15087366432447.png" alt=""></p>
+<h2 id="路由保护">路由保护</h2>
+<h3 id="中间件">中间件</h3>
+<p>Passport 包含一个 验证保护机制 可以验证请求中的的访问令牌。因为前面修改了
+<code>auth.php</code>文件中，<code>guards</code> 下 api 部分中的保护机制从 <code>token</code> 改为了 <code>passport</code>，只要给需要验证访问令牌的路由添加 <code>auth:api</code> 中间件，该机制将发挥作用</p>
+<pre><code class="language-php">Route::get('/user', function () {
+    //
+})-&gt;middleware('auth:api');
+</code></pre>
+<h3 id="传递访问令牌">传递访问令牌</h3>
+<p>接入应用在调用 Passport 保护下的路由时，需要将访问令牌作为 Bearer 令牌放在请求头 Authorization 中。</p>
+<p><strong>注意</strong></p>
+<ul>
+<li>是“Accept”，而不是“content-type”，否则会被重定向到 login 页面</li>
+<li>“Bearer”后面有个空格，再跟 access_token 的字符串</li>
+</ul>
+<pre><code class="language-php">$response = $client-&gt;request('GET', '/api/user', [
+    'headers' =&gt; [
+        'Accept' =&gt; 'application/json',
+        'Authorization' =&gt; 'Bearer '.$accessToken,
+    ],
+]);
+</code></pre>
+<p><img src="/media/15490412690798/15076013244450.jpg" alt=""></p>
+<p><img src="/media/15490412690798/15076018513906.jpg" alt=""></p>
+<h2 id="令牌作用域">令牌作用域</h2>
+<p>API 客户端接入特定用户时，可以通过作用域来限定其访问权限。例如电子商务应用中，一些接入应用可以获取订单的发货状态而不能创建订单</p>
+<h3 id="定义作用域">定义作用域</h3>
+<p><code>AuthServiceProvider</code> 的 <code>boot</code> 方法中，使用 <code>Passport::tokensCan</code> 方法来定义 API 的作用域。（作用域描述将会在授权确认页中直接展示给用户，可以将其定义为任何你需要的内容）</p>
+<pre><code class="language-php">use Laravel\Passport\Passport;
+
+Passport::tokensCan([
+    'place-orders' =&gt; 'Place orders',
+    'check-status' =&gt; 'Check order status',
+]);
+</code></pre>
+<h3 id="给令牌分派作用域">给令牌分派作用域</h3>
+<h4 id="授权码机制">授权码机制</h4>
+<p>使用授权码机制申请访问令牌时，接入应用可以通过 scope 字符串参数指定他们需要的作用域。scope 包含多个作用域名称时，名称之间使用<strong>空格</strong>分隔</p>
+<pre><code class="language-php">Route::get('/redirect', function () {
+    $query = http_build_query([
+        'client_id' =&gt; 'client-id',
+        'redirect_uri' =&gt; 'http://example.com/callback',
+        'response_type' =&gt; 'code',
+        'scope' =&gt; 'place-orders check-status',
+    ]);
+
+    return redirect('http://your-app.com/oauth/authorize?'.$query);
+});
+</code></pre>
+<h4 id="私人访问">私人访问</h4>
+<p>使用 User 模型的 createToken 方法发放访问令牌时，你可以将需要的作用域数组作为第二个参数传给此方法：</p>
+<pre><code class="language-php">$token = $user-&gt;createToken('My Token', ['place-orders'])-&gt;accessToken;
+</code></pre>
+<h3 id="检查作用域">检查作用域</h3>
+<p>Passport 包含两个检查作用域的中间件，通过访问令牌请求时将会使用这两个中间件来检查是否授予了特定作用域</p>
+<p>将下面的中间件添加到 app/Http/Kernel.php 文件的 $routeMiddleware 属性</p>
+<pre><code class="language-php">'scopes' =&gt; \Laravel\Passport\Http\Middleware\CheckScopes::class,
+'scope' =&gt; \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
+</code></pre>
+<p>路由可以使用 scopes 中间件来检查当前请求是否拥有指定的 <strong>所有</strong> 作用域</p>
+<pre><code class="language-php">Route::get('/orders', function () {
+    // Access token has both &quot;check-status&quot; and &quot;place-orders&quot; scopes...
+})-&gt;middleware('scopes:check-status,place-orders');
+</code></pre>
+<p>使用 scope 中间件来检查当前请求是否拥有指定的 <strong>任意</strong> 作用域</p>
+<pre><code class="language-php">Route::get('/orders', function () {
+    // Access token has either &quot;check-status&quot; or &quot;place-orders&quot; scope...
+})-&gt;middleware('scope:check-status,place-orders');
+</code></pre>
+<p>使用当前授权 User 实例上的 tokenCan 方法来验证此<strong>令牌是否拥有指定的作用域</strong></p>
+<pre><code class="language-php">use Illuminate\Http\Request;
+
+Route::get('/orders', function (Request $request) {
+    if ($request-&gt;user()-&gt;tokenCan('place-orders')) {
+        //
+    }
+});
+</code></pre>
+<h2 id="获取处理-tokens">获取/处理 tokens</h2>
+<h3 id="获取当前用户的-tokens">获取当前用户的 tokens</h3>
+<pre><code class="language-php">Auth::user()-&gt;tokens();
+</code></pre>
+<h3 id="让令牌包括刷新令牌过期">让令牌(包括刷新令牌)过期</h3>
+<p>修改数据表， revoked 字段值为 1（access_tokens 和 refresh_tokens 表）</p>
+<p>或调用 token 实例的 revoke 方法</p>
+<pre><code class="language-php">$userTokens = $userInstance-&gt;tokens;
+
+foreach($userTokens as $token) {
+    $token-&gt;revoke();   
+}
+</code></pre>
+<p><strong>注意</strong> refresh_token 无法通过 revoke 方法取消</p>
+<h2 id="javascript-接入-api">JavaScript 接入 API</h2>
+<p>使用同样的 API 可以被你自己的 web 应用、移动应用、第三方应用以及你发布到各个包管理平台的 SDK 共同使用，将会给开发过程带来极大的便利。</p>
+<p><strong>通常</strong>，在你通过 JavaScript 接入你的 API 时，<strong>每次请求你的应用程序时都需要手动传递访问令牌</strong>，然而，Passport 其中一个中间件可以帮你做这件事，你需要做的仅仅是将 <code>CreateFreshApiToken</code> 中间件添加到你的 <strong>web 中间件组</strong>中</p>
+<p>修改<code>app/Http/Kernel.php</code>的<code>$middlewareGroups</code></p>
+<pre><code class="language-php">'web' =&gt; [
+    // Other middleware...
+    \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+],
+</code></pre>
+<p>Passport 的这个中间件将会在你所有的对外请求中添加一个 laravel_token cookie ，该 cookie 将包含一个加密后的 JWT （https://jwt.io/），Passport 可以根据此数据判断你 JavaScript 应用的授权状态，至此，你可以无需传递访问令牌直接请求应用程序的 API 了</p>
+<pre><code class="language-js">// 不再需要手动传递令牌
+axios.get('/user')
+    .then(response =&gt; {
+        console.log(response.data);
+    });
+</code></pre>
+<p>当使用上面方法授权时，Axios 会自动带上 <code>X-CSRF-TOKEN</code> 请求头传递。另外，默认的 Laravel JavaScript 也会带上 <code>X-Requested-With</code> 请求头:</p>
+<pre><code class="language-js">window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+};
+</code></pre>
+<p><strong>注意</strong></p>
+<p>如果你用了其他 JavaScript 框架，需要确保每次对外请求都会带有 <code>X-CSRF-TOKEN</code> 和 <code>X-Requested-With</code> 请求头。（阅读下自带的 Vue 组件相关代码）</p>
+<h2 id="事件">事件</h2>
+<p>Passport 在访问令牌和刷新令牌时触发事件，可以通过触发这些事件来修改或删除数据库中的其他访问令牌。在应用程序的<code>EventServiceProvider</code>中为这些事件附加监听器</p>
+<pre><code class="language-php">protected $listen = [
+    'Laravel\Passport\Events\AccessTokenCreated' =&gt; [
+        'App\Listeners\RevokeOldTokens',
+    ],
+
+    'Laravel\Passport\Events\RefreshTokenCreated' =&gt; [
+        'App\Listeners\PruneOldTokens',
+    ],
+];
+</code></pre>
+<h2 id="测试">测试</h2>
+<p>Passport 的 actingAs 方法可以用于指定当前认证的用户及其授权范围。 actingAs 方法第一个参数是一个对象，第二个参数是数组表示申请的授权范围:</p>
+<pre><code class="language-php">public function testServerCreation()
+{
+    Passport::actingAs(
+        factory(User::class)-&gt;create(),
+        ['create-servers']
+    );
+
+    $response = $this-&gt;post('/api/create-server');
+
+    $response-&gt;assertStatus(200);
+}
+</code></pre>
+<h2 id="处理跨域以及-passport-怎样设置">处理跨域（以及 Passport 怎样设置）</h2>
+<h3 id="安装-laravel-cors">安装 <code>laravel-cors</code></h3>
+<pre><code class="language-shell">composer require barryvdh/laravel-cors
+</code></pre>
+<h3 id="添加-provider-configappphp">添加 Provider （config/app.php）</h3>
+<pre><code class="language-php">// other providers
+// Cors
+Barryvdh\Cors\ServiceProvider::class,
+</code></pre>
+<h3 id="然后修改kernelphp">然后修改<code>Kernel.php</code></h3>
+<p>先把&quot;cors&quot;添加到可使用中间件列表中，以后可以在路由中使用&quot;cors&quot;名称来调用它</p>
+<pre><code class="language-php">protected $routeMiddleware = [
+    //other middlewares
+    'cors'        =&gt; \Barryvdh\Cors\HandleCors::class,
+</code></pre>
+<p>我们可以把它放入<strong>全局中间件</strong>，也可以放入<strong>路由组中间件</strong>中。</p>
+<p>例如，全局</p>
+<pre><code class="language-php">protected $middleware = [
+    //other global middlewares
+    \Barryvdh\Cors\HandleCors::class
+]
+</code></pre>
+<p>例如 <code>/api</code>组</p>
+<pre><code class="language-php">protected $middlewareGroups = [
+    //web
+    //...
+    
+    //api
+    'api' =&gt; [
+            'cors',
+            'throttle:60,1',
+            'bindings',
+
+        ],
+</code></pre>
+<p>或者是任意一个单独的路由中</p>
+<pre><code class="language-php">Route::get('/test_api', 'ApiController@test')-&gt;middleware(['cors']);
+</code></pre>
+<p><strong>注意：中间件执行顺序问题</strong></p>
+<p>注意，需要把<code>cors</code>放在中间件列表数组的最 前面</p>
+<p><strong>如果使用了 <code>Passport</code> 来做 OAuth2</strong></p>
+<p>需要修改<code>app/Providers/AuthServiceProvider</code>,表示在 <code>/oauth/token</code>等请求中允许跨域请求</p>
+<pre><code class="language-php">use Route;
+//...
+
+// register all the routes of Passport library
+Route::group(['middleware' =&gt; 'cors'], function () {
+    Passport::routes();
+});
+
+// Passport::routes();
+</code></pre>
+<p>如果仍然有问题，在 index.php 或 bootstrap/app.php 里添加</p>
+<pre><code class="language-php">&lt;?php header('Access-Control-Allow-Origin: *'); ?&gt;
+</code></pre>
+<h2 id="使用-dingo-快速提供-restful-风格的-api-服务">使用 Dingo 快速提供 RESTFul 风格的 API 服务</h2>
+<p>client 获取到 <code>access_token</code> 后(不管用什么授权方式), 就可以拿着这个令牌, 来使用 API 进行后续的数据操作了. 每次访问都需要带上这个 access_token.</p>
+<p>而具体的 api 服务, 我们使用 Dingo 来实现.</p>
+<p><a href="https://github.com/dingo/api">https://github.com/dingo/api</a></p>
+<p><a href="https://laravel-china.org/topics/2758/dingoapi-document-translation">https://laravel-china.org/topics/2758/dingoapi-document-translation</a></p>
+<h3 id="安装与配置">安装与配置</h3>
+<p>修改<code>composer.json</code>，在“require”中添加下面的内容后运行<code>composer install</code></p>
+<pre><code class="language-json">&quot;dingo/api&quot;: &quot;1.0.*dev&quot;,
+</code></pre>
+<p>修改<code>config/app.php</code>问题，添加新的 providers</p>
+<pre><code class="language-php">//in 'providers' array
+Dingo\Api\Provider\LaravelServiceProvider::class,
+</code></pre>
+<p>运行</p>
+<pre><code class="language-shell">$ php artisan vendor:publish
+$ php artisan migrate
+</code></pre>
+<p>提示</p>
+<blockquote>
+<p>Copied File [/vendor/dingo/api/config/api.php] To [/config/api.php]</p>
+</blockquote>
+<p>添加以下内容到 .env 文件中（具体的说明在文档中有说明）</p>
+<pre><code class="language-shell">API_STANDARDS_TREE=x
+API_SUBTYPE=rest
+API_NAME=REST
+API_PREFIX=api
+API_VERSION=v1
+API_CONDITIONAL_REQUEST=true
+API_STRICT=false
+API_DEBUG=true
+API_DEFAULT_FORMAT=json
+</code></pre>
+<h3 id="创建-serviceprovider">创建 ServiceProvider</h3>
+<p>原作者漏了这一段, 一直没更新&hellip; 如果没这个文件, 会在 使用 api.auth 这个 middleware 时一直提示 401 认证失败</p>
+<p>添加一个文件 <code>app/Providers/OauthServiceProvider.php</code>, 内容如下</p>
+<pre><code class="language-php">&lt;?php
+namespace App\Providers;
+use Dingo\Api\Auth\Auth;
+use Dingo\Api\Auth\Provider\OAuth2;
+use Illuminate\Support\ServiceProvider;
+class OAuthServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this-&gt;app[Auth::class]-&gt;extend('oauth', function ($app) {
+            $provider = new OAuth2($app['oauth2-server.authorizer']-&gt;getChecker());
+            $provider-&gt;setUserResolver(function ($id) {
+                // Logic to return a user by their ID.
+            });
+            $provider-&gt;setClientResolver(function ($id) {
+                // Logic to return a client by their ID.
+            });
+            return $provider;
+        });
+    }
+    public function register()
+    {
+        //
+    }
+}
+</code></pre>
+<p>然后将它添加到 <code>/config/app.php</code>的<code>providers</code>数组中</p>
+<pre><code class="language-php">// oauth2
+App\Providers\OAuthServiceProvider::class,        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+</code></pre>
+<h2 id="测试-1">测试</h2>
+<p>这里以获取用户数据为例</p>
+<h3 id="如果当前你还没有用户数据可以创建一个模拟用户">如果当前你还没有用户数据，可以创建一个模拟用户</h3>
+<p>定义一个用户创建新模拟用户的路由，多运行几次，得到一些用户</p>
+<pre><code class="language-php">Route::get('/test/register',function(){
+	$user = new App\User();
+ 	$user-&gt;name=&quot;tester&quot;;
+ 	$user-&gt;email=&quot;test@test.com&quot;;
+ 	$user-&gt;password = \Illuminate\Support\Facades\Hash::make(&quot;password&quot;);
+ 	$user-&gt;save();
+});
+</code></pre>
+<h3 id="然后再编写-api-相关路由">然后再编写 api 相关路由</h3>
+<p>在路由定义文件中, 添加内容.</p>
+<pre><code class="language-php">$api = app('Dingo\Api\Routing\Router');
+
+$api-&gt;version('v1', ['namespace' =&gt; 'App\Http\Controllers'], function ($api) {
+    $api-&gt;get('users', 'UsersController@index');
+    $api-&gt;get('users/{id}', 'UsersController@show');
+});
+
+$api-&gt;version('v1', ['namespace' =&gt; 'App\Http\Controllers\Api', 'middleware' =&gt; 'api.auth'] , function ($api) {
+    $api-&gt;get('products/{id}', 'ProductController@show');
+});
+</code></pre>
+<h3 id="对应的-controller-和方法-稍后供-api-调用并返回数据">对应的 Controller 和方法, 稍后供 api 调用并返回数据</h3>
+<pre><code class="language-php">class UsersController extends Controller
+{
+    public function index()
+    {
+        return User::all();
+    }
+
+    public function show($id)
+    {
+        return User::findOrFail($id);
+    }
+}
+</code></pre>
+<p>第一个路由中, 没有申明需要使用 OAuth2 认证, 因此可以直接获取到数据, 说明 Dingo API 服务已经正常运行并能自动转换成 json 返回给 client</p>
+<p><img src="/media/15490412690798/15039188223548.jpg" alt=""></p>
+<p>然后再看添加了<code>'middleware' =&gt; 'api.auth'</code> 这段声明的路由. (使用 api.auth 中间件)</p>
+<p>首先看看, 在请求 Headers 里什么信息都没有附带的情况下, 会返回什么结果</p>
+<p><img src="/media/15490412690798/15039199153006.jpg" alt=""></p>
+<p>返回认证失败提示</p>
+<blockquote>
+<p>Failed to authenticate because of bad credentials or an invalid authorization header</p>
+</blockquote>
+<p>然后</p>
+<ol>
+<li>设置<code>Authorization</code>的<code>Type</code>为&quot;OAuth2&rdquo;</li>
+</ol>
+<p><img src="/media/15490412690798/15039200457486.jpg" alt=""></p>
+<ol start="2">
+<li>向 <code>Headers</code> 添加一个key <code>Authorization</code> , 值为 Bearer [刚获得的 access_token]</li>
+</ol>
+<blockquote>
+<p>Bearer PjqswJA1n47h03m1wseO0KAoZAf0yChgbgcfJMjz</p>
+</blockquote>
+<p>OK, 搞定. 正常使用 access_token 发送请求, 并获得了数据</p>
+<p><img src="/media/15490412690798/15039212566176.jpg" alt=""></p>
+<p>你可以试着修改下 access_token 的值, 再发送请求, 发现提示认证失败了.</p>
+<p>这里是 curl 命令行版本</p>
+<pre><code class="language-shell">curl http://localhost:8000/api/user/1 -H 'Authorization: Bearer AG24h4DdMU8z7SKl1r3O8iXQRs169Wi06OIwd4VS'
+</code></pre>
+<h2 id="jquery-使用-ajax-请求获取-token-和请求接口">jQuery 使用 Ajax 请求获取 token 和请求接口</h2>
+<p>在将 token 等一起发送请求时，需要使用<code>JSON.stringify</code>将请求 body 字符串化</p>
+<pre><code class="language-js">var rootUrl = 'https://192.168.1.1/';
+
+function test_api() {
+    $.ajax({
+        url: rootUrl + 'oauth/token',
+        type: &quot;POST&quot;,
+        dataType: &quot;json&quot;, // expected format for response
+        // contentType: &quot;application/x-www-form-urlencoded&quot;, // send as JSON
+        headers: {
+            contentType: &quot;application/x-www-form-urlencoded&quot;
+        }, // send as JSON
+        data: {
+            &quot;grant_type&quot;: &quot;password&quot;,
+            &quot;client_id&quot;: &quot;2&quot;,
+            &quot;client_secret&quot;: &quot;Anl7W82HyMSNK6oTwkMeeq5sgrdLCcj6kf5uuOJ3&quot;,
+            &quot;username&quot;: &quot;test_user&quot;,
+            &quot;password&quot;: &quot;123456&quot;,
+            &quot;scope&quot;: &quot;&quot;
+        },
+
+        success: function(data) {
+            token = data.access_token;
+
+            $.ajax({
+                url: rootUrl + 'api/v1/search',
+                type: &quot;POST&quot;,
+                dataType: &quot;json&quot;,
+                headers: {
+                    &quot;Authorization&quot;: &quot;Bearer &quot; + token,
+                    &quot;Content-Type&quot;: &quot;application/json&quot;
+                },
+                data: JSON.stringify({
+                    &quot;search_type&quot;: &quot;quotes&quot;,
+                    &quot;quotes_keyword_type&quot;: &quot;product&quot;,
+                    &quot;keywords&quot;: [&quot;H5007NLT&quot;]
+                }),
+
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    });
+}
+
+//send request
+test_api();
+</code></pre>
+<h1 id="jwt">jwt</h1>
+<p><a href="https://jwt.io/introduction/">https://jwt.io/introduction/</a>
+JSON Web Token(jwt)说明</p>
+<p><a href="https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a">https://medium.com/employbl/build-authentication-into-your-laravel-api-with-json-web-tokens-jwt-cd223ace8d1a</a></p>
+<h2 id="安装与配置-1">安装与配置</h2>
+<p>安装 jwt-auth ，记得指定版本 1.0.*  否则会安装 0.x</p>
+<pre><code class="language-shell">composer require tymon/jwt-auth &quot;1.0.*&quot;
+</code></pre>
+<p>发布配置文件, 得到 config/jwt.php</p>
+<pre><code class="language-shell">php artisan vendor:publish --provider=&quot;Tymon\JWTAuth\Providers\LaravelServiceProvider&quot;
+</code></pre>
+<p>修改这个配置文件，把 driver 改成 jwt，default guard 改成 api
+这样确保我们使用 laravel 的内置 auth 认证方法，但背后是由 jwt-auth 来驱动的</p>
+<pre><code class="language-php">'defaults' =&gt; [
+      'guard' =&gt; 'api',
+      'passwords' =&gt; 'users',
+
+'guards' =&gt; [
+      'api' =&gt; [
+        'driver' =&gt; 'jwt',
+        'provider' =&gt; 'users',
+</code></pre>
+<p>生成 secret key，得到<code>JWT_SECRET</code>在<code>.env</code>里面</p>
+<pre><code class="language-shell">php artisan jwt:secret
+</code></pre>
+<h2 id="allow-cors">allow CORS</h2>
+<pre><code class="language-shell">composer require barryvdh/laravel-cors
+</code></pre>
+<p>然后 <code>app/Http/Kernel.php</code>的<code>$middleware</code>添加</p>
+<pre><code class="language-php">protected $middleware = [
+    ...
+    \Barryvdh\Cors\HandleCors::class,
+];
+</code></pre>
+<h2 id="user-模型实现-jwtsubject-接口">User 模型实现 JWTSubject 接口</h2>
+<p>让 User 模型（或者其他你使用的用户验证模型）能实现 <code>JWTSubject</code> 接口,这个接口你可以看看源码<code>Tymon\JWTAuth\Contracts\JWTSubject</code>有两个方法. 都需要在 User 模型里实现它们</p>
+<ul>
+<li><code>getJWTIdentifier()</code></li>
+<li><code>getJWTCustomClaims()</code></li>
+</ul>
+<p>代码如下</p>
+<pre><code class="language-php">use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends Authenticatable implements JWTSubject
+{
+    public function getJWTIdentifier()
+    {
+        return $this-&gt;getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    
+    public function setPasswordAttribute($password)
+    {
+        if ( !empty($password) ) {
+            $this-&gt;attributes['password'] = bcrypt($password);
+        }
+    }    
+    
+</code></pre>
+<p>第一个<code>getJWTIdentifier()</code>使用<code>getKey()</code>来得到 primary key（用户id）</p>
+<p><code>getJWTCustomClaims()</code>返回一个空数组</p>
+<p>最后还有<code>setPasswordAttribute()</code>确保每次保存密码是一个加密的数据</p>
+<h2 id="auth有关的routes-和-controllers">auth有关的routes 和 controllers</h2>
+<p>这里希望 POST <code>/api/register</code> 可以注册并返回 token
+POST<code>/api/login</code>登录并返回token</p>
+<p>注意仔细阅读 <a href="https://laravel.com/docs/5.7/authentication#authenticating-users">https://laravel.com/docs/5.7/authentication#authenticating-users</a> 部分</p>
+<pre><code class="language-php">Route::post('/register', 'AuthController@register');
+Route::post('/login', 'AuthController@login');
+Route::post('/logout', 'AuthController@logout');
+</code></pre>
+<pre><code class="language-shell">php artisan make:controller AuthController
+</code></pre>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use App\User;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+
+class AuthController extends Controller
+{
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request-&gt;all(), [
+            'name' =&gt; 'required|string|max:255',
+            'email' =&gt; 'required|string|email|max:255|unique:users',
+            'password' =&gt; 'required|string|min:6|confirmed',
+        ]);
+
+        if($validator-&gt;fails()){
+                return response()-&gt;json($validator-&gt;errors()-&gt;toJson(), 400);
+        }
+    
+        $user = User::create([
+             'email'    =&gt; $request-&gt;email,
+             'password' =&gt; $request-&gt;password,
+         ]);
+
+        $token = auth()-&gt;login($user);
+
+        return $this-&gt;respondWithToken($token);
+        
+        //或者返回 201 码，更合乎规范
+        $token = JWTAuth::fromUser($user);
+        return response()-&gt;json(compact('user','token'),201);
+    }
+
+    public function login()
+    {
+        $credentials = request(['email', 'password']);
+
+        if (! $token = auth()-&gt;attempt($credentials)) {
+            return response()-&gt;json(['error' =&gt; 'Unauthorized'], 401);
+        }
+
+        return $this-&gt;respondWithToken($token);
+    }
+    
+    //更好的方式，通过 JWTException 捕获详细的异常
+    public function authenticate(Request $request)
+    {
+        $credentials = $request-&gt;only('email', 'password');
+
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()-&gt;json(['error' =&gt; 'invalid_credentials'], 400);
+            }
+        } catch (JWTException $e) {
+            return response()-&gt;json(['error' =&gt; 'could_not_create_token'], 500);
+        }
+
+        return response()-&gt;json(compact('token'));
+    }
+
+
+    public function logout()
+    {
+        auth()-&gt;logout();
+
+        return response()-&gt;json(['message' =&gt; 'Successfully logged out']);
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()-&gt;json([
+            'access_token' =&gt; $token,
+            'token_type'   =&gt; 'bearer',
+            'expires_in'   =&gt; auth()-&gt;factory()-&gt;getTTL() * 60
+        ]);
+    }
+    
+    
+    //获取用户信息，并判断 token 是否已经缺失、过期、无效等
+    public function getAuthenticatedUser()
+    {
+        try {
+
+            if (! $user = JWTAuth::parseToken()-&gt;authenticate()) {
+                    return response()-&gt;json(['user_not_found'], 404);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()-&gt;json(['token_expired'], $e-&gt;getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()-&gt;json(['token_invalid'], $e-&gt;getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()-&gt;json(['token_absent'], $e-&gt;getStatusCode());
+
+        }
+
+        return response()-&gt;json(compact('user'));
+    }
+}
+</code></pre>
+<h2 id="jwt-authentication-测试用例">JWT Authentication 测试用例</h2>
+<p>Feature 测试</p>
+<pre><code class="language-shell">php artisan make:test AuthenticationTest
+</code></pre>
+<p>注释掉<code>use Illuminate\Foundation\Testing\RefreshDatabase;</code> 否则下次运行会清空全部数据表！！</p>
+<pre><code class="language-php">namespace Tests\Feature;
+
+use App\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
+
+class AuthenticationTest extends TestCase
+{
+    use DatabaseMigrations;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $user = new User([
+             'email'    =&gt; 'test@email.com',
+             'password' =&gt; '123456'
+         ]);
+
+        $user-&gt;save();
+    }
+
+    /** @test */
+    public function it_will_register_a_user()
+    {
+        $response = $this-&gt;post('api/register', [
+            'email'    =&gt; 'test2@email.com',
+            'password' =&gt; '123456'
+        ]);
+
+        $response-&gt;assertJsonStructure([
+            'access_token',
+            'token_type',
+            'expires_in'
+        ]);
+    }
+
+    /** @test */
+    public function it_will_log_a_user_in()
+    {
+        $response = $this-&gt;post('api/login', [
+            'email'    =&gt; 'test@email.com',
+            'password' =&gt; '123456'
+        ]);
+
+        $response-&gt;assertJsonStructure([
+            'access_token',
+            'token_type',
+            'expires_in'
+        ]);
+    }
+
+    /** @test */
+    public function it_will_not_log_an_invalid_user_in()
+    {
+        $response = $this-&gt;post('api/login', [
+            'email'    =&gt; 'test@email.com',
+            'password' =&gt; 'notlegitpassword'
+        ]);
+
+        $response-&gt;assertJsonStructure([
+            'error',
+        ]);
+    }
+}
+</code></pre>
+<h2 id="结合-ldap-登录以及修改上面的-authcontroller-代码解决返回-access_token--true-而不是实际的字符串问题">结合 ldap 登录，以及修改上面的 AuthController 代码，解决返回 access_token = true 而不是实际的字符串问题</h2>
+<p>如果结合 ldap 方式登录，修改以下几处（结合 ldap-laravel 的内容来看）</p>
+<h3 id="configauthphp修改-driver-和-defaults">config/auth.php，修改 driver 和 defaults</h3>
+<p>一定要记得<code>defaults</code>的guard改成api，不然后面就需要手动使用 <code>JWTAuth</code></p>
+<pre><code class="language-php">'defaults' =&gt; [
+        'guard' =&gt; 'api',  //from web
+
+'providers' =&gt; [
+        'users' =&gt; [
+            'driver' =&gt; 'ldap', //from eloquent
+</code></pre>
+<h3 id="configldap_authphp-在ldap登录的时候将字段进行匹配">config/ldap_auth.php， 在ldap登录的时候，将字段进行匹配</h3>
+<pre><code class="language-php">'identifiers' =&gt; [
+    'database' =&gt; [
+        'guid_column' =&gt; 'name', //from objectguid，确保把从 ldap 服务器里拿到的 guid (类似 xxxx-xxxxx-xxxxx-xxxxx) 保存到本地 user 表的 name 字段，而不是目前不存在的 objectguid 字段（除非你自己在 migration user 里增加这个字段）
+        'username_column' =&gt; 'email', // 把从 ldap 服务器拿到的 username 数据保存到 user 表的 email 字段， 注意这里有提示，要把它添加到后面的 sync attributes 列表里面去
+        
+        
+'usernames' =&gt; [
+    'eloquent' =&gt; 'email', // 我直接把 ldap 登录时用的 email 保存，没有把 user 表的 email 字段改成 username
+    
+'sync_attributes' =&gt; [
+    'email' =&gt; 'userprincipalname', 
+</code></pre>
+<h3 id="authcontoller-里的-login-等">AuthContoller 里的 login 等</h3>
+<p>如果忘了 修改 <code>auth.php</code>里 <code>defaults</code>的<code>guard</code>为“api”(原来是 web)</p>
+<p>用前面的<code>auth()-&gt;attempt($credentials))</code>代码，返回的 access_token 是一个bool 值 <code>true</code></p>
+<p><img src="/media/15490412690798/15570444716552.jpg" alt="-w140"></p>
+<p>需要修改成<code>JWTAuth::attempt()</code></p>
+<pre><code class="language-php">use JWTAuth;
+
+public function login()
+    if (! $token = JWTAuth::attempt($credentials)) {
+</code></pre>
+<p>但如果设置了 <code>defaults</code>, 或者手动改成<code>JWTAuth::attempt</code>,就能得到完整的字符串 <code>access_token</code>，在后面获取资源、用户资料来使用了</p>
+<p><img src="/media/15490412690798/15570448772708.jpg" alt="-w498"></p>
+<p><strong>修改这个 defaults 的影响就是</strong></p>
+<p>如果是 api, 那么 postman 等 api 方式就能正常得到 access_token，但是 laravel 的 blade 方式里去 ldap 登录就会失败(ldap 的blade模板登录使用的必须默认为 web)</p>
+<h3 id="删除-register-有关的代码">删除 register 有关的代码</h3>
+<p>路由、控制器方法等</p>
+<p>改成在登录时，如果用户不存在，就自动注册到 user 表（参考 ldap 的章节）</p>
+<h2 id="资源-api-有关">资源 api 有关</h2>
+<h3 id="创建一个-middleware-返回详细的-jwt-认证异常">创建一个 middleware, 返回详细的 jwt 认证异常</h3>
+<p>默认的<code>auth:api</code> middleware 在 access_token 等有问题的情况下，只会返回一个 HTTP status 401 Unauthorized</p>
+<pre><code class="language-json">{
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
+}
+</code></pre>
+<p>为了能返回更完整的错误信息，添加一个名为 <code>jwt.verify</code> 的middleware</p>
+<pre><code class="language-shell">php artisan make:middleware JwtMiddleware
+</code></pre>
+<p>注意，它扩展自 <code>Tymon\JWTAuth\Http\Middleware\BaseMiddleware</code></p>
+<pre><code class="language-php">namespace App\Http\Middleware;
+
+use Closure;
+use JWTAuth;
+use Exception;
+use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
+
+class JwtMiddleware extends BaseMiddleware
+{
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        try {
+            $user = JWTAuth::parseToken()-&gt;authenticate();
+        } catch (Exception $e) {
+            if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
+                return response()-&gt;json(['status' =&gt; 'Token is Invalid']);
+            }else if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
+                return response()-&gt;json(['status' =&gt; 'Token is Expired']);
+            }else{
+                return response()-&gt;json(['status' =&gt; 'Authorization Token not found']);
+            }
+        }
+        return $next($request);
+    }
+}
+</code></pre>
+<p>然后注册这个新创建的 middleware，在<code>app/http/Kernel.php</code></p>
+<pre><code class="language-php">protected $routeMiddleware = [
+    [...]
+    'jwt.verify' =&gt; \App\Http\Middleware\JwtMiddleware::class,
+];
+
+</code></pre>
+<p>使用刚创建的 <code>jwt.verify</code> middleware 替换掉 <code>auth:api</code>来保护资源</p>
+<p>由于还需要对请求频率控制（<code>api</code>middleware），所以最后是 <code>middleware(['jwt.verify','api'])</code></p>
+<pre><code class="language-php">// login logout register 等路由
+
+Route::group(['middleware' =&gt; 'jwt.verify'], function () {
+    Route::get('logout', 'ApiController@logout');
+ 
+    Route::get('user', 'ApiController@getAuthUser');
+ 
+    Route::get('products', 'ProductController@index');
+    Route::get('products/{id}', 'ProductController@show');
+    Route::post('products', 'ProductController@store');
+    Route::put('products/{id}', 'ProductController@update');
+    Route::delete('products/{id}', 'ProductController@destroy');
+});
+</code></pre>
+<p>测试多个场景，看到更完整的信息</p>
+<p><strong>过期</strong>：注意 HTTP status 是200</p>
+<p><img src="/media/15490412690798/15571930390578.jpg" alt="-w354"></p>
+<p>试着删掉，报不存在</p>
+<p><img src="/media/15490412690798/15571930924661.jpg" alt="-w371"></p>
+<p>试着删掉一个字母，测试错误的 token
+<img src="/media/15490412690798/15571931452493.jpg" alt="-w295"></p>
+<h3 id="apiresource-与-resource">apiResource() 与 resource()</h3>
+<p>简化成 <code>apiResource()</code> (注意不是 <code>resource()</code>，后者还会创建 <code>create</code> <code>edit</code>等方法&ndash;对应blade模板渲染，这里的 api 不需要，因为视图都在client前端里完成了)</p>
+<pre><code class="language-php">Route::apiResource('books', 'BookController');
+Route::post('books/{book}/ratings', 'RatingController@store');
+</code></pre>
+<h3 id="测试-postman">测试 postman</h3>
+<p>然后在 postman 里测试的时候， headers 里就必须要带上 access_token 了</p>
+<pre><code class="language-json">Authorization: Bearer xxxxxxxxx[access_token]
+</code></pre>
+<p>测试一下各种情况，(空，错误的，受保护/不受保护)，来看看 jwt.verify 这个 middleware 能不能正常返回错误信息</p>
+<p><img src="/media/15490412690798/15571040998124.jpg" alt="-w351"></p>
+<h3 id="创建资源--模型">创建资源 &amp; 模型</h3>
+<p>详细文档查看：Eloquent: API Resources：  <a href="https://laravel.com/docs/5.8/eloquent-resources">https://laravel.com/docs/5.8/eloquent-resources</a></p>
+<p>创建资源类 (这个是将返回数据进行封装，生成类似于 Dingo-api 的 JSON 响应格式,例如定义了 <code>BookResource</code> 后，在 Controller 里调用<code>$book = Book::create([]); return new BookResource($book);</code>)</p>
+<pre><code class="language-shell"># create a resource class
+php artisan make:resource BookResource
+
+# create a resource collection using either of the two commands
+php artisan make:resource Users --collection
+php artisan make:resource UserCollection
+</code></pre>
+<p>带 <code>--collection</code>的资源，除了返回 <code>data</code> 数据，还会返回 meta 数据，例如分页信息</p>
+<p><img src="/media/15490412690798/15571101680342.jpg" alt="-w218"></p>
+<p>修改 <code>toArray()</code> 方法，返回有关的字段，同时进行格式转换（例如日期强制转成 string 格式，因为默认日期是 object）</p>
+<p>这个方法将 resource 转换为 array 数组，然后以 JSON 格式返回到 response, 因此 这个 response 要包含所有的细节，例如这里 <code>user</code>和<code>ratings</code>就是和“主体数据”<code>book</code>有关的</p>
+<pre><code class="language-php">// app/Http/Resources/BookResource.php
+
+namespace App\Http\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class User extends JsonResource
+{
+    public function toArray($request)
+    {
+      return [
+        'id' =&gt; $this-&gt;id,
+        'title' =&gt; $this-&gt;title,
+        'description' =&gt; $this-&gt;description,
+        'created_at' =&gt; (string) $this-&gt;created_at,
+        'updated_at' =&gt; (string) $this-&gt;updated_at,
+        'user' =&gt; $this-&gt;user,
+        'ratings' =&gt; $this-&gt;ratings,
+      ];
+    }
+</code></pre>
+<p>注意，可以在里面添加任意自定义的数据，例如这里增加一个“平均打分”，这样就可以直接在结果里返回</p>
+<pre><code class="language-php">'average_rating' =&gt; $this-&gt;ratings-&gt;avg('rating')
+</code></pre>
+<p>或者更复杂的计算结果</p>
+<pre><code class="language-php">'secret' =&gt; $this-&gt;when(Auth::user()-&gt;isAdmin(), 'secret-value'),
+</code></pre>
+<p>更多还是参看 Laravel 官方文档的 Eloquent: API Resource</p>
+<p>创建模型（同时创建 migration 文件 <code>-m</code>）</p>
+<pre><code class="language-shell">php artisan make:model Book -m
+</code></pre>
+<p>然后修改 migration 文件内容，添加<code>user_id</code>并分别创建关联（<code>hasMany()</code>和 <code>belongsTo()</code>），以及 model 的<code>$fillable</code></p>
+<p>最后会得到类似 dingo-api 的返回 JSON 结果（用 <code>data</code> 包裹）
+，注意里面的字段和前面<code>toArray()</code>一样的</p>
+<p><img src="/media/15490412690798/15571084684094.jpg" alt=""></p>
+<h3 id="控制器以及使用-resource">控制器，以及使用 Resource</h3>
+<p>带 <code>--api</code>参数</p>
+<pre><code class="language-shell">php artisan make:controller BookController --api
+</code></pre>
+<p>这里利用到了前面创建的 Resource，</p>
+<p>还有 <code>Book::with()</code>将关联的数据一起读取出来</p>
+<pre><code class="language-php">use App\Book; //model
+use App\Http\Resources\BookResource; //resource
+
+public function index()
+{
+  return BookResource::collection(Book::with('ratings')-&gt;paginate(25));
+}
+
+public function store(Request $request)
+{
+  $book = Book::create([
+    'user_id' =&gt; $request-&gt;user()-&gt;id,
+    'title' =&gt; $request-&gt;title,
+    'description' =&gt; $request-&gt;description,
+  ]);
+
+  return new BookResource($book);
+}
+
+// 使用了  route model binding （直接使用 Book model 作为参数）https://laravel.com/docs/5.6/routing#route-model-binding
+public function show(Book $book)
+{
+  return new BookResource($book);
+}
+
+// forbidden 的 http code 一般是 403
+public function update(Request $request, Book $book)
+{
+  // check if currently authenticated user is the owner of the book
+  if ($request-&gt;user()-&gt;id !== $book-&gt;user_id) {
+    return response()-&gt;json(['error' =&gt; 'You can only edit your own books.'], 403);
+  }
+
+  $book-&gt;update($request-&gt;only(['title', 'description']));
+
+  return new BookResource($book);
+}
+
+// 一般返回 http code 是 204 （No content： action successfuly, but return no content）
+public function destroy(Book $book)
+{
+  $book-&gt;delete();
+
+  return response()-&gt;json(null, 204);
+}
+</code></pre>
+<p>如果没有用 Resource， collection， pagination, 返回的数据不带 meta data</p>
+<p><img src="/media/15490412690798/15571978327725.jpg" alt="-w284"></p>
+<p>如果进行了分页，会带 metadata</p>
+<p><img src="/media/15490412690798/15571983834613.jpg" alt="-w294"></p>
+<h4 id="如果使用了-repository-模式">如果使用了 repository 模式</h4>
+<ol>
+<li>model 都被移动到 App\Entities 目录下了</li>
+<li>controller 实现相关 interface, 且在构造器函数中注入 repository</li>
+<li>repository interface 绑定的 eloquent 关联到 entitiy</li>
+<li>在控制器里对“模型关联”，要用 <code>with()</code>,如<code>$tickets = $this-&gt;repository-&gt;with('user')-&gt;all();</code></li>
+</ol>
+<p><img src="/media/15490412690798/15571982641507.jpg" alt="-w373"></p>
+<h4 id="在控制器里对-api-endpoints-保护">在控制器里对 api endpoints 保护</h4>
+<p>应用<code>auth:api</code> middleware, 除了<code>index</code>和<code>show</code>不需要用户验证，其他都需要</p>
+<pre><code class="language-php">// app/Http/Controllers/BookController.php
+
+public function __construct()
+{
+  $this-&gt;middleware('auth:api')-&gt;except(['index', 'show']);
+}
+</code></pre>
+<p>然后和 BookController 有关的 RatingController，所有方法都需要登录</p>
+<pre><code class="language-php">// app/Http/Controllers/RatingController.php
+
+public function __construct()
+{
+  $this-&gt;middleware('auth:api');
+}
+</code></pre>
+<h3 id="我的-资源permission">“我的” 资源（permission）</h3>
+<p>google 搜“laravel api resource permission”</p>
+<p>Passport 有 “作用域”的概念来控制用户访问权限。</p>
+<h4 id="方法1-可以通过在控制器的-构造方法-里手动得到当前用户并获取属于当前用户的-model">方法1 可以通过在控制器的 构造方法 里手动得到<strong>当前用户</strong>，并获取属于当前用户的 model</h4>
+<pre><code class="language-php">protected $user;
+ 
+public function __construct()
+{
+    $this-&gt;user = JWTAuth::parseToken()-&gt;authenticate();
+}
+
+// index,show,store里面都用 $this-&gt;user-&gt;products()  获取“我的”
+public function index()
+{
+    return $this-&gt;user
+        -&gt;products()
+        -&gt;get(['name', 'price', 'quantity'])
+        -&gt;toArray();
+}
+
+public function show($id)
+{
+    $product = $this-&gt;user-&gt;products()-&gt;find($id);
+ 
+    if (!$product) {
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Sorry, product with id ' . $id . ' cannot be found'
+        ], 400);
+    }
+ 
+    return $product;
+}
+
+public function store(Request $request)
+{
+    $this-&gt;validate($request, [
+        'name' =&gt; 'required',
+        'price' =&gt; 'required|integer',
+        'quantity' =&gt; 'required|integer'
+    ]);
+ 
+    $product = new Product();
+    $product-&gt;name = $request-&gt;name;
+    $product-&gt;price = $request-&gt;price;
+    $product-&gt;quantity = $request-&gt;quantity;
+ 
+    if ($this-&gt;user-&gt;products()-&gt;save($product))
+        return response()-&gt;json([
+            'success' =&gt; true,
+            'product' =&gt; $product
+        ]);
+    else
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Sorry, product could not be added'
+        ], 500);
+}
+
+
+public function update(Request $request, $id)
+{
+    $product = $this-&gt;user-&gt;products()-&gt;find($id);
+ 
+    if (!$product) {
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Sorry, product with id ' . $id . ' cannot be found'
+        ], 400);
+    }
+ 
+    $updated = $product-&gt;fill($request-&gt;all())
+        -&gt;save();
+ 
+    if ($updated) {
+        return response()-&gt;json([
+            'success' =&gt; true
+        ]);
+    } else {
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Sorry, product could not be updated'
+        ], 500);
+    }
+}
+
+public function destroy($id)
+{
+    $product = $this-&gt;user-&gt;products()-&gt;find($id);
+ 
+    if (!$product) {
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Sorry, product with id ' . $id . ' cannot be found'
+        ], 400);
+    }
+ 
+    if ($product-&gt;delete()) {
+        return response()-&gt;json([
+            'success' =&gt; true
+        ]);
+    } else {
+        return response()-&gt;json([
+            'success' =&gt; false,
+            'message' =&gt; 'Product could not be deleted'
+        ], 500);
+    }
+}
+</code></pre>
+<h4 id="方法2-使用-laravel-的-authorization">方法2 使用 Laravel 的 <code>Authorization</code></h4>
+<p>特别是 Authorizing Actions Using Policies，可以通过 user model, controller, middleware 等，还有<code>authorizeResource</code>的概念）</p>
+<p>参考内容（api 驱动的 SPA 应用）</p>
+<p><a href="https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/">https://serversideup.net/laravel-gates-and-policies-in-an-api-driven-spa/</a></p>
+<h4 id="其他包如-spatiepermissions">其他包如 spatie/permissions</h4>
+<h3 id="处理资源-not-found异常">处理“资源 not found”异常</h3>
+<p>默认 Laravel 会在 model 不存在时，返回 404 错误和 抛出<code>ModelNotFoundException</code>异常。</p>
+<p>对于 api, 需要抛出更友好的错误消息，在<code>app/Exceptions/Handler.php</code>增加代码</p>
+<pre><code class="language-php">// app/Exceptions/Handler.php
+
+if ($exception instanceof ModelNotFoundException &amp;&amp; $request-&gt;wantsJson()) {
+  return response()-&gt;json([
+    'error' =&gt; 'Resource not found'
+  ], 404);
+}
+</code></pre>
+<h2 id="问题">问题</h2>
+<h3 id="运行测试的时候-method-illuminateauthsessionguardfactory-does-not-exist">运行测试的时候 Method Illuminate\Auth\SessionGuard::factory does not exist</h3>
+<p>在 AuthController 修改<code>respondWithToken</code>方法，给<code>auth()</code>添加参数<code>'api'</code></p>
+<pre><code class="language-php">auth('api')-&gt;factory()-&gt;getTTL() * 60
+</code></pre>
+<h2 id="扩展阅读">扩展阅读</h2>
+<p><a href="https://blog.pusher.com/build-rest-api-laravel-api-resources/">https://blog.pusher.com/build-rest-api-laravel-api-resources/</a>
+<a href="https://github.com/francescomalatesta/laravel-api-boilerplate-jwt">https://github.com/francescomalatesta/laravel-api-boilerplate-jwt</a></p>
+<h1 id="references">References</h1>
+<p><a href="https://blog.shameerc.com/2016/08/set-up-oauth2-server-using-laravel-passport">https://blog.shameerc.com/2016/08/set-up-oauth2-server-using-laravel-passport</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/oauth2-jwt/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/oauth2-jwt/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E4%BF%AE%E6%94%B9-env-%E6%96%87%E4%BB%B6/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/100%E4%B8%AAlaravel%E5%B8%B8%E7%94%A8%E6%89%A9%E5%B1%95/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="授权 Gates &amp;amp; Policy （Authorization） permalink: laravel-user-permission-control date: 2017/07/01 10:10:10 tags: laravel 用户正常通过认证后（用户认证服务 登录/注册等），不可能让每一个进入系统的用户都拥有一样" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="授权 Gates &amp; Policy （Authorization） permalink: laravel-user-permission-control date: 2017/07/01 10:10:10 tags: laravel 用户正常通过认证后（用户认证服务 登录/注册等），不可能让每一个进入系统的用户都拥有一样" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E6%8E%88%E6%9D%83-gates-policy-authorization/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="授权 Gates &amp; Policy （Authorization） permalink: laravel-user-permission-control date: 2017/07/01 10:10:10 tags: laravel 用户正常通过认证后（用户认证服务 登录/注册等），不可能让每一个进入系统的用户都拥有一样">
+
+<meta itemprop="wordCount" content="3667">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="授权 Gates &amp; Policy （Authorization） permalink: laravel-user-permission-control date: 2017/07/01 10:10:10 tags: laravel 用户正常通过认证后（用户认证服务 登录/注册等），不可能让每一个进入系统的用户都拥有一样"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E6%8E%88%E6%9D%83-gates-policy-authorization/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E6%8E%88%E6%9D%83-gates-policy-authorization/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3667字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>授权 Gates &amp; Policy （Authorization）</p>
+<p>permalink: laravel-user-permission-control
+date: 2017/07/01 10:10:10
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>用户正常通过<strong>认证</strong>后（<code>用户认证服务</code> 登录/注册等），不可能让每一个进入系统的用户都拥有一样的操作许可，必须按需求划分许可等级。</p>
+<p>Laravel 用两种方式实现用户授权：</p>
+<p><strong>gates 许可？</strong> 和 <strong>policy 策略？</strong></p>
+<p>gates 可以看做 路由器，提供了一个简单的、基于闭包的方式来授权认证
+policy 则像控制器，在特定的模型或者资源中通过分组来实现授权认证的逻辑</p>
+<p>大部分应用同时包含 gates 和 policy。两者结合起来使用。</p>
+<p>Gates 大部分应用在模型和资源无关的地方，比如查看管理员的面板。与之相反，策略应该用在特定的模型或者资源中。</p>
+<h1 id="gates">Gates</h1>
+<h2 id="定义">定义</h2>
+<p>Gates 是用来决定用户<strong>是否授权执行给定的 动作</strong>的闭包函数</p>
+<p>在<code>app/Providers/AuthServiceProvider.php</code>文件中，使用<code>Gate</code> facade 来定义许可。</p>
+<p>Gates 总是默认接受一个用户实例作为第一个参数，并且可以接受可选参数，比如 相关的 Eloquent 模型。</p>
+<p>定义一个<code>update-post</code>许可，判断当前 User 和 Post 模型是否有从属关系。（用户的 id 是否与文章的 user_id 一致）</p>
+<pre><code class="language-php">public function boot(GateContract $gate)
+    {
+        $this-&gt;registerPolicies($gate);
+
+        /*$gate-&gt;define('update-post', function ($user, $post) {
+            return $user-&gt;id === $post-&gt;user_id;
+        });*/
+        
+        //5.5文档不同
+        Gate::define('update-post', function ($user, $post) {
+            return $user-&gt;id == $post-&gt;user_id;
+        });
+    }
+</code></pre>
+<p>也可以使用 <code>Class@method</code> 风格的回调字符串来定义，就像路由里定义一个对应的控制器方法一样</p>
+<p><strong>注意，这里已经出现了 Policy 概念了，后面会讲到</strong></p>
+<pre><code class="language-php">public function boot()
+{
+    $this-&gt;registerPolicies();
+
+    Gate::define('update-post', 'PostPolicy@update');
+    Gate::define('posts.view', 'PostPolicy@view');
+    Gate::define('posts.create', 'PostPolicy@create');
+    Gate::define('posts.update', 'PostPolicy@update');
+    Gate::define('posts.delete', 'PostPolicy@delete');
+}
+</code></pre>
+<p><strong>资源 Gates</strong></p>
+<p>一次性定义多个 Gate 功能，类似路由里定义资源</p>
+<pre><code class="language-php">Gate::resource('posts', 'PostPolicy');
+
+//等于下面几句
+Gate::define('posts.view', 'PostPolicy@view');
+Gate::define('posts.create', 'PostPolicy@create');
+Gate::define('posts.update', 'PostPolicy@update');
+Gate::define('posts.delete', 'PostPolicy@delete');
+
+//如果需要覆盖或添加新功能， 传入第三个参数
+//下面的代码将创建两个新的Gate定义： posts.image 和 posts.photo 
+Gate::resource('posts', 'PostPolicy', [
+    'image' =&gt; 'updateImage',
+    'photo' =&gt; 'updatePhoto',
+]);
+</code></pre>
+<h3 id="授权检查前后">授权检查前后</h3>
+<p>可以使用 <code>before</code> 方法来定义所有授权检查前会被运行的回调。例如下例，如果是管理员（before回调返回一个非 null 的结果），该结果会被作为检查的结果，将中断后面的其他验证</p>
+<pre><code class="language-php">$gate-&gt;before(function ($user, $ability) {
+    if ($user-&gt;isSuperAdmin()) {
+        return true;
+    }
+});
+</code></pre>
+<p>既然有 before，那么就有 after。表示当所有授权检查后会被运行的回调，<strong>无法修改 after 回调中授权检查的结果</strong></p>
+<pre><code class="language-php">$gate-&gt;after(function ($user, $ability, $result, $arguments) {
+    //
+});
+</code></pre>
+<h2 id="授权动作检查">授权动作检查</h2>
+<p>定义完授权后，就可以使用来做“许可检查”了。</p>
+<p>使用 gates 来授权动作时，应使用 <code>allows</code> 或 <code>denies</code> 方法</p>
+<p>allows（别名 check）, denies。它们获取许可的名称和参数，并传递到许可的回调中。Gate 会自动加载<strong>当前登录用户</strong>，因此不需要传递当前登录用户到方法中。</p>
+<p>在某个 Controller 中，在 update 方法中检查许可。当然你也可以用 allows 方法，不过判断结果就是反的了。</p>
+<pre><code class="language-php">public function update($id)
+    {
+        $post = Post::findOrFail($id);
+
+        if (Gate::allows('update-post', $post)) {
+            // 指定用户可以更新博客...
+        }
+
+        if (Gate::denies('update-post', $post)) {
+            abort(403);
+        }
+
+        // 更新文章...
+    }
+</code></pre>
+<p><strong>forUser($user)`处理 非当前登录用户 的其他指定用户</strong></p>
+<pre><code class="language-php">if (Gate::forUser($user)-&gt;allows('update-post', $post)) {
+    //
+}
+</code></pre>
+<p><strong>许可的回调传递多个参数 ？？5.5没有了</strong></p>
+<p>这里不是用前面的 GateContract，而是 Gate Facade</p>
+<pre><code class="language-php">Gate::define('delete-comment', function ($user, $post, $comment) {
+    //
+});
+</code></pre>
+<p>然后在做许可检查的时候，传入对应的数组作为 Gate 方法的参数</p>
+<pre><code class="language-php">if (Gate::allows('delete-comment', [$post, $comment])) {
+    //
+}
+</code></pre>
+<h3 id="user-模型直接使用-authorizable-trait不需要单独用-gate-facede">User 模型直接使用 Authorizable trait，不需要单独用 Gate Facede</h3>
+<p>除了用 Gate 外，还可以用 App\User 模型的实例检查许可，User 模型使用了Authorizable trait，它提供了两个方法：can 及 cannot（非常像 allows 和 denies）</p>
+<pre><code class="language-php">public function update(Request $request, $id)
+{
+    $post = Post::findOrFail($id);
+
+    if ($request-&gt;user()-&gt;cannot('update-post', $post)) {
+        abort(403);
+    }
+
+    // 更新文章...
+}
+</code></pre>
+<h3 id="在-blade-模板中">在 Blade 模板中</h3>
+<p>有时候需要在模板中快速判断许可并决定显示的内容</p>
+<pre><code class="language-php">@can('update-post', $post)
+    &lt;a href=&quot;/post/{{ $post-&gt;id }}/edit&quot;&gt;编辑文章&lt;/a&gt;
+@else
+    &lt;!-- 当前登录用户不可以更新文章 --&gt;
+@endcan
+</code></pre>
+<h3 id="在表单请求中">在表单请求中</h3>
+<p>在表单请求的 authorize 方法中进行检查</p>
+<pre><code class="language-php">public function authorize()
+{
+    $postId = $this-&gt;route('post');
+
+    return Gate::allows('update', Post::findOrFail($postId));
+}
+</code></pre>
+<h1 id="策略-policy">策略 Policy</h1>
+<p>策略是在特定**模型或者资源****中组织授权逻辑的类  (Gate 一般指定某个动作——当然也有resource类型的 Gate)</p>
+<p>例如，如果你的应用是一个博客，会有一个 Post <strong>模型</strong>和一个相应的 <strong>PostPolicy</strong> 来<strong>授权用户动作</strong>，比如创建或者更新博客</p>
+<h2 id="生成策略">生成策略</h2>
+<p>使用 make:policy artisan 命令 来生成策略，放在<code>app/Policies</code>目录</p>
+<pre><code class="language-shell">//默认生成空的策略类
+php artisan make:policy PostPolicy
+
+//如果希望生成的类包含基本的「CRUD」策略方法， 可以在使用命令时指定 --model 选项：
+php artisan make:policy PostPolicy --model=Post
+</code></pre>
+<p>会生成文件类似</p>
+<pre><code class="language-php">namespace App\Policies;
+
+use App\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class UserPolicy
+{
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view the user.
+     *
+     * @param  \App\User  $user
+     * @param  \App\User  $user
+     * @return mixed
+     */
+    public function view(User $user, User $user)
+    {
+        //
+    }
+
+    public function create(User $user)
+    {
+        //
+    }
+    
+    //other code
+</code></pre>
+<blockquote>
+<p>所有授权策略会通过 Laravel 服务容器 解析，意指你可以在授权策略的构造器对任何需要的依赖使用类型提示，它们将会被自动注入</p>
+</blockquote>
+<h2 id="注册策略">注册策略</h2>
+<p>在 <code>AuthServiceProvider</code> 包含了一个 <code>policies</code> 属性，可将各种 <strong>模型</strong>(如 Post::class) 对应至 <strong>管理它们的授权策略</strong> (PostPolicy::class)</p>
+<pre><code class="language-php">/**
+ * 应用程序的授权策略对应。
+ *
+ * @var array
+ */
+protected $policies = [
+    Post::class =&gt; PostPolicy::class,
+    
+    // 最新版 laravel 上面的这个，需要 use 准确的类路径  否则会出现即使条件满足，也返回“This action is unauthorized.”。
+    
+    //还可以用下面的“字符串”的方法，测试ok
+    'App\Entities\Ticket' =&gt; 'App\Policies\TicketPolicy'
+];
+</code></pre>
+<p>将全部的授权逻辑定义在 AuthServiceProvider 文件中，会越来越庞杂，因此在大型的应用中，需要把这些授权逻辑切分至「授权策略」类，<strong>基于授权的资源****将授权逻辑进行分组</strong></p>
+<h3 id="编辑授权策略">编辑授权策略</h3>
+<p>一旦授权策略被生成且注册，我们就可以<strong>为授权的每个动作添加方法</strong>。</p>
+<p>(你可以安装 spatie/laravel-permission 扩展包，来参考它的 <code>UserPolicy</code> 已有的一些方法)</p>
+<p>在 PostPolicy 中定义一个 <code>update</code> 方法，它会判断指定的 User 是否可以更新指定的 Post 实例。接收 User 和 Post 实例作为参数，返回 true 或 false</p>
+<p>注意看看，它和 Gates 里面定义的 <code>update-post</code>许可有什么相同和不同？</p>
+<pre><code class="language-php">namespace App\Policies;
+
+use App\User;
+use App\Post;
+
+class PostPolicy
+{
+    /**
+     * 判断指定的文章是否可以被该用户更新。
+     *
+     * @param  \App\User  $user
+     * @param  \App\Post  $post
+     * @return bool
+     */
+    public function update(User $user, Post $post)
+    {
+        return $user-&gt;id === $post-&gt;user_id;
+    }
+}
+</code></pre>
+<p>你可以接着在此授权策略定义额外的方法，作为各种许可需要的授权。例如，你可以定义 <code>show</code>、<code>destroy</code> 或 <code>addComment</code> 方法来授权 Post 的多种行为。</p>
+<blockquote>
+<p>如果在 Artisan 控制台生成策略时使用 &ndash;model 选项，会自动包含view、create、update 和 delete 动作。</p>
+</blockquote>
+<p>注意：所有授权策略会通过 Laravel 服务容器 解析，意指你可以在授权策略的构造器对任何需要的依赖使用类型提示，它们将会被自动注入。</p>
+<h3 id="策略过滤器">策略过滤器</h3>
+<p><strong>对特定用户</strong>，你可能希望通过指定的策略<strong>授权所有动作</strong>（这个功能最常见的场景是授权应用的<strong>管理员</strong>可以<strong>访问所有动作</strong>）。</p>
+<p>和前面在 AuthServiceProvider 中定义 Gate 一样，可以在授权策略赋予所有许可给指定用户，在授权策略中定义一个 <code>before</code> 方法。授权策略的此方法会在其它所有授权检查前被运行，提供了一种方式来授权动作而不是指定的策略方法来执行判断。</p>
+<pre><code class="language-php">public function before($user, $ability)
+{
+    if ($user-&gt;isSuperAdmin()) {
+        return true;
+    }
+}
+</code></pre>
+<p>如果你想<strong>拒绝用户所有的授权</strong>，你应该在 before 方法中返回 false。如果返回的是 null，则通过其它的策略方法来决定授权与否。</p>
+<h3 id="策略方法没有关联的模型">策略方法没有关联的模型</h3>
+<p>注意到下面的代码，Policy 类中，<code>update</code>方法有两个参数，第二个是 Post 模型，而<code>create</code>只有一个参数。</p>
+<p>可见一些策略方法只接受当前认证通过的用户作为参数而<strong>不用传入授权相关的模型实例</strong>（因为还没创建模型之前，User 和 Model 之间并没有关联），常见的就是 <code>create</code> 动作。</p>
+<pre><code class="language-php">public function create(User $user)
+{
+    //
+}
+
+public function update(User $user, Post $post)
+{
+    //
+}
+</code></pre>
+<p>例如我们只需要检查下用户是否有权创建博客，而不需要知道“博客模型的实例”（因为还没创建呢）,只需要传入一个参数就可以了。</p>
+<h2 id="使用-policy-来授权动作">使用 Policy 来授权动作</h2>
+<h3 id="通过用户模型">通过用户模型</h3>
+<p>User 模型的 <code>can</code> 与 <code>cannot</code> 方法。</p>
+<p>如果指定模型的 Policy 已被注册，can 方法会自动调用核实的策略方法并且返回 boolean 值。</p>
+<p>如果没有策略注册到这个模型，can 方法会尝试调用和动作名相匹配的基于闭包的 <strong>Gate</strong>。</p>
+<p>策略 Policy，优先于许可 Gate</p>
+<pre><code class="language-php">if ($user-&gt;can('update', $post)) {
+    //
+}
+</code></pre>
+<p>前面提到有一种<strong>授权策略不需要模型实例</strong>（例如用户能否 create 博客），则在 <code>can</code>等判断里也不需要传入模型实例，<strong>只要传入类名</strong></p>
+<pre><code class="language-php">use App\Post;
+
+if ($user-&gt;can('create', Post::class)) {
+    // 执行相关策略中的「create」方法...
+}
+</code></pre>
+<h3 id="通过中间件">通过中间件</h3>
+<p>Laravel 包含一个可以在请求到达路由或控制器之前就进行动作授权的中间件。默认<code>Illuminate\Auth\Middleware\Authorize</code> 中间件被指定到 <code>App\Http\Kernel</code> 类中 <code>can</code> 键上</p>
+<pre><code class="language-php">use App\Post;
+
+Route::put('/post/{post}', function (Post $post) {
+    // 当前用户可以更新博客...
+})-&gt;middleware('can:update,post');
+</code></pre>
+<p>传递给 <code>can</code> 中间件 2 个参数,第一个是需要授权的动作的名称(update),第二个是我们希望传递给策略方法的路由参数(post, 这里因为使用了 隐式模型绑定-routing.html#implicit-binding，一个 Post 会被传递给策略方法)</p>
+<p>如果用户不被授权访问指定的动作，这个中间件会生成带有 403 状态码的 HTTP 响应。</p>
+<p>同样对于不需要指定模型的策略，can 动作也可以只需要指定类名</p>
+<pre><code class="language-php">Route::post('/post', function () {
+    // 当前用户可以创建博客...
+})-&gt;middleware('can:create,App\Post');
+</code></pre>
+<h3 id="通过控制器辅助函数">通过控制器辅助函数</h3>
+<p>除了在 User 模型中提供辅助方法外，Laravel 也为所有继承了 <code>App\Http\Controllers\Controller</code> 基类的<strong>控制器</strong>提供了一个有用的 <code>authorize</code> 方法</p>
+<p>和 can 方法类似，这个方法接收需要授权的动作和相关的模型作为参数。如果动作不被授权，authorize 方法会抛出 Illuminate\Auth\Access\AuthorizationException 异常，然后被 Laravel 默认的异常处理器转化为带有 403 状态码的 HTTP 响应：</p>
+<pre><code class="language-php">class PostController extends Controller
+{
+    /**
+     * 更新指定博客。
+     *
+     * @param  Request  $request
+     * @param  Post  $post
+     * @return Response
+     */
+    public function update(Request $request, Post $post)
+    {
+        $this-&gt;authorize('update', $post);
+
+        // 当前用户可以更新博客
+</code></pre>
+<p>同样。。。不需要指定模型的动作的</p>
+<pre><code class="language-php">$this-&gt;authorize('create', Post::class);
+</code></pre>
+<h3 id="使用-blade-模板">使用 Blade 模板</h3>
+<p>希望页面的指定部分只展示给允许授权访问指定动作的用户.</p>
+<p>例如，你可能希望只展示更新表单给有权更新博客的用户。这种情况下，你可以直接使用 @can 和 @cannot 指令。</p>
+<pre><code class="language-php">@can('update', $post)
+    &lt;!-- 当前用户可以更新博客 --&gt;
+@elsecan('create', $post)
+    &lt;!-- 当前用户可以新建博客 --&gt;
+@endcan
+
+@cannot('update', $post)
+    &lt;!-- 当前用户不可以更新博客 --&gt;
+@elsecannot('create', $post)
+    &lt;!-- 当前用户不可以新建博客 --&gt;
+@endcannot
+</code></pre>
+<p>实际上是 @if @unless 的缩写, <code>@can</code> 和<code>@cannot</code>会转换成下面的声明</p>
+<pre><code class="language-php">@if (Auth::user()-&gt;can('update', $post))
+    &lt;!-- 当前用户可以更新博客 --&gt;
+@endif
+
+@unless (Auth::user()-&gt;can('update', $post))
+    &lt;!-- 当前用户不可以更新博客 --&gt;
+@endunless
+</code></pre>
+<p>又来。。。不需要指定模型实例的动作</p>
+<pre><code class="language-php">@can('create', App\Post::class)
+    &lt;!-- 当前用户可以新建博客 --&gt;
+@endcan
+
+@cannot('create', App\Post::class)
+    &lt;!-- 当前用户不可以新建博客 --&gt;
+@endcannot
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E6%8E%88%E6%9D%83-gates-policy-authorization/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E6%8E%88%E6%9D%83-gates-policy-authorization/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%AD%98%E5%82%A8%E7%AD%89/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E5%AE%89%E5%85%A8%E7%9B%B8%E5%85%B3-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86-hash/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: React 常见问题与技巧 permalink: react-problem-tips tags: react 常见问题 Element type is invalid: expected a string(for build-in components) or a class/function&amp;hellip; 命令行创建组件 https://www.npmjs.com/package/react-create react-create component Home --entry 其他 https://www.npmjs.com/package/react.cli &amp;hellip; 在 React 里读取配置参数 使用 axios 等网络请求时，需要一个 “r" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: React 常见问题与技巧 permalink: react-problem-tips tags: react 常见问题 Element type is invalid: expected a string(for build-in components) or a class/function&hellip; 命令行创建组件 https://www.npmjs.com/package/react-create react-create component Home --entry 其他 https://www.npmjs.com/package/react.cli &hellip; 在 React 里读取配置参数 使用 axios 等网络请求时，需要一个 “r" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: React 常见问题与技巧 permalink: react-problem-tips tags: react 常见问题 Element type is invalid: expected a string(for build-in components) or a class/function&hellip; 命令行创建组件 https://www.npmjs.com/package/react-create react-create component Home --entry 其他 https://www.npmjs.com/package/react.cli &hellip; 在 React 里读取配置参数 使用 axios 等网络请求时，需要一个 “r">
+
+<meta itemprop="wordCount" content="2247">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: React 常见问题与技巧 permalink: react-problem-tips tags: react 常见问题 Element type is invalid: expected a string(for build-in components) or a class/function&hellip; 命令行创建组件 https://www.npmjs.com/package/react-create react-create component Home --entry 其他 https://www.npmjs.com/package/react.cli &hellip; 在 React 里读取配置参数 使用 axios 等网络请求时，需要一个 “r"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2247字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: React 常见问题与技巧
+permalink: react-problem-tips
+tags:</p>
+<ul>
+<li>react</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="常见问题">常见问题</h1>
+<h2 id="element-type-is-invalid-expected-a-stringfor-build-in-components-or-a-classfunction">Element type is invalid: expected a string(for build-in components) or a class/function&hellip;</h2>
+<p><img src="/media/15490411860733/15269948079374.jpg" alt=""></p>
+<h1 id="命令行创建组件">命令行创建组件</h1>
+<p><a href="https://www.npmjs.com/package/react-create">https://www.npmjs.com/package/react-create</a></p>
+<pre><code class="language-shell">react-create component Home --entry
+</code></pre>
+<p>其他
+<a href="https://www.npmjs.com/package/react.cli">https://www.npmjs.com/package/react.cli</a>
+&hellip;</p>
+<h1 id="在-react-里读取配置参数">在 React 里读取配置参数</h1>
+<p>使用 axios 等网络请求时，需要一个 “root url”， 这个地址是变化的，本地开发和线上环境可能是两个不同的地址</p>
+<p>那么如何把它做成外部配置参数，在 react 代码里引用呢?</p>
+<p>根据 <a href="https://stackoverflow.com/questions/30568796/how-to-store-configuration-file-and-read-it-using-react">https://stackoverflow.com/questions/30568796/how-to-store-configuration-file-and-read-it-using-react</a></p>
+<ol>
+<li>
+<p>webpack 里可以用 external</p>
+</li>
+<li>
+<p>如果使用 create-react-app 创建的应用，可以直接使用 <code>.env</code> 文件</p>
+</li>
+</ol>
+<p>create a file named .env in the root of project.</p>
+<p>define permanent environment variables.</p>
+<pre><code class="language-js">REACT_APP_SECRET_CODE=abcdef
+</code></pre>
+<p>You must create custom environment variables beginning with <code>REACT_APP_</code></p>
+<p>What other .env files can be used?</p>
+<p>.env files should be checked into source control (with the exclusion of .env*.local).</p>
+<ul>
+<li>.env: Default.</li>
+<li>.env.local: Local overrides. This file is loaded for all environments except test.</li>
+<li>.env.development, .env.test, .env.production: Environment-specific settings.</li>
+<li>.env.development.local, .env.test.local, .env.production.local: Local overrides of environment-specific settings.</li>
+</ul>
+<p>Files on the left have more priority than files on the right:</p>
+<ul>
+<li>npm start: .env.development.local, .env.development, .env.local, .env</li>
+<li>npm run build: .env.production.local, .env.production, .env.local, .env</li>
+<li>npm test: .env.test.local, .env.test, .env (note .env.local is missing)</li>
+</ul>
+<p>you can access it from the component with</p>
+<pre><code class="language-js">process.env.REACT_APP_SECRET_CODE
+</code></pre>
+<h2 id="问题-envproduction-没有覆盖-envlocal-的配置">问题， .env.production 没有覆盖 .env.local 的配置</h2>
+<p><a href="https://github.com/facebook/create-react-app/issues/4002">https://github.com/facebook/create-react-app/issues/4002</a></p>
+<p>不知道是不是bug， 后来通过删除 process.env&hellip;.. 变量，直接用 proxy 和代码里根目录临时解决（不过如果要跨站其他 url 就不行了）</p>
+<h1 id="向子组件传入-props-以及在组件的某个方法中再传入-props-以及-upload-组件处理文件是否全部上传完毕">向子组件传入 props， 以及在组件的某个方法中再传入 props (以及 Upload 组件处理文件是否全部上传完毕)</h1>
+<p>标题有点绕，事情是这样子的：</p>
+<p>使用 antd 开发项目时，有一个 Steps 组件，每完成一步，就加载一个对应的 Content 组件(最重要的是一个上传文件组件)。一开始使用了几个 Functional Component, 没有传入任何 props。</p>
+<pre><code class="language-js">const steps = [
+  {title: 'Ready', content: &lt;ReadyComponent /&gt;},
+  {title: 'Upload .s2p files', content: &lt;UploadComponent /&gt;},
+  {title: 'Beautify format of files', content: &lt;BeautifiedComponent /&gt;},
+  {title: 'Merge to single file', content: &lt;MergedComponent /&gt;}
+];
+</code></pre>
+<p>注意那个<code>{...uploadProps}</code>, 这个对象主要是设置 Dragger 组件的属性的。</p>
+<pre><code class="language-js">const uploadProps = (props) =&gt; {
+  return {
+    name: 'file',
+    multiple: true,
+    action: '/api/hub/tools/uploadS2P?code=' + code,
+    onChange(info) {
+      const status = info.file.status;
+      if (status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully.`);
+
+        uploadedFiles.push(info.file.name);
+      } else if (status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+
+    }
+  }
+};
+
+const UploadComponent = ()=&gt;(
+  &lt;Row type=&quot;flex&quot; justify=&quot;center&quot; align=&quot;top&quot; style={{minHeight: '400px'}}&gt;
+    &lt;Col span={8} style={{ textAlign: 'center' }}&gt;
+      &lt;Dragger {...uploadProps}&gt;
+        &lt;p className=&quot;ant-upload-drag-icon&quot;&gt;
+          &lt;Icon type=&quot;inbox&quot; /&gt;
+        &lt;/p&gt;
+        &lt;p className=&quot;ant-upload-text&quot;&gt;Click or drag file to this area to upload&lt;/p&gt;
+        &lt;p className=&quot;ant-upload-hint&quot;&gt;Support for a single or bulk upload. Strictly prohibit from uploading company data or other band files&lt;/p&gt;
+      &lt;/Dragger&gt;
+    &lt;/Col&gt;
+  &lt;/Row&gt;
+)
+</code></pre>
+<p>在 Steps 切换时，直接加载组件显示出来（具体看官网的案例）</p>
+<pre><code class="language-js">{steps[this.state.current].content}
+</code></pre>
+<p><strong>好了，现在情况有变。要求：在上传多个文件时，确认多个文件全部完成后，才能按下一步</strong></p>
+<p>好吧，那只能先把按钮隐藏了。如果添加一个外部变量，在 <code>render()</code>里进行判断。</p>
+<pre><code class="language-js">let isUploaded = false;
+let uploadedFiles = [];
+
+// 在 Upload 组件的 onChange 里添加
+if (info.fileList.length === uploadedFiles.length) {
+    isUploaded = true;
+}
+
+// 在按钮的代码处
+let allowNext = false;
+
+if (this.state.current &lt; steps.length - 1){
+  allowNext = true;
+
+  if((this.state.current === 1) &amp;&amp; (isUploaded === false)) {
+    allowNext = false;
+  } 
+}
+</code></pre>
+<p>会发现，文件全部上传完后，这个下一步按钮照样不显示。 因为这个变量<code>isUploaded</code>并没有触发按钮组件的 <code>allowNext</code>变化</p>
+<p>要改成用 <code>setState</code> 来修改变量。这样才能让变量触发按钮的显示/隐藏</p>
+<p>先在按钮组件内增加一个方法，以及这个 state 变量的初始值</p>
+<pre><code class="language-js">constructor(props) {
+    super(props);
+    this.state = {
+      current: 0,
+      isUploaded: false
+    }
+  }
+
+finishUpload() {
+    this.setState({isUploaded: true})
+}
+</code></pre>
+<p>怎么把这个方法传入到 Upload 组件去呢？目前是个无状态函数，而且是直接显示啊。</p>
+<p>增加一个方法<code>wrapStepContent</code>，接收两个参数，一个是当前第几步骤，一个是 props(注意，这是关键)</p>
+<pre><code class="language-js">const wrapStepContent = (index, props) =&gt; {
+  const components = [
+    &lt;ReadyComponent {...props} /&gt;,
+    &lt;UploadComponent {...props} /&gt;,
+    &lt;BeautifiedComponent {...props} /&gt;,
+    &lt;MergedComponent {...props} /&gt;
+  ];
+
+  return components[index];
+}
+</code></pre>
+<p>然后把前面那个直接显示组件 <code>{steps[this.state.current].content}</code> 改成先传入一些值，然后返回带props的组件。
+注意参数<code>{finishUpload: ()=&gt;this.finishUpload()}</code> 就是往子组件里面传入这个方法，让子组件能调用，进而修改父组件的 state 变量</p>
+<pre><code class="language-js">{wrapStepContent(this.state.current, {finishUpload: ()=&gt;this.finishUpload()})}
+</code></pre>
+<p>把<code>UploadComponent</code>要改成能接受参数的形式</p>
+<pre><code class="language-js">const UploadComponent = (props)=&gt;(
+</code></pre>
+<p><strong>最有意思的来了</strong></p>
+<p>因为 antd Upload 组件的传入的那个属性里，不知道刚传入的 props, 如何在 onChange 里调用？</p>
+<p>下面的代码，把<code>uploadProps</code> 从一个对象<code>const uploadProps = {}</code>，改成一个可接收 props 参数的函数，在里面调用 <code>props.finishUpload();</code></p>
+<pre><code class="language-js">const uploadProps = (props) =&gt; {
+  return {
+    //...
+    onChange(info) {
+      //....
+      
+      if(info.fileList.length === uploadedFiles.length) {
+        props.finishUpload();
+      }
+    }
+  }
+};
+</code></pre>
+<p>在组件调用的时候，（1）传入props到<code>uploadProps</code>函数，得到修改后 的uploadProps，（2）再与 props 一起合并（Object.assign）（3）最后一起展开为组件 Dragger 的属性。</p>
+<pre><code class="language-js">const UploadComponent = (props)=&gt;(
+    //...
+    &lt;Dragger {...Object.assign(uploadProps(props), props)}&gt;
+</code></pre>
+<p>现在可以回顾整个过程</p>
+<ol>
+<li>在”顶级“组件里 定义 state 变量，和修改upload 状态的方法 （upload 状态）</li>
+<li>把修改upload 状态的方法通过 props 传给 UploadComponent</li>
+<li>UploadComponent 组件把 props 同时传给子组件 Dragger，以及 Dragger 的一组内部属性，共享修改upload 状态的方法</li>
+</ol>
+<p>简单来说其实就是跨父子组件的 props 传输与 子组件调用父组件方法修改父组件的属性。</p>
+<p>难点就是把 props 除了传入组件，还传入了组件的另外一个属性/方法。(利用对象的合并与展开)</p>
+<h1 id="使用-chrome-dev-tools-中的-react-面板调试">使用 Chrome Dev Tools 中的 React 面板调试</h1>
+<p>查看到整个路由、组件的结构，以及某个组件的 state 和 props</p>
+<p><img src="/media/15490411860733/15350738504374.jpg" alt="-w1277"></p>
+<h1 id="react-hot-loader-热更新-create-react-app">react-hot-loader 热更新 (create-react-app)</h1>
+<pre><code class="language-shell">npm i react-hot-loader -D
+</code></pre>
+<p>在webpack.config.dev.js中entry第一行增加`'react-hot-loader/patch&rsquo;</p>
+<p>如果有.babelrc文件就增加<code>&quot;plugins&quot;: [&quot;react-hot-loader/babel&quot;]</code></p>
+<p>如果是create-react-app项目就在webpack.config.dev.js文件module-rules-oneOf下新增代码&quot;plugins&rdquo;: [&ldquo;react-hot-loader/babel&rdquo;] 大约在143行号</p>
+<p>然后在代码的入口entry 根节点包含热更新</p>
+<pre><code class="language-js">//....
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
+import { AppContainer } from 'react-hot-loader'; // 包裹根节点，想要渲染的内容
+
+
+const root = document.getElementById('root')
+const render = Component =&gt; {
+    ReactDOM.hydrate(
+        &lt;AppContainer&gt;
+            &lt;Component /&gt;
+        &lt;/AppContainer&gt;,
+        root
+    )
+}
+render(App)
+
+if (module.hot) {
+    module.hot.accept('./App', () =&gt; { // 当我们热更新的代码出现的时候，把App重新加载
+        const NextApp = require('./App').default //因为在App里使用的是export default语法，这里使用的是require,默认不会加载default的，所以需要手动加上
+        render(NextApp) // 重新渲染到 document 里面
+    })
+}
+// ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
+registerServiceWorker();
+</code></pre>
+<h2 id="向另一个组件中插入别的组件">向另一个组件中插入别的组件</h2>
+<p>类似 jQuery 的 prepend() 的“动态”插入代码，而不是“占位”：</p>
+<p>组件A</p>
+<pre><code class="language-js">&lt;div className=&quot;component-a&quot;&gt;
+    &lt;Input /&gt;
+    
+    //等待插入的组件B的位置
+&lt;/div&gt;
+</code></pre>
+<p><a href="https://stackoverflow.com/questions/25797048/how-to-pass-in-a-react-component-into-another-react-component-to-transclude-the">https://stackoverflow.com/questions/25797048/how-to-pass-in-a-react-component-into-another-react-component-to-transclude-the</a></p>
+<p>这个里面答案</p>
+<p>(1)父组件里用 {children}实现:   我的问题，不想改动原来的组件代码
+(2)HOC 方式：我使用了Taro，不支持无状态组件</p>
+<p>这个问题也有人问</p>
+<p><a href="https://stackoverflow.com/questions/31823801/how-to-append-and-prepend-element-in-react-js-like-jquery">https://stackoverflow.com/questions/31823801/how-to-append-and-prepend-element-in-react-js-like-jquery</a></p>
+<p><a href="https://www.skptricks.com/2018/06/append-or-prepend-html-using-reactjs.html(">https://www.skptricks.com/2018/06/append-or-prepend-html-using-reactjs.html(</a>只有 DOM ,没有 JSX)</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/react-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E6%8A%80%E5%B7%A7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/react-%E7%9A%84-render-props/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/react-router4/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

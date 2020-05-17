@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="表 &amp;amp; 记录基本操作 CRUD 增删改查 添加数据、删除数据、查询数据等 # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 （单条 多条） INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); INSERT INTO EMPLOYEES(" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="表 &amp; 记录基本操作 CRUD 增删改查 添加数据、删除数据、查询数据等 # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 （单条 多条） INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); INSERT INTO EMPLOYEES(" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="表 &amp; 记录基本操作 CRUD 增删改查 添加数据、删除数据、查询数据等 # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 （单条 多条） INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); INSERT INTO EMPLOYEES(">
+
+<meta itemprop="wordCount" content="6491">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="表 &amp; 记录基本操作 CRUD 增删改查 添加数据、删除数据、查询数据等 # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 （单条 多条） INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); INSERT INTO EMPLOYEES("/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6491字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="表--记录基本操作-crud-增删改查">表 &amp; 记录基本操作 CRUD 增删改查</h1>
+<p>添加数据、删除数据、查询数据等</p>
+<pre><code class="language-sql"># 创建新表 
+CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
+
+# 插入数据 （单条 多条）
+INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');
+INSERT INTO EMPLOYEES(  ID, NAME, AGE, ADDRESS, SALARY)  
+VALUES
+ (1, 'Maxsu', 25, '海口市人民大道2880号', 109990.00 ), 
+(2, 'minsu', 25, '广州中山大道 ', 125000.00 ), 
+(3, '李洋', 21, '北京市朝阳区', 185000.00),   
+(4, 'Manisha', 24, 'Mumbai', 65000.00), 
+(5, 'Larry', 21, 'Paris', 85000.00);
+
+# 选择记录 
+SELECT * FROM user_tbl;
+# 复杂的条件 &amp; 排序 &amp; 只查询某些字段
+SELECT city, data FROM weather
+    ORDER BY city, temp_lo;
+SELECT DISTINCT city
+    FROM weather;
+SELECT DISTINCT city
+    FROM weather
+    ORDER BY city;
+
+# 更新数据 
+UPDATE user_tbl set name = '李四', age = '20' WHERE name = '张三';
+
+# 删除记录 
+DELETE FROM user_tbl WHERE name = '李四' ;
+
+# 添加栏位 
+ALTER TABLE user_tbl ADD email VARCHAR(40);
+
+# 更新结构 
+ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL;
+
+# 更名栏位 
+ALTER TABLE user_tbl RENAME COLUMN signup_date TO signup;
+
+# 删除栏位 
+ALTER TABLE user_tbl DROP COLUMN email;
+
+# 表格更名 
+ALTER TABLE user_tbl RENAME TO backup_tbl;
+
+# 删除表
+DROP TABLE IF EXISTS backup_tbl;
+</code></pre>
+<p>注意 好像 create table 不支持 mysql 类似的 DESCRIPTION 语法 <code>cd_project_model int4 DESCRIPTION 'project and model' NOT NULL</code></p>
+<p>必须在创建完毕表和 index 后，</p>
+<pre><code class="language-sql">COMMENT ON COLUMN rfq.&quot;RFQ_ITEM_SUPPLIER_QUOTATION&quot;.nr_warranty IS 'Warranty in Months';
+</code></pre>
+<p>更多数据库基本操作</p>
+<pre><code class="language-sql">-- 添加 column
+ALTER TABLE tr.&quot;TIME_SHEET&quot; ADD COLUMN cd_system_product_category int4 NOT null default 1;
+
+-- change column type &amp; name &amp; default
+ALTER TABLE tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; 
+    RENAME COLUMN fl_insert_by_system TO ds_insert_by_system,
+    ALTER COLUMN ds_insert_by_system DROP DEFAULT,
+    ALTER COLUMN ds_insert_by_system DROP NOT NULL;
+    ALTER COLUMN ds_insert_by_system TYPE varchar(100),
+    ALTER COLUMN ds_insert_by_system set DEFAULT NULL;
+UPDATE tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; set ds_insert_by_system=NULL where ds_insert_by_system='Y'
+
+ALTER table tr.&quot;TEST_REQUEST_WORK_ORDER_COMMENTS&quot; ADD CONSTRAINT &quot;FK_TEST_REQUEST_WORK_ORDER_COMMENTS03&quot; FOREIGN KEY (cd_project_comments_type) REFERENCES &quot;PROJECT_COMMENTS_TYPE&quot;(cd_project_comments_type)  ON
+    UPDATE RESTRICT ON DELETE RESTRICT
+
+-- 创建索引
+CREATE INDEX &quot;TR_TEST_REQUEST_idx_ds_tr_number&quot; ON tr.&quot;TR_TEST_REQUEST&quot; USING gist (ds_tr_number);
+CREATE INDEX &quot;TR_TEST_REQUEST_idx_ds_tr_number&quot; ON tr.&quot;TR_TEST_REQUEST&quot; USING gin (ds_tr_number gin_trgm_ops);
+
+INSERT INTO rfq.&quot;SHIPPING_COST_TYPE&quot; (ds_shipping_cost_type) VALUES ('custom duty');
+
+select * from tr.&quot;TR_TEST_REQUEST&quot; where dt_update&gt;=(now()-interval '3 months');
+
+select json_agg( row_to_json(t) ) as row_to_json from (SELECT (ds_tr_number) as text, (cd_tr_test_request) as id, ( 'Y' ) as fl_active ,cd_tr_test_request as recid  /*sqlAddon*/  FROM &quot;TR_TEST_REQUEST&quot;  WHERE 1 = 1  AND EXISTS (SELECT 1 FROM tr.&quot;TR_TEST_REQUEST&quot; x WHERE x.cd_tr_test_request = tr.&quot;TR_TEST_REQUEST&quot;.cd_tr_test_request and x.dt_update&gt;=(now()-interval '6 months')) AND ds_tr_number ilike '%20180%' ORDER BY 1 ) t
+
+TRUNCATE TABLE tr.&quot;TIME_SHEET&quot;
+
+CREATE TABLE rfq.&quot;SHIPPING_COST&quot; (
+    cd_shipping_cost bigserial NOT NULL,
+    cd_shipping int4 NOT NULL,
+    cd_shipping_cost_type int4 NOT NULL,
+    nr_amount numeric(18,2) NOT NULL DEFAULT 0,
+    cd_currency int4 NOT NULL,
+    cd_currency_rate int4 NULL,
+    nr_duty_rate int4 NULL,
+    nr_amount_usd numeric(18,2) NULL DEFAULT 0,
+    ds_remark text NULL,
+    dt_deactivated date NULL,
+    dt_record timestamptz NULL DEFAULT now(),
+    CONSTRAINT &quot;SHIPPING_COST_pkey&quot; PRIMARY KEY (cd_shipping_cost),
+    CONSTRAINT &quot;fk_SHIPPING_COST_cd_shipping&quot; FOREIGN KEY (cd_shipping) REFERENCES rfq.&quot;SHIPPING&quot;(cd_shipping) ON UPDATE RESTRICT ON DELETE CASCADE
+);
+CREATE INDEX &quot;SHIPPING_COST_idx_cd_shipping&quot; ON rfq.&quot;SHIPPING_COST&quot; USING btree (cd_shipping);
+
+-- 重新让 Sequence 开始 1 开始
+ALTER SEQUENCE rfq.&quot;SHIPPING_cd_shipping_seq&quot; restart with 1;
+
+-- table size
+select relname, pg_size_pretty(pg_relation_size(relid)) from pg_stat_user_tables where schemaname='public' order by pg_relation_size(relid) desc;
+
+-- count distinct 多个字段
+select count(distinct (s.nr_sample, wo.nr_wo_code)) from tr.&quot;MTE_WORK_ORDER_SAMPLE_DATA&quot; s, tr.&quot;MTE_WORK_ORDER&quot; wo  
+      where s.cd_wo_id = wo.cd_wo_id
+      and s.nr_tool_timestamp &gt; 0; 
+</code></pre>
+<h2 id="insert-数据后返回新记录指定的字段-如-自增id-或其他的-">INSERT 数据后返回新记录指定的字段 (如 自增id, 或其他的 )</h2>
+<pre><code class="language-sql">-- id 是一个自增主键， 但我们不想插入数据后返回它，而直接显示用户名。
+INSERT INTO table_name (username, address) VALUES('eric', 'dongguan')
+RETURNING username;
+
+-- 还可以返回多个
+INSERT INTO table_name (username, address) VALUES('eric', 'dongguan')
+RETURNING id, username;
+</code></pre>
+<h1 id="sequence-与-主键自动使用自增顺序支持-nextval-等序列函数">sequence 与 主键自动使用“自增顺序”（支持 nextval() 等序列函数）</h1>
+<p><a href="https://blog.csdn.net/timo1160139211/article/details/78191470#2%E4%B8%BB%E9%94%AE%E5%90%8D-myid">https://blog.csdn.net/timo1160139211/article/details/78191470#2%E4%B8%BB%E9%94%AE%E5%90%8D-myid</a></p>
+<p>方法1 主键字段使用SERIAL , 自动创建名为users_id_seq的序列，且MAXVALUE=9223372036854775807</p>
+<pre><code class="language-sql">CREATE TABLE users
+(
+id SERIAL primary key ,
+name character varying,
+password character varying
+)
+</code></pre>
+<p>方法2 先创建序列，然后设置字段的自增</p>
+<pre><code class="language-sql">
+CREATE SEQUENCE users_id_seq
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
+ 
+alter table users alter column id set default nextval('users_id_seq');
+</code></pre>
+<h2 id="sequence-作用">Sequence 作用</h2>
+<p>在后面的 <code>modelBasicExtend</code> 中也是一个公共属性<code>$sequence_obj</code></p>
+<p>参考 <a href="https://blog.csdn.net/chaochao52001/article/details/53312052">https://blog.csdn.net/chaochao52001/article/details/53312052</a></p>
+<p>平时在 MySQL 里用自增字段来生成 &ldquo;id&rdquo;，如果有多名用户，并且这些用户同时批量插入大量数据，很有可能会发生 主键冲突而导致的<strong>并发插入数据失败</strong> 问题。</p>
+<p>主要是因为 流水号是<strong>客户端</strong>根据数据表的主键ID字段的max()值为基础、通过自加或自减实现递增或递减的流水号</p>
+<p>因此，如果把这个生成流水号的操作<strong>放到数据库服务器端</strong>，就能按照一定规则直接赋值生成一个流水号，解决客户端并发时流水号相同的情况。</p>
+<p>创建 Sequence 的例子</p>
+<pre><code class="language-sql">create sequence for_test -序列名
+increment by 1 -增长间隔 每次增加1
+start with 1 -x为初始值 从1开始
+nomaxvalue -x为最大值 没有最大值
+nocache -没有缓存序列
+//minvalue x //x为最小值 这里没有使用
+//maxvalue x //x为最大值 这里没有使用
+//cache x -制定缓存序列值的个数 
+//cycle -循环使用，到达最大值或者最小值时，从新建立对象
+</code></pre>
+<p>创建表, TestID 并不是 auto-incremental</p>
+<pre><code class="language-sql">create table Test
+(
+TestID int primary key,
+TestName varchar2(20) not null,
+Tdescription varchar2(200) null
+)
+</code></pre>
+<p>使用，插入数据时，直接赋值 <code>for_test.nextval</code></p>
+<pre><code class="language-sql">insert into Test
+values(for_test.nextval,’序列测试’,’这是一个序列使用的例子’)
+</code></pre>
+<h2 id="一个-nextval-得到下一个-sequence-id-的使用注意问题">一个 nextval() 得到下一个 sequence id 的使用注意问题</h2>
+<pre><code class="language-sql">FOR q IN SELECT distinct 
+....
+loop
+
+  SELECT nextval('&quot;TEST_REQUEST_WORK_ORDER_SAMPL_cd_test_request_work_order_s_seq1&quot;'::regclass) INTO vcd_test_request_work_order_sample_raw;
+
+  if exists  ....
+    UPDATE....
+  else
+    INSERT ....
+  end if
+
+End Loop
+</code></pre>
+<h2 id="重新计数">重新计数</h2>
+<h1 id="字符串处理">字符串处理</h1>
+<h2 id="类似-php-implode--js-的-join-把字段结果拼接起来--string_aggtcol-">类似 php implode(,) / js 的 join(,) 把字段结果拼接起来  string_agg(t.col, &lsquo;,')</h2>
+<p>from 的 subquery 要给一个别名，然后 string_agg 里使用别名</p>
+<pre><code class="language-sql">select string_agg(t.col::text, ',') from 
+(
+    select table.col from table limit 10
+) as t
+</code></pre>
+<h1 id="数组json-字段">数组/json 字段</h1>
+<h2 id="在-sql-中查询数组--比-in-更快-而且不受限制只能等于值">在 sql 中查询&quot;数组&rdquo;!  比 IN 更快, 而且不受限制只能&quot;等于值&rdquo;</h2>
+<p>ilike/ in / = 都支持,  <code>any (ARRAY['a','b','c'])</code></p>
+<pre><code class="language-sql">--  123 = ANY(column)
+
+select * from &quot;HUMAN_RESOURCE&quot; where ds_human_resource ilike any (ARRAY['%a%', '%b%'])
+</code></pre>
+<h2 id="order-by-1--2">ORDER By 1  (2)</h2>
+<p>这里假设表的字段为</p>
+<p>item, bin &hellip;</p>
+<p>order by 1, 2 等于是 item, bin 的“别名”</p>
+<pre><code class="language-SQL">select *
+from t
+order by item, bin;
+</code></pre>
+<p>因此，在这个系统中，1 一般是“主键”表示按数字排，2 是字符串，因此可能是按字母顺序排</p>
+<h2 id="-双竖线--连接多个字符串"><code>||</code> (双竖线)  连接多个字符串</h2>
+<p>在 getUserPermission 里看到了，有的代码里也有</p>
+<p>例如 <code>';' || p_parameter || ';' ilike '%;' || s.ds_system_permission_id || ';%' </code></p>
+<p><code>;test; ilike %;xxxxtestxxxx;%</code></p>
+<h2 id="json_agg">json_agg</h2>
+<h2 id="array_agg">array_agg</h2>
+<p>类似 php 的 <code>implode(xxxx, &quot;,&quot;)</code></p>
+<pre><code>(select array_to_string(array_agg(sq.nr_qty_unit_measure_basic), \' / \') 
+FROM 
+    &quot;RFQ_ITEM_SUPPLIER&quot; s, &quot;RFQ_ITEM_SUPPLIER_QUOTATION&quot; sq 
+WHERE 
+    s.cd_rfq_item = &quot;RFQ_ITEM&quot;.cd_rfq_item 
+AND 
+    sq.cd_rfq_item_supplier =  s.cd_rfq_item_supplier 
+AND 
+    COALESCE(sq.nr_qtty_to_buy, 0) &gt; 0) 
+as nr_quo_qty_unit_measure_basic
+</code></pre>
+<p>当然如果比较简单的两表查询 例如 SHIPPING  和 SHIPPING_DELIVERY（字段 ds_po_number, 外键 cd_shipping）
+可以加上 DISTINCT 去重</p>
+<pre><code>(select array_to_string(array_agg(DISTINCT(sd.ds_po_number)), \';\') 
+FROM rfq.&quot;SHIPPING_DELIVERY&quot; sd  
+WHERE sd.cd_shipping =  &quot;SHIPPING&quot;.cd_shipping ) 
+as ds_po
+</code></pre>
+<p>如果需要把多个字段先用 &ldquo;|&rdquo; 拼接，再把多行拼接 “;” 可以用连接符</p>
+<pre><code>select array_to_string(array_agg(DISTINCT(sd.ds_po_number || ';' || ....)), \';\') 。。。。
+</code></pre>
+<p>复杂一点的场景， 表 SHIPPING_EXPRESS 有两个字段 ds_express_express_address_from 和 ds_express_express_address_to 需要关联 SHIPPING_EXPRESS_ADDRESS 表。 而上面的 ds_shipping_express_address 会“重名”，因此需要把一个表关联两次用不同的别名</p>
+<p>如下的 sea_a 和 sea_b</p>
+<pre><code>(
+SELECT array_to_string(array_agg(sea_a.ds_shipping_express_address || \'|\' || sea_b.ds_shipping_express_address || \'|\' || se.nr_charging_track_number), \';\') 
+FROM rfq.&quot;SHIPPING_EXPRESS&quot; se, rfq.&quot;SHIPPING_EXPRESS_ADDRESS&quot; sea_a,rfq.&quot;SHIPPING_EXPRESS_ADDRESS&quot; sea_b 
+WHERE se.cd_shipping =  &quot;SHIPPING&quot;.cd_shipping 
+AND se.cd_shipping_express_address_from =  sea_a.cd_shipping_express_address 
+AND se.cd_shipping_express_address_to =  sea_b.cd_shipping_express_address 
+) as ds_express_track
+</code></pre>
+<p>注意，使用这个，如果某个字段是“空”，直接连接会导致整个字符串都变成空白</p>
+<p><code>|| sc.nr_duty_rate</code>   如果这个 <code>nr_duty_rate</code> 为空, 整个 array_to_string(array_agg()) 都变成空白。</p>
+<p>需要用  coalesce 来提前处理下</p>
+<p><code>|| coalesce(sc.nr_duty_rate, 0)</code></p>
+<h2 id="连表--查询--删除-using-从数据表t1中把那些id值在数据表t2里有匹配的记录全删除掉">连表  查询 + 删除 USING (从数据表t1中把那些id值在数据表t2里有匹配的记录全删除掉)</h2>
+<p>你可以想象成 select 的 JOIN</p>
+<p>例如 删除某个指定导演的所有电影</p>
+<pre><code class="language-sql">DELETE FROM films USING producers
+  WHERE producer_id = producers.id AND producers.name = 'foo';
+</code></pre>
+<p>案例 <code>tr.if_test_request_work_order_sample_before()</code></p>
+<pre><code class="language-sql">DELETE FROM &quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot;
+  USING &quot;TEST_REQUEST_WORK_ORDER&quot;
+  WHERE &quot;TEST_REQUEST_WORK_ORDER&quot;.cd_test_request_work_order_parent = OLD.cd_test_request_work_order
+    AND &quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot;.cd_test_request_work_order = &quot;TEST_REQUEST_WORK_ORDER&quot;.cd_test_request_work_order
+    AND cd_test_request_sample            = OLD.cd_test_request_sample;
+</code></pre>
+<p>TEST_REQUEST_WORK_ORDER 有个字段 cd_test_request_work_order_parent</p>
+<h2 id="字段直接用数组类型">字段直接用数组类型！！</h2>
+<p>例如 PROJECT_MODEl</p>
+<p>ds_system_product_category int4[] NULL,</p>
+<h2 id="-与-直接在-sql-中写数组-array"><code>@&gt;</code> 与 直接在 sql 中写数组 <code>array[]</code></h2>
+<p>contains 的意思. 只不过我有一次遇到了错误。  改用  <code>= ANY()</code> 反而可以正常执行</p>
+<pre><code class="language-php">// 注意格式。
+$forcedWhere = ' AND &quot;PROJECT_MODEL&quot;.cds_system_product_category @&gt; array[' . $this-&gt;db-&gt;cd_system_product_category.']::bigint[]';
+</code></pre>
+<p>在 Project_model.php （controller） 里面，而且有一个 <code>$this-&gt;db-&gt;cd_system_product_category</code> 可以不用指定 table? 直接从 db 读取字段？</p>
+<p>如果需要把原来一个 cd_ 的字段改成  cds_ 且保留原来数据。</p>
+<p>下面的会导致清空数据</p>
+<pre><code class="language-sql">alter table rfq.&quot;SUPPLIER&quot; alter cd_human_resource_sourcing drop default;
+alter table rfq.&quot;SUPPLIER&quot; alter cd_human_resource_sourcing type int[] using array[cd_human_resource_sourcing];
+alter table rfq.&quot;SUPPLIER&quot; alter cd_human_resource_sourcing set default '{}';
+-- 此时在 dbeaver 里看是 NULL 值。（刷新也是）
+
+-- 这一步后，发现居然自动保留了原来的值！  都不需要用临时表来保存了。。。
+alter table public.&quot;T_USER&quot; rename cd_department to cds_department;
+
+</code></pre>
+<p>要保留的话：建个临时表，再插入回来</p>
+<h1 id="排序--分组">排序 &amp; 分组</h1>
+<h2 id="order-by-排序">ORDER BY 排序</h2>
+<p>有 ASC/DESC 升序(默认)/降序</p>
+<pre><code class="language-sql">SELECT *   
+FROM EMPLOYEES  
+ORDER BY AGE ASC;
+</code></pre>
+<p>多列排序, 以及 WHERE</p>
+<pre><code class="language-sql">SELECT *   
+FROM EMPLOYEES  
+WHERE age &gt; 10
+ORDER BY NAME, ADDRESS DESC;
+</code></pre>
+<p>ORDER By 1  (2)</p>
+<p>这里假设表的字段为</p>
+<p>item, bin &hellip;</p>
+<p>order by 1, 2 等于是 item, bin 的“别名”</p>
+<pre><code class="language-SQL">select *
+from t
+order by item, bin;
+</code></pre>
+<p>因此，在这个系统中，1 一般是“主键”表示按数字排，2 是字符串，因此可能是按字母顺序排</p>
+<h2 id="group-by-分组">Group By 分组</h2>
+<p>将具有相同数据的表中的这些行分组在一起。 可以用来合并同类的数据</p>
+<p>例如, Rose 和 Jack 分别有两种工资收入类型 Basic 和 More.  我们只想看“总工资”</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rose</td>
+<td>Basic</td>
+<td>5000</td>
+</tr>
+<tr>
+<td>Jack</td>
+<td>Basic</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>Rose</td>
+<td>More</td>
+<td>4000</td>
+</tr>
+<tr>
+<td>Jack</td>
+<td>More</td>
+<td>3500</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">SELECT NAME, SUM(SALARY)   
+FROM EMPLOYEES   
+GROUP BY NAME;
+</code></pre>
+<p>输出结果，按名字合计数额, 合并了冗余数据</p>
+<p>name    sum
+Eric        8500
+Jack        10200</p>
+<h2 id="having">HAVING</h2>
+<p>HAVING子句与GROUP BY子句组合使用.(区别在后面“聚集函数”有讲)</p>
+<p>假设数据如下</p>
+<table>
+<thead>
+<tr>
+<th>name        sum</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eric        8500</td>
+<td></td>
+</tr>
+<tr>
+<td>Jack        10200</td>
+<td></td>
+</tr>
+<tr>
+<td>Eric        8500</td>
+<td></td>
+</tr>
+<tr>
+<td>Rose        8500</td>
+<td></td>
+</tr>
+<tr>
+<td>Rose        10200</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">SELECT NAME, COUNT(NAME) 
+FROM EMPLOYEES 
+GROUP BY NAME HAVING COUNT (NAME) &gt; 1;
+</code></pre>
+<p>假设没有 <code>HAVING</code>, 那么 <code>GROUP BY NAME</code>后，列出 Eric Jack, Rose 几个人,以及它们的名字出现了几次</p>
+<table>
+<thead>
+<tr>
+<th>name        count</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eric        2</td>
+<td></td>
+</tr>
+<tr>
+<td>Jack        1</td>
+<td></td>
+</tr>
+<tr>
+<td>Rose        2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>但是由于有 HAVING 的“约束”，必须 count &gt; 2 才出现在结果中。因此最终会剔除 Jack</p>
+<table>
+<thead>
+<tr>
+<th>name        count</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eric        2</td>
+<td></td>
+</tr>
+<tr>
+<td>Rose        2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="条件查询-and-or-not-like-in-between-not-in-and--or">条件查询 (AND/ OR/ NOT/ LIKE/ IN/ BETWEEN/ NOT IN/ AND + OR)</h1>
+<ul>
+<li>AND 条件</li>
+<li>OR 条件</li>
+<li>AND &amp; OR 条件</li>
+<li>NOT 条件</li>
+<li>LIKE 条件</li>
+<li>IN 条件</li>
+<li>NOT IN 条件</li>
+<li>BETWEEN 条件</li>
+</ul>
+<pre><code class="language-sql">-- AND
+SELECT *  
+FROM EMPLOYEES  
+WHERE SALARY &gt; 120000  
+AND ID &lt;= 4;
+
+-- OR
+SELECT *  
+FROM  EMPLOYEES 
+WHERE NAME = 'Minsu'  
+OR ADDRESS = 'Noida';
+
+-- 结合 AND 和 OR
+SELECT *  
+FROM EMPLOYEES  
+WHERE (NAME = 'Minsu' AND ADDRESS = 'Delhi')  
+OR (ID&gt;= 8);
+
+-- NOT
+SELECT *  
+FROM EMPLOYEES  
+WHERE address IS NOT NULL ;
+
+-- IN
+SELECT *  
+FROM EMPLOYEES  
+WHERE AGE IN (19, 21);
+
+-- NOT IN (结合了 NOT 和 IN)
+SELECT *  
+FROM EMPLOYEES  
+WHERE age NOT IN(21,24) ;
+
+-- LIKE
+SELECT *   
+FROM EMPLOYEES   
+WHERE NAME LIKE 'Ma%';
+
+-- BETWEEN
+SELECT *   
+FROM EMPLOYEES   
+WHERE AGE BETWEEN 24 AND 27;
+</code></pre>
+<h2 id="ilike-与-like">ilike 与 like</h2>
+<p>大小写敏感</p>
+<h1 id="连接">连接</h1>
+<ul>
+<li>内连接(INNER JOIN)</li>
+<li>左外连接(LEFT OUTER JOIN)</li>
+<li>右外连接(RIGHT OUTER JOIN)</li>
+<li>全外连接(FULL OUTER JOIN)</li>
+<li>跨连接(CROSS JOIN)</li>
+</ul>
+<p>例如数据如下</p>
+<p><code>EMPLOYEES</code>表</p>
+<table>
+<thead>
+<tr>
+<th>id        name</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1         Eric</td>
+<td></td>
+</tr>
+<tr>
+<td>2         Rose</td>
+<td></td>
+</tr>
+<tr>
+<td>3         Jack</td>
+<td></td>
+</tr>
+<tr>
+<td>4         Jobs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><code>Department</code>表</p>
+<table>
+<thead>
+<tr>
+<th>uid        dept</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1           IT</td>
+<td></td>
+</tr>
+<tr>
+<td>4           Marketing</td>
+<td></td>
+</tr>
+<tr>
+<td>5           SAP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="inner-join">INNER JOIN</h2>
+<pre><code class="language-sql">SELECT EMPLOYEES.ID, EMPLOYEES.NAME, DEPARTMENT.DEPT  
+FROM EMPLOYEES   
+INNER JOIN DEPARTMENT  
+ON EMPLOYEES.ID = DEPARTMENT.ID;
+</code></pre>
+<p><img src="/media/postgresql/inner-join.jpg" alt="Alt text" title="Optional title"></p>
+<p>结果： （只有同时在两个表里有记录，才会显示）</p>
+<p>1   Eric        IT     <br>
+4   Jobs        Marketing</p>
+<h2 id="左外连接">左外连接</h2>
+<p>返回从“ON”条件中指定的左侧表中的所有行，只返回满足条件的另一个表中的行</p>
+<p><img src="/media/postgresql/left-join.jpg" alt="Alt text" title="Optional title"></p>
+<pre><code class="language-sql">SELECT EMPLOYEES.ID, EMPLOYEES.NAME, DEPARTMENT.DEPT  
+FROM EMPLOYEES 
+LEFT OUTER JOIN DEPARTMENT  
+ON EMPLOYEES.ID = DEPARTMENT.ID;
+</code></pre>
+<p>结果：“左”表 EMPLOYEE 的记录全部显示，但“右”表由于没 Rose 和 Jack 的记录，就显示 NULL</p>
+<p>1   Eric        IT     <br>
+2   Rose        NULL
+3   Jack        NULL
+4   Jobs        Marketing</p>
+<h2 id="右外">右外</h2>
+<pre><code class="language-sql">SELECT EMPLOYEES.ID, EMPLOYEES.NAME, DEPARTMENT.DEPT  
+FROM EMPLOYEES 
+RIGHT OUTER JOIN DEPARTMENT  
+ON EMPLOYEES.ID = DEPARTMENT.ID;
+</code></pre>
+<p><img src="/media/postgresql/right-join.jpg" alt="Alt text" title="Optional title"></p>
+<p>结果: 注意，一个 dept 为 “SAP”的记录，由于它只存在 department 表里，在 employee 表里没有对应的数据，所以 <code>ID</code> 和 <code>NAME</code>显示 NULL</p>
+<p>1   Eric        IT     <br>
+4   Jobs        Marketing
+NULL    NULL    SAP</p>
+<h2 id="全外">全外</h2>
+<pre><code class="language-sql">SELECT EMPLOYEES.ID, EMPLOYEES.NAME, DEPARTMENT.DEPT  
+FROM EMPLOYEES 
+FULL OUTER JOIN DEPARTMENT  
+ON EMPLOYEES.ID = DEPARTMENT.ID;
+</code></pre>
+<p><img src="/media/postgresql/full-join.jpg" alt="Alt text" title="Optional title"></p>
+<p>结果： 其实就是把 LEFT RIGHT 两种外连接的结果合起来了. 不管左边表，还是右边表，字段没数据都填充 NULL</p>
+<p>1   Eric        IT     <br>
+2   Rose        NULL
+3   Jack        NULL
+4   Jobs        Marketing
+NULL    NULL    SAP</p>
+<h2 id="跨连接cross-join-也叫交叉连接">跨连接(CROSS JOIN) 也叫交叉连接</h2>
+<p>将第一个表的每一行与第二个表的每一行相匹配(笛卡尔积)</p>
+<p>如果table1具有“x”行，而table2具有“y”行，则所得到的表将具有(x * y)行</p>
+<pre><code class="language-sql">SELECT NAME, DEPT 
+FROM EMPLOYEES  
+CROSS JOIN DEPARTMENT;
+</code></pre>
+<p>结果：employee 表里的 Eric，同时与 department 表的全部记录 IT  Marketing SAP 匹配，返回了3条记录。
+其他用户也一样。</p>
+<p>Eric        IT     <br>
+Eric        Marketing
+Eric        SAP    <br>
+Rose        IT     <br>
+Rose        Marketing
+Rose        SAP    <br>
+Jack        IT     <br>
+Jack        Marketing
+Jack        SAP    <br>
+Jobs        IT     <br>
+Jobs        Marketing
+Jobs        SAP</p>
+<h1 id="union-all-union-子句-组合多个select语句的结果返回全部不返回重复的行">UNION ALL/ UNION 子句 组合多个SELECT语句的结果，返回全部/不返回重复的行</h1>
+<h2 id="union">UNION</h2>
+<p>每个SELECT必须具有相同的列数，相同数量的列表达式，相同的数据类型，并且具有相同的顺序，但不一定要相同.</p>
+<p><code>EMPLOYEE</code>表</p>
+<p>id | name  | age | address   | salary
+&mdash;-+&mdash;&mdash;-+&mdash;&ndash;+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&ndash;
+1 | Paul  |  32 | California|  20000
+2 | Allen |  25 | Texas     |  15000
+3 | Teddy |  23 | Norway    |  20000
+4 | Mark  |  25 | Rich-Mond |  65000
+5 | David |  27 | Texas     |  85000
+6 | Kim   |  22 | South-Hall|  45000
+7 | James |  24 | Houston   |  10000</p>
+<p><code>DEPARTMENT</code>表</p>
+<p>id | dept        | emp_id
+&mdash;-+&mdash;&mdash;&mdash;&mdash;-+&mdash;&mdash;&ndash;
+1 | IT Billing  |      1
+2 | Engineering |      2
+3 | Finance     |      7
+4 | Engineering |      3
+5 | Finance     |      4
+6 | Engineering |      5
+7 | Finance     |      6</p>
+<pre><code class="language-sql">SELECT EMP_ID, NAME, DEPT FROM EMPLOYEE INNER JOIN DEPARTMENT
+        ON EMPLOYEE.ID = DEPARTMENT.EMP_ID
+   UNION
+     SELECT EMP_ID, NAME, DEPT FROM EMPLOYEE LEFT OUTER JOIN DEPARTMENT
+        ON EMPLOYEE.ID = DEPARTMENT.EMP_ID;
+</code></pre>
+<p>第一部分 <code>SELECT EMP_ID, NAME, DEPT FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID</code> 是&quot;内连&rdquo;，找到同时在两个表里出现的数据</p>
+<p>因为这里每个 employee 记录都有对应的 department 记录, 所以其实两个 SELECT 的结果是一样的。</p>
+<p>经过 UNION 后，只会显示不重复的数据</p>
+<p>1  Eric  IT
+2  Rose  Marking
+3  Jack  SAP
+&hellip;.
+[不会显示重复的记录]</p>
+<h2 id="union-all">UNION ALL</h2>
+<p>它不同，会把重复的记录也列出来！</p>
+<p>1  Eric  IT
+2  Rose  Marking
+3  Jack  SAP
+&hellip;.
+[又来一次，重复的]
+1  Eric  IT
+2  Rose  Marking
+3  Jack  SAP
+&hellip;.</p>
+<h1 id="sql中exists的用法">SQL中EXISTS的用法</h1>
+<p>出现在 CFilterMaker 的 834 行</p>
+<pre><code class="language-sql">$sql = ' AND EXISTS ( SELECT 1'
+                    . ' FROM &quot;' . $tablerelation . '&quot;'
+                    -- ....略
+</code></pre>
+<p>EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False
+EXISTS 指定一个子查询，检测 行 的存在。</p>
+<p>参考 <a href="https://www.cnblogs.com/xuanhai/p/5810918.html">https://www.cnblogs.com/xuanhai/p/5810918.html</a></p>
+<h2 id="常用-exist-跨表查数据">常用 exist 跨表查数据</h2>
+<pre><code class="language-sql">select 1
+where 
+  (exists ( select  1 from tr.&quot;TEST_REQUEST_APPROVAL_STEPS&quot;  x where x.cd_approval_status = 1 and x.cd_human_resource_define and x.cd_test_request = ss)
+  or exists ( select 1 from tr.&quot;TEST_REQUEST_WORK_ORDER&quot; y where y.cd_test_request = ss and y.cd_technician = )
+</code></pre>
+<h1 id="case-条件分支与嵌套">CASE 条件分支与嵌套</h1>
+<p>一层</p>
+<pre><code class="language-sql">SELECT CASE 
+    WHEN edition = 'STAN' THEN 
+         
+    WHEN edition = 'SUI' THEN
+         
+    ELSE 'S7' 
+END AS version
+</code></pre>
+<p>嵌套</p>
+<pre><code class="language-sql">SELECT CASE 
+    WHEN edition = 'STAN' THEN 
+         CASE 
+              WHEN has9 = 1 THEN '9'
+              WHEN has8 = 1 THEN '8'
+              WHEN has7 = 1 THEN '7'
+              WHEN hasOLD = 1 THEN 'OLD'
+         END
+    WHEN edition = 'SUI' THEN
+         CASE 
+              WHEN has9 = 1 THEN 'S9'
+              WHEN has8 = 1 THEN 'S8'
+         END
+    ELSE 'S7' 
+END AS version
+</code></pre>
+<h1 id="coalescevalue--返回第一个非空的值">COALESCE(value, &lsquo;') 返回第一个非空的值</h1>
+<p>注意如果字段是数字类型，做串联的时候， 一定要强制转换成 text <code>::text</code></p>
+<blockquote>
+<p>COALESCE(&ldquo;HUMAN_RESOURCE&rdquo;.ds_human_resource_full, '' ) || '-' || COALESCE(&ldquo;HUMAN_RESOURCE&rdquo;.nr_staff_number::text, '' );</p>
+</blockquote>
+<h1 id="子查询">子查询</h1>
+<p>嵌入到WHERE子句, 返回将在主查询中使用的数据, 作为进一步限制要检索的数据的条件</p>
+<ul>
+<li>子查询必须括在括号中</li>
+<li>子查询在<code>SELECT</code>子句中只能有一列，除非主查询中有多个列用于比较其所选列的子查询</li>
+<li><code>ORDER BY</code>不能用于子查询，尽管主查询可以使用<code>ORDER BY</code>(不过用 <code>GROUP BY</code>可用于执行与子查询中的<code>ORDER BY</code>相同的功能)</li>
+<li>返回多行的子查询只能与多个值运算符一起使用，例如：IN，EXISTS，NOT IN，ANY / SOME，ALL运算符</li>
+<li>BETWEEN运算符不能与子查询一起使用; 但是，BETWEEN可以在子查询中使用</li>
+</ul>
+<p>id | name  | age | address   | salary
+&mdash;-+&mdash;&mdash;-+&mdash;&ndash;+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&ndash;
+1 | Paul  |  32 | California|  20000
+2 | Allen |  25 | Texas     |  15000
+3 | Teddy |  23 | Norway    |  20000
+4 | Mark  |  25 | Rich-Mond |  65000
+5 | David |  27 | Texas     |  85000
+6 | Kim   |  22 | South-Hall|  45000
+7 | James |  24 | Houston   |  10000</p>
+<h2 id="select">SELECT</h2>
+<pre><code class="language-sql">SELECT *
+     FROM COMPANY
+     WHERE ID IN (SELECT ID
+                  FROM COMPANY
+                  WHERE SALARY &gt; 45000) ;
+</code></pre>
+<p>结果： 先找到 salary &gt; 45000 的记录，然后从这些记录的 ID 范围内查</p>
+<p>4 | Mark  |  25 | Rich-Mond   |  65000
+5 | David |  27 | Texas       |  85000</p>
+<h2 id="insert--update--delete">INSERT &amp; Update &amp; DELETE</h2>
+<p>从一个表里找出符合条件的记录，插入另一个表</p>
+<pre><code class="language-sql">INSERT INTO COMPANY_BKP
+     SELECT * FROM COMPANY
+     WHERE ID IN (SELECT ID
+                  FROM COMPANY) ;
+
+-- 从另外一个表里找到满足条件的记录，然后在当前表里修改对应的数据
+UPDATE COMPANY
+     SET SALARY = SALARY * 0.50
+     WHERE AGE IN (SELECT AGE FROM COMPANY_BKP
+                   WHERE AGE &gt;= 27 );
+
+DELETE FROM COMPANY
+     WHERE AGE IN (SELECT AGE FROM COMPANY_BKP
+                   WHERE AGE &gt; 27 );
+</code></pre>
+<h1 id="技巧">技巧</h1>
+<h2 id="执行一个具有返回值的测试函数-并显示出来">执行一个具有返回值的测试函数, 并显示出来</h2>
+<p>先定义好函数。 关键是 return</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(p_cd_test_request bigint)
+ RETURNS text
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    v_result                     text;
+    v_backlog                    int;
+    v_onhold                     int;
+
+BEGIN
+
+    v_tr_smp_code_for_backlog = getSysParameter('TR_SMP_CODE_FOR_BACKLOG')::int;
+    v_tr_smp_code_for_onhold = getSysParameter('TR_SMP_CODE_FOR_ONHOLD')::int;
+
+    FOR q IN
+        SELECT w.cd_test_request_work_order,
+               SUM(CASE WHEN s.cd_test_request_work_order_status = v_tr_smp_code_for_backlog THEN 1 ELSE 0 END)   as backlog,
+              --
+               count(1)                                                                                           as totalcount
+        FROM tr.&quot;TEST_REQUEST_WORK_ORDER&quot; w,
+             tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; s
+        WHERE w.cd_test_request = p_cd_test_request
+          AND s.cd_test_request_work_order = w.cd_test_request_work_order
+        GROUP BY w.cd_test_request_work_order
+        LOOP
+            SELECT CASE
+                       WHEN q.totalcount = q.cancelled THEN v_tr_smp_code_for_canceled -- Cancelled
+                       WHEN q.ontest &gt; 0 THEN v_tr_smp_code_for_ontest -- ontest
+                       WHEN q.totalcount = q.completed + q.cancelled THEN v_tr_smp_code_for_completed -- Completed
+                       WHEN q.backlog &gt; 0  THEN v_tr_smp_code_for_backlog -- Backlog
+                       WHEN q.onhold &gt; 0 THEN v_tr_smp_code_for_onhold -- On Hold
+                       ELSE NULL
+                       END
+            into v_cd_test_request_status;
+
+        END LOOP;
+
+
+        return json_agg(v_cd_test_request_status);
+
+END;
+$function$
+;
+</code></pre>
+<p>然后在 query 里执行</p>
+<pre><code class="language-sql">select usetest.testfunc(6) as res;
+</code></pre>
+<h3 id="返回-dataset-select-执行结果-或者-table">返回 dataset (select 执行结果) 或者 table</h3>
+<p><a href="https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-SET">https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-SET</a>
+<a href="https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-TABLE">https://www.postgresql.org/docs/current/xfunc-sql.html#XFUNC-SQL-FUNCTIONS-RETURNING-TABLE</a></p>
+<pre><code class="language-sql">CREATE FUNCTION getfoo(int) RETURNS SETOF foo AS $$
+    SELECT * FROM foo WHERE fooid = $1;
+$$ LANGUAGE SQL;
+
+SELECT * FROM getfoo(1) AS t1;
+</code></pre>
+<p>但是我按上面的案例写一个</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(
+    p_cd_test_request bigint
+    -- 需要 OUT (后面说)
+)
+ RETURNS SETOF record
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    v_result                     text;
+    v_backlog                    int;
+BEGIN
+    v_tr_smp_code_for_backlog = getSysParameter('TR_SMP_CODE_FOR_BACKLOG')::int;
+    v_tr_smp_code_for_onhold = getSysParameter('TR_SMP_CODE_FOR_ONHOLD')::int;
+
+    -- 需要 return query (后面说)
+    SELECT w.cd_test_request_work_order,
+        count(1)                                                                                           as totalcount 
+    FROM tr.&quot;TEST_REQUEST_WORK_ORDER&quot; w,
+         tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; s
+    WHERE w.cd_test_request = $1
+      AND s.cd_test_request_work_order = w.cd_test_request_work_order
+    GROUP BY w.cd_test_request_work_order;
+END; 
+$function$
+;
+</code></pre>
+<p>然后运行</p>
+<pre><code class="language-sql">select * from usetest.testfunc(6);
+</code></pre>
+<p>报错</p>
+<blockquote>
+<p>ERROR: a column definition list is required for functions returning &ldquo;record&rdquo;</p>
+</blockquote>
+<p>需要显式把返回的参数用 OUT 列出来</p>
+<pre><code class="language-sql">CREATE OR REPLACE FUNCTION usetest.testfunc(
+    p_cd_test_request bigint, 
+    OUT cd_test_request_work_order bigint, 
+    OUT backlog bigint
+)
+</code></pre>
+<p>再执行，又报错</p>
+<blockquote>
+<p>ERROR: query has no destination for result data
+HINT: If you want to discard the results of a SELECT, use PERFORM instead.
+CONTEXT: PL/pgSQL function country(text) line 5 at SQL statement</p>
+</blockquote>
+<p>然后按照 <a href="https://stackoverflow.com/questions/41274337/postgresql-query-has-no-destination-for-result-data">https://stackoverflow.com/questions/41274337/postgresql-query-has-no-destination-for-result-data</a></p>
+<p>加上 <code>return query</code> 就可以了！！！</p>
+<pre><code class="language-sql">    return query
+      SELECT w.cd_test_request_work_order,
+      -- 略
+</code></pre>
+<h2 id="如果返回的是查询表又不一样">如果返回的是查询表，又不一样</h2>
+<pre><code class="language-sql">RETURNS TABLE(email text, user_id integer) AS $$
+
+
+SELECT email, user_id
+FROM app.lookup_email(4,730035455897450,6,'u')
+</code></pre>
+<h2 id="用-do-来执行一个临时函数而不需要定义">用 DO 来执行一个“临时函数”，而不需要定义</h2>
+<p><a href="https://www.postgresql.org/docs/current/sql-do.html">https://www.postgresql.org/docs/current/sql-do.html</a></p>
+<pre><code class="language-sql">DO $$DECLARE r record;
+BEGIN
+    FOR r IN SELECT table_schema, table_name FROM information_schema.tables
+             WHERE table_type = 'VIEW' AND table_schema = 'public'
+    LOOP
+        EXECUTE 'GRANT ALL ON ' || quote_ident(r.table_schema) || '.' || quote_ident(r.table_name) || ' TO webuser';
+    END LOOP;
+END$$;
+</code></pre>
+<p>直接用 IF 等关键词不支持 报错 SQL Error [42601]: ERROR: syntax error at or near &ldquo;if&rdquo;</p>
+<pre><code class="language-sql">IF xxx THEN
+END IF
+</code></pre>
+<p>加上下面的 &ldquo;DO&rdquo; 就可以了。 里面内容和 function 一样了。</p>
+<pre><code class="language-sql">DO LANGUAGE plpgsql $$
+    DECLARE
+        v_error_text text;
+    BEGIN
+        IF (SELECT COUNT(*) FROM pg_language WHERE lanname = 'plpgsql') &gt; 0 THEN 
+            RAISE NOTICE 'GOOD';
+        ELSE
+            RAISE NOTICE 'BAD';
+        END IF;
+    END;
+$$;
+</code></pre>
+<p>注意：</p>
+<p>调用别的函数，用 <code>PERFORM()</code></p>
+<p>必须要有返回值： 如果里面只有 SELECT * FROM table  会报错.  <a href="https://stackoverflow.com/questions/46008181/returning-a-query-from-a-do-block">https://stackoverflow.com/questions/46008181/returning-a-query-from-a-do-block</a></p>
+<p>因此，要实现 IF ，而且是“匿名函数”（测试下一些功能）必须改成</p>
+<pre><code class="language-sql">WITH data AS (
+    SELECT          tbl.id, tbl.&quot;someLongURI&quot;
+    FROM            mytable tbl
+    WHERE           tbl.&quot;userId&quot; = 123;
+), changed AS (
+    UPDATE          mytable tbl
+    SET             tbl.status = 'IN_WORK',
+                    tbl.&quot;userId&quot; = 123
+    WHERE           tbl.&quot;someLongURI&quot; IN (
+        SELECT      &quot;someLongURI&quot;
+        FROM        tbl.mytable
+        WHERE       tbl.status = 'UNUSED'
+            AND     pg_try_advisory_xact_lock(id)
+        ORDER BY    id ASC 
+        LIMIT       1
+        FOR UPDATE 
+    )
+    AND NOT EXISTS (SELECT * FROM data)
+    RETURNING   tbl.id, tbl.&quot;someLongURI&quot;
+)
+SELECT *
+FROM changed
+UNION ALL
+SELECT *
+FROM data
+WHERE NOT EXISTS (SELECT * FROM changed);
+</code></pre>
+<h1 id="sql-语言">SQL 语言</h1>
+<h2 id="sql-语法">SQL 语法</h2>
+<h2 id="数据定义-ddl">数据定义 DDL</h2>
+<h1 id="高级查询">高级查询</h1>
+<h2 id="递归查询创建递归视图">递归查询，创建递归视图</h2>
+<p>例如下面的数据，有个表 <code>digui_test</code></p>
+<p>select * from digui_test;
+id | pid | name
+&mdash;-+&mdash;&ndash;+&mdash;&mdash;
+2 |   0 | a
+1 |   0 | b
+3 |   2 | c
+4 |   2 | d
+5 |   2 | e
+6 |   2 | f
+7 |   3 | g
+8 |   3 | h
+9 |   4 | i
+10 |   5 | j
+11 |   7 | k
+12 |   2 | l
+13 |   9 | m
+14 |   9 | n
+15 |   4 | o
+(15 行记录)</p>
+<p>想查询出 id=3 及下面所有子数据</p>
+<pre><code class="language-sql">with RECURSIVE t as
+(
+  select a.id,a.name,a.pid from digui_test a where id=3
+  union all
+  select k.id,k.name,k.pid  from digui_test k , t c where c.id = k.pid
+)
+select id,name,pid from t;
+</code></pre>
+<p>id | name | pid
+&mdash;-+&mdash;&mdash;+&mdash;&ndash;
+3 | c    |   2
+7 | g    |   3
+8 | h    |   3
+11 | k    |   7
+(4 行记录)</p>
+<p>还可以利用自带的几个参数 depth,path,cycle 求出树深度，路径，是否为环数据</p>
+<pre><code class="language-sql">with RECURSIVE t(id,name,pid,depth,path,cycle) as
+(
+  select a.id, a.name, a.pid, 1, array[a.id], false from digui_test a where id=3
+  union all
+  select k.id,k.name,k.pid,c.depth+1,path||k.id,k.id=any(path) from digui_test k , t c where c.id = k.pid and not cycle
+)
+select * from t;
+</code></pre>
+<p>id | name | pid | depth |   path   | cycle
+&mdash;-+&mdash;&mdash;+&mdash;&ndash;+&mdash;&mdash;-+&mdash;&mdash;&mdash;-+&mdash;&mdash;-
+3 | c    |   2 |     1 | {3}      | f
+7 | g    |   3 |     2 | {3,7}    | f
+8 | h    |   3 |     2 | {3,8}    | f
+11 | k    |   7 |     3 | {3,7,11} | f
+(4 行记录)</p>
+<h3 id="理解">理解：</h3>
+<p><a href="https://www.cnblogs.com/ricklz/p/12590618.html">https://www.cnblogs.com/ricklz/p/12590618.html</a></p>
+<p>1、SELECT * FROM emp WHERE empid = 2 执行后，存入1个临时表
+2、执行 SELECT emp.* FROM emp, r WHERE emp.empparid = r.empid ，
+结果为
+5 | 2 | MANAGER
+3、继续执行  SELECT emp.* FROM emp, r WHERE emp.empparid = r.empid 直到
+记录集为空(没有满足条件的记录)；
+4、将1、2、3的结果UNION ALL后输出。</p>
+<h3 id="一个递归-view">一个递归 View</h3>
+<pre><code class="language-sql">create view request.&quot;VIEW_REQUEST_PROCESS_LEVEL&quot; as
+WITH RECURSIVE reqprocess AS (
+  -- 先找出全部“根节点”
+  SELECT
+    cd_request_process,
+    nr_sequence::text as ds_sequence,
+    1 as nr_level
+  FROM
+    request.&quot;REQUEST_PROCESS&quot;
+  WHERE cd_request_process_parent is null
+
+  UNION
+
+    -- s 是 递归 reqprocess, e 是表&quot;REQUEST_PROCESS&quot;
+    SELECT
+      e.cd_request_process,
+      s.ds_sequence || '.' ||   e.nr_sequence::text as ds_sequence, -- (view 中)父节点 ds_sequence 和 表 自身的 nr_sequence = 子节点 ds_sequence
+      s.nr_level + 1 as nr_level -- (view 中)父节点的 nr_level + 1 = 子节点 nr_level
+    FROM
+      request.&quot;REQUEST_PROCESS&quot; e
+    INNER JOIN reqprocess s ON s.cd_request_process = e.cd_request_process_parent
+) SELECT
+  *
+FROM
+  reqprocess;
+
+</code></pre>
+<h3 id="练习实现一个返回-省市县-字符串的查询">练习，实现一个返回 &ldquo;省&raquo;市&raquo;县&rdquo; 字符串的查询</h3>
+<pre><code class="language-sql">with RECURSIVE cte as
+(
+select a.id,cast(a.name as varchar(100)) from tb a where id='002'
+union all 
+select k.id,cast(c.name||'&gt;'||k.name as varchar(100)) as name  
+from tb k 
+inner join cte c on c.id = k.pid
+)select id,name from cte ;
+</code></pre>
+<h3 id="mysql-似乎还没有-sqlserver-把关键词-recursive-去掉即可">mysql 似乎还没有， sqlserver 把关键词 recursive 去掉即可</h3>
+<p><a href="https://www.jianshu.com/p/9e7c2a481e49">https://www.jianshu.com/p/9e7c2a481e49</a>
+<a href="https://juejin.im/post/5df875676fb9a0165835a629">https://juejin.im/post/5df875676fb9a0165835a629</a></p>
+<h1 id="使用-php-代码">使用 php 代码</h1>
+<p>You can use <code>PDO</code> (object oriented):</p>
+<pre><code class="language-php">$db = new PDO('pgsql:host=localhost');
+$statement = $db-&gt;prepare(&quot;SELECT datname FROM pg_database&quot;);
+$statement-&gt;execute();
+while ($row = $statement-&gt;fetch()) {
+    echo &quot;&lt;p&gt;&quot; . htmlspecialchars($row[&quot;datname&quot;]) . &quot;&lt;/p&gt;\n&quot;;
+}
+</code></pre>
+<p>Or the <code>pg_connect()</code> functions (procedural):</p>
+<pre><code class="language-php">$conn = pg_connect(&quot;postgresql://localhost&quot;);
+$result = pg_query($conn, &quot;SELECT datname FROM pg_database&quot;);
+while ($row = pg_fetch_row($result)) {
+    echo &quot;&lt;p&gt;&quot; . htmlspecialchars($row[0]) . &quot;&lt;/p&gt;\n&quot;;
+}
+</code></pre>
+<h1 id="坑">坑</h1>
+<h2 id="not-in-12-把-null-值所在的记录也去掉了">NOT IN (1,2) 把 NULL 值所在的记录也去掉了</h2>
+<h2 id="id-------type_id-------name">id       type_id       name</h2>
+<p>1        1             Peppa
+2        1             George
+3        2             Susie
+4        3             Danny
+5        4             Pedro
+6        null          Desk
+7        null          Table</p>
+<p>如果用</p>
+<pre><code class="language-sql">select * from table_name where type_id not in (2, 3, 4)
+</code></pre>
+<p>预期应列出4个，但实际上 type_id 为 null 的值没有列出来</p>
+<pre><code class="language-js">peppa
+George
+//Desk
+//Table
+</code></pre>
+<p>如果要把 null 带出来，需要显式说明</p>
+<pre><code class="language-sql">select * from table_name where (type_id not in (2, 3, 4) OR type_id is null)
+</code></pre>
+<p>可能是因为 where 子句走到 type_id = null 那条记录的时候，  <code>null NOT in (2,3,4)</code> 通常我们认为应该返回 true (确实啊！null 不在 2,3,4 里面是“真”)， 但实际上返回的是 false (试试  select NULL not in (1,2))  所以在最终结果也跳过了它</p>
+<h1 id="常用场景">常用场景</h1>
+<h2 id="找脏数据解决添加约束产生的不存在报错例如-主表记录删了-副表-还有和主表关联的记录">找&quot;脏&quot;数据，解决添加约束产生的“不存在”报错（例如 主表记录删了， 副表 还有和主表关联的记录）</h2>
+<pre><code class="language-sql">一种是用 IN  效率比较低?
+select distinct(cd_test_request_work_order) 
+  from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; trwos 
+  where cd_test_request_work_order not in (select cd_test_request_work_order from tr.&quot;TEST_REQUEST_WORK_ORDER&quot; trwo )
+</code></pre>
+<p>一种使用 where not exist 效率更高</p>
+<pre><code class="language-sql">select * from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; trwos where not exists (
+  select cd_test_request_work_order from tr.&quot;TEST_REQUEST_WORK_ORDER&quot; trwo where trwo.cd_test_request_work_order =trwos.cd_test_request_work_order )
+</code></pre>
+<p>然后删除 <code>delete from ......</code></p>
+<h2 id="a-has-many-b-从-b-表找到统计结果如-max赋值给-a-表某个字段">A has many B, 从 B 表找到统计结果如 max()，赋值给 A 表某个字段</h2>
+<pre><code class="language-sql">select 
+  cd_test_request_work_order_sample, 
+  (select min(dt_record)  from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; trwosr where ds_insert_by_system is null and cd_test_request_work_order_sample = trwos.cd_test_request_work_order_sample ) as min_dt_start 
+  from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; trwos
+  where dt_start is null and cd_test_request_work_order_sample in(
+    select cd_test_request_work_order_sample from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; trwosr where ds_insert_by_system is null group by cd_test_request_work_order_sample
+  );
+  
+
+
+update tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE&quot; trwos 
+set dt_start = (select min(dt_record)  from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; trwosr where ds_insert_by_system is null and cd_test_request_work_order_sample = trwos.cd_test_request_work_order_sample)
+where dt_start is null and cd_test_request_work_order_sample in(
+  select cd_test_request_work_order_sample from tr.&quot;TEST_REQUEST_WORK_ORDER_SAMPLE_RAW&quot; trwosr where ds_insert_by_system is null group by cd_test_request_work_order_sample
+);
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/postgre-sql-%E6%9F%A5%E8%AF%A2/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E9%85%8D%E7%BD%AE/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/postgre-sql-%E5%87%BD%E6%95%B0-%E8%A7%86%E5%9B%BE-%E7%B4%A2%E5%BC%95-%E7%BB%9F%E8%AE%A1-%E4%BA%8B%E5%8A%A1/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

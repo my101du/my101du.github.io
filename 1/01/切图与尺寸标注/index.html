@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="切图与尺寸标注 https://juejin.im/entry/58ee01f85c497d0062d0471e 很多同类产品对比 https://imweb.io/topic/56d6795cca5e865230c1d4f8 ps 的css 生成（当然会有冗余） https://blog.yayuanzi.com/3254.html https://www.zhihu.com/question/60352831 切图(导出图层) Cutterman(先在官网注册) 导入 PSD, 选择图层，一次把" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="切图与尺寸标注 https://juejin.im/entry/58ee01f85c497d0062d0471e 很多同类产品对比 https://imweb.io/topic/56d6795cca5e865230c1d4f8 ps 的css 生成（当然会有冗余） https://blog.yayuanzi.com/3254.html https://www.zhihu.com/question/60352831 切图(导出图层) Cutterman(先在官网注册) 导入 PSD, 选择图层，一次把" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="切图与尺寸标注 https://juejin.im/entry/58ee01f85c497d0062d0471e 很多同类产品对比 https://imweb.io/topic/56d6795cca5e865230c1d4f8 ps 的css 生成（当然会有冗余） https://blog.yayuanzi.com/3254.html https://www.zhihu.com/question/60352831 切图(导出图层) Cutterman(先在官网注册) 导入 PSD, 选择图层，一次把">
+
+<meta itemprop="wordCount" content="1583">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="切图与尺寸标注 https://juejin.im/entry/58ee01f85c497d0062d0471e 很多同类产品对比 https://imweb.io/topic/56d6795cca5e865230c1d4f8 ps 的css 生成（当然会有冗余） https://blog.yayuanzi.com/3254.html https://www.zhihu.com/question/60352831 切图(导出图层) Cutterman(先在官网注册) 导入 PSD, 选择图层，一次把"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1583字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>切图与尺寸标注</p>
+<p><a href="https://juejin.im/entry/58ee01f85c497d0062d0471e">https://juejin.im/entry/58ee01f85c497d0062d0471e</a></p>
+<p>很多同类产品对比
+<a href="https://imweb.io/topic/56d6795cca5e865230c1d4f8">https://imweb.io/topic/56d6795cca5e865230c1d4f8</a></p>
+<p>ps 的css 生成（当然会有冗余）
+<a href="https://blog.yayuanzi.com/3254.html">https://blog.yayuanzi.com/3254.html</a></p>
+<p><a href="https://www.zhihu.com/question/60352831">https://www.zhihu.com/question/60352831</a></p>
+<h1 id="切图导出图层">切图(导出图层)</h1>
+<h2 id="cutterman先在官网注册">Cutterman(先在官网注册)</h2>
+<p>导入 PSD, 选择图层，一次把所有图片元素都导出成单独的文件。</p>
+<p>PhotoShop CC 版本以上（CS6版即将不支持&ndash; CS6 才能在 xp 下运行）</p>
+<p>CS6 已经无法使用了，扩展面板无法显示，而且无法登陆。</p>
+<h2 id="直接生成html研究">直接生成html研究</h2>
+<p><a href="https://purplebamboo.github.io/2014/05/29/change-psd-to-html/">https://purplebamboo.github.io/2014/05/29/change-psd-to-html/</a></p>
+<p><a href="https://github.com/purplebamboo/psd2html">https://github.com/purplebamboo/psd2html</a></p>
+<p>使用绝对定位实现的，因此psd2html适合的场景为对性能，html语义都不是要求很高的场景，比如只有几天寿命的活动页面。</p>
+<h2 id="photoshop-cc-复制图层css">photoshop cc 复制图层css</h2>
+<p><a href="https://helpx.adobe.com/cn/photoshop/using/copy-css-shape-or-text.html">https://helpx.adobe.com/cn/photoshop/using/copy-css-shape-or-text.html</a></p>
+<p>切片</p>
+<p><a href="https://helpx.adobe.com/cn/photoshop/using/slicing-web-pages.html">https://helpx.adobe.com/cn/photoshop/using/slicing-web-pages.html</a></p>
+<h2 id="httpsgithubcomzprodevpsd2json"><a href="https://github.com/zprodev/psd2json">https://github.com/zprodev/psd2json</a></h2>
+<p>直接导出 json 便于复制文本</p>
+<pre><code class="language-shell">npm install psd2json
+</code></pre>
+<pre><code class="language-js">var psd2json = require('psd2json');
+
+var jsonData = psd2json('./target.psd');                            // return JSON
+var jsonData = psd2json('./target.psd', './outdir');                // return JSON and output /outdir/target.json /outdir/target/*.png
+var jsonData = psd2json('./target.psd', {outJsonDir:'./outdir'});   // return JSON and output /outdir/target.json
+var jsonData = psd2json('./target.psd', {outImgDir:'./outdir'});    // return JSON and output /outdir/target/*.png
+</code></pre>
+<h2 id="蓝湖">蓝湖</h2>
+<p><a href="https://lanhuapp.com/">https://lanhuapp.com/</a></p>
+<p>要上传，无离线处理</p>
+<h2 id="httpsgithubcomsuperraytinpuzzler"><a href="https://github.com/superRaytin/puzzler">https://github.com/superRaytin/puzzler</a></h2>
+<p>问题：只支持jpeg切片。PSD 会自动转换成<strong>平面</strong>的 jpg，丢失图层</p>
+<p>能够快速切片并导出html(一个 json 保存配置信息)</p>
+<p>问题：对于文本在图片背景下的，切片导出会把文本混进来（因为没有图层。。。）  办法： 导出混合了文本的切片后，再编辑图片，把中间涂抹成空白色</p>
+<p>问题2： 如果有网格的瓦片，多条 y 轴会导致<strong>整个</strong>页面切割成 N 列，而不是只有网格瓦片的那一部分，还会导致“文字区域与参考线重合，无法导出html”（不适合小元素较多，文本需要 SEO 及内部搜索的）</p>
+<h2 id="pxcook-的切图功能">PxCook 的切图功能</h2>
+<p>打开 photoshop 编辑-远程连接  设置一个密码。</p>
+<p>打开 PSD 文档。</p>
+<p>然后回到 pxcook ，填写密码，连接，开始导出</p>
+<p>需要保持 ps 打开，不然关闭后，远程连接就没有了</p>
+<p><strong>问题</strong> 切所选图层，实际上要在 PS 里选中图层/组，而不是在 pxcook里选择层/元素</p>
+<p>这样就不需要 cutterman 了？</p>
+<h1 id="psd-标注">PSD 标注</h1>
+<h2 id="命令行工具利用-psdjs">命令行工具（利用 psd.js）</h2>
+<p><a href="https://juejin.im/entry/5ba8c1c8f265da0af4070ea9">https://juejin.im/entry/5ba8c1c8f265da0af4070ea9</a></p>
+<p><a href="https://github.com/jawil/blog/issues/11">https://github.com/jawil/blog/issues/11</a></p>
+<p>有些是需要上传psd到远程服务器的，我更喜欢能本地处理的</p>
+<p>话说  photoshop 和 sketch 对比，内存和体积都太大了</p>
+<h2 id="pxcook-mac像素大厨">PxCook (mac)像素大厨</h2>
+<p>基于 adobe AIR</p>
+<p>导入一个 PSD 文件，设置单位为 rem ，点击一下图层中的元素就能得到它的长、宽、上、下、padding 等</p>
+<h2 id="标你妹--官方网站httpwwwbiaonimeiacom">标你妹  官方网站：http://www.biaonimeia.com/</h2>
+<h2 id="蓝湖-在线要联网">蓝湖 （在线，要联网）</h2>
+<p>Mac端App</p>
+<p>Photoshop 插件</p>
+<h2 id="zeplin--推荐-和-sketch-一起">zeplin  推荐， 和 sketch 一起</h2>
+<h2 id="parker-cutterman-同一个开发者--sketch-适用">parker (cutterman 同一个开发者)  Sketch 适用</h2>
+<h1 id="psd-体积太大">PSD 体积太大</h1>
+<p><a href="https://www.zhihu.com/question/37529916">https://www.zhihu.com/question/37529916</a></p>
+<p>有一个脚本（不知道作用）
+&ldquo;不显示“（只能缩小一点点）</p>
+<ul>
+<li>把全部图层选中复制到另一个 PSD 文件</li>
+</ul>
+<h1 id="ps-在虚拟机或低配置显卡里报错-vram-512m-问题">PS 在虚拟机或低配置显卡里报错 vRam 512M 问题</h1>
+<p>CC 2017 2018 一打开文件，就提示3D 火焰什么的 要求 vRam 512，然后确认，会提示 无法完成请求，因为不是指定文档。。。</p>
+<p>（虚拟机里，这个首选项要鼠标一直往下滚，或者按方向下键才出来。。。。 还以为新版不见了。。）</p>
+<p>Paralles 中设置显存为 512M  (但这样内存捉急了)
+在 VirtualBox 这免费开源的里面反而正常！！！  即使显存是 32M 也不会有问题， 估计是 Paralles 显卡驱动的问题（更新无效。）</p>
+<p><strong>无效</strong>
+将“编辑&ndash;首选项&ndash;性能&ndash;高级选项”里面的“绘图模式”设置为基本。（不开到 512M 这个是灰色的。。。）
+编辑-首选项-性能  内存调小</p>
+<p>无解， 那就 Parallels 用 512M 显存吧。真浪费，分配的内存才 1G</p>
+<p>换成“绿色” CC.。。。  然后在弹出 vRam 512 的时候选“不再显示”，继续打开，是Ok 的。（高版本的“安装版”继续操作提示文件格式错误什么的，打不开）</p>
+<p>但是 Cutterman 要求 CC2014及以上（无法加载面板），  CC2015 绿色版打开 cutterman 报错“因为程序错误。。”</p>
+<p>CC2015 特别安装版(装完要登录 Adobe ID。。。。不然进不去。。)</p>
+<p>CC2014 安装板 （重装系统再装 cutterman, 不然一直提示无法加载扩展）</p>
+<p><strong>最后</strong></p>
+<p>使用 512M 显存！ CC 2018</p>
+<h2 id="上面的可忽略">上面的可忽略</h2>
+<p>如果提示“ps无法完成请求，因为它不是所指类型文档”</p>
+<p>不要在 PS 里打开文件， 直接<strong>右键文件，用 Photoshop 打开</strong> 就可以了！！！！ （不用管这个内存的问题）</p>
+<p>怀疑是 Parallels 对远程网络文件的判断有问题，Virtual 可以像“本地”一样直接打开。</p>
+<h1 id="批量修改图片大小颜色">批量修改图片(大小/颜色)</h1>
+<p>打开 PS 的“动作”面板（ALT + 9）,</p>
+<p>先打开图片。 （确保这个打开动作不会“录制“成动作的一部分）</p>
+<p>新建动作，把步骤操作一遍包括打开、储存、关闭，完成后停止动作</p>
+<p>然后开始“批处理”（文件-自动-批处理），选择 动作、源、目标的文件夹</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E5%88%87%E5%9B%BE%E4%B8%8E%E5%B0%BA%E5%AF%B8%E6%A0%87%E6%B3%A8/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E5%89%8D%E7%AB%AF_%E5%85%A8%E6%A0%88%E5%9F%BA%E6%9C%AC%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/webpack3%E6%95%99%E7%A8%8B/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="请求, 响应, Session 与 CSRF permalink: laravel-request-response-session-csrf tags: laravel 以 5.5 为准 请求 获取请求 通过依赖注入的方式来获取当前 HTTP 请求的实例，在控制器方法中使用 Illuminate\Http\Request 类型提示。当前的请求实例将通过 服" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="请求, 响应, Session 与 CSRF permalink: laravel-request-response-session-csrf tags: laravel 以 5.5 为准 请求 获取请求 通过依赖注入的方式来获取当前 HTTP 请求的实例，在控制器方法中使用 Illuminate\Http\Request 类型提示。当前的请求实例将通过 服" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="请求, 响应, Session 与 CSRF permalink: laravel-request-response-session-csrf tags: laravel 以 5.5 为准 请求 获取请求 通过依赖注入的方式来获取当前 HTTP 请求的实例，在控制器方法中使用 Illuminate\Http\Request 类型提示。当前的请求实例将通过 服">
+
+<meta itemprop="wordCount" content="4767">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="请求, 响应, Session 与 CSRF permalink: laravel-request-response-session-csrf tags: laravel 以 5.5 为准 请求 获取请求 通过依赖注入的方式来获取当前 HTTP 请求的实例，在控制器方法中使用 Illuminate\Http\Request 类型提示。当前的请求实例将通过 服"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4767字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>请求, 响应, Session 与 CSRF</p>
+<p>permalink: laravel-request-response-session-csrf
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p>以 5.5 为准</p>
+<h1 id="请求">请求</h1>
+<h2 id="获取请求">获取请求</h2>
+<p>通过依赖注入的方式来获取当前 HTTP 请求的实例，在控制器方法中使用 <code>Illuminate\Http\Request</code> <strong>类型提示</strong>。当前的请求实例将通过 服务容器 自动注入：</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    public function store(Request $request)
+    {
+        $name = $request-&gt;input('name');
+</code></pre>
+<p><strong>依赖注入，路由参数</strong></p>
+<p>如果控制器方法也有输入数据是从路由参数中传入的，只需将路由参数置于其他依赖之后。 例如，你的路由是这样定义的：</p>
+<pre><code class="language-php">Route::put('user/{id}', 'UserController@update');
+</code></pre>
+<p>像下方一样定义控制器方法，你就可以使用 Illuminate\Http\Request 类型提示了，同时获取到路由参数 <code>id</code>：</p>
+<pre><code class="language-php">class UserController extends Controller
+{
+    public function update(Request $request, $id)
+    {
+</code></pre>
+<p><strong>通过路由闭包获取请求</strong></p>
+<p>也可以在一个路由闭包中使用 Illuminate\Http\Request 类型提示。当它执行时，服务容器会自动注入当前请求到闭包中：</p>
+<pre><code class="language-php">use Illuminate\Http\Request;
+
+Route::get('/', function (Request $request) {
+    //
+});
+</code></pre>
+<h2 id="获取请求路径--方法">获取请求路径 &amp; 方法</h2>
+<p>Illuminate\Http\Request 的实例提供了多种方法去检查应用程序的 HTTP 请求，Laravel 的 Illuminate\Http\Request 继承了 Symfony\Component\HttpFoundation\Request 类</p>
+<p><strong>获取请求路径</strong></p>
+<p>如果收到的请求目标地址是 <a href="http://domain.com/foo/bar">http://domain.com/foo/bar</a>，那么 path 将会返回 foo/bar：</p>
+<pre><code class="language-php">$uri = $request-&gt;path();
+</code></pre>
+<p>is 方法可以验证收到的请求路径和指定规则是否匹配。使用这个方法的时候你也可以传递一个 * 字符作为通配符：</p>
+<pre><code class="language-php">if ($request-&gt;is('admin/*')) {
+    //
+}
+</code></pre>
+<p><strong>获取请求的 URL</strong></p>
+<p>使用 url 或 fullUrl 方法去获取传入请求的完整 URL。url 方法返回不带有查询字符串的 URL，而 fullUrl 方法的返回值包含查询字符串：</p>
+<pre><code class="language-php">// Without Query String...
+$url = $request-&gt;url();
+
+// With Query String...
+$url = $request-&gt;fullUrl();
+</code></pre>
+<p><strong>判断请求方法（GET / POST）</strong></p>
+<p>对于传入的请求 method 方法将返回 HTTP 的请求方式。你也可以使用 isMethod 方法去验证 HTTP 的请求方式与指定规则是否相配：</p>
+<pre><code class="language-php">if ($request-&gt;isMethod('post'))
+</code></pre>
+<h2 id="psr-7-请求">PSR-7 请求</h2>
+<p>PSR-7 标准制定的 HTTP 消息接口包含了请求和响应。(<a href="http://www.php-fig.org/psr/psr-7/">http://www.php-fig.org/psr/psr-7/</a>)</p>
+<p>如果你想使用一个 PSR-7 请求来代替一个 Laravel 请求，那么你首先要安装几个函数库。Laravel 使用了 Symfony 的 HTTP 消息桥接组件，将原来的 Laravel 请求和响应转换到 PSR-7 所兼容的实现：</p>
+<pre><code class="language-shell">composer require symfony/psr-http-message-bridge
+composer require zendframework/zend-diactoros
+</code></pre>
+<p>安装完这些库后， 就可以在路由闭包或控制器中，简单的对请求类型使用类型提示来获取 PSR-7 的请求：</p>
+<pre><code class="language-php">use Psr\Http\Message\ServerRequestInterface;
+
+Route::get('/', function (ServerRequestInterface $request) {
+    //
+});
+</code></pre>
+<blockquote>
+<p>如果你从路由或者控制器返回了一个 PSR-7 响应实例，那么这个实例将被自动转换回一个 Laravel 响应实例，同时由框架显示。</p>
+</blockquote>
+<h2 id="输入数据的预处理和规范化">输入数据的预处理和规范化</h2>
+<h3 id="全局中间件处理空字符串转换成-null-和前后空白删除">全局中间件处理空字符串转换成 null 和前后空白删除</h3>
+<p>在 Laravel 的全局中间件中默认包含了 <code>TrimStrings</code> 和 <code>ConvertEmptyStringsToNull</code> 两个中间件。这些中间件被列在 App\Http\Kernel 类中。它们会自动处理所有请求中传入的字符串字段，比如将空的字符串字段转变成 null 值。你再也不用担心路由和控制器中数据规范化的问题。</p>
+<p>如果你想停用这些功能，你可以在 App\Http\Kernel 类的 $middleware 属性中移除这些中间件。</p>
+<h2 id="获取输入数据">获取输入数据</h2>
+<h3 id="获取所有输入数据">获取所有输入数据</h3>
+<p>你可以使用 <code>all</code> 方法以 数组 形式获取到所有输入数据:</p>
+<pre><code class="language-php">$input = $request-&gt;all();
+</code></pre>
+<h3 id="获取指定值">获取指定值</h3>
+<p><code>input</code> 方法通常被用来获取用户输入数据.给 input 方法的第二个参数传入一个默认值。当请求的输入数据不存在于此请求时，返回该默认值</p>
+<pre><code class="language-php">$name = $request-&gt;input('name');
+$name = $request-&gt;input('name', 'Sally');
+</code></pre>
+<p>如果传输表单数据中包含「数组」形式的数据，那么可以使用「点」语法来获取数组</p>
+<pre><code class="language-php">$name = $request-&gt;input('products.0.name');
+
+//一次性获取多个
+$names = $request-&gt;input('products.*.name');
+</code></pre>
+<h3 id="通过查询字符串获取输入数据">通过查询字符串获取输入数据</h3>
+<p>使用 input 方法可以从整个请求中获取输入数据（包括查询字符串, GET 与 POST）。query 方法可以只从查询字符串中获取输入数据（GET）</p>
+<pre><code class="language-php">$name = $request-&gt;query('name');
+
+// 不存在的时候，返回默认值
+$name = $request-&gt;query('name', 'Helen');
+</code></pre>
+<p>将所有查询字符串作为一个<strong>关联数组</strong>取回</p>
+<pre><code class="language-php">$query = $request-&gt;query();
+</code></pre>
+<h3 id="通过动态属性获取输入数据">通过动态属性获取输入数据</h3>
+<p>通过 <code>Illuminate\Http\Request</code> 实例的动态属性来获取用户输入的数据,例如，如果你应用程序表单中包含 name 字段，那么可以像这样访问提交的值：（Laravel 在处理动态属性的优先级是，先从请求的数据中查找，没有的话再到路由参数中找。）</p>
+<pre><code class="language-php">$name = $request-&gt;name;
+</code></pre>
+<h3 id="获取-json-输入信息">获取 JSON 输入信息</h3>
+<p>发送 JSON 请求到应用时，只要<strong>请求表头中设置了 Content-Type 为　application/json</strong>，你就可以直接从 Input 方法中获取 JSON 数据(可以通过 「点」语法来读取 JSON 数组)</p>
+<pre><code class="language-php">$name = $request-&gt;input('user.name');
+</code></pre>
+<h3 id="获取部分数据">获取部分数据</h3>
+<p>用 only 和 except 方法。这两个方法都接收单个 数组 或<strong>动态列表</strong>(?)作为参数：</p>
+<pre><code class="language-php">$input = $request-&gt;only(['username', 'password']);
+
+$input = $request-&gt;only('username', 'password');
+
+$input = $request-&gt;except(['credit_card']);
+
+$input = $request-&gt;except('credit_card');
+</code></pre>
+<h3 id="确定是否存在输入值-以及是否为空">确定是否存在输入值 以及是否为空</h3>
+<pre><code class="language-php">if ($request-&gt;has('name')) {
+    //
+}
+
+//提供一个数组作为参数,将确定是否存在 所有 指定的值
+if ($request-&gt;has(['name', 'email'])) {
+    //
+}
+
+//存在数据并且不为空时，你可以使用 filled 方法
+if ($request-&gt;filled('name')) {
+    //
+}
+</code></pre>
+<h2 id="旧输入数据">旧输入数据</h2>
+<p>Laravel 允许你将本次的输入数据保留到下一次请求发送前。这个特性在表单验证错误后重新填写表单相当有用。（如果你使用了 Laravel 的 验证特性，你就不需要在手动实现这些方法，因为 Laravel 内置的验证工具会自动调用他们）</p>
+<h3 id="将输入数据闪存至-session">将输入数据闪存至 Session</h3>
+<p>Illuminate\Http\Request 的 flash 方法会将当前输入的数据存进 session 中，因此下次用户发送请求到应用程序时就可以使用它们：</p>
+<pre><code class="language-php">$request-&gt;flash();
+
+//将当前请求数据的子集保存到 session, 用于保护一些敏感信息
+$request-&gt;flashOnly(['username', 'email']);
+
+$request-&gt;flashExcept('password');
+</code></pre>
+<h3 id="闪存输入数据到-session-后重定向">闪存输入数据到 Session 后重定向</h3>
+<p>在重定向方法后加上 withInput 即可</p>
+<pre><code class="language-php">return redirect('form')-&gt;withInput();
+
+return redirect('form')-&gt;withInput(
+    $request-&gt;except('password')
+);
+</code></pre>
+<h3 id="获取旧输入数据">获取旧输入数据</h3>
+<p>使用 Request 实例中的 <code>old</code> 方法。old 方法提供一个简便的方式从 Session 取出被闪存的输入数据：</p>
+<pre><code class="language-php">$username = $request-&gt;old('username');
+</code></pre>
+<p>或者使用全局辅助函数 old。如果你要在 Blade 模板 中显示旧输入数据，可以使用更加方便的 old 辅助函数。如果旧数据不存在，则返回 null：</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; name=&quot;username&quot; value=&quot;{{ old('username') }}&quot;&gt;
+</code></pre>
+<h2 id="cookies">Cookies</h2>
+<h3 id="从请求中获取-cookie-值">从请求中获取 Cookie 值</h3>
+<p>Laravel 框架创建的每个 cookie 都会被加密并且加上认证标识，这代表着用户擅自更改的 cookie 都会失效。若要从此次请求获取 cookie 值，你可以使用 Illuminate\Http\Request 实例中的 cookie 方法</p>
+<pre><code class="language-php">$value = $request-&gt;cookie('name');
+</code></pre>
+<h3 id="将-cookies-附加到响应">将 Cookies 附加到响应</h3>
+<p>附加一个 cookie 到 Illuminate\Http\Response 实例。有效 cookie 应该传递字段名称，字段值和过期时间给这个方法：</p>
+<pre><code class="language-php">return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes
+);
+</code></pre>
+<p>还可以接受更多参数，只是使用频率较低。通常作用是传递参数给 PHP 原生 设置 cookie 方法</p>
+<pre><code class="language-php">return response('Hello World')-&gt;cookie(
+    'name', 'value', $minutes, $path, $domain, $secure, $httpOnly
+);
+</code></pre>
+<h3 id="生成-cookie-实例">生成 Cookie 实例</h3>
+<p>如果你想要在一段时间以后生成一个可以给定 Symfony\Component\HttpFoundation\Cookie 的响应实例，你可以先生成 $cookie 实例，然后再指定给 response 实例，否则这个 cookie 不会被发送回客户端：</p>
+<pre><code class="language-php">$cookie = cookie('name', 'value', $minutes);
+
+return response('Hello World')-&gt;cookie($cookie);
+</code></pre>
+<h3 id="创建不加密的-cookie">创建不加密的 Cookie</h3>
+<p>默认 Laravel 创建的所有 Cookie 都是加密过的，创建未加密的 Cookie 的方法请见 【小技巧分享】在 Laravel 中设置没有加密的 cookie</p>
+<p><a href="https://laravel-china.org/topics/1758">https://laravel-china.org/topics/1758</a></p>
+<h2 id="文件资源">文件资源</h2>
+<p>使用 <code>Illuminate\Http\Request</code> 实例中的 <code>file</code> 方法获取上传的文件。file 方法返回的对象是 <code>Symfony\Component\HttpFoundation\File\UploadedFile</code> 类的实例，该类继承了 PHP 的 <code>SplFileInfo</code> 类，并提供了许多和文件交互的方法：</p>
+<pre><code class="language-php">$file = $request-&gt;file('photo');
+
+$file = $request-&gt;photo;
+</code></pre>
+<h3 id="确认上传的文件是否存在--有效">确认上传的文件是否存在 &amp; 有效</h3>
+<p>使用请求的 hasFile 方法确认上传的文件是否存在</p>
+<pre><code class="language-php">if ($request-&gt;hasFile('photo')) {
+    //
+}
+</code></pre>
+<p>通过 isValid 方法验证上传的文件是否有效：</p>
+<pre><code class="language-php">if ($request-&gt;file('photo')-&gt;isValid()) {
+    //
+}
+</code></pre>
+<h3 id="文件路径--扩展名">文件路径 &amp; 扩展名</h3>
+<p><code>UploadedFile</code> 这个类也包含了访问文件完整路径和扩展的方法。<code>extension</code> 方法会尝试根据文件内容猜测文件的扩展名。猜测结果可能不同于客户端原始的扩展名：　</p>
+<pre><code class="language-php">$path = $request-&gt;photo-&gt;path();
+
+$extension = $request-&gt;photo-&gt;extension();
+</code></pre>
+<h3 id="其它上传文件的方法">其它上传文件的方法</h3>
+<p>UploadedFile 的实例还有许多可用的方法，可以到该对象的 API 文档 了解这些方法的详细信息</p>
+<p><a href="http://api.symfony.com/3.0/Symfony/Component/HttpFoundation/File/UploadedFile.html">http://api.symfony.com/3.0/Symfony/Component/HttpFoundation/File/UploadedFile.html</a></p>
+<h3 id="储存上传文件">储存上传文件</h3>
+<p>在设置好 文件系统 的配置信息后，你可以使用 UploadedFile 的 store 方法把上传文件储存到本地磁盘，或者是亚马逊 S3 云存储上。</p>
+<p>store 方法允许存储文件到相对于文件系统根目录配置的路径。这个路径不能包含文件名，名称将使用 MD5 散列文件内容自动生成。</p>
+<p>store 方法还接受一个可选的第二个参数，用于文件存储到磁盘的名称。这个方法会返回文件相对于磁盘根目录的路径：</p>
+<pre><code class="language-php">$path = $request-&gt;photo-&gt;store('images');
+
+$path = $request-&gt;photo-&gt;store('images', 's3');
+</code></pre>
+<p>如果你不想自动生成文件名，那么可以使用 storeAs 方法去设置路径，文件名和磁盘名作为方法参数：</p>
+<pre><code class="language-php">$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg');
+
+$path = $request-&gt;photo-&gt;storeAs('images', 'filename.jpg', 's3');
+</code></pre>
+<h2 id="配置可信代理">配置可信代理</h2>
+<p>如果你的应用程序运行在 TLS / SSL 证书负载均衡器后，你可能会注意到你的应用程序有时不会生成 HTTPS 链接。通常这是因为你的应用程序被负载均衡器转发 80 端口的流量，不知道应该生成安全链接。</p>
+<p>为了解决这个问题，你可以在 Laravel 应用程序中加载 App\Http\Middleware\TrustProxies 这个中间件，这使得你可以快速自定义应用程序信任的负载均衡器或代理。你信任的代理列表应该保存在这个中间件的属性 $proxies 数组中。除了配置可信代理，你还可以配置发送给代理的原始请求响应头：</p>
+<pre><code class="language-php">namespace App\Http\Middleware;
+
+use Illuminate\Http\Request;
+use Fideloper\Proxy\TrustProxies as Middleware;
+
+class TrustProxies extends Middleware
+{
+    /**
+     * 这个应用程序的可信代理列表
+     *
+     * @var array
+     */
+    protected $proxies = [
+        '192.168.1.1',
+        '192.168.1.2',
+    ];
+
+    /**
+     * 当前代理响应头映射关系
+     *
+     * @var array
+     */
+    protected $headers = [
+        Request::HEADER_FORWARDED =&gt; 'FORWARDED',
+        Request::HEADER_X_FORWARDED_FOR =&gt; 'X_FORWARDED_FOR',
+        Request::HEADER_X_FORWARDED_HOST =&gt; 'X_FORWARDED_HOST',
+        Request::HEADER_X_FORWARDED_PORT =&gt; 'X_FORWARDED_PORT',
+        Request::HEADER_X_FORWARDED_PROTO =&gt; 'X_FORWARDED_PROTO',
+    ];
+}
+</code></pre>
+<h3 id="信任所有代理">信任所有代理</h3>
+<p>如果你使用亚马逊 AWS 或其他的云负载均衡器，你可能不知道负载均衡器的实际 IP 地址。在这种情况下，你可以使用 ** 来信任所有代理：</p>
+<pre><code class="language-php">protected $proxies = '**';
+</code></pre>
+<h1 id="响应">响应</h1>
+<h2 id="返回基本的-http-或-json-响应">返回基本的 http 或 json 响应</h2>
+<p>在<strong>路由</strong>中，通过 return ，可以返回</p>
+<ul>
+<li>字符串</li>
+<li>数组</li>
+<li>Eloqent Collection</li>
+</ul>
+<p>字符串会自动转换成完整的 HTTP 响应，数组、Eloquent 集合会<strong>自动转换</strong>成 json 响应。</p>
+<pre><code class="language-php">Route::get('/', function () {
+    return 'Hello World';
+    
+    return ['aa', 'bb', 'cc'];
+    
+    return User::find()-&gt;get();
+});
+</code></pre>
+<h2 id="返回-illuminatehttpresponse-实例">返回 Illuminate\Http\Response 实例</h2>
+<pre><code class="language-php">Route::get('home', function () {
+    return response('Hello World', 200)
+                  -&gt;header('Content-Type', 'text/plain');
+});
+</code></pre>
+<h3 id="附加更多的头信息">附加更多的<strong>头信息</strong></h3>
+<pre><code class="language-php">return response($content)
+            -&gt;header('Content-Type', $type)
+            -&gt;header('X-Header-One', 'Header Value')
+            -&gt;header('X-Header-Two', 'Header Value');
+</code></pre>
+<h3 id="附加-cookie-到响应">附加 <strong>Cookie</strong> 到响应</h3>
+<pre><code class="language-php">return response($content)
+                -&gt;header('Content-Type', $type)
+                -&gt;cookie('name', 'value', $minutes);
+</code></pre>
+<p>默认情况下，写入到客户端的 Cookies 都是加密的，如果想禁用，需要修改<code>App\Http\Middleware\EncryptCookies</code>中间件</p>
+<pre><code class="language-php">protected $except = [
+    'cookie_name',
+];
+</code></pre>
+<h2 id="重定向响应">重定向响应</h2>
+<p>它是<code>Illuminate\Http\RedirectResponse</code>类的实例.</p>
+<h3 id="最简单"><strong>最简单</strong></h3>
+<p>使用 <code>redirect</code> 辅助函数。</p>
+<pre><code class="language-php">return redirect('home/dashboard');
+</code></pre>
+<h3 id="重定向到上一页">重定向到上一页</h3>
+<p>有些时候，在提交表单的时候，希望用户在出错时<strong>返回上一页</strong>
+(由于这个功能利用了 Session，请确保调用 back 函数的路由是使用 web 中间件组或应用了所有的 Session 中间件)</p>
+<pre><code class="language-php">return back()-&gt;withInput();
+</code></pre>
+<h3 id="重定向到命名路由">重定向到<strong>命名路由</strong></h3>
+<p><code>redirect</code> 辅助函数不带任何参数，会返回 Illuminate\Routing\Redirector 实例，就可以调用 Redirector 的任何方法，例如 route</p>
+<pre><code class="language-php">return redirect()-&gt;route('login');
+
+// 路由有参数
+return redirect()-&gt;route('profile', ['id' =&gt; 1]);
+</code></pre>
+<p><strong>通过 Eloquent 模型填充参数</strong></p>
+<p>Laravel 的<strong>路由</strong>允许将 <strong>Eloquent</strong> 模型作为<strong>参数</strong>，因此 redirect 也可以。</p>
+<pre><code class="language-php">// 对应此路由: profile/{id}
+return redirect()-&gt;route('profile', [$user]);
+</code></pre>
+<h2 id="重定向到控制器方法">重定向到控制器方法</h2>
+<p>不一定要为控制器指定完整的命名空间，因为 Laravel 的 RouteServiceProvider 会自动设置基本的控制器命名空间</p>
+<pre><code class="language-php">return redirect()-&gt;action('HomeController@index');
+
+return redirect()-&gt;action(
+    'UserController@profile', ['id' =&gt; 1]
+);
+</code></pre>
+<h2 id="重定向并附加-session-闪存数据">重定向并附加 Session 闪存数据</h2>
+<p>在用户重定向的时候，将消息附加到 Session 闪存中。</p>
+<pre><code class="language-php">Route::post('user/profile', function () {
+    // 更新用户的信息...
+
+    return redirect('dashboard')-&gt;with('status', 'Profile updated!');
+});
+</code></pre>
+<p>然后可以使用<code>session()</code>函数调用</p>
+<pre><code class="language-html">@if (session('status'))
+    &lt;div class=&quot;alert alert-success&quot;&gt;
+        {{ session('status') }}
+    &lt;/div&gt;
+@endif
+</code></pre>
+<h2 id="视图响应">视图响应</h2>
+<pre><code class="language-php">return response()
+            -&gt;view('hello', $data, 200)
+            -&gt;header('Content-Type', $type);
+</code></pre>
+<p>如果您不需要自定义 HTTP 状态码或者头信息，则应该使用全局的 view 辅助函数。</p>
+<pre><code class="language-php">return view('admin.index');
+</code></pre>
+<h2 id="json-响应--jsonp">JSON 响应 &amp; JSONP</h2>
+<p>json 方法会自动把 Content-Type 响应头信息设置为 application/json，并使用 PHP json_encode 函数将数组转换为 JSON（很方便啊）</p>
+<pre><code class="language-php">return response()-&gt;json([
+    'name' =&gt; 'Abigail',
+    'state' =&gt; 'CA'
+]);
+</code></pre>
+<p>如果要创建 jsonp 响应，需要链式调用<code>withCallback</code></p>
+<pre><code class="language-php">return response()
+            -&gt;json(['name' =&gt; 'Abigail', 'state' =&gt; 'CA'])
+            -&gt;withCallback($request-&gt;input('callback'));
+</code></pre>
+<h2 id="文件下载">文件下载</h2>
+<pre><code class="language-php">return response()-&gt;download($pathToFile);
+return response()-&gt;download($pathToFile, $name, $headers);
+return response()-&gt;download($pathToFile)-&gt;deleteFileAfterSend(true);
+</code></pre>
+<h2 id="文件响应直接在浏览器显示图片或者-pdf">文件响应（直接在浏览器显示图片或者 PDF）</h2>
+<pre><code class="language-php">return response()-&gt;file($pathToFile);
+return response()-&gt;file($pathToFile, $headers);
+</code></pre>
+<h2 id="响应宏自定义响应方法">响应宏（自定义响应方法）</h2>
+<p>使用 Response Facade 实现的 macro 方法，例如，从 服务提供者 的 boot 方法</p>
+<pre><code class="language-php">namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Response;
+
+class ResponseMacroServiceProvider extends ServiceProvider
+{
+    /**
+     * Register the application's response macros.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        Response::macro('caps', function ($value) {
+            return Response::make(strtoupper($value));
+        });
+    }
+}
+</code></pre>
+<p>调用</p>
+<pre><code class="language-php">return response()-&gt;caps('foo');
+</code></pre>
+<h2 id="返回上一页表单并附带提交的数据以及错误信息">返回上一页表单，并附带提交的数据，以及错误信息</h2>
+<pre><code class="language-php">return back()-&gt;withInput()-&gt;withErrors(['required at least 1 keyword']);
+</code></pre>
+<p>也可以指定自定义信息类型</p>
+<pre><code class="language-php">return back()-&gt;withInput()-&gt;with('message', 'At least 1 keyword');
+</code></pre>
+<h1 id="表单方法伪造">表单方法伪造</h1>
+<p>HTML 表单默认不支持 PUT、PATCH 或 DELETE 行为（但这些是 RESTFul 风格接口的标配方法）。所以当你要从 HTML 表单中调用定义了 PUT、PATCH 或 DELETE 路由时，你将需要在表单中增加隐藏的 _method 输入标签。使用 _method 字段的值作为 HTTP 的请求方法：</p>
+<pre><code class="language-html">&lt;form action=&quot;/foo/bar&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;_token&quot; value=&quot;{{ csrf_token() }}&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>你也可以使用辅助函数 <code>method_field</code> 来生成隐藏的 <code>_method</code> 输入标签：</p>
+<pre><code class="language-html">&lt;form method=&quot;POST&quot;&gt;
+	{{ method_field('PUT') }}
+&lt;/form&gt;
+</code></pre>
+<h1 id="csrf---跨站请求伪造-保护">CSRF  ( 跨站请求伪造 )保护</h1>
+<p>它凭借已通过身份验证的用户身份来运行未经过授权的命令。</p>
+<p>Laravel 会自动为每个活跃用户的会话生成一个 CSRF「令牌」。该令牌用于验证经过身份验证的用户是否是向应用程序发出请求的用户。</p>
+<p>任何情况下当你在应用程序中定义 HTML 表单时，都应该在表单中包含一个隐藏的 CSRF 令牌字段，以便 CSRF 保护中间件可以验证该请求。可以使用辅助函数 <code>csrf_field</code> 来生成令牌字段：</p>
+<pre><code class="language-html">&lt;form method=&quot;POST&quot; action=&quot;/profile&quot;&gt;
+    {{ csrf_field() }}
+    ...
+&lt;/form&gt;
+</code></pre>
+<p>包含在 web 中间件组里的 VerifyCsrfToken 中间件会自动验证请求里的令牌是否与存储在会话中令牌匹配。</p>
+<p>因此如果出现下面的错误，就要检查提交过来的 post 数据、表单是否包含了<code>{{ csrf_field }}</code></p>
+<blockquote>
+<p>The page has expired due to inactivity. Please refresh and try again.</p>
+</blockquote>
+<p>##CSRF 令牌 &amp; JavaScript</p>
+<p>构建由 Javascript 驱动的应用时，可以很方便地让 Javascript HTTP 函数库在发起每一个请求时自动附上 CSRF 令牌。</p>
+<p>默认情况下， <code>resources/assets/js/bootstrap.js</code> 文件会用 Axios HTTP 函数库注册的 csrf-token meta 标签中的值。如果你不使用这个函数库，你需要手动为你的应用配置此行为。</p>
+<h2 id="在某些路由中关闭-csrf-中间件白名单">在某些路由中关闭 csrf 中间件(白名单)</h2>
+<p>在开发一些 API 接口，或者调用外部的一些服务的时候，我们可能并<strong>不需要对这些路由进行 CSRF 保护</strong>。（例如使用了 Strips 服务，它会发送 post 请求给你的应用中，但不会在 post 数据中包含 csrf 字段）</p>
+<p>修改 <code>app/Http/MiddleWare/VerifyCsrfToken.php</code>，在<code>$except</code>里添加这些路由即可。</p>
+<pre><code class="language-php">protected $except = [
+        'strips/*'
+    ];
+</code></pre>
+<h2 id="x-csrf-token">X-CSRF-TOKEN</h2>
+<p>除了检查 POST 参数中的 CSRF 令牌外，VerifyCsrfToken 中间件还会检查 X-CSRF-TOKEN 请求头。你可以将令牌保存在 HTML meta 标签中：</p>
+<pre><code class="language-html">&lt;meta name=&quot;csrf-token&quot; content=&quot;{{ csrf_token() }}&quot;&gt;
+</code></pre>
+<p>使用类似 jQuery 的库自动将令牌添加到所有请求的头信息中。这可以为基于 AJAX 的应用提供简单、方便的 CSRF 保护：</p>
+<pre><code class="language-js">$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name=&quot;csrf-token&quot;]').attr('content')
+    }
+});
+</code></pre>
+<h2 id="资料">资料</h2>
+<p>请仔细阅读（本文好像是 5.1 环境，有些代码不一样了）</p>
+<p><a href="https://blog.csdn.net/ljfphp/article/details/78563297">https://blog.csdn.net/ljfphp/article/details/78563297</a></p>
+<h1 id="session">Session</h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E8%AF%B7%E6%B1%82-%E5%93%8D%E5%BA%94-session-%E4%B8%8E-csrf/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E8%B7%AF%E7%94%B1/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%A7%86%E5%9B%BE%E4%B8%8E-blade-%E6%A8%A1%E6%9D%BF/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

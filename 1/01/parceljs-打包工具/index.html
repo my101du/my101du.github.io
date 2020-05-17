@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="title: parceljs 打包工具 permalink: parceljs tags: frontend https://parceljs.org/getting_started.html https://www.zhihu.com/question/263676981 打包工具与构建工具的区别（简单-&amp;gt;更多功能） 厌倦了 webpack 的繁琐，还有莫名其妙突然 webpack-dev-server 性能变低 快速开始 npm install -g parcel-bundler 你正在使" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="title: parceljs 打包工具 permalink: parceljs tags: frontend https://parceljs.org/getting_started.html https://www.zhihu.com/question/263676981 打包工具与构建工具的区别（简单-&gt;更多功能） 厌倦了 webpack 的繁琐，还有莫名其妙突然 webpack-dev-server 性能变低 快速开始 npm install -g parcel-bundler 你正在使" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/parceljs-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="title: parceljs 打包工具 permalink: parceljs tags: frontend https://parceljs.org/getting_started.html https://www.zhihu.com/question/263676981 打包工具与构建工具的区别（简单-&gt;更多功能） 厌倦了 webpack 的繁琐，还有莫名其妙突然 webpack-dev-server 性能变低 快速开始 npm install -g parcel-bundler 你正在使">
+
+<meta itemprop="wordCount" content="3507">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="title: parceljs 打包工具 permalink: parceljs tags: frontend https://parceljs.org/getting_started.html https://www.zhihu.com/question/263676981 打包工具与构建工具的区别（简单-&gt;更多功能） 厌倦了 webpack 的繁琐，还有莫名其妙突然 webpack-dev-server 性能变低 快速开始 npm install -g parcel-bundler 你正在使"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/parceljs-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/parceljs-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3507字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>title: parceljs 打包工具
+permalink: parceljs
+tags:</p>
+<ul>
+<li>frontend</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<p><a href="https://parceljs.org/getting_started.html">https://parceljs.org/getting_started.html</a></p>
+<p><a href="https://www.zhihu.com/question/263676981">https://www.zhihu.com/question/263676981</a></p>
+<p>打包工具与构建工具的区别（简单-&gt;更多功能）</p>
+<p>厌倦了 webpack 的繁琐，还有莫名其妙突然 webpack-dev-server 性能变低</p>
+<h1 id="快速开始">快速开始</h1>
+<pre><code class="language-shell">npm install -g parcel-bundler
+</code></pre>
+<p>你正在使用的项目目录下创建一个 package.json 文件</p>
+<pre><code class="language-shell">npm init -y
+</code></pre>
+<p>创建一个 index.html 和 index.js 文件。</p>
+<pre><code class="language-html">&lt;html&gt;
+&lt;body&gt;
+  &lt;script src=&quot;./index.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="language-js">console.log('hello world')
+</code></pre>
+<p>Parcel 内置了一个当你改变文件时能够自动重新构建应用的开发服务器，而且为了实现快速开发，该开发服务器支持热模块替换。只需要在入口文件指出。</p>
+<pre><code class="language-shell">parcel index.html
+</code></pre>
+<p>http://localhost:1234/</p>
+<p>也可以使用 -p <!-- raw HTML omitted --> 选项覆盖默认的端口</p>
+<p>如果有自己的服务器，你可以在watch 模式下运行 Parcel 。当文件改变它仍然会自动重新构建并支持热替换，但是不会启动 web 服务。</p>
+<pre><code class="language-shell">parcel watch index.html
+</code></pre>
+<p>当你准备在生产模式下创建，build 模式会关闭监听并且只建立一次</p>
+<h1 id="资源">资源</h1>
+<p>资源可以代表任意文件，如 JavaScript，CSS，HTML</p>
+<p>Parcel 会自动地分析这些文件和包中引用的依赖。相同类型的资源会被组合到同一捆绑包中。如果导入其他类型的资源（例如：你在 JS 文件中导入 CSS 文件），Parcel 会启动子捆绑包，并在父捆绑包中保留对它的引用</p>
+<h2 id="javascript">Javascript</h2>
+<p>Parcel 同时支持 CommonJS 和 ES6 两种模块语法来导入文件。它也支持动态的 import() 函数语法异步加载模块</p>
+<pre><code class="language-js">// 使用 CommonJS 语法导入模块
+const dep = require('./path/to/dep')
+
+// 使用 ES6 语法导入模块
+import dep from './path/to/dep'
+</code></pre>
+<p>也能在 JavaScript 文件中导入非 JavaScript 资源，例如：CSS 文件及图片文件。导入这类文件时，Parcel 不会像其他打包工具一样内联该文件，而是将所有的依赖放置在另外一个捆绑包里（例如：一个 CSS 文件）。当使用 CSS Modules 时，这个导出类会被放置在 JavaScript 包里。其他的资源文件将以 URL 的形式导出到 JavaScript 包中的 output 中，以便于能在你的代码中引用。</p>
+<pre><code class="language-js">// 引入 CSS 文件
+import './test.css'
+
+// 引入包含 CSS 模块的 CSS 文件
+import classNames from './test.css'
+
+// 以 URL 的形式引入图片
+import imageURL from './test.png'
+</code></pre>
+<p>如果你想通过内联文件到 JavaScript 包取代 URL 引入文件的方式，你可以使用 Node.js 的 fs.readFileSync API。URL 必须是静态可分析的，意味着它不能有任何变量（除了__dirname 和 __filename）。</p>
+<pre><code class="language-js">mport fs from 'fs'
+
+// 以字符串的形式读取内容
+const string = fs.readFileSync(__dirname + '/test.txt', 'utf8')
+
+// 以 Buffer 的形式读取内容
+const buffer = fs.readFileSync(__dirname + '/test.png')
+
+</code></pre>
+<h2 id="css--lesssass以及-stylus-等-css-预处理器语言">CSS &amp; LESS，SASS，以及 Stylus 等 CSS 预处理器语言</h2>
+<p>JavaScript 文件或 HTML 文件都能导入 CSS 资源，并且能通过 @import 语法引用依赖，还能通过 url() 函数引入图片，字体等</p>
+<pre><code class="language-css">/* 引入其他 CSS 文件 */
+@import './other.css';
+
+.test {
+  /* 引用图像文件 */
+  background: url('./images/background.png');
+}
+</code></pre>
+<p>其他的 LESS，SASS，以及 Stylus 等 CSS 预处理器语言也是支持的，并且执行方法是与之相同的。</p>
+<h2 id="scss">SCSS</h2>
+<p>编译 SCSS 需要 sass 模块</p>
+<pre><code class="language-shell">npm install sass
+</code></pre>
+<p>一旦安装了 sass，你就可以在 JavaScript 文件中引入 SCSS 文件。</p>
+<pre><code class="language-js">import './custom.scss'
+</code></pre>
+<h2 id="html">HTML</h2>
+<p>提供给 Parcel 常用入口文件，但也可以被 JavaScript 文件引用</p>
+<h1 id="转换">转换</h1>
+<p>Parcel 支持许多开箱即用的转换器和内置的编译器。您可以</p>
+<ul>
+<li>使用 Babel 转换 JavaScript ，</li>
+<li>使用 PostCSS 转换 CSS ，</li>
+<li>使用 PostHTML 转换 HTML</li>
+</ul>
+<p>Parcel 在模块中找到配置文件 (例如 <code>.babelrc</code> ，<code>.postcssrc</code>) 时会自动运行并进行转换</p>
+<h2 id="babel-是一个流行的-javascript-转换器">Babel 是一个流行的 JavaScript 转换器</h2>
+<pre><code class="language-shell">yarn add @babel/preset-env
+</code></pre>
+<p>接着，创建一个 <code>.babelrc</code>:</p>
+<pre><code class="language-json">{
+  &quot;presets&quot;: [&quot;@babel/preset-env&quot;]
+}
+</code></pre>
+<h2 id="postcss-是一个使用插件转换-css-的工具">PostCSS 是一个使用插件转换 CSS 的工具</h2>
+<p>例如 autoprefixer，Preset Env 以及 CSS Modules</p>
+<p>使用 Parcel 配置 PostCSS ，使用下面的配置文件</p>
+<p>.postcssrc (JSON)，.postcssrc.js，或 postcss.config.js。</p>
+<p>安装 plugins</p>
+<pre><code class="language-shell">yarn add postcss-modules autoprefixer
+</code></pre>
+<p>创建一个 .postcssrc 文件：</p>
+<pre><code class="language-json">{
+  &quot;modules&quot;: true,
+  &quot;plugins&quot;: {
+    &quot;autoprefixer&quot;: {
+      &quot;grid&quot;: true
+    }
+  }
+}
+</code></pre>
+<p>Plugins 在 plugins 对象中被指定为 key，并使用对象的值定义选项。如果插件没有选项，只需将其设置为 true 即可。</p>
+<p>可以在 .browserslistrc 中指定 autoprefixer、Preset Env 和目标浏览器的其他工具:</p>
+<pre><code class="language-js">&gt; 1%
+last 2 versions
+</code></pre>
+<p>使用顶级 modules 键时，CSS 模块启用方式稍有不同。这是因为 Parcel 需要对 CSS 模块提供特殊支持，因为它们也导出一个包含在 JavaScript 包中的对象。请注意，你仍然需要在你的项目中安装 postcss-modules 。</p>
+<p><strong>使用现有 CSS 库</strong></p>
+<p>为了使 CSS 模块能够与现有模块一起正常工作，则需在自己的 .postcssrc 中指定这种支持。</p>
+<p><strong>设置 cssnano 的压缩配置</strong></p>
+<p>在生产环境构建时，会使用 cssnano 来压缩 css 文件。可以创建一个 cssnano.config.js 文件来进行详细的压缩配置：</p>
+<pre><code class="language-json">module.exports = {
+  calc: false,
+  discardComments: {
+    removeAll: true
+  }
+}
+
+</code></pre>
+<h2 id="posthtml-是一个通过插件转换-html-的工具">PostHTML 是一个通过插件转换 HTML 的工具</h2>
+<p>创建配置， .posthtmlrc (JSON) ，.posthtmlrc.js 或者 posthtml.config.js。</p>
+<p>安装 plugin</p>
+<pre><code class="language-shell">yarn add posthtml-img-autosize
+</code></pre>
+<p>创建一个 .posthtmlrc ：</p>
+<pre><code class="language-json">{
+  &quot;plugins&quot;: {
+    &quot;posthtml-img-autosize&quot;: {
+      &quot;root&quot;: &quot;./images&quot;
+    }
+  }
+}
+</code></pre>
+<h2 id="typescript-无需任何额外配置开箱即用">TypeScript 无需任何额外配置，开箱即用</h2>
+<p>是 JavaScript 类型的超集，它可以编译成普通的 JavaScript，同时也支持现代 ES2015+ 的特性</p>
+<h1 id="代码拆分-零配置代码拆分并且开箱即用">代码拆分 （零配置代码拆分，并且开箱即用）</h1>
+<p>将应用程序的代码拆分成单独的包，这些包可以按需加载：更小的初始包大小和更短的加载时间</p>
+<p>通过使用动态 import() 函数的语法提案来控制的，该提案与普通 import 语句或 require 函数的类似，但返回一个 Promise 对象。这意味着模块是异步加载的</p>
+<p>例子: 使用动态导入(dynamic import)来按需加载应用程序的子页面</p>
+<pre><code class="language-js">// pages/about.js
+export function render() {
+  // 渲染页面
+}
+</code></pre>
+<pre><code class="language-js">import('./pages/about').then(function(page) {
+  // 渲染页面
+  page.render()
+})
+</code></pre>
+<p>因为 import() 返回一个 Promise，所以你也可以使用 async/await 语法。不过，在浏览器广泛支持它之前，你可能需要配置 Babel 来转换语法。</p>
+<pre><code class="language-js">const page = await import('./pages/about')
+// 渲染页面
+page.render()
+</code></pre>
+<p>动态导入也会在 Parcel 中延迟加载，因此你仍然需要将所有的 import() 调用放在文件的顶部，并且在使用子捆绑包之前，它们不会被加载。以下示例展示如何动态地延迟加载应用程序的子页面。</p>
+<pre><code class="language-js">/ 设置页面名称到动态引入的映射中。
+// 在使用前，这些页面都不会被加载。
+const pages = {
+  about: import('./pages/about'),
+  blog: import('./pages/blog')
+}
+
+async function renderPage(page) {
+  // 懒加载请求页面。
+  const page = await pages[page]
+  return page.render()
+}
+</code></pre>
+<p>注意： 如果你仍然想在本地浏览器中使用不支持的语法 async/await ，切记需要在你的应用程序引入 babel-polyfill 或在你的库中引入 babel-runtime + babel-plugin-transform-runtime 。</p>
+<pre><code class="language-shell">yarn add babel-polyfill
+</code></pre>
+<pre><code class="language-js">import 'babel-polyfill'
+import './app'
+</code></pre>
+<p>请参阅 babel-polyfill 和 babel-runtime 的文档。</p>
+<h1 id="热模块重载hmr--在运行时自动更新浏览器-无需刷新整个页面">热模块重载(HMR)  在运行时自动更新浏览器 无需刷新整个页面</h1>
+<p>支持开箱即用的 JavaScript 和 CSS 资源。HMR 构建在生产模式下时自动禁用</p>
+<p>你可以使用 module.hot API 对此过程进行 hook ，编写这段代码会在你处理模块时或有新版本进入时通知您。类似项目 react-hot-loader 可以帮助你完成该过程，并通过 Parcel 实现开箱即用。</p>
+<p>有两种已知方法： <code>module.hot.accept</code> 和 <code>module.hot.dispose</code> 。你可以调用 module.hot.accept 并赋予一个回调函数，该函数会在模块或其他依赖项被更新时执行。当该模块即将被替换时，module.hot.dispose 回调函数会被调用。</p>
+<pre><code class="language-js">if (module.hot) {
+  module.hot.dispose(function() {
+    // 模块即将被替换时
+  })
+
+  module.hot.accept(function() {
+    // 模块或其依赖项之一刚刚更新时
+  })
+}
+</code></pre>
+<h2 id="安全写入safe-write">安全写入(Safe Write)</h2>
+<p>一些文本编辑器和 IDE 均有安全写入的功能，这基本上可以防止数据丢失，通过获取文本的副本并在保存时对其进行重命名操作。</p>
+<p>当使用热模块重载 (HMR) 时，此功能会阻止文件更新的自动检测，要禁用安全写入，请使用下列提供的选项:</p>
+<p>Sublime Text 3 将 atomic_save: &ldquo;false&rdquo; 添加到你用户设置中。
+IntelliJ 在设置中使用搜索来查找 &ldquo;safe write&rdquo; 并将其禁用。
+Vim 添加 :set backupcopy=yes 到你的设置中.
+WebStorm 在 Preferences &gt; Appearance &amp; Behavior &gt; System Settings 中取消选中 &ldquo;safe write&rdquo; 选项。</p>
+<h1 id="生产模式">生产模式</h1>
+<p>当需要绑定应用程序的时候，你可以使用 Parcel 的生产模式。</p>
+<pre><code class="language-shell">parcel build entry.js
+</code></pre>
+<p>这将关闭监听模式和热模块替换，所以它只会编译一次。它还会开启 minifier 来减少输出包文件的大小。Parcel 使用的 minifiers 有 JavaScript 的 terser ，CSS 的 cssnano 还有 HTML 的 htmlnano。</p>
+<p>启动生产模式还要设置环境变量 NODE_ENV=production 。像 React 这种只用开发调试功能的大型库，通过设置这个环境变量来禁用调试功能，从而构建得更小更快。</p>
+<h1 id="配方recipes-如-react-preact--vue-等集成">配方(Recipes) 如 React&amp; Preact &amp; Vue 等集成</h1>
+<pre><code class="language-shell">npm install --save react
+npm install --save react-dom
+npm install --save-dev parcel-bundler
+</code></pre>
+<p>添加 start 指令到 package.json</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;parcel index.html&quot;
+}
+</code></pre>
+<h1 id="cli">CLI</h1>
+<pre><code class="language-shell"># 服务
+# serve 命令启用一个开发服务器，且支持 热模块替换 以实现快速开发。当你更改文件时，该服务器将自动重新构建你的应用程序。
+parcel index.html
+
+# 构建（Build）
+# build 命令会一次性构建资源，它还启用了压缩功能，并将 NODE_ENV 变量设置为生产环境。详见生产环境
+parcel build index.html
+
+# 监听（Watch）
+# 监听（watch）命令与服务器类似，主要区别在于它并不会启动服务器。
+parcel watch index.html
+
+# 帮助
+parcel help
+</code></pre>
+<p>Options</p>
+<pre><code class="language-shell"># 设置输出目录（默认为：&quot;dist&quot;）
+parcel build entry.js --out-dir build/output
+parcel build entry.js -d build/output
+
+#设置要提供服务的公共 URL（默认为：&quot;/&quot;）
+parcel entry.js --public-url ./dist/
+
+#目标（Target） （默认为：browser）  node，browser 和 electron
+parcel build entry.js --target node
+
+# 更改日志级别（默认为：3）
+# 0	禁用记录 1	只记录错误 2	记录错误和警告 3记录一切
+parcel entry.js --log-level 1
+
+#禁用 HMR
+parcel entry.js --no-hmr
+
+#HMR 主机名（默认为：当前 window 的 location.hostname）
+# HMR 端口
+parcel entry.js --hmr-hostname parceljs.org
+parcel entry.js --hmr-port 8080
+
+#禁用 minification(build)
+parcel build entry.js --no-minify
+
+# 禁用文件系统缓存(默认为：缓存启用)
+parcel build entry.js --no-cache
+
+# 输出的文件名（默认为：源文件名称）改变了入口 bundle 的输出文件名。
+parcel build entry.js --out-file output.html
+
+# 打印详细的报告（默认为：精简报告） 可用于：build
+parcel build entry.js --detailed-report
+
+# 启用 https  可用于： serve
+# 会生成一个自签名证书，你可能需要配置你的浏览器，使之接受 localhost 上的自签名证书。
+parcel entry.js --https
+
+# 设置一个自定义证书
+parcel entry.js --cert certificate.cert --key private.key
+
+# 在浏览器中打开  (默认为：禁用开启)
+parcel entry.js --open
+
+# 禁用 source-maps (默认为：source-maps 启用)
+parcel build entry.js --no-source-maps
+
+# 禁用 autoinstall(默认为：autoinstall 启用)
+parcel entry.js --no-autoinstall
+</code></pre>
+<h1 id="其他">其他</h1>
+<p>解决 antd 引入后 <code>@import ~antd/dist/antd.css</code>报错</p>
+<blockquote>
+<p>Cannot resolve dependency &lsquo;~antd/dist/antd.css&rsquo;</p>
+</blockquote>
+<p>这里 <code>@import</code>实际上是 sass 的语法</p>
+<p>需要把 index.css 改成 scss (奇怪的是)</p>
+<pre><code class="language-js">@import &quot;./node_modules/antd/dist/antd.less&quot;;
+</code></pre>
+<h2 id="环境变量例如本地测试环境使用不同的值">环境变量（例如本地测试环境使用不同的值）</h2>
+<p>官方说明，支持 <code>.env</code>环境</p>
+<p><a href="https://github.com/parcel-bundler/parcel/issues/1498">https://github.com/parcel-bundler/parcel/issues/1498</a></p>
+<p>或者简化下</p>
+<pre><code class="language-shell">ENV=test parcel src/index.html
+</code></pre>
+<p>然后就可以使用了</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="http://web.jobbole.com/93276/">http://web.jobbole.com/93276/</a>（看后面的内容，分析了 Parcel 的一些弊端）</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/parceljs-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/parceljs-%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/rest-api-%E8%A7%84%E8%8C%83%E4%B8%8E%E6%96%87%E6%A1%A3%E7%94%9F%E6%88%90/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/serverless/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

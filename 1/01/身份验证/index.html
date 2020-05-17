@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="身份验证 permalink: laravel-user-authentication-reset-password tags: laravel 用户认证 快速为新项目生成认证有关的 路由、View 文件等 php artisan make:auth 会发现在 routers/web.php中自动添加了下面的路由 Auth::routes(); //" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="身份验证 permalink: laravel-user-authentication-reset-password tags: laravel 用户认证 快速为新项目生成认证有关的 路由、View 文件等 php artisan make:auth 会发现在 routers/web.php中自动添加了下面的路由 Auth::routes(); //" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="身份验证 permalink: laravel-user-authentication-reset-password tags: laravel 用户认证 快速为新项目生成认证有关的 路由、View 文件等 php artisan make:auth 会发现在 routers/web.php中自动添加了下面的路由 Auth::routes(); //">
+
+<meta itemprop="wordCount" content="3904">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="身份验证 permalink: laravel-user-authentication-reset-password tags: laravel 用户认证 快速为新项目生成认证有关的 路由、View 文件等 php artisan make:auth 会发现在 routers/web.php中自动添加了下面的路由 Auth::routes(); //"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3904字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 8分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>身份验证</p>
+<p>permalink: laravel-user-authentication-reset-password
+tags:</p>
+<ul>
+<li>laravel</li>
+</ul>
+<hr>
+<!-- raw HTML omitted -->
+<h1 id="用户认证">用户认证</h1>
+<h2 id="快速为新项目生成认证有关的-路由view-文件等">快速为新项目生成认证有关的 路由、View 文件等</h2>
+<pre><code class="language-shell">php artisan make:auth
+</code></pre>
+<p>会发现在 <code>routers/web.php</code>中自动添加了下面的路由</p>
+<pre><code class="language-php">Auth::routes();  // /login, /register ...
+
+Route::get('/home', 'HomeController@index')-&gt;name('home');
+</code></pre>
+<p>以及 views 模板文件</p>
+<p><img src="/media/15490412690697/15439878837778.jpg" alt="-w708"></p>
+<h2 id="数据表模型控制器等">数据表/模型/控制器等</h2>
+<p><strong>对应配置文件</strong>
+<code>config/auth.php</code></p>
+<p><strong>对应的数据表</strong>
+<code>users</code>
+可以通过创建“迁移”来建立这个表，</p>
+<p><img src="/media/15490412690697/15439881151519.jpg" alt="-w602"></p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<p>也可以直接按下面这段SQL来创建一个最简单的用户表</p>
+<pre><code class="language-sql">CREATE TABLE `users` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `email` char(50) NOT NULL DEFAULT '',
+  `name` char(30) DEFAULT NULL,
+  `password` char(80) NOT NULL DEFAULT '',
+  `remember_token` char(100) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+</code></pre>
+<p><strong>对应的 Eloquent 模型</strong>
+<code>app</code>目录下文件<code>User.php</code>，命名空间<code>App</code>，类名<code>User</code>
+如果不使用默认的 Eloquent 认证来驱动， 可以用 Laravel 查询构造器的 database 认证驱动</p>
+<p><strong>对应的认证控制器</strong>
+App\Http\Controllers\Auth 命名空间下，包括</p>
+<ul>
+<li>AuthController</li>
+<li>PasswordController</li>
+</ul>
+<p>它们已经包括了处理用户注册、登录等的逻辑</p>
+<p><img src="/media/15490412690697/15439880101086.jpg" alt="-w766"></p>
+<h2 id="认证相关的路由视图文件">认证相关的路由/视图文件</h2>
+<pre><code class="language-php">// 登录相关路由...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// 注册路由...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+</code></pre>
+<p>在<code>resources/views/auth</code>下分别创建<code>login.blade.php</code>和<code>register.blade.php</code>对应登录、注册的视图</p>
+<pre><code class="language-html">&lt;!-- resources/views/auth/login.blade.php --&gt;
+&lt;form method=&quot;POST&quot; action=&quot;/auth/login&quot;&gt;
+    {!! csrf_field() !!}
+    &lt;div&gt; Email &lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;{{ old('email') }}&quot;&gt; &lt;/div&gt;
+
+    &lt;div&gt; Password &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot;&gt; &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;remember&quot;&gt; Remember Me
+        &lt;button type=&quot;submit&quot;&gt;Login&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<pre><code class="language-html">&lt;!--和login.blade.php 类似，多两个字段--&gt;
+&lt;div&gt; Name &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;{{ old('name') }}&quot;&gt; &lt;/div&gt;
+&lt;div&gt; Confirm Password &lt;input type=&quot;password&quot; name=&quot;password_confirmation&quot;&gt; &lt;/div&gt;
+</code></pre>
+<h2 id="修改默认配置信息">修改默认配置信息</h2>
+<h3 id="修改默认的跳转路径">修改默认的跳转路径</h3>
+<p>当用户成功认证后，他们将被重定向到 /home URI
+用户认证失败后，将会被重定向到 /auth/login URI</p>
+<p>修改<code>app/HTTP/Controllers/Auth/AuthController.php</code>来修改这两个值</p>
+<pre><code class="language-php">protected $redirectPath = '/dashboard';
+protected $loginPath = '/login';
+</code></pre>
+<h3 id="自定义表单字段">自定义表单字段</h3>
+<p>除了默认的 email 等，你还可以添加手机等自定义字段.</p>
+<p>另外，还需要在 AuthController 的 <code>validator</code> 方法中，对新增加的字段添加验证条件。</p>
+<p>同样<code>create</code>方法里也要对新字段进行处理</p>
+<h2 id="开始测试注册和登陆">开始测试注册和登陆</h2>
+<p><strong>测试注册</strong>
+访问<code>http://localhost/auth/register</code>。
+注意，<code>AuthController</code>中的<code>validator</code>方法中，定义了一个要求： <code>password</code>必须大于6位。</p>
+<p>你可以任意修改这个里面的 validator 和 create，增加自定义字段、限制条件等等。</p>
+<pre><code class="language-php">return Validator::make($data, [
+            'name' =&gt; 'required|max:255',
+            'email' =&gt; 'required|email|max:255|unique:users',
+            'password' =&gt; 'required|confirmed|min:6',
+        ]);
+</code></pre>
+<p>一切OK后，会在<code>users</code>表里自动创建一个密码字段被加密的用户，并自动跳转到到 <code>/home</code>路径，这个路径当然可以在<code>AuthController</code>里修改</p>
+<pre><code class="language-php">//修改成功后跳转
+protected $redirectPath = '/dashboard';
+//修改认证失败后跳转
+protected $loginPath = '/login';
+</code></pre>
+<p><strong>测试登录</strong>
+在浏览器访问 <code>http://localhost/auth/login</code>，输入用户名密码，如果你之前没有创建好 <code>users</code>数据表，会提示错误如下。赶紧回去把表创建好。</p>
+<blockquote>
+<p>QueryException in Connection.php line 662:
+SQLSTATE[42S22]: Column not found: 1054 Unknown column &lsquo;email&rsquo; in &lsquo;where clause&rsquo; (SQL: select * from <code>users</code> where <code>email</code> = <a href="mailto:yourname@gmail.com">yourname@gmail.com</a> limit 1)</p>
+</blockquote>
+<p><strong>看看当前登录用户的信息</strong>
+在 routes.php 里定义一个路由，做简单测试用途</p>
+<p>有两种方法可以查看：
+使用<code>Auth::user()</code>
+或者通过<code>Illuminate\Http\Request</code>的实例<code>$request-&gt;user()</code></p>
+<pre><code class="language-php">Route::get('auth/test', function(){
+    dd(Auth::user());
+});
+</code></pre>
+<p>展开<code>attributes</code>节点，可以看到里面包含了用户的各个信息。</p>
+<p><strong>检查用户是否登录</strong></p>
+<pre><code class="language-php">if (Auth::check()) {
+    // 这个用户已经登录...
+}
+</code></pre>
+<h2 id="获取已登录用户检查是否登录">获取已登录用户/检查是否登录</h2>
+<p><strong><code>Auth::user()</code></strong></p>
+<p>可以在Controller、Blade模板中用 <code>Auth</code>这个 Facade</p>
+<pre><code class="language-php">dd(Auth::user());
+echo Auth::user()-&gt;email;
+{{ Auth::user()-&gt;name }}
+</code></pre>
+<p><strong>或者使用 Illuminate\Http\Request 实例</strong></p>
+<pre><code class="language-php">public function updateProfile(Request $request)
+    {
+        if ($request-&gt;user()) {
+            // $request-&gt;user() 返回认证过的用户的实例...
+        }
+    }
+</code></pre>
+<p><strong>检查是否登录</strong></p>
+<pre><code class="language-php">if (Auth::check()) {
+    // 这个用户已经登录...
+}
+</code></pre>
+<h2 id="限制路由访问">限制路由访问</h2>
+<p>当然，在每一个控制器、方法里对用户是否登录进行检查是不可能的，效率太低了。
+我们应该使用<code>auth</code>“中间件”</p>
+<p>在 <code>app\Http\Middleware\Authenticate.php</code> 文件中定义了<code>auth</code>中间件。然后就可以像普通中间件一样，应用到路由、控制器、控制器类的构造器中</p>
+<pre><code class="language-php">// 使用路由闭包...
+Route::get('profile', ['middleware' =&gt; 'auth', function() {
+    // 只有认证过的用户能进来这里...
+}]);
+
+// 使用控制器...
+Route::get('profile', [
+    'middleware' =&gt; 'auth',
+    'uses' =&gt; 'ProfileController@show'
+]);
+
+public function __construct()
+{
+    // 执行 auth 认证
+    $this-&gt;middleware('auth');
+}
+</code></pre>
+<h2 id="认证错误尝试限制">认证错误尝试限制</h2>
+<p>可以使用 Illuminate\Foundation\Auth\ThrottlesLogins trait 来控制认证频率</p>
+<p>默认情况下，如果用户在进行几次尝试后仍不能提供正确的凭证，将在一分钟内无法进行登录。这个限制会特别针对用户的用户名称 / 邮件地址和他们的 IP 地址：</p>
+<pre><code class="language-php">//....
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+class AuthController extends Controller
+{
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+</code></pre>
+<p>//待续。  实现自己的认证方法
+// 密码重置 社会化登陆等等</p>
+<h1 id="手动验证用户">手动验证用户</h1>
+<h1 id="修改登录类型">修改登录类型</h1>
+<p>默认是使用 Email 进行登录，可以修改为使用 name 或其他字段登录（如手机）</p>
+<p>需改<code>AuthController</code></p>
+<pre><code class="language-php">protected $username = 'name';
+</code></pre>
+<p>以及对应的视图文件<code>auth/login.blade.php</code>中字段</p>
+<p>5.5中修改 LoginController.php</p>
+<pre><code class="language-php">/**
+     * overwrite the default login account type
+     * @return [type] [description]
+     */
+    public function username()
+    {
+        return 'name';
+    }
+</code></pre>
+<h1 id="http-基础认证">HTTP 基础认证</h1>
+<h2 id="无状态-http-基础认证">无状态 HTTP 基础认证</h2>
+<h1 id="社会化认证">社会化认证</h1>
+<h1 id="自定义-guards">自定义 Guards</h1>
+<h1 id="自定义用户提供器">自定义用户提供器</h1>
+<h1 id="事件">事件</h1>
+<h1 id="重设密码-51">重设密码 (5.1)</h1>
+<p>首先必须要让 User Model implement <code>Illuminate\Contracts\Auth\CanResetPassword</code> contract</p>
+<p>然后使用<code>Illuminate\Auth\Passwords\CanResetPassword</code> 的 trait 引入实现这个接口所需的方法。</p>
+<h2 id="重置密码必须在未登录状态">重置密码，<strong>必须在未登录状态</strong></h2>
+<p>这点官方文档好像没说， 重置密码（通常在登陆界面里叫“忘记密码”）必须是在用户<strong>未登录状态</strong>下才能进入 <code>/password/email</code>。否则会一直重定向到首页</p>
+<h2 id="生成重置令牌的数据表迁移文件">生成重置令牌的数据表迁移文件</h2>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<p>如果你的 password_resets 表丢失了（例如不小心删除了 migration 文件），在后面提交邮件地址时会报错</p>
+<p><img src="/media/15490412690697/15051173215412.jpg" alt=""></p>
+<p>重建 password_resets 表的 migration 内容</p>
+<pre><code class="language-php">use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePasswordResetsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table-&gt;string('email')-&gt;index();
+            $table-&gt;string('token')-&gt;index();
+            $table-&gt;timestamp('created_at');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('password_resets');
+    }
+}
+</code></pre>
+<h2 id="设置邮件发送参数">设置邮件发送参数</h2>
+<p>在<code>.env</code>里设置邮件发送参数。</p>
+<pre><code class="language-shell">
+</code></pre>
+<p>具体的知识可以参考“邮件发送”章节。</p>
+<p>如果发信设置错误，可能会报错</p>
+<blockquote>
+<p>Swift_TransportException in AbstractSmtpTransport.php line 162:
+Cannot send message without a sender address</p>
+</blockquote>
+<h2 id="定义路由">定义路由</h2>
+<pre><code class="language-php">// Password reset link request routes...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+</code></pre>
+<p>第一条：显示“输入邮箱地址”的页面
+第二条：输入邮箱后，点击提交邮箱地址的 post 操作</p>
+<p>第三条：用户点击自己邮箱中收到重设密码的地址（带 token 的链接），会来到一个输入新密码的页面
+第四条：输入新密码后提交</p>
+<h2 id="视图">视图</h2>
+<h3 id="创建用户填写自己的邮箱地址的视图文件">创建用户填写自己的邮箱地址的视图文件</h3>
+<p>文件 resources/views/auth/password.blade.php</p>
+<pre><code class="language-html">&lt;!-- resources/views/auth/password.blade.php --&gt;
+
+&lt;form method=&quot;POST&quot; action=&quot;/password/email&quot;&gt;
+    {!! csrf_field() !!}
+
+    @if (count($errors) &gt; 0)
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    @endif
+
+    &lt;div&gt;
+        Email
+        &lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;{{ old('email') }}&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+        &lt;button type=&quot;submit&quot;&gt;
+            发送重置密码邮件
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<p>如果用户输入了一个没有在 users 表中存在的邮箱，会提示错误</p>
+<blockquote>
+<p>We can&rsquo;t find a user with that e-mail address.</p>
+</blockquote>
+<p><img src="/media/15490412690697/15051172480542.jpg" alt=""></p>
+<h3 id="创建发送到邮箱中的视图模板">创建发送到邮箱中的视图模板</h3>
+<p>如果没有创建这个文件，会报错</p>
+<blockquote>
+<p>InvalidArgumentException in FileViewFinder.php line 137:
+View [emails.password] not found.</p>
+</blockquote>
+<p>文件 resources/views/emails/password.blade.php，里面内容很简单，最重要的就显示 $token，让用户点击后跳转到重设密码页面。</p>
+<p>下面是一个最简单的干净页面，你可以在里面添加一些背景色、字体颜色等。</p>
+<pre><code class="language-html">&lt;!-- 文件 resources/views/emails/password.blade.php --&gt;
+
+点击此处重置你的密码：{{ url('password/reset/'.$token) }}
+</code></pre>
+<p>点击上面的提交按钮后，如果 EMAIL 参数配置正确，过一会你的邮箱就会收到重置密码的信息</p>
+<p><img src="/media/15490412690697/15051266469605.jpg" alt="">
+在数据表<code>password_resets</code>中还会看到一条记录</p>
+<p><img src="/media/15490412690697/15051266951269.jpg" alt=""></p>
+<h2 id="发送邮件后提示信息">发送邮件后，提示信息</h2>
+<p>默认情况下，发送完邮件后，仍然会停留在这个填写邮箱地址的界面。为了显示“发送成功，请点击你的邮箱收件箱中的密码重置链接”信息。需要修改代码</p>
+<pre><code class="language-php">@if (session('status'))
+
+    &lt;strong&gt;Success!&lt;/strong&gt;
+        &lt;p&gt;Please check your email and click the password reset link&lt;/p&gt;
+
+@else
+	
+	&lt;!--邮箱地址输入表单--&gt;
+
+@endif
+</code></pre>
+<h2 id="创建重新填写我的密码表单视图文件">创建“重新填写我的密码”表单视图文件</h2>
+<p>当点击上面的链接后，会提示文件不存在</p>
+<p><img src="/media/15490412690697/15051267956436.jpg" alt=""></p>
+<blockquote>
+<p>InvalidArgumentException in FileViewFinder.php line 137:
+View [auth.reset] not found.</p>
+</blockquote>
+<p>创建这个文件 resources/views/auth/reset.blade.php，内容如下</p>
+<pre><code class="language-html">&lt;!-- resources/views/auth/reset.blade.php --&gt;
+
+&lt;form method=&quot;POST&quot; action=&quot;/password/reset&quot;&gt;
+    {!! csrf_field() !!}
+    &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;{{ $token }}&quot;&gt;
+
+    @if (count($errors) &gt; 0)
+        &lt;ul&gt;
+            @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    @endif
+
+    &lt;div&gt; 电子邮箱 &lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;{{ old('email') }}&quot;&gt;  &lt;/div&gt;
+
+    &lt;div&gt; 密码  &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt; &lt;/div&gt;
+
+    &lt;div&gt; 重新输入密码 &lt;input type=&quot;password&quot; name=&quot;password_confirmation&quot;&gt;  &lt;/div&gt;
+
+    &lt;div&gt; &lt;button type=&quot;submit&quot;&gt; 重置密码 &lt;/button&gt;  &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+<p><img src="/media/15490412690697/15051271529993.jpg" alt=""></p>
+<p>修改密码后，会自动重新登录。（如果填写的邮箱不对，会报错）</p>
+<p><strong>注意</strong>
+默认情况下，密码重置令牌会在<strong>一个小时后过期</strong>，你可以更改 config/auth.php 的 reminder.expire 选项，来修改这个设置。</p>
+<h2 id="设置重定向页面">设置重定向页面</h2>
+<p>重置密码成功后，这个用户会<strong>自动登录</strong>并<strong>重定向</strong>到 <code>/home</code>。要自定义重定向地址，只需定义 PasswordController 的 redirectTo 属性即可：</p>
+<pre><code class="language-php">protected $redirectTo = '/dashboard';
+</code></pre>
+<h1 id="重设密码-55">重设密码 (5.5)</h1>
+<p>5.5 中发送重置邮件改成了使用 Illuminate\Notifications\Notifiable 这个 trait，模型 App\User 已经添加了。</p>
+<p>在<code>Auth\ForgotPasswordController</code>和<code>Auth\ResetPasswordController</code>中，实现了 发送重置密码链接邮件 和 重置密码 的逻辑。</p>
+<h2 id="视图-1">视图</h2>
+<p>resources/views/auth/passwords 下面有两个文件</p>
+<ul>
+<li>email.blade.php 填写自己的 email，点击发送重置密码链接的邮件</li>
+<li>reset.blade.php 点击邮件里的重置链接后，输入新密码</li>
+</ul>
+<p>原来 5.1 版本中的 /resources/views/auth/password.blade.php 实际上就可以认为是上面的 email.blade.php. (注意 form action 的不同， 5.5 中是 <code>{{ route('password.email') }}</code>)</p>
+<h2 id="路由">路由</h2>
+<p>/password/reset</p>
+<p>可以修改 ResetPasswordController 中的 redirectTo 属性，从而自定义重置密码后重定向到的位置</p>
+<h2 id="需要自定义的地方">需要自定义的地方</h2>
+<p>收到邮件后，有些地方需要自己去定义</p>
+<p><img src="/media/15490412690697/15063101786566.jpg" alt=""></p>
+<p>app name 和 app url 在应用的 .env 文件中修改<code>APP_NAME</code>和<code>APP_URL</code>
+（查看代码 /vendor/laravel/framework/src/Illuminate/Auth/Notifications/ResetPassword.php）</p>
+<p>&ldquo;from name&rdquo;(sender)，则修改 config/mail.php 的 <code>'from' =&gt; ['address' =&gt; 'someemail@somedomain.com', 'name' =&gt; 'Firstname Lastname']</code>，或在 .env 里新添加定义<code>MAIL_FROM_ADDRESS</code>和<code>MAIL_FROM_NAME</code></p>
+<h1 id="如何添加新的用户字段">如何添加新的用户字段？</h1>
+<h2 id="migration">Migration</h2>
+<p>除了直接在 phpMyAdmin 等工具里修改数据表，还可以用 <code>migration</code></p>
+<p><a href="https://docs.vanguardapp.io/registration-form.html">https://docs.vanguardapp.io/registration-form.html</a></p>
+<pre><code class="language-shell">php artisan make:migration add_nick_name_field_to_users_table
+</code></pre>
+<p>修改在<code>database/migrations</code>里自动生成的文件 up 和 down 方法</p>
+<pre><code class="language-php">public function up()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table-&gt;string('nick', 20);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table-&gt;dropColumn('nick');
+        });
+    }
+</code></pre>
+<p>然后运行 migration</p>
+<pre><code class="language-shell">php artisan migrate
+</code></pre>
+<h2 id="修改-auth-controller">修改 Auth Controller</h2>
+<p>根据 <code>/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesAndRegistersUsers.php</code>
+Here you can easily find interesting methods that will responsible for login and register user.</p>
+<p>These are</p>
+<p>getRegister() // responsible for showing registration form</p>
+<p>postRegister() // responsible for processing registration request</p>
+<p>getLogin() // responsible for showing login form</p>
+<p>postLogin() // responsible for authentication user
+These methods are called every time, when you will access specific route (auth/register or auth/login) i.e User registration &amp; User login</p>
+<p>Hope this will clear some concepts !!</p>
+<p>你可以在<code>App/Http/Controllers/Auth/AuthController.php</code>里重写这些方法。
+例如</p>
+<pre><code class="language-php">public function postRegister(Request $request)
+{
+    $validator = $this-&gt;validator($request-&gt;all());
+
+    if ($validator-&gt;fails())
+    {
+        $this-&gt;throwValidationException(
+            $request, $validator
+        );
+    }
+
+    $user = $this-&gt;create($request-&gt;all()); // here the values are inserted
+    $user-&gt;my_new_field = 'init_value';     // here would be the place to add your custom default
+    $user-&gt;save();                          // maybe try to do all that in a single transaction...
+
+    Auth::login($user);
+
+    return redirect($this-&gt;redirectPath());
+}
+</code></pre>
+<p>根据需要添加</p>
+<pre><code class="language-php">$request-&gt;only('email', 'username', 'password', 'country_id', 'nick')
+</code></pre>
+<h2 id="修改-html-模板">修改 HTML 模板</h2>
+<p>在<code>resources/views/auth/</code>中修改 register.blade.php 等文件</p>
+<h2 id="修改-model">修改 Model</h2>
+<p>打开 <code>app/User.php</code>模型文件。
+在<code>$fillable</code>中添加新字段</p>
+<h2 id="修改验证">修改“验证”</h2>
+<p>在验证方法或用户验证类中添加</p>
+<pre><code class="language-php">$rules = [
+    //...
+    'nick' =&gt; 'required|min:3'
+];
+</code></pre>
+<h1 id="用户认证时的事件">用户认证时的事件</h1>
+<p>可以在事件发生时，进行日志记录</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://codecanyon.net/item/vanguard-advanced-php-login-and-user-management/14521866?ref=loshMiS">https://codecanyon.net/item/vanguard-advanced-php-login-and-user-management/14521866?ref=loshMiS</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/%E9%82%AE%E4%BB%B6/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/%E8%B7%AF%E7%94%B1/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

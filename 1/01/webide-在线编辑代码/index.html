@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+         - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="code-server sudo docker run -it -p 127.0.0.1:8080:8080 -v &amp;quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&amp;quot; -v &amp;quot;$PWD:/home/coder/project&amp;quot; codercom/code-server:v2 docker 版有权限问题。。报错 docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &amp;ldquo;chdir to cwd (&amp;quot;/home/coder/project&amp;quot;) set in config.json failed: permission denied&amp;rdquo; : unknown. https://github.com/cdr/code-server/issues/459 提到解决方法 Fixed by manually create the folders /home/coder/project (无效) # 这个" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title> - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="http://blog.zhishibee.com/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="" />
+<meta property="og:description" content="code-server sudo docker run -it -p 127.0.0.1:8080:8080 -v &quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&quot; -v &quot;$PWD:/home/coder/project&quot; codercom/code-server:v2 docker 版有权限问题。。报错 docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &ldquo;chdir to cwd (&quot;/home/coder/project&quot;) set in config.json failed: permission denied&rdquo; : unknown. https://github.com/cdr/code-server/issues/459 提到解决方法 Fixed by manually create the folders /home/coder/project (无效) # 这个" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://blog.zhishibee.com/1/01/webide-%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/" />
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="code-server sudo docker run -it -p 127.0.0.1:8080:8080 -v &quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&quot; -v &quot;$PWD:/home/coder/project&quot; codercom/code-server:v2 docker 版有权限问题。。报错 docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &ldquo;chdir to cwd (&quot;/home/coder/project&quot;) set in config.json failed: permission denied&rdquo; : unknown. https://github.com/cdr/code-server/issues/459 提到解决方法 Fixed by manually create the folders /home/coder/project (无效) # 这个">
+
+<meta itemprop="wordCount" content="1997">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="code-server sudo docker run -it -p 127.0.0.1:8080:8080 -v &quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&quot; -v &quot;$PWD:/home/coder/project&quot; codercom/code-server:v2 docker 版有权限问题。。报错 docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &ldquo;chdir to cwd (&quot;/home/coder/project&quot;) set in config.json failed: permission denied&rdquo; : unknown. https://github.com/cdr/code-server/issues/459 提到解决方法 Fixed by manually create the folders /home/coder/project (无效) # 这个"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/bootstrap4/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="http://blog.zhishibee.com/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/webide-%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/"
+    ></a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/webide-%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1997字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="code-server">code-server</h2>
+<pre><code class="language-shell">sudo docker run -it -p 127.0.0.1:8080:8080 -v &quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&quot; -v &quot;$PWD:/home/coder/project&quot; codercom/code-server:v2
+</code></pre>
+<p>docker 版有权限问题。。报错</p>
+<blockquote>
+<p>docker: Error response from daemon: OCI runtime create failed: container_linux.go:346: starting container process caused &ldquo;chdir to cwd (&quot;/home/coder/project&quot;) set in config.json failed: permission denied&rdquo;
+: unknown.</p>
+</blockquote>
+<p><a href="https://github.com/cdr/code-server/issues/459">https://github.com/cdr/code-server/issues/459</a> 提到解决方法</p>
+<p>Fixed by manually create the folders /home/coder/project  (无效)</p>
+<pre><code class="language-shell"># 这个目录保存等下容器要生成的 extensions 等，所以要可写
+sudo mkdir -p ~/.local/share/code-server/extensions
+
+sudo chown -R username ~/.local/share/code-server
+
+# 一定要进入某一个当前用户可写的项目目录，否则 ${PWD}会因为无权限报上面的错误，例如我在 home 目录就遇到了
+cd Your-Project-Home
+
+docker run....
+
+# 当然写成固定的路径也可以 /home/wwwroot/projects:
+
+# 如果要外网访问， -p 改成 0.0.0.0:8080
+</code></pre>
+<p>会给出一个临时密码，如 5bab9e8dca3323294c02553b  要使用固定的密码，在启动时加参数</p>
+<pre><code class="language-shell">--PASSWORD xxxxx
+</code></pre>
+<p>如果要部署 https
+give code-server a certificate with code-server &ndash;cert followed by the path to your certificate. Additionally, you can use certificate keys with &ndash;cert-key followed by the path to your key. If you pass &ndash;cert without any path code-server will generate a self-signed certificate.</p>
+<p>-d 后台运行</p>
+<p>最后</p>
+<pre><code class="language-shell">sudo docker run -dit --name code-server -p 0.0.0.0:8080:8080 -e PASSWORD=123456 -v &quot;${HOME}/.local/share/code-server:/home/coder/.local/share/code-server&quot; -v &quot;/home/wwwroot:/home/coder/project&quot; codercom/code-server:latest
+</code></pre>
+<p>访问后会比较慢。。。（可能也和服务器配置、网速有关？）</p>
+<p>升级 docker image. (从 help 里可以看到版本和官方 release 的差异)</p>
+<pre><code class="language-shell">sudo docker pull codercom/code-server:latest
+sudo docker stop code-server
+sudo docker rm code-server
+sudo docker run -dit....
+</code></pre>
+<p><strong>进去后，如果有提示升级，马上升到最新版。。。</strong></p>
+<p>进入后，一直</p>
+<blockquote>
+<p>Attempting to reconnect in 15 seconds&hellip;</p>
+</blockquote>
+<p>控制台看到：</p>
+<blockquote>
+<p>ERR Error: WebSocket close with status code 1006</p>
+</blockquote>
+<p>和</p>
+<blockquote>
+<p>WebSocket connection to &lsquo;ws://xx.xx.xx.xx:8080/?reconnectionToken=9ce641f5-12f6-41bb-9edc-5aa795499b6e&amp;reconnection=true&amp;skipWebSocketFrames=false&rsquo; failed: Error in connection establishment: net::ERR_EMPTY_RESPONSE</p>
+</blockquote>
+<p>需要到防火墙打开端口。(宝塔 + 腾讯云/阿里云安全组，出 + 入 都要开)</p>
+<p>如果是走 frp. 除了 http 协议外，还要添加一个 tcp 的协议</p>
+<pre><code class="language-shell">[WS]
+#访问协议
+type = tcp
+#内网web服务的端口号
+local_port = 8082
+remote_port = 8082
+</code></pre>
+<p>还是没用，要在 nginx 反向代理里增加下面的内容</p>
+<pre><code class="language-shell">map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    localtion / {
+        # ... 略
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+    }
+}
+</code></pre>
+<p><a href="https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html">https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html</a></p>
+<p><a href="https://www.hi-linux.com/posts/42176.html">https://www.hi-linux.com/posts/42176.html</a></p>
+<p>回到服务器， docker ps -a 发现 Exit 了。。 全部关掉这些。  重新启动（可能是启动太多次，冲突了。。资源不够什么的）</p>
+<p>运行一会又不动白屏了。  回到服务器一看。。。哎哎。  容器又是 Exited</p>
+<p>重新启动几次。  打开文件不多的时候还可以，文件、插件多了内存就不够了。。。。</p>
+<p><strong>问题</strong></p>
+<p>ctrl + shift + c  打开 chrome 的 console, docker 必崩。。。。 所以要把这个快捷键绑定到 code-server 某个事件上</p>
+<h3 id="binary-版">binary 版</h3>
+<p><a href="https://github.com/cdr/code-server/releases">https://github.com/cdr/code-server/releases</a></p>
+<p>chmod +x code-server 解决问题。</p>
+<p>反应很快，比docker 体验好(不过打开项目后，打开几个文件装几个插件，内存占用就差不多了。。。)。 也没有权限问题。</p>
+<p>解决关闭ssh窗口进程杀掉问题  nohup <!-- raw HTML omitted --> <!-- raw HTML omitted --> &gt;<!-- raw HTML omitted --> 2&gt;&amp;1 &amp;
+注意！！nohup命令执行后，不要直接关闭终端，使用exit命令退出会话</p>
+<p>使用中问题：不知道是不是内存不够还是1M水管/国外网络延迟，intellisense 非常慢，基本不可用状态。</p>
+<h3 id="terminal-是-docker-环境的">terminal 是 docker 环境的。</h3>
+<p>不过可以  ifconfig 查看到 host 的 ip 然后 ssh 登录上去到宿主机即可。</p>
+<h3 id="自己修改-docker-文件例如增加-php-等-便于安装-phpformarter-等需要执行路径的">自己修改 docker 文件。例如增加 php 等。 便于安装 phpformarter 等需要执行路径的</h3>
+<h3 id="最后总结操作体验十分接近-vscode-机器性能强且-局域网访问速度足够的话很快-但如果通过-frp-的穿透带宽不够-速度和方便性远不如-cloud9-直接连接-server-不走-ftp-1m-带宽也挺快估计是-frp-中转的延迟太大了">最后总结，操作体验十分接近 vscode, 机器性能强且 局域网访问速度足够的话很快。 但如果通过 frp 的穿透，带宽不够 速度和方便性远不如 cloud9 （直接连接 server 不走 ftp 1M 带宽也挺快，估计是 frp 中转的延迟太大了。）</h3>
+<h3 id="另一个人的完整体验和解决坑">另一个人的完整体验和解决坑</h3>
+<p><a href="https://blog.lopygo.com/2019/p-vscode-code-server-test/">https://blog.lopygo.com/2019/p-vscode-code-server-test/</a></p>
+<p>如安全问题、高级命令等</p>
+<h2 id="httpsstackblitzcom"><a href="https://stackblitz.com">https://stackblitz.com</a></h2>
+<p>这个智能提示很快，而且自带了 hotload 等，还能和 github 项目对接， 但是公司的网络问题。 在对接 repository 的时候一直卡在 initial repository&hellip;</p>
+<h2 id="self-hosted-cloud9">self-hosted cloud9</h2>
+<p>不知道用了什么黑科技，运行起来挺快的，普通打开几个文件后，占用内存好低。（一点都不像也是 node 的）</p>
+<pre><code class="language-shell">git clone https://github.com/c9/core.git c9sdk
+cd c9sdk
+scripts/install-sdk.sh
+
+node server.js
+
+--settings       Settings file to use
+--help           Show command line options.
+-t               Start in test mode
+-k               Kill tmux server in test mode
+-b               Start the bridge server - to receive commands from the cli  [default: false]
+-w               Workspace directory
+--port           Port
+--debug          Turn debugging on
+--listen         IP address of the server
+--readonly       Run in read only mode
+--packed         Whether to use the packed version.
+--auth           Basic Auth username:password  (-a)
+--collab         Whether to enable collab.
+--no-cache       Don t use the cached version of CSS
+
+
+# http://localhost:8181/ide.html 
+
+
+# 默认只能在本地访问， 如果要在外面也能访问 并且加上一个用户验证（比较弱的验证。。。）
+node server.js -l 0.0.0.0 -p 8080 -a username:password
+
+
+# 默认是在 /cloud9sdk 目录下启动 workspace. 但我们一般希望是在自己的项目如 /var/www 下
+# 你可以创建多个命令来实现，一个端口对应一个项目目录
+node server.js -w /var/www/project1 -p 8081
+node server.js -w /var/www/project2 -p 8082
+
+git pull origin master
+</code></pre>
+<h3 id="过滤一些目录如node_modules">过滤一些目录，如node_modules</h3>
+<p>在 project_setting 里面， find in files  , ignore&hellip;</p>
+<p><em>node_modules/</em>
+/vendor</p>
+<p>必须要关掉页面，重新进入 cloud9 才能生效</p>
+<h3 id="terminal-改用-zsh">terminal 改用 zsh</h3>
+<p>默认bash, 并不会根据用户设置的 shell 而改变</p>
+<p>方法：</p>
+<ol>
+<li>运行  <code>exec zsh</code></li>
+<li>在 ~/.bashrc 里顶部添加  zsh</li>
+</ol>
+<h3 id="codeintel">codeintel</h3>
+<p>当编辑php 文件，弹出一个安装plugin 提示</p>
+<p><a href="https://github.com/c9/c9.ide.language.codeintel/blob/master/README.md">https://github.com/c9/c9.ide.language.codeintel/blob/master/README.md</a></p>
+<pre><code class="language-shell">sudo easy_install pip
+sudo pip install -U pip
+
+sudo pip install -U virtualenv
+virtualenv --python=python2 $HOME/.c9/python2
+source $HOME/.c9/python2/bin/activate
+
+
+sudo apt-get update
+sudo apt-get install python-dev
+
+mkdir /tmp/codeintel
+pip download -d /tmp/codeintel codeintel==0.9.3
+
+cd /tmp/codeintel
+tar xf CodeIntel-0.9.3.tar.gz
+mv CodeIntel-0.9.3/SilverCity CodeIntel-0.9.3/silvercity
+tar czf CodeIntel-0.9.3.tar.gz CodeIntel-0.9.3
+pip install -U --no-index --find-links=/tmp/codeintel codeintel
+</code></pre>
+<p>重载 cloud9</p>
+<h3 id="修改了-运行项目目录用户后提示-failed-to-write-to-statesettings-file-or-folder-statesettings-does-not-exist">修改了 运行项目目录、用户后提示 Failed to write to &lsquo;state.settings&rsquo;. File or folder &lsquo;state.settings&rsquo; does not exist.</h3>
+<p>如果你是用  newuser 这个用户启动项目的： &ldquo;node server.js xxxxx&rdquo;,  一定要把项目的所有权也改成该用户。  &lsquo;chown newuser /home/wwwroot/project&rsquo;, 否则会报这个错误</p>
+<h2 id="aws-cloud9-收购了-cloud9-改成云服务了">AWS Cloud9 (收购了 cloud9 改成云服务了)</h2>
+<p><a href="https://console.aws.amazon.com/cloud9">https://console.aws.amazon.com/cloud9</a></p>
+<p>可以连接到 amazon 的 ec2 或自己的 linux(只用webide， 不需要付费了。)</p>
+<p>连接到自己的 linux server， 需要把 public SSH key 复制到服务器用户目录的 .ssh/authorized_keys&hellip;. 里面去</p>
+<p>会提示你正在 install cloud9 ide 所需要的 package.(glibc-statics  node-pty  Nak sqlite  node-qty 等) 国内服务器可能比较慢</p>
+<blockquote>
+<p>AWS Cloud9 无需额外付费。如果您为 AWS Cloud9 开发环境使用 Amazon EC2 实例，则您仅为用于运行和存储您的代码的 计算和存储资源（例如 EC2 实例、 EBS 卷）付费。您还可以通过 SSH 将您的 AWS Cloud9 开发环境连接到现有 Linux服务器（例如本地服务器）而无需额外付费。</p>
+</blockquote>
+<p>问题
+因为是“远程访问”， 所以文件树展开速度非常慢（不过高亮很快 毕竟服务器本地先加载后渲染）。  国外 AWS -&gt; 国内服务器
+而且智能提示有点傻。。。经常不显示</p>
+<p>可以修改 server 的 region 改成亚洲的试试（默认是美国）
+无法安装 vscode 的各种牛逼插件。。。  只能在 project setting 里启用自带的 js library 支持。</p>
+<h2 id="cloud-studio">cloud studio</h2>
+<p><a href="https://4guangnian.cloudstudio.net/">https://4guangnian.cloudstudio.net/</a>  在公司网络无法登陆。。。。（coding.net 屏蔽。。）  否则应该是最优解。</p>
+<h2 id="哎-还是等-vscode-官方的吧">哎 还是等 vscode 官方的吧！</h2>
+<h2 id="自己搭建-webide-coding">自己搭建 webide (coding)</h2>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="http://blog.zhishibee.com/1/01/webide-%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/" title="" target="_blank" rel="external">http://blog.zhishibee.com/1/01/webide-%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E4%BB%A3%E7%A0%81/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="http://blog.zhishibee.com/1/01/windows%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-%E5%B7%A5%E4%BD%9C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/" title=""><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="http://blog.zhishibee.com/1/01/veracrypt-%E5%8A%A0%E5%AF%86%E7%94%B5%E8%84%91%E6%96%87%E4%BB%B6/"
+                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="http://blog.zhishibee.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="http://blog.zhishibee.com/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="http://blog.zhishibee.com/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'http:\/\/blog.zhishibee.com\/',
+            CONTENT_URL: 'http:\/\/blog.zhishibee.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="http://blog.zhishibee.com/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
