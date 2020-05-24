@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="大家好，这里是四光年科技出品的精品课系列，为了能让大家更轻松地学会微信公众平台开发，我们制作了这套**《最好懂的微信公众平台开发教程》**，" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号" />
+<meta property="og:description" content="大家好，这里是四光年科技出品的精品课系列，为了能让大家更轻松地学会微信公众平台开发，我们制作了这套**《最好懂的微信公众平台开发教程》**，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/wechat-develop-with-examples-chapter-1/" />
+
+<meta itemprop="name" content="最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号">
+<meta itemprop="description" content="大家好，这里是四光年科技出品的精品课系列，为了能让大家更轻松地学会微信公众平台开发，我们制作了这套**《最好懂的微信公众平台开发教程》**，">
+
+<meta itemprop="wordCount" content="7306">
+
+
+
+<meta itemprop="keywords" content="微信," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号"/>
+<meta name="twitter:description" content="大家好，这里是四光年科技出品的精品课系列，为了能让大家更轻松地学会微信公众平台开发，我们制作了这套**《最好懂的微信公众平台开发教程》**，"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-wechat-develop-with-examples-chapter-1" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wechat-develop-with-examples-chapter-1/"
+    >最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%BE%AE%E4%BF%A1/"> 微信 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wechat-develop-with-examples-chapter-1/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 7306字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 15分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/mobile/wechat/%E5%9B%9B%E5%85%89%E5%B9%B4-%E5%BE%AE%E4%BF%A1%E6%95%99%E7%A8%8B-%E5%B0%81%E9%9D%A2.png" alt=""></p>
+<p>大家好，这里是<code>四光年科技</code>出品的精品课系列，为了能让大家更轻松地学会微信公众平台开发，我们制作了这套**《最好懂的微信公众平台开发教程》**，和现在市面上的很多课程不一样，它的特点主要有：</p>
+<ol>
+<li>挤去没有用的水分，<strong>不废话</strong>，直接进入主题</li>
+<li>不罗列概念和名词，而是<strong>在实践中去理解</strong></li>
+<li>保持课程的<strong>节奏感</strong>，不会让你昏昏欲睡</li>
+<li>配套的视频和课件制作精良，<strong>内容简洁生动</strong></li>
+</ol>
+<p>你可以扫描我们的二维码，随时学习优质的课程和了解行业动态。</p>
+<h1 id="微信公众号的蓬勃发展">微信公众号的蓬勃发展</h1>
+<p>微信基本上是每一部手机上的必装应用，各种各样的公众号在我们衣食住行中提供了很多便利。比如通过“招行银行”的公众号，我们可以直接进行余额查询、转账，而不需要亲自去柜台，节省了很多时间和精力。</p>
+<p><img src="/article_images/mobile/wechat/%E6%8B%9B%E5%95%86%E9%93%B6%E8%A1%8C.png" alt=""></p>
+<h1 id="微信公众号的跨平台优势">微信公众号的跨平台优势</h1>
+<p>开发一个公众号可以<strong>同时运行在 iOS 和安卓两个平台</strong>，时间短，成本低，依托微信的海量用户，<strong>能够很快地进行推广和占领市场</strong>。因此不少团队和开发者都跃跃欲试，投入到这场变革中去实现自己的梦想。</p>
+<p><img src="/article_images/mobile/wechat/%E8%B7%A8%E5%B9%B3%E5%8F%B0.jpg" alt=""></p>
+<h1 id="第一个案例零代码打造鲜鲜美美水果店公众号">第一个案例——零代码打造“鲜鲜美美”水果店公众号</h1>
+<p>在这个案例中，我们会从零开始打造一个叫“鲜鲜美美”的水果店公众号。因为这个公众号完整实现了<code>消息自动回复</code>、<code>自定义菜单</code>、<code>图文素材</code>等公众号常见的功能，所以如果你不需要一些高级功能的话，<strong>学完本章完全可以开始基于微信公众号进行创业了</strong>~</p>
+<p><img src="/article_images/mobile/wechat/%E6%B0%B4%E6%9E%9C%E5%BA%97.jpg" alt="">
+<img src="/article_images/mobile/wechat/%E6%96%B0logo.jpg" alt="">
+<img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E9%A2%84%E8%A7%88.jpg" alt=""></p>
+<p>在本章中，我们暂时不会写任何的代码，而是通过直接<strong>操作公众号管理后台</strong>来实现所有的功能，通过<strong>实践</strong>去理解一些<code>新名词和概念</code>，这对后面我们进行正式开发是非常重要的。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B6%88%E6%81%AF%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8.jpg" alt=""></p>
+<p>那么，我们就从注册一个新的微信公众号开始吧。</p>
+<h1 id="注册微信公众号之前的准备">注册微信公众号之前的准备</h1>
+<h2 id="需要准备的材料">需要准备的材料：</h2>
+<p><strong>必备</strong></p>
+<ul>
+<li>一个电子邮箱</li>
+<li>身份证正反面扫描件</li>
+</ul>
+<p><strong>如果是公司或机构</strong></p>
+<ul>
+<li>营业执照</li>
+<li>公章</li>
+<li>对公银行账号</li>
+</ul>
+<h1 id="开始注册">开始注册</h1>
+<h2 id="填写基本资料">填写基本资料</h2>
+<p>请打开微信公众平台首页，<code>http://mp.weixin.qq.com</code>，点击右上角的“立即注册”链接。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E9%A6%96%E9%A1%B5.jpg" alt=""></p>
+<p>在基本资料页面里，填写一个能正常收信的邮箱（下一步会进行验证），以及密码。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B3%A8%E5%86%8C-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.png" alt=""></p>
+<h2 id="邮箱验证">邮箱验证</h2>
+<p>一般等待一会，就能收到微信官方发送的验证邮件，里面有一个链接，点击一下就可以通过验证。</p>
+<p><img src="/article_images/video.png" alt="注册-邮箱验证"></p>
+<h2 id="公众号的类型">公众号的类型？</h2>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%B1%BB%E5%9E%8B.png" alt=""></p>
+<p>到这一步的时候，需要选择<code>公众号的类型</code>。如果你之前看过微信的一些资料，可能已经被<code>公众号</code>、<code>订阅号</code>、<code>服务号</code>这几个名词弄晕了。现在我们先来理一理它们之间的关系，然后再决定选择哪种类型。</p>
+<p><strong>公众号包括下面几种类型，他们的应用范围</strong></p>
+<ul>
+<li><strong>订阅号</strong>（一般用于推送新闻、资讯，以及自媒体传播个人知识，比如“腾讯新闻”）</li>
+<li><strong>服务号</strong>（一般用于提供线上查询、线下生活服务，以及一些针对不同用户的个性化功能，比如“招商银行”）</li>
+<li>企业号（特定领域，主要是在大型公司内部进行资源管理，平时很少用到）</li>
+<li>小程序（以前叫“应用号”，即将开放！可以认为是<code>把一些 APP 搬到了微信的内部</code>）</li>
+</ul>
+<p>下面主要来说明订阅号和服务号的详细区别。</p>
+<p><strong>展示的位置不同</strong></p>
+<p>打开微信的聊天记录列表，有一个叫**“订阅号”**的分组，里面的所有公众号都属于**订阅号**类别；所以其他的公众号都属于**服务号**。可以看到<code>订阅号被折叠到一个分组</code>里面了，需要二次点击才能看到所有的订阅号；而<code>服务号和好友是平级的</code>。</p>
+<p><img src="/article_images/video.png" alt="注册-订阅号与服务号位置"></p>
+<p><strong>权限的大小不同</strong></p>
+<ul>
+<li>订阅号可以==每天==向用户群发一条消息（相当于一个月30条），服务号一个月总共只能群发==四次==消息</li>
+<li>订阅号提供给用户的信息千篇一律；而服务号可以获得用户的微信个人信息，为每个人提供个性化服务</li>
+<li>订阅号能调用的微信接口比服务号少（例如只有服务号才有微信支付的接口）</li>
+</ul>
+<p>你可以把订阅号想象成每天上门送报纸的，送给不同的订阅者都是一模一样的内容，送完就走了；
+而服务号是每周末来家里打扫卫生的清洁阿姨，给每一位顾客的家提供<strong>个性化服务</strong>，打扫你家和打扫别人家肯定是完全不同的工作场景。</p>
+<p><img src="/article_images/mobile/wechat/%E8%AE%A2%E9%98%85%E5%8F%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%8F%B7%E5%AF%B9%E6%AF%94%E4%B8%BE%E4%BE%8B.jpg" alt=""></p>
+<h2 id="那么我们这个水果店应该选哪种呢">那么我们这个水果店应该选哪种呢？</h2>
+<p>分析一下我们小店的特点：</p>
+<ol>
+<li>为用户提供水果报价，<strong>功能比较简单</strong>，暂时不会提供“订制水果”这种个性需求。</li>
+<li>因为水果的价格和天气、运输、库存情况有关联，价格波动比较大，并且有时候我们会发布促销信息，所以对<strong>信息的时效性要求比较高</strong></li>
+</ol>
+<p>因此选择“<strong>订阅号</strong>”更合适。</p>
+<h2 id="登记详细信息">登记详细信息</h2>
+<p>注意<strong>一旦确定公众号的类型以后就不可以更改了</strong>！</p>
+<p>先不要提交，可以分别看看订阅号和服务号都要填哪些资料。</p>
+<p><img src="/article_images/video.png" alt="注册-登记资料"></p>
+<h1 id="认证公众号">认证公众号</h1>
+<p>成功登录微信公众平台后，建议你对公众号进行<code>微信认证</code>。就是让第三方的资质认证机构来审核下你的公司信息，然后颁发一个可信赖的证明。</p>
+<p>那么经过<code>微信认证</code>后的公众号和未认证的公众号对比起来有哪些优势呢？</p>
+<ul>
+<li>首先，在用户搜索你的公众号的时候，如果和其他的公众号有相似名称，你的后面会带个<strong>认证的图标</strong>，这样在一堆竞争者中显得更加可信。
+<img src="/article_images/mobile/wechat/%E5%B7%B2%E8%AE%A4%E8%AF%81%E5%85%AC%E4%BC%97%E5%8F%B7.png" alt=""></li>
+<li>其次，进行公众平台开发的时候，开发者可以拥有<strong>更多的接口权限</strong>。没有认证的公众号，因为平台给的权限很少，基本上做不了什么太高级的功能。这个区别我们在后面的案例中会看到。
+<img src="/article_images/mobile/wechat/%E8%AE%A4%E8%AF%81%E6%9D%83%E9%99%90%E5%AF%B9%E6%AF%94.png" alt=""></li>
+</ul>
+<h2 id="开始认证">开始认证</h2>
+<p>请准备好<code>营业执照</code>、<code>公司公章</code>、公众号管理者的<code>身份证</code>，并且在管理员的微信APP上开通<code>微信支付</code>（绑定一张银行卡），并且用于支付的银行卡上有 300 元余额。每次认证都需要<strong>交纳300元</strong>的认证费用。<strong>有效期是一年，一年后，要再次认证</strong></p>
+<p>然后在左侧的菜单中找到“微信认证”入口。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BE%AE%E4%BF%A1%E8%AE%A4%E8%AF%81.png" alt=""></p>
+<p>下面开始认证，请按照视频里的解说进行</p>
+<p><img src="/article_images/video.png" alt="认证"></p>
+<h1 id="公众号基本设置">公众号基本设置</h1>
+<p>刚注册的公众号还很不完善，需要进行一些基本的设置才可以使用，比如添加图标、简介，加强账号安全保护等。</p>
+<h2 id="添加言简意赅的公众号简介">添加言简意赅的公众号简介</h2>
+<p>用一句话来介绍公众号的特点、用途。注意<strong>字数不要太多，要言之有物，让用户看得明白</strong>。</p>
+<p><img src="/article_images/video.png" alt="设置-功能介绍"></p>
+<h2 id="制作让人印象深刻的图标">制作让人印象深刻的图标</h2>
+<p>一个漂亮的<strong>图标是公众号的门脸</strong>，可以让用户很容易记住你。如果你对自己的设计能力不够自信的话，这里有一个很不错的建议：</p>
+<p><strong>使用纯色的背景，加上一两个对比鲜明的文字或字母</strong></p>
+<p>虽然达不到专业的设计水准，但简洁明了，视觉冲击力很强。</p>
+<p>现在我们花一分钟的时间来使用 <code>photoshop</code> 软件来制作“鲜鲜美美”的logo。</p>
+<p><img src="/article_images/video.png" alt="设置-logo"></p>
+<ol>
+<li>新建一个文档，大小为 <strong>512 x 512</strong> 像素（这样才能保证清晰度）</li>
+<li>将<strong>前景色</strong>设置为绿色（绿色代表大自然中水果的新鲜颜色~）</li>
+<li><strong>填充前景色</strong>到画布中</li>
+<li>添加一个<strong>文字</strong>，“鲜”，然后设置文本的大小，颜色为白色，调整下位置居中</li>
+<li>保存成 <code>jpeg</code> 格式（可以稍微压缩一下）</li>
+<li>图标做完后就可以<strong>上传</strong>了</li>
+</ol>
+<h2 id="获取公众号的二维码">获取公众号的二维码</h2>
+<p>现在我们要将公众号的二维码打印出来，然后做成海报贴在小店门口，让路过的街坊邻居们扫码关注。</p>
+<p>打开“基本设置”，找到二维码下载链接，这里有<strong>几种不同尺寸的图片</strong>，分别对应海报、喷绘、墙面等情况。</p>
+<p><img src="/article_images/video.png" alt="设置-二维码"></p>
+<h2 id="开通公众号的操作保护和风险提醒">开通公众号的操作保护和风险提醒</h2>
+<p>保障账号的安全是很重要的。如果公众号被别有用心的人盗取了密码，然后给你的用户群发垃圾信息；或者偷偷删除一些重要数据，都会给你造成很大的损失。因此，要在两方面提高公众号的安全。</p>
+<ol>
+<li>开通<strong>风险操作保护</strong>：必须<strong>由管理员在微信上点击确认</strong>后才能进行登录、修改账号资料、群发消息等操作。</li>
+<li>开通<strong>风险操作提醒</strong>：任何人在管理后台进行了风险较大的操作，都会<strong>发送提醒给管理员的微信</strong>。</li>
+</ol>
+<p><img src="/article_images/video.png" alt="设置-风险保护-操作提醒"></p>
+<p>我们要养成经常查看登录历史的习惯，防患于未然。在<strong>风险操作记录</strong>里可以查看历史操作记录，一旦看到异常的行为，马上修改密码并检查电脑的安全情况。</p>
+<p><img src="/article_images/video.png" alt="设置-登录记录-修改密码"></p>
+<p>设置完成后，如果有人登陆，管理员的微信上会收到一条通知</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%99%BB%E5%BD%95%E6%8F%90%E9%86%92.png" alt=""></p>
+<h2 id="添加其他的公众号运营人员">添加其他的公众号运营人员</h2>
+<p>有时我们自己不方便操作，或者工作量变大后一个人忙不过来，还可以添加一些信得过的<strong>运营者</strong>。让他们也能登录公众号管理后台，协助管理员完成一些工作。</p>
+<p><img src="/article_images/video.png" alt="设置-添加运营者"></p>
+<h1 id="消息自动回复">消息自动回复</h1>
+<p>好了，接下来我们开始<strong>让公众号和用户之间能产生互动</strong>，也就是<code>消息自动回复</code>。</p>
+<ol>
+<li>用户扫码关注公众号后，公众号会发送一条欢迎语给用户</li>
+<li>用户发送消息给公众号，公众号会根据发送的内容回复用户</li>
+</ol>
+<h2 id="被添加自动回复">被添加自动回复</h2>
+<p>一条好的欢迎语应该包含这两部分：先大致介绍一下公众号的特点，然后给出一些操作提示。例如：</p>
+<blockquote>
+<p>你好，欢迎关注鲜鲜美美，每天给你带来新鲜水果和快乐心情！发送你喜欢吃的水果名（如“苹果”），马上获得今日惊喜价</p>
+</blockquote>
+<p>这句欢迎语在后台的<strong>自动回复</strong>，<strong>被添加自动回复</strong>里添加</p>
+<ol>
+<li>如果没有启用“<strong>自动回复</strong>”，需要先在后台把它启用</li>
+<li>找到“<strong>被添加自动回复</strong>”，然后在下面的输入框里输入一段欢迎语</li>
+<li>在微信上取消关注、然后重新关注，看看是否正常接收到欢迎语</li>
+</ol>
+<p><img src="/article_images/video.png" alt="自动回复-被关注"></p>
+<h2 id="关键词匹配自动回复">关键词匹配自动回复</h2>
+<p>公众号自动回复的一个最重要特性就是可以<code>匹配用户的消息关键词</code>：例如用户发送“榴莲”，公众号就会把榴莲的价格回复给用户。现在我们就来设置一下。</p>
+<ol>
+<li>在“自动回复”功能里，找到“<strong>关键词自动回复</strong>”</li>
+<li>点击“<strong>添加规则</strong>”</li>
+<li>可以添加<strong>一个或多个关键词</strong>。如果某种水果有别名和相关词语，就添加多个关键词，例如用户可能会发送“红富士”、“烟台大苹果”等等来获取“苹果”的价格。</li>
+<li>添加<strong>匹配成功后</strong>回复给用户的内容，这里就是苹果的报价了。</li>
+</ol>
+<p><img src="/article_images/video.png" alt="自动回复-关键词"></p>
+<p><strong>关键词的未全匹配和已全匹配</strong></p>
+<p>注意到在添加关键词的时候，有个选项是<code>未全匹配</code>和<code>已全匹配</code>，这是什么意思呢？举个例子来说明一下，假设现在有两个匹配的关键词分别是<strong>梨子</strong>（已全匹配）和<strong>香蕉</strong>（未全匹配）。</p>
+<p><code>已全匹配</code>就是用户必须发送<strong>完全等于关键词</strong>的消息，发送“我想吃梨子”是不行的，必须发送“梨子”这两个字；
+而<code>未全匹配</code>就是用户发送的消息中只要<strong>包含有关键词</strong>就行了，字多字少没关系，“我要吃香蕉”、“香蕉很好吃”和“香蕉”都可以触发自动回复。</p>
+<p><img src="/article_images/video.png" alt="自动回复-已全匹配和未全匹配"></p>
+<h2 id="未匹配消息自动回复">未匹配消息自动回复</h2>
+<p>万一<strong>没有找到匹配的关键词</strong>怎么办？例如有人恶作剧发送了“馒头”？一个优秀的互联网产品应该在这种异常情况下返回一个明确的提示。</p>
+<ol>
+<li>打开<code>消息自动回复</code>（我觉得这个叫法不太好，容易和左侧菜单的“自动回复”名称混淆，用**“未匹配消息自动回复”**这个词语更贴切一些。微信公众平台有很多这种莫名其妙的词语，请注意区分和理解）</li>
+<li>填写需要回复的内容“对不起，输入有误，请输入一个水果名称”</li>
+</ol>
+<p>不过未匹配的情况下<strong>1个小时内只能自动回复1—2次</strong> ，也就是说即使某个用户频繁地多次发送“馒头”，一小时内只会回复你 1-2 次“对不起，输入有误，请输入一个水果名称”，这应该是为了节约服务器资源吧。</p>
+<p><img src="/article_images/video.png" alt="自动回复-未匹配"></p>
+<h1 id="管理素材与图文消息">管理素材与图文消息</h1>
+<p>前面我们都是回复用户一段简单的<code>文本</code>，这样的几个字看起来<strong>干巴巴</strong>的，如果能够使用图片、视频、音乐等多媒体<code>素材</code>来回复用户那就很<strong>吸引人</strong>了。这一节就来介绍公众号的<code>素材管理</code>功能。</p>
+<p><strong>文本</strong></p>
+<blockquote>
+<p>这里有大长腿妹子妹子在跳舞！快来看啊！</p>
+</blockquote>
+<p><strong>一图胜千言</strong></p>
+<p><img src="/article_images/mobile/wechat/%E5%A4%A7%E9%95%BF%E8%85%BF%E5%8A%A8%E7%94%BB.gif" alt=""></p>
+<h2 id="素材管理">素材管理</h2>
+<p>打开<code>素材管理</code>页面，微信公众号的素材包括这几种形式</p>
+<ul>
+<li><strong>图片</strong></li>
+<li><strong>语音</strong></li>
+<li><strong>视频</strong>（这里主要是指<strong>本地视频</strong>，需要将它们先上传到微信服务器上才能使用)</li>
+<li><strong>图文</strong>（将文本和上面几种素材结合起来的<strong>一篇或多篇图文并茂的文章</strong>）</li>
+</ul>
+<p><img src="/article_images/mobile/wechat/%E7%B4%A0%E6%9D%90%E7%A7%8D%E7%B1%BB.jpg" alt=""></p>
+<h2 id="上传图片和视频">上传图片和视频</h2>
+<p>上传图片操作比较简单，注意文件大小不要超过 5M。</p>
+<p><img src="/article_images/video.png" alt="素材-图片"></p>
+<p>上传视频的时候要注意，<strong>上传后需要等待微信官方审核，时间大概在10-20 分钟左右，在此期间内，无法使用这个视频素材</strong>。</p>
+<p><img src="/article_images/video.png" alt="素材-视频"></p>
+<h2 id="新建图文消息">新建图文消息</h2>
+<p>有了前面上传的图片和视频素材，下面我们来使用它们新建一个<code>图文消息</code>，内容包括苹果价格、苹果的营养价值、削苹果的教学视频等几个部分。</p>
+<p><img src="/article_images/mobile/wechat/%E5%9B%BE%E6%96%87%E9%A2%84%E8%A7%88.png" alt=""></p>
+<p>首先新建图文，添加标题，调整字号大小</p>
+<p><img src="/article_images/video.png" alt="素材-图文-新建图文"></p>
+<p>可以支持<code>在线视频</code>（由腾讯视频提供），只需要搜索需要的视频播放地址，然后复制就可以了。（除了在线视频，你还可以使用QQ音乐提供的在线音乐播放）</p>
+<p><img src="/article_images/video.png" alt="素材-图文-在线视频"></p>
+<p>插入素材库里的视频（之前上传的），注意，如果还在审核期的话是无法使用的，请稍等一会。</p>
+<p><img src="/article_images/video.png" alt="素材-图文-插入视频"></p>
+<p>在文章的最后，插入一张图片（来自素材库），这是一张我们公众号的二维码，可以引导阅读者扫码关注。</p>
+<p><img src="/article_images/video.png" alt="素材-图文-二维码图片"></p>
+<p>给图文消息添加一个<code>封面</code>图片，否则会提示内容不完整</p>
+<p><img src="/article_images/video.png" alt="素材-图文-封面"></p>
+<p>图文消息在正式使用之前，我们应该提前检查下在微信上的显示效果，比如是不是有格式错乱、图片丢失、错别字等问题。一篇好的图文应该语言通顺、排版美观，这样用户才会愿意一直订阅下去。预览包括了群发后、分享给好友、分享到朋友圈等几种场景。</p>
+<p>除了使用网页上的预览工具外，还可以直接把图文的<code>临时地址</code>发到微信上，在真实设备上预览。</p>
+<p><img src="/article_images/video.png" alt="素材-图文-预览"></p>
+<p>一个图文消息可以包含<code>多篇文章</code>，我们可以点<code>左侧</code>图文列表下面的<code>加号</code>，添加更多的图文，预览一下会发现它们会将列表的形式展示。</p>
+<p><img src="/article_images/video.png" alt="素材-图文-多篇"></p>
+<h2 id="用新添加的图文消息作为自动回复">用新添加的图文消息作为自动回复</h2>
+<p>好了，这篇关于“苹果”的图文消息已经准备好，现在用它作为一个自动回复来响应用户的消息。</p>
+<ol>
+<li>进入“自动回复”的“关键词自动回复”，找到某个关键词，点击小箭头展开关键词设置界面</li>
+<li>点击一下“图文”这个图标</li>
+<li>在弹出的“选择素材”窗口中，选择刚刚添加的新的图文</li>
+<li>完成后可以看到“文本”和“图文”后面有个数字，例如<code>文本(1)和图文(1)</code>，表示目前这个关键词对应的自动回复有文本和图文各一条</li>
+</ol>
+<p><img src="/article_images/video.png" alt="素材-图文-回复图文"></p>
+<h2 id="删除旧的文本自动回复">删除旧的文本自动回复</h2>
+<p>现在我们在手机上发送“苹果”这个关键词，多操作几次后会发现一个奇怪的现象——公众号会<code>随机回复旧的文本和新的图文</code>。奇怪，不是用新的图文<strong>替代</strong>旧的文本吗？</p>
+<p>微信的策略是<code>允许保留多条回复内容</code>的，如果某个关键词匹配下添加了文本、图文、视频……等等几个回复内容，公众号会<code>自动挑选一个</code>回复用户。
+因此我们需要把之前的旧的文本回复删除掉，只保留一条图文回复即可。</p>
+<p><img src="/article_images/video.png" alt="素材-图文-删除旧文本回复"></p>
+<h1 id="消息管理与手动回复消息">消息管理与手动回复消息</h1>
+<p>用户发送给公众号的每一条消息都会被系统记录下来（文本消息可以保留5天，其他的图片、音频等消息保留3天，到期后自动删除）。<code>消息管理</code>功能就是用于查看历史消息记录的。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B6%88%E6%81%AF%E7%AE%A1%E7%90%86%E5%88%97%E8%A1%A8.jpg" alt=""></p>
+<p>另外，前面的场景中不管是文本，还是图文，都是公众号对用户<code>自动回复</code>。那有没有可能<code>手动回复</code>个性化的内容呢？比如下图中，这些消息就不是“自动回复”里面的。</p>
+<p><img src="/article_images/mobile/wechat/%E6%89%8B%E5%8A%A8%E5%9B%9E%E5%A4%8D%E7%94%A8%E6%88%B7.png" alt=""></p>
+<p>为什么要手动回复用户呢？</p>
+<p>因为<strong>用户的消息是最有价值的数据</strong>，我们可以向某个用户发送特定的通知，或者从大量消息中找到商机。</p>
+<p>例如现在西瓜还没有上市，但是已经有人在询问西瓜的价格了。我们不应该置之不理，而应该及时通知他西瓜还没有上市，并且在上市后马上通知他过来采购，这样用户会觉得小店的服务非常贴心，销售额就能蒸蒸日上了。</p>
+<p>又比如某个用户发送了“白菜”（明明我们是卖水果的好吧），他不一定是恶意的，说不定是一个热心的老顾客<strong>希望你的水果店以后能卖蔬菜，这样他就不用跑去别的蔬菜店了</strong>，如果经常看到类似的消息，说明大家的呼声很强烈，可以考虑把水果店的经营范围扩展到蔬菜了。</p>
+<p><img src="/article_images/mobile/wechat/%E6%97%A0%E5%9B%9E%E5%A4%8D%E4%B8%8E%E6%89%8B%E5%8A%A8%E5%9B%9E%E5%A4%8D.png" alt=""></p>
+<p>下面我们就来从<code>消息管理</code>里挖掘有价值的信息，然后手动回复。</p>
+<ol>
+<li>打开公众号后台的“<strong>消息管理</strong>”</li>
+<li>找到需要手动回复的消息</li>
+<li>回复用户</li>
+<li>稍后这个用户的微信上就能看到公众号回复的消息了</li>
+</ol>
+<p><img src="/article_images/video.png" alt="消息管理-手动回复"></p>
+<h1 id="自定义菜单">自定义菜单</h1>
+<p>如果用户有其他的需求，比如想“获取联系方式”、“获取小店地址”、“获取所有水果优惠”等等，虽然我们也可以像前面一样添加关键词自动回复，但是这样实在是太麻烦了，而且<code>让用户去记忆太多命令是做产品的大忌</code>。</p>
+<p>因此我们可以使用微信公众平台提供的<code>自定义菜单</code>功能，<strong>把一些复杂的查询命令进行简化</strong>，让用户不需要输入文字，直接<strong>点一下菜单</strong>就可以了。</p>
+<p><img src="/article_images/mobile/wechat/%E7%94%A8%E8%8F%9C%E5%8D%95%E4%BB%A3%E6%9B%BF%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4.jpg" alt=""></p>
+<h2 id="启用自定义菜单">启用自定义菜单</h2>
+<p>如果公众号后台左侧没有显示“自定义菜单”这个链接，需要手动添加一下，在“<strong>添加功能插件</strong>”里面。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95.jpg" alt=""></p>
+<p>添加功能插件后，要<strong>启用自定义菜单</strong>。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-启用"></p>
+<h2 id="准备好菜单动作对应的图文消息">准备好菜单动作对应的图文消息</h2>
+<p>前面提到有“获取联系方式”、“获取小店地址”等等多个需求，我们要分别制作它们的图文，然后再添加菜单去绑定它们。</p>
+<p><strong>注意</strong></p>
+<p>启用了自定菜单后，在公众号的对话界面中原来的<code>输入框区域</code>会变成一个<code>菜单区域</code>。虽然很多人都知道可以点击左下角的那个<code>菜单/输入切换</code>按钮，但是一些年龄较大的用户可能因为找不到这个按钮而产生困惑，怎么突然找不到输入框了？我怎么查“水果报价”呢？</p>
+<p><img src="/article_images/mobile/wechat/%E8%BE%93%E5%85%A5-%E8%8F%9C%E5%8D%95%E5%88%87%E6%8D%A2%E6%8C%89%E9%92%AE" alt=""></p>
+<p>我们的产品做任何升级和改进，一定要尽可能<code>兼容原来的操作</code>，要平滑过渡，以免流失宝贵的用户资源，实在不能兼容，要<code>给出新操作方法的帮助信息</code>。
+所以我们要有一个菜单叫“水果报价”，点击后会显示一篇图文，提示用户可以点击<code>菜单/输入切换</code>小图标进行切换。</p>
+<p>添加图文的方法前面已经讲解过了，这里正好可以复习一下。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-添加图文"></p>
+<h2 id="添加菜单">添加菜单</h2>
+<p>接着就可以添加<code>主菜单</code>和<code>子菜单</code>了，主菜单显示在微信聊天界面底部的，目前主菜单最多能显示3个项目，另外每个主菜单可以拥有5个二级子菜单。注意控制字数，以免显示不全。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-添加菜单"></p>
+<h2 id="拖动菜单进行排序">拖动菜单进行排序</h2>
+<p>添加菜单后，如果对排列的顺序不满意，可以拖动重新排序。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-排序"></p>
+<p>可以随时预览一下自定义菜单的效果，以免正式发布后影响用户正常操作。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-预览"></p>
+<h2 id="绑定菜单点击动作和图文">绑定菜单点击动作和图文</h2>
+<p>好了，现在菜单调整好了，图文也准备ok，是时候把它们绑定在一起了。</p>
+<p>点击某个菜单后，在右侧的<code>菜单内容</code>中选择<code>发送消息</code>（我觉得这个“菜单内容”应该叫“菜单点击动作”更贴切——在公众平台里，有不少这样的莫名其妙的名词，大家一定要搞清楚）。
+然后点击<code>从素材库中选择</code>，分别选择刚添加的几个图文。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-绑定图文-发布"></p>
+<h2 id="测试">测试</h2>
+<p>菜单保存提交后，大概15分钟后，就会在所有关注公众号的用户的微信上生效。</p>
+<p><img src="/article_images/video.png" alt="自定义菜单-测试"></p>
+<h1 id="用户分组">用户分组</h1>
+<p>当公众号的关注者越来越多，为了便于管理和进行个性化服务，我们需要<strong>根据用户的特征进行分组</strong>。比如爱吃苹果的、爱吃香蕉的，等等。这就要用到<code>用户管理</code>里的<code>用户标签</code>功能了。</p>
+<p><img src="/article_images/mobile/wechat/%E4%BA%BA%E7%BE%A4%E7%88%B1%E5%A5%BD.png" alt=""></p>
+<h2 id="新建一些标签">新建一些标签</h2>
+<p>首先新建若干个特征<code>标签</code>，例如爱吃苹果、爱吃香蕉。</p>
+<p><img src="/article_images/video.png" alt="用户管理-添加标签"></p>
+<p><strong>注意</strong> 用户的<code>性别</code>和<code>地区</code>不需要自己去新建标签，微信会自动标记用户的这两个属性，在需要的时候我们直接使用就可以了。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BE%AE%E4%BF%A1%E7%94%A8%E6%88%B7%E8%B5%84%E6%96%99.png" alt=""></p>
+<h2 id="给用户打标签">给用户打标签</h2>
+<p>添加完需要的标签后，就可以为用户贴上不同的标签了，一个用户可以有多个标签，也可以一次性选中多个用户后，批量打标签。</p>
+<p><img src="/article_images/video.png" alt="用户管理-打标签"></p>
+<h2 id="筛选用户">筛选用户</h2>
+<p>在右侧的标签区域中，点击某个标签，可以只列出符合条件的用户</p>
+<p><img src="/article_images/video.png" alt="用户管理-筛选用户"></p>
+<h1 id="群发消息">群发消息</h1>
+<p>节假日到了，我们想搞一些促销活动来回馈新老用户，以前的老办法是打电话、发短信通知，效率很低。但现在有了微信，我们可以使用<code>群发消息</code>功能，把消息快速推送给所有用户。</p>
+<p>还记得前面学过的吗？<strong>订阅号每天可以群发一条消息，服务号每个月只能发4条消息。</strong></p>
+<p>群发消息的时候，可以发给所有人，也可以通过标签来筛选，只发给一部分人。群发消息可以使用<code>文本</code>、也可以使用素材管理中的<code>图片</code>、<code>图文</code>、<code>视频</code>等等。</p>
+<p><img src="/article_images/video.png" alt="群发消息"></p>
+<p>不久后就可以在微信上收到这条消息了。</p>
+<p><img src="/article_images/mobile/wechat/%E6%94%B6%E5%88%B0%E7%BE%A4%E5%8F%91%E6%B6%88%E6%81%AF.png" alt=""></p>
+<h1 id="总结">总结</h1>
+<p>案例1就介绍到这里了。这一章主要是为下一章正式开发做准备。现在回忆一下，你对下面列出的这些概念理解得怎么样了？如果印象仍然很模糊，请马上回到有关章节去复习。这些概念很重要，<strong>千万不要似懂非懂</strong>，否则在后面的课程学习中你会遇到很大的阻力</p>
+<ul>
+<li>自动回复</li>
+<li>关键词匹配</li>
+<li>素材</li>
+<li>图文消息</li>
+<li>自定义菜单</li>
+<li>自定义菜单-菜单内容（一个有歧义的词，叫“点击动作”会更好）</li>
+<li>用户标签</li>
+<li>群发消息</li>
+<li>订阅号与服务号</li>
+</ul>
+<p>顺便再啰嗦一句，所以如果你不需要一些高级功能的话，<strong>学完本章完全可以开始基于微信公众号进行创业了</strong>~ 只要你的服务好、内容质量不错，并且一直坚持下去，要实现成功并不需要特别高深的技术。</p>
+<p>当然如果你想基于微信公众平台开发一些高级的功能，那就赶快进入下一章吧。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/wechat-develop-with-examples-chapter-1/" title="最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号" target="_blank" rel="external">https://my101du.github.io/1/01/wechat-develop-with-examples-chapter-1/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-2/" title="最好懂的微信公众平台开发教程(2)——电影查询助手"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/axure-with-examples/"
+                    title="最好懂的Axure产品原型设计教程"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

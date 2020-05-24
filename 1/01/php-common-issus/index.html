@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        PHP 开发中常见的一些问题 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="进行微信开发时，捕获HTTP_RAW_POST_DATA数据报错 Php 5.6 &amp;ldquo;Automatically populating $HTTP_RAW_POST_DATA is deprecated&amp;rdquo; 修改php.ini，取消注释 always_populate_raw_post_data = -1 数字 整数处理 转换成整数 intval(3.6) // 3" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>PHP 开发中常见的一些问题 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="PHP 开发中常见的一些问题" />
+<meta property="og:description" content="进行微信开发时，捕获HTTP_RAW_POST_DATA数据报错 Php 5.6 &ldquo;Automatically populating $HTTP_RAW_POST_DATA is deprecated&rdquo; 修改php.ini，取消注释 always_populate_raw_post_data = -1 数字 整数处理 转换成整数 intval(3.6) // 3" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/php-common-issus/" />
+
+<meta itemprop="name" content="PHP 开发中常见的一些问题">
+<meta itemprop="description" content="进行微信开发时，捕获HTTP_RAW_POST_DATA数据报错 Php 5.6 &ldquo;Automatically populating $HTTP_RAW_POST_DATA is deprecated&rdquo; 修改php.ini，取消注释 always_populate_raw_post_data = -1 数字 整数处理 转换成整数 intval(3.6) // 3">
+
+<meta itemprop="wordCount" content="4311">
+
+
+
+<meta itemprop="keywords" content="php," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PHP 开发中常见的一些问题"/>
+<meta name="twitter:description" content="进行微信开发时，捕获HTTP_RAW_POST_DATA数据报错 Php 5.6 &ldquo;Automatically populating $HTTP_RAW_POST_DATA is deprecated&rdquo; 修改php.ini，取消注释 always_populate_raw_post_data = -1 数字 整数处理 转换成整数 intval(3.6) // 3"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-php-common-issus" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/php-common-issus/"
+    >PHP 开发中常见的一些问题</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/php/"> php </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/php-common-issus/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4311字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h2 id="进行微信开发时捕获http_raw_post_data数据报错">进行微信开发时，捕获<code>HTTP_RAW_POST_DATA</code>数据报错</h2>
+<blockquote>
+<p>Php 5.6 &ldquo;Automatically populating $HTTP_RAW_POST_DATA is deprecated&rdquo;</p>
+</blockquote>
+<p>修改<code>php.ini</code>，取消注释</p>
+<pre><code class="language-shell">always_populate_raw_post_data = -1
+</code></pre>
+<h1 id="数字">数字</h1>
+<h2 id="整数处理">整数处理</h2>
+<p>转换成整数  intval(3.6)  // 3
+四舍五入取整  round(3.6) //4
+向上取整     ceil(3.1) //4
+向下取整     floor(3.9) //3</p>
+<h1 id="一些技巧">一些技巧</h1>
+<h2 id="stdclass-转-array">stdClass 转 array</h2>
+<p>用 <code>(array) ($product-&gt;fields)</code> 会报错 502， 需要用下面的办法来转换</p>
+<pre><code class="language-php">json_decode(json_encode($product-&gt;fields), true);
+</code></pre>
+<h2 id="对象的成员名含有空格">对象的成员名含有空格</h2>
+<p>有时候从外部获取到的数据，某个对象的成员名含有空格（一般来自一些 windows / sap 服务器），用<code>{}</code>包裹即可</p>
+<pre><code class="language-php">$user = new User();
+
+//error
+echo $user-&gt;Full Name
+
+echo $user-&gt;{'Full Name'}
+</code></pre>
+<h2 id="对象的成员名使用变量">对象的成员名使用变量</h2>
+<p>例如有时候为了提高效率，会把一些<strong>成员名称</strong>存入变量中。当调用时，可以用下面的方法</p>
+<pre><code class="language-php">echo $result-&gt;$thead;
+
+//如果是一个数组元素，必须使用花括号, 否则变量会识别错误
+echo $result-&gt;{$thead['name']};
+
+//还有网络上的说这个方法，但是试过得到空白
+$result-&gt;{'$thead'}
+</code></pre>
+<h2 id="快速权限判断-类似-js-的逻辑运算符">快速权限判断, 类似 js 的逻辑运算符</h2>
+<pre><code class="language-php">$perm_edit = true;
+$perm_edit &amp;&amp; $grid-&gt;setColumn();
+</code></pre>
+<h1 id="函数">函数</h1>
+<h2 id="把函数名作为参数传入">把函数名作为参数传入</h2>
+<pre><code class="language-php">function someFunc($a)
+{
+    echo $a;
+}
+
+function callFunc($name)
+{
+    $name('funky!');
+}
+
+callFunc('someFunc');
+</code></pre>
+<h1 id="字符串">字符串</h1>
+<p>strcmp</p>
+<h2 id="url编码">URL编码</h2>
+<p>参考 <a href="https://aotu.io/notes/2017/06/15/The-mystery-of-URL-encoding/index.html">https://aotu.io/notes/2017/06/15/The-mystery-of-URL-encoding/index.html</a></p>
+<p><strong>php 中 rawurlencode() 和 urlencode()</strong></p>
+<h2 id="替换-nbsp">替换 <code>&amp;nbsp;</code></h2>
+<p>使用下面的代码，无效，还是会留下来</p>
+<pre><code class="language-php">str_replace(&quot;&amp;nbsp;&quot;, &quot;&quot;, $str);
+</code></pre>
+<p><a href="https://stackoverflow.com/questions/9870974/replace-nbsp-characters-that-are-hidden-in-text">https://stackoverflow.com/questions/9870974/replace-nbsp-characters-that-are-hidden-in-text</a></p>
+<pre><code class="language-php">$string = htmlentities($content, null, 'utf-8');
+$content = str_replace(&quot;&amp;nbsp;&quot;, &quot;&quot;, $string);
+$content = html_entity_decode($content);
+</code></pre>
+<h2 id="查找字符串应用">查找字符串应用</h2>
+<pre><code class="language-php">$ds_sequence = '12.6.12';
+    
+//  echo strrpos($ds_sequence, '.');
+    
+    echo strrpos($ds_sequence, '.') ? '.' : '';
+    
+    
+//  echo substr($ds_sequence, 0, strrpos($ds_sequence, '.'));
+</code></pre>
+<h1 id="数组">数组</h1>
+<h2 id="合并-增加元素等">合并、 增加元素等</h2>
+<pre><code class="language-php">// array_push 会改变原数组 $toEmails
+array_push($toEmails, $tr['ds_human_resource_request_email']);
+
+// 而 array_merge 需要重新赋值
+$toEmails = array_merge($toEmails, array_column($wos, 'ds_technician_email'));
+</code></pre>
+<h2 id="数组排序">数组排序</h2>
+<p><a href="http://www.cnblogs.com/sunxiaorui/p/4387273.html">http://www.cnblogs.com/sunxiaorui/p/4387273.html</a></p>
+<p><code>rsort($array)</code> 直接对数组进行反向排序，返回 bool 值，原数组已经被改变
+<code>$new array = array_reverse($array)</code> 对数据排序并返回赋值给另一个变量</p>
+<p>PHP的一维数组排序函数：</p>
+<p>sort  对数组的值按照升序排列(rsort降序)，不保留原始的键</p>
+<p>ksort 对数组的键按照升序排列(krsort降序) 保留键值关系</p>
+<p>asort 对数组的值按照升序排列(arsort降序)，保留键值关系</p>
+<p>php二维数组排序方法(array_multisort usort)</p>
+<p>一维数组排序可以使用asort、ksort等一些方法进程排序，相对来说比较简单。二维数组的排序怎么实现呢？使用array_multisort和usort可以实现.</p>
+<p>例如像下面的数组：</p>
+<p>复制代码代码如下:</p>
+<p>$users = array(
+array(&lsquo;name&rsquo; =&gt; &lsquo;tom&rsquo;, &lsquo;age&rsquo; =&gt; 20)
+, array(&lsquo;name&rsquo; =&gt; &lsquo;anny&rsquo;, &lsquo;age&rsquo; =&gt; 18)
+, array(&lsquo;name&rsquo; =&gt; &lsquo;jack&rsquo;, &lsquo;age&rsquo; =&gt; 22)
+);
+希望能按照age从小到大进行排序。笔者整理了两个方法出来，分享给大家。</p>
+<p>1、使用array_multisort</p>
+<p>使用这个方法，会比较麻烦些，要将age提取出来存储到一维数组里，然后按照age升序排列。具体代码如下：</p>
+<p>复制代码代码如下:</p>
+<p>$ages = array();
+foreach ($users as $user) {
+$ages[] = $user[&lsquo;age&rsquo;];
+}
+array_multisort($ages, SORT_ASC, $users);</p>
+<p>执行后，$users就是排序好的数组了，可以打印出来看看。如果需要先按年龄升序排列，再按照名称升序排列，方法同上，就是多提取一个名称数组出来，最后的排序方法这样调用：</p>
+<p>复制代码代码如下:</p>
+<p>array_multisort($ages, SORT_ASC, $names, SORT_ASC, $users);
+2、使用usort</p>
+<p>使用这个方法最大的好处就是可以自定义一些比较复杂的排序方法。例如按照名称的长度降序排列：</p>
+<p>复制代码代码如下:</p>
+<p>usort($users, function($a, $b) {
+$al = strlen($a[&lsquo;name&rsquo;]);
+$bl = strlen($b[&lsquo;name&rsquo;]);
+if ($al == $bl)
+return 0;
+return ($al &gt; $bl) ? -1 : 1;
+});
+这里使用了匿名函数，如果有需要也可以单独提取出来。其中$a, $b可以理解为$users数组下的元素，可以直接索引name值，并计算长度，而后比较长度就可以了。</p>
+<h2 id="一个没有key的数组用它的value做key">一个没有key的数组，用它的value做key</h2>
+<p>平时这种用法是 一个 $key  一个 $value  分别做 key 和 value, 当然也可以使用相同的</p>
+<p>例如</p>
+<pre><code class="language-php">$a = ['a', 'b', 'c'];
+
+//得到 ['a'=&gt;'a', 'b'=&gt;'b', 'c'=&gt;'c']
+$final_array = array_combine($a, $a);
+</code></pre>
+<h2 id="多维数组遍历">多维数组遍历</h2>
+<pre><code class="language-php">function arr_foreach ($arr) {
+    static $data;
+    if (!is_array ($arr)) {
+        return $data;
+    }
+    foreach ($arr as $key =&gt; $val ) {
+        if (is_array ($val)) {
+            arr_foreach ($val);
+        } else {
+            $data[]=$val;
+        }
+    }
+    return $data;
+}
+$data=arr_foreach($arr);
+</code></pre>
+<h2 id="交集">交集</h2>
+<p><code>array_intersect(arr1, arr2,...)</code></p>
+<p>返回结果：一个数组，其元素必须是存在 arr1 中，并且能够在其他 array 里找到</p>
+<p><img src="/media/15490410133069/15156583804180.jpg" alt=""></p>
+<pre><code class="language-php">$array1 = array(&quot;a&quot; =&gt; &quot;green&quot;, &quot;red&quot;, &quot;blue&quot;);
+$array2 = array(&quot;b&quot; =&gt; &quot;green&quot;, &quot;yellow&quot;, &quot;red&quot;);
+$result = array_intersect($array1, $array2);
+print_r($result);
+
+/**
+Array
+(
+    [a] =&gt; green
+    [0] =&gt; red
+)
+*/
+</code></pre>
+<h2 id="差异">差异</h2>
+<p><code>array_diff(arr1, arr2,...)</code> 返回一个数组，所有元素只在第一个数组中，但不存在其他任意数组中</p>
+<p><img src="/media/15490410133069/15156586331498.jpg" alt=""></p>
+<pre><code class="language-php">$array1 = array(&quot;a&quot; =&gt; &quot;green&quot;, &quot;red&quot;, &quot;blue&quot;, &quot;red&quot;);
+$array2 = array(&quot;b&quot; =&gt; &quot;green&quot;, &quot;yellow&quot;, &quot;red&quot;);
+$result = array_diff($array1, $array2);
+
+print_r($result);
+
+/**
+Array
+(
+    [1] =&gt; blue
+)
+*/
+</code></pre>
+<p><strong>坑</strong></p>
+<p><a href="https://stackoverflow.com/questions/19830585/why-array-diff-gives-array-to-string-conversion-error">https://stackoverflow.com/questions/19830585/why-array-diff-gives-array-to-string-conversion-error</a></p>
+<p><a href="http://www.04007.cn/article/278.html">http://www.04007.cn/article/278.html</a></p>
+<p>无法比较多维数组， 会抛出错误，只适用于一维数组</p>
+<blockquote>
+<p>array to string conversion</p>
+</blockquote>
+<p><strong>扩展</strong></p>
+<p><a href="https://www.jianshu.com/p/c9db39ed9983">https://www.jianshu.com/p/c9db39ed9983</a></p>
+<p>array_diff() - 比较数组的键值，返回差集构成的数组；
+array_diff_key() - 比较数组的键名，返回差集构成的数组；
+array_diff_assoc() - 比较数组的键名和键值，返回差集构成的数组；
+array_intersect() - 比较数组的键值，返回交集构成的数组；
+array_intersect_key() - 比较数组的键名，返回交集构成的数组；
+array_intersect_assoc() - 比较数组的键名和键值，返回交集构成的数组；</p>
+<h2 id="从一个按数字排序的二维数组中选择某个元素也是数组的某个字符串字段名作为它的索引">从一个按数字排序的二维数组中，选择某个元素（也是数组）的某个字符串字段名作为它的索引</h2>
+<p>例如</p>
+<pre><code class="language-php">$a = array(
+    0 =&gt; array('key'=&gt;2, 'name'=&gt;'Eric'),
+    1 =&gt; array('key'=&gt;4, 'name'=&gt;'Tim'),
+    2 =&gt; array('key'=&gt;5, 'name'=&gt;'Bob'),
+)
+
+// 使用 array array_column ( array $input , mixed $column_key [, mixed $index_key = NULL ] )
+
+// 如果仅指定第二个参数，不指定第三个, 表示“index 不变”，只留下指定的 column
+$b = array_column($a, 'name');
+$a = array(
+    0 =&gt; 'Eric',
+    1 =&gt; 'Tim',
+    2 =&gt; 'Bob'
+)
+
+// 如果第二个参数为 NULL，表示把整个数组的全部 column 取出, 第三个参数就是“以哪个 column 作为 新 的index&quot;
+$b = array_column($a, NULL, 'key')
+$b = array(
+    2 =&gt; array('key'=&gt;2, 'name'=&gt;'Eric'),
+    4 =&gt; array('key'=&gt;4, 'name'=&gt;'Tim'),
+    5 =&gt; array('key'=&gt;5, 'name'=&gt;'Bob'),
+)
+</code></pre>
+<h2 id="key-统一转成大小写">key 统一转成大、小写</h2>
+<pre><code class="language-php">$input_array = array(&quot;FirSt&quot; =&gt; 1, &quot;SecOnd&quot; =&gt; 4);
+print_r(array_change_key_case($input_array, CASE_UPPER));
+</code></pre>
+<h2 id="从复杂的多-key-数组里取某一个-key-构成新的一维数组然后去重">从复杂的多 key 数组里，取某一个 key 构成新的一维数组，然后去重</h2>
+<pre><code class="language-php">$allStatus = array_unique(array_column(json_decode($records), 'ds_test_request_status'));
+</code></pre>
+<h1 id="表单相关">表单相关</h1>
+<h2 id="变量名中的空格点号自动转换成下划线">变量名中的空格、点号自动转换成下划线</h2>
+<p>在表单中，有时候为了方便（例如导出时保持名称一致，或者别的原因），可能会使用<strong>带空格/点号的字段名</strong>，例如 <code>&lt;input type=''text&quot; name=&quot;first name&quot;&gt;</code>，里面<strong>first name</strong>这样的。</p>
+<p>当提交表单后，会得到一个被自动把空格转换成下划线了的变量<code>$_POST['first_name']</code>，（<strong>first_name</strong>），如果用原来空格的名称去读会得到空的数据，这点要注意</p>
+<p>可以查到是因为默认禁止了使用这样的变量名</p>
+<p><a href="https://stackoverflow.com/questions/17092398/post-spaces-converted-in-underscores">https://stackoverflow.com/questions/17092398/post-spaces-converted-in-underscores</a>
+<a href="https://bugs.php.net/bug.php?id=40000">https://bugs.php.net/bug.php?id=40000</a>
+<a href="http://fr.php.net/manual/en/language.variables.predefined.php#64336">http://fr.php.net/manual/en/language.variables.predefined.php#64336</a></p>
+<h1 id="一些坑">一些坑</h1>
+<h2 id="unset-掉数组中的一些元素后转成-json-会出现异常情况">unset 掉数组中的一些元素后，转成 json 会出现异常情况</h2>
+<p>unset 掉数组后，原来的索引被破坏，“数组”变成“字典”？</p>
+<p>需要重建索引</p>
+<pre><code>$arr = ['a', 'b', 'c'];
+unset($arr[1]);
+
+$newArr = array_values($arr);
+</code></pre>
+<h2 id="array_push-会覆盖掉相同的数据">array_push 会覆盖掉“相同”的数据</h2>
+<pre><code class="language-php">$arr_1 = [['aa', 'bb'], ['bb','cc']];
+
+array_push($arr_1, ['bb', 'cc']);
+print_r($arr_1);
+</code></pre>
+<p>输出</p>
+<pre><code>array(3) {
+  [0]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(2) &quot;aa&quot;
+    [1]=&gt;
+    string(2) &quot;bb&quot;
+  }
+  [1]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(2) &quot;bb&quot;
+    [1]=&gt;
+    string(2) &quot;cc&quot;
+  }
+  [2]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(2) &quot;bb&quot;
+    [1]=&gt;
+    string(2) &quot;cc&quot;
+  }
+}
+</code></pre>
+<h1 id="错误处理">错误处理</h1>
+<h2 id="nginx-504-gateway-time-out-问题处理进程僵死">nginx 504 Gateway Time-out 问题处理（进程僵死）</h2>
+<p><a href="http://blog.51yip.com/apachenginx/1475.html">http://blog.51yip.com/apachenginx/1475.html</a></p>
+<h2 id="500-错误">500 错误</h2>
+<blockquote>
+<p>This page isn’t working
+<a href="http://www.sample.org">www.sample.org</a> is currently unable to handle this request.
+HTTP ERROR 500</p>
+</blockquote>
+<p>打开 php.ini 的 error_reporting 没有输出错误。。。</p>
+<p>后来打开 nginx 的 <code>error_log  logs/error.log;</code>, 重启 nginx。
+重新复现错误，检查文件<code>/usr/local/nginx/logs/error.log;</code>发现问题：</p>
+<blockquote>
+<p>PHP message: PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate     73728 bytes) in /Users/projects/vendor/composer/ClassLoade    r.php on line 444&rdquo; while reading response header from upstream, client: 127.0.0.1, server: <a href="http://www.sample.org">www.sample.org</a>, request: &ldquo;GET /test_odata HTTP/1.1&rdquo;, upstream: &ldquo;fastcgi://127.0.0.1:9000&rdquo;, ho    st: &ldquo;pf.pulse.com&rdquo;</p>
+</blockquote>
+<h2 id="php提示-maximum-execution-time-of-30-seconds-exceeded错误的解决办法">php提示 Maximum execution time of 30 seconds exceeded&hellip;错误的解决办法</h2>
+<p>做一些耗时较长的处理时（例如网页抓取，大文件/字符串处理），出现如下这个错误提示：</p>
+<blockquote>
+<p>Fatal error: Maximum execution time of 30 seconds exceeded in &hellip;&hellip;</p>
+</blockquote>
+<p>意思是说脚本执行时间超过了30秒的上限。处理这个错误的方法基本上有三种。</p>
+<p><strong>修改php的配置文件 php.ini 文件</strong></p>
+<p>找到 php.ini 这个文件，然后在这个文件中找到：</p>
+<pre><code class="language-shell">#单位是秒 也可以直接修改为：max_execution_time=0; 无限制
+max_execution_time = 30 ;
+</code></pre>
+<p>修改完后需要重启一下 php 服务。</p>
+<p><strong>使用 ini_set() 函数</strong></p>
+<p>如果不能够修改 php.ini （流入使用虚拟主机），使用ini_set()这个函数来改变最大执行时间限制值，在程序的顶部加入如下代码：</p>
+<pre><code class="language-php">ini_set('max_execution_time','100');
+</code></pre>
+<p>也可以设置为0，那么就是不限制执行的时间。</p>
+<p><strong>使用set_time_limit() 函数</strong></p>
+<p>在程序的顶部加入：</p>
+<pre><code class="language-php">set_time_limit(100);
+</code></pre>
+<p>则表示最大执行时间设置为了100秒，当然也可以将参数设置为0，意思同上。</p>
+<p>set_time_limit 函数说明：</p>
+<p>默认值为30秒，或者是在php.ini的max_execution_time被定义的值，如果此值存在。当此函数被调用时， set_time_limit()会从零开始重新启动超时计数器。换句话说，如果超时默认是30秒，在脚本运行了了25秒时调用 set_time_limit(20)，那么，脚本在超时之前可运行总时间为45秒。</p>
+<p>当php运行于安全模式下时，此功能不能生效。除了关闭安全模式（在 php.ini 中将 safe_mode 设置为 off）或改变 php.ini 中的时间限制，没有别的办法。</p>
+<p>案例：如果没有打开安全模式，设置程序运行时间为25秒。例如：</p>
+<pre><code class="language-php">if(!ini_get('safe_mode')){
+    set_time_limit(25);
+}
+</code></pre>
+<p>定时任务控制器总是异常终止，查找原因，直接访问该任务url，先提示：504 Gateway Time-out，改了fastcgi_connect_timeout，fastcgi_send_timeout，fastcgi_read_timeout三个nginx配置后，又提示：502 Bad Gateway
+后台执行让php支持长任务运行（如1小时），需要设置以下几处：</p>
+<p>1、修改php代码中处理超时时间：
+ini_set(&lsquo;memory_limit&rsquo;,&lsquo;3072M&rsquo;);
+ini_set(&ldquo;max_execution_time&rdquo;, 0);
+set_time_limit(0);</p>
+<p>2、修改nginx配置（/etc/nginx/sites-avaliable/default）：</p>
+<p>　　fastcgi_connect_timeout 3600s;
+　　fastcgi_send_timeout 3600s;
+　　fastcgi_read_timeout 3600s;
+3、修改php配置（/etc/php/5.6/fpm/pool.d/www.conf）：</p>
+<pre><code> request_terminate_timeout=3600
+</code></pre>
+<h1 id="对php超时控制的思考">对PHP超时控制的思考</h1>
+<p><a href="https://www.kancloud.cn/nickbai/php7/363357">https://www.kancloud.cn/nickbai/php7/363357</a></p>
+<p><a href="https://rentu.github.io/2017/03/07/%E5%85%B3%E4%BA%8EPHP-cli%E6%A8%A1%E5%BC%8F/">https://rentu.github.io/2017/03/07/%E5%85%B3%E4%BA%8EPHP-cli%E6%A8%A1%E5%BC%8F/</a></p>
+<h1 id="表单客户端加密">表单客户端加密</h1>
+<p>首先最重要的是<strong>确保服务器使用 https 加密协议</strong></p>
+<p>另外，可以使用服务器上生成的<strong>秘钥对</strong>，对表单提交传输的数据加密。</p>
+<p>在浏览器端使用 javascript ，使用<strong>公钥</strong>对用户输入的数据进行加密，然后再服务器上使用<strong>私钥</strong>解密，进一步加强安全。</p>
+<p>为了更加的安全，可以考虑更多，例如在浏览器端<strong>动态请求更新公钥</strong>，而不是一直使用一个旧的。 还有例如破解难度更大的非对称算法。</p>
+<p>这里使用 RSA 密钥来完成一个案例。</p>
+<p>资料：  <a href="https://github.com/travist/jsencrypt">https://github.com/travist/jsencrypt</a></p>
+<h2 id="服务器生成-rsa-密钥对公钥-私钥">服务器生成 RSA 密钥对（公钥 私钥）</h2>
+<pre><code class="language-shell">openssl genrsa -out rsa_1024_priv.pem 1024
+
+openssl rsa -pubout -in rsa_1024_priv.pem -out rsa_1024_pub.pem
+</code></pre>
+<p>windows 下需要安装 Git bash 来调用 ssh-keygen 来生成。</p>
+<h2 id="客户端使用-公钥-加密">客户端使用 公钥 加密</h2>
+<p>使用 公钥 文件和一个专门用来生成 js 加密库的 php 文件</p>
+<p>把 <code>rsa_1024_priv.pem</code> 和 <code>bulid_js.php</code>放在一起。运行</p>
+<pre><code class="language-shell">php ./bulid_js.php
+</code></pre>
+<p>得到<code>rsl_ras.js</code>，放入表单 html ,然后就可以<code>rsa_encode</code>来对字符串加密了</p>
+<pre><code class="language-html">&lt;script src=&quot;{{ asset('js/hlz_rsa.js') }}&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    var password = rsa_encode($(this).find('input[name=password]').val());
+&lt;/script&gt;
+</code></pre>
+<h2 id="后台服务器使用--私钥-解密">后台服务器使用  私钥 解密</h2>
+<p>表单里假设输入时密码是 123456 ，经过和<code>公钥</code>一起加密后得到一大串字符。这里再用 <code>私钥</code>来还原出来。</p>
+<pre><code class="language-php">$res_prv = openssl_get_privatekey( file_get_contents(storage_path('rsa_1024_priv.pem')) );
+
+openssl_private_decrypt(base64_decode($password), $decrypted, $res_prv);
+
+if ($decrypted) {
+    return $decrypted;
+}else {
+    return false;
+}
+</code></pre>
+<h3 id="更进一步动态请求更新公钥">更进一步，动态请求/更新公钥</h3>
+<h1 id="windows-8-下使用-php-cgi-启动-php7-iis-页面后-500-错误">windows 8 下使用 php-cgi 启动 php7 iis 页面后 500 错误</h1>
+<p>按网上的说明</p>
+<ol>
+<li>尝试使用多个版本的 php， 包括 nts  ts  32  64</li>
+<li>尝试删除 maphander 里的 php 信息，重新使用 php-manager 注册 php-cgi 并配置</li>
+<li>尝试安装过 vc++ 2013  （php-nts-vc14 名称）</li>
+<li>重启 iis 站点等</li>
+</ol>
+<p>后来直接双击 php-cgi.exe ，弹出一个错误 ”The program can&rsquo;t start because api-ms-win-crt-stdio-l1-1-0.dll is missing from your computers, try to resintalling the program to fix the problem“</p>
+<p>可以自己下载这些 dll 去注册，但这比较麻烦</p>
+<p>查了资料说是有些更新包没有安装。。。。</p>
+<p>重新运行 windows update ，发现有个补丁包（win8.1）一直无法安装  KB2919355.</p>
+<p>百度搜索，手动下载安装（以及提前需要的一个包）</p>
+<p>如果不想手动下载，可以删除  C:\Windows\SoftwareDistribution 下的 DataStore 和 Download 文件夹下的内容</p>
+<h1 id="处理较大-json-或图片文件时提示内存耗尽">处理较大 json 或图片文件时提示内存耗尽</h1>
+<blockquote>
+<p>Allowed memory size of xxxxxx bytes exhausted (tried to allocate 20480 bytes)</p>
+</blockquote>
+<h2 id="不推荐直接设置不限制">不推荐：直接设置不限制</h2>
+<pre><code class="language-php">ini_set('memory_limit', '-1');
+set_time_limit(0);
+</code></pre>
+<h2 id="json_encode">json_encode</h2>
+<p><a href="https://stackoverflow.com/questions/31085943/safe-json-decode-to-prevent-exhausting-memory">https://stackoverflow.com/questions/31085943/safe-json-decode-to-prevent-exhausting-memory</a></p>
+<p>一个 json 文件，即使它只有几M, 使用 json_encode() 并写入文件的时候，也会报错。令人困惑的内存占用问题</p>
+<h3 id="如果文件大小不确定设置不同的内存限制有时候也无济于事">如果文件大小不确定，设置不同的内存限制，有时候也无济于事。</h3>
+<pre><code class="language-php">ini_set('memory_limit','256M');
+</code></pre>
+<p>这段代码有时候不工作</p>
+<p>动态计算大小：</p>
+<p>下面这些思路，都是用stream 的方式</p>
+<h3 id="这个包把json写入方式改成-stream-模式结合-listener写入时只占用很小的内存">这个包，把json写入方式改成 stream 模式（结合 <code>Listener</code>），写入时只占用很小的内存。</h3>
+<p><a href="https://github.com/salsify/jsonstreamingparser">https://github.com/salsify/jsonstreamingparser</a></p>
+<h3 id="php-扩展-httpsgithubcomshevronext-jsonreader--比较复杂">php 扩展 <a href="https://github.com/shevron/ext-jsonreader">https://github.com/shevron/ext-jsonreader</a>  比较复杂</h3>
+<h2 id="图片压缩">图片压缩</h2>
+<p>使用图片压缩库时，也经常会出现这个问题</p>
+<ol>
+<li>在上传的源头，就控制图片大小。发现超过限制，就禁止上传</li>
+<li>因为知道了最大的图片体积，就可以计算出缩放时需要的内存，用 ini_set() 了</li>
+</ol>
+<p>动态计算大小（占用内存）</p>
+<pre><code class="language-php">$size = $defaultMemoryLimit + floor(($width * $height * 4 * 1.5 + 1048576) / 1048576);
+
+ini_set('memory_limit', $size . 'M');
+</code></pre>
+<h2 id="从代码层面优化">从代码层面优化</h2>
+<p>当然，更好的方式是在代码层面优化。例如拆分数据分步存储等。</p>
+<h1 id="var">var</h1>
+<p>var 必须用在类中, 差不多可以认为是 public 的别名</p>
+<pre><code class="language-php">class TestClass {
+    var $a;
+
+    public function __construct() {
+        $this-&gt;a = '1234';
+    }
+}
+</code></pre>
+<h1 id="并发锁解决类似抢红包">并发锁，解决类似“抢红包”</h1>
+<p><a href="https://www.v2ex.com/t/322782">https://www.v2ex.com/t/322782</a></p>
+<p><a href="https://www.jianshu.com/p/93c22bf724d5">https://www.jianshu.com/p/93c22bf724d5</a></p>
+<p>有多种思路：</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/php-common-issus/" title="PHP 开发中常见的一些问题" target="_blank" rel="external">https://my101du.github.io/1/01/php-common-issus/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/phpunit/" title="PHPUnit"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/php-and-memcached/"
+                    title="PHP 与 Memcached 缓存"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        购买性价比高的服务器&amp;阿里云使用教程 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="任何一个网站或服务都是运行在互联网上一台服务器上的。服务器的运行最重要的是稳定，所以对温度、湿度、电源、消防、网络速度等等都有非常高的要求。" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>购买性价比高的服务器&amp;阿里云使用教程 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="购买性价比高的服务器&amp;阿里云使用教程" />
+<meta property="og:description" content="任何一个网站或服务都是运行在互联网上一台服务器上的。服务器的运行最重要的是稳定，所以对温度、湿度、电源、消防、网络速度等等都有非常高的要求。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/how-to-buy-server-aliyun/" />
+
+<meta itemprop="name" content="购买性价比高的服务器&amp;阿里云使用教程">
+<meta itemprop="description" content="任何一个网站或服务都是运行在互联网上一台服务器上的。服务器的运行最重要的是稳定，所以对温度、湿度、电源、消防、网络速度等等都有非常高的要求。">
+
+<meta itemprop="wordCount" content="6316">
+
+
+
+<meta itemprop="keywords" content="运维," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="购买性价比高的服务器&amp;阿里云使用教程"/>
+<meta name="twitter:description" content="任何一个网站或服务都是运行在互联网上一台服务器上的。服务器的运行最重要的是稳定，所以对温度、湿度、电源、消防、网络速度等等都有非常高的要求。"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-how-to-buy-server-aliyun" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/how-to-buy-server-aliyun/"
+    >购买性价比高的服务器&amp;阿里云使用教程</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E8%BF%90%E7%BB%B4/"> 运维 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/how-to-buy-server-aliyun/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 6316字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/server/aliyun.png" alt="阿里云"></p>
+<p>任何一个网站或服务都是运行在互联网上一台服务器上的。服务器的运行最重要的是稳定，所以对温度、湿度、电源、消防、网络速度等等都有非常高的要求。由于个人或小公司没有能力提供这样的条件，于是一些有实力和资质认证的公司就建了一批机房，成为服务商，聘请专业的工程师维护，然后把机器、网络、配套设施打包成各种方案对外销售，普通用户再从服务商这里购买服务器资源。</p>
+<p>用户的需求千差万别——可能是一个企业展示网站，也可能是一个时刻都有大量请求的游戏服务器，很多人不知道如何去选择适合自己的服务器。这篇教程就告诉你根据预算、需求、以及产品发展的不同阶段来选购服务器，并对主流服务器商进行对比，最后重点讲解国内外几个最具代表性的服务商——Linode、DigitalOcean、Vultr 和阿里云的使用。</p>
+<h1 id="经验谈">经验谈</h1>
+<p>我们遇到过不少这样的案例。</p>
+<p>有位客户打算开发一个出国英语考试的在线答题系统，这个系统的特点就是<strong>访问人数不多</strong>，用户在答题时<strong>客户端和服务器之间数据交互极少</strong>，直到最后计算分数的时候，才会记录学习进度，也就是说大部分时间服务器是“闲”的。</p>
+<p>我们注意到这个需求中<strong>对带宽、存储和请求数的要求并不高</strong>，再加上<strong>客户自己没有全职的运维人员</strong>，于是建议他先购买一台阿里云的双核CPU、2G 内存、100G的硬盘和4M带宽，按月付的话每月200多块钱就足够了；等将来用户量上来后，可以增加内存和带宽，或者再添加一台服务器做数据库分离。但是<strong>客户坚信自己的产品很牛掰，一定要提前准备好将来可能每天几百万PV的访问量</strong>，并且<strong>认为自己的数据是“核心机密”</strong>，不放心存放在阿里云，拒绝了我们的方案。后来可能是在一些电脑城销售的建议下订购了一台 Dell 的 4U 服务器、16核的CPU、32G的内存、1TB 的 SAS 硬盘，<strong>花了差不多10万块</strong>，然后买了<strong>10M 的独享带宽</strong>把机器托管在附近的一个机房，几个程序员就开始埋头苦干。</p>
+<p>项目上线后，由于网站用户体验太差，而且又没怎么去做推广，导致用户数量一直在低位徘徊。<strong>服务器的负载从来没有高过 0.5，磁盘占用不到10%</strong>。
+不久后项目就关闭了，前期投入基本上都打了水漂。</p>
+<p>除了这种常见的“我的产品一定会火”系列，还有被忽悠把机器托管在个体户机房导致经常抽风的；为了省钱买和别人共享低配置虚拟主机，网站三天两头打不开的；网站面向国外用户却把机器放在大陆机房的……等等。</p>
+<p>见得多了，我们就总结了这么几条经验，帮助大家避开这些坑，购买到性价比高的服务器。</p>
+<h2 id="控制预算逐步增加硬件方面的投入">控制预算——逐步增加硬件方面的投入</h2>
+<ol>
+<li>对于大部分资金不是特别充裕的人来说，一定要认真分析自己的情况，不要把金钱浪费在“未来可能”上。现在是互联网时代，很多产品都是先做个小模型，然后快速迭代，根据用户反馈去改进和发展，硬件方面的投入也是一样，<strong>创业初期，服务器性能稍微大于当前需求就可以了，留出一部分钱花在产品和营销上</strong>。</li>
+<li>80% 的网站都是从小慢慢做大的，并且其中有 90% 的网站会由于各种原因失败，其中**“想得过于遥远”是其中很常见的一个失败原因**。</li>
+<li>购买服务器前，<strong>一定要咨询靠谱的专业人员</strong>，不要听信一些不负责任的销售给你的“建议”。</li>
+<li>如果对价格和硬件不是特别懂行，尽量在 Dell 官网、京东等<strong>价格透明、可信度高的电商网站订购机器</strong>，不要去一些乱七八糟的店面。</li>
+</ol>
+<h2 id="合理分配资源你的网站特点是什么">合理分配资源——你的网站特点是什么</h2>
+<p>确定了预算准备购买机器了，有没有想过你的网站或服务特点是什么？是一个图片下载站？在线视频？还是论坛？
+<strong>不同的网站类型，对服务器的各个参数要求是不同的</strong>。采购机器时，要把钱花在刀刃上。</p>
+<ol>
+<li>如果你是一个普通的企业宣传站点，每天可能就几十个访问用户，那么最好选“按时/按流量”的收费方式，然后带宽稍微大一些，这样潜在客户首次访问的时候，打开速度较快；并且因为是按流量收费，不会因为购买了固定带宽却白白闲置。</li>
+<li>如果是一个资讯网站，那么要考虑到在频繁请求一些热门文章的时候，是不是有足够的内存来缓存这些数据，降低访问数据库的压力</li>
+<li>如果你是一个文件下载站，很多用户同时下载的时候，如果带宽不够就会给用户带来很不好的体验，所以最好是挂上 CDN 来加速。</li>
+<li>如果是一个提供数据计算服务的网站，CPU 够不够强？多核利用率高不高？</li>
+</ol>
+<p>这些都需要在系统部署之前和运行过程中去不断分析和调整，如果自己不懂，要咨询专业人员，否则“木桶效应”在服务器上会表现得很突出，花了钱却得不到预期的性能。</p>
+<h2 id="除非没有其他选择不要自己买机器去托管">除非没有其他选择，不要自己买机器去托管</h2>
+<p><strong>传统的服务器托管</strong></p>
+<p>在服务器市场发展的早期，大部分站长只能自行购买服务器，办手续托管到机房，或者购买机房提供的一些固定型号的服务器。遇到机器故障或者系统维护，只能扛着工具包去机房，硬件损坏的风险由自己承担，机器出问题导致网站几天访问不了是常事。</p>
+<p><strong>VPS</strong></p>
+<p>幸好后来虚拟化技术发展迅速，服务器商将一台配置强劲的物理机资源划分成几个彼此独立的“VPS”，用户购买VPS后通过远程连接进行管理，机器出现故障再也不用用户自己亲自去机房维修了，而是由服务器商承担硬件损坏的维修工作，并且大部分VPS服务器商都为用户提供了一套系统，帮助进行数据的备份和恢复。重建一台机器几分钟就可以完成了。</p>
+<p><strong>云主机</strong></p>
+<p>VPS虽然提高了硬件的利用率和方便了用户的维护，但是在扩展性方面仍然不是很强大，于是现在又有了VPS的升级版——“云主机”。购买云主机后，硬件升级和规模扩展速度更快。比如对很多电商企业而言，可以在促销的时候升级硬件和增加机器数量应对短暂的流量高峰，等促销期过了，再恢复成平时较低的硬件配置和较少的机器数量，大幅降低了资金投入和人员成本；同时对小型创业团队来说，按时间计费、按流量计费等等新的计费策略可以让开发者们更灵活地进行产品的开发和部署。
+云技术的发展，让以前需要自己花大气力安装的配置的操作也成为了可以直接购买的“服务”，例如阿里云的云数据库、负载均衡等等。都是直接购买配置即可使用，给运维和开发人员节省了大量的精力。</p>
+<p>因此，除非你真的有什么极度机密的数据，或者一些特殊原因，快乐地拥抱云服务吧，别再考虑自己购买服务器了，看着它天天贬值和经常担心出故障丢数据实在太累了。</p>
+<h2 id="除了机器更重要的是服务质量">除了机器，更重要的是服务质量</h2>
+<p>很多人选购服务器的时候会过于看重硬件配置，<strong>于是很多小商家就利用“同样的价格配置越高越占便宜”这个心理</strong>，推出一些配置高价格低廉的套餐来吸引你购买，至于以后是什么样，能忽悠就忽悠，大不了赚一笔算一笔。
+服务器的管理和维护是非常需要经验的，网站需要 24x7 的稳定运行，如果你遇到一个技术差劲又没有值班人员的小商家，一旦机器出现问题，你就哭去吧。那时候中断访问都是小事，能不能把数据取回来都是问题。
+所以选择服务器提供商的时候</p>
+<ul>
+<li>一定要核实对方是不是有资质，避免遇到一些“层层代理”</li>
+<li>那些与同类产品对比起来明显便宜的，很可能藏有一些猫腻。比如说用了性能较差的虚拟化技术、限制流量、超售（就是承诺一台机器上几台VPS，结果卖了几十份出去，大家抢资源），等等</li>
+<li>询问身边信得过的、买过服务器的人，让他们推荐，不要相信网上的那些推荐文章，很多都是做广告，然后带个小尾巴让你给他返点的（当然这里面也有些不错的服务器商）</li>
+<li>可以试着联系官方留的客服信息（邮件、电话），询问一些难度比较大的技术问题，看对方的解答速度和准确率，如果回复速度太慢或者语焉不详打太极的，这样的一定不要选</li>
+<li>了解服务器商在发生故障时的数据备份和应付攻击上的措施，这些情况虽然极少发生，但一旦发生了就是灾难性的后果，有实力的服务器商会有异地容灾备份，和各种防护、对抗攻击的防火墙，可以帮助你降低损失。</li>
+</ul>
+<h2 id="机房放在哪个地区选择电信联通专线还是多线接入">机房放在哪个地区，选择电信/联通专线还是多线接入</h2>
+<p>现在主要有联通、电信两家网络服务商布设的光纤网络。但是由于历史原因，两家的网络布线工作是分头进行并且存在竞争关系的。由于对接的总带宽不够，于是我们就会发现打开一些游戏客户端的时候，会提示你是进入“电信服务器”还是“联通服务器”，就是因为两家竞争、用户受苦——如果你家安装的宽带是电信提供的，而访问的服务器放在联通机房，速度就会受影响。
+虽然现在两家都在努力打通这个隔阂，但是我们选择机房的时候还是要考虑这个问题。</p>
+<ol>
+<li>如果你的用户在南方城市分布比较多，就把服务器放在电信机房</li>
+<li>如果用户主要分布在北方，就选择联通机房</li>
+<li>如果全国范围内用户分布均匀，就选择提供了多线接入的机房。它们会自动根据用户的来源地来分配最快速的线路。</li>
+<li>如果是一些特殊情况，例如给大学等教育机构提供服务，就要考虑给服务器接入一条教育网专线。</li>
+</ol>
+<p>另外，很多服务商会有不同地区的机房选择，例如北京、杭州、青岛等等。我个人觉得，新的城市虽然在价格上有一些优惠，但最好是选择北京、杭州等 IT 产业比较发达的地方，因为这几个城市的机房已经有多年成熟的运维经验，人才也相对多一些。</p>
+<h2 id="服务器放在国外的情况">服务器放在国外的情况</h2>
+<ol>
+<li>
+<p>中国大陆与国外通信的光纤出口带宽一直捉襟见肘，即使不断扩容也无法满足国内外之间日益膨胀的数据。再加上GFW的存在、DNS 污染等等原因，导致国内外之间的访问总是不那么顺畅，如果你的用户在国外，为了提供最佳的访问体验，尽量选择国外机房。</p>
+</li>
+<li>
+<p>除了基础设施的影响，大陆的政策要求任何一个在中国的机房里运行的域名都要求到政府机关备案，并且还可能随时对服务器的内容进行审查。有的人可能觉得备案太麻烦（填材料、照相等等），或者觉得隐私被侵犯，就不能把服务器放在国内了。</p>
+</li>
+</ol>
+<p>现在很多服务商都提供了大陆之外的机房，那么你该选哪里呢？</p>
+<h3 id="香港">香港</h3>
+<ul>
+<li>东南亚地区访问很快，同时国外访问的速度也不错，是面向亚洲用户的网站第一选择。</li>
+<li>最靠近大陆，白天访问速度很快，快接近电信联通的速度了；但是由于整体出口带宽是有上限的，网络访问高峰期会有较大影响</li>
+<li>因为带宽资源不足，因此香港机房的带宽价格相对而言比较贵。</li>
+</ul>
+<h3 id="新加坡">新加坡</h3>
+<ul>
+<li>据说线路有优化，稳定的时候很快，但是经常会</li>
+</ul>
+<h3 id="日本">日本</h3>
+<h3 id="美国西海岸">美国西海岸</h3>
+<h3 id="美国东海岸">美国东海岸</h3>
+<h3 id="德国英国等欧洲国家">德国、英国等欧洲国家</h3>
+<h3 id="澳洲">澳洲</h3>
+<h2 id="机器是死的人是活的">机器是死的，人是活的</h2>
+<p>服务器不是个人电脑，对运维技术人员的要求很高，要舍得花钱找合适的人，将来机器出现问题，或者扩展设备等等，最好是由一开始就熟悉系统的人来做。</p>
+<h2 id="不要过早优化到了某个瓶颈时堆机器比堆人便宜">不要过早优化——到了某个瓶颈时，堆机器比堆人便宜</h2>
+<p>如果网站发展很快，恭喜你！
+不过这时候你也会很苦恼，因为用户的反馈如潮水般涌来，投诉你的网站老是出错、访问缓慢……
+这时候是招人来优化服务器的性能呢？还是赶紧升级服务器的硬件和带宽？我们的建议是，优先堆硬件。</p>
+<p>作为一个刚刚发展起来的产品，扩展新的硬件见效非常快，可以立竿见影地缓解服务器压力。用户是最宝贵的，一定要想办法把他们留下来。如果临时去招聘有经验的人，首先他们要求的薪资非常高，其次人员到位以后，熟悉你网站的结构也需要时间，一来二去很多用户就流失了。</p>
+<p>增加硬件也不能盲目，需要根据访问日志查出瓶颈在哪里，然后有针对性地去增加。例如 Web 服务经常出现 503 报错，很有可能是数据库访问压力太大，建议增加一些内存用于缓存数据。如果你是一个图片/视频网站，服务器压力小但是用户反映加载页面慢，最大的可能就是带宽不够了。</p>
+<h2 id="当堆机器都没有效果时再优化代码">当堆机器都没有效果时，再优化代码</h2>
+<p>一般到这个阶段，你的公司应该已经盈利了。这时候网站发展速度也保持稳定，</p>
+<h1 id="主流服务器提供商的对比">主流服务器提供商的对比</h1>
+<p>最近也在考虑买香港的主机。
+我之前是阿里云青岛，但是因为每个网站 /域名都要备案才能对外服务，无法很快验证想法玩一玩。
+现在就跑了一个 wordpress ，真浪费啊，到期后不准备再用国内机房了。
+也不知道是机器性能问题还是其他什么问题， 1G 的内存 2M 的带宽，全部静态资源都已经挂 CDN ，做好了缓存和性能优化，同时访问人数 2 、 3 个人，跑个 wordpress 都卡卡卡。</p>
+<p>现在已经把个人博客换成 hexo ，挂到 gitcafe/github 的 pages 上了，秒开（ gitcafe 是香港机房）</p>
+<hr>
+<p>对比了一些香港的方案，供你参考。</p>
+<h2 id="以下均选用-2m-带宽价格是大致的数字">选择标准：我只需要“能买到”的最低配置，同时在此基础上“性价比越高越好”。
+以下均选用 2M 带宽；价格是大致的数字。</h2>
+<p>机器配置</p>
+<p>阿里云：最近新增了机房香港 2 区，如果登录后购买，起步配置要求 2 核 /4G ，超过我的预算了
+腾讯云：起步 2 核 /2G ， 1900 元 /年
+青云：起步 1 核 /1G ， 1700/年
+UCloud ：起步 1 核 /2G ， 1650/年
+美团云：最近有 5 折优惠，但是没有香港机房</p>
+<p>因此接近的价位，腾讯云应该是配置最高的， 2 核 2G 。</p>
+<hr>
+<p>网络（这部分有一些是道听途说，见谅）</p>
+<p>阿里云和腾讯云都明确指出“香港机房主要面向亚太地区，在大陆访问可能达不到预期”，态度很老实。其他商家没有说明。</p>
+<p>阿里云以前的香港线路被吐槽过，不过新的香港 2 区，前几天有 V 友发了测试结果，速度有极大的提升
+腾讯云身边没有人用过，网上也很少看到信息，网络情况不清楚。
+青云据说是 pccw 线路，从一开始就很快（是据说，我没有证据）
+UCloud 鄙公司在用，我们用的 5M 带宽，很稳定，不知道怎么对比</p>
+<p>从网络情况来看，应该选择阿里云 2 区，次之青云</p>
+<hr>
+<p>使用体验</p>
+<p>阿里云的面板很强大，能够同时管理在万网注册的域名，备案也很方便，另外还有不少云服务可以很方便地购买，但觉得有些乱糟糟。
+去年的使用中，云盾挡住了不少 web 攻击。
+有一次在服务器上拉 lnmp.org 一键包极慢（几 kb ），反馈 ticket 给客服，很快告诉我“下载国外的软件包是这样的”。还没我家的宽带下载快，真是……
+然后就是 wordpress 慢的问题了，这个应该是我的问题，不是马云的问题。
+不过总体觉得阿里用无微不至的服务和庞大的产品线弥补使用体验的缺失（我们这么多服务，还有“亲，我会帮你的”客服小二，让广大小站长买买买）。</p>
+<p>腾讯云没用过，进去看了看，管理面板做得很好很清晰。</p>
+<p>UCloud 公司在用，很好用，很稳定，很稳定，很稳定，机房出过一次网络故障，半小时解决了问题。就是注册刚没几分钟，就有客服打电话给你“为什么注册了帐号，没买机器？”把我吓尿了。</p>
+<p>青云的网站简直一团乱麻，报价都很难找到，还有各种各样的什么路由器 xxxx ，什么附加 oooo ，列表拉得老长，作为一个智商有问题的小白用户，我都怕了。</p>
+<p>从这方面看， UCloud 综合是第一</p>
+<hr>
+<p>总结：</p>
+<p>我选了最便宜的 hostus ，先翻墙用着。
+等哪个云公司有 1 核 /1G/2M 的香港主机，价格在 1000-1200 ，我就会下手了</p>
+<h1 id="稳定无敌的-linode">稳定无敌的 Linode</h1>
+<h1 id="性价比高的-digitalocean">性价比高的 DigitalOcean</h1>
+<h1 id="好用不贵的-vultr">好用不贵的 Vultr</h1>
+<h1 id="国内王者阿里云">国内王者阿里云</h1>
+<p><img src="/media/15490412288328/15028004577168.jpg" alt=""></p>
+<h1 id="阿里云配置免费-ssl-证书">阿里云配置免费 SSL 证书</h1>
+<p>简单来讲：服务器部署了 SSL 证书后可以确保用户在浏览器上输入的机密信息和从服务器上查询的机密信息从用户电脑到服务器之间的传输链路上是高强度加密传输的，是不可能被非法篡改和窃取的。同时向网站访问者证明了服务器的真实身份，此真实身份是通过第三方权威机构 （GlobalSign） 验证的。也就是说有两大作用：数据加密和身份认证。</p>
+<p>鉴于目前各种间谍软件、窃听软件都无非是想非法获得用户的机密信息，如果服务器部署了 SSL 证书就可以减少黑客通过嗅探网络数据包的方式截取用户输入的数据，从而达到保护网站用户的合法权益。</p>
+<h2 id="域名验证类型">域名验证类型</h2>
+<p><strong>DNS方式</strong>
+证书绑定的域名使用了阿里云的云解析，可以自动完成</p>
+<p><strong>文件形式</strong>
+如果用了别的 DNS 解析服务商（例如你切换到了 DNSPod），文件验证方式可能会创建隐藏目录，如果是Windows服务器或用了阿里云的OSS服务，请选择DNS方式。</p>
+<p>创建 CSR ，出现绿色字创建成功</p>
+<p>提交审核</p>
+<p>进入列表，点击“补全”，把信息填进去。</p>
+<p>要注意
+这个 SSL证书是对“域名”的，也就是说， <a href="http://www.test.com">www.test.com</a> 和 bbb.test.com 是两个域名！要分别申请证书才行。不是说你申请了 test.com 就可以通用了。</p>
+<h2 id="收到一封操作指南的邮件">收到一封操作指南的邮件</h2>
+<p>下载那个文件，然后上传到服务器，进行验证。
+审核通过后</p>
+<h2 id="修改-nginx-或其他-web服务器">修改 Nginx 或其他 web服务器</h2>
+<p>下载那两个 key ,pem 文件，放到某个目录下。然后修改虚拟主机的配置文件(如果你没有虚拟主机，只有一个网站，那就修改默认的配置文件)，如果用了反向代理（例如node程序），和 http 的 location 一样。</p>
+<pre><code class="language-shell">server {
+listen 443; server_name localhost;
+ssl on;
+root html;
+index index.html index.htm;
+ssl_certificate   磁盘目录/订单号.pem;
+ssl_certificate_key  磁盘目录/订单号.key;
+ssl_session_timeout 5m;
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers AESGCM:ALL:!DH:!EXPORT:!RC4:+HIGH:!MEDIUM:!LOW:!aNULL:!eNULL;
+ssl_prefer_server_ciphers on;
+location / {
+root html;
+index index.html index.htm;
+}
+}
+</code></pre>
+<p>nginx -t 测试一下，然后 -s reload 重启</p>
+<h2 id="默认访问-https">默认访问 https</h2>
+<p>有两种方法</p>
+<pre><code># 跳转方式，普通 HTTP 服务器，HTTP 就是用端口80
+server{
+    listen 80;
+    server_name example.com;
+
+    return 301 https://example.com$request_uri; # 这就是把所有的 request 转跳到 https
+}
+
+#同时支持两个协议
+server {
+    listen              80;
+    listen              443 ssl;
+    server_name         www.example.com;
+
+    ssl_certificate     www.example.com.crt;
+    ssl_certificate_key www.example.com.key;
+    ...
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/how-to-buy-server-aliyun/" title="购买性价比高的服务器&amp;阿里云使用教程" target="_blank" rel="external">https://my101du.github.io/1/01/how-to-buy-server-aliyun/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/come-back-ja-jun-peng/" title="贾君鹏你妈妈喊你回家吃饭"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/about-code-and-design/"
+                    title="谈谈写代码和设计的一些想法"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

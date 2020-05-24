@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        discuz论坛系统安装配置、优化与二次开发 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="discuz 是国内使用人数最大的知名论坛系统。 帖子分表和其他表优化 缘由 随着discuz的发帖数越来越多，cdb_forum_posts （帖子回复表）会" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>discuz论坛系统安装配置、优化与二次开发 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="discuz论坛系统安装配置、优化与二次开发" />
+<meta property="og:description" content="discuz 是国内使用人数最大的知名论坛系统。 帖子分表和其他表优化 缘由 随着discuz的发帖数越来越多，cdb_forum_posts （帖子回复表）会" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/discuz-config-optimize-develop/" />
+
+<meta itemprop="name" content="discuz论坛系统安装配置、优化与二次开发">
+<meta itemprop="description" content="discuz 是国内使用人数最大的知名论坛系统。 帖子分表和其他表优化 缘由 随着discuz的发帖数越来越多，cdb_forum_posts （帖子回复表）会">
+
+<meta itemprop="wordCount" content="4613">
+
+
+
+<meta itemprop="keywords" content="discuz," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="discuz论坛系统安装配置、优化与二次开发"/>
+<meta name="twitter:description" content="discuz 是国内使用人数最大的知名论坛系统。 帖子分表和其他表优化 缘由 随着discuz的发帖数越来越多，cdb_forum_posts （帖子回复表）会"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-discuz-config-optimize-develop" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/discuz-config-optimize-develop/"
+    >discuz论坛系统安装配置、优化与二次开发</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/discuz/"> discuz </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/discuz-config-optimize-develop/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4613字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>discuz 是国内使用人数最大的知名论坛系统。</p>
+<h1 id="帖子分表和其他表优化">帖子分表和其他表优化</h1>
+<h2 id="缘由">缘由</h2>
+<p>随着discuz的发帖数越来越多，<code>cdb_forum_posts</code> （帖子回复表）会越来越大，导致查询效率比较低，影响帖子打开速度，甚至造成整个mysql数据库服务请求失败。</p>
+<p>因此将这个大表进行拆分，是提高查询速度的一个好办法，幸运的是，discuz后台自带了这样的性能优化工具，并且discuz的代码里已经实现了自动在分表里查询帖子的处理，不需要我们自己去写表名的分配处理逻辑。</p>
+<p><img src="/article_images/php/discuz_table_split_before.png" alt="拆分回复表" title="拆分回复表"></p>
+<h2 id="首先要调整部分服务器参数">首先要调整部分服务器参数</h2>
+<p>一般服务器的环境都是调整过参数的，例如php-fpm的等待时间，mysql的缓存大小等等。因为我们没有登录服务器使用mysql的命令行工具，而是通过在浏览器里直接使用discuz后台自带的分表工具，为了避免因网络不流畅或其他原因导致操作失败，最好先把这些参数调整一下，让操作能顺利通过。</p>
+<h3 id="关闭discuz的外部访问">关闭discuz的外部访问</h3>
+<p>登录后台 /admin.php 后，进入“全局”，“关闭站点”</p>
+<p><img src="/article_images/image/php/discuz_table_split_close_bbs.png" alt="关闭站点" title="关闭站点"></p>
+<h3 id="修改php-fpm的超时时间">修改php-fpm的超时时间</h3>
+<pre><code class="language-shell">vi /usr/local/php/etc/php-fpm.conf
+</code></pre>
+<p>修改 <code>request_terminate_timeout = 0</code></p>
+<h3 id="修改mysql的等待时间">修改mysql的等待时间</h3>
+<pre><code class="language-shell">vi /etc/my.conf
+</code></pre>
+<p>修改
+<code>wait_timeout=3000</code>
+<code>interactive_timeout=3000</code></p>
+<p>记得重启一下php-fpm和mysql服务，让配置生效。</p>
+<h2 id="优化用户表">优化用户表</h2>
+<hr>
+<p>进入后台的“站长”-“用户表优化”</p>
+<p>点击 <code>立即体检</code></p>
+<p><img src="/article_images/image/php/discuz_table_split_user_table_check.png" alt="用户表体检" title=" 用户表体检"></p>
+<p>分析完成后，会提示优化建议，以及可以调整“单步优化数”（服务器配置好，这个数字可以适当调高，一般默认即可，太多容易导致操作失败）</p>
+<p><img src="/article_images/image/php/discuz_table_split_user_table_option.png" alt="优化建议" title=" 优化建议"></p>
+<p>然后点“立即优化”即可自动开始，在这个过程中，不要关掉这个窗口</p>
+<p><img src="/article_images/image/php/discuz_table_split_user_table_process1.png" alt="1" title=" 1">  <br>
+<img src="/article_images/image/php/discuz_table_split_user_table_process2.png" alt="2" title=" 2"></p>
+<h2 id="回复表分表">回复表分表</h2>
+<hr>
+<p>进入后台的“站长”-“帖子分表”</p>
+<p>注意不是“主题分表”，这两个是有区别的，主题分表一般不要处理，因为我们的帖子都必须要允许回复，不能放入存档。</p>
+<p><img src="/article_images/image/php/discuz_table_split_thread_archive.png" alt="主题分表" title=" 主题分表"></p>
+<p>下图是“帖子分表”的默认界面，注意看红色标记的内容。
+我们之前已经把主表cdb_forum_post拆分过几次了（每个约500M），最近这个表又增大了不少，达到了1.35G，因此我们这里再次分表。</p>
+<p><img src="/article_images/image/php/discuz_table_split_post_list.png" alt="帖子分表" title=" 帖子分表"></p>
+<p>点击主表cdb_forum_post那一行最后的“分表”（可能会提示你必须先关闭站点）。
+如图所示，我们创建一个新表（你也可以把分出来的数据附加到以前的分表里，不推荐），另外，选择转移数据量大小为500M(根据你的需求而定，如果你的整个数据库不大，可以分出100M、200M等小一点的分表，表越小，应该读取速度越快），然后点击“确认分表”。</p>
+<p><img src="/article_images/image/php/discuz_table_split_post_option.png" alt="开始分表" title=" 开始分表"></p>
+<p><img src="/article_images/image/php/discuz_table_split_post_process1.png" alt="分表操作中" title=" 分表操作中"></p>
+<p>数据迁移完成后，提示是否要优化表。点击确定的时候，页面像失去响应一样没有反应，其实这时候已经在开始优化表了，这个页面千万不要中途关掉。表比较大的时候，容易操作失败，因此之前我们才需要调整php-fpm和mysql的等待时间。
+如果操作中断，可以ssh到服务器上，使用命令行登录mysql，运行表优化语句，效果也是一样的。</p>
+<p><img src="/article_images/image/php/discuz_table_split_post_optimize.png" alt="优化表" title=" 优化表"></p>
+<h1 id="discuzx2对性能的提升分析">DiscuzX2对性能的提升分析</h1>
+<p>现在DZ2.0的架构是不是受帖子数影响很大？比如楼数很高的帖子如果数量多了会明显影响网站速度什么的。
+开源网站DZ2.O 本人不是技术者 恳请有个完整的解释
+举报 添加评论 分享 • 邀请回答
+0
+my101du，胡乱摸索道路中的产品经理 修改话题经验
+以前的dz7.2及之前版本确实有这个问题。</p>
+<p>我读过6.1的代码，基本上是面向过程的，需要的时候就include文件、函数，文件归类也比较乱，在处理一些问题的时候也不够漂亮，感觉是补来补去。
+虽然说面向过程和面向对象不是造成性能问题的一个最关键因素，但从代码规划方面可以窥见一点，当时的项目团队在免费——收费——免费——服务之间摇摆，而且随着论坛的发展，SNS、微博等各种新的形态产品出来的竞争，康盛公司的变化也比较大，比如开发supersite、uchome（当时都是独立的）。收购ecshop又卖掉等。 这些对discuz的团队影响还是比较大的，产品是人开发的，因此当时应该没有人会去想如何进行一次彻底的变革，或者想其他的办法提高性能，dz一直在跟风，添加各种功能（也有可能像微软一样，摊子大了，做大的变化会损失一部分老用户，这是没有办法的办法）。</p>
+<p>随着帖子数据的增加，原来的那个核心框架，基本上已经优化到极限了（这时候一些丑陋的处理方式，你突然会觉得，我靠太牛逼了，不这样处理的话 还有什么能处理得这么好呢？简直是带着镣铐跳舞）。数据库结构因为需要兼顾版本升级，不可能有太大变化，索引、内存表等等都用上了，然后就面临瓶颈了，这是discuz的问题，不是mysql、memcache、eaccelertor的问题（不要和我提什么数据库读写分离、服务器集群，你觉得他们的主要用户广大个人站长有这么多钱么？）。</p>
+<p>我们公司的网站，posts表大概2000W行数据，一旦进行类似抢楼活动（即你所说的高楼层），锁表的现象非常严重，有时候甚至会出现我和旁边坐着的同事，我比他先提交，等了差不多3-4秒后，他的帖子反而排到我前面去了，然后刷新页面，他的楼又跑到我下面来了这种诡异现象。因此对性能影响是非常明显的。</p>
+<p>我当时试过在7.2上用memcached，自己写代码，但是兼容有问题，有时读帖子会不正常，作罢了。</p>
+<p>你提到的优化某个楼数很多的帖子，这个7.2版本也有，不过感觉没什么效果，该慢的还是慢。因此我们经常做的事情就是，登录phpmysqladmin，优化表、修复表，删回收站、优化帖子……极端情况下还得kill掉一些僵死的mysql连接（会把后续的读表请求都锁死导致网站无法访问）。</p>
+<p>是的，你应该注意到了，dz7.2到x2.0版本，不是升级，而是数据转换了，数据表的结构彻彻底底变了。
+代码规划更加整洁了。
+后台里你看看，全局——服务器优化，内存优化（直接支持memcache等等等各种），这些与服务器的关系更密切
+网站的缓存设置更加详细，这是自身的优化（居然还有js的压缩选项、是否延迟加载这种前端优化方面的东西）
+再看“站长”，居然有个优化大师！建议你进行配置的优化，还有用户表（memeber）、贴子表的优化（thread），另外加了帖子分表（post，这个简直是救星，再也不怕帖子多了），熟悉的人应该知道这三个表是dz数据库里的巨头。新的x2.0已经帮你想到了。</p>
+<p>因为我没有仔细看过分表后读取数据的代码和测试，因此暂时不能肯定“单表情况下，楼数高会导致论坛慢”，以及“分表后，楼数再高也不怕”。因为这个和其他因素有关，比如缓存、服务器当前的资源情况，mysql的cache设置等等。</p>
+<p>我唯一想说的是，被腾讯收购后，你们的开发能力上升了几个档次。修改</p>
+<p>游心（提问者）
+首先谢谢您的回答，想再问一个问题，X2以后的版本是不是受这方面（高楼数量）的影响比较小了，还是基本可以免除这方面的影响？相比来说，帖子总数的影响较大还是高楼数量的影响较大？
+2013-07-05</p>
+<p>my101du（作者）
+是的，x2以后因为自带了一些表的优化功能，对运营人员的技术能力要求降低了，开启这些优化功能的人会更多（不用白不用），再加上新版应该对表结构、索引、程序运行效率进行了一些改进，所以同样的服务器环境下，速度提高是肯定的。</p>
+<p>但是，高楼数量的影响变小，不等于可以免除这方面的影响，因为mysql数据表都是以文件形式存储在磁盘上的，最终更受这些文件内部数据存储结构、碎片情况、以及磁盘IO速度影响更大。</p>
+<p>从我观察来看（不一定代表所有情况），高楼数量影响较大，帖子总数影响较小。
+帖子总数对应的是 thread表，前台页面对应的是列表页。楼层对应的是post表，前台页面对应的是帖子内容页。我有时候打不开内容页，但同时打开列表页很正常。</p>
+<p>因此我猜测，因为thread表体积、记录数比posts表小/少很多，查询时需要扫描的记录行数要少。而且因为只返回标题等字段，字符串长度小很多，而post表如果遇到一些楼层长篇大论，返回的字符串就很多了（这时候在管理工具里可以看到query语句正在 sending data），需要扫描的行数也多，如果再遇到排序（我经常用倒序看帖，这时候管理工具里会出现 sorting data停住），消耗的资源会更多一些，会产生MyISAM引擎经常发生的锁表现象。所以高楼数量影响较大。</p>
+<p>因为不是数据库专家，对索引的正确使用还在学习中，我的解释只能从表象来说明，无法从原理上说明，望批评指正。</p>
+<h1 id="解决找回密码时提示参数错误的问题">解决找回密码时提示“参数错误”的问题</h1>
+<p>此为 discuz 官方 bug，一直未修复，需要改动一下两个文件</p>
+<ul>
+<li><code>/source/module/member/member_getpasswd.php</code></li>
+<li><code>template/default/member/getpasswd.htm</code></li>
+</ul>
+<p>首先修改 <code>/source/module/member/member_getpasswd.php</code>第32行,添加一行代码</p>
+<pre><code class="language-php">$uid = $_GET['uid'];
+$sign = $_GET['sign'];//添加的代码
+</code></pre>
+<p>然后修改 <code>template/default/member/getpasswd.htm</code>,找到第8行,将</p>
+<pre><code class="language-html">&lt;form method=&quot;post&quot; autocomplete=&quot;off&quot; action=&quot;member.php?mod=getpasswd&amp;uid=$uid&amp;id=$hashid&quot;&gt;
+</code></pre>
+<p>修改为：</p>
+<pre><code class="language-html">&lt;form method=&quot;post&quot; autocomplete=&quot;off&quot; action=&quot;member.php?mod=getpasswd&amp;uid=$uid&amp;id=$hashid&amp;sign=$sign&quot;&gt;
+</code></pre>
+<p>后台更新一下缓存</p>
+<h1 id="主题列表页最后更新时间错误显示一个未来时间">主题列表页最后更新时间错误，显示一个未来时间</h1>
+<p>竟然最后更新是10月份了，会员的时区设置是正确的。后台设置的时区也是正确的！！</p>
+<p>是否是限时置顶或精华</p>
+<p>没有指定，也没有精华</p>
+<p>限时高亮呢</p>
+<p>有设置升降</p>
+<p>限时的吗？如果是带有限时设置的是会这样的</p>
+<p>主题被提升了，它是显示的设定的未来的时间</p>
+<p>为啥要这样设置呢？最后发表时间显示为提升的时间，看起来最后发表时间都超前了，</p>
+<p>没有为啥，开发团队，排序用的</p>
+<h1 id="discuz的一些问题处理记录">Discuz的一些问题处理记录</h1>
+<h2 id="外部调用当指定帖子id同时属性非固定时按指定id的前后顺序排序">外部调用。当指定帖子id，同时属性非“固定”时，按指定id的前后顺序排序</h2>
+<p>广告帖子区域的排序之前是固定排序的，应市场部同事的要求，需要通过点击更新按钮（后台&ndash;&gt;门户&ndash;&gt;模块管理&ndash;&gt;数据调用&ndash;&gt;更新）自动按照属性（数据调用&ndash;&gt;属性）中指定主题的顺序排序。</p>
+<p>注意：帖子数据调用代码中，如果不指定排序方式（这在设置固定的id列表时会发生），默认按lastpoast排序</p>
+<p>首先，修改  <code>source/class/block/forum/block_thread.php</code>,找到258行</p>
+<pre><code class="language-php">$orderby        = isset($parameter['orderby']) ? (in_array($parameter['orderby'],array('lastpost','dateline','replies','views','heats','recommends')) ? $parameter['orderby'] : 'lastpost') : 'lastpost';
+</code></pre>
+<p>删除默认排序<code>lastpost</code>，即改成</p>
+<pre><code class="language-php">$orderby        = isset($parameter['orderby']) ? (in_array($parameter['orderby'],array('lastpost','dateline','replies','views','heats','recommends')) ? $parameter['orderby'] : 'lastpost') : '';
+</code></pre>
+<p>然后，找到354行，插入一行代码：</p>
+<pre><code class="language-php">$order_string = ($orderby == '') ? &quot;ORDER BY find_in_set(t.tid,'{$parameter['tids']}')&quot; : &quot;ORDER BY t.$orderby DESC&quot;;
+</code></pre>
+<p>并将如下代码做相应的修改：</p>
+<pre><code class="language-php">$query = DB::query(&quot;SELECT DISTINCT t.*$sqlfield
+                        FROM `&quot;.DB::table('forum_thread').&quot;` t
+                        $sqlfrom WHERE {$maxwhere}t.readperm='0'
+                        $sql
+                        AND t.displayorder&gt;='0'
+                        ORDER BY t.$orderby DESC
+                        LIMIT $startrow,$items;&quot;
+                        );
+</code></pre>
+<p>改成</p>
+<pre><code class="language-php">$query = DB::query(&quot;SELECT DISTINCT t.*$sqlfield
+                        FROM `&quot;.DB::table('forum_thread').&quot;` t
+                        $sqlfrom WHERE {$maxwhere}t.readperm='0'
+                        $sql
+                        AND t.displayorder&gt;='0'
+                        &quot;.$order_string.&quot;
+                        LIMIT $startrow,$items;&quot;
+                        );
+</code></pre>
+<h1 id="修改楼层广告显示逻辑变随机显示一个为全部显示">修改楼层广告显示逻辑，变“随机显示一个”为全部显示</h1>
+<p>对于帖子楼层内的广告位，如果该版块设置了多个广告，那么这些广告是随机在每个楼层显示。</p>
+<p>例如在“测试版块”里，投放了 A，B 三个”楼层内广告”，并且设定了位置在“楼层下方”，那么 A 和 B 这两个广告是回随机出现在 1、2 楼的，每一楼只会显示一个，要么是 A，要么是 B。</p>
+<p>而我们为了让 1、2、3…… 楼，都把 A、B 显示出来，不处理“随机”，像下面这样：</p>
+<p><img src="/article_images/web/discuz-some-problems/ad-in-floor-show-more.png" alt=""></p>
+<p>处理过程</p>
+<ol>
+<li>首先找到模板 <code>/templates/default/forum/viewthread_node.htm</code> 中的 <code>&lt;!--{ad/thread/a_pb/1/$postcount}--&gt;</code> 这段代码。它与前台页面中广告位的显示有关</li>
+<li>找到上面那个模板源文件对应生成的模板缓存文件<code>/data/templates/1_diy_forum_viewthread.tpl.php</code>中<code>&lt;?php echo adshow(&quot;thread/a_pb/1/$postcount&quot;);?&gt;</code>这段代码，可知函数 <code>adshow</code>负责广告的显示。</li>
+<li>在 <code>/source/function/function_core.php</code> 文件中找到这个函数 <code>function adshow</code></li>
+<li>分析函数，发现主要的“随机”处理发生在 <code>@eval($evalcode['create']);</code>这段代码</li>
+<li>跟踪到 <code>/source/class/adv/adv_thread.php</code> 文件，找到 <code>evalcode</code>函数，将里面的<code>create</code>一段，改成如下,主要是通过屏蔽 <code>array_rand</code> ，然后添加 <code>foreach</code> 循环 <code>adid</code> 数组来实现字符串组合，实现把若干个广告一起显示出来</li>
+</ol>
+<pre><code class="language-php">//$adid = $adids[array_rand($adids)];
+foreach($adids as $adid){
+	if($parameters[$adid][\'position\'] == 3) {
+		$_G[\'thread\'][\'contentmr\'] = $parameters[$adid][\'width\'] ? $parameters[$adid][\'width\'].\'px\' : \'auto\';
+		$extra = \'style=&quot;margin-left:10px;width:\'.$_G[\'thread\'][\'contentmr\'].\'&quot;\';
+	}
+	$adcode .= $codes[$adid];
+}
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/discuz-config-optimize-develop/" title="discuz论坛系统安装配置、优化与二次开发" target="_blank" rel="external">https://my101du.github.io/1/01/discuz-config-optimize-develop/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/docker-compose/" title="docker compose 编排容器"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/dbeaver-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"
+                    title="dbeaver 跨平台数据库管理工具"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

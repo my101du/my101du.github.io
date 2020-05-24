@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        IDEA &amp; PHPStorm &amp; WebStorm使用 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="特点： phpstorm 类的方法调用，在参数前面有个小小的 img controller 等提示，不用鼠标放上就能知道参数类型！ 有个独有的字体： fira code retina&amp;hellip;. 系统没有。 功能 在不同机器之间同步配" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>IDEA &amp; PHPStorm &amp; WebStorm使用 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="IDEA &amp; PHPStorm &amp; WebStorm使用" />
+<meta property="og:description" content="特点： phpstorm 类的方法调用，在参数前面有个小小的 img controller 等提示，不用鼠标放上就能知道参数类型！ 有个独有的字体： fira code retina&hellip;. 系统没有。 功能 在不同机器之间同步配" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/intellij-ide-series/" />
+
+<meta itemprop="name" content="IDEA &amp; PHPStorm &amp; WebStorm使用">
+<meta itemprop="description" content="特点： phpstorm 类的方法调用，在参数前面有个小小的 img controller 等提示，不用鼠标放上就能知道参数类型！ 有个独有的字体： fira code retina&hellip;. 系统没有。 功能 在不同机器之间同步配">
+
+<meta itemprop="wordCount" content="5924">
+
+
+
+<meta itemprop="keywords" content="IDEA,工具," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="IDEA &amp; PHPStorm &amp; WebStorm使用"/>
+<meta name="twitter:description" content="特点： phpstorm 类的方法调用，在参数前面有个小小的 img controller 等提示，不用鼠标放上就能知道参数类型！ 有个独有的字体： fira code retina&hellip;. 系统没有。 功能 在不同机器之间同步配"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-intellij-ide-series" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/intellij-ide-series/"
+    >IDEA &amp; PHPStorm &amp; WebStorm使用</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/idea/"> IDEA </a>
+    <a class="article-tag-link" href="/tags/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/intellij-ide-series/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5924字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/tools/textmate-editor/cover.png" alt=""></p>
+<h1 id="特点">特点：</h1>
+<p>phpstorm</p>
+<p>类的方法调用，在参数前面有个小小的 img  controller 等提示，不用鼠标放上就能知道参数类型！
+有个独有的字体： fira code retina&hellip;. 系统没有。</p>
+<h1 id="功能">功能</h1>
+<h2 id="在不同机器之间同步配置">在不同机器之间同步配置</h2>
+<p><a href="https://juejin.im/post/5b6aa3dbe51d4519596be18e">https://juejin.im/post/5b6aa3dbe51d4519596be18e</a></p>
+<p>可以用 settings repository 插件在团队之间共享 （推荐）</p>
+<p>在任何托管服务上创建 Git 存储库，例如 Bitbucket 或 GitHub。
+在安装了要共享其设置的 IntelliJ IDEA 实例的计算机上，导航到 File | Settings Repository。指定创建的远程仓库的 URL，然后点击 Overwrite Remote。
+在要应用设置的每台计算机上，在 Settings/Preferences dialog 对话框中，展开 Tools 节点并选择 Settings Repository，指定创建的远程仓库的 URL，然后点击 Overwrite Local。
+如果想要储存库保留远程设置和本地设置的组合，可以点击 Merge。如果检测到任何冲突，将显示一个对话框，可以在其中解决这些冲突。如果要使用本地设置覆盖远程设置，请单击点击 Overwrite Remote。</p>
+<p>只读源，因为它们不能被覆盖或合并，仅用作设置源。
+要配置此类存储库，请执行以下操作：</p>
+<p>在 Settings / Preferences Dialog 对话框中，展开 Tools 节点，然后选择 Settings Repository。
+单击“+”并添加包含要共享设置的 GitHub 仓库的 URL。</p>
+<p>与只读源中的设置进行同步的方法与 Settings Repository 的方式相同。</p>
+<p>也可以用 settings sync 只在自己的账号上同步</p>
+<h2 id="隐藏显示函数参数前面的类型提示">隐藏、显示函数参数前面的类型提示。</h2>
+<p>看起来像：</p>
+<pre><code class="language-php">  $grid-&gt;setGridName(&lt;gridname&gt;'gridTRWOComment');
+</code></pre>
+<p>Edit -&gt; Inlay Hints  打开语言如 PHP， 勾上 &ldquo;show parameter hints&rdquo; 下面两个</p>
+<h2 id="自动换行">自动换行</h2>
+<p>File-&gt;Settings-&gt;Editor  点击general，勾选 “ Use soft wrap in editor ”    ，这样就可以自动换行了</p>
+<p>2019.3 后： 勾选后，在后面加入想要换行的文件扩展名，如*.md; *.txt; *.rst; *.adoc;*.php;*.html;*.htm  分号隔开</p>
+<h2 id="terminal">terminal</h2>
+<h3 id="光标错位的问题">光标错位的问题</h3>
+<p>默认打开windows 的 cmd.exe，  win 下没问题。</p>
+<p>但 ssh 连上 linux 机器后，光标总是右移一位。</p>
+<p>打开 cmd, 修改属性，改成“使用传统 console”.</p>
+<p>退出 ssh 登录，重新登录就可以了</p>
+<p>&mdash;&ndash; 无效。 估计是 zsh 的问题， 使用 bash 即可。  <code>/bin/bash</code></p>
+<p>zsh 光标问题解决：</p>
+<p>默认的 ag&hellip;. 主题 改成 frisk(有换行问题) &ndash;&gt; 最终 mh  (OK)</p>
+<h3 id="用-git-bash-替代-cmd">用 git bash 替代 cmd</h3>
+<p>terminal 设置路径。 例如我的是：</p>
+<p>&ldquo;C:\Users\Eric.Zhang3\AppData\Local\Programs\Git\bin\sh.exe&rdquo; -login -i</p>
+<h3 id="而且经常发现-vi-文件后按-esc-跳回了编辑区域-再输入-w-会覆盖编辑区文本">而且经常发现 vi 文件后，按 esc 跳回了编辑区域， 再输入 :w 会覆盖编辑区文本。。。</h3>
+<p>找到 keymap, 搜“switch focus to Editor” 去掉 esc 这个快捷键即可</p>
+<h3 id="取消自动保存-未保存文件前显示-">取消自动保存、 未保存文件前显示 *</h3>
+<p>取消自动保存
+进入 File -&gt; Settings -&gt;Appearance-&gt;System Settings，
+取消下面两选项的勾选：
+Save files on frame deactivation
+Save files automatically if application is idle for xx sec.</p>
+<p>2、星星标记
+进入 File -&gt; Settings -&gt; Editor -&gt; Editor Tabs，
+勾选下面选项：
+Mark modified</p>
+<p><strong>问题</strong>  如果启用了修改文件自动 sftp 上传到远程，最好开启这个自动保存。
+否则会出现问题， 当某种情况下，修改了文件，没有自动保存（同时同步 sftp 到远程），切出去， 切回来，文件顶部提示一个 “file  reload” 手动操作， 点一下后，导致两边不同步了！！！</p>
+<h1 id="性能">性能</h1>
+<h2 id="解决很卡的问题">解决很卡的问题</h2>
+<p>调整内存:</p>
+<p>编辑 xxxx.vmoptions 文件
+把 xms 和 sms 改成 1G以上（默认是128M和750M）</p>
+<p>-Xms256m
+-Xmx1010m
+-XX:MaxPermSize=350m</p>
+<p>使用硬件加速:</p>
+<p>-Dawt.usesystemAAFontSettings=lcd
+-Dawt.java2d.opengl=true</p>
+<p>一、phpstorm的提速设置
+关于ps的performance，说多了都是泪，还是直奔主题吧~</p>
+<p>（一）Java VM options
+PHPStorm依赖java运行环境，说白了也就是java虚拟机，找到help &gt; Edit Custom VM Options，然后在这个文件里可以根据需要增加或减少PHPstorm使用的内存</p>
+<p>-Xms500m
+-Xmx1500m</p>
+<p>-Dawt.useSystemAAFontSettings=lcd
+-Dawt.java2d.opengl=true</p>
+<h1 id="这一条只适合于mac-可以使java调用优化过的图形引擎">这一条只适合于Mac, 可以使java调用优化过的图形引擎</h1>
+<p>-Dapple.awt.graphics.UseQuartz=true
+当然这里还有其他的一些设置，你可以网上搜搜别人都是怎么设置的，然后相应地自行探索</p>
+<p>（二）自定义properties
+进入help &gt; Edit Custom Properties来设置PHPStorm的自定义属性.</p>
+<p>editor.zero.latency.typing=true
+上面这条，改变的是PHPstorm如何渲染字体：立即渲染文字，而不是先进行内容分析。可能会因此导致偶尔有那么一瞬间文字都是不带样式的，但是整体上会顺畅很多。</p>
+<p>（三）Inspections and plugins（检查和插件）
+PHPstorm的一大问题就是太强大了，默认加了很多功能，而我们可能平时根本用不到。</p>
+<p>找到preferences -&gt; plugins，把我们根本用不到的很多插件plugin，禁用掉！</p>
+<p>file</p>
+<p>不要担心禁的太多，如果你勾掉一个插件的时候，它又被另外一个插件依赖，它会提示你的；而且，在特定的情境下，当PHPstorm觉得你应该启用一个插件的时候，它也会提示你的。</p>
+<p>禁用不必要的插件是第一步，但是禁用代码检查（inspections），往往可能影响更大。找到Settings &gt; Editor &gt; Inspections，根据自己的情况看看哪些时候其实不需要实时的代码检查</p>
+<p>（四）Language injection（其它语言的插入）
+有一个插件其实特别影响性能，就是 IntelliLang. 这个插件支持一种语言在其他的文件格式中也照样能被识别，比如说当你在一个PHP文件中插入HTML，或者用到HTML的代码自动补齐或高亮显示功能时。</p>
+<p>当然，并不建议完全禁用掉这个插件，但是呢，可能有些特定的语言插入支持，你并不会用到，这个时候你可以到Settings &gt; Editor &gt; Language Injections下，把当前项目里不可能用到的第三方语言插入，都勾掉。</p>
+<p>（五）排除对特定项目目录的索引
+在 Settings &gt; Directories 下可以将特定的目录标记排除，然后PHPstorm就不会索引其中的文件了。建议排除的目录一般是类似cache、public、storage等包含资源编译文件的，当然还有两个大头，就是vendor 和node_modules目录。</p>
+<p>vendor目录的问题
+排除掉vendor目录，意味着就不能基于那里面的组件进行自动补全（auto-complete）了，所以这可能不是个好主意。但是呢，有个小技巧就是，你可以整体上排除掉vendor目录，然后在Settings &gt; Languages &amp; Frameworks &gt; PHP下，将你真正用到的组件目录给额外添加上。</p>
+<p>关于Node modules目录
+Node modules目录实际上默认已经被排除掉了，但是呢，在 Settings &gt; Languages &amp; Frameworks &gt; JavaScript &gt; Libraries下，你会看到，它们又被额外引入进来了，假设说你写js不是那么多，你也可以在这里将其完全排除掉。当然这些呢，都是基于项目的，你可以在不同的项目作不同的选择。</p>
+<p>二、删除之前版本的phpstorm缓存文件夹
+经常，每次你更新了PHPstorm，它就会创建一个新的cache文件，而不会自动删除你上一个版本的cache文件夹，这往往会占用大量的系统盘空间，如果你用了某一个版本的PHPstorm很长时间，这个文件夹一般都是好几GB。</p>
+<p>在Mac上，你可以查找类似‘PhpStorm2016.x’或~/Library/Caches的文件夹，然后删除它；</p>
+<p>在windows上，在你的当前用户目录查找类似.WebIde的文件夹，将多出来的删掉。</p>
+<p>三、phpstorm不断重新索引（re-index）的问题
+在新近版本的PS上，这里一般指2018以后的版本，你可能会发现PS老是自动地不断重新索引，在右下角会出现indexing的状态条，导致你编辑文件的操作很容易被打断，或者说PS的各种方便的提示、补全功能会因此而暂停，遇到这个问题，可以尝试如下解决：</p>
+<p>重建缓存： File &gt; Invalidate Caches/Restart,也即重新生成缓存，然后重启，一般此问题会解决</p>
+<p>如果第一步没解决问题，那么到plugin中禁用掉.ignore插件，该插件存在的bug也会导致此问题 file 重启后观察解决情况</p>
+<h2 id="减少打字时的卡顿感觉--不需要新版的-20193-在-windows-上从来没出现-旧的-jdk-可能性能并不好">减少打字时的“卡顿”感觉  (不需要，新版的 2019.3 在 windows 上从来没出现， 旧的 jdk 可能性能并不好)</h2>
+<p>修改 <code>Contents/info.plist</code> 把 <code>JVMVersion</code> 改成 <code>1.6</code>（可能还要去 apple 的官网下载 1.6 版本的 JDK）</p>
+<h2 id="无法输入中文全角标点符号">无法输入中文全角标点符号</h2>
+<p>前段时间升级了IntelliJ IDEA 15 和 WebStorm 11 ，突然发现IntelliJ IDEA 15 和 WebStorm 11 中无法输入中文标点。到大猫的IntelliJ IDEA前端开发 群里问了一下，找到了解决方案：</p>
+<p>IntelliJ IDEA 15 和 WebStorm 11 内置 JDK 1.8 的版本，但是这个版本存在中文标点输入以后自动被转换成英文（半角）的 Bug。</p>
+<p>经试验，使用 JDK 8u45 可以正常输入中文标点，具体如下：</p>
+<p>下载安装 JDK 8u45；
+重启IntelliJ IDEA；
+选择 JDK ：按 CMD + Shift + A，输入 JDK，选择 Switch IDE boot JDk… 可以选择新安装的JDK 8u45；</p>
+<h1 id="插件">插件</h1>
+<p>rainbow indent.  彩色缩进
+rainbow brackets 彩色括号
+bootstrap3</p>
+<p>Intelij light them</p>
+<p>php:</p>
+<pre><code>php inspections (EA extends) 帮你分析代码哪里可以改进，哪里有问题。。。太强大了
+</code></pre>
+<h2 id="类似-vscode-的-gitlen--在行上显示-git-更改记录谁改了这一行">类似 vscode 的 gitlen , 在行上显示 git 更改记录(谁改了这一行)</h2>
+<p>安装  gittoolbox 这个插件</p>
+<h1 id="美化">美化</h1>
+<p><a href="http://color-themes.com/?view=index">http://color-themes.com/?view=index</a></p>
+<p>最后选择  notepad++</p>
+<p>然后把编辑器的背景色改成纯白。</p>
+<h2 id="字体">字体</h2>
+<p>fira code retina 舒适，但非 retina 有点模糊。  Incosolata 非常清晰。
+12
+line: 1.1</p>
+<p>官方最新出了个 jetbrains mono</p>
+<h2 id="主题">主题</h2>
+<h3 id="最后选-notepad-稍微调整即可">最后选 notepad++ 稍微调整即可。</h3>
+<p>instance property:  类成员  加粗
+注释：绿色
+va
+字符串： 灰色</p>
+<h3 id="安装-matarial-theme-ui">安装 Matarial Theme UI</h3>
+<h2 id="搜-editor-tab">搜 Editor tab</h2>
+<p>显示小字体
+多行（取消 display in one tab）</p>
+<h2 id="高亮显示相同的变量">高亮显示相同的变量</h2>
+<p>实idea有这个功能，只是没有背景颜色，在这里有可能是编辑区的背景颜色和选中变量的背景颜色一样，</p>
+<p>Editor -&gt; Color schema -&gt; General  修改 Code 下 identifier under caret/(write) 右边修改背景颜色</p>
+<h2 id="function-之间显示一个水平线separator">function 之间显示一个水平线。（separator）</h2>
+<p>搜索  separeter  -&gt; methods separator  勾上</p>
+<h1 id="技巧">技巧</h1>
+<h2 id="sftp-远程开发">sftp 远程开发</h2>
+<p>便于在本地远程编辑服务器上的文件，更新完本地文件，马上把变化同步到远程服务器。
+(非常适合开发一些需要实际服务器域名的项目，例如微信的项目； 或者不许本地有数据库的，必须连接到公司的开发机上的文件，才能连上数据库的情况)</p>
+<p>首先，创建一个基于远程主机的工程文件。</p>
+<p>首先选&quot;create project from existing folder&rdquo;.</p>
+<p>然后选 &ldquo;web server is on remote host, files are accessible via FTP/SFTP/FTPS&rdquo;
+(如果是局域网的 windows 共享文件夹, 还可以 mount 为一个盘)</p>
+<p>设置一个本地目录，等下保存远端拉取的文件</p>
+<p>Deploy Option 选 Custom</p>
+<p>Upload changed files automaticlly to the default server 选 &ldquo;On explicit save action(ctrl+s)&rdquo;  (其中Upload external changes用于配置【非手动修改时，发生改变的文件，是否自动上传】，比如less自动编译为css的时候，就非常有用)</p>
+<p>然后 add new remote server, 选择 Type: SFTP 等 (一般用 SFTP 可以用 SSH 账号)</p>
+<p>选择 Server 上的 root 目录（一般如果这个服务器上的 /home/wwwroot 有有多个项目，就选这个 /home/wwwoort，和等下要选的 Project Root 不一样的）</p>
+<p>选择项目目录。如  /home/wwwroot/project_1</p>
+<p>接下来会把文件下载过来-根据文件数量等待时间不等。有修改就自动上传文件覆盖</p>
+<p>管理服务器：</p>
+<p>“Tools”&mdash;》“Deployment”&mdash;》“Brower Remote Host”</p>
+<p>当由于某些意外，你本地工程的代码与ftp上不一致了，我们还可以通过在左侧文件浏览器里，右键目录或文件，选择</p>
+<p>Upload to xxx</p>
+<h3 id="远程变化同步到本地">远程变化同步到本地</h3>
+<p>在 browse remote host 的文件管理器里，目录上右键：sync with local</p>
+<p>选中文件后，点上面的按钮， sync&hellip;..</p>
+<h2 id="快速输入-php-">快速输入 <code>&lt;?php ?&gt;</code></h2>
+<p>Preferences-&gt;Editor-&gt;Live Templates, click on the PHP and add new Live Template Live Templates</p>
+<p>and then input</p>
+<p>Abbreviation: php
+Group: user
+Template Text: <!-- raw HTML omitted -->
+Context:
+Check HTML</p>
+<p>最新版的在Editor ， File and Code Templates</p>
+<p>然后就可以输入php，然后 tab，就自动生成了</p>
+<h2 id="bookmark-在大段代码内不同区域跳转">“bookmark” 在大段代码内不同区域跳转</h2>
+<p>在某行上， ctrl + shift + 0/1/2/3/4&hellip;. 创建一个书签</p>
+<p>然后 ctrl + 0/1/2 跳转过去</p>
+<p>或者打开命令面板，show bookmarks 跳转</p>
+<p>如果不需要了， 还是按 ctrl+shift+0/1/2/3  取消书签</p>
+<h2 id="回车后强制缩进问题">回车后强制缩进问题</h2>
+<p>例如 php 数组, 或者很多 input 控件的属性换行。</p>
+<p>最后一行回车后，会自动加一个缩进，连按删除键都不会往前一个个 space 往前走，而是直接跑到上面一行末尾去了</p>
+<pre><code class="language-php">$send = array(
+            &quot;javascript&quot; =&gt; '',
+            'wo' =&gt; $cd_wo,
+            'toolbar' =&gt; $toolbar,
+            'gridComment' =&gt; $gridComment
+                // 换行后自动缩进了
+        ) + $trans;
+</code></pre>
+<pre><code class="language-html">&lt;input name=&quot;ab&quot;
+            &lt;!-- 也多了莫名其妙的缩进 --&gt;id=&quot;ab&quot;
+ /&gt;
+</code></pre>
+<p>File-&gt;setting-&gt;Editor-&gt;code_style-&gt;indent</p>
+<p>keep indent in new line 取消</p>
+<h2 id="过于智能提示-导致连输入的普通文本带空格也会自动提示的问题">过于智能提示， 导致连输入的“普通文本”带空格，也会自动提示的问题</h2>
+<p>例如在注释里打一个单词，  test request    输入 test 后， 自动提示了一个 变量名、函数等，还要手动删除</p>
+<p>需要关闭掉这个功能，改成需要手动按 tab 才能触发</p>
+<p>Editor-&gt;General-&gt;Code Completion</p>
+<p>取消勾选： insert selected suggestion by pressing space,dot or other&hellip;..</p>
+<h2 id="file-assosi">file assosi&hellip;.</h2>
+<p>把 ci 框架的 _view.php 设置成 html 识别。 就能在左侧的 struture 里看到 js 结构和 html 结构了</p>
+<p>但是发现这种强制设置的，会有代码高亮的问题。 例如混合在里面的 js 注释，和变量名颜色一样。。。</p>
+<p>还是手动在 struchure 的顶上工具里切换文件识别吧。</p>
+<h2 id="php-格式化时对齐-等号-箭头等">php 格式化时，对齐 等号 箭头等</h2>
+<p>Settings -&gt; Editor -&gt; Code Style -&gt; PHP -&gt; Wrapping and Braces -&gt; Align consecutive assignments</p>
+<p>以及所有 array  class 等的 align (右边有预览效果)</p>
+<p>HTML 的也是在这里找。</p>
+<h2 id="快捷键注释一行-注释符显示在行首而不缩进的问题">快捷键注释一行， 注释符显示在行首而不缩进的问题</h2>
+<p>在 html 代码里尤其烦。。丑死了</p>
+<pre><code class="language-php">public function test() {
+    //想要的
+    $a = 2;
+
+// 不想要的
+    $b = 3;
+}
+</code></pre>
+<p>进入 Settings -&gt; Code Style -&gt; Java ，在右边选择 “Code Generation” Tab，然后找到 Comment Code 那块，把
+Line comment at first column
+Block comment at first column
+去掉前面两个的复选框</p>
+<h2 id="phpstorm-livetemplate">PHPStorm livetemplate</h2>
+<p>变量.</p>
+<p>比如我要实现一键获取$_GET[]的参数，例如如下：
+<code>$username = $_GET['username']</code></p>
+<p>在代码模板里面要这么设置：</p>
+<pre><code>$$$NAME$ = $_GET['$NAME$'];
+$END$
+</code></pre>
+<p>注意看最前面有3个 <code>$$$</code>，<code>$$$NAME$</code> 是啥意思呢？
+<code>$$</code>其实是PHPStorm里面的转义字符，将<code>$$</code>转义成为了<code>$</code></p>
+<p>那么<code>$NAME$</code>当然是个变量啦，因为后面也用到一样的了，所以就可以设置成变量了，
+<code>$END$</code>是内置变量，它代表键盘光标最后停留的位置。</p>
+<p>变量的值使用函数</p>
+<h2 id="php-字符串中-sql-语法高亮">php 字符串中 sql 语法高亮</h2>
+<p>对于大段的 SQL, 如果禁用  <code>$sql = 'tablename.xxxx'</code> 无法准确看到 SQL 语法高亮，利用 language injection 和 “定界符” 来实现</p>
+<pre><code class="language-php">$where = &lt;&lt;&lt;SQL
+ &quot;WHERE table_name='bbb'
+ AND username='{$username}'
+ &quot;
+SQL;
+</code></pre>
+<h1 id="改造">改造</h1>
+<h2 id="sublime-快捷键--新版似乎自带了">sublime 快捷键  （新版似乎自带了？？？）</h2>
+<p><a href="https://github.com/ekaragodin/idea-sublime-keymap">https://github.com/ekaragodin/idea-sublime-keymap</a></p>
+<p>使用 Sublime.xml 放到 ~/.phpstorm/config/keymaps/ 下</p>
+<p>然后在“设置”里 keymap 下拉框调整为 sublime Text 方案</p>
+<h2 id="phpstorm-不提示通过-include-进来的父类-library-实例化后类变量-的方法">PHPStorm 不提示通过 include 进来的父类、 library、 实例化后类变量 的方法</h2>
+<p>When IDE resolves paths .. it checks</p>
+<p>absolute path
+relative to the current file
+relative to the project root
+relative to the content root (typical PhpStorm project has only single content root, which is the same as project root)</p>
+<p>Laravel 等用 autoload 特性的项目应该这个问题不大。 一些传统项目有这个问题。 例如 CodeIgniter 的例子</p>
+<h3 id="父类通过-require--include-引入一个带路径常量的文件">父类通过 require / include 引入一个带“路径常量”的文件</h3>
+<pre><code class="language-php">class baseController {
+    public function foo() {
+        echo 'foo';
+    }
+}
+</code></pre>
+<pre><code class="language-php">require APPPATH . 'controllers/baseController';
+
+class B extends baseController {
+    public function index() {
+        $this-&gt;foo(); // 不提示。
+    }
+}
+</code></pre>
+<p>step 1
+有说 “点击File   =&gt; Invalidate Caches /Restart  清除重置。就好了。一些缓存什么的可能没加载对。”</p>
+<p>如果没有效果，下一步</p>
+<p>step 2
+应该是 APPPATH 常量没有被识别。</p>
+<p>修改配置， 添加 PATH Variable .   例如  APPPATH d:/project/xxx/xxxx/application
+无效</p>
+<p>step 3
+在类的顶部添加</p>
+<pre><code class="language-php">/** @define &quot;root_dir()&quot; &quot;/home/me/project/&quot; */
+// or
+/** @define &quot;ROOT_DIR&quot; &quot;/home/me/project/&quot; */
+</code></pre>
+<p>清除重置 。 OK!</p>
+<p>问题： 如果这个项目是你本地开发的， 可能 push 代码上去后，别人看了这个路径会很疑惑！</p>
+<p>所以改成 &ldquo;动态获取&rdquo; 路径  例如</p>
+<pre><code class="language-php">/** @define &quot;APPPATH&quot; dirname(dirname(__DIR__)) */
+</code></pre>
+<h3 id="library">library</h3>
+<p>如果用变量的形式 <code>$grid</code>  必须要先“假装”实例化</p>
+<pre><code class="language-php">$grid = $this-&gt;w2gridgen;
+$f    = $this-&gt;cfields;
+$fm   = $this-&gt;cfiltermaker;
+
+if (1 == 2) {
+    $f    = new Cfields();
+    $grid = new w2gridgen();
+    $fm   = new cfiltermaker();
+}
+</code></pre>
+<p>其实只要在 config 里自动加载了这些 library 就可用 <code>$this-&gt;library_name-&gt;</code> 自动提示了</p>
+<pre><code class="language-php">$this-&gt;grid-&gt;addColumn();
+</code></pre>
+<h3 id="如果是在其他任意地方要自动提示某个类-用-property-">如果是在其他任意地方要自动提示某个类, 用 <code>@property </code></h3>
+<p>使用了 phpdoc 的 “magic property”</p>
+<p><a href="https://github.com/topdown/phpStorm-CC-Helpers">https://github.com/topdown/phpStorm-CC-Helpers</a></p>
+<p><a href="https://github.com/nicolas-goudry/CI-PHPStorm-Code-Completion">https://github.com/nicolas-goudry/CI-PHPStorm-Code-Completion</a></p>
+<p>下载文件后</p>
+<p>然后 External Libraries &gt; Configure PHP Include Paths 添加 phpStorm-CC-helpers</p>
+<p>CI 框架项目要设置下  Mark as Plain Text</p>
+<p>/system/core/Controller.php
+/system/core/Model.php</p>
+<p>试试修改 **刚添加的 external library 里, PHPStorm_CI_CC.php 文件, 分别在 CI_Controller  CI_Model 前面添加需要的类</p>
+<pre><code class="language-php">***************** YOUR LIBRARIES *****************
+* @property Layout              $layout               Layout Class
+
+
+***************** YOUR MODELS *****************
+* @property user_model          $user_model           ,$user
+* @property data_model          $data_model
+* @property products_model      $products_model
+* @property movie_model         $movie_model
+</code></pre>
+<p>然后能看到效果了</p>
+<pre><code class="language-php">$this-&gt;membership_model-&gt;get_records();
+
+$this-&gt;fm
+</code></pre>
+<p>并且好像不支持  <code>tr/xxxx_model</code> 这种带目录的形式自动提示, 解决办法：</p>
+<p><a href="https://stackoverflow.com/questions/18432819/phpdoc-not-showing-folders-for-packages">https://stackoverflow.com/questions/18432819/phpdoc-not-showing-folders-for-packages</a></p>
+<p>用下划线  <code>Folder_Class</code> 或者 反斜线 <code>Folder\Class</code> 。 $this 后面能出现 model 名， 但是接下来的 model 的成员方法就不能显示了。</p>
+<p><strong>解决</strong> 不需要加 目录前缀！！  发现 PHPStorm 自动把全部的 model 都纳入索引了！  只需要输入 目录里面的类名开始几个字母，自动填充！</p>
+<p>注意： 如果不同的 controller 里，对不同的 model 定义了相同的 model 名, 那么可能是有问题的。</p>
+<p>解决这个方法，就是在  Class/Function 上面，重新写   @property test_model $mainmodel   覆盖前面  <code>PHPStorm_CI_CC.php</code> 的即可</p>
+<p>/**</p>
+<ul>
+<li>@property test_model $mainmodel
+*/</li>
+</ul>
+<p>我觉得 PHPStorm_CI_CC 里添加 library 和常用的 model, 然后直接在 class 的顶上添加一些当前类特有引用的 model 是最好的组合。</p>
+<h3 id="最好的办法改成-autoload--composer-的方式">最好的办法，改成 autoload + composer 的方式。。。。</h3>
+<p>资料：
+<a href="https://segmentfault.com/a/1190000015802145">https://segmentfault.com/a/1190000015802145</a>
+<a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206323719-Constants-Unresolved-include-">https://intellij-support.jetbrains.com/hc/en-us/community/posts/206323719-Constants-Unresolved-include-</a>
+<a href="https://stackoverflow.com/questions/37264086/phpstorm-wont-resolve-includes-using-constants">https://stackoverflow.com/questions/37264086/phpstorm-wont-resolve-includes-using-constants</a></p>
+<h1 id="crack">crack</h1>
+<p>解压 crack.zip 放入某个目录</p>
+<p>然后安装后运行，打开 Help, Edit Custom VM Options …  添加</p>
+<p>mac: -javaagent:/Users/neo/jetbrains-agent.jar
+linux: -javaagent:/home/neo/jetbrains-agent.jar
+windows: -javaagent:C:\Users\neo\jetbrains-agent.jar</p>
+<p>一定要记得重启一下软件，就是推出再打开就可以了，</p>
+<p>这时，输入 active server   ：</p>
+<p>过段时间发现上面那个过期了，无法激活，使用新的 jetbrains-agent license server：http://fls.jetbrains-agent.com</p>
+<p>永久激活到 2089 年：</p>
+<p>然后输入激活码</p>
+<pre><code>3AGXEJXFK9-eyJsaWNlbnNlSWQiOiIzQUdYRUpYRks5IiwibGljZW5zZWVOYW1lIjoiaHR0cHM6Ly96aGlsZS5pbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiIiLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkFDIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9LHsiY29kZSI6IkRQTiIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJQUyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJHTyIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJETSIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwODktMDctMDciLCJwYWlkVXBUbyI6IjIwODktMDctMDcifSx7ImNvZGUiOiJSUzAiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUkQiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUEMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUk0iLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiV1MiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiREMiLCJmYWxsYmFja0RhdGUiOiIyMDg5LTA3LTA3IiwicGFpZFVwVG8iOiIyMDg5LTA3LTA3In0seyJjb2RlIjoiUlNVIiwiZmFsbGJhY2tEYXRlIjoiMjA4OS0wNy0wNyIsInBhaWRVcFRvIjoiMjA4OS0wNy0wNyJ9XSwiaGFzaCI6IjEyNzk2ODc3LzAiLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0=-WGTHs6XpDhr+uumvbwQPOdlxWnQwgnGaL4eRnlpGKApEEkJyYvNEuPWBSrQkPmVpim/8Sab6HV04Dw3IzkJT0yTc29sPEXBf69+7y6Jv718FaJu4MWfsAk/ZGtNIUOczUQ0iGKKnSSsfQ/3UoMv0q/yJcfvj+me5Zd/gfaisCCMUaGjB/lWIPpEPzblDtVJbRexB1MALrLCEoDv3ujcPAZ7xWb54DiZwjYhQvQ+CvpNNF2jeTku7lbm5v+BoDsdeRq7YBt9ANLUKPr2DahcaZ4gctpHZXhG96IyKx232jYq9jQrFDbQMtVr3E+GsCekMEWSD//dLT+HuZdc1sAIYrw==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ndaik1GD0nyTdqkZgURQZGW+RGxCdBITPXIwpjhhaD0SXGa4XSZBEBoiPdY6XV6pOfUJeyfi9dXsY4MmT0D+sKoST3rSw96xaf9FXPvOjn4prMTdj3Ji3CyQrGWeQU2nzYqFrp1QYNLAbaViHRKuJrYHI6GCvqCbJe0LQ8qqUiVMA9wG/PQwScpNmTF9Kp2Iej+Z5OUxF33zzm+vg/nYV31HLF7fJUAplI/1nM+ZG8K+AXWgYKChtknl3sW9PCQa3a3imPL9GVToUNxc0wcuTil8mqveWcSQCHYxsIaUajWLpFzoO2AhK4mfYBSStAqEjoXRTuj17mo8Q6M2SHOcwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQBonMu8oa3vmNAa4RQP8gPGlX3SQaA3WCRUAj6Zrlk8AesKV1YSkh5D2l+yUk6njysgzfr1bIR5xF8eup5xXc4/G7NtVYRSMvrd6rfQcHOyK5UFJLm+8utmyMIDrZOzLQuTsT8NxFpbCVCfV5wNRu4rChrCuArYVGaKbmp9ymkw1PU6+HoO5i2wU3ikTmRv8IRjrlSStyNzXpnPTwt7bja19ousk56r40SmlmC04GdDHErr0ei2UbjUua5kw71Qn9g02tL9fERI2sSRjQrvPbn9INwRWl5+k05mlKekbtbu2ev2woJFZK4WEXAd/GaAdeZZdumv8T2idDFL7cAirJwcrbfpawPeXr52oKTPnXfi0l5+g9Gnt/wfiXCrPElX6ycTR6iL3GC2VR4jTz6YatT4Ntz59/THOT7NJQhr6AyLkhhJCdkzE2cob/KouVp4ivV7Q3Fc6HX7eepHAAF/DpxwgOrg9smX6coXLgfp0b1RU2u/tUNID04rpNxTMueTtrT8WSskqvaJd3RH8r7cnRj6Y2hltkja82HlpDURDxDTRvv+krbwMr26SB/40BjpMUrDRCeKuiBahC0DCoU/4+ze1l94wVUhdkCfL0GpJrMSCDEK+XEurU18Hb7WT+ThXbkdl6VpFdHsRvqAnhR2g4b+Qzgidmuky5NUZVfEaZqV/g==
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/intellij-ide-series/" title="IDEA &amp; PHPStorm &amp; WebStorm使用" target="_blank" rel="external">https://my101du.github.io/1/01/intellij-ide-series/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/imovie-study/" title="iMovie教程"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/hugo-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E7%94%9F%E6%88%90%E5%99%A8/"
+                    title="hugo 静态网站生成器"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="zh">
   <head>
     <title>
-         - my101du Blog
+        使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 - my101du Blog
       </title>
         <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,2325 +20,30 @@
     <meta http-equiv="window-target" content="_top" />
     
     
-    <meta name="description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站
-permalink: linux-nginx-mysql-php-apache-set-up date: 2016/05/25 10:10:10 tags:
- 运维   目前，有不少网站站长都不再满足于租用一个和别人共用的虚拟主机（指开箱即用，或者简单配置后即可运行的网站），因为往往这些虚拟主机在开始的时候能满足需求，随着访问人数攀升，以及个性化定制需求的增加，各种不灵活的掣肘就浮现出来了。拥有一台自己拥有完全控制权的独立服务器（或 VPS，或现在流行的云主机），用来搭建一个网站以及运行有意思的服务（爬虫、远程备份，等等），就成为进阶站长和技术爱好者的目标。
-又或者你只是想先在自己的电脑上搭建一个 PHP 的运行环境进行学习、开发。
-都可以在这里找到细致而详尽的答案。
-本文包括在三种主流的操作系统（Linux &amp;amp; Windows &amp;amp; OS X）上搭建 Nginx&#43;PHP&#43;MySQL 环境的过程。因为 LEMP（Linux &#43; Nginx &#43; MySQL &#43; PHP）实际上已经是现在很多中小型网站运行的主流环境了，所以我们重点笔墨放在 Linux 上，我们也建议 Windows 的开发者尽可能使用虚拟机来安装 Linux，可以避免遇到很多莫名其妙的问题。
-本文并未涉及服务器的选购、 Linux 安装配置、以及 Nginx&#43;PHP&#43;MySQL 的性能优化等知识。 如果需要了解这些内容 ,请查看我们相关的教程：
- 如何选购合适的独立服务器-vps-云主机 Linux安装配置与常用命令 基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化  最简单的方式：一键安装 XAMPP 跨平台的 Apache &#43; MySQL(MariaDB)&#43; PHP，并自带了 Ftp 服务端、PhpMyAdmin等。
-下载 Linux 版本（.run 后缀名），安装后会在 /opt/lampp
-# 一些控制命令（修改了Apache、PHP、MySQL的配置文件后要重启） ./ctlscript.sh help ./ctlscript.sh (start|stop|restart|status) ./ctlscript.sh (start|stop|restart|status) mysql ./ctlscript.sh (start|stop|restart|status) proftpd ./ctlscript.sh (start|stop|restart|status) apache  Linux 下的 LNMP 环境一键安装包 如果你没有太多时间去研究各种软件包版本和库之间的依赖关系，而且对性能调优不太熟悉，只想尽快搭建一个可以快速运行起来的网站的话建议选择一键包。 一键包除了可以简化繁琐和容易出错的安装过程外，还有很强大的参数调整方式（通过命令行或图形界面）。 但也有缺陷，那就是安装的时候可定制型不强，一些特殊的模块可能并没有默认安装。
-我最常用的是军哥的一键包
-这个一键包的作者有多年的运维经验，非常建议多读读安装脚本的代码，可以从中学到很多的知识。 在 http://lnmp.org 下载，解压并运行安装脚本即可，安装过程中会有详细的提示，用于选择 PHP 版本、MySQL版本、默认 root 密码等等。
-$ wget -c http://soft.vpser.net/lnmp/lnmp1.3-full.tar.gz &amp;amp;&amp;amp; tar zxf lnmp1.3-full.tar.gz &amp;amp;&amp;amp; cd lnmp1.3-full &amp;amp;&amp;amp; ./install.sh lnmp  最新版的一键包支持 PHP7(对比PHP5有几倍的性能提升，但有部分函数不兼容一些比较古老的PHP框架/CMS，在稳定的生产环境中还是建议使用 PHP5)。
-除了安装基本的 LEMP 环境外，还可以添加 ftp 服务器、memcached 内存缓存服务等功能。
-由于这个一键包没有提供图形界面的管理面板，所以只能通过命令行去启动服务、添加主机等操作。
-LNMP无法删除或更改权限，显示：
- rm: cannot remove `.user.ini&amp;rsquo;: Operation not permitted
- 无法删除“.user.ini”文件解决方法,运行后删除即可
-chattr -i /home/wwwroot/default/.user.ini  如果是需要修改文件，记得修改完以后运行：
-chattr &#43;i /home/wwwroot/default/.user.ini  如果你对命令行并不熟练，也可以选择WDCP、AMH等带有图形界面的管理面板，其中 好像WDCP在阿里云上用得比较多；AMH也是一个非常不错的环境，特点是有一个优化过的 MySQL 管理器 。
-默认不会安装 ext_ldap ext_filenfo 等包 在laravel应用 composer install 会报错。需要手动安装
-以 ldap 为例
-# 先进入 src 目录, 解压 php 压缩包（bz2格式） cd ~/lnmp1.5/src tar -jxvf xx.tar.bz2 # 进入需要安装的扩展目录 cd php-7.1.18/ext/ldap # 然后依次运行 （--with-ldap 可以不带？ fileinfo 测试） /usr/local/php/bin/phpize ./configure --with-php-config=/usr/local/php/bin/php-config --with-ldap  如果报错
- configure: error: Cannot find ldap.h
- 则安装下面的包后再运行 configure
-yum install openldap openldap-devel -y  如果继续提示
- configure: error: Cannot find ldap libraries in /usr/lib
- 则复制一些文件后重新 configure
-cp -frp /usr/lib64/libldap* /usr/lib/  运行make 命令
-make &amp;amp;&amp;amp; make install  提示如下，记住这个路径
- Installing shared extensions: /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
- 打开/usr/local/php/etc/php.ini 添加fileinfo.so扩展
-extension = &amp;quot;ldap.so&amp;quot;  重启确保生效,
-lnmp retstart  再运行下面的命令查看模块列表
-php -m  Windows 下的一键安装包 XAMPP，比较大，只有 Apache
-UPUPW (有 Apache 或 Nginx 版本)，可以自己搭配 PHP &amp;amp; MySQL 版本
-Apache 使用别的目录做虚拟主机目录时，403 Forbidden问题 #定义个目录 Define VHOSTS_ROOT &amp;quot;/mnt/share&amp;quot; # 编辑 conf/httpd-vhosts.conf # 使用了其他目录作为虚拟主机目录，这段是最重要的 &amp;lt;Directory &amp;quot;${VHOSTS_ROOT}&amp;quot;&amp;gt; Options Indexes FollowSymLinks AllowOverride None Require all granted &amp;lt;/Directory&amp;gt;  CentOS 系统安装 Nginx &#43; PHP &amp;amp; MySQL 对一些有软件洁癖的技术爱好者，或者一些老鸟来说，用一键包往往难以满足他们从头到尾控制安装过程的满足感。下面就分别介绍 CentOS 和 Ubuntu 这两个最流行的发行版上安装 LEMP 环境的方法。
-这里默认的版本为 CentOS 7，部分在 CentOS 6 下有差异的地方附有说明。
-添加 epel 源 #因为 nginx 没有在官方源里面，需要添加epel源 $ sudo yum install epel-release #还需要安装下面的 rpm 包以便能安装 PHP5.5 #如果是 CentOS 7 $ rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm $ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm #如果是 CentOS 6 $ rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm  安装必需的软件和库 #下面的命令安装包含了 `pcre` `openssl` 等 `nginx` / `tengine` 必须要用到的库 $ yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel gcc gcc-c&#43;&#43; libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2 libxml2-devel imake autoconf automake screen sysstat compat-libstdc&#43;&#43;-33 curl curl-devel  安装Nginx 用 yum来安装 Nginx
-$ sudo yum install nginx  按照提示输入 yes 后开始安装。安装完毕后，Nginx 的配置文件在 /etc/nginx 目录下。其中 sites-enabled目录中保存激活的虚拟主机配置文件。
-#使用以下命令启动 Nginx： $ sudo systemctl start nginx  有时候可能存在问题：启动时或运行配置参数重新加载的命令 nginx -s reload 时报错
- nginx: [error] open() &amp;ldquo;/run/nginx.pid&amp;rdquo; and failed
- 需要 -c 参数手动指定 nginx 的配置文件路径 /etc/nginx/nginx.conf
-$ /usr/sbin/nginx -c /etc/nginx/nginx.conf  最后将Nginx设置为开机启动
-$ sudo systemctl enable nginx.service  最后测试一下 nginx 服务是否正常运行。启动 nginx 服务后，通过浏览器访问http://localhost（本地开发环境）或 http://&amp;lt;外网IP地址&amp;gt; 来确定是否已经启动。如果一切正常，页面会显示一行
- Welcome to Nginx
- 补充
-更建议用 Tengine 来替代 Nginx，并用编译源代码的方式来安装，见后面的章节**“用 Tengine 替代 Nginx”**
-开放防火墙中的端口 检查系统中 firewalld 防火墙服务是否开启
-$ sudo systemctl status firewalld  如果已开启（显示 active (running)），我们需要修改防火墙配置，开启外网访问 80 端口。 修改 /etc/firewalld/zones/public.xml 文件，在 &amp;lt;zone&amp;gt;&amp;lt;/zone&amp;gt;一节中增加 &amp;lt;service name=&amp;quot;nginx&amp;quot;/&amp;gt; 关于防火墙的设置，可以学习我们讲解 CentOS 的安装和配置有关教程。
-保存后重新加载firewalld服务
-$ sudo systemctl reload firewalld  安装 MariaDB（MySQL） MariaDB是MySQL的一个开源分支，在 MySQL 被甲骨文公司收购后，由开源社区进行开发和维护，在CentOS 7的软件仓库中，已经默认将 MySQL更替为了MariaDB。
-使用yum直接安装MariaDB
-sudo yum install mariadb-server #安装完成之后，执行以下命令启动MariaDB服务 sudo systemctl start mariadb  基本安全设置（root密码等）
-MariaDB默认root密码为空，我们需要设置一下，执行脚本：
-sudo /usr/bin/mysql_secure_installation  这个脚本会经过如下一系列的交互问答来进行MariaDB的安全设置。
- 首先提示输入当前的root密码： Enter current password for root (enter for none): 初始root密码为空，我们直接敲回车进行下一步。
-  Set root password? [Y/n] 设置root密码，默认选项为Yes，我们直接回车，提示输入密码，在这里设置您的MariaDB的root账户密码。
-  Remove anonymous users? [Y/n] 是否移除匿名用户，默认选项为Yes，建议按默认设置，回车继续。
-  Disallow root login remotely? [Y/n] 是否禁止root用户远程登录？如果您只在本机内访问MariaDB，建议按默认设置，回车继续。 如果您还有其他云主机需要使用root账号访问该数据库，则需要选择n。
-  Remove test database and access to it? [Y/n] 是否删除测试用的数据库和权限？ 建议按照默认设置，回车继续。
-  Reload privilege tables now? [Y/n] 是否重新加载权限表？因为我们上面更新了root的密码，这里需要重新加载，回车。
- 登录测试
-完成后你会看到Success!的提示，MariaDB的安全设置已经完成。我们可以使用以下命令登录MariaDB：
-mysql -uroot -p #按提示输入root密码，就会进入MariaDB的交互界面，说明已经安装成功。 mysql&amp;gt; mysql&amp;gt; show databases; &#43;--------------------&#43; | Database | &#43;--------------------&#43; | information_schema | | mysql | | performance_schema | &#43;--------------------&#43; 3 rows in set (0.00 sec)  最后将MariaDB设置为开机启动
-sudo systemctl enable mariadb  可能的问题：在连接外部数据库时提示无法连接
- Error:Can&amp;rsquo;t connect to MySQL server on &amp;lsquo;10.211.55.2&amp;rsquo; (13) Errno:2003
- 解决办法 关闭CentOS的 SELinux
-setenforce 0 vi /etc/selinux/config # 修改 SELINUX=enforcing 为 SELINUX=disabled  重装或替换 MariaDB 为 MySQL 卸载
-#查看CentOS自带mysql是否已安装 yum list installed | grep mysql #若有自带安装的mysql，卸载CentOS系统自带mysql数据库，若有多个依赖文件则依次卸载 yum -y remove mysql-libs.x86_64 yum -y remove [依次卸载其他文件] #当结果显示为Complete！即卸载完毕  开始安装
-#查看yum库上的mysql版本信息 yum list | grep mysql 或 yum -y list mysql* #安装mysql-server，mysql(包括服务端和client) yum -y install mysql-server mysql mysql-devel #查看刚安装mysql数据库版本信息 rpm -qi mysql-server  最后要重复之前安装过程中的 基本安全设置 和 登录测试 以及 配置和优化步骤。
-安装PHP（默认是5.4，安装5.5的方法在后面一节） #先安装PHP(默认5.4) yum install php php-fpm #安装php扩展 yum -y install php-mysql php-gd php-pear php-xml php-mhash php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mcrypt #安装完成后启动 php-fpm sudo systemctl start php-fpm #将php-fpm设置为开机启动 sudo systemctl enable php-fpm  安装加速扩展如 XCache 等
-比较麻烦，建议直接安装 PHP5.5，自带有 Opcache
-卸载旧版本 PHP 与安装 高级版本PHP（如 5.5，Laravel 等现代化的 PHP框架要求比较新的 PHP 版本） 卸载老版本（如5.4）以及对应的依赖
-yum remove php php-fpm  必须强制删除其他有关的包
-rpm -qa|grep php  提示如下
- php-pdo-5.1.6-27.el5_5.3 php-mysql-5.1.6-27.el5_5.3 php-xml-5.1.6-27.el5_5.3 php-cli-5.1.6-27.el5_5.3 php-common-5.1.6-27.el5_5.3 php-gd-5.1.6-27.el5_5.3
- 注意卸载要先卸载没有依赖的：pdo是mysql的依赖项；common是gd的依赖项； 例如：
-# rpm -e php-pdo-5.1.6-27.el5_5.3 &amp;gt; error: Failed dependencies: &amp;gt; php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386  所以正确的卸载顺序是：
-rpm -e php-mysql-5.1.6-27.el5_5.3 rpm -e php-pdo-5.1.6-27.el5_5.3 rpm -e php-xml-5.1.6-27.el5_5.3 rpm -e php-cli-5.1.6-27.el5_5.3 rpm -e php-gd-5.1.6-27.el5_5.3 rpm -e php-common-5.1.6-27.el5_5.3  再用 php -v 查看版本信息已经没有提示
-安装PHP5.5以及扩展
-yum install php55w php55w-opcache php55w-common php55w-fpm php55w-gd php55w-imap php55w-mbstring php55w-mcrypt php55w-mysql php55w-pdo php55w-xml php55w-xmlrpc php55w-soap  下面是扩展的列表与简介，按你的需求添加（只需要添加你用到的即可，例如 mssql 等扩展就极少用到，不需要添加进去）
- php55w mod_php, php55w-zts php55w-bcmath php55w-cli php-cgi, php-pcntl, php-readline php55w-common php-api, php-bz2, php-calendar, php-ctype, php-curl, php-date, php-exif, php-fileinfo, php-ftp, php-gettext, php-gmp, php-hash, php-iconv, php-json, php-libxml, php-openssl, php-pcre, php-pecl-Fileinfo, php-pecl-phar, php-pecl-zip, php-reflection, php-session, php-shmop, php-simplexml, php-sockets, php-spl, php-tokenizer, php-zend-abi, php-zip, php-zlib php55w-dba php55w-devel php55w-embedded php-embedded-devel php55w-enchant php55w-fpm php55w-gd php55w-imap php55w-interbase php_database, php-firebird php55w-intl php55w-ldap php55w-mbstring php55w-mcrypt php55w-mssql php55w-mysql php-mysqli, php_database php55w-mysqlnd php-mysqli, php_database php55w-odbc php-pdo_odbc, php_database php55w-opcache php55w-pecl-zendopcache php55w-pdo php55w-pecl-gearman php55w-pecl-geoip php55w-pecl-memcache php55w-pecl-xdebug php55w-pgsql php-pdo_pgsql, php_database php55w-process php-posix, php-sysvmsg, php-sysvsem, php-sysvshm php55w-pspell php55w-recode php55w-snmp php55w-soap php55w-tidy php55w-xml php-dom, php-domxml, php-wddx, php-xsl php55w-xmlrpc  安装 PHP7 首先还是要卸载旧版的 PHP
-sudo yum remove php-fpm php-cli php-common  开始安装
-sudo yum install php70u-fpm-nginx php70u-cli php70u-mysqlnd  修改 php-fpm配置
-vi /etc/php-fpm.d/www.conf #将 listen = 127.0.0.1:9000 注释掉，使用 php-fpm.sock 方式 #去掉这行的注释 listen.acl_users = nginx  然后在以后的 Nginx 虚拟主机配置文件中，location ~ \.php$ { 配置中，要设置 fastcgi_pass为 unix:/var/run/php-fpm/php-fpm.sock;
-#Nginx 的虚拟主机配置  Ubuntu 系统安装 LEMP Ubuntu 的软件源和 apt-get 命令非常强大，除了安装时自动解决或提示烦人的依赖关系，在需要卸载和和清理软件的时候也是很方便的。这可能和 CentOS 特别追求稳定，一般在生产环境配置好后就不怎么动了；而 Ubuntu 比较倾向于开发者日常使用，经常会更新软件和修改配置（当然 Ubuntu Server 也非常稳定）
-以下均以 Ubuntu 14.04 LTS 为例。
-安装必备的环境 sudo apt-get install build-essential apt-get install libpcre3 libpcre3-dev apt-get install libssl-dev  通过 apt-get 快速安装MySQL、Nginx #先 update 一下 sudo apt-get update #Nginx sudo apt-get install nginx sudo service nginx start sudo service nginx restart #MySQL 如果是 14.10 可能会提示“非稳定版……”，使用 mysql-server-5-5 即可 sudo apt-get install mysql-server # 如果上面出错，也可以下载repo再安装 MySQL http://dev.mysql.com/downloads/repo/apt/ sudo dpkg -i /PATH/version-specific-package-name.deb sudo apt-get install mysql-server # 安装 MySQL 的系统数据库，以及初始化安全配置 sudo mysql_install_db sudo /usr/bin/mysql_secure_installation  安装PHP 安装 PHP5
-sudo apt-get install php5-fpm php5-mysql # 编辑 php-fpm 配置，修改 listen（注释之前的 127.0.0.1:9000）,注意以后的 Nginx 虚拟主机都用这个 vi /etc/php5/fpm/pool.d/www.conf listen = /var/run/php5-fpm.sock # 重新启动 php5-fpm 服务 sudo service php5-fpm restart  安装 PHP7
-$ sudo add-apt-repository ppa:ondrej/php # 如果失败 $ sudo apt-get install -y language-pack-en-base $ sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php $ sudo apt-get update # 如果 web 服务器是 apache $ sudo apt-get install php7.0 php7.0-mysql # 如果 web 服务器是 nginx $ sudo apt-get install php7.0-fpm php7.0-mysql $ sudo service nginx restart $ php -v  浏览已安装的程序。要查看已安装的软件包列表，请输入以下命令。请注意你希望卸载的软件包的名称。
-dpkg &amp;ndash;list 3 卸载程序和所有配置文件。在终端中输入以下命令，把替换成你希望完全移除的程序：
-sudo apt-get &amp;ndash;purge remove 4 只卸载程序。如果你移除程序但保留配置文件，请输入以下命令：
-sudo apt-get remove 可以隔段时间 apt-get autoremove 移除没用的包
-用 Tengine 替代 Nginx 在之前，不管是 CentOS 还是 Ubuntu，我们都是通过系统自带的 yum或 apt-get安装的 Nginx，没有使用手动编译的方式， 虽然大部分的时候这种方式已经满足需求的，但如果某些时候需要启用高级特性，就只能通过编译源码的方式来安装。
-Nginx 的源码包和文档，可以在 Nginx 官网下载和学习，解压后按文档说明一步步来就可以了。然而我们中国的淘宝技术团队，做了一个更不错的替代品—— Tengine。
-Tengine 是淘宝基于 Nginx 开发的一个 Web 服务器，在性能和安全等方面进行了增强，见 Tengine官方文档
-wget http://tengine.taobao.org/download/tengine-2.1.2.tar.gz tar zxvf tengine-2.1.2.tar.gz cd tengine-2.1.2 ./configure --with-http_sysguard_module --with-http_realip_module make &amp;amp;&amp;amp; make install  默认会安装到路径 /usr/local/nginx 下，配置文件路径为 /usr/local/nginx/conf/nginx.conf
-部分云服务器的 Ubuntu 下由于 IPV6 地址导致报错的问题 在 Vultr 上一台服务器，安装 Ubuntu 14.04，安装 tengine 后无法启动或 nginx -t 测试，报错：
- nginx: [emerg] invalid port in resolver &amp;ldquo;2001:19f0:300:1704::6&amp;rdquo; in /usr/local/nginx/conf/nginx.conf:123
- 这是因为服务器用了 IPV6 地址，而 tengine 还不支持的原因。关掉即可
-vi /etc/resolv.conf #注释IPv6地址  Nginx 的配置 配置PHP虚拟主机 注意 PHP 5 和 PHP 7 安装后，php-fpm 配置参数是不同的，在 Nginx 的 vhosts 文件里要注意修改 fastcgi_pass 字段
- /var/run/php5-fpm.sock /var/run/php/php7.0-fpm.sock  server { listen 80; root /usr/share/nginx/www; index index.php index.html index.htm; server_name example.com; location / { try_files $uri $uri/ /index.html; } error_page 404 /404.html; error_page 500 502 503 504 /50x.html; location = /50x.html { root /usr/share/nginx/www; } # pass the PHP scripts to FastCGI server listening on /var/run/php5-fpm.sock location ~ \.php$ { try_files $uri =404; fastcgi_pass unix:/var/run/php5-fpm.sock; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; } }  在 Nginx 里添加虚拟主机并运行 PHP 站点 这时 php-fpm 已经安装完毕，但是现在需要配置一下 Nginx，在 /etc/nginx/conf.d 目录中新建一个名为 test.conf 的文件（注：Tengine路径不一样，在 /usr/local/nginx/conf 中），其内容为：
-server { listen 80; location ~ \.php$ { root /usr/local/nginx/htdocs/test; fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; } }  然后执行以下命令使我们的配置生效：
-sudo systemctl reload nginx # 或者 nginx -s reload  测试php脚本是否正常运行
-在  /usr/local/nginx/htdocs/test 里新建一个 PHP 文件 index.php ，编辑里面的内容为
-&amp;lt;?php echo phpinfo(); ?&amp;gt;  然后使用浏览器访问 http://localhost/test/index.php
-安装 Apache 与 PHP 支持 http://php.net/manual/en/install.unix.apache2.php
-或用 XAMPP。
-虚拟主机 # 添加基于端口的虚拟主机 $ vi xamppfiles/etc/httpd.conf # 添加 Listen 8888 等所有新虚拟主机的端口，每个虚拟主机的端口都要添加进去 Listen 80 Listen 8888 # 去掉 Include httpd-vhosts.conf 文件，引入虚拟主机配置文件 # Virtual hosts Include etc/extra/httpd-vhosts.conf  编辑 /config/extra/httpd-vhosts.conf
- 多端口  一定要记得先在 httpd.conf 里添加 Listen
-Listen 80 Listen 8888  # 增加多个端口对应的虚拟主机 &amp;lt;VirtualHost *:8888&amp;gt; ServerAdmin webmaster@dummy-host2.example.com DocumentRoot &amp;quot;D:/Project/WebSite/Other/dev-helper/public&amp;quot; # 这里是 localhost ServerName localhost ErrorLog &amp;quot;logs/dummy-host2.example.com-error.log&amp;quot; ##CustomLog &amp;quot;logs/dummy-host2.example.com-access.log&amp;quot; common &amp;lt;Directory &amp;quot;D:/Project/WebSite/Other/dev-helper/public&amp;quot;&amp;gt; Options Indexes FollowSymLinks Includes ExecCGI AllowOverride All Require all granted &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  共用一个 80 端口，多个域名  &amp;lt;VirtualHost *:80&amp;gt; ServerAdmin webmaster@dummy-host2.example.com DocumentRoot &amp;quot;D:/Project/WebSite/Other/dev-helper/public&amp;quot; # 这里是本地测试域名 ServerName dev-helper.test.com ErrorLog &amp;quot;logs/dummy-host2.example.com-error.log&amp;quot; ##CustomLog &amp;quot;logs/dummy-host2.example.com-access.log&amp;quot; common &amp;lt;Directory &amp;quot;D:/Project/WebSite/Other/dev-helper/public&amp;quot;&amp;gt; Options Indexes FollowSymLinks Includes ExecCGI AllowOverride All Require all granted &amp;lt;/Directory&amp;gt; &amp;lt;/VirtualHost&amp;gt;  修改 /etc/hosts
-127.0.0.1 dev-helper.test.com  3 重新启动
-$ xamppfiles/bin/apachectl -k restart
-环境变量 在 vhost 里
-&amp;lt;VirtualHost *:80&amp;gt; # ... SetEnv RUN_MODE production &amp;lt;/VirtualHost&amp;gt;  windows &#43; xampp 下的 memcache/memcached 大部分 windows 下的 php 扩展都能在这里找 https://windows.php.net/downloads/pecl/releases/
-extension 如果 /ext/ 下没有 php_memcache 需要下载
-https://pecl.php.net/package/memcache 找到版本对应的 dll （测试过 nts 无法加载， 必须是 ts 版本）
-在 php.ini 末尾添加
-extension=php_memcache.dll [Memcache] memcache.allow_failover = 1 memcache.max_failover_attempts=20 memcache.chunk_size =8192 memcache.default_port = 11211
-memcache server 注意 memcache 和 memcached 是不同的，windows 下不再支持了，因为 libmemcached doesn&amp;rsquo;t work on Windows. 先判断下？ 或者在开发环境（windows）中临时插入代码。
-if(!class_exists(&#39;Memcached&#39;)) { class Memcached extends Memcache { public function set($key, $var, $expire = null) { /** * @see http://php.net/manual/en/memcache.set.php * @see http://php.net/manual/en/memcached.set.php */ parent::set($key, $var, null, $expire); } } }  windows 下的 imagick 解压后复制 php_imagick.dll 到 ext 还有复制全部 CORE_RL 开头和 IM_MOD_RL 开头的 dll 到 php.exe 所在的同级目录
-修改 php.ini 添加 extension=php_imagick.dll
-重启
-PHP 相关配置 解决 php 无法写入 session 的问题 php安装完成之后，需要设置一下php session的目录，并注意修改目录权限为你的web目录用户权限
-sudo mkdir /var/lib/php/session/ sudo chown -R apache:apache /var/lib/php/session/  配置 php.ini #设置默认时区 date.timezone = PRC #禁用函数列表，如果需要再删除 disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space #设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，或者直接写上程序/data/www.111cn.net/:/tmp/ open_basedir = .:/tmp/ #关闭错误报告在前台页面显示 display_errors = OFF # 设置 cgi.fix_pathinfo cgi.fix_pathinfo=0  ##php 的 opcache 和 nginx 的 sendfile 导致修改文件代码不生效问题
-lnmp 环境配置好后，发现修改 PHP 代码，还是会显示前面代码的输出结果。本地开发环境需要修改两处
- php.ini 文件 把 opcache enable 改成 0 (关闭) nginx.config 里把 sendfile 改成 off  重启两个服务
-MySQL(MariaDB)的配置 拷贝一个默认配置文件
-# 根据机器的性能，将/usr/share/mysql/目录下的某个配置文件复制到 /etc 下，例如 my-huge.cnf cp /usr/share/mysql/my-huge.cnf /etc/my.cnf  注意：如果/etc目录下面默认有一个 my.cnf，直接覆盖即可
-提示 mysqli_connect(): (HY000/2002): No such file or directory 如果你装了 XAMPP，然后关闭了 apache php，只运行 MySQL 然后新安装了一个 Nginx 和 PHP，想调用 XAMPP 这个 MySQL，如果用 mysqli_connect 等 localhost 的时候会报这个错误。
-首先访问 XAMPP 的mysql
-mysql -uroot -p show variables like &#39;%socket%&#39;; # 找到这个值，例如/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock # 然后编辑 /etc/php.ini # 找到 mysqli.default_socket, 把它的值修改 killall -9 php-fpm php-fpm  一些常见问题 Nginx 的默认设置缺乏，导致上传较大文件时提示
- 413 Request Entity Too Large
- Add the following line to http or server or location context to increase the size limit in nginx.conf, enter: # set client body size to 2M # client_max_body_size 2M; Save and close the file. Reload the nginx webserver, enter: # /usr/local/nginx/sbin/nginx -s reload  参考资料  How To Upgrade to PHP 7 on CentOS 7 全新安装Mac OSX 开发者环境 OS X安装配置-工作环境搭建-使用技巧 Mac下安装LNMP(Nginx&#43;PHP5.6)环境  title: 基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化 permalink: linux-nginx-mysql-php-apache-optimize date: 2016/05/25 10:10:10 categories:
- server   定时打包备份网站文件、数据库、访问日志 在这里下载备份脚本
-$ chmod &#43;x wwwroot_batch_backup.sh $ chmod &#43;x mysql_batch_backup.sh $ chmod &#43;x access_log_batch_backup.sh  一些常见问题 Nginx 的默认设置缺乏，导致上传较大文件时提示
- 413 Request Entity Too Large
- Add the following line to http or server or location context to increase the size limit in nginx.conf, enter: # set client body size to 2M # client_max_body_size 2M; Save and close the file. Reload the nginx webserver, enter: # /usr/local/nginx/sbin/nginx -s reload  参考资料  How To Upgrade to PHP 7 on CentOS 7   为什么要使用最新版本的 MySQL？以及新旧版本数据库的环境兼容问题 以前我是一个“顽固派”，认为软件的版本够用就好，没必要追求最新版，所以在 Mac 上一直用着 5.1 版本。它体积小，不占太多硬盘空间，而且启动后台服务后占用内存也才 20M 不到，非常节省资源。
-但是 MySQL 这个数据库不一样，最新版的会有更强大的性能（当然占用系统资源也会更多），以及更多的特性（虽然平时感觉不到），和对数据更好的兼容（毕竟现在数据比什么都重要，而且数据来源五花八门）。
-但就是这个平时感觉不到的东西，最近坑了我一把。
-" />
+    <meta name="description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 slug: linux-nginx-mysql-php-apache-set-up date: 2016/05/25 10:10:10 tags: 运维 目前，有不少网站站长都不再满足于租用一个和别人共用的虚" />
     <meta name="generator" content="Hugo 0.70.0 with theme pure" />
-    <title> - my101du Blog</title>
+    <title>使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 - my101du Blog</title>
     
     
     <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
     
     <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
-    <meta property="og:title" content="" />
-<meta property="og:description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站
-permalink: linux-nginx-mysql-php-apache-set-up
-date: 2016/05/25 10:10:10
-tags:
-
-运维
-
-
-
-目前，有不少网站站长都不再满足于租用一个和别人共用的虚拟主机（指开箱即用，或者简单配置后即可运行的网站），因为往往这些虚拟主机在开始的时候能满足需求，随着访问人数攀升，以及个性化定制需求的增加，各种不灵活的掣肘就浮现出来了。拥有一台自己拥有完全控制权的独立服务器（或 VPS，或现在流行的云主机），用来搭建一个网站以及运行有意思的服务（爬虫、远程备份，等等），就成为进阶站长和技术爱好者的目标。
-又或者你只是想先在自己的电脑上搭建一个 PHP 的运行环境进行学习、开发。
-都可以在这里找到细致而详尽的答案。
-
-本文包括在三种主流的操作系统（Linux &amp; Windows &amp; OS X）上搭建 Nginx&#43;PHP&#43;MySQL 环境的过程。因为 LEMP（Linux &#43; Nginx &#43; MySQL &#43; PHP）实际上已经是现在很多中小型网站运行的主流环境了，所以我们重点笔墨放在 Linux 上，我们也建议 Windows 的开发者尽可能使用虚拟机来安装 Linux，可以避免遇到很多莫名其妙的问题。
-本文并未涉及服务器的选购、 Linux 安装配置、以及 Nginx&#43;PHP&#43;MySQL 的性能优化等知识。
-如果需要了解这些内容 ,请查看我们相关的教程：
-
-如何选购合适的独立服务器-vps-云主机
-Linux安装配置与常用命令
-基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-
-最简单的方式：一键安装
-XAMPP
-跨平台的 Apache &#43; MySQL(MariaDB)&#43; PHP，并自带了 Ftp 服务端、PhpMyAdmin等。
-下载 Linux 版本（.run 后缀名），安装后会在 /opt/lampp
-# 一些控制命令（修改了Apache、PHP、MySQL的配置文件后要重启）
-./ctlscript.sh help
-       ./ctlscript.sh (start|stop|restart|status)
-       ./ctlscript.sh (start|stop|restart|status) mysql
-       ./ctlscript.sh (start|stop|restart|status) proftpd
-       ./ctlscript.sh (start|stop|restart|status) apache
-
-Linux 下的 LNMP 环境一键安装包
-如果你没有太多时间去研究各种软件包版本和库之间的依赖关系，而且对性能调优不太熟悉，只想尽快搭建一个可以快速运行起来的网站的话建议选择一键包。
-一键包除了可以简化繁琐和容易出错的安装过程外，还有很强大的参数调整方式（通过命令行或图形界面）。
-但也有缺陷，那就是安装的时候可定制型不强，一些特殊的模块可能并没有默认安装。
-我最常用的是军哥的一键包
-这个一键包的作者有多年的运维经验，非常建议多读读安装脚本的代码，可以从中学到很多的知识。
-在 http://lnmp.org 下载，解压并运行安装脚本即可，安装过程中会有详细的提示，用于选择 PHP 版本、MySQL版本、默认 root 密码等等。
-$ wget -c http://soft.vpser.net/lnmp/lnmp1.3-full.tar.gz &amp;&amp; tar zxf lnmp1.3-full.tar.gz &amp;&amp; cd lnmp1.3-full &amp;&amp; ./install.sh lnmp
-
-最新版的一键包支持 PHP7(对比PHP5有几倍的性能提升，但有部分函数不兼容一些比较古老的PHP框架/CMS，在稳定的生产环境中还是建议使用 PHP5)。
-除了安装基本的 LEMP 环境外，还可以添加 ftp 服务器、memcached 内存缓存服务等功能。
-由于这个一键包没有提供图形界面的管理面板，所以只能通过命令行去启动服务、添加主机等操作。
-LNMP无法删除或更改权限，显示：
-
-rm: cannot remove `.user.ini&rsquo;: Operation not permitted
-
-无法删除“.user.ini”文件解决方法,运行后删除即可
-chattr -i /home/wwwroot/default/.user.ini
-
-如果是需要修改文件，记得修改完以后运行：
-chattr &#43;i /home/wwwroot/default/.user.ini
-
-如果你对命令行并不熟练，也可以选择WDCP、AMH等带有图形界面的管理面板，其中 好像WDCP在阿里云上用得比较多；AMH也是一个非常不错的环境，特点是有一个优化过的 MySQL 管理器 。
-默认不会安装 ext_ldap  ext_filenfo 等包
-在laravel应用 composer install 会报错。需要手动安装
-以 ldap 为例
-# 先进入 src 目录, 解压 php 压缩包（bz2格式）
-cd ~/lnmp1.5/src
-tar -jxvf xx.tar.bz2
-
-# 进入需要安装的扩展目录
-cd php-7.1.18/ext/ldap
-
-# 然后依次运行 （--with-ldap 可以不带？ fileinfo 测试）
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config --with-ldap 
-
-如果报错
-
-configure: error: Cannot find ldap.h
-
-则安装下面的包后再运行 configure
-yum install openldap openldap-devel  -y
-
-如果继续提示
-
-configure: error: Cannot find ldap libraries in /usr/lib
-
-则复制一些文件后重新 configure
-cp -frp /usr/lib64/libldap* /usr/lib/
-
-运行make 命令
-make &amp;&amp; make install
-
-提示如下，记住这个路径
-
-Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
-
-打开/usr/local/php/etc/php.ini 添加fileinfo.so扩展
-extension = &quot;ldap.so&quot; 
-
-重启确保生效,
-lnmp retstart
-
-再运行下面的命令查看模块列表
-php -m
-
-Windows 下的一键安装包
-XAMPP，比较大，只有 Apache
-UPUPW (有 Apache 或 Nginx 版本)，可以自己搭配 PHP &amp; MySQL 版本
-Apache 使用别的目录做虚拟主机目录时，403 Forbidden问题
-#定义个目录
-Define VHOSTS_ROOT &quot;/mnt/share&quot;
-
-# 编辑 conf/httpd-vhosts.conf
-# 使用了其他目录作为虚拟主机目录，这段是最重要的
-&lt;Directory &quot;${VHOSTS_ROOT}&quot;&gt;
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-&lt;/Directory&gt;
-
-CentOS 系统安装 Nginx &#43; PHP &amp; MySQL
-对一些有软件洁癖的技术爱好者，或者一些老鸟来说，用一键包往往难以满足他们从头到尾控制安装过程的满足感。下面就分别介绍 CentOS 和 Ubuntu 这两个最流行的发行版上安装 LEMP 环境的方法。
-这里默认的版本为 CentOS 7，部分在 CentOS 6 下有差异的地方附有说明。
-添加 epel 源
-#因为 nginx 没有在官方源里面，需要添加epel源
-$ sudo yum install epel-release
-
-#还需要安装下面的 rpm 包以便能安装 PHP5.5
-
-#如果是 CentOS 7 
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-
-#如果是 CentOS 6
-$ rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
-
-安装必需的软件和库
-#下面的命令安装包含了 `pcre` `openssl` 等 `nginx` / `tengine` 必须要用到的库
-$ yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel gcc gcc-c&#43;&#43; libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2 libxml2-devel imake autoconf automake screen sysstat compat-libstdc&#43;&#43;-33 curl curl-devel
-
-安装Nginx
-用 yum来安装 Nginx
-$ sudo yum install nginx
-
-按照提示输入 yes 后开始安装。安装完毕后，Nginx 的配置文件在 /etc/nginx 目录下。其中 sites-enabled目录中保存激活的虚拟主机配置文件。
-#使用以下命令启动 Nginx：
-$ sudo systemctl start nginx
-
-有时候可能存在问题：启动时或运行配置参数重新加载的命令 nginx -s reload 时报错
-
-nginx: [error] open() &ldquo;/run/nginx.pid&rdquo; and failed
-
-需要 -c 参数手动指定 nginx 的配置文件路径 /etc/nginx/nginx.conf
-$ /usr/sbin/nginx -c /etc/nginx/nginx.conf
-
-最后将Nginx设置为开机启动
-$ sudo systemctl enable nginx.service
-
-最后测试一下 nginx 服务是否正常运行。启动 nginx 服务后，通过浏览器访问http://localhost（本地开发环境）或 http://&lt;外网IP地址&gt; 来确定是否已经启动。如果一切正常，页面会显示一行
-
-Welcome to Nginx
-
-补充
-更建议用 Tengine 来替代 Nginx，并用编译源代码的方式来安装，见后面的章节**“用 Tengine 替代 Nginx”**
-开放防火墙中的端口
-检查系统中 firewalld 防火墙服务是否开启
-$ sudo systemctl status firewalld
-
-如果已开启（显示 active (running)），我们需要修改防火墙配置，开启外网访问 80 端口。
-修改 /etc/firewalld/zones/public.xml 文件，在 &lt;zone&gt;&lt;/zone&gt;一节中增加 &lt;service name=&quot;nginx&quot;/&gt;
-关于防火墙的设置，可以学习我们讲解 CentOS 的安装和配置有关教程。
-保存后重新加载firewalld服务
-$ sudo systemctl reload firewalld
-
-安装 MariaDB（MySQL）
-MariaDB是MySQL的一个开源分支，在 MySQL 被甲骨文公司收购后，由开源社区进行开发和维护，在CentOS 7的软件仓库中，已经默认将 MySQL更替为了MariaDB。
-使用yum直接安装MariaDB
-sudo yum install mariadb-server
-
-#安装完成之后，执行以下命令启动MariaDB服务
-sudo systemctl start mariadb
-
-基本安全设置（root密码等）
-MariaDB默认root密码为空，我们需要设置一下，执行脚本：
-sudo /usr/bin/mysql_secure_installation
-
-这个脚本会经过如下一系列的交互问答来进行MariaDB的安全设置。
-
-首先提示输入当前的root密码：
-Enter current password for root (enter for none):
-初始root密码为空，我们直接敲回车进行下一步。
-
-
-Set root password? [Y/n]
-设置root密码，默认选项为Yes，我们直接回车，提示输入密码，在这里设置您的MariaDB的root账户密码。
-
-
-Remove anonymous users? [Y/n]
-是否移除匿名用户，默认选项为Yes，建议按默认设置，回车继续。
-
-
-Disallow root login remotely? [Y/n]
-是否禁止root用户远程登录？如果您只在本机内访问MariaDB，建议按默认设置，回车继续。 如果您还有其他云主机需要使用root账号访问该数据库，则需要选择n。
-
-
-Remove test database and access to it? [Y/n]
-是否删除测试用的数据库和权限？ 建议按照默认设置，回车继续。
-
-
-Reload privilege tables now? [Y/n]
-是否重新加载权限表？因为我们上面更新了root的密码，这里需要重新加载，回车。
-
-登录测试
-完成后你会看到Success!的提示，MariaDB的安全设置已经完成。我们可以使用以下命令登录MariaDB：
-mysql -uroot -p
-
-#按提示输入root密码，就会进入MariaDB的交互界面，说明已经安装成功。
-mysql&gt;
-mysql&gt; show databases;
-&#43;--------------------&#43;
-| Database           |
-&#43;--------------------&#43;
-| information_schema |
-| mysql              |
-| performance_schema |
-&#43;--------------------&#43;
-3 rows in set (0.00 sec)
-
-最后将MariaDB设置为开机启动
-sudo systemctl enable mariadb
-
-可能的问题：在连接外部数据库时提示无法连接
-
-Error:Can&rsquo;t connect to MySQL server on &lsquo;10.211.55.2&rsquo; (13)
-Errno:2003
-
-解决办法 关闭CentOS的 SELinux
-setenforce 0
-vi /etc/selinux/config
-# 修改 SELINUX=enforcing 为 SELINUX=disabled
-
-重装或替换 MariaDB 为 MySQL
-卸载
-#查看CentOS自带mysql是否已安装
-yum list installed | grep mysql
-
-#若有自带安装的mysql，卸载CentOS系统自带mysql数据库，若有多个依赖文件则依次卸载
-yum -y remove mysql-libs.x86_64
-yum -y remove [依次卸载其他文件]
-
-#当结果显示为Complete！即卸载完毕
-
-开始安装
-#查看yum库上的mysql版本信息
-yum list | grep mysql 或 yum -y list mysql*
-
-#安装mysql-server，mysql(包括服务端和client)
-yum -y install mysql-server mysql mysql-devel 
-
-#查看刚安装mysql数据库版本信息
-rpm -qi mysql-server
-
-最后要重复之前安装过程中的 基本安全设置 和 登录测试 以及 配置和优化步骤。
-安装PHP（默认是5.4，安装5.5的方法在后面一节）
-#先安装PHP(默认5.4)
-yum install php php-fpm 
-
-#安装php扩展
-yum -y install  php-mysql php-gd  php-pear php-xml php-mhash php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mcrypt
-
-#安装完成后启动 php-fpm
-sudo systemctl start php-fpm
-
-#将php-fpm设置为开机启动
-sudo systemctl enable php-fpm
-
-安装加速扩展如 XCache 等
-比较麻烦，建议直接安装 PHP5.5，自带有 Opcache
-卸载旧版本 PHP 与安装 高级版本PHP（如 5.5，Laravel 等现代化的 PHP框架要求比较新的 PHP 版本）
-卸载老版本（如5.4）以及对应的依赖
-yum remove php php-fpm
-
-必须强制删除其他有关的包
-rpm -qa|grep php
-
-提示如下
-
-php-pdo-5.1.6-27.el5_5.3
-php-mysql-5.1.6-27.el5_5.3
-php-xml-5.1.6-27.el5_5.3
-php-cli-5.1.6-27.el5_5.3
-php-common-5.1.6-27.el5_5.3
-php-gd-5.1.6-27.el5_5.3
-
-注意卸载要先卸载没有依赖的：pdo是mysql的依赖项；common是gd的依赖项；
-例如：
-# rpm -e php-pdo-5.1.6-27.el5_5.3
-&gt; error: Failed dependencies:
-&gt; php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386
-
-所以正确的卸载顺序是：
-rpm -e php-mysql-5.1.6-27.el5_5.3 
-rpm -e php-pdo-5.1.6-27.el5_5.3 
-rpm -e php-xml-5.1.6-27.el5_5.3 
-rpm -e php-cli-5.1.6-27.el5_5.3 
-rpm -e php-gd-5.1.6-27.el5_5.3 
-rpm -e php-common-5.1.6-27.el5_5.3
-
-再用 php -v 查看版本信息已经没有提示
-安装PHP5.5以及扩展
-yum install php55w php55w-opcache php55w-common php55w-fpm php55w-gd php55w-imap php55w-mbstring php55w-mcrypt php55w-mysql php55w-pdo php55w-xml php55w-xmlrpc php55w-soap
-
-下面是扩展的列表与简介，按你的需求添加（只需要添加你用到的即可，例如 mssql 等扩展就极少用到，不需要添加进去）
-
-php55w    mod_php, php55w-zts
-php55w-bcmath
-php55w-cli    php-cgi, php-pcntl, php-readline
-php55w-common    php-api, php-bz2, php-calendar, php-ctype, php-curl, php-date, php-exif, php-fileinfo, php-ftp, php-gettext, php-gmp, php-hash, php-iconv, php-json, php-libxml, php-openssl, php-pcre, php-pecl-Fileinfo, php-pecl-phar, php-pecl-zip, php-reflection, php-session, php-shmop, php-simplexml, php-sockets, php-spl, php-tokenizer, php-zend-abi, php-zip, php-zlib
-php55w-dba
-php55w-devel
-php55w-embedded    php-embedded-devel
-php55w-enchant
-php55w-fpm
-php55w-gd
-php55w-imap
-php55w-interbase    php_database, php-firebird
-php55w-intl
-php55w-ldap
-php55w-mbstring
-php55w-mcrypt
-php55w-mssql
-php55w-mysql    php-mysqli, php_database
-php55w-mysqlnd    php-mysqli, php_database
-php55w-odbc    php-pdo_odbc, php_database
-php55w-opcache    php55w-pecl-zendopcache
-php55w-pdo
-php55w-pecl-gearman
-php55w-pecl-geoip
-php55w-pecl-memcache
-php55w-pecl-xdebug
-php55w-pgsql    php-pdo_pgsql, php_database
-php55w-process    php-posix, php-sysvmsg, php-sysvsem, php-sysvshm
-php55w-pspell
-php55w-recode
-php55w-snmp
-php55w-soap
-php55w-tidy
-php55w-xml    php-dom, php-domxml, php-wddx, php-xsl
-php55w-xmlrpc
-
-安装 PHP7
-首先还是要卸载旧版的 PHP
-sudo yum remove php-fpm php-cli php-common
-
-开始安装
-sudo yum install php70u-fpm-nginx php70u-cli php70u-mysqlnd
-
-修改 php-fpm配置
-vi /etc/php-fpm.d/www.conf
-
-#将 listen = 127.0.0.1:9000 注释掉，使用 php-fpm.sock 方式
-
-#去掉这行的注释
-listen.acl_users = nginx
-
-然后在以后的 Nginx 虚拟主机配置文件中，location ~ \.php$ { 配置中，要设置 fastcgi_pass为 unix:/var/run/php-fpm/php-fpm.sock;
-#Nginx 的虚拟主机配置
-
-Ubuntu 系统安装 LEMP
-Ubuntu 的软件源和 apt-get 命令非常强大，除了安装时自动解决或提示烦人的依赖关系，在需要卸载和和清理软件的时候也是很方便的。这可能和 CentOS 特别追求稳定，一般在生产环境配置好后就不怎么动了；而 Ubuntu 比较倾向于开发者日常使用，经常会更新软件和修改配置（当然 Ubuntu Server 也非常稳定）
-以下均以 Ubuntu 14.04 LTS 为例。
-安装必备的环境
-sudo apt-get install build-essential
-apt-get install libpcre3 libpcre3-dev
-apt-get install libssl-dev
-
-通过 apt-get 快速安装MySQL、Nginx
-#先 update 一下
-sudo apt-get update
-
-#Nginx
-sudo apt-get install nginx
-sudo service nginx start
-sudo service nginx restart
-
-#MySQL 如果是 14.10 可能会提示“非稳定版……”，使用 mysql-server-5-5 即可
-sudo apt-get install mysql-server 
-
-# 如果上面出错，也可以下载repo再安装 MySQL
-http://dev.mysql.com/downloads/repo/apt/
-sudo dpkg -i /PATH/version-specific-package-name.deb
-sudo apt-get install mysql-server
-
-# 安装 MySQL 的系统数据库，以及初始化安全配置
-sudo mysql_install_db
-sudo /usr/bin/mysql_secure_installation
-
-安装PHP
-安装 PHP5
-sudo apt-get install php5-fpm php5-mysql
-
-# 编辑 php-fpm 配置，修改 listen（注释之前的 127.0.0.1:9000）,注意以后的 Nginx 虚拟主机都用这个
-vi /etc/php5/fpm/pool.d/www.conf
-listen = /var/run/php5-fpm.sock
-
-# 重新启动 php5-fpm 服务
-sudo service php5-fpm restart
-
-安装 PHP7
-$ sudo add-apt-repository ppa:ondrej/php
-
-# 如果失败
-$ sudo apt-get install -y language-pack-en-base
-$ sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
-
-$ sudo apt-get update
-
-# 如果 web 服务器是 apache
-$ sudo apt-get install php7.0 php7.0-mysql
-
-# 如果 web 服务器是 nginx
-$ sudo apt-get install php7.0-fpm php7.0-mysql
-
-$ sudo service nginx restart
-$ php -v
-
-浏览已安装的程序。要查看已安装的软件包列表，请输入以下命令。请注意你希望卸载的软件包的名称。
-dpkg &ndash;list
-3
-卸载程序和所有配置文件。在终端中输入以下命令，把替换成你希望完全移除的程序：
-sudo apt-get &ndash;purge remove 
-4
-只卸载程序。如果你移除程序但保留配置文件，请输入以下命令：
-sudo apt-get remove 
-可以隔段时间 apt-get autoremove 移除没用的包
-用 Tengine 替代 Nginx
-在之前，不管是 CentOS 还是 Ubuntu，我们都是通过系统自带的 yum或 apt-get安装的 Nginx，没有使用手动编译的方式， 虽然大部分的时候这种方式已经满足需求的，但如果某些时候需要启用高级特性，就只能通过编译源码的方式来安装。
-Nginx 的源码包和文档，可以在 Nginx 官网下载和学习，解压后按文档说明一步步来就可以了。然而我们中国的淘宝技术团队，做了一个更不错的替代品—— Tengine。
-Tengine 是淘宝基于 Nginx 开发的一个 Web 服务器，在性能和安全等方面进行了增强，见 Tengine官方文档
-wget http://tengine.taobao.org/download/tengine-2.1.2.tar.gz
-tar zxvf tengine-2.1.2.tar.gz
-cd tengine-2.1.2
-./configure --with-http_sysguard_module --with-http_realip_module
-make &amp;&amp; make install
-
-默认会安装到路径 /usr/local/nginx 下，配置文件路径为 /usr/local/nginx/conf/nginx.conf
-部分云服务器的 Ubuntu 下由于 IPV6 地址导致报错的问题
-在 Vultr 上一台服务器，安装 Ubuntu 14.04，安装 tengine 后无法启动或 nginx -t 测试，报错：
-
-nginx: [emerg] invalid port in resolver &ldquo;2001:19f0:300:1704::6&rdquo; in /usr/local/nginx/conf/nginx.conf:123
-
-这是因为服务器用了 IPV6 地址，而 tengine 还不支持的原因。关掉即可
-vi /etc/resolv.conf
-
-#注释IPv6地址
-
-Nginx 的配置
-配置PHP虚拟主机
-注意 PHP 5 和 PHP 7 安装后，php-fpm 配置参数是不同的，在 Nginx 的 vhosts 文件里要注意修改 fastcgi_pass 字段
-
-/var/run/php5-fpm.sock
-/var/run/php/php7.0-fpm.sock
-
-server {
-        listen   80;
-     
-        root /usr/share/nginx/www;
-        index index.php index.html index.htm;
-
-        server_name example.com;
-
-        location / {
-                try_files $uri $uri/ /index.html;
-        }
-
-        error_page 404 /404.html;
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-              root /usr/share/nginx/www;
-        }
-
-        # pass the PHP scripts to FastCGI server listening on /var/run/php5-fpm.sock
-        location ~ \.php$ {
-                try_files $uri =404;
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
-                fastcgi_index index.php;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                include fastcgi_params;
-                
-        }
-
-}
-
-在 Nginx 里添加虚拟主机并运行 PHP 站点
-这时 php-fpm 已经安装完毕，但是现在需要配置一下 Nginx，在 /etc/nginx/conf.d 目录中新建一个名为 test.conf 的文件（注：Tengine路径不一样，在 /usr/local/nginx/conf 中），其内容为：
-server {
-    listen 80;
-
-    location ~ \.php$ {
-        root          /usr/local/nginx/htdocs/test;
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-
-然后执行以下命令使我们的配置生效：
-sudo systemctl reload nginx
-# 或者
-nginx -s reload
-
-测试php脚本是否正常运行
-在  /usr/local/nginx/htdocs/test 里新建一个 PHP 文件 index.php ，编辑里面的内容为
-&lt;?php echo phpinfo(); ?&gt;
-
-然后使用浏览器访问 http://localhost/test/index.php
-安装 Apache 与 PHP 支持
-http://php.net/manual/en/install.unix.apache2.php
-或用 XAMPP。
-虚拟主机
-# 添加基于端口的虚拟主机
-$ vi xamppfiles/etc/httpd.conf
-
-# 添加 Listen 8888 等所有新虚拟主机的端口，每个虚拟主机的端口都要添加进去
-Listen 80
-Listen 8888
-# 去掉 Include httpd-vhosts.conf 文件，引入虚拟主机配置文件
-# Virtual hosts
-Include etc/extra/httpd-vhosts.conf
-
-编辑 /config/extra/httpd-vhosts.conf
-
-多端口
-
-一定要记得先在 httpd.conf 里添加 Listen
-Listen 80
-Listen 8888
-
-# 增加多个端口对应的虚拟主机
-&lt;VirtualHost *:8888&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是 localhost
-    ServerName localhost
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-
-
-共用一个 80 端口，多个域名
-
-&lt;VirtualHost *:80&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是本地测试域名
-    ServerName dev-helper.test.com
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-
-&lt;/VirtualHost&gt;
-
-修改 /etc/hosts
-127.0.0.1  dev-helper.test.com
-
-3 重新启动
-$ xamppfiles/bin/apachectl -k restart
-环境变量
-在 vhost 里
-&lt;VirtualHost *:80&gt;
-    # ...
-    SetEnv RUN_MODE production
-&lt;/VirtualHost&gt;
-
-windows &#43; xampp 下的 memcache/memcached
-大部分 windows 下的 php 扩展都能在这里找  https://windows.php.net/downloads/pecl/releases/
-extension
-如果 /ext/ 下没有 php_memcache 需要下载
-https://pecl.php.net/package/memcache  找到版本对应的 dll    （测试过 nts 无法加载， 必须是 ts 版本）
-在 php.ini 末尾添加
-extension=php_memcache.dll
-[Memcache]
-memcache.allow_failover = 1
-memcache.max_failover_attempts=20
-memcache.chunk_size =8192
-memcache.default_port = 11211
-memcache server
-注意  memcache 和 memcached 是不同的，windows 下不再支持了，因为 libmemcached doesn&rsquo;t work on Windows.
-先判断下？ 或者在开发环境（windows）中临时插入代码。
-if(!class_exists(&#39;Memcached&#39;)) {
-    class Memcached extends Memcache
-    {
-        public function set($key, $var, $expire = null)
-        {
-            /**
-             * @see http://php.net/manual/en/memcache.set.php
-             * @see http://php.net/manual/en/memcached.set.php
-             */
-            parent::set($key, $var, null, $expire);
-        }
-    }
-}
-
-windows 下的 imagick
-解压后复制 php_imagick.dll 到  ext
-还有复制全部  CORE_RL 开头和 IM_MOD_RL 开头的 dll 到  php.exe 所在的同级目录
-修改 php.ini   添加  extension=php_imagick.dll
-重启
-PHP 相关配置
-解决 php 无法写入 session 的问题
-php安装完成之后，需要设置一下php session的目录，并注意修改目录权限为你的web目录用户权限
-sudo mkdir /var/lib/php/session/
-sudo chown -R apache:apache /var/lib/php/session/
-
-配置 php.ini
-#设置默认时区
-date.timezone = PRC
-
-#禁用函数列表，如果需要再删除
-disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space
-
-#设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，或者直接写上程序/data/www.111cn.net/:/tmp/
-open_basedir = .:/tmp/ 
-
-#关闭错误报告在前台页面显示
-display_errors = OFF
-
-# 设置 cgi.fix_pathinfo
-cgi.fix_pathinfo=0
-
-##php 的 opcache 和 nginx 的 sendfile 导致修改文件代码不生效问题
-lnmp 环境配置好后，发现修改 PHP 代码，还是会显示前面代码的输出结果。本地开发环境需要修改两处
-
-php.ini 文件  把 opcache enable 改成 0 (关闭)
-nginx.config 里把 sendfile 改成 off
-
-重启两个服务
-MySQL(MariaDB)的配置
-拷贝一个默认配置文件
-# 根据机器的性能，将/usr/share/mysql/目录下的某个配置文件复制到 /etc 下，例如 my-huge.cnf
-cp /usr/share/mysql/my-huge.cnf /etc/my.cnf 
-
-注意：如果/etc目录下面默认有一个 my.cnf，直接覆盖即可
-提示 mysqli_connect(): (HY000/2002): No such file or directory
-如果你装了 XAMPP，然后关闭了 apache php，只运行 MySQL
-然后新安装了一个 Nginx 和 PHP，想调用 XAMPP 这个 MySQL，如果用 mysqli_connect 等 localhost 的时候会报这个错误。
-首先访问 XAMPP 的mysql
-mysql -uroot -p 
-show variables like &#39;%socket%&#39;;
-
-# 找到这个值，例如/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
-# 然后编辑 /etc/php.ini
-# 找到 mysqli.default_socket, 把它的值修改
-
-killall -9 php-fpm
-php-fpm
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-全新安装Mac OSX 开发者环境
-OS X安装配置-工作环境搭建-使用技巧
-Mac下安装LNMP(Nginx&#43;PHP5.6)环境
-
-title: 基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-permalink: linux-nginx-mysql-php-apache-optimize
-date: 2016/05/25 10:10:10
-categories:
-
-server
-
-
-
-定时打包备份网站文件、数据库、访问日志
-在这里下载备份脚本
-$ chmod &#43;x wwwroot_batch_backup.sh
-$ chmod &#43;x mysql_batch_backup.sh
-$ chmod &#43;x access_log_batch_backup.sh
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-
-
-为什么要使用最新版本的 MySQL？以及新旧版本数据库的环境兼容问题
-以前我是一个“顽固派”，认为软件的版本够用就好，没必要追求最新版，所以在 Mac 上一直用着 5.1 版本。它体积小，不占太多硬盘空间，而且启动后台服务后占用内存也才 20M 不到，非常节省资源。
-但是 MySQL 这个数据库不一样，最新版的会有更强大的性能（当然占用系统资源也会更多），以及更多的特性（虽然平时感觉不到），和对数据更好的兼容（毕竟现在数据比什么都重要，而且数据来源五花八门）。
-但就是这个平时感觉不到的东西，最近坑了我一把。" />
+    <meta property="og:title" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站" />
+<meta property="og:description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 slug: linux-nginx-mysql-php-apache-set-up date: 2016/05/25 10:10:10 tags: 运维 目前，有不少网站站长都不再满足于租用一个和别人共用的虚" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站
-permalink: linux-nginx-mysql-php-apache-set-up
-date: 2016/05/25 10:10:10
-tags:
+<meta itemprop="name" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站">
+<meta itemprop="description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 slug: linux-nginx-mysql-php-apache-set-up date: 2016/05/25 10:10:10 tags: 运维 目前，有不少网站站长都不再满足于租用一个和别人共用的虚">
 
-运维
-
-
-
-目前，有不少网站站长都不再满足于租用一个和别人共用的虚拟主机（指开箱即用，或者简单配置后即可运行的网站），因为往往这些虚拟主机在开始的时候能满足需求，随着访问人数攀升，以及个性化定制需求的增加，各种不灵活的掣肘就浮现出来了。拥有一台自己拥有完全控制权的独立服务器（或 VPS，或现在流行的云主机），用来搭建一个网站以及运行有意思的服务（爬虫、远程备份，等等），就成为进阶站长和技术爱好者的目标。
-又或者你只是想先在自己的电脑上搭建一个 PHP 的运行环境进行学习、开发。
-都可以在这里找到细致而详尽的答案。
-
-本文包括在三种主流的操作系统（Linux &amp; Windows &amp; OS X）上搭建 Nginx&#43;PHP&#43;MySQL 环境的过程。因为 LEMP（Linux &#43; Nginx &#43; MySQL &#43; PHP）实际上已经是现在很多中小型网站运行的主流环境了，所以我们重点笔墨放在 Linux 上，我们也建议 Windows 的开发者尽可能使用虚拟机来安装 Linux，可以避免遇到很多莫名其妙的问题。
-本文并未涉及服务器的选购、 Linux 安装配置、以及 Nginx&#43;PHP&#43;MySQL 的性能优化等知识。
-如果需要了解这些内容 ,请查看我们相关的教程：
-
-如何选购合适的独立服务器-vps-云主机
-Linux安装配置与常用命令
-基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-
-最简单的方式：一键安装
-XAMPP
-跨平台的 Apache &#43; MySQL(MariaDB)&#43; PHP，并自带了 Ftp 服务端、PhpMyAdmin等。
-下载 Linux 版本（.run 后缀名），安装后会在 /opt/lampp
-# 一些控制命令（修改了Apache、PHP、MySQL的配置文件后要重启）
-./ctlscript.sh help
-       ./ctlscript.sh (start|stop|restart|status)
-       ./ctlscript.sh (start|stop|restart|status) mysql
-       ./ctlscript.sh (start|stop|restart|status) proftpd
-       ./ctlscript.sh (start|stop|restart|status) apache
-
-Linux 下的 LNMP 环境一键安装包
-如果你没有太多时间去研究各种软件包版本和库之间的依赖关系，而且对性能调优不太熟悉，只想尽快搭建一个可以快速运行起来的网站的话建议选择一键包。
-一键包除了可以简化繁琐和容易出错的安装过程外，还有很强大的参数调整方式（通过命令行或图形界面）。
-但也有缺陷，那就是安装的时候可定制型不强，一些特殊的模块可能并没有默认安装。
-我最常用的是军哥的一键包
-这个一键包的作者有多年的运维经验，非常建议多读读安装脚本的代码，可以从中学到很多的知识。
-在 http://lnmp.org 下载，解压并运行安装脚本即可，安装过程中会有详细的提示，用于选择 PHP 版本、MySQL版本、默认 root 密码等等。
-$ wget -c http://soft.vpser.net/lnmp/lnmp1.3-full.tar.gz &amp;&amp; tar zxf lnmp1.3-full.tar.gz &amp;&amp; cd lnmp1.3-full &amp;&amp; ./install.sh lnmp
-
-最新版的一键包支持 PHP7(对比PHP5有几倍的性能提升，但有部分函数不兼容一些比较古老的PHP框架/CMS，在稳定的生产环境中还是建议使用 PHP5)。
-除了安装基本的 LEMP 环境外，还可以添加 ftp 服务器、memcached 内存缓存服务等功能。
-由于这个一键包没有提供图形界面的管理面板，所以只能通过命令行去启动服务、添加主机等操作。
-LNMP无法删除或更改权限，显示：
-
-rm: cannot remove `.user.ini&rsquo;: Operation not permitted
-
-无法删除“.user.ini”文件解决方法,运行后删除即可
-chattr -i /home/wwwroot/default/.user.ini
-
-如果是需要修改文件，记得修改完以后运行：
-chattr &#43;i /home/wwwroot/default/.user.ini
-
-如果你对命令行并不熟练，也可以选择WDCP、AMH等带有图形界面的管理面板，其中 好像WDCP在阿里云上用得比较多；AMH也是一个非常不错的环境，特点是有一个优化过的 MySQL 管理器 。
-默认不会安装 ext_ldap  ext_filenfo 等包
-在laravel应用 composer install 会报错。需要手动安装
-以 ldap 为例
-# 先进入 src 目录, 解压 php 压缩包（bz2格式）
-cd ~/lnmp1.5/src
-tar -jxvf xx.tar.bz2
-
-# 进入需要安装的扩展目录
-cd php-7.1.18/ext/ldap
-
-# 然后依次运行 （--with-ldap 可以不带？ fileinfo 测试）
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config --with-ldap 
-
-如果报错
-
-configure: error: Cannot find ldap.h
-
-则安装下面的包后再运行 configure
-yum install openldap openldap-devel  -y
-
-如果继续提示
-
-configure: error: Cannot find ldap libraries in /usr/lib
-
-则复制一些文件后重新 configure
-cp -frp /usr/lib64/libldap* /usr/lib/
-
-运行make 命令
-make &amp;&amp; make install
-
-提示如下，记住这个路径
-
-Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
-
-打开/usr/local/php/etc/php.ini 添加fileinfo.so扩展
-extension = &quot;ldap.so&quot; 
-
-重启确保生效,
-lnmp retstart
-
-再运行下面的命令查看模块列表
-php -m
-
-Windows 下的一键安装包
-XAMPP，比较大，只有 Apache
-UPUPW (有 Apache 或 Nginx 版本)，可以自己搭配 PHP &amp; MySQL 版本
-Apache 使用别的目录做虚拟主机目录时，403 Forbidden问题
-#定义个目录
-Define VHOSTS_ROOT &quot;/mnt/share&quot;
-
-# 编辑 conf/httpd-vhosts.conf
-# 使用了其他目录作为虚拟主机目录，这段是最重要的
-&lt;Directory &quot;${VHOSTS_ROOT}&quot;&gt;
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-&lt;/Directory&gt;
-
-CentOS 系统安装 Nginx &#43; PHP &amp; MySQL
-对一些有软件洁癖的技术爱好者，或者一些老鸟来说，用一键包往往难以满足他们从头到尾控制安装过程的满足感。下面就分别介绍 CentOS 和 Ubuntu 这两个最流行的发行版上安装 LEMP 环境的方法。
-这里默认的版本为 CentOS 7，部分在 CentOS 6 下有差异的地方附有说明。
-添加 epel 源
-#因为 nginx 没有在官方源里面，需要添加epel源
-$ sudo yum install epel-release
-
-#还需要安装下面的 rpm 包以便能安装 PHP5.5
-
-#如果是 CentOS 7 
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-
-#如果是 CentOS 6
-$ rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
-
-安装必需的软件和库
-#下面的命令安装包含了 `pcre` `openssl` 等 `nginx` / `tengine` 必须要用到的库
-$ yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel gcc gcc-c&#43;&#43; libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2 libxml2-devel imake autoconf automake screen sysstat compat-libstdc&#43;&#43;-33 curl curl-devel
-
-安装Nginx
-用 yum来安装 Nginx
-$ sudo yum install nginx
-
-按照提示输入 yes 后开始安装。安装完毕后，Nginx 的配置文件在 /etc/nginx 目录下。其中 sites-enabled目录中保存激活的虚拟主机配置文件。
-#使用以下命令启动 Nginx：
-$ sudo systemctl start nginx
-
-有时候可能存在问题：启动时或运行配置参数重新加载的命令 nginx -s reload 时报错
-
-nginx: [error] open() &ldquo;/run/nginx.pid&rdquo; and failed
-
-需要 -c 参数手动指定 nginx 的配置文件路径 /etc/nginx/nginx.conf
-$ /usr/sbin/nginx -c /etc/nginx/nginx.conf
-
-最后将Nginx设置为开机启动
-$ sudo systemctl enable nginx.service
-
-最后测试一下 nginx 服务是否正常运行。启动 nginx 服务后，通过浏览器访问http://localhost（本地开发环境）或 http://&lt;外网IP地址&gt; 来确定是否已经启动。如果一切正常，页面会显示一行
-
-Welcome to Nginx
-
-补充
-更建议用 Tengine 来替代 Nginx，并用编译源代码的方式来安装，见后面的章节**“用 Tengine 替代 Nginx”**
-开放防火墙中的端口
-检查系统中 firewalld 防火墙服务是否开启
-$ sudo systemctl status firewalld
-
-如果已开启（显示 active (running)），我们需要修改防火墙配置，开启外网访问 80 端口。
-修改 /etc/firewalld/zones/public.xml 文件，在 &lt;zone&gt;&lt;/zone&gt;一节中增加 &lt;service name=&quot;nginx&quot;/&gt;
-关于防火墙的设置，可以学习我们讲解 CentOS 的安装和配置有关教程。
-保存后重新加载firewalld服务
-$ sudo systemctl reload firewalld
-
-安装 MariaDB（MySQL）
-MariaDB是MySQL的一个开源分支，在 MySQL 被甲骨文公司收购后，由开源社区进行开发和维护，在CentOS 7的软件仓库中，已经默认将 MySQL更替为了MariaDB。
-使用yum直接安装MariaDB
-sudo yum install mariadb-server
-
-#安装完成之后，执行以下命令启动MariaDB服务
-sudo systemctl start mariadb
-
-基本安全设置（root密码等）
-MariaDB默认root密码为空，我们需要设置一下，执行脚本：
-sudo /usr/bin/mysql_secure_installation
-
-这个脚本会经过如下一系列的交互问答来进行MariaDB的安全设置。
-
-首先提示输入当前的root密码：
-Enter current password for root (enter for none):
-初始root密码为空，我们直接敲回车进行下一步。
-
-
-Set root password? [Y/n]
-设置root密码，默认选项为Yes，我们直接回车，提示输入密码，在这里设置您的MariaDB的root账户密码。
-
-
-Remove anonymous users? [Y/n]
-是否移除匿名用户，默认选项为Yes，建议按默认设置，回车继续。
-
-
-Disallow root login remotely? [Y/n]
-是否禁止root用户远程登录？如果您只在本机内访问MariaDB，建议按默认设置，回车继续。 如果您还有其他云主机需要使用root账号访问该数据库，则需要选择n。
-
-
-Remove test database and access to it? [Y/n]
-是否删除测试用的数据库和权限？ 建议按照默认设置，回车继续。
-
-
-Reload privilege tables now? [Y/n]
-是否重新加载权限表？因为我们上面更新了root的密码，这里需要重新加载，回车。
-
-登录测试
-完成后你会看到Success!的提示，MariaDB的安全设置已经完成。我们可以使用以下命令登录MariaDB：
-mysql -uroot -p
-
-#按提示输入root密码，就会进入MariaDB的交互界面，说明已经安装成功。
-mysql&gt;
-mysql&gt; show databases;
-&#43;--------------------&#43;
-| Database           |
-&#43;--------------------&#43;
-| information_schema |
-| mysql              |
-| performance_schema |
-&#43;--------------------&#43;
-3 rows in set (0.00 sec)
-
-最后将MariaDB设置为开机启动
-sudo systemctl enable mariadb
-
-可能的问题：在连接外部数据库时提示无法连接
-
-Error:Can&rsquo;t connect to MySQL server on &lsquo;10.211.55.2&rsquo; (13)
-Errno:2003
-
-解决办法 关闭CentOS的 SELinux
-setenforce 0
-vi /etc/selinux/config
-# 修改 SELINUX=enforcing 为 SELINUX=disabled
-
-重装或替换 MariaDB 为 MySQL
-卸载
-#查看CentOS自带mysql是否已安装
-yum list installed | grep mysql
-
-#若有自带安装的mysql，卸载CentOS系统自带mysql数据库，若有多个依赖文件则依次卸载
-yum -y remove mysql-libs.x86_64
-yum -y remove [依次卸载其他文件]
-
-#当结果显示为Complete！即卸载完毕
-
-开始安装
-#查看yum库上的mysql版本信息
-yum list | grep mysql 或 yum -y list mysql*
-
-#安装mysql-server，mysql(包括服务端和client)
-yum -y install mysql-server mysql mysql-devel 
-
-#查看刚安装mysql数据库版本信息
-rpm -qi mysql-server
-
-最后要重复之前安装过程中的 基本安全设置 和 登录测试 以及 配置和优化步骤。
-安装PHP（默认是5.4，安装5.5的方法在后面一节）
-#先安装PHP(默认5.4)
-yum install php php-fpm 
-
-#安装php扩展
-yum -y install  php-mysql php-gd  php-pear php-xml php-mhash php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mcrypt
-
-#安装完成后启动 php-fpm
-sudo systemctl start php-fpm
-
-#将php-fpm设置为开机启动
-sudo systemctl enable php-fpm
-
-安装加速扩展如 XCache 等
-比较麻烦，建议直接安装 PHP5.5，自带有 Opcache
-卸载旧版本 PHP 与安装 高级版本PHP（如 5.5，Laravel 等现代化的 PHP框架要求比较新的 PHP 版本）
-卸载老版本（如5.4）以及对应的依赖
-yum remove php php-fpm
-
-必须强制删除其他有关的包
-rpm -qa|grep php
-
-提示如下
-
-php-pdo-5.1.6-27.el5_5.3
-php-mysql-5.1.6-27.el5_5.3
-php-xml-5.1.6-27.el5_5.3
-php-cli-5.1.6-27.el5_5.3
-php-common-5.1.6-27.el5_5.3
-php-gd-5.1.6-27.el5_5.3
-
-注意卸载要先卸载没有依赖的：pdo是mysql的依赖项；common是gd的依赖项；
-例如：
-# rpm -e php-pdo-5.1.6-27.el5_5.3
-&gt; error: Failed dependencies:
-&gt; php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386
-
-所以正确的卸载顺序是：
-rpm -e php-mysql-5.1.6-27.el5_5.3 
-rpm -e php-pdo-5.1.6-27.el5_5.3 
-rpm -e php-xml-5.1.6-27.el5_5.3 
-rpm -e php-cli-5.1.6-27.el5_5.3 
-rpm -e php-gd-5.1.6-27.el5_5.3 
-rpm -e php-common-5.1.6-27.el5_5.3
-
-再用 php -v 查看版本信息已经没有提示
-安装PHP5.5以及扩展
-yum install php55w php55w-opcache php55w-common php55w-fpm php55w-gd php55w-imap php55w-mbstring php55w-mcrypt php55w-mysql php55w-pdo php55w-xml php55w-xmlrpc php55w-soap
-
-下面是扩展的列表与简介，按你的需求添加（只需要添加你用到的即可，例如 mssql 等扩展就极少用到，不需要添加进去）
-
-php55w    mod_php, php55w-zts
-php55w-bcmath
-php55w-cli    php-cgi, php-pcntl, php-readline
-php55w-common    php-api, php-bz2, php-calendar, php-ctype, php-curl, php-date, php-exif, php-fileinfo, php-ftp, php-gettext, php-gmp, php-hash, php-iconv, php-json, php-libxml, php-openssl, php-pcre, php-pecl-Fileinfo, php-pecl-phar, php-pecl-zip, php-reflection, php-session, php-shmop, php-simplexml, php-sockets, php-spl, php-tokenizer, php-zend-abi, php-zip, php-zlib
-php55w-dba
-php55w-devel
-php55w-embedded    php-embedded-devel
-php55w-enchant
-php55w-fpm
-php55w-gd
-php55w-imap
-php55w-interbase    php_database, php-firebird
-php55w-intl
-php55w-ldap
-php55w-mbstring
-php55w-mcrypt
-php55w-mssql
-php55w-mysql    php-mysqli, php_database
-php55w-mysqlnd    php-mysqli, php_database
-php55w-odbc    php-pdo_odbc, php_database
-php55w-opcache    php55w-pecl-zendopcache
-php55w-pdo
-php55w-pecl-gearman
-php55w-pecl-geoip
-php55w-pecl-memcache
-php55w-pecl-xdebug
-php55w-pgsql    php-pdo_pgsql, php_database
-php55w-process    php-posix, php-sysvmsg, php-sysvsem, php-sysvshm
-php55w-pspell
-php55w-recode
-php55w-snmp
-php55w-soap
-php55w-tidy
-php55w-xml    php-dom, php-domxml, php-wddx, php-xsl
-php55w-xmlrpc
-
-安装 PHP7
-首先还是要卸载旧版的 PHP
-sudo yum remove php-fpm php-cli php-common
-
-开始安装
-sudo yum install php70u-fpm-nginx php70u-cli php70u-mysqlnd
-
-修改 php-fpm配置
-vi /etc/php-fpm.d/www.conf
-
-#将 listen = 127.0.0.1:9000 注释掉，使用 php-fpm.sock 方式
-
-#去掉这行的注释
-listen.acl_users = nginx
-
-然后在以后的 Nginx 虚拟主机配置文件中，location ~ \.php$ { 配置中，要设置 fastcgi_pass为 unix:/var/run/php-fpm/php-fpm.sock;
-#Nginx 的虚拟主机配置
-
-Ubuntu 系统安装 LEMP
-Ubuntu 的软件源和 apt-get 命令非常强大，除了安装时自动解决或提示烦人的依赖关系，在需要卸载和和清理软件的时候也是很方便的。这可能和 CentOS 特别追求稳定，一般在生产环境配置好后就不怎么动了；而 Ubuntu 比较倾向于开发者日常使用，经常会更新软件和修改配置（当然 Ubuntu Server 也非常稳定）
-以下均以 Ubuntu 14.04 LTS 为例。
-安装必备的环境
-sudo apt-get install build-essential
-apt-get install libpcre3 libpcre3-dev
-apt-get install libssl-dev
-
-通过 apt-get 快速安装MySQL、Nginx
-#先 update 一下
-sudo apt-get update
-
-#Nginx
-sudo apt-get install nginx
-sudo service nginx start
-sudo service nginx restart
-
-#MySQL 如果是 14.10 可能会提示“非稳定版……”，使用 mysql-server-5-5 即可
-sudo apt-get install mysql-server 
-
-# 如果上面出错，也可以下载repo再安装 MySQL
-http://dev.mysql.com/downloads/repo/apt/
-sudo dpkg -i /PATH/version-specific-package-name.deb
-sudo apt-get install mysql-server
-
-# 安装 MySQL 的系统数据库，以及初始化安全配置
-sudo mysql_install_db
-sudo /usr/bin/mysql_secure_installation
-
-安装PHP
-安装 PHP5
-sudo apt-get install php5-fpm php5-mysql
-
-# 编辑 php-fpm 配置，修改 listen（注释之前的 127.0.0.1:9000）,注意以后的 Nginx 虚拟主机都用这个
-vi /etc/php5/fpm/pool.d/www.conf
-listen = /var/run/php5-fpm.sock
-
-# 重新启动 php5-fpm 服务
-sudo service php5-fpm restart
-
-安装 PHP7
-$ sudo add-apt-repository ppa:ondrej/php
-
-# 如果失败
-$ sudo apt-get install -y language-pack-en-base
-$ sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
-
-$ sudo apt-get update
-
-# 如果 web 服务器是 apache
-$ sudo apt-get install php7.0 php7.0-mysql
-
-# 如果 web 服务器是 nginx
-$ sudo apt-get install php7.0-fpm php7.0-mysql
-
-$ sudo service nginx restart
-$ php -v
-
-浏览已安装的程序。要查看已安装的软件包列表，请输入以下命令。请注意你希望卸载的软件包的名称。
-dpkg &ndash;list
-3
-卸载程序和所有配置文件。在终端中输入以下命令，把替换成你希望完全移除的程序：
-sudo apt-get &ndash;purge remove 
-4
-只卸载程序。如果你移除程序但保留配置文件，请输入以下命令：
-sudo apt-get remove 
-可以隔段时间 apt-get autoremove 移除没用的包
-用 Tengine 替代 Nginx
-在之前，不管是 CentOS 还是 Ubuntu，我们都是通过系统自带的 yum或 apt-get安装的 Nginx，没有使用手动编译的方式， 虽然大部分的时候这种方式已经满足需求的，但如果某些时候需要启用高级特性，就只能通过编译源码的方式来安装。
-Nginx 的源码包和文档，可以在 Nginx 官网下载和学习，解压后按文档说明一步步来就可以了。然而我们中国的淘宝技术团队，做了一个更不错的替代品—— Tengine。
-Tengine 是淘宝基于 Nginx 开发的一个 Web 服务器，在性能和安全等方面进行了增强，见 Tengine官方文档
-wget http://tengine.taobao.org/download/tengine-2.1.2.tar.gz
-tar zxvf tengine-2.1.2.tar.gz
-cd tengine-2.1.2
-./configure --with-http_sysguard_module --with-http_realip_module
-make &amp;&amp; make install
-
-默认会安装到路径 /usr/local/nginx 下，配置文件路径为 /usr/local/nginx/conf/nginx.conf
-部分云服务器的 Ubuntu 下由于 IPV6 地址导致报错的问题
-在 Vultr 上一台服务器，安装 Ubuntu 14.04，安装 tengine 后无法启动或 nginx -t 测试，报错：
-
-nginx: [emerg] invalid port in resolver &ldquo;2001:19f0:300:1704::6&rdquo; in /usr/local/nginx/conf/nginx.conf:123
-
-这是因为服务器用了 IPV6 地址，而 tengine 还不支持的原因。关掉即可
-vi /etc/resolv.conf
-
-#注释IPv6地址
-
-Nginx 的配置
-配置PHP虚拟主机
-注意 PHP 5 和 PHP 7 安装后，php-fpm 配置参数是不同的，在 Nginx 的 vhosts 文件里要注意修改 fastcgi_pass 字段
-
-/var/run/php5-fpm.sock
-/var/run/php/php7.0-fpm.sock
-
-server {
-        listen   80;
-     
-        root /usr/share/nginx/www;
-        index index.php index.html index.htm;
-
-        server_name example.com;
-
-        location / {
-                try_files $uri $uri/ /index.html;
-        }
-
-        error_page 404 /404.html;
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-              root /usr/share/nginx/www;
-        }
-
-        # pass the PHP scripts to FastCGI server listening on /var/run/php5-fpm.sock
-        location ~ \.php$ {
-                try_files $uri =404;
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
-                fastcgi_index index.php;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                include fastcgi_params;
-                
-        }
-
-}
-
-在 Nginx 里添加虚拟主机并运行 PHP 站点
-这时 php-fpm 已经安装完毕，但是现在需要配置一下 Nginx，在 /etc/nginx/conf.d 目录中新建一个名为 test.conf 的文件（注：Tengine路径不一样，在 /usr/local/nginx/conf 中），其内容为：
-server {
-    listen 80;
-
-    location ~ \.php$ {
-        root          /usr/local/nginx/htdocs/test;
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-
-然后执行以下命令使我们的配置生效：
-sudo systemctl reload nginx
-# 或者
-nginx -s reload
-
-测试php脚本是否正常运行
-在  /usr/local/nginx/htdocs/test 里新建一个 PHP 文件 index.php ，编辑里面的内容为
-&lt;?php echo phpinfo(); ?&gt;
-
-然后使用浏览器访问 http://localhost/test/index.php
-安装 Apache 与 PHP 支持
-http://php.net/manual/en/install.unix.apache2.php
-或用 XAMPP。
-虚拟主机
-# 添加基于端口的虚拟主机
-$ vi xamppfiles/etc/httpd.conf
-
-# 添加 Listen 8888 等所有新虚拟主机的端口，每个虚拟主机的端口都要添加进去
-Listen 80
-Listen 8888
-# 去掉 Include httpd-vhosts.conf 文件，引入虚拟主机配置文件
-# Virtual hosts
-Include etc/extra/httpd-vhosts.conf
-
-编辑 /config/extra/httpd-vhosts.conf
-
-多端口
-
-一定要记得先在 httpd.conf 里添加 Listen
-Listen 80
-Listen 8888
-
-# 增加多个端口对应的虚拟主机
-&lt;VirtualHost *:8888&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是 localhost
-    ServerName localhost
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-
-
-共用一个 80 端口，多个域名
-
-&lt;VirtualHost *:80&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是本地测试域名
-    ServerName dev-helper.test.com
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-
-&lt;/VirtualHost&gt;
-
-修改 /etc/hosts
-127.0.0.1  dev-helper.test.com
-
-3 重新启动
-$ xamppfiles/bin/apachectl -k restart
-环境变量
-在 vhost 里
-&lt;VirtualHost *:80&gt;
-    # ...
-    SetEnv RUN_MODE production
-&lt;/VirtualHost&gt;
-
-windows &#43; xampp 下的 memcache/memcached
-大部分 windows 下的 php 扩展都能在这里找  https://windows.php.net/downloads/pecl/releases/
-extension
-如果 /ext/ 下没有 php_memcache 需要下载
-https://pecl.php.net/package/memcache  找到版本对应的 dll    （测试过 nts 无法加载， 必须是 ts 版本）
-在 php.ini 末尾添加
-extension=php_memcache.dll
-[Memcache]
-memcache.allow_failover = 1
-memcache.max_failover_attempts=20
-memcache.chunk_size =8192
-memcache.default_port = 11211
-memcache server
-注意  memcache 和 memcached 是不同的，windows 下不再支持了，因为 libmemcached doesn&rsquo;t work on Windows.
-先判断下？ 或者在开发环境（windows）中临时插入代码。
-if(!class_exists(&#39;Memcached&#39;)) {
-    class Memcached extends Memcache
-    {
-        public function set($key, $var, $expire = null)
-        {
-            /**
-             * @see http://php.net/manual/en/memcache.set.php
-             * @see http://php.net/manual/en/memcached.set.php
-             */
-            parent::set($key, $var, null, $expire);
-        }
-    }
-}
-
-windows 下的 imagick
-解压后复制 php_imagick.dll 到  ext
-还有复制全部  CORE_RL 开头和 IM_MOD_RL 开头的 dll 到  php.exe 所在的同级目录
-修改 php.ini   添加  extension=php_imagick.dll
-重启
-PHP 相关配置
-解决 php 无法写入 session 的问题
-php安装完成之后，需要设置一下php session的目录，并注意修改目录权限为你的web目录用户权限
-sudo mkdir /var/lib/php/session/
-sudo chown -R apache:apache /var/lib/php/session/
-
-配置 php.ini
-#设置默认时区
-date.timezone = PRC
-
-#禁用函数列表，如果需要再删除
-disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space
-
-#设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，或者直接写上程序/data/www.111cn.net/:/tmp/
-open_basedir = .:/tmp/ 
-
-#关闭错误报告在前台页面显示
-display_errors = OFF
-
-# 设置 cgi.fix_pathinfo
-cgi.fix_pathinfo=0
-
-##php 的 opcache 和 nginx 的 sendfile 导致修改文件代码不生效问题
-lnmp 环境配置好后，发现修改 PHP 代码，还是会显示前面代码的输出结果。本地开发环境需要修改两处
-
-php.ini 文件  把 opcache enable 改成 0 (关闭)
-nginx.config 里把 sendfile 改成 off
-
-重启两个服务
-MySQL(MariaDB)的配置
-拷贝一个默认配置文件
-# 根据机器的性能，将/usr/share/mysql/目录下的某个配置文件复制到 /etc 下，例如 my-huge.cnf
-cp /usr/share/mysql/my-huge.cnf /etc/my.cnf 
-
-注意：如果/etc目录下面默认有一个 my.cnf，直接覆盖即可
-提示 mysqli_connect(): (HY000/2002): No such file or directory
-如果你装了 XAMPP，然后关闭了 apache php，只运行 MySQL
-然后新安装了一个 Nginx 和 PHP，想调用 XAMPP 这个 MySQL，如果用 mysqli_connect 等 localhost 的时候会报这个错误。
-首先访问 XAMPP 的mysql
-mysql -uroot -p 
-show variables like &#39;%socket%&#39;;
-
-# 找到这个值，例如/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
-# 然后编辑 /etc/php.ini
-# 找到 mysqli.default_socket, 把它的值修改
-
-killall -9 php-fpm
-php-fpm
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-全新安装Mac OSX 开发者环境
-OS X安装配置-工作环境搭建-使用技巧
-Mac下安装LNMP(Nginx&#43;PHP5.6)环境
-
-title: 基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-permalink: linux-nginx-mysql-php-apache-optimize
-date: 2016/05/25 10:10:10
-categories:
-
-server
-
-
-
-定时打包备份网站文件、数据库、访问日志
-在这里下载备份脚本
-$ chmod &#43;x wwwroot_batch_backup.sh
-$ chmod &#43;x mysql_batch_backup.sh
-$ chmod &#43;x access_log_batch_backup.sh
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-
-
-为什么要使用最新版本的 MySQL？以及新旧版本数据库的环境兼容问题
-以前我是一个“顽固派”，认为软件的版本够用就好，没必要追求最新版，所以在 Mac 上一直用着 5.1 版本。它体积小，不占太多硬盘空间，而且启动后台服务后占用内存也才 20M 不到，非常节省资源。
-但是 MySQL 这个数据库不一样，最新版的会有更强大的性能（当然占用系统资源也会更多），以及更多的特性（虽然平时感觉不到），和对数据更好的兼容（毕竟现在数据比什么都重要，而且数据来源五花八门）。
-但就是这个平时感觉不到的东西，最近坑了我一把。">
-
-<meta itemprop="wordCount" content="11394">
+<meta itemprop="wordCount" content="11391">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站
-permalink: linux-nginx-mysql-php-apache-set-up
-date: 2016/05/25 10:10:10
-tags:
-
-运维
-
-
-
-目前，有不少网站站长都不再满足于租用一个和别人共用的虚拟主机（指开箱即用，或者简单配置后即可运行的网站），因为往往这些虚拟主机在开始的时候能满足需求，随着访问人数攀升，以及个性化定制需求的增加，各种不灵活的掣肘就浮现出来了。拥有一台自己拥有完全控制权的独立服务器（或 VPS，或现在流行的云主机），用来搭建一个网站以及运行有意思的服务（爬虫、远程备份，等等），就成为进阶站长和技术爱好者的目标。
-又或者你只是想先在自己的电脑上搭建一个 PHP 的运行环境进行学习、开发。
-都可以在这里找到细致而详尽的答案。
-
-本文包括在三种主流的操作系统（Linux &amp; Windows &amp; OS X）上搭建 Nginx&#43;PHP&#43;MySQL 环境的过程。因为 LEMP（Linux &#43; Nginx &#43; MySQL &#43; PHP）实际上已经是现在很多中小型网站运行的主流环境了，所以我们重点笔墨放在 Linux 上，我们也建议 Windows 的开发者尽可能使用虚拟机来安装 Linux，可以避免遇到很多莫名其妙的问题。
-本文并未涉及服务器的选购、 Linux 安装配置、以及 Nginx&#43;PHP&#43;MySQL 的性能优化等知识。
-如果需要了解这些内容 ,请查看我们相关的教程：
-
-如何选购合适的独立服务器-vps-云主机
-Linux安装配置与常用命令
-基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-
-最简单的方式：一键安装
-XAMPP
-跨平台的 Apache &#43; MySQL(MariaDB)&#43; PHP，并自带了 Ftp 服务端、PhpMyAdmin等。
-下载 Linux 版本（.run 后缀名），安装后会在 /opt/lampp
-# 一些控制命令（修改了Apache、PHP、MySQL的配置文件后要重启）
-./ctlscript.sh help
-       ./ctlscript.sh (start|stop|restart|status)
-       ./ctlscript.sh (start|stop|restart|status) mysql
-       ./ctlscript.sh (start|stop|restart|status) proftpd
-       ./ctlscript.sh (start|stop|restart|status) apache
-
-Linux 下的 LNMP 环境一键安装包
-如果你没有太多时间去研究各种软件包版本和库之间的依赖关系，而且对性能调优不太熟悉，只想尽快搭建一个可以快速运行起来的网站的话建议选择一键包。
-一键包除了可以简化繁琐和容易出错的安装过程外，还有很强大的参数调整方式（通过命令行或图形界面）。
-但也有缺陷，那就是安装的时候可定制型不强，一些特殊的模块可能并没有默认安装。
-我最常用的是军哥的一键包
-这个一键包的作者有多年的运维经验，非常建议多读读安装脚本的代码，可以从中学到很多的知识。
-在 http://lnmp.org 下载，解压并运行安装脚本即可，安装过程中会有详细的提示，用于选择 PHP 版本、MySQL版本、默认 root 密码等等。
-$ wget -c http://soft.vpser.net/lnmp/lnmp1.3-full.tar.gz &amp;&amp; tar zxf lnmp1.3-full.tar.gz &amp;&amp; cd lnmp1.3-full &amp;&amp; ./install.sh lnmp
-
-最新版的一键包支持 PHP7(对比PHP5有几倍的性能提升，但有部分函数不兼容一些比较古老的PHP框架/CMS，在稳定的生产环境中还是建议使用 PHP5)。
-除了安装基本的 LEMP 环境外，还可以添加 ftp 服务器、memcached 内存缓存服务等功能。
-由于这个一键包没有提供图形界面的管理面板，所以只能通过命令行去启动服务、添加主机等操作。
-LNMP无法删除或更改权限，显示：
-
-rm: cannot remove `.user.ini&rsquo;: Operation not permitted
-
-无法删除“.user.ini”文件解决方法,运行后删除即可
-chattr -i /home/wwwroot/default/.user.ini
-
-如果是需要修改文件，记得修改完以后运行：
-chattr &#43;i /home/wwwroot/default/.user.ini
-
-如果你对命令行并不熟练，也可以选择WDCP、AMH等带有图形界面的管理面板，其中 好像WDCP在阿里云上用得比较多；AMH也是一个非常不错的环境，特点是有一个优化过的 MySQL 管理器 。
-默认不会安装 ext_ldap  ext_filenfo 等包
-在laravel应用 composer install 会报错。需要手动安装
-以 ldap 为例
-# 先进入 src 目录, 解压 php 压缩包（bz2格式）
-cd ~/lnmp1.5/src
-tar -jxvf xx.tar.bz2
-
-# 进入需要安装的扩展目录
-cd php-7.1.18/ext/ldap
-
-# 然后依次运行 （--with-ldap 可以不带？ fileinfo 测试）
-/usr/local/php/bin/phpize
-./configure --with-php-config=/usr/local/php/bin/php-config --with-ldap 
-
-如果报错
-
-configure: error: Cannot find ldap.h
-
-则安装下面的包后再运行 configure
-yum install openldap openldap-devel  -y
-
-如果继续提示
-
-configure: error: Cannot find ldap libraries in /usr/lib
-
-则复制一些文件后重新 configure
-cp -frp /usr/lib64/libldap* /usr/lib/
-
-运行make 命令
-make &amp;&amp; make install
-
-提示如下，记住这个路径
-
-Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/
-
-打开/usr/local/php/etc/php.ini 添加fileinfo.so扩展
-extension = &quot;ldap.so&quot; 
-
-重启确保生效,
-lnmp retstart
-
-再运行下面的命令查看模块列表
-php -m
-
-Windows 下的一键安装包
-XAMPP，比较大，只有 Apache
-UPUPW (有 Apache 或 Nginx 版本)，可以自己搭配 PHP &amp; MySQL 版本
-Apache 使用别的目录做虚拟主机目录时，403 Forbidden问题
-#定义个目录
-Define VHOSTS_ROOT &quot;/mnt/share&quot;
-
-# 编辑 conf/httpd-vhosts.conf
-# 使用了其他目录作为虚拟主机目录，这段是最重要的
-&lt;Directory &quot;${VHOSTS_ROOT}&quot;&gt;
-    Options Indexes FollowSymLinks
-    AllowOverride None
-    Require all granted
-&lt;/Directory&gt;
-
-CentOS 系统安装 Nginx &#43; PHP &amp; MySQL
-对一些有软件洁癖的技术爱好者，或者一些老鸟来说，用一键包往往难以满足他们从头到尾控制安装过程的满足感。下面就分别介绍 CentOS 和 Ubuntu 这两个最流行的发行版上安装 LEMP 环境的方法。
-这里默认的版本为 CentOS 7，部分在 CentOS 6 下有差异的地方附有说明。
-添加 epel 源
-#因为 nginx 没有在官方源里面，需要添加epel源
-$ sudo yum install epel-release
-
-#还需要安装下面的 rpm 包以便能安装 PHP5.5
-
-#如果是 CentOS 7 
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/epel-release.rpm
-$ rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-
-#如果是 CentOS 6
-$ rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
-
-安装必需的软件和库
-#下面的命令安装包含了 `pcre` `openssl` 等 `nginx` / `tengine` 必须要用到的库
-$ yum -y install ntp make openssl openssl-devel pcre pcre-devel libpng libpng-devel libjpeg-6b libjpeg-devel-6b freetype freetype-devel gd gd-devel zlib zlib-devel gcc gcc-c&#43;&#43; libXpm libXpm-devel ncurses ncurses-devel libmcrypt libmcrypt-devel libxml2 libxml2-devel imake autoconf automake screen sysstat compat-libstdc&#43;&#43;-33 curl curl-devel
-
-安装Nginx
-用 yum来安装 Nginx
-$ sudo yum install nginx
-
-按照提示输入 yes 后开始安装。安装完毕后，Nginx 的配置文件在 /etc/nginx 目录下。其中 sites-enabled目录中保存激活的虚拟主机配置文件。
-#使用以下命令启动 Nginx：
-$ sudo systemctl start nginx
-
-有时候可能存在问题：启动时或运行配置参数重新加载的命令 nginx -s reload 时报错
-
-nginx: [error] open() &ldquo;/run/nginx.pid&rdquo; and failed
-
-需要 -c 参数手动指定 nginx 的配置文件路径 /etc/nginx/nginx.conf
-$ /usr/sbin/nginx -c /etc/nginx/nginx.conf
-
-最后将Nginx设置为开机启动
-$ sudo systemctl enable nginx.service
-
-最后测试一下 nginx 服务是否正常运行。启动 nginx 服务后，通过浏览器访问http://localhost（本地开发环境）或 http://&lt;外网IP地址&gt; 来确定是否已经启动。如果一切正常，页面会显示一行
-
-Welcome to Nginx
-
-补充
-更建议用 Tengine 来替代 Nginx，并用编译源代码的方式来安装，见后面的章节**“用 Tengine 替代 Nginx”**
-开放防火墙中的端口
-检查系统中 firewalld 防火墙服务是否开启
-$ sudo systemctl status firewalld
-
-如果已开启（显示 active (running)），我们需要修改防火墙配置，开启外网访问 80 端口。
-修改 /etc/firewalld/zones/public.xml 文件，在 &lt;zone&gt;&lt;/zone&gt;一节中增加 &lt;service name=&quot;nginx&quot;/&gt;
-关于防火墙的设置，可以学习我们讲解 CentOS 的安装和配置有关教程。
-保存后重新加载firewalld服务
-$ sudo systemctl reload firewalld
-
-安装 MariaDB（MySQL）
-MariaDB是MySQL的一个开源分支，在 MySQL 被甲骨文公司收购后，由开源社区进行开发和维护，在CentOS 7的软件仓库中，已经默认将 MySQL更替为了MariaDB。
-使用yum直接安装MariaDB
-sudo yum install mariadb-server
-
-#安装完成之后，执行以下命令启动MariaDB服务
-sudo systemctl start mariadb
-
-基本安全设置（root密码等）
-MariaDB默认root密码为空，我们需要设置一下，执行脚本：
-sudo /usr/bin/mysql_secure_installation
-
-这个脚本会经过如下一系列的交互问答来进行MariaDB的安全设置。
-
-首先提示输入当前的root密码：
-Enter current password for root (enter for none):
-初始root密码为空，我们直接敲回车进行下一步。
-
-
-Set root password? [Y/n]
-设置root密码，默认选项为Yes，我们直接回车，提示输入密码，在这里设置您的MariaDB的root账户密码。
-
-
-Remove anonymous users? [Y/n]
-是否移除匿名用户，默认选项为Yes，建议按默认设置，回车继续。
-
-
-Disallow root login remotely? [Y/n]
-是否禁止root用户远程登录？如果您只在本机内访问MariaDB，建议按默认设置，回车继续。 如果您还有其他云主机需要使用root账号访问该数据库，则需要选择n。
-
-
-Remove test database and access to it? [Y/n]
-是否删除测试用的数据库和权限？ 建议按照默认设置，回车继续。
-
-
-Reload privilege tables now? [Y/n]
-是否重新加载权限表？因为我们上面更新了root的密码，这里需要重新加载，回车。
-
-登录测试
-完成后你会看到Success!的提示，MariaDB的安全设置已经完成。我们可以使用以下命令登录MariaDB：
-mysql -uroot -p
-
-#按提示输入root密码，就会进入MariaDB的交互界面，说明已经安装成功。
-mysql&gt;
-mysql&gt; show databases;
-&#43;--------------------&#43;
-| Database           |
-&#43;--------------------&#43;
-| information_schema |
-| mysql              |
-| performance_schema |
-&#43;--------------------&#43;
-3 rows in set (0.00 sec)
-
-最后将MariaDB设置为开机启动
-sudo systemctl enable mariadb
-
-可能的问题：在连接外部数据库时提示无法连接
-
-Error:Can&rsquo;t connect to MySQL server on &lsquo;10.211.55.2&rsquo; (13)
-Errno:2003
-
-解决办法 关闭CentOS的 SELinux
-setenforce 0
-vi /etc/selinux/config
-# 修改 SELINUX=enforcing 为 SELINUX=disabled
-
-重装或替换 MariaDB 为 MySQL
-卸载
-#查看CentOS自带mysql是否已安装
-yum list installed | grep mysql
-
-#若有自带安装的mysql，卸载CentOS系统自带mysql数据库，若有多个依赖文件则依次卸载
-yum -y remove mysql-libs.x86_64
-yum -y remove [依次卸载其他文件]
-
-#当结果显示为Complete！即卸载完毕
-
-开始安装
-#查看yum库上的mysql版本信息
-yum list | grep mysql 或 yum -y list mysql*
-
-#安装mysql-server，mysql(包括服务端和client)
-yum -y install mysql-server mysql mysql-devel 
-
-#查看刚安装mysql数据库版本信息
-rpm -qi mysql-server
-
-最后要重复之前安装过程中的 基本安全设置 和 登录测试 以及 配置和优化步骤。
-安装PHP（默认是5.4，安装5.5的方法在后面一节）
-#先安装PHP(默认5.4)
-yum install php php-fpm 
-
-#安装php扩展
-yum -y install  php-mysql php-gd  php-pear php-xml php-mhash php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel php-mcrypt
-
-#安装完成后启动 php-fpm
-sudo systemctl start php-fpm
-
-#将php-fpm设置为开机启动
-sudo systemctl enable php-fpm
-
-安装加速扩展如 XCache 等
-比较麻烦，建议直接安装 PHP5.5，自带有 Opcache
-卸载旧版本 PHP 与安装 高级版本PHP（如 5.5，Laravel 等现代化的 PHP框架要求比较新的 PHP 版本）
-卸载老版本（如5.4）以及对应的依赖
-yum remove php php-fpm
-
-必须强制删除其他有关的包
-rpm -qa|grep php
-
-提示如下
-
-php-pdo-5.1.6-27.el5_5.3
-php-mysql-5.1.6-27.el5_5.3
-php-xml-5.1.6-27.el5_5.3
-php-cli-5.1.6-27.el5_5.3
-php-common-5.1.6-27.el5_5.3
-php-gd-5.1.6-27.el5_5.3
-
-注意卸载要先卸载没有依赖的：pdo是mysql的依赖项；common是gd的依赖项；
-例如：
-# rpm -e php-pdo-5.1.6-27.el5_5.3
-&gt; error: Failed dependencies:
-&gt; php-pdo is needed by (installed) php-mysql-5.1.6-27.el5_5.3.i386
-
-所以正确的卸载顺序是：
-rpm -e php-mysql-5.1.6-27.el5_5.3 
-rpm -e php-pdo-5.1.6-27.el5_5.3 
-rpm -e php-xml-5.1.6-27.el5_5.3 
-rpm -e php-cli-5.1.6-27.el5_5.3 
-rpm -e php-gd-5.1.6-27.el5_5.3 
-rpm -e php-common-5.1.6-27.el5_5.3
-
-再用 php -v 查看版本信息已经没有提示
-安装PHP5.5以及扩展
-yum install php55w php55w-opcache php55w-common php55w-fpm php55w-gd php55w-imap php55w-mbstring php55w-mcrypt php55w-mysql php55w-pdo php55w-xml php55w-xmlrpc php55w-soap
-
-下面是扩展的列表与简介，按你的需求添加（只需要添加你用到的即可，例如 mssql 等扩展就极少用到，不需要添加进去）
-
-php55w    mod_php, php55w-zts
-php55w-bcmath
-php55w-cli    php-cgi, php-pcntl, php-readline
-php55w-common    php-api, php-bz2, php-calendar, php-ctype, php-curl, php-date, php-exif, php-fileinfo, php-ftp, php-gettext, php-gmp, php-hash, php-iconv, php-json, php-libxml, php-openssl, php-pcre, php-pecl-Fileinfo, php-pecl-phar, php-pecl-zip, php-reflection, php-session, php-shmop, php-simplexml, php-sockets, php-spl, php-tokenizer, php-zend-abi, php-zip, php-zlib
-php55w-dba
-php55w-devel
-php55w-embedded    php-embedded-devel
-php55w-enchant
-php55w-fpm
-php55w-gd
-php55w-imap
-php55w-interbase    php_database, php-firebird
-php55w-intl
-php55w-ldap
-php55w-mbstring
-php55w-mcrypt
-php55w-mssql
-php55w-mysql    php-mysqli, php_database
-php55w-mysqlnd    php-mysqli, php_database
-php55w-odbc    php-pdo_odbc, php_database
-php55w-opcache    php55w-pecl-zendopcache
-php55w-pdo
-php55w-pecl-gearman
-php55w-pecl-geoip
-php55w-pecl-memcache
-php55w-pecl-xdebug
-php55w-pgsql    php-pdo_pgsql, php_database
-php55w-process    php-posix, php-sysvmsg, php-sysvsem, php-sysvshm
-php55w-pspell
-php55w-recode
-php55w-snmp
-php55w-soap
-php55w-tidy
-php55w-xml    php-dom, php-domxml, php-wddx, php-xsl
-php55w-xmlrpc
-
-安装 PHP7
-首先还是要卸载旧版的 PHP
-sudo yum remove php-fpm php-cli php-common
-
-开始安装
-sudo yum install php70u-fpm-nginx php70u-cli php70u-mysqlnd
-
-修改 php-fpm配置
-vi /etc/php-fpm.d/www.conf
-
-#将 listen = 127.0.0.1:9000 注释掉，使用 php-fpm.sock 方式
-
-#去掉这行的注释
-listen.acl_users = nginx
-
-然后在以后的 Nginx 虚拟主机配置文件中，location ~ \.php$ { 配置中，要设置 fastcgi_pass为 unix:/var/run/php-fpm/php-fpm.sock;
-#Nginx 的虚拟主机配置
-
-Ubuntu 系统安装 LEMP
-Ubuntu 的软件源和 apt-get 命令非常强大，除了安装时自动解决或提示烦人的依赖关系，在需要卸载和和清理软件的时候也是很方便的。这可能和 CentOS 特别追求稳定，一般在生产环境配置好后就不怎么动了；而 Ubuntu 比较倾向于开发者日常使用，经常会更新软件和修改配置（当然 Ubuntu Server 也非常稳定）
-以下均以 Ubuntu 14.04 LTS 为例。
-安装必备的环境
-sudo apt-get install build-essential
-apt-get install libpcre3 libpcre3-dev
-apt-get install libssl-dev
-
-通过 apt-get 快速安装MySQL、Nginx
-#先 update 一下
-sudo apt-get update
-
-#Nginx
-sudo apt-get install nginx
-sudo service nginx start
-sudo service nginx restart
-
-#MySQL 如果是 14.10 可能会提示“非稳定版……”，使用 mysql-server-5-5 即可
-sudo apt-get install mysql-server 
-
-# 如果上面出错，也可以下载repo再安装 MySQL
-http://dev.mysql.com/downloads/repo/apt/
-sudo dpkg -i /PATH/version-specific-package-name.deb
-sudo apt-get install mysql-server
-
-# 安装 MySQL 的系统数据库，以及初始化安全配置
-sudo mysql_install_db
-sudo /usr/bin/mysql_secure_installation
-
-安装PHP
-安装 PHP5
-sudo apt-get install php5-fpm php5-mysql
-
-# 编辑 php-fpm 配置，修改 listen（注释之前的 127.0.0.1:9000）,注意以后的 Nginx 虚拟主机都用这个
-vi /etc/php5/fpm/pool.d/www.conf
-listen = /var/run/php5-fpm.sock
-
-# 重新启动 php5-fpm 服务
-sudo service php5-fpm restart
-
-安装 PHP7
-$ sudo add-apt-repository ppa:ondrej/php
-
-# 如果失败
-$ sudo apt-get install -y language-pack-en-base
-$ sudo LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php
-
-$ sudo apt-get update
-
-# 如果 web 服务器是 apache
-$ sudo apt-get install php7.0 php7.0-mysql
-
-# 如果 web 服务器是 nginx
-$ sudo apt-get install php7.0-fpm php7.0-mysql
-
-$ sudo service nginx restart
-$ php -v
-
-浏览已安装的程序。要查看已安装的软件包列表，请输入以下命令。请注意你希望卸载的软件包的名称。
-dpkg &ndash;list
-3
-卸载程序和所有配置文件。在终端中输入以下命令，把替换成你希望完全移除的程序：
-sudo apt-get &ndash;purge remove 
-4
-只卸载程序。如果你移除程序但保留配置文件，请输入以下命令：
-sudo apt-get remove 
-可以隔段时间 apt-get autoremove 移除没用的包
-用 Tengine 替代 Nginx
-在之前，不管是 CentOS 还是 Ubuntu，我们都是通过系统自带的 yum或 apt-get安装的 Nginx，没有使用手动编译的方式， 虽然大部分的时候这种方式已经满足需求的，但如果某些时候需要启用高级特性，就只能通过编译源码的方式来安装。
-Nginx 的源码包和文档，可以在 Nginx 官网下载和学习，解压后按文档说明一步步来就可以了。然而我们中国的淘宝技术团队，做了一个更不错的替代品—— Tengine。
-Tengine 是淘宝基于 Nginx 开发的一个 Web 服务器，在性能和安全等方面进行了增强，见 Tengine官方文档
-wget http://tengine.taobao.org/download/tengine-2.1.2.tar.gz
-tar zxvf tengine-2.1.2.tar.gz
-cd tengine-2.1.2
-./configure --with-http_sysguard_module --with-http_realip_module
-make &amp;&amp; make install
-
-默认会安装到路径 /usr/local/nginx 下，配置文件路径为 /usr/local/nginx/conf/nginx.conf
-部分云服务器的 Ubuntu 下由于 IPV6 地址导致报错的问题
-在 Vultr 上一台服务器，安装 Ubuntu 14.04，安装 tengine 后无法启动或 nginx -t 测试，报错：
-
-nginx: [emerg] invalid port in resolver &ldquo;2001:19f0:300:1704::6&rdquo; in /usr/local/nginx/conf/nginx.conf:123
-
-这是因为服务器用了 IPV6 地址，而 tengine 还不支持的原因。关掉即可
-vi /etc/resolv.conf
-
-#注释IPv6地址
-
-Nginx 的配置
-配置PHP虚拟主机
-注意 PHP 5 和 PHP 7 安装后，php-fpm 配置参数是不同的，在 Nginx 的 vhosts 文件里要注意修改 fastcgi_pass 字段
-
-/var/run/php5-fpm.sock
-/var/run/php/php7.0-fpm.sock
-
-server {
-        listen   80;
-     
-        root /usr/share/nginx/www;
-        index index.php index.html index.htm;
-
-        server_name example.com;
-
-        location / {
-                try_files $uri $uri/ /index.html;
-        }
-
-        error_page 404 /404.html;
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-              root /usr/share/nginx/www;
-        }
-
-        # pass the PHP scripts to FastCGI server listening on /var/run/php5-fpm.sock
-        location ~ \.php$ {
-                try_files $uri =404;
-                fastcgi_pass unix:/var/run/php5-fpm.sock;
-                fastcgi_index index.php;
-                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-                include fastcgi_params;
-                
-        }
-
-}
-
-在 Nginx 里添加虚拟主机并运行 PHP 站点
-这时 php-fpm 已经安装完毕，但是现在需要配置一下 Nginx，在 /etc/nginx/conf.d 目录中新建一个名为 test.conf 的文件（注：Tengine路径不一样，在 /usr/local/nginx/conf 中），其内容为：
-server {
-    listen 80;
-
-    location ~ \.php$ {
-        root          /usr/local/nginx/htdocs/test;
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-
-然后执行以下命令使我们的配置生效：
-sudo systemctl reload nginx
-# 或者
-nginx -s reload
-
-测试php脚本是否正常运行
-在  /usr/local/nginx/htdocs/test 里新建一个 PHP 文件 index.php ，编辑里面的内容为
-&lt;?php echo phpinfo(); ?&gt;
-
-然后使用浏览器访问 http://localhost/test/index.php
-安装 Apache 与 PHP 支持
-http://php.net/manual/en/install.unix.apache2.php
-或用 XAMPP。
-虚拟主机
-# 添加基于端口的虚拟主机
-$ vi xamppfiles/etc/httpd.conf
-
-# 添加 Listen 8888 等所有新虚拟主机的端口，每个虚拟主机的端口都要添加进去
-Listen 80
-Listen 8888
-# 去掉 Include httpd-vhosts.conf 文件，引入虚拟主机配置文件
-# Virtual hosts
-Include etc/extra/httpd-vhosts.conf
-
-编辑 /config/extra/httpd-vhosts.conf
-
-多端口
-
-一定要记得先在 httpd.conf 里添加 Listen
-Listen 80
-Listen 8888
-
-# 增加多个端口对应的虚拟主机
-&lt;VirtualHost *:8888&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是 localhost
-    ServerName localhost
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-
-
-共用一个 80 端口，多个域名
-
-&lt;VirtualHost *:80&gt;
-    ServerAdmin webmaster@dummy-host2.example.com
-    DocumentRoot &quot;D:/Project/WebSite/Other/dev-helper/public&quot;
-    # 这里是本地测试域名
-    ServerName dev-helper.test.com
-    ErrorLog &quot;logs/dummy-host2.example.com-error.log&quot;
-    ##CustomLog &quot;logs/dummy-host2.example.com-access.log&quot; common
-
-    &lt;Directory &quot;D:/Project/WebSite/Other/dev-helper/public&quot;&gt;
-        Options Indexes FollowSymLinks Includes ExecCGI
-        AllowOverride All
-        Require all granted
-    &lt;/Directory&gt;
-
-&lt;/VirtualHost&gt;
-
-修改 /etc/hosts
-127.0.0.1  dev-helper.test.com
-
-3 重新启动
-$ xamppfiles/bin/apachectl -k restart
-环境变量
-在 vhost 里
-&lt;VirtualHost *:80&gt;
-    # ...
-    SetEnv RUN_MODE production
-&lt;/VirtualHost&gt;
-
-windows &#43; xampp 下的 memcache/memcached
-大部分 windows 下的 php 扩展都能在这里找  https://windows.php.net/downloads/pecl/releases/
-extension
-如果 /ext/ 下没有 php_memcache 需要下载
-https://pecl.php.net/package/memcache  找到版本对应的 dll    （测试过 nts 无法加载， 必须是 ts 版本）
-在 php.ini 末尾添加
-extension=php_memcache.dll
-[Memcache]
-memcache.allow_failover = 1
-memcache.max_failover_attempts=20
-memcache.chunk_size =8192
-memcache.default_port = 11211
-memcache server
-注意  memcache 和 memcached 是不同的，windows 下不再支持了，因为 libmemcached doesn&rsquo;t work on Windows.
-先判断下？ 或者在开发环境（windows）中临时插入代码。
-if(!class_exists(&#39;Memcached&#39;)) {
-    class Memcached extends Memcache
-    {
-        public function set($key, $var, $expire = null)
-        {
-            /**
-             * @see http://php.net/manual/en/memcache.set.php
-             * @see http://php.net/manual/en/memcached.set.php
-             */
-            parent::set($key, $var, null, $expire);
-        }
-    }
-}
-
-windows 下的 imagick
-解压后复制 php_imagick.dll 到  ext
-还有复制全部  CORE_RL 开头和 IM_MOD_RL 开头的 dll 到  php.exe 所在的同级目录
-修改 php.ini   添加  extension=php_imagick.dll
-重启
-PHP 相关配置
-解决 php 无法写入 session 的问题
-php安装完成之后，需要设置一下php session的目录，并注意修改目录权限为你的web目录用户权限
-sudo mkdir /var/lib/php/session/
-sudo chown -R apache:apache /var/lib/php/session/
-
-配置 php.ini
-#设置默认时区
-date.timezone = PRC
-
-#禁用函数列表，如果需要再删除
-disable_functions = passthru,exec,system,chroot,scandir,chgrp,chown,shell_exec,proc_open,proc_get_status,ini_alter,ini_alter,ini_restore,dl,openlog,syslog,readlink,symlink,popepassthru,stream_socket_server,escapeshellcmd,dll,popen,disk_free_space,checkdnsrr,checkdnsrr,getservbyname,getservbyport,disk_total_space
-
-#设置表示允许访问当前目录(即PHP脚本文件所在之目录)和/tmp/目录,可以防止php木马跨站,如果改了之后安装程序有问题(例如：织梦内容管理系统)，可以注销此行，或者直接写上程序/data/www.111cn.net/:/tmp/
-open_basedir = .:/tmp/ 
-
-#关闭错误报告在前台页面显示
-display_errors = OFF
-
-# 设置 cgi.fix_pathinfo
-cgi.fix_pathinfo=0
-
-##php 的 opcache 和 nginx 的 sendfile 导致修改文件代码不生效问题
-lnmp 环境配置好后，发现修改 PHP 代码，还是会显示前面代码的输出结果。本地开发环境需要修改两处
-
-php.ini 文件  把 opcache enable 改成 0 (关闭)
-nginx.config 里把 sendfile 改成 off
-
-重启两个服务
-MySQL(MariaDB)的配置
-拷贝一个默认配置文件
-# 根据机器的性能，将/usr/share/mysql/目录下的某个配置文件复制到 /etc 下，例如 my-huge.cnf
-cp /usr/share/mysql/my-huge.cnf /etc/my.cnf 
-
-注意：如果/etc目录下面默认有一个 my.cnf，直接覆盖即可
-提示 mysqli_connect(): (HY000/2002): No such file or directory
-如果你装了 XAMPP，然后关闭了 apache php，只运行 MySQL
-然后新安装了一个 Nginx 和 PHP，想调用 XAMPP 这个 MySQL，如果用 mysqli_connect 等 localhost 的时候会报这个错误。
-首先访问 XAMPP 的mysql
-mysql -uroot -p 
-show variables like &#39;%socket%&#39;;
-
-# 找到这个值，例如/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock
-# 然后编辑 /etc/php.ini
-# 找到 mysqli.default_socket, 把它的值修改
-
-killall -9 php-fpm
-php-fpm
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-全新安装Mac OSX 开发者环境
-OS X安装配置-工作环境搭建-使用技巧
-Mac下安装LNMP(Nginx&#43;PHP5.6)环境
-
-title: 基于Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP的网站优化
-permalink: linux-nginx-mysql-php-apache-optimize
-date: 2016/05/25 10:10:10
-categories:
-
-server
-
-
-
-定时打包备份网站文件、数据库、访问日志
-在这里下载备份脚本
-$ chmod &#43;x wwwroot_batch_backup.sh
-$ chmod &#43;x mysql_batch_backup.sh
-$ chmod &#43;x access_log_batch_backup.sh
-
-一些常见问题
-Nginx 的默认设置缺乏，导致上传较大文件时提示
-
-413 Request Entity Too Large
-
-Add the following line to http or server or location context to increase the size limit in nginx.conf, enter:
-
-# set client body size to 2M #
-client_max_body_size 2M;
-Save and close the file. Reload the nginx webserver, enter:
-# /usr/local/nginx/sbin/nginx -s reload
-
-参考资料
-
-How To Upgrade to PHP 7 on CentOS 7
-
-
-为什么要使用最新版本的 MySQL？以及新旧版本数据库的环境兼容问题
-以前我是一个“顽固派”，认为软件的版本够用就好，没必要追求最新版，所以在 Mac 上一直用着 5.1 版本。它体积小，不占太多硬盘空间，而且启动后台服务后占用内存也才 20M 不到，非常节省资源。
-但是 MySQL 这个数据库不一样，最新版的会有更强大的性能（当然占用系统资源也会更多），以及更多的特性（虽然平时感觉不到），和对数据更好的兼容（毕竟现在数据比什么都重要，而且数据来源五花八门）。
-但就是这个平时感觉不到的东西，最近坑了我一把。"/>
+<meta name="twitter:title" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站"/>
+<meta name="twitter:description" content="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站 slug: linux-nginx-mysql-php-apache-set-up date: 2016/05/25 10:10:10 tags: 运维 目前，有不少网站站长都不再满足于租用一个和别人共用的虚"/>
 
     <!--[if lte IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -2457,6 +162,342 @@ How To Upgrade to PHP 7 on CentOS 7
     <div class="widget-body">
         <ul class="tag-list">
             
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
         </ul>
 
     </div>
@@ -2469,7 +510,7 @@ How To Upgrade to PHP 7 on CentOS 7
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://my101du.github.io/1/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="title"></a>
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
                     </p>
                     <p class="item-date">
                         <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
@@ -2479,7 +520,7 @@ How To Upgrade to PHP 7 on CentOS 7
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://my101du.github.io/1/01/bootstrap-%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E4%B8%8E%E6%8A%80%E5%B7%A7/" class="title"></a>
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
                     </p>
                     <p class="item-date">
                         <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
@@ -2489,7 +530,7 @@ How To Upgrade to PHP 7 on CentOS 7
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://my101du.github.io/1/01/bootstrap4/" class="title"></a>
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
                     </p>
                     <p class="item-date">
                         <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
@@ -2499,7 +540,7 @@ How To Upgrade to PHP 7 on CentOS 7
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://my101du.github.io/1/01/css-%E5%8A%A8%E7%94%BB/" class="title"></a>
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
                     </p>
                     <p class="item-date">
                         <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
@@ -2509,7 +550,7 @@ How To Upgrade to PHP 7 on CentOS 7
             <li>
                 <div class="item-inner">
                     <p class="item-title">
-                        <a href="https://my101du.github.io/1/01/css-%E5%8A%A8%E7%94%BB%E5%BA%93-animate.css/" class="title"></a>
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
                     </p>
                     <p class="item-date">
                         <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
@@ -2541,7 +582,7 @@ How To Upgrade to PHP 7 on CentOS 7
   <a
     class="article-title"
     href="/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/"
-    ></a
+    >使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站</a
   >
 </h1>
 
@@ -2550,13 +591,13 @@ How To Upgrade to PHP 7 on CentOS 7
 
         <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/#comments"
             class="article-comment-link">评论</a></span>
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11394字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11391字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23分 </span>
       </div>
     </div>
     <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
       <p>使用Linux+Nginx(Apache)+MySQL+PHP搭建网站</p>
-<p>permalink: linux-nginx-mysql-php-apache-set-up
+<p>slug: linux-nginx-mysql-php-apache-set-up
 date: 2016/05/25 10:10:10
 tags:</p>
 <ul>
@@ -2567,7 +608,6 @@ tags:</p>
 <p>目前，有不少网站站长都不再满足于租用一个和别人共用的<code>虚拟主机</code>（指开箱即用，或者简单配置后即可运行的网站），因为往往这些虚拟主机在开始的时候能满足需求，随着访问人数攀升，以及个性化定制需求的增加，各种不灵活的掣肘就浮现出来了。拥有一台自己拥有完全控制权的<code>独立服务器</code>（或 <code>VPS</code>，或现在流行的<code>云主机</code>），用来搭建一个网站以及运行有意思的服务（爬虫、远程备份，等等），就成为进阶站长和技术爱好者的目标。</p>
 <p>又或者你只是想先在自己的电脑上搭建一个 PHP 的运行环境进行学习、开发。</p>
 <p>都可以在这里找到细致而详尽的答案。</p>
-<!-- raw HTML omitted -->
 <p>本文包括在三种主流的操作系统（Linux &amp; Windows &amp; OS X）上搭建 <code>Nginx+PHP+MySQL</code> 环境的过程。因为 <code>LEMP</code>（Linux + Nginx + MySQL + PHP）实际上已经是现在很多中小型网站运行的主流环境了，所以我们重点笔墨放在 Linux 上，我们也建议 Windows 的开发者尽可能使用虚拟机来安装 Linux，可以避免遇到很多莫名其妙的问题。</p>
 <p>本文并未涉及服务器的选购、 Linux 安装配置、以及 Nginx+PHP+MySQL 的性能优化等知识。
 如果需要了解这些内容 ,请查看我们相关的教程：</p>
@@ -3238,14 +1278,13 @@ Save and close the file. Reload the nginx webserver, enter:
 <li><a href="http://www.itjiaoshou.com/os-x-install-config-work-skills">OS X安装配置-工作环境搭建-使用技巧</a></li>
 <li><a href="http://avnpc.com/pages/install-lnmp-on-osx">Mac下安装LNMP(Nginx+PHP5.6)环境</a></li>
 </ul>
-<p>title: 基于Linux+Nginx(Apache)+MySQL+PHP的网站优化
-permalink: linux-nginx-mysql-php-apache-optimize
+<h1 id="基于linuxnginxapachemysqlphp的网站优化">基于Linux+Nginx(Apache)+MySQL+PHP的网站优化</h1>
+<p>slug: linux-nginx-mysql-php-apache-optimize
 date: 2016/05/25 10:10:10
 categories:</p>
 <ul>
 <li>server</li>
 </ul>
-<hr>
 <p><img src="/article_images/server/linux-nginx-mysql-php/lemp_cover.png" alt=""></p>
 <h1 id="定时打包备份网站文件数据库访问日志">定时打包备份网站文件、数据库、访问日志</h1>
 <p><a href="https://github.com/my101du/courses/tree/master/server/backup">在这里下载备份脚本</a></p>
@@ -3387,14 +1426,13 @@ SHOW VIEW：允许查询试图
 CREATE ROUTINE：允许创建新的存储过程
 ALTER ROUTINE：允许修改存储过程
 EXECUTE：允许执行查询</p>
-<p>title: Nginx升级-添加模块-mp4流媒体播放支持
-permalink: nginx-update-add-module-mp4-stream
+<h1 id="nginx升级-添加模块-mp4流媒体播放支持">Nginx升级-添加模块-mp4流媒体播放支持</h1>
+<p>slug: nginx-update-add-module-mp4-stream
 date: 2015/12/18 10:10:10
 categories:</p>
 <ul>
 <li>server</li>
 </ul>
-<hr>
 <p>一切开始之前，先看看现在的 Nginx 版本、安装路径、模块等信息，记下 <code>configure arguments:</code> 以备后用。</p>
 <pre><code class="language-shell">$nginx -V
 
@@ -3476,20 +1514,18 @@ cp ./objs/nginx /usr/local/nginx/nginx
  
 nginx -s reload
 </code></pre>
-<p>title: 一次坑爹的经历——在OSX上的PHP环境上安装openssl扩展
-permalink: osx-and-php-install-openssl-extension
+<h1 id="一次坑爹的经历在osx上的php环境上安装openssl扩展">一次坑爹的经历——在OSX上的PHP环境上安装openssl扩展</h1>
+<p>slug: osx-and-php-install-openssl-extension
 date: 2015/12/18 10:10:10
 categories:</p>
 <ul>
 <li>server</li>
 </ul>
-<hr>
 <p><img src="/article_images/server/osx-and-php-install-openssl-extension/cover.png" alt=""></p>
 <p>事情是这样子的。
 两年前，我最初在 OSX 10.9 上全部用手动编译的方式安装了 Nginx1.2.7 + PHP5.6.11，当时安装 PHP 时并未在 <code>./configure</code> 命令中用 <code>--with-openssl</code> 把 openssl 扩展安装进去（因为工作中没有用到过）。
 后来一直平滑升级到 10.10，10.11，由于安装的环境一直运行正常，所以也没有进行任何变动，只修改了一些配置参数。
 因为最近需要学习 <code>Laravel</code>，在安装 <code>Composer</code> 的时候报错，提示一定要安装 <code>OpenSSL</code> 扩展才行，于是踏上了漫漫的打怪征程……</p>
-<!-- raw HTML omitted -->
 <h1 id="首先尝试-phpize-方式动态添加-openssl-扩展">首先尝试 phpize 方式动态添加 openssl 扩展</h1>
 <h2 id="一开始我理解错了把-php-的-openssl-扩展和单独的-openssl-库两者搞混了">一开始我理解错了，把 <code>php 的 openssl 扩展</code>和<code>单独的 openssl 库</code>两者搞混了。</h2>
 <p><strong>首先是错误的方式——单独的 openssl 库</strong></p>
@@ -3621,13 +1657,14 @@ sudo vi /etc/hosts
 <p>socket方式：使用unix domain socket连接套接字/dev/shm/php-cgi.sock，不走网络，速度更快，/dev/shm是内存文件系统挂载点，比默认的/tmp/php-cgi.sock磁盘文件更快</p>
 <p>修改完重启php-fpm和nginx（nginx -s reload）可以生效</p>
 <p>注意：nginx和php-fpm需要配置一样的链接方式和监听方式，就是php-fpm使用什么监听，nginx就需要用什么方式来链接</p>
+
     </div>
     <div class="article-footer">
 <blockquote class="mt-2x">
   <ul class="post-copyright list-unstyled">
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接: </strong>
-      <a href="https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" title="" target="_blank" rel="external">https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</a>
+      <a href="https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" title="使用Linux&#43;Nginx(Apache)&#43;MySQL&#43;PHP搭建网站" target="_blank" rel="external">https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8linux-nginxapache-mysql-php%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/</a>
     </li>
     <li class="post-copyright-license">
       <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
@@ -3659,13 +1696,13 @@ sudo vi /etc/hosts
     <div class="bar-inner">
         <ul class="pager pull-left">
             <li class="prev">
-                <a href="https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8rsync%E5%92%8Clftp%E7%AD%89%E5%B7%A5%E5%85%B7%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E9%97%B4%E5%90%8C%E6%AD%A5%E6%96%87%E4%BB%B6/" title=""><i
+                <a href="https://my101du.github.io/1/01/php-sms-code-validation/" title="使用PHP开发短信验证码功能"><i
                         class="icon icon-angle-left"
                         aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
             </li>
             <li class="next">
-                <a href="https://my101du.github.io/1/01/%E4%B8%BA%E7%AB%99%E7%82%B9%E5%90%AF%E7%94%A8https/"
-                    title=""><span>上一篇&nbsp;&nbsp;</span><i
+                <a href="https://my101du.github.io/1/01/%E4%BD%BF%E7%94%A8-sharepoint-%E5%92%8C-flow-%E5%AE%9E%E7%8E%B0-pulse-%E7%9A%84%E5%86%85%E9%83%A8%E5%B7%A5%E4%BD%9C%E6%B5%81/"
+                    title="使用 SharePoint 和 Flow 实现 Pulse 的内部工作流"><span>上一篇&nbsp;&nbsp;</span><i
                         class="icon icon-angle-right" aria-hidden="true"></i></a>
             </li>
             

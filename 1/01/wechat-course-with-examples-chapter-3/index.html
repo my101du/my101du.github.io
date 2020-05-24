@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="如果你有一个（或者多个）微信公众号正在运营，那么一定会发现通过 mp.weixin.qq.com 登录后的公众号管理后台有很多不方便的地方： 运营人员同一时间只能管理一个公众号" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统" />
+<meta property="og:description" content="如果你有一个（或者多个）微信公众号正在运营，那么一定会发现通过 mp.weixin.qq.com 登录后的公众号管理后台有很多不方便的地方： 运营人员同一时间只能管理一个公众号" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-3/" />
+
+<meta itemprop="name" content="最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统">
+<meta itemprop="description" content="如果你有一个（或者多个）微信公众号正在运营，那么一定会发现通过 mp.weixin.qq.com 登录后的公众号管理后台有很多不方便的地方： 运营人员同一时间只能管理一个公众号">
+
+<meta itemprop="wordCount" content="11946">
+
+
+
+<meta itemprop="keywords" content="微信," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统"/>
+<meta name="twitter:description" content="如果你有一个（或者多个）微信公众号正在运营，那么一定会发现通过 mp.weixin.qq.com 登录后的公众号管理后台有很多不方便的地方： 运营人员同一时间只能管理一个公众号"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-wechat-course-with-examples-chapter-3" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wechat-course-with-examples-chapter-3/"
+    >最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%BE%AE%E4%BF%A1/"> 微信 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wechat-course-with-examples-chapter-3/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11946字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 24分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/mobile/wechat/%E5%9B%9B%E5%85%89%E5%B9%B4-%E5%BE%AE%E4%BF%A1%E6%95%99%E7%A8%8B-%E5%B0%81%E9%9D%A2.png" alt=""></p>
+<p>如果你有一个（或者多个）微信公众号正在运营，那么一定会发现通过 mp.weixin.qq.com 登录后的<strong>公众号管理后台</strong>有很多不方便的地方：</p>
+<ol>
+<li>运营人员<strong>同一时间只能管理一个公众号</strong>，如果要操作其他的公众号，必须退出当前账号然后重新登陆其他账号，切换过程很麻烦</li>
+<li><strong>素材不能在公众号之间共享</strong>，一张图片要重复上传多次，才能分别在这几个公众号的素材管理中心里使用</li>
+<li>如果要同时向这几个公众号的所有用户<strong>群发消息</strong>，只能逐个编辑素材、手动操作</li>
+<li><strong>默认的文章编辑器不好用</strong>，无法实现一些高级效果</li>
+</ol>
+<p>我们现在就来搭建一个支持多公众号的<strong>微信运营系统</strong>来解决上面这些问题。</p>
+<p><img src="/article_images/mobile/wechat/%E5%90%8C%E6%97%B6%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E5%85%AC%E4%BC%97%E5%8F%B7.png" alt=""></p>
+<h1 id="分析系统结构与模块">分析系统结构与模块</h1>
+<p>在开始写代码之前，我们先把整个系统的<strong>结构、模块和数据</strong>梳理一下。</p>
+<p>在下面的列表中，我们把本系统<strong>最核心的功能模块</strong>列了出来。这个列表里的内容暂时看不懂没有关系，后面会逐个讲解，目前你只需要对整个系统的结构有个大概的印象就可以了。</p>
+<ul>
+<li>前台展示页面（略）</li>
+<li>通用
+<ul>
+<li>登录</li>
+<li>注册</li>
+<li>修改登录密码与个人资料</li>
+</ul>
+</li>
+<li>系统管理（只有管理员才能访问）
+<ul>
+<li>系统参数设置
+<ul>
+<li>站点状态（开启/关闭）</li>
+<li>其他参数</li>
+</ul>
+</li>
+<li>用户组管理
+<ul>
+<li>创建用户组</li>
+<li>分配权限</li>
+</ul>
+</li>
+<li>用户管理
+<ul>
+<li>创建用户</li>
+<li>启用/禁用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多媒体素材管理
+<ul>
+<li>素材列表</li>
+<li>新增、删除</li>
+<li><code>同步公众号</code></li>
+</ul>
+</li>
+<li>图文管理
+<ul>
+<li>图文列表</li>
+<li>新增、删除、编辑</li>
+<li><code>同步公众号</code></li>
+</ul>
+</li>
+</ul>
+<pre><code>- 公众号管理（只有管理员才能访问）
+	- 添加公众号
+	- 编辑公众号
+		- 设置开发参数
+		- 更新 access_token
+	- 运营人员管理
+		- 分配权限
+- 公众号设置
+	- 设置自定义菜单
+	- 设置个性化菜单
+	- 设置自动回复
+	- 二维码管理
+		- 二维码列表
+		- 生成二维码
+	- 模板消息管理
+	- 客服管理
+		- 创建客服
+		- 开启/关闭客服功能
+- 订阅用户管理
+	- 同步公众号
+	- 标签管理（订阅用户分组）
+	- 用户列表
+		- 用户编辑（备注、标签、拉黑）
+- 消息管理
+	- 消息列表
+	- 回复消息
+	- 群发消息
+- 客服管理
+	- 客服状态
+	- 客服聊天记录
+	- 向客服分配用户	
+- 数据统计
+</code></pre>
+<h1 id="基于四光年内容管理系统扩展开发">基于“四光年内容管理系统”扩展开发</h1>
+<p>要想成为一个高效率的程序员，<strong>“尽量不要重复造轮子”</strong>，注意积累平时写的代码片段、工具函数、甚至是一些功能完整的模块，这样在以后遇到相似的场景时可以直接使用它们。</p>
+<h2 id="模块与代码的复用">模块与代码的复用</h2>
+<p><img src="/article_images/mobile/wechat/%E6%A8%A1%E5%9D%97%E5%A4%8D%E7%94%A8.jpeg" alt=""></p>
+<p>如上面的结构列表所示，用背景颜色标注出来的模块是这个<code>微信运营系统</code>特有的<strong>与微信公众号有关的功能模块</strong>，而没有背景颜色的模块则来自于以前开发的一个<code>四光年内容管理系统</code>。这个<code>四光年内容管理系统</code>是我们在**《最好懂的 ThinkPHP 实战案例教程》**里重点讲解的一个案例。包含了完整的用户权限处理、用户组、文件管理、文章管理等等。</p>
+<p>因为我们的<strong>微信运营系统</strong>中也会有用户权限、文件管理（素材）、文章管理（图文）等功能，所以可以直接使用<strong>四光年内容管理系统</strong>中的很多模块，并在它的基础上开发与<strong>微信公众号</strong>有关的新模块即可。因此在这个教程中，我们也只会讲解这些新模块的开发过程。</p>
+<h2 id="必备知识">必备知识</h2>
+<p>要完成本教程中的案例，你必须要已经学会<code>ThinkPHP框架</code>、和<code>Bootstrap前端开发框架</code> 这两门技能（以及与这两门技能有关的基础知识，例如 <code>PHP</code>、<code>MySQL</code>、<code>HTML与CSS</code>等）。在这里不会对它们进行讲解，如果你以前从来没有接触过，请先学习完我们制作的这两个课程</p>
+<ul>
+<li>《最好懂的 ThinkPHP 实战案例教程》</li>
+<li>《最好懂的 Bootstrap 实战案例教程》</li>
+</ul>
+<h2 id="复制数据库增加数据表">复制数据库，增加数据表</h2>
+<p>我们把<strong>四光年管理系统</strong>里的数据库<code>db_cms</code>导出，然后根据它创建一个新的数据库<code>db_wechat</code>。</p>
+<p>然后创建下面这几个和微信公众号相关模块对应的数据表：</p>
+<ul>
+<li>管理员（包括超级管理员、运营人员）： <code>pre_admin</code></li>
+<li>公众号（公众号的参数，基本设置）：<code>pre_account</code></li>
+<li>订阅用户（公众号的订阅者）：<code>pre_subscriber</code></li>
+<li>消息（用户发送给公众号的消息，以及公众号的回复）：<code>pre_message</code></li>
+<li>素材（图片、视频、音频、图文等）：<code>pre_material</code></li>
+</ul>
+<p>我们可以使用 <code>adminer.php</code>这个小巧的图形界面数据库管理器来操作（可以在《最好懂的 MySQL 实战案例教程》找到这个管理器的详细使用方法）</p>
+<p><img src="/video.png" alt="adminer-创建数据库和表"></p>
+<p>或者直接在服务器上<strong>通过命令行</strong>来操作：（如果你对这些命令不熟悉，建议使用上面的图形界面来操作，或者学习《最好懂的 MySQL 实战案例教程》）</p>
+<pre><code class="language-shell"># 导出数据库
+$ mysqldump -uroot -p db_cms &gt; ./db_cms_export.sql
+
+# 连接 MySQL 数据库服务器
+$ mysql -uroot -p
+
+# 在 MySQL 的命令行界面创建数据库
+&gt;CREATE DATABASE db_wechat;
+
+# 按 Ctrl + C 退回到系统命令行，导入数据
+$ mysql -uroot -p123456 db_wechat &lt; db_cms_export.sql
+
+# 创建表 we_material (暂时只添加了一个主键，稍后再补充其他字段)
+$ mysql -uroot -p
+$ use db_wechat;
+&gt;CREATE TABLE `pre_material` (
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY
+) ENGINE='MyISAM' COLLATE 'utf8_bin';
+
+# 创建其他表 略
+</code></pre>
+<h2 id="部署到-sae-服务器">部署到 SAE 服务器</h2>
+<p>在前面的教程中，我们已经知道怎样购买一台 SAE 服务器来部署代码，同样我们也会<strong>继续使用它来运行这个系统</strong>。</p>
+<p>由于文件数量的增加，不可能像之前一样<strong>通过在线文件管理页面，把文件逐个逐个上传</strong>，这样操作效率太低了。我们会使用 <strong>SVN</strong> 或<strong>Git</strong> 工具来进行<strong>大量代码的推送</strong>。详细教程请查看 SAE 的官方文档</p>
+<p><a href="https://www.sinacloud.com/doc/sae/tutorial/code-deploy.html">SAE-代码部署手册</a></p>
+<p>或者学习我们制作的</p>
+<ul>
+<li>《最好懂的版本控制系统实战教程——Git》</li>
+<li>《最好懂的版本控制系统实战教程——SVN》</li>
+</ul>
+<h1 id="理解公众号接口">理解“公众号接口”</h1>
+<p>OK，准备了这么多的背景知识和进行必备操作后，终于可以正式进入这些微信公众号相关模块的开发了！不过呢，我们还是要先<strong>真正理解</strong>一些<strong>新的概念和名词</strong>。</p>
+<h2 id="现实中的接口">现实中的“接口”</h2>
+<p><code>接口</code>这个名词，相信你在学习<strong>面向对象编程</strong>（Java、C#、PHP等）的时候也遇到过很多次了。它就像我们家里的电源插座，上面有很多接口，有两孔的、有三孔的，有一些新款的还带有 USB 接口，你<strong>不用关心</strong>把设备插上去后<strong>这个插座内部发生了什么</strong>，只需要知道插座的接口有<strong>这几个特征</strong></p>
+<ol>
+<li>设备插上去就会通电</li>
+<li>一个插座上有很多种接口（两孔、三孔、USB），用来兼容不同设备和插头</li>
+<li>不同类型的接口不能混用，比如一台电脑主机的三脚插头是无法塞入一个两孔插口的</li>
+</ol>
+<p><img src="/article_images/mobile/wechat/%E5%B0%8F%E7%B1%B3%E6%8F%92%E5%BA%A7.jpg" alt=""></p>
+<h2 id="微信公众平台管理页面的背后">微信公众平台管理页面的背后</h2>
+<p>在前面的教程中，我们登录官方的<strong>微信公众平台管理页面</strong>后<strong>进行了很多操作</strong>，例如添加素材、修改公众号的参数等等，在这个过程中，我们实际上不知道、也根本不关心<strong>系统内部在做什么</strong>，只需要**每一个操作都能得到反馈（成功或失败）**即可。</p>
+<p>所有这些操作，其实都是通过<strong>调用微信公众平台提供的接口</strong>完成的。</p>
+<blockquote>
+<p>添加素材操作——调用添加素材接口——系统内部响应
+删除消息操作——调用删除消息接口——系统内部响应
+……</p>
+</blockquote>
+<p><img src="/article_images/mobile/wechat/%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%8E%A5%E5%8F%A3.png" alt=""></p>
+<h2 id="身份验证后才能调用接口">身份验证后才能调用接口</h2>
+<p>除了<strong>公众号管理系统</strong>可以使用这些接口，微信官方还把这些接口<strong>开放出来给第三方开发者</strong>，让我们能够不用登陆官方的管理系统，<strong>自己开发一个管理系统来操作公众号</strong>。</p>
+<p>和官方的公众号管理系统一样，我们肯定不能随便修改别人拥有的公众号，必须先通过<strong>身份验证</strong>（登录）后才能操作<strong>自己的公众号</strong>。因此公众平台也会<strong>验证你每次调用接口的行为是不是合法</strong>。</p>
+<p>请回过头去看看教程的第二部分，还记得在“开发者设置”里，每一个公众号都拥有两个叫 <code>AppID</code>和<code>SecretKey</code>的参数吗？<strong>第三方开发者就是使用这两个参数来表明自己能操作哪个公众号的</strong>。所以一定要保证这两个参数不会泄露出去，否则别人拿到这两个参数，就可以自己开发一个系统来随意操作你的公众号了！</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E6%8E%A5%E5%8F%A3-%E5%8E%9F%E7%90%86.png" alt=""></p>
+<h2 id="不同的公众号类型拥有不同的接口权限">不同的公众号类型拥有不同的接口权限</h2>
+<p>我们知道微信公众号有<code>订阅号</code>、<code>服务号</code>之分，并且还有<strong>是否通过了微信认证</strong>的区别。</p>
+<p><code>订阅号</code>和<code>服务号</code>的应用场景不同（前者注重资讯的传播，后者注重提供服务），因此这两种公众号<strong>提供的接口也不一样</strong>。</p>
+<p>另外，通过了微信认证的公众号，表示它的运营者的身份信息是真实、合法的（你可以回到本系列教程的第一部分去看看<code>认证公众号</code>章节），所以<strong>允许拥有这个公众号的开发者也可以调用更多的接口</strong>。</p>
+<p><strong>完整的公众号接口权限说明</strong>可以在下面这张表里看到，里面的内容暂时看不懂没有关系，后面我们会详细讲解。</p>
+<p><a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1433401084&amp;token=&amp;lang=zh_CN">公众号接口权限说明</a></p>
+<p>如果想知道<strong>你当前拥有的这个公众号有哪些接口权限</strong>，可以随时登录公众号管理后台，然后在<code>开发设置</code>——<code>接口权限</code>里查看</p>
+<p><img src="/article_images/foreground/bootstrap/%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8E%A5%E5%8F%A3%E6%9D%83%E9%99%90.png" alt=""></p>
+<h1 id="无所不能却又被严格限制的测试号">无所不能，却又被严格限制的“测试号”</h1>
+<h2 id="什么是公众平台测试账号">什么是公众平台测试账号</h2>
+<p>因为如下两个原因，我们在普通的公众号之外，还需要一个<code>测试号</code>。</p>
+<ol>
+<li>只有认证后的公众号才会有更多的接口权限，而认证公众号需要提交公司的证明文件、同时缴纳300元的认证费用。很多开发者<strong>只是想了解或学习一下微信公众号的这些接口</strong>，并不想马上就去认证。</li>
+<li>在写代码进行公众号接口的开发工作时，<strong>不能随便去修改一个正常运营中的公众号的数据、参数</strong>，因为一旦出错将导致订阅用户大量流失等严重后果。我们必须<strong>先在一个测试环境进行代码审查和功能测试</strong>，确认<strong>功能一切正常后</strong>，才能把这些代码应用到运营中的公众号上面去。</li>
+</ol>
+<p><code>公众平台测试账号</code>就是微信官方<strong>为了满足团队开发测试、个人研究而开放的一种特殊的账号</strong>。它并不区分订阅号、服务号、是否认证，而是<strong>拥有所有公众号类型的接口权限</strong>，但是它<strong>只能在我们的开发测试环境内使用</strong>，无法被普通用户搜索到，也无法向除了开发测试团队以外的人提供服务。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7.png" alt=""></p>
+<h2 id="申请一个测试号">申请一个测试号</h2>
+<ol>
+<li>打开<code>开发</code>——<code>开发者工具</code>，找到右侧<code>公众平台测试帐号</code></li>
+<li>点击<code>进入</code>按钮，在打开的页面里用微信扫码登录，按提示完善信息即可</li>
+</ol>
+<p>如图，<strong>测试账号和普通的公众号看起来十分相似</strong>，都有 <code>appID</code>和<code>appsecret</code>用于权限验证，也有<code>URL</code>和<code>Token</code>用于公众平台的服务器验证和处理转发的 XML 消息数据。有一点要注意，因为它是“测试账号”，所以并不需要对消息进行加密，因此也就没有普通公众号的<code>EncodingAESKey</code>参数（消息加解密密钥）。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF.png" alt=""></p>
+<p>下方的<strong>JS接口安全域名</strong>与调用微信 APP 的 <code>JSSDK</code> 有关，我们在后面的教程和案例里再讲解，暂时不用管它。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7-JS%E6%8E%A5%E5%8F%A3%E5%AE%89%E5%85%A8%E5%9F%9F%E5%90%8D.png" alt=""></p>
+<p>下方的这部分，左边是<strong>开发人员和测试人员关注这个测试账号的二维码</strong>，扫码后就关注了这个测试号，可以测试测试各种接口和功能；右边是当前已经关注的用户（开发人员和测试人员）。</p>
+<p><img src="/article_images/mobile/wechat/%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7-%E4%BA%8C%E7%BB%B4%E7%A0%81%E4%B8%8E%E8%AE%A2%E9%98%85%E8%80%85.png" alt=""></p>
+<p><strong>模板消息接口</strong>后面讲解，这里不做说明</p>
+<p>最后一个大的列表，是这个测试账号拥有的<strong>接口</strong>，可以看到它涵盖了订阅号、服务号<strong>所有的接口权限</strong>，因此我们可以放心地使用它来测试所有公众号的接口。</p>
+<h1 id="公众号管理模块">公众号管理模块</h1>
+<ul>
+<li>公众号管理（只有管理员才能访问）
+<ul>
+<li>添加公众号</li>
+<li>编辑公众号
+<ul>
+<li>设置开发参数</li>
+<li>更新 access_token</li>
+</ul>
+</li>
+<li>客服管理
+<ul>
+<li>创建客服</li>
+<li>开启/关闭客服功能</li>
+</ul>
+</li>
+<li>运营人员管理
+<ul>
+<li>分配权限</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="多个公众号管理添加编辑删除">多个公众号管理（添加、编辑、删除）</h2>
+<p>为了让我们的系统能<strong>同时管理多个公众号</strong>（包括操作这些公众号，以及处理它们的用户消息），首先必须把这些公众号的开发参数添加进来。</p>
+<h3 id="修改数据表添加缺失的字段">修改数据表，添加缺失的字段</h3>
+<p>在 MySQL 里修改<code>pre_accounts</code>表，按下面这个 SQL 语句，增加除了<code>id</code>以外的剩余字段。</p>
+<pre><code class="language-sql">CREATE TABLE `pre_account` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `appid` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'AppID',
+  `secretkey` varchar(100) COLLATE utf8_bin NOT NULL COMMENT 'SecretKey',
+  `url` varchar(255) COLLATE utf8_bin NOT NULL COMMENT '服务器URL',
+  `token` varchar(255) COLLATE utf8_bin NOT NULL COMMENT 'Token',
+  `encoding_aes_key` varchar(255) COLLATE utf8_bin NOT NULL COMMENT '消息加密',
+  `description` varchar(255) COLLATE utf8_bin NOT NULL COMMENT '公众号说明',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+</code></pre>
+<h3 id="创建对应的模型">创建对应的模型</h3>
+<p>在项目的<code>/Application/Admin/Model/</code>下创建文件<code>AccountModel.class.php</code>，内容如下</p>
+<pre><code class="language-php">namespace Admin\Model;
+
+use Think\Model;
+
+class AccountModel extends Model
+{
+    /**
+     * 自动验证
+     * @var array
+     */
+    protected $_validate = array(
+        array('appid', '', 'appid已经存在', 0, 'unique', 3),
+        array('url', '', 'URL不能重复，否则消息接收处理会混乱', 0, 'unique', 3),
+    );
+
+    /**
+     * 自动完成
+     * @var array
+     */
+    protected $_auto = array(
+        array('update_time', 'time', 3, 'function'),
+    );
+
+    /**
+     * 获取数据
+     * @param  [type] $map [description]
+     * @return [type]      [description]
+     */
+    public function getData($map)
+    {
+        $accounts = $this-&gt;where($map)-&gt;select();
+        return $accounts;
+    }
+
+    public function getDataById($id)
+    {
+        $account = $this-&gt;where(array('id' =&gt; $id))-&gt;find();
+        return $account;
+    }
+
+    /**
+     * 添加数据
+     */
+    public function addData()
+    {
+        $data = I('post.');
+        if (!$this-&gt;create($data)) {
+            return $this-&gt;getError();
+        } else {
+            $result = $this-&gt;data($data)-&gt;add();
+            return true;
+        }
+
+    }
+
+    /**
+     * 编辑数据
+     * @param  [type] $id   [description]
+     * @param  [type] $data [description]
+     * @return [type]       [description]
+     */
+    public function editData($id, $data)
+    {
+        if (!$this-&gt;create($data)) {
+            return $this-&gt;getError();
+        } else {
+            $map    = array(&quot;id&quot; =&gt; $id);
+            $result = $this-&gt;where($map)-&gt;data($data)-&gt;save();
+            return true;
+        }
+
+    }
+
+    /**
+     * 删除数据
+     * @param  [type] $id [description]
+     * @return [type]     [description]
+     */
+    public function deleteData($id)
+    {
+        $this-&gt;where(array(&quot;id&quot; =&gt; $id))-&gt;delete();
+    }
+}
+</code></pre>
+<p>注意几点</p>
+<ul>
+<li>appid 和 url，每个公众号的这两个字段必须与其他的不同，否则会出现公众号身份鉴定混乱、消息被发送到错误的公众号。</li>
+<li>后面的几个方法，请参考下面的 AccountController 控制器对比来看</li>
+</ul>
+<h3 id="创建-accountcontroller-控制器与相关的-action">创建 AccountController 控制器与相关的 Action</h3>
+<p>在项目的<code>/Application/Admin/Controller/</code>下创建文件<code>AccountController.class.php</code>，内容如下</p>
+<pre><code class="language-php">class AccountController extends Controller
+{
+    /**
+     * 公众号管理页面
+     * @return [type] [description]
+     */
+    public function index()
+    {
+        $modelAccount = D('Account');
+
+        $data['accounts'] = $modelAccount-&gt;getData();
+
+        $this-&gt;assign($data);
+        $this-&gt;display('Admin_accounts');
+    }
+
+    /**
+     * 添加公众号
+     */
+    public function add()
+    {
+        D('Account')-&gt;addData();
+
+        $this-&gt;success('操作成功', U('Account/index'));
+    }
+
+    /**
+     * 编辑公众号
+     * @return [type] [description]
+     */
+    public function edit()
+    {
+        $id   = I('get.id');
+        $data = array(I('get.name') =&gt; I('get.value'));
+
+        $result = D('Account')-&gt;editData($id, $data);
+
+        $this-&gt;ajaxReturn($result === true ? array('code' =&gt; 200, 'msg' =&gt; '操作成功') : array('code' =&gt; 1001, 'msg' =&gt; '发生错误' . $result));
+    }
+
+    /**
+     * 删除公众号
+     * @return [type] [description]
+     */
+    public function delete()
+    {
+        D('Account')-&gt;deleteData(I('get.id'));
+        $this-&gt;success('删除成功', U('Account/index'));
+    }
+}
+</code></pre>
+<p>特别注意<code>edit</code>这个方法，是用的 <code>ajaxReturn</code>方式返回，请结合下面的“公众号管理页面”中“编辑公众号”操作的 ajax 请求来理解</p>
+<h3 id="公众号管理页面">公众号管理页面</h3>
+<p>创建上面控制器 AccountController 中 <code>index</code> 方法中 display 的对应模板文件<code>/Template/Admin_accounts.html</code>，内容如下</p>
+<pre><code class="language-html">&lt;!-- 公众号列表、编辑 --&gt;
+&lt;table class=&quot;table table-striped table-bordered table-condensed&quot;&gt;
+    &lt;tr&gt;
+        &lt;th&gt;id&lt;/th&gt;
+        &lt;th&gt;公众号说明&lt;/th&gt;
+        &lt;th&gt;appid 与 secretkey&lt;/th&gt;
+        &lt;th&gt;url、token与加密密钥&lt;/th&gt;
+        &lt;th&gt;编辑&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tbody&gt;
+        &lt;foreach name=&quot;accounts&quot; item=&quot;account&quot;&gt;
+            &lt;tr class=&quot;account-item&quot;&gt;
+                &lt;td class=&quot;account-id&quot;&gt;{$account.id}&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;description&quot;&gt;{$account.description}&lt;/div&gt;  
+                &lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;appid&quot;&gt;{$account.appid}&lt;/div&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;secretkey&quot;&gt;{$account.secretkey}&lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;url&quot;&gt;{$account.url}&lt;/div&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;token&quot;&gt;{$account.token}&lt;/div&gt;
+                    &lt;div class=&quot;edit-enabled&quot; data-name=&quot;encoding_aes_key&quot;&gt;{$account.encoding_aes_key}&lt;/div&gt;
+                &lt;/td&gt;
+                &lt;!-- &lt;td class=&quot;edit-disabled&quot;&gt;
+                &lt;p&gt;{$account.access_token}&lt;/p&gt;
+                &lt;p&gt;{:date('Y-m-d H:i:s', $account['expire_time'])}&lt;/p&gt;
+            &lt;/td&gt; --&gt;
+                &lt;td&gt;
+                    &lt;a href=&quot;{:U('Account/delete',array('id'=&gt;$account['id']))}&quot;&gt;删除&lt;/a&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/foreach&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- 新增公众号 --&gt;
+&lt;form action=&quot;{:U('Account/add')}&quot; method=&quot;post&quot;&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;新增公众号&lt;/legend&gt;
+        &lt;p&gt;
+            &lt;label&gt;公众号描述&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;description&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label&gt;appid&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;appid&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label&gt;secretkey&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;secretkey&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label&gt;url&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;url&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label&gt;token&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;token&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;label&gt;encoding_aes_key&lt;/label&gt;
+            &lt;input type=&quot;text&quot; name=&quot;encoding_aes_key&quot; class=&quot;form-control&quot;&gt;
+        &lt;/p&gt;
+    &lt;/fieldset&gt;
+    &lt;input type=&quot;submit&quot; class=&quot;btn btn-default&quot; value=&quot;确定&quot; /&gt;
+&lt;/form&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+(function(){
+    $(function(){
+        //部分单元格双击后可以编辑参数
+        $(&quot;.edit-enabled&quot;).unbind().dblclick(tdclick);
+    });
+
+    function tdclick() {
+        //获取原单元格内的内容
+        var td = $(this);
+        var originalValue = td.html();
+
+        //创建一个 input
+        var inputNode = $(&quot;&lt;input&gt;&quot;);
+        inputNode.attr(&quot;value&quot;, originalValue);
+
+        //插入 input
+        td.html('');
+        td.append(inputNode);
+        inputNode.focus();
+
+        //避免出现 input 后单元格还能双击，导致输入框内显示&lt;input 代码
+        td.unbind();
+
+        //这个 input 输入完毕数据后失去焦点自动提交
+        inputNode.blur(function() {
+            //获取 id(第一个 td)
+            var modifyId = td.parent().parent().find(&quot;td&quot;).first().html();
+
+            var params = {id: modifyId, name: td.attr('data-name'), value: inputNode.val()};
+
+            //数据有变化才提交
+            if(params.value !== originalValue){
+                $.getJSON(&quot;{:U('Account/edit')}&quot;, params, function(json, textStatus) {
+                    if(json.code == 200){
+                        td.html(params.value);
+                    }else{
+                        td.html(originalValue);
+                        alert(json.msg);
+                    }
+                });
+            }else{
+                td.html(originalValue);
+            }
+
+            //重新绑定双击事件
+            td.unbind().dblclick(tdclick);
+        });
+    }
+}());
+&lt;/script&gt;
+</code></pre>
+<p>仔细看里面的两段代码</p>
+<ul>
+<li>新增公众号的表单</li>
+<li>编辑公众号参数的 javascript 代码（双击文本后可以修改这个公众号的参数）</li>
+</ul>
+<p>好了，现在你可以测试一下，是不是能够成功地增加、编辑、删除公众号了。把你拥有的几个公众号的开发参数添加进去吧。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2.png" alt=""></p>
+<h2 id="运营人员管理">运营人员管理</h2>
+<p>创建用户组、用户来管理不同的公众号。分配权限</p>
+<h1 id="同时捕获和处理多个公众号的消息数据">同时捕获和处理多个公众号的消息数据</h1>
+<p>我们在前面的教程中，已经知道如何<strong>自己架设服务器</strong>，<strong>让公众平台转发用户的消息</strong>，并<strong>自行处理消息回复</strong>。如果每个公众号都需要一台服务器、一个域名是不现实的——有的公司拥有 N 个公众号，不可能去购买这么多的服务器空间和域名。</p>
+<p>其实只要稍微改造一下我们这个公众号运营系统，就能让他支持<strong>同时处理多个公众号的消息</strong>，这样我们只需要一台服务器和一个域名了，极大节省了开支。</p>
+<h2 id="修改公众号的消息转发服务器-url">修改公众号的消息转发服务器 URL</h2>
+<p>首先在刚刚做好的<strong>公众号管理页面</strong>里，把你拥有的几个公众号的 <code>url</code> 参数修改成如下（前面的都一样，appid参数有区分），例如</p>
+<ul>
+<li>公众号1： <a href="http://www.yourdomain.com/index.php/Home/message/handler?appid=%5B">http://www.yourdomain.com/index.php/Home/message/handler?appid=[</a>第一个公众号的appid]</li>
+<li>公众号2： <a href="http://www.yourdomain.com/index.php/Home/message/handler?appid=%5B">http://www.yourdomain.com/index.php/Home/message/handler?appid=[</a>第二个公众号的appid]</li>
+<li>……更多公众号继续添加</li>
+</ul>
+<p>然后进入<strong>官方的微信公众号管理界面</strong><code>mp.weixin.qq.com</code>，<strong>逐个修改</strong>你每个公众号的开发者参数，把 url 改成和上面的对应起来。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%B1%E7%94%A8url.png" alt=""></p>
+<p>记得把<strong>测试号</strong>的 url 参数也修改一下</p>
+<p><img src="/article_images/mobile/wechat/%E6%B5%8B%E8%AF%95%E5%8F%B7url%E9%87%8D%E6%96%B0%E9%85%8D%E7%BD%AE.png" alt=""></p>
+<h2 id="创建对应的代码">创建对应的代码</h2>
+<p>创建一个控制器类 <code>/Application/Home/Controller/MessageController.class.php</code>（对应上面的 URL），内容如下</p>
+<pre><code class="language-php">class MessageController extends Controller
+{
+    public function handler()
+    {
+        $account = M('Account')-&gt;where(array('appid' =&gt; I('get.appid')))-&gt;find();
+
+        if (isset($_GET[&quot;echostr&quot;])) {
+            $echoStr = $_GET[&quot;echostr&quot;];
+            
+            if ($this-&gt;checkSignature($account['token'])) {
+                echo $echoStr;
+                exit;
+            }
+        } else {
+            $this-&gt;responseMsg($account);
+        }
+    }
+
+    private function responseMsg($account)
+    {
+        $postStr = file_get_contents('php://input');
+
+        if (!empty($postStr)) {
+
+            // 处理用户发送过来的消息（XML格式），获取里面的变量
+            libxml_disable_entity_loader(true);
+            $postObj      = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $fromUsername = $postObj-&gt;FromUserName;
+            $toUsername   = $postObj-&gt;ToUserName;
+            $keyword      = trim($postObj-&gt;Content);
+            $time         = time();
+            $msgType      = $postObj-&gt;MsgType;
+            $event        = $postObj-&gt;Event;
+            $eventKey     = $postObj-&gt;EventKey;
+
+            // $keyword 是用户发送的消息内容（文本）
+            if (!empty($keyword)) {
+                $tpl = &quot;&lt;xml&gt;
+							&lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;
+							&lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;
+							&lt;CreateTime&gt;%s&lt;/CreateTime&gt;
+							&lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;
+							&lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;
+							&lt;FuncFlag&gt;0&lt;/FuncFlag&gt;
+							&lt;/xml&gt;&quot;;
+		        $msgType = &quot;text&quot;;
+		        $time    = time();
+		
+		        $resultStr = sprintf($tpl, $fromUsername, $toUsername, $time, $msgType, '正在处理公众号' . $account['description']);
+		        echo $resultStr;
+            } 
+        } else {
+            echo &quot;用户发送的消息为空内容&quot;;
+            exit;
+        }
+    }
+
+    private function checkSignature($token)
+    {
+        $signature = $_GET[&quot;signature&quot;];
+        $timestamp = $_GET[&quot;timestamp&quot;];
+        $nonce     = $_GET[&quot;nonce&quot;];
+
+        $token  = defined(&quot;TOKEN&quot;) ? TOKEN : $token;
+        $tmpArr = array($token, $timestamp, $nonce);
+        // use SORT_STRING rule
+        sort($tmpArr, SORT_STRING);
+        $tmpStr = implode($tmpArr);
+        $tmpStr = sha1($tmpStr);
+
+        if ($tmpStr == $signature) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+</code></pre>
+<p>上面的代码其实大部分我们在之前已经学习过了，只是这里因为要同时处理多个公众号，在入口处通过识别 <code>appid</code>这个<code>$_GET</code>参数来查找对应的公众号数据<code>$account</code>。</p>
+<p>然后把<code>$account</code>作为参数分别传递给服务器验证方法<code>checkSignature</code>和消息回复方法<code>responseMsg</code>。OK，打开多个公众号来检查一下，现在已经可以同时处理多个公众号的消息，而不需要很多服务器和域名了。</p>
+<p><img src="/article_images/mobile/wechat/%E5%90%8C%E6%97%B6%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84%E6%B6%88%E6%81%AF.png" alt=""></p>
+<h1 id="access_token-获取与更新">access_token 获取与更新</h1>
+<h2 id="appid-和-secretkey-参数与-access_token-的关系">AppID 和 SecretKey 参数与 access_token 的关系</h2>
+<p>前面我们一直在用公众号参数中的 <code>url</code>、<code>token</code> 这两个与<strong>服务器验证和消息处理</strong>有关的参数。那么 <code>AppID</code> 和 <code>SecretKey</code> 呢？我们目前只知道它是<strong>每个微信公众号的身份识别信息</strong>，那么公众平台怎么用它来识别公众号？成功识别后又做了哪些事情呢？</p>
+<p>为了方便理解，我们来举个栗子。</p>
+<p>如果你进出过一些安全保密措施比较严谨的大楼（比如说服务器机房、有很多不同公司的写字楼），可能经历过这样的场景：</p>
+<ol>
+<li>访客必须先在前台保安处登记<strong>身份证信息</strong>，并告知保安我要<strong>去几号房找谁</strong>，保安会先<strong>打内线电话和那个房间的那个人确认一下</strong>，如果你没带身份证，或者找的那个人说不接收你的访问，保安是不会放你进去的</li>
+<li>如果上一步身份证检查通过，你要找的人也确定了你是正常访问，保安会把你的身份证收到抽屉里，<strong>准备发给你一张本栋大楼特有的通行磁卡</strong></li>
+<li>保安会<strong>询问你大概办事要多久，准备什么时候出去</strong>，<strong>要访问几号房</strong>，然后把<strong>到期时间、访问房间这些信息都记录到磁卡上</strong></li>
+<li>然后保安把这张<strong>记录了各种信息的内部磁卡</strong>发给你，这张卡<strong>是大楼内部的唯一通行证，并且限制了只能刷开某个房间的门</strong>，其他门是没法进入的</li>
+<li>在磁卡的<strong>有效期内，你可以拿着它多次进入目的地房间</strong></li>
+<li>如果你<strong>在约定的时间内没有办完事，磁卡就失效了</strong>，你<strong>再也进不了任何房间</strong>，只能去保安那里<strong>重新更新下磁卡的有效期</strong></li>
+<li>办完事后把磁卡交给保安换回身份证（我还要用它进别的大楼呢）</li>
+<li><strong>如果你过了很长一段时间再来这栋大楼办事，要重新拿身份证换磁卡</strong>，不能因为以前来过一次，就随便放你进去</li>
+</ol>
+<p><img src="/article_images/mobile/wechat/%E4%BF%9D%E5%AE%89%E5%88%B7%E5%8D%A1.jpg" alt=""></p>
+<p>在上面的场景中，<code>AppID</code>就像你的身份证，<code>SecretKey</code>就像你和要找的人之间约定的“几号房、几点、找谁”这个<strong>私密确认信息</strong>（这个信息只有你和他之间才知道）。而为了方便大楼内部识别身份和限制访问房间，你的身份信息确认后，要换一张磁卡，<strong>这张磁卡是你在大楼内活动的唯一凭证，并且有过期时间（认卡不认人）</strong>。</p>
+<p>在微信公众平台开发技术中，这张用身份证换取的“磁卡通行证”叫<code>Access Token</code>。</p>
+<p><img src="/article_images/mobile/wechat/access_token%E8%8E%B7%E5%8F%96.png" alt=""></p>
+<p>为什么要搞这样的一个东西，而不直接用 <code>AppID</code> 和 <code>SecretKey</code> 呢？原因有：</p>
+<ol>
+<li>我怎么知道你不会伪造身份证？而大楼内的这个磁卡，我可以在里面添加一些机密的识别信息，外面的人极难伪造，还能经常更新</li>
+<li>如果磁卡一直不过期，万一你的卡遗失了被别人捡到，别人化妆、易容模仿你进了你的房间怎么办？所以要有个过期时间，时间一过，就必须重新去登记。</li>
+</ol>
+<p>总而言之，<strong>任意第三方开发者如果想调用微信公众号的接口，都必须先用<code>AppID</code>和<code>SecretKey</code>换到一个<code>access_token</code>，然后用它在有效期内调用，过期要重新获取</strong>。</p>
+<h2 id="编写-access_token-获取和更新的代码">编写 access_token 获取和更新的代码</h2>
+<p>在微信公众号开发文档中，关于 <code>access_token</code> 获取的说明如下：</p>
+<p><a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140183&amp;token=&amp;lang=zh_CN">公众平台的API调用所需的access_token</a></p>
+<p>挺枯燥是吧？其实很简单，我们理一理就是这个顺序：</p>
+<ol>
+<li>开发者把公众号的 <code>AppID</code> 和<code>SecretKey</code>作为参数，一起发送给微信公众平台的一个 URL（<strong>这个URL专门生成 <code>access_token</code></strong>）</li>
+<li>微信公众平台检查 <code>AppID</code>和<code>SecretKey</code>，确认这是一个合法的公众号，生成一个<code>access_token</code><strong>发回给开发者</strong></li>
+<li>微信公众平台设置了这个<code>access_token</code><strong>有效期是两个小时</strong></li>
+<li>开发者<strong>在自己的服务器上保存这个<code>access_token</code></strong>，以供后面的接口调用来使用，两小时内不需要再获取<code>access_token</code></li>
+<li>在两个小时以内，开发者都可以<strong>拿着这个<code>access_token</code>来调用公众号的各种接口</strong></li>
+<li>每次调用，微信公众平台都会检查这个<code>access_token</code>是不是还在有效期，如果<strong>过期了就禁止调用并通知开发者</strong></li>
+<li><code>access_token</code><strong>到期后，开发者需要手动更新它</strong></li>
+<li>回到第 1 步</li>
+</ol>
+<h3 id="修改-pre_account数据表记录每个公众号当前的access_token和过期时间">修改 <code>pre_account</code>数据表，记录每个公众号当前的<code>access_token</code>和过期时间</h3>
+<pre><code class="language-sql">ALTER TABLE pre_account ADD `access_token` VARCHAR(255) NULL;
+ALTER TABLE pre_account ADD `expire_time` INT(11) DEFAULT '0' NULL;
+</code></pre>
+<h3 id="网络请求类-curl">网络请求类 Curl</h3>
+<p>在 <code>/Application/Common</code> 目录下创建一个文件夹<code>Wechat</code>，用于保存和微信开发有关的所有类。然后在里面新建一个<code>Curl.class.php</code>文件，后面我们调用微信的接口，都需要用它来发起网络请求、以及处理响应数据。</p>
+<pre><code class="language-php">namespace Common\Wechat;
+
+class Curl
+{
+    private static $_ch;
+    private static $_header;
+    private static $_body;
+
+    private static $_cookie  = array();
+    private static $_options = array();
+    private static $_url     = array();
+    private static $_referer = array();
+
+    public static function callWebServer($queryUrl, $param = '', $method = 'get', $is_json = true, $is_urlcode = true)
+    {
+        if (empty($queryUrl)) {
+            return false;
+        }
+        $method = strtolower($method);
+        $ret    = '';
+        $param  = empty($param) ? array() : $param;
+        self::_init();
+        if ($method == 'get') {
+            $ret = self::_httpGet($queryUrl, $param);
+        } elseif ($method == 'post') {
+            $ret = self::_httpPost($queryUrl, $param, $is_urlcode);
+        }
+        if (!empty($ret)) {
+            if ($is_json) {
+                return json_decode($ret, true);
+            } else {
+                return $ret;
+            }
+        }
+        return true;
+    }
+
+    private static function _init()
+    {
+        self::$_ch = curl_init();
+
+        curl_setopt(self::$_ch, CURLOPT_HEADER, true);
+        curl_setopt(self::$_ch, CURLOPT_RETURNTRANSFER, true);
+        //curl_setopt(self::$_ch, CURLOPT_FRESH_CONNECT, true);
+    }
+
+    public static function setOption($optArray = array())
+    {
+        foreach ($optArray as $opt) {
+            curl_setopt(self::$_ch, $opt['key'], $opt['value']);
+        }
+    }
+
+    private static function _close()
+    {
+        if (is_resource(self::$_ch)) {
+            curl_close(self::$_ch);
+        }
+
+        return true;
+    }
+
+    private static function _httpGet($url, $query = array())
+    {
+
+        if (!empty($query)) {
+            $url .= (strpos($url, '?') === false) ? '?' : '&amp;';
+            $url .= is_array($query) ? http_build_query($query) : $query;
+        }
+
+        curl_setopt(self::$_ch, CURLOPT_URL, $url);
+        curl_setopt(self::$_ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(self::$_ch, CURLOPT_HEADER, 0);
+        curl_setopt(self::$_ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt(self::$_ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt(self::$_ch, CURLOPT_SSLVERSION, 1);
+
+        $ret = self::_execute();
+        self::_close();
+        return $ret;
+    }
+
+    private static function _httpPost($url, $query = array(), $is_urlcode = true)
+    {
+        if (is_array($query)) {
+            foreach ($query as $key =&gt; $val) {
+                if ($is_urlcode) {
+                    $encode_key = urlencode($key);
+                } else {
+                    $encode_key = $key;
+                }
+                if ($encode_key != $key) {
+                    unset($query[$key]);
+                }
+                if ($is_urlcode) {
+                    $query[$encode_key] = urlencode($val);
+                } else {
+                    $query[$encode_key] = $val;
+                }
+
+            }
+        }
+        curl_setopt(self::$_ch, CURLOPT_URL, $url);
+        curl_setopt(self::$_ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt(self::$_ch, CURLOPT_HEADER, 0);
+        curl_setopt(self::$_ch, CURLOPT_POST, true);
+        curl_setopt(self::$_ch, CURLOPT_POSTFIELDS, $query);
+        curl_setopt(self::$_ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt(self::$_ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt(self::$_ch, CURLOPT_SSLVERSION, 1);
+
+        $ret = self::_execute();
+        self::_close();
+        return $ret;
+    }
+
+    private static function _put($url, $query = array())
+    {
+        curl_setopt(self::$_ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+
+        return self::_httpPost($url, $query);
+    }
+
+    private static function _delete($url, $query = array())
+    {
+        curl_setopt(self::$_ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+
+        return self::_httpPost($url, $query);
+    }
+
+    private static function _head($url, $query = array())
+    {
+        curl_setopt(self::$_ch, CURLOPT_CUSTOMREQUEST, 'HEAD');
+
+        return self::_httpPost($url, $query);
+    }
+
+    private static function _execute()
+    {
+        $response = curl_exec(self::$_ch);
+        $errno    = curl_errno(self::$_ch);
+
+        if ($errno &gt; 0) {
+            throw new \Exception(curl_error(self::$_ch), $errno);
+        }
+        return $response;
+    }
+
+    /**
+     * 上传文件
+     * @param $filename 文件名+路径
+     * @return \CURLFile|string 返回可直接用于Curl发送的模式
+     * PHP5.5以后，将废弃以@文件名的方式上传文件。
+     */
+    public static function addFile($filename)
+    {
+        return class_exists('\CURLFile') ? new \CURLFile($filename) : '@' . $filename;
+    }
+}
+</code></pre>
+<h3 id="获取和更新access_token的类">获取和更新<code>access_token</code>的类</h3>
+<p>在<code>Application/Common/Wechat/</code>这个保存微信开发专用文件的目录里新建<code>AccessToken.class.php</code>类文件，内容如下</p>
+<pre><code class="language-php">namespace Common\Wechat;
+
+class AccessToken
+{
+    //单例
+    private static $_instance;
+
+    protected $appid;
+    protected $secretKey;
+    protected $baseUrl;
+    protected $getAccessTokenUrl;
+
+    protected function __construct($appid, $secretKey)
+    {
+        //parent::__construct();
+        $this-&gt;appid     = $appid;
+        $this-&gt;secretKey = $secretKey;
+        $this-&gt;baseUrl   = C('BASE_URL');
+    }
+
+    public function __clone()
+    {
+        throw new Exception(&quot;Singleton Class Can Not Be Cloned&quot;);
+    }
+
+    public static function getInstance($appid, $secretKey)
+    {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new AccessToken($appid, $secretKey);
+        }
+        return self::$_instance;
+    }
+
+    public function getAccessToken()
+    {
+        $this-&gt;getAccessTokenUrl = $this-&gt;baseUrl . 'token?grant_type=client_credential&amp;appid=' . $this-&gt;appid . '&amp;secret=' . $this-&gt;secretKey;
+
+        if (S('access_token_' . $this-&gt;appid)) {
+            \Think\Log::record(&quot;get access_token from cache&quot;, 'INFO');
+
+        } else {
+            \Think\Log::record(&quot;get new access_token by curl&quot;, 'INFO');
+
+            $data = Curl::callWebServer($this-&gt;getAccessTokenUrl, '', 'GET');
+            if ($data['access_token']) {
+                S('access_token_' . $this-&gt;appid, $data['access_token'], C('ACCESS_TOKEN_EXPIRE_TIME'));
+
+                M('Account')-&gt;where(array('appid' =&gt; $this-&gt;appid))-&gt;data(array('access_token' =&gt; $data['access_token'], 'expire_time' =&gt; time() + C('ACCESS_TOKEN_EXPIRE_TIME')))-&gt;save();
+            }
+
+        }
+
+        return S('access_token_' . $this-&gt;appid);
+    }
+}
+</code></pre>
+<p>注意这个类的一个属性<code>$this-&gt;baseUrl   = C('BASE_URL');</code>。微信的接口调用 URL 有很多，例如</p>
+<ul>
+<li>获取 access_token 的接口 URL：https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid=[略]</li>
+<li>获取自定义菜单的接口 URL：https://api.weixin.qq.com/cgi-bin/menu?[略]</li>
+<li>其他调用接口</li>
+</ul>
+<p>而它们的前面一部分<code>https://api.weixin.qq.com/cgi-bin/</code>都是一模一样的，所以为了以后减少些代码，提前在<code>配置文件</code>里写好。编辑一下<code>/Application/Comon/Conf/config.php</code>，在自动加载的配置文件列表里添加一个<code>wechat</code>。</p>
+<pre><code class="language-php">'LOAD_EXT_CONFIG'   =&gt; 'db,wechat',
+</code></pre>
+<p>然后新增<code>/Application/Comon/Conf/wechat.php</code>这个配置文件的具体内容</p>
+<pre><code class="language-php">return array(
+    'BASE_URL'                 =&gt; 'https://api.weixin.qq.com/cgi-bin/',
+</code></pre>
+<p>顺便我们把<code>access_token</code>的<strong>本地过期、主动刷新的时间</strong>参数<code>ACCESS_TOKEN_EXPIRE_TIME</code>也添加到里面去(接着修改<code>wechat.php</code>这个配置文件)，设置为 7000 秒。</p>
+<p>为什么不和微信公众平台规定的 7200 秒保持一致呢？因为考虑到网络等其他因素，我们不能等到刚好 7200 秒再去请求公众平台服务器来更新<code>access_token</code>，而应该提早一点。否则到了 7200 秒左右，开发者这边刚发出一个接口调用请求，公众平台服务器就告诉你“过期了”，那这个请求就会失败。</p>
+<p>如果提前一点去主动更新<code>access_token</code>，就可以确保不会发生这种<strong>请求还没到达公众平台服务器 access_token 就过期了</strong>的问题。</p>
+<pre><code class="language-php">return array(
+    'BASE_URL'                 =&gt; 'https://api.weixin.qq.com/cgi-bin/',
+    'ACCESS_TOKEN_EXPIRE_TIME' =&gt; 7000,
+</code></pre>
+<p><img src="/article_images/mobile/wechat/%E6%8F%90%E5%89%8D%E6%9B%B4%E6%96%B0access_token.png" alt=""></p>
+<p>这个类的构造方法<code>__construct</code>接收<code>$appid</code> 和 <code>$secretKey</code>这两个参数，用来创建一个<code>AccessToken</code>类的实例，然后通过运行这个实例的<code>getAccessToken</code>方法，请求公众平台服务器的<code>access_token</code>生成接口，并把得到的<code>access_token</code>值保存在本地的一个缓存文件中（同时还会写入到数据表里面去）。</p>
+<p><strong>下次其他的微信接口调用需要使用<code>access_token</code>的时候，都需要先运行<code>getAccessToken</code>方法，如果发现缓存还没有过期，就直接从缓存读取，否则就重新获取<code>access_token</code>并更新本地的缓存</strong></p>
+<h3 id="手动更新access_token">手动更新<code>access_token</code></h3>
+<p>为了在代码开发阶段便于调试，我们要增加一个“手动更新”<code>access_token</code>的功能。</p>
+<p>首先在公众号管理界面的公众号列表里添加这个更新按钮（文件是 <code>/Template/Admin_accounts.html</code>）</p>
+<pre><code class="language-html">&lt;!-- 略 每个公众号的“删除”操作按钮 --&gt;
+&lt;a href=&quot;{:U('Account/updateAccessToken',array('id'=&gt;$account['id']))}&quot;&gt;更新&lt;/a&gt;
+</code></pre>
+<p>然后在控制器<code>/Application/Admin/Controller/AccountController.class.php</code>中添加这个对应的方法</p>
+<pre><code class="language-php">/**
+* 手动更新 access_token
+* @return [type] [description]
+*/
+public function updateAccessToken()
+{
+   $account     = D('Account')-&gt;getDataById(I('get.id'));
+   $accessToken = AccessToken::getInstance($account['appid'], $account['secretkey']);
+
+   S('access_token_' . $account['appid'], null);
+
+   $access_token = $accessToken-&gt;getAccessToken();
+   
+   $this-&gt;success('已经更新access_token');
+}
+</code></pre>
+<p>操作一下试试，功能正常 :）。下一节我们就会用到这个有效的<code>access_token</code>来调用其他接口了。</p>
+<p><img src="/article_images/mobile/wechat/%E6%89%8B%E5%8A%A8%E6%9B%B4%E6%96%B0access_token.gif" alt=""></p>
+<h1 id="共享素材同步素材">共享素材、同步素材</h1>
+<p>在前面<code>同时处理多个公众号消息数据</code>章节中，我们只是<strong>简单回复了一段文本</strong>来检测功能是否正常。而在实际的公众号运营中，为了提高内容的吸引力，我们一般是<strong>回复给用户一张图片、一段视频，或者是一组图文</strong>，这些都是微信公众号的**“素材”**。</p>
+<p>它们必须先上传到公众号的“素材管理库”后才能被调用。在把<strong>把文件上传到公众平台的服务器上的同时，会生成一个唯一的 <code>media_id</code> 值来标记它</strong>。</p>
+<p>这样我们在群发、或者回复某个用户的时候，如果要使用这个素材，不需要真的把这个文件发给用户（想想看，如果你的服务器要给 1 万个订阅用户每人发送一张 1M 的图片，需要消耗多少流量费用！）。我们只需要<strong>发送一段带有这个 <code>media_id</code> 的XML 数据</strong>就可以了。类似这样（还记得第二部分里，我们用<code>log</code>日志来记录过发送图片消息时的情况吗）：</p>
+<p><img src="/article_images/mobile/wechat/%E5%9B%BE%E7%89%87%E7%B1%BB%E5%9E%8B%E6%B6%88%E6%81%AFxml.jpg" alt=""></p>
+<p>在接收者那边，收到这段 XML 数据后根据里面的<code>media_id</code>，再去公众平台的服务器上<strong>去找到对应的真实文件地址</strong>，下载到手机上。这样就避免了在传输过程中的流量消耗等问题。</p>
+<p>注意到了么？这就好像你给远方的朋友汇一大笔钱，并不需要直接把一堆现金打包寄过去，你只要找到附近的邮政储蓄的网点，把钱存进去，邮局会把一张存单凭据根据你写的地址寄给你的朋友，他收到后拿着这张凭据就能在任意的邮政储蓄连锁网点取钱了。</p>
+<h2 id="如何统一管理多个公众号的素材">如何统一管理多个公众号的素材</h2>
+<p>由于<strong>每一个公众号的素材库都是独立的，里面的文件只能供本公众号来使用</strong>，如果我们有多个公众号，分别管理这些素材就很繁琐了。</p>
+<p>为了在不同的公众号之间共享素材和统一管理，我们可以这么做：</p>
+<ol>
+<li>所有的素材都<strong>先保存到本地的服务器</strong>上，暂不上传到微信公众平台服务器</li>
+<li>运营人员可以<strong>将这些本地素材同时上传到多个公众号的素材库</strong></li>
+<li>还可以将公众号<strong>已有的素材下载到本地</strong></li>
+</ol>
+<h2 id="保存在本地服务器">保存在本地服务器</h2>
+<p>这一步请阅读《最好懂的 ThinkPHP 实战案例教程》中与<strong>文件上传</strong>和<strong>内容管理/编辑</strong>有关的章节，此处不再重复。</p>
+<h2 id="多媒体素材同步">多媒体素材同步</h2>
+<h3 id="将多媒体素材发送到公众号保存图片视频等类型的素材">将多媒体素材发送到公众号保存（图片、视频等类型的素材）</h3>
+<p>素材类型：图片/视频/音频/缩略图
+素材有效期：临时素材/永久素材</p>
+<p>新增临时素材（四种）：发送 type, media内容，返回 type, media_id, created_at</p>
+<p>新增永久素材：
+新增图片、音频、缩略图、视频时，和临时素材一样发送 type 和 media，另外视频还要发送两个字段 title 和 description，都会返回 media_id，图片还会返回一个 URL</p>
+<h3 id="删除多媒体素材">删除多媒体素材</h3>
+<p>删除永久素材：通过 media_id</p>
+<p>图片、视频等多媒体素材只能删除</p>
+<h2 id="图文同步">图文同步</h2>
+<h3 id="新增图文">新增图文</h3>
+<p>新增图文素材，发送 articles 对象（多图文可以有多篇文章），返回 media_id</p>
+<p>在图文中可以插入素材（永久/临时），但因为临时素材会失效，所以最好插入永久素材。
+由于永久素材有额度现实，所以微信提供了一种不占用额度的、只能用于图文素材里面的“图文内部图片素材”，上传后只返回一个 URL，没有 media_id。</p>
+<p>区分“图文消息内的图片获取 URL”和普通的“图片永久素材”，前者不会占用 5000 的名额，只得到一个 URL；后者会有 mediaID 和 URL，视频等没有url，只有media_id</p>
+<h3 id="修改图文">修改图文</h3>
+<p>永久图文素材可以修改原内容</p>
+<h2 id="素材列表">素材列表</h2>
+<p>获取素材列表/总数（只能获取永久素材，无法获取临时素材）</p>
+<p>获取某个临时素材：发送 media_id 直接得到文件本身</p>
+<h2 id="获取某个永久素材通过-media_id">获取某个永久素材（通过 media_id）：</h2>
+<p>获取图片、音频、缩略图时直接得到文件本身
+获取视频时得到 title, description, 下载URL
+获取图文素材时得到详细的数据</p>
+<h1 id="公众号设置模块">公众号设置模块</h1>
+<ul>
+<li>公众号设置
+<ul>
+<li>设置自定义菜单</li>
+<li>设置个性化菜单</li>
+<li>设置自动回复</li>
+<li>二维码管理
+<ul>
+<li>二维码列表</li>
+<li>生成二维码</li>
+</ul>
+</li>
+<li>模板消息管理</li>
+<li>客服管理
+<ul>
+<li>创建客服</li>
+<li>开启/关闭客服功能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="设置公众号的自定义菜单">设置公众号的自定义菜单</h2>
+<p>好了，前面我们已经获得了一个有效的<code>access_token</code>，那么现在可以用它来发起别的微信公众号接口调用了。首先来试试修改公众号<strong>自定义菜单</strong>吧。</p>
+<h2 id="设置个性化菜单">设置个性化菜单</h2>
+<h2 id="自动回复设置">自动回复设置</h2>
+<h2 id="用户管理">用户管理</h2>
+<p>保存到数据库，给用户添加更多资料</p>
+<h1 id="群发消息">群发消息</h1>
+<p>接口：图文素材 &amp; 群发</p>
+<h1 id="客服">客服</h1>
+<h1 id="促销活动扫码有奖">促销活动——扫码有奖</h1>
+<p>账号管理-生成带参数的二维码
+接收事件推送（未关注的/已关注的）处理带的事件key</p>
+<h1 id="数据分析">数据分析</h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-3/" title="最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统" target="_blank" rel="external">https://my101du.github.io/1/01/wechat-course-with-examples-chapter-3/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-4/" title="最好懂的微信公众平台开发教程(4)-企业员工管理系统"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-2/"
+                    title="最好懂的微信公众平台开发教程(2)——电影查询助手"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

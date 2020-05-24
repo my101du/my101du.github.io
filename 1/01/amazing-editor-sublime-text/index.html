@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Sublime Text调教 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Sublime Text 是一个代码编辑器……后面的内容我不想复制了，你们自己百度吧。 因为我是一个靠写代码为生的人，每天工作的时候，使用时间最长的除了浏览器就是编" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>Sublime Text调教 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Sublime Text调教" />
+<meta property="og:description" content="Sublime Text 是一个代码编辑器……后面的内容我不想复制了，你们自己百度吧。 因为我是一个靠写代码为生的人，每天工作的时候，使用时间最长的除了浏览器就是编" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/amazing-editor-sublime-text/" />
+
+<meta itemprop="name" content="Sublime Text调教">
+<meta itemprop="description" content="Sublime Text 是一个代码编辑器……后面的内容我不想复制了，你们自己百度吧。 因为我是一个靠写代码为生的人，每天工作的时候，使用时间最长的除了浏览器就是编">
+
+<meta itemprop="wordCount" content="10035">
+
+
+
+<meta itemprop="keywords" content="工具," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sublime Text调教"/>
+<meta name="twitter:description" content="Sublime Text 是一个代码编辑器……后面的内容我不想复制了，你们自己百度吧。 因为我是一个靠写代码为生的人，每天工作的时候，使用时间最长的除了浏览器就是编"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-amazing-editor-sublime-text" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/amazing-editor-sublime-text/"
+    >Sublime Text调教</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/amazing-editor-sublime-text/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 10035字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 21分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Sublime Text 是一个代码编辑器……后面的内容我不想复制了，你们自己百度吧。
+因为我是一个靠写代码为生的人，每天工作的时候，使用时间最长的除了浏览器就是编辑器了，因此选择编辑器只有一个要求：第一是启动和响应速度快，第二是内存占用小，第三是能折腾插件。在Windows下，我用得最多的就是 NotePad++，花式写PHP很是流畅。后来换 Mac 后，试用了若干编辑器（TextMate、TextWrangle等等，这个有空会再写一篇），最终留下了 Sublimte Text 3(其实2也很不错，但是在识别GBK文件的时候有一点点瑕疵所以就放弃了)。</p>
+<h1 id="安装插件所需要的库以-sublime-text-3-为例">安装插件所需要的库（以 sublime text 3 为例）</h1>
+<p><strong>2017 09 14 正式版已经不需要手动运行这个命令了</strong></p>
+<p>直接打开 Package Control 命令面板，输入 install ，会提示安装 Package Control。然后就可以开始安装插件了。</p>
+<p><strong>其他 3 低版本</strong></p>
+<p>点击菜单<code>view</code>，<code>Show Console</code>，输入下面的内容，回车，这时候可能会卡住一会，稍等一下直到执行完毕。</p>
+<pre><code class="language-python">import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)
+</code></pre>
+<p>重启 Sublime Text。</p>
+<p>如果在菜单<code>Preferences</code>可以看到<code>Package Control</code>，就表示安装成功，接下来可以安装插件了。</p>
+<p>如果通过上面的方式安装失败，可以点击下面的页面，下载 <code>Package Control</code> 包，直接放到安装文件的<code> Packages/</code>目录（可以通过菜单里的<code>Browse Packages</code>找到这个目录）</p>
+<p><a href="https://packagecontrol.io/Package%20Control.sublime-package">https://packagecontrol.io/Package%20Control.sublime-package</a></p>
+<h1 id="安装插件">安装插件</h1>
+<p>运行 <code>Cmd+Shift+P</code>，输入<code>install</code>，选中 <code>install package</code>即可安装插件了。</p>
+<p>如果要显示当前有哪些插件，运行 <code>Cmd+Shift+P</code>，然后输入<code>list</code>，根据自动提示选择即可；同样要删除一个插件，输入<code>remove</code>跟着操作即可。</p>
+<h1 id="推荐插件与主题">推荐插件与主题</h1>
+<p>以下是我使用的插件、主题列表</p>
+<h2 id="效率提高">效率提高</h2>
+<ul>
+<li>SublimeCodeIntel</li>
+<li>All autocomplete</li>
+<li>auto filename 在代码里输入路径的时候（如css、html里的文件），自动列出文件</li>
+<li>auto prefixer</li>
+<li>Wordpress Completions (wp开发，钩子、函数等自动完成)</li>
+<li>Tabsextra 增强tab区域</li>
+</ul>
+<p><strong>装了 CodeIntel 后， php 的函数、参数自动完成： 输入函数名后，不要打左边括号，直接按 tab 。</strong></p>
+<h2 id="代码格式化">代码格式化</h2>
+<ul>
+<li>delete blanklines</li>
+<li>doc blockr</li>
+<li>Alignment</li>
+<li>CodeFormatter(支持 php，python，js，html，CSS，运行命令 format 格式化, 比 phpfmt 要问题少，phpfmt 经常导致卡死)</li>
+<li>bracket hightlighter（括号匹配高亮显示）</li>
+<li>JSX</li>
+<li>ReactJS(上面那个，但使用 ES6时候，hint 会对 <!-- raw HTML omitted -->一直提示标签没闭合 )</li>
+<li>Babel 解决 jsx 标签高亮混乱问题</li>
+<li>Babel Snippets</li>
+<li>html-css-js pretty</li>
+<li>jsFormat  (比上一个要好一些，例如数组的自动缩进等) 但是会把 jsx 里面的的 &lt;&gt; 标签都空个字符。</li>
+<li>HTMLBeautify  （用 html-css-js 格式化html会导致 Laravel 的 Blade 语法不换行问题，使用这个来处理就会保持换行，注意修改配置文件，避免删除空行;还有<code>&quot;translate_tabs_to_spaces&quot;: false,</code>,如果用 space 的话，会把内部 js 代码去掉缩进格式）</li>
+<li>phpfmt（需要安装 PHP7 ）</li>
+<li>generic config 让各种配置文件(.conf 结尾)高亮</li>
+<li>blade highlighter  Laravel 的模板语法高亮</li>
+<li>jsPrettier 支持  jsx 的格式化</li>
+</ul>
+<p>html-css-js pretty 自定义设置</p>
+<p>React 项目中 js 格式化
+使用上面的 html-css-js 或 jsFormat ，都会导致运行时，把 jsx 组件的标签搞乱，或者 import {} 的括号换行，因此要用 <code>jsPrettier</code>插件. 先全局安装 pretier,然后在 sublime 里就可以配置快捷键了。</p>
+<pre><code class="language-shell">npm install -g prettier
+</code></pre>
+<p>配置<code>jsPrettier</code>插件的快捷键</p>
+<p><code>{ &quot;keys&quot;: [&quot;super+alt+f&quot;], &quot;command&quot;: &quot;js_prettier&quot; }</code></p>
+<p>jsx 的关闭标签不另起一行</p>
+<pre><code class="language-json">{
+        &quot;prettier_options&quot;: {
+                &quot;jsxBracketSameLine&quot;: true
+        }
+}
+</code></pre>
+<p>参考</p>
+<p><a href="https://stackoverflow.com/questions/27558699/is-there-a-jsx-formatter-for-sublime-text">https://stackoverflow.com/questions/27558699/is-there-a-jsx-formatter-for-sublime-text</a></p>
+<h2 id="自动检查">自动检查</h2>
+<ul>
+<li>SublintLinter</li>
+<li>SublintLinter-jslint</li>
+<li>SublintLinter-csslint</li>
+<li>SublintLinter-php(不是那个phplint)</li>
+<li>SublintLinter-htmllint (首先要 npm -g install jslint eslint 等等)</li>
+<li>SublimeLinter-jshint</li>
+<li>SublimeLinter-jsxhint</li>
+</ul>
+<h2 id="文件支持">文件支持</h2>
+<ul>
+<li>markdown editing——knockdown更佳</li>
+<li>markmon 实时预览</li>
+<li>markdown preview</li>
+<li>markdown highlight</li>
+<li>Markdown Lighting</li>
+<li>Markdown Extended</li>
+<li>Dockerfile syntax hightlighter</li>
+<li>DotEnv</li>
+<li>Generic Config(各种配置文件，如果无法识别，在 View Syntax 里面设置一下文件类别)</li>
+</ul>
+<h2 id="html-与-css">HTML 与 CSS</h2>
+<ul>
+<li>CSSComb</li>
+<li>html5  输入 html5 按 tab 自动补全文件</li>
+<li>color highlighter</li>
+</ul>
+<h2 id="esformatter-格式化比-jsbeautify-好">ESformatter 格式化（比 jsbeautify 好）</h2>
+<p>全局安装后，再安装插件</p>
+<pre><code class="language-js">npm i -g esformatter
+</code></pre>
+<h2 id="剪贴板粘贴图片">剪贴板粘贴图片</h2>
+<p>imagepaste 插件</p>
+<p>注意某些情况下可能有如下错误。导致  ctrl + v 失效（此时观察到粘贴普通文本的快捷键被自动改成了 shift + insert&hellip;）</p>
+<p>File &ldquo;C:\Sublime Text Build 3207\Data\Packages\ImagePaste\ImagePaste.py&rdquo;, line 21, in <!-- raw HTML omitted -->
+from PIL import ImageGrab
+ImportError: cannot import name ImageGrab</p>
+<p>估计是网络问题。</p>
+<p>装好后又报</p>
+<p>Unable to extract text from the clipboard, available formats: CF_DIB, CF_BITMAP, CF_DIBV5</p>
+<h2 id="自动压缩文件-xxxjscssjsonhtml-为-xxxminjscssjsonhtml">自动压缩文件 xxx.js/css/json/html 为 xxx.min.js/css/json/html</h2>
+<p><a href="https://packagecontrol.io/packages/Minify">https://packagecontrol.io/packages/Minify</a></p>
+<p>同时安装下面两个，可以在保存文件时自动进行压缩(最新版的，第二个不需要了 开个设置开关即可)</p>
+<pre><code class="language-json">// Auto-minify files on save?
+	&quot;auto_minify_on_save&quot;: false,
+
+</code></pre>
+<p><img src="/media/15490412483574/15318292025399.jpg" alt=""></p>
+<p>Which 3rd party programs are used by Minify</p>
+<pre><code>            Minify	                                 Beautify
+</code></pre>
+<p>CSS	         clean-css + clean-css-cli or uglifycs     js-beautify –css
+HTML	     html-minifier	                            js-beautify –html
+JavaScript	 uglifyjs	                                uglifyjs –beautify
+JSON	     minjson (uses uglifyjs)	                 minjson (uses uglifyjs)
+SVG         svgo	                                    svgo –pretty</p>
+<p>然后需要一些 node 包的全局安装</p>
+<pre><code class="language-shell">npm install -g clean-css-cli uglifycss js-beautify html-minifier uglify-js minjson svgo
+</code></pre>
+<p>如何使用？</p>
+<p>编辑 css js 等文件，然后在命令行或者 Tools 菜单里访问，也可以设置快捷键</p>
+<p>如果在  minify 的基础上，还要 uglify, 修改用户配置文件</p>
+<pre><code class="language-json">{
+    &quot;uglifyjs_options&quot;: &quot;--mangle-props&quot;,
+    
+    //不需要转换完后打开新文件
+    &quot;open_file&quot;: false,
+}
+</code></pre>
+<p>转完后变成单行，文件体积也缩小了很多</p>
+<p><img src="/media/15490412483574/15318954042889.jpg" alt=""></p>
+<p><img src="/media/15490412483574/15318954358874.jpg" alt=""></p>
+<p>再次格式化回来发现，很多变量已经被混淆了</p>
+<p><strong>但是混淆后，发现 jQuery 会提示找不到。。。非不得以还是取消了</strong></p>
+<p><img src="/media/15490412483574/15318953528514.jpg" alt=""></p>
+<p><strong>source map 的问题</strong></p>
+<p>压缩/混淆后，如果在浏览器报错， chrome开发者工具是很难进行排查的。</p>
+<p>部署前端之前，开发者通常会对代码进行打包压缩，这样可以减少代码大小，从而有效提高访问速度。然而，压缩代码的报错信息是很难Debug的，因为它的行号和列号已经失真。这时就需要Source Map来还原真实的出错位置了。</p>
+<p>需要一个 source map 文件来帮助定位错误</p>
+<p>首先在文件底部添加一行.</p>
+<pre><code class="language-js">//# sourceMappingURL=jquery.min.map
+</code></pre>
+<p><strong>注意不要在插件里开启了删除注释</strong></p>
+<pre><code class="language-json">&quot;keep_comments&quot;: true,
+&quot;comments_to_keep&quot;: &quot;/sourceMappingURL/&quot;,
+</code></pre>
+<p>如果最新的<code>uglifyjs --version</code> 已经是最新的 3.x.x 版本，这个插件默认的命令会报错</p>
+<p><img src="/media/15490412483574/15318966508901.jpg" alt=""></p>
+<p>需要打开插件来编辑一下，<code>/Users/zzy/Library/Application Support/Sublime Text 3/Packages/Minify/Minify.py</code></p>
+<p>找到这里，直接把后面的全部删掉</p>
+<p><img src="/media/15490412483574/15318967172795.jpg" alt=""></p>
+<p>改成保留一个参数就足够了</p>
+<pre><code class="language-js">--source-map content=inline,includeSources,url=inline
+</code></pre>
+<p><img src="/media/15490412483574/15318967289431.jpg" alt=""></p>
+<p>再次运行命令，正常生成</p>
+<p><img src="/media/15490412483574/15318967997057.jpg" alt=""></p>
+<h2 id="自动完成">自动完成</h2>
+<ul>
+<li>Emmet</li>
+<li>JQuery</li>
+<li>NodeJS</li>
+<li>Javascript &amp; NodeJS snippets</li>
+<li>TypeScript</li>
+<li>Babel  <a href="http://hao.jser.com/archive/8322/">http://hao.jser.com/archive/8322/</a></li>
+<li>javascript completions(快速生成js代码)  作者新建一个 JavaScript Enhancements （支持 TS React cordova angular express自动报错等等。。。。可以替换了）</li>
+<li>TerminalView(上面的必备)</li>
+<li>Javascript Next (有些用 ES6 写的 jsx，import 会被jshint 误报，将 view -syntax 设为 all open eentions as js next即可)</li>
+<li>Javascript ES6 syntax</li>
+<li>ES6 React</li>
+<li>json reindent(jsfmt已经包含了)</li>
+<li>node complete</li>
+<li>Phpcs (输入函数名，多次按tab补全参数列表)</li>
+<li>Lodash Completion (不需要打 _. 只要输入方法名就可以自动列出参数)</li>
+</ul>
+<p>其中
+sublimecodeintel 会提示一个猜测列表(例如输入 file_get_ 会出来 file_get_contents file_xxx_xxxge 等)，这个只能自动完成函数，但是phpintel 会自动完成“参数列表”，可惜不能弹出完整函数。建议用 phpintel,
+php-snippet
+解决方法是，不要输入太多的函数名字母，太多的话，就激活sublimecodeintel了</p>
+<p>use Flow for type checking and auto-completions.</p>
+<h2 id="框架与库">框架与库</h2>
+<ul>
+<li>ionic framewordk snippets(还有排第一个的没有测试）</li>
+<li>AngularJS</li>
+<li>BootStrap3 Snippets (输入 bs3-)</li>
+<li>BootStrap4 Snippets (输入 b4-)</li>
+</ul>
+<p>自带很多快速生成的模板
+<img src="/media/15490412483574/15323956240549.jpg" alt=""></p>
+<ul>
+<li>meteor snips</li>
+<li>underscore.js snippets</li>
+<li>ThinkPHP</li>
+<li>Laravel 5 Snippets</li>
+<li>wordpress completion</li>
+<li>Vuejs snippets</li>
+<li>vuejs highsyntax</li>
+</ul>
+<h2 id="字体">字体</h2>
+<p>menlo 太圆润，不如 <strong>Lucida Grande</strong> 清晰（从 dash 的 jQuery 审查css里看到的 -apple-system 第一，它第二）。使用这个字体后还有个好处， tab 设为 2 后，缩进空间也比较大了 (使用一段时间，眼睛累，感觉边缘太“硬”)</p>
+<p>font-size 设置 13 比较不错</p>
+<p>monaco 比 menlo 纤细，字母容易识别</p>
+<p>windows 下没有 monaco，用 Source Code Pro</p>
+<p>最后：</p>
+<p>SF Mono Light 或 Regular ，在黑色白色背景下都很不错（不需要 gray_antialias）</p>
+<p>最终选择这个：  能够把每个字母都清晰识别出来，而且略“扁”，小屏幕笔记本能看到更多行</p>
+<p>&ldquo;font_face&rdquo;: &ldquo;Roboto Mono Medium For Powerline&rdquo;,</p>
+<p>windows  4k:</p>
+<p>&ldquo;font_face&rdquo;: &ldquo;Consolas&rdquo;,
+&ldquo;font_size&rdquo;: 11,
+&ldquo;font_options&rdquo;:
+[
+&ldquo;directwrite&rdquo;
+],</p>
+<h2 id="颜色主题">颜色主题</h2>
+<p>推荐安装  GitHub Color theme 插件！（比 inspire github 等都漂亮）https://github.com/AlexanderEkdahl/github-sublime-theme</p>
+<p>然后安装 SF Font Regular 字体</p>
+<p>Inspired GitHub Color Scheme （关键词会变粗，太多黑色的颜色字，不好看）</p>
+<p>据说黑色背景比白色背景伤眼睛。。。</p>
+<ul>
+<li>monakai extend</li>
+<li>theme soda</li>
+<li>theme-spaceblack  这个的代码配色很舒适</li>
+<li>github theme  （最后选择了 Inspired Github 颜色主题）</li>
+<li>visual studio bold（去掉脚本代码背景）</li>
+<li>monokai</li>
+<li>bbedit</li>
+<li>Laravel 5 docs light （这个不错, 但是注释和括号都是灰色，编辑 js 看不太清楚）</li>
+<li>Ksix</li>
+</ul>
+<p><strong>mariana</strong> 很漂亮的字体，对比度舒适</p>
+<p>通过对比，发现 Material (主题、配色都有)是识别度非常高的</p>
+<ul>
+<li>A file icon 用便于识别的图标让不同类型的文件更容易找到</li>
+</ul>
+<p>修改完theme配置文件后，切换一次到其他主题，再切回来，然后关闭文件再打开就生效了</p>
+<p><strong>BB-Edit</strong>
+字体清晰，排版漂亮
+要交换 string 和 comment 的颜色 绿、灰
+交换 keywords 和 variables 的颜色 红、蓝
+修改 Library function</p>
+<p>深色主题很不错
+Oceanic Next</p>
+<h2 id="自定义主题">自定义主题</h2>
+<p>修改 /Users/zzy/Library/Application Support/Sublime Text 3/Packages/User/Color Highlighter/themes/Visual Studio Bold (SL).tmTheme  这个目录里的文件，对默认的配色进行修改</p>
+<p>例如这里的 赋值、对比等符号改成 #FF0000</p>
+<h2 id="亮色主题">亮色主题</h2>
+<p>ayu(太亮) 清爽，太花</p>
+<p>boxy - 彩色图标(可以识别 laravel 等框架的特定文件类型！ A file icon , zzz A file icon zzz)，</p>
+<p>亮色 boxy yesterday   非常不错！变量、字符串的对比很好</p>
+<h2 id="微信小程序">微信小程序</h2>
+<p>wxml 高亮用这个（而不是 wxapp-&gt;WXML）,否则在“属性”里的 <code>{{}}</code>代码和普通字符串一样都是灰色</p>
+<p><img src="/media/15490412483574/15382070979004.jpg" alt="-w298"></p>
+<p><img src="/media/15490412483574/15382071148962.jpg" alt="-w378"></p>
+<h2 id="uml">UML</h2>
+<p><a href="https://juejin.im/post/5b7697b5f265da27d57e523b">https://juejin.im/post/5b7697b5f265da27d57e523b</a></p>
+<p>下载  plantuml.jar  (这个地址居然还有 jQuery 等版本的插件！！)</p>
+<p><a href="https://plantuml.com/zh/download">https://plantuml.com/zh/download</a></p>
+<p>配置：</p>
+<p>打开 Sublime Text &gt; Preferences &gt; Package Setting &gt; Plant​Uml​Diagrams &gt; Setting - User，在其中添加如下配置：</p>
+<pre><code class="language-json">{
+    &quot;plantuml_server&quot;: &quot;http://www.plantuml.com/plantuml/&quot;,
+    &quot;jar_file&quot;: &quot;path/to/plantuml.jar&quot;,
+    &quot;charset&quot;: &quot;UTF-8&quot;
+}
+</code></pre>
+<p>Plant​Uml​Diagrams 的运行机制是先调用 plantuml_server 配置的服务进行转换，如果不行再调用 jar_file 的 jar 包来转换。</p>
+<p>上文中的 plantuml_server 是 PlantUML 的官方服务，如果涉及到一些项目机密等情况，你也可以提供一个自建的服务</p>
+<p>最简单的一个案例</p>
+<pre><code class="language-uml">Bob -&gt; Alice : Hello, how are you
+Alice -&gt; Bob : Fine, thank you, and you?
+</code></pre>
+<p><strong>选中文本</strong>  快捷键 alt+M 生成, 这个过程挺慢的。。。。</p>
+<p>ctrl+~ 查看提示</p>
+<p>10:52:31:662.946939 2.89e+01 - PlantUmlDiagrams.process_diagram_image:35 - Processing diagrams in None&hellip;
+10:52:31:662.946939 2.04e+03 - PlantUmlDiagrams.diagram.base.process:44 - Rendering diagram for block&hellip; 0
+10:52:45:479.784012 2.05e+03 - PlantUmlDiagrams.diagram.plantuml.generate:103 - Failed to connect to the server: &lt;urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond&gt; (<a href="http://www.plantuml.com/plantuml/">http://www.plantuml.com/plantuml/</a>) Falling back to local rendering&hellip;
+10:52:45:555.913925 7.65e-02 - PlantUmlDiagrams.diagram.plantuml._generate_local:173 - Bob -&gt; Alice : Hello, how are you
+Alice -&gt; Bob : Fine, thank you, and you?
+10:52:45:555.913925 1.71e-04 - PlantUmlDiagrams.diagram.plantuml._generate_local:174 - Error Processing Diagram: Error: Unable to access jarfile C:\Users\plantuml.jar
+10:52:45:555.913925 2.05e+03 - PlantUmlDiagrams.diagram.render_and_view:202 - continuous_processor: Sublime 3 Simple Viewer viewing [&lsquo;c:\users\eric.zhang3\appdata\local\temp\untitledw70_gv.png&rsquo;]
+decode image failed</p>
+<p>markdown 其实也是支持的。</p>
+<pre><code class="language-flow">flow
+st=&gt;start: Start
+op=&gt;operation: Your Operation
+cond=&gt;condition: Yes or No?
+e=&gt;end
+st-&gt;op-&gt;cond
+cond(yes)-&gt;e
+cond(no)-&gt;op
+</code></pre>
+<p>除了 PlantUML ，其实还有很多类似功能的库（只是库）能够实现将文本描述转换为UML图形。比较知名的有：mermaid、js-sequence-diagrams、flowchart.js。这些库会被一些 markdown 软件集成，这样就能在 markdown 中插入 UML 等图形了。如此看来，PlantUML 还有一个好处是可以比较方便的在各处迁移，毕竟语法都是类似甚至一样的。</p>
+<p>我要“实时预览”！！ vscode 中有没有？</p>
+<h1 id="最后">最后：</h1>
+<p>OneDark 暗色
+Laravel Doc 亮色（改掉粗体）</p>
+<h3 id="编辑颜色主题的配置">编辑颜色主题的配置</h3>
+<p><img src="/media/15490412483574/15258264218753.jpg" alt=""></p>
+<p><img src="/media/15490412483574/15258265990095.jpg" alt=""></p>
+<h3 id="亮色">亮色</h3>
+<p>Inspired Github
+Ayu Light
+Monokai extended Light</p>
+<p>下载的 Notepad++ Theme for submit ,手动安装(用过，效果比较差)</p>
+<pre><code class="language-shell">Add the following into Preferences &gt; Settings &gt; User
+
+    &quot;color_scheme&quot;: &quot;Your Current Color Scheme&quot;
+--&gt;
+    &quot;color_scheme&quot;: &quot;Packages/Notepad++ Theme/Default Stylers.tmTheme&quot;
+</code></pre>
+<h2 id="功能增强其他">功能增强、其他</h2>
+<ul>
+<li>ConvertToUTF8</li>
+<li>GBK Encoding Supprot（3 不需要了，版本 2 要手动安装）</li>
+<li>Sublimerge Pro(对比)</li>
+<li>Vintage  好像3没有了 改成 vintagous # vim 模式 <a href="http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html">http://feliving.github.io/Sublime-Text-3-Documentation/vintage.html</a></li>
+<li>sidebar enhancement</li>
+</ul>
+<h2 id="要手动下载安装包">要手动下载安装包</h2>
+<p>bootstrap 3
+<a href="https://github.com/JasonMortonNZ/bs3-sublime-plugin">https://github.com/JasonMortonNZ/bs3-sublime-plugin</a></p>
+<h2 id="目前使用的">目前使用的</h2>
+<p>V20170914</p>
+<p>Materal Theme（在 Package Settings 里启用和设置）
+One Dark Theme(/Material)
+Laravel5 docs color theme</p>
+<p>A File Icon
+Alignment 多行编辑
+All Autocomplete 在所有打开的文件中找自动完成的匹配
+AutoFileName 自动完成路径
+AutoPrefixer 自动给 CSS 添加前缀
+Babel
+BootStrap3 Snippets
+BracketHighlighter 括号高亮
+Color Hightlight  颜色代码直接显示对应颜色
+DocBlockr 块注释
+Dockerfile Syntax Highlighting 支持 Docker 配置文件
+DotEnv  支持 .env 文件
+EJS2  支持 EJS 模板语法
+Emmet  代码智能生成
+Emmet Css Snippets</p>
+<ul>
+<li>ESLint
+Express Completion  Node 的一个框架 Express
+Generic config  配置文件高亮，如 Nginx 的配置
+HTML-CSS-JS Prettify
+HTML5
+Indent XML
+Javascript Completions
+jQuery
+JsFormat
+Laravel5 Snippets
+Laravel Blade hightlighter
+Laravel Helper Completions
+Lodash Completion JS的一个实用工具库
+NodeJS or  Javascript &amp; NodeJS completion ?
+Phpcs
+phpfmt 格式化 PHP 代码
+SublimeCodeIntel 智能提示引擎</li>
+</ul>
+<p>SublimeLinter 代码错误检测框架（下面的都需要它）
+SublimeLinter-contrib-eslint<br>
+SublimeLinter-jshint
+SublimeLinter-php 使用php-l
+SublimeLinter-phpcs  使用 phpcs
+Vuejs Snippets
+Wordpress Completion
+zzz A File Icon zzz</p>
+<h1 id="禁用插件">禁用插件</h1>
+<p>如果你不想卸载插件，但暂时禁用他们（或者一些自带的插件无法卸载），你可以禁用他们</p>
+<p>cmd+shift+p，输入 disable packages.</p>
+<p>可以关掉一些你不用的语言支持（如 ASP 等），以及暂时不想激活的插件</p>
+<h1 id="配置文件">配置文件</h1>
+<h2 id="文件列表过滤一些文件">文件列表过滤一些文件</h2>
+<p>Preferences-&gt;Settings - User，编辑相关代码，注意JSON格式:</p>
+<p>排除特定目录，使用：&ldquo;folder_exclude_patterns&rdquo;
+排除特定文件，使用：&ldquo;file_exclude_patterns&rdquo;</p>
+<p>具体可以参考 Preferences-&gt;Setting -Default。</p>
+<blockquote>
+<pre><code>&quot;file_exclude_patterns&quot;: [...., &quot;._.*&quot;],
+</code></pre>
+</blockquote>
+<h2 id="不搜索一些目录">不搜索一些目录</h2>
+<p>在 cmd+t 输入关键词进行文件全局搜索时，经常出现一些奇怪的二进制文件，例如 .phpintel 和 node_modules(node npm) 和 vendor(php composer) 里面的内容，如何把它们排除出去呢？在配置文件里添加</p>
+<p><code>folder_exclude_patterns&quot;: [&quot;name_of_folder&quot;]</code></p>
+<h2 id="全局搜索文件排除文件夹">全局搜索文件，排除文件夹</h2>
+<p><code>*.*, D:\projects,-*/assets/*</code></p>
+<p>或者文件类型</p>
+<p><code>*.php,*.js,*.sql D:\Project\WebSite\QASystems\site\QASystems,-*.txt</code></p>
+<p>但好像不生效，还是用前面的设置里添加目录吧</p>
+<h2 id="phpfmt-插件配置">phpfmt 插件配置</h2>
+<p>可以修改插件的 User 设置文件</p>
+<pre><code class="language-json">{
+	&quot;version&quot;: 4,
+	&quot;autocomplete&quot;: true,
+	&quot;autoimport&quot;: true,
+	&quot;format_on_save&quot;: true,
+	&quot;passes&quot;:
+	[
+		&quot;AlignConstVisibilityEquals&quot;,
+		&quot;AlignDoubleArrow&quot;,
+		&quot;AlignEquals&quot;,
+		&quot;AlignGroupDoubleArrow&quot;,
+		&quot;AlignPHPCode&quot;,
+		&quot;AlignTypehint&quot;,
+		&quot;AutoSemicolon&quot;,
+		&quot;CakePHPStyle&quot;,
+		&quot;OnlyOrderUseClauses&quot;, //不会自动把没使用的import给删掉（开发的时候自己要手动补上。。。）
+		&quot;ReindentAndAlignObjOps&quot;,
+		&quot;PrettyPrintDocBlocks&quot;,
+		&quot;SortUseNameSpace&quot;
+	],
+	&quot;php_bin&quot;: &quot;/usr/local/bin/php&quot;,
+	&quot;psr2&quot;: true
+}
+
+</code></pre>
+<p>或者手动打开一些开关。
+在命令行界面里输入<code>phpfmt</code>，在自动弹出的列表里选择 <code>enable/disable additional transformations</code> ，进入扩展的开关菜单。</p>
+<p>底部提示“phpfmt autocomplete database not found”</p>
+<p>打开命令面板，输入 phpfmt， found the &ldquo;build database&hellip;&rdquo; in the command list.</p>
+<p>then choose the &ldquo;root&rdquo; of the project to set as database save</p>
+<h2 id="安装了-htmlbeauty-后php和html代码混写不干扰例如wordpress的模板文件">安装了 htmlbeauty 后，php和html代码混写不干扰（例如wordpress的模板文件）</h2>
+<p>修改 htmlbeauty 的 user 配置，忽略几个特殊标签即可</p>
+<pre><code>&quot;ignored_tag_opening&quot; : &quot;&lt;script|&lt;style|&lt;!--|{\\*|&lt;\\?php&quot;,
+// indicates when to stop ignoring
+&quot;ignored_tag_closing&quot; : &quot;&lt;/script|&lt;/style|--&gt;|\\*}|\\?&gt;&quot;,
+</code></pre>
+<h2 id="web-inspecter-插件使-console-控制台显示在右边默认是下方">web inspecter 插件，使 console 控制台显示在右边（默认是下方）</h2>
+<p>编辑插件的 user config
+&ldquo;console_layout&rdquo;: {
+&ldquo;cols&rdquo;: [0.0, 0.6, 1.0],
+&ldquo;rows&rdquo;: [0.0, 0.7, 1.0],
+&ldquo;cells&rdquo;: [[0, 0, 2, 1], [0, 1, 1, 2], [1, 1, 2, 2]]
+}</p>
+<p>cells 改为<br>
+&ldquo;cells&rdquo;: [[0, 0, 1, 2], [1, 0, 2, 1], [1, 1, 2, 2]]</p>
+<h2 id="sublimerepl-与终端">SublimeREPL 与终端</h2>
+<p>Shell：
+For configure open Preferences | Package Settings | SublimeREPL | Settings - User and try to override the environment variable PS1:</p>
+<p>{
+&ldquo;default_extend_env&rdquo;: {
+&ldquo;PS1&rdquo;: &ldquo;\w\$&rdquo;
+}
+}
+Requires restart Shell to apply changes.</p>
+<p><a href="http://stackoverflow.com/questions/15315092/sublimerepl-and-zsh-oh-my-zsh">http://stackoverflow.com/questions/15315092/sublimerepl-and-zsh-oh-my-zsh</a></p>
+<p>SublimeREPL/config/Shell/Main.sublime-menu:</p>
+<p>20: &ldquo;cmd&rdquo;: {&ldquo;windows&rdquo;: [&ldquo;cmd.exe&rdquo;],
+21:         &ldquo;linux&rdquo;: [&ldquo;zsh&rdquo;, &ldquo;-i&rdquo;],
+22:         &ldquo;osx&rdquo;: [&ldquo;zsh&rdquo;, &ldquo;-i&rdquo;]},</p>
+<p>SublimeREPL/config/SublimeREPL\ /(OSX).sublime-settings and injected the SHELL variable to the &ldquo;default_extended_env&rdquo; directive like so:</p>
+<p>3: &ldquo;default_extend_env&rdquo;: {&ldquo;PATH&rdquo;: &ldquo;{PATH}:/usr/local/bin&rdquo;, &ldquo;SHELL&rdquo; : &ldquo;/bin/zsh&rdquo; }</p>
+<p>nd the output just edit SublimeREPL/config/Shell/Main.sublime-menu:</p>
+<p>26: &ldquo;suppress_echo&rdquo;: false</p>
+<h1 id="快捷键">快捷键</h1>
+<p>Cmd+R 函数名大纲
+Cmd+Shift+D 复制当前一行内容
+Cmd + / 注释所选部分/当前行</p>
+<p>安装 <code>Alignment</code>后，可以修改配置，对等号、冒号进行对齐</p>
+<p>Cmd + ~ 打开不同的窗口，在 windows 之间切换 （一个项目添加多个 Folder 会导致搜索结果太多）</p>
+<p>如果有超过2个窗口，想通过名字来识别，需要安装 <a href="https://packagecontrol.io/packages/GotoWindow">https://packagecontrol.io/packages/GotoWindow</a> 插件 （感觉有一点点延迟，不如 cmd+~ 快速）</p>
+<p>Ctrl+Cmd+p 可以在多个项目（projects）之间切换，但是会替换当前窗口</p>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="提示-there-are-no-packages-available-for-installation">提示 There are no packages available for installation</h2>
+<p>官方提供的Package Control 出问题了</p>
+<p>首先下载一个新的 <a href="https://github.com/wbond/package_control">https://github.com/wbond/package_control</a> ,解压后命名为 <code>Package Control</code></p>
+<p>打开Sublime，点击：首选项-&gt;浏览程序包，便会打开一个文件夹！
+然后删除这个文件夹中已有的”Package Control文件夹</p>
+<p>将刚才自己下载好的并且重新命名的Package Control复制到该文件夹下</p>
+<p>记得把之前添加在 Package Control 的用户自定义设置里的 channels: 这一行删了</p>
+<p>还有删掉官方下载的放在installed packages里面的package control</p>
+<p>然后重新启动Sublime</p>
+<p>添加其他的 Repository:</p>
+<p>点击Add Repository，然后在右下出弹出的框里填入此网址：
+<a href="https://github.com/n1k0/SublimeHighlight/tree/python3">https://github.com/n1k0/SublimeHighlight/tree/python3</a></p>
+<p>无效，ctrl + ` 打开控制台看到提示：</p>
+<blockquote>
+<p>Unable to download <a href="https://packagecontrol.io/channel_v3.json">https://packagecontrol.io/channel_v3.json</a></p>
+</blockquote>
+<p>在浏览器访问这个地址也是一直打不开。</p>
+<p>打开 package control  的 user setting , 添加</p>
+<pre><code class="language-json">&quot;downloader_precedence&quot;:
+	{
+		&quot;linux&quot;:
+		[
+			&quot;curl&quot;, &quot;urllib&quot;
+		],
+		&quot;osx&quot;:
+		[
+			&quot;urllib&quot;
+		],
+		&quot;windows&quot;:
+		[
+			&quot;wininet&quot;
+		]
+	},
+</code></pre>
+<p>还是没用，听说是墙太厉害了。。</p>
+<pre><code>&quot;channels&quot;:
+[
+&quot;https://packagecontrol.io/channel_v3.json&quot;,
+&quot;https://web.archive.org/web/20160103232808/https://packagecontrol.io/channel_v3.json&quot;,
+&quot;https://gist.githubusercontent.com/nick1m/660ed046a096dae0b0ab/raw/e6e9e23a0bb48b44537f61025fbc359f8d586eb4/channel_v3.json&quot;
+],
+</code></pre>
+<p>这有有个自动更新的：</p>
+<p><a href="https://github.com/HBLong/channel_v3_daily">https://github.com/HBLong/channel_v3_daily</a></p>
+<p>终于可以了。。。。</p>
+<pre><code>&quot;channels&quot;:
+	[
+	&quot;https://raw.githubusercontent.com/HBLong/channel_v3_daily/master/channel_v3.json&quot;
+	],
+</code></pre>
+<h2 id="cpu-占用高">CPU 占用高</h2>
+<h3 id="关掉文件索引在-user-设置里添加">关掉文件索引，在 User 设置里添加</h3>
+<pre><code class="language-xml">&quot;index_files&quot;:false
+</code></pre>
+<p>In ~/Library/Application Support/Sublime Text 3/ is a folder called Index. It contains a number of files, and to be honest I’m not sure what their specific job is. Nor does it seem to matter. Just make sure that Sublime isn’t running, rename the Index folder Index.save or something that will keep it safely out of Sublime’s way, and create a new, empty folder called Index.</p>
+<h3 id="测试依次禁用以下插件观察">测试依次禁用以下插件观察：</h3>
+<p>mac 下仍然使用了较高的 energy useage</p>
+<ul>
+<li>A file icon</li>
+</ul>
+<h2 id="输入字母的时候整个界面闪烁跳动">输入字母的时候，整个界面闪烁跳动</h2>
+<p>mac下输入汉字，每输入一个字母，界面都会闪烁一次，非常不爽。
+需要修改User配置，把字体改成 monaco，12 即可解决</p>
+<h2 id="mac-下字体很粗看上去模糊">mac 下字体很粗，看上去模糊</h2>
+<p>修改配置文件，添加</p>
+<pre><code class="language-json">&quot;font_options&quot;:
+    [
+        &quot;gray_antialias&quot;
+    ],
+</code></pre>
+<h2 id="jshint-在-jquery-里提示--is-not-defined">jshint 在 jQuery 里提示 $ is not defined</h2>
+<pre><code class="language-shell">vi ~/.jshintrc
+
+# 添加一段
+&quot;globals&quot;: {
+        &quot;$&quot;: false
+    }
+</code></pre>
+<p>同样在这个文件里面，可以把<code>never used</code>，“变量未使用”“函数未定义等”的提示给关掉，重启 st</p>
+<pre><code class="language-js">// Prevent use of undefined variables
+&quot;undef&quot;: false,
+&quot;unused&quot;: false
+</code></pre>
+<p>但还是建议使用 strict 严格模式，保持良好的编码习惯</p>
+<h2 id="如何关闭-jshint-中对结尾要求分号的验证">如何关闭 jshint 中对结尾要求分号的验证</h2>
+<p>现在很多框架的编程风格都不再强求行末尾有分号了，例如 vue react 等。但是 jshint 会检验这个，看起来很烦</p>
+<p><img src="/media/15490412483574/15054442607259.jpg" alt=""></p>
+<p>我们可以关闭它</p>
+<p>编辑 ~/.jshintrc ，或者打开 ST 的 package 设置，打开 SublimeLinter 的设置，找到</p>
+<pre><code class="language-json">&quot;linters&quot;: {
+            &quot;jshint&quot;: {
+                &quot;@disable&quot;: false,
+                &quot;args&quot;: [],
+                &quot;excludes&quot;: []
+            }
+        }
+</code></pre>
+<p>在 args 里面添加一点内容，变成<code>&quot;args&quot;: [{&quot;asi&quot;: true}],</code> 就可以了</p>
+<h2 id="使用-jshint-提示-jsx-文件-unclosed-regular-expression">使用 jshint 提示 jsx 文件 “unclosed regular expression”</h2>
+<p>在<code>&lt;/Breadcrumb.Item&gt;</code>处报错。</p>
+<pre><code class="language-jsx">&lt;Layout style={{ padding: '0 24px 24px' }}&gt;
+      &lt;Breadcrumb style={{ margin: '16px 0' }}&gt;
+        &lt;Breadcrumb.Item&gt;Home&lt;/Breadcrumb.Item&gt;
+</code></pre>
+<p>解决方法，删掉jshint, 安装 eslint, 然后把 sublime 的插件也卸掉 jshint/jsxhint</p>
+<pre><code class="language-shell">npm uninstall -g jshint
+
+npm install -g eslint
+</code></pre>
+<h2 id="编辑-react-jsjsx-文件时emmet-自动完成不生效">编辑 react js(jsx) 文件时，emmet 自动完成不生效</h2>
+<p>按这里的说明 <a href="http://wesbos.com/emmet-react-jsx-sublime/">http://wesbos.com/emmet-react-jsx-sublime/</a>，输入关键字然后按 <code>Ctrl+E</code> 即可，如果要改成使用 <code>tab</code> 自动完成，则使用这里面的说明：</p>
+<p><a href="http://stackoverflow.com/questions/26089802/in-sublime-text-3-how-do-you-enable-emmet-for-jsx-files">http://stackoverflow.com/questions/26089802/in-sublime-text-3-how-do-you-enable-emmet-for-jsx-files</a></p>
+<p>不过编写代码的时候，要改成 <code>div.className</code> 的形式。</p>
+<h2 id="beautify-插件的一些问题">beautify 插件的一些问题</h2>
+<p>htmlbeautifily 插件配置(HTML-Js-CSS Pretty)会导致 laravel 的 blade 标签变成一行，这个插件不会，然后这里改成 false 可以保证人工的空行不被删除</p>
+<p>另外要把 sublime 的indent 全部设置成 tab，否则 script 和 style 标签里面会丢失缩进……(方法 &ldquo;translate_tabs_to_spaces&rdquo;: false, 然后convert本文档)
+<a href="https://github.com/rareyman/HTMLBeautify/issues/23">https://github.com/rareyman/HTMLBeautify/issues/23</a></p>
+<pre><code class="language-json">{
+    &quot;remove_extraline&quot;: false
+    //tag_indent 和 tag_unindent 删除 section，让 section 能正常变成单行
+}
+</code></pre>
+<p>jsfmt 代替 html-css-js ，编辑插件个人设置，添加一个扩展名  jsx（但是这个没有设置 tab 宽度的选项，会默认格式化为 4），把 indent  value 改成两个空格就好了
+html-css-js会导致 jsx 的元素标签默认加两个空格（因为被识别为大于小于）</p>
+<h2 id="如果没有封闭的--标签php不会自动提示">如果没有封闭的 &lsquo;?&gt;&rsquo; 标签，PHP不会自动提示</h2>
+<p>Sublime won&rsquo;t autocomplete PHP files when there is no closing ?&gt; tags , so in “Preferences–&gt;Settings-User” add this snippet:</p>
+<p>&ldquo;auto_complete_selector&rdquo;: &ldquo;source, text&rdquo;,</p>
+<h2 id="用中文输入法输入文字的时候老输入框老是飘在左上角">用中文输入法输入文字的时候，老输入框老是飘在左上角</h2>
+<p>安装 IME Support 插件，这样输入法</p>
+<h2 id="光标在输入汉字时定位不对例如显示在汉字的前面">光标在输入汉字时定位不对（例如显示在汉字的前面）</h2>
+<p>修改个人设置，把字体改成非等宽的。（例如 consolas 会导致光标汉字定位错误，而雅黑不会），或者安装能自动识别中英文的字体，例如 <code>source code pro</code></p>
+<pre><code class="language-json">&quot;font_face&quot;: &quot;Microsoft Yahei&quot;
+</code></pre>
+<h2 id="让-phpfmt-插件能够运行在-php56-或更低版本下">让 phpfmt 插件能够运行在 PHP5.6 或更低版本下</h2>
+<p>phpfmt 是一个非常强大的 PHP 代码格式化插件，可以一键帮你生成符合 PSR 规范的代码、进行等号对齐等等。但是最新的版本要求 PHP7.0 以上，如果你用了 PHP5.6或更低的，会在运行 phpfmt 时报错。</p>
+<p>由于一些特殊原因，我们的网站可能不能运行在 PHP7 （例如一些老的类，用了类同名构造函数而不是 __constructor，却又不方便修改），因此我们需要修改下这个错误提示，让它能忽略版本检测而正常运行 phpfmt。</p>
+<p>打开 <code>Preferences</code>，<code>Browse Packages</code>，找到 <code>phpfmt</code>插件的文件夹，找到<code>phpfmt.py</code>文件，搜索 &ldquo;5.6&quot;字样，把那一行很长的<code>if</code>后面部分删除（就是下面这部分）</p>
+<pre><code> or 'PHP 5.6' in res.decode('utf-8') or 'PHP 5.6' in err.decode('utf-8')
+</code></pre>
+<p>保存，就既不会报PHP版本不支持，又能使用代码格式化功能了。</p>
+<h1 id="不推荐-关掉自动弹出的支付提醒">不推荐： 关掉自动弹出的支付提醒</h1>
+<p>ST3 默认是不需要购买就能直接用的，但是会有一定的频率弹出要求支付。</p>
+<p>注意：不要使用盗版/破解。
+如果你几天甚至几个小时的薪水就能拿到 80 美元 = 640 元，你一定要付费！除了是遵守法律外，也是支持开发者不断更新（但是我很不喜欢它老是涨价。。。）</p>
+<p>如果你暂时还是学生或者没有支付能力，可以关闭它。</p>
+<p>未注册版不能禁用自动升级了了。。。。</p>
+<p><a href="https://github.com/SublimeTextIssues/Core/issues/1206">https://github.com/SublimeTextIssues/Core/issues/1206</a></p>
+<h1 id="一些插件">一些插件</h1>
+<h2 id="rester-sublime-http-client">rester-sublime-http-client</h2>
+<p>安装，创建一个文件（例如以 .rest 结尾, 和 vscode 的 http client 共用）</p>
+<p>需要配合 <a href="https://github.com/pjdietz/sublime-merge-variables">https://github.com/pjdietz/sublime-merge-variables</a> 实现“环境变量”</p>
+<h2 id="merge-variables">Merge Variables</h2>
+<pre><code class="language-json">{
+    &quot;active_sets&quot;: [&quot;mysite&quot;, &quot;mysite-development&quot;],
+    &quot;sets&quot;: {
+        &quot;mysite&quot;: {
+            &quot;{{HOSTNAME}}&quot;: &quot;www.myexamplesite.com&quot;,
+            &quot;{{TITLE}}&quot;: &quot;My Example Site&quot;
+        },
+        &quot;mysite-development&quot;: {
+            &quot;{{HOSTNAME}}&quot;: &quot;dev.myexamplesite.com&quot;
+        }
+
+    }
+}
+</code></pre>
+<h2 id="更好用的-requester">更好用的 Requester</h2>
+<p>上面的那个，虽然可以兼容 vscode 的 client 插件，但是运行后，结果在新 tab 页面打开，即使使用 pretty json 也无法高亮</p>
+<p><a href="http://requester.org/">http://requester.org/</a>
+使用 <a href="https://packagecontrol.io/packages/Requester">https://packagecontrol.io/packages/Requester</a>
+（https://github.com/kylebebak/Requester）</p>
+<p>因为用到了 python-requests ，更多使用方法可直接查看 <a href="http://docs.python-requests.org/en/master/">http://docs.python-requests.org/en/master/</a></p>
+<p><strong>注意</strong>
+<code>###env</code> 之间没有空格，否则会在定义变量运行时提示</p>
+<blockquote>
+<p>PrepareRequest Error name &lsquo;xxx&rsquo; not defined</p>
+</blockquote>
+<pre><code class="language-python">####### Request items ##########
+
+###env
+base_url = 'http://test.com'
+###env
+
+get(base_url + '/posts', params={'c': 'd'})
+
+post(base_url + '/posts', timeout=15)
+</code></pre>
+<p>注意，这个插件会因为返回数据包过大而弹出下面的错误(测试后发现大概是 800KB 以上)，修改 settings 也无效。 vs code 的没有这个问题</p>
+<blockquote>
+<p>Other Error: (&lsquo;Connection broken: IncompleteRead</p>
+</blockquote>
+<h1 id="其他">其他</h1>
+<p>为不同的 project 设置不同的主题配色、字体等配置</p>
+<p>首先保存 project,然后单击“Edit Project，添加 settings</p>
+<p><img src="/media/15490412483574/15246271035206.jpg" alt=""></p>
+<h2 id="隐藏掉顶部的-title">隐藏掉顶部的 title</h2>
+<p>&ldquo;show_full_path&rdquo;: false</p>
+<p>for windows:
+<a href="https://github.com/mikadev001/SublimeText-Overlay">https://github.com/mikadev001/SublimeText-Overlay</a></p>
+<h1 id="我的配置文件">我的配置文件</h1>
+<p>更新于 2019/05/14</p>
+<pre><code class="language-json">{
+    &quot;animation_enabled&quot;: false,
+    &quot;auto_complete_selector&quot;: &quot;source, text&quot;,
+    &quot;auto_indent&quot;: true,
+    &quot;binary_file_patterns&quot;:
+    [
+        &quot;*.dds&quot;,
+        &quot;*.eot&quot;,
+        &quot;*.gif&quot;,
+        &quot;*.ico&quot;,
+        &quot;*.jar&quot;,
+        &quot;*.jpeg&quot;,
+        &quot;*.jpg&quot;,
+        &quot;*.pdf&quot;,
+        &quot;*.png&quot;,
+        &quot;*.swf&quot;,
+        &quot;*.tga&quot;,
+        &quot;*.ttf&quot;,
+        &quot;*.zip&quot;
+    ],
+    &quot;bold_folder_labels&quot;: true,
+    &quot;color_scheme&quot;: &quot;Packages/MarkdownLight/MarkdownLight.tmTheme&quot;,
+    &quot;detect_indentation&quot;: true,
+    &quot;enable_tab_scrolling&quot;: false,
+    &quot;file_exclude_patterns&quot;:
+    [
+        &quot;._*&quot;,
+        &quot;*.pyc&quot;,
+        &quot;*.pyo&quot;,
+        &quot;*.exe&quot;,
+        &quot;*.dll&quot;,
+        &quot;*.obj&quot;,
+        &quot;*.o&quot;,
+        &quot;*.a&quot;,
+        &quot;*.lib&quot;,
+        &quot;*.so&quot;,
+        &quot;*.dylib&quot;,
+        &quot;*.ncb&quot;,
+        &quot;*.sdf&quot;,
+        &quot;*.suo&quot;,
+        &quot;*.pdb&quot;,
+        &quot;*.idb&quot;,
+        &quot;.DS_Store&quot;,
+        &quot;*.class&quot;,
+        &quot;*.psd&quot;,
+        &quot;*.db&quot;,
+        &quot;*.sublime-workspace&quot;,
+        &quot;*.sublime-project&quot;,
+        &quot;*.csv&quot;,
+        &quot;*.tar.gz&quot;,
+        &quot;*.zip&quot;,
+        &quot;*.svg&quot;,
+        &quot;*.jpg&quot;,
+        &quot;*.png&quot;,
+        &quot;*.gif&quot;,
+        &quot;package-lock.json&quot;,
+        &quot;*.po&quot;,
+		&quot;*.woff&quot;,
+		&quot;*.woff2&quot;,
+		&quot;*.svg&quot;,
+		&quot;*.xls&quot;,
+		&quot;*.xlsx&quot;,
+		&quot;*.test&quot;,
+		&quot;*.min.js&quot;
+    ],
+    &quot;folder_exclude_patterns&quot;:
+    [
+        &quot;.git&quot;,
+        &quot;.phpintel&quot;,
+        &quot;node_modules&quot;,
+        &quot;vendor&quot;,
+        &quot;storage&quot;,
+        &quot;.temp&quot;,
+        &quot;.rn_temp&quot;,
+        &quot;.vscode&quot;,
+        &quot;.cache&quot;
+    ],
+    &quot;font_face&quot;: &quot;SF Mono Medium&quot;,
+    &quot;font_options&quot;:
+    [
+    ],
+    &quot;font_size&quot;: 13,
+    &quot;highlight_line&quot;: false,
+    &quot;highlight_modified_tabs&quot;: true,
+    &quot;ignored_packages&quot;:
+    [
+        &quot;ActionScript&quot;,
+        &quot;AppleScript&quot;,
+        &quot;ASP&quot;,
+        &quot;C#&quot;,
+        &quot;C++&quot;,
+        &quot;Clojure&quot;,
+        &quot;D&quot;,
+        &quot;Erlang&quot;,
+        &quot;Go&quot;,
+        &quot;Groovy&quot;,
+        &quot;Haskell&quot;,
+        &quot;Java&quot;,
+        &quot;Lisp&quot;,
+        &quot;Lua&quot;,
+        &quot;Matlab&quot;,
+        &quot;Objective-C&quot;,
+        &quot;OCaml&quot;,
+        &quot;Pascal&quot;,
+        &quot;Perl&quot;,
+        &quot;R&quot;,
+        &quot;Rails&quot;,
+        &quot;Ruby&quot;,
+        &quot;Rust&quot;,
+        &quot;Scala&quot;,
+        &quot;TypeScript&quot;,
+        &quot;Vintage&quot;
+    ],
+    &quot;index_files&quot;: false,
+    &quot;line_padding_botttom&quot;: 6,
+    &quot;line_padding_top&quot;: 2,
+    &quot;open_files_in_new_window&quot;: false,
+    &quot;overlay_scroll_bars&quot;: &quot;enabled&quot;,
+    &quot;show_encoding&quot;: true,
+    &quot;show_full_path&quot;: true,
+    &quot;show_tab_close_buttons&quot;: true,
+    &quot;tab_size&quot;: 4,
+    &quot;theme&quot;: &quot;Adaptive.sublime-theme&quot;,
+    &quot;translate_tabs_to_spaces&quot;: false,
+    &quot;tree_animation_enabled&quot;: false,
+    &quot;update_check&quot;: true,
+    &quot;use_tab_stops&quot;: true
+}
+
+
+</code></pre>
+<h1 id="编译一些-php-文件时提示end-of-line-character-is-invalid-expected-n-but-found-rn">编译一些 php 文件时，提示<code>End of line character is invalid; expected “\n” but found “\r\n”</code></h1>
+<p>这是因为这个文件可能在 windows 下编辑过，换行符是 \r\n， 而在 linux 系下再编辑就有问题了</p>
+<p><img src="/media/15490412483574/15320497036244.jpg" alt=""></p>
+<p>全选文件内容，然后在 View &ndash; Line Endings 改成 Unix 即可</p>
+<p><img src="/media/15490412483574/15320496261702.jpg" alt=""></p>
+<h1 id="像-vscode-一样在同一个窗口容器里打开两个项目tab-切换">像 vscode 一样，在同一个窗口容器里打开两个项目，tab 切换</h1>
+<p><img src="/media/15490412483574/15399218816745.jpg" alt="-w812"></p>
+<p>然后在新的窗口里打开 project, 然后拖进来前面的窗口</p>
+<p><img src="/media/15490412483574/15399218437196.jpg" alt="-w868"></p>
+<p>如果觉得太占用空间，就可以拖动 tab，然后使用 cmd + ` 来切换  （tab 显示的不是project name 而是当前文件，不是很好用）</p>
+<h1 id="多开-sublime--以及对项目project使用不同的主题">多开 Sublime  以及对项目（project）使用不同的主题</h1>
+<p>进入 <code>/Applications</code>, 复制 Sublime Text.app 为 Editor.app , 修改图标（icns）</p>
+<p>两个应用可以分别打开，但共享同样的主题，为了便于在切换的时候快速看出是哪个编辑器（原版，克隆版）</p>
+<p>可以在 Editor.app 里打开一个&quot;project&rdquo;,  然后点击菜单 project-edit project。
+添加 <code>settings</code> 和 <code>color_scheme</code> , 让这个项目使用不同的主题。</p>
+<pre><code class="language-json">{
+	&quot;folders&quot;:
+	[
+		{
+			&quot;path&quot;: &quot;.&quot;
+		}
+	],
+	&quot;settings&quot;:
+    {
+        &quot;color_scheme&quot;: &quot;Packages/User/BBEdit (SL).tmTheme&quot;
+    }
+}
+
+</code></pre>
+<h1 id="在-sublime-内运行-phpunit-而无需跳转到-terminal">在 Sublime 内运行 PHPUnit 而无需跳转到 terminal</h1>
+<p><a href="https://laravel-news.com/sublime-phpunit">https://laravel-news.com/sublime-phpunit</a></p>
+<h1 id="markdown">markdown</h1>
+<h2 id="markdown-editing">markdown editing</h2>
+<p>可以用 mdc 等快速生成代码块</p>
+<p>注意在 syntax 里 把 markdown 设置为全部用 markdownediting GM 方式打开，这样可以让行内代码也能高亮（否则默认识别为 markdown light, 会有点问题，部分高亮如加粗字体不显示）</p>
+<p>然后在 package settings  -&gt; markdown editing -&gt; markdown GFM setting - users 里修改 markdown 颜色方案</p>
+<p>综合对比 这个是最佳的。  加粗。 列表等都正常</p>
+<pre><code class="language-json">&quot;color_scheme&quot;: &quot;Packages/Color Scheme - Default/Celeste.sublime-color-scheme&quot;,
+</code></pre>
+<p>MarkdownLight 更舒适点</p>
+<pre><code class="language-json">&quot;color_scheme&quot;: &quot;Packages/MarkdownLight/MarkdownLight.tmTheme&quot;,
+
+</code></pre>
+<h2 id="markdown-lighting">markdown lighting</h2>
+<p>作用主要是 按 ctrl+r 显示大纲跳转的时候，有缩进。。。。</p>
+<h2 id="table-editor">table editor</h2>
+<p><a href="https://github.com/SublimeText-Markdown/TableEditor">https://github.com/SublimeText-Markdown/TableEditor</a></p>
+<h2 id="sublime_zk---行内图片--wiki-链接等">sublime_zk   行内图片 &amp; wiki 链接等</h2>
+<p><a href="https://github.com/renerocksai/sublime_zk">https://github.com/renerocksai/sublime_zk</a></p>
+<p>打开命令行，添加 Repository, 添加上面的。</p>
+<p>然后再 Install Package，查找 sublime_zk</p>
+<ol>
+<li>打开配置文件，启用 自动显示本地图片</li>
+<li>因为它只支持当前目录下的图片文件（发现 <code>../../</code>这样的相对路径都有问题, 第一张图显示，后面的没反应)， 于是把图片统一保存media/ 目录，然后下面的子目录下，都用 <code>ln -s /media ./</code> 链接过来</li>
+<li>奇怪的是， &lsquo;media/&lsquo;又可以正常！！  难道是因为正在插件装完后，有一个时间在本地索引图片链接么？</li>
+<li>不过，总之，文档内的图片，统一用 media/xxx.jpg 然后做软链，比乱七八糟的多层相对链接好多了</li>
+</ol>
+<p>补充： 明白了， 必须满足几个条件</p>
+<ol>
+<li>
+<p>View 里 syntax 必须选择 markdown 一直用 markdown extended 类型打开（其他 markdown light 什么的都不行）
+要进入一个文件，鼠标定位在有图片的那行，手动运行 show images&hellip;. 和路径似乎关系不大，主要是要光标定位到任意一个图片的行，然后手动 show 出来，后面再次打开就都可以了</p>
+</li>
+<li>
+<p>如果文章里，前面有一个图片地址是错误的（打不开图片），后面的也会跟着全部无法显示。。。。。</p>
+</li>
+</ol>
+<h1 id="php-开发-最终版">php 开发 （最终版）</h1>
+<p>如果配置出错，或者插件有问题，多多少少总不完美，测试下面的组合是最好的</p>
+<p>SublimeLinter  在开发阶段显示语法错误
++ sublimelinter-php  (直接调用 php 执行文件)
+x sublimelinter-phplint (windows 下可能不好用，经常 error)</p>
+<pre><code>sublime linter-phpmd  可以显示未使用的变量（就像 vscode 的功能）  报错
+https://sublimelinter.readthedocs.io/en/latest/settings.html 设置 好像 lintphp 也可以？
+</code></pre>
+<p>PHPIntel 智能提示，例如类实例<code>$test-&gt;</code> 打完箭头后，自动列出方法、成员
+可能要配合 sublime codeintel&hellip;</p>
+<p>phpfmt   格式化代码，需要根据自己的需要，调教一番（手动斜眼）</p>
+<p>显示未使用的变量 <a href="https://stackoverflow.com/questions/28679370/identifying-php-unused-and-undefied-variables-sublime">https://stackoverflow.com/questions/28679370/identifying-php-unused-and-undefied-variables-sublime</a></p>
+<h2 id="codeigniter">codeigniter</h2>
+<pre><code>+ codeignitoer snipts (更快)  crud 可以直接得到一个 CRUD 的 controller 碉堡了！  ci_start 等等， db_ cart_add 等，真的效率
+x codeigniter utilly  (这个要打一大堆再 tab)
+</code></pre>
+<h2 id="函数参数提示鼠标放上去显示各个参数">函数参数提示，鼠标放上去显示各个参数。</h2>
+<p>安装 phpintel,  打卡命令行，  phpintel -&gt; scan project,  等待一会</p>
+<h1 id="vim">vim</h1>
+<p>需要VinTage和VinTageEx插件；
+Preferences -&gt; Setting - User ，即可打开配置文件进行编辑，将 ignored_packages 项的[]里面内容清空：&ldquo;ignored_packages&rdquo;: [&ldquo;Vintage&rdquo;]改成&quot;ignored_packages&rdquo;: <a href="%E5%9B%A0%E4%B8%BASublime3%E7%9A%84%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%8D%E5%8F%AF%E4%BF%AE%E6%94%B9%EF%BC%8C%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E8%A6%86%E7%9B%96%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">&quot;&quot;</a>。
+修改vintage下的配置文件默认模式为命令模式。</p>
+<h1 id="格式化代码">格式化代码</h1>
+<p><a href="https://github.com/akalongman/sublimetext-codeformatter">https://github.com/akalongman/sublimetext-codeformatter</a>  (php 7.3 太新，会报错)</p>
+<pre><code class="language-json">&quot;codeformatter_php_options&quot;:
+{
+    &quot;syntaxes&quot;: &quot;php&quot;, // Syntax names which must process PHP formatter
+    &quot;php_path&quot;: &quot;&quot;, // Path for PHP executable, e.g. &quot;/usr/lib/php&quot; or &quot;C:/Program Files/PHP/php.exe&quot;. If empty, uses command &quot;php&quot; from system environments
+    &quot;format_on_save&quot;: false, // Format on save. Either a boolean (true/false) or a string regexp tested on filename. Example : &quot;^((?!.min.|vendor).)*$&quot;
+    &quot;psr1&quot;: false, // Activate PSR1 style
+    &quot;psr1_naming&quot;: false, // Activate PSR1 style - Section 3 and 4.3 - Class and method names case
+    &quot;psr2&quot;: true, // Activate PSR2 style
+    &quot;indent_with_space&quot;: 4, // Use spaces instead of tabs for indentation
+    &quot;enable_auto_align&quot;: true, // Enable auto align of = and =&gt;
+    &quot;visibility_order&quot;: true, // Fixes visibility order for method in classes - PSR-2 4.2
+    &quot;smart_linebreak_after_curly&quot;: true, // Convert multistatement blocks into multiline blocks
+
+    // Enable specific transformations. Example: [&quot;ConvertOpenTagWithEcho&quot;, &quot;PrettyPrintDocBlocks&quot;]
+    // You can list all available transformations from command palette: CodeFormatter: Show PHP Transformations
+    // You can also see examples of many transformations at https://github.com/akalongman/sublimetext-codeformatter/blob/master/PHP-Transformations.md
+    &quot;passes&quot;: [],
+
+    // Disable specific transformations
+    &quot;excludes&quot;: []
+}
+
+
+&quot;codeformatter_js_options&quot;:
+{
+    &quot;syntaxes&quot;: &quot;javascript,json&quot;, // Syntax names which must process JS formatter
+    &quot;format_on_save&quot;: false, // Format on save. Either a boolean (true/false) or a string regexp tested on filename. Example : &quot;^((?!.min.|vendor).)*$&quot;
+    &quot;indent_size&quot;: 4, // indentation size
+    &quot;indent_char&quot;: &quot; &quot;, // Indent character
+    &quot;indent_with_tabs&quot;: false, // Indent with one tab (overrides indent_size and indent_char options)
+    &quot;eol&quot;: &quot;\n&quot;, // EOL symbol
+    &quot;preserve_newlines&quot;: false, // whether existing line breaks should be preserved,
+    &quot;max_preserve_newlines&quot;: 10, // maximum number of line breaks to be preserved in one chunk
+    &quot;space_in_paren&quot;: false, // Add padding spaces within paren, ie. f( a, b )
+    &quot;space_in_empty_paren&quot;: false, // Add padding spaces within paren if parent empty, ie. f(  )
+    &quot;e4x&quot;: false, // Pass E4X xml literals through untouched
+    &quot;jslint_happy&quot;: false, // if true, then jslint-stricter mode is enforced. Example function () vs function()
+    &quot;brace_style&quot;: &quot;collapse&quot;, // &quot;collapse&quot; | &quot;expand&quot; | &quot;end-expand&quot;. put braces on the same line as control statements (default), or put braces on own line (Allman / ANSI style), or just put end braces on own line.
+    &quot;keep_array_indentation&quot;: false, // keep array indentation.
+    &quot;keep_function_indentation&quot;: false, // keep function indentation.
+    &quot;eval_code&quot;: false, // eval code
+    &quot;unescape_strings&quot;: false, // Decode printable characters encoded in xNN notation
+    &quot;wrap_line_length&quot;: 0, // Wrap lines at next opportunity after N characters
+    &quot;break_chained_methods&quot;: false, // Break chained method calls across subsequent lines
+    &quot;end_with_newline&quot;: false, // Add new line at end of file
+    &quot;comma_first&quot;: false // Add comma first
+}
+
+    &quot;codeformatter_html_options&quot;:
+{
+    &quot;syntaxes&quot;: &quot;html,asp,xml&quot;, // Syntax names which must process HTML formatter
+    &quot;format_on_save&quot;: false, // Format on save. Either a boolean (true/false) or a string regexp tested on filename. Example : &quot;^((?!.min.|vendor).)*$&quot;
+    &quot;indent_size&quot;: 4, // indentation size
+    &quot;indent_char&quot;: &quot; &quot;, // Indentation character
+    &quot;indent_with_tabs&quot;: false, // Indent with one tab (overrides indent_size and indent_char options)
+    &quot;exception_on_tag_mismatch&quot;: false, // If the last closing tag is not at the same indentation level as the first opening tag, there's probably a tag mismatch in the file
+    &quot;expand_javascript&quot;: false, // Expand JavaScript inside of &lt;script&gt; tags (also affects CSS purely by coincidence)
+    &quot;expand_tags&quot;: false, // Expand tag attributes onto new lines
+    &quot;minimum_attribute_count&quot;: 2, // Minimum number of attributes needed before tag attributes are expanded to new lines
+    &quot;first_attribute_on_new_line&quot;: false, // Put all attributes on separate lines from the tag (only uses 1 indentation unit as opposed to lining all attributes up with the first)
+    &quot;reduce_empty_tags&quot;: false, // Put closing tags on same line as opening tag if there is no content between them
+    &quot;reduce_whole_word_tags&quot;: false, // Put closing tags on same line as opening tag if there is whole word between them
+    &quot;custom_singletons&quot;: &quot;&quot; // Custom singleton tags for various template languages outside of the HTML5 spec
+}
+
+    &quot;codeformatter_css_options&quot;:
+{
+    &quot;syntaxes&quot;: &quot;css,less&quot;, // Syntax names which must process CSS formatter
+    &quot;format_on_save&quot;: false, // Format on save. Either a boolean (true/false) or a string regexp tested on filename. Example : &quot;^((?!.min.|vendor).)*$&quot;
+    &quot;indent_size&quot;: 4, // Indentation size
+    &quot;indent_char&quot;: &quot; &quot;, // Indentation character
+    &quot;indent_with_tabs&quot;: false, // Indent with one tab (overrides indent_size and indent_char options)
+    &quot;selector_separator_newline&quot;: false, // Add new lines after selector separators
+    &quot;end_with_newline&quot;: false, // Add new line of end in file
+    &quot;newline_between_rules&quot;: false, // Add new line between rules
+    &quot;eol&quot;: &quot;\n&quot; // EOL symbol
+}
+</code></pre>
+<h1 id="作为一个-todo-list-工具">作为一个 todo list 工具</h1>
+<p>特别在写代码的时候，需要记录大量函数、流程的实现过程。 比 trello 快。 而且便于一次看到层级</p>
+<p><a href="https://github.com/aziz/PlainTasks">https://github.com/aziz/PlainTasks</a></p>
+<p>先建立一个 xxx.todo 文档</p>
+<p>常用快捷键</p>
+<p>cmd+i  新建item</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/amazing-editor-sublime-text/" title="Sublime Text调教" target="_blank" rel="external">https://my101du.github.io/1/01/amazing-editor-sublime-text/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/superagent%E6%88%96node-crawler%E6%8A%93%E5%8F%96%E9%A1%B5%E9%9D%A2%E5%B9%B6%E7%94%A8cheerio%E6%88%96jsdom%E8%A7%A3%E6%9E%90dom/" title="superagent或node-crawler抓取页面，并用Cheerio或JSDOM解析DOM"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/ssh-server/"
+                    title="SSH服务安装与配置"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -37,7 +37,7 @@
 <meta itemprop="name" content="">
 <meta itemprop="description" content="title: IDEA &amp; PHPStorm &amp; WebStorm使用 permalink: intellij-ide-series tags: IDEA 工具 特点： phpstorm 类的方法调用，在参数前面有个小小的 img controller 等提示，不用鼠标放上就能知道参数类型！ 有个独有的字体">
 
-<meta itemprop="wordCount" content="5888">
+<meta itemprop="wordCount" content="5945">
 
 
 
@@ -162,6 +162,10 @@
     <div class="widget-body">
         <ul class="tag-list">
             
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">1</span></li>
+            
         </ul>
 
     </div>
@@ -255,7 +259,7 @@
 
         <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/idea-phpstorm-webstorm%E4%BD%BF%E7%94%A8/#comments"
             class="article-comment-link">评论</a></span>
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5888字</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5945字</span>
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
       </div>
     </div>
@@ -508,6 +512,14 @@ $END$
 <p>那么<code>$NAME$</code>当然是个变量啦，因为后面也用到一样的了，所以就可以设置成变量了，
 <code>$END$</code>是内置变量，它代表键盘光标最后停留的位置。</p>
 <p>变量的值使用函数</p>
+<h2 id="php-字符串中-sql-语法高亮">php 字符串中 sql 语法高亮</h2>
+<p>对于大段的 SQL, 如果禁用  <code>$sql = 'tablename.xxxx'</code> 无法准确看到 SQL 语法高亮，利用 language injection 和 “定界符” 来实现</p>
+<pre><code class="language-php">$where = &lt;&lt;&lt;SQL
+ &quot;WHERE table_name='bbb'
+ AND username='{$username}'
+ &quot;
+SQL;
+</code></pre>
 <h1 id="改造">改造</h1>
 <h2 id="sublime-快捷键--新版似乎自带了">sublime 快捷键  （新版似乎自带了？？？）</h2>
 <p><a href="https://github.com/ekaragodin/idea-sublime-keymap">https://github.com/ekaragodin/idea-sublime-keymap</a></p>

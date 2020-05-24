@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Chrome使用技巧 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="Chrome 是由 google 公司开发的一款高速的、现代化的浏览器 修改被记忆的“地区” 例如曾经使用过地址在新加坡、日本的代理服务器，访问 Google 的时候，会自动跳转到 www.google.com.sg （" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>Chrome使用技巧 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Chrome使用技巧" />
+<meta property="og:description" content="Chrome 是由 google 公司开发的一款高速的、现代化的浏览器 修改被记忆的“地区” 例如曾经使用过地址在新加坡、日本的代理服务器，访问 Google 的时候，会自动跳转到 www.google.com.sg （" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/chrome-skills/" />
+
+<meta itemprop="name" content="Chrome使用技巧">
+<meta itemprop="description" content="Chrome 是由 google 公司开发的一款高速的、现代化的浏览器 修改被记忆的“地区” 例如曾经使用过地址在新加坡、日本的代理服务器，访问 Google 的时候，会自动跳转到 www.google.com.sg （">
+
+<meta itemprop="wordCount" content="2288">
+
+
+
+<meta itemprop="keywords" content="Chrome,工具," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Chrome使用技巧"/>
+<meta name="twitter:description" content="Chrome 是由 google 公司开发的一款高速的、现代化的浏览器 修改被记忆的“地区” 例如曾经使用过地址在新加坡、日本的代理服务器，访问 Google 的时候，会自动跳转到 www.google.com.sg （"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-chrome-skills" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/chrome-skills/"
+    >Chrome使用技巧</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/chrome/"> Chrome </a>
+    <a class="article-tag-link" href="/tags/%E5%B7%A5%E5%85%B7/"> 工具 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/chrome-skills/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2288字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>Chrome 是由 google 公司开发的一款高速的、现代化的浏览器</p>
+<h1 id="修改被记忆的地区">修改被记忆的“地区”</h1>
+<p>例如曾经使用过地址在新加坡、日本的代理服务器，访问 Google 的时候，会自动跳转到 <a href="http://www.google.com.sg">www.google.com.sg</a> （新加坡）或 <a href="http://www.google.jp">www.google.jp</a> （日本）。</p>
+<p>即使之后停止使用代理服务器，google 也不会自动识别到你的真实地理位置。
+其实只要在浏览器地址栏里给 google 指定一个 “ncr”的参数即可，如下：</p>
+<p><a href="www.google.com/ncr">www.google.com/ncr</a></p>
+<h1 id="删除网址自动完成中的某一项">删除网址自动完成中的某一项</h1>
+<p>当你浏览过一些“特别”的网站，chrome 会自动帮你记录，下次当在地址栏里输入一个字母时，会自动补全一个列表，其中就含有这个网址。有时候在公共场合演示时，被别人看见很尴尬。那么如何删除呢？</p>
+<p>在出现这个列表的时候， fn+shift+delete(Mac) 或者 shift+delete(Windows)</p>
+<h1 id="无法打开某些页面">无法打开某些页面</h1>
+<p>在一次把 production 上的 wordpress 在本地还原后。一直无法打开文章编辑页面，在 console 里看到报错</p>
+<blockquote>
+<p>Failed to load resource: net::ERR_INCOMPLETE_CHUNKED_ENCODING</p>
+</blockquote>
+<p>一直以为是还原后环境有问题。网上查到有的说要改 nginx 的所属用户，但是我对比了 Safari 却功能正常。</p>
+<p>后来发现原来是 <code>Do Not Track</code>功能导致的</p>
+<p>打开 chrome 的设置，找到高级设置，Privacy，把&quot;Send a Do Not Track&quot;选项取消勾选就可以了（估计是我以前为了看一些特殊的网站，把这项启用了）</p>
+<p>如果还是无法解决，后来参看</p>
+<p><a href="http://www.qcyoung.com/2015/09/11/%E5%85%B3%E4%BA%8Echrome%E6%8A%A5%E9%94%99netERR_INCOMPLETE_CHUNKED_ENCODING%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">http://www.qcyoung.com/2015/09/11/%E5%85%B3%E4%BA%8Echrome%E6%8A%A5%E9%94%99netERR_INCOMPLETE_CHUNKED_ENCODING%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</a></p>
+<p>把nginx的 <code>gzip on</code> 打开就可以了。。。。</p>
+<blockquote>
+<p>背景</p>
+</blockquote>
+<blockquote>
+<p>今天遇到一个 bug ，这个 bug 很神奇，在 Chrome 下刷新项目页时会报错 net::ERR_INCOMPLETE_CHUNKED_ENCODING 而显示不出网页，在 Safari 和 Firefox 下正常。查了一下这个错误的网上的解决方案。众说纷纭比较多，由于这个 bug 着实查着改了很久..这里进行一个总结，来帮助可能被坑的后来人。</p>
+</blockquote>
+<blockquote>
+<p>BUG 描述及解决办法</p>
+</blockquote>
+<blockquote>
+<p>在某项目页中，后台传给我了一串比较长的 json 数据，我在处理这些数据，刷新页面时 Chrome 意外报错 net::ERR_INCOMPLETE_CHUNKED_ENCODING。页面加载不了 DOM 结构。在 Firefox 及 Safari 上加载正常。</p>
+</blockquote>
+<blockquote>
+<p>在调试后发现，报错原因在于 json 数据在 Chrome 接收的过程中会被随机截断，不能加载完全的 json 数据。导致 json 结构报错。</p>
+</blockquote>
+<blockquote>
+<p>报错提示</p>
+</blockquote>
+<blockquote>
+<p>这里参考我的尝试步骤以及网上的部分可行的办法来推荐尝试：</p>
+</blockquote>
+<blockquote>
+<p>1.关闭杀毒软件</p>
+</blockquote>
+<blockquote>
+<p>2.关闭 Chrome 高级设置里的 “预提取资源，以便更快速的加载网页”</p>
+</blockquote>
+<blockquote>
+<p>3.关闭 Chrome 扩展程序或停用代理类扩展</p>
+</blockquote>
+<blockquote>
+<p>4.设置 header 报表头 content-length</p>
+</blockquote>
+<blockquote>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>5.nginx fastcgi buffer 的设置</p>
+</blockquote>
+<blockquote>
+<p>6.nginx 打开 gzip</p>
+</blockquote>
+<h1 id="网页性能分析">网页性能分析</h1>
+<h1 id="调试工具使用">调试工具使用</h1>
+<h2 id="快捷键">快捷键</h2>
+<p>当在 console 里输入不少命令后，想要清空，  CTRL + L</p>
+<h2 id="查看-response-以-json-格式化">查看 response 以 json 格式化</h2>
+<p>To see a tree view in recent versions of Chrome:</p>
+<p>Navigate to Developer Tools &gt; Network &gt; the given response &gt; Preview</p>
+<h1 id="移动设备模拟">移动设备模拟</h1>
+<h1 id="有意思的插件">有意思的插件</h1>
+<ul>
+<li>Evernote Clip 印象笔记剪藏</li>
+<li>livereload</li>
+<li>SwitchyOmega</li>
+<li>Adblock plus</li>
+<li>Allow-Control-Allow-Origin(默认全部跨域规则 <em>://</em>/* 会导致一些网站出问题，例如github无法登陆和star，要删除后手动添加网址)</li>
+<li>Video Download professional</li>
+<li>The Great Suspender</li>
+<li>Tampermonkey</li>
+<li>Fatkun图片批量下载</li>
+</ul>
+<p><strong>几个配置面板</strong></p>
+<ul>
+<li>chrome://plugins</li>
+<li>chrome://flags</li>
+</ul>
+<h1 id="下载-youtube-插件">下载 Youtube 插件</h1>
+<p>最新的 google 策略中已经禁止一些 chrome 插件直接下载 Youtube 视频了. 但是可以用其他的一些办法:</p>
+<p>例如一些独立的下载软件, 有的是免费, 有的是收费.</p>
+<p>这里还有一个有意思的 chrome 插件, 是利用 Opera 的下载插件曲线救国实现的..</p>
+<p><a href="http://en.savefrom.net/savefrom-helper-for-google-chrome.php">http://en.savefrom.net/savefrom-helper-for-google-chrome.php</a></p>
+<p>首先安装 chrome 的插件 Chameleon
+然后使用 Chameleon 来安装 Opera 的插件 SaveFrom.net Helper
+然后就可以发现在 Youtube 的视频界面中出现下载按钮了.</p>
+<h2 id="youtube-subtitle-下载">youtube subtitle 下载</h2>
+<p>例如喜欢的 TED Radio Hour from NPR. 需要在路上听，没有字幕，很多不明白啊！</p>
+<p><a href="https://downsub.com/">https://downsub.com/</a> 在线输入地址
+<a href="http://www.lilsubs.com/">http://www.lilsubs.com/</a>  （TED 也可以）</p>
+<p>工具
+<a href="https://www.4kdownload.com/howto/howto-download-youtube-subtitles">https://www.4kdownload.com/howto/howto-download-youtube-subtitles</a></p>
+<p>chrome 插件
+<a href="https://chrome.google.com/webstore/detail/subtitles-for-youtube/oanhbddbfkjaphdibnebkklpplclomal?hl=en">https://chrome.google.com/webstore/detail/subtitles-for-youtube/oanhbddbfkjaphdibnebkklpplclomal?hl=en</a></p>
+<p>tampermonkey脚本
+<a href="https://greasyfork.org/en/scripts/5368-youtube-subtitle-downloader-v20">https://greasyfork.org/en/scripts/5368-youtube-subtitle-downloader-v20</a></p>
+<h1 id="对某个-tab-静音以及禁止自动播放声音">对某个 tab 静音，以及禁止自动播放声音</h1>
+<p>有时候打开一个页面，突然会播放声音。必须右键 tab 选择 mute 才可以关闭</p>
+<ol>
+<li>快速显示一个小图标，点一下就能关闭，简化右键两步操作</li>
+</ol>
+<p>The second way is also simple. Go to Chrome address bar and type “chrome://flags/#enable-tab-audio-muting”, and you will see the highlighted option with ocher color “Tab audio muting UI control ” and click on “Enable”.</p>
+<ol start="2">
+<li>安装插件，像 Really Mute Inactive Tabs LT 这类，关闭自动播放声音</li>
+</ol>
+<h1 id="恶意网站提示">恶意网站提示</h1>
+<p>有的网站因为之前被木马注入、入侵过，会有一些残留的恶意文件。google 会记录它们，一直到清理完这些恶意软件，并且申请重新扫描</p>
+<p>如果是开发阶段，可以暂时关闭这个提示：</p>
+<p><a href="https://www.shoutmeloud.com/disable-chrome-warning-the-website-ahead-contains-malware.html">https://www.shoutmeloud.com/disable-chrome-warning-the-website-ahead-contains-malware.html</a></p>
+<h1 id="突然不能定位">突然不能定位</h1>
+<p>突然有一天高德 百度地图无法自动定位了。 在设置的“内容”里也找不到位置的设置。</p>
+<p>原来是需要对单个网站设置</p>
+<p>点击前面的锁，展开 Site Settings,</p>
+<p><img src="/media/15490412483970/15272941816815.jpg" alt=""></p>
+<p>修改 location</p>
+<p><img src="/media/15490412483970/15272942473922.jpg" alt=""></p>
+<p>如果还是无法定位，需要进系统设置里开启</p>
+<p><img src="/media/15490412483970/15272943518595.jpg" alt=""></p>
+<h1 id="chrome-地址栏翻译">chrome 地址栏翻译</h1>
+<p><a href="http://www.apprcn.com/translate-with-chrome-omnibar.html">http://www.apprcn.com/translate-with-chrome-omnibar.html</a></p>
+<h1 id="github-增强">Github 增强</h1>
+<h2 id="octotree">Octotree</h2>
+<p>显示目录</p>
+<h2 id="sourcegraph">sourcegraph</h2>
+<p>代码跳转、语义分析等等，</p>
+<p>(Code intelligence 收费。。$10/mon)</p>
+<p><a href="https://about.sourcegraph.com/docs">https://about.sourcegraph.com/docs</a>
+<a href="https://about.sourcegraph.com/docs/integrations">https://about.sourcegraph.com/docs/integrations</a></p>
+<p>可以在本地/VPS 上用 docker 来运行服务端</p>
+<p><img src="/media/15490412483970/15319645465992.jpg" alt=""></p>
+<p>点击后</p>
+<p><img src="/media/15490412483970/15319645792461.jpg" alt=""></p>
+<p>函数分析</p>
+<p><img src="/media/15490412483970/15319646637864.jpg" alt=""></p>
+<h1 id="启用最新的-material-design-refresh-圆角或者使用旧版的标签ui">启用最新的 Material Design Refresh (圆角)，或者使用旧版的标签UI</h1>
+<ol>
+<li>打开 chrome://flags/#top-chrome-md</li>
+</ol>
+<p>UI Layout for the browser&rsquo;s top chrome  改成 Refresh</p>
+<p>如果是default 就是旧版的</p>
+<ol start="3">
+<li>打开 chrome://flags/#views-browser-windows</li>
+</ol>
+<p>Use Views browser windows instead of Cocoa. 改成 enable</p>
+<h1 id="页面性能调优一次优化页面卡顿的记录">页面性能调优（一次优化页面卡顿的记录）</h1>
+<p>背景：</p>
+<ol>
+<li>一个 w2ui 的 grid, 限制了显示 1000 行数据（修改筛选条件后显示 300 行左右），</li>
+<li>但是 columns 特别多 (50+)</li>
+<li>并有部分 cell 的回调函数来修改单元格数据计算并改变背景色</li>
+<li>grid 加载后，有一个动态插入若干 columns, 并触发 grid 的 refresh 事件的操作</li>
+</ol>
+<h2 id="memory-分析">Memory 分析</h2>
+<p>打开开发者工具，切到 memory  然后 take snapshoot 查看各个对象占用的内存</p>
+<h2 id="performace">performace</h2>
+<p>切到 performace</p>
+<p>点击 “record” 开始录制</p>
+<p>刷新一次数据，等待完成</p>
+<p>关闭录制，生成 profile</p>
+<p>在顶部方框内，发现有多段在 Recalculate Style..  Layout &hellip;</p>
+<p>框住要分析的那段时间的请求和渲染。  紫色是渲染问题（里面很多小方块，右上角有红色三角形，提示“forced reflow”&hellip;.）</p>
+<p>然后点一下定位，在底部的区域，点下 summary 先大致看下。 然后点 Call Tree， <strong>逐级展开</strong>定位到堆栈最后一层出问题的 js 方法 ，可能会发现 jQuery 的 getWidthOrHeight 等出问题的方法。。。。</p>
+<h2 id="reflow">reflow</h2>
+<p><a href="https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts">https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing#avoid-forced-synchronous-layouts</a></p>
+<h2 id="避免">避免</h2>
+<p><a href="https://pagebuildersandwich.com/increased-plugins-performance-200/">https://pagebuildersandwich.com/increased-plugins-performance-200/</a></p>
+<h1 id="绕过-ssl-检查导致的不能打开某些自签名https网站如gateone">绕过 ssl 检查导致的不能打开某些自签名https网站（如gateone）</h1>
+<p>这个问题不知道为什么在 windows 的 chrome 上是可以点”advanced&rdquo; 然后直接点 ”Proceed to xx.xx.xx.xx (unsafe)“访问的。 mac 上无法</p>
+<p>方式：</p>
+<ol>
+<li>点小锁</li>
+<li>把证书图标拖动到某个文件夹</li>
+<li>打开钥匙串，切到 “证书”</li>
+<li>添加证书</li>
+<li>双击证书，展开 “trust&rdquo;, 选‘always trust&rdquo;</li>
+<li>刷新页面，就可以进入了</li>
+</ol>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/chrome-skills/" title="Chrome使用技巧" target="_blank" rel="external">https://my101du.github.io/1/01/chrome-skills/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/cmder-in-windows/" title="Cmder-让windows下的终端工具更强大"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/chrome-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/"
+                    title="chrome 插件开发"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        meteor-react-layout与flow-router学习 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="这是 Meteor 结合 React 的开发相关知识。 有道是“师傅领进门，修行在个人”。虽然这些资料都是经过了精挑细选的，可以避免我少走弯路。但作为一个之前大部分时间" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>meteor-react-layout与flow-router学习 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="meteor-react-layout与flow-router学习" />
+<meta property="og:description" content="这是 Meteor 结合 React 的开发相关知识。 有道是“师傅领进门，修行在个人”。虽然这些资料都是经过了精挑细选的，可以避免我少走弯路。但作为一个之前大部分时间" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/meteor-react-layout-and-flow-router-study/" />
+
+<meta itemprop="name" content="meteor-react-layout与flow-router学习">
+<meta itemprop="description" content="这是 Meteor 结合 React 的开发相关知识。 有道是“师傅领进门，修行在个人”。虽然这些资料都是经过了精挑细选的，可以避免我少走弯路。但作为一个之前大部分时间">
+
+<meta itemprop="wordCount" content="4996">
+
+
+
+<meta itemprop="keywords" content="Meteor," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="meteor-react-layout与flow-router学习"/>
+<meta name="twitter:description" content="这是 Meteor 结合 React 的开发相关知识。 有道是“师傅领进门，修行在个人”。虽然这些资料都是经过了精挑细选的，可以避免我少走弯路。但作为一个之前大部分时间"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-meteor-react-layout-and-flow-router-study" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/meteor-react-layout-and-flow-router-study/"
+    >meteor-react-layout与flow-router学习</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/meteor/"> Meteor </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/meteor-react-layout-and-flow-router-study/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4996字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>这是 <code>Meteor</code> 结合 <code>React</code> 的开发相关知识。</p>
+<p>有道是“师傅领进门，修行在个人”。虽然这些资料都是经过了精挑细选的，可以避免我少走弯路。但作为一个之前大部分时间做 PHP 后端开发的“伪全栈”，短时间要学会还真不容易。再加上最近又是加班赶工年尾项目，又是搬新公司忙着当苦工和网管，学习时间也不是很充足。</p>
+<p>不过总算是捣鼓出一个“还能跑起来”的应用了。并且在这个过程中，从对概念的一知半解，到慢慢看代码越来越顺畅，最后自己能敲出来（虽然质量很烂），真的是苦尽甘来啊。</p>
+<p>这个应用叫**“单身狗配对“**，分为如下几个模块:</p>
+<ul>
+<li>”寻狗“：实际上就是用户列表啦，可以排序，以及搜索，并且关注他人，以及给感兴趣的人发消息（未完成）</li>
+<li>”狗窝“：就是群组，用户可以加入群组，创建群组</li>
+<li>”活动“：用户可以报名参加活动，群组发布集体活动</li>
+<li>”我的“：编辑个人资料，查看消息列表，查看自己关注的人、已加入的狗窝、已报名的活动</li>
+<li>登录注册：没什么好说的，使用的 meteor 自带账号系统</li>
+</ul>
+<p><strong>访问地址(请全程全局翻墙，由于网络和开发时间、水平有限，可能会有一些奇怪的bug)</strong></p>
+<p><a href="http://my101du-singledog.meteor.com">meteor-单身狗配对</a></p>
+<p><strong>截图</strong></p>
+<p><img src="/article_images/foreground/meteor-react-flowrouter-layout-semantic/dog-list.png" alt=""></p>
+<p><img src="/article_images/foreground/meteor-react-flowrouter-layout-semantic/nest-list.png" alt=""></p>
+<p><img src="/article_images/foreground/meteor-react-flowrouter-layout-semantic/my-profile.png" alt=""></p>
+<p><strong>已经使用到的技术清单</strong></p>
+<ul>
+<li>Meteor 基础开发框架(以及自带的 <code>MongoDB</code>，<code>accounts-ui</code>,<code>check</code> 等 packages)</li>
+<li><code>Meteor-React</code> 前端库</li>
+<li><code>FlowRouter</code> 客户端路由</li>
+<li><code>react-layout</code> 结合 <code>FlowLayout</code> 实现 <code>react JSX</code> 的布局</li>
+<li><code>Semantic-UI</code> 前端界面库</li>
+<li>其他 Meteor 插件</li>
+</ul>
+<h1 id="创建-meteor-项目并添加所有必需的包">创建 meteor 项目并添加所有必需的包</h1>
+<pre><code class="language-shell">$ meteor create SingleDog
+$ cd SingleDog
+$ meteor add [包名]
+
+//安装完毕后请运行 meteor list 命令对照着下面的清单，补上所有需要的包
+
+$ meteor list
+
+accounts-password         1.1.4  Password support for accounts
+accounts-ui               1.1.6  Simple templates to add login widgets to an app
+audit-argument-checks     1.0.4  Try to detect inadequate input sanitization
+blaze-html-templates      1.0.1  Compile HTML templates into reactive UI with Meteor Blaze
+check                     1.1.0  Check whether a value matches a pattern
+ecmascript                0.1.6* Compiler plugin that supports ES2015+ in all .js files
+es5-shim                  4.1.14  Shims and polyfills to improve ECMAScript 5 support
+flemay:less-autoprefixer  1.2.0  The dynamic stylesheet language + Autoprefixer
+jquery                    1.11.4  Manipulate the DOM using CSS selectors
+kadira:flow-router        2.10.0  Carefully Designed Client Side Router for Meteor
+kadira:react-layout       1.5.3  Layout Manager for React with SSR Support
+meteor-base               1.0.1  Packages that every Meteor app needs
+mobile-experience         1.0.1  Packages for a great mobile user experience
+mongo                     1.1.3  Adaptor for using MongoDB and Minimongo over DDP
+react                     0.14.3* Everything you need to use React with Meteor.
+semantic:ui               2.1.7  Official Semantic UI Integration for Meteor
+semantic:ui-css           2.1.2  Semantic UI - CSS Release of Semantic UI
+session                   1.1.1  Session variable
+standard-minifiers        1.0.2  Standard minifiers used with Meteor apps by default.
+tracker                   1.0.9  Dependency tracker to allow reactive callbacks
+
+// 然后运行起来
+$ meteor reset
+$ meteor
+</code></pre>
+<h1 id="把目录结构安排好一个良好的目录结构和清晰的命令可以在项目变大的时候容易找到">把目录结构安排好，一个良好的目录结构和清晰的命令可以在项目变大的时候容易找到</h1>
+<p>好吧，其实我这里的命名不是很清晰，英语捉急</p>
+<pre><code class="language-shell">$ tree -L 3
+
+├── README.md
+├── client                       / 存储在客户端运行的代码
+│   ├── index.html                |- 入口文件
+│   ├── scripts                  / js代码和 JSX 组件（React）
+│   │   ├── Container.jsx         |- React 组件容器
+│   │   ├── DogAvatar.jsx         |- 狗头……（就是”关注者“等一小堆头像）
+│   │   ├── DogDetail.jsx         |- 狗详情
+│   │   ├── DogList.jsx           |- 狗列表，以及单个列表元素
+│   │   ├── EventList.jsx         |- 活动列表，以及单个活动元素
+│   │   ├── Header.jsx            |- 头部，包括顶部菜单、用户账号组件
+│   │   ├── My.jsx                |- ”我的“
+│   │   ├── MyProfile.jsx         |- 个人资料编辑
+│   │   ├── NestList.jsx          |- &quot;狗窝&quot;列表，以及单个列表元素
+│   │   └── main.jsx              |- React的”入口“，Meteor.startup 写在这里，并 render 根组件
+│   ├── styles                   / 样式文件
+│   │   └── common.css
+│   ├── templates                / 模板文件(如果用 React 做前端库，应该就不用了)
+│   │   └── includes
+│   └── ui                       / 把 meteor 的 Blaze 组件（例如 accounts）封装成 React 能用的
+│       └── AccountsUIWrapper.jsx
+├── collections                  / mongodb 的 collection 定义，以及数据 methods
+│   ├── dogs.js                   |- 狗
+│   ├── events.js                 |- 活动
+│   ├── messages.js               |- 短消息
+│   └── nests.js                  |- 狗窝
+├── globals                      / 为了去掉 google fonts 添加的，好像没效果
+│   └── site.variables.import.less
+├── lib                          / 公共函数库、路由
+│   ├── permissions.js            |- 检查权限的一些函数
+│   └── router.jsx                |- 路由定义
+├── public                       / 存储服务端和客户端共同使用的文件，如图片等
+│   └── images
+│       ├── Aaron\ Adams.ico
+│       ├── Andy\ Skowronski.ico
+│       ├── Carman\ Lee.ico
+│       ├── Cecilia\ Cheung.ico
+│       └── Tess\ Bethune.ico
+└── server                       / 只在服务器端运行的程序，如下面的初始化测试数据，和 publish 定义
+    ├── initData.js               |- 初始化测试数据
+    └── publish.js                |- Collection 的 publish 定义
+</code></pre>
+<h1 id="所有一切的入口-indexhtml">所有一切的入口 index.html</h1>
+<pre><code class="language-html">&lt;body&gt;&lt;/body&gt;
+</code></pre>
+<p>什么？你没搞错吧，入口文件怎么会只有这这个东西？<code>head</code> 呢，<code>html</code>呢？</p>
+<p>其实我一开始也很疑惑，后来遇到把 <code>Blaze</code> 的 <code>LoginButton</code> 组件封装成 React JSX 组件后，嵌入到代码里被渲染两次的问题，查资料才知道，<code>React</code>结合 <code>Reac-tLayout</code>会自动生成完整的页面 <code>DOM</code> ，所以直接删掉就好了。</p>
+<h1 id="进了入口之后往哪个方向走">进了入口之后，往哪个方向走？</h1>
+<p>开始编辑路由文件 <code>/client/lib/router.jsx</code> 吧，由于结构不是很复杂，基本上都是重复的代码，就不截取代码了，弄清楚模块和路径的对应关系即可。</p>
+<p>由于我们已经安装了 <code>FlowRouter</code>和<code>React-Layout</code>两个包，所以是可以支持下面这种 <code>ReactLayout.render</code> 的布局方法的，注意和 meteor 默认的 <code>Blaze</code>布局方法比较相似，只是关键词不同而已。</p>
+<pre><code class="language-javascript">ReactLayout.render(Container, {content: &lt;DogList sortType={sortType} limit={limit} /&gt;})
+</code></pre>
+<p>主要注意几点：</p>
+<ol>
+<li>部分路由里，需要添加 <code>triggersEnter</code>对用户是否登录进行判断</li>
+<li>尽可能在 <code>render</code> 的时候，把数据传入 <code>JSX</code> 组件，减少 <code>React</code> 再次处理数据(因为有莫名其妙的读取和渲染两次问题)</li>
+<li>在需要数据的时候，提前用 <code>subscriptions</code> 订阅好</li>
+</ol>
+<h1 id="collections-定义与测试数据">Collections 定义与测试数据</h1>
+<p>在这个应用里，我们用了 4 个 collectoin，都放在 <code>/collections</code>目录里面，分别对应一个 js 文件。</p>
+<ol>
+<li>Dogs: 狗（用户）</li>
+<li>Events: 活动</li>
+<li>Nests: 狗窝（群组）</li>
+<li>Messages: 短消息</li>
+</ol>
+<p>每个文件的第一行都是类似下面的代码，因为 collection 是放在根目录下（而不是 <code>client</code>目录），所以会自动在客户端和服务端保持数据的一致</p>
+<pre><code class="language-javascript">Dogs = new Mongo.Collection('dogs');
+</code></pre>
+<p>先不急着在里面添加 <code>methods</code>、和 <code>allow</code>,<code>deny</code>权限设置，先添加一些测试数据。</p>
+<p>写一个测试数据初始化文件放在 <code>/server</code>里，叫<code>initData.js</code>,这样每次启动 <code>meteor</code>命令后，会自动在服务器端插入数据到 mongodb 里面，客户端也可以直接读取。</p>
+<ol>
+<li>先添加一些”狗“，每次 <code>insert</code>数据后，会返回这条新数据的 <code>_id</code>(由 mongodb 自动生成的)，便于后面直接使用</li>
+<li>”狗“的 <code>followers</code> 字段是一个数组，存储关注TA的所有”狗“的<code>_id</code>（注意不是”用户id“）</li>
+<li>”狗窝“的 <code>users</code>字段，和”活动“的<code>applicants</code>字段，分别表示”成员“，和”报名者“，也是一个数组，存储”狗“的<code>_id</code></li>
+</ol>
+<pre><code class="language-javascript">/**
+ * 狗
+ */
+var dogsCount = Dogs.find().count();
+console.log(&quot;dogsCount&quot;, dogsCount);
+if (dogsCount === 0) {
+    console.log(&quot;0 dogs, need fill test data&quot;);
+    dogId_1 = Dogs.insert({
+        userId: '1',
+        nickName: '霸王别挤',
+        mobile: '18173782161',
+        sex: 'male',
+        age: '22',
+        job: '公务员',
+        like: '运动,跑步',
+        avatar: 'Aaron Adams.ico',
+        figure: '1',
+        personality: '1',
+        followers: []
+    });
+    dogId_2 = Dogs.insert({
+        userId: '2',
+        nickName: '轻舞飞扬',
+        mobile: '17173782162',
+        sex: 'female',
+
+后面的略……
+
+/**
+ * 狗窝
+ */
+var nestsCount = Nests.find().count();
+console.log(&quot;nestsCount&quot;, nestsCount);
+if (nestsCount === 0) {
+    Nests.insert({
+        name: '科技园单身狗俱乐部',
+        desc: '我们是一批码农, 长在青青草原上',
+        users: [dogId_1, dogId_2]
+    });
+    Nests.insert({
+        name: '大长腿妹子',
+        desc: '颜值高，身材好，关键还能修电脑',
+        users: [dogId_5, dogId_6]
+    });
+
+后面的略……
+</code></pre>
+<h1 id="服务器端的-publish">服务器端的 Publish</h1>
+<p>编辑 <code>/server/publish.js</code>文件，写好所有的 <code>publish</code>规则，而对应的客户端的 <code>subscribe</code>还记得么？在 <code>router.jsx</code>里路由已经匹配好了。</p>
+<pre><code class="language-javascript">Meteor.publish(&quot;dogs&quot;, function () {
+  return Dogs.find({});
+});
+
+Meteor.publish(&quot;dogDetail&quot;, function (userId) {
+  return Dogs.findOne({userId: userId});
+});
+
+Meteor.publish('nests', function(){
+  return Nests.find({});
+});
+
+Meteor.publish('events', function(){
+  return Events.find({});
+});
+</code></pre>
+<h1 id="以-dogsjs为例添加服务端的-methods">以 <code>dogs.js</code>为例，添加服务端的 <code>methods</code></h1>
+<p>服务端的数据处理，无外乎<strong>增删改查</strong>，我们以操作”狗“这个 <code>Collection</code>为例，主要有 <code>addDog</code>,<code>updateDog</code>两个 <code>method</code>。</p>
+<ol>
+<li>添加数据的时候，用 <code>check</code>方法来检查这些数据是否有值（<code>check</code>是一个 meteor 的包）</li>
+<li>然后判断某个数据是不是重复（例如手机号码不能重复）</li>
+<li>用 meteor 捆绑的 <code>Underscore.js</code>工具库，来”扩展“提交过来的数据，因为<code>userId</code>字段需要读取当前登录的用户id，为了确保不被客户端伪造，所以在服务端来生成。</li>
+<li>最后插入数据，返回新数据的 <code>_id</code></li>
+</ol>
+<p>按这样的流程，把几个 <code>collection</code> 对应的文件都添加好 <code>methods</code>。</p>
+<pre><code class="language-javascript">Meteor.methods({
+  addDog(dogData){
+    if (! Meteor.userId()) {
+      throw new Meteor.Error(&quot;请先登录&quot;);
+    }
+
+    check(dogData, {
+      nickName: String,
+      mobile: String,
+      sex: String,
+      age: String,
+      job: String,
+      like: String,
+      figure: String,
+      personality: String
+    });
+
+
+    //手机号码必须唯一
+    var sameMobileDog = Dogs.findOne({mobile: dogData.mobile});
+    if(sameMobileDog){
+      return{
+        mobileExists: true,
+        _id: sameMobileDog._id
+      }
+    }
+
+    var newDog = _.extend(dogData, {
+      userId: Meteor.userId(),
+      username: Meteor.user().username,
+      avatar: &quot;_1.ico&quot;,
+      followers: [],//关注他的人
+      nests: [], //加入的狗窝
+      events: [], // 报名的活动
+      addDate: new Date()
+    });
+
+    var dogId = Dogs.insert(newDog);
+
+    return {_id: dogId};
+  },
+
+  // 编辑
+  updateDog(dogId, dog){
+
+    Dogs.update({_id: dogId}, {$set: dog}, function(){
+      console.log(&quot;修改成功&quot;);
+    });
+  },
+</code></pre>
+<h1 id="开始进入react和jsx的世界">开始进入”React“和”JSX“的世界</h1>
+<p>其实前面大部分的内容，都还是和 <code>meteor</code>有关，只是在 <code>router.js</code>里偶尔夹杂一些<code>react-layout</code>有关的东西。那我们的应用既然是用 <code>React</code>作为前端库，下面就要把重心放到 <code>组件</code>来了。</p>
+<p>在<code>/client/scripts</code>目录里，我们已经把所有的组件都创建好了。</p>
+<p>由于最复杂的就是 <code>DogList.jsx</code>，所以就详细来解说这个文件里的两个组件（叫<code>Component</code>）。</p>
+<p>在这个文件里，虽然叫<code>DogList</code>，但其实里面同时写有两个组件的</p>
+<ul>
+<li>列表, 对应 <code>DogList = React.createClass</code></li>
+<li>列表里的单个元素, 对应 <code>DogOfList = React.createClass</code></li>
+</ul>
+<p>因为它们实际上是一个整体，所以放一起方便修改，当然了如果应用很复杂或者有团队协作需求，还是建议拆开成不同的文件来存放。</p>
+<p>每个组件都可以实现如下几个方法/获取参数：</p>
+<pre><code class="language-javascript">  // 这个应该就是实现”桥接“ meteor 的数据给 react 读取所必须的 mixins 列表了。没有它，react 就读不到 meteor 传过来的数据了
+  mixins: [ReactMeteorData],
+
+  // 这个方法返回的数据，可以通过  this.data.dataName 来读取
+  getMeteorData() {
+    return {}
+  },
+
+  getInitialState() {
+      return {};
+  },
+
+  // 设置默认的 props
+  getDefaultProps: function() {
+    return {};
+  },
+
+  // 组件加载完毕后调用，例如可以初始化 semantic-ui 的 modal 弹窗控件
+  componentDidMount(){
+
+  },
+
+  // 组件有数据更新的时候调用（这个在和 Semantic-UI 的一些交互控件组合的时候有用）
+  componentDidUpdate() {
+
+  },
+
+  // componentDidMount() {},
+
+  // componentWillReceiveProps() {},
+  // shouldComponentUpdate() {},
+  // componentWillUpdate() {},
+  // componentDidUpdate() {},
+
+  // componentWillUnmount() {},
+
+
+  // 这里定义你自己的所有方法，对应 render 里绑定给组件事件的 {this.funcName}
+  YourFunction1(){
+
+  },
+
+  YourFunction2(){
+
+  },
+
+  //……
+
+  render(){
+    return (
+      &lt;div&gt;
+        组件内部{this.props.dataName}
+        &lt;a onClick={this.YourFunction1}&gt;动作&lt;/a&gt;
+      &lt;/div&gt;
+    )
+  }
+</code></pre>
+<p>具体的业务流程代码看各个文件即可，特别注意的是，因为这里都是 <code>client</code>端，所以操作 <code>Collection</code> 是要使用<code>Meteor.call('服务器端的method名', 参数, 回调函数)</code>来调用服务端定义的<code>method</code>的。</p>
+<pre><code class="language-javascript">Meteor.call('updateDog', this.props.dogData._id, {followers: currentFollowers}, function(error, result){
+        console.log(&quot;关注成功&quot;);
+      });
+</code></pre>
+<p><strong>一些疑问</strong></p>
+<p>由于我对 React 还是初学阶段，经常出现数据被读取两次，界面被渲染两次的现象。网上查资料，有各种各样的说法，例如停掉 fast-render 啊，用 subscription 的 handler 等等。还没时间细究。</p>
+<h1 id="美化界面">美化界面</h1>
+<p>我们使用的是 <code>Semantic-UI</code>这个界面库，而不是常见的 <code>BootStrap</code>。
+这个库我个人觉得效果比 bootstrap 要漂亮一点，还有就是组件齐全一点。但是因为其”语义化“，如果设置 class 的时候顺序不对，它是会出错的……</p>
+<p>这里就不多说了，直接看文档，了解布局、组件、以及一些基本的”参数”即可（这些参数是对所有组件都通用的，例如大小、颜色、对齐等等，一通百通）</p>
+<p>特别是“集成“那一章，说清楚了与其他 js 库/开发框架结合的方法。</p>
+<p><strong>特别注意</strong></p>
+<p>由于使用了 <code>React</code>, 我们要仔细检查所有 <code>render</code>里含有 <code>semantic</code>的代码，有两个小失误是经常遇到的，会导致浏览器报错</p>
+<ol>
+<li>遗漏了某个 <code>class</code>,忘了把它改成<code>className</code></li>
+<li>所有html元素必须符合 xhtml 严格规范，例如 <code>img</code>等, 必须要闭合标签！</li>
+</ol>
+<h1 id="部署">部署</h1>
+<p>本来想学习下 <code>pm2-meteor</code>的，但是我的阿里云主机上装的是 <code>CentOS 6</code>，在装 <code>node</code> 的时候提示<code>g++</code> 版本太低，而重新编译安装耗时太长了。</p>
+<blockquote>
+<p>WARNING: C++ compiler too old, need g++ 4.8 or clang++ 3.4 (CXX=g++)</p>
+</blockquote>
+<p>还是先部署到 <code>meteor.com</code>吧。虽然慢得像乌龟一样……</p>
+<pre><code class="language-shell">$ meteor deploy singledog.meteor.com
+</code></pre>
+<p>可以在浏览器打开 <code>http://singledog.meteor.com</code> 查看了，由于国内网速的原因和当前阶段技术能力不足，会有一些诡异的问题出现……</p>
+<h1 id="参考资料">参考资料</h1>
+<p><strong>主要学习资料</strong></p>
+<ul>
+<li>Meteor ：https://www.meteor.com</li>
+<li>ReactJS：https://facebook.github.io/react/</li>
+<li>FolwRouter ：https://atmospherejs.com/kadira/flow-router</li>
+<li>ReactJS Layout：https://github.com/kadirahq/meteor-react-layout 支持flow router</li>
+<li>Smantic UI：http://semantic-ui.com/</li>
+<li>Discover Meteor 中文版： <a href="http://wiki.jikexueyuan.com/project/discover-meteor/overwise.html">http://wiki.jikexueyuan.com/project/discover-meteor/overwise.html</a></li>
+<li><a href="https://atmospherejs.com">https://atmospherejs.com</a> 使用 Meteor 包的说明</li>
+</ul>
+<p><strong>一些社区与搜索来源</strong></p>
+<ul>
+<li>Google 搜关键词 &ldquo;meteor + xxxxx, react + xxxx&rdquo;</li>
+<li>StackOverFlow 学英语</li>
+<li>GitHub 看不懂说明直接看代码</li>
+<li><a href="https://crater.io">https://crater.io</a></li>
+<li><a href="http://www.meteorhub.org/">http://www.meteorhub.org/</a>  Meteor 中国社区</li>
+<li><a href="http://react-china.org/">http://react-china.org/</a> React 中国</li>
+</ul>
+<p>后面是没整理完的：</p>
+<h2 id="using-react-context">Using React Context</h2>
+<p><strong>Material-UI</strong>
+<a href="https://github.com/callemall/material-ui">https://github.com/callemall/material-ui</a></p>
+<h2 id="meteor-flowrouter-和-react-结合封装-loginbutton-组件成-react-后被渲染两次">meteor FlowRouter 和 React 结合，封装 LoginButton 组件成 React 后，被渲染两次</h2>
+<p>you don&rsquo;t need to render layout in the body.</p>
+<p>The router will take care of the rendering.</p>
+<p>so, just have</p>
+<!-- raw HTML omitted -->
+<p>Edit: Thanks to Keith, I have a better understanding of my problem. Here is his comment:</p>
+<p>one thing to keep in mind, all the html you write in meteor isn&rsquo;t kept as html. It all gets converted to javascript. Things like index.html do not get pushed to the browsesr. Meteor just takes all the html you write converts it to javascript and renders what it needs to based on what your code says. This is how it knows todynamically change and rerender html</p>
+<p>For things like changing title of the head or add meta etc, we can do it directely in the javascript.</p>
+<p>就是说 /client/index.html 里不要有任何的 <code>&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;</code>，只要留个 <code>&lt;body&gt;&lt;/body&gt;</code>就可以了， react 在渲染的时候，会自动生成根元素 <code>&lt;div id=&quot;react-root&quot;&gt;</code>，并且自动把你的 <code>render(&lt;App /&gt;, document.getElementById(&quot;ele_id&quot;))</code>的 <code>&lt;div id=&quot;ele_id&quot;&gt;</code>生成出来然后包裹，不需要你在 html 文件里写出来这个 <code>&lt;div id=&quot;ele_id&quot;&gt;</code></p>
+<h2 id="getmeterdata-里同样一个数据被读取两次">getMeterData 里，同样一个数据被读取两次</h2>
+<p><a href="http://stackoverflow.com/questions/32207797/meteor-react-renders-twice-after-subscription-are-ready">http://stackoverflow.com/questions/32207797/meteor-react-renders-twice-after-subscription-are-ready</a></p>
+<p><a href="https://github.com/meteor/react-packages/blob/c9b1f285c438a399685dc7da7f43ea2bb6697eda/examples/react-todos/client/components/AppBody.jsx#L121-L123">https://github.com/meteor/react-packages/blob/c9b1f285c438a399685dc7da7f43ea2bb6697eda/examples/react-todos/client/components/AppBody.jsx#L121-L123</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/meteor-react-layout-and-flow-router-study/" title="meteor-react-layout与flow-router学习" target="_blank" rel="external">https://my101du.github.io/1/01/meteor-react-layout-and-flow-router-study/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/meteor-study/" title="meteor教程"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/markdown-%E8%BD%AC-json/"
+                    title="markdown 转 json"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

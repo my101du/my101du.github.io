@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        玩转路由器 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="极路由 进入 web 后台管理,而非默认的 admin_mobile 简化界面 默认的简化界面中，无法修改 dhcp 的 IP 范围 URL 改成 admin_web 即可 高级模式 进入后台，进入插件， 切换到“路由器信息” 底" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>玩转路由器 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="玩转路由器" />
+<meta property="og:description" content="极路由 进入 web 后台管理,而非默认的 admin_mobile 简化界面 默认的简化界面中，无法修改 dhcp 的 IP 范围 URL 改成 admin_web 即可 高级模式 进入后台，进入插件， 切换到“路由器信息” 底" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/router-advanced/" />
+
+<meta itemprop="name" content="玩转路由器">
+<meta itemprop="description" content="极路由 进入 web 后台管理,而非默认的 admin_mobile 简化界面 默认的简化界面中，无法修改 dhcp 的 IP 范围 URL 改成 admin_web 即可 高级模式 进入后台，进入插件， 切换到“路由器信息” 底">
+
+<meta itemprop="wordCount" content="11134">
+
+
+
+<meta itemprop="keywords" content="技能," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="玩转路由器"/>
+<meta name="twitter:description" content="极路由 进入 web 后台管理,而非默认的 admin_mobile 简化界面 默认的简化界面中，无法修改 dhcp 的 IP 范围 URL 改成 admin_web 即可 高级模式 进入后台，进入插件， 切换到“路由器信息” 底"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-router-advanced" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/router-advanced/"
+    >玩转路由器</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E6%8A%80%E8%83%BD/"> 技能 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/router-advanced/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 11134字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 23分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="极路由">极路由</h1>
+<h2 id="进入-web-后台管理而非默认的-admin_mobile-简化界面">进入 web 后台管理,而非默认的 admin_mobile 简化界面</h2>
+<p>默认的简化界面中，无法修改 dhcp 的 IP 范围</p>
+<p>URL 改成 admin_web 即可</p>
+<h2 id="高级模式">高级模式</h2>
+<p>进入后台，进入插件， 切换到“路由器信息”</p>
+<p>底部，展开“高级设置”</p>
+<p>申请开发者模式，申请。（需要注册账号）</p>
+<p>安装开发者模式插件， root系统的SSH端口号为1022，用户名: root，密码: 路由器后台密码；</p>
+<h2 id="安装-ss">安装 ss</h2>
+<p>智能插件 - 去往插件市场 - 全部插件</p>
+<p>然后随便在插件市场选一个插件</p>
+<p>地址是类似于是这样的</p>
+<p><a href="https://app.hiwifi.com/store.php?m=plugins&amp;a=install&amp;rid=r1593903593&amp;sid=382974826">https://app.hiwifi.com/store.php?m=plugins&amp;a=install&amp;rid=r1593903593&amp;sid=382974826</a>
+将后面的一串数字(382974826)改成 163116535 ，就可以看到ss插件了。安装即可。</p>
+<p>安装好以后，在配置参数页面配置好自己的账号密码以及加密方式。</p>
+<p>然后白名单模式需要填写一个名单，名单内的网站会走代理。代理的网址可以在github上找到相应的项目。（当然，也可以全局模式）</p>
+<p>这里我已经提取了一份gfwlist.txt （不是最新的），将内容复制到域名列表即可。</p>
+<h1 id="小米路由器">小米路由器</h1>
+<h2 id="远程下载">远程下载</h2>
+<h2 id="刷开发版本--root">刷开发版本 &amp; root</h2>
+<ol>
+<li>刷开发版：</li>
+</ol>
+<p><a href="http://www1.miwifi.com/miwifi_download.html">http://www1.miwifi.com/miwifi_download.html</a></p>
+<p>进入后台，选择常用设置，点击系统状态，点击手动升级
+选择你刚刚解压的固件开始升级</p>
+<ol start="2">
+<li>root：</li>
+</ol>
+<p>进入小米官方的root密码获取网址：https://d.miwifi.com/rom/ssh?userId=2193363448</p>
+<p>登入你的小米账号复制root密码和下载工具包
+下载工具包会出现一个警示点击接受即可</p>
+<p>准备一个U盘。注意U盘必须为（FAT/FAT32格式）否则无法识别
+将下载的工具包bin文件复制到U盘（FAT/FAT32格式）的根目录下，保证文件名为miwifi_ssh.bin
+断开小米路由器的电源，将U盘插入USB接口
+按住reset按钮之后重新接入电源，指示灯变为黄色闪烁状态即可松开reset键
+等待3-5秒后安装完成之后，小米路由器会自动重启</p>
+<p>注意，</p>
+<ol>
+<li>U盘一定不能有隐藏分区，用磁盘工具删除全部</li>
+<li>断电、插入U盘、按住reset, 插电源， 看到黄灯闪一秒后，就可以松开reset  不要一直按着，会变红灯。（这时U盘会有读数据的闪烁，如果失败，U盘会一直红色）</li>
+</ol>
+<p>ssh 登录 用户名是root，密码</p>
+<h2 id="安装-mt-工具箱-然后安装-ss-客户端">安装 mt 工具箱 ，然后安装 ss 客户端</h2>
+<p><a href="https://bbs.misstar.com/?thread-6.htm">https://bbs.misstar.com/?thread-6.htm</a></p>
+<pre><code class="language-shell">curl -s -k https://www.misstar.com/download/$(uname -m)/mtinstall -o /tmp/mtinstall &amp;&amp; chmod +x /tmp/mtinstall &amp;&amp; /tmp/mtinstall
+</code></pre>
+<p>mini 存储空间小，用 ”云安装“  （重启后配置丢失!!!  而添加gfwlist 后丢配置，所以还是一些“特殊”网站，本地备一个 v2ray  ss 客户端吧 或者换 R3G）</p>
+<p>如果改成 安装模式， 要把 U盘 拔掉，不然一直提示写入失败。(好像拔掉也没用)</p>
+<p>写入失败的原因是usb挂在的存储设备出现问题导致的。如果要正常写入请拔掉usb存储设备。本人亲测问题解决</p>
+<p>解决：
+手动升级刷MiWiFi开发版2.17.100成功，能正常上网。 (<a href="https://mirom.ezbox.idv.tw/miwifi/R1CM/roms-developer/">https://mirom.ezbox.idv.tw/miwifi/R1CM/roms-developer/</a>)
+进入https://d.miwifi.com/rom/ssh开启SSH成功，并下载工具包，并严格按工具包使用方法操作(ssh)
+再从手机APP绑定路由，在APP中卸载USB设备。再取下设备。
+刷入
+关掉自动升级？不知升级后会不会出问题
+（问题：路由出现卡死的情况后插件就会丢失）</p>
+<p>还有一个账号密码是什么鬼?</p>
+<p>请输入管理员用户名[admin]：
+请输入密码[misstar.com]：</p>
+<p>用户名：admin
+密  码：misstar.com
+工具箱：http://192.168.3.1:1314  (端口是错的 。。)
+工具箱：https://mt.misstar.com</p>
+<p>192.168.31.1:1024   这才是端口 1024</p>
+<p>路由器后台菜单上有显示MT工具箱就说明你安装成功  你必须使用 <a href="https://mt.misstar.com">https://mt.misstar.com</a> 访问工具箱登录界面</p>
+<p>目前支持设备：</p>
+<p>R1DY R2D RICM R3 R3D R3G R3L R3P
+arm路由: R1D R2D R3D，mips路由: R3 R3P R3G R1CM</p>
+<p>理论支持小米全系列路由，至少2.0支持的3.0都支持！</p>
+<p>云加载安装模式，在开机时联网重新下载插件，不占用路由空间（使用tmp缓存），原来小空间路由器（R3/R3G/Mini）将不需要外接U盘，理论上可支持青春版。</p>
+<p>这里的设置要注意DNS重定向关闭</p>
+<p>找不到插件列表</p>
+<p>打开浏览器F12，的控制台，可以看到有几行报错信息 链接复制出来，浏览器新开标签页打开。会提示不安全之类的，如下 选择继续前往，然后加载出一串JSON数据就OK了。回头刷新管理页面看&hellip;.</p>
+<p>安装”科学上网“插件</p>
+<p>添加 ss 服务器节点。  那么设置了“科学上网”的机器(默认) 就是 PAC (<code>/tmp/misstar/applications/ss/config/pac.conf</code>)</p>
+<ol>
+<li>打开 ip138.com 可以发现是国内地址</li>
+<li>google 搜索  ip  显示的就是 ss 服务器地址了(翻墙成功)</li>
+</ol>
+<p>设置自定义 gfwlist，添加原来没在 pac.conf 里的域名 后要重启路由器才能生效。。。</p>
+<p><a href="https://www.misstar.com/?thread-188.htm">https://www.misstar.com/?thread-188.htm</a></p>
+<p><a href="https://github.com/breakwa11/gfw_whitelist">https://github.com/breakwa11/gfw_whitelist</a></p>
+<p>telegram?
+<a href="https://bbs.misstar.com/?thread-12.htm">https://bbs.misstar.com/?thread-12.htm</a></p>
+<p>后面 apple-tv   netflix 就好了。。</p>
+<p>Koolproxy 广告过滤 待测试</p>
+<p>卸载 mt</p>
+<p>在工具箱管理界面里那个“卸载”点了没反应。</p>
+<pre><code class="language-shell">wget http://www.misstar.com/tools/uninstall.sh -O /tmp/uninstall.sh &amp;&amp; chmod +x /tmp/uninstall.sh &amp;&amp; /tmp/uninstall.sh
+
+</code></pre>
+<h3 id="改-20">改 2.0</h3>
+<pre><code class="language-shell">wget http://cloud.lifeheart.cn:188/miwifi/MT/tools/appstore/install.sh -O /tmp/install.sh &amp;&amp; chmod +x /tmp/install.sh &amp;&amp; /tmp/install.sh
+
+
+wget http://cloud.lifeheart.cn:188/miwifi/MT/tools/appstore/uninstall.sh -O /tmp/uninstall.sh &amp;&amp; chmod +x /tmp/uninstall.sh &amp;&amp; /tmp/uninstall.sh
+
+</code></pre>
+<h2 id="刷-pandorabox-推荐">刷 PandoraBox （推荐）</h2>
+<p>因为 MT 插件无法使用 “本地安装” 模式（ROM 空间不够），导致无法灵活添加 gfwlist （重启后丢失配置）</p>
+<p><a href="http://downloads.openwrt.org.cn/PandoraBox/Xiaomi-Mini-R1CM/stable/">http://downloads.openwrt.org.cn/PandoraBox/Xiaomi-Mini-R1CM/stable/</a>
+r1024版本比较纯净一点，基本上只集成了一些基本的功能，空闲空间大，比较适合老手折腾。r512版本集合了shadowsocks，transmission，迅雷等工具，更方便使用。而且实测过程中r512版本在折腾的过程中不太会出现莫名其妙的错误（后面会有一些解释），对于自己想加入Python等功能的来说也更方便配置</p>
+<p><a href="https://blog.phpgao.com/xiaomi_router_shadowsocks_libev_spec.html">https://blog.phpgao.com/xiaomi_router_shadowsocks_libev_spec.html</a>
+<a href="https://blog.nex3z.com/2015/12/20/%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8mini/">https://blog.nex3z.com/2015/12/20/%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8mini/</a></p>
+<p><a href="https://www.yanxurui.cc/posts/tool/2017-10-14-miwifi-mini-pandorabox-shadowsocks/">https://www.yanxurui.cc/posts/tool/2017-10-14-miwifi-mini-pandorabox-shadowsocks/</a>  (这是最好懂的！！)</p>
+<p><a href="https://leondong1993.github.io/2016/10/miRouter/">https://leondong1993.github.io/2016/10/miRouter/</a>
+<a href="https://menyifan.com/2015/10/06/mini2/">https://menyifan.com/2015/10/06/mini2/</a></p>
+<pre><code class="language-shell">scp /E/PandoraBox.bin root@192.168.31.1:/tmp/PandoraBox.bin
+
+ssh root@192.168.31.1
+mtd -r write /tmp/PandoraBox.bin OS1  # 有的叫 firmware
+
+# 疯狂闪动  w/e ...
+</code></pre>
+<p>灯变蓝后能搜到PandoraBox_开头的wifi，没有密码。</p>
+<p>192.168.1.1
+用户名root,初始密码为admin</p>
+<p>如果你的光猫是 192.168.1.1  一定要把 LAN 的 ip 改成别的网段，然后重启，不然会冲突。</p>
+<h3 id="翻墙原理与一些说明">翻墙原理与一些说明</h3>
+<p>开不开启透明代理？不开启的话默认是全局流量都通过 Shadowsocks 转发，基本上不是我们所乐见的，一方面很多 Shadowsocks 配置对于流量有限制，另外很多国内的网站去国外绕一圈没有太大必要。那么，我们需要一个路由表，用来区分哪些是中国的 IP，如果是中国的 IP 那么我们就直接访问就好。当然，这样也有不合理的地方，比如有些国外的网站并没有被墙，那么这部分其实也不需要透过 Shadowsocks 访问，要做到这一点 redsock2 据说可以用来判断是否被墙，当然对于我这种懒人来说，区分国内外的方式已经是可以接受的了。至于如何获得这份路由表，文章后面会谈到。</p>
+<p>不是使用 UDP 转发？如果你的 Shadowsocks 配置支持 UDP 转发，那么皆大欢喜，使用 UDP 转发可以省去 DNS 部分的处理。如果不支持就需要继续往下看。</p>
+<p>一般 DNS 查询使用 UDP，但是很多公共 DNS 会受到污染。这里基本上又有两个走向（都会使用到 ChinaDNS，之后谈到怎么配置 ChinaDNS）</p>
+<p>关于 ChinaDNS
+至于为什么要使用 ChinaDNS 可能会有疑问，如果我有一台不会被投毒的 DNS 转发服务器，或是通过强制 TCP 走 Shadowsocks 的方式来查询域名就可以得到正确的解析结果，那么，为什么还要加一层 ChinaDNS 呢？嗯，解析结果正确没有错，但是有个问题，正确的未必是合适的。</p>
+<h3 id="最终刷-1696-版-解决问题-512-版缺这缺那-还无法运行-ss哎-浪费了两个晚上">最终！刷 1696 版 解决问题， 512 版缺这缺那 ，还无法运行 ss&hellip;哎 浪费了两个晚上。</h3>
+<h3 id="这个最简单了-后面的扯来扯去太复杂-pandorabox用shadowsockschinadns实现智能翻墙">这个最简单了， 后面的扯来扯去太复杂。 PandoraBox用ShadowSocks&amp;ChinaDNS实现智能翻墙</h3>
+<p>ChinaDNS设置:</p>
+<p>端口1053</p>
+<p>上游 114.114.114.114,8.8.8.8</p>
+<p>中国路由表：配置更新ChinaDNS的更新 /etc/chinadns_chnroute.txt文件</p>
+<pre><code class="language-shell"># 手动
+wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | awk -F\| '/CN\|ipv4/ { printf(&quot;%s/%d\n&quot;, $4, 32-log($5)/log(2)) }' &gt; /etc/chinadns_chnroute.txt
+
+# 放到计划任务(【系统】【计划任务】中添加自动更新)
+40 8 * * * wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | awk -F\| '/CN\|ipv4/ { printf(&quot;%s/%d\n&quot;, $4, 32-log($5)/log(2)) }' &gt; /etc/chinadns_chnroute.txt
+</code></pre>
+<p>DHCP/DNS中【DNS转发】设置成【127.0.0.1#1053】</p>
+<p>切换到【HOSTS和解析文件】勾选【忽略解析文件】</p>
+<p>ShadowSocks设置: 勾选【透明代理】在【UDP转发】勾选【启用】UDP转发转发端口务必跟DHCP/DNS中【DNS转发】
+端口 1081
+忽略列表：/etc/chinadns_chnroute.txt</p>
+<p>代理协议： TCP+UDP (可能没有这项)</p>
+<p>UDP 转发 （看下面）
+本地端口1153
+UPD转发地址：8.8.8.8:53</p>
+<p>重启下路由器生效</p>
+<p>如何判断是否实现智能翻墙可以查询下IP便知
+<a href="https://www.whatismyip.com/">https://www.whatismyip.com/</a>  显示ShadowSocks设置好的代理IP
+<a href="http://www.ip.cn/">http://www.ip.cn/</a>         显示国内直连IP
+二处IP不同即成功实现无障碍扶墙</p>
+<p>PS:路由器PandoraBox每次重启貌似都要重新在ShadowSocks中点击【保存&amp;应用】重启一次才行。或者在【系统】【启动项】在【本地启动脚本】里加入</p>
+<pre><code class="language-shell">/etc/init.d/shadowsocks start
+</code></pre>
+<p>启动脚本插入到&rsquo;exit 0&rsquo;之前即可随系统启动运行。</p>
+<p>google 还是打不开</p>
+<p>运行 /etc/init.d/shadowsocks start 报错</p>
+<blockquote>
+<p>/etc/rc.common: line 138: ss_tunnel_stop: not found
+iptables: Chain already exists.
+ipset v6.20.1: Error in line 2: Syntax error: cannot parse /etc/chinadns_chnroute.txt: resolving to IPv4 address failed</p>
+</blockquote>
+<p>按下面的两个文件，修改内容，重启。restart (默认的文件不全，坑爹啊)</p>
+<h3 id="r512-内置了sschinadns-c默认是运行不起来ss服务的即使你填好了ss配置">r512 内置了SS，ChinaDNS-C，默认是运行不起来SS服务的，即使你填好了SS配置。</h3>
+<p>先修改/etc/config/shadowsocks 配置，修改为：</p>
+<pre><code class="language-shell">config shadowsocks 'config'
+    option blacklist_enabled '0'
+    option remote_server 'xxxxxxxx'
+    option remote_port 'xxxxx'
+    option local_address '0.0.0.0'
+    option local_port  '1080'
+    option password 'xxxxxx'
+    option cipher 'xxxxxx'
+    option redir_enabled '1'
+    option whitelist_enabled '1'
+    option enabled '0'
+    option redir_port '1080'
+    option tunnel_enable '1'
+    option tunnel_port  '1053'
+    option DNS '8.8.8.8:53'
+</code></pre>
+<p>简单解释一下原理
+网上的教程不少，但大都专注于具体的操作，对原理的解释不多，我简单写写自己的理解。</p>
+<p>上面的配置文件让Shadowsocks把8.8.8.8也就是谷歌的DNS的53端口转发到本地的1053。
+ChinaDNS中可以配置国内DNS，它起到了混合国内DNS和谷歌DNS的功能，结果在1053端口。
+Dnsmasq配置为忽略其他解析只转发1053端口，让局域网内的用户可以用路由器作为DNS服务器。
+Shadowsocks还有一个工作是对所有的网络访问进行转发，但国内IP除外。
+经过上面的流程，就实现了近乎透明的网络访问，但还是有缺陷的：</p>
+<p>所有的非国内IP都走代理，有可能带来浪费和速度上的损失，某些需要IP登录的功能失效。
+不能很方便的开/关和配置黑/白名单。
+和本地的比，我感觉不太稳定。</p>
+<p>修改/etc/init.d/shadowsocks 启动脚本:</p>
+<pre><code class="language-shell">start() {
+    # HACK fd
+    ulimit -n 4096
+
+    config_load &quot;shadowsocks&quot;
+    local enabled remote rport lport pass redir_enabled redir_port          whitelist_enabled blacklist_enabled
+    config_get enabled config enabled
+    config_get remote config remote_server
+    config_get rport config remote_port
+    config_get lport config local_port
+    config_get laddress config local_address
+    config_get cipher config cipher
+    config_get pass config password
+    config_get redir_enabled config redir_enabled
+    config_get tunnel_enable config tunnel_enable
+        config_get tunnel_port  config tunnel_port
+    config_get DNS config DNS
+    config_get redir_port config redir_port
+    config_get whitelist_enabled config whitelist_enabled
+    config_get blacklist_enabled config blacklist_enabled
+
+    [ -z &quot;$remote&quot; ] || [ -z &quot;$rport&quot; ] || [ -z &quot;$pass&quot; ] &amp;&amp; {
+        echo &quot;missing parameters. check config&quot;
+        return 1
+    }
+
+    [ &quot;$enabled&quot; = '1' ] &amp;&amp; {
+        service_start /usr/bin/ss-local             -s &quot;$remote&quot;            -p &quot;$rport&quot;             -l &quot;$lport&quot;             ${cipher:+-m $cipher}           -k &quot;$pass&quot;          -u          -f &quot;$ss_local_PID_FILE&quot;
+    }
+
+    [ &quot;$redir_enabled&quot; = '1' ] &amp;&amp; {
+        service_start /usr/bin/ss-redir             -s &quot;$remote&quot;            -p &quot;$rport&quot;             -l &quot;$redir_port&quot;                         -b &quot;$laddress&quot;             ${cipher:+-m $cipher}           -k &quot;$pass&quot;          -f &quot;$ss_redir_PID_FILE&quot;
+
+        remoteip=&quot;`resolveip -t5 $remote`&quot;
+
+        iptables -t nat -N SHADOWSOCKS
+        iptables -t nat -A SHADOWSOCKS -d 0.0.0.0/8 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 10.0.0.0/8 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 127.0.0.0/8 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 169.254.0.0/16 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 172.16.0.0/12 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 192.168.0.0/16 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 224.0.0.0/4 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d 240.0.0.0/4 -j RETURN
+        iptables -t nat -A SHADOWSOCKS -d $remoteip -j RETURN
+
+        [ &quot;$blacklist_enabled&quot; = '1' ] &amp;&amp; {
+            sed -e &quot;s/^/-A blacklist &amp;/g&quot; -e &quot;1 i\-N blacklist nethash --hashsize 64&quot; $ipset_blacklist | ipset -R -!
+            iptables -t nat -A SHADOWSOCKS -p tcp -m set --match-set blacklist src -j RETURN
+        }
+
+        if [ &quot;$whitelist_enabled&quot; = '1' ];then
+            sed -e &quot;s/^/-A whitelist &amp;/g&quot; -e &quot;1 i\-N whitelist nethash --hashsize 4096&quot; $ipset_whitelist | ipset -R -!
+            iptables -t nat -A SHADOWSOCKS -p tcp -m set ! --match-set whitelist dst -j REDIRECT --to-ports $redir_port
+        else
+            iptables -t nat -A SHADOWSOCKS -p tcp -j REDIRECT --to-ports $redir_port
+        fi
+        iptables -t nat -I zone_lan_prerouting -j SHADOWSOCKS
+    }
+    # 这段就是加进去的
+     [ &quot;$tunnel_enable&quot; = '1' ] &amp;&amp; {
+                service_start /usr/bin/ss-tunnel                         -s &quot;$remote&quot;                         -p &quot;$rport&quot;                         -l &quot;$lport&quot;                         ${cipher:+-m $cipher}                         -k &quot;$pass&quot;                         -u                         -l &quot;$tunnel_port&quot;                         -L &quot;$DNS&quot;                         -f &quot;$ss_tunnel_PID_FILE&quot;
+        }
+}
+
+ss_local_stop() {
+    service_stop /usr/bin/ss-local &amp;&amp; {
+        rm &quot;$ss_local_PID_FILE&quot;
+    }
+}
+
+# 原文件漏了这个函数 补上
+ss_tunnel_stop() {
+        service_stop /usr/bin/ss-tunnel &amp;&amp; {
+                rm &quot;$ss_tunnel_PID_FILE&quot;
+        }
+}
+
+ss_redir_stop() {
+    service_stop /usr/bin/ss-redir &amp;&amp; {
+        iptables -t nat -D zone_lan_prerouting -j SHADOWSOCKS &amp;&gt; /dev/null
+        iptables -t nat -F SHADOWSOCKS &amp;&gt; /dev/null
+        sleep 1
+        iptables -t nat -X SHADOWSOCKS &amp;&gt; /dev/null
+        ipset destroy whitelist &amp;&gt; /dev/null
+        ipset destroy blacklist &amp;&gt; /dev/null
+        rm &quot;$ss_redir_PID_FILE&quot;
+    }
+}
+
+stop() {
+    ss_local_stop
+    ss_redir_stop
+        ss_tunnel_stop
+}
+</code></pre>
+<h3 id="r1024-手动安装-shadowsocks-libev-spec">r1024 手动安装 shadowsocks-libev-spec</h3>
+<p>shadowsocks-libev-spec是shadowsocks-libev项目针对openwrt优化过的版本，项目地址，项目主页， <a href="http://openwrt-dist.sourceforge.net/">http://openwrt-dist.sourceforge.net/</a>而shadowsocks-libev则是用c语言，使用libev库按照python原版重新实现的版本。相比python原版，占用资源更小，速度更快。</p>
+<p>将该项目官方源加入到opkg配置中去 <code>etc/opkg.conf</code> 末尾 ，根据不同的cpu源地址略有不同，项目主页里有具体地址</p>
+<p>类似</p>
+<pre><code>src/gz openwrt_dist http://openwrt-dist.sourceforge.net/releases/ramips/packages
+src/gz openwrt_dist_luci http://openwrt-dist.sourceforge.net/releases/luci/packages
+</code></pre>
+<p>也可以在路由器luci网页配置中的系统&gt;软件包&gt;配置下直接加进去，然后点右下角的提交按钮。</p>
+<p>配置好之后执行以下命令，刷新列表，安装依赖包</p>
+<pre><code class="language-shell">opkg update
+
+#可以libpolarssl代替libopenssl，前者体积较小支持的加密方式也较少，适用于内存紧张的设备。
+opkg install ip libc libgcc libgmp libnettle libopenssl zlib
+opkg install ipset iptables-mod-tproxy
+
+#可能还需要安装以下依赖包
+opkg install kmod-nfnetlink kmod-ipt-ipset kmod-ipt-tproxy libmnl libpthread
+
+# 最后安装实际要用到的软件：
+opkg install shadowsocks-libev-spec ChinaDNS luci-app-shadowsocks-spec luci-app-chinadns
+
+#截止写文章为止官方源里并没有包含shadowsocks-libev-spec的预编译包，只能到 https://sourceforge.net/projects/openwrt-dist/files/shadowsocks-libev/2.4.8-8816fa1/ 手动下载，shadowsocks-libev-spec的最新版是2.4.8-2，请根据cpu型号选择下载。然后用scp或者sftp上传至路由器中安装。
+</code></pre>
+<p>装完ipset后可能会有出错信息，没关系，重启路由器后就可以了。</p>
+<p>shadowsocks需要配置国内IP忽略列表才能工作，全新安装后并没有自带需要自行下载。我这里是作为计划任务，每天4点下载更新该列表，列表文件路径为/etc/chinadns_chnroute.txt后面配置的时候要用到。</p>
+<pre><code class="language-shell">* 4 * * * wget -O- 'http://ftp.apnic.net/apnic/stats/apnic/delegated-apnic-latest' | awk -F\| '/CN\|ipv4/ { printf(&quot;%s/%d\n&quot;, $4, 32-log($5)/log(2)) }' &gt; /etc/chinadns_chnroute.txt
+
+</code></pre>
+<h3 id="配置shadowsocks">配置shadowsocks</h3>
+<p>在服务菜单下应该就可以看到ChinaDNS和ShadowSocks两项了。但是还没有运行，我们需要对其配置。</p>
+<p>使用的方案为：路由器接到DNS解析请求后转发到ChinaDNS来处理，ChinaDNS根据国内IP忽略列表来识别是否为国内网站，是国内网站的交给国内DNS服务器处理，否则交给shadowsocks走代理。而shadowsocks开启UDP转发功能（服务器端和客户端都要开启），将DNS请求转发给国外DNS服务器解析，避免DNS污染问题。</p>
+<p>这样只要是国外网站就走代理，保证万无一失，且判断速度也较快，只是进行查表操作。不像redsocks那样，需要先尝试连接目标网站，无法连接后再走代理。缺点是有些没有被墙的国外网站也被强制走代理。</p>
+<p>先进行服务器配置，</p>
+<ul>
+<li>别名 随便写一个</li>
+<li>一次验证 根据服务器情况设置，需要一次验证的就勾选，不需要的就不勾</li>
+<li>服务器地址 填写shadowsocks服务器的地址，请填写IP地址 避免不必要的麻烦</li>
+<li>服务器端口 填写shadowsocks服务器的端口号</li>
+<li>本地端口 默认为1080</li>
+<li>连接超时 默认填60即可，即60秒后超时</li>
+<li>密码 填写shadowsocks服务器密码</li>
+<li>加密方式 必须与shadowsocks服务器加密方式一致</li>
+</ul>
+<p>然后配置UDP转发</p>
+<ul>
+<li>启用 打勾</li>
+<li>UDP本地端口 可以填写默认的1153</li>
+<li>UDP转发地址 填写国外的‘干净’DNS服务器地址，我这里使用Google的DNS地址8.8.4.4:53</li>
+</ul>
+<p>访问控制里只需配置接口－WAN下面的被忽略IP列表，在里面选&ndash; 自定义 &ndash;然后填写上面下载的国内IP忽略列表/etc/chinadns_chnroute.txt。如果你和我一样保持忽略列表路径和文件名为默认值的话，填写后这一栏会变成ChinaDNS路由表。</p>
+<p>再在顶部全局设置里的全局服务器选择刚才你配置好的服务器配置即可。</p>
+<p>最后点击页面右下角的保存&amp;应用按钮即可运行shadowsocks了。页面刷新后看到顶部运行状态一栏内：透明代理显示运行中，UDP转发显示运行中，即表示正确配置并运行了。</p>
+<p>配置ChinaDNS</p>
+<ul>
+<li>启用和启用双向过滤都勾选上</li>
+<li>本地端口 保持默认的5353即可</li>
+<li>国内路由表 填写上面下载的国内IP忽略列表/etc/chinadns_chnroute.txt，注意 这一项需要与上面的访问控制&gt;接口－WAN&gt;被忽略IP列表保持一致</li>
+<li>上游服务器 * 需要填写两个DNS服务器地址，第一个写国内DNS服务器地址，第二个写转发给shadowsocks的UDP转发地址，端口号即是上面UDP本地端口的值。两个地址间用半角逗号分隔</li>
+</ul>
+<p>最后点击页面右下角的保存&amp;应用按钮即可运行ChinaDNS了。</p>
+<p>最后需要进行DNS转发设置</p>
+<p>切换到网络&gt;DHCP/DNS，在服务器设置下面的一般设置&gt;DNS转发项内填写127.0.0.1#5353，其中的5353即是上面ChinaDNS里本地端口的值。</p>
+<p>然后在服务器设置下面的HOSTS和解析文件&gt;忽略解析文件项打勾。</p>
+<p>整个防止DNS污染的流程如下</p>
+<p>DNS请求
+└─转发给ChinaDNS(127.0.0.1#5353)
+└─根据国内路由表(/etc/chinadns_chnroute.txt)判断是否为国内网站
+│
+├─国内网站交给上游服务器(114.114.114.114)处理
+│
+└─国外网站交给shadowsocks的UDP转发(127.0.0.1:1153)处理
+└─shadowsocks的UDP转发给国外DNS服务器(8.8.4.4:53)解析</p>
+<p>所有连到这台路由器上的设备都可以透明翻墙，对于手机，PS4，PSV等翻墙设置麻烦的设备尤其方便。</p>
+<h3 id="另外一篇shadowsocks--gfwlist-实现路由器自动翻墙">另外一篇：Shadowsocks + GfwList 实现路由器自动翻墙</h3>
+<p>(1)只有被墙的站点才走代理: gfwlist
+对于被墙的域名，dnsmasq使用ss-tunel进行解析，ss-tunel通过ss-server转发udp报文到国外的dns服务器，比如8.8.8.8，dnsmasq把解析出来的ip加入到一个集合中，比如gfwlist  (好复杂。。。)
+iptabel将目的ip位于gfwlist集合中的tcp报文转发到ss-redir
+ss-redir将tcp流通过ss-server转发到目的服务器（被墙的服务器）</p>
+<p>(2)另一种翻墙的方式是将除国内域名以外的所有域名都通过iptables转发到shadowsocks</p>
+<pre><code class="language-shell">opkg update
+opkg install iptables-mod-nat-extra ipset
+opkg remove dnsmasq &amp;&amp; opkg install dnsmasq-full
+
+# 一键
+opkg install shadowsocks-libev
+</code></pre>
+<p>这里是原版shadowsocks-libev，很多教程安装的是shadowsocks-libev-spec，shadowsocks-libev-spec是针对openwrt的优化版
+也有教程安装了luci-app-shadowsocks-spec，它相当于shadowsocks-libev的ui，可以在pandorabox的管理后台进行shadowsocks的启动和关闭，对于程序员而言当然不需要这个</p>
+<pre><code class="language-shell">opkg files shadowsocks-libev
+# /usr/bin/ss-local  #建立本地 SOCKS 代理
+# /usr/bin/ss-redir #建立透明代理
+# /usr/bin/ss-tunnel # 提供 UDP 转发
+</code></pre>
+<p>断电后路由器会自动恢复出厂设置，据说需要升级固件</p>
+<p>PandoraBox-ralink-mt7620-xiaomi-mini-2018-12-14-git-1b9b0f382-squashfs-sysupgrade.bin</p>
+<p>安装shadowsocksr-libev 因为有些ss服务商都只提供shadowsocksr</p>
+<p>DNS不经过代理服务器，而是直接通过8.8.8.8#53解析</p>
+<pre><code class="language-shell">vim /etc/dnsmasq.d/dnsmasq_gfwlist_ipset.conf
+%s/127.0.0.1#5353/8.8.8.8#53/g
+</code></pre>
+<p>所以就不需要/usr/bin/ssr-tunnel了</p>
+<p>使用新的ssr服务</p>
+<pre><code class="language-json">{
+    &quot;server&quot;: &quot;hk2.dawangidc.org&quot;,
+    &quot;server_port&quot;: &quot;16230&quot;,
+    &quot;password&quot;: &quot;xxx&quot;,
+    &quot;method&quot;: &quot;chacha20&quot;,
+    &quot;protocol&quot;: &quot;auth_chain_a&quot;,
+    &quot;obfs&quot;: &quot;tls1.2_ticket_auth&quot;
+}
+</code></pre>
+<h3 id="部分设备如笔记本一直提示-wifi-密码错误">部分设备（如笔记本）一直提示 wifi 密码错误</h3>
+<p>其他机器都能连上，就笔记本一直提示错误（win10）</p>
+<p>找到原因了， 浏览器的问题 。 换一个浏览器 就可以了    IE</p>
+<h2 id="老毛子-padavan--比-pandorabox-更方便">老毛子 Padavan  比 PandoraBox 更方便</h2>
+<p>不要随便改那些什么 opg 自动更新的配置，有次改了，script 自动从 2018更新带 2019年，结果 ss 彻底用不了了。。。。 只能恢复出厂设置</p>
+<p><a href="https://sixu.life/xiaomi-mini-padavan.html">https://sixu.life/xiaomi-mini-padavan.html</a>
+<a href="https://blog.csdn.net/xhhjin/article/details/53458633">https://blog.csdn.net/xhhjin/article/details/53458633</a></p>
+<h3 id="刷入不死breed来加载-padavan-固件">刷入不死breed(来加载 Padavan 固件)</h3>
+<pre><code class="language-shell">cd /tmp
+mtd -r write breed-mt7620-xiaomi-mini.bin Bootloader
+</code></pre>
+<p>刷入后，机器会重新启动，指示灯变蓝.</p>
+<h3 id="进入-web-刷机模式刷-padavan">进入 web 刷机模式，刷 Padavan</h3>
+<p>需要确保电脑设置为自动获取 IP 地址，并且是用 <strong>网线</strong> 连接服务器（此时没有 wifi）</p>
+<p>1，断开小米路由器的电源，用牙签等尖锐物按下路由器 reset 按钮后重新接入电源；
+2，等到 mini 路由器的灯开始闪烁或 ping 通时即表明进入 Web 刷机模式，松开 reset 键。</p>
+<p>输入 192.168.1.1，就进入不死 Breed 的控制台了</p>
+<p>在 Breed Web 控制台依次选择：固件更新 -&gt; 常规固件 -&gt; 勾选固件复选框 -&gt; 浏览，选择上一步下载好的 Padavan 固件上传，刷入搞定！</p>
+<p>此时在启动方式里面选择的是普通固件，如果想刷回小米原厂固件，进入“固件启动设置页面”，将固件类型选择为“小米 Mini”保存，然后就可以完美启动小米 Mini 原厂固件了，而且可以使用串口 (TTL) 登录。</p>
+<p>另外，上一步下载的 Padavan 固件是我备份的，最新的版本可以看恩山无线论坛老毛子 Padavan 固件帖子：http://www.right.com.cn/forum/thread-161324-1-1.html，在里面可以找到适配小米路由器 mini 的版本和最新固件的云盘下载地址。</p>
+<p>启动方式里先选”普通固件“</p>
+<p>Padavan 默认配置
+旧固件网关：192.168.1.1
+新固件网关：192.168.123.1
+管理页面：http://my.router/
+管理账号：admin/admin</p>
+<p>wifi:1234567890
+刷机不恢复默认值</p>
+<p>最后，浏览器输入 <a href="http://my.router/">http://my.router/</a> 对 Padavan 进行一些简单的设置，比如扩展功能中的 ShadowSocks 和广告屏蔽功能，这样所有连接上路由器的手机，电脑都可以进行智能上网和广告过滤了，再也不用一个个配置了！</p>
+<p>速度问题：</p>
+<p>我吧之前翻出来的mini刷了这个，然后吧2.4G关了，单单使用5G速度最多5M/s，幸好不断流，但是配置太低了，估计3G会好很多</p>
+<h3 id="老毛子下-5g-信号不是很好">老毛子下 5G 信号不是很好。</h3>
+<p>测速发现下载只有 20Mb ,而上传有 50Mb（200M宽带），路由器旁边客厅还可以到 170~180。</p>
+<p>比之前原版小米路由的5G穿墙差多了。  连路由器管理界面都各种卡卡卡</p>
+<p>带宽 改成 20/40,   （其实 20/40/80 没影响）
+然后关闭广告屏蔽插件(Adbyby )
+无线信道选 149 (165 反而低一些) 所以这个是最关键的。。。。
+固定发射速率链接模式:  (默认是 否  不要乱改，否则无法连接了！我改了下88M 的那个 上不了网了。45M 那个，速度反而低了)
+无线模式，固定到 n/ac mix  不要那些老的模式了</p>
+<p>果然可以跑到 110M+ 了(虽然达不到客厅里接近 200M 带宽满速)！！！ 不用再换回小米原版路由了（MT 工具箱就像半成品，特别是 gfwlist 不够智能）</p>
+<h3 id="samba-aidisk">samba （aidisk）</h3>
+<p>不要用那个 aidisk 的向导，它创建的 admin/family 无法设置”账号“级别的权限</p>
+<p>必须进高级设置，usb 应用，手动新增账号和调整文件夹权限。</p>
+<h3 id="启用-lnmp-以及各种服务">启用 lnmp 以及各种服务</h3>
+<p>插上 U 盘(ext4  ntfs)，开始 wordpress,  nextcloud 等同步服务</p>
+<p>在U盘（建议先格式化为ext4格式）根目录新建一个opt文件夹，插到路由器 
+格式化U盘教程</p>
+<pre><code>    2.  USB 应用程序： 允许运行 Optware  开启Entware
+</code></pre>
+<p>要先 更新 onmp 脚本 否则 打不开的。</p>
+<p>应用后，查看日志，在安装了。。。。比较慢。。 这时  探针什么的都是打不开的 提示 refuse.</p>
+<h3 id="padavan-查看网络流量">padavan 查看网络流量</h3>
+<p>高级-网络信息-流量监控 (不准。。。)  例如我一台笔记本，用百度网盘下了大量视频，居然这里显示还不到 1G</p>
+<h3 id="对客户端限速">对客户端限速</h3>
+<p>在高级设置&gt;自定义设置&gt;脚本&gt;在防火墙规则 (Emong’s Qos) 启动后执行:内添加以下代码</p>
+<pre><code class="language-shell"># 限制玩客云设备 192.168.123.204 每秒钟通过 200×1.5=300K ；超过的流量都丢弃 (设置的太少，会导致无法开机)
+# 将192.168.123.204修改成你玩客云的ip
+iptables -t mangle -I FORWARD 1 -s 192.168.123.204 -m limit --limit 200/s --limit-burst 1000 -j ACCEPT
+
+iptables -t mangle -A FORWARD -s 192.168.123.204 -j DROP
+</code></pre>
+<p>查询限速命令是否生效？</p>
+<p>在高级设置&gt;系统管理&gt;控制台&gt;输入 <code>iptables -t mangle -nvL FORWARD</code> &gt;刷新,如果结果出现刚才设定的IP则为成功。</p>
+<h3 id="virtualhere-网络文件远程访问">virtualhere 网络文件远程访问</h3>
+<h3 id="v2ray">V2ray</h3>
+<p>SS 服务 老是被墙 不稳定（服务中断，需要改端口重启）</p>
+<h4 id="准备配置文件">准备配置文件</h4>
+<p>电脑上打开v2rayN，点击菜单栏中的“参数设置”，点击“路由设置”，“域名策略”选“AsIs”，“预定义规则”选“绕过局域网及大陆地址”</p>
+<p>想要使用的节点上单击右键，选择“导出所选服务器为客户端配置”,</p>
+<p>找到 outbound 部分， v2ray 服务器配置  记住下面几个关键内容 address, id, alterId,  port</p>
+<pre><code class="language-json">tag: 'my-server'
+
+&quot;address&quot; : &quot;xxx.xxx.xxx.xxx&quot;,
+&quot;users&quot; : [
+  {
+    &quot;id&quot; : &quot;8b1418eb-d85e-45be-a40a-68d96b34472f&quot;,
+    &quot;alterId&quot; : 233,
+    &quot;security&quot; : &quot;auto&quot;,
+    &quot;level&quot; : 0
+  }
+],
+&quot;port&quot; : 47338
+</code></pre>
+<p>替换下面的“黑名单”版配置文件中服务器配置（绕过大陆ip,其他IP全部走代理）</p>
+<p>用配置文件生成器</p>
+<p><a href="https://github.com/veekxt/v2ray-template/blob/master/kcp%2Bvmess/config_server.json">https://github.com/veekxt/v2ray-template/blob/master/kcp%2Bvmess/config_server.json</a></p>
+<p>得到一个配置文件</p>
+<pre><code class="language-json">{
+  &quot;log&quot;: {
+    &quot;access&quot;: &quot;&quot;,
+    &quot;error&quot;: &quot;&quot;,
+    &quot;loglevel&quot;: &quot;&quot;
+  },
+  &quot;inbound&quot;: {
+    &quot;port&quot;: 1080,
+    &quot;listen&quot;: &quot;0.0.0.0&quot;,
+    &quot;protocol&quot;: &quot;socks&quot;,
+    &quot;settings&quot;: {
+      &quot;auth&quot;: &quot;noauth&quot;,
+      &quot;udp&quot;: true,
+      &quot;ip&quot;: &quot;127.0.0.1&quot;,
+      &quot;clients&quot;: null
+    },
+    &quot;streamSettings&quot;: null
+  },
+  &quot;outbound&quot;: {
+    &quot;tag&quot;: &quot;agentout&quot;,
+    &quot;protocol&quot;: &quot;vmess&quot;,
+    &quot;settings&quot;: {
+      &quot;vnext&quot;: [
+        {
+          &quot;address&quot;: &quot;123.123.123.123&quot;,
+          &quot;port&quot;: 47338,
+          &quot;users&quot;: [
+            {
+              &quot;id&quot;: &quot;8b1418eb-d85e-45be-a40a-68d96b34472f&quot;,
+              &quot;alterId&quot;: auto,
+              &quot;security&quot;: &quot;auto&quot;
+            }
+          ]
+        }
+      ],
+      &quot;servers&quot;: null
+    },
+    &quot;streamSettings&quot;: {
+      &quot;network&quot;: &quot;ws&quot;,
+      &quot;security&quot;: &quot;tls&quot;,
+      &quot;tcpSettings&quot;: null,
+      &quot;kcpSettings&quot;: null,
+      &quot;wsSettings&quot;: {
+        &quot;connectionReuse&quot;: true,
+        &quot;path&quot;: &quot;/&quot;,
+        &quot;headers&quot;: {
+          &quot;Host&quot;: &quot;abcd你的信息&quot;
+        }
+      }
+    },
+    &quot;mux&quot;: {
+      &quot;enabled&quot;: true
+    }
+  },
+  &quot;inboundDetour&quot;: [
+    {
+      &quot;port&quot;: &quot;1099&quot;,
+      &quot;listen&quot;: &quot;0.0.0.0&quot;,
+    &quot;protocol&quot;: &quot;dokodemo-door&quot;,
+    &quot;settings&quot;: {
+      &quot;network&quot;: &quot;tcp,udp&quot;,
+      &quot;timeout&quot;: 300,
+      &quot;followRedirect&quot;: true
+    }
+    }
+  ],
+  &quot;outboundDetour&quot;: [
+    {
+      &quot;protocol&quot;: &quot;freedom&quot;,
+      &quot;settings&quot;: {
+        &quot;response&quot;: null
+      },
+      &quot;tag&quot;: &quot;direct&quot;
+    },
+    {
+      &quot;protocol&quot;: &quot;blackhole&quot;,
+      &quot;settings&quot;: {
+        &quot;response&quot;: {
+          &quot;type&quot;: &quot;http&quot;
+        }
+      },
+      &quot;tag&quot;: &quot;blockout&quot;
+    }
+  ],
+  &quot;dns&quot;: {
+    &quot;servers&quot;: [
+      &quot;119.29.29.29&quot;,
+      &quot;localhost&quot;
+    ]
+  },
+  &quot;routing&quot;: {
+    &quot;strategy&quot;: &quot;rules&quot;,
+    &quot;settings&quot;: {
+      &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,
+      &quot;rules&quot;: [
+        {
+          &quot;type&quot;: &quot;field&quot;,
+          &quot;port&quot;: null,
+          &quot;outboundTag&quot;: &quot;direct&quot;,
+          &quot;ip&quot;: [
+            &quot;0.0.0.0/8&quot;,
+            &quot;10.0.0.0/8&quot;,
+            &quot;100.64.0.0/10&quot;,
+            &quot;127.0.0.0/8&quot;,
+            &quot;169.254.0.0/16&quot;,
+            &quot;172.16.0.0/12&quot;,
+            &quot;192.0.0.0/24&quot;,
+            &quot;192.0.2.0/24&quot;,
+            &quot;192.168.0.0/16&quot;,
+            &quot;198.18.0.0/15&quot;,
+            &quot;198.51.100.0/24&quot;,
+            &quot;203.0.113.0/24&quot;,
+            &quot;::1/128&quot;,
+            &quot;fc00::/7&quot;,
+            &quot;fe80::/10&quot;
+          ],
+          &quot;domain&quot;: null
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+<h4 id="扩展功能----搭建web服务----v2ray">扩展功能  - 搭建web服务  - V2Ray</h4>
+<p>v2ray proxy 开关 打开,
+开启透明代理  打开</p>
+<p>粘贴上面的配置文件到 v2ray_config_script</p>
+<p>应用本页设置, 等待, 会提示找不到并下载v2ctl, geoip.dat  /opt/bin/v2ray 等文件</p>
+<p>查看路由器log，如有提示“守护进程启动”即为启动成功。（如果你的路由器没有安装v2ray，这一步会自动下载安装v2ray，在内存允许的情况下不需要插入u盘</p>
+<p>开启chinadns
+经过上一步，应该可以正常访问外网。但有可能出现”访问国内网站很慢“的情况，这时就需要开启chinadns，智能分流。</p>
+<p>点击“搭建web环境”，”chinadns“，</p>
+<p>打开“chinadns”的开关，其他默认，</p>
+<p>如图（我的图稍有修改，你们的先按默认就行），点击“应用本页面设置”，稍等即可。之后访问国内网站应该是直连，国外网站应该是代理。</p>
+<p>如果出现微信、QQ、淘宝等经常谜之慢，加载龟速的情况，请将chinadns中，“要使用的DNS服务器”里面的服务器改为以下内容（我推测是因为默认使用的DNS服务器有国外的openDNS的缘故。这里自定义了阿里云DNS，腾讯DNS，114DNS，以及Google DNS）：</p>
+<p>223.5.5.5,119.29.29.29,114.114.114.114,8.8.8.8</p>
+<p>如果你的路由器没有安装chinadns，点击“应用本页面设置”后会自动下载相关程序，进行安装，通常会很快。
+chinadns要在v2ray完全启动，即看到“守护进程启动”后再开启。</p>
+<h4 id="问题--dnsmasq11043-exiting-on-receipt-of-sigterm">问题  dnsmasq[11043]: exiting on receipt of SIGTERM</h4>
+<p>根据 #199 outboundDetour 这个配置项已经废弃, 所以配置里的 outboundDetour 并没有起作用, 因此没有 direct 这个 tag. 只要把它变为 其中一个 outbound 就可以了</p>
+<h1 id="远程下载-1">远程下载</h1>
+<h2 id="迅雷远程">迅雷远程</h2>
+<p>配置扩展环境</p>
+<p>找不到激活码</p>
+<p>关闭迅雷远程几次 http://192.168.3.1:9000/getsysinfo 多刷新几次 就可以了绑定了 到时候备份下保存下xunlei 文件夹下 xunlei\cfg\etm.cfg 这是关于迅雷远程id绑定信息文件 可以用于任何一台有远程固件的路</p>
+<p>在系统管理-控制台输入  wget -qO- http://127.0.0.1:9000/getsysinfo   也没用。</p>
+<p>2019.3</p>
+<p>远程迅雷早已经废掉了，就算给你激活码也用不了，警察显示下载器不在线，要么用AIRA2或者TR，要么自己安装电驴或者QB等</p>
+<p>换 aria2</p>
+<h2 id="aria2">aria2</h2>
+<h1 id="接移动硬盘">接移动硬盘</h1>
+<h2 id="aidisk">aidisk</h2>
+<p>设置账号密码  admin pe&hellip;.  family 8&hellip;4</p>
+<p>华硕 ddns     z.y.asuscomm.com (非法注册请求，跳过吧)</p>
+<h2 id="设置">设置</h2>
+<p>高级设置 USB 应用设置</p>
+<h2 id="供电的问题">供电的问题</h2>
+<p>最好接 2.5 的 不需要外接供电的移动硬盘</p>
+<p>我打开USB3.0，有线及WIFI都正常使用，在线视频及下载也没发现不妥。不过电脑大批量往里写文件出过问题（是大批量文件，总容量达300G）！往里写大文件速度在80M~110M/S，几乎是网速的极限，还受移动硬盘的影响（用硬盘盒+3.5寸硬盘，速度不稳，接电脑也会掉速到80M）。是拷贝2~3G大文件的速度。开始一次拷贝了10来G文件都正常，接着再一次性拷贝约300G文件，几小时后发现杯具了——硬盘飘红了。现在挂2.5寸硬盘，不敢大批量拷贝文件进USB硬盘了。</p>
+<p>我用R6400 带5T的希捷硬盘盒子用了一年没有问题，设置了休眠</p>
+<p>几率问题？</p>
+<p>备份相片怕出问题可以及时在电脑端、云端再备份一份啊</p>
+<p>改成 USB2.0 模式 避免干扰</p>
+<h1 id="极路由-go-安装-shadowsocks">极路由 Go 安装 Shadowsocks</h1>
+<p>注意，可能最新版本已经不支持了。</p>
+<h2 id="申请开发者">申请开发者</h2>
+<p>首先登录后台管理界面，修改 URL 里的 admin_mobile 为 admin_web 激活完整版的界面。</p>
+<p>进入“插件安装”，点击“路由器信息”，展开“高级设置”，申请开发者（要激活设备满 15 天后）</p>
+<h2 id="然后对设备-root">然后对设备 root</h2>
+<h2 id="登录路由器安装-ss-插件">登录路由器安装 SS 插件</h2>
+<p>使用root帐号SSH连接路由器，端口为1022，密码为后台登陆密码</p>
+<p>然后安装 SS 插件</p>
+<pre><code class="language-shell">ssh root@hiwifi.com -p 1022
+cd /tmp &amp;&amp; wget http://7xsjgk.com1.z0.glb.clouddn.com/shadowGO.sh &amp;&amp; sh shadowGO.sh &amp;&amp; rm shadowGO.sh
+</code></pre>
+<h2 id="设置-ss-参数">设置 SS 参数</h2>
+<p>进入路由器后台后，设置 Shadowsocks 的参数。</p>
+<p>注意，尽量不要升级版本，以免官方把这个功能给关闭了。</p>
+<h1 id="远程下载-2">远程下载</h1>
+<h2 id="迅雷远程-1">迅雷远程。</h2>
+<p>已被官方封杀。 以前小米路由还可以用的。</p>
+<h2 id="aria2-1">aria2</h2>
+<p>3、登录 Aria2 WebUI
+如你的远程地址为a.asuscomm.com，则登录地址为：a.asuscomm.com:8088/aria2/</p>
+<p>4、登录后点击右上角设置—服务器设置
+主机：a.asuscomm.com，注意不需要任何端口号
+端口：6800，注意不要跟上面的8088混淆
+访问密码：这个就是填写第二步的密码</p>
+<h1 id="nas">NAS</h1>
+<h2 id="samba-共享">samba 共享</h2>
+<h2 id="手机文件自动同步">手机文件自动同步</h2>
+<p>FtpSyncX, 以及之前有个 filexxxx 的 现在 pro 要收费了</p>
+<p>SMBSync2</p>
+<h1 id="pandora-路由器-无线桥接-做二级路由蹭网无线转有线">pandora 路由器 无线桥接 做二级路由（蹭网。。。无线转有线）</h1>
+<p>进入网络-无线， 在某个信号，如2.4G 下点 搜索， 找到上级路由的 wifi 信号，连接到主路由。(2.4只能连2.4, 5G 只能连5G， 不过好像5g 一直有问题，换2.4G 。。。)</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>选择模式为 _client 的网络，修改，无线安全， 3个选项要与主路由一样。 同步加密算法。 等待 1 分钟</p>
+<p>** 有说改成 client_bridge</p>
+<p>这时一定要保存提交配置</p>
+<p>关闭没必要的自启动项目： dnsmasq， telnet, firewall, ddns</p>
+<p>进入 网络-接口，  LAN 中 ipv4 修改为其他网段，如192.168.4.1  ，  DNS 改成主路由的 IP,  关闭 DHCP</p>
+<p>进入 网络-接口  检测新建的一个接口 wwan 是否连接到 ipv4, 有 ip 表示成功，</p>
+<p>方法2：</p>
+<p>资料：
+<a href="https://www.right.com.cn/forum/thread-114724-1-1.html">https://www.right.com.cn/forum/thread-114724-1-1.html</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/router-advanced/" title="玩转路由器" target="_blank" rel="external">https://my101du.github.io/1/01/router-advanced/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/use-markdown/" title="用markdown来写作"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/baidu-share/"
+                    title="玩转百度云"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

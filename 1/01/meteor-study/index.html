@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        meteor教程 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="我之前的主要工作是偏向于后端的 PHP&#43;MySQL 开发，对“前端”的理解比较肤浅，以为仅仅是“组织和表现数据，并兼容不同的设备界面”。在熟练使用 jQuery、" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>meteor教程 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="meteor教程" />
+<meta property="og:description" content="我之前的主要工作是偏向于后端的 PHP&#43;MySQL 开发，对“前端”的理解比较肤浅，以为仅仅是“组织和表现数据，并兼容不同的设备界面”。在熟练使用 jQuery、" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/meteor-study/" />
+
+<meta itemprop="name" content="meteor教程">
+<meta itemprop="description" content="我之前的主要工作是偏向于后端的 PHP&#43;MySQL 开发，对“前端”的理解比较肤浅，以为仅仅是“组织和表现数据，并兼容不同的设备界面”。在熟练使用 jQuery、">
+
+<meta itemprop="wordCount" content="13315">
+
+
+
+<meta itemprop="keywords" content="Meteor," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="meteor教程"/>
+<meta name="twitter:description" content="我之前的主要工作是偏向于后端的 PHP&#43;MySQL 开发，对“前端”的理解比较肤浅，以为仅仅是“组织和表现数据，并兼容不同的设备界面”。在熟练使用 jQuery、"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-meteor-study" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/meteor-study/"
+    >meteor教程</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/meteor/"> Meteor </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/meteor-study/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 13315字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 27分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/media/15490411859993/meteor.png" alt=""></p>
+<p>我之前的主要工作是偏向于后端的 PHP+MySQL 开发，对“前端”的理解比较肤浅，以为仅仅是“组织和表现数据，并兼容不同的设备界面”。在熟练使用 jQuery、BootStrap 以及简单尝试过 NodeJS、AngularJS 等后，飘飘然以为自己是“全栈工程师”了。殊不知随着前端技术的发展，“全栈”这个词，应该是指能灵活运用各种前后端技术，组合各种优秀组件，高效开发跨设备的应用。</p>
+<p>最近因缘际会需要学习 <code>Meteor</code> 这个全栈开发框架，因为和之前熟悉的“前后端分离、数据分层分步传输展示”的开发习惯完全不同，在学习和实践的过程中一方面是不断克服不适，踩坑，另一方面又像探险一样不断发出“哇——”的惊叹。</p>
+<p>Tony兄建议我根据 Tutorial 来实践学习 todos 案例，可能是由于英文词汇和新的开发思维两方面的障碍，在粗略看第一遍的时候效率不是很高，于是在等待安装和下载的过程中，我把 v2ex 和知乎上一些围绕 <code>meteor</code> 的其他技术概念有关的图文说明、对比分析看了一遍（如 react、Virtual DOM、Flux、flow-router 等），搞明白了“响应式编程”“数据热更新”“前后端同时存取mongodb数据库”“部署代码自动刷新保持session状态”等，终于知道它的特性、适用范围和与其他有关技术方案相比的异同。</p>
+<p>正如官方所说 <code>Full stack JavaScript for amazing apps</code>，<code>meteor</code>是一个融合了各种前后端技术来开发跨设备应用的开发框架。（按我不成熟的理解，有些类似 ionic 为提高开发 hybird app 效率所做的工具/库整合，但 meteor 适用范围更广也更灵活）</p>
+<h1 id="安装-node">安装 node</h1>
+<p>按官方的下面的方法一直失败，可能是 14.10 对高版本（&gt;=4）的 node 支持有问题</p>
+<pre><code class="language-shell">curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</code></pre>
+<p>最后用下面的方法成功（安装的是 0.10.xx 的 node 版本，一切正常）</p>
+<pre><code class="language-shell">sudo apt-get purge node nodejs
+sudo curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install -y nodejs
+nodejs -v
+npm -v
+# 因为默认命令是 nodejs ,所以创建一个链接为 node 命令
+ln /usr/bin/nodejs /usr/sbin/node
+</code></pre>
+<h2 id="一定要换淘宝的-npm-源">一定要换淘宝的 npm 源</h2>
+<pre><code class="language-shell">npm config set registry https://registry.npm.taobao.org
+
+// 配置后可通过下面方式来验证是否成功
+npm config get registry
+// 或
+npm info express
+</code></pre>
+<h1 id="下载与安装">下载与安装</h1>
+<p>执行下面这个 shell 安装脚本的时候，需要下载一些被“墙”的资源（可以将这个安装脚本另存为 install.sh，然后 vi 看到），<strong>所以先要全局翻墙，或者对终端进行 HTTP 代理</strong>（查看我的另一篇文章<a href="http://www.itjiaoshou.com/mac-os-x-install-config-use-skills">《OS X安装配置与使用技巧》</a>）</p>
+<pre><code class="language-shell">$ cd ~
+$ curl https://install.meteor.com/ | sh
+# 安装完毕后，会有一个 .meteor 的文件夹，体积好大啊……
+
+# 为 meteor 命令创建一个链接(如果已经存在则不需要再创建了，只要更新下环境变量即可)
+$ ln -s ~/.meteor/meteor /usr/local/bin/
+$ source .bash_profile
+</code></pre>
+<p><strong>一个小问题</strong></p>
+<p>在前面为了让终端使用代理而配置 privoxy 时，如果通过 <code>export</code> 命令设置了 https_proxy 这个环境变量，会导致后面安装官方 todos 案例失败，报下面的错误</p>
+<blockquote>
+<p>tunneling socket could not be established …… openssl……</p>
+</blockquote>
+<p>通过运行 <code>unset https_proxy</code> 将这个环境变量去掉就可以了。</p>
+<h1 id="官方的-todos-案例跑起来看看">官方的 todos 案例跑起来看看</h1>
+<p>眼见为实，我们先看看 <code>meteor</code> 的一个官方案例，它实现了注册登录、多人编辑、权限、界面跨平台等特性。在动手从零开始写代码前，大致看看我们最后会做出一个什么样的东西来。</p>
+<pre><code class="language-shell"># 安装 todos 案例
+$ meteor create --example todos
+$ meteor
+# 上面的命令输入后，会loading、building 一堆文件，可见 meteor 有“后端”特性，不是单纯的在html里加载前端 js 库
+</code></pre>
+<p>提示如下，就表示安装运行成功了。在浏览器打开 <code>http://localhost:3000/</code> 访问看看。通过开启 safari 的 <code>响应式开发工具</code>或 chrome 的 <code>设备模拟器</code>，一套代码同时适应各种不同的设备尺寸。</p>
+<blockquote>
+<p>todos  meteor
+[[[[[ ~/Downloads/todos ]]]]]              <br>
+=&gt; Started proxy.                          <br>
+=&gt; Started MongoDB.                        <br>
+=&gt; Started your app.                       <br>
+=&gt; App running at: http://localhost:3000/</p>
+</blockquote>
+<p><img src="/article_images/foreground/meteor-study/todos-example-web.png" alt=""></p>
+<p><img src="/article_images/foreground/meteor-study/todos-example-response.png" alt=""></p>
+<h1 id="从头开始开发-todos">从头开始开发 todos</h1>
+<h2 id="1-删掉前面的官方例子创建一个空项目">1. 删掉前面的官方例子，创建一个空项目</h2>
+<pre><code class="language-shell">$ rm -rf todos
+$ meteor create simple-todos
+$ cd simple-todos
+$ meteor
+</code></pre>
+<h2 id="2-感受一下修改文件自动刷新不用手动刷新浏览器了">2. 感受一下<strong>修改文件，自动刷新</strong>，不用手动刷新浏览器了。</h2>
+<p>打开目录下的 <code>simple-todos.html</code> ，随便修改一下里面的 html 代码，保存后再回到浏览器，发现它已经自动刷新了。这和之前开发 PHP 的时候，修改完文件，要手动刷新浏览器产生新的请求才会更新页面的流程不一样。</p>
+<p>同时，在终端工具里，会打印出一行信息，提示刚刚进行了一次刷新</p>
+<blockquote>
+<p>Client modified &ndash; refreshing</p>
+</blockquote>
+<p>十分类似之前做 <code>ionic</code> 开发的时候，使用过的 <strong>gulp + gulp-connect</strong> ——监听某个目录下的文件变化，结合浏览器的 livereload 插件实现自动刷新（估计内部的实现方式可能大同小异）。</p>
+<h2 id="3-对-meteor-的第一印象让我想起-angularjs-的绑定和-smarty-模板语言">3. 对 meteor 的第一印象，让我想起 angularJS 的“绑定”和 smarty 模板语言</h2>
+<p>官方教程是直接删除实例代码，写一个循环显示数据。</p>
+<p>我还没来得急删除，就发现这代码挺熟悉的。<strong>和 AngularJS 里的“数据双向绑定”和“模板嵌入”有些类似</strong>。</p>
+<p><img src="/article_images/foreground/meteor-study/js-html-bind.png" alt=""></p>
+<p>“工欲善其事，必先利其器”，先把 Sublime Text 的 meteor 自动完成插件装上。cmd+shift+p，输入 install package。</p>
+<p><img src="/article_images/foreground/meteor-study/sublime-plugin-meteor.png" alt=""></p>
+<h2 id="4-然后删除默认代码继续沿着教程进行循环显示一个-tasks-数组">4. 然后删除默认代码，继续沿着教程进行，循环显示一个 tasks 数组</h2>
+<p>分别在两个文件里输入以下内容（省略了部分不重要的代码）。</p>
+<p>这里我并未删除 <code>simple-todos.js</code> 文件里原来那几段带有&rsquo;hello&rsquo;关键词的<code>Template.hello.helpers</code> 代码，页面虽然会报一个 error，但正常显示出了 tasks 列表，猜测也是用到了“作用域”的概念？一处错误不致影响整体？</p>
+<pre><code class="language-html">&lt;!--simple-todos.html--&gt;
+&lt;ul&gt;
+    {{  #each tasks  }}
+          {{ &gt; task  }}
+      {{  /each  }}
+&lt;/ul&gt;
+
+&lt;template name=&quot;task&quot;&gt;
+  &lt;li&gt;{{  text  }}&lt;/li&gt;
+&lt;/template&gt;
+</code></pre>
+<pre><code class="language-javascript">//simple-todos.js
+  Template.body.helpers({
+    tasks: [
+      {text: 'this is task1'},
+      {text: 'this is task2'},
+      {text: 'this is task3'},
+    ]
+  });
+</code></pre>
+<p>文档上有段话很重要，大概说清楚了 meteor 是怎么处理html模板（和它的独特“模板语法”的）</p>
+<blockquote>
+<p>meteor 会把app里面的html文件全部进行解析，就像普通html标签一样显示；
+<strong>而位于<code>&lt;template name=&quot;模板名&quot;&gt;</code>里面的内容，会编译到 meteor template 里面去</strong>，一种方式是就和上面的代码一样
+嵌入到 html 代码中，另一种方式就是用javascript的方法 Template.templateName</p>
+</blockquote>
+<p><strong>啊，听起来好像php的模板引擎里的“公共调用”和AngularJS里的基本directive，一种是 模板引擎的标签语法，一种是在后台进行<code>$this-&gt;display()</code>加载模板，循环、变量显示什么的，类似如此</strong></p>
+<p>所以 <code>{ { # each } }</code> 和<code>{ { # if } }</code>，以及后面可能出现的这些“标签名”也就没什么好说的了，只是记忆多一套语法规则而已。</p>
+<p>然后这里出现的新概念是 <code>helper</code>，在 <code>Template.body</code>里定义了一个叫 <code>tasks</code>的 helper，并返回了一个数组，然后在循环里显示了出来每个数组元素的 <code>text</code>属性</p>
+<h2 id="5-css文件">5. CSS文件</h2>
+<p>略，不废话</p>
+<h2 id="6-更真实的数据以及collectiondocuments的概念">6. 更真实的数据，以及“collection”“documents”的概念</h2>
+<p>刚刚我们是手动填充的一个测试数组，没什么意思。</p>
+<p><strong><code>collection</code>是 meteor 保存持久化数据的方式，能同时被 server 和 client 两端访问。</strong></p>
+<p>按PHP和MySQL的思维，处理数据都是： 前端发出数据操作请求——php操作数据库——MySQL将数据处理结果返回给PHP——PHP再渲染 html ，前后端同时操作数据库这怎么可能？</p>
+<p>当然如果能实现：前端一查数据，发现有变化自己就更新界面，而不用辗转发送到后端处理，再由后端刷新页面，那该多好啊。工作中有时候遇到查 MySQL 却因为 php-fpm 出现 502 问题导致失败确实是令人焦头烂额。</p>
+<p>好吧，带着疑问接着看……</p>
+<blockquote>
+<p>Creating a new collection is as easy as calling MyCollection = new Mongo.Collection(&ldquo;my-collection&rdquo;); in your JavaScript. On the server, this sets up a MongoDB collection called my-collection; on the client, this creates a cache connected to the server collection. We&rsquo;ll learn more about the client/server divide in step 12, but for now we can write our code with the assumption that the entire database is present on the client.</p>
+</blockquote>
+<p>教程这时候说了一通 server/client 使用 <code>MyCollection = new Mongo.Collection(&quot;my-collection&quot;);</code>会产生什么不同返回结果的废话，结果说要到 12 节才详细解释，有种“欲知后事如何……”，就是说<strong>接下来都是以 client 端为准</strong></p>
+<p><strong>修改<code>sample-todos.js</code>，把前面手动设置的那个数组删除，改成从 collection 获取</strong></p>
+<pre><code class="language-javascript">// 创建一个 collection
+Tasks = new Mongo.Collection(&quot;tasks&quot;);
+
+if (Meteor.isClient) {
+  // This code only runs on the client
+  Template.body.helpers({
+    tasks: function () {
+      return Tasks.find({});
+    }
+  });
+}
+</code></pre>
+<p>当然了，界面里的那个列表已经消失了，因为 tasks 还是空的。</p>
+<p><strong>手动从 server 端插入新的测试数据……<code>collection</code>里的项目叫<code>document</code></strong></p>
+<p>好吧，document 不是文档的意思么？这奇怪的命名。可以类比传统的关系型数据库： collection 是表，document 是一行记录吧？</p>
+<p>注意这里是 <code>server</code>端……，新开一个命令行窗口，进入项目目录运行</p>
+<pre><code class="language-shell">$ meteor mongo 
+# 咦，居然自带 mongodb 了 下面是提示
+/**
+MongoDB shell version: 2.6.7
+connecting to: 127.0.0.1:3001/meteor
+Welcome to the MongoDB shell.
+For interactive help, type &quot;help&quot;.
+For more comprehensive documentation, see
+    http://docs.mongodb.org/
+Questions? Try the support group
+    http://groups.google.com/group/mongodb-user
+meteor:PRIMARY&gt;
+*/
+
+# 插入新数据，多插入几条
+$ db.tasks.insert({ text: &quot;Hello world!&quot;, createdAt: new Date() });
+# 操作成功会返回
+/**
+meteor:PRIMARY&gt; db.tasks.insert({text: &quot;hello world!&quot;, createAt: new Date()});
+WriteResult({ &quot;nInserted&quot; : 1 })
+meteor:PRIMARY&gt; db.tasks.insert({text: &quot;hello java!&quot;, createAt: new Date()});
+WriteResult({ &quot;nInserted&quot; : 1 })
+meteor:PRIMARY&gt; db.tasks.insert({text: &quot;hello python!&quot;, createAt: new Date()});
+WriteResult({ &quot;nInserted&quot; : 1 })
+meteor:PRIMARY&gt; db.tasks.insert({text: &quot;hello php!&quot;, createAt: new Date()});
+WriteResult({ &quot;nInserted&quot; : 1 })
+*/
+</code></pre>
+<p>这时候看浏览器，自动更新了列表。我们没有写任何 <code>SELECT * FROM xxxx LIMIT xxx</code>，甚至没有任何类似连接数据库的操作 <code>mysql_connect(host, port, user, password)</code>，它！自！己！自！动！更！新！了！</p>
+<p><img src="/article_images/foreground/meteor-study/mongo-insert-result.png" alt=""></p>
+<h2 id="7-命令行太麻烦容易出错通过-ui-界面插入数据这才是现实操作">7. 命令行太麻烦容易出错，通过 UI 界面插入数据（这才是现实操作）</h2>
+<p>在html文件里添加一个表单</p>
+<pre><code class="language-html"> &lt;form class=&quot;new-task&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;text&quot; placeholder=&quot;Type to add new tasks&quot; /&gt;
+          &lt;/form&gt;
+</code></pre>
+<p>关键问题来了，这个问题之前在默认实例代码里也发现了，就是不管是按钮还是表单，都没有一个类似 jQuery 里的 <code>$(&quot;#id&quot;).click()</code> 这样的明显的某个元素的事件绑定？</p>
+<p>然而原来只是语法的不一样而已……，在 meteor 里，顺序是 <code>动作 元素筛选器</code>，例如下面的 <code>submit .new-task</code>，和 jQuery 貌似正好相反。名词、动词前后不一样，可能也体现了两者的设计思路的不同，一个注重“事件”，一个注重“元素”</p>
+<pre><code class="language-javascript">Template.body.events({
+    &quot;submit .new-task&quot;: function (event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+ 
+      // Get value from form element
+      var text = event.target.text.value;
+ 
+      // Insert a task into the collection
+      Tasks.insert({
+        text: text,
+        createdAt: new Date() // current time
+      });
+ 
+      // Clear form
+      event.target.text.value = &quot;&quot;;
+    }
+  });
+</code></pre>
+<p>至此，终于发现使用 javascript 同时进行前后端开发的好处之一了吧——那就是“数据格式的统一”。想当初，PHP要保存一个使用了时间控件(类似 BootStrap 的 date 插件)的输入框时间值，得从 javascript 里进行一次转换，保存的时候PHP进行一次转换，才能放到 MySQL 里以时间戳形式存储……</p>
+<p>马上插入一条数据看看：</p>
+<p><img src="/article_images/foreground/meteor-study/mongo-insert-result.png" alt=""></p>
+<p>教程 <strong>Attaching events to templates</strong> 这段啰啰嗦嗦意思就是怎么给模板绑定事件，没啥好说的，记住这段代码 <code>Template.templateName.events(...)</code>就可以了，至于里面具体的 <code>event</code> 类别，只能工作中阅读详细文档了。</p>
+<p><strong>关于插入数据</strong></p>
+<p>因为 NoSQL 的特性，我们可以朝 Tasks 这个 collection 里插入任意的数据，即使在定义 Scheme 的时候，不存在相关的信息也可以！
+这在传统 MySQL 里是很难的，一张表定义了哪些字段，就只能插入这些字段，不存在的字段名及数据会被丢弃或报错。
+而在 MongoDB 里，以上面为例，我们可以插入新数据的时候增加一个字段，如 <code>{text: 'javascript 大法好', user: 'root', createAt: new Date()}</code>，其中 <code>user</code> 就是之前并未定义的数据字段。</p>
+<p>因此这就导致了“安全性”，我们肯定不能让用户随便在 client 端随便插入数据。</p>
+<p>文档又来了一招“预知后事如何，下回分解……”</p>
+<p>关于这点，可以读一下 LeanCloud 的文档，并在线测试一下就明白了。</p>
+<p><strong>数据排序</strong></p>
+<p>将排序改成最新的todo在前面，这个和 MySQL 对比来看也是有不同的，MySQL 是先在数据库里排好序，再直接显示；这里是先查，再对结果排序</p>
+<pre><code class="language-javascript">return Tasks.find({}, {sort: {createdAt: -1 }});
+</code></pre>
+<h2 id="8-把todo设为已完成删除todo">8. 把todo设为已完成，删除todo</h2>
+<p>实际上总结这一步我们要学习的就是三点</p>
+<ol>
+<li>如何 update 数据</li>
+<li>如何删除数据</li>
+<li>如何判断数据不同的状态，并显示不同的样式</li>
+</ol>
+<p>编辑 simple-todos.html 文件，<strong>注意 <code>li</code> 的 <code>class=&quot;{ { # if checked } } checked { { /if } }&quot;</code>属性，这里和 AngularJS 的 <code>ng-if</code>有点类似，如果task数据的<code>checked</code>为<code>true</code>，则使用样式名<code>checked</code></strong></p>
+<pre><code class="language-html">&lt;template name=&quot;task&quot;&gt;
+  &lt;li class=&quot;{{ #if checked }}checked{{ /if }}&quot;&gt;
+    &lt;button class=&quot;delete&quot;&gt;&amp;times;&lt;/button&gt;
+ 
+    &lt;input type=&quot;checkbox&quot; checked=&quot;{{ checked }}&quot; class=&quot;toggle-checked&quot; /&gt;
+ 
+    &lt;span class=&quot;text&quot;&gt;{{ text }}&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/template&gt;
+</code></pre>
+<p>同样要给删除按钮和完成checkbox绑定动作，注意<code>Template.task</code>，是为模板<code>task</code>绑定事件，而不是之前的 <code>Template.body</code>。
+这里使用了<strong>collection 的另外两个方法 <code>update</code> 和 <code>remove</code></strong></p>
+<pre><code class="language-javascript">Template.task.events({
+    &quot;click .toggle-checked&quot;: function () {
+      // Set the checked property to the opposite of its current value
+      Tasks.update(this._id, {
+        $set: {checked: ! this.checked}
+      });
+    },
+    &quot;click .delete&quot;: function () {
+      Tasks.remove(this._id);
+    }
+  });
+</code></pre>
+<p><strong>注意到<code>this._id</code></strong></p>
+<p><code>this</code>指向了一个单独的 task 对象，在 collection 里每个 document 都有一个唯一的 <code>_id</code> 字段用于指向这个特定的 document。有点类似于 MySQL 里数据值唯一的“自增字段”。</p>
+<p>因为<code>_id</code> 字段可以指向这个特定的 document，所以可以使用 <code>update</code> 和 <code>remove</code> 来修改关联的 task 数据。</p>
+<p><strong>update</strong></p>
+<p>第一个参数是个标记这组 collectioin 里某个子集的 selector(“选择器”?)，第二个参数是一个“update parameter”（不知如何翻译……），用 $set 来修改 <code>checked</code> 字段的值。</p>
+<p><strong>remove</strong></p>
+<p>只有一个参数，就是一个 selector</p>
+<h2 id="9-部署应用在移动设备上安装安卓和-ios">9. 部署应用，在移动设备上安装（安卓和 iOS）</h2>
+<p><strong>我觉得这些和 ionic 十分类似……，只是命令名变了一下而已……</strong></p>
+<p><strong>发布到免费的web测试环境上</strong></p>
+<p>应该就是把文件上传到 meteor.com 上，并分配一个二级域名，以便可以在网络上通过各种设备来访问。
+Uploading 非常慢……所以建议还是用你自己的服务器吧。</p>
+<pre><code class="language-shell">$ meteor deploy my_app_name.meteor.com
+# 输入你的邮箱等信息，如果名字已经被别人用了，那就换一个吧……
+</code></pre>
+<p><strong>发布到 iOS设备上</strong></p>
+<pre><code class="language-shell">meteor install-sdk ios
+meteor add-platform ios
+meteor run ios
+
+# 需要开发者账号
+meteor run ios-device
+meteor run ios-device --mobile-server my_app_name.meteor.com
+</code></pre>
+<p><strong>发布到安卓设备(模拟器和真实设备)</strong></p>
+<pre><code class="language-shell">meteor install-sdk android
+meteor add-platform android
+meteor run android
+
+# 开启 Debug
+meteor run android-device
+meteor run android-device --mobile-server my_app_name.meteor.com
+</code></pre>
+<h2 id="10-使用-session-存储临时-ui-状态实现隐藏已完成task功能">10. 使用 Session 存储临时 UI 状态（实现“隐藏已完成task”功能）</h2>
+<p>首先把这个checkbox添加到页面中，通过改变选中状态实现 显示/隐藏 已完成task列表</p>
+<pre><code class="language-html">&lt;label class=&quot;hide-completed&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; checked=&quot;{{ hideCompleted }}&quot; /&gt;
+        Hide Completed Tasks
+      &lt;/label&gt;
+      
+&lt;form…… 略&gt;
+</code></pre>
+<p>绑定动作，写入 Session 值，如果勾选，则为 true，没有勾选则为 false</p>
+<pre><code class="language-javascript">&quot;change .hide-completed input&quot;: function (event) {
+      Session.set(&quot;hideCompleted&quot;, event.target.checked);
+    }
+</code></pre>
+<p>最后根据 <code>hideCompleted</code> 这个session值，进行分支处理，来对需要显示的数据进行过滤，修改前面的 helpers。注意里面的<code>checked: { $ne: true }</code>。</p>
+<pre><code class="language-javascript">Template.body.helpers({
+    tasks: function () {
+      if (Session.get(&quot;hideCompleted&quot;)) {
+        // If hide completed is checked, filter tasks
+        return Tasks.find({checked: {$ne: true }}, {sort: {createdAt: -1 }});
+      } else {
+        // Otherwise, return all of the tasks
+        return Tasks.find({}, {sort: {createdAt: -1 }});
+      }
+    },
+    hideCompleted: function () {
+      return Session.get(&quot;hideCompleted&quot;);
+    }
+  });
+</code></pre>
+<p><strong>Session与Mongo.Collecton的相似之处和不同之处</strong></p>
+<p>他们都可以认为是一种“reactive data”，意思就是当数据变化了，页面在检测到变化时会马上更新显示，而不需要去手动修改界面。
+而区别在于，Mongo.Collection 有时候会和 server 端关联，server 端触发数据变化会造成前端界面改变；
+而 Session 的存取则都是发生在 client 端，所以特别适合保存临时的UI状态。（我可以认为它有些像 LocalStorage 的功能吗？）</p>
+<p><strong>扩展功能，计数</strong></p>
+<p>添加一个helper</p>
+<pre><code class="language-javascript">incompleteCount: function () {
+      return Tasks.find({checked: {$ne: true }}).count();
+    }
+</code></pre>
+<p>在html里用 <code>{{ incompleteCount }}</code>读取。</p>
+<p><img src="/article_images/foreground/meteor-study/mongo-insert-result.png" alt=""></p>
+<h2 id="11-添加用户账号系统">11. 添加用户账号系统</h2>
+<p><strong>真是太贴心了！！居然还自带了一套用户登录UI</strong></p>
+<pre><code class="language-shell">meteor add accounts-ui accounts-password
+</code></pre>
+<p>放入登录组件（是一个下拉按钮，点击弹出登录窗口）</p>
+<pre><code class="language-html">{{ &gt; loginButtons }}
+ 
+&lt;form class=&quot;new-task&quot;&gt; 略
+</code></pre>
+<p><img src="/article_images/foreground/meteor-study/login.png" alt=""></p>
+<p>配置 <code>account-ui</code>，使用 username 的形式（默认是email）</p>
+<pre><code class="language-javascript">Accounts.ui.config({
+    passwordSignupFields: &quot;USERNAME_ONLY&quot;
+  });
+</code></pre>
+<p>这样就可以使用登录、注册功能了（完全不用写一行代码……），马上注册一个账号吧。</p>
+<p><strong>有了账户系统，就需要扩展一下我们app的权限控制了</strong></p>
+<ol>
+<li>只有登录后才可以添加 task</li>
+<li>显示每个 task 的添加者</li>
+</ol>
+<p>正如前面所说，collecton 的 document 可以在后期扩展更多的 field。这里添加两个：</p>
+<ol>
+<li><code>owner</code>(就是建立这个 task 的 user 的 <code>_id</code>)</li>
+<li><code>username</code>（简历这个 task 的 user 的 username，直接保存在 task 的 object，就不用再去查一次 user 了）</li>
+</ol>
+<p>扩展之前写的 <code>insert</code> 方法，owner 和 username 都可以通过 <code>Meteor.xxxx</code> 来获取（有点像 PHP 框架里封装的用户 session 读取方法）</p>
+<pre><code class="language-javascript">Tasks.insert({
+        text: text,
+        createdAt: new Date(),            // current time
+        owner: Meteor.userId(),           // _id of logged in user
+        username: Meteor.user().username  // username of logged in user
+      });
+</code></pre>
+<p>因为需求是“只有登录了的用户才可以增加新的的 task”，所以未登录的时候，表单是不显示的，这里加上 <code>{ { # if 条件 } }</code> 判断。
+还有要把添加这条 task 的 username 显示出来</p>
+<pre><code class="language-html">{{ #if currentUser }}
+        &lt;form class=&quot;new-task&quot;&gt;
+          &lt;input type=&quot;text&quot; name=&quot;text&quot; placeholder=&quot;Type to add new tasks&quot; /&gt;
+        &lt;/form&gt;
+      {{ /if }}
+      
+&lt;template……略
+&lt;span class=&quot;text&quot;&gt;&lt;strong&gt;{{ username }}&lt;/strong&gt; - {{ text }}&lt;/span&gt;
+</code></pre>
+<p>如下图，登录后再创建 task，前面就会显示创建者的用户名了</p>
+<p><img src="/article_images/foreground/meteor-study/login-add-task.png" alt=""></p>
+<p>Meteor 的教程习惯是“先摆实例，再讲道理”，我喜欢。文档接着开始解释这套用户系统的概念了。</p>
+<p>它称 <code>accounts-ui</code> 叫 <code>package</code>，既然是“包”，就是说里面包括了 template、逻辑代码等整套处理方案。默认提供的是通过密码登录，也可以安装 <code>accounts-facebook</code>实现使用facebook账号登录（当然这在天朝就是个笑话了），这个package可以通过简单的 <code>currentUser</code> 在html里显示用户信息，在javascript可以用 Meteor.User() 来获取整个用户document数据</p>
+<h2 id="12-提高系统的安全性用methods来替代client端对数据库的操作">12. 提高系统的安全性，用“methods”来替代client端对数据库的操作</h2>
+<p>截止目前，我们可以直接在 client 端对数据进行增删改查，没有任何对数据进行权限方面的保护。（回忆下看看，用户 A 新建的 task，用户 B 登录后也可以删除它，甚至不登录都可以——这么多可怕）</p>
+<p>对于一个测试app或者个人自用的app来说不是什么问题，但多人共同访问一份数据，就必须加入各种权限控制策略了。</p>
+<p>首先卸载 <code>insecure</code> 包，它允许我们在 client 端访问数据库，产品一旦过了“原型设计”阶段，就要卸载掉这个不安全的东西。</p>
+<pre><code class="language-shell">$ meteor remove insecure
+</code></pre>
+<p>卸载完毕后，发现所有的按钮、表单组件都不可用了(具体表现如下图，点checkbox和删除按钮，界面闪一下却不会发生任何效果)，那是因为client端操作数据库的权限被移除了。</p>
+<p><img src="/article_images/foreground/meteor-study/remove-insecure.png" alt=""></p>
+<p><strong>定义 methods</strong></p>
+<p>官方文档对<code>methods</code>的解释有点拗口。大概意思是，如果我们要在 client 端对数据库进行任何一个操作，都要定义一个对应的 method，不能像以前那样直接在客户端进行 insert、remove 等操作了。并且 method 可以同时被 server 和 client 端执行。</p>
+<p>可以大概把 method 想象成以前开发时服务器端定义的一个个“API”，专门用于实现一个小的功能。在这个 API 内部进行权限验证、数据处理等操作，客户端只需要带着“符合规定”的参数请求这个 API 地址就可以了，API 会返回结果。</p>
+<p>只不过这个 API 不是以 url 的形式出现，因为“前后端”统一了嘛，所以 url 可以省略了。</p>
+<p><strong>在 <code>if (Meteor.isClient)</code> 的外面</strong>定义这些 methods，包括 <code>addTask</code>,<code>deleteTask</code>,<code>setChecked</code>，和 client 端代码差不多，只不过把操作都包裹到 <code>method</code>里面了。最后把之前的 client 端数据操作代码都改成调用 method 的方式</p>
+<pre><code class="language-javascript">//在 if(Meteor.isClient){} 外面
+Meteor.methods({
+  addTask: function (text) {
+    // Make sure the user is logged in before inserting a task
+    if (! Meteor.userId()) {
+      throw new Meteor.Error(&quot;not-authorized&quot;);
+    }
+ 
+    Tasks.insert({
+      text: text,
+      createdAt: new Date(),
+      owner: Meteor.userId(),
+      username: Meteor.user().username
+    });
+  },
+  deleteTask: function (taskId) {
+    Tasks.remove(taskId);
+  },
+  setChecked: function (taskId, setChecked) {
+    Tasks.update(taskId, { $set: { checked: setChecked} });
+  }
+});
+
+//之前的 &quot;submit .new-task&quot;: function (event) { 内部代码改成
+Meteor.call(&quot;addTask&quot;, text);
+
+//之前的 &quot;click .toggle-checked&quot;: function () { 内部代码改成
+Meteor.call(&quot;setChecked&quot;, this._id, ! this.checked);
+
+//之前的 &quot;click .delete&quot;: function () { 内部代码改成
+Meteor.call(&quot;deleteTask&quot;, this._id);
+</code></pre>
+<p>在 <code>addTask</code> 这个 method 里判断用户是否登录，如果没有则抛出错误。后面我们再对 <code>setChecked</code>和<code>deleteTask</code>添加代码设置权限，让用户只能修改自己的 task。</p>
+<p><strong>Optimistic UI 的概念</strong></p>
+<p>为什么我们要在 client 和 server 上定义 method 呢？</p>
+<p>在使用 <code>Meteor.call</code>的时候，有两件事平行进行着</p>
+<ol>
+<li>就和传统的ajax请求一样，client发起一个请求到server端运行 method（这时候环境是安全的）</li>
+<li>（牛逼之处来了）method 的一个“模拟器”在 client 端直接运行（不去 server 端请求），通过一些信息来 <strong>预测</strong>server 可能返回的结果</li>
+</ol>
+<p>第一点好理解，第二点是干嘛的？以“新建一个task”为例</p>
+<p><strong>在服务器端返回结果之前，客户端首先已经在界面上生成并显示了这个task数据；等到服务器端结果返回结果，如果数据没有变化，那就这样保持客户端的数据，如果和客户端数据不一样就更新下客户端的数据</strong></p>
+<p>牛啊！真牛啊！以前写PHP的时候，一定要在表单提交完成，服务器端处理完毕后，再捕获返回值来显示数据，是一个先操作再看结果的过程。</p>
+<p>现在，直接提交数据，马上就在界面上显示最新的数据，至于服务器端的处理，让它慢慢来吧，大不了有变化再更新一点嘛。是先看结果再等待操作过程。难怪前端发展日新月异，轮子不断涌现，这种颠覆传统的思想确实让人high起来！</p>
+<h2 id="13-使用-publish-和-subscribe-来过滤数据">13. 使用 Publish 和 Subscribe 来过滤数据</h2>
+<p>在默认情况下，使用 <code>Task.find()</code> 会把所有数据都读取出来，这对于多用户的系统来说肯定是不行的。我们要让用户只能读取属于自己的数据。</p>
+<p>和前面删除 insecure package 一样，需要删除 <code>autopublish</code>这个 package</p>
+<pre><code class="language-shell">$ meteor remove autopublish
+</code></pre>
+<p>我们发现列表中的数据都消失了。此后从 server 读取数据，我们都要明确指出读取符合什么条件的数据。</p>
+<p><code>publish</code>运行在 server 端，而 <code>Subscribe</code>运行在 client 端，正如字面意思，一个“发布”，一个“订阅”</p>
+<pre><code class="language-javascript">if (Meteor.isServer) {
+    Meteor.publish(&quot;tasks&quot;, function(){
+        return Tasks.find();
+    });
+}
+
+if(Meteor.isClient) {
+    Meteor.subscribe(&quot;tasks&quot;);
+}
+</code></pre>
+<p><strong>处理 task 的“私有”属性，以及判断 task 的 owner</strong></p>
+<p>在 task 的模板里添加如下代码，在当前用户是该 task 的 owner 的时候，允许将这个 task 设为私有或公开。
+同时，如果这条 task 是私有，也有显示对应的样式</p>
+<pre><code class="language-html">{{ #if isOwner }}
+      &lt;button class=&quot;toggle-private&quot;&gt;
+        {{ #if private }}
+          Private
+        {{ else }}
+          Public
+        {{ /if }}
+      &lt;/button&gt;
+    {{ /if }}
+    
+&lt;!--private样式--&gt;
+&lt;li class=&quot;{{ #if checked }}checked{{ /if }} {{ #if private }}private{{ /if }}&quot;&gt;
+</code></pre>
+<p>注意上面模板中的 <code>isOwner</code> 变量，<strong>这个在 <code>Template.task</code>的 <code>helpers</code> 里获取</strong>（而不是 Template.body.helpers）</p>
+<p>然后添加上 <code>setPrivate</code> 这个 method（稍后再在 client 里调用）</p>
+<pre><code class="language-javascript">Template.task.helpers({
+    isOwner: function () {
+      return this.owner === Meteor.userId();
+    }
+  });
+  
+//Meteor.methods({
+      setPrivate: function (taskId, setToPrivate) {
+        var task = Tasks.findOne(taskId);
+     
+        // Make sure only the task owner can make a task private
+        if (task.owner !== Meteor.userId()) {
+          throw new Meteor.Error(&quot;not-authorized&quot;);
+        }
+     
+        Tasks.update(taskId, { $set: { private: setToPrivate } });
+      }
+
+//略
+// 为 &lt;button class=&quot;toggle-private&quot;&gt; 元素绑定事件，调用 setPrivate 这个 method
+&quot;click .toggle-private&quot;: function () {
+      Meteor.call(&quot;setPrivate&quot;, this._id, ! this.private);
+    }
+</code></pre>
+<p>至此，我们可以对某一个 task 设置 <code>private</code> 属性值了。那么，怎么在 client 读取的时候自动进行过滤呢？</p>
+<p>修改 server 端的 <code>publish</code> 规则，为 <code>find</code> 方法添加过滤规则，一是 tasks 的 owner 必须是当前用户</p>
+<pre><code class="language-javascript">Meteor.publish(&quot;tasks&quot;, function () {
+    return Tasks.find({
+      $or: [
+        { private: {$ne: true} },
+        { owner: this.userId }
+      ]
+    });
+  });
+</code></pre>
+<p><strong>测试“private”是否生效</strong></p>
+<p>按文档说明，使用浏览器的“隐身模式”对比两个登录用户，用户 A 对某个 task 设置了 private，那么用户 B 是看不到这个 task 的。</p>
+<p><img src="/article_images/foreground/meteor-study/private-public.png" alt=""></p>
+<p>最后，需要对 <code>deleteTask</code> 和 <code>setChecked</code> 进行权限的处理，在正式操作数据前添加代码</p>
+<pre><code class="language-javascript">var task = Tasks.findOne(taskId);
+    if (task.private &amp;&amp; task.owner !== Meteor.userId()) {
+      // If the task is private, make sure only the owner can delete it
+      throw new Meteor.Error(&quot;not-authorized&quot;);
+    }
+略
+</code></pre>
+<h2 id="14-晋级打怪">14. 晋级打怪</h2>
+<p>最后，就是看看官方推荐的书， 下载官方的两个较大型案例研究，以及看看有关的工具、资源、设计，还有完整手册了~</p>
+<p>后面是关于分别将 Angular 和 React 与 Meteor 集成的资料了。这个其实就属于萝卜青菜各有所爱了，我以前捣鼓 ionic 的时候是学习的 AngularJS，但是现在 React 很火嘛，于是就以学习 React 为主了。</p>
+<h1 id="使用-react-和-meteor">使用 React 和 Meteor</h1>
+<h2 id="1-一些枯燥的理论关于-react">1. 一些枯燥的理论关于 react</h2>
+<p>react 的官方说明乍看比较难懂，还不如直接去 facebook 看原版的。看了一些零散的资料，重要术语就是 “JSX”，“在javascript代码里写界面”，“界面和数据混合”，“Virtual DOM”，“组件化”等等。react 给我印象最深刻的就是“零零散散的组件拼装在一起”。</p>
+<p>在 React 里，不再和 Meteor 一样用 <code>{{ templateName }}</code>或<code>Template.templateName</code>来容纳 HTML。而是使用 <code>view component</code>。</p>
+<p><strong><code>view component</code>是通过 <code>React.createClass</code>定义的类，你可以在里面实现任何想要的方法。甚至包括生成视图（如 <code>render</code> 方法），获取数据（如通过 <code>props</code>属性从父元素中得到）。这和以前把 HTML 和 数据 分离的思路是完全不同的。</strong></p>
+<p>举个可能不是很恰当的例子，以前 HTML 和 数据 分离的模式，就像老式的诺基亚功能机，各种电话短信等等构成一个封闭的诺基亚手机操作系统，但它们只能用在同型号手机上，没法移植到摩托罗拉等功能机上，并且也很难把某个功能从操作系统里删掉，删掉就会导致功能不完整或者系统崩溃。</p>
+<p>而 React 的组件就像现在手机里的 APP，各种 APP 是独立的，各自实现一个功能，不依赖其他的 APP 就能运行，可以任意删除而不影响操作系统，也可以在别的手机上安装不存在兼容问题。</p>
+<p>例如，可以制作各种 component，如滚动列表、一个表单、一个漂亮的按钮等等，然后把它们用到各种各样的页面中去。</p>
+<p><strong>JSX直接用javascript来写HTML并通过 render()渲染出来</strong></p>
+<p>这里思维需要从原来直接写HTML里切换出来，例如 <code>&lt;div class='style_class'&gt;</code>，而因为 JSX 是用原生的 Javascript 生成 HTML，所以写法变成了<code>className</code>。</p>
+<h2 id="2-新建项目">2. 新建项目</h2>
+<p><strong>明白了上面的概念，再结合代码就容易明白了，先创建一个新的项目叫 <code>simple-todos-react</code></strong></p>
+<pre><code class="language-shell"># 首先要安装react支持
+$meteor add react
+</code></pre>
+<p>有下面的提示就表示安装成功了</p>
+<blockquote>
+<p>Changes to your project&rsquo;s package version selections:</p>
+<p>coffeescript        added, version 1.0.11  <br>
+cosmos:browserify   added, version 0.9.3
+jsx                 added, version 0.2.3
+react               added, version 0.14.3
+react-meteor-data   added, version 0.2.4
+react-runtime       added, version 0.14.4
+react-runtime-dev   added, version 0.14.4
+react-runtime-prod  added, version 0.14.4</p>
+</blockquote>
+<pre><code class="language-shell"># 创建新项目
+$ meteor create simple-todos-react
+$ cd simple-todos-react
+
+# 因为以后都是用 React 的 JSX 了，所以现在可以删掉 `simple-todos-react.js`文件了。
+$ rm simple-todos-react.js
+$ meteor
+</code></pre>
+<p><strong>安装好 sublime text 的插件</strong></p>
+<p><img src="/article_images/foreground/meteor-study/sublime-plugin-react.png" alt=""></p>
+<h2 id="3-找到simple-todos-reacthtml删掉里面的-body-和-tempalte-代码段改成一个容器">3. 找到<code>simple-todos-react.html</code>，删掉里面的 body 和 tempalte 代码段，改成一个“容器”**</h2>
+<pre><code class="language-html">&lt;body&gt;
+  &lt;div id=&quot;render-target&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<h2 id="4-新建-simple-todos-reactjsx">4. 新建 <code>simple-todos-react.jsx</code>**</h2>
+<p>注意 <code>React.render(&lt;App /&gt;, document.getElementById(&quot;render-target&quot;));</code>里的 <code>&lt;App /&gt;</code>，以及获取到的 <code>id=render-target</code>这个元素</p>
+<pre><code class="language-javascript">if (Meteor.isClient) {
+ 
+  Meteor.startup(function () {
+    React.render(&lt;App /&gt;, document.getElementById(&quot;render-target&quot;));
+  });
+}
+</code></pre>
+<h2 id="5-前面的代码里要render出app-这个-component现在就来实现它">5. 前面的代码里要render出<!-- raw HTML omitted -->这个 component，现在就来实现它**</h2>
+<p>新建 <code>App.jsx</code></p>
+<ul>
+<li>里面定义的 <code>getTask</code>方法用于获取一组测试数据</li>
+<li>注意看它的<code>render</code>方法，在里面 return 一段 HTML，而这段 HTML 里又用 <code>{this.renderTasks()}</code>调用了 <code>renderTasks</code>方法</li>
+<li>最后 <code>renderTasks</code> 方法里，又调用了一个 component，叫<strong><code>&lt;Task /&gt;</code></strong>，这是需要后面再去定义的</li>
+</ul>
+<p>我们现在不需要再在 <code>simple-todos-react.html</code>写 HTML代码了，全部在 JSX 文件里实现。component 有点像极大扩展特性的 template ，除了能被任意调用，还能够自己生成HTML、数据。</p>
+<p>注意到<code>this.getTasks().map</code>里面有个奇怪的语法 <code>(arg)=&gt;{ return result; }</code>，这是最新的  <strong><code>ES2015</code>特性</strong>，更多的资料可阅读文档里附上的一些链接。</p>
+<pre><code class="language-javascript">App = React.createClass({
+  getTasks() {
+    return [
+      {_id: 1, text: 'this is task 1'},
+      {_id: 2, text: 'this is task 2'},
+      {_id: 3, text: 'this is task 3'},
+    ];
+  },
+
+  renderTasks() {
+    //return this.getTasks().map((task)=&gt;{
+      //return &lt;Task key={task._id} task={task} /&gt;;
+    //});
+  },
+
+  render() {
+    return (
+      &lt;div className=&quot;container&quot;&gt;
+        &lt;header&gt;&lt;h1&gt;Todo List&lt;/h1&gt;&lt;/header&gt;
+
+        &lt;ul&gt;{this.renderTasks()}&lt;/ul&gt;
+      &lt;/div&gt;
+    );
+  }
+
+});
+</code></pre>
+<h2 id="6-最后来实现task组件">6. 最后来实现Task组件**</h2>
+<p>新建 <code>Task.jsx</code> 文件。如前面所说，<strong>Task组件通过它的父级元素的props属性来获取数据</strong>。</p>
+<pre><code class="language-javascript">Task = React.createClass({
+  propTypes: {
+    task: React.PropTypes.object.isRequired
+  },
+
+  render() {
+    return (
+      //&lt;li&gt;{this.props.task.text}&lt;/li&gt;
+    );
+  }
+});
+</code></pre>
+<h2 id="7-样式文件">7. 样式文件</h2>
+<p>这个没什么新的，和前面原版的案例一模一样，复制一下就可以了</p>
+<h2 id="8-保存数据">8. 保存数据</h2>
+<p>关于操作 mongo 并插入测试数据也和前面一样，就不重复了。</p>
+<pre><code class="language-shell">$ meteor mongo
+$ db.tasks.insert({ text: &quot;Hello world!&quot;, createdAt: new Date() });
+</code></pre>
+<p><strong>mixin是什么</strong></p>
+<p>因为 react 的组件都是独立的，但这些组件可能拥有某些共同功能，为了能共享一部分代码，就使用 mixin 来定义写方法以实现这些共同的功能，使用了这个 mixin 的组件能自由地使用这些方法。（有点像PHP里的第三方工具类？）</p>
+<p><strong>在React component 内使用 ReactMeteorData 这个 mixin 从 collection 获取数据</strong></p>
+<p>当使用了这个 mixin 后，就可以定义一个 method <code>getMeteorData</code>来跟踪数据变化，这个 method 的返回值可以在 <code>render()</code> 里使用 <code>this.data</code>来访问。</p>
+<p>首先在 <code>simple-todos-react.jsx</code>定义 collection</p>
+<pre><code class="language-javascript">Tasks = new Mongo.Collection(&quot;tasks&quot;);
+</code></pre>
+<p>删除之前 App.jsx 里的 getTasks 方法，改成 mixin 的 getMeteorData 方法，然后修改 renderTasks 里的数据获取方式为 <code>this.data.tasks</code></p>
+<pre><code class="language-javascript">mixins: [ReactMeteorData],
+
+getMeteorData() {
+    return {
+      tasks: Tasks.find({}).fetch()
+    }
+  },
+</code></pre>
+<p><strong>一个容易出错的地方</strong></p>
+<p>我在 <code>tasks: Tasks.find({}).fetch()</code> 后面写了个分号“;&quot;， 结果报错如下。后来仔细对比文档删除后就好了。特别注意这里看上去像一条js语句，其实好像只是一个对象……</p>
+<blockquote>
+<p>While processing files with jsx (for target web.browser):
+App.jsx:14:35: App.jsx: Unexpected token (14:35)</p>
+</blockquote>
+<h2 id="9-表单">9. 表单</h2>
+<p>在 App.jsx 的 <code>render()</code> 里添加一个表单，唯一注意的是表单有个<code>onSubmit={this.handleSubmit}</code>属性绑定了提交时候的动作。</p>
+<p>然后写 <code>handleSubmit</code> 的实现，使用了 React 特有的一些方法如 <code>React.findDOMNode</code></p>
+<pre><code class="language-javascript"> handleSubmit(event) {
+    event.preventDefault();
+    var text = React.findDOMNode(this.refs.textInput).value.trim();
+ 
+    Tasks.insert({
+      text: text,
+      createdAt: new Date() // current time
+    });
+ 
+    React.findDOMNode(this.refs.textInput).value = &quot;&quot;;
+  },
+
+  render() {
+      
+          //&lt;form className=&quot;new-task&quot; onSubmit={this.handleSubmit}&gt;
+            &lt;input
+              type=&quot;text&quot;
+              ref=&quot;textInput&quot;
+              placeholder=&quot;Type to add new tasks&quot;&gt;
+          //&lt;/form&gt;
+         }
+</code></pre>
+<p><strong>总结一下</strong></p>
+<p>如上面例子可以看到，在 React 里，捕获事件是通过直接在组件上面引用一个方法（这里就是 onSubmit）。在事件捕获器内部，你可以使用 <code>ref</code> 属性和<code>findDOMNode</code>方法来引用组件的元素。</p>
+<p><strong>排序</strong></p>
+<p>修改 <code>getMeteorData</code> 方法，增加<code>sort</code></p>
+<pre><code class="language-javascript">tasks: Tasks.find({}, {sort: {createdAt: -1 }}).fetch()
+</code></pre>
+<h2 id="10-task的删除和check">10. task的删除和check</h2>
+<p>进入 <code>Task.jsx</code>，为 Task 组件添加两个方法，然后修改 render 方法，添加按钮和checkbox，并绑定事件，代码很好懂就不详细介绍了。发现都是一直在“翻译”meteor 的语法到 react 的表达方式啊……要注意 render 里面 HTML 的属性名要换用“javascript”的方式（例如 <code>className</code>）</p>
+<p>其实还是蛮喜欢 react 的表达方式的，主要是花括号不用打两个，哈哈！！</p>
+<pre><code class="language-javascript">Task = React.createClass({
+  propTypes: {
+    task: React.PropTypes.object.isRequired
+  },
+
+  toggleChecked() {
+    Tasks.update(this.props.task._id, {
+      $set: {checked: !this.props.task.checked}
+    });
+  },
+
+  deleteThisTask() {
+    Tasks.remove(this.props.task._id);
+  },
+
+  render() {
+    const taskClassName = this.props.task.checked ? &quot;checked&quot; : &quot;&quot;;
+
+    return (
+      &lt;li className={taskClassName}&gt;
+        &lt;button className=&quot;delete&quot; onClick={this.deleteThisTask}&gt;&amp;times;&lt;/button&gt;
+
+        &lt;input type=&quot;checkbox&quot; readOnly={true} checked={this.props.task.checked} onClick={this.toggleChecked} /&gt;
+        &lt;span className=&quot;text&quot;&gt;{this.props.task.text}&lt;/span&gt;
+      &lt;/li&gt;
+    );
+  }
+});
+</code></pre>
+<h2 id="11-保存临时-ui-状态数据">11. 保存临时 UI 状态数据</h2>
+<p>前面的 deploy、发布到手机都已经说过了，略</p>
+<p>话说接下来都不想写了，直接贴代码吧（基本上都是从 metor 自带的前端语法翻译成 react 的表达方式）</p>
+<p>App.jsx 文件，这里新的知识是 <code>state</code>，回忆一下 meteor 自带的 <code>Session</code>吧，类似的功能。</p>
+<p><code>getInitialState</code>方法用于初始化 state 数据。</p>
+<p>修改 getMeteorData，对返回的 tasks 数据增加一个过滤条件（判断是否勾选了“只看未完成”）。
+最后，增加一个返回值 <code>incompleteCount</code>，显示未完成task的总数，在 render 里用 <code> ({this.data.incompleteCount})</code>读取</p>
+<pre><code class="language-javascript">mixins: [ReactMeteorData],
+
+//let query 这种写法好像用了 ES2016 的语法，尚需要学习
+getMeteorData() {
+    let query = {};
+ 
+    if (this.state.hideCompleted) {
+      query = {checked: {$ne: true }};
+    }
+ 
+    return {
+      tasks: Tasks.find(query, {sort: {createdAt: -1 }}).fetch(),
+      incompleteCount: Tasks.find({checked: {$ne: true }}).count()
+    };
+  },
+ 
+  getInitialState() {
+    return {
+      hideCompleted: false
+    }
+  },
+略
+
+toggleHideCompleted() {
+    this.setState({
+      hideCompleted: ! this.state.hideCompleted
+    });
+  },
+
+render(){ 
+略
+&lt;label className=&quot;hide-completed&quot;&gt;
+            &lt;input
+              type=&quot;checkbox&quot;
+              readOnly={true}
+              checked={this.state.hideCompleted}
+              onClick={this.toggleHideCompleted} /&gt;
+            Hide Completed Tasks
+          &lt;/label&gt;
+        }
+</code></pre>
+<h2 id="12-把用户登录包-accounts-ui-封装成-react-的组件">12. 把用户登录包 accounts-ui 封装成 react 的组件！</h2>
+<p>还记得原版的 meteor 只要在模板里放一个 <code>{ { &gt; loginButtons } }</code> 就可以实现一个登陆框吗？在 react 里其实也可以用，只不过步骤多了一点，要先将他包裹成一个 react 的组件才能被使用。</p>
+<p>命令行安装 accounts-ui 和 accounts-password 两个包（略）</p>
+<p>创建一个 <code>AccountsUIWrapper.jsx</code>文件（也就是一个组件）</p>
+<pre><code class="language-javascript">AccountsUIWrapper = React.createClass({
+  componentDidMount() {
+    // Use Meteor Blaze to render login buttons
+    this.view = Blaze.render(Template.loginButtons,
+      React.findDOMNode(this.refs.container));
+  },
+  componentWillUnmount() {
+    // Clean up Blaze view
+    Blaze.remove(this.view);
+  },
+  render() {
+    // Just render a placeholder container that will be filled in
+    return &lt;span ref=&quot;container&quot; /&gt;;
+  }
+});
+</code></pre>
+<p>然后就可以直接在 <code>App.jsx</code>的 render 方法里直接调用这个组件</p>
+<pre><code class="language-html">&lt;AccountsUIWrapper /&gt;
+&lt;form className=&quot;new-task&quot; onSubmit={this.handleSubmit} &gt;
+</code></pre>
+<p>Accounts.ui.config 的配置在 <code>simple-todo-react.jsx</code>里，和前面一样，略</p>
+<p>Tasks.insert 里增加插入 owner 和 username ，和前面一样，略</p>
+<p>这里要注意的是，使用 meteor 原版的前端库，可以直接调用 <code>currentUser</code> ，而被封装成 react 组件后，要手动把它作为返回值。修改 <code>getMeteorData</code>，添加一行获取 <code>currentUser</code> 值。</p>
+<pre><code class="language-javascript">return {
+      tasks: Tasks.find(query, {sort: {createdAt: -1 }}).fetch(),
+      incompleteCount: Tasks.find({checked: {$ne: true }}).count(),
+      currentUser: Meteor.user()
+    };
+</code></pre>
+<p>然后才能被“模板”识别出来，修改 App.jsx，这一段比较长，但实际上是个三元运算符 condition ? true_switch : false_switch</p>
+<pre><code class="language-javascript">this.data.currentUser ?
+  &lt;form className=&quot;new-task&quot; onSubmit={this.handleSubmit}&gt;
+    &lt;input
+      type=&quot;text&quot;
+      ref=&quot;textInput&quot;
+      placeholder=&quot;Type to add new tasks&quot;&gt;&lt;/input&gt;
+  &lt;/form&gt; 
+  : 
+  ''
+</code></pre>
+<p>然后 Task.jsx 组件就可以使用 <code>{this.props.task.username}</code>把它的用户名显示出来了</p>
+<pre><code class="language-javascript">&lt;span className=&quot;text&quot;&gt;
+          &lt;strong&gt;{this.props.task.username}&lt;/strong&gt;: {this.props.task.text}
+        &lt;/span&gt;
+</code></pre>
+<h2 id="13-使用-method-提高安全性">13. 使用 method 提高安全性</h2>
+<p>和 meteor 的差不多，也是先删除 insecure 包，然后添加 <code>Meteor.methods</code>，最后把组件里操作数据库的方式改成 <code>Meteor.call()</code>的形式 。</p>
+<p>例如 Task 组件</p>
+<pre><code class="language-javascript">// toggleChecked
+Meteor.call(&quot;setChecked&quot;, this.props.task._id, ! this.props.task.checked);
+
+// deleteThisTask
+Meteor.call(&quot;removeTask&quot;, this.props.task._id);
+</code></pre>
+<p>在 <code>simple-todos-react.jsx</code>里定义这些 methods，注意它们的写法和前面有点不一样，不是<code>methodName: function(params){}</code>，而是更加简写的 <code>methodName(params){}</code></p>
+<h2 id="14-使用-server-端的-publish-和-client-端的-subscribe以及将-task-设为私有的处理">14. 使用 server 端的 Publish 和 client 端的 Subscribe，以及将 task 设为私有的处理</h2>
+<p>先删除 autopublish 包。然后添加 Public 和 Subscribe ，这个和之前的代码一样的，略</p>
+<p>然后添加一个 method，和之前的 <code>setPrivate</code>一样，代码略（但是这里把 var task 改成了 const task）</p>
+<p>传一个新的属性<code>showPrivateButton</code>给 Task ，只有当这条数据的 owner 等于当前登录用户的时候，才显示“设为私有”按钮。这里修改 App.jsx 的 <code>renderTasks</code>，注意两句的写法。</p>
+<pre><code class="language-javascript">return this.data.tasks.map((task) =&gt; {
+      const currentUserId = this.data.currentUser &amp;&amp; this.data.currentUser._id;
+      const showPrivateButton = task.owner === currentUserId;
+ 
+      return (&lt;Task
+        key={task._id}
+        task={task}
+        showPrivateButton={showPrivateButton}&gt;);
+    });
+</code></pre>
+<p>然后在 Task.jsx 的<code>propTypes</code>属性对象里增加一个成员<code>showPrivateButton</code>(来自前面的传入，指定是 bool 类型的)。
+然后在 render 方法里根据 showPrivateButton 的值生成这个按钮。
+最后实现这个按钮点击绑定的事件 <code>togglePrivate</code>（调用 setPrivate 这个 method）。</p>
+<p>还有最后，如果这个task是private的，它的样式也要和普通的task通过 <code>taskClassName</code> 有所区分(前面我们只设置了 checked 这个class，现在还要加上 private)</p>
+<pre><code class="language-javascript">Task = React.createClass({
+  propTypes: {
+    task: React.PropTypes.object.isRequired,
+    showPrivateButton: React.PropTypes.bool.isRequired
+  },
+//略
+
+togglePrivate() {
+    Meteor.call(&quot;setPrivate&quot;, this.props.task._id, ! this.props.task.private);
+  },
+
+//略
+{ this.props.showPrivateButton ? (
+          &lt;button className=&quot;toggle-private&quot; onClick={this.togglePrivate}&gt;
+            { this.props.task.private ? &quot;Private&quot; : &quot;Public&quot; }
+        ) : ''}
+ //略
+ render() {
+    const taskClassName = (this.props.task.checked ? &quot;checked&quot; : &quot;&quot;) + &quot; &quot; +
+      (this.props.task.private ? &quot;private&quot; : &quot;&quot;);
+ 
+    return (
+      &lt;li className={taskClassName}&gt;
+        )
+     }
+   })
+</code></pre>
+<p>好了，现在仍然是所有用户都可以看到别人的包括私有的 task。和之前一样，在 server 端的 publish 方法里加上数据的过滤，只输出当前用户的 Public 属性的 task。</p>
+<pre><code class="language-javascript">if (Meteor.isServer) {
+  // Only publish tasks that are public or belong to the current user
+  Meteor.publish(&quot;tasks&quot;, function () {
+    return Tasks.find({
+      $or: [
+        { private: {$ne: true} },
+        { owner: this.userId }
+      ]
+    });
+  });
+}
+
+//最后，在 removeTask 和 setChecked 两个 method 里添加权限处理。
+const task = Tasks.findOne(taskId);
+    if (task.private &amp;&amp; task.owner !== Meteor.userId()) {
+      // If the task is private, make sure only the owner can delete it
+      throw new Meteor.Error(&quot;not-authorized&quot;);
+    }
+</code></pre>
+<h2 id="降级">降级</h2>
+<pre><code class="language-shell">#这个命令是安装的最新版本，如果你的app是老版本的，会报`Meteor x.x.x  is not installed and could not be downloaded`
+$curl https://install.meteor.com/ | sh
+
+#因此需要手动下载和修改安装脚本
+$wget https://install.meteor.com
+$mv index.html install_meteor.sh
+$vi install_meteor.sh
+#把 RELEASE = x.x.x 改成旧版本号
+$ sh install_meteor.sh 
+</code></pre>
+<h2 id="meteor-package-version-not-in-catalog-npm-container">meteor Package version not in catalog: npm-container</h2>
+<blockquote>
+<p>While selecting package versions:
+error: Package version not in catalog: npm-container 1.2.0</p>
+</blockquote>
+<blockquote>
+<p>While refreshing package catalog to resolve previous errors:
+error: Network error: wss://packages.meteor.com/websocket: getaddrinfo ENOTFOUND</p>
+</blockquote>
+<p>解决方法</p>
+<ol>
+<li>找到 .meteor\package 文件中的 npm-container 删除掉这行或者 卸载本地的 npm-container 重新安装</li>
+<li>做完操作后，运行一次 meteor 工程后，再次做其他操作即可</li>
+</ol>
+<h1 id="mongodb">mongodb</h1>
+<h2 id="mac-下安装与启动-mongo这个是系统安装的独立的-mongo而非-meteor-库自带的meteor要区分开来">mac 下安装与启动 mongo（这个是系统安装的独立的 mongo，而非 meteor 库自带的meteor，要区分开来）</h2>
+<pre><code class="language-shell">$ brew install mongodb
+$ brew services start mongodb
+$ mongo
+&gt;db
+# 列出 test 库，表示安装成功
+</code></pre>
+<h2 id="备份和还原-meteor-的数据库">备份和还原 meteor 的数据库</h2>
+<pre><code class="language-shell">$ cd meteor-project
+$ meteor
+$ ps aux|grep &quot;mongo&quot;
+# 看到类似下面一样提示，这就是 meteor 的 mongo 运行的当前数据库，端口 3001，库名 meteor
+# /Users/zzy/.meteor/packages/meteor-tool/.1.1.10.1b51q9m++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/mongodb/bin/mongo 127.0.0.1:3001/meteor
+</code></pre>
+<p>切换到“系统”的 mongo，使用 mongodump 命令来备份和还原</p>
+<pre><code class="language-shell">#备份
+$ cd /usr/local/Cellar/mongodb/3.2.0/bin/
+$ mongodump -h 127.0.0.1 --port 3001 -d database_name [-c 表] -o ~/mongo_bak/
+
+#还原操作就是反过来(bson文件)
+$ mongorestore -h 127.0.0.1 --port 3001 -d database_name -c table_name --drop /mongo_bak/table_name.bson
+
+# 如果是 json 文件，只能一个个集合来处理
+$mongoimport --host 127.0.0.1 --port 3001 --db meteor -c collection_name --drop --file ./Downloads/mongo-txd-erp-20160303-202033.js
+</code></pre>
+<h1 id="是时候看完整的文档了">是时候看完整的文档了</h1>
+<p>学完了 meteor todos 和 todos with react ，我们可以边工作边查阅完整的文档。对所有组件、方法和属性、包的说明及用法，都可以在这里找到。简直是包罗万象，什么发邮件、用户权限控制、组件封装、网络请求、静态资源管理等等……</p>
+<p>建议先粗略看一遍，了解目录和关键点，然后在遇到问题的时候就可以快速找到资料。</p>
+<h1 id="更完整的学习案例">更完整的学习案例</h1>
+<p>官方还有两个更完善的案例 todos 和 local market，可以clone代码下来研究学习，是非常好的资料。</p>
+<h1 id="工具资源包">工具、资源、包</h1>
+<p><strong>工具</strong></p>
+<ul>
+<li>meteor CLI</li>
+<li>IDE与编辑器：常用的如 Sublime Text 3（我爱死它了），VS Code，Atom，WebStorm（重量级选手）</li>
+<li>其他： <a href="http://meteor.toys/">http://meteor.toys/</a> 和 <a href="https://kadira.io/">https://kadira.io/</a> ，用于调试、性能分析等</li>
+</ul>
+<p><strong>资源</strong></p>
+<p>书啊、视频教程、博客、论坛等等，深入学习必备</p>
+<p><strong>包</strong></p>
+<p><a href="https://atmospherejs.com/">https://atmospherejs.com/</a>  好多的有意思的包，一个优秀的框架一定有繁荣发展的第三方资源</p>
+<h1 id="多说一句在写这篇blog的时候hexo解析行内代码块中有特殊符号的问题">多说一句：在写这篇blog的时候，hexo解析行内代码块中有特殊符号的问题</h1>
+<p>因为 meteor 里有不少语法是两个花括号，然后带个 <code>&gt;</code>或者<code>#</code>号，而hexo有个bug，就是如果用 <code>行内代码块</code> 包裹，在生成的时候仍然会报错，例如 <code>{ { &gt; xxxxxx } }</code> 和 <code>{ { # xxxxxx } }</code>，在 <code>hexo s</code>的时候报错类似：</p>
+<blockquote>
+<p>FATAL Template render error: unexpected token: #
+at Error.exports.TemplateError (/Users/zzy/my_blog/node_modules/nunjucks/src/lib.js:51:19)</p>
+</blockquote>
+<p>网上查了一些资料，有的说在两个花括号和中间代码之间添加空格，有的说用反斜杠转义，但都没有解决问题。后来看了这篇 <a href="https://github.com/hexojs/hexo/issues/1071">https://github.com/hexojs/hexo/issues/1071</a> ，使用 Raw 插件，发现它除了添加个 <code>{ %</code> ，貌似没解决我的问题。后来测试下，只需要在每个花括号和特殊符号之间统统插入一个空格就可以了。</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/meteor-study/" title="meteor教程" target="_blank" rel="external">https://my101du.github.io/1/01/meteor-study/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/migration-%E8%BF%81%E7%A7%BB/" title="Migration 迁移"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/meteor-react-layout-and-flow-router-study/"
+                    title="meteor-react-layout与flow-router学习"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

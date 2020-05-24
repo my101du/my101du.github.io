@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        自营vps多用户管理 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="一键包 &amp;amp; 面板 Lnmp 一键包 安装很慢，升级不便（据说编译安装对本机配置进行优化？） http://forum.ubuntu.org.cn/viewtopic.php?t=247502 是否 lnmp 一键包 省空间一点？ 1.2G -&amp;gt; 1.6G 现在建议用 ubuntu 的 apt-get 安装 WDCP 宝塔 一些功能" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>自营vps多用户管理 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="自营vps多用户管理" />
+<meta property="og:description" content="一键包 &amp; 面板 Lnmp 一键包 安装很慢，升级不便（据说编译安装对本机配置进行优化？） http://forum.ubuntu.org.cn/viewtopic.php?t=247502 是否 lnmp 一键包 省空间一点？ 1.2G -&gt; 1.6G 现在建议用 ubuntu 的 apt-get 安装 WDCP 宝塔 一些功能" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/vps-hosting-multi-users/" />
+
+<meta itemprop="name" content="自营vps多用户管理">
+<meta itemprop="description" content="一键包 &amp; 面板 Lnmp 一键包 安装很慢，升级不便（据说编译安装对本机配置进行优化？） http://forum.ubuntu.org.cn/viewtopic.php?t=247502 是否 lnmp 一键包 省空间一点？ 1.2G -&gt; 1.6G 现在建议用 ubuntu 的 apt-get 安装 WDCP 宝塔 一些功能">
+
+<meta itemprop="wordCount" content="1488">
+
+
+
+<meta itemprop="keywords" content="server," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="自营vps多用户管理"/>
+<meta name="twitter:description" content="一键包 &amp; 面板 Lnmp 一键包 安装很慢，升级不便（据说编译安装对本机配置进行优化？） http://forum.ubuntu.org.cn/viewtopic.php?t=247502 是否 lnmp 一键包 省空间一点？ 1.2G -&gt; 1.6G 现在建议用 ubuntu 的 apt-get 安装 WDCP 宝塔 一些功能"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-vps-hosting-multi-users" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/vps-hosting-multi-users/"
+    >自营vps多用户管理</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/server/"> server </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/vps-hosting-multi-users/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1488字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="一键包--面板">一键包 &amp; 面板</h1>
+<h2 id="lnmp-一键包">Lnmp 一键包</h2>
+<p>安装很慢，升级不便（据说编译安装对本机配置进行优化？）
+<a href="http://forum.ubuntu.org.cn/viewtopic.php?t=247502">http://forum.ubuntu.org.cn/viewtopic.php?t=247502</a></p>
+<p>是否 lnmp 一键包 省空间一点？  1.2G -&gt; 1.6G</p>
+<p>现在建议用 ubuntu 的 apt-get 安装</p>
+<h2 id="wdcp">WDCP</h2>
+<h2 id="宝塔">宝塔</h2>
+<p>一些功能只有专业版有（木马查杀 等）
+<a href="https://www.bt.cn/download/linuxpro.html">https://www.bt.cn/download/linuxpro.html</a></p>
+<p>如无特殊： Nginx 建议最新版本， PHP 7.1， MySQL5.5（小于1G低内存）</p>
+<p>下载安装脚本，根据提示安装依赖的库和宝塔程序</p>
+<p><a href="https://www.bt.cn/bbs/thread-1186-1-1.html">https://www.bt.cn/bbs/thread-1186-1-1.html</a></p>
+<pre><code class="language-shell">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install.sh &amp;&amp; sh install.sh
+</code></pre>
+<p><img src="/media/15490412288399/15353599347282.jpg" alt="-w714"></p>
+<p>如果提示下面这个，说明前面的安全策略没有打开 <strong>5880</strong> 端口（终于知道这个干什么用的了。） 还有个 <strong>888</strong> 端口，好像也有用。。。</p>
+<p>安全组<strong>出</strong>方向要放行5880端口 不然将安装不上面板!</p>
+<blockquote>
+<p>&ndash;2018-08-27 16:53:17&ndash;  (try: 4)  http://125.88.182.172:5880/install/src/pip-9.0.1.tar.gz
+Connecting to 125.88.182.172:5880&hellip; failed: Connection timed out.
+Retrying.</p>
+</blockquote>
+<p>然后登陆到宝塔面板正式安装 Nginx 等应用</p>
+<p>似乎 Ubuntu 无法使用极速安装（过程很久），CentOS 使用 RPM 方式？</p>
+<p>因为 PHP7.2 对一些函数支持的变化，可能导致部分应用无法运行，另外压测里变化并不是极大，因此我这里选 7.1 足够了。
+MySQL 的话，5.6 和 5.7 对系统占用资源较大，建议 1G 以上内存的服务器使用。</p>
+<p>重点：MySQL5.6中内置了对Innodb的全文索引支持   innodb内部性能增强</p>
+<p><img src="/media/15490412288399/15350055306874.jpg" alt="-w655"></p>
+<p><img src="/media/15490412288399/15350055592814.jpg" alt="-w639"></p>
+<p>CentOS7 极速安装非常快</p>
+<p><img src="/media/15490412288399/15350123193939.jpg" alt="-w616"></p>
+<p>Nginx 过滤器</p>
+<p><img src="/media/15490412288399/15350148777052.jpg" alt="-w633"></p>
+<p><img src="/media/15490412288399/15350148971904.jpg" alt="-w291"></p>
+<p>MySQL 优化</p>
+<p><img src="/media/15490412288399/15350149760488.jpg" alt="-w607"></p>
+<p>PHP 设置</p>
+<p><img src="/media/15490412288399/15350150396297.jpg" alt="-w623"></p>
+<h3 id="腾讯云设置安全组">腾讯云设置安全组</h3>
+<p>官方：
+<a href="https://www.bt.cn/bbs/thread-1229-1-1.html">https://www.bt.cn/bbs/thread-1229-1-1.html</a></p>
+<p><img src="/media/15490412288399/15353593215028.jpg" alt="-w230"></p>
+<p>入站默认拒绝所有</p>
+<p><img src="/media/15490412288399/15353594186304.jpg" alt="-w909"></p>
+<p>添加入站规则（这里没有按官方的添加ftp等端口，因为我只用 sftp 足够）</p>
+<p><img src="/media/15490412288399/15353595823672.jpg" alt="-w913"></p>
+<p>出站默认拒绝所有，所以要添加出站的规则，把入站规则的复制进来就好</p>
+<p><img src="/media/15490412288399/15353593379768.jpg" alt="-w869"></p>
+<p><img src="/media/15490412288399/15353597297897.jpg" alt="-w913"></p>
+<p>然后切换到“关联实例”，把规则绑定到云主机</p>
+<p><img src="/media/15490412288399/15353597559959.jpg" alt="-w484"></p>
+<p><img src="/media/15490412288399/15353597862861.jpg" alt="-w824"></p>
+<h4 id="注意如果需要在腾讯云上登录其他服务器跳板需要开启-出站-22">注意，如果需要在腾讯云上登录其他服务器（跳板），需要开启 “出站” 22</h4>
+<h2 id="amh-5-版本收费">AMH （5 版本收费）</h2>
+<h1 id="用户隔离面板">用户隔离面板</h1>
+<p>2018&rsquo;s Ultimate Guide to Web Panels: cPanel vs. Plesk vs. Webmin vs. Other Popular Hosting Management Tools</p>
+<p><a href="https://www.hostingadvice.com/blog/cpanel-vs-plesk-vs-webpanel/">https://www.hostingadvice.com/blog/cpanel-vs-plesk-vs-webpanel/</a></p>
+<p>cPanel &amp; WHM | Plesk | DirectAdmin</p>
+<p>Core-Admin | InterWorx | ISPmanager | i-MSCP | Froxlor | Vesta | ZPanel | Sentora | Webmin | ISPConfig | Ajenti | BlueOnyx | CentOS Web Panel | Virtualmin</p>
+<p>免费的最后选择：（有一些不维护了）
+Vesta
+Sentora
+Webmin
+centos web panel(仅 CentOS)</p>
+<h2 id="cloudlinux">CloudLinux</h2>
+<h2 id="plesk">Plesk</h2>
+<p>Plesk在全球的市场份额比所有其它同类产品的总和还多，其受欢迎的程度可见一斑，几乎是领跑同类产品</p>
+<h2 id="cpanel--whm">cPanel &amp; WHM</h2>
+<p>cPanel &amp; WHM是一个基于Linux的Web主机控制面板，提供了一个图形界面和自动化工具，cPanel有3层结构，分别管理员，经销商和终端用户</p>
+<p><a href="https://cpanel.com/pricing/">https://cpanel.com/pricing/</a></p>
+<h2 id="dircetadmin">DircetAdmin</h2>
+<h1 id="安全">安全</h1>
+<h2 id="一些服务器安全软件">一些服务器安全软件</h2>
+<p>安全狗：据说还是被挂马。。
+云锁：免费功能少了些，有高级收费版 150/月
+悬镜：还不成熟？
+护卫神
+云盾： 阿里的</p>
+<p><a href="https://www.zhihu.com/question/19822513">https://www.zhihu.com/question/19822513</a></p>
+<h2 id="最后选择云锁">最后选择：云锁</h2>
+<p><a href="http://www.yunsuo.com.cn/">http://www.yunsuo.com.cn/</a></p>
+<p><strong>放弃</strong></p>
+<p>看个报告就要钱了。。。</p>
+<pre><code class="language-shell"># download &amp; install
+wget http://download.yunsuo.com.cn/v3/yunsuo_agent_64bit.tar.gz &amp;&amp; tar xvzf yunsuo_agent_64bit.tar.gz &amp;&amp; chmod +x yunsuo_install/install &amp;&amp; yunsuo_install/install
+
+# bind the server to account
+/usr/local/yunsuo_agent/agent_smart_tool.sh -u [username] -p [password]
+
+
+# uninstall
+/usr/local/yunsuo_agent/uninstall
+</code></pre>
+<p><img src="/media/15490412286931/15354297978426.jpg" alt="-w1017"></p>
+<p>更多设置</p>
+<p><a href="http://help.yunsuo.com.cn/manual/f19.html">http://help.yunsuo.com.cn/manual/f19.html</a></p>
+<h2 id="安全狗">安全狗</h2>
+<p><a href="https://www.v2ex.com/t/198149">https://www.v2ex.com/t/198149</a></p>
+<p>服务器安全狗的功能在于防火墙，过滤网络连接 管控权限风险和修复补丁
+网站安全狗 才是能够基于web，做脚本 站点权限 防盗链的</p>
+<p>各种产品命名太复杂</p>
+<pre><code class="language-shell"># download (官网的链接点不动。。。)
+wget http://down.safedog.cn/safedog_linux64.tar.gz
+
+# install
+tar xzvf safedog_linux64.tar.gz &amp;&amp; cd safedog_an_linux64_2.8.21207 &amp;&amp; chmod +x *.py &amp;&amp; sudo ./install.py
+
+# login
+sdcloud -u 服云帐号
+
+# 如果找不到那个命令，就下载一个证书 放到/etc/safedog/sdcc目录下
+# http://fuyun.safedog.cn/serverCenter/bind_server_index.html
+</code></pre>
+<p>还是无法运行这命令。。。。</p>
+<p>宝塔面板安装安全狗 提示</p>
+<blockquote>
+<p>Sorry! exist the nonsupported module of nginx, exit install</p>
+</blockquote>
+<p>切换到 Tengine 一样提示
+<strong>切换 Nginx 版本 1.8 就可以了</strong> （1.13.1 以下有漏洞如何处理？）</p>
+<h3 id="卸载">卸载</h3>
+<p>因为我在安装后，wordpress 提交时，经常出现什么敏感词。。。 所以就删了算了</p>
+<p><a href="https://zhuanlan.zhihu.com/p/25478314">https://zhuanlan.zhihu.com/p/25478314</a></p>
+<h2 id="悬镜">悬镜</h2>
+<p><a href="http://www.xmirror.cn/">http://www.xmirror.cn/</a></p>
+<p>官网首页看上去很不靠谱啊。。 https 错误，时间截止到 2017 年</p>
+<p><strong>登录必须要 root 账号 坑爹文档没说，其他用户名在 root 组都不行</strong></p>
+<p>开启下<strong>6361</strong>端口，防止登录失败。</p>
+<pre><code class="language-shell"># install
+sudo wget -O install.sh http://dl.xmirror.cn/a/install.sh &amp;&amp; sudo sh install.sh
+
+# 安装时选 Proxy install 模式，用 Normal install 会提示下面的错误
+</code></pre>
+<p>Install Xmirrorsec for Nginx:                              [ FAIL ]
+Install Xmirrorcc for Nginx:                               [ FAIL ]</p>
+<p>注意如果 Nginx 用了 1.8 版要切换回来1.12，否则会提示</p>
+<blockquote>
+<p>heck Web Server:                                          [ NOT FOUND ]</p>
+</blockquote>
+<p>最后输入网站的账号密码，绑定服务器
+如果没提前开启 6361 端口，这里会一直卡死。。。。更加显得不专业了</p>
+<p>WTF? 以前叫云诺？</p>
+<p><strong>放弃</strong>
+搞了半天，端口也开了，root 也允许了，还是无法登录或者在PC 端添加服务器</p>
+<pre><code class="language-shell"># uninstall
+/usr/share/xmirror/scripts/uninstall.sh
+</code></pre>
+<h2 id="360-主机卫士-死了">360 主机卫士-死了</h2>
+<p><a href="https://www.cnblogs.com/xiaozi/p/9132737.html">https://www.cnblogs.com/xiaozi/p/9132737.html</a></p>
+<h1 id="监控">监控</h1>
+<h2 id="apm-偏重性能">APM: 偏重“性能”</h2>
+<p><a href="https://www.oneapm.com/">https://www.oneapm.com/</a></p>
+<h1 id="案例">案例</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/42746104">https://zhuanlan.zhihu.com/p/42746104</a>  （跳板，端口限制，后门，日志检查，云锁，解密php文件）</p>
+<h1 id="参考资料">参考资料</h1>
+<p><a href="https://www.zhihu.com/question/40700914">https://www.zhihu.com/question/40700914</a></p>
+<p><a href="https://blog.csdn.net/enweitech/article/details/70211074">https://blog.csdn.net/enweitech/article/details/70211074</a></p>
+<p><a href="https://www.v2ex.com/t/403413">https://www.v2ex.com/t/403413</a></p>
+<p><a href="https://www.youtube.com/watch?v=ka_Ozw2nla4">https://www.youtube.com/watch?v=ka_Ozw2nla4</a></p>
+<p><a href="https://www.quora.com/Is-there-a-good-and-free-cPanel-alternative">https://www.quora.com/Is-there-a-good-and-free-cPanel-alternative</a></p>
+<p><a href="https://helgesverre.com/blog/free-alternatives-to-cpanel/">https://helgesverre.com/blog/free-alternatives-to-cpanel/</a></p>
+<p><a href="https://blog.ssdnodes.com/blog/cpanel-alternatives-vps/">https://blog.ssdnodes.com/blog/cpanel-alternatives-vps/</a></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/vps-hosting-multi-users/" title="自营vps多用户管理" target="_blank" rel="external">https://my101du.github.io/1/01/vps-hosting-multi-users/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/form-development-tips/" title="表单开发问题记录"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/auto-refresh/"
+                    title="自动刷新"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

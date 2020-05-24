@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        ReactJS 案例学习 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="学完基础，做个 todo。还是有一些不够清晰的地方。 以及开发辅助工具的使用 还有对页面、组件的规划，代码习惯等等 React 全家桶 https://blog.csdn.net/column/details/14545.html react react-router redux react-redux react-router-redux redux-saga immutable reselect antd 首先" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>ReactJS 案例学习 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="ReactJS 案例学习" />
+<meta property="og:description" content="学完基础，做个 todo。还是有一些不够清晰的地方。 以及开发辅助工具的使用 还有对页面、组件的规划，代码习惯等等 React 全家桶 https://blog.csdn.net/column/details/14545.html react react-router redux react-redux react-router-redux redux-saga immutable reselect antd 首先" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/react-js-case-study/" />
+
+<meta itemprop="name" content="ReactJS 案例学习">
+<meta itemprop="description" content="学完基础，做个 todo。还是有一些不够清晰的地方。 以及开发辅助工具的使用 还有对页面、组件的规划，代码习惯等等 React 全家桶 https://blog.csdn.net/column/details/14545.html react react-router redux react-redux react-router-redux redux-saga immutable reselect antd 首先">
+
+<meta itemprop="wordCount" content="8854">
+
+
+
+<meta itemprop="keywords" content="foreground," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ReactJS 案例学习"/>
+<meta name="twitter:description" content="学完基础，做个 todo。还是有一些不够清晰的地方。 以及开发辅助工具的使用 还有对页面、组件的规划，代码习惯等等 React 全家桶 https://blog.csdn.net/column/details/14545.html react react-router redux react-redux react-router-redux redux-saga immutable reselect antd 首先"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-react-js-case-study" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/react-js-case-study/"
+    >ReactJS 案例学习</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/foreground/"> foreground </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/react-js-case-study/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8854字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 18分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>学完基础，做个 todo。还是有一些不够清晰的地方。</p>
+<p>以及开发辅助工具的使用</p>
+<p>还有对页面、组件的规划，代码习惯等等</p>
+<h1 id="react-全家桶">React 全家桶</h1>
+<p><a href="https://blog.csdn.net/column/details/14545.html">https://blog.csdn.net/column/details/14545.html</a></p>
+<ul>
+<li>react</li>
+<li>react-router</li>
+<li>redux</li>
+<li>react-redux</li>
+<li>react-router-redux</li>
+<li>redux-saga</li>
+<li>immutable</li>
+<li>reselect</li>
+<li>antd</li>
+</ul>
+<h2 id="首先用-json-server-模拟服务端和数据">首先用 json-server 模拟服务端和数据</h2>
+<p>参看单独教程</p>
+<p>当然除了用这个 RESTFul 风格的测试数据服务端工具（毕竟又要启动一个端口）</p>
+<p>在 package.json 的 scripts 里添加一条命令来简化启动</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    //other
+    &quot;server&quot;: &quot;cd server &amp;&amp; json-server db.json -w -p 8000&quot;,
+}
+</code></pre>
+<p>后面直接用 <code>npm run server</code>来启动 json-server 服务</p>
+<p>你也可以用别的模拟数据生成工具</p>
+<p>例如 roadhog dev support mock
+configured in .roadhogrc.mock.js.</p>
+<h2 id="客户端">客户端</h2>
+<p>安装 roadhog （见单独教程），它和 create-react-js 的区别“Cli tool for creating react apps, configurable version of create-react-app
+”</p>
+<p>或者在 create-react-js 的项目里手动把配置文件释放出来也可以</p>
+<p>以下可略（使用 create-react-js 工具自动创建，不需手动操作）</p>
+<p>新建/src目录，用于存放客户端代码
+新建/public目录，用户存放项目的静态文件（图片等）
+新建/src/index.js和/public/index.html两个文件，分别作为应用的入口文件和页面的入口文件
+执行npm i react react-dom react-router -S，安装基本的react依赖
+在/src/index.js中写入以下代码</p>
+<h2 id="新增页面">新增页面</h2>
+<blockquote>
+<p>Tips: 关于文件的命名，我采用这样的方式：[模块][功能].xxx，上面是一个添加用户的页面，所以模块是User，功能是Add，良好的命名风格可以让你的项目、代码更容易维护（这里由于是React的一个组件，所以使用大写开头的大驼峰命名法）。</p>
+</blockquote>
+<p>src/pages/UserAdd.js</p>
+<h2 id="配置路由">配置路由</h2>
+<h2 id="表单提交数据">表单提交数据</h2>
+<p>React中的表单并不提供双向数据绑定的功能，我们需要给表单绑定它的value，然后提供一个onChange的处理方法来更新value的值</p>
+<p>使用组件的state来维护表单的值，在onChange的时候使用setState来更新值</p>
+<pre><code class="language-javascript">class UserAdd extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+      name: '',
+      age: 0,
+      gender: ''
+    };
+  }
+  handleValueChange (field, value, type = 'string') {
+    // 由于表单的值都是字符串，我们可以根据传入type为number来手动转换value的类型为number类型
+    if (type === 'number') {
+      value = +value;
+    }
+
+    this.setState({
+      [field]: value
+    });
+  }
+  handleSubmit (e) {
+    // 阻止表单submit事件自动跳转页面的动作
+    e.preventDefault();
+    alert(JSON.stringify(this.state));
+  }
+  render () {
+    const {name, age, gender} = this.state;
+    return (
+      &lt;div&gt;
+        &lt;header&gt;
+          &lt;h1&gt;添加用户&lt;/h1&gt;
+        &lt;/header&gt;
+
+        &lt;main&gt;
+          &lt;form onSubmit={(e) =&gt; this.handleSubmit(e)}&gt;
+            &lt;label&gt;用户名：&lt;/label&gt;
+            &lt;input type=&quot;text&quot; value={name} onChange={(e) =&gt; this.handleValueChange('name', e.target.value)}/&gt;
+            &lt;br/&gt;
+            &lt;label&gt;年龄：&lt;/label&gt;
+            &lt;input type=&quot;number&quot; value={age || ''} onChange={(e) =&gt; this.handleValueChange('age', e.target.value, 'number')}/&gt;
+            &lt;br/&gt;
+            &lt;label&gt;性别：&lt;/label&gt;
+            &lt;select value={gender} onChange={(e) =&gt; this.handleValueChange('gender', e.target.value)}&gt;
+              &lt;option value=&quot;&quot;&gt;请选择&lt;/option&gt;
+              &lt;option value=&quot;male&quot;&gt;男&lt;/option&gt;
+              &lt;option value=&quot;female&quot;&gt;女&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;br/&gt;
+            &lt;br/&gt;
+            &lt;input type=&quot;submit&quot; value=&quot;提交&quot;/&gt;
+          &lt;/form&gt;
+        &lt;/main&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<h2 id="调用接口">调用接口</h2>
+<p>调用接口可以有很多方法：Ajax、表单提交、fetch。这里用fetch
+修改 <code>handleSubmit</code> 方法，把alert 删掉，改成向 json-server 的接口 POST 数据的 fetch 动作</p>
+<pre><code class="language-js">fetch('http://localhost:3000/user', {
+  method: 'post',
+  // 使用fetch提交的json数据需要使用JSON.stringify转换为字符串
+  body: JSON.stringify({
+    name,
+    age,
+    gender
+  }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+  .then((res) =&gt; res.json())
+  .then((res) =&gt; {
+    // 当添加成功时，返回的json对象中应包含一个有效的id字段
+    // 所以可以使用res.id来判断添加是否成功
+    if (res.id) {
+      alert('添加用户成功');
+      this.setState({
+        name: '',
+        age: 0,
+        gender: ''
+      });
+    } else {
+      alert('添加失败');
+    }
+  })
+  .catch((err) =&gt; console.error(err));
+</code></pre>
+<p>再打开 json-server 的 http://localhost:3000/user 可以看到新用户已经添加</p>
+<h2 id="表单验证">表单验证</h2>
+<p>唉，自己写就是麻烦， 幸好后面我们用 antd 的组件可以帮我们自动完成这些。。</p>
+<p>截取一些关键代码</p>
+<p>首先给每个 state 数据添加 valid error 属性，值放入 value 属性</p>
+<pre><code class="language-js">this.state = {
+      form: {
+        name: {
+          valid: false,
+          value: '',
+          error: ''
+        },
+</code></pre>
+<p>在handleValueChange方法中，根据参数field获取state中对应表单的对象，然后根据新的值value判断新的值是否有效，将新的值和新的有效状态更新到state里。</p>
+<pre><code class="language-js">const {form} = this.state;
+
+    const newFieldObj = {value, valid: true, error: ''};
+
+    switch (field) {
+      case 'name': {
+        if (value.length &gt;= 5) {
+          newFieldObj.error = '用户名最多4个字符';
+          newFieldObj.valid = false;
+        } else if (value.length === 0) {
+          newFieldObj.error = '请输入用户名';
+          newFieldObj.valid = false;
+        }
+        break;
+      }
+      
+      // age  gender 等处理
+      
+    this.setState({
+      form: {
+        ...form,
+        [field]: newFieldObj
+      }
+    });
+</code></pre>
+<p>在 handleSubmit 对每个字段的 valid 检测</p>
+<p>(这个写法 <code>const {form: {name, age, gender}} = this.state;</code> 注意下)</p>
+<pre><code class="language-js">const {form: {name, age, gender}} = this.state;
+if (!name.valid || !age.valid || !gender.valid) {
+  alert('请填写正确的信息后重试');
+  return;
+}
+</code></pre>
+<p>fetch 里的 post 数据也需要修改成类似<code>name: name.value,</code> 的形式</p>
+<p>render 里也要修改每个输入元素的 value (因为原来的字符串变成了一个对象（value valid error）)</p>
+<pre><code class="language-js">&lt;input
+      type=&quot;text&quot;
+      value={name.value}
+</code></pre>
+<h2 id="组件化表单和控件">组件化表单和控件</h2>
+<p>前面是添加用户，如果添加图书，那么就会有重复的代码出现（特别是验证代码，它们和组件耦合在一起，无法复用）</p>
+<p>用组件化的方式去给表单验证这些逻辑解耦</p>
+<h3 id="高阶组件formprovider">高阶组件：formProvider</h3>
+<p>高阶组件就是返回组件的组件（函数）,可以在不修改原组件代码的情况下，修改原组件的行为或增强功能。</p>
+<p>以前面带有表单校验功能的添加用户的表单为例：</p>
+<ul>
+<li>用户表单有3个字段：name、age、gender，并且每个字段都有它自己的校验规则和对应的错误信息</li>
+<li>图书的表单有name、price、owner_id三个字段，每个字段有它自己的校验规则和错误信息</li>
+<li>写一个表单的时候，都需要有一个地方来保存表单字段的值（state），有一个函数来处理表单值的更新和校验（handleValueChange）  <strong>可以用高阶组件来封装</strong></li>
+<li>添加用户的表单和添加图书的表单之间的不同之处仅仅是表单字段以及字段的默认值、校验规则和错误信息。</li>
+</ul>
+<p>在/src下新建一个目录<code>utils</code>，新建<code>formProvider.js</code>文件</p>
+<pre><code class="language-js">import React from 'react';
+
+function formProvider (fields) {
+  return function (Comp) {
+  
+    const initialFormState = {};
+    
+    for (const key in fields) {
+      initialFormState[key] = {
+        value: fields[key].defaultValue,
+        error: ''
+      };
+    }
+  
+    
+    class FormComponent extends React.Component {
+        constructor (props) {
+            super(props);
+            this.state = {
+              form: initialFormState,
+              formValid: false
+            };
+        
+            this.handleValueChange = this.handleValueChange.bind(this);
+        }
+        
+        handleValueChange (fieldName, value) {
+            const { form } = this.state;
+    
+            const newFieldState = {value, valid: true, error: ''};
+    
+            const fieldRules = fields[fieldName].rules;
+    
+            for (let i = 0; i &lt; fieldRules.length; i++) {
+              const {pattern, error} = fieldRules[i];
+              let valid = false;
+              if (typeof pattern === 'function') {
+                valid = pattern(value);
+              } else {
+                valid = pattern.test(value);
+              }
+    
+              if (!valid) {
+                newFieldState.valid = false;
+                newFieldState.error = error;
+                break;
+              }
+            }
+    
+            const newForm = {...form, [fieldName]: newFieldState};
+            const formValid = Object.values(newForm).every(f =&gt; f.valid);
+    
+            this.setState({
+              form: newForm,
+              formValid
+            });
+          }
+          
+        render () {
+            const {form, formValid} = this.state;
+            return &lt;Comp {...this.props} form={form} formValid={formValid} onFormChange={this.handleValueChange}/&gt;
+        }
+    }
+
+    return FormComponent;
+  }
+}
+
+export default formProvider;
+</code></pre>
+<p>formProvider接收一个fields参数(是一个对象)，并返回一个函数，这个函数接收一个组件作为参数并返回一个组件.
+使用高阶组件后，UserAdd.js 改成如下：</p>
+<p>经过formProvider处理后的UserAdd组件会得到额外的props</p>
+<ul>
+<li>form</li>
+<li>formValid</li>
+<li>onFormChange</li>
+</ul>
+<pre><code class="language-js">import React from 'react';
+import formProvider from '../utils/formProvider';
+
+/*class UserAdd extends React.Component {
+  
+*/
+// 上面省略了与之前相同的代码，只列出不同的部分
+
+handleSubmit (e) {
+    // 多了 formValid
+    const {form: {name, age, gender}, formValid} = this.props;
+    if (!formValid) {
+      alert('请填写正确的信息后重试');
+
+render () {
+    // 多了 onFormChange
+    const {form: {name, age, gender}, onFormChange} = this.props;
+    return (
+        
+        // onChange 调用 onFormChange
+        &lt;input
+          type=&quot;number&quot;
+          value={age.value || ''}
+          onChange={(e) =&gt; onFormChange('age', +e.target.value)}
+        /&gt;
+        {!age.valid &amp;&amp; &lt;span&gt;{age.error}&lt;/span&gt;}
+
+const fields = {
+  name: {
+    defaultValue: '',
+    rules: [
+      {
+        pattern: function (value) {
+          return value.length &gt; 0;
+        },
+        error: '请输入用户名'
+      },
+      {
+        pattern: /^.{1,4}$/,
+        error: '用户名最多4个字符'
+      }
+    ]
+  },
+  age: {
+    defaultValue: 0,
+    rules: [
+      {
+        pattern: function (value) {
+          return value &gt;= 1 &amp;&amp; value &lt;= 100;
+        },
+        error: '请输入1~100的年龄'
+      }
+    ]
+  },
+  gender: {
+    defaultValue: '',
+    rules: [
+      {
+        pattern: function (value) {
+          return !!value;
+        },
+        error: '请选择性别'
+      }
+    ]
+  }
+}            
+
+UserAdd = formProvider(fields)(UserAdd);
+
+export default UserAdd;
+</code></pre>
+<h3 id="表单控件组件">表单控件组件</h3>
+<p>抽离了表单的状态的维护和更新逻辑，但这并不够完美. 在 render 方法中，name age 等几个表单组件都有类似的 error 显示，label 标签。</p>
+<p>将其封装成一个<code>FormItem</code>组件，新建<code>/src/components</code>目录和<code>FormItem.js</code>文件</p>
+<p>注意<code>{children}</code></p>
+<pre><code class="language-js">import React from 'react';
+
+class FormItem extends React.Component {
+  render () {
+    const {label, children, valid, error} = this.props;
+    return (
+      &lt;div&gt;
+        &lt;label&gt;{label}&lt;/label&gt;
+        {children}
+        {!valid &amp;&amp; &lt;span&gt;{error}&lt;/span&gt;}
+      &lt;/div&gt;
+    );
+  }
+}
+
+export default FormItem;
+</code></pre>
+<p>然后就可以在 UserAdd.js 里使用了</p>
+<pre><code class="language-js">...
+import FormItem from '../components/FormItem';
+
+...
+render(){
+    &lt;FormItem label=&quot;用户名：&quot; valid={name.valid} error={name.error}&gt;
+      &lt;input
+        type=&quot;text&quot;
+        value={name.value}
+        onChange={(e) =&gt; onFormChange('name', e.target.value)}
+      /&gt;
+    &lt;/FormItem&gt;
+    ...
+</code></pre>
+<h2 id="渲染用户数据列表">渲染用户数据列表</h2>
+<pre><code class="language-js">class UserList extends React.Component {
+
+    componentWillMount () {
+        fetch('http://localhost:3000/user')
+          .then(res =&gt; res.json())
+          .then(res =&gt; {
+            this.setState({
+              userList: res
+            });
+          });
+      }
+    
+    render () {
+        const {userList} = this.state;
+        
+        return (
+            &lt;table&gt;...
+            {
+                userList.map((user) =&gt; {
+                  return (
+                    &lt;tr key={user.id}&gt;
+                      &lt;td&gt;{user.id}&lt;/td&gt;
+                      &lt;td&gt;{user.name}&lt;/td&gt;
+        )
+
+</code></pre>
+<p>添加路由和菜单项(略)</p>
+<p>在用户添加完用户后，自动跳转到用户列表<code>this.context.router.push</code></p>
+<pre><code class="language-js">class UserAdd extends React.Component {
+  handleSubmit (e) {
+    ...
+    
+    //fetch
+    
+    if (res.id) {
+      alert('添加用户成功');
+      this.context.router.push('/user/list');
+      return;
+
+// 必须给UserAdd定义一个包含router属性的contextTypes
+// 使得组件中可以通过this.context.router来使用React Router提供的方法
+UserAdd.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+</code></pre>
+<h2 id="提取布局组件">提取布局组件</h2>
+<p>大部分页面都有相似的header和footer，不同的是中间部分的内容。新建<code>/src/layouts</code>目录用来存放布局组件，新建<code>HomeLayout.js</code>文件：</p>
+<pre><code class="language-js">lass HomeLayout extends React.Component {
+  render () {
+    const {title, children} = this.props;
+    return (
+      &lt;div&gt;
+        &lt;header&gt;
+          &lt;h1&gt;{title}&lt;/h1&gt;
+        &lt;/header&gt;
+
+        &lt;main&gt;
+          {children}
+        &lt;/main&gt;
+</code></pre>
+<p>然后就可以重构之前的页面</p>
+<pre><code class="language-js">import HomeLayout from '../layouts/HomeLayout';
+
+class Home extends React.Component {
+  render () {
+    return (
+      &lt;HomeLayout title=&quot;Welcome&quot;&gt;
+        &lt;Link to=&quot;/user/list&quot;&gt;用户列表&lt;/Link&gt;
+        //...
+</code></pre>
+<p>继续优化，把“每个页面都 import HomeLayout&rdquo; 改成 &ldquo;给每个需要使用HomeLayout布局的页面路由添加一个component为HomeLayout的<strong>父路由</strong>&rdquo;</p>
+<pre><code class="language-js">// /src/index.js
+...
+ReactDOM.render((
+  &lt;Router history={hashHistory}&gt;
+    &lt;Route path=&quot;/&quot; component={HomeLayout&gt;
+      &lt;Route path=&quot;/&quot; component={HomePage}/&gt;
+      &lt;Route path=&quot;/user/add&quot; component={UserAddPage}/&gt;
+      &lt;Route path=&quot;/user/list&quot; component={UserListPage}/&gt;
+    &lt;/Route&gt;
+  &lt;/Router&gt;
+), document.getElementById('app'));
+</code></pre>
+<p>相当于下面的结果，<code>HomeLayout</code>将会根据当前的<code>url</code>从<code>props.children</code>接收到相应的组件内容</p>
+<pre><code>//当url为”/”：
+&lt;HomeLayout&gt;
+  &lt;HomePage/&gt;
+&lt;/HomeLayout&gt;
+
+//当url为”/user/add”：
+&lt;HomeLayout&gt;
+  &lt;UserAddPage/&gt;
+&lt;/HomeLayout&gt;
+</code></pre>
+<p>这样做可以解除每个页面与HomeLayout之间的耦合，但也有一些问题：</p>
+<p>title怎么办？（使用react context api）
+有的页面组件需要添加一个额外的根节点（如/src/pages/Home.js）
+这里不再进行进一步的讲解，自己动手试试？</p>
+<h2 id="用户删除与编辑">用户删除与编辑</h2>
+<p>在用户列表的 render 里添加”操作“按钮列</p>
+<pre><code class="language-js">&lt;td&gt;
+    &lt;a href=&quot;javascript:void(0)&quot; onClick={() =&gt; this.handleEdit(user)}&gt;编辑&lt;/a&gt;
+    &amp;nbsp;
+    &lt;a href=&quot;javascript:void(0)&quot; onClick={() =&gt; this.handleDel(user)}&gt;删除&lt;/a&gt;
+  &lt;/td&gt;
+</code></pre>
+<p>用户删除</p>
+<pre><code class="language-js">handleDel (user) {
+    const confirmed = confirm(`确定要删除用户 ${user.name} 吗？`);
+
+    if (confirmed) {
+      fetch('http://localhost:3000/user/' + user.id, {
+        method: 'delete'
+      })
+        .then(res =&gt; res.json())
+        .then(res =&gt; {
+          this.setState({
+            userList: this.state.userList.filter(item =&gt; item.id !== user.id)
+          });
+          alert('删除用户成功');
+        })
+        .catch(err =&gt; {
+          console.error(err);
+          alert('删除用户失败');
+        });
+    }
+  }
+</code></pre>
+<p>用户编辑和用户添加基本上是一样的，不同的地方有：</p>
+<ul>
+<li>用户编辑需要将用户的数据先填充到表单</li>
+<li>用户编辑在提交表单的时候调用的接口和方法不同</li>
+<li>页面标题不同</li>
+<li>页面路由不同</li>
+</ul>
+<p>复制UserAdd.js文件的代码到一个新的UserEdit.js文件中，再对上述四点进行修改？ 不，又太多重复代码了。因此</p>
+<ul>
+<li>升级formProvider使其返回的表单组件支持传入表单的值（用于主动填充表单）</li>
+<li>将UserAdd.js中的大部分代码抽离到一个通用组件UserEditor，通过传入不同的props来控制组件的行为是添加还是编辑</li>
+</ul>
+<p>修改/src/utils/formProvider.js文件，给表单组件传入了一个<code>setFormValues</code>的方法，用于在组件中主动设置表单的值。</p>
+<pre><code class="language-js">constructor (props) {
+    ...
+    this.setFormValues = this.setFormValues.bind(this);
+}
+
+setFormValues (values) {
+    if (!values) {
+      return;
+    }
+    
+    const {form} = this.state;
+    let newForm = {...form};
+    for (const field in form) {
+      if (form.hasOwnProperty(field)) {
+        if (typeof values[field] !== 'undefined') {
+          newForm[field] = {...newForm[field], value: values[field]};
+        }
+        // 正常情况下主动设置的每个字段一定是有效的
+        newForm[field].valid = true;
+      }
+    }
+    
+    this.setState({form: newForm});
+}
+
+render () {
+    const {form, formValid} = this.state;
+    return (
+      &lt;Comp 
+        {...this.props}
+        form={form}
+        formValid={formValid}
+        onFormChange={this.handleValueChange}
+        setFormValues={this.setFormValues}
+      /&gt;
+    );
+  }
+  
+return FormComponent;
+</code></pre>
+<p>新建/src/components/UserEditor.js文件，将表单处理代码从UserAdd.js里剥离出去</p>
+<pre><code class="language-javascript">...
+class UserEditor extends React.Component {
+    handleSubmit (e) { ... }
+    render() {}
+}
+
+//UserEditor.contextTypes
+UserEditor.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+UserEditor = formProvider({ ... })(UserEditor);
+
+export default UserEditor;
+</code></pre>
+<p>handleSubmit方法中，通过检查是否收到一个editTarget的props来判断这次的操作是添加操作还是编辑操作，并根据当前的操作切换调用接口的url和method</p>
+<p>在UserEditor加载的时候检查是否存在props.editTarget，如果存在，使用props.setFormValues方法将editTarget的值设置到表单：</p>
+<pre><code class="language-js">handleSubmit (e) {
+    if (!formValid) {
+    
+    let editType = '添加';
+    let apiUrl = 'http://localhost:3000/user';
+    let method = 'post';
+    if (editTarget) {
+      editType = '编辑';
+      apiUrl += '/' + editTarget.id;
+      method = 'put';
+    }
+    
+    fetch(apiUrl, {
+      method,
+      
+
+componentWillMount () {
+    const {editTarget, setFormValues} = this.props;
+    if (editTarget) {
+      setFormValues(editTarget);
+    }
+  }
+</code></pre>
+<p>UserEditor 完成。要作为一个用户添加器使用时<code>&lt;UserEditor/&gt;</code>，作为一个用户编辑器使用时，将编辑的目标用户对象传给editTarget这个属性<code>&lt;UserEditor editTarget={user}/&gt;</code></p>
+<p>UserAdd.js 这个页面就简化成</p>
+<pre><code class="language-js">render(){
+    &lt;HomeLayout title=&quot;添加用户&quot;&gt;
+        &lt;UserEditor/&gt;
+</code></pre>
+<p>添加 UserEditPage。在这个页面组件里，我们根据路由中名为<code>id</code>的参数（<code>this.context.router.params.id</code>）来调用接口获取用户数据（保存在this.state.user中）。</p>
+<p><strong>注意：任何使用this.context.xxx的地方，必须在组件的contextTypes里定义对应的PropTypes。</strong></p>
+<pre><code class="language-js">class UserEdit extends React.Component {
+    componentWillMount () {
+        const userId = this.context.router.params.id;
+        fetch('http://localhost:3000/user/' + userId)
+          .then(res =&gt; res.json())
+          .then(res =&gt; {
+            this.setState({
+              user: res
+              
+    render () {
+        const {user} = this.state;
+        return (
+          &lt;HomeLayout title=&quot;编辑用户&quot;&gt;
+            {
+              user ? &lt;UserEditor editTarget={user}/&gt; : '加载中...'
+            }
+          &lt;/HomeLayout&gt;
+          
+UserEdit.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+export default UserEdit;
+</code></pre>
+<p>完成用户列表页面 <code>UserList.js</code> 里的 <code>handleEdit</code> 方法</p>
+<pre><code class="language-js">class UserList extends React.Component {
+    handleEdit (user) {
+        this.context.router.push('/user/edit/' + user.id);
+    }
+  
+UserList.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+</code></pre>
+<p><strong>补充</strong></p>
+<p>涉及 1 reactroute版本问题，this contex router push is not a function 2 React Router context router 未定义错误 1 this context router push改为this context router history push 2 router React PropTypes object isRequired 改为router Object this context router params id改为this context router route match params id</p>
+<h2 id="图书管理">图书管理</h2>
+<p>与用户管理基本相同。（也可以使用更高层次的高阶组件来实现组件配置化）</p>
+<h2 id="自动完成组件包含一个输入框一个下拉框的复合控件">自动完成组件（包含一个输入框、一个下拉框的复合控件）</h2>
+<p>实现一个通用组件，在动手写代码之前我会做以下准备工作：</p>
+<ul>
+<li>确定组件结构</li>
+<li>观察组件逻辑</li>
+<li>确定组件内部状态（state）</li>
+<li>确定组件向外暴露的属性（props）</li>
+</ul>
+<p><strong>组件结构</strong></p>
+<p>这里下拉框，并不是指select与option（是一个带边框的、位于输入框正下方的一个列表）</p>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;input type=&quot;text&quot;/&gt;
+  &lt;ul&gt;
+    &lt;li&gt;...&lt;/li&gt;
+    ...
+</code></pre>
+<p><strong>组件逻辑</strong></p>
+<ol>
+<li>未输入时，与普通输入框一致</li>
+<li>输入改变时如果有建议的选项，则在下放显示出建议列表</li>
+<li>建议列表可以使用键盘上下键进行选择，选择某一项时该项高亮显示，并且输入框的值变为该项的值</li>
+<li>当移出列表（在第一项按上键或在最后一项按下键）时，输入框的值变为原来输入的值（图中的“as”）</li>
+<li>按下回车键可以确定选择该项，列表消失</li>
+<li>可以使用鼠标在列表中进行选择，鼠标移入的列表项高亮显示</li>
+</ol>
+<p><strong>组件内部状态</strong></p>
+<p>一个易用的通用组件应该对外隐藏只有内部使用的状态。使用React组件的state来维护组件的内部状态。</p>
+<ul>
+<li>逻辑2|3|4：输入框中显示的值，默认为空字符串（displayValue）</li>
+<li>逻辑3|6：建议列表中高亮的项目，可以维护一个项目在列表中的索引，默认为-1（activeItemIndex)</li>
+</ul>
+<p><strong>暴露的属性</strong></p>
+<p>组件实际的值、推荐列表，应该由组件的使用者来控制（这才是一个”通用“的组件）</p>
+<ul>
+<li>value：代表实际的值（不同于上面的displayValue表示显示的、临时的值，value表示的是最终的值）</li>
+<li>options：代表当前组件的建议列表，为空数组时，建议列表隐藏</li>
+<li>onValueChange：用于在输入值或确定选择了某一项时通知使用者的回调方法，使用者可以在这个回调方法中对options、value进行更新</li>
+</ul>
+<p>开始实现，在<code>/src/components</code>下新建<code>AutoComplete.js</code>文件，写入组件的基本代码：</p>
+<pre><code class="language-js">import React from 'react';
+
+class AutoComplete extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      displayValue: '',
+      activeItemIndex: -1
+    };
+  }
+
+  render () {
+    const {displayValue, activeItemIndex} = this.state;
+    const {value, options} = this.props;
+    return (
+      &lt;div&gt;
+        &lt;input value={value}/&gt;
+        {options.length &gt; 0 &amp;&amp; (
+          &lt;ul&gt;
+            {
+              options.map((item, index) =&gt; {
+                return (
+                  &lt;li key={index}&gt;
+                    {item.text || item}
+                  &lt;/li&gt;
+                );
+              })
+            }
+          &lt;/ul&gt;
+        )}
+      &lt;/div&gt;
+    );
+  }
+}
+
+// 通用组件最好写一下propTypes约束
+AutoComplete.propTypes = {
+  value: PropTypes.string.isRequired,
+  options: PropTypes.array.isRequired,
+  onValueChange: PropTypes.func.isRequired
+};
+
+export default AutoComplete;
+</code></pre>
+<p>现在可以试试把输入书本信息的代码改成这个组件</p>
+<pre><code class="language-js">&lt;FormItem label=&quot;所有者：&quot; valid={owner_id.valid} error={owner_id.error}&gt;
+
+  &lt;AutoComplete
+    value={owner_id.value ? owner_id.value + '' : ''}
+    options={['10000（一韬）', '10001（张三）']}
+    onValueChange={value =&gt; onFormChange('owner_id', value)}
+  /&gt;
+&lt;/FormItem&gt;
+</code></pre>
+<h3 id="样式">样式</h3>
+<p>新建<code>/src/styles</code>文件夹和<code>auto-complete.less</code>文件</p>
+<pre><code class="language-css">.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  top: 110%;
+  left: 0;
+  right: 0;
+  position: absolute;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .6);
+
+  &gt; li {
+    padding: 3px 6px;
+
+    &amp;.active {
+      background-color: #0094ff;
+      color: white;
+    }
+  }
+}
+</code></pre>
+<p>给AutoComplete加上className</p>
+<pre><code class="language-js">import style from '../styles/auto-complete.less';
+...
+
+&lt;div className={style.wrapper}&gt;
+        &lt;input value={displayValue || value}/&gt;
+        {options.length &gt; 0 &amp;&amp; (
+          &lt;ul className={style.options}&gt;
+            {
+              options.map((item, index) =&gt; {
+                return (
+                  &lt;li key={index} className={activeItemIndex === index ? style.active : ''}&gt;
+</code></pre>
+<h3 id="监听事件">监听事件</h3>
+<ul>
+<li>输入框的onChange</li>
+<li>输入框的onKeyDown，用于对上下键、回车键进行监听处理</li>
+<li>列表项目的onClick</li>
+<li>列表项目的onMouseEnter，用于在鼠标移入时设置activeItemIndex</li>
+<li>列表的onMouseLeave，用户鼠标移出时重置activeItemIndex</li>
+</ul>
+<pre><code class="language-js">function getItemValue (item) {
+  return item.value || item;
+}
+
+class AutoComplete extends React.Component {
+  constructor (props) {
+    ...
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleLeave = this.handleLeave.bind(this);
+  }
+  
+    handleChange (value) { }
+
+  handleKeyDown (e) { }
+
+  handleEnter (index) { }
+
+  handleLeave () { }
+  
+  render(){
+    &lt;input onChange={e =&gt; this.handleChange(e.target.value)}
+          onKeyDown={this.handleKeyDown}
+          
+    {options.length &gt; 0 &amp;&amp; (
+          &lt;ul className={style.options} onMouseLeave={this.handleLeave}&gt;
+
+            &lt;li
+                key={index}
+                className={index === activeItemIndex ? style.active : ''}
+                onMouseEnter={() =&gt; this.handleEnter(index)}
+                onClick={() =&gt; this.handleChange(getItemValue(item))}
+  }
+</code></pre>
+<p><code>handleChange</code>方法用于在用户输入、选择列表项的时候重置内部状态（清空displayName、设置activeItemIndex为-1），并通过回调将新的值传递给组件使用者：</p>
+<pre><code class="language-js">handleChange (value) {
+    this.setState({activeItemIndex: -1, displayValue: ''});
+    this.props.onValueChange(value);
+  }
+</code></pre>
+<p><code>handleKeyDown</code>方法，这个方法中需要判断当前按下的键是否为上下方向键或回车键</p>
+<pre><code class="language-js">handleKeyDown (e) {
+    const {activeItemIndex} = this.state;
+    const {options} = this.props;
+
+    switch (e.keyCode) {
+      // 13为回车键的键码（keyCode）
+      case 13: {
+        // 判断是否有列表项处于选中状态
+        if (activeItemIndex &gt;= 0) {
+          // 防止按下回车键后自动提交表单
+          e.preventDefault();
+          e.stopPropagation();
+          this.handleChange(getItemValue(options[activeItemIndex]));
+        }
+        break;
+      }
+      // 38为上方向键，40为下方向键
+      case 38:
+      case 40: {
+        e.preventDefault();
+        // 使用moveItem方法对更新或取消选中项
+        this.moveItem(e.keyCode === 38 ? 'up' : 'down');
+        break;
+      }
+    }
+  }
+
+  moveItem (direction) {
+    const {activeItemIndex} = this.state;
+    const {options} = this.props;
+    const lastIndex = options.length - 1;
+    let newIndex = -1;
+
+    // 计算新的activeItemIndex
+    if (direction === 'up') {
+      if (activeItemIndex === -1) {
+        // 如果没有选中项则选择最后一项
+        newIndex = lastIndex;
+      } else {
+        newIndex = activeItemIndex - 1;
+      }
+    } else {
+      if (activeItemIndex &lt; lastIndex) {
+        newIndex = activeItemIndex + 1;
+      }
+    }
+
+    // 获取新的displayValue
+    let newDisplayValue = '';
+    if (newIndex &gt;= 0) {
+      newDisplayValue = getItemValue(options[newIndex]);
+    }
+
+    // 更新状态
+    this.setState({
+      displayValue: newDisplayValue,
+      activeItemIndex: newIndex
+    });
+  }
+</code></pre>
+<p><code>handleEnter</code>和<code>handleLeave</code>方法</p>
+<pre><code class="language-js">handleEnter (index) {
+    const currentItem = this.props.options[index];
+    this.setState({activeItemIndex: index, displayValue: getItemValue(currentItem)});
+  }
+
+  handleLeave () {
+    this.setState({activeItemIndex: -1, displayValue: ''});
+  }
+</code></pre>
+<p>由于选择后的值会把用户名也带上（我们希望在 options 里显示用户名，但value只要 id）</p>
+<p>有时候我们显示的值并不一定是我们想要得到的值，这也是为什么我在组件的代码里有一个getItemValue方法了。</p>
+<pre><code class="language-js">&lt;AutoComplete
+    value={owner_id.value ? owner_id.value + '' : ''}
+    options={[{text: '10000（一韬）', value: 10000}, {text: '10001（张三）', value: 10001}]}
+    onValueChange={value =&gt; onFormChange('owner_id', value)}
+  /&gt;
+</code></pre>
+<h3 id="改成调用接口获取建议列表">改成调用接口获取建议列表</h3>
+<pre><code class="language-js">...
+getRecommendUsers (partialUserId) {
+    fetch('http://localhost:3000/user?id_like=' + partialUserId)
+      .then((res) =&gt; res.json())
+      .then((res) =&gt; {
+        if (res.length === 1 &amp;&amp; res[0].id === partialUserId) {
+          // 如果结果只有1条且id与输入的id一致，说明输入的id已经完整了，没必要再设置建议列表
+          return;
+        }
+
+        // 设置建议列表
+        this.setState({
+          recommendUsers: res.map((user) =&gt; {
+            return {
+              text: `${user.id}（${user.name}）`,
+              value: user.id
+            };
+          })
+        });
+      });
+  }
+  
+  
+    timer = 0;
+  handleOwnerIdChange (value) {
+    this.props.onFormChange('owner_id', value);
+    this.setState({recommendUsers: []});
+
+    // 使用“节流”的方式进行请求，防止用户输入的过程中过多地发送请求
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    if (value) {
+      // 200毫秒内只会发送1次请求
+      this.timer = setTimeout(() =&gt; {
+        // 真正的请求方法
+        this.getRecommendUsers(value);
+        this.timer = 0;
+      }, 200);
+    }
+  }
+  
+  
+  render(){
+    &lt;AutoComplete
+            value={owner_id.value ? owner_id.value + '' : ''}
+            options={recommendUsers}
+            onValueChange={value =&gt; this.handleOwnerIdChange(value)}
+          /&gt;
+  }
+</code></pre>
+<h2 id="登录与身份验证">登录与身份验证</h2>
+<p>SPA的鉴权方式和传统的web应用不同,由于页面的渲染不再依赖服务端，与服务端的交互都通过接口来完成.
+RESTful风格的接口提倡无状态（state less），通常不使用cookie和session来进行身份认证.比较流行的一种方式是使用web token，所谓的token可以看作是一个标识身份的令牌。客户端在登录成功后可以获得服务端加密后的token，然后在后续需要身份认证的接口请求中在header中带上这个token，服务端就可以通过判断token的有效性来验证该请求是否合法。</p>
+<h3 id="改造服务端">改造服务端</h3>
+<p>这里为了提供验证服务，你可以拿任何后端代码来写一个接口（例如 express/koa）,也可以直接用前面的 json-server</p>
+<p>以”项目依赖“形式安装 json-server <code>npm i json-server -D</code>，之前是全局的。但现在我们要使用它的 api。</p>
+<p>新建 <code>/server/index.js</code> 文件，作为启动 json-server 服务的入口文件. (当然，如果不想再学习这些，可以自己写一个 express 的 api 接口)</p>
+<pre><code class="language-js">const path = require('path');
+const jsonServer = require('json-server');
+const server = jsonServer.create();
+const router = jsonServer.router(path.join(__dirname, 'db.json'));
+const middlewares = jsonServer.defaults();
+
+server.use(jsonServer.bodyParser);
+server.use(middlewares);
+
+server.post('/login', function (req, res, next) {
+  res.header('Access-Control-Expose-Headers', 'access-token');
+  const {account, password} = req.body;
+  if (account === 'admin' &amp;&amp; password === '123456') {
+    res.header('access-token', Date.now());
+    res.json(true);
+  } else {
+    res.json(false);
+  }
+});
+
+server.use(require('./auth'));
+server.use(router);
+
+server.listen(3000, function () {
+  console.log('JSON Server is running in http://localhost:3000');
+});
+</code></pre>
+<p>里面有一句 <code>server.use(require('./auth'));</code>， /server/auth.js 内容如下：</p>
+<pre><code class="language-js">const expireTime = 1000 * 60;
+
+module.exports = function (req, res, next) {
+  res.header('Access-Control-Expose-Headers', 'access-token');
+  const now = Date.now();
+
+  let unauthorized = true;
+  const token = req.headers['access-token'];
+  if (token) {
+    const expired = now - token &gt; expireTime;
+    if (!expired) {
+      unauthorized = false;
+      res.header('access-token', now);
+    }
+  }
+
+  if (unauthorized) {
+    res.sendStatus(401);
+  } else {
+    next();
+  }
+};
+</code></pre>
+<p>使用<code>npm run server</code>重启服务器，或者把这句命令写到 package.json 里面，作为</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    &quot;server&quot;: &quot;node server/index.js&quot;,
+    ...
+</code></pre>
+<p>现在我们的服务器就拥有了身份认证的功能，访问除了’/login’外的其它接口时，服务端会根据请求的header中access-token来判断请求是否有效，如果无效则会返回401状态码。
+当客户端收到401的状态码时，需要跳转到登录页面进行登录，有效的管理员账号为admin，密码为123456</p>
+<p>以POST方法提交下面的参数到’http://localhost:3000/login‘接口，就能够完成登录。</p>
+<pre><code class="language-json">{
+  &quot;account&quot;: &quot;admin&quot;,
+  &quot;password&quot;: &quot;123456&quot;
+}
+</code></pre>
+<p>登录成功后，接口返回true，并且在返回的headers中包含了一个有效的access-token，用于在后面的请求中使用；登录失败则返回false。</p>
+<p>access-token的有效期为1分钟，每次有效的接口请求都会获得新的access-token；若1分钟内没有做操作，则会过期需要重新登录。</p>
+<p>我们的access-token只是一个简单的timestamp，且没有做任何加密措施。</p>
+<h3 id="封装fetch">封装fetch</h3>
+<p>由于我们每个接口的请求都需要加上一个名为access-token的header，在每次需要调用接口的时候都写一遍就非常的不明智了，所以我们需要封装fetch方法。</p>
+<p>新建<code>/src/utils/request.js</code>，写入以下代码：</p>
+<pre><code class="language-js">import { hashHistory } from 'react-router';
+
+export default function request (method, url, body) {
+  method = method.toUpperCase();
+  if (method === 'GET') {
+    // fetch的GET不允许有body，参数只能放在url中
+    body = undefined;
+  } else {
+    body = body &amp;&amp; JSON.stringify(body);
+  }
+
+  return fetch(url, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Token': sessionStorage.getItem('access_token') || '' // 从sessionStorage中获取access token
+    },
+    body
+  })
+    .then((res) =&gt; {
+      if (res.status === 401) {
+        hashHistory.push('/login');
+        return Promise.reject('Unauthorized.');
+      } else {
+        const token = res.headers.get('access-token');
+        // 如果这个请求会返回新的 token，记录到 sessionStorage
+        if (token) {
+          sessionStorage.setItem('access_token', token);
+        }
+        return res.json();
+      }
+    });
+}
+
+export const get = url =&gt; request('GET', url);
+export const post = (url, body) =&gt; request('POST', url, body);
+export const put = (url, body) =&gt; request('PUT', url, body);
+export const del = (url, body) =&gt; request('DELETE', url, body);
+</code></pre>
+<p>然后就可以在需要调用接口的时候使用request或get、post等方法，例如</p>
+<pre><code class="language-js">// 注意这里的 {get}
+import request, {get} from '../utils/request';
+
+
+getRecommendUsers (partialUserId) {
+    get('http://localhost:3000/user?id_like=' + partialUserId)
+      .then((res) =&gt; {
+</code></pre>
+<h3 id="登录界面">登录界面</h3>
+<p>当前用户列表页里面并没有数据（被拒绝了并且尝试跳转到路由 /login ）</p>
+<p>新建文件 <code>/pages/Login.js</code></p>
+<pre><code class="language-js">handleSubmit (e) {
+    e.preventDefault();
+
+    const {formValid, form: {account, password}} = this.props;
+    if (!formValid) {
+    
+    post('http://localhost:3000/login', {
+      account: account.value,
+      password: password.value
+    }).then((res) =&gt; {
+        if (res) {
+          this.context.router.push('/');
+        } else {
+          alert('登录失败，账号或密码错误');
+          
+render () {
+    const {form: {account, password}, onFormChange} = this.props;
+    return (
+      &lt;HomeLayout title=&quot;请登录&quot;&gt;
+        &lt;form onSubmit={this.handleSubmit}&gt;
+          &lt;FormItem label=&quot;账号：&quot; valid={account.valid} error={account.error}&gt;
+            &lt;input type=&quot;text&quot; value={account.value} onChange={e =&gt; onFormChange('account', e.target.value)}/&gt;
+            
+            
+Login.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
+
+Login = formProvider({
+  account: {
+    defaultValue: '',
+    rules: [
+      {
+        pattern (value) {
+          return value.length &gt; 0;
+        },
+        error: '请输入账号'
+      }
+    ]
+  },
+  password: {
+    defaultValue: '',
+    rules: [
+      {
+        pattern (value) {
+          return value.length &gt; 0;
+        },
+        error: '请输入密码'
+      }
+    ]
+  }
+})(Login);
+
+export default Login;
+</code></pre>
+<h2 id="引入-antdesign-组件库">引入 AntDesign 组件库</h2>
+<p>样式 less 略。</p>
+<p>form 改成使用 Antd 的 Form 组件（create方法可以替代自己封装的 formProvider ）</p>
+<p>login-page less 可参考</p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/react-js-case-study/" title="ReactJS 案例学习" target="_blank" rel="external">https://my101du.github.io/1/01/react-js-case-study/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/reactjs-study/" title="reactjs教程"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/react-network-request-and-response/"
+                    title="react 网络请求与返回值处理"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

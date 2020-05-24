@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Vue2.x 教程 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="传统的页面中，数据刷新 双向绑定 安装 传统应用，在浏览器中引用（例如和以前的旧代码集成） &amp;lt;script src=&amp;quot;//vuejs.org/js/vue.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 使用 npm $ npm install vue Vue-Cli 创建一个单页应用模版 # install vue-cli $ npm install --global vue-cli" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>Vue2.x 教程 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Vue2.x 教程" />
+<meta property="og:description" content="传统的页面中，数据刷新 双向绑定 安装 传统应用，在浏览器中引用（例如和以前的旧代码集成） &lt;script src=&quot;//vuejs.org/js/vue.min.js&quot;&gt;&lt;/script&gt; 使用 npm $ npm install vue Vue-Cli 创建一个单页应用模版 # install vue-cli $ npm install --global vue-cli" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/vue-2-tutorial/" />
+
+<meta itemprop="name" content="Vue2.x 教程">
+<meta itemprop="description" content="传统的页面中，数据刷新 双向绑定 安装 传统应用，在浏览器中引用（例如和以前的旧代码集成） &lt;script src=&quot;//vuejs.org/js/vue.min.js&quot;&gt;&lt;/script&gt; 使用 npm $ npm install vue Vue-Cli 创建一个单页应用模版 # install vue-cli $ npm install --global vue-cli">
+
+<meta itemprop="wordCount" content="14146">
+
+
+
+<meta itemprop="keywords" content="vue," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vue2.x 教程"/>
+<meta name="twitter:description" content="传统的页面中，数据刷新 双向绑定 安装 传统应用，在浏览器中引用（例如和以前的旧代码集成） &lt;script src=&quot;//vuejs.org/js/vue.min.js&quot;&gt;&lt;/script&gt; 使用 npm $ npm install vue Vue-Cli 创建一个单页应用模版 # install vue-cli $ npm install --global vue-cli"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-vue-2-tutorial" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/vue-2-tutorial/"
+    >Vue2.x 教程</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/vue/"> vue </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/vue-2-tutorial/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 14146字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 29分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="传统的页面中数据刷新">传统的页面中，数据刷新</h1>
+<p>双向绑定</p>
+<h1 id="安装">安装</h1>
+<h2 id="传统应用在浏览器中引用例如和以前的旧代码集成">传统应用，在浏览器中引用（例如和以前的旧代码集成）</h2>
+<pre><code class="language-html">&lt;script src=&quot;//vuejs.org/js/vue.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="使用-npm">使用 npm</h2>
+<pre><code class="language-shell">$ npm install vue
+</code></pre>
+<h2 id="vue-cli-创建一个单页应用模版">Vue-Cli 创建一个单页应用模版</h2>
+<pre><code class="language-shell"># install vue-cli
+$ npm install --global vue-cli
+
+# create a new project using the &quot;webpack&quot; template
+$ vue init webpack my-project
+
+# 以下是提示信息，注意后面要学习vue-router unit tests e2e tests 相关
+Project name vue-app
+? Project description A Vue.js project
+? Author  &lt;&gt;
+? Vue build standalone
+? Install vue-router? Yes
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset Standard
+? Setup unit tests with Karma + Mocha? Yes
+? Setup e2e tests with Nightwatch? Yes
+
+# 进入项目，安装包
+$ cd my-project
+$ npm install
+
+# 运行
+$ npm run dev
+</code></pre>
+<p>自动打开 <code>localhost:8080</code>，注意里面有很多链接，都是可以学习的，vue 生态系统里 vue-router vuex vue-loader 等</p>
+<pre><code class="language-html">&lt;h2&gt;Essential Links&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://vuejs.org&quot; target=&quot;_blank&quot;&gt;Core Docs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://forum.vuejs.org&quot; target=&quot;_blank&quot;&gt;Forum&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://chat.vuejs.org&quot; target=&quot;_blank&quot;&gt;Community Chat&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://twitter.com/vuejs&quot; target=&quot;_blank&quot;&gt;Twitter&lt;/a&gt;&lt;/li&gt;
+      &lt;br&gt;
+      &lt;li&gt;&lt;a href=&quot;http://vuejs-templates.github.io/webpack/&quot; target=&quot;_blank&quot;&gt;Docs for This Template&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h2&gt;Ecosystem&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://router.vuejs.org/&quot; target=&quot;_blank&quot;&gt;vue-router&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://vuex.vuejs.org/&quot; target=&quot;_blank&quot;&gt;vuex&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://vue-loader.vuejs.org/&quot; target=&quot;_blank&quot;&gt;vue-loader&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/awesome-vue&quot; target=&quot;_blank&quot;&gt;awesome-vue&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+<h1 id="开始">开始</h1>
+<h2 id="先来个最简单显示一段字符串">先来个最简单，显示一段字符串</h2>
+<p>注意下面的</p>
+<ol>
+<li>将一个<code>div</code>设置了<code>id</code>属性为<code>app-1</code></li>
+<li>使用两对花括号把一个<code>message</code>包裹在里面</li>
+</ol>
+<pre><code class="language-html">&lt;div id=&quot;app-1&quot;&gt;{{ message }}&lt;/div&gt;
+</code></pre>
+<p>然后我们看看 Vue 是怎样“操作”这个元素的</p>
+<pre><code class="language-javascript">var app1 = new Vue({
+	el: &quot;#app-1&quot;,
+	data: {
+		message: &quot;this is message in app-1&quot;
+	}
+});
+</code></pre>
+<ol>
+<li>首先 new 一个 Vue 对象</li>
+<li><code>el</code>的值对应前面创建的<code>&lt;div id=&quot;app-1&quot;&gt;</code> (和 jQuery 的选择器一样)</li>
+<li><code>data</code>是一个对象，其中<code>message</code>成员赋值了一个字符串</li>
+<li>html代码中的<code>message</code>就像个变量，被 Vue 赋值后，自动显示赋值后的字符串</li>
+</ol>
+<h2 id="v-bind属性与指令"><code>v-bind</code>属性与“指令”</h2>
+<p>再添加一个div元素以及绑定的 Vue 对象，一个页面中可以有多个 Vue 对应</p>
+<pre><code class="language-html">&lt;div id=&quot;app-2&quot;&gt;
+	&lt;span v-bind:title=&quot;title&quot;&gt;
+		this is the message in app-2
+	&lt;/span&gt;	
+&lt;/div&gt;
+</code></pre>
+<p>注意，这里没有直接用<code>title=&quot;&quot;</code>这样的html属性格式，而是用了<code>v-bind:title=&quot;&quot;</code>，<code>v-bind</code>这个属性叫做“指令”。</p>
+<pre><code class="language-javascript">var app2 = new Vue({
+	el: &quot;#app-2&quot;,
+	data: {
+		title: &quot;this is the bind attribute 'title'&quot;
+	}
+});
+</code></pre>
+<p>打开浏览器的控制台，输入 <code>app2.title=&quot;new title!&quot;</code>，会发现数据会马上变化而不需要刷新页面！</p>
+<h1 id="条件与循环">条件与循环</h1>
+<p>通过在 Vue 对象里给变量赋值，来控制 html 元素</p>
+<h2 id="v-if条件指令"><code>v-if</code>条件指令</h2>
+<pre><code class="language-html">&lt;div id=&quot;app-3&quot;&gt;
+  &lt;p v-if=&quot;seen&quot;&gt;Now you see me&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+</code></pre>
+<h2 id="v-for指令"><code>v-for</code>指令</h2>
+<pre><code class="language-html">&lt;div id=&quot;app-4&quot;&gt;
+  &lt;ol&gt;
+    &lt;li v-for=&quot;todo in todos&quot;&gt;
+      {{ todo.text }}
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-javascript">var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: 'Learn JavaScript' },
+      { text: 'Learn Vue' },
+      { text: 'Build something awesome' }
+    ]
+  }
+})
+</code></pre>
+<p>试试在浏览器控制台中输入，插入一条数据，列表会马上新增</p>
+<pre><code class="language-shell">app4.todos.push({ text: 'New item' })
+</code></pre>
+<h1 id="用户输入改变数据">用户输入改变数据</h1>
+<p>以上都是我们在 Vue 对象中对数据进行处理，然后在页面中展示数据变化。
+那么如果需要用户操作数据呢？（例如点击按钮、在输入框填写文本）</p>
+<p>这样就用到<code>v-on</code>指令了</p>
+<p>如下，使用<code>v-on</code>指令，并且绑定一个<code>click</code>方法，名称为<code>reverseMessage</code>
+以及在一个<code>input</code>输入框组件上添加<code>v-model</code>指令，实现<code>双向绑定</code>，当用户修改输入内容时，自动修改<code>message</code>变量，并且在界面上表现出来。</p>
+<pre><code class="language-html">&lt;div id=&quot;app-5&quot;&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;button v-on:click=&quot;reverseMessage&quot;&gt;Reverse Message&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;app-6&quot;&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;input v-model=&quot;message&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<p>然后在 Vue 对象实现这个方法(反转字符串)，注意</p>
+<ol>
+<li>在<code>methods</code>对象里面定义了这个 Vue 组件的所有方法</li>
+<li>使用<code>this.message</code>来引用 Vue 组件的成员</li>
+</ol>
+<pre><code class="language-js">var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+</code></pre>
+<h1 id="将多个组件组合起来">将多个组件组合起来</h1>
+<p><code>组件</code>也是一个 Vue 的实例，并且包含了一些预定义的选项。
+使用可以让你构建大型的系统，重用组件能够节省很多的代码量。</p>
+<h2 id="定义个最简单的组件">定义个最简单的组件</h2>
+<p>假设这个组件叫 <code>todo-item</code>，我们可以想象它是一个自定义名称的 HTML 元素，和<code>div</code>差不多</p>
+<pre><code class="language-html">&lt;div id=&quot;app-1&quot;&gt;
+	&lt;ol&gt;
+		&lt;todo-item&gt;&lt;/todo-item&gt;
+	&lt;/ol&gt;
+&lt;/div&gt;
+</code></pre>
+<p>然后使用<code>Vue.component(组件名, {组件属性})</code>来定义这个组件，<code>template</code>指定了这个组件显示成什么样子。</p>
+<pre><code class="language-js">Vue.component('todo-item', {
+  template: '&lt;li&gt;This is a todo&lt;/li&gt;'
+})
+
+var app1 = new Vue({
+	el: &quot;#app-1&quot;,
+	data: {}
+});
+</code></pre>
+<p><strong>特别注意</strong> 组件必须要放在另外一个 Vue 组件中，例如这里的<code>app1</code>，不可以独立存在于 HTML 页面中。</p>
+<h2 id="传递数据到组件中去">传递数据到组件中去</h2>
+<p>如果只是像上面那样只是把代码拆分出去，全是静态数据，并且每一个组件都是一模一样，实际上没什么太大的意义。</p>
+<p>我们需要的是这个组件能够灵活地<code>传入数据，然后显示相应的变化的内容</code></p>
+<h3 id="传入的数据">传入的数据</h3>
+<p>假设向<code>todo-item</code>传入的数据是一个名叫<code>item</code>的对象，这个对象的值是<code>{text: &quot;this is item text&quot;}</code>，在<code>app1</code>里先定义好。</p>
+<p>我们希望后面<strong>把 item 这个数据传给</strong> <code>todo-item</code>组件并显示出来。</p>
+<pre><code class="language-js">var app1 = new Vue({
+	el: &quot;#app-1&quot;,
+	data: {
+		item: {text: &quot;this is item text&quot;}
+	}
+});
+</code></pre>
+<h3 id="修改组件的定义">修改组件的定义</h3>
+<ol>
+<li>接受名为<code>todo</code>的<code>props</code>（联想一下 <!-- raw HTML omitted -->）</li>
+<li>以及template 中，使用<code>{{ todo.text }}</code>来显示传入的 todo 的值</li>
+</ol>
+<p>这个<code>todo</code>实际上只是个“变量名”，在组件内部便于识别，叫 element 啥的都可以。等下要接受从外面传进来的<code>item</code>这个数据。</p>
+<pre><code class="language-js">Vue.component('todo-item', {
+  props: ['todo'],
+  template: '&lt;li&gt;{{ todo.text }}&lt;/li&gt;'
+})
+</code></pre>
+<h3 id="如何传入-todo-数据">如何传入 todo 数据</h3>
+<p>组件的定义修改好后，现在正式把<code>item</code>这个数据传给<code>&lt;todo-item&gt;</code>组件</p>
+<p>使用<code>v-bind</code>指令，指定“变量名”为<code>todo</code>，“值”为<code>item</code></p>
+<pre><code class="language-html">&lt;div id=&quot;app-1&quot;&gt;
+	&lt;ol&gt;
+		&lt;todo-item v-bind:todo=&quot;item&quot;&gt;&lt;/todo-item&gt;
+	&lt;/ol&gt;
+&lt;/div&gt;
+</code></pre>
+<p>当然，除了向组件传入一个简单数据，也可以结合循环、条件等，传入复杂的数据。</p>
+<pre><code class="language-js">var app1 = new Vue({
+  el: '#app-1',
+  data: {
+    groceryList: [
+      { id: 0, text: 'Vegetables' },
+      { id: 1, text: 'Cheese' },
+      { id: 2, text: 'Whatever else humans are supposed to eat' }
+    ]
+  }
+})
+</code></pre>
+<pre><code class="language-html">&lt;todo-item
+	 v-for=&quot;item in groceryList&quot;
+	 v-bind:todo=&quot;item&quot;
+	 v-bind:key=&quot;item.id&quot;&gt;
+&lt;/todo-item&gt;
+</code></pre>
+<h2 id="组件的独立性">组件的独立性</h2>
+<p>现在，通过拆分组件，并且在组件之间传递数据，可以让整个应用更灵活。组件之间的独立也便于系统的扩展。</p>
+<p>例如这样的一个结构，就非常清晰（自解释？），比我们大量的<code>&lt;div id=&quot;xx&quot;&gt;</code>混在一起，更容易维护，以“组件”的思维，而不是“代码段”的思维</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;app-nav&gt;&lt;/app-nav&gt;
+  &lt;app-view&gt;
+    &lt;app-sidebar&gt;&lt;/app-sidebar&gt;
+    &lt;app-content&gt;&lt;/app-content&gt;
+  &lt;/app-view&gt;
+&lt;/div&gt;
+</code></pre>
+<h1 id="vue-实例">Vue 实例</h1>
+<h2 id="构造">构造</h2>
+<p>前面我们使用 <code>new Vue()</code>创建了一个新的 Vue 实例。它包含了很多的选项，例如数据、模版、挂载的元素、方法、生命周期回调函数等（全部的 <a href="http://vuejs.org/v2/api">http://vuejs.org/v2/api</a>）</p>
+<p>同样也可以基于自己的需求来扩展！</p>
+<pre><code class="language-js">var MyComponent = Vue.extend({
+  //扩展 options
+})
+
+var myComponentInstance = new MyComponent()
+</code></pre>
+<p>组件都是这样通过对 Vue 实例进行扩展得到的。</p>
+<p>我们可以直接组合使用这些组件来搭建自己的应哟功能。</p>
+<h2 id="vue-实例的成员和方法">Vue 实例的成员和方法</h2>
+<h3 id="代理-data-对象的成员"><code>代理</code> data 对象的成员</h3>
+<pre><code class="language-js">var data = { a: 1 }
+var vm = new Vue({
+	data: data
+})
+</code></pre>
+<p>然后可以直接通过<code>vm</code>这个 vue 实例，来访问 data 对象的成员。（例如<code>vm.a</code>，而不需要先获取到它的<code>data</code>成员）</p>
+<p>分别修改两边的值，都会影响到另外一边。</p>
+<pre><code class="language-js">var new_a = vm.a;
+
+vm.a === data.a // -&gt; true
+
+vm.a = 2
+data.a // -&gt; 2
+
+data.a = 3
+vm.a // -&gt; 3
+</code></pre>
+<p>注意，这些代理的成员都是“响应式”的，如果创建一个实例后，再向它添加新的成员，是不会触发界面的更新的。</p>
+<p>区别于上面的“代理成员”(直接使用<code>vue实例</code>访问)，Vue 实例还暴露了一些实例成员和方法，通过<code>$</code>来访问(<code>vue实例.$实例成员</code> 或者<code>vue实例.$实例方法</code>)</p>
+<pre><code class="language-js">var data = { a: 1 }
+var vm = new Vue({
+  el: '#example',
+  data: data
+})
+vm.$data === data // -&gt; true
+vm.$el === document.getElementById('example') // -&gt; true
+// $watch is an instance method
+vm.$watch('a', function (newVal, oldVal) {
+  // this callback will be called when `vm.a` changes
+})
+</code></pre>
+<h2 id="实例的生命周期-hooks">实例的生命周期 hooks</h2>
+<p>例如mounted, updated, and destroyed，看一下Lifecycle Diagram图</p>
+<pre><code class="language-js">var vm = new Vue({
+  data: {
+    a: 1
+  },
+  created: function () {
+    // `this` points to the vm instance
+    console.log('a is: ' + this.a)
+  }
+})
+</code></pre>
+<h1 id="template-syntax-模板语法">Template Syntax 模板语法</h1>
+<p>Vue 把模板编译为 Virtual DOM，只修改变化的部分</p>
+<h2 id="文本">文本</h2>
+<pre><code class="language-html">&lt;span&gt;{{ message }}&lt;/span&gt;
+</code></pre>
+<p>如果要让数据变化的时候，内容不会更新，添加<code>v-once</code>指令</p>
+<pre><code class="language-html">&lt;span v-once&gt;This will never change: {{ msg }}&lt;/span&gt;
+</code></pre>
+<h2 id="原始-html">原始 HTML</h2>
+<p>会显示原始的 html 内容。注意，这个方法可能会带来一些安全问题（如 XSS）</p>
+<pre><code class="language-html">&lt;div v-html=&quot;rawHtml&quot;&gt;&lt;/div&gt;
+</code></pre>
+<h2 id="属性">属性</h2>
+<p>记得前面学过<code>v-bind:title</code>吗？使用<code>v-bind:属性名</code>可以为属性指定动态的值</p>
+<pre><code class="language-html">&lt;div v-bind:id=&quot;dynamicId&quot;&gt;&lt;/div&gt;
+&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+<h2 id="javascript-表达式">JavaScript 表达式</h2>
+<p>直接在模板中使用 JavaScript <strong>表达式</strong></p>
+<pre><code class="language-html">{{ number + 1 }}
+{{ ok ? 'YES' : 'NO' }}
+{{ message.split('').reverse().join('') }}
+
+&lt;div v-bind:id=&quot;'list-' + id&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>注意，只支持“表达式”，不支持变量声明、流程控制等</p>
+<pre><code class="language-html">&lt;!-- this is a statement, not an expression: --&gt;
+{{ var a = 1 }}
+&lt;!-- flow control won't work either, use ternary expressions --&gt;
+
+</code></pre>
+<p>错误:</p>
+<p><img src="/media/15490411858115/15474573993395.jpg" alt="-w290"></p>
+<h2 id="指令">指令</h2>
+<p><code>指令</code>可以看成以<code>v-</code>开头的特殊的“属性”。它的值应该是一个单独的 Javascript 表达式。</p>
+<p>当表达式的值变化时，动态地作用于 DOM上。</p>
+<p>例如，当 seen 表达式变化时，基于它的值，<code>v-if</code>指令会动态地插入/删除 <code>p</code>元素。</p>
+<pre><code class="language-html">&lt;p v-if=&quot;seen&quot;&gt;Now you see me&lt;/p&gt;
+</code></pre>
+<h3 id="参数">参数</h3>
+<p>在前面的例子中， <code>href</code>，<code>click</code>都是指令的<code>参数</code>，它告诉指令(v-bind)绑定元素(a)的(href)属性和表达式(url)的值</p>
+<pre><code class="language-html">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;
+&lt;a v-on:click=&quot;doSomething&quot;&gt;
+</code></pre>
+<h3 id="修饰符">修饰符</h3>
+<p>特殊的后缀，告诉指令以特殊的方式绑定。
+例如<code>.prevent</code>修饰符告诉<code>v-on</code>指令在事件触发时调用<code>event.preventDefault()</code></p>
+<pre><code class="language-html">&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+</code></pre>
+<p>在后面学习<code>v-on</code>和<code>v-model</code>可以看到更多修饰符</p>
+<h3 id="过滤器">过滤器</h3>
+<p>实际上就是作用于表达式的函数。</p>
+<pre><code class="language-html">&lt;!-- in mustaches --&gt;
+{{ message | capitalize }}
+&lt;!-- in v-bind --&gt;
+&lt;div v-bind:id=&quot;rawId | formatId&quot;&gt;&lt;/div&gt;
+
+&lt;!--链式--&gt;
+{{ message | filterA | filterB }}
+
+&lt;!--带参数--&gt;
+{{ message | filterA('arg1', arg2) }}
+</code></pre>
+<pre><code class="language-js">new Vue({
+  // ...
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  }
+})
+</code></pre>
+<h3 id="速记法缩写">速记法（缩写）</h3>
+<p>缩写一些频繁使用的指令</p>
+<pre><code class="language-html">&lt;a v-bind:href=&quot;url&quot;&gt;&lt;/a&gt;
+&lt;a :href=&quot;url&quot;&gt;&lt;/a&gt;
+
+&lt;a v-on:click=&quot;doSomething&quot;&gt;&lt;/a&gt;
+&lt;a @click=&quot;doSomething&quot;&gt;&lt;/a&gt;
+</code></pre>
+<h1 id="computed-properties可变成员与watchers">Computed Properties（可变成员?）与Watchers</h1>
+<h2 id="computed-properties">Computed Properties</h2>
+<p>在表达式中，不宜写一些特别复杂的逻辑。</p>
+<p>在下面的场景中，一个表达式依赖于另外一个表达式（一般是需要通过转换、计算），例如是通过<code>message</code>计算得到另外一个结果。</p>
+<p>假如在页面里，有很多地方都写了这样的代码，一旦计算方法有变，就需要修改很多地方。</p>
+<pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;
+  {{ message.split('').reverse().join('') }}
+&lt;/div&gt;
+</code></pre>
+<p>因此我们使用Computed Properties，让这种依赖另一个表达式的数据，能够被一个函数自动“计算”出来，当依赖的表达式数据变化时，它也会自动更新。</p>
+<p>在 Vue 实例的 options 中，定义<code>computed</code>成员。并添加 <code>reversedMessage</code>成员函数，返回一个根据 this.message 计算得到的值</p>
+<pre><code class="language-js">var vm = new Vue({
+  el: '#example',
+  data: {
+    message: 'Hello'
+  },
+  computed: {
+    // a computed getter
+    reversedMessage: function () {
+      // `this` points to the vm instance
+      return this.message.split('').reverse().join('')
+    }
+  }
+})
+</code></pre>
+<pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;
+  &lt;p&gt;Original message: &quot;{{ message }}&quot;&lt;/p&gt;
+  &lt;p&gt;Computed reversed message: &quot;{{ reversedMessage }}&quot;&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>就像前面所说，Vue 实例代理了它的<code>data</code>，我们也可以直接访问这些<code>computed</code>成员.</p>
+<pre><code class="language-js">console.log(vm.reversedMessage) // -&gt; 'olleH'
+vm.message = 'Goodbye'
+console.log(vm.reversedMessage) // -&gt; 'eybdooG'
+</code></pre>
+<h3 id="对比一下-method">对比一下 Method?</h3>
+<p>我们看到 computed property 也是一个函数，那么它和 method 很像，区别在哪？</p>
+<p>替换成 method 的形式</p>
+<pre><code class="language-html">&lt;p&gt;Reversed message: &quot;{{ reverseMessage() }}&quot;&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+methods: {
+  reverseMessage: function () {
+    return this.message.split('').reverse().join('')
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>区别在于：Computed Properties 是可以被缓存的，除非它依赖的数据变化了，否则是不会变化的。上面例子中如果message 保持不变，那么 reverseMessage 不管被访问多少次，都会快速返回前面计算得到的结果。</p>
+<p>因此在应用中，尽可能减少计算，把计算结果缓存起来，有助于提高性能。</p>
+<h3 id="对比一下vue-实例的-watch-方法">对比一下Vue 实例的 watch 方法？</h3>
+<p>例如，同样实现自动生成 fullName</p>
+<pre><code class="language-html">&lt;div id=&quot;demo&quot;&gt;{{ fullName }}&lt;/div&gt;
+</code></pre>
+<p>watch 版本</p>
+<pre><code class="language-js">var vm = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar',
+    fullName: 'Foo Bar'
+  },
+  watch: {
+    firstName: function (val) {
+      this.fullName = val + ' ' + this.lastName
+    },
+    lastName: function (val) {
+      this.fullName = this.firstName + ' ' + val
+    }
+  }
+})
+</code></pre>
+<p>computed property 版本</p>
+<pre><code class="language-js">var vm = new Vue({
+  el: '#demo',
+  data: {
+    firstName: 'Foo',
+    lastName: 'Bar'
+  },
+  computed: {
+    fullName: function () {
+      return this.firstName + ' ' + this.lastName
+    }
+  }
+})
+</code></pre>
+<p>代码看起来简单多了！</p>
+<h3 id="computed-setter">Computed Setter</h3>
+<p>默认情况下， computed property 是 getter，如果需要也可以使用它的 setter，例如下面例子，反向通过 full name 得到 first name 和 last name</p>
+<p>在浏览器 console 里输入<code>vm.fullName = 'John Doe'</code>，其他两个数据会自动变化</p>
+<pre><code class="language-js">// ...
+computed: {
+  fullName: {
+    // getter
+    get: function () {
+      return this.firstName + ' ' + this.lastName
+    },
+    // setter
+    set: function (newValue) {
+      var names = newValue.split(' ')
+      this.firstName = names[0]
+      this.lastName = names[names.length - 1]
+    }
+  }
+}
+</code></pre>
+<h2 id="watcher">Watcher</h2>
+<p>虽然 computed property 非常方便，但有时候在处理一些异步请求或者大量数据时，通过 watch 选项来响应数据变化很有用</p>
+<p>例如下面的例子，输入问题，请求远端的api，得到响应答案</p>
+<pre><code class="language-html">&lt;div id=&quot;watch-example&quot;&gt;
+  &lt;p&gt;
+    Ask a yes/no question:
+    &lt;input v-model=&quot;question&quot;&gt;
+  &lt;/p&gt;
+  &lt;p&gt;{{ answer }}&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<p>使用了<code>axios</code>和<code>lodash</code>库，以及请求<code>https://yesno.wtf/api</code></p>
+<pre><code class="language-js">&lt;script src=&quot;https://unpkg.com/axios@0.12.0/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/lodash@4.13.1/lodash.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+var watchExampleVM = new Vue({
+  el: '#watch-example',
+  data: {
+    question: '',
+    answer: 'I cannot give you an answer until you ask a question!'
+  },
+  watch: {
+    // whenever question changes, this function will run
+    question: function (newQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.getAnswer()
+    }
+  },
+  methods: {
+    getAnswer: _.debounce(
+      function () {
+        if (this.question.indexOf('?') === -1) {
+          this.answer = 'Questions usually contain a question mark. ;-)'
+          return
+        }
+        this.answer = 'Thinking...'
+        var vm = this
+        axios.get('https://yesno.wtf/api')
+          .then(function (response) {
+            vm.answer = _.capitalize(response.data.answer)
+          })
+          .catch(function (error) {
+            vm.answer = 'Error! Could not reach the API. ' + error
+          })
+      },
+      // This is the number of milliseconds we wait for the
+      // user to stop typing.
+      500
+    )
+  }
+})
+</code></pre>
+<h1 id="class类和-style样式绑定">Class(类)和 Style(样式)绑定</h1>
+<h2 id="绑定-class">绑定 Class</h2>
+<h3 id="对象语法">对象语法</h3>
+<p>一种方法是直接写在<strong>行内</strong>，设置<code>v-bind:class=</code>对象</p>
+<p>根据<code>isActive</code>和<code>hasError</code>的值来决定是否使用这个 class</p>
+<pre><code class="language-html">&lt;div class=&quot;static&quot;
+     v-bind:class=&quot;{ active: isActive, 'text-danger': hasError }&quot;&gt;
+&lt;/div&gt;
+</code></pre>
+<p>对应的</p>
+<pre><code class="language-js">data: {
+  isActive: true,
+  hasError: false
+}
+</code></pre>
+<p>最后渲染</p>
+<pre><code class="language-html">&lt;div class=&quot;static active&quot;&gt;&lt;/div&gt;
+</code></pre>
+<p>或者不写在行内，在 data 选项里来处理 class 对象</p>
+<pre><code class="language-html">&lt;div v-bind:class=&quot;classObject&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  classObject: {
+    active: true,
+    'text-danger': false
+  }
+}
+</code></pre>
+<p>甚至使用 computed propery 来实现更灵活的样式控制</p>
+<pre><code class="language-js">data: {
+  isActive: true,
+  error: null
+},
+computed: {
+  classObject: function () {
+    return {
+      active: this.isActive &amp;&amp; !this.error,
+      'text-danger': this.error &amp;&amp; this.error.type === 'fatal',
+    }
+  }
+}
+</code></pre>
+<h3 id="数组语法">数组语法</h3>
+<p>传入一个数组来应用一组 Class</p>
+<pre><code class="language-html">&lt;div v-bind:class=&quot;[activeClass, errorClass]&quot;&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  activeClass: 'active',
+  errorClass: 'text-danger'
+}
+</code></pre>
+<p>当然也可以结合一些表达式</p>
+<pre><code class="language-html">&lt;div v-bind:class=&quot;[isActive ? activeClass : '', errorClass]&quot;&gt;
+</code></pre>
+<p>甚至和前面“对象语法”混用</p>
+<pre><code class="language-html">&lt;div v-bind:class=&quot;[{ active: isActive }, errorClass]&quot;&gt;
+</code></pre>
+<h3 id="在组件中使用">在组件中使用</h3>
+<pre><code class="language-js">Vue.component('my-component', {
+  template: '&lt;p class=&quot;foo bar&quot;&gt;Hi&lt;/p&gt;'
+})
+</code></pre>
+<pre><code class="language-html">&lt;!--在 foo bar 的基础上，再加上 boo--&gt;
+&lt;my-component class=&quot;baz boo&quot;&gt;&lt;/my-component&gt;
+
+&lt;!--根据 isActive 的值，决定是否在 foo bar 的基础上添加 active--&gt;
+&lt;my-component v-bind:class=&quot;{ active: isActive }&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+<h2 id="绑定样式">绑定样式</h2>
+<h3 id="对象语法-1">对象语法</h3>
+<pre><code class="language-html">&lt;div v-bind:style=&quot;{ color: activeColor, fontSize: fontSize + 'px' }&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  activeColor: 'red',
+  fontSize: 30
+}
+</code></pre>
+<p>不过一般会自己绑定一个样式对象（Style Object）以保持模板的整洁</p>
+<pre><code class="language-html">&lt;div v-bind:style=&quot;styleObject&quot;&gt;&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  styleObject: {
+    color: 'red',
+    fontSize: '13px'
+  }
+}
+</code></pre>
+<h3 id="数组语法-1">数组语法</h3>
+<p>绑定更多样式对象</p>
+<pre><code class="language-html">&lt;div v-bind:style=&quot;[baseStyles, overridingStyles]&quot;&gt;
+</code></pre>
+<h3 id="自动前缀">自动前缀</h3>
+<h3 id="多个值">多个值</h3>
+<p>会自动根据浏览器支持情况渲染数组中的某个值</p>
+<pre><code class="language-html">&lt;div v-bind:style=&quot;{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }&quot;&gt;
+</code></pre>
+<h1 id="条件渲染">条件渲染</h1>
+<h2 id="v-if">v-if</h2>
+<h3 id="普通">普通</h3>
+<p>v-else</p>
+<pre><code class="language-html">&lt;div v-if=&quot;Math.random() &gt; 0.5&quot;&gt;
+  Now you see me
+&lt;/div&gt;
+&lt;div v-else&gt;
+  Now you don't
+&lt;/div&gt;
+</code></pre>
+<p>v-else-if</p>
+<pre><code class="language-html">&lt;div v-if=&quot;type === 'A'&quot;&gt;
+  A
+&lt;/div&gt;
+&lt;div v-else-if=&quot;type === 'B'&quot;&gt;
+  B
+&lt;/div&gt;
+&lt;div v-else&gt;
+  Not A/B
+&lt;/div&gt;
+</code></pre>
+<h3 id="多个元素一起进行判断">多个元素一起进行判断</h3>
+<p>使用<code>&lt;template&gt;</code>把一组需要判断的元素包裹起来，会自动生成一个不可见的外部元素</p>
+<pre><code class="language-html">&lt;template v-if=&quot;ok&quot;&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+  &lt;p&gt;Paragraph 1&lt;/p&gt;
+  &lt;p&gt;Paragraph 2&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+<h3 id="使用key来控制可重用元素">使用<code>key</code>来控制可重用元素</h3>
+<p>为了提高界面绘制的性能，Vue 维护了一套 Virtual DOM，绘制和改变DOM不再是非常直观的，可以说有时候“不要相信你看到的代码”。</p>
+<p>尽可能重用原来的DOM，只绘制改变的部分</p>
+<p>例如这个例子，当点击切换按钮的时候，我们发现虽然 label 里的文本和 input 里的 placeholder 会变化</p>
+<p>但是</p>
+<p>输入一些内容后，切换时，这个 input 居然把输入的内容也保持了下来。
+而我们需要的是，切换时会清空 input（因为从代码上看，完全是两个独立的 input 好吗？）</p>
+<pre><code class="language-html">&lt;template v-if=&quot;loginType === 'username'&quot;&gt;
+  &lt;label&gt;Username&lt;/label&gt;
+  &lt;input placeholder=&quot;Enter your username&quot;&gt;
+&lt;/template&gt;
+&lt;template v-else&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input placeholder=&quot;Enter your email address&quot;&gt;
+&lt;/template&gt;
+&lt;button v-model=&quot;loginType&quot;&gt;toggle login type&lt;/button&gt;
+</code></pre>
+<p>这是因为 Vue 为了减少重绘 DOM，在切换时，并不会删掉 input ，而只会简单地修改 placeholder。另外 输入的文本是晚于 input 的，因此会一直留在那里。</p>
+<p>这个问题，只需要给需要强制更新的元素添加一个 key 属性，让vue认为它们是完全独立的元素</p>
+<pre><code class="language-html">&lt;template v-if=&quot;loginType === 'username'&quot;&gt;
+  &lt;label&gt;Username&lt;/label&gt;
+  &lt;input placeholder=&quot;Enter your username&quot; key=&quot;username-input&quot;&gt;
+&lt;/template&gt;
+&lt;template v-else&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input placeholder=&quot;Enter your email address&quot; key=&quot;email-input&quot;&gt;
+&lt;/template&gt;
+</code></pre>
+<p>注意，此时 label 仍然被视为可复用的元素。</p>
+<h3 id="v-show">v-show</h3>
+<p>注意，<code>v-if </code> 是决定是否渲染元素（是一个销毁/创建），而<code>v-show</code>则总是把元素渲染出来，然后修改<code>display</code>的属性来让元素显示/隐藏</p>
+<p>显然 v-show 的效率更高（没有创建/销毁元素的系统开销）</p>
+<p><strong>注意</strong></p>
+<p>不支持 <!-- raw HTML omitted --></p>
+<h1 id="list-rendering-列表">List Rendering 列表</h1>
+<h2 id="v-for">v-for</h2>
+<h3 id="基本用法">基本用法</h3>
+<p>前面说过了，可以使用 index 这个参数来获得当前项的索引。</p>
+<p>然后，在v-for 块的内部，可以访问父级作用域的成员，如下面的<code>parentMessage</code></p>
+<pre><code class="language-js">var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    parentMessage: 'Parent',
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
+  }
+})
+</code></pre>
+<pre><code class="language-html">&lt;li v-for=&quot;(item, index) in items&quot;&gt;
+    {{ parentMessage }} - {{ index }} - {{ item.message }}
+  &lt;/li&gt;
+</code></pre>
+<h3 id="与template一起">与<!-- raw HTML omitted -->一起</h3>
+<p>可以同时循环多个元素</p>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;template v-for=&quot;item in items&quot;&gt;
+    &lt;li&gt;{{ item.msg }}&lt;/li&gt;
+    &lt;li class=&quot;divider&quot;&gt;&lt;/li&gt;
+  &lt;/template&gt;
+&lt;/ul&gt;
+</code></pre>
+<h3 id="与对象一起使用迭代显示对象的所有成员">与对象一起使用，迭代显示对象的所有成员</h3>
+<p>和循环显示数组很相似，只不过这里是显示对象的成员，而不是数组的某个元素</p>
+<pre><code class="language-html">&lt;ul id=&quot;repeat-object&quot; class=&quot;demo&quot;&gt;
+  &lt;li v-for=&quot;value in object&quot;&gt;
+    {{ value }}
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+  el: '#repeat-object',
+  data: {
+    object: {
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30
+    }
+  }
+})
+</code></pre>
+<p>同时支持其他参数，如对象成员的 key，以及索引</p>
+<pre><code class="language-html">&lt;div v-for=&quot;(value, key, index) in object&quot;&gt;
+  {{ index }}. {{ key }} : {{ value }}
+&lt;/div&gt;
+</code></pre>
+<p><strong>注意</strong>
+key 的顺序和<code>Object.keys()</code>有关，可能与 JavaScript 引擎的实现有些不一致</p>
+<h3 id="设定一个范围内">设定一个范围内</h3>
+<p>通过设置一个整数，可以让 v-for 重复显示模板若干次</p>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;span v-for=&quot;n in 10&quot;&gt;{{ n }} &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="与组件一起">与组件一起</h3>
+<p><strong>注意</strong>
+现在的版本中，v-for与组件一起时，key 是必须的(<code>v-bind:key</code>)</p>
+<pre><code class="language-html">&lt;my-component v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+<h3 id="与-v-if-一起">与 v-if 一起</h3>
+<p>v-if 的优先级低于 v-for，这在一些需要在循环内按条件显示的时候有用</p>
+<pre><code class="language-html">&lt;li v-for=&quot;todo in todos&quot; v-if=&quot;!todo.isComplete&quot;&gt;
+  {{ todo }}
+&lt;/li&gt;
+</code></pre>
+<p><strong>注意</strong>
+在上面的写法中，v-for <strong>并不会主动传递任何数据给组件</strong>。这是因为组件有自己独立的作用域，为了不让组件和 v-for 联系过于紧密，以便尽可能在其他地方复用组件。</p>
+<p>因此，为了传递数据给组件，要使用<code>props</code></p>
+<pre><code class="language-html">&lt;my-component
+  v-for=&quot;(item, index) in items&quot;
+  v-bind:item=&quot;item&quot;
+  v-bind:index=&quot;index&quot;
+  :key=&quot;item.id&quot;&gt;
+&lt;/my-component&gt;
+</code></pre>
+<h2 id="key">key</h2>
+<p>在 v-for 中，默认使用<code>in-place-patch</code>特性，如果数据项的排序变化，vue 并不会去移动 DOM 元素，而是在原地（<code>in-place</code>）去<code>patch</code>每个元素，确保它反映出在特定的 index 上应该渲染什么。</p>
+<p>这个默认的特性是效率很高的。但只适用于你的列表渲染输出不依赖于 child component state 或者 temporary DOM state（例如 form 表单中 input 组件的 value）</p>
+<p>为了让 vue 能跟踪每个节点（node）的身份，然后重用和重新排序存在的元素，你应该给每个item提供一个<strong>唯一</strong>的<code>key</code>属性</p>
+<p>推荐给每个 v-for 中的元素添加 key，除非元素特别简单，或者为了性能有意让它们依赖于默认行为。</p>
+<pre><code class="language-html">&lt;div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;
+  &lt;!-- content --&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="数组变化检查">数组变化检查</h2>
+<h3 id="转换方法">转换方法</h3>
+<p>Vue  封装了一个“被观察的数组”，这个数组包含了一系列的<strong>转换方法</strong>，它们会触发 view 的更新</p>
+<ul>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()</li>
+<li>unshift()</li>
+<li>splice()</li>
+<li>sort()</li>
+<li>reverse()</li>
+</ul>
+<p>现在可以调用这些方法了。</p>
+<pre><code class="language-js">example1.items.push({ message: 'Baz' })
+</code></pre>
+<h3 id="替换数组">替换数组</h3>
+<p>上面的<strong>转换方法</strong>，会改变掉原来的数组的值。</p>
+<p>同样也有不改变原数组值的方法，filter(), concat() and slice()，它们只会<strong>返回一个新的数组</strong></p>
+<pre><code class="language-js">example1.items = example1.items.filter(function (item) {
+  return item.message.match(/Foo/)
+})
+</code></pre>
+<h3 id="警告">警告</h3>
+<p>受限于 JavaScript ，Vue 无法检测对数组的下列改变</p>
+<ol>
+<li>通过 index 直接修改 item，例如 vm.items[indexOfItem] = newValue</li>
+<li>修改数组的大小（length），例如 vm.items.length = newLength</li>
+</ol>
+<p>为了解决第一个问题，有两种变通的方法</p>
+<pre><code class="language-js">// Vue.set
+Vue.set(example1.items, indexOfItem, newValue)
+
+// Array.prototype.splice
+example1.items.splice(indexOfItem, 1, newValue)
+</code></pre>
+<p>为了解决第二个问题</p>
+<pre><code class="language-js">example1.items.splice(newLength)
+</code></pre>
+<h2 id="显示过滤排序后的结果">显示过滤、排序后的结果</h2>
+<p>第一种方法是使用 computed property</p>
+<pre><code class="language-html">&lt;li v-for=&quot;n in evenNumbers&quot;&gt;{{ n }}&lt;/li&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  numbers: [ 1, 2, 3, 4, 5 ]
+},
+computed: {
+  evenNumbers: function () {
+    return this.numbers.filter(function (number) {
+      return number % 2 === 0
+    })
+  }
+}
+</code></pre>
+<p>但是有时候不可行（教程说是例如 inside nested v-for loops ，不太明白），就要用 method</p>
+<pre><code class="language-html">&lt;li v-for=&quot;n in even(numbers)&quot;&gt;{{ n }}&lt;/li&gt;
+</code></pre>
+<pre><code class="language-js">data: {
+  numbers: [ 1, 2, 3, 4, 5 ]
+},
+methods: {
+  even: function (numbers) {
+    return numbers.filter(function (number) {
+      return number % 2 === 0
+    })
+  }
+}
+</code></pre>
+<h1 id="事件处理">事件处理</h1>
+<h2 id="监听事件">监听事件</h2>
+<p>使用 v-on 指令来监听 DOM 的事件，并在它们被触发的时候运行一些 js 代码</p>
+<p>例如最简单的，直接在指令中运行代码</p>
+<pre><code class="language-html">&lt;div id=&quot;example-1&quot;&gt;
+  &lt;button v-on:click=&quot;counter += 1&quot;&gt;Add 1&lt;/button&gt;
+  &lt;p&gt;The button above has been clicked {{ counter }} times.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">var example1 = new Vue({
+  el: '#example-1',
+  data: {
+    counter: 0
+  }
+})
+</code></pre>
+<h2 id="方法事件处理">方法事件处理</h2>
+<p>但一般情况下，处理事件的逻辑都是比较复杂的，不可能都写在指令里面。
+v-on 可以接受被调用的方法（method）的名称</p>
+<pre><code class="language-html">&lt;div id=&quot;example-2&quot;&gt;
+  &lt;!-- `greet` is the name of a method defined below --&gt;
+  &lt;button v-on:click=&quot;greet&quot;&gt;Greet&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    name: 'Vue.js'
+  },
+  // define methods under the `methods` object
+  methods: {
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+      // `event` is the native DOM event
+      if (event) {
+        alert(event.target.tagName)
+      }
+    }
+  }
+})
+// you can invoke methods in JavaScript too
+example2.greet() // -&gt; 'Hello Vue.js!'
+</code></pre>
+<h2 id="在行内处理者中的方法">在行内处理者中的方法</h2>
+<p>除了直接绑定一个方法名称，我们也可以直接在行内的 JavaScript 声明中使用方法</p>
+<pre><code class="language-html">&lt;div id=&quot;example-3&quot;&gt;
+  &lt;button v-on:click=&quot;say('hi')&quot;&gt;Say hi&lt;/button&gt;
+  &lt;button v-on:click=&quot;say('what')&quot;&gt;Say what&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+</code></pre>
+<p>有时候要访问原来的DOM事件，可以使用特殊的<code>$event</code>变量传到 method 中</p>
+<pre><code class="language-html">&lt;button v-on:click=&quot;warn('Form cannot be submitted yet.', $event)&quot;&gt;
+  Submit
+&lt;/button&gt;
+</code></pre>
+<pre><code class="language-js">methods: {
+  warn: function (message, event) {
+    // now we have access to the native event
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+</code></pre>
+<h2 id="事件修饰符">事件修饰符</h2>
+<p>在前面，我们经常需要在事件处理器中调用<code>event.preventDefault()</code>或<code>event.stopPropagation()</code>等。虽然也可以在方法里面写这些代码，但是一来略显繁琐，二来我们要尽可能<strong>让方法只专注于处理数据逻辑</strong>，而不要去管这些 DOM 事件的细节。</p>
+<p>因此 Vue 提供了一些事件修饰符来简化这个过程</p>
+<ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once</li>
+</ul>
+<pre><code class="language-html">&lt;!-- the click event's propagation will be stopped --&gt;
+&lt;a v-on:click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+&lt;!-- the submit event will no longer reload the page --&gt;
+&lt;form v-on:submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+&lt;!-- modifiers can be chained --&gt;
+&lt;a v-on:click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+&lt;!-- just the modifier --&gt;
+&lt;form v-on:submit.prevent&gt;&lt;/form&gt;
+&lt;!-- use capture mode when adding the event listener --&gt;
+&lt;div v-on:click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+&lt;!-- only trigger handler if event.target is the element itself --&gt;
+&lt;!-- i.e. not from a child element --&gt;
+&lt;div v-on:click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<p>新的版本中有如下特性。  不像其他的修饰符一般是和原生的DOM事件相冲突（如 perventDefault()）, <code>.once</code>修饰符同样能用于 <code>component events</code>（后面会讲到）</p>
+<pre><code class="language-html">&lt;!-- the click event will be triggered at most once --&gt;
+&lt;a v-on:click.once=&quot;doThis&quot;&gt;&lt;/a&gt;
+</code></pre>
+<h2 id="按键代码修饰符">按键代码修饰符</h2>
+<pre><code class="language-html">&lt;!-- only call vm.submit() when the keyCode is 13 --&gt;
+&lt;input v-on:keyup.13=&quot;submit&quot;&gt;
+</code></pre>
+<p>但是记住这些按键代码太繁琐了，因此 Vue 提供了一些别名来方便记忆</p>
+<ul>
+<li>.enter</li>
+<li>.tab</li>
+<li>.delete (captures both “Delete” and “Backspace” keys)</li>
+<li>.esc</li>
+<li>.space</li>
+<li>.up</li>
+<li>.down</li>
+<li>.left</li>
+<li>.right</li>
+</ul>
+<p>甚至还可以自己定义这些别名</p>
+<pre><code class="language-js">// enable v-on:keyup.f1
+Vue.config.keyCodes.f1 = 112
+</code></pre>
+<h2 id="修饰符按键">修饰符按键</h2>
+<p>和前面的名字太像了。。。主要是一些特殊的功能键（ctrl,alt等）以及鼠标按键</p>
+<pre><code class="language-html">&lt;!-- Alt + C --&gt;
+&lt;input @keyup.alt.67=&quot;clear&quot;&gt;
+&lt;!-- Ctrl + Click --&gt;
+&lt;div @click.ctrl=&quot;doSomething&quot;&gt;Do something&lt;/div&gt;
+</code></pre>
+<p>注意上面的按键组合和普通的 keyup 有一些差异，必须“被按住”才发生，例如 keyup.ctrl，表示按住 ctrl 不松手，然后释放另外一个建，松开 ctrl 是不会触发事件的。</p>
+<h3 id="鼠标按键事件">鼠标按键事件</h3>
+<ul>
+<li>.left</li>
+<li>.right</li>
+<li>.middle</li>
+</ul>
+<h2 id="why-listeners-in-html">Why Listeners in HTML?</h2>
+<p>You might be concerned that this whole event listening approach violates the good old rules about “separation of concerns”. Rest assured - since all Vue handler functions and expressions are strictly bound to the ViewModel that’s handling the current view, it won’t cause any maintenance difficulty. In fact, there are several benefits in using v-on:
+It’s easier to locate the handler function implementations within your JS code by simply skimming the HTML template.
+Since you don’t have to manually attach event listeners in JS, your ViewModel code can be pure logic and DOM-free. This makes it easier to test.
+When a ViewModel is destroyed, all event listeners are automatically removed. You don’t need to worry about cleaning it up yourself.</p>
+<h1 id="form-input-bindings-表单输入绑定">Form Input Bindings 表单输入绑定</h1>
+<h2 id="基本使用">基本使用</h2>
+<p>You can use  <code>v-model</code> directive to create the two-way data bindings.(on form inputs and textareas elemens). It automatically picks the correct way to update the element based on the input type.</p>
+<p><code>v-model </code>will <strong>ingore the initial value, selected or checked attributes found on any form element</strong>. it will <strong>always treat the Vue instance data</strong> as the source of truth.</p>
+<p>you should declare the initial value on the JavaScript side, inside the <code>data</code> options of your component.</p>
+<p><strong>for languages that require an IME</strong>&hellip;.
+&hellip;</p>
+<h3 id="text--multiline-text">Text &amp; Multiline Text</h3>
+<pre><code class="language-html">&lt;p&gt;{{ message }}&lt;/p&gt;
+&lt;input v-model=message /&gt;
+&lt;textarea v-model=message&gt;&lt;/textarea&gt;
+</code></pre>
+<p><strong>Interpolation on textarea</strong></p>
+<p>interplolation on textareas(<code>&lt;textarea&gt;{{message}}&lt;/textarea&gt;</code>) won&rsquo;t work.</p>
+<h3 id="single-checkbox">Single Checkbox</h3>
+<p>has a boolean value</p>
+<pre><code class="language-html">// display the &quot;true&quot; or &quot;false&quot;
+&lt;input type=&quot;checkbox&quot; v-model=&quot;checked&quot; /&gt;
+{{ checked }}
+</code></pre>
+<h3 id="multiple-checkboxes">Multiple checkboxes</h3>
+<p>bound to the same Array</p>
+<pre><code class="language-html">&lt;div id='example-3'&gt;
+	&lt;input type=&quot;checkbox&quot; id=&quot;jack&quot; value=&quot;Jack&quot; v-model=&quot;checkedNames&quot;&gt;
+	&lt;label for=&quot;jack&quot;&gt;Jack&lt;/label&gt;
+	&lt;input type=&quot;checkbox&quot; id=&quot;john&quot; value=&quot;John&quot; v-model=&quot;checkedNames&quot;&gt;
+	&lt;label for=&quot;john&quot;&gt;John&lt;/label&gt;
+	  
+	&lt;span&gt;Checked names: {{ checkedNames }}&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+  el: '#example-3',
+  data: {
+    checkedNames: []
+  }
+})
+</code></pre>
+<h3 id="radio">Radio</h3>
+<pre><code class="language-html">&lt;input type=&quot;radio&quot; id=&quot;one&quot; value=&quot;One&quot; v-model=&quot;picked&quot;&gt;
+&lt;label for=&quot;one&quot;&gt;One&lt;/label&gt;
+&lt;br&gt;
+&lt;input type=&quot;radio&quot; id=&quot;two&quot; value=&quot;Two&quot; v-model=&quot;picked&quot;&gt;
+&lt;label for=&quot;two&quot;&gt;Two&lt;/label&gt;
+&lt;br&gt;
+&lt;span&gt;Picked: {{ picked }}&lt;/span&gt;
+</code></pre>
+<h3 id="select">Select</h3>
+<pre><code class="language-html">&lt;!--or use  multiple--&gt;
+&lt;select v-model=&quot;selected&quot;&gt;
+  &lt;option disabled value=&quot;&quot;&gt;Please select one&lt;/option&gt;
+  &lt;option&gt;A&lt;/option&gt;
+  &lt;option&gt;B&lt;/option&gt;
+  &lt;option&gt;C&lt;/option&gt;
+&lt;/select&gt;
+&lt;span&gt;Selected: {{ selected }}&lt;/span&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+  el: '...',
+  data: {
+    selected: ''
+  }
+})
+</code></pre>
+<p>in the iOS</p>
+<blockquote>
+<p>If the initial value of your v-model expression does not match any of the options, the <!-- raw HTML omitted --> element will render in an “unselected” state. On iOS this will cause the user not being able to select the first item because iOS does not fire a change event in this case. It is therefore recommended to provide a disabled option with an empty value, as demonstrated in the example above.</p>
+</blockquote>
+<p><strong>Dynamic options rendered with v-for</strong></p>
+<pre><code class="language-html">&lt;select v-model=&quot;selected&quot;&gt;
+  &lt;option v-for=&quot;option in options&quot; v-bind:value=&quot;option.value&quot;&gt;
+    {{ option.text }}
+  &lt;/option&gt;
+&lt;/select&gt;
+&lt;span&gt;Selected: {{ selected }}&lt;/span&gt;
+</code></pre>
+<pre><code class="language-js">new Vue({
+  el: '...',
+  data: {
+    selected: 'A',
+    options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
+  }
+})
+</code></pre>
+<h2 id="value-bindings">Value Bindings</h2>
+<p>for radio, checkbox and select options, the <code>v-model</code> binding values are usually static strings(or booleans for checkbox)</p>
+<pre><code class="language-html">&lt;!-- `picked` is a string &quot;a&quot; when checked --&gt;
+&lt;input type=&quot;radio&quot; v-model=&quot;picked&quot; value=&quot;a&quot;&gt;
+&lt;!-- `toggle` is either true or false --&gt;
+&lt;input type=&quot;checkbox&quot; v-model=&quot;toggle&quot;&gt;
+&lt;!-- `selected` is a string &quot;abc&quot; when selected --&gt;
+&lt;select v-model=&quot;selected&quot;&gt;
+  &lt;option value=&quot;abc&quot;&gt;ABC&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<p>but sometimes we may want to bind the value to a dynamic property on the Vue instance. we can use <code>v-bind</code> to archieve that.</p>
+<p>in addtion, using <code>v-bind</code> allows us to bind the input value to non-string values.</p>
+<p>eg:</p>
+<pre><code class="language-html">&lt;input
+	type=&quot;checbox&quot;
+	v-model=&quot;toggle&quot;
+	v-bind:true-value=&quot;a&quot;
+	v-bind:false-value=&quot;b&quot;&gt;
+
+&lt;input type=&quot;radio&quot; v-model=&quot;pick&quot; v-bind:value=&quot;a&quot;&gt;
+
+&lt;select v-model=&quot;selected&quot;&gt;
+  &lt;!-- inline object literal --&gt;
+  &lt;option v-bind:value=&quot;{ number: 123 }&quot;&gt;123&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+<pre><code class="language-js">// checkbox: when checked:
+vm.toggle === vm.a
+// when unchecked:
+vm.toggle === vm.b
+
+// radio: when checked:
+vm.pick === vm.a
+
+// select: when selected:
+typeof vm.selected // =&gt; 'object'
+vm.selected.number // =&gt; 123
+
+</code></pre>
+<h2 id="modifiers">Modifiers</h2>
+<h3 id="lazy">lazy</h3>
+<p>by default, <code>v-model</code> syncs the input with the data after each <code>input</code> event, you can add the <code>lazy</code> modifier to instead sync after the <code>change</code>event</p>
+<p>input -&gt; change</p>
+<pre><code class="language-html">&lt;input v-model.lazy=&quot;msg&quot; &gt;
+</code></pre>
+<h3 id="number">number</h3>
+<p>if you want user input to be automatically typecast as a number, you can add the <code>number</code> modifier to your <code>v-model</code> managed inputs.
+(because even with the <code>type=&quot;number&quot;</code>, the value of HTML input elements always returns a string)</p>
+<pre><code class="language-html">&lt;input v-model.number=&quot;age&quot; type=&quot;number&quot;&gt;
+</code></pre>
+<h3 id="trim">trim</h3>
+<p>if you want user input to be trimmed automaticallly.</p>
+<pre><code class="language-html">&lt;input v-model.trim=&quot;msg&quot;&gt;
+</code></pre>
+<h1 id="components">Components</h1>
+<p>components are <strong>custome elements</strong> that Vue&rsquo;s compiler attaches behavior to.</p>
+<h2 id="using-components">Using components</h2>
+<h3 id="registration">Registration</h3>
+<p>we have learned in the previous sections that we can create a new Vue Instance with:</p>
+<pre><code class="language-js">new Vue({
+el: &quot;#some-element&quot;,
+//options
+})
+</code></pre>
+<p>To register a global component you can use <code>Vue.component(tagName, options)</code></p>
+<pre><code class="language-js">Vue.component('my-component', {
+  // options
+})
+</code></pre>
+<p>Once <strong>registered</strong>, a component can be used <strong>in an instance&rsquo;s template</strong> as a <strong>custom element.</strong> (just like a HTML element)</p>
+<p><strong>NOTICE</strong></p>
+<p>make sure the component has been registered before you instantiate the root Vue instance:</p>
+<pre><code class="language-js">// register
+Vue.component('my-component', {
+  template: '&lt;div&gt;A custom component!&lt;/div&gt;'
+})
+// create a root instance
+new Vue({
+  el: '#example'
+})
+</code></pre>
+<p>then</p>
+<pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;
+  &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+</code></pre>
+<p>will render to:</p>
+<pre><code class="language-html">&lt;div id=&quot;example&quot;&gt;
+  &lt;div&gt;A custom component!&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="local-registration">Local Registration</h3>
+<p>You don&rsquo;t need to register every component globally.(so boring). You can make a component available only <strong>in the scope of another instance/component</strong> by registering it with the <code>components</code> instance option:</p>
+<p>parent component &mdash;- (use &ldquo;components&rdquo; option) &mdash;- child components</p>
+<p>child components will <strong>only be available in parent&rsquo;s template.</strong></p>
+<pre><code class="language-js">var Child = {
+  template: '&lt;div&gt;A custom component!&lt;/div&gt;'
+}
+new Vue({
+  // ...
+  components: {
+    'my-component': Child
+  }
+})
+</code></pre>
+<h3 id="dom-template-parsing-cavents-模板解析的一些警告">DOM Template Parsing Cavents 模板解析的一些警告</h3>
+<p>在使用一些 DOM 作为 template 的时候（例如使用 el option 来挂载一个已经存在内容的 element），要注意有一些 elements 是有限制的，主要是<strong>内部能容纳哪些类型的子element</strong>。</p>
+<p>例如 <!-- raw HTML omitted -->, <!-- raw HTML omitted -->, <!-- raw HTML omitted --> and <!-- raw HTML omitted -->， DOM 规则限制了只有某些元素才能出现在它内部（ ul 里面必须是 li， table 里面是 tr， select 里面是 option）</p>
+<p>另外还有，option 也只能出现在 select 内部。</p>
+<p>因为 Vue 必须在浏览器已经解析和初始化模板<strong>之后</strong>，才能取到里面的内容。因此如果你在 <strong>HTML文档的 DOM 中</strong> ，在这些有限制的 element 里放自定义组件，会产生一个 invalid content 错误，并导致 Vue 最终渲染结果产生错误。</p>
+<p>一个变通方法是使用<code>is</code>属性（special attribute）</p>
+<pre><code class="language-html">&lt;table&gt;
+  &lt;tr is=&quot;my-row&quot;&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p><strong>什么情况下可以突破限制，在这些特殊的element里放自定义组件呢？</strong></p>
+<p>使用 <code>string templates</code>，这也是 Vue 的推荐</p>
+<ul>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>JavaScript inline template strings</li>
+<li>使用 .vue components</li>
+</ul>
+<h3 id="组件的-data-option-必须是函数">组件的 data option 必须是函数</h3>
+<p>大部分 Vue 的 constructor 中传入的 options 都能直接用到 组件上</p>
+<pre><code class="language-js">// constructor ，创建 Vue 实例
+new Vue({
+	//options
+})
+
+// component，定义一个 Vue 组件
+Vue.component('comp-name', {
+	//options 大部分类似
+})
+</code></pre>
+<p>但是，constructor 中，option <code>data</code>是一个<strong>对象</strong>，而在 组件 里，这个 data option 则是<strong>函数</strong>。</p>
+<p>如果用错了，Vue will halt and emit warnings in the console, telling you that data must be a function for component instances</p>
+<p>目前不知道详细的原因，我猜测是：“组件”的特性就是要尽可能独立，并且由于数据的变化也会影响组件，因此其“内部”的数据要能够“被计算”，不被外部的数据影响（例如一些全局变量）。</p>
+<pre><code class="language-js">//construtor option
+data: {
+	message: &quot;this is message in app-1&quot;
+}
+
+// component option
+data: function () {
+	return data
+}
+</code></pre>
+<h3 id="从官方文档拆出关于组件的-data-使用内部数据而不是外部共享的">从官方文档拆出：关于组件的 data 使用“内部”数据，而不是外部共享的</h3>
+<p>假设有这样一个例子：有三个计数器组件<code>simple-counter</code>，每点击一次就 +1</p>
+<pre><code class="language-html">&lt;div id=&quot;example-2&quot;&gt;
+  &lt;simple-counter&gt;&lt;/simple-counter&gt;
+  &lt;simple-counter&gt;&lt;/simple-counter&gt;
+  &lt;simple-counter&gt;&lt;/simple-counter&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在下面代码中，每个组件实例的 data function 都共享了相同的对象引用（就是第一行的那个 data）。导致任何一个组件的动作，都会导致共享的 data 对象变化。并且会在三个组件上显示数据的变化</p>
+<pre><code class="language-js">// share
+var data = { counter: 0 }
+
+Vue.component('simple-counter', {
+  template: '&lt;button v-on:click=&quot;counter += 1&quot;&gt;{{ counter }}&lt;/button&gt;',
+
+  data: function () {
+    return data
+  }
+})
+new Vue({
+  el: '#example-2'
+})
+</code></pre>
+<p>如果使用下面的，让<code>counter</code>只属于组件的内部，就可以解决这个问题了。</p>
+<pre><code class="language-js">data: function () {
+  return {
+    counter: 0
+  }
+}
+</code></pre>
+<h3 id="composing-components-复合组件">Composing Components 复合组件</h3>
+<p>Vue 的组件可以组合起来使用，常见的就是 parent 和 child 组件之间的 include 关系。</p>
+<p>组件之间要尽可能隔离，这样开发人员只维护自己的一部分代码，便于组件的重用。</p>
+<p>但是组件之间又不可避免要进行通信，例如 parent 要传递一些数据到 child， 同时 child 发生了一些事件也要能通知给 parent。
+在 Vue 中，父子组件之间的关系可以概括成 <strong>props</strong> down, <strong>events</strong> up</p>
+<p><img src="/media/15490411858115/15053685277620.jpg" alt=""></p>
+<h2 id="props">Props</h2>
+<h3 id="passing-data-with-props">passing data with props</h3>
+<p>每个组件实例都有自己的 isolated scope (被隔离的作用域？)</p>
+<p>也就是说无法直接在 child 组件的模板中直接引用 parent 数据。数据只能通过 props 传递下去。</p>
+<p>子组件必须明确声明自己希望接收的 props</p>
+<pre><code class="language-js">Vue.component('child', {
+  // declare the props
+  props: ['message'],
+  // just like data, the prop can be used inside templates
+  // and is also made available in the vm as this.message
+  template: '&lt;span&gt;{{ message }}&lt;/span&gt;'
+})
+</code></pre>
+<p>然后可以在调用 child 组件的时候，传入数据</p>
+<pre><code class="language-html">&lt;child message=&quot;hello!&quot;&gt;&lt;/child&gt;
+</code></pre>
+<h3 id="camelcase-vs-kebab-case--驼峰与连字符的对应与转换">camelCase vs. kebab-case  驼峰与连字符的对应与转换</h3>
+<p>因为 HTML 属性是大小写不敏感的，例如 SRC 和 src 在浏览器看来是一样，因此如果使用 non-string templates 的情况下，我们向组件传递 props，它的一些命名就要注意了。</p>
+<p>Vue 组件中，可以使用驼峰式</p>
+<pre><code class="language-js">Vue.component('child', {
+  // camelCase in JavaScript
+  props: ['myMessage'],
+  template: '&lt;span&gt;{{ myMessage }}&lt;/span&gt;'
+})
+</code></pre>
+<p>但是在 HTML 中，对应的 props 名称则必须使用连字符形式，它们是相对应的。</p>
+<pre><code class="language-html">&lt;child my-message=&quot;hello!&quot;&gt;&lt;/child&gt;
+</code></pre>
+<p>当然了如果使用 String Template(就是前面提到的 Vue 单文件，x-template 等) ，这个限制就不存在了。（也可以在 HTML 里也使用驼峰？）</p>
+<h3 id="dynamic-props">Dynamic Props</h3>
+<p>除了在 props 里传入字符串，还可以使用 v-bind 动态绑定 props。这样主要 parent 中数据更新，同样会传递到 child  (v-bind: 同样可以简写成 :)</p>
+<pre><code class="language-html">&lt;div&gt;
+  &lt;input v-model=&quot;parentMsg&quot;&gt;
+  &lt;br&gt;
+  &lt;child v-bind:my-message=&quot;parentMsg&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+</code></pre>
+<p>如果要把一个对象里所有的属性都作为 props 传递，则可以省掉<code>v-bind:prop-name</code>中的 prop-name</p>
+<pre><code class="language-js">todo: {
+  text: 'Learn Vue',
+  isComplete: false
+}
+</code></pre>
+<pre><code class="language-html">&lt;todo-item v-bind=&quot;todo&quot;&gt;&lt;/todo-item&gt;
+
+&lt;!--equivalent to--&gt;
+&lt;todo-item
+  v-bind:text=&quot;todo.text&quot;
+  v-bind:is-complete=&quot;todo.isComplete&quot;
+&gt;&lt;/todo-item&gt;
+</code></pre>
+<h3 id="字面上的--动态的--如何传入一个数字">字面上的 &amp; 动态的 —— 如何传入一个数字？</h3>
+<p>通常会犯的一个错误是，把一个“数字”使用 literal syntax 来传入
+例如下面的例子，实际上子组件只会得到一个“字符串” 1，而不是真正的数字。</p>
+<pre><code class="language-html">&lt;comp some-prop=&quot;1&quot;&gt;&lt;/comp&gt;
+</code></pre>
+<p>如果想要传入一个<strong>真正的数字</strong>，应该使用 v-bind 来确保这个值能作为一个 JavaScript expression。</p>
+<pre><code class="language-html">&lt;comp v-bind:some-prop=&quot;1&quot;&gt;&lt;/comp&gt;
+</code></pre>
+<h3 id="单向数据流--one-way-data-flow">单向数据流  One-Way Data Flow</h3>
+<p>child 的数据来自 parent 通过 props 的传递，而且这是唯一的方式。以避免 child 组件意外影响 parent 的 state。</p>
+<p>因此你不要在 child 内部去改变 props，Vue 将报错。</p>
+<p>只有两种情况下需要处理 prop</p>
+<ol>
+<li>prop 作为一个 initial value 传入，然后 child 组件希望在以后把它作为一个本地数据属性(Define a local data property that uses the prop’s initial value as its initial value)</li>
+</ol>
+<pre><code class="language-js">props: ['initialCounter'],
+data: function () {
+  return { counter: this.initialCounter }
+}
+</code></pre>
+<ol start="2">
+<li>prop 在传入时是一个原生值，但是需要将它进行处理（Define a computed property that is computed from the prop’s value:）</li>
+</ol>
+<pre><code class="language-js">props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+</code></pre>
+<p><strong>注意</strong></p>
+<p>如果 prop 如果是对象或数组（在 JavaScript 里是引用传递），在 child 内部改变这些 object 或 array 本身<strong>将会影响</strong>parent 的 state</p>
+<p>（因此，上面两个例子，并不会修改本身的值），可以试试传入一个 array，然后用 js 的 map/foreach 试试“修改本身”</p>
+<h3 id="prop-validation-验证-prop">Prop Validation 验证 prop</h3>
+<p>在团队中，或者你想把自己开发的组件发布出去给其他人使用，就要注意 props 的“数据验证”的问题了，避免产生一些问题。例如，你要规定这个组件允许传入的 props 数据的格式、范围。</p>
+<p>把 props 从数组/字符串形式改成对象，并且设置验证规则(也支持自定义函数)</p>
+<pre><code class="language-js">Vue.component('example', {
+  props: {
+    // basic type check (`null` means accept any type)
+    propA: Number,
+    // multiple possible types
+    propB: [String, Number],
+    // a required string
+    propC: {
+      type: String,
+      required: true
+    },
+    // a number with default value
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // object/array defaults should be returned from a
+    // factory function
+    propE: {
+      type: Object,
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // custom validator function
+    propF: {
+      validator: function (value) {
+        return value &gt; 10
+      }
+    }
+  }
+})
+</code></pre>
+<p>支持的 type 有以下，或者是一个自定义的 constructor，使用 instanceof 检查</p>
+<p>String
+Number
+Boolean
+Function
+Object
+Array
+Symbol</p>
+<p>如果验证失败，Vue 会在 console 产生一个错误。</p>
+<p><strong>注意</strong></p>
+<p>props 的 validation 动作发生在组件实例创建<strong>之前</strong>，所以在 default 或者 validator 函数中，实例的成员都是不可用的（例如 来自 data，computed， methods）</p>
+<h2 id="non-prop-attributes--非-prop-的属性">Non-Prop Attributes  非 Prop 的属性</h2>
+<p>一个 non-prop attribute 也是一个传递给组件的 attribute, 但是没有一个相符的 prop 被定义。</p>
+<p>虽然开发者可以明确定义组件可接受的 props，但是不可能完全估计到组件使用的上下文环境。因此组件可以接受被添加到组件<strong>root element</strong>的“任意”属性。（并传递给内部的 child elements?）</p>
+<p>例如，有一个第三方的组件 <code>&lt;bs-date-input&gt;</code>，内部有个 <!-- raw HTML omitted -->，模板是</p>
+<pre><code class="language-html">&lt;input type=&quot;date&quot; class=&quot;form-control&quot;&gt;
+</code></pre>
+<p>这个 <!-- raw HTML omitted --> 它需要 data-3d-date-picker attribute ,所以我们就可以把这个属性添加到组件实例上，它会自动添加到 root element(也就是 <!-- raw HTML omitted --> 上)</p>
+<pre><code class="language-html">&lt;bs-date-input data-3d-date-picker=&quot;true&quot;&gt;&lt;/bs-date-input&gt;
+</code></pre>
+<h3 id="如果传入同名的-attribute何时替换何时合并">如果传入同名的 attribute，何时替换，何时合并？</h3>
+<p>还是以上面那个<code>&lt;bs-date-input&gt;</code>为例，假设它模板的 input 有个 class</p>
+<pre><code class="language-html">&lt;input type=&quot;date&quot; class=&quot;form-control&quot;&gt;
+</code></pre>
+<p>然后又传入一个新的 class  <code>date-picker-theme-dark</code></p>
+<pre><code class="language-html">&lt;bs-date-input
+	type=&quot;large&quot;
+  data-3d-date-picker=&quot;true&quot;
+  class=&quot;date-picker-theme-dark&quot;
+&gt;&lt;/bs-date-input&gt;
+</code></pre>
+<p>会发生什么呢？</p>
+<p>Vue 会把 <code>class</code> 和 <code>style</code> <strong>合并</strong>，因此 input 的 class 变成 form-control date-picker-theme-dark。</p>
+<p>而<strong>其他的</strong> attribte 会被传入的值<strong>替代</strong>，也就是说 input 的 type 会变成 large。（boom，input 会出错，因为 large 并不是一个合法的 input 属性）</p>
+<h2 id="自定义事件">自定义事件</h2>
+<p>前面知道 parent 可以通过 props 传入数据到 child。那么当 child 如何把发生的事件传递回去呢？ 这就是 Vue 的自定义事件系统。</p>
+<h3 id="使用--v-on-来处理自定义事件">使用  <code>v-on</code> 来处理自定义事件</h3>
+<p>每个 Vue 实例都实现了一个 事件接口（events interface），能够</p>
+<p>Listen to an event using $on(eventName)  监听事件
+Trigger an event using $emit(eventName)  发射事件</p>
+<p>注意 Vue 的事件系统<strong>不同于</strong>浏览器的事件系统 EventTarget API.（虽然看起来像，https://developer.mozilla.org/en-US/docs/Web/API/EventTarget， $on and $emit are not aliases for addEventListener and dispatchEvent.）</p>
+<p>另外，parent 组件能够监听来自 child 组件 emit 出来的事件（在模板上用 <code>v-on</code>）</p>
+<p><strong>必须</strong>使用<code>v-on</code>在模板上，而<strong>不可以</strong>使用<code>$on</code>来监听 child  emit 的事件。</p>
+<p>下面是一个例子，每个子组件 <code>button-counter</code> 在被点击一次后（点击事件），除了会增加 1(执行<code>incrementCounter</code>函数改变内部数据)，同时还会发射一个事件到父组件<code>el: '#counter-event-example'</code>，通知父组件执行<code>increment</code>对应的函数<code>incrementTotal</code>更新它内部的 total（this.$emit(&lsquo;increment&rsquo;)）。</p>
+<p>分清 incrementCounter 和 incrementTotal 分别位于哪个组件是关键。</p>
+<p><code>v-on:increment=&quot;incrementTotal&quot;</code> 可以这么理解：在 <!-- raw HTML omitted -->组件上定义了一个事件监听器<strong>名称</strong>叫“increment”，对应的**值（最终在 parent 组件上执行的函数？）**是<code>incrementTotal</code>。</p>
+<pre><code class="language-html">&lt;div id=&quot;counter-event-example&quot;&gt;
+  &lt;p&gt;{{ total }}&lt;/p&gt;
+  &lt;button-counter v-on:increment=&quot;incrementTotal&quot;&gt;&lt;/button-counter&gt;
+  &lt;button-counter v-on:increment=&quot;incrementTotal&quot;&gt;&lt;/button-counter&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code class="language-js">Vue.component('button-counter', {
+  template: '&lt;button v-on:click=&quot;incrementCounter&quot;&gt;{{ counter }}&lt;/button&gt;',
+  data: function () {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    incrementCounter: function () {
+      this.counter += 1
+      this.$emit('increment')
+    }
+  },
+})
+new Vue({
+  el: '#counter-event-example',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1
+    }
+  }
+})
+</code></pre>
+<p>在这个例子中，子组件完全不管外部发生了什么，只负责汇报自己的变化，假设父组件会关心。</p>
+<h3 id="在组件上绑定原生的事件">在组件上绑定原生的事件</h3>
+<p>在组件上使用 v-on:event-name 后，默认由 Vue 来处理。但有时候想让 JavaScript 来处理怎么办呢？例如一个 click 事件，不想让 vue 来处理</p>
+<p>只需要在 v-on 后添加修饰符<code>.native</code></p>
+<pre><code class="language-html">&lt;my-component v-on:click.native=&quot;doTheThing&quot;&gt;&lt;/my-component&gt;
+</code></pre>
+<h3 id="sync-修饰符">sync 修饰符</h3>
+<p>（此场景确实有）</p>
+<p>因为 Vue 组件的“单向数据流”特性，是不能在子组件修改 props 的，如果一定要做，可以使用一个叫“sync”的修饰符（类似一种语法糖）</p>
+<pre><code class="language-html">&lt;comp :foo.sync=&quot;bar&quot;&gt;&lt;/comp&gt;
+
+&lt;!--相当于--&gt;
+&lt;comp :foo=&quot;bar&quot; @update:foo=&quot;val =&gt; bar = val&quot;&gt;&lt;/comp&gt;
+</code></pre>
+<p>如果要让 child component 更新 foo 的值，需要明确指定<strong>发射事件</strong>，而不是直接改变 prop</p>
+<h3 id="在-form-input-components-上使用自定义事件">在 Form Input Components 上使用自定义事件</h3>
+<p>（本节不太明白）</p>
+<p>实际上前面我们用的<code>&lt;input v-model=&quot;something&quot;&gt;</code> 中 v-model 也是一个语法糖，相当于</p>
+<pre><code class="language-js">&lt;input
+  v-bind:value=&quot;something&quot;
+  v-on:input=&quot;something = $event.target.value&quot;&gt;
+</code></pre>
+<p>因此如果要创建一个组件</p>
+<pre><code class="language-js">&lt;custom-input
+  :value=&quot;something&quot;
+  @input=&quot;value =&gt; { something = value }&quot;&gt;
+&lt;/custom-input&gt;
+</code></pre>
+<p>一个组件如果要使用<code>v-model</code>，那么它一定要：</p>
+<ul>
+<li>接收一个 value prop</li>
+<li>使用新值发射一个 input 事件</li>
+</ul>
+<pre><code class="language-html">&lt;currency-input v-model=&quot;price&quot;&gt;&lt;/currency-input&gt;
+</code></pre>
+<p>相应地</p>
+<pre><code class="language-js">Vue.component('currency-input', {
+  template: '\
+    &lt;span&gt;\
+      $\
+      &lt;input\
+        ref=&quot;input&quot;\
+        v-bind:value=&quot;value&quot;\
+        v-on:input=&quot;updateValue($event.target.value)&quot;&gt;\
+    &lt;/span&gt;\
+  ',
+  props: ['value'],
+  methods: {
+    // Instead of updating the value directly, this
+    // method is used to format and place constraints
+    // on the input's value
+    updateValue: function (value) {
+      var formattedValue = value
+        // Remove whitespace on either side
+        .trim()
+        // Shorten to 2 decimal places
+        .slice(
+          0,
+          value.indexOf('.') === -1
+            ? value.length
+            : value.indexOf('.') + 3
+        )
+      // If the value was not already normalized,
+      // manually override it to conform
+      if (formattedValue !== value) {
+        this.$refs.input.value = formattedValue
+      }
+      // Emit the number value through the input event
+      this.$emit('input', Number(formattedValue))
+    }
+  }
+})
+</code></pre>
+<p>上面这个例子很简单，事实上为了使用更强大的检测，有下面的例子
+<a href="https://jsfiddle.net/chrisvfritz/1oqjojjx/?utm_source=website&amp;utm_medium=embed&amp;utm_campaign=1oqjojjx">https://jsfiddle.net/chrisvfritz/1oqjojjx/?utm_source=website&amp;utm_medium=embed&amp;utm_campaign=1oqjojjx</a></p>
+<h3 id="自定义组件的-v-model">自定义组件的 <code>v-model</code></h3>
+<p>默认情况下，组件上的 v-model 使用 “value” 作为 prop 和 “input” 作为 event。但是有一些组件（例如 checkbox  radio）希望把 value prop 用作别的用途。</p>
+<p>例如 checkbox，它实际上最重要的属性是 checked（布尔值），另外还需要使用一个“change”事件以便于理解（而不是 input）</p>
+<p>因此在组件定义中，使用 model  option 来避免冲突(把 value 用在别的目的上)
+<strong>注意要明确定义 checked 这个 prop</strong></p>
+<pre><code class="language-js">Vue.component('my-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean,
+    // this allows using the `value` prop for a different purpose
+    value: String
+  },
+  // ...
+})
+</code></pre>
+<p>使用以下两种方式都可以</p>
+<pre><code class="language-html">&lt;my-checkbox v-model=&quot;foo&quot; value=&quot;some value&quot;&gt;&lt;/my-checkbox&gt;
+
+&lt;my-checkbox
+  :checked=&quot;foo&quot;
+  @change=&quot;val =&gt; { foo = val }&quot;
+  value=&quot;some value&quot;&gt;
+&lt;/my-checkbox&gt;
+</code></pre>
+<h3 id="非父子关系组件之间的通信">非父子关系组件之间的通信</h3>
+<p>创建一个空的 Vue 实例，作为“中间事件总线” （central event bus）来让两个独立的组件进行通信</p>
+<pre><code class="language-js">var bus = new Vue()
+
+// in component A's method
+bus.$emit('id-selected', 1)
+
+// in component B's created hook
+bus.$on('id-selected', function (id) {
+  // ...
+})
+</code></pre>
+<p>在更复杂的场景中，应该考虑使用 state-management pattern.（ <a href="https://vuejs.org/v2/guide/state-management.html">https://vuejs.org/v2/guide/state-management.html</a>）</p>
+<p>例如 vuex？</p>
+<h2 id="使用-slots-进行-content-distribution内容分配">使用 Slots 进行 Content Distribution（内容分配？）</h2>
+<p>通常希望用这样的方式组合一些组件</p>
+<pre><code class="language-html">&lt;app&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+  &lt;app-footer&gt;&lt;/app-footer&gt;
+&lt;/app&gt;
+</code></pre>
+<p>可以看出</p>
+<ul>
+<li><!-- raw HTML omitted --> 组件并不知道它会收到什么内容，取决于使用 <!-- raw HTML omitted --> 的父组件</li>
+<li><!-- raw HTML omitted --> 可能拥有它自己的模板</li>
+</ul>
+<p>用一种方式混合父组件的内容与子组件自己的模板，让组件可以组合，这就是<code>内容分发</code>。使用特殊的 <!-- raw HTML omitted --> 元素作为原始内容的插槽</p>
+<h3 id="编译作用域">编译作用域</h3>
+<p>先要明确内容在哪个作用域里编译。
+父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译。</p>
+<p>有一个例子. <code>someChildProperty</code>是子组件的属性，如果试图在父组件模板内将一个指令绑定到子组件的属性/方法，是不会有效的 。父组件模板不应该知道子组件的状态。</p>
+<pre><code class="language-html">&lt;child-component v-show=&quot;someChildProperty&quot;&gt;&lt;/child-component&gt;
+</code></pre>
+<p>暂停。。。。</p>
+<h2 id="动态组件">动态组件</h2>
+<h1 id="iview-界面库">iView 界面库</h1>
+<h2 id="使用-iview-cli-工具">使用 iView Cli 工具</h2>
+<p>项目初始化 &amp; 离线文档等 （感觉不好使）</p>
+<p><img src="/media/15490411858115/15051304028778.jpg" alt=""></p>
+<h2 id="引入文件">引入文件</h2>
+<p>CDN 方式</p>
+<pre><code class="language-html">&lt;!-- 引入Vue --&gt;
+&lt;script src=&quot;//vuejs.org/js/vue.min.js&quot;&gt;&lt;/script&gt;
+&lt;!-- 引入样式 --&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;//unpkg.com/iview/dist/styles/iview.css&quot;&gt;
+&lt;!-- 引入组件库 --&gt;
+&lt;script src=&quot;//unpkg.com/iview/dist/iview.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>或者 npm 安装</p>
+<p>教程/组件参看 <a href="http://www.iviewui.com">www.iviewui.com</a></p>
+<h1 id="整合-cordova">整合 Cordova</h1>
+<h2 id="首先按步骤创建好-cordova-项目test-cordova">首先按步骤创建好 cordova 项目&quot;test-cordova&rdquo;</h2>
+<pre><code class="language-shell">npm i -g install cordova
+
+cordova crerate app-cordova
+
+cd app-cordova
+
+cordova platforms add android
+cordova requirements
+cordova build
+cordova run
+</code></pre>
+<h2 id="进入-cordova-项目目录后再创建-test-vue项目使用-vue-cli">进入 cordova 项目目录后，再创建 &ldquo;test-vue&quot;项目（使用 vue cli）</h2>
+<pre><code class="language-shell">cd  test-cordova
+vue init webpack vue-app
+
+cd vue-app
+npm install
+
+npm run dev
+</code></pre>
+<p>##整合两者的关键就是将vue-app项目默认的构建位置dist目录修改为cordova-app项目中的www目录</p>
+<p>并能够使用cordova命令直接运行在手机端</p>
+<p>打开 <code>config/index.js</code>，修改里面的几个参数</p>
+<blockquote>
+<p>index: path.resolve(__dirname, &lsquo;../../www/index.html&rsquo;),
+assetsRoot: path.resolve(__dirname, &lsquo;../../www&rsquo;),
+assetsSubDirectory: &lsquo;',
+assetsPublicPath: &lsquo;',</p>
+</blockquote>
+<p>这样，<code>npm run build </code>会将工程打包到与 app-vue 项目同级的 app-cordova 项目下</p>
+<p>本地调试，在 chrome 的设备模拟器中，可以使用 vue-devtools 扩展来获取界面信息</p>
+<h2 id="在-vue-中引入-cordova">在 vue 中引入 cordova</h2>
+<p>修改 vue 项目的 index.html，在 head 中添加</p>
+<pre><code class="language-html">&lt;script src=&quot;cordova.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="合并打包命令">合并打包命令</h2>
+<p>流程：
+先进入 <code>app-vue</code>目录，开发你的代码，运行<code>npm run dev</code>在<code>http://localhost:8080/</code>中调试（这是是一个 vue 项目）</p>
+<p>要打包成 cordova 命令的时候，回到上级 <code>app-cordova</code>，运行<code>cordova run android</code>或<code>cordova serve</code>。</p>
+<p>当然可以修改 <code>app-vue</code> 里的<code>npm run</code>命令，让它能自动调用 cordova 的相关命令</p>
+<p>更改vue下的package.json，在最后添加一条名为<code>android</code>的参数</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;node build/dev-server.js&quot;,
+    &quot;start&quot;: &quot;node build/dev-server.js&quot;,
+    &quot;build&quot;: &quot;node build/build.js&quot;,
+    &quot;unit&quot;: &quot;cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run&quot;,
+    &quot;e2e&quot;: &quot;node test/e2e/runner.js&quot;,
+    &quot;test&quot;: &quot;npm run unit &amp;&amp; npm run e2e&quot;,
+    &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit/specs test/e2e/specs&quot;,
+    &quot;android&quot;: &quot;npm run build &amp;&amp; cordova run android&quot;
+  }
+</code></pre>
+<p>然后就可以运行下面的命令简化</p>
+<pre><code class="language-shell">npm run android
+</code></pre>
+<h2 id="热更新插件">热更新插件</h2>
+<p><a href="https://github.com/nordnet/cordova-hot-code-push">https://github.com/nordnet/cordova-hot-code-push</a></p>
+<p>原理，在用户启动 app 的时候从服务器检查更新并安装</p>
+<p><img src="/media/15490411858115/15052807715564.jpg" alt=""></p>
+<pre><code class="language-shell"># 添加自动更新插件
+cordova plugin add cordova-hot-code-push-plugin
+
+# 环境依赖，解决本地运行后网页得不到更新的问题
+cordova plugin add cordova-hot-code-push-local-dev-addon
+
+# 安装自动更新客户端（一台电脑只需要安装一次）
+npm install -g cordova-hot-code-push-cli
+</code></pre>
+<h3 id="热更新配置文件">热更新配置文件</h3>
+<p>在 cordova 根目录下建<code>cordova-hcp.json</code></p>
+<pre><code class="language-json">{ 
+  &quot;update&quot;: &quot;start&quot;, 
+  &quot;content_url&quot;: &quot;http://60.205.169.27:80/cordovaDemo/www&quot; 
+}
+</code></pre>
+<p>key	含义	说明
+content_url	项目地址	放在服务器上的项目地址
+update	更新方式	app的更新方式
+update的可选值</p>
+<p>值	含义
+start	app启动时更新，默认为该值
+resume	app从后台回复时更新
+now	下载完成后立即更新</p>
+<p>修改 config.xml ，设置 config-file 的位置指向 chcp.json</p>
+<pre><code class="language-xml">&lt;widget&gt;
+  ...
+   &lt;chcp&gt;
+     &lt;auto-download enabled=&quot;true&quot; /&gt;
+     &lt;auto-install enabled=&quot;true&quot; /&gt;
+     &lt;config-file url=&quot;http://60.205.169.27:80/cordovaDemo/www/chcp.json&quot; /&gt;
+&lt;!--发布时更改为false,否则更新无法使用。--&gt;
+     &lt;local-development enabled=&quot;true&quot; /&gt;
+   &lt;/chcp&gt;
+   ...
+&lt;/widget&gt;
+</code></pre>
+<h3 id="发布更新">发布更新</h3>
+<p>在cordova项目下执行cordova-hcp build.此时会在www目录下生成chcp.json,chcp.manifest两个文件，chcp.json中有部分内容与之前配置的cordova-hcp.json文件相同。
+将根cordova目录下的www目录替换服务器上的www目录</p>
+<h3 id="使用">使用</h3>
+<p>在 App 启动的时候检查更新，先<code>fetchUpdate</code>，然后<code>installUpdate</code>，如果发生错误可以检查 <a href="https://github.com/nordnet/cordova-hot-code-push/wiki/Error-codes">https://github.com/nordnet/cordova-hot-code-push/wiki/Error-codes</a></p>
+<pre><code class="language-js">document.addEventListener('deviceready', () =&gt; {
+  let chcp = window.chcp
+  chcp.fetchUpdate(function (error, data) {
+    if (!error) {
+      chcp.installUpdate((err) =&gt; {
+        let msg = '更新成功'
+        if (err) {
+          msg = JSON.stringify(err)
+        }
+        window.alert(msg)
+      })
+    } else {
+      if (error.code === 2) {
+        window.alert('无更新')
+      } else {
+        window.alert(`error:${JSON.stringify(error)};data:${JSON.stringify(data)}`)
+      }
+    }
+  })
+}, false)
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/vue-2-tutorial/" title="Vue2.x 教程" target="_blank" rel="external">https://my101du.github.io/1/01/vue-2-tutorial/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/w2ui/" title="w2ui"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/vscode/"
+                    title="VSCode"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

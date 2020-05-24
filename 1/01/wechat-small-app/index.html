@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        微信小程序开发 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="注册小程序账号 通过公众号的企业认证后，即可快速注册小程序 （否则会有很多需要验证的，比较麻烦） 绑定管理员 注意：一个手机号码只能绑定5个小程序 添" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>微信小程序开发 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="微信小程序开发" />
+<meta property="og:description" content="注册小程序账号 通过公众号的企业认证后，即可快速注册小程序 （否则会有很多需要验证的，比较麻烦） 绑定管理员 注意：一个手机号码只能绑定5个小程序 添" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/wechat-small-app/" />
+
+<meta itemprop="name" content="微信小程序开发">
+<meta itemprop="description" content="注册小程序账号 通过公众号的企业认证后，即可快速注册小程序 （否则会有很多需要验证的，比较麻烦） 绑定管理员 注意：一个手机号码只能绑定5个小程序 添">
+
+<meta itemprop="wordCount" content="4970">
+
+
+
+<meta itemprop="keywords" content="微信," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="微信小程序开发"/>
+<meta name="twitter:description" content="注册小程序账号 通过公众号的企业认证后，即可快速注册小程序 （否则会有很多需要验证的，比较麻烦） 绑定管理员 注意：一个手机号码只能绑定5个小程序 添"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-wechat-small-app" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wechat-small-app/"
+    >微信小程序开发</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%BE%AE%E4%BF%A1/"> 微信 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wechat-small-app/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 4970字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 10分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="注册小程序账号">注册小程序账号</h1>
+<p>通过公众号的企业认证后，即可快速注册小程序 （否则会有很多需要验证的，比较麻烦）</p>
+<p><img src="/media/15490412160146/15228217244733.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15228220810013.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15228221099086.jpg" alt=""></p>
+<h2 id="绑定管理员">绑定管理员</h2>
+<p>注意：一个手机号码只能绑定<strong>5个小程序</strong></p>
+<p><img src="/media/15490412160146/15228221362886.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15228222177434.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15228222630712.jpg" alt=""></p>
+<h2 id="添加成员例如增加开发者">添加成员（例如增加开发者）</h2>
+<p><img src="/media/15490412160146/15228224123007.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15228223799324.jpg" alt=""></p>
+<h1 id="开发工具">开发工具</h1>
+<p>这个工具可以同时开发微信公众号和小程序/小游戏</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html</a></p>
+<h1 id="小程序设置与测试环境配置">小程序设置与测试环境配置</h1>
+<h2 id="基本设置">基本设置</h2>
+<p>logo 简介等</p>
+<p><img src="/media/15490412160146/15233405059094.jpg" alt=""></p>
+<h2 id="开发配置">开发配置</h2>
+<p>配置域名</p>
+<p>其中“<strong>服务器域名</strong>”是指与小程序代码有关的域名（例如小程序从哪里获取数据）要求域名<strong>必须备案</strong>和有 HTTPS 证书（小程序的request等请求需要HTTPS）</p>
+<p>如果暂时没有备案的域名，可以到后面的“开发者工具”里申请一个腾讯云的测试权限。会分配一个腾讯的子域名给你做开发测试。（但是后续发布的时候，还是必须要一个备案的正式域名）</p>
+<p><strong>业务域名</strong>是指在小程序中如果用 web-view 嵌入网页，能支持的“白名单”域名，在这个名单外面的无法被小程序打开（个人小程序是没有“业务域名”这个配置的）</p>
+<p><img src="/media/15490412160146/15233388742733.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15233407849417.jpg" alt=""></p>
+<h2 id="第三方服务">第三方服务</h2>
+<p>可以把小程序托管给一些第三方平台，就像以前让你的微信公众号在有赞开店一样。这样自己就不用写代码，但也同时失去了自己开发的自由度。</p>
+<h2 id="接口设置">接口设置</h2>
+<h2 id="小程序的后台代码与数据使用腾讯云提供的测试环境">小程序的后台代码与数据（使用腾讯云提供的测试环境）</h2>
+<p><a href="https://cloud.tencent.com/document/product/619/11446">https://cloud.tencent.com/document/product/619/11446</a></p>
+<p><img src="/media/15490412160146/15233409707258.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15233410582367.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15233462481935.jpg" alt=""></p>
+<p>如果绑定了多个小程序，在手机上会有个列表让你选择，并有个授权确认</p>
+<p><img src="/media/15490412160146/15233463743568.jpg" alt=""></p>
+<p>如果没有腾讯云账号，绑定或创建一个</p>
+<p><img src="/media/15490412160146/15233463943329.jpg" alt=""></p>
+<p>点击“注册新账号”后，以后可用这个<code>微信公众号的登录账号（小程序）</code>，来登录<code>腾讯云</code>，而不需要再重新注册腾讯云</p>
+<p><img src="/media/15490412160146/15233465765159.jpg" alt=""></p>
+<h2 id="demo-代码">demo 代码</h2>
+<p>在腾讯云这里可以下载node/php 的Demo 代码，建议下载来读一下</p>
+<p><img src="/media/15490412160146/15233466345726.jpg" alt="">
+打开开发者工具，新建一个项目。假设我们的后台代码用 node.js 开发</p>
+<p><img src="/media/15490412160146/15233467956677.jpg" alt=""></p>
+<p>可以看到这个项目里同时包含了 server 端代码和 client 端代码</p>
+<p><img src="/media/15490412160146/15233469637667.jpg" alt=""></p>
+<p>server 端的代码可以看到是一个基于 koa 框架的应用.
+学习 koa 在这里 <a href="http://koajs.com/">http://koajs.com/</a></p>
+<p><img src="/media/15490412160146/15233477471777.jpg" alt=""></p>
+<p><img src="/media/15490412160146/15233466894231.jpg" alt=""></p>
+<p>点击“腾讯云”的图标，上传测试代码，勾上“自动安装依赖”</p>
+<p><img src="/media/15490412160146/15233466977746.jpg" alt=""></p>
+<p>获取到腾讯云测试环境分配的域名，粘贴到 <code>client/config.js</code> 里面去</p>
+<p><img src="/media/15490412160146/15233467048857.jpg" alt=""></p>
+<p>（在小程序的“开发设置”里不支持这个域名，粘贴后会提示“此域名为开发环境域名，不可在正式环境下使用，请修改”）</p>
+<p><img src="/media/15490412160146/15233474127315.jpg" alt=""></p>
+<p>查看开发环境</p>
+<p>可以看下“常见问题”</p>
+<p><img src="/media/15490412160146/15233476741389.jpg" alt=""></p>
+<h2 id="测试">测试</h2>
+<p><img src="/media/15490412160146/15233474467876.jpg" alt=""></p>
+<p>提示登录成功就可以了</p>
+<h2 id="在手机上预览">在手机上预览</h2>
+<p><img src="/media/15490412160146/15233495380215.jpg" alt=""></p>
+<h2 id="服务端配置-https-略">服务端配置 HTTPS (略)</h2>
+<h1 id="基础">基础</h1>
+<h2 id="创建小程序项目">创建小程序项目</h2>
+<p><img src="/media/15490412160146/15233430885902.jpg" alt=""></p>
+<p>填写项目的 AppID 和目录</p>
+<p><img src="/media/15490412160146/15233448392750.jpg" alt=""></p>
+<p>或者创建代码片段（可共享的小项目）</p>
+<p><img src="/media/15490412160146/15233449570259.jpg" alt=""></p>
+<p>创建完项目后，下次可以直接打开</p>
+<p><img src="/media/15490412160146/15233448870865.jpg" alt=""></p>
+<h2 id="文件结构">文件结构</h2>
+<p>项目创建后，会默认生成核心文件（App.js, App.json, App.wxss 等）并自动添加一个页面 <code>/page/index</code></p>
+<p><img src="/media/15490412160146/15233451729101.jpg" alt=""></p>
+<p>在目录下可以发现这几种类型的文件，它们的作用一般是</p>
+<p>.json 后缀的 JSON 配置文件
+.wxml 后缀的 WXML 模板文件
+.wxss 后缀的 WXSS 样式文件
+.js 后缀的 JS 脚本逻辑文件</p>
+<p>分别说明：</p>
+<h2 id="json-配置">JSON 配置</h2>
+<h3 id="小程序配置-appjson">小程序配置 <code>app.json</code></h3>
+<p>包括页面路径、界面表现、网络超时时间、底部 tab 等</p>
+<p>最关键的 ：</p>
+<p>pages字段 —— 用于描述当前小程序所有页面路径，这是为了让微信客户端知道当前你的小程序页面定义在哪个目录。
+window字段 —— 小程序所有页面的顶部背景颜色，文字颜色定义在这里的。</p>
+<p>完整的配置参看：https://developers.weixin.qq.com/miniprogram/dev/framework/config.html</p>
+<h3 id="工具配置-projectconfigjson">工具配置 project.config.json</h3>
+<p>重新安装工具或者换电脑工作时，你只要载入同一个项目的代码包，开发者工具就自动会帮你恢复到当时你开发项目时的个性化配置、选项</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/edit.html#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">https://developers.weixin.qq.com/miniprogram/dev/devtools/edit.html#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6</a></p>
+<h3 id="页面配置-pagejson">页面配置 page.json</h3>
+<p>如果你整个小程序的风格是蓝色调，那么你可以在 app.json 里边声明顶部颜色是蓝色即可。实际情况可能不是这样，可能你小程序里边的每个页面都有不一样的色调来区分不同功能模块，因此我们提供了 page.json，让开发者可以独立定义每个页面的一些属性，例如刚刚说的顶部颜色、是否允许下拉刷新等等</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/config.html">https://developers.weixin.qq.com/miniprogram/dev/framework/config.html</a></p>
+<h2 id="wxml-模板">WXML 模板</h2>
+<p>和 html 不一样，里面是一些“组件”,标签是 <code>view</code>, <code>button</code>, <code>text</code> 等等（看后面内容）</p>
+<p>以及类似 <code>wx:if</code>这样的属性以及 <code>{{ }}</code> 这样的表达式(通过 JS 操作 DOM)</p>
+<p>详细参看 <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/</a></p>
+<h2 id="wxss-样式">WXSS 样式</h2>
+<p>WXSS 在底层支持新的尺寸单位 rpx，小程序底层会换算</p>
+<p>前边 app.json, page.json 的概念相同，你可以写一个 app.wxss 作为全局样式，会作用于当前小程序的所有页面，局部页面样式 page.wxss 仅对当前页面生效</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html</a></p>
+<h2 id="js-交互逻辑">JS 交互逻辑</h2>
+<pre><code class="language-html">&lt;view&gt;{{ msg }}&lt;/view&gt;
+&lt;button bindtap=&quot;clickMe&quot;&gt;点击我&lt;/button&gt;
+</code></pre>
+<p>点击 button 按钮的时候，我们希望把界面上 msg 显示成 &ldquo;Hello World&rdquo;，于是我们在 button 上声明一个属性: bindtap ，在 JS 文件里边声明了 clickMe 方法来响应这次点击操作：</p>
+<pre><code class="language-js">Page({
+  clickMe: function() {
+    this.setData({ msg: &quot;Hello World&quot; })
+  }
+})
+</code></pre>
+<p><code>事件</code> <a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.htmlc">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.htmlc</a>
+<code>API</code> <a href="https://developers.weixin.qq.com/miniprogram/dev/api/">https://developers.weixin.qq.com/miniprogram/dev/api/</a> (在 JS 中调用小程序提供的丰富的 API，利用这些 API 可以很方便的调起<strong>微信提供的能力</strong>,用的时候，查阅即可)</p>
+<h1 id="api">API</h1>
+<h2 id="如何让-wxrequest-的-headers-能支持用户验证">如何让 wx.request 的 headers 能支持用户验证</h2>
+<p>例如 woocommerce 的 rest api 需要登录用户和密码，要传输到headers 里面去。</p>
+<p>首先通过 postman 看到生成的代码</p>
+<p><img src="/media/15490412160146/15236670200842.jpg" alt=""></p>
+<p>修改函数，支持 headers 对象扩展</p>
+<pre><code class="language-javascript">function getRequestExt(url, data, headers) {
+
+    var objHeaders = {
+        'Content-Type': 'application/json'
+    };
+
+    if (headers) {
+        objHeaders = Object.assign(objHeaders, headers);
+    }
+
+    var getRequest = wxPromisify(wx.request)
+    return getRequest({
+        url: url,
+        method: 'GET',
+        data: data,
+        header: objHeaders
+    })
+}
+</code></pre>
+<p>调用的时候</p>
+<pre><code class="language-javascript">var headersExt = {
+            &quot;Authorization&quot;: &quot;Basic Y2txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxmRlZWRhMDBh&quot;
+        };
+
+        var getProductsRequest = wxRequestExt.getRequestExt(wcAPI.generateProductsURL(data), {}, headersExt);
+</code></pre>
+<p><strong>扩展：Basic Auth 的用户名和密码组合是如何生成 Authorization: 字符串的？</strong></p>
+<p>使用以下 php 代码（其他语言也有类似的函数或库）, 得到的值正好等于 headers 里 <code>Authorization</code>字符串</p>
+<pre><code class="language-php">base64_encode('username:password');
+</code></pre>
+<h1 id="页面">页面</h1>
+<p>新建一个目录，用来容纳一个“页面”的 wxml,json 等文件。在这个目录里新建一个页面，自动生成4个文件</p>
+<p><img src="/media/15490412160146/15235376280747.jpg" alt=""></p>
+<p>然后要在根目录下 <code>app.json</code> 里注册这个页面的信息</p>
+<p><img src="/media/15490412160146/15235375499459.jpg" alt=""></p>
+<h1 id="资料">资料</h1>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/index.html?t=201839">官方</a></p>
+<p><a href="https://devework.com/category/wordpress">https://devework.com/category/wordpress</a></p>
+<p>[知乎 微信小程序专题]https://www.zhihu.com/topic/20061410/hot</p>
+<p><a href="http://www.wxapp-union.com/">小程序社区</a></p>
+<p>[踩坑集合]https://github.com/senola/wechat-app-issues</p>
+<p>[wafer2 腾讯云下一代小程序综合解决方案]https://github.com/tencentyun/wafer2-startup
+<a href="https://juejin.im/post/59cb487ef265da065075409f">https://juejin.im/post/59cb487ef265da065075409f</a>
+<a href="https://zhuanlan.zhihu.com/p/33236607">https://zhuanlan.zhihu.com/p/33236607</a></p>
+<h1 id="文档">文档</h1>
+<p><a href="https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017831">https://mp.weixin.qq.com/debug/wxadoc/introduction/index.html?t=2017831</a></p>
+<h1 id="框架">框架</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/25244324">https://zhuanlan.zhihu.com/p/25244324</a></p>
+<h1 id="优化">优化</h1>
+<p><a href="https://github.com/tencentyun/wecos">https://github.com/tencentyun/wecos</a>
+<a href="https://github.com/tencentyun">https://github.com/tencentyun</a>
+<a href="https://github.com/tencentyun/wafer2-startup">https://github.com/tencentyun/wafer2-startup</a></p>
+<h1 id="踩坑">踩坑</h1>
+<h2 id="that--this-的作用解决在-wx-api-的回调函数中-thisdata-返回-undefined-的错误">that = this 的作用，解决在 wx api 的回调函数中 this.data 返回 undefined 的错误</h2>
+<p><a href="https://www.jianshu.com/p/1ab0b8c4c078">https://www.jianshu.com/p/1ab0b8c4c078</a></p>
+<h2 id="在真机预览中将小程序打开调试">在<strong>真机预览</strong>中，将小程序<strong>打开调试</strong></h2>
+<p>如果在开发配置中，没有添加备案的域名，这里手机扫码添加小程序（Nodejs模板 自动创建）后，点击第一个登录测试连接，会提示</p>
+<blockquote>
+<p>ERR_LOGIN_FAILED 登录失败，可能是网络错误或者服务器发生异常</p>
+</blockquote>
+<p>根据这里的说明 <a href="http://html51.com/info-6828-1/">http://html51.com/info-6828-1/</a></p>
+<p>以及 wafer2  （https://github.com/tencentyun/wafer2-startup）</p>
+<p>如果使用开发环境域名则需要 在<strong>真机预览</strong>中，将小程序<strong>打开调试</strong>即可（点击手机小程序中右上角的三个小点，然后打开调试，就是可以使用开发环境的域名了）</p>
+<h2 id="在真机测试时请求网络返回错误--request-fail-ssl-hand-shake">在真机测试时，请求网络返回错误  request fail ssl hand shake</h2>
+<p><a href="http://www.wxapp-union.com/thread-648-1-1.html">http://www.wxapp-union.com/thread-648-1-1.html</a></p>
+<p>开发环境不校验。。。。</p>
+<p>顺便去仔细看看所有的坑！！</p>
+<p><a href="http://www.wxapp-union.com/forum.php?mod=viewthread&amp;tid=2441&amp;highlight=">http://www.wxapp-union.com/forum.php?mod=viewthread&amp;tid=2441&amp;highlight=</a>调试</p>
+<p>上面勾选不校验，还是没用，按下面的方法改成 pem 类型证书就好了。。。（pem 和 key 同时出现）</p>
+<p>问题：本地调试request能正常访问https，真机调试预览的时候无法获取数据，提示:request:fail ssl hand shake error</p>
+<p>解决方法:</p>
+<p>证书是申请的腾讯云免费的， ssl证书配置需要使用pem,不使用crt, 之前一直不行,后来配置修改成 pem就好了</p>
+<p>pem 可以通过crt+key在线合成:https://www.myssl.cn/tools/merge-pem-cert.html</p>
+<h2 id="一个-from-中点击任意元素都只会触发最后一个按钮的自动点击">一个 from 中，点击任意元素，都只会触发“最后&quot;一个按钮的自动点击</h2>
+<p>把这个表单挪到其他页面，点击元素都正常触发，不会”自动跳到“最后一个按钮去自动触发点击。</p>
+<p>删除该页面的 wxss 样式文件后恢复正常。。。 可见是哪个地方有问题（估计是微信小程序的bug?）</p>
+<p>逐行排查，发现是当时给 button 设置为 position ，让它没有边框样式，这个会导致不管点击 form 的哪里，都会触发最后一个按钮</p>
+<p><img src="/media/15490412160146/15258686726662.jpg" alt=""></p>
+<h1 id="开发效率">开发效率</h1>
+<h2 id="vscode">VSCode</h2>
+<p>用了几天，虽然代码提示什么的比 sl 还好用，但是有时候拖动卡顿，而且占用CPU资源</p>
+<p>用 vsCode 开发微信小程序可以配置以下插件，让开发更美好：</p>
+<ol>
+<li>vscode weapp api</li>
+<li>vscode wxml</li>
+<li>vscode-wechat  (实际上是调用 wepy 然后启动一个服务，并在编辑界面里直接预览，但我一直遇到问题，提示<code>unable to open wechat app, no provider for ..../entensions/xxxxx/content.html</code>)</li>
+<li>Easy WXLESS</li>
+<li>有个和 vsCode 差不多，还可以预览的 IDE：<strong>Egret Wing</strong> （加载太慢了，不知道什么原因, 换了 4.1.5 历史版本不升级）</li>
+</ol>
+<h2 id="wept">Wept</h2>
+<p>还是用 wept 打开后和 VSCode 两边一起看吧</p>
+<p>或者直接在项目里运行 wept 启动，然后安装 vscode 插件https://github.com/FabianLauer/chrome-vs-code，（但是没有 localstorage?）</p>
+<p>或者自己开发一个插件，专门打开浏览器窗口 <a href="https://stackoverflow.com/questions/34205481/how-to-open-browser-from-visual-studio-code-api">https://stackoverflow.com/questions/34205481/how-to-open-browser-from-visual-studio-code-api</a></p>
+<p><a href="https://stackoverflow.com/questions/30039512/how-to-view-my-html-code-in-browser-with-visual-studio-code">https://stackoverflow.com/questions/30039512/how-to-view-my-html-code-in-browser-with-visual-studio-code</a></p>
+<p>vscode-browser-plus (崩溃)
+Web Browser （怎么启动？）</p>
+<p>参考
+<a href="https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer">https://marketplace.visualstudio.com/items?itemName=hdg.live-html-previewer</a></p>
+<h2 id="sublime-插件">Sublime 插件</h2>
+<h3 id="httpsgithubcomspringlongsublime-wxapp"><a href="https://github.com/springlong/Sublime-wxapp">https://github.com/springlong/Sublime-wxapp</a></h3>
+<p>下载解压到插件目录</p>
+<p>用户配置添加</p>
+<pre><code class="language-json">&quot;auto_complete_triggers&quot;:
+[
+  {
+    &quot;characters&quot;: &quot;abcdefghijklmnopqrstuvwxyz &quot;,
+    &quot;selector&quot;: &quot;text.wxml&quot;
+  }
+],
+</code></pre>
+<p>注意把 js 文件的识别设置为“Javascript”，用“Babel”会无法出现 wx. 自动提示</p>
+<p><strong>问题</strong></p>
+<p>输入 wx 后还要在列表里选半天。。。（打开了 all autocomplete 会把现有的变量和函数引入进来）</p>
+<h3 id="httpsgithubcomfloydagithubwxapp"><a href="https://github.com/FloydaGithub/wxapp">https://github.com/FloydaGithub/wxapp</a></h3>
+<p>直接在插件里安装，可以识别 wxml wxss</p>
+<p>API 自动完成用  <code>wxget</code>  <code>wxshow</code> 类似这种(已经记到脑子了，就不用像上个插件那样选了)，问题是无法&quot;自动填充参数&rdquo;</p>
+<h1 id="云开发">云开发</h1>
+<p>不需要服务器，调用函数、api 即可</p>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html#%E4%BA%91%E5%BC%80%E5%8F%91%E6%8E%A7%E5%88%B6%E5%8F%B0">https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html#%E4%BA%91%E5%BC%80%E5%8F%91%E6%8E%A7%E5%88%B6%E5%8F%B0</a></p>
+<p><a href="https://juejin.im/post/5bd7f93f6fb9a05cff326537">https://juejin.im/post/5bd7f93f6fb9a05cff326537</a></p>
+<h2 id="在小程序里创建云函数目录">在小程序里创建云函数目录</h2>
+<p>（1）使用quickstart（云开发快速启动模版）创建项目</p>
+<p>（2）基于现有的小程序使用云开发</p>
+<p>在小程序目录下创建一个文件夹作为你的云函数目录（例如 <code>cloud/functions</code>），然后在project.config.json 文件中新增字段&quot;cloudfunctionRoot&rdquo;: &ldquo;你的云函数目录&rdquo;，即可以在微信开发者工具中看到目录的图标变成了云，在此目录下创建云函数即可；</p>
+<pre><code class="language-json">{
+	&quot;miniprogramRoot&quot;: &quot;dist/&quot;,
+	&quot;projectname&quot;: &quot;Test&quot;,
+	&quot;description&quot;: &quot;Test Miniapp&quot;,
+	&quot;appid&quot;: &quot;wx12345667&quot;,
+  &quot;cloudfunctionRoot&quot;: &quot;cloud/functions/&quot;, // 这行指定云函数目录
+  &quot;setting&quot;: {
+		&quot;urlCheck&quot;: true,
+		&quot;es6&quot;: false,
+</code></pre>
+<p>初始化</p>
+<pre><code class="language-js">wx.cloud.init({
+      env: 'test-33dd2c',
+      traceUser: true
+    })
+</code></pre>
+<h2 id="编写云函数-在小程序中调用">编写云函数, 在小程序中调用</h2>
+<p>使用微信开发者工具在云函数目录下创建一个云函数时，会根据名称创建一个目录，目录中包含一个index.js 和package.json。</p>
+<p><img src="/media/15490412160146/15505649215985.jpg" alt="-w249"></p>
+<p>index.js的入口函数如下所示：</p>
+<pre><code class="language-js">//云函数入口函数
+exports.main = async (event, context) =&gt; {
+    // 参数获取在event 中获取，如使用上面的调用函数后，获取data使用 event.key1、event.key2即可
+    const { key1, key2 } = event;
+    return { query: { key1, key2 } }
+}
+
+</code></pre>
+<p>在小程序中使用如下方式调用云函数</p>
+<pre><code class="language-js">wx.cloud.callFunction({
+    name: '云函数名称',
+    data: {
+      key1: 'value1',
+      key2: 'value2'
+    }
+}).then((res) =&gt; {
+    console.log(res);
+}).catch((e) =&gt; {
+    console.log(e);
+});
+</code></pre>
+<h2 id="云函数安装第三方依赖以及-tcb-router-管理路由">云函数安装第三方依赖，以及 tcb-router 管理路由</h2>
+<p>每个云函数可视为一个单独的服务，如果需要安装第三方依赖，只需要在该目录点击右键，选择在终端中打开, 并npm install依赖即可</p>
+<p>需要注意的是，每个云函数都是独立的，所需要的依赖都需要在对应的目录下进行npm install，但这样就会使得项目变得十分庞大且不优雅。因此，接下来我介绍一下tcb-router（基于 koa 风格的小程序·云开发云函数轻量级类路由库，优化服务端函数处理逻辑）</p>
+<pre><code class="language-js">const TcbRouter = require('tcb-router');
+exports.main = (event, context) =&gt; {
+    const app = new TcbRouter({ event });
+    app.router('路由名称', async (ctx) =&gt; {
+        //原有的event需要通过ctx._req.event 获取
+        const { param1, param2 } = ctx._req.event;
+        ctx.body = { key1: value1 };
+    });
+})
+
+</code></pre>
+<p>此时小程序的调用方式也需要改成：</p>
+<pre><code class="language-js">wx.cloud.callFunction({
+    name: '云函数名称',
+    data: {
+      $url: '路由名称',
+      // 其他数据
+      param1: 'test1',
+      param2: 'test2'
+    },
+    success: res =&gt; {},
+    fail: err =&gt; {
+      console.error(`[云函数] [${action}] 调用失败`, err)
+    }
+})
+</code></pre>
+<h2 id="taro-里提示-wx-未定义的错误">Taro 里提示 &ldquo;wx&rdquo; 未定义的错误</h2>
+<p>由于Taro 对微信的一些新api 并没有支持到，比如使用云开发时需要用到wx.cloud，Taro 并没有支持，但亲测是可以直接使用wx 变量，但是会被eslint 提醒，看着十分不悦，可以在.eslintrc 文件中增加以下代码；</p>
+<pre><code class="language-json">&quot;globals&quot;: {
+  &quot;wx&quot;: true
+},
+
+</code></pre>
+<h1 id="爬虫与-html-解析">爬虫与 html 解析</h1>
+<p><strong>superagent</strong> 是一个非常实用的http请求模块，用来抓取网页十分有用，使用也十分简单，以下是我在抓取yourei.jp 时使用的代码：</p>
+<pre><code class="language-js">// const superagent = require('superagent');
+// ...
+function crawler(url, cb) {
+  return new Promise((resolve, reject) =&gt; {
+    superagent.get(url).set({
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+    }).end(function (err, res) {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve(res);
+    });
+  });
+}
+</code></pre>
+<p>cheerio 是一个轻型灵活，类jQuery的对HTML元素分析操作的工具。在进行一些server端渲染的页面以及一些简单的小页面的爬取时，cheerio十分好用且高效。</p>
+<p>在使用superagent 抓取了网页内容后，可以使用如下方式解析页面代码</p>
+<pre><code class="language-js">// const cheerio = require('cheerio');
+// ...
+const result = crawler(apiUrl).then((res) =&gt; {
+  // 使用load 之后，$ 即可同jquery 一样使用选择器来选择元素了
+  const $ = cheerio.load(res.text);
+  const categories = [];
+  $('[data-toggle]').each((i, ele) =&gt; {
+    // 可以使用.text()、.html() 等方式获取元素的内容
+    categories.push($(ele).attr('href'));
+  });
+  return {
+    list: categories,
+  };
+});
+
+</code></pre>
+<h1 id="一些问题">一些问题</h1>
+<p>由于微信小程序必须在管理界面里设置“可信域名”，因此如果直接在小程序代码里向一些 api 发送请求，会提示</p>
+<blockquote>
+<p>不在以下 request 合法域名列表中</p>
+</blockquote>
+<p>微信公众平台后台开发设置 request 合法域名 添加即可（只支持 https）</p>
+<p>如果接口是 http 的，那就只能在自己的服务器上写请求代码，然后小程序先请求自己的服务器（中转）了。。</p>
+<p>公众号关注</p>
+<p><img src="/media/15490412160146/15382120427635.jpg" alt="-w774"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/wechat-small-app/" title="微信小程序开发" target="_blank" rel="external">https://my101du.github.io/1/01/wechat-small-app/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%A1%86%E6%9E%B6-%E8%84%B1%E7%A6%BB%E5%BE%AE%E4%BF%A1%E5%9C%A8%E4%BB%BB%E6%84%8F%E5%AE%89%E5%8D%93%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87-iot/" title="微信小程序框架-脱离微信在任意安卓硬件设备-IoT"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/wechat-app-dev-enhance/"
+                    title="微信小程序-高级开发"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

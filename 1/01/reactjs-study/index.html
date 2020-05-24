@@ -1,0 +1,2806 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        reactjs教程 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="安装 React 与系列开发工具 手动安装包，或者为已经存在的项目启用 React # 初始化 package.json 文件 npm init # 必须安装 react 和 react-dom npm install --save react react-dom 推荐使用官方的脚手架 create-react-app 创建一个新的 React 项" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>reactjs教程 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="reactjs教程" />
+<meta property="og:description" content="安装 React 与系列开发工具 手动安装包，或者为已经存在的项目启用 React # 初始化 package.json 文件 npm init # 必须安装 react 和 react-dom npm install --save react react-dom 推荐使用官方的脚手架 create-react-app 创建一个新的 React 项" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/reactjs-study/" />
+
+<meta itemprop="name" content="reactjs教程">
+<meta itemprop="description" content="安装 React 与系列开发工具 手动安装包，或者为已经存在的项目启用 React # 初始化 package.json 文件 npm init # 必须安装 react 和 react-dom npm install --save react react-dom 推荐使用官方的脚手架 create-react-app 创建一个新的 React 项">
+
+<meta itemprop="wordCount" content="13282">
+
+
+
+<meta itemprop="keywords" content="React,前端," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="reactjs教程"/>
+<meta name="twitter:description" content="安装 React 与系列开发工具 手动安装包，或者为已经存在的项目启用 React # 初始化 package.json 文件 npm init # 必须安装 react 和 react-dom npm install --save react react-dom 推荐使用官方的脚手架 create-react-app 创建一个新的 React 项"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-reactjs-study" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/reactjs-study/"
+    >reactjs教程</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/react/"> React </a>
+    <a class="article-tag-link" href="/tags/%E5%89%8D%E7%AB%AF/"> 前端 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/reactjs-study/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 13282字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 27分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="安装-react-与系列开发工具">安装 React 与系列开发工具</h1>
+<h2 id="手动安装包或者为已经存在的项目启用-react">手动安装包，或者为已经存在的项目启用 React</h2>
+<pre><code class="language-shell"># 初始化 package.json 文件
+npm init
+
+# 必须安装 react 和 react-dom
+npm install --save react react-dom
+</code></pre>
+<h2 id="推荐使用官方的脚手架-create-react-app-创建一个新的-react-项目自动启用各种特性">推荐使用官方的脚手架 create-react-app 创建一个新的 React 项目（自动启用各种特性）</h2>
+<pre><code class="language-shell">npm install -g create-react-app
+create-react-app hello-world
+cd hello-world
+yarn start
+</code></pre>
+<h2 id="安装-babeljsx-webpack-支持">安装 Babel、JSX， webpack 支持</h2>
+<p>可以在 React 项目中使用 ES6 语法、支持 JSX 文件，以及 webpack 打包编译工具</p>
+<p>推荐使用 <code>yarn</code> 代替 <code>npm</code></p>
+<pre><code class="language-shell"># babel，webpack 等
+yarn add webpack babel-preset-react babel-loader babel-core babel-preset-es2015
+
+# hot-loader 开发必备包
+yarn add classnames flux react-hot-loader node-sass node-libs-browser webpack-dev-server css-loader file-loader sass-loader style-loader url-loader
+</code></pre>
+<h2 id="传统项目从-cdn-引入文件">传统项目，从 CDN 引入文件</h2>
+<p>当然也可以不使用 npm，而直接引入外部文件（当你的项目不是 SPA 或纯前端项目，需要兼容当前一些传统的 MVC 模板时）</p>
+<pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/react@15/dist/react.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/react-dom@15/dist/react-dom.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h1 id="tutorial">Tutorial</h1>
+<h2 id="create-a-component">Create a component</h2>
+<h2 id="square">Square</h2>
+<h3 id="button-event">button event</h3>
+<pre><code class="language-js">class Square extends React.Component {
+    render(){
+        return (
+            &lt;button className=&quot;square&quot; onClick={() =&gt; alert('click')}&gt;
+            {this.props.value}
+            &lt;/button&gt;
+        );
+    }
+}
+</code></pre>
+<p>Do <strong>NOT</strong> use the <code>onClick={alert('click')}</code>, it will execute immediately, use the <strong>arrow function</strong> syntax when the button clicked.</p>
+<h3 id="state">state</h3>
+<p>React components can have state by setting <code>this.state</code> in the constructor, which should be considered private to the component.</p>
+<pre><code class="language-js">//...Square extends..
+constructor(props){
+    super(props);
+    this.state = {
+        value: null,
+    };
+}
+</code></pre>
+<p>when defining the constructor of a subclass, you need to explicitly call<code>super(props)</code>;</p>
+<pre><code class="language-js">//...
+render(){
+    return (
+        &lt;button onClick={()=&gt;this.setState({value: 'X'})}&gt;
+            {this.state.value}
+        &lt;/button&gt;
+    );
+}
+</code></pre>
+<h2 id="developer-tools">developer tools</h2>
+<p>install the chrome extension (find in the store). inspect the component in your DOM tree.</p>
+<h3 id="extra-steps-with-codepen">Extra steps with CodePen.</h3>
+<h2 id="lifting-state-up">Lifting State Up</h2>
+<p>right now, the state is encapsulated in each Square Component, to make a fully-working game, now we need to check if one player has won the game, and alternate placing X and O in the squares.</p>
+<p>to check if someone has won, we&rsquo;ll need to have the value of all 9 squares in one place, rather than split up across the square components.</p>
+<p>you might think that Board should just inquire what the current state of each Square is. Although it is technically possible to do this in React, but it&rsquo;s discouraged because it tends to make code difficult to understand, more brittle, and harder to refactor.</p>
+<p>Instead, the best solution here is to store this state in the Board component instead of in each Square, and the Board component can tell each Square what to display, like how to make each Square display its index eariler.</p>
+<p><strong>when you want to aggregate data from multiple children or to have two child components communicate with each other, move the state upwards so that it lives in the parent component, the parent can then pass the state back down to the children via props, so that the child components are always in sync with each other and with the parent.</strong></p>
+<p>Add a constructor to the Board and set its initial state to contain an array with 9 nulls, corresponding to the 9 squares</p>
+<pre><code class="language-js">class Board extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            squares: Array(9).fill(null);
+        }
+    };
+    
+    renderSquare(i) {
+        //return &lt;Square value={i} /&gt;;
+        //modify it to pass a value prop to Square
+        return &lt;Square value={this.state.squares[i]} /&gt;;
+    }
+    
+    render(){
+        const state = &quot;Next Player: X&quot;;
+        return (
+            &lt;div&gt;
+                &lt;div className=&quot;status&quot;&gt;{state}&lt;/div&gt;
+                &lt;div class=&quot;board-row&quot;&gt;
+                    {this.renderSquare(0)}
+                    {this.renderSquare(1)}
+                &lt;/div&gt;
+                &lt;!--//3 rows--&gt;
+                    {this.renderSquare(8)}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<h3 id="update-the-state-of-board-when-a-square-is-clicked">update the state of Board when a Square is clicked</h3>
+<p>Now we need to change what happens when a Square is clicked, The Board component now stores which squares are filled, which mean we need some way for Square to update the state of Board. Since component state is considered private, <strong>we can&rsquo;t update Board&rsquo;s state directly from Square</strong></p>
+<p>the usual pattern here is pass down a function from Board to Square that gets called when the Square is clicked.</p>
+<pre><code class="language-js">renderSquare(i){
+    return (
+        &lt;Square 
+            value={this.state.squares[i]}
+            onClick={()=&gt;this.handleClick(i)}
+         /&gt;
+    )
+}
+</code></pre>
+<p>we split the returned element into multiple lines for readability, and added parens(<code>()</code>) around it so that JavaScript doesn&rsquo;t insert a semicolon after <code>return</code> and break out our code.</p>
+<p>Now let&rsquo;s passing down two props from Board to Square: <code>value</code> and <code>onClick</code>, the latter is a function that Square can call. Let&rsquo;s make the following changes to Square.</p>
+<ul>
+<li>Replace the <code>this.state.value</code> with <code>this.props.value</code> in Square&rsquo;s <code>render</code></li>
+<li>Replace the <code>this.setState</code> with <code>this.props.onClick()</code> in Squares&rsquo;s <code>render</code></li>
+<li>Delete the <code>constructor</code> definition from Square because it doesn&rsquo;t have state anymore.</li>
+</ul>
+<p>the Square component now looks like this:</p>
+<pre><code class="language-js">class Square extends React.Component {
+    render(){
+        return (
+            &lt;button className=&quot;square&quot; onClick={()=&gt;this.props.onClick()}&gt;
+                {this.props.value}
+            &lt;/button&gt;
+        )
+    }
+}
+</code></pre>
+<p>Now when the square is clicked, it calls the <code>onClick</code> function that was passed by Board.</p>
+<p>Try clicking a Square, you should get an error because we haven&rsquo;t defined <code>handleClick</code> on the Board yet.</p>
+<p>let&rsquo;s recap what happens:</p>
+<ol>
+<li>the <code>onClick</code> prop on the build-in DOM <code>button</code> component tells React to set up a event <strong>listener</strong>.</li>
+<li>When the button clicked, React will call the <code>onClick</code> event <strong>handler</strong> defined in the Square&rsquo;s <code>render()</code> method.</li>
+<li>the event handler calls the <code>this.props.onClick</code>. Squares&rsquo; props were specified by the Board.</li>
+<li>Board passed <code>onClick={()=&gt;this.handleClick(i)}</code> to Square, so when called, it runs <code>this.handleClick(i)</code> on the <strong>Board</strong></li>
+<li>we have not defined the <code>handleClick()</code> method on Board yet, so the code crashes.</li>
+</ol>
+<p><strong>About the names</strong></p>
+<p>Now the DOM <code>&lt;button&gt;</code> element&rsquo;s <code>onClick</code> attribute has a <strong>special meaning</strong> to React.
+but we could have named Square&rsquo;s <code>onClick</code> prop or Board&rsquo;s <code>handleClick</code> method differently.</p>
+<p>It is, however, conventional in React apps to use <code>on*</code> names for the attributes and <code>handle*</code> for the handler methods.</p>
+<pre><code class="language-js">//....in Board component
+
+handleClick(i){
+    const squares = this.state.squares.slice();// copy an array
+    squares[i] = 'X'; // now all clicks will display 'X'
+    this.setState({squares: squares});
+}
+</code></pre>
+<p>we call <code>slice()</code> function to <strong>copy</strong> the squares array instead of mutating the existing array. (read the next chapter &ldquo;whey immutability is important&rdquo;)</p>
+<p><strong>controlled components</strong></p>
+<p>let&rsquo;s continue building the game, Note how whenever Board&rsquo;s state changes, the Square components <strong>rerender automatically</strong>. Square no long keeps its own state, it receives its value from its parent Board and informs its parent when it&rsquo;s clicked. we call components like this <strong>controlled components</strong></p>
+<h3 id="why-immutability-is-important">why immutability is important</h3>
+<p>Generally there are two ways for changing data. the first method is to mutate the data by directly changing the values of a variable, the second method is to replace the data with a new copy of the object that also includes desired changes.</p>
+<pre><code class="language-js">var player = {score: 1, name: 'Jeff'};
+var newPlayer = Object.assign({}, player, {score: 2});
+
+// now player is unchanged, but newPlayer is {score:2, name:'Jeff'}
+//The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.
+
+// or if you are using object spread syntax proposal, you can write
+var newPlayer = {...player, score: 2}
+</code></pre>
+<p>now we have an added benefit that can help us increase component and overall application performance.</p>
+<p><strong>Why?</strong></p>
+<p>Easier Undo/Redo and Time Travel</p>
+<p>Immutability also makes some complex features much more easier to implement, for example, further in this tutorial we will implement time travel between different stages of the game. Avoiding data mutations lets us can keep a reference to older versions of the data, and switch between them if we need to.</p>
+<p>Tracking Changes</p>
+<p>Determining When to Re-render in React</p>
+<p>Since immutable data can more easily determine if changes have been made, it also helps to determine when a component requires being re-rendered.（learn more about <code>shouldComponentUpdate()</code>, and take a look at Optimizing Performance:https://reactjs.org/docs/optimizing-performance.html#examples）</p>
+<h2 id="functional-component">Functional Component</h2>
+<p>We have removed the <code>constructor</code>, and in fact, React supports a simpler syntax called <strong>functional components</strong> for component types like Square that only consist of a <code>render()</code> method. Rather than define a class extending the <code>React.Component</code>. Simply write a function that takes props and returns what should be rendered.</p>
+<pre><code class="language-js">function Square(props) {
+  return (
+    &lt;button className=&quot;square&quot; onClick={props.onClick}&gt;
+      {props.value}
+    &lt;/button&gt;
+  );
+}
+</code></pre>
+<p>You&rsquo;ll need to change <code>this.props</code> to <code>props</code> both times it appears. Most components in your apps will be able to be written as functional components. these components tend to be easier to write and React will optimize them more in the future.</p>
+<p><strong>the function name</strong></p>
+<p>while we&rsquo;re cleaning up the code, we also need to change the <code>onClick={()=&gt;props.onClick()}</code> to just <code>onClick={props.onClick}</code>, as passing the function down is enough for our example. Note that <code>onClick={props.onClick()}</code> would not work because it would call <code>props.onClick</code> immediately instead of passing it down.</p>
+<h3 id="taking-turns">taking turns</h3>
+<p>Our game is that only &lsquo;X&rsquo; can play, let&rsquo;s modify the Board constructor, make the default move to be by &lsquo;X&rsquo;</p>
+<pre><code class="language-js">this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    };
+</code></pre>
+<p>Each time we move we shall toggle <code>xIsNext</code> by flipping the boolean value and saving the state. Now update Board&rsquo;s <code>handleClick</code> function to flip the value of <code>xIsNext</code></p>
+<pre><code class="language-js">handleClick(i){
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({
+        squares: squares,
+        xIsNext: !this.state.xIsNext,
+    });
+}
+</code></pre>
+<p>Now &lsquo;X&rsquo; and &lsquo;O&rsquo; take turns, Next, change the <code>status</code> text in Board&rsquo;s <code>render</code> so that it also displays who is next.</p>
+<pre><code class="language-js">render(){
+    const status = 'Next Player:' + (this.state.xIsNext ? 'X' : 'O');
+    return ()
+}
+</code></pre>
+<h3 id="declaring-a-winner">declaring a winner</h3>
+<p>Add this helper function to the end of the file.</p>
+<p>胜利规则，9个格子的棋盘中（编号 0，1，2，3&hellip;.8）</p>
+<pre><code>0 1 2
+3 4 5
+6 7 8
+</code></pre>
+<p>只要有三个符号能连接在一起就胜利（包括横、竖、斜），因此就有下面的胜利情况，共8种</p>
+<ul>
+<li>0 1 2 (以下几个都是横向)</li>
+<li>3 4 5</li>
+<li>6 7 8</li>
+<li>0 3 6（以下几个都是竖向）</li>
+<li>1 4 7</li>
+<li>2 5 8</li>
+<li>0 4 8（以下几个表示斜着连）</li>
+<li>2 4 6</li>
+</ul>
+<p>每次有玩家落子，都依次循环判断这 8 种获胜情况，如果发现某个情况满足，就表示该玩家获胜。（例如：循环跑到情况3时，发现标号 6 7 8这三个格子中存在同一个玩家 &lsquo;X&rsquo;或&rsquo;O&rsquo; 的棋子, 就表示它已经连成了）</p>
+<pre><code class="language-js">function calculateWinner(squares){
+    const lins = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    
+    for(let i=0; i&lt;lines.length; i++){
+        const [first, second, third] = lines[i];
+        if(squares[first] 
+            &amp;&amp; squares[first] === squares[second]
+            &amp;&amp; squares[first] === squares[third]){
+            return squares[first];    
+        }
+    }
+    return null;
+}
+</code></pre>
+<p>you can call it in Board&rsquo;s <code>render()</code> function to check if anyone has own the game and make the status text show &ldquo;Winner: [X/O]&rdquo; when someone wins.</p>
+<p>Replace the <code>status</code> declaration in Board&rsquo;s <code>render()</code> with this code</p>
+<pre><code class="language-js">render(){
+    const winner = calculateWinner(this.state.squares);
+    let status;
+    if (winner) {
+        status = 'Winner is: ' + winner;
+    } else {
+        status = 'Next Player: ' + (this.state.xIsNext ?  'X' : 'O');
+    }
+    
+    //return 
+}
+</code></pre>
+<p>Now you can change <code>handleClick</code> in Board to</p>
+<ul>
+<li>return early and ignore the click if someone has already own the game</li>
+<li>or if a square is already filled.</li>
+</ul>
+<pre><code class="language-js">handleClick(i){
+    const squares = this.state.squares.slice();
+    
+    if(calculateWinner(squares) || squares[i]) {
+        return;
+    }
+    
+    //
+}
+</code></pre>
+<p>Congratulations!</p>
+<h2 id="storing-a-history">Storing a History</h2>
+<p>let&rsquo;s make it possible to revisit old states of the board so we can see what it looked like after any of the previous moves. we&rsquo;re already creating a new <code>squares</code> array each time a move is made, which means we can easily store the past board state simultaneously.</p>
+<p>we will want the top-level component(Game) to be responsible for displaying the list of moves. So just as we pulled the state up before from Square into Board. Let&rsquo;s now pull it up again from Board into Game.</p>
+<p>first, set up the initial state for Game by adding a constructor to it.</p>
+<pre><code class="language-js">class Game extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true,
+    };
+  }
+</code></pre>
+<p>then change Board so that it takes <code>squares</code> via props and has its own <code>onClick</code> prop specified by Game,</p>
+<pre><code class="language-js">//class Board extends
+
+renderSquare(i) {
+    return (
+      &lt;Square
+        value={this.props.squares[i]}
+        onClick={() =&gt; this.props.onClick(i)}
+      /&gt;
+    );
+  }
+</code></pre>
+<p>Game&rsquo;s <code>render</code> should look at the most recent history entry and can take over calculating the game status.</p>
+<pre><code class="language-js">handleClick(){
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const squares = current.suqares.slice();
+    
+    // calculating winner
+    
+    this.setState({
+        history: history.concat([
+            {squares: squares}
+        ]),
+        xIsNext: !this.state.xIsNext;
+    })
+}
+</code></pre>
+<p>at this point, Board only needs <code>renderSquare</code> and <code>render</code>, the state initialization and click handler should both live in Game.</p>
+<h3 id="showing-the-moves">Showing the moves</h3>
+<p>let&rsquo;s how the previous moves made in the game so far.</p>
+<p>React elements are first-class JS Object and we can store them or pass them around. <strong>To render multiple items in React</strong>, we pass an array of React elements. the most common way to build the array is to map your array of data, let&rsquo;s do that in the <code>render</code> method of Game.</p>
+<pre><code class="language-js">render(){
+    //...
+    const winner = calculateWinner(current.squares);
+    
+    const moves = history.map((step, move) =&gt; {
+        const desc = move ? 
+            'go to move #' + move :
+            'go to game start';
+        return (
+            &lt;li&gt;
+                &lt;button onClick={()=&gt;this.jumpTo(move)}&gt;{desc}&lt;/button&gt;
+            &lt;/li&gt;
+        );
+    });
+    
+    return (
+        //....
+        &lt;ol&gt;{moves}&lt;/ol&gt;
+    )
+}
+</code></pre>
+<p>for each step in the history, we create a list item <code>&lt;li&gt;</code> with a button <code>&lt;button&gt;</code> inside it that has a click handler which we&rsquo;ll implement it shortly. with this code, you should see a list of the moves that have been made in the game, along with a warning that says</p>
+<blockquote>
+<p>Each child in an array of iterator should have a unique <code>key</code> prop. check the render method of &ldquo;Game&rdquo;</p>
+</blockquote>
+<p>let&rsquo;s talk about what that warning means.</p>
+<h3 id="keys">keys</h3>
+<p>when you render a list of items, React always stores some info about each item in the list.If you render a component that has state, the state need to be stored - and regardless of how you implement your components, <strong>React stores a reference to the backing native views</strong></p>
+<p>when you update that list, React needs to determine what has changed, you could have added, removed, rearranged, or updated items in the list</p>
+<p>imaging transitioning from</p>
+<pre><code class="language-html">&lt;li&gt;Alexa: 7 tasks left&lt;/li&gt;
+&lt;li&gt;Ben: 5 tasks left&lt;/li&gt;
+</code></pre>
+<p>to</p>
+<pre><code class="language-html">&lt;li&gt;Ben: 9 tasks left&lt;/li&gt;
+&lt;li&gt;Claudia: 8 tasks left&lt;/li&gt;
+&lt;li&gt;Alexa: 5 tasks left&lt;/li&gt;
+</code></pre>
+<p>to a human eye, it looks likely that Alexa and Ben swapped places and Claudia was added.
+<strong>But React doesn&rsquo;t know what you intended it to do(&ldquo;who&rdquo; is Ben? which is the element?)</strong></p>
+<p>As as result, React ask you to specify a <strong>key</strong> property on each element in a list.(A string to differentiate each component from its siblings. )</p>
+<p>in this case, <code>ben</code>, <code>alexa</code> might be sensible keys.</p>
+<p><strong>Key is a special property that&rsquo;s reserved by React</strong>(along with <code>ref</code>, a more advanced feature)</p>
+<p>when an element is created, React pulls off the <code>key</code> property and stores the key directly on the returned element.</p>
+<p>even though it may look like it is part of props, it can not be referenced with <code>this.props.key</code>!!</p>
+<p>React use the <code>key</code> automatically while deciding which children to update, <strong>there is no way for a component to inqure about its own key</strong></p>
+<p>When a list is rerendered, React takes each element in the new version and looks for one with a matching key in the previous list. When a key is added to the set, a component is created; when a key is removed, a component is destroyed. Keys tell React about the identity of each component, so that it can maintain the state across rerenders. If you change the key of a component, it will be completely destroyed and recreated with a new state.</p>
+<p><strong>It’s strongly recommended that you assign proper keys whenever you build dynamic lists</strong>( If you don’t have an appropriate key handy, you may want to consider restructuring your data so that you do.)</p>
+<p>If you don’t specify any key, React will warn you and fall back to using the array index as a key – which is not the correct choice if you ever reorder elements in the list or add/remove items anywhere but the bottom of the list. Explicitly passing key={i} silences the warning but has the same problem so isn’t recommended in most cases.</p>
+<p>Component keys don’t need to be globally unique, only unique relative to the immediate siblings.</p>
+<h3 id="implementing-time-travel">Implementing time travel</h3>
+<p>modify the move element, add the <code>key</code></p>
+<pre><code class="language-js">return (
+        &lt;li key={move}&gt;
+          &lt;button onClick={() =&gt; this.jumpTo(move)}&gt;{desc}&lt;/button&gt;
+        &lt;/li&gt;
+</code></pre>
+<p>let&rsquo;s implement the <code>jumpTo()</code> method.</p>
+<p>first add the <code>stepNumber: 0,</code> to the initial state in the Game&rsquo;s constructor.</p>
+<pre><code class="language-js">jumpTo(step) {
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0,
+    });
+  }
+</code></pre>
+<p>update the Game&rsquo;s <code>handleClick</code>,</p>
+<p>(&ldquo;history&rdquo; not need the first step? need to read again.)
+Then update stepNumber when a new move is made by adding stepNumber: history.length to the state update in Game’s handleClick. We’ll also update handleClick to be aware of stepNumber when reading the current board state so that you can go back in time then click in the board to create a new entry.:</p>
+<pre><code class="language-js">handleClick(i) {
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    
+    //
+    this.setState({
+        stepNumber: history.length,
+
+
+// modify the render method
+render(){
+    const current = history[this.state.stepNumber];
+</code></pre>
+<p>If you click any move button now, the board should immediately update to show what the game looked like at that time.</p>
+<h3 id="wrapping-up">Wrapping up</h3>
+<p>If you have extra time or want to practice your new skills, here are some ideas for improvements you could make, listed in order of increasing difficulty:
+Display the move locations in the format “(1, 3)” in the move list.
+Bold the currently selected item in the move list.
+Rewrite Board to use two loops to make the squares instead of hardcoding them.
+Add a toggle button that lets you sort the moves in either ascending or descending order.
+When someone wins, highlight the three squares that caused the win.</p>
+<h1 id="react-router">React Router</h1>
+<h2 id="链接跳转">链接跳转</h2>
+<p>有两种方式，一种是用 <code>browserHistory.push</code> ，一种是用 <code>&lt;Link to='nextUrl'&gt;</code> 包裹 html 元素（如 button）
+2.4 以上版本 react-router 的那个 withRoute 的还没有看</p>
+<pre><code class="language-javascript">import { Link, browserHistory } from 'react-router';
+
+export default class Home extends React.Component {
+// some code
+navigateToUserProfile() {
+        browserHistory.push('/user/profile');
+    }
+    
+render() {
+	//some code
+	&lt;button className=&quot;btn&quot; onClick={this.navigateToUserProfile}&gt;Jump&lt;/button&gt;
+	
+	//method 2
+	&lt;Link to=&quot;/user/profile&quot;&gt;&lt;button className=&quot;btn&quot;&gt;Jump&lt;/button&gt;&lt;/Link&gt;
+}
+</code></pre>
+<h1 id="hello-world">Hello World</h1>
+<p>React is a JavaScript library, and so it assumes you have a basic understanding of the JavaScript language. If you don’t feel very confident, we recommend refreshing your JavaScript knowledge so you can follow along more easily.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript</a></p>
+<p>We also use some of the ES6 syntax in the examples. We try to use it sparingly because it’s still relatively new, but we encourage you to get familiar with arrow functions, classes, template literals, let, and const statements. You can use Babel REPL to check what ES6 code compiles to.</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes</a>
+<a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals">https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let</a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const</a>
+<a href="http://babeljs.io/repl/#?babili=false&amp;evaluate=true&amp;lineWrap=false&amp;presets=es2015%2Creact&amp;experimental=false&amp;loose=false&amp;spec=false&amp;code=const%20element%20%3D%20%3Ch1%3EHello%2C%20world!%3C%2Fh1%3E%3B%0Aconst%20container%20%3D%20document.getElementById('root')%3B%0AReactDOM.render(element%2C%20container)%3B%0A">http://babeljs.io/repl/#?babili=false&amp;evaluate=true&amp;lineWrap=false&amp;presets=es2015%2Creact&amp;experimental=false&amp;loose=false&amp;spec=false&amp;code=const%20element%20%3D%20%3Ch1%3EHello%2C%20world!%3C%2Fh1%3E%3B%0Aconst%20container%20%3D%20document.getElementById('root')%3B%0AReactDOM.render(element%2C%20container)%3B%0A</a></p>
+<p><strong>Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.</strong></p>
+<p>For example, this code may fail to update the counter:</p>
+<pre><code class="language-js">// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+</code></pre>
+<p>To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:</p>
+<pre><code class="language-js">// Correct
+this.setState((prevState, props) =&gt; ({
+  counter: prevState.counter + props.increment
+}));
+</code></pre>
+<h2 id="handling-events">handling events</h2>
+<p>Another difference is that you cannot return false to prevent default behavior in React.</p>
+<p>You must call <code>preventDefault</code> explicitly</p>
+<p>in html</p>
+<pre><code class="language-html">&lt;a href=&quot;#&quot; onclick=&quot;console.log('The link was clicked.'); return false&quot;&gt;
+  Click me
+&lt;/a&gt;
+</code></pre>
+<p>in React</p>
+<pre><code class="language-js">function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    &lt;a href=&quot;#&quot; onClick={handleClick}&gt;
+      Click me
+    &lt;/a&gt;
+  );
+}
+</code></pre>
+<p>When you define a component using an ES6 class, a common pattern is for an event handler to be a method on the class. For example, this Toggle component renders a button that lets the user toggle between “ON” and “OFF” states:</p>
+<p><strong>You have to be careful about the meaning of this in JSX callbacks</strong>. In JavaScript, <strong>class methods are not bound by default</strong>. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.</p>
+<p>This is not React-specific behavior; it is a part of how functions work in JavaScript. Generally, if you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.</p>
+<pre><code class="language-js">class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState =&gt; ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      &lt;button onClick={this.handleClick}&gt;
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<p>If calling bind annoys you, there are two ways you can get around this. If you are using the experimental public class fields syntax, you can use class fields to correctly bind callbacks:(This syntax is enabled by default in Create React App.)</p>
+<pre><code class="language-js">handleClick = () =&gt; {
+    console.log('this is:', this);
+  }
+</code></pre>
+<p>If you aren’t using class fields syntax, you can use an arrow function in the callback:</p>
+<pre><code class="language-js">render() {
+    // This syntax ensures `this` is bound within handleClick
+    return (
+      &lt;button onClick={(e) =&gt; this.handleClick(e)}&gt;
+        Click me
+      &lt;/button&gt;
+    );
+</code></pre>
+<p><strong>problem</strong></p>
+<p>The problem with this syntax is that a different callback is created each time the LoggingButton renders. In most cases, this is fine. However, <strong>if this callback is passed as a prop to lower components, those components might do an extra re-rendering</strong>. We generally recommend binding in the constructor or using the class fields syntax, to avoid this sort of performance problem.</p>
+<h3 id="passing-arguments-to-event-handlers">passing arguments to event handlers</h3>
+<p>The above two lines are equivalent, and use arrow functions and Function.prototype.bind respectively.</p>
+<pre><code class="language-js">&lt;button onClick={(e) =&gt; this.deleteRow(id, e)}&gt;Delete Row&lt;/button&gt;
+&lt;button onClick={this.deleteRow.bind(this, id)}&gt;Delete Row&lt;/button&gt;
+</code></pre>
+<h2 id="conditional-rendering">Conditional Rendering</h2>
+<p>render only some of them, depending on the state of your application</p>
+<pre><code class="language-js">class LoginControl extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = {isLoggedIn: false};
+  }
+
+  handleLoginClick() {
+    this.setState({isLoggedIn: true});
+  }
+
+  handleLogoutClick() {
+    this.setState({isLoggedIn: false});
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn;
+
+    let button = null;
+    if (isLoggedIn) {
+      button = &lt;LogoutButton onClick={this.handleLogoutClick} /&gt;;
+    } else {
+      button = &lt;LoginButton onClick={this.handleLoginClick} /&gt;;
+    }
+
+    return (
+      &lt;div&gt;
+        &lt;Greeting isLoggedIn={isLoggedIn} /&gt;
+        {button}
+      &lt;/div&gt;
+    );
+  }
+}
+
+ReactDOM.render(
+  &lt;LoginControl /&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<h3 id="inline-if-with-logical--operator">Inline If with Logical &amp;&amp; Operator</h3>
+<p>This includes the JavaScript logical <code>&amp;&amp;</code> operator. It can be handy for conditionally including an element:</p>
+<p>It works because in JavaScript, <code>true &amp;&amp; expression</code> always evaluates to <strong>expression</strong>, and <code>false &amp;&amp; expression</code> always evaluates to <strong>false</strong>.</p>
+<pre><code class="language-js">{unreadMessages.length &gt; 0 &amp;&amp;
+        &lt;h2&gt;
+          You have {unreadMessages.length} unread messages.
+        &lt;/h2&gt;
+      }
+</code></pre>
+<h3 id="inline-if-else-with-conditional-operator">Inline If-Else with Conditional Operator</h3>
+<p><code>condition ? true : false.</code></p>
+<pre><code class="language-js">return (
+    &lt;div&gt;
+      The user is &lt;b&gt;{isLoggedIn ? 'currently' : 'not'}&lt;/b&gt; logged in.
+    &lt;/div&gt;
+  );
+</code></pre>
+<p>also be used for larger expressions</p>
+<pre><code class="language-js">&lt;div&gt;
+      {isLoggedIn ? (
+        &lt;LogoutButton onClick={this.handleLogoutClick} /&gt;
+      ) : (
+        &lt;LoginButton onClick={this.handleLoginClick} /&gt;
+      )}
+    &lt;/div&gt;
+</code></pre>
+<p>Also remember that whenever conditions become too complex, it might be a good time to extract a component.</p>
+<h3 id="preventing-component-from-rendering">Preventing Component from Rendering</h3>
+<p>n the example below, the <!-- raw HTML omitted --> is rendered depending on the value of the prop called warn. If the value of the prop is false, then the component does not render:</p>
+<p>Returning null from a component’s render method does not affect the firing of the component’s lifecycle methods. For instance, <strong>componentWillUpdate and componentDidUpdate will still be called.</strong></p>
+<pre><code class="language-js">class Page
+//...
+ &lt;WarningBanner warn={this.state.showWarning} /&gt;
+ 
+
+function WarningBanner(props) {
+  if (!props.warn) {
+    return null;
+  }
+
+  return (
+    &lt;div className=&quot;warning&quot;&gt;
+      Warning!
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h2 id="list--keys">List &amp; Keys</h2>
+<p>We assign the new array returned by <code>map()</code> to the variable doubled and log it:</p>
+<p>In React, transforming arrays into lists of elements is nearly identical.</p>
+<pre><code class="language-js">const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map((number) =&gt; number * 2);
+console.log(doubled);
+</code></pre>
+<h3 id="rendering-multiple-components">Rendering Multiple Components</h3>
+<p>You can build collections of elements and include them in JSX using curly braces {}.
+Below, we loop through the numbers array using the JavaScript map() function. We return an <!-- raw HTML omitted --> element for each item. Finally, we assign the resulting array of elements to listItems:</p>
+<p>We include the entire listItems array inside a <!-- raw HTML omitted --> element, and render it to the DOM:</p>
+<pre><code class="language-js">const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =&gt;
+  &lt;li&gt;{number}&lt;/li&gt;
+);
+
+ReactDOM.render(
+  &lt;ul&gt;{listItems}&lt;/ul&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<h3 id="basic-list-component">Basic List Component</h3>
+<p>assign a <code>key</code> to our list items inside numbers.map() and fix the missing key issue.</p>
+<pre><code class="language-js">function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =&gt;
+    &lt;li key={number.toString()}&gt;
+      {number}
+    &lt;/li&gt;
+  );
+  return (
+    &lt;ul&gt;{listItems}&lt;/ul&gt;
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  &lt;NumberList numbers={numbers} /&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<h3 id="extracting-components-with-keys">Extracting Components with Keys</h3>
+<p>Keys only make sense in the context of the surrounding array.
+For example, if you extract a ListItem component, you should <strong>keep the key on the <!-- raw HTML omitted --> elements</strong> in the array <strong>rather than on the root <!-- raw HTML omitted --> element in the ListItem itself</strong>.</p>
+<p>key 放在 React 组件上（例如 ListItem），而不是组件内部的html元素上（例如 li）</p>
+<pre><code class="language-js">//Incorrect Key use
+
+&lt;ListItem value={number} /&gt;
+
+function ListItem(props) {
+  const value = props.value;
+  return (
+    // Wrong! There is no need to specify the key here:
+    &lt;li key={value.toString()}&gt;
+      {value}
+    &lt;/li&gt;
+  );
+}
+    
+//correct
+
+&lt;ListItem key={number.toString()}
+              value={number} /&gt;
+              
+function ListItem(props) {
+  // Correct! There is no need to specify the key here:
+  return &lt;li&gt;{props.value}&lt;/li&gt;;
+}
+</code></pre>
+<h3 id="keys-must-only-be-unique-among-siblings">Keys Must Only Be Unique Among Siblings</h3>
+<p>Keys serve <strong>as a hint to React</strong> but they <strong>don’t get passed to your components</strong>. If you need the same value in your component, pass it explicitly <strong>as a prop with a different name</strong>:</p>
+<p>key 只是给 React 来识别组件用，如果要把 key 的值传递给组件，要使用不同的属性名，传递和 key 一样的值即可</p>
+<p>With the example above, the Post component can read props.id, but not props.key.</p>
+<pre><code class="language-js">const content = posts.map((post) =&gt;
+  &lt;Post
+    key={post.id}
+    id={post.id}
+    title={post.title} /&gt;
+);
+</code></pre>
+<h3 id="embedding-map-in-jsx">Embedding map() in JSX</h3>
+<p>JSX allows embedding any expressions in curly braces so we could inline the map() result:</p>
+<p>from</p>
+<pre><code class="language-js">function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =&gt;
+    &lt;ListItem key={number.toString()}
+              value={number} /&gt;
+
+  );
+  return (
+    &lt;ul&gt;
+      {listItems}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+<p>to</p>
+<pre><code class="language-js">function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    &lt;ul&gt;
+      {numbers.map((number) =&gt;
+        &lt;ListItem key={number.toString()}
+                  value={number} /&gt;
+
+      )}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+<h3 id="end">End</h3>
+<p>Keep in mind that if the map() body is too nested, it might be a good time to extract a component.</p>
+<h2 id="forms">Forms</h2>
+<h3 id="controlled-components">Controlled Components</h3>
+<p>In HTML, form elements such as <!-- raw HTML omitted -->, <!-- raw HTML omitted -->, and <!-- raw HTML omitted --> typically maintain their own state and update it based on user input.</p>
+<p>In React, mutable state is typically kept in the state property of components, and only updated with setState().</p>
+<pre><code class="language-js">class NameForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      &lt;form onSubmit={this.handleSubmit}&gt;
+        &lt;label&gt;
+          Name:
+          &lt;input type=&quot;text&quot; value={this.state.value} onChange={this.handleChange} /&gt;
+        &lt;/label&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+      &lt;/form&gt;
+    );
+  }
+}
+</code></pre>
+<h3 id="the-textarea-tag">The textarea Tag</h3>
+<p>n React, a <!-- raw HTML omitted --> uses a value attribute instead</p>
+<pre><code class="language-js">// html
+&lt;textarea&gt;
+  Hello there, this is some text in a text area
+&lt;/textarea&gt;
+
+// React
+&lt;textarea value={this.state.value} onChange={this.handleChange} /&gt;
+</code></pre>
+<h3 id="the-select-tag">The select Tag</h3>
+<p>in <strong>html</strong>, it use <strong>selected attribute</strong>
+but in React, uses a <strong>value attribute</strong> on the root select tag to instead.</p>
+<pre><code class="language-js">&lt;select value={this.state.value} onChange={this.handleChange}&gt;
+</code></pre>
+<p>You can pass an <strong>array</strong> into the value attribute, allowing you to select <strong>multiple</strong> options in a select tag:</p>
+<pre><code class="language-js">&lt;select multiple={true} value={['B', 'C']}&gt;
+</code></pre>
+<h3 id="handling-multiple-inputs">Handling Multiple Inputs</h3>
+<p>reduce the code!(one handle method, deal with multiple input)</p>
+<p>When you need to handle multiple controlled input elements, you can add a name attribute to each element and let the handler function choose what to do based on the value of <code>event.target.name</code>.</p>
+<p>通过<code>target.type</code>判断控件类型，<code>target.name</code>获取 <code>name=&quot;&quot;</code> 对应组件</p>
+<p>注意checkbox类型的“值”是 <code>event.target.checked </code>其他是 <code>event.target.value</code></p>
+<p>使用 ES6 的特性 <strong>computed property name</strong></p>
+<pre><code class="language-js">this.setState({
+      [name]: value
+    });
+</code></pre>
+<pre><code class="language-js">handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  render() {
+    return (
+      &lt;form&gt;
+        &lt;label&gt;
+          Is going:
+          &lt;input
+            name=&quot;isGoing&quot;
+            type=&quot;checkbox&quot;
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange} /&gt;
+        &lt;/label&gt;
+        &lt;br /&gt;
+        &lt;label&gt;
+          Number of guests:
+          &lt;input
+            name=&quot;numberOfGuests&quot;
+            type=&quot;number&quot;
+            value={this.state.numberOfGuests}
+            onChange={this.handleInputChange} /&gt;
+        &lt;/label&gt;
+      &lt;/form&gt;
+    );
+  }
+</code></pre>
+<p>in the code, we use ES6 computed property name syntax</p>
+<pre><code class="language-js">this.setState({
+  [name]: value
+});
+</code></pre>
+<p>equals to ES5</p>
+<pre><code class="language-js">var partialState = {};
+partialState[name] = value;
+this.setState(partialState);
+</code></pre>
+<h3 id="controlled-input-null-value">Controlled Input Null Value</h3>
+<p>Specifying the value prop on a controlled component prevents the user from changing the input unless you desire so. If you’ve specified a value but the input is still editable, you may have accidentally set value to undefined or null.</p>
+<p>The input is locked at first but becomes editable after a short delay.</p>
+<pre><code class="language-js">ReactDOM.render(&lt;input value=&quot;hi&quot; /&gt;, mountNode);
+
+setTimeout(function() {
+  ReactDOM.render(&lt;input value={null} /&gt;, mountNode);
+}, 1000);
+</code></pre>
+<h3 id="alternatives-to-controlled-components">Alternatives to Controlled Components</h3>
+<p>It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change and pipe all of the input state through a React component. This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library. In these situations, you might want to check out uncontrolled components, an alternative technique for implementing input forms.</p>
+<p>go to Advance -&gt; Uncontrolled Component to read it.</p>
+<h2 id="lifting-state-up-1">Lifting State up</h2>
+<p>define a shared component, both TemperatureInput components independently keep their values in the local state:</p>
+<pre><code class="language-js">const scaleNames = {
+  c: 'Celsius',
+  f: 'Fahrenheit'
+};
+
+class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {temperature: ''};
+  }
+
+  handleChange(e) {
+    this.setState({temperature: e.target.value});
+  }
+
+  render() {
+    const temperature = this.state.temperature;
+    const scale = this.props.scale;
+    return (
+      &lt;fieldset&gt;
+        &lt;legend&gt;Enter temperature in {scaleNames[scale]}:&lt;/legend&gt;
+        &lt;input value={temperature}
+               onChange={this.handleChange} /&gt;
+      &lt;/fieldset&gt;
+    );
+  }
+}
+</code></pre>
+<p>pass the specific value to Component</p>
+<pre><code class="language-js">class Calculator extends React.Component {
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;TemperatureInput scale=&quot;c&quot; /&gt;
+        &lt;TemperatureInput scale=&quot;f&quot; /&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>then lifting the state up to parent component.</p>
+<pre><code class="language-js"> handleChange(e) {
+    // Before: this.setState({temperature: e.target.value});
+    this.props.onTemperatureChange(e.target.value);
+    // ...
+</code></pre>
+<p>in Calculaor</p>
+<pre><code class="language-js">handleCelsiusChange(temperature) {
+    this.setState({scale: 'c', temperature});
+  }
+
+  handleFahrenheitChange(temperature) {
+    this.setState({scale: 'f', temperature});
+  }
+
+  render() {
+    const scale = this.state.scale;
+    const temperature = this.state.temperature;
+    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+    const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
+    
+    
+    return &lt;TemperatureInput
+          scale=&quot;c&quot;
+          temperature={celsius}
+          onTemperatureChange={this.handleCelsiusChange} /&gt;
+
+        &lt;TemperatureInput
+          scale=&quot;f&quot;
+          temperature={fahrenheit}
+          onTemperatureChange={this.handleFahrenheitChange} /&gt;
+
+        &lt;BoilingVerdict
+          celsius={parseFloat(celsius)} /&gt;
+</code></pre>
+<h1 id="advanced">Advanced</h1>
+<h2 id="jsx-in-depth">JSX in Depth</h2>
+<h3 id="using-dot-notation-for-jsx-type">Using Dot Notation for JSX Type</h3>
+<p>if you have a single module that exports many React components</p>
+<pre><code class="language-js">import React from 'react';
+
+const MyComponents = {
+  DatePicker: function DatePicker(props) {
+    return &lt;div&gt;Imagine a {props.color} datepicker here.&lt;/div&gt;;
+  }
+}
+
+function BlueDatePicker() {
+  return &lt;MyComponents.DatePicker color=&quot;blue&quot; /&gt;;
+}
+</code></pre>
+<h3 id="user-defined-components-must-be-capitalized">User-Defined Components Must Be Capitalized</h3>
+<pre><code class="language-js">// Wrong! This is a component and should have been capitalized:
+function hello(props) {
+  return &lt;div&gt;Hello {props.toWhat}&lt;/div&gt;;
+}
+
+function HelloWorld() {
+  // Wrong! React thinks &lt;hello /&gt; is an HTML tag because it's not capitalized:
+  return &lt;hello toWhat=&quot;World&quot; /&gt;;
+}
+</code></pre>
+<p>Choosing the Type at Runtime</p>
+<pre><code class="language-js">const components = {
+  photo: PhotoStory,
+  video: VideoStory
+};
+
+function Story(props) {
+  // Correct! JSX type can be a capitalized variable.
+  const SpecificStory = components[props.storyType];
+  return &lt;SpecificStory story={props.story} /&gt;;
+}
+</code></pre>
+<h3 id="props-in-jsx">Props in JSX</h3>
+<p><code>if</code> statements and <code>for</code> loops are not expressions in JavaScript, so they can’t be used in JSX directly. Instead, you can put these in the surrounding code. For example:</p>
+<pre><code class="language-js">function NumberDescriber(props) {
+  let description;
+  if (props.number % 2 == 0) {
+    description = &lt;strong&gt;even&lt;/strong&gt;;
+  } else {
+    description = &lt;i&gt;odd&lt;/i&gt;;
+  }
+  return &lt;div&gt;{props.number} is an {description} number&lt;/div&gt;;
+}
+
+</code></pre>
+<h3 id="string-literals">String Literals</h3>
+<p>pass a string literal as a prop. These two JSX expressions are equivalent:</p>
+<pre><code class="language-js">&lt;MyComponent message=&quot;hello world&quot; /&gt;
+
+&lt;MyComponent message={'hello world'} /&gt;
+</code></pre>
+<h3 id="spread-attributes">Spread Attributes</h3>
+<p>If you already have props as an object, and you want to pass it in JSX, you can use &hellip; as a “spread” operator to pass the whole props object. These two components are equivalent:</p>
+<pre><code class="language-js">function App1() {
+  return &lt;Greeting firstName=&quot;Ben&quot; lastName=&quot;Hector&quot; /&gt;;
+}
+
+function App2() {
+  const props = {firstName: 'Ben', lastName: 'Hector'};
+  return &lt;Greeting {...props} /&gt;;
+}
+</code></pre>
+<p>You can also pick specific props that your component will consume while passing all other props using the spread operator.</p>
+<p>(only choose a part of them, not pass &ldquo;kind&rdquo; to the button element)</p>
+<pre><code class="language-js">const { kind, ...other } = props;
+return &lt;button {...other} /&gt;;
+</code></pre>
+<h3 id="children-in-jsx">Children in JSX</h3>
+<p>a special prop: <code>props.children</code></p>
+<p><strong>String Literals</strong></p>
+<p>This is valid JSX, and props.children in MyComponent will simply be the string &ldquo;Hello world!&rdquo;</p>
+<pre><code class="language-js">&lt;MyComponent&gt;Hello world!&lt;/MyComponent&gt;
+</code></pre>
+<p>(It also removes blank lines, removes whitespace at the beginning and ending of a line),they are the same return result</p>
+<pre><code class="language-js">&lt;div&gt;Hello World&lt;/div&gt;
+
+&lt;div&gt;
+  Hello World
+&lt;/div&gt;
+
+&lt;div&gt;
+  Hello
+  World
+&lt;/div&gt;
+</code></pre>
+<p><strong>JSX Children</strong></p>
+<pre><code class="language-js">&lt;MyContainer&gt;
+  &lt;MyFirstComponent /&gt;
+  &lt;MySecondComponent /&gt;
+&lt;/MyContainer&gt;
+</code></pre>
+<p>A React component can also return an array of elements:</p>
+<pre><code class="language-js">render() {
+  // No need to wrap list items in an extra element!
+  return [
+    // Don't forget the keys :)
+    &lt;li key=&quot;A&quot;&gt;First item&lt;/li&gt;,
+    &lt;li key=&quot;B&quot;&gt;Second item&lt;/li&gt;,
+    &lt;li key=&quot;C&quot;&gt;Third item&lt;/li&gt;,
+  ];
+}
+</code></pre>
+<h3 id="javascript-expressions-as-children">JavaScript Expressions as Children</h3>
+<p>You can pass any JavaScript expression as children, by enclosing it within {}. For example, these expressions are equivalent:</p>
+<pre><code class="language-js">&lt;MyComponent&gt;foo&lt;/MyComponent&gt;
+
+&lt;MyComponent&gt;{'foo'}&lt;/MyComponent&gt;
+</code></pre>
+<p>This is often useful for rendering a list of JSX expressions of arbitrary length. For example, this renders an HTML list</p>
+<pre><code class="language-js">function Item(props) {
+  return &lt;li&gt;{props.message}&lt;/li&gt;;
+}
+
+function TodoList() {
+  const todos = ['finish doc', 'submit pr', 'nag dan to review'];
+  return (
+    &lt;ul&gt;
+      {todos.map((message) =&gt; &lt;Item key={message} message={message} /&gt;)}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+<p>JavaScript expressions can be mixed with other types of children. This is often useful in lieu of string templates:</p>
+<pre><code class="language-js">function Hello(props) {
+  return &lt;div&gt;Hello {props.addressee}!&lt;/div&gt;;
+}
+</code></pre>
+<h3 id="functions-as-children">Functions as Children</h3>
+<p>Normally, JavaScript expressions inserted in JSX will evaluate to a string, a React element, or a list of those things. However, props.children works just like any other prop in that it can pass any sort of data, not just the sorts that React knows how to render. For example, if you have a custom component, you could have it take a callback as props.children:</p>
+<pre><code class="language-js">// Calls the children callback numTimes to produce a repeated component
+function Repeat(props) {
+  let items = [];
+  for (let i = 0; i &lt; props.numTimes; i++) {
+    items.push(props.children(i));
+  }
+  return &lt;div&gt;{items}&lt;/div&gt;;
+}
+
+function ListOfTenThings() {
+  return (
+    &lt;Repeat numTimes={10}&gt;
+      {(index) =&gt; &lt;div key={index}&gt;This is item {index} in the list&lt;/div&gt;}
+    &lt;/Repeat&gt;
+  );
+}
+</code></pre>
+<p>Children passed to a custom component can be anything, as long as that component transforms them into something React can understand before rendering. This usage is not common, but it works if you want to stretch what JSX is capable of.</p>
+<h3 id="booleans-null-and-undefined-are-ignored">Booleans, Null, and Undefined Are Ignored</h3>
+<p>false, null, undefined, and true are valid children. They simply don’t render.</p>
+<p>This can be useful to conditionally render React elements. This JSX only renders a <!-- raw HTML omitted --> if showHeader is true:</p>
+<pre><code class="language-js">&lt;div&gt;
+  {showHeader &amp;&amp; &lt;Header /&gt;}
+  &lt;Content /&gt;
+&lt;/div&gt;
+</code></pre>
+<p>One caveat is that some “falsy” values, such as the 0 number, are still rendered by React. For example, this code will not behave as you might expect because 0 will be printed when props.messages is an empty array:</p>
+<pre><code class="language-js">&lt;div&gt;
+  {props.messages.length &amp;&amp;
+    &lt;MessageList messages={props.messages} /&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+<p>To fix this, make sure that the expression before &amp;&amp; is always boolean:</p>
+<pre><code class="language-js">&lt;div&gt;
+  {props.messages.length &gt; 0 &amp;&amp;
+    &lt;MessageList messages={props.messages} /&gt;
+  }
+&lt;/div&gt;
+</code></pre>
+<p>Conversely, if you want a value like false, true, null, or undefined to appear in the output, you have to convert it to a string first:</p>
+<pre><code class="language-js">&lt;div&gt;
+  My JavaScript variable is {String(myVariable)}.
+&lt;/div&gt;
+</code></pre>
+<h2 id="typechecking-with-proptypes">Typechecking With PropTypes</h2>
+<p>React.PropTypes has moved into a different package since React v15.5. Please use the prop-types library instead.</p>
+<pre><code class="language-shell">npm install --save prop-types
+</code></pre>
+<pre><code class="language-js">import PropTypes from 'prop-types'; // ES6
+var PropTypes = require('prop-types'); // ES5 with npm
+
+class Greeting extends React.Component {
+  render() {}
+}
+
+Greeting.propTypes = {
+  name: PropTypes.string
+};
+</code></pre>
+<h3 id="proptypes">PropTypes</h3>
+<p>validators provided:</p>
+<p>goto <a href="https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes">https://reactjs.org/docs/typechecking-with-proptypes.html#proptypes</a></p>
+<pre><code class="language-js">MyComponent.propTypes = {
+  // You can declare that a prop is a specific JS primitive. By default, these
+  // are all optional.
+  optionalArray: PropTypes.array,
+  optionalBool: PropTypes.bool,
+  optionalFunc: PropTypes.func,
+  optionalNumber: PropTypes.number,
+  optionalObject: PropTypes.object,
+  optionalString: PropTypes.string,
+  optionalSymbol: PropTypes.symbol,
+  
+  //.....
+  // An object taking on a particular shape
+  optionalObjectWithShape: PropTypes.shape({
+    color: PropTypes.string,
+    fontSize: PropTypes.number
+  }),
+</code></pre>
+<h3 id="requiring-single-child">Requiring Single Child</h3>
+<p>With PropTypes.element you can specify that only a single child can be passed to a component as children.</p>
+<pre><code class="language-js">class MyComponent extends React.Component {
+  render() {
+    // This must be exactly one element or it will warn.
+    const children = this.props.children;
+    return (
+      &lt;div&gt;
+        {children}
+      &lt;/div&gt;
+    );
+  }
+}
+
+MyComponent.propTypes = {
+  children: PropTypes.element.isRequired
+};
+</code></pre>
+<h3 id="default-prop-values">Default Prop Values</h3>
+<p>You can define default values for your props by assigning to the special defaultProps property:</p>
+<p>The defaultProps will be used to ensure that this.props.name will have a value if it was not specified by the parent component. The propTypes typechecking happens after defaultProps are resolved, so typechecking will also apply to the defaultProps.</p>
+<pre><code class="language-js">class Greeting extends React.Component {
+  render() {
+    return (
+      &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;
+    );
+  }
+}
+
+// Specifies the default values for props:
+Greeting.defaultProps = {
+  name: 'Stranger'
+};
+
+// Renders &quot;Hello, Stranger&quot;:
+ReactDOM.render(
+  &lt;Greeting /&gt;,
+  document.getElementById('example')
+);
+</code></pre>
+<h2 id="refs-and-the-dom">Refs and the DOM</h2>
+<p>In the typical React dataflow, props are the only way that parent components interact with their children. To modify a child, you re-render it with new props. However, there are a few cases where you need to imperatively modify a child outside of the typical dataflow. The child to be modified could be an instance of a React component, or it could be a DOM element. For both of these cases, React provides an escape hatch.</p>
+<p><strong>Don’t Overuse Refs</strong>.Avoid using refs for anything that can be done declaratively.</p>
+<h3 id="adding-a-ref-to-a-dom-element">Adding a Ref to a DOM Element</h3>
+<p>The <code>ref</code> attribute takes a callback function,and the callback will be executed immediately after the component is mounted or unmounted.</p>
+<p>When the ref attribute is used on an HTML element, the ref callback receives the underlying DOM element as its argument. For example, this code uses the ref callback to store a reference to a DOM node:</p>
+<pre><code class="language-js">class CustomTextInput extends React.Component {
+
+    focusTextInput() {
+        // Explicitly focus the text input using the raw DOM API
+        this.textInput.focus();
+      }
+      
+    render(){
+        &lt;input
+          type=&quot;text&quot;
+          ref={(input) =&gt; { this.textInput = input; }} /&gt;
+        
+        &lt;input
+          type=&quot;button&quot;
+          value=&quot;Focus the text input&quot;
+          onClick={this.focusTextInput}
+        /&gt;
+</code></pre>
+<p>React will call the ref callback with the DOM element when the component mounts, and call it with null when it unmounts. ref callbacks are invoked before componentDidMount or componentDidUpdate lifecycle hooks.</p>
+<p>Using the ref callback just to set a property on the class is a common pattern for accessing DOM elements. The preferred way is to set the property in the ref callback like in the above example. There is even a shorter way to write it: <code>ref={input =&gt; this.textInput = input}</code>.</p>
+<h3 id="adding-a-ref-to-a-class-component">Adding a Ref to a Class Component</h3>
+<p>the ref callback receives the mounted instance of the component as its argument. For example, if we wanted to wrap the CustomTextInput above to simulate it being clicked immediately after mounting:</p>
+<p>that this only works if CustomTextInput is declared as a class:</p>
+<pre><code class="language-js">class AutoFocusTextInput extends React.Component {
+  componentDidMount() {
+    this.textInput.focusTextInput();
+  }
+
+  render() {
+    return (
+      &lt;CustomTextInput
+        ref={(input) =&gt; { this.textInput = input; }} /&gt;
+
+    );
+  }
+}
+</code></pre>
+<h3 id="refs-and-functional-components">Refs and Functional Components</h3>
+<p>You may not use the ref attribute on functional components because they don’t have instances:</p>
+<pre><code class="language-js">function MyFunctionalComponent() {
+  return &lt;input /&gt;;
+}
+
+class Parent extends React.Component {
+  render() {
+    // This will *not* work!
+    return (
+      &lt;MyFunctionalComponent
+        ref={(input) =&gt; { this.textInput = input; }} /&gt;
+    );
+  }
+}
+</code></pre>
+<p>You can, however, use the ref attribute <strong>inside a functional component</strong> as long as you refer to a DOM element or a class component:</p>
+<pre><code class="language-js">function CustomTextInput(props) {
+  // textInput must be declared here so the ref callback can refer to it
+  let textInput = null;
+
+  function handleClick() {
+    textInput.focus();
+  }
+
+  return (
+    &lt;div&gt;
+      &lt;input
+        type=&quot;text&quot;
+        ref={(input) =&gt; { textInput = input; }} /&gt;
+
+</code></pre>
+<h3 id="exposing-dom-refs-to-parent-components">Exposing DOM Refs to Parent Components</h3>
+<p>in such cases we recommend exposing a special prop on the child. The child would <strong>take a function prop</strong> with an arbitrary name (e.g. inputRef) and attach it to the DOM node as a ref attribute. This lets the parent pass its ref callback to the child’s DOM node through the component in the middle.</p>
+<pre><code class="language-js">function CustomTextInput(props) {
+  return (
+    &lt;div&gt;
+      &lt;input ref={props.inputRef} /&gt;
+    &lt;/div&gt;
+  );
+}
+
+class Parent extends React.Component {
+  render() {
+    return (
+      &lt;CustomTextInput
+        inputRef={el =&gt; this.inputElement = el}
+      /&gt;
+    );
+  }
+}
+</code></pre>
+<p>In the example above, Parent passes its ref callback as an inputRef prop to the CustomTextInput, and the CustomTextInput passes the same function as a special ref attribute to the <!-- raw HTML omitted -->.
+As a result, this.inputElement in Parent will be set to the DOM node corresponding to the <!-- raw HTML omitted --> element in the CustomTextInput.</p>
+<h3 id="legacy-api-string-refs">Legacy API: String Refs</h3>
+<p>older API where the ref attribute is a string, like &ldquo;textInput&rdquo;, and the DOM node is accessed as this.refs.textInput.
+We advise against it because string refs have some issues, are considered legacy, and are likely to be removed in one of the future releases. If you’re currently using this.refs.textInput to access refs, we recommend the callback pattern instead.</p>
+<h3 id="caveats">Caveats</h3>
+<p>If the ref callback is defined as an inline function, it will get called twice during updates, first with null and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the ref callback as a bound method on the class, but note that it shouldn’t matter in most cases.</p>
+<h2 id="uncontrolled-components">Uncontrolled Components</h2>
+<p>In a controlled component, form data is handled by a React component。</p>
+<p>uncontrolled components, where form data is handled by the DOM itself。instead of writing an event handler for every state update, you can use a <code>ref</code> to get form values from the DOM</p>
+<pre><code class="language-js">handleSubmit(event) {
+    alert('A name was submitted: ' + this.input.value);
+    event.preventDefault();
+  }
+
+render(){
+    &lt;input type=&quot;text&quot; ref={(input) =&gt; this.input = input} /&gt;
+</code></pre>
+<p>Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. It can also be slightly less code if you want to be quick and dirty</p>
+<h3 id="default-values">Default Values</h3>
+<p>In the React rendering lifecycle, the <code>value</code> attribute on form elements will override the value in the DOM</p>
+<p>if want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a defaultValue attribute instead of value.</p>
+<pre><code class="language-js">&lt;input
+          defaultValue=&quot;Bob&quot;
+          type=&quot;text&quot;
+          ref={(input) =&gt; this.input = input} /&gt;
+</code></pre>
+<p>Likewise, <!-- raw HTML omitted --> and <!-- raw HTML omitted --> support defaultChecked, and <!-- raw HTML omitted --> and <!-- raw HTML omitted --> supports defaultValue.</p>
+<h2 id="optimizing-performance">Optimizing Performance</h2>
+<h3 id="use-the-production-build">Use the Production Build</h3>
+<p>在 Chrome 的 React Develop tool 可以看到图标，当前是否生产环境</p>
+<p>Single-File Builds
+Remember that only React files ending with <code>.production.min.js</code> are suitable for production.</p>
+<h3 id="brunch">Brunch</h3>
+<p><code>UglifyJS</code> is a JavaScript parser, minifier, compressor or beautifier toolkit.</p>
+<p>Adds UglifyJS support to brunch.<code>uglify-js-brunch</code> will minify your javascript files.</p>
+<pre><code class="language-shell"># If you use npm
+npm install --save-dev uglify-js-brunch
+
+# If you use Yarn
+yarn add --dev uglify-js-brunch
+</code></pre>
+<p>to create a production build, add the -p flag to the build command:
+Remember that you only need to do this for production builds.You shouldn’t pass -p flag or apply this plugin in development because it will hide useful React warnings, and make the builds much slower.</p>
+<pre><code class="language-shell">brunch build -p
+</code></pre>
+<h3 id="browserify">Browserify</h3>
+<p>require(&lsquo;modules&rsquo;) in the <strong>browser</strong>.
+Use a node-style require() to organize your browser code and load modules installed by npm.</p>
+<p>browserify will recursively analyze all the require() calls in your app in order to build a bundle you can serve up to the browser in a single <!-- raw HTML omitted --> tag.</p>
+<pre><code class="language-shell"># If you use npm
+npm install --save-dev envify uglify-js uglifyify 
+
+# If you use Yarn
+yarn add --dev envify uglify-js uglifyify 
+</code></pre>
+<p>To create a production build, make sure that you add these transforms (the order matters):
+The envify transform ensures the right build environment is set. Make it global (-g).
+The uglifyify transform removes development imports. Make it global too (-g).
+Finally, the resulting bundle is piped to uglify-js for mangling (read why).</p>
+<pre><code class="language-js">browserify ./index.js \
+  -g [ envify --NODE_ENV production ] \
+  -g uglifyify \
+  | uglifyjs --compress --mangle &gt; ./bundle.js
+</code></pre>
+<blockquote>
+<p>The package name is uglify-js, but the binary it provides is called uglifyjs.
+This is not a typo.</p>
+</blockquote>
+<h3 id="rollup">Rollup</h3>
+<p>(with the next section &ldquo;webpack&rdquo;)
+<a href="http://www.css88.com/archives/7703#more-7703">http://www.css88.com/archives/7703#more-7703</a></p>
+<p>4月初，Facebook 将一个 巨大的 pull 请求 合并到了 React 主分支(master) 中，将其现有的构建流程替换为基于 Rollup ，这一举动 促使 一些人发很疑惑 “你为什么选择 Rollup 而抛弃 webpack ”？</p>
+<pre><code class="language-shell"># If you use npm
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+
+# If you use Yarn
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+</code></pre>
+<p>To create a production build, make sure that you add these plugins (the order matters):
+The replace plugin ensures the right build environment is set.
+The commonjs plugin provides support for CommonJS in Rollup.
+The uglify plugin compresses and mangles the final bundle</p>
+<pre><code class="language-json">plugins: [
+  // ...
+  require('rollup-plugin-replace')({
+    'process.env.NODE_ENV': JSON.stringify('production')
+  }),
+  require('rollup-plugin-commonjs')(),
+  require('rollup-plugin-uglify')(),
+  // ...
+]
+</code></pre>
+<h3 id="webpack">webpack</h3>
+<p><a href="https://webpack.js.org/guides/production-build/">https://webpack.js.org/guides/production-build/</a></p>
+<p>You shouldn’t apply UglifyJsPlugin or DefinePlugin with &lsquo;production&rsquo; value in development because they will hide useful React warnings, and make the builds much slower.</p>
+<pre><code class="language-json">new webpack.DefinePlugin({
+  'process.env': {
+    NODE_ENV: JSON.stringify('production')
+  }
+}),
+new webpack.optimize.UglifyJsPlugin()
+</code></pre>
+<h2 id="profiling-components-with-the-chrome-performance-tab">Profiling Components with the Chrome Performance Tab</h2>
+<p>In the development mode, you can visualize how components mount, update, and unmount, using the performance tools in supported browsers.</p>
+<p>Load your app with ?react_perf in the query string (for example, http://localhost:3000/?react_perf).
+Open the Chrome DevTools Performance tab and press Record.
+Perform the actions you want to profile. Don’t record more than 20 seconds or Chrome might hang.
+Stop recording.
+React events will be grouped under the User Timing label.</p>
+<h3 id="avoid-reconciliation">Avoid Reconciliation</h3>
+<p>In some cases, your component can speed all of this up by overriding the lifecycle function shouldComponentUpdate, which is triggered before the re-rendering process starts. The default implementation of this function returns true, leaving React to perform the update:</p>
+<pre><code class="language-js">shouldComponentUpdate(nextProps, nextState) {
+  return true;
+}
+</code></pre>
+<p>If you know that in some situations your component doesn’t need to update, you can return false</p>
+<p>默认渲染行为的问题</p>
+<p>在React Component的生命周期中，有一个shouldComponentUpdate方法。这个方法默认返回值是true。</p>
+<p>这意味着就算没有改变组件的props或者state，也会导致组件的重绘。这就经常导致组件因为不相关数据的改变导致重绘，这极大的降低了React的渲染效率。比如下面的例子中，任何options的变化，甚至是其他数据的变化都可能导致所有cell的重绘。</p>
+<pre><code class="language-js">//Table Component
+{this.props.items.map(i =&gt;
+    &lt;Cell data={i} option={this.props.options[i]} /&gt;
+)}
+</code></pre>
+<p>为了避免这个问题，我们可以在Cell中重写shouldComponentUpdate方法，只在option发生改变时进行重绘。</p>
+<pre><code class="language-js">class Cell extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.option === nextProps.option) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+</code></pre>
+<p>因为上面的情况十分通用，React创建了<code>PureComponent</code>组件创建了默认的<code>shouldComponentUpdate</code>行为。这个默认的shouldComponentUpdate行为会一一比较props和state中所有的属性，只有当其中任意一项发生改变是，才会进行重绘。</p>
+<p>需要注意的是，PureComponent使用<strong>浅比较</strong>判断组件是否需要重绘,因此，下面对数据的修改并不会导致重绘（假设Table也是PureComponent)</p>
+<pre><code class="language-js">options.push(new Option())
+  options.splice(0, 1)
+  options[i].name = &quot;Hello&quot;
+</code></pre>
+<p>在原对象上进行修改，由于浅比较是比较指针的异同，所以会认为不需要进行重绘。
+这就会产生问题，我们实际上“修改了”传入的数据，但组件没有重绘。。。</p>
+<p>为了避免出现这些问题，推荐使用immutable.js。immutable.js会在每次对原对象进行添加，删除，修改使返回新的对象实例。任何对数据的修改都会导致数据指针的变化。</p>
+<p>绕了三次：  汗
+组件默认会自动重绘
+为了避免自动重绘，可以重写shouldComponentUpdate方法或直接让它继承 PureComponent
+但是由于PureComponent对比 props 和 state 用了浅比较（指针异同，原对象没有改变），某些情况下修改了数据，“想要”重绘 React 却不给重绘
+使用immutable.js，当对原对象添加删除修改，返回“新的”对象实例，触发数据指针变化</p>
+<p><strong>其他的陷阱</strong></p>
+<p>Literal Array与Literal Object</p>
+<p>使用<code>||</code>运算符</p>
+<pre><code class="language-js">{this.props.items.map(i =&gt;
+ &lt;Cell data={i} options={this.props.options || []} /&gt;
+)}
+</code></pre>
+<p>若options为空，则会使用[]。[]每次会生成新的Array，因此导致Cell每次的props都不一样，导致需要重绘。解决方法如下:</p>
+<pre><code class="language-js">const default = [];
+{this.props.items.map(i =&gt;
+&lt;Cell data={i} options={this.props.options || default} /&gt;
+)}
+</code></pre>
+<p>内联函数</p>
+<p>函数也经常作为props传递，由于每次需要为内联函数创建一个新的实例，所以每次function都会指向不同的内存地址。比如：</p>
+<pre><code class="language-js">render() {
+  &lt;MyInput onChange={e =&gt; this.props.update(e.target.value)} /&gt;;
+}
+
+//或
+update(e) {
+  this.props.update(e.target.value);
+}
+render() {
+  return &lt;MyInput onChange={this.update.bind(this)} /&gt;;
+}
+</code></pre>
+<p>为了解决这个问题，需要提前绑定this指针：</p>
+<pre><code class="language-js">constructor(props) {
+ super(props);
+ this.update = this.update.bind(this);
+}
+update(e) {
+ this.props.update(e.target.value);
+}
+render() {
+ return &lt;MyInput onChange={this.update} /&gt;;
+}
+</code></pre>
+<h3 id="the-power-of-not-mutating-data">The Power Of Not Mutating Data</h3>
+<p>The simplest way to avoid this problem is to avoid mutating values that you are using as props or state. For example, the handleClick method above could be rewritten using concat as:</p>
+<pre><code class="language-js">handleClick() {
+  this.setState(prevState =&gt; ({
+    words: prevState.words.concat(['marklar'])
+  }));
+}
+
+//ES6 supports a spread syntax
+handleClick() {
+  this.setState(prevState =&gt; ({
+    words: [...prevState.words, 'marklar'],
+  }));
+};
+</code></pre>
+<p>You can also rewrite code that mutates objects to avoid mutation, in a similar way. For example, let’s say we have an object named colormap and we want to write a function that changes colormap.right to be &lsquo;blue&rsquo;. We could write:</p>
+<pre><code class="language-js">function updateColorMap(colormap) {
+  colormap.right = 'blue';
+}
+</code></pre>
+<p>To write this without mutating the original object, we can use Object.assign method:</p>
+<pre><code class="language-js">function updateColorMap(colormap) {
+  return Object.assign({}, colormap, {right: 'blue'});
+}
+
+// object spread properties to make it easier 
+function updateColorMap(colormap) {
+  return {...colormap, right: 'blue'};
+}
+</code></pre>
+<p>updateColorMap now returns a new object, rather than mutating the old one. Object.assign is in ES6 and requires a polyfill.</p>
+<h3 id="使用immutablejs">使用immutable.js</h3>
+<p>It provides immutable, persistent collections that work via structural sharing:</p>
+<ul>
+<li>Immutable: once created, a collection cannot be altered at another point in time.</li>
+<li>Persistent: new collections can be created from a previous collection and a mutation such as set. The original collection is still valid after the new collection is created.</li>
+<li>Structural Sharing: new collections are created using as much of the same structure as the original collection as possible, reducing copying to a minimum to improve performance.</li>
+</ul>
+<p>Immutability makes tracking changes cheap. A change will always result in a new object so we only need to check if the reference to the object has changed. For example, in this regular JavaScript code:</p>
+<pre><code class="language-js">const x = { foo: 'bar' };
+const y = x;
+y.foo = 'baz';
+x === y; // true
+</code></pre>
+<p>Although y was edited, since it’s a reference to the same object as x, this comparison returns true. You can write similar code with immutable.js:</p>
+<pre><code class="language-js">const SomeRecord = Immutable.Record({ foo: null });
+const x = new SomeRecord({ foo: 'bar' });
+const y = x.set('foo', 'baz');
+const z = x.set('foo', 'bar');
+x === y; // false
+x === z; // true
+</code></pre>
+<p>In this case, since a new reference is returned when mutating x, we can use a reference equality check (x === y) to verify that the new value stored in y is different than the original value stored in x.</p>
+<h2 id="react-without-es6">React Without ES6</h2>
+<p>Normally you would define a React component as a plain JavaScript class:</p>
+<pre><code class="language-js">class Greeting extends React.Component {
+  render() {
+    return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+  }
+}
+</code></pre>
+<p>If you don’t use ES6 yet, you may use the create-react-class module instead:</p>
+<pre><code class="language-js">var createReactClass = require('create-react-class');
+var Greeting = createReactClass({
+  render: function() {
+    return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+  }
+});
+</code></pre>
+<h3 id="declaring-default-props">Declaring Default Props</h3>
+<p>With functions and ES6 classes <code>defaultProps</code> is defined as a property on the component itself:</p>
+<pre><code class="language-js">class Greeting extends React.Component {
+  // ...
+}
+
+Greeting.defaultProps = {
+  name: 'Mary'
+};
+</code></pre>
+<p>With createReactClass(), you need to define getDefaultProps() as a function on the passed object:</p>
+<pre><code class="language-js">var Greeting = createReactClass({
+  getDefaultProps: function() {
+    return {
+      name: 'Mary'
+    };
+  },
+
+  // ...
+
+});
+</code></pre>
+<h3 id="setting-the-initial-state">Setting the Initial State</h3>
+<p>In ES6 classes,you can define the initial state by assigning this.state in the constructor:</p>
+<pre><code class="language-js">class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {count: props.initialCount};
+  }
+  // ...
+}
+</code></pre>
+<p>With createReactClass()</p>
+<pre><code class="language-js">var Counter = createReactClass({
+  getInitialState: function() {
+    return {count: this.props.initialCount};
+  },
+  // ...
+});
+</code></pre>
+<h3 id="autobinding">Autobinding</h3>
+<p>ES6 classes. This means that they don’t automatically bind this to the instance.You’ll have to explicitly use .bind(this) in the constructor:</p>
+<pre><code class="language-js">constructor(props) {
+    super(props);
+    this.state = {message: 'Hello!'};
+    // This line is important!
+    this.handleClick = this.handleClick.bind(this);
+  }
+</code></pre>
+<p>With createReactClass(), this is not necessary because it binds all methods:</p>
+<p>If the boilerplate code is too unattractive to you, you may enable the experimental Class Properties syntax proposal with Babel:</p>
+<pre><code class="language-js">// WARNING: this syntax is experimental!
+  // Using an arrow here binds the method:
+  handleClick = () =&gt; {
+    alert(this.state.message);
+  }
+</code></pre>
+<h2 id="context">Context</h2>
+<p>If you want your application to be stable, don’t use context. It is an experimental API and it is likely to break in future releases of React.</p>
+<p>state management : use Redux or MobX,</p>
+<p>If you aren’t an experienced React developer, don’t use context. There is usually a better way to implement functionality just using props and state.</p>
+<h2 id="error-boundaries">Error Boundaries</h2>
+<p>A JavaScript error in a part of the UI <strong>shouldn’t break the whole app</strong>. To solve this problem for React users, React 16 introduces a new concept of an “error boundary”.</p>
+<p>Error boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI instead of the component tree that crashed.</p>
+<p>Error boundaries do <strong>not</strong> catch errors for:</p>
+<ul>
+<li>Event handlers (learn more)</li>
+<li>Asynchronous code (e.g. setTimeout or requestAnimationFrame callbacks)</li>
+<li>Server side rendering</li>
+<li>Errors thrown in the error boundary itself (rather than its children)</li>
+</ul>
+<p>A class component <strong>becomes an error boundary</strong> if it defines a new lifecycle method called <code>componentDidCatch(error, info)</code>:</p>
+<pre><code class="language-js">class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return &lt;h1&gt;Something went wrong.&lt;/h1&gt;;
+    }
+    return this.props.children;
+  }
+}
+</code></pre>
+<p>Then you can use it as a regular component:</p>
+<pre><code class="language-js">&lt;ErrorBoundary&gt;
+  &lt;MyWidget /&gt;
+&lt;/ErrorBoundary&gt;
+</code></pre>
+<p>The componentDidCatch() method works like a JavaScript catch {} block, but for components.</p>
+<p>Note that error boundaries only catch errors in the components below them in the tree.</p>
+<h3 id="componentdidcatch-parameters">componentDidCatch Parameters</h3>
+<p><code>error</code> is an error that has been thrown.
+<code>info</code> is an object with componentStack key. The property has information about component stack during thrown error.</p>
+<pre><code class="language-js">componentDidCatch(error, info) {
+  
+  /* Example stack information:
+     in ComponentThatThrows (created by App)
+     in ErrorBoundary (created by App)
+     in div (created by App)
+     in App
+  */
+  logComponentStackToMyService(info.componentStack);
+}
+</code></pre>
+<h3 id="live-demo">Live Demo</h3>
+<p><a href="https://codepen.io/gaearon/pen/wqvxGa?editors=0010">https://codepen.io/gaearon/pen/wqvxGa?editors=0010</a></p>
+<h3 id="where-to-place-error-boundaries">Where to Place Error Boundaries</h3>
+<p>You may wrap <strong>top-level route</strong> components to display a “Something went wrong” message to the user, just like server-side frameworks often handle crashes. You may also wrap <strong>individual widgets</strong> in an error boundary to protect them from crashing the rest of the application.</p>
+<h3 id="new-behavior-for-uncaught-errors">New Behavior for Uncaught Errors</h3>
+<p><strong>As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.</strong></p>
+<p>一个组件有未捕获的错误，则不会moute整个tree？ （例子是，在一个应用中，与其显示有错误的，不如不显示——想象转账的时候数字错了？）</p>
+<p>We also encourage you to use JS error reporting services (or build your own) so that you can learn about unhandled exceptions as they happen in production, and fix them.</p>
+<h3 id="component-stack-traces">Component Stack Traces</h3>
+<p>you can see the line number/Component/Function&hellip;.</p>
+<h3 id="how-about-trycatch">How About try/catch?</h3>
+<p>try / catch is great but it only works for imperative code:</p>
+<h3 id="how-about-event-handlers">How About Event Handlers?</h3>
+<p>Error boundaries do not catch errors inside event handlers.</p>
+<p>Unlike the render method and lifecycle hooks, the event handlers don’t happen during rendering. So if they throw, React still knows what to display on the screen.</p>
+<p>If you need to catch an error inside event handler, use the regular JavaScript try / catch statement:</p>
+<pre><code class="language-js">handleClick = () =&gt; {
+    try {
+      // Do something that could throw
+    } catch (error) {
+      this.setState({ error });
+    }
+  }
+
+  render() {
+    if (this.state.error) {
+      return &lt;h1&gt;Caught an error.&lt;/h1&gt;
+    }
+    return &lt;div onClick={this.handleClick}&gt;Click Me&lt;/div&gt;
+  }
+}
+</code></pre>
+<p>the above example is demonstrating regular JavaScript behavior and doesn’t use error boundaries.</p>
+<h2 id="web-components">Web Components</h2>
+<h3 id="using-web-components-in-react">Using Web Components in React</h3>
+<pre><code class="language-js">class HelloMessage extends React.Component {
+  render() {
+    return &lt;div&gt;Hello &lt;x-search&gt;{this.props.name}&lt;/x-search&gt;!&lt;/div&gt;;
+  }
+}
+</code></pre>
+<p>One common confusion is that Web Components use “class” instead of “className”.</p>
+<h3 id="using-react-in-your-web-components">Using React in your Web Components</h3>
+<pre><code class="language-js">class XSearch extends HTMLElement {
+  connectedCallback() {
+    const mountPoint = document.createElement('span');
+    this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
+
+    const name = this.getAttribute('name');
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+    ReactDOM.render(&lt;a href={url}&gt;{name}&lt;/a&gt;, mountPoint);
+  }
+}
+customElements.define('x-search', XSearch);
+</code></pre>
+<p>Note:
+This code will not work if you transform classes with Babel. See this issue for the discussion.</p>
+<h2 id="higher-order-componentshoc">Higher-Order Components(HOC)</h2>
+<p>to reusing component logic, Concretely, a higher-order component is a function that takes a component and returns a new component.</p>
+<p>一个高阶组件只是一个包装了另外一个 React 组件的 React 组件。通常实现为一个函数，本质上是一个类工厂（class factory）</p>
+<pre><code class="language-js">const EnhancedComponent = higherOrderComponent(WrappedComponent);
+</code></pre>
+<p>Whereas a component transforms props into UI, a higher-order component transforms a component into another component.</p>
+<p>HOCs are common in third-party React libraries, such as <strong>Redux</strong>’s <code>connect</code> and Relay’s createContainer.</p>
+<h3 id="wrap-the-display-name-for-easy-debugging">Wrap the Display Name for Easy Debugging</h3>
+<p>To ease debugging, choose a display name that communicates that it’s the result of an HOC.</p>
+<pre><code class="language-js">function withSubscription(WrappedComponent) {
+  class WithSubscription extends React.Component {/* ... */}
+  WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+  return WithSubscription;
+}
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}
+</code></pre>
+<h3 id="dont-use-hocs-inside-the-render-method">Don’t Use HOCs Inside the render Method</h3>
+<p>React’s diffing algorithm (called <strong>reconciliation</strong>)</p>
+<p>&hellip;.// other content</p>
+<h2 id="integrating-with-other-libraries">Integrating with Other Libraries</h2>
+<h3 id="integrating-with-dom-manipulation-plugins">Integrating with DOM Manipulation Plugins</h3>
+<p>React is unaware of changes made to the DOM outside of React. It determines updates based on its own internal representation, and if the same DOM nodes are manipulated by another library, React gets confused and has no way to recover.</p>
+<p>The easiest way to avoid conflicts is to prevent the React component from updating. You can do this by rendering elements that React has no reason to update, like an empty <!-- raw HTML omitted -->.</p>
+<p>We will attach a <code>ref</code> to the root DOM element. Inside <code>componentDidMount</code>, we will get a reference to it so we can pass it to the jQuery plugin.</p>
+<pre><code class="language-js">class SomePlugin extends React.Component {
+  componentDidMount() {
+    this.$el = $(this.el);
+    this.$el.somePlugin();
+  }
+
+  componentWillUnmount() {
+    this.$el.somePlugin('destroy');
+  }
+
+  render() {
+    return &lt;div ref={el =&gt; this.el = el} /&gt;;
+  }
+}
+</code></pre>
+<p>Many jQuery plugins attach event listeners to the DOM so it’s important to detach them in componentWillUnmount</p>
+<p>remembering to remove any event listeners the plugin registered to prevent memory leaks.</p>
+<h3 id="integrating-with-jquery-chosen-plugin">Integrating with jQuery Chosen Plugin</h3>
+<p>Chosen(which augments <!-- raw HTML omitted --> inputs)
+<a href="https://harvesthq.github.io/chosen/">https://harvesthq.github.io/chosen/</a></p>
+<p>How it works: If you call it on a <!-- raw HTML omitted --> DOM node, it reads the attributes off of the original DOM node, hides it with an inline style, and then appends a separate DOM node with its own visual representation right after the <!-- raw HTML omitted -->. Then it fires jQuery events to notify us about the changes.</p>
+<p>&ldquo;Wrapper&rdquo; React component</p>
+<pre><code class="language-js">function Example() {
+  return (
+    &lt;Chosen onChange={value =&gt; console.log(value)}&gt;
+      &lt;option&gt;vanilla&lt;/option&gt;
+      &lt;option&gt;chocolate&lt;/option&gt;
+      &lt;option&gt;strawberry&lt;/option&gt;
+    &lt;/Chosen&gt;
+  );
+}
+</code></pre>
+<p>then create an empty component with a render() method where we return <!-- raw HTML omitted --> wrapped in a <!-- raw HTML omitted -->:(This is necessary because Chosen will append another DOM element right after the <!-- raw HTML omitted --> node we passed to it)</p>
+<pre><code class="language-js">class Chosen extends React.Component {
+    componentDidMount() {
+      this.$el = $(this.el);
+      this.$el.chosen();
+    }
+    
+    componentWillUnmount() {
+      this.$el.chosen('destroy');
+    }
+    
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;select className=&quot;Chosen-select&quot; ref={el =&gt; this.el = el}&gt;
+          {this.props.children}
+        &lt;/select&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+</code></pre>
+<p>we also want to be notified about the value changes. To do this, we will subscribe to the jQuery change event on the <!-- raw HTML omitted --> managed by Chosen.</p>
+<p>We won’t pass this.props.onChange directly to Chosen because component’s props might change over time, and that includes event handlers. Instead, we will declare a handleChange() method that calls <code>this.props.onChange</code>, and subscribe it to the jQuery change event:</p>
+<p>continue</p>
+<h1 id="react-route">React-Route</h1>
+<h1 id="relay">Relay</h1>
+<p><a href="https://facebook.github.io/relay/docs/getting-started.html">https://facebook.github.io/relay/docs/getting-started.html</a></p>
+<p>A JavaScript framework for building data-driven React applications</p>
+<h1 id="preact">Preact</h1>
+<p>3kb（gzip后）的轻量 react 替代方案，拥有同样的 ES6 API</p>
+<p><a href="https://github.com/developit/preact/">https://github.com/developit/preact/</a></p>
+<h1 id="build-项目">Build 项目</h1>
+<p>项目开发测试完毕后，运行 <code>npm run build</code> 或 <code>yarn build</code>，生成一个 build 目录，</p>
+<h2 id="解决在子目录中访问时js-提示-404-的为">解决在子目录中访问时，js 提示 404 的为</h2>
+<p>build 出来的项目如果在非根目录运行，（例如 http://localhost/subject/build/index.html）会提示如下 404 错误</p>
+<p><img src="/media/15490411859885/15228299433935.jpg" alt=""></p>
+<p>这是因为生成的文件中，引用的路径是“根目录”</p>
+<p><img src="/media/15490411859885/15228300007851.jpg" alt=""></p>
+<p>你可以把这里手动修改成 &ldquo;./static/js/main&hellip;..&rdquo; （但是每次build 都要改很麻烦）</p>
+<p>因此使用这里</p>
+<p><a href="https://github.com/facebook/create-react-app/issues/165">https://github.com/facebook/create-react-app/issues/165</a></p>
+<p>在 package.json 里，添加一行<code>homepage</code> 指向相对目录，再次编译，<code>build/index.html</code>里对 js 文件的路径引用就自动变成了 <code>./static/js</code> 了</p>
+<pre><code class="language-json">//
+homepage: &quot;./&quot;,
+//
+</code></pre>
+<h1 id="dva">Dva</h1>
+<p>一个集成开发脚手架。</p>
+<ul>
+<li>把 react-router, redux，fetch 等进行轻度封装，可以避免在写 redux 代码时，需要创建大量文件来处理 action, reducer，store。统一用 model 来处理 action、异步</li>
+<li>使用 dva-cli 命令，快速生成 model，route， component 文件和优雅的项目结构</li>
+<li>使用 roadhog 来实现配置</li>
+<li>统一的 loading 处理（dva-loading）、error 捕捉</li>
+</ul>
+<p>但是，官方的 sample 代码跑起来后，总会有一些小问题。Issues 里找不到答案。。。
+由于有一些自己实现的东西，所以又多了一些记忆和学习成本
+已经不用了。</p>
+<p>这里只记录一些重要的代码和插件</p>
+<h2 id="插件">插件</h2>
+<p>&ldquo;path-to-regexp&rdquo;: &ldquo;^2.1.0&rdquo;,   把path 变成正则匹配
+&ldquo;qs&rdquo;: &ldquo;^6.5.1&rdquo;,                字符串化
+&ldquo;query-string&rdquo;: &ldquo;^5.0.1&rdquo;,      URL 里的查询字符串组装
+&ldquo;react-helmet&rdquo;: &ldquo;^5.2.0&rdquo;       在子组件里替代 meta 信息
+classnames                      组合 ClassNames</p>
+<h2 id="项目结构组织">项目结构组织</h2>
+<p>components  （组件）
+/-index.js
+/-Login.js
+/-Layout (比较复杂的，可以拆分成更小的组件)
+/-index.js
+/-Header.js
+/-Footer.js
+routes  （“大”页面）
+/-app.js 入口
+/-login
+/-index.js
+/-dashboard （可以把一些“小数据”放到子目录里）
+/-index.js
+/-components
+/-logs
+/-users
+services   (服务，例如网络请求等)
+utils      （配置文件、工具库）</p>
+<p>一些代码</p>
+<p><strong>utils/config.js</strong></p>
+<pre><code class="language-js">const API = '/api/v1'
+
+module.exports = {
+  prefix: 'pulse',
+  footerText: 'Pulse Electronics Inc. 2017',
+  //....
+  api: {
+    userLogin: `${API}/user/login`,
+    userLogout: `${API}/user/logout`,
+    userInfo: `${API}/userInfo`,
+    users: `${API}/users`,
+    user: `${API}/user/:id`,
+    search: `${API}/search/:type`
+  }
+}
+</code></pre>
+<p>在目录里，使用<code>index.js</code>来导出内部的模块</p>
+<p><strong>utils/index.js</strong></p>
+<pre><code class="language-js">import classnames from 'classnames'
+import lodash from 'lodash'
+import config from './config'
+import request from './request'
+
+// Convert the hyphen to hump
+String.prototype.hyphenToHump = function(){
+  return this.replace(/-(\w)/g, (...args) =&gt;{
+    return args[1].toUpperCase()
+  })
+}
+
+// Date format
+Date.prototype.format = function(){
+
+}
+
+module.exports = {
+  config,
+  classnames,
+}
+</code></pre>
+<h2 id="一些新知识">一些新知识</h2>
+<p>String Prototype 的更多方法。如 testString.startWith('/')
+正则： <code>pathToRegexp(routeString).exec(pathname)</code></p>
+<p>数组里是否包含某个元素 <code>testArray.includes('a')</code></p>
+<p>在字符串里解析变量  <code>/${pathname}</code></p>
+<h1 id="axios-网络请求">Axios 网络请求</h1>
+<h2 id="跨域">跨域</h2>
+<h2 id="访问-ssl-证书为自签名的本地测试环境">访问 ssl 证书为自签名的本地测试环境</h2>
+<p>如果测试服务器使用的证书为自签名，访问时默会报错，提示 Network Sec&hellip;</p>
+<p>在浏览器里手动点击“继续”后，就正常了。但我们不想出问题后再手动解决</p>
+<p><a href="https://stackoverflow.com/questions/19665863/how-do-i-use-a-self-signed-certificate-for-a-https-node-js-server">https://stackoverflow.com/questions/19665863/how-do-i-use-a-self-signed-certificate-for-a-https-node-js-server</a></p>
+<h1 id="按组件按需加载而不是按路由">按组件按需加载，而不是按路由</h1>
+<p><a href="https://github.com/jamiebuilds/react-loadable">https://github.com/jamiebuilds/react-loadable</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25874892">https://zhuanlan.zhihu.com/p/25874892</a></p>
+<h1 id="更强大的表格组件">更强大的表格组件</h1>
+<p><strong>DevExtreme React Grid</strong></p>
+<p>a component that displays table data from a local or remote source. It supports paging, sorting, filtering, grouping and other data shaping options, row selection, and data editing.</p>
+<p>可用于 Material-UI 或 Bootstrap</p>
+<p><a href="https://devexpress.github.io/devextreme-reactive/react/grid/">https://devexpress.github.io/devextreme-reactive/react/grid/</a></p>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="eslint-的问题">ESLint 的问题</h2>
+<p>报错</p>
+<blockquote>
+<p>&lsquo;React&rsquo; is defined but never used no-unused-vars</p>
+</blockquote>
+<p><a href="https://github.com/youngwind/blog/issues/13">https://github.com/youngwind/blog/issues/13</a></p>
+<h2 id="为啥-setstate-的参数中对象成员可以不写-key">为啥 setState() 的参数中，对象成员可以不写 key？</h2>
+<p>例如通常我们看到的 setState 是</p>
+<pre><code class="language-js">this.setState({
+    a: 'c',
+    b: 'd'
+})
+</code></pre>
+<p>但是在 material-ui 的一个 table 组件范例代码里看到</p>
+<pre><code class="language-js">let order = 'desc';
+
+this.setState({ data, order, orderBy });
+</code></pre>
+<p>what? 不写 key? （还是 value？）
+在这里查到，是 ES6 的特性，用在 key（字符串） 和 value（变量名） “同名”的时候，简化代码</p>
+<p><a href="https://stackoverflow.com/questions/42181873/react-js-setstate-call-with-key-but-without-value">https://stackoverflow.com/questions/42181873/react-js-setstate-call-with-key-but-without-value</a></p>
+<h2 id="form-组件没有指定默认-state-值然后修改时报错">Form 组件没有指定默认 state 值，然后修改时报错</h2>
+<p>一个 input 组件</p>
+<pre><code class="language-js">
+handleChange(event){
+    this.setState({
+        username: event.target.value
+    })
+}
+
+render(){
+    return (
+        &lt;div&gt;
+            &lt;input type=&quot;text&quot; value={this.state.username} onChange={e=&gt;this.handleChange(e)} /&gt;
+        &lt;/div&gt;
+    )
+}
+</code></pre>
+<p>然而当输入的时候，提示“从一个 uncontrolled” 变化到了 &ldquo;controlled&rdquo;</p>
+<blockquote>
+<p>A component is changing an uncontrolled input of type text to be controlled</p>
+</blockquote>
+<p>奇怪，不是已经让 value 用 onChange 接管了吗？</p>
+<p>原因是需要<strong>初始化组件上的 state 值</strong> <code>this.state.username</code>。</p>
+<h2 id="修改-create-react-app-项目-run-的默认端口">修改 create-react-app 项目 run 的默认端口</h2>
+<p>默认是 3000， 如果你的其他node项目用了这个，会导致冲突。</p>
+<p>修改 <code>package.json</code> ，修改 <code>script</code>里的<code>start</code>,在前面添加 <code>PORT=3006 </code></p>
+<pre><code class="language-js">&quot;scripts&quot;: {
+    &quot;start&quot;: &quot;PORT=3006 react-scripts start&quot;,
+</code></pre>
+<p>再运行<code>yarn start</code></p>
+<h1 id="技巧">技巧</h1>
+<h2 id="import-路径的自动识别">import 路径的自动识别</h2>
+<pre><code class="language-js">// 使用
+import { config } from '../../utils/config'
+
+// 还是?
+import { config } from 'config'
+</code></pre>
+<p>希望用别名来调用比较长的路径</p>
+<p>Webpack 有 alias</p>
+<p><a href="https://github.com/sorrycc/roadhog/issues/121">https://github.com/sorrycc/roadhog/issues/121</a></p>
+<p>roadhog 需要安装 babel-plugin-resolve</p>
+<p>但据说 alias 对 eslint 有副作用，会导致函数等无法定位</p>
+<h1 id="案例学习">案例学习</h1>
+<p>融合 antd-mobile 和 react &amp; mobx &amp; react-router &amp; loadable</p>
+<p><a href="https://github.com/cllgeek/geekjc-antd-mobile/blob/master/src/functions/ArticleList/index.js">https://github.com/cllgeek/geekjc-antd-mobile/blob/master/src/functions/ArticleList/index.js</a></p>
+<h1 id="ui-库">UI 库</h1>
+<h2 id="material--难用">Material  难用</h2>
+<h2 id="httpreact-toolboxiocomponentsradio_group-简单"><a href="http://react-toolbox.io/#/components/radio_group">http://react-toolbox.io/#/components/radio_group</a> 简单</h2>
+<h2 id="antd-强大--还有-antd-mobile">Antd 强大  （还有 antd-mobile）</h2>
+<h1 id="开发工具">开发工具</h1>
+<h2 id="react-develop-tools">React Develop tools</h2>
+<p>除了 chrome/firefox 插件，如果想在 safari 等使用，可以用这个独立的（通过 npm 全局安装）</p>
+<p><a href="https://github.com/facebook/react-devtools/tree/master/packages/react-devtools">https://github.com/facebook/react-devtools/tree/master/packages/react-devtools</a></p>
+<h1 id="问题收集">问题收集</h1>
+<h2 id="如何修改嵌套的复杂-state-例如-stateitems5children--添加一个记录">如何修改嵌套的复杂 state 例如 state.items[5].children  添加一个记录</h2>
+<p>首先，肯定是不要直接用 <code>this.state = {}</code> 处理 因为不会马上反应在 dom 中</p>
+<p>接着, 下面的 用 {&hellip;state.property, {key: value}}  方法，也会有 this.state 读取的数据不正确的问题。。。。？</p>
+<pre><code class="language-js">this.setState({
+  someProperty: Object.assign({}, this.state.someProperty, {flag: false})
+});
+</code></pre>
+<p>最后</p>
+<pre><code class="language-js">//首先用 展开操作符， 赋值给另外一个新对象
+var someProperty = {...this.state.someProperty}
+
+// 然后修改值
+someProperty.flag = true;
+
+// 保存回去
+this.setState({someProperty})
+</code></pre>
+<p>上面的方法是处理了一级嵌套</p>
+<p>更复杂的深层嵌套像下面这样</p>
+<pre><code class="language-js">this.state = {
+   someProperty: {
+      someOtherProperty: {
+          anotherProperty: {
+             flag: true
+          }
+          ..
+      }
+      ...
+   }
+   ...
+}
+</code></pre>
+<p>需要在每一层都用展开操作符</p>
+<pre><code class="language-js">this.setState(prevState =&gt; ({
+    ...prevState,
+    someProperty: {
+        ...prevState.someProperty,
+        someOtherProperty: {
+            ...prevState.someProperty.someOtherProperty, 
+            anotherProperty: {
+               ...prevState.someProperty.someOtherProperty.anotherProperty,
+               flag: false
+            }
+        }
+    }
+}))
+</code></pre>
+<p>一个包：https://github.com/kolodny/immutability-helper   （mutate a copy of data without changing the original source）
+非常强大。。。</p>
+<p>另外，还有人提到，用 loadash 来</p>
+<p>Using lodash/fp set:</p>
+<pre><code class="language-js">import {set} from 'lodash/fp';
+
+const newState = set([&quot;someProperty&quot;, &quot;flag&quot;], false, this.state);
+</code></pre>
+<p>Using lodash/fp merge:</p>
+<pre><code class="language-js">import {merge} from 'lodash/fp';
+
+const newState = merge(this.state, {
+  someProperty: {flag: false},
+});
+</code></pre>
+<p>用 deep clone <code>_.cloneDeep</code></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/reactjs-study/" title="reactjs教程" target="_blank" rel="external">https://my101du.github.io/1/01/reactjs-study/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/react%E5%BA%93-%E7%95%8C%E9%9D%A2%E4%B8%8E%E6%96%87%E6%9C%AC%E7%9B%B8%E5%85%B3/" title="react库-界面与文本相关"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/react-js-case-study/"
+                    title="ReactJS 案例学习"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

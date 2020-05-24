@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        最好懂的微信公众平台开发教程(2)——电影查询助手 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="在前面的“鲜鲜美美”水果店公众号案例中，我们没有写一行代码，仅仅通过在管理后台里进行一系列操作就实现了很多功能。但是这些功能都受限于微信公众" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>最好懂的微信公众平台开发教程(2)——电影查询助手 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="最好懂的微信公众平台开发教程(2)——电影查询助手" />
+<meta property="og:description" content="在前面的“鲜鲜美美”水果店公众号案例中，我们没有写一行代码，仅仅通过在管理后台里进行一系列操作就实现了很多功能。但是这些功能都受限于微信公众" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-2/" />
+
+<meta itemprop="name" content="最好懂的微信公众平台开发教程(2)——电影查询助手">
+<meta itemprop="description" content="在前面的“鲜鲜美美”水果店公众号案例中，我们没有写一行代码，仅仅通过在管理后台里进行一系列操作就实现了很多功能。但是这些功能都受限于微信公众">
+
+<meta itemprop="wordCount" content="8595">
+
+
+
+<meta itemprop="keywords" content="微信," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="最好懂的微信公众平台开发教程(2)——电影查询助手"/>
+<meta name="twitter:description" content="在前面的“鲜鲜美美”水果店公众号案例中，我们没有写一行代码，仅仅通过在管理后台里进行一系列操作就实现了很多功能。但是这些功能都受限于微信公众"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-wechat-course-with-examples-chapter-2" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/wechat-course-with-examples-chapter-2/"
+    >最好懂的微信公众平台开发教程(2)——电影查询助手</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E5%BE%AE%E4%BF%A1/"> 微信 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/wechat-course-with-examples-chapter-2/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8595字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 18分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/mobile/wechat/%E5%9B%9B%E5%85%89%E5%B9%B4-%E5%BE%AE%E4%BF%A1%E6%95%99%E7%A8%8B-%E5%B0%81%E9%9D%A2.png" alt=""></p>
+<p>在前面的“鲜鲜美美”水果店公众号案例中，我们没有写一行代码，仅仅通过在管理后台里进行一系列操作就实现了很多功能。但是这些功能都<strong>受限于微信公众号的后台</strong>，如果你想实现一些令人惊叹的点子，而公众号管理后台又无法提供，就一筹莫展了。</p>
+<p>在本案例中，我们会学习如何从默认的<code>编辑模式</code>(通过操作公众号后台实现一些功能)进入<code>开发模式</code>(自己搭建服务器、写代码实现高级功能)。</p>
+<p><img src="/article_images/mobile/wechat/%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E5%92%8C%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F.png" alt=""></p>
+<p>然后会在一个<code>样板代码</code>的基础上开发“电影查询助手”公众号。这个公众号的功能是：</p>
+<blockquote>
+<p>用户发送某一部电影的名称，得到演员、导演、内容简介等影片信息</p>
+</blockquote>
+<h1 id="什么是微信公众平台开发">什么是“微信公众平台开发”</h1>
+<p>在上一个案例中，数据传输过程是这样的：用户先<strong>发送消息到公众号</strong>，然后由<strong>微信公众平台的服务器处理</strong>后，<strong>直接把处理结果返回</strong>用户，这在需要处理的消息种类很少的时候，完全可以通过<code>关键词匹配自动回复</code>来满足需求。</p>
+<p><img src="/article_images/mobile/wechat/%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93.png" alt=""></p>
+<p>但是在这个案例中，由于现存的电影资料数据成千上万，不可能在公众号管理后台的<code>关键词自动回复</code>里去维护这么庞大的列表。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%AC%E4%BC%97%E5%8F%B7%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E5%85%B3%E9%94%AE%E8%AF%8D.png" alt=""></p>
+<p>所以我们希望能<strong>使用自己的服务器</strong>，通过<strong>获取用户发送的消息</strong>（电影名称），<strong>查询自己服务器上的电影资料库</strong>，然后再把结果回复给用户。这就需要<strong>在用户和我们自己的服务器之间，使用微信公众平台作为桥梁，向用户提供服务</strong>。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93.png" alt=""></p>
+<p>这就是<code>微信公众平台开发</code> 的一部分——<strong>接管消息处理功能</strong>，也是本案例中我们要重点学习的内容。</p>
+<p><code>微信公众平台开发</code>另外一部分是<strong>接管和扩展公众号管理功能</strong>，这方面的内容在下一章的案例中再讲述。</p>
+<p>总之你暂时可以这么认为，<code>微信公众平台开发</code>就是把以前通过公众号管理后台来处理的事情，挪到自己的服务器上来处理，通过这种方式来突破公众号管理后台的限制。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E7%BB%93%E6%9E%84.png" alt=""></p>
+<h1 id="进入开发模式">进入开发模式</h1>
+<h2 id="成为开发者">成为开发者</h2>
+<p>在进行开发之前，我们要把微信公众号从默认的<strong>编辑模式</strong>切换到<strong>开发模式</strong>。</p>
+<p>首先要<strong>申请成为开发者</strong>。进入公众号管理后台的<code>开发</code>——<code>基本设置</code>页面，在这里申请成为开发者。</p>
+<p><img src="/article_images/video.png" alt="准备-成为开发者"></p>
+<h2 id="公众平台开发相关参数说明">公众平台开发相关参数说明</h2>
+<p>开启成功后，会看到两组参数。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BC%80%E5%8F%91%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0.png" alt=""></p>
+<p>其中第一组<code>开发者ID</code>，包括<code>AppID</code>和<code>AppSecret</code>两个参数，这两个参数在开通的时候已经分配了默认值。
+这组配置用于<strong>识别当前公众号的身份和权限</strong>，与上图中的通过“接口调用”来管理公众号关系密切，这里暂时就不说明了，在后面<strong>调用公众号接口</strong>进行开发的时候会通过案例去理解。</p>
+<p>下面的第二组参数是<code>服务器配置</code>，包括 URL、TOKEN 等。主要是用于<strong>在公众平台服务器 和 你的服务器 之间进行验证和通信</strong>以及<strong>处理消息的转发</strong>。本案例主要是使用这组配置参数。</p>
+<p>如果还是难以理解，你可以认为 <code>APPID</code>和 <code>KEY</code>好比是演唱会的入场券，票面上号码不重复，每个人一张，凭票入场（识别作用），有的人是贵宾包厢，可以享受舒适的座椅、饮料，有的人只买到普通座位，有的人只能在最外围站着观看（权限检查）。拿票的人可能从1号门，也可能从2号门入场，但只要他的票有效，就能入场（请求来源不固定）。关注的重点是<strong>身份</strong>。</p>
+<p><img src="/article_images/mobile/wechat/%E5%85%A5%E5%9C%BA%E5%88%B8.png" alt=""></p>
+<p>而<code>服务器的配置</code>参数就像一张快递单，快递公司要把包裹顺利寄到你家里，就必须写清楚详细地址才能派件。(快递公司就是微信公众平台服务器，包裹就是数据，房子的详细地址就是 URL)，关注的重点是<strong>目标地址</strong></p>
+<p><img src="/article_images/mobile/wechat/%E5%BF%AB%E9%80%92%E5%8D%95.png" alt=""></p>
+<h1 id="搭建自己的服务器">搭建自己的服务器</h1>
+<h2 id="创建一个-sae-服务器">创建一个 SAE 服务器</h2>
+<p>对于很多开发人员来说，购买和维护服务器、注册域名、进行域名备案等是一个很头疼的问题。</p>
+<p>在创业初期，花太多精力在这方面其实是没有必要的，幸好有不少公司已经已经帮我们解决了这个难题。他们把各种底层的细节封装起来，以<strong>云服务</strong>的方式出售<strong>服务器资源</strong>，并提供<strong>友好、强大的管理工具</strong>。</p>
+<p><strong>SAE 是新浪公司提供的一种云服务</strong>。只要简单地选择一个运行环境（比如 PHP、Java），不需要经过繁琐的安装和配置，就可以获得一个开箱即用的“服务器”（请注意，官方正式名称叫<code>云引擎</code>，为了理解方便，我这里还是叫服务器）。</p>
+<p>这里以购买和开通一个包含 <strong>PHP5.6</strong> 环境的服务器为例。</p>
+<p><img src="/article_images/video.png" alt="sae-开通"></p>
+<h2 id="了解官方提供的样板代码">了解官方提供的样板代码</h2>
+<p>有了服务器后，我们就要在上面运行代码了，这个代码我们不用自己来从头开始写，官方已经提供了一个<code>PHP</code>语言的<strong>样板代码</strong>，直接在它基础上进行修改和扩展就可以了。
+打开这个地址</p>
+<p><a href="http://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421135319&amp;token=&amp;lang=zh_CN"></a></p>
+<p>找到中间的 <code>PHP示例代码下载：下载</code>字样，把文件下载下来。</p>
+<p><img src="/article_images/mobile/wechat/%E6%A0%B7%E6%9D%BF%E4%BB%A3%E7%A0%81%E4%B8%8B%E8%BD%BD.png" alt=""></p>
+<p>下载完毕后解压，将样板代码文件<code>wx_sample.php</code>重命名为 <code>handler.php</code>（这个文件名没什么别的含义，只不过是个人习惯而已，你也可以随便命名成别的）。</p>
+<p><img src="/article_images/video.png" alt="准备-样板代码"></p>
+<p>打开文件大致浏览一下，里面的<code>wechatCallbackapiTest</code>类和最重要的两个方法——“验证”(<code>valid</code>)和“消息处理”(<code>responseMsg</code>)，稍后会详细解释。现在只要知道代码的作用是什么就可以了。</p>
+<h2 id="将样板代码部署到-sae">将样板代码部署到 SAE</h2>
+<p>有了“硬件”，还要有“软件”。我们把样板代码文件部署到 SAE 上面去，用它来接受外部的网络请求。</p>
+<p>首先进入 SAE 的<code>代码管理</code>。
+选择<code>SVN</code>管理方式
+创建一个<code>版本</code>，随便填一下，比如这里是第一次操作，就填 1 好了
+输入一个安全密码，这是 SAE 的一个安全措施，如果没有的话，按提示申请即可
+版本创建完成后，点击<code>编辑代码</code>链接，就可以打开<code>在线代码管理器</code>了，里面已经有两个默认的文件<code>index.php</code>和<code>config.yaml</code>，不要删除或移动它们！
+点击<code>上传文件</code>的小箭头，把样板文件<code>handler.php</code>上传到 SAE 服务器，点一下文件名标签上的保存小图标就可以了</p>
+<p><img src="/article_images/video.png" alt="sae-代码管理与部署样板代码"></p>
+<h1 id="服务器配置与验证">服务器配置与验证</h1>
+<p>现在可以开始打通<strong>微信公众平台</strong> 和我们<strong>搭建的服务器</strong>之间的<strong>连接</strong>了。</p>
+<p>现在公众平台还不知道服务器的地址，要在公众号管理后台的<code>服务器配置</code>里填写。打开开发配置后，目前<code>服务器配置</code>里的 <code>URL</code>、<code>TOKEN</code>和<code>EncodingAESKey</code>都是空的。（不要理会上面的 AppID 那一组参数，那是下一章才会涉及的东西）</p>
+<p><img src="/article_images/video.png" alt="服务器配置-修改配置"></p>
+<h2 id="修改-url">修改 URL</h2>
+<p>这个 <code>URL</code> 就是<strong>访问 SAE 服务器上<code>handler.php</code>文件的网络地址</strong>。</p>
+<p>每一个 SAE 服务器在创建完成后都会自动分配一个网络地址。在 SAE 管理后台的<code>总览</code>页面里，点击<code>二级域名</code>的<code>可用域名</code>下拉框可以看到。
+URL的完整格式如下</p>
+<blockquote>
+<p>htts://[你在创建sae时取的二级域名].applinz.com/<strong>handler.php</strong></p>
+</blockquote>
+<p>把这个地址填写到 <code>服务器配置</code>的 <code>URL</code>一栏里。</p>
+<p><img src="/article_images/video.png" alt="服务器配置-修改URL"></p>
+<h2 id="修改-token">修改 TOKEN</h2>
+<p>接着是修改<code>TOKEN</code>。TOKEN 是通信双方用来确认互相身份的一个字符串，第三方可能不知道这是什么。凡是 TOKEN 为空或错误的请求，就可以认为通信是不可信的。
+就好比土匪们接头的暗语，杨子荣上威虎山的时候，说一句“天王盖地虎，宝塔镇河妖”，座山雕就知道是自己人了。</p>
+<p><img src="/article_images/mobile/wechat/%E5%AE%9D%E5%A1%94%E9%95%87%E6%B2%B3%E5%A6%96.png" alt=""></p>
+<p>因为是双方通信，所以需要在公众号后台的<code>服务器配置</code>和 SAE 服务器上的样板代码里保持 TOKEN 一致。TOKEN 要使用一个别人很难猜到的字符串，这里为了便于说明，就用 <code>xianxianmeimei</code> 这个字符串。</p>
+<ol>
+<li>首先在<code>服务器配置</code>的<code>TOKEN</code>一栏里填写 <code>xianxianmeimei</code></li>
+<li>然后修改 <code>handler.php</code> 文件，把第一行的常量赋值 <code>define(&quot;TOKEN&quot;, &quot;wechat&quot;);</code>改成 <code>define(&quot;TOKEN&quot;, &quot;xianxianmeimei&quot;);</code></li>
+<li>最后重新把这个样板文件上传到 SAE，覆盖旧的文件（当然你也可以直接<code>在线编辑</code>代码）</li>
+</ol>
+<p><img src="/article_images/video.png" alt="服务器配置-修改TOKEN"></p>
+<h2 id="encodingaeskey-和消息加密">EncodingAESKey 和消息加密</h2>
+<p>每次公众平台服务器转发数据到你的服务器，都可以将<code>消息加密</code>，以确保消息数据<strong>即使被人窃取，一时半会也难以破译</strong>。这就像在战争中，我方的情报必须要进行某种方式的加密后才能发出去，战友接到这个情报后，再解密出来阅读。这个加密和解密的方法确保只有我们自己人之间才知道，这就是<code>EncodingAESKey</code>的作用。</p>
+<p><img src="/article_images/mobile/wechat/%E6%83%85%E6%8A%A5%E5%8A%A0%E5%AF%86.png" alt=""></p>
+<p>举个简单的例子，你和对方约定，在每一句话中间都插入一句唐诗。（当然实际中的加密肯定是非常复杂的，并且还有多次加密，这里只是说明一下原理）</p>
+<p>加密前</p>
+<blockquote>
+<p>我去北京开会</p>
+</blockquote>
+<p>加密后</p>
+<blockquote>
+<p>我<strong>白</strong>去<strong>日</strong>北<strong>依</strong>京<strong>山</strong>开<strong>尽</strong>会</p>
+</blockquote>
+<p>不过这个案例中为了简化，我们暂时不开启加密。</p>
+<h2 id="样板代码中的-valid-方法详解">样板代码中的 valid 方法详解</h2>
+<p>现在我们来看看<code>handler.php</code>到底做了些什么，以及服务器验证是如何进行的。</p>
+<p><img src="/article_images/video.png" alt="准备-valid方法分析"></p>
+<p>首先实例化了一个<code>wechatCallbackapiTest</code>类，这个类里面有三个方法。</p>
+<pre><code class="language-php">//实例
+$wechatObj = new wechatCallbackapiTest();
+
+//……
+//类
+class wechatCallbackapiTest
+{
+    public function valid()
+    //……
+    public function responseMsg()
+    //……
+    private function checkSignature()
+    //……
+}
+</code></pre>
+<p>紧接着就开始运行这个 <code>valid</code>方法，可以看到这个方法是接收了公众号服务器的 <code>get</code> 请求。并且把请求里的一个参数 <code>echostr</code> 的值保存为 <code>$echoStr</code>。然后调用了另一个方法 <code>$this-&gt;checkSignature()</code>，如果这个方法返回了 <code>true</code>，就把刚收到的<code>$_GET['echostr']</code>值原样返回给公众号服务器，这样公众号服务器就知道“OK，这台服务器已经通过验证了”。</p>
+<pre><code class="language-php">$wechatObj-&gt;valid();
+
+//……
+	public function valid()
+	    {
+	        $echoStr = $_GET[&quot;echostr&quot;];
+	
+	        //valid signature , option
+	        if ($this-&gt;checkSignature()) {
+	            echo $echoStr;
+	            exit;
+	        }
+	    }
+</code></pre>
+<p>来到 <code>checkSignature</code> 方法。首先得到了三个从公众号服务器发过来的get请求值，分别是 <code>signature</code>，<code>timestamp</code>，<code>nonce</code>。接着把<code>$token, $timestamp, $nonce</code>三个值进行组合、编码(sha1函数)，得到<code>tmpStr</code>，如果它等于<code>$signature</code>，就返回 <code>true</code>。</p>
+<pre><code class="language-php">$signature = $_GET[&quot;signature&quot;];
+$timestamp = $_GET[&quot;timestamp&quot;];
+$nonce     = $_GET[&quot;nonce&quot;];
+
+$token  = TOKEN;
+$tmpArr = array($token, $timestamp, $nonce);
+// use SORT_STRING rule
+sort($tmpArr, SORT_STRING);
+$tmpStr = implode($tmpArr);
+$tmpStr = sha1($tmpStr);
+
+if ($tmpStr == $signature) {
+  return true;
+} else {
+  return false;
+}
+</code></pre>
+<p>这里要理解： <strong>公众平台使用 TOKEN 和 时间戳等参数，调用一系列函数计算出一个 signature 值，然后一起发给你的服务器，在你的服务器上，用同样的方法计算一次，看是否结果等于传过来的 signature。这个过程中，最关键的就是两边的 TOKEN 值必须一致</strong>。</p>
+<p><img src="/article_images/video.png" alt="服务器配置-valid参数图解"></p>
+<h2 id="开始验证--启用服务器配置">开始验证 &amp; 启用服务器配置</h2>
+<p>填完后点击“提交”，如果没有报错，就表示公众平台已经和你的服务器建立联系了！如果报<code>TOKEN验证错误</code>请检查 SAE 上的文件是否正常，比如 TOKEN 有没有写错字母，然后重新退出再提交一下。</p>
+<p>最后点击一下“启用”。<strong>注意</strong> 打开这个开关后，<strong>之前在公众号管理后台添加的“自动回复”就会失效了</strong>，因为从现在开始，<strong>用户的消息将被公众平台转发给你的服务器，由你自行处理和回复</strong>。</p>
+<p><img src="/article_images/video.png" alt="服务器配置-提交和启用"></p>
+<h1 id="接收并处理消息">接收并处理消息</h1>
+<p>服务器通过了微信公众平台的验证后，现在开始<strong>处理公众平台转发的用户消息</strong>。</p>
+<h2 id="关闭验证方法打开消息处理方法">关闭验证方法，打开消息处理方法</h2>
+<p><code>handler.php</code>文件目前还是在运行验证服务器的<code>valid</code>方法，所以先<strong>把 valid 方法注释掉</strong>。然后<strong>打开消息处理方法 responseMsg</strong>，才能开始处理消息数据。接收消息、生成消息回复都是在这个方法里面完成的。</p>
+<pre><code class="language-php">//通过服务器验证后，要注释掉这行代码，否则会一收到请求就触发验证
+//$wechatObj-&gt;valid();
+
+//开始对用户发送的消息进行处理
+$wechatObj-&gt;responseMsg();
+</code></pre>
+<p><img src="/article_images/video.png" alt="消息-关闭valid-打开responseMessage"></p>
+<h2 id="接收消息数据">接收消息数据</h2>
+<p>用户向公众号发送消息后，微信公众平台会把它封装成 <code>XML格式的数据</code> 转发给我们的服务器，我们的代码里用<code>$GLOBALS[&quot;HTTP_RAW_POST_DATA&quot;]</code>获取数据并赋值给一个变量。</p>
+<pre><code class="language-php">$postStr = $GLOBALS[&quot;HTTP_RAW_POST_DATA&quot;];
+</code></pre>
+<p><strong>获取原始数据的一些说明</strong></p>
+<p>PHP有一个特性：如果用<code>$_POST</code>来获取数据的话，默认只能识别出<code>application/x-www.form-urlencoded</code>标准的数据类型（就是平时在网站上进行填表等操作生成的数据）。</p>
+<p>而公众平台默认是用这个 <code>XML</code> 这个格式来转发数据的，因此得使用<strong>能保留原型</strong>的<code>$GLOBALS['HTTP_RAW_POST_DATA'] </code>方式来获取。这也是样板代码里没有用 <code>$_POST</code> 的原因。</p>
+<p>但是如果 PHP 的配置文件 <code>php.ini</code> 里没有开启对<strong>原始数据</strong>的支持，样板代码会报错，需要改成 <code>$postStr = file_get_contents('php://input');</code>的形式。</p>
+<pre><code class="language-php">//原来的获取 post 的代码
+//$postStr = $GLOBALS[&quot;HTTP_RAW_POST_DATA&quot;];
+
+// 修改后的
+$postStr = file_get_contents('php://input');
+</code></pre>
+<p>得到 XML 数据后，为了便于获取 XML 数据里各个节点的值（如发送者、发送时间、发送内容等等），使用<code>simplexml_load_string</code>函数将XML数据转换成<strong>对象</strong>。</p>
+<pre><code class="language-php">$postObj      = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+
+$fromUsername = $postObj-&gt;FromUserName;
+$toUsername   = $postObj-&gt;ToUserName;
+</code></pre>
+<p><img src="/article_images/video.png" alt="消息-接收消息分析"></p>
+<h2 id="记录消息数据">记录消息数据</h2>
+<h3 id="写一个日志记录工具">写一个日志记录工具</h3>
+<p>为了<strong>把消息数据记录下来</strong>进行分析，现在写一个简单的日志记录工具。日志在开发中十分重要，有时候遇到一些莫名其妙的问题，只要看一下日志里面是不是有异常就能找到原因了。</p>
+<p>函数的名字叫 <code>c_log()</code>，接收一个字符串参数<code>$str</code>。它会把传入的字符串写到一个日志文件 <code>log.html</code> 里面。（日志文件一般习惯用 <code>txt</code>或者 <code>log</code>作为后缀，但是这里为了能让编辑器可以高亮 XML 代码，我使用了<code>html</code>后缀）。</p>
+<p>写入的时候使用了“追加”模式(<code>FILE_APPEND</code>)，这样旧的内容可以一直保留而不会被新的数据覆盖，然后记录一下当前的时间，最后适当美化一下格式（添加换行、分隔符）。</p>
+<pre><code class="language-php">function c_log($str)
+{
+    file_put_contents('log.html', '\n', FILE_APPEND);
+    file_put_contents('log.html', str_repeat('=', 20) . date('Y-m-d H:i:s', time()) . str_repeat('=', 20), FILE_APPEND);
+    file_put_contents('log.html', $str, FILE_APPEND);
+    file_put_contents('log.html', '\n', FILE_APPEND);
+}
+</code></pre>
+<p><img src="/article_images/video.png" alt="消息-日志函数"></p>
+<h3 id="开始记录消息数据">开始记录消息数据</h3>
+<p>只要用户发送消息，公众平台会马上把消息封装成 XML 数据，转发到我们的服务器上，这时候我们在<code>responseMessage</code>方法中马上把 XML 数据记录到日志文件中。</p>
+<pre><code class="language-php">public function responseMsg()
+    {
+        //……
+        $postStr = file_get_contents('php://input');
+
+        //将用户发送的内容用日志记录下来
+        c_log($postStr);
+        //……
+    }
+</code></pre>
+<p><img src="/article_images/video.png" alt="消息-记录消息数据"></p>
+<h2 id="分析消息xml数据">分析消息XML数据</h2>
+<p>在微信上随意发送消息给公众号，我们来看看日志记录函数有没有正常工作。</p>
+<h3 id="分析文本类型的消息">分析文本类型的消息</h3>
+<p>如果发送了一条<strong>文本消息</strong>，会发现日志文件 <code>log.html</code>已经出现了记录的XML数据，下面来分析一下各个节点。</p>
+<ul>
+<li><strong>FromUserName</strong>：表示消息是来自哪里，这里的值就是<strong>发送消息的用户的OpenID</strong></li>
+<li><strong>ToUserName</strong>：表示这条消息发给谁，值是<strong>公众号的“原始ID”</strong>，每一个<strong>公众号</strong>都有一个这样唯一的ID。这个值可以公众号管理后台的“注册信息”里找到，公众号的“原始ID”和消息数据里的这个<code>ToUserName</code>是一样的。</li>
+<li><strong>MsgType</strong>：消息类型，这里值是 <code>text</code> 表示文本消息。后面会讲到其他类型。</li>
+<li><strong>Content</strong>：消息主体，这里就是发送的文本内容</li>
+</ul>
+<p><img src="/article_images/video.png" alt="消息-分析消息XML"></p>
+<h3 id="分析图片类型的消息">分析图片类型的消息</h3>
+<p>如果向公众号发送一张<strong>图片</strong>，发现这次<code>log.html</code>文件里记录下来的 XML 数据有一些不同了。其中 <code>MsgType</code>变成了 <code>image</code>，表示这是个<strong>图片类型的消息</strong>，并且之前的 <code>Cotent</code>字段消失，变成了<code>PicUrl</code>和 <code>MediaId</code>，这是图片类型的消息所特有的属性。</p>
+<p><img src="/article_images/video.png" alt="消息-图片类型消息"></p>
+<h1 id="回复消息">回复消息</h1>
+<p>分析完用户发过来的消息数据后，我们就能有针对性地回复他们了。比如根据关键词、根据发送的是文本/图片/视频等情况来分别回复。</p>
+<h2 id="组装回复消息xml数据">组装回复消息XML数据</h2>
+<p>因为我们的回复消息是先发给<code>微信公众平台</code>，然后再由微信公众平台<code>转发</code>给用户的，所以必须遵守微信公众平台规定的数据格式——<strong>回复消息也要使用 XML 数据</strong>。我们来看看如何组装一个回复消息。</p>
+<p><img src="/article_images/mobile/wechat/%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93.png" alt=""></p>
+<p>首先定义一个变量<code>$textTpl</code>，作为回复消息的“模板”，然后使用 <code>sprintf()</code>函数向模板里面填充数据。</p>
+<pre><code class="language-php">$textTpl = &quot;&lt;xml&gt;
+				&lt;ToUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/ToUserName&gt;
+				&lt;FromUserName&gt;&lt;![CDATA[%s]]&gt;&lt;/FromUserName&gt;
+				&lt;CreateTime&gt;%s&lt;/CreateTime&gt;
+				&lt;MsgType&gt;&lt;![CDATA[%s]]&gt;&lt;/MsgType&gt;
+				&lt;Content&gt;&lt;![CDATA[%s]]&gt;&lt;/Content&gt;
+				&lt;FuncFlag&gt;0&lt;/FuncFlag&gt;
+				&lt;/xml&gt;&quot;;
+				
+  if (!empty($keyword)) {
+	$msgType = &quot;text&quot;;
+	
+	//$contentStr = &quot;Welcome to wechat world!&quot;;
+	$contentStr = '你发送的消息内容是 : ' . $keyword;
+	
+      $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+      
+      echo $resultStr;
+</code></pre>
+<p>注意几个地方：</p>
+<ul>
+<li><strong>FromUserName 和 ToUserName 的值正好与用户发送的消息中相反</strong>：用户发送的消息中，<code>ToUserName</code>字段是指我们的公众号ID，<code>FromUserName</code>是指用户的 OpenID；而回复消息的时候，发送方是 公众号ID，接收方则是用户的 OpenID。</li>
+<li><strong>MsgType</strong>：定义回复哪种类型的消息，可以使用文本、图片等，还可以回复一个图文素材，这里为简化，以 <code>text</code>类型来说明。</li>
+<li><strong>Content</strong>：回复消息的内容，把用户发过来的内容<code>$keyword</code>添加几个字后，原样返回给用户。</li>
+</ul>
+<p>模板填充完数据后，用 <code>echo</code>函数将组装好的消息回复 XML 数据发送给公众平台服务器，接着公众平台会继续转发给用户。</p>
+<p>现在试试看，随便发几个字给公众号，会不会收到<code>'你发送的消息内容是: balabalabala</code>？</p>
+<p><img src="/article_images/video.png" alt="自动回复-回复消息"></p>
+<h2 id="进行关键词匹配自动回复">进行关键词匹配自动回复</h2>
+<p>现在我们来写代码实现<strong>关键词自动回复</strong>。其实很简单，就是添加几个<code>if</code>条件判断而已。</p>
+<pre><code class="language-php">//关键词匹配
+ if ($keyword == '卧虎藏龙') {
+     $contentStr .= ' 这是一部动作片';
+ } elseif ($keyword == '港囧') {
+     $contentStr .= ' 这是一部喜剧片';
+ } else {
+     $contentStr .= ' 你说的这部电影我没看过呢';
+ }
+</code></pre>
+<p><img src="/article_images/video.png" alt="自动回复-关键词匹配"></p>
+<h1 id="使用在线api服务查找电影数据">使用在线API服务查找电影数据</h1>
+<p>经过前面充分的准备，应该对消息的接收、回复处理有了比较深刻的理解，是时候开始本案例中最有意思的部分了。</p>
+<p>上一节里通过关键词判断来返回不同的结果，这在<strong>数据不多的情况</strong>下还ok，但是我们现在是要搜索电影，不可能在代码里写上万个 <code>if</code> 语句吧？</p>
+<p>你可能会想，搭建一个 MySQL 数据库，然后往里面保存数据可以吗？
+——当然可以。</p>
+<p>不过，这些实现成本都太高了，互联网产品开发的四字真言——“<strong>唯快不破</strong>”，还有一句很经典的话是“<strong>不要重复造轮子</strong>”。
+我们可以直接使用现成的海量电影数据库！</p>
+<p><img src="/article_images/mobile/wechat/%E7%94%B5%E5%BD%B1%E6%95%B0%E6%8D%AE%E5%BA%93.png" alt=""></p>
+<h2 id="申请聚合数据的影视检索api">申请“聚合数据”的影视检索API</h2>
+<p>在云服务时代，我们要善于使用成熟的互联网服务，把精力集中到自己的业务流程上。</p>
+<p>“<strong>聚合数据</strong>”是一家很不错的<strong>数据服务提供商</strong>，它提供了天气、快递、汇率等等很多方面的查询服务，有很方便的接口和详细的文档。通过调用它提供给开发者的 <strong>API</strong>，我们可以<strong>直接使用</strong>它上面的海量数据，而无需自己搭建和维护一个本地数据库。</p>
+<p><img src="/article_images/mobile/wechat/%E8%81%9A%E5%90%88%E6%95%B0%E6%8D%AE.png" alt=""></p>
+<p>现在我们就来注册和申请<strong>影视检索</strong>的 API。</p>
+<ol>
+<li>注册后会赠送一些额度，先大致浏览一下有哪些接口可以使用，其中有些 API是收费或者限制调用次数的，有些是免费且不限制请求数量的</li>
+<li>申请到影视检索的 API 后，系统会分配一个 <code>AppKey</code>，这是调用 API 的<strong>凭证</strong>，注意不要泄露。</li>
+</ol>
+<p><img src="/article_images/video.png" alt="api-聚合数据-申请api"></p>
+<h2 id="熟悉-api-的参数和使用方法">熟悉 API 的参数和使用方法</h2>
+<ol>
+<li>我们先了解一下 API 调用的一些基本知识，例如请求参数、URL、返回数据的格式等。每一次调用聚合数据的 API，实际上都是向这个接口的 URL发起一个 http 请求，用 get 或 post 的方式携带<strong>参数</strong>（例如这里就是我们要查询的电影名称），然后等待聚合数据的服务器返回一组 json 数据（可能成功，也可能失败）</li>
+<li>在开发代码之前，应该先用<strong>在线测试工具</strong>模拟一下请求过程，看看返回的 json 数据格式是什么样子，写代码的时候要仔细匹配这个格式（例如电影的标题、导演、演员，如果数据太长是否需要截取，等等）</li>
+<li>最后仔细看一下<a href="https://www.juhe.cn/docs/api/id/94">API的范例代码</a>。官方提供的范例代码是最稳定的，只要修改下配合参数，根据自己的需要调整一下就可以了。</li>
+</ol>
+<p><img src="/article_images/video.png" alt="api-说明与测试"></p>
+<h2 id="新建一个获取电影的函数">新建一个获取电影的函数</h2>
+<p>编辑<code>handler.php</code>，注释掉原来的回复消息代码，并创建一个名为 <code>getMovieInfo()</code> 的函数来获取电影数据。
+平时我们要注意保持良好的编程习惯：对于某个特定的功能实现，最好作为函数独立出去，这样有利于在别的地方<strong>重复利用</strong>。</p>
+<p>里面暂时留空，稍后来写通过 API 获取电影数据的代码。</p>
+<pre><code class="language-php">//$contentStr = '你发送的消息内容是 : ' . $keyword;
+
+$contentStr .= getMovieInfo($keyword);
+
+//……
+
+function getMovieInfo($keyword)
+{
+    $returnStr = '';
+    
+    // 通过 API 获取电影数据的代码稍后完善
+    
+    return $returnStr;
+}
+</code></pre>
+<p><img src="/article_images/video.png" alt="api-准备getMovieInfo"></p>
+<h2 id="发起网络请求获取电影数据">发起网络请求获取电影数据</h2>
+<p>现在来完善<code>getMovieInfo</code>函数。
+它的作用是通过 API 从“聚合数据”的服务器上获取电影数据，然后将返回的 json 结果数据组装成字符串。</p>
+<p>我们把聚合数据的<strong>范例代码</strong>里“影视影讯检索调用示例代码”这段的前半部分复制进来，将 <code>appkey</code>修改成刚刚申请到的 <code>AppKey</code>。然后把函数的参数 <code>$keyword</code>赋值给<code>$params</code>数组的 <code>q</code> 元素，最后用<code>$params</code>作为请求参数来调用<code>juhecurl</code>函数。</p>
+<p><code>juhecurl</code> 函数也来自范例代码，整个复制进来就可以了，不需要修改。</p>
+<pre><code class="language-php">$appkey = 'abcdefghijklmnopqrstuvwxyz';
+$url    = &quot;http://op.juhe.cn/onebox/movie/video&quot;;
+$params = array(
+   &quot;key&quot;   =&gt; $appkey, //应用APPKEY(应用详细页查询)
+   &quot;dtype&quot; =&gt; &quot;&quot;, //返回数据的格式,xml或json，默认json
+
+   //这里关键词应该使用函数的参数 $keyword
+   &quot;q&quot;     =&gt; $keyword, //影视搜索名称
+);
+$paramstring = http_build_query($params);
+$content     = juhecurl($url, $paramstring);
+
+//……
+
+function juhecurl($url, $params = false, $ispost = 0)
+{
+    $httpInfo = array();
+    $ch       = curl_init();
+//略
+}
+</code></pre>
+<p><img src="/article_images/video.png" alt="api-完成getMovieInfo"></p>
+<h2 id="处理返回的-json-电影数据">处理返回的 json 电影数据</h2>
+<p>通过<code>juhecurl</code>函数请求聚合数据服务器后返回的是一个 <code>json</code> 格式的数据，需要使用<code>json_decode</code>函数将它转换成<strong>数组</strong>形式，才能得到里面的 <code>title</code>(电影标题)，<code>act</code>(演员) 等值。
+为了让返回给用户的消息文本更加美观，我们用<code>sprintf</code>对字符串进行格式化，做好分段、空格等处理。</p>
+<pre><code class="language-php">    $result      = json_decode($content, true);
+    if ($result) {
+        if ($result['error_code'] == '0') {
+            //print_r($result);
+
+            //将返回的数据组装成字符串（json转成了数组）
+            $movie           = $result['result'];
+            $returnStringTpl = &quot;影片名：%s \n
+             标签：%s \n
+             演员：%s \n
+             年份：%s \n
+             评分：%s \n
+             地区：%s \n
+             导演：%s \n
+             描述：%s&quot;;
+            $returnStr = sprintf($returnStringTpl, $movie['title'], $movie['tag'], $movie['act'], $movie['year'], $movie['rate'], $movie['area'], $movie['dir'], $movie['desc']);
+        } else {
+            //echo $result['error_code'] . &quot;:&quot; . $result['reason'];
+            $returnStr .= $result['error_code'] . &quot;:&quot; . $result['reason'];
+        }
+    }
+</code></pre>
+<p><img src="/article_images/video.png" alt="api-处理json"></p>
+<h2 id="测试">测试</h2>
+<p>好了，现在用微信发送一部电影的名称，稍等片刻，在屏幕上看到返回电影信息的那一刻，是不是很激动？</p>
+<p><img src="/article_images/video.png" alt="api-测试"></p>
+<h1 id="事件类型的消息处理">事件类型的消息处理</h1>
+<p>在案例1中，用户关注公众号后公众号会发送一段“被添加自动回复”的欢迎语，这实际上是一个自动触发的<strong>事件</strong>。
+在“自定义菜单”中，点击菜单后发送消息实际上也是一个<strong>菜单点击事件</strong></p>
+<h2 id="分析关注取消关注动作产生的-xml-数据">分析关注/取消关注动作产生的 XML 数据</h2>
+<p><strong>用户关注公众号这个事件被触发后，同样也会产生一条消息发给公众号</strong>，只不过<strong>只有消息主体，没有“消息文本”</strong>。</p>
+<p>为了验证，我们看看日志记录里面，用户关注公众号的时候会发生什么。</p>
+<ol>
+<li>取消关注公众号，再重新关注一下</li>
+<li>日志函数<code>c_log</code>会把这个“关注公众号”事件产生的消息 XML 数据打印出来。</li>
+<li>和文本消息不同，<code>MsgType</code>的值变成了 <code>event</code>（文本消息这个值是 <code>text</code>），说明这是个<strong>事件类型</strong>的消息</li>
+<li>多了两个字段 <code>Event</code> 和 <code>EventKey</code>，其中 <code>Event</code>字段的值是<code>subscribe</code></li>
+<li>“取消关注”的<code>Event</code>值是<code>unsubscribe</code>，说明<strong>事件有很多种</strong></li>
+</ol>
+<p><img src="/article_images/video.png" alt="事件-事件xml"></p>
+<h2 id="判断是否为事件消息实现被关注自动回复">判断是否为事件消息，实现被关注自动回复</h2>
+<p>通过<code>MsgType</code>可以判断当前是什么类型的消息。然后再根据 <code>MsgType</code>，来处理不同消息类型下的数据：</p>
+<p>例如</p>
+<ol>
+<li><code>MsgType</code>等于<code>event</code>，同时<code>Event</code>等于<code>subscribe</code>，是一个事件类型的消息，是事件类型消息里面的 “被关注事件”</li>
+<li><code>MsgType</code>等于<code>event</code>，同时<code>Event</code>等于<code>unsubscribe</code>，是一个事件类型的消息，是事件类型消息里面的 “取消关注事件”</li>
+<li><code>MsgType</code>等于<code>image</code>，是一个图片类型的消息</li>
+</ol>
+<p>回到代码，首先要把 XML 消息数据中 <code>MsgType</code>和<code>Event</code>等几个节点的值拿出来分别赋值给变量。然后进行值的判断，如果满足<code>$msgType == 'event'</code>并且同时满足<code>$event == 'subscribe'</code>，就发送一段欢迎语：</p>
+<pre><code class="language-php">} else {
+ //echo &quot;请输入一些东西&quot;;
+ //如果收到用户发送过来的内容为空，可能是订阅、取消订阅事件，或者是发送了一张图片
+
+ //处理事件
+ if ($msgType == 'event') {
+     //处理订阅事件
+     if ($event == 'subscribe') {
+         $msgType    = &quot;text&quot;;
+         $contentStr = '谢谢你订阅';
+         $resultStr  = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+         echo $resultStr;
+     }
+ }
+}
+</code></pre>
+<p><img src="/article_images/video.png" alt="事件-处理订阅事件"></p>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-2/" title="最好懂的微信公众平台开发教程(2)——电影查询助手" target="_blank" rel="external">https://my101du.github.io/1/01/wechat-course-with-examples-chapter-2/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/wechat-course-with-examples-chapter-3/" title="最好懂的微信公众平台开发教程(3)——使用ThinkPHP和公众号接口开发微信运营系统"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/wechat-develop-with-examples-chapter-1/"
+                    title="最好懂的微信公众平台开发教程(1)——零代码打造水果店公众号"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

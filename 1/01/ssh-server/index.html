@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        SSH服务安装与配置 - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="安装 SSH 服务 http://blog.csdn.net/netwalk/article/details/12952051 安装服务端 Ubuntu缺省没有安装SSH Server，使用以下命令安装： sudo apt-get install openssh-server 然后确认sshserver是否启动了：（或用“n" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>SSH服务安装与配置 - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="SSH服务安装与配置" />
+<meta property="og:description" content="安装 SSH 服务 http://blog.csdn.net/netwalk/article/details/12952051 安装服务端 Ubuntu缺省没有安装SSH Server，使用以下命令安装： sudo apt-get install openssh-server 然后确认sshserver是否启动了：（或用“n" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/ssh-server/" />
+
+<meta itemprop="name" content="SSH服务安装与配置">
+<meta itemprop="description" content="安装 SSH 服务 http://blog.csdn.net/netwalk/article/details/12952051 安装服务端 Ubuntu缺省没有安装SSH Server，使用以下命令安装： sudo apt-get install openssh-server 然后确认sshserver是否启动了：（或用“n">
+
+<meta itemprop="wordCount" content="5654">
+
+
+
+<meta itemprop="keywords" content="运维,SSH," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SSH服务安装与配置"/>
+<meta name="twitter:description" content="安装 SSH 服务 http://blog.csdn.net/netwalk/article/details/12952051 安装服务端 Ubuntu缺省没有安装SSH Server，使用以下命令安装： sudo apt-get install openssh-server 然后确认sshserver是否启动了：（或用“n"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-ssh-server" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/ssh-server/"
+    >SSH服务安装与配置</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E8%BF%90%E7%BB%B4/"> 运维 </a>
+    <a class="article-tag-link" href="/tags/ssh/"> SSH </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/ssh-server/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5654字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <h1 id="安装-ssh-服务">安装 SSH 服务</h1>
+<p><a href="http://blog.csdn.net/netwalk/article/details/12952051">http://blog.csdn.net/netwalk/article/details/12952051</a></p>
+<p><strong>安装服务端</strong></p>
+<p>Ubuntu缺省没有安装SSH Server，使用以下命令安装：
+sudo apt-get install openssh-server
+然后确认sshserver是否启动了：（或用“netstat -tlp”命令）
+ps -e|grep ssh
+如果只有ssh-agent那ssh-server还没有启动，需要/etc/init.d/ssh start，如果看到sshd那说明ssh-server已经启动了。 
+如果没有则可以这样启动：
+sudo/etc/init.d/ssh start
+　　事实上如果没什么特别需求，到这里 OpenSSH Server 就算安装好了。但是进一步设置一下，可以让 OpenSSH 登录时间更短，并且更加安全。这一切都是通过修改 openssh 的配置文件 sshd_config 实现的。</p>
+<p><strong>SSH配置</strong></p>
+<p>ssh-server配置文件位于/etc/ssh/sshd_config，在这里可以定义SSH的服务端口，默认端口是22，你可以自己定义成其他端口号，如222。然后重启SSH服务：</p>
+<p>sudo /etc/init.d/sshresart  
+通过修改配置文件/etc/ssh/sshd_config，可以改ssh登录端口和禁止root登录。改端口可以防止被端口扫描。</p>
+<pre><code class="language-shell">sudo cp/etc/ssh/sshd_config /etc/ssh/sshd_config.original  
+sudochmod a-w /etc/ssh/sshd_config.original
+</code></pre>
+<p>编辑配置文件 /etc/ssh/sshd_config  </p>
+<pre><code class="language-shell">找到#Port 22，去掉注释，修改成一个五位的端口：
+Port 22333
+找到#PermitRootLogin yes，去掉注释，修改为：
+PermitRootLogin no
+配置完成后重起：
+sudo/etc/init.d/ssh restart  
+</code></pre>
+<p><strong>SSH服务命令</strong></p>
+<p>停止服务：sudo /etc/init.d/ssh stop
+启动服务：sudo /etc/init.d/ssh start
+重启服务：sudo /etc/init.d/sshresart</p>
+<h1 id="zsh-与-on-my-zsh">Zsh 与 On-My-Zsh</h1>
+<pre><code class="language-shell">yum -y install zsh
+cat /etc/shells # 看到最后一行已经有 zsh 了
+
+chsh -s $(which zsh) # 切换 shell
+
+# 如果报错 chsh: Warning: &quot;/usr/bin/zsh&quot; is not listed in /etc/shells
+# 就修改 命令为 手动指定 zsh 在 /etc/shells 里的路径（这个 $(which zsh)可能有点问题，在 Ubuntu 里是 /usr/bin/zsh）
+chsh -s /bin/zsh
+
+echo $SHELL # 查看是否切换成功
+
+# 安装 oh-my-zsh
+sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</code></pre>
+<p>设置主题</p>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</a></p>
+<p>修改 <code>~/.zshrc</code>文件 <code>ZSH_THEME</code>变量，例如很炫的 <strong>agnoster</strong></p>
+<p>但是由于缺少一个字体，需要安装一下</p>
+<pre><code class="language-shell">git clone https://github.com/powerline/fonts.git
+cd fonts
+./install.sh
+</code></pre>
+<p>安装完字体之后，需要在iterm2中设置一下，Preferences-&gt;Profiles-&gt;Text，在Font和Non-ASCII Font 修改字体，搜 meslo dz ，设为 Meslo LG M DZ for Powerline 常规 12</p>
+<p><img src="/media/15490412289089/15211843192309.jpg" alt=""></p>
+<pre><code class="language-shell"># 修改配置，显示主机名、用户名(对于识别多台服务器很有帮助)
+$ vi ~/.zshrc
+
+# 添加以下一行
+PROMPT='%(!.%{%F{yellow}%}.)$USER @ %{$fg[white]%}%M %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+
+# 其实不需要这么复杂。 因为 username 不重要， 在多台主机之间最重要的hostname
+# 你可以在 -&gt; 符号前 （默认robby....主题）添加   %n: username  %m: hostname
+%n@%m
+
+# 刷新
+$ source .zshrc
+</code></pre>
+<h1 id="安全">安全</h1>
+<p>登录的时候，出现这种情况。可能是因为被网络上的扫描工具尝试字典破解</p>
+<blockquote>
+<p>mux_client_request_session: read from master failed: Broken pipe
+Last failed login: Fri Mar  9 01:27:22 UTC 2018 from 89.19.24.154 on ssh:notty
+There were 1465 failed login attempts since the last successful login.</p>
+</blockquote>
+<h2 id="更改-ssh-默认端口">更改 ssh 默认端口</h2>
+<p>服务器默认使用了 22 端口作为 ssh 服务的端口，这个端口成为入侵者重点关注的突破口，因此需要将它改成一些难以猜测的端口，例如 13682 这样的。</p>
+<p><strong>特别注意</strong></p>
+<p>如果你使用了防火墙服务，必须要先在防火墙规则里添加好你要修改的新端口，并且暂时不要关掉原来的22端口，确认用新端口可以登录后再关掉 22 端口。以免改完后无法登录！（我有一次在机房配置好后就回公司，在公司远程修改了 22 端口却忘了提前在防火墙开放端口，结果把自己挡在外面了，只好重新跑回到机房去配置）</p>
+<pre><code class="language-shell"># 先把防火墙里的新端口开放
+$ vi /etc/sysconfig/iptables
+
+# 复制 22 这行，改成 13682 等端口
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 13682 -j ACCEPT
+
+# 使防火墙规则生效
+$ services iptables restart
+$ iptables -L
+ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:ssh
+ACCEPT     tcp  --  anywhere             anywhere             state NEW tcp dpt:13682
+
+# 很重要的一步，关掉 SELinux(教程最前面有说明)，或者安装`policycoreutils-python` 来支持 `semanage` 命令，放行新端口
+$ setenforce 0
+
+$ yum -y install
+$ semanage port -a -t ssh_port_t -p tcp 13682
+$ semanage port -l | grep ssh
+ssh_port_t                     tcp      13682, 22
+</code></pre>
+<p>如果使用 firewalld 替代 iptables</p>
+<pre><code class="language-shell"># 查看开放了哪些端口
+firewall-cmd -list-all
+
+# 开放新的端口
+firewall-cmd --add-port=13682/tcp --permanent
+
+systemctl reload firewalld 
+</code></pre>
+<p>修改配置文件</p>
+<pre><code class="language-shell"># 编辑 ssh 服务的配置文件，找到这两行，改成新的配置参数，第一个是端口，第二是禁止 root 登录
+# 首先备份一下
+$ cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+
+$ vi /etc/ssh/sshd_config
+Port 13682 # 从 Port 22 修改
+
+# 重载 sshd 服务的配置参数(我发现还需要重启服务器才有效果……)
+$ service sshd reload
+$ service sshd restart
+$ reboot
+
+# 最后再编辑 iptables 文件，删掉之前的 22 端口那行的配置，重启 iptables 服务，关闭 22 端口
+</code></pre>
+<h2 id="不允许-root-远程登录">不允许 root 远程登录</h2>
+<p>另外，我们还要禁止 root 这个用户来登录，以免攻击者猜测到或者管理员泄露了 root 密码后，还能保障一定的安全。</p>
+<p><strong>首先要创建一个非 root 用户</strong></p>
+<p>(如果不创建，等下设置生效后就进不去系统了。。。)</p>
+<pre><code class="language-shell">useradd eric
+passwd eric
+</code></pre>
+<p>然后</p>
+<pre><code class="language-shell">$ vi /etc/ssh/sshd_config
+
+# 从 PermitRootLogin yes 修改
+PermitRootLogin no 
+
+$ service sshd restart
+</code></pre>
+<p>当再次通过 ssh 远程登录时，需要在命令行中指定Port参数。</p>
+<pre><code class="language-shell"># 测试 root 直接登录（使用默认 22 端口），提示连接被拒绝，这是系统的防火墙在起作用
+$ ssh root@192.168.56.101
+ssh: connect to host 192.168.56.101 port 22: Connection refused
+
+# root 使用指定新端口登录，提示权限被拒绝，这是 sshd 服务的`PermitRootLogin no`权限设置在起作用
+$ ssh -p 13682 root@192.168.56.101
+Permission denied, please try again.
+
+# 使用 -p 指定新端口，以及用 newuser 这个我们之前创建的普通用户可以正常登录
+$ ssh -p 13682 newuser@192.168.56.101
+#The authenticity of host '[192.168.56.101]:13682 ([192.168.56.101]:13682)' can't be established.
+#ECDSA key fingerprint is SHA256:MBkrnI7mctKMFkMovitFmvzpq4+Vj4uvLrbvGZXH/P4.
+#Are you sure you want to continue connecting (yes/no)? yes
+</code></pre>
+<h2 id="空闲超时退出时间间隔">空闲超时退出时间间隔</h2>
+<p>如果用户连接了服务器，然后中途又因为其他事情离开了机器，这时候如果有其他人来到电脑前进行恶意破坏，那就会造成很大的损失了。
+我们无法保证每个用户都有离开随时锁住屏幕的习惯，因此需要在服务器上设置一个超时时间，当服务器检测到用户很久没有操作后，就把这个空闲用户强制注销。</p>
+<pre><code class="language-shell">$ vi /etc/ssh/sshd_config
+ClientAliveInterval 600
+ClientAliveCountMax 0
+</code></pre>
+<h2 id="要求用户使用公钥登录禁止使用输入用户名和密码的方式登录">要求用户使用公钥登录，禁止使用输入用户名和密码的方式登录</h2>
+<p>虽然我们禁用了 root 用户远程登录服务器，但是仍然有两个弊端：</p>
+<ol>
+<li>一些别有用心的人仍然可以通过不断输入账号和密码去猜测和尝试</li>
+<li>合法用户每次登录的时候，如果密码很复杂的话，输入容易出错</li>
+</ol>
+<p>所以最好让服务器给每台信任的设备（例如你天天使用的笔记本电脑）“发个证”，每次登录的时候，服务器看一下这个证件就可以了，而不用繁琐地验证用户名和密码。</p>
+<p><strong>注意</strong>
+用户一定要保管好自己的设备（和里面的“证件”），因为一旦丢失了设备或让别人进入了你的操作系统，就可以畅通无阻地以你的身份拿着“证件”登录到服务器了。</p>
+<p>有两种免密登录方式</p>
+<ol>
+<li>服务器上生成 id_rsa （钥匙） 和 id_rsa.pub (锁),  然后把 id_rsa 复制很多份，发给每个同事，让他们登录的时候指定“钥匙”</li>
+</ol>
+<p>命令行</p>
+<pre><code class="language-shell"># -i 指定私钥，默认条件下使用 ~/.ssh/id_rsa
+# -l 指定用户名 
+# -p 指定端口，默认为 22
+ssh -i ~/.ssh/id_rsa -p 2222 -l wangao 192.168.56.101
+</code></pre>
+<p>或 xshell/sftp 等工具的“指定密钥”</p>
+<p>但一旦同事离职/电脑丢失，这个钥匙就相当于泄露了。。。</p>
+<ol start="2">
+<li>在每台需要登录的 客户端电脑 上生成一个自签名证书，然后把证书内容放到 服务器 上的“信任设备列表”里</li>
+</ol>
+<p>推荐用这种方式，当员工辞职，管理员只需要从信任设备列表里删除这个证书内容就可以了</p>
+<p>下面来详细说明下如何使用公钥来登录。这里假设被登录的服务器是“Server”，客户端是“Client”</p>
+<h3 id="在-client-例如笔记本上用-ssh-keygen-命令创建公钥">在 Client （例如笔记本）上用 ssh-keygen 命令创建公钥**</h3>
+<pre><code class="language-shell"># 在 Client 上运行
+# ssh-keygen:生成秘钥 -t指定算法 -f 指定生成秘钥路径 -N 指定密码
+$ ssh-keygen -t rsa
+
+# 为了以后在 ssh 登录的时候不用输入密码，直接回车就可以了。
+Generating public/private rsa key pair.
+Enter file in which to save the key(/root/.ssh/id_rsa):
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in/root/.ssh/id_rsa.
+Your public key has been saved in/root/.ssh/id_rsa.pub.
+The key fingerprint is:
+7b:aa:08:a0:99:fc:d9:cc:d8:2e:4b:1a:c0:6b:da:e4root@Server1
+The key s randomart image is:
++--[ RSA 2048]----+
+|o. S |
+|++. . |
+|+=o. . . |
+|o+=oB. o |
+|..E==*... |
++-----------------+  
+</code></pre>
+<p>得到两个文件</p>
+<pre><code class="language-shell">$ls -l .ssh
+-rw-------. 1 root root 1675 12月 10 22:20 id_rsa
+-rw-r--r--. 1 root root 394 12月 10 22:20 id_rsa.pub
+</code></pre>
+<p>输入后，会提示已经创建了 <code>.ssh/id_rsa</code>、<code>id_rsa.pub</code> 两个文件，其中第一个为密钥，第二个为公钥。</p>
+<h3 id="将-client-上生成的-公钥-文件-id_rsapub-复制到-server-的-ssh-目录下">将 Client 上生成的 <strong>公钥</strong> 文件 <code>id_rsa.pub</code> 复制到 Server 的 <code>.ssh</code> 目录下</h3>
+<h4 id="首先要在-server-上创建一个ssh目录">首先要在 Server 上创建一个<code>.ssh</code>目录</h4>
+<p>注意，如果你禁用了 root 登录，那么就要在用于 SSH 登录的用户主目录下创建，例如 <code>/home/newuser/.ssh</code></p>
+<p>用用户、密码方式登录 Server 机器(这里是 newuser)</p>
+<pre><code class="language-shell"># 用 newuser 账号登录后
+$ mkdir /home/newuser/.ssh
+chown newuser:newuser /home/newuser/.ssh
+</code></pre>
+<p><strong>注意</strong>如果你是在 root 用户下通过 newuser 创建用户的 .ssh 文件夹，需要 修改 owner，否则后面通过公钥文件验证会失败</p>
+<h4 id="然后回到-client-机器-将前面生成的公钥文件上传到-server-的-ssh-目录里面去">然后回到 Client 机器， 将前面生成的公钥文件上传到 Server 的 .ssh 目录里面去</h4>
+<pre><code class="language-shell">$ scp -P 13682 .ssh/id_rsa.pub newuser@192.168.56.101:~/.ssh/
+</code></pre>
+<p>回到 Server，发现文件已经存在</p>
+<pre><code class="language-shell">$ ll .ssh/
+total 4
+-rw-r--r-- 1 newuser newuser 398 Aug 20 06:08 id_rsa.pub
+</code></pre>
+<h4 id="将-client-的公钥文件添加到-server-的已验证钥匙列表文件底部sshauthorized_keys">将 Client 的公钥文件添加到 Server 的“已验证钥匙”列表文件底部（<code>.ssh/authorized_keys</code>）</h4>
+<pre><code class="language-shell"># 注意，现在是在 Server 机器上
+$ cat ~/.ssh/id_dsa.pub &gt;&gt; /home/newuser/.ssh/authorized_keys
+
+
+# 确保在 newuser 登录
+whoami
+
+# 设置authorized_keys权限
+$ chmod 600 ~/.ssh/authorized_keys
+
+# 设置.ssh目录权限
+$ chmod 700 -R ~/.ssh
+</code></pre>
+<h3 id="直接使用简化版的-ssh-copy-id-命令复制-client-的公钥内容到-server-的-authorized_keys-文件底部">直接使用简化版的 ssh-copy-id 命令，复制 client 的公钥内容到 server 的 authorized_keys 文件底部</h3>
+<pre><code class="language-shell"># 这里用户名是 test, 就会发送到目标服务器的 /home/test/.ssh/authorized_keys 文件
+ssh-copy-id test@192.168.0.3
+
+#输入目标服务器的用户密码
+</code></pre>
+<h3 id="修改-sshd-配置关闭密码登录">修改 sshd 配置，关闭密码登录</h3>
+<p>编辑 /etc/ssh/sshd_config 文件，进行如下设置：</p>
+<pre><code class="language-shell">RSAAuthentication yes
+PubkeyAuthentication yes
+</code></pre>
+<p>另外，如果你希望 root 能通过 ssh 登录的话，请留意 root 用户能否通过 SSH 登录：</p>
+<pre><code class="language-shell">PermitRootLogin yes
+</code></pre>
+<p>当你完成全部设置，并以密钥方式登录成功后，再禁用密码登录：</p>
+<pre><code class="language-shell">PasswordAuthentication no
+</code></pre>
+<p>最后，重启 SSH 服务：</p>
+<pre><code class="language-shell">service sshd restart
+</code></pre>
+<h3 id="回到-client测试无密码访问">回到 Client，测试无密码访问</h3>
+<pre><code class="language-shell"># 注意现在是在 Client 上
+$ ssh -p 13682 newuser@192.168.56.101
+
+# 无需密码登录成功
+Last login: Tue Dec 10 22:34:02 2013
+</code></pre>
+<h2 id="跳板机">跳板机</h2>
+<p>我们无法保证客户端的情况</p>
+<ol>
+<li>个人电脑会不会遗失在家或被盗</li>
+<li>个人电脑系统会不会崩溃</li>
+<li>个人电脑的网络安全问题</li>
+<li>员工离职后设备内密钥的清空</li>
+<li>服务器维护太多的客户端公钥非常麻烦</li>
+</ol>
+<p>因此，更好的办法是建立一台可信的“跳板机”，用户先登录这台机器，然后使用公钥的方式从跳板机登录到服务器。这样服务器就只要维护一些可信的 跳板机 IP 和公钥即可。</p>
+<h3 id="只允许部分用户通过-ssh-访问">只允许部分用户通过 SSH 访问</h3>
+<p>当系统中添加的用户越来越多，我们就要设置只允许其中几个用户才能使用 SSH 登录。</p>
+<p><strong>只允许列表中的用户名登录</strong></p>
+<pre><code class="language-shell">$ vi /etc/ssh/sshd_config
+AllowUsers root user1  user2
+</code></pre>
+<p><strong>限制只有某些个IP才能远程登录服务器</strong></p>
+<p>一些公司里人员流动比较频繁，当运维人员离职后，除了修改密码外，还要考虑到机器可能存在被外部访问的风险。因此设置一个 IP 地址列表，把公司的 IP 以及认为是安全的网络环境 IP 地址添加进去，然后禁止任何其他的 IP 地址登录。</p>
+<pre><code class="language-shell">$ vi /etc/hosts.deny     #在其中加入sshd:ALL
+$ vi /etc/hosts.allow    #在其中进行如下设置：sshd:192.168.1.1     #(只允许192.168.1.1这个IP远程登录服务器)
+</code></pre>
+<h2 id="常见错误">常见错误</h2>
+<p><strong>报错 Too many Authentication Failures for user root</strong></p>
+<p>在 ssh 或者 scp 的命令中添加参数</p>
+<pre><code class="language-shell">$ scp -o PubkeyAuthentication=no user@host
+</code></pre>
+<p><strong>复制完 publich key 内容后，SSH 连接时还是需要密码</strong></p>
+<p>如果手动复制 <code>id_rsa.pub</code> 文件的内容到远端的 <code>authorized_keys</code> 文件，发现 SSH 连接时还是需要密码，可能是因为 vi 编辑的时候，把行号复制进去了。建议使用<code>scp</code>上传源文件，然后用 <code>cat &gt;&gt;</code> 附加到文件末尾的方式，避免复制的时候格式错误。</p>
+<h2 id="设置客户端超时自动断开">设置“客户端超时自动断开”</h2>
+<p>修改下面的操作可能会降低服务器的安全性（例如你在客户端登陆后，忘记退出，被别人继续登录上去操作）</p>
+<pre><code class="language-shell">vim /etc/ssh/sshd_config
+
+# 修改下面两个值（如果不存在就添加）
+ClientAliveInterval 30       （每30秒往客户端发送会话请求，保持连接）
+ClientAliveCountMax 3      （去掉注释即可，3表示重连客户端3次失败后，重启SSH会话）
+
+#重启sshd服务，使配置生效
+/etc/init.d/sshd restart   
+service sshd restart
+#如果是 ubuntu
+/etc/init.d/ssh restart
+
+</code></pre>
+<p>腾讯云的主机 ubuntu 比 centos 的内存要少 100M.另外推荐一下重装一系统.</p>
+<p>有回复：https://www.v2ex.com/t/435395
+（系统显示的原因，可以不管吗？）</p>
+<pre><code> cxh116 · 34 分钟前 · 125 views  
+</code></pre>
+<p>ubuntu 的内存只有 890 M 的样子,而 centos 却有 990 M .</p>
+<p>建好主机后,推荐马上重装一下系统,重装时,去掉 &ldquo;免费开通 DDos 防护、WAF 和云镜主机防护 &quot; , &ldquo;免费开通云产品监控、分析和实时告警&rdquo; 两个选项,这样就不会有 YDLive 等进程了.</p>
+<p>另外推荐在腾讯云的控制台,新建安全组,只开放必要的端口,并关联到主机.
+防止后面安装 mysql mongodb 之类的,服务默认公网可访问,而导致主机被攻击之类的.</p>
+<p>ssh 方面.
+编辑 /etc/ssh/sshd_config 文件,
+改 Port 行,把端口改成非 22 端口,记得把新改的端口加到安全组里面.
+PermitRootLogin 改成 no, 禁止 root 用户登录.记得先新建普通用户,或直接 sudo -i -u centos 切换到 centos 用户看看.
+PasswordAuthentication 改成 no ,禁止密码登录,只允许公钥登录.记得先添加公钥到你的新建用户或 centos
+用户的.ssh/authorized_keys 文件里.
+然后重启 ssh , systemctl restart sshd . 不要退出当前 ssh 连接,新开窗口尝试用新端口和用户看是否可以正常登录,不能的话,在原 ssh 连接操作找原因.</p>
+<h1 id="生成-sftp-secure-shell-ssh-key-pair-for-an-sftp">生成 SFTP Secure Shell (SSH) key pair for an SFTP</h1>
+<p>生成一个 key 文件，在客户端不需要输入密码。提高安全性。</p>
+<h2 id="使用">使用</h2>
+<p><img src="/media/15490412289089/15365508071884.jpg" alt="-w449"></p>
+<h2 id="生成">生成</h2>
+<p>在 <strong>linux</strong> 下
+<a href="https://docs.oracle.com/en/cloud/paas/database-dbaas-cloud/csdbi/generate-ssh-key-pair.html#GUID-69EF7E8A-7CD5-482E-A878-882EA21DE2B8">https://docs.oracle.com/en/cloud/paas/database-dbaas-cloud/csdbi/generate-ssh-key-pair.html#GUID-69EF7E8A-7CD5-482E-A878-882EA21DE2B8</a></p>
+<pre><code class="language-shell">cd $HOME
+
+# 为 private key 指定 filename, 然后输入密码
+ssh-keygen -b 2048 -t rsa -f filename
+</code></pre>
+<p>the private key has been saved as filename and the public key has been saved as filename.pub</p>
+<p>得到一个 .pub 和一个 private key</p>
+<p>但是生成出来不是 ppk 后缀。需要转换
+根据这篇文章，https://haydenjames.io/how-to-convert-openssh-keys-to-putty-ppk-on-linux-with-puttygen/</p>
+<p>centos 的仓库没有 putty Download and install EPEL Repository:</p>
+<pre><code class="language-shell">sudo wget http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm 
+sudo rpm -ivh epel-release-7-11.noarch.rpm
+sudo yum install putty
+</code></pre>
+<p>在 debian 等上安装<code>putty-tools</code>来安装</p>
+<pre><code class="language-shell">apt-get install putty-tools
+puttygen keyname -o keyname.ppk
+
+</code></pre>
+<p>Linux 下 puttygen <a href="https://www.ssh.com/ssh/putty/linux/puttygen">https://www.ssh.com/ssh/putty/linux/puttygen</a></p>
+<p><strong>windows</strong> 下用 putty 生成</p>
+<p><a href="https://my.bluehost.com/hosting/help/putty">https://my.bluehost.com/hosting/help/putty</a></p>
+<p>ppk 转 pem</p>
+<pre><code class="language-shell">puttygen SISPKey.ppk -O private-openssh -o pemkey.pem
+</code></pre>
+<h1 id="客户端">客户端</h1>
+<h2 id="原始方式">原始方式</h2>
+<pre><code class="language-shell">ssh root@1.2.3.45 -p xx
+
+scp root@1.2.4.5
+</code></pre>
+<h2 id="使用软件">使用软件</h2>
+<p>secureCRT, xsheel  zoc 等都是收费的
+finalshell 据说有字符问题，个人作者也不知道怎么处理</p>
+<h2 id="使用-sshconfig-结合-alias-的方式">使用 ssh/config 结合 alias 的方式</h2>
+<p>编辑 <code>~/.ssh/config</code>文件</p>
+<pre><code class="language-shell">host server1
+    hostname 192.168.3.1
+    username devops
+    port 2222
+
+host server2 server_test
+    hostname 192.168.3.2
+    username devops
+    port 2222
+</code></pre>
+<p><code>host</code>就是“别名”，可以有多个名称，将来可以直接用别名来登录</p>
+<pre><code class="language-shell">ssh server1
+
+# 任意一个别名都可以
+ssh server2
+ssh server_test
+</code></pre>
+<p>如果某台服务器需要获取一个密钥来登录,在后面添加<code>IdentityFile</code></p>
+<pre><code class="language-shell">host server018 mongodb-box mongo
+    hostname 192.168.3.1
+    username devops
+    port 2222
+    IdentityFile ~/.ssh/id_dsa_devops
+</code></pre>
+<h2 id="使用命令别名的方式推荐因为上面那个不知道怎么输入密码">使用命令别名的方式（推荐，因为上面那个不知道怎么输入“密码”）</h2>
+<pre><code class="language-shell">vim ~/.bash_aliases
+
+# 在里面添加所有别名
+alias scotch='ssh nick@scotch.io'
+alias example2='ssh root@example.com'
+alias example3='ssh userxyz123@64.233.160.0 -p 56000'
+alias amazon1='ssh ec2-user@ec2.amazon.com -i /path/to/special/privatekey/amazon.pem'
+
+# 然后使之生效
+source ~/.bash_aliases
+
+# 然后就可以直接连接了
+scotch
+example2
+example3
+
+# 不记得别名，可以再创建一个命令看看列表
+alias listssh='cat ~/.bash_aliases'
+
+listssh
+</code></pre>
+<p><strong>扩展： 高亮 cat 输出结果</strong>
+<a href="https://stackoverflow.com/questions/7851134/syntax-highlighting-colorizing-cat">https://stackoverflow.com/questions/7851134/syntax-highlighting-colorizing-cat</a></p>
+<p>因为 ssh 命令没有“密码”的参数，只能用 <code>sshpass</code> 再加上 <code>ssh</code>,
+并且由于密码可能有特殊字符，要用单引号包裹进来
+例如</p>
+<pre><code class="language-shell">alias my_vm=&quot;sshpass -p 'Pass&amp;Word_123' ssh root@1.2.3.4 -p22&quot;
+</code></pre>
+<p><strong>注意： 每次修改内容，都要运行 source ~/.bash_aliases</strong></p>
+<h2 id="使用自写脚本和一个字典">使用自写脚本，和一个字典</h2>
+<p>创建一个“字典文件”  <code>ssh_pass</code></p>
+<p>第一位是“别名”，第二位是“IP/主机”，第三位是“密码”，第四位是“端口” 第五位是“用户名”</p>
+<pre><code class="language-shell">my_vm 10.211.55.11 123456 22 root
+my_aliyun 1.2.3.4 PassWord123 22 root
+my_bandwagon 5.6.7.8 WordPass456 27331 root
+</code></pre>
+<p>然后创建一个脚本，从字典里读取对应的内容</p>
+<pre><code>vi /usr/local/bin/autossh
+</code></pre>
+<p>内容如下</p>
+<pre><code class="language-shell">#!/bin/bash  
+  
+RC_ERR_NO_HOST=11  
+RC_ERR_NO_PASSWORD=21  
+RC_ERR_NO_PROT=31  
+RC_ERR_NO_USER=41
+RC_ERR_NO_SHORTNAME=51
+RC_SUCCESS=0  
+  
+pass_path=~/zzy_work/sec_files/sshp_pass
+  
+shortname=$1  
+  
+# arguments   
+if [ -z $shortname ]; then  
+    echo &quot;请检查连接的短名称&quot;  
+    exit $RC_ERR_NO_SHORTNAME  
+fi  
+  
+# read file  
+host=`grep $shortname\  $pass_path | cut -d' ' -f 2`  
+if [ -z $host ]; then  
+    echo &quot;请检查 host 或 ip&quot;  
+    exit $RC_ERR_NO_HOST 
+fi 
+
+# read file  
+pwd=`grep $shortname\  $pass_path | cut -d' ' -f 3`  
+if [ -z $pwd ]; then  
+    echo &quot;请检查密码&quot;  
+    exit $RC_ERR_NO_PASSWORD  
+fi  
+
+port=`grep $shortname\  $pass_path | cut -d' ' -f 4`  
+if [ -z $port ]; then  
+    echo &quot;请检查端口&quot;  
+    exit $RC_ERR_NO_PORT  
+fi  
+
+user=`grep $shortname\  $pass_path | cut -d' ' -f 5`  
+if [ -z $user ]; then  
+    echo &quot;请检查用户名&quot;  
+    exit $RC_ERR_NO_USER  
+fi 
+  
+exec sshpass -p $pwd  ssh $user@$host -p$port  
+exit $RC_SUCCESS  
+
+</code></pre>
+<p>然后给运行权限</p>
+<pre><code class="language-shell">chmod +x /usr/local/bin/autossh
+</code></pre>
+<p>使用的时候，需要先用 ssh 的完整命令连接一次服务器</p>
+<pre><code class="language-shell">ssh root@1.2.3.4
+</code></pre>
+<p>提示是否在 <code>~/.ssh/know_hosts</code>里记录服务器，输入 yes</p>
+<p>然后 <code>exit</code>退出，就可以直接用“字典”里的别名登录了</p>
+<pre><code class="language-shell">autossh my_vm
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/ssh-server/" title="SSH服务安装与配置" target="_blank" rel="external">https://my101du.github.io/1/01/ssh-server/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/amazing-editor-sublime-text/" title="Sublime Text调教"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/ms-sql-server/"
+                    title="SQL Server"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

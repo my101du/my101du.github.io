@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        dva - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="dva is a React and redux based, lightweight and elm-style framework, which supports side effects, hot module replacement, dynamic on demand, react-native, and SSR. It has been widely used in production environments. elm 概念，通过 reducers, effects 和 subscriptions 组织 model dva 经朋友推荐开始接触 dva ，从 1.x 版本开始使用，一直看着" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>dva - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="dva" />
+<meta property="og:description" content="dva is a React and redux based, lightweight and elm-style framework, which supports side effects, hot module replacement, dynamic on demand, react-native, and SSR. It has been widely used in production environments. elm 概念，通过 reducers, effects 和 subscriptions 组织 model dva 经朋友推荐开始接触 dva ，从 1.x 版本开始使用，一直看着" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/dva-and-react/" />
+
+<meta itemprop="name" content="dva">
+<meta itemprop="description" content="dva is a React and redux based, lightweight and elm-style framework, which supports side effects, hot module replacement, dynamic on demand, react-native, and SSR. It has been widely used in production environments. elm 概念，通过 reducers, effects 和 subscriptions 组织 model dva 经朋友推荐开始接触 dva ，从 1.x 版本开始使用，一直看着">
+
+<meta itemprop="wordCount" content="2466">
+
+
+
+<meta itemprop="keywords" content="foreground," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="dva"/>
+<meta name="twitter:description" content="dva is a React and redux based, lightweight and elm-style framework, which supports side effects, hot module replacement, dynamic on demand, react-native, and SSR. It has been widely used in production environments. elm 概念，通过 reducers, effects 和 subscriptions 组织 model dva 经朋友推荐开始接触 dva ，从 1.x 版本开始使用，一直看着"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-dva-and-react" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/dva-and-react/"
+    >dva</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/foreground/"> foreground </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/dva-and-react/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2466字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p>dva is a React and redux based, lightweight and elm-style framework, which supports side effects, hot module replacement, dynamic on demand, react-native, and SSR. It has been widely used in production environments.</p>
+<p>elm 概念，通过 reducers, effects 和 subscriptions 组织 model</p>
+<p>dva
+经朋友推荐开始接触 dva ，从 1.x 版本开始使用，一直看着它发展到前不久的 2.x，我也基于这个工具开发了一套项目模版，它简化了 redux 的使用，并且在封装了 redux-saga 和 react-router，同时还可以包含 dva-loading 插件获取 loading 状态等。</p>
+<p>在 redux 时代，当我需要新增一种跨页面全局数据的时候，我需要去项目的 reducers 目录定义一下这种数据命名和初始值，然后在 constans 目录中为更改这项数据的操作定义一种唯一的操作类型（type），再去 actions 目录定义一些方法，这些方法最后会得到更改后的数据和操作类型（type），最后再回到 reducers 中根据这个操作类型（type）把数据整合到 reducer 中…可以看到，我在编写 redux 这部分代码的时候需要频繁在 actions 、 constants 、 reducers 这几个目录间切换。</p>
+<p>而使用 dva 就可以免除这些困扰了，我只需要一个 model 中就可以完成所有操作</p>
+<h1 id="dvi-cli">dvi-cli</h1>
+<p>全套</p>
+<pre><code class="language-shell">npm install dva-cli -g
+$ dva -v
+
+$ dva new dva-quickstart
+$ cd dva-quickstart
+$ npm start
+</code></pre>
+<h1 id="dva-core">dva-core</h1>
+<p>对应 dva 里的“定义 Model”部分。dva 通过 model 的概念把一个领域的模型管理起来，包含同步更新 state 的 reducers，处理异步逻辑的 effects，订阅数据源的 subscriptions 。</p>
+<p>例如 models/products.js</p>
+<pre><code class="language-js">export default {
+  namespace: 'products', //表示在全局 state 上的 key
+  state: [], //是初始值，在这里是空数组
+  reducers: { //等同于 redux 里的 reducer，接收 action，同步更新 state
+    'delete'(state, { payload: id }) {
+      return state.filter(item =&gt; item.id !== id);
+    },
+  },
+};
+</code></pre>
+<p>载入它 （当然可以像 taro-dva 的 dva.js 一样，写 createApp 来初始化各种数据）</p>
+<pre><code class="language-js">app.model(require('./models/products').default);
+</code></pre>
+<p>把 Component 和 model 两者 connect 起来</p>
+<pre><code class="language-js">import { connect } from 'dva'; // taro 里直接用 from &quot;@tarojsredux&quot; dva 文档里说这两个一样？
+import ProductList from '../components/ProductList';
+
+const Products = ({ dispatch, products }) =&gt; {
+  function handleDelete(id) {
+    dispatch({
+      type: 'products/delete',
+      payload: id,
+    });
+  }
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;List of Products&lt;/h2&gt;
+      &lt;ProductList onDelete={handleDelete} products={products} /&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default connect(({ products }) =&gt; ({
+  products,
+}))(Products);
+</code></pre>
+<p>在入口文件初始化和启动</p>
+<pre><code class="language-js">// 1. Initialize
+const app = dva();
+
+// 4. Router
+app.router(() =&gt; &lt;App /&gt;);
+
+// 5. Start
+app.start('#root');
+</code></pre>
+<h1 id="概念">概念</h1>
+<p>对各种概念的解释非常清晰，多读读理解。  （taro-dva 的案例里没有用到 subscription, 尝试使用）</p>
+<p>在 dva 中你可以通过 dva 的实例属性 <code>_store</code> 看到顶部的 state 数据，但是通常你很少会用到: （taro-dav 里 dva.js 有用法）</p>
+<h1 id="项目源码分析--理解整个过程-还有一些模式">项目源码分析  理解整个过程， 还有一些模式</h1>
+<p>这里以 taro 整合 dva 为例</p>
+<h2 id="安装依赖-dva-core--dva-loading以及-redux-相关">安装依赖 <code>dva-core</code>  <code>dva-loading</code>，以及 redux 相关</h2>
+<pre><code class="language-json">&quot;dva-core&quot;: &quot;^1.4.0&quot;,
+&quot;dva-loading&quot;: &quot;^2.0.5&quot;,
+
+&quot;@tarojs/redux&quot;: &quot;^1.0.0-beta.25&quot;,
+&quot;@tarojs/redux-h5&quot;: &quot;^1.0.0-beta.25&quot;,
+
+&quot;react-redux&quot;: &quot;^5.0.7&quot;,
+&quot;redux&quot;: &quot;^4.0.0&quot;,
+&quot;redux-logger&quot;: &quot;^3.0.6&quot;,
+&quot;redux-thunk&quot;: &quot;^2.3.0&quot;
+</code></pre>
+<h2 id="models">models</h2>
+<p>redux 有 action/reducer 等一堆零散东西。简单来说，分成几块：</p>
+<ol>
+<li>数据  （例如 post 博客）</li>
+<li>修改数据的方法  （例如 edit()）</li>
+<li>又一个方法： 调用修改数据的方法后，数据会怎么变化 （例如 saveEdit()）</li>
+<li>这些方法分别叫什么名字  (例如 &lsquo;edit&rsquo;, &lsquo;saveEdit&rsquo; 注意他们是字符串)</li>
+</ol>
+<p>这些东西分散在 N 个目录和不同的文件下，虽然逻辑结构清晰，但编辑、管理起来实在是太痛苦了，改个方法要在几个文件里跳来跳去。随便增加一个动作就要添加几个文件。</p>
+<p>还好， dva 可以把它们统一成“model”（模型）的概念，在一个文件里完成这一系列步骤。下面是一个 <code>post</code> 的 model</p>
+<p>文件 <code>MyApp/src/models/post.js</code></p>
+<p>一个 model 关键的几个部分：</p>
+<ol>
+<li>namespace: 表示这个 model 的名称</li>
+<li>state：这个 model 的数据</li>
+<li>effects: model 可以有哪些“动作”（例如请求网络，获取数据）</li>
+<li>reducers:  对应某个 effect, 当完成动作后，对数据怎么操作</li>
+</ol>
+<pre><code class="language-js">import Taro from '@tarojs/taro'
+import action from &quot;../utils/action&quot;;
+import request from &quot;../utils/request&quot;;
+import delay from &quot;../utils/delay&quot;;
+
+export default {
+  namespace: 'posts',
+
+  state: {
+    currentCategory: null,
+    isFetching: false,
+    updateTime: null,
+    postsByCategories: {},
+  },
+
+  reducers: {
+      postsByCategory(state, {payload}) {
+        const {items, id} = payload;
+
+        return {...state, postsByCategories: {...state.postsByCategories, [id]: items}}
+    },
+    //other reducer...
+  },
+
+  effects: {
+    * search(_, {all, call, put}) {
+      Taro.showLoading({
+        title: '搜索中...',
+      });
+      try {
+        let loadPro = yield put(action(&quot;load&quot;));
+        yield call(() =&gt; loadPro);
+      } finally {
+        Taro.hideLoading();
+      }
+    },
+    
+    * load({payload}, {all, call, put}) {
+      let {data} = yield call(request, {
+        url: 'https://easy-mock.com/mock/5b21d97f6b88957fa8a502f2/example/feed'
+      });
+      yield call(delay, 2000);//增加延迟测试效果
+      yield put(action(&quot;save&quot;, {list: data}))
+    },
+    
+    * fetchPostsByCategory({payload}, {all, call, put}) {
+      const { id } = payload;
+
+      // let {data}   
+      let data = yield call(request, {
+        url: SITE_URL + &quot;/wp-json/wp/v2/posts?categories=&quot; + id
+      });
+
+      // yield call(delay, 2000);//增加延迟测试效果
+      yield put(action(&quot;postsByCategory&quot;, {items: data, id}))
+    },
+    // other effects...
+  },
+};
+
+</code></pre>
+<h3 id="effect">effect</h3>
+<p>在一个 effect 中，通过用 <code>call()</code> 来调用另外一个方法（例如，网络请求、获取文件内容等）</p>
+<pre><code class="language-js">let data = yield call(request, {
+    url: SITE_URL + &quot;/wp-json/wp/v2/posts?categories=&quot; + id
+  });
+</code></pre>
+<p>当得到返回数据后，再调用<code>put()</code>方法触发一个 model 里对应的 <code>reducer</code>(例如这里“postsByCategory”，并带有参数)</p>
+<pre><code class="language-js">yield put(action(&quot;postsByCategory&quot;, {items: data, id}))
+</code></pre>
+<h3 id="reducer">reducer</h3>
+<p>在 effect 里使用 <code>put()</code>来触发某个 reducer. 在这里进行数据的后续处理。</p>
+<p>改变 model 的 <code>state</code> 属性。</p>
+<pre><code class="language-js">postsByCategory(state, {payload}) {
+  const {items, id} = payload;
+
+  return {...state, postsByCategories: {...state.postsByCategories, [id]: items}}
+},
+</code></pre>
+<h3 id="同时导出多个-models">同时导出多个 models</h3>
+<p>根据业务需要，可以创建 N 个 models. 然后统一导出供后面 dva app 创建函数来调用， 生成 dva 实例。</p>
+<p>文件 <code>MyApp/models/index.js</code></p>
+<pre><code class="language-js">import posts from './posts'
+import products from './products'
+// other models
+
+export default [
+  posts, products
+]
+</code></pre>
+<h2 id="定义创建-dva-app-实例的函数-createappopt关联-redux-的-stores-和-dva-models">定义创建 dva app 实例的函数 createApp(opt)：关联 redux 的 stores 和 dva models</h2>
+<p>文件 <code>MyApp/src/dva.js</code></p>
+<p>这个函数：</p>
+<ol>
+<li>接受一个<code>opt</code>参数，值包含有 <code>models</code> 列表</li>
+<li>循环 <code>opt.models</code>, 使用 <code>app.model(model)</code>来向 dva app 注册 models</li>
+<li>为 dva app 创建一个<code>dispatch()</code>方法，来自<code>app._store.dispatch()</code></li>
+<li>为 dva app 创建一个<code>getStore()</code>方法，返回<code>app._store</code></li>
+<li>最后返回一个 dva app 实例</li>
+</ol>
+<pre><code class="language-js">import {create} from 'dva-core';
+import {createLogger} from 'redux-logger';
+import createLoading from 'dva-loading';
+
+let app;
+let store;
+let dispatch;
+
+function createApp(opt) {
+  opt.onAction = [createLogger()];
+  app = create(opt);
+  app.use(createLoading({}));
+
+  if (!global.registered) opt.models.forEach(model =&gt; app.model(model));
+  global.registered = true;
+  app.start();
+
+  store = app._store;
+  app.getStore = () =&gt; store;
+
+  dispatch = store.dispatch;
+
+  app.dispatch = dispatch;
+  return app;
+}
+
+export default {
+  createApp,
+  getDispatch() {
+    return app.dispatch;
+  }
+}
+</code></pre>
+<h2 id="dispatch-是干什么的">dispatch 是干什么的？</h2>
+<p>翻译来叫“分派”，在 Redux 里，其实就是一个函数，用来发送通知，驱动数据的变化。这个 dispatch 函数有两个参数</p>
+<ol>
+<li>干什么</li>
+<li>带</li>
+</ol>
+<h2 id="定义-action-辅助方法-非必需将-dispatch-的参数列表格式化">定义 action() 辅助方法 (非必需)：将 dispatch 的参数列表格式化</h2>
+<p>文件<code>./utils/action.js</code></p>
+<p>将按顺序列出的多个参数值（无索引名） [type, payload]，转换成一个有索引名的 js 对象 {type: type, payload: payload}</p>
+<pre><code class="language-js">const action = (type, payload) =&gt; ({type, payload});
+
+export default action
+</code></pre>
+<p>有了它，在写 <code>dispatch()</code> 调用时的参数时候，就可以简化为 (参数的值具体表示什么，等下在 model 里去看)</p>
+<pre><code class="language-js">dispatch(action(&quot;post/get&quot;, {id: 123}));
+</code></pre>
+<p>否则就要完整写出 type, payload 名称.</p>
+<pre><code class="language-js">dispatch({
+    type: 'post/get',
+    payload: {
+        id: 123
+    }
+})
+</code></pre>
+<p>因为代码里会频繁调用 model 的方法，所以用这个 <code>action()</code>来简化代码</p>
+<h2 id="在入口文件中调用-createapp创建-dva-app-实例">在入口文件中调用 createApp()，创建 dva app 实例</h2>
+<p>在 React 应用的入口文件<code>app.js</code>中</p>
+<pre><code class="language-js">// redux Provider
+import { Provider } from &quot;@tarojs/redux&quot;;
+
+// 引入 dva app 创建函数所在的文件
+import dva from &quot;./dva&quot;;
+
+// 引入所有定义的 models (见下一节)
+import models from &quot;./model&quot;;
+
+// 引入 action 辅助函数
+import action from &quot;./utils/action&quot;;
+
+// 创建 dva app 实例（参数有 initialStatus: {}, models 等）
+const dvaApp = dva.createApp({
+  initialState: {},
+  models: models,
+  onError(e, dispatch) {
+    dispatch(action(&quot;sys/error&quot;, e));
+  }
+});
+
+// 获取这个 dva app 的 store
+const dvaStore = dvaApp.getStore();
+
+// 然后把 store 传给 redux Prodiver 组件，就可以在其他组件中使用 store 属性的值
+render() {
+    return (
+      &lt;Provider store={dvaStore}&gt;
+        &lt;Home /&gt;
+      &lt;/Provider&gt;
+    );
+</code></pre>
+<h2 id="调用-model-的方法和获取-store-内的数据">调用 model 的方法和获取 store 内的数据</h2>
+<p>在根组件<code>&lt;App /&gt;</code>中注入 store 后，假设在子组件<code>&lt;Home /&gt;</code>中要使用数据：</p>
+<pre><code class="language-js">// Redux 的 connect 方法，用于向组件内注入 store 数据
+import { connect } from &quot;@tarojs/redux&quot;;
+
+// 前面讲过，简化 dispatch 的参数
+import action from &quot;../../utils/action&quot;;
+
+// 该组件的属性，自动拥有了 posts，以及 store 的 dispatch 方法
+@connect(({ posts }) =&gt; ({
+  posts
+}))
+export default class Home extends Component {
+
+    componentDidMount() {
+        // 调用 store 的 dispatch 方法，参数1是 model 内的一个 effect, 参数2 是数据
+        this.props.dispatch(
+          action(&quot;posts/fetchPostsByCategory&quot;, { id: newsCategories[0].id })
+        );
+      }
+      
+    render() {
+        // 获取存储在 store 里的 posts 数据(作为组件的 posts 属性)
+        const posts = this.props.posts
+    }
+</code></pre>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/dva-and-react/" title="dva" target="_blank" rel="external">https://my101du.github.io/1/01/dva-and-react/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/echarts-library/" title="EChart 图表库"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/dotnet-core-%E5%BC%80%E5%8F%91/"
+                    title="DotNet Core 开发"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

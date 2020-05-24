@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        Swift类型工程使用最新百度地图SDK.md - my101du Blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="在 APP 中，如果我们要基于地图开发一些功能，可以使用 Apple 官方自带的 MapKit， 或者百度地图的 SDK。因为百度地图提供了多个平台（Android、" />
+    <meta name="generator" content="Hugo 0.70.0 with theme pure" />
+    <title>Swift类型工程使用最新百度地图SDK.md - my101du Blog</title>
+    
+    
+    <link rel="stylesheet" href="https://my101du.github.io/css/style.min.7dc20efbc53647d41aa9ddea0c48e59300223d084e66ea0cbe7c30bd88903acc.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="Swift类型工程使用最新百度地图SDK.md" />
+<meta property="og:description" content="在 APP 中，如果我们要基于地图开发一些功能，可以使用 Apple 官方自带的 MapKit， 或者百度地图的 SDK。因为百度地图提供了多个平台（Android、" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://my101du.github.io/1/01/develop-map-app-with-baidu-sdk-swift/" />
+
+<meta itemprop="name" content="Swift类型工程使用最新百度地图SDK.md">
+<meta itemprop="description" content="在 APP 中，如果我们要基于地图开发一些功能，可以使用 Apple 官方自带的 MapKit， 或者百度地图的 SDK。因为百度地图提供了多个平台（Android、">
+
+<meta itemprop="wordCount" content="2722">
+
+
+
+<meta itemprop="keywords" content="百度地图," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Swift类型工程使用最新百度地图SDK.md"/>
+<meta name="twitter:description" content="在 APP 中，如果我们要基于地图开发一些功能，可以使用 Apple 官方自带的 MapKit， 或者百度地图的 SDK。因为百度地图提供了多个平台（Android、"/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/my101du" target="_blank">
+            <img class="img-circle img-rotate" src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">my101du</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md"></h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Dongguan, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content"><p>enjoy~</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/aftereffects/" class="tag-list-link">aftereffects</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/android/" class="tag-list-link">android</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angular/" class="tag-list-link">angular</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/angularjs/" class="tag-list-link">angularjs</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/animate/" class="tag-list-link">animate</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/atom/" class="tag-list-link">atom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/axure/" class="tag-list-link">axure</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/bi/" class="tag-list-link">bi</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/chrome/" class="tag-list-link">chrome</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/cocos2d/" class="tag-list-link">cocos2d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/css/" class="tag-list-link">css</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/data-visualization/" class="tag-list-link">data-visualization</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/discuz/" class="tag-list-link">discuz</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/docker/" class="tag-list-link">docker</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/echarts/" class="tag-list-link">echarts</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ecshop/" class="tag-list-link">ecshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/express/" class="tag-list-link">express</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/foreground/" class="tag-list-link">foreground</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/forever/" class="tag-list-link">forever</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/frontend/" class="tag-list-link">frontend</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/google-analytics/" class="tag-list-link">google-analytics</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/hexo/" class="tag-list-link">hexo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/highlight/" class="tag-list-link">highlight</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/https/" class="tag-list-link">https</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/idea/" class="tag-list-link">idea</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/imovie/" class="tag-list-link">imovie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ionic/" class="tag-list-link">ionic</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/javascript/" class="tag-list-link">javascript</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jest/" class="tag-list-link">jest</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/jquery/" class="tag-list-link">jquery</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/laravel/" class="tag-list-link">laravel</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/macos/" class="tag-list-link">macos</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/magento/" class="tag-list-link">magento</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/markdown/" class="tag-list-link">markdown</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/meteor/" class="tag-list-link">meteor</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mobile/" class="tag-list-link">mobile</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nginx/" class="tag-list-link">nginx</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/nodejs/" class="tag-list-link">nodejs</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/openwrt/" class="tag-list-link">openwrt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/other/" class="tag-list-link">other</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/photoshop/" class="tag-list-link">photoshop</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/php/" class="tag-list-link">php</a><span
+                    class="tag-list-count">9</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/play/" class="tag-list-link">play</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/pm2/" class="tag-list-link">pm2</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ppt/" class="tag-list-link">ppt</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/premiere/" class="tag-list-link">premiere</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/react/" class="tag-list-link">react</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/reactnative/" class="tag-list-link">reactnative</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/samba/" class="tag-list-link">samba</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/screenflow/" class="tag-list-link">screenflow</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/seo/" class="tag-list-link">seo</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/server/" class="tag-list-link">server</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/shadowsocks/" class="tag-list-link">shadowsocks</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/simplehtmldom/" class="tag-list-link">simplehtmldom</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/sketch/" class="tag-list-link">sketch</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skill/" class="tag-list-link">skill</a><span
+                    class="tag-list-count">4</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/skills/" class="tag-list-link">skills</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/ssh/" class="tag-list-link">ssh</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/supervisor/" class="tag-list-link">supervisor</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/svn/" class="tag-list-link">svn</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/tools/" class="tag-list-link">tools</a><span
+                    class="tag-list-count">3</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/typecho/" class="tag-list-link">typecho</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/unity3d/" class="tag-list-link">unity3d</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vim/" class="tag-list-link">vim</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vnc/" class="tag-list-link">vnc</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/vue/" class="tag-list-link">vue</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/web-server/" class="tag-list-link">web-server</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/webpack/" class="tag-list-link">webpack</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/wordpress/" class="tag-list-link">wordpress</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/write/" class="tag-list-link">write</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/zombie/" class="tag-list-link">zombie</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%86%99%E4%BD%9C/" class="tag-list-link">写作</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%89%8D%E7%AB%AF/" class="tag-list-link">前端</a><span
+                    class="tag-list-count">12</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%B7%A5%E5%85%B7/" class="tag-list-link">工具</a><span
+                    class="tag-list-count">25</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E5%BE%AE%E4%BF%A1/" class="tag-list-link">微信</a><span
+                    class="tag-list-count">7</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%80%9D%E8%80%83/" class="tag-list-link">思考</a><span
+                    class="tag-list-count">6</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E5%B7%A7/" class="tag-list-link">技巧</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%8A%80%E8%83%BD/" class="tag-list-link">技能</a><span
+                    class="tag-list-count">17</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="tag-list-link">正则表达式</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E6%B8%B8%E6%88%8F/" class="tag-list-link">游戏</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/" class="tag-list-link">百度地图</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E8%BF%90%E7%BB%B4/" class="tag-list-link">运维</a><span
+                    class="tag-list-count">18</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://my101du.github.io/tags/%E9%9A%8F%E7%AC%94/" class="tag-list-link">随笔</a><span
+                    class="tag-list-count">18</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/1-1/" class="title">1-1</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/100-laravel-extensions/" class="title">100个laravel常用扩展</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/national-day-2009/" class="title">2009年国庆小记</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF/" class="title">500 错误</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://my101du.github.io/1/01/500-%E9%94%99%E8%AF%AF%E7%B3%BB%E5%88%97/" class="title">500 错误系列</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">0001-01-01</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-develop-map-app-with-baidu-sdk-swift" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/1/01/develop-map-app-with-baidu-sdk-swift/"
+    >Swift类型工程使用最新百度地图SDK.md</a
+  >
+</h1>
+
+      <div class="article-meta">
+          
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE/"> 百度地图 </a>
+  </span>
+
+        <span class="post-comment"><i class="icon icon-comment"></i>&nbsp;<a href="/1/01/develop-map-app-with-baidu-sdk-swift/#comments"
+            class="article-comment-link">评论</a></span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2722字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <p><img src="/article_images/mobile/develop-map-app-with-baidu-sdk-swift/cover.png" alt=""></p>
+<p>在 APP 中，如果我们要基于地图开发一些功能，可以使用 Apple 官方自带的 MapKit， 或者百度地图的 SDK。因为百度地图提供了多个平台（Android、JavaScript）的文档，学习一次后在开发其他平台上的应用时也会有帮助，一般中国的开发者都选择它。
+因为目前最新版本 2.9.1 仍然是用 Objective-C 编写的，因此如果我们的工程是 Swift 的话，在引入 SDK 时，会有一些要注意的地方，踩了不少坑后，我把一些要注意的关键地方记录了下来供大家参考。</p>
+<p>参考如下文章</p>
+<p><a href="http://developer.baidu.com/map/index.php?title=iossdk/guide/buildproject">http://developer.baidu.com/map/index.php?title=iossdk/guide/buildproject</a></p>
+<p><a href="http://developer.baidu.com/map/index.php?title=iossdk/guide/swift">http://developer.baidu.com/map/index.php?title=iossdk/guide/swift</a></p>
+<h1 id="编辑项目属性文件-infoplist">编辑项目属性文件 info.plist</h1>
+<p>由于iOS9改用更安全的https，为了能够在iOS9中正常使用地图SDK，需要修改 <code>info.plist</code>
+右键点击 <code>info.plist</code> 文件，选择“Open As……Source Code”，添加如下几行内容</p>
+<pre><code class="language-xml">&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
+&lt;dict&gt;
+   &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
+   &lt;true/&gt;
+&lt;/dict&gt;
+</code></pre>
+<p>然后添加以下两个 Boolean 值，都为“YES”，可以右键，“Add Row”</p>
+<pre><code class="language-shell">NSLocationWhenInUseUsageDescription
+NSLocationAlwaysUsageDescription
+</code></pre>
+<p>另外 info.plist 中必须添加 <code>Bundle display name</code>，否则运行时会报错 <code>manager start failed!</code>，填写 <code>$(PRODUCT_NAME)</code>即可。</p>
+<h1 id="导入sdk文件到项目中">导入SDK文件到项目中</h1>
+<p>最新版的 SDK 不再提供 .a 类型的库，而都采用了 framework 形式的库
+按照 <a href="http://developer.baidu.com/map/index.php?title=iossdk/guide/buildproject">http://developer.baidu.com/map/index.php?title=iossdk/guide/buildproject</a> 的说明，可以通过两种方式引入 framework 文件。</p>
+<p><strong>第一种方法：使用 CocoaPod</strong></p>
+<pre><code class="language-shell">$vi Podfile
+
+#添加如下一行后保存退出
+pod 'BaiduMapKit'
+
+$pod install
+</code></pre>
+<p>出现</p>
+<blockquote>
+<p>Installing BaiduMapKit (2.9.1)
+Generating Pods project</p>
+</blockquote>
+<p>这样会在 <code>Pods/BaiduMapKit</code> 目录下保存所有的 framework 文件和一个 Resource 目录下的资源文件 bundle</p>
+<p><strong>第二种方法：手动复制</strong></p>
+<p>将需要的 framework 文件复制到 <code>Resource/BaiduMapSDK</code> 目录下，其中 <code>BaiduMapAPI_Base.framework</code> 是必需的，其他的并非必需，仔细看文档上有详细说明。</p>
+<p>对于第二种方法，还要手动引入一个资源文件包（这里面有一些图片什么的）</p>
+<p>右键项目名，“Add Files To……”，把 <code>BaiduMapAPI_Map.framework/Resources/mapapi.bundle</code> 这个文件添加进来，如果提示是否要复制，选是。</p>
+<h1 id="添加linked-frameworks-and-libraries或link-binary-with-libraries">添加“Linked Frameworks and Libraries”(或“Link Binary With Libraries”)</h1>
+<p>进入项目设置的 <code>Target-&gt;Build Phases</code> 选项卡，找到“Link Binary With Libraries”，点“+”号，选 <code>Add Other</code>，把刚刚导入的 framework 文件添加进来（可以多选）</p>
+<ul>
+<li>BaiduMapAPI_Base.framework</li>
+<li>BaiduMapAPI_Cloud.framework</li>
+<li>BaiduMapAPI_Location.framework</li>
+<li>BaiduMapAPI_Map.framework</li>
+<li>BaiduMapAPI_Radar.framework</li>
+<li>BaiduMapAPI_Search.framework</li>
+<li>BaiduMapAPI_Utils.framework</li>
+</ul>
+<p>然后继续添加其他的系统库，共 9 个</p>
+<ul>
+<li>CoreLocation.framework</li>
+<li>QuartzCore.framework</li>
+<li>OpenGLES.framework</li>
+<li>SystemConfiguration.framework</li>
+<li>CoreGraphics.framework</li>
+<li>Security.framework</li>
+<li>libsqlite3.0.tbd</li>
+<li>CoreTelephony.framework</li>
+<li>libstdc++.6.0.9.tbd</li>
+</ul>
+<p>切换到 <code>Target-&gt;General</code> 的 <code>Linked Frameworks and Libraries</code> 下也能看到这些link了的库，如果没有，则添加一下。</p>
+<h1 id="桥接头文件">桥接头文件</h1>
+<p>这一步特别重要，以后我们在 Swfit 项目中，引入 Objective-C 编写的第三方库，或者与 Objective-C 代码混编，都需要这一步操作。
+这里假设你的项目叫“TestProject”。</p>
+<ol>
+<li>首先新建一个空的 .m 文件(Objective-C)，假设命名为 <code>tmp.m</code>。</li>
+<li>有人说会自动提示是否建立一个桥接头文件，但是我在 Xcode7 上没发现。</li>
+<li>于是只好手动建立一个文件，命名为 <code>TestProject-Bridging-Header.h</code></li>
+<li>进入项目设置“Target-&gt;Build Settings”，找到“Swift Compiler-Code Generation”,编辑 <code>Objective-C Bridging Header</code>，输入刚创建的 .h 文件的路径，注意包含项目名，例如<code>TestProject/TestProject-Bridging-Header.h</code></li>
+<li>然后再找到 “Linking”，编辑<code>Other Link Flags</code>，添加一个类型为 <code>-objC</code></li>
+<li>最后选中<code>tmp.m</code>文件，在最右侧的文件属性编辑器里，把它的后缀名改成 <code>.mm</code>，看到它下面的 <code>Type</code>会自动变成 <code>Default - Objective-C++ Source</code>（这个什么编译类型的东西解释起来比较复杂，我猜测是百度地图的SDK用的什么C++编译环境？反正你只要知道 Apple 在兼容 C，C++，Objective-C，Objective-C++，Swift 方面很牛逼就是了）</li>
+</ol>
+<h1 id="import-头文件以及初始化百度地图">import 头文件以及初始化百度地图</h1>
+<p>编辑那个桥接头文件 <code>TestProject-Bridging-Header.h</code>，输入如下内容</p>
+<pre><code class="language-C++">#import &lt;BaiduMapAPI_Base/BMKBaseComponent.h&gt;//引入base相关所有的头文件
+#import &lt;BaiduMapAPI_Map/BMKMapComponent.h&gt;//引入地图功能所有的头文件
+</code></pre>
+<p>因为百度地图的文档还是用 Objective-C 做案例代码写的，所以你还是要看得懂这些代码，然后转成 Swift 语法写一次。</p>
+<p>编辑 <code>AppDelegate.swift</code>，看看是否报错，如果没有报错的话，说明百度地图的库已经被正常加载进来了。</p>
+<pre><code class="language-swift">var mapManager: BMKMapManager?
+
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+        mapManager = BMKMapManager()
+        return true
+    }
+
+</code></pre>
+<h1 id="第三方库">第三方库</h1>
+<p>Spring	动画、自定义控件外观
+SwiftyJSON	解析 JSON 格式的数据
+TPKeyboardAvoiding	让输入框一直在屏幕中间，避免被键盘挡住
+Alamofire	网络库</p>
+<h1 id="问题">问题</h1>
+<p>调用 WebViewController时，无法打开页面，报错“blocked a cleartext HTTP”
+查询</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/31254725/transport-security-has-blocked-a-cleartext-http">http://stackoverflow.com/questions/31254725/transport-security-has-blocked-a-cleartext-http</a></li>
+<li><a href="https://forums.developer.apple.com/thread/3544">https://forums.developer.apple.com/thread/3544</a></li>
+</ul>
+<p>需要在 info.plist 里添加一组值
+NSAppTransportSecurity Dictionary
++NSAllowsArbitraryLoads Boolean YES</p>
+<h1 id="上架市场">上架市场</h1>
+<h2 id="创建-app-ids">创建 App IDs</h2>
+<p><img src="/media/15490412159769/15129592690091.jpg" alt=""></p>
+<p>例如 com.yourcomany.yourappname</p>
+<p><img src="/media/15490412159769/15129593365035.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129594995142.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129595570096.jpg" alt=""></p>
+<h2 id="本地创建证书签名请求文件certsigningrequest">本地创建证书签名请求文件（.certSigningRequest）</h2>
+<p>与开发设备有关——例如你的 macbook pro</p>
+<h3 id="在本地创建-csr-文件certificate-signing-request准备请求签名">在本地创建 CSR 文件（Certificate Signing Request），准备请求签名</h3>
+<p>钥匙串&ndash;》证书助理&ndash;》从证书机构请求证书</p>
+<p><img src="/media/15490412159769/15129573880827.jpg" alt=""></p>
+<p>填写用户的信息</p>
+<p>选中“save to disk&rdquo; 后，不要填 CA Email Address 了。</p>
+<p>用户邮箱如 <a href="mailto:timdeng@test.sample">timdeng@test.sample</a>
+comman name 如： TimDeng</p>
+<p><img src="/media/15490412159769/15129574738443.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129575244425.jpg" alt=""></p>
+<h2 id="创建开发环境生产环境证书">创建开发环境/生产环境证书</h2>
+<p><img src="/media/15490412159769/15129570884301.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129570515199.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129571432414.jpg" alt=""></p>
+<p>可选择</p>
+<ul>
+<li>仅限开发环境 Development（不会被任何你的开发设备以外的 apple 设备看到）</li>
+<li>或者是发布到 app store (Production 生产环境)</li>
+<li>部分注册设备（Pending ，一般是你开发完毕后，先给部分同事看，最后发布到 app store
+给所有人看）</li>
+</ul>
+<p>关系到后面”发布证书“</p>
+<p><img src="/media/15490412159769/15129572126740.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129572384308.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129573132689.jpg" alt=""></p>
+<p>选择上一步生成的本地 CSR 文件 <code>CertificateSigningRequest.certSigningRequest</code></p>
+<p><img src="/media/15490412159769/15129577217932.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129569440997.jpg" alt=""></p>
+<p>下载已签名的开发环境/生产环境证书。</p>
+<p><img src="/media/15490412159769/15446896087571.jpg" alt="-w274"></p>
+<p>直接打开，会自动加入电脑到证书列表中</p>
+<p>在钥匙串，System - all items 里看到已经添加了两个证书 （Production 对应 distribution）</p>
+<p><img src="/media/15490412159769/15446895654226.jpg" alt="-w464"></p>
+<h2 id="导出生成-p12-证书主要是-api-cloud-要用用-itunes-connect-不需要-">导出生成 P12 证书（主要是 API Cloud 要用，用 iTunes Connect 不需要 ）</h2>
+<p>所有的 cer 文件可以回到列表界面看到</p>
+<p><img src="/media/15490412159769/15129569844304.jpg" alt=""></p>
+<p>双击打开下载的 ios_distribution.cer 文件,点击“Add”，添加到本地钥匙串</p>
+<p><img src="/media/15490412159769/15129578500872.jpg" alt=""></p>
+<p><strong>注意，最新版的 10.14 里双击后自动安装，发现会被安装到”system“里面去，导致无法导出为 .p12 的类型</strong></p>
+<p>必须要展开 &ldquo;<strong>login</strong>&quot;, 选中 <strong>&ldquo;My Cetificates</strong>&rdquo; 类别，然后<strong>手动把证书拖进去</strong>。才能在下一步的导出里看到 <code>.p12</code> 文件类型（否则在别的地方，导出的时候会自动变成 <code>.cer</code> ，<code>.p12</code> 是灰色的）</p>
+<p><img src="/media/15490412159769/15447512752579.jpg" alt="-w1028"></p>
+<p>右键导出</p>
+<p><img src="/media/15490412159769/15447515113024.jpg" alt="-w704"></p>
+<p>一定要是 <code>.p12</code>类型</p>
+<p><img src="/media/15490412159769/15447515663869.jpg" alt="-w645"></p>
+<h2 id="注册测试设备如你的-iphone-ipad-等">注册测试设备(如你的 iPhone iPad 等)</h2>
+<p><img src="/media/15490412159769/15129590731379.jpg" alt=""></p>
+<p>一次添加一个设备，一次注册多个设备</p>
+<p><img src="/media/15490412159769/15129591130000.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129646592326.jpg" alt=""></p>
+<h2 id="创建描述文件后面发布时用到后缀-mobileprovision">创建描述文件（后面发布时用到，后缀 .mobileprovision）</h2>
+<p>Provisioning Profiles</p>
+<p>把 <code>测试环境/开发环境证书</code> + <code>appid</code> + <code>目标设备</code> 几个参数一起定义为一个描述文件。</p>
+<p><img src="/media/15490412159769/15129647506103.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129648167991.jpg" alt=""></p>
+<h3 id="仅限发布到部分测试设备">仅限发布到部分测试设备</h3>
+<p>生成的 ipa 可以运行在某些测试设备上</p>
+<h3 id="发布到正式的-app-store-或-ad-hoc-列表中的设备">发布到正式的 App Store 或 ad Hoc 列表中的设备</h3>
+<p>这一步建议<strong>创建两个描述文件 adhoc 和 production</strong></p>
+<p>（1）先发布给 ad hoc 列表中的设备去测试下
+（2）没问题了，最后才发布到 app store 全网用户</p>
+<p><img src="/media/15490412159769/15129648585968.jpg" alt=""></p>
+<p>选择 App ID</p>
+<p><img src="/media/15490412159769/15129648801785.jpg" alt=""></p>
+<p>选择证书</p>
+<p><img src="/media/15490412159769/15129688929609.jpg" alt="">
+选择发布的目标设备（ad hoc 列表），<strong>只有这个列表里的设备能在 itunes store 里看到这个 app 的上架信息，其他用户都看不到。</strong></p>
+<p><img src="/media/15490412159769/15129689171303.jpg" alt="">
+命名</p>
+<p><img src="/media/15490412159769/15129689663889.jpg" alt="">
+生成，下载</p>
+<p><img src="/media/15490412159769/15129690072002.jpg" alt=""></p>
+<p>下载它，得到文件</p>
+<p><img src="/media/15490412159769/15446907657658.jpg" alt="-w391"></p>
+<p>在 描述文件 列表中也能看到</p>
+<p><img src="/media/15490412159769/15446907341263.jpg" alt="-w740"></p>
+<h2 id="登陆到-itunes-connect-新建一个app以及后续管理它的发布运营情况">登陆到 iTunes Connect 新建一个APP以及后续管理它的发布、运营情况</h2>
+<p><a href="https://itunesconnect.apple.com/">https://itunesconnect.apple.com/</a></p>
+<p><strong>后面提交的构建状态，以及管理 app 的促销等信息，都在这里</strong></p>
+<p><img src="/media/15490412159769/15446925600051.jpg" alt=""></p>
+<h2 id="发布-app-使用-xcode-发布">发布 APP: 使用 Xcode 发布</h2>
+<p>Product &gt; Archive</p>
+<p>填写信息后， 选择 ”发布证书“和 描述文件</p>
+<p>记得设置图标</p>
+<p><img src="/media/15490412159769/15446927507029.jpg" alt=""></p>
+<h2 id="发布-app使用-apicloud">发布 APP：使用 APICloud</h2>
+<p><img src="/media/15490412159769/15129602080681.jpg" alt=""></p>
+<p><img src="/media/15490412159769/15129602180259.png" alt=""></p>
+<h2 id="推送服务证书">推送服务证书</h2>
+<h1 id="开发者中心">开发者中心</h1>
+<h2 id="邀请团队成员">邀请团队成员</h2>
+<p>区别于 iTunes 用户</p>
+<p><img src="/media/15490412159769/15129604360722.jpg" alt=""></p>
+<p>邀请为管理员或普通用户</p>
+<p><img src="/media/15490412159769/15129605309036.jpg" alt=""></p>
+<h1 id="itunes-connect">iTunes Connect</h1>
+
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://my101du.github.io/1/01/develop-map-app-with-baidu-sdk-swift/" title="Swift类型工程使用最新百度地图SDK.md" target="_blank" rel="external">https://my101du.github.io/1/01/develop-map-app-with-baidu-sdk-swift/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License：</strong><a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN</a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/my101du" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://avatars2.githubusercontent.com/u/1332645?s=460&amp;u=dc114d6baad010456a5af87c4cc2df0694ff2b1c&amp;v=4" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/my101du" target="_blank"><span class="text-dark">my101du</span><small class="ml-1x"></small></a></h3>
+        <div>Stay Hungry, Stay Foolish</div>
+      </div>
+    </figure>
+  </div>
+</div>
+    </div>
+  </article>
+<section id="comments">
+</section>
+
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://my101du.github.io/1/01/taro-%E4%B8%89%E7%AB%AF%E5%BC%80%E5%8F%91/" title="taro 三端开发"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://my101du.github.io/1/01/study-svn/"
+                    title="SVN版本控制"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/my101du" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://my101du.github.io/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2017  -
+    2020
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/php.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://my101du.github.io/js/application.min.bdeb64b910570b6c41badc6a05b7afb0c8ad9efd8525de3c7257d59e786326a3.js"></script>
+<script src="https://my101du.github.io/js/plugin.min.51ff8c7317566f82259170fa36e09c4493adc9b9378b427a01ad3f017ebac7dd.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/my101du.github.io\/',
+            CONTENT_URL: 'https:\/\/my101du.github.io\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://my101du.github.io/js/insight.min.a343cd9a5a7698336b28ef3a7c16a3a1b1d2d5fb17dc8ed04022bbe08cc5459073a15bdafa3a8a58cdd56080784bdd69fa70b1ae8597565c799c57ed00f0e120.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>
